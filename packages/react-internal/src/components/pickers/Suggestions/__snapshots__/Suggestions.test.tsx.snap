@@ -103,6 +103,12 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
@@ -110,7 +116,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -122,12 +127,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
-                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="sug-0"
@@ -153,9 +152,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               black
-               
+
             </div>
           </span>
         </button>
@@ -239,13 +238,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -257,9 +259,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -285,9 +284,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               blue
-               
+
             </div>
           </span>
         </button>
@@ -371,13 +370,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -389,9 +391,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-2"
@@ -417,9 +416,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               brown
-               
+
             </div>
           </span>
         </button>
@@ -503,13 +502,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -521,9 +523,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -549,9 +548,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               cyan
-               
+
             </div>
           </span>
         </button>
@@ -635,13 +634,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -653,9 +655,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-4"
@@ -681,9 +680,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               green
-               
+
             </div>
           </span>
         </button>
@@ -767,13 +766,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -785,9 +787,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -813,9 +812,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               magenta
-               
+
             </div>
           </span>
         </button>
@@ -899,13 +898,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -917,9 +919,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-6"
@@ -945,9 +944,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               mauve
-               
+
             </div>
           </span>
         </button>
@@ -1031,13 +1030,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1049,9 +1051,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -1077,9 +1076,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               orange
-               
+
             </div>
           </span>
         </button>
@@ -1163,13 +1162,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1181,9 +1183,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-8"
@@ -1209,9 +1208,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               pink
-               
+
             </div>
           </span>
         </button>
@@ -1295,13 +1294,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1313,9 +1315,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -1341,9 +1340,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               purple
-               
+
             </div>
           </span>
         </button>
@@ -1427,13 +1426,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1445,9 +1447,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-10"
@@ -1473,9 +1472,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               red
-               
+
             </div>
           </span>
         </button>
@@ -1559,13 +1558,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1577,9 +1579,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -1605,9 +1604,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               rose
-               
+
             </div>
           </span>
         </button>
@@ -1691,13 +1690,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1709,9 +1711,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-12"
@@ -1737,9 +1736,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               violet
-               
+
             </div>
           </span>
         </button>
@@ -1823,13 +1822,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1841,9 +1843,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-13"
@@ -1869,9 +1868,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               white
-               
+
             </div>
           </span>
         </button>
@@ -1955,13 +1954,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -1973,9 +1975,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -2001,9 +2000,9 @@ exports[`Suggestions renders a list properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               yellow
-               
+
             </div>
           </span>
         </button>
@@ -2127,6 +2126,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
@@ -2134,7 +2139,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2146,12 +2150,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
-                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="sug-0"
@@ -2177,9 +2175,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               black
-               
+
             </div>
           </span>
         </button>
@@ -2263,13 +2261,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2281,9 +2282,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -2309,9 +2307,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               blue
-               
+
             </div>
           </span>
         </button>
@@ -2395,13 +2393,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2413,9 +2414,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-2"
@@ -2441,9 +2439,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               brown
-               
+
             </div>
           </span>
         </button>
@@ -2527,13 +2525,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2545,9 +2546,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -2573,9 +2571,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               cyan
-               
+
             </div>
           </span>
         </button>
@@ -2659,13 +2657,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2677,9 +2678,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-4"
@@ -2705,9 +2703,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               green
-               
+
             </div>
           </span>
         </button>
@@ -2791,13 +2789,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2809,9 +2810,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -2837,9 +2835,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               magenta
-               
+
             </div>
           </span>
         </button>
@@ -2923,13 +2921,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -2941,9 +2942,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-6"
@@ -2969,9 +2967,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               mauve
-               
+
             </div>
           </span>
         </button>
@@ -3055,13 +3053,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3073,9 +3074,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -3101,9 +3099,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               orange
-               
+
             </div>
           </span>
         </button>
@@ -3187,13 +3185,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3205,9 +3206,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-8"
@@ -3233,9 +3231,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               pink
-               
+
             </div>
           </span>
         </button>
@@ -3319,13 +3317,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3337,9 +3338,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -3365,9 +3363,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               purple
-               
+
             </div>
           </span>
         </button>
@@ -3451,13 +3449,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3469,9 +3470,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-10"
@@ -3497,9 +3495,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               red
-               
+
             </div>
           </span>
         </button>
@@ -3583,13 +3581,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3601,9 +3602,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -3629,9 +3627,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               rose
-               
+
             </div>
           </span>
         </button>
@@ -3715,13 +3713,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3733,9 +3734,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-12"
@@ -3761,9 +3759,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               violet
-               
+
             </div>
           </span>
         </button>
@@ -3847,13 +3845,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3865,9 +3866,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-13"
@@ -3893,9 +3891,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               white
-               
+
             </div>
           </span>
         </button>
@@ -3979,13 +3977,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -3997,9 +3998,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -4025,9 +4023,9 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               yellow
-               
+
             </div>
           </span>
         </button>
@@ -4128,13 +4126,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4146,9 +4147,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-0"
@@ -4174,9 +4172,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               black
-               
+
             </div>
           </span>
         </button>
@@ -4260,13 +4258,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4278,9 +4279,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -4306,9 +4304,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               blue
-               
+
             </div>
           </span>
         </button>
@@ -4392,13 +4390,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4410,9 +4411,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-2"
@@ -4438,9 +4436,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               brown
-               
+
             </div>
           </span>
         </button>
@@ -4524,13 +4522,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4542,9 +4543,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -4570,9 +4568,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               cyan
-               
+
             </div>
           </span>
         </button>
@@ -4656,13 +4654,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4674,9 +4675,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-4"
@@ -4702,9 +4700,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               green
-               
+
             </div>
           </span>
         </button>
@@ -4788,13 +4786,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4806,9 +4807,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -4834,9 +4832,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               magenta
-               
+
             </div>
           </span>
         </button>
@@ -4920,13 +4918,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -4938,9 +4939,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-6"
@@ -4966,9 +4964,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               mauve
-               
+
             </div>
           </span>
         </button>
@@ -5052,13 +5050,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5070,9 +5071,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -5098,9 +5096,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               orange
-               
+
             </div>
           </span>
         </button>
@@ -5196,6 +5194,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
@@ -5203,7 +5207,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5215,12 +5218,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
-                forced-color-adjust: none;
               }
           data-is-focusable={true}
           id="sug-8"
@@ -5246,9 +5243,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               pink
-               
+
             </div>
           </span>
         </button>
@@ -5332,13 +5329,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5350,9 +5350,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -5378,9 +5375,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               purple
-               
+
             </div>
           </span>
         </button>
@@ -5464,13 +5461,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5482,9 +5482,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-10"
@@ -5510,9 +5507,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               red
-               
+
             </div>
           </span>
         </button>
@@ -5596,13 +5593,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5614,9 +5614,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -5642,9 +5639,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               rose
-               
+
             </div>
           </span>
         </button>
@@ -5728,13 +5725,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5746,9 +5746,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-12"
@@ -5774,9 +5771,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               violet
-               
+
             </div>
           </span>
         </button>
@@ -5860,13 +5857,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -5878,9 +5878,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-13"
@@ -5906,9 +5903,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               white
-               
+
             </div>
           </span>
         </button>
@@ -5992,13 +5989,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
                 forced-color-adjust: none;
               }
@@ -6010,9 +6010,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -6038,9 +6035,9 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             data-automationid="splitbuttonprimary"
           >
             <div>
-               
+
               yellow
-               
+
             </div>
           </span>
         </button>

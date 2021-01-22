@@ -226,6 +226,10 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         position: relative;
                         top: 0px;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-color: Window;
+                        border: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
@@ -242,7 +246,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       &:active .ms-Button-icon {
                         color: #004578;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         border: 0px;
                       }
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
@@ -383,11 +387,14 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         position: relative;
                         top: 0px;
                       }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-color: Window;
+                        border: 0px;
+                      }
                       &:hover {
                         color: #0078d4;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                        border-color: Highlight;
+                      @media screen and (-ms-high-contrast: active){&:hover {
                         color: Highlight;
                       }
                       &:hover .ms-Button-icon {
@@ -399,10 +406,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       &:active .ms-Button-icon {
                         color: #004578;
                       }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                        border: 0px;
-                      }
-                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+                      @media screen and (-ms-high-contrast: active){&:focus {
                         border: 1px solid WindowText;
                       }
                       .ms-Nav-compositeLink:hover & {
@@ -602,11 +606,14 @@ exports[`Nav renders Nav correctly 1`] = `
                       position: relative;
                       top: 0px;
                     }
+                    @media screen and (-ms-high-contrast: active){& {
+                      border-color: Window;
+                      border: 0px;
+                    }
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
-                      border-color: Highlight;
+                    @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -618,10 +625,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                      border: 0px;
-                    }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
+                    @media screen and (-ms-high-contrast: active){&:focus {
                       border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
@@ -663,7 +667,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           vertical-align: middle;
                         }
                   >
-                    
+
                   </div>
                 </span>
               </button>
