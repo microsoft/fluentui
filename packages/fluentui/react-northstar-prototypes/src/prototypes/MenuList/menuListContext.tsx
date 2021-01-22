@@ -5,9 +5,8 @@ const MenuListContext = React.createContext<MenuListContext>({
   setIndex: null,
   setOpen: null,
   triggerRef: null,
-  checkedItems: [],
-  onItemChecked: () => null,
-  onItemUnChecked: () => null,
+  checkedValues: {},
+  onCheckedValuesChange: (name: string, value: number[]) => null,
 });
 
 export interface MenuListContext {
@@ -15,9 +14,8 @@ export interface MenuListContext {
   setIndex: (index: number) => void;
   setOpen: (open: boolean) => void;
   triggerRef: React.RefObject<HTMLDivElement>;
-  checkedItems: number[];
-  onItemChecked: (item: number) => void;
-  onItemUnChecked: (item: number) => void;
+  checkedValues: Record<string, number[]>;
+  onCheckedValuesChange: (name: string, value: number[]) => void;
 }
 
 export const MenuListProvider = MenuListContext.Provider;

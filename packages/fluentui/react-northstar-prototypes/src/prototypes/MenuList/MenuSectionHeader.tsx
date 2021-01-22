@@ -6,6 +6,7 @@ export const MenuSectionHeader = (props: any) => {
 
   const styles = {
     fontWeight: 700,
+    width: 'fit-content',
   };
 
   return (

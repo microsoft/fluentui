@@ -4,19 +4,22 @@ import { useMenuContext } from './menuContext';
 import { MenuListProvider } from './menuListContext';
 
 export function MenuList({ children }) {
-  const { triggerRef, open, currentIndex, setIndex, menuRef, setOpen } = useMenuContext();
-  const [checkedItems, setCheckedItems] = React.useState<number[]>([]);
+  const {
+    triggerRef,
+    open,
+    currentIndex,
+    setIndex,
+    menuRef,
+    setOpen,
+    onCheckedValuesChange: onRootCheckedValuesChange,
+  } = useMenuContext();
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, number[]>>({});
 
-  const onItemChecked = (item: number) => setCheckedItems(s => [...s, item]);
-  const onItemUnChecked = (item: number) =>
-    setCheckedItems(s => {
-      const newArray = [...s];
-      const index = newArray.indexOf(item);
-      if (index > -1) {
-        newArray.splice(index, 1);
-      }
-
-      return newArray;
+  const onCheckedValuesChange = (name: string, items: number[]) =>
+    setCheckedValues(s => {
+      const newState = { ...s, [name]: items };
+      onRootCheckedValuesChange(newState);
+      return newState;
     });
 
   return (
@@ -38,9 +41,8 @@ export function MenuList({ children }) {
               setIndex,
               setOpen,
               triggerRef,
-              checkedItems,
-              onItemChecked,
-              onItemUnChecked,
+              checkedValues,
+              onCheckedValuesChange,
             }}
           >
             <div ref={menuRef}>{children}</div>

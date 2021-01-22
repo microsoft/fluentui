@@ -3,7 +3,7 @@ import { MenuContextProvider } from './menuContext';
 import { useEventListener } from '@fluentui/react-component-event-listener';
 
 export const Menu = props => {
-  const { children, trigger = null, open = false } = props;
+  const { children, trigger = null, open = false, onCheckedValuesChange } = props;
   const triggerRef = React.useRef<HTMLDivElement>();
   const menuRef = React.useRef<HTMLDivElement>();
 
@@ -46,6 +46,7 @@ export const Menu = props => {
         open: isOpen,
         setOpen,
         menuRef,
+        onCheckedValuesChange,
       }}
     >
       <div
