@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 21 Jan 2021 12:26:08 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jan 2021 12:28:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.12.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.12.8)
+
+Fri, 22 Jan 2021 12:28:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.12.7..@uifabric/charting_v4.12.8)
+
+### Patches
+
+- Line Chart: X axis callout for last circle issue resolved. Updated xAxisCalloutData for last circle ([PR #16556](https://github.com/microsoft/fluentui/pull/16556) by v-jasha@microsoft.com)
 
 ## [4.12.7](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.12.7)
 
