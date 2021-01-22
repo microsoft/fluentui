@@ -353,6 +353,7 @@ function isCurrentMonth(month: number, year: number, today: Date): boolean {
 
 function onButtonKeyDown(callback: () => void): (ev: React.KeyboardEvent<HTMLButtonElement>) => void {
   return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.enter:
         callback();

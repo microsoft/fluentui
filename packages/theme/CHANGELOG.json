@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.12",
+      "version": "2.0.0-beta.12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jan 2021 12:30:40 GMT",
       "tag": "@fluentui/theme_v2.0.0-beta.11",
       "version": "2.0.0-beta.11",

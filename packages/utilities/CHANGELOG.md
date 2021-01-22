@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 11 Nov 2020 12:30:44 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.9)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.6..@fluentui/utilities_v8.0.0-beta.9)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.6)
 
