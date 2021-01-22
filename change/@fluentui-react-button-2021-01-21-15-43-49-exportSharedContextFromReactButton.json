@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Button: Re-exporting MenuContext from react-button to avoid fragility in package versions usage.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-21T23:43:49.064Z"
+}
