@@ -34,16 +34,10 @@ export type MakeStylesResolvedStyles = Record<string, MakeStylesResolvedRule>;
 
 // Renderer types
 
-export type MakeStylesLookupEntry = [string, MakeStylesResolvedRule];
-
 export type MakeStylesMatchedDefinitions = MakeStylesResolvedStyles;
 
 export interface MakeStylesRenderer {
   id: string;
 
-  insertDefinitions(
-    lookupTable: Record<string, MakeStylesLookupEntry>,
-    resolvedDefinitions: MakeStylesMatchedDefinitions,
-    rtl: boolean,
-  ): string;
+  insertDefinitions(resolvedDefinitions: MakeStylesMatchedDefinitions, rtl: boolean): string;
 }
