@@ -145,6 +145,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     ...(p.hasToggleIndicator && { paddingRight: v.toggleIndicatorSize }),
     ...(p.multiple &&
       p.hasItemsSelected && {
+        paddingTop: pxToRem(1),
         paddingBottom: pxToRem(4),
       }),
   }),
@@ -250,6 +251,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     margin: 0,
     position: 'absolute',
     right: pxToRem(8),
+    top: pxToRem(8),
     color: v.color,
     ...(p.disabled && { color: v.disabledColor }),
   }),
