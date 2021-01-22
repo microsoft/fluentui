@@ -17,8 +17,12 @@ export function MenuItem({ children, index, submenu = null, onClick = null }) {
         setOpen(false);
         triggerRef.current.focus();
       }
+
+      if (e.key === ' ' || e.key === 'Enter') {
+        onClick();
+      }
     },
-    [setOpen, triggerRef],
+    [setOpen, triggerRef, onClick],
   );
 
   useEventListener({
