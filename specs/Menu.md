@@ -866,6 +866,12 @@ In the event that the selection method is a radio, the previous selected item mu
 
 Accessibility behaviour is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
 
+### Creating sections or groups within a menu
+
+⚠️ When using [MenuDivider](#menudivider) without [MenuGroup](#menugroup)
+
+The [MenuDivider](#menudivider) is a purely visual component. The component is only intended to be used as visual 'sugar'. When meaningful partitions [MenuItems](#menuitem) exists, [MenuGroup](#menugroup) should be used to provide the correct experience for narration.
+
 ### Focus management
 
 ### Disabled menu items
