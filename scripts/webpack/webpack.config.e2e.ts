@@ -6,8 +6,9 @@ import webpack, { DefinePlugin } from 'webpack';
 import config from '../config';
 import { getProcessEnv } from '../getProcessEnv';
 
-const { paths } = config;
+console.log('process', getProcessEnv());
 
+const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
