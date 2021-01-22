@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Announced } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { DatePicker, IDatePicker } from '@fluentui/react-date-time';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
@@ -12,11 +11,9 @@ const styles = mergeStyleSets({
 export const DatePickerInputExample: React.FunctionComponent = () => {
   const [value, setValue] = React.useState<Date | undefined>();
   const datePickerRef = React.useRef<IDatePicker>(null);
-  const [clearedAnnounced, setClearedAnnounced] = React.useState<JSX.Element | undefined>();
 
   const onClick = React.useCallback((): void => {
     setValue(undefined);
-    setClearedAnnounced(<Announced message="Input field cleared" aria-live="assertive" />);
   }, []);
 
   return (
@@ -35,8 +32,7 @@ export const DatePickerInputExample: React.FunctionComponent = () => {
         componentRef={datePickerRef}
         className={styles.control}
       />
-      {clearedAnnounced}
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton aria-label="Clear the date input" onClick={onClick} text="Clear" />
     </div>
   );
 };
