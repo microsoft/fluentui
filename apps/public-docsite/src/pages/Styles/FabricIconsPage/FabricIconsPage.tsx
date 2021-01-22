@@ -17,7 +17,7 @@ for (const iconName in MDL2Icons) {
   const component = MDL2Icons[iconName];
   if (
     typeof component === 'function' &&
-    iconName != 'createSvgIcon' &&
+    iconName !== 'createSvgIcon' &&
     String(component).indexOf('return React.createElement') !== -1
   ) {
     component.key = 'iconName';
