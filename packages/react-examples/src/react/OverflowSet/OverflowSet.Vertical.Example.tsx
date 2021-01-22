@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommandBarButton } from '@fluentui/react/lib/compat/Button';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
-import { TooltipHost } from '@fluentui/react';
+import { DirectionalHint, TooltipHost } from '@fluentui/react';
 
 const noOp = () => undefined;
 
@@ -15,7 +15,7 @@ const onRenderOverflowButtonStyles = {
 
 const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return (
-    <TooltipHost content={item.title} id={`menuitem-${item.key}-tooltip`}>
+    <TooltipHost content={item.title} directionalHint={DirectionalHint.rightCenter}>
       <CommandBarButton
         role="menuitem"
         aria-label={item.name}
@@ -29,9 +29,10 @@ const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
 
 const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
   return (
-    <TooltipHost content="More items" id="menuitem-more-tooltip">
+    <TooltipHost content="More items" directionalHint={DirectionalHint.rightCenter}>
       <CommandBarButton
         role="menuitem"
+        aria-label="More items"
         styles={onRenderOverflowButtonStyles}
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}
