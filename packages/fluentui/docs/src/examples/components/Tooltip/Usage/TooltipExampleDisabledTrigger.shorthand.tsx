@@ -5,7 +5,7 @@ const TooltipExampleDisabledTrigger = () => {
   return (
     <Tooltip
       trigger={<Button disabledFocusable content="Hover me" />}
-      content="This tooltip is set on the div wrapping the disabled button"
+      content="The button uses disabledFocusable property."
     />
   );
 };

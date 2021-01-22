@@ -1,33 +1,33 @@
 import * as React from 'react';
 import { Button, Flex } from '@fluentui/react-northstar';
-import { EmojiIcon, TranslationIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
+import { MicIcon, TranslationIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
-const ButtonExampleDisabled = () => (
+const ButtonExampleDisabledFocusable = () => (
   <Flex column gap="gap.smaller">
     <Flex gap="gap.smaller">
-      <Button disabled>Default</Button>
-      <Button disabled primary>
+      <Button disabledFocusable>Default</Button>
+      <Button disabledFocusable primary>
         <Button.Content>Primary</Button.Content>
       </Button>
-      <Button disabled inverted>
+      <Button disabledFocusable inverted>
         <Button.Content content="Inverted Button" />
       </Button>
-      <Button disabled icon iconPosition="before" primary>
-        <EmojiIcon xSpacing="after" />
+      <Button disabledFocusable icon iconPosition="before" primary>
+        <MicIcon xSpacing="after" />
         <Button.Content content="Click me" />
       </Button>
-      <Button disabled circular title="Translation">
+      <Button disabledFocusable circular title="Translation">
         <TranslationIcon xSpacing="none" />
       </Button>
-      <Button disabled text>
+      <Button disabledFocusable text>
         <CallVideoIcon xSpacing="before" />
         <Button.Content content="Disabled text button" />
       </Button>
     </Flex>
-    <Button disabled fluid>
+    <Button disabledFocusable fluid>
       <Button.Content>Fluid</Button.Content>
     </Button>
   </Flex>
 );
 
-export default ButtonExampleDisabled;
+export default ButtonExampleDisabledFocusable;
