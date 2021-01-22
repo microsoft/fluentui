@@ -44,7 +44,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -59,7 +59,7 @@ exports[`Button renders ActionButton correctly 1`] = `
       &:hover {
         color: #0078d4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -168,7 +168,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         top: 3px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         border: none;
         bottom: 4px;
         left: 4px;
@@ -181,14 +181,14 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         position: relative;
         top: 0px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border: none;
       }
       &:hover {
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         color: Highlight;
       }
       &:hover .ms-Button-icon {
@@ -319,7 +319,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             margin-top: 0;
             text-align: center;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             color: GrayText;
           }
       data-icon-name="ChevronDown"
@@ -383,7 +383,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -399,7 +399,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -531,7 +531,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -547,7 +547,7 @@ exports[`Button renders DefaultButton correctly 1`] = `
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -650,7 +650,7 @@ exports[`Button renders IconButton correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -666,7 +666,7 @@ exports[`Button renders IconButton correctly 1`] = `
         background-color: #f3f2f1;
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -782,7 +782,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -798,7 +798,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
