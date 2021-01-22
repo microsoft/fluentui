@@ -75,7 +75,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
     const items = event.currentTarget.querySelectorAll('.item');
     setNavBarItems(items);
     
-// Find the navBar item with tabindex="0" and set the focused menunavBar item index accordingly
+// Find the navBar item with tabindex="0" and set the focused navBar item index accordingly
     Array.from(items).forEach((item: HTMLElement, index) => { // Begin forEach 1
     const tabindex = item.getAttribute('tabindex');
     if (tabindex === '0') { // Begin if 1
@@ -86,12 +86,21 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
     
   return (
     <>
-<h1>Accessible App bar prototype</h1>
+<h1>Accessible navigation bar prototype</h1>
+
+<h3>Requirements</h3>
+<ul>
+<li>When the navigation bar content is entered, the instrukction message "To navigate use the arrow keys" should be narrated.</li>
+<li>The role used for navigation bar items should allow the use  of the aria-gselected attribute to indicate if the navigation bar item is selected.</li>
+<li>The narration should be as concise as possible. So the ARIA landmark (&lt;nav&gt;, role="navigation" or another) and navigation bar item count or current position narration is not desired. The reason behind not using the ARIA landmark is that <a href="https://webaim.org/projects/screenreadersurvey8/">landmarks in general ar rarely used by the users</a>.  </li>
+<li>The most important information should be narrated first if possible.</li>
+</ul>
+
 <h3>General notes</h3>
 <ul>
 <li>The number of new items is not present on the buttons. It should be a part of the window title instead.</li>
-<li>The usage hint is narrated using aN aria-live element. The drawback of this solution is that the narration is queued, so if user tabs out and in to the navigation bar several times, the hint will be spoken repeatedly several times as well.</li>
-<li>ARIA landmarks, including the &lt;nav&gt; and role="navigation", are not used, because it only adds unnecessary narration. The goal is to be the least verbose as possible. Instead, the F6 key should work for navigating to the navigation bar and other parts of the app.</li>
+<li>The instruction message is narrated using aN aria-live element. The drawback of this solution is that the narration is queued, so if user tabs out and in to the navigation bar several times, the hint will be spoken repeatedly several times as well.</li>
+<li>While no landmark is used to wrap the navigation bar, F6 should still work to be able to navigate to the navigation bar.</li>
 </ul>
 
                     <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -105,6 +114,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 </div>
 <h3>Notes</h3>
 <ul>
+<li>The toolbar variant is rejected because the toolbar role does not fit the navigation bar purpose. The toolbar role is more appropriate for a set of tools rather than the main navigation of the app.</li>
 <li>When entering the toolbar content, JAWS, NVDA and VoiceOver all  read "toolbar" as the firs narration.</li>
 </ul>
 
@@ -117,7 +127,8 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 </div>
 <h3>Notes</h3>
 <ul>
-<li>The tablist role is not appropriate because, when VPC cursor is disabled, JAWS reads "To switch pages press Control+PageDown" as the usage when a tab is selected.</li>
+<li>The tablist variant is not appropriate because it does not fit the navigation bar purpose. The tablist role is more appropriate for use in structured text content, forms or settings panels rather than the main navigation of the app.</li>
+<li>The tablist role is not appropriate because, when VPC cursor is disabled, JAWS reads "To switch pages press Control+PageDown" as the instruction message when a tab is focused.</li>
 </ul>
 
 <h2>role="menu"</h2>
@@ -129,10 +140,11 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 </div>
 <h3>Notes</h3>
 <ul>
-<li>Neither the "menu", nor the "menubar" role is appropriate because VoiceOver reads "To close the menu, press Escape" as the usage hint.</li>
+<li>The menuitem role does not allow the use of the aria-selected attribute so this variant is rejected.</li>
 <li>When entering the navigation bar content, JAWS reads "menu" as the firs narration.</li>
 <li>When leaving the navigation bar  content, JAWS reads "leaving menus".</li>
 <li>When entering the navigation bar  content, JAWS reads "To move through items press up or down arrow" as the last narration.</li>
+<li>Neither the "menu", nor the "menubar" role is appropriate because VoiceOver reads "To close the menu, press Escape" as the instruction message.</li>
 </ul>
 
 <h2>aria-label only</h2>
@@ -145,8 +157,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
 <h3>Notes</h3>
 <ul>
-<li>NVDA sometimes (could not reproduce when) does not narrate the aria-label.</li>
-<li>This variant is considered the best option, because it is the least verbose one.</li>
+<li>NVDA does not narrate the aria-label when entering the navigation bar content so this variant is rejected.</li>
 </ul>
 
 <h2>role="group" and aria-label</h2>
@@ -159,8 +170,9 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
 <h3>Notes</h3>
 <ul>
-<li>NVDA sometimes (could not reproduce when) does not narrate the aria-label.</li>
-<li>When entering the navigation bar content, JAWS announces "group" after narrating the label but before narrating the navigation bar item.</li>
+<li>NVDA sometimes (could not reproduce when) does not narrate the aria-label when entering the navigation bar content. However, it does narrate it when in the forms mode.</li>
+<li>When entering the navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating the label but before narrating the navigation bar item.</li>
+<li>This variant looks like the best solution.</li>
 </ul>
 
 <h2>&lt;li&gt; items</h2>
