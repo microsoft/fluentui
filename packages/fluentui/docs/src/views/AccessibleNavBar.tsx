@@ -313,6 +313,38 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
+      <h2>using "nav" tag </h2>
+      <nav aria-label="bar" onFocus={handleFocus} onBlur={handleBlur}>
+        <button className="item" tabIndex={0}>
+          Activities
+        </button>
+        <button className="item" tabIndex={-1}>
+          Chats
+        </button>
+        <button className="item" tabIndex={-1}>
+          Teams
+        </button>
+        <button className="item" tabIndex={-1}>
+          Calendar
+        </button>
+      </nav>
+
+      <h2>using "role" region </h2>
+      <div role="region" aria-label="navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
+        <button className="item" tabIndex={0}>
+          Activities
+        </button>
+        <button className="item" tabIndex={-1}>
+          Chats
+        </button>
+        <button className="item" tabIndex={-1}>
+          Teams
+        </button>
+        <button className="item" tabIndex={-1}>
+          Calendar
+        </button>
+      </div>
+
       <h3>Notes</h3>
       <ul>
         <li>
