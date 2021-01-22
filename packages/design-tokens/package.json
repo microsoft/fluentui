@@ -1,0 +1,10 @@
+{
+  "name": "@fluentui/design-tokens",
+  "version": "1.0.0",
+  "description": "Official Fluent UI design tokens",
+  "main": "index.js",
+  "repository": "https://github.com/microsoft/fluentui-token-pipeline",
+  "author": "Fluent UI",
+  "license": "MIT",
+  "private": false
+}

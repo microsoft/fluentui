@@ -1,0 +1,2983 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fluent UI style reference</title>
+    <style type="text/css">
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      html {
+        box-sizing: border-box;
+        min-height: 100%;
+
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 20px;
+        color: black;
+        background-color: white;
+
+        cursor: default;
+      }
+
+      body {
+        color: black;
+        padding: 0 2em 2em 2em;
+      }
+
+      p,
+      h1,
+      h2 {
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+      }
+
+      h1 {
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 40px;
+      }
+
+      h2 {
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+      }
+
+      h3 {
+        font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 24px;
+      }
+
+      .tokentable {
+        display: grid;
+        grid-template-columns: [swatch] 32px [name] auto [alias] auto [value] 1fr;
+        grid-auto-rows: 32px;
+        gap: 0.25em 1em;
+        justify-content: start;
+      }
+
+      .tokentable > h1,
+      .tokentable > h2,
+      .tokentable > h3 {
+        grid-column: 1 / -1;
+      }
+
+      .tokentable > * {
+        margin: auto 0;
+        overflow: hidden;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .tokentable > .swatch {
+        user-select: none;
+      }
+
+      .tokentable > .unknown.swatch {
+        color: #c0c0c0;
+        text-align: center;
+      }
+
+      .tokentable > .color.swatch {
+        height: 100%;
+      }
+
+      .tokentable > .transparent.color.swatch {
+        background-position: 0px 0px, 8px 8px;
+        background-size: 16px 16px;
+        background-image: linear-gradient(45deg, #eee 25%, transparent 25%, transparent 75%, #eee 75%, #eee 100%),
+          linear-gradient(45deg, #eee 25%, white 25%, white 75%, #eee 75%, #eee 100%);
+      }
+
+      .tokentable > .text.swatch {
+        color: #404040;
+        user-select: none;
+      }
+
+      .tokentable > .value:not(:empty)::before,
+      .tokentable > .finalvalue::before {
+        content: ' = ';
+        color: #808080;
+      }
+
+      .tokentable > .finalvalue {
+        font-family: Inconsolata, Consolas, SFMono-Regular, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Fluent UI style reference</h1>
+
+    <p>Generated on <time datetime="2021-01-22T00:19:16.294Z">Fri, 22 Jan 2021 00:19:16 GMT</time></p>
+
+    <h1>Global tokens</h1>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: #000000;"></div>
+      <div class="name">Global-Color-Black</div>
+      <div class="value"></div>
+      <div class="finalvalue">#000000</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 0%);"></div>
+      <div class="name">Global-Color-Brand-0</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 0%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 2%);"></div>
+      <div class="name">Global-Color-Brand-2</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 2%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 4%);"></div>
+      <div class="name">Global-Color-Brand-4</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 4%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 6%);"></div>
+      <div class="name">Global-Color-Brand-6</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 6%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 8%);"></div>
+      <div class="name">Global-Color-Brand-8</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 8%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 10%);"></div>
+      <div class="name">Global-Color-Brand-10</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 10%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 12%);"></div>
+      <div class="name">Global-Color-Brand-12</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 12%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 14%);"></div>
+      <div class="name">Global-Color-Brand-14</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 16%);"></div>
+      <div class="name">Global-Color-Brand-16</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 16%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 18%);"></div>
+      <div class="name">Global-Color-Brand-18</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 18%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 20%);"></div>
+      <div class="name">Global-Color-Brand-20</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 20%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 22%);"></div>
+      <div class="name">Global-Color-Brand-22</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 22%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">Global-Color-Brand-24</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 26%);"></div>
+      <div class="name">Global-Color-Brand-26</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 28%);"></div>
+      <div class="name">Global-Color-Brand-28</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 28%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 30%);"></div>
+      <div class="name">Global-Color-Brand-30</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 30%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 32%);"></div>
+      <div class="name">Global-Color-Brand-32</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 32%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 34%);"></div>
+      <div class="name">Global-Color-Brand-34</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 34%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 36%);"></div>
+      <div class="name">Global-Color-Brand-36</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 36%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 38%);"></div>
+      <div class="name">Global-Color-Brand-38</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 38%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">Global-Color-Brand-40</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">Global-Color-Brand-42</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 44%);"></div>
+      <div class="name">Global-Color-Brand-44</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 44%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 46%);"></div>
+      <div class="name">Global-Color-Brand-46</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 46%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 48%);"></div>
+      <div class="name">Global-Color-Brand-48</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 48%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 50%);"></div>
+      <div class="name">Global-Color-Brand-50</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 50%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 52%);"></div>
+      <div class="name">Global-Color-Brand-52</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 52%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 54%);"></div>
+      <div class="name">Global-Color-Brand-54</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 54%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 56%);"></div>
+      <div class="name">Global-Color-Brand-56</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 56%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 58%);"></div>
+      <div class="name">Global-Color-Brand-58</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 58%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 60%);"></div>
+      <div class="name">Global-Color-Brand-60</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 60%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 62%);"></div>
+      <div class="name">Global-Color-Brand-62</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 62%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 64%);"></div>
+      <div class="name">Global-Color-Brand-64</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 64%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 66%);"></div>
+      <div class="name">Global-Color-Brand-66</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 66%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 68%);"></div>
+      <div class="name">Global-Color-Brand-68</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 68%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 70%);"></div>
+      <div class="name">Global-Color-Brand-70</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 72%);"></div>
+      <div class="name">Global-Color-Brand-72</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 72%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 74%);"></div>
+      <div class="name">Global-Color-Brand-74</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 74%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 76%);"></div>
+      <div class="name">Global-Color-Brand-76</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 76%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 78%);"></div>
+      <div class="name">Global-Color-Brand-78</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 80%);"></div>
+      <div class="name">Global-Color-Brand-80</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 80%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 82%);"></div>
+      <div class="name">Global-Color-Brand-82</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 84%);"></div>
+      <div class="name">Global-Color-Brand-84</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 84%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 86%);"></div>
+      <div class="name">Global-Color-Brand-86</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 86%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 88%);"></div>
+      <div class="name">Global-Color-Brand-88</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 90%);"></div>
+      <div class="name">Global-Color-Brand-90</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 90%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 92%);"></div>
+      <div class="name">Global-Color-Brand-92</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 92%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 94%);"></div>
+      <div class="name">Global-Color-Brand-94</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 96%);"></div>
+      <div class="name">Global-Color-Brand-96</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 98%);"></div>
+      <div class="name">Global-Color-Brand-98</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 98%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 100%);"></div>
+      <div class="name">Global-Color-Brand-100</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(206, 100%, 100%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 0%);"></div>
+      <div class="name">Global-Color-Grey-0</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 0%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 2%);"></div>
+      <div class="name">Global-Color-Grey-2</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 2%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 4%);"></div>
+      <div class="name">Global-Color-Grey-4</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 4%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 6%);"></div>
+      <div class="name">Global-Color-Grey-6</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 6%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 8%);"></div>
+      <div class="name">Global-Color-Grey-8</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 8%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 10%);"></div>
+      <div class="name">Global-Color-Grey-10</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 10%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 12%);"></div>
+      <div class="name">Global-Color-Grey-12</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 12%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Global-Color-Grey-14</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 16%);"></div>
+      <div class="name">Global-Color-Grey-16</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 16%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 18%);"></div>
+      <div class="name">Global-Color-Grey-18</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 18%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 20%);"></div>
+      <div class="name">Global-Color-Grey-20</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 20%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 22%);"></div>
+      <div class="name">Global-Color-Grey-22</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 22%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 24%);"></div>
+      <div class="name">Global-Color-Grey-24</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">Global-Color-Grey-26</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 28%);"></div>
+      <div class="name">Global-Color-Grey-28</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 28%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 30%);"></div>
+      <div class="name">Global-Color-Grey-30</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 30%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 32%);"></div>
+      <div class="name">Global-Color-Grey-32</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 32%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 34%);"></div>
+      <div class="name">Global-Color-Grey-34</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 34%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 36%);"></div>
+      <div class="name">Global-Color-Grey-36</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 36%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 38%);"></div>
+      <div class="name">Global-Color-Grey-38</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 38%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 40%);"></div>
+      <div class="name">Global-Color-Grey-40</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 42%);"></div>
+      <div class="name">Global-Color-Grey-42</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 44%);"></div>
+      <div class="name">Global-Color-Grey-44</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 44%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 46%);"></div>
+      <div class="name">Global-Color-Grey-46</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 46%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 48%);"></div>
+      <div class="name">Global-Color-Grey-48</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 48%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 50%);"></div>
+      <div class="name">Global-Color-Grey-50</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 50%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 52%);"></div>
+      <div class="name">Global-Color-Grey-52</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 52%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 54%);"></div>
+      <div class="name">Global-Color-Grey-54</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 54%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 56%);"></div>
+      <div class="name">Global-Color-Grey-56</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 56%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 58%);"></div>
+      <div class="name">Global-Color-Grey-58</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 58%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 60%);"></div>
+      <div class="name">Global-Color-Grey-60</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 60%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 62%);"></div>
+      <div class="name">Global-Color-Grey-62</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 62%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 64%);"></div>
+      <div class="name">Global-Color-Grey-64</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 64%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 66%);"></div>
+      <div class="name">Global-Color-Grey-66</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 66%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 68%);"></div>
+      <div class="name">Global-Color-Grey-68</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 68%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">Global-Color-Grey-70</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 72%);"></div>
+      <div class="name">Global-Color-Grey-72</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 72%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 74%);"></div>
+      <div class="name">Global-Color-Grey-74</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 74%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 76%);"></div>
+      <div class="name">Global-Color-Grey-76</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 76%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">Global-Color-Grey-78</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 80%);"></div>
+      <div class="name">Global-Color-Grey-80</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 80%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">Global-Color-Grey-82</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 84%);"></div>
+      <div class="name">Global-Color-Grey-84</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 84%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 86%);"></div>
+      <div class="name">Global-Color-Grey-86</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 86%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Global-Color-Grey-88</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 90%);"></div>
+      <div class="name">Global-Color-Grey-90</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 90%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 92%);"></div>
+      <div class="name">Global-Color-Grey-92</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 92%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">Global-Color-Grey-94</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">Global-Color-Grey-96</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 98%);"></div>
+      <div class="name">Global-Color-Grey-98</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 98%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 100%);"></div>
+      <div class="name">Global-Color-Grey-100</div>
+      <div class="value"></div>
+      <div class="finalvalue">hsl(0, 0%, 100%)</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">Global-Color-White</div>
+      <div class="value"></div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Corner-Radius-Circle</div>
+      <div class="value"></div>
+      <div class="finalvalue">9999</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Corner-Radius-ExtraLarge</div>
+      <div class="value"></div>
+      <div class="finalvalue">8</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Corner-Radius-Large</div>
+      <div class="value"></div>
+      <div class="finalvalue">6</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Corner-Radius-Medium</div>
+      <div class="value"></div>
+      <div class="finalvalue">4</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Corner-Radius-None</div>
+      <div class="value"></div>
+      <div class="finalvalue">0</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Corner-Radius-Small</div>
+      <div class="value"></div>
+      <div class="finalvalue">2</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Family-Default</div>
+      <div class="value"></div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Family-Monospace</div>
+      <div class="value"></div>
+      <div class="finalvalue">Consolas, "Courier New", monospace</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Family-Numeric</div>
+      <div class="value"></div>
+      <div class="finalvalue">
+        "Bahnschrift", "Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif
+      </div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-100</div>
+      <div class="value"></div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-200</div>
+      <div class="value"></div>
+      <div class="finalvalue">16</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-300</div>
+      <div class="value"></div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-400</div>
+      <div class="value"></div>
+      <div class="finalvalue">22</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-500</div>
+      <div class="value"></div>
+      <div class="finalvalue">28</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-600</div>
+      <div class="value"></div>
+      <div class="finalvalue">32</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-700</div>
+      <div class="value"></div>
+      <div class="finalvalue">36</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-800</div>
+      <div class="value"></div>
+      <div class="finalvalue">40</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-900</div>
+      <div class="value"></div>
+      <div class="finalvalue">52</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-LineHeight-1000</div>
+      <div class="value"></div>
+      <div class="finalvalue">92</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-100</div>
+      <div class="value"></div>
+      <div class="finalvalue">10</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-200</div>
+      <div class="value"></div>
+      <div class="finalvalue">12</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-300</div>
+      <div class="value"></div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-400</div>
+      <div class="value"></div>
+      <div class="finalvalue">16</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-500</div>
+      <div class="value"></div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-600</div>
+      <div class="value"></div>
+      <div class="finalvalue">24</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-700</div>
+      <div class="value"></div>
+      <div class="finalvalue">28</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-800</div>
+      <div class="value"></div>
+      <div class="finalvalue">32</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-900</div>
+      <div class="value"></div>
+      <div class="finalvalue">40</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Size-1000</div>
+      <div class="value"></div>
+      <div class="finalvalue">68</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Weight-Medium</div>
+      <div class="value"></div>
+      <div class="finalvalue">500</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Weight-Regular</div>
+      <div class="value"></div>
+      <div class="finalvalue">400</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Font-Weight-Semibold</div>
+      <div class="value"></div>
+      <div class="finalvalue">600</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Padding-400</div>
+      <div class="value"></div>
+      <div class="finalvalue">7,15,7,15</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Stroke-Width-0</div>
+      <div class="value"></div>
+      <div class="finalvalue">0</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Global-Stroke-Width-100</div>
+      <div class="value"></div>
+      <div class="finalvalue">1</div>
+    </div>
+
+    <h1>Alias tokens</h1>
+
+    <h2>Set-Body</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Body-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Body-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-300</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Body-Font-Size</div>
+      <div class="value">Global-Font-Size-300</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Body-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Regular</div>
+      <div class="finalvalue">400</div>
+    </div>
+
+    <h2>Set-Borderless</h2>
+
+    <div class="tokentable">
+      <div class="transparent color swatch"></div>
+      <div class="name">Borderless-Stroke-Color-Rest</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Borderless-Stroke-Color-Hover</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Borderless-Stroke-Color-Pressed</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Borderless-Stroke-Color-Disabled</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Borderless-Stroke-Width</div>
+      <div class="value">Global-Stroke-Width-0</div>
+      <div class="finalvalue">0</div>
+    </div>
+
+    <h2>Set-BrandBackground</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">BrandBackground-Fill-Color-Rest</div>
+      <div class="value">Global-Color-Brand-42</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">BrandBackground-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Brand-40</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">BrandBackground-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Brand-24</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">BrandBackground-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-94</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-BrandBackgroundSelected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">BrandBackgroundSelected-Fill-Color-Rest</div>
+      <div class="value">BrandBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">BrandBackgroundSelected-Fill-Color-Hover</div>
+      <div class="value">BrandBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">BrandBackgroundSelected-Fill-Color-Pressed</div>
+      <div class="value">BrandBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">BrandBackgroundSelected-Fill-Color-Disabled</div>
+      <div class="value">BrandBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-Caption</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Caption-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Caption-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-200</div>
+      <div class="finalvalue">16</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Caption-Font-Size</div>
+      <div class="value">Global-Font-Size-200</div>
+      <div class="finalvalue">12</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Caption-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Regular</div>
+      <div class="finalvalue">400</div>
+    </div>
+
+    <h2>Set-Control</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Control-Corner-Radius</div>
+      <div class="value">Global-Corner-Radius-Medium</div>
+      <div class="finalvalue">4</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Control-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Control-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-300</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Control-Font-Size</div>
+      <div class="value">Global-Font-Size-300</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Control-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-Display</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Display-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Display-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-1000</div>
+      <div class="finalvalue">92</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Display-Font-Size</div>
+      <div class="value">Global-Font-Size-1000</div>
+      <div class="finalvalue">68</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Display-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-GhostBackground</h2>
+
+    <div class="tokentable">
+      <div class="transparent color swatch"></div>
+      <div class="name">GhostBackground-Fill-Color-Rest</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">GhostBackground-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Grey-96</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">GhostBackground-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">GhostBackground-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-94</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-GhostBackgroundSelected</h2>
+
+    <div class="tokentable">
+      <div class="transparent color swatch"></div>
+      <div class="name">GhostBackgroundSelected-Fill-Color-Rest</div>
+      <div class="value">GhostBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">GhostBackgroundSelected-Fill-Color-Hover</div>
+      <div class="value">GhostBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">GhostBackgroundSelected-Fill-Color-Pressed</div>
+      <div class="value">GhostBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">GhostBackgroundSelected-Fill-Color-Disabled</div>
+      <div class="value">GhostBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-Headline</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Headline-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Headline-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-500</div>
+      <div class="finalvalue">28</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Headline-Font-Size</div>
+      <div class="value">Global-Font-Size-500</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Headline-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-Icon</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Icon-Corner-Radius</div>
+      <div class="value">Global-Corner-Radius-Medium</div>
+      <div class="finalvalue">4</div>
+    </div>
+
+    <h2>Set-Illustration</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Illustration-Corner-Radius</div>
+      <div class="value">Global-Corner-Radius-ExtraLarge</div>
+      <div class="finalvalue">8</div>
+    </div>
+
+    <h2>Set-LargeTitle</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">LargeTitle-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">LargeTitle-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-900</div>
+      <div class="finalvalue">52</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">LargeTitle-Font-Size</div>
+      <div class="value">Global-Font-Size-900</div>
+      <div class="finalvalue">40</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">LargeTitle-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-NeutralBackground1</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 100%);"></div>
+      <div class="name">NeutralBackground1-Fill-Color-Rest</div>
+      <div class="value">Global-Color-Grey-100</div>
+      <div class="finalvalue">hsl(0, 0%, 100%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">NeutralBackground1-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Grey-96</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralBackground1-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">NeutralBackground1-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-94</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-NeutralBackground1Selected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 100%);"></div>
+      <div class="name">NeutralBackground1Selected-Fill-Color-Rest</div>
+      <div class="value">NeutralBackground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 100%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">NeutralBackground1Selected-Fill-Color-Hover</div>
+      <div class="value">NeutralBackground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralBackground1Selected-Fill-Color-Pressed</div>
+      <div class="value">NeutralBackground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">NeutralBackground1Selected-Fill-Color-Disabled</div>
+      <div class="value">NeutralBackground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-NeutralBackground2</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 98%);"></div>
+      <div class="name">NeutralBackground2-Fill-Color-Rest</div>
+      <div class="value">Global-Color-Grey-98</div>
+      <div class="finalvalue">hsl(0, 0%, 98%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">NeutralBackground2-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Grey-94</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 86%);"></div>
+      <div class="name">NeutralBackground2-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-86</div>
+      <div class="finalvalue">hsl(0, 0%, 86%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">NeutralBackground2-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-94</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-NeutralBackground2Selected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 98%);"></div>
+      <div class="name">NeutralBackground2Selected-Fill-Color-Rest</div>
+      <div class="value">NeutralBackground2-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 98%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">NeutralBackground2Selected-Fill-Color-Hover</div>
+      <div class="value">NeutralBackground2-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 86%);"></div>
+      <div class="name">NeutralBackground2Selected-Fill-Color-Pressed</div>
+      <div class="value">NeutralBackground2-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 86%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">NeutralBackground2Selected-Fill-Color-Disabled</div>
+      <div class="value">NeutralBackground2-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+    </div>
+
+    <h2>Set-NeutralForeground1</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1-Fill-Color-Rest</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>Set-NeutralForeground1Selected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1Selected-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1Selected-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1Selected-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground1Selected-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>Set-NeutralForeground2</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">NeutralForeground2-Fill-Color-Rest</div>
+      <div class="value">Global-Color-Grey-26</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>Set-NeutralForeground2Brand</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">NeutralForeground2Brand-Fill-Color-Rest</div>
+      <div class="value">Global-Color-Grey-26</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">NeutralForeground2Brand-Fill-Color-Hover</div>
+      <div class="value">Global-Color-Brand-42</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">NeutralForeground2Brand-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-Brand-40</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2Brand-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-14</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>Set-NeutralForeground2BrandSelected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">NeutralForeground2BrandSelected-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">NeutralForeground2BrandSelected-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">NeutralForeground2BrandSelected-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2BrandSelected-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>Set-NeutralForeground2Selected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">NeutralForeground2Selected-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground2-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2Selected-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground2-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2Selected-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground2-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">NeutralForeground2Selected-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground2-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>Set-NeutralForegroundInverted</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInverted-Fill-Color-Rest</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInverted-Fill-Color-Hover</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInverted-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInverted-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+    </div>
+
+    <h2>Set-NeutralForegroundInvertedAccessible</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="value">Global-Color-White</div>
+      <div class="finalvalue">#ffffff</div>
+    </div>
+
+    <h2>Set-NeutralForegroundInvertedAccessibleSelected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+    </div>
+
+    <h2>Set-NeutralForegroundInvertedSelected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedSelected-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInverted-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedSelected-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInverted-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedSelected-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInverted-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">NeutralForegroundInvertedSelected-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInverted-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+    </div>
+
+    <h2>Set-NeutralStroke1</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">NeutralStroke1-Stroke-Color-Rest</div>
+      <div class="value">Global-Color-Grey-82</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">NeutralStroke1-Stroke-Color-Hover</div>
+      <div class="value">Global-Color-Grey-78</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">NeutralStroke1-Stroke-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-70</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke1-Stroke-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">NeutralStroke1-Stroke-Width</div>
+      <div class="value">Global-Stroke-Width-100</div>
+      <div class="finalvalue">1</div>
+    </div>
+
+    <h2>Set-NeutralStroke1Selected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">NeutralStroke1Selected-Stroke-Color-Rest</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">NeutralStroke1Selected-Stroke-Color-Hover</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">NeutralStroke1Selected-Stroke-Color-Pressed</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke1Selected-Stroke-Color-Disabled</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">NeutralStroke1Selected-Stroke-Width</div>
+      <div class="value">NeutralStroke1-Stroke-Width</div>
+      <div class="finalvalue">1</div>
+    </div>
+
+    <h2>Set-NeutralStroke2</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2-Stroke-Color-Rest</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2-Stroke-Color-Hover</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2-Stroke-Color-Pressed</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2-Stroke-Color-Disabled</div>
+      <div class="value">Global-Color-Grey-88</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">NeutralStroke2-Stroke-Width</div>
+      <div class="value">Global-Stroke-Width-100</div>
+      <div class="finalvalue">1</div>
+    </div>
+
+    <h2>Set-NeutralStroke2Selected</h2>
+
+    <div class="tokentable">
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2Selected-Stroke-Color-Rest</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2Selected-Stroke-Color-Hover</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2Selected-Stroke-Color-Pressed</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">NeutralStroke2Selected-Stroke-Color-Disabled</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">NeutralStroke2Selected-Stroke-Width</div>
+      <div class="value">NeutralStroke2-Stroke-Width</div>
+      <div class="finalvalue">1</div>
+    </div>
+
+    <h2>Set-Round</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Round-Corner-Radius</div>
+      <div class="value">Global-Corner-Radius-Circle</div>
+      <div class="finalvalue">9999</div>
+    </div>
+
+    <h2>Set-Square</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Square-Corner-Radius</div>
+      <div class="value">Global-Corner-Radius-None</div>
+      <div class="finalvalue">0</div>
+    </div>
+
+    <h2>Set-Subheadline</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Subheadline-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Subheadline-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-400</div>
+      <div class="finalvalue">22</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Subheadline-Font-Size</div>
+      <div class="value">Global-Font-Size-400</div>
+      <div class="finalvalue">16</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Subheadline-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-Surface</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Surface-Corner-Radius</div>
+      <div class="value">Global-Corner-Radius-Medium</div>
+      <div class="finalvalue">4</div>
+    </div>
+
+    <h2>Set-Title1</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title1-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title1-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-800</div>
+      <div class="finalvalue">40</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title1-Font-Size</div>
+      <div class="value">Global-Font-Size-800</div>
+      <div class="finalvalue">32</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title1-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-Title2</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title2-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title2-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-700</div>
+      <div class="finalvalue">36</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title2-Font-Size</div>
+      <div class="value">Global-Font-Size-700</div>
+      <div class="finalvalue">28</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title2-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-Title3</h2>
+
+    <div class="tokentable">
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title3-Font-Family</div>
+      <div class="value">Global-Font-Family-Default</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title3-Font-LineHeight</div>
+      <div class="value">Global-Font-LineHeight-600</div>
+      <div class="finalvalue">32</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title3-Font-Size</div>
+      <div class="value">Global-Font-Size-600</div>
+      <div class="finalvalue">24</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Title3-Font-Weight</div>
+      <div class="value">Global-Font-Weight-Semibold</div>
+      <div class="finalvalue">600</div>
+    </div>
+
+    <h2>Set-TransparentBackground</h2>
+
+    <div class="tokentable">
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackground-Fill-Color-Rest</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackground-Fill-Color-Hover</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackground-Fill-Color-Pressed</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackground-Fill-Color-Disabled</div>
+      <div class="value"></div>
+      <div class="finalvalue">transparent</div>
+    </div>
+
+    <h2>Set-TransparentBackgroundSelected</h2>
+
+    <div class="tokentable">
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackgroundSelected-Fill-Color-Rest</div>
+      <div class="value">TransparentBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackgroundSelected-Fill-Color-Hover</div>
+      <div class="value">TransparentBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackgroundSelected-Fill-Color-Pressed</div>
+      <div class="value">TransparentBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">TransparentBackgroundSelected-Fill-Color-Disabled</div>
+      <div class="value">TransparentBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+    </div>
+
+    <h1>Control tokens</h1>
+
+    <h2>Button</h2>
+
+    <div class="tokentable">
+      <h3>Base</h3>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Base-Corner-Radius</div>
+      <div class="value">Control-Corner-Radius</div>
+      <div class="finalvalue">4</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 100%);"></div>
+      <div class="name">Button-Base-Fill-Color-Rest</div>
+      <div class="value">NeutralBackground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 100%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">Button-Base-Fill-Color-Hover</div>
+      <div class="value">NeutralBackground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Button-Base-Fill-Color-Pressed</div>
+      <div class="value">NeutralBackground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">Button-Base-Fill-Color-Disabled</div>
+      <div class="value">NeutralBackground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 100%);"></div>
+      <div class="name">Button-Base-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralBackground1Selected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 100%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">Button-Base-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralBackground1Selected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Button-Base-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralBackground1Selected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">Button-Base-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralBackground1Selected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Base-Layout-Padding</div>
+      <div class="value"></div>
+      <div class="finalvalue">7,15,7,15</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Rest</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Hover</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Pressed</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Disabled</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Selected-Rest</div>
+      <div class="value">NeutralStroke1Selected-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Selected-Hover</div>
+      <div class="value">NeutralStroke1Selected-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Selected-Pressed</div>
+      <div class="value">NeutralStroke1Selected-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Button-Base-Stroke-Color-Selected-Disabled</div>
+      <div class="value">NeutralStroke1Selected-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Base-Stroke-Width</div>
+      <div class="value">NeutralStroke1-Stroke-Width</div>
+      <div class="finalvalue">1</div>
+
+      <h3>Content</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Content-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Content-Font-Family</div>
+      <div class="value">Control-Font-Family</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Content-Font-LineHeight</div>
+      <div class="value">Control-Font-LineHeight</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Content-Font-Size</div>
+      <div class="value">Control-Font-Size</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Button-Content-Font-Weight</div>
+      <div class="value">Control-Font-Weight</div>
+      <div class="finalvalue">600</div>
+
+      <h3>Icon</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">Button-Icon-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>ButtonGhost</h2>
+
+    <div class="tokentable">
+      <h3>Base</h3>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Base-Corner-Radius</div>
+      <div class="value">Control-Corner-Radius</div>
+      <div class="finalvalue">4</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Rest</div>
+      <div class="value">GhostBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Hover</div>
+      <div class="value">GhostBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Pressed</div>
+      <div class="value">GhostBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Disabled</div>
+      <div class="value">GhostBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Selected-Rest</div>
+      <div class="value">GhostBackgroundSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 96%);"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Selected-Hover</div>
+      <div class="value">GhostBackgroundSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 96%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Selected-Pressed</div>
+      <div class="value">GhostBackgroundSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">ButtonGhost-Base-Fill-Color-Selected-Disabled</div>
+      <div class="value">GhostBackgroundSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Base-Layout-Padding</div>
+      <div class="value"></div>
+      <div class="finalvalue">7,15,7,15</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Selected-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Selected-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Selected-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonGhost-Base-Stroke-Color-Selected-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Base-Stroke-Width</div>
+      <div class="value">Borderless-Stroke-Width</div>
+      <div class="finalvalue">0</div>
+
+      <h3>Content</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonGhost-Content-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Content-Font-Family</div>
+      <div class="value">Body-Font-Family</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Content-Font-LineHeight</div>
+      <div class="value">Body-Font-LineHeight</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Content-Font-Size</div>
+      <div class="value">Body-Font-Size</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonGhost-Content-Font-Weight</div>
+      <div class="value">Body-Font-Weight</div>
+      <div class="finalvalue">400</div>
+
+      <h3>Icon</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground2Brand-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 26%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 26%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonGhost-Icon-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForeground2BrandSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>ButtonOutline</h2>
+
+    <div class="tokentable">
+      <h3>Base</h3>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Base-Corner-Radius</div>
+      <div class="value">Control-Corner-Radius</div>
+      <div class="finalvalue">4</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Rest</div>
+      <div class="value">TransparentBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Hover</div>
+      <div class="value">TransparentBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Pressed</div>
+      <div class="value">TransparentBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Disabled</div>
+      <div class="value">TransparentBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Selected-Rest</div>
+      <div class="value">TransparentBackgroundSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Selected-Hover</div>
+      <div class="value">TransparentBackgroundSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Selected-Pressed</div>
+      <div class="value">TransparentBackgroundSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonOutline-Base-Fill-Color-Selected-Disabled</div>
+      <div class="value">TransparentBackgroundSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Base-Layout-Padding</div>
+      <div class="value"></div>
+      <div class="finalvalue">7,15,7,15</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Rest</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Hover</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Pressed</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Disabled</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Selected-Rest</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Selected-Hover</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Selected-Pressed</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">ButtonOutline-Base-Stroke-Color-Selected-Disabled</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Base-Stroke-Width</div>
+      <div class="value">NeutralStroke1-Stroke-Width</div>
+      <div class="finalvalue">1</div>
+
+      <h3>Content</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Content-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Content-Font-Family</div>
+      <div class="value">Control-Font-Family</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Content-Font-LineHeight</div>
+      <div class="value">Control-Font-LineHeight</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Content-Font-Size</div>
+      <div class="value">Control-Font-Size</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonOutline-Content-Font-Weight</div>
+      <div class="value">Control-Font-Weight</div>
+      <div class="finalvalue">600</div>
+
+      <h3>Icon</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Rest</div>
+      <div class="value">NeutralForeground1-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Hover</div>
+      <div class="value">NeutralForeground1-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Pressed</div>
+      <div class="value">NeutralForeground1-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Disabled</div>
+      <div class="value">NeutralForeground1-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 14%);"></div>
+      <div class="name">ButtonOutline-Icon-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForeground1Selected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 14%)</div>
+    </div>
+
+    <h2>ButtonPrimary</h2>
+
+    <div class="tokentable">
+      <h3>Base</h3>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Base-Corner-Radius</div>
+      <div class="value">Control-Corner-Radius</div>
+      <div class="finalvalue">4</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Rest</div>
+      <div class="value">BrandBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Hover</div>
+      <div class="value">BrandBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Pressed</div>
+      <div class="value">BrandBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Disabled</div>
+      <div class="value">BrandBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Selected-Rest</div>
+      <div class="value">BrandBackgroundSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Selected-Hover</div>
+      <div class="value">BrandBackgroundSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Selected-Pressed</div>
+      <div class="value">BrandBackgroundSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">ButtonPrimary-Base-Fill-Color-Selected-Disabled</div>
+      <div class="value">BrandBackgroundSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Base-Layout-Padding</div>
+      <div class="value"></div>
+      <div class="finalvalue">7,15,7,15</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Selected-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Selected-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Selected-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">ButtonPrimary-Base-Stroke-Color-Selected-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Base-Stroke-Width</div>
+      <div class="value">Borderless-Stroke-Width</div>
+      <div class="finalvalue">0</div>
+
+      <h3>Content</h3>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Content-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Content-Font-Family</div>
+      <div class="value">Control-Font-Family</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Content-Font-LineHeight</div>
+      <div class="value">Control-Font-LineHeight</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Content-Font-Size</div>
+      <div class="value">Control-Font-Size</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">ButtonPrimary-Content-Font-Weight</div>
+      <div class="value">Control-Font-Weight</div>
+      <div class="finalvalue">600</div>
+
+      <h3>Icon</h3>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">ButtonPrimary-Icon-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessibleSelected-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+    </div>
+
+    <h2>CheckBox</h2>
+
+    <div class="tokentable">
+      <h3>Box</h3>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">CheckBox-Box-Corner-Radius</div>
+      <div class="value">Control-Corner-Radius</div>
+      <div class="finalvalue">4</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Indeterminate-Rest</div>
+      <div class="value">BrandBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Indeterminate-Hover</div>
+      <div class="value">BrandBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Indeterminate-Pressed</div>
+      <div class="value">BrandBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Indeterminate-Disabled</div>
+      <div class="value">BrandBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Rest</div>
+      <div class="value">TransparentBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Hover</div>
+      <div class="value">TransparentBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Pressed</div>
+      <div class="value">TransparentBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Disabled</div>
+      <div class="value">TransparentBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Selected-Rest</div>
+      <div class="value">BrandBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Selected-Hover</div>
+      <div class="value">BrandBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Selected-Pressed</div>
+      <div class="value">BrandBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">CheckBox-Box-Fill-Color-Selected-Disabled</div>
+      <div class="value">BrandBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 78%);"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Hover</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 78%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Disabled</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Indeterminate-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Indeterminate-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Indeterminate-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Indeterminate-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 82%);"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Rest</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 82%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 70%);"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Pressed</div>
+      <div class="value">NeutralStroke1-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 70%)</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Selected-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Selected-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Selected-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">CheckBox-Box-Stroke-Color-Selected-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">CheckBox-Box-Stroke-Width</div>
+      <div class="value">NeutralStroke1-Stroke-Width</div>
+      <div class="finalvalue">1</div>
+
+      <h3>Check</h3>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Indeterminate-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Indeterminate-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Indeterminate-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Indeterminate-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Check-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <h3>Text</h3>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Indeterminate-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Indeterminate-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Indeterminate-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Indeterminate-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Selected-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Selected-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Selected-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">CheckBox-Text-Fill-Color-Selected-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">CheckBox-Text-Font-Family</div>
+      <div class="value">Body-Font-Family</div>
+      <div class="finalvalue">"Segoe UI", Roboto, "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">CheckBox-Text-Font-LineHeight</div>
+      <div class="value">Body-Font-LineHeight</div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">CheckBox-Text-Font-Size</div>
+      <div class="value">Body-Font-Size</div>
+      <div class="finalvalue">14</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">CheckBox-Text-Font-Weight</div>
+      <div class="value">Body-Font-Weight</div>
+      <div class="finalvalue">400</div>
+    </div>
+
+    <h2>Slider</h2>
+
+    <div class="tokentable">
+      <h3>Thumb</h3>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Slider-Thumb-Corner-Radius</div>
+      <div class="value">Round-Corner-Radius</div>
+      <div class="finalvalue">9999</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 42%);"></div>
+      <div class="name">Slider-Thumb-Fill-Color-Rest</div>
+      <div class="value">BrandBackground-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(206, 100%, 42%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 40%);"></div>
+      <div class="name">Slider-Thumb-Fill-Color-Hover</div>
+      <div class="value">BrandBackground-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(206, 100%, 40%)</div>
+
+      <div class="color swatch" style="background-color: hsl(206, 100%, 24%);"></div>
+      <div class="name">Slider-Thumb-Fill-Color-Pressed</div>
+      <div class="value">BrandBackground-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(206, 100%, 24%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">Slider-Thumb-Fill-Color-Disabled</div>
+      <div class="value">BrandBackground-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Slider-Thumb-Layout-Height</div>
+      <div class="value"></div>
+      <div class="finalvalue">20</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Slider-Thumb-Layout-Width</div>
+      <div class="value"></div>
+      <div class="finalvalue">20</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Slider-Thumb-Stroke-Color-Rest</div>
+      <div class="value">Borderless-Stroke-Color-Rest</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Slider-Thumb-Stroke-Color-Hover</div>
+      <div class="value">Borderless-Stroke-Color-Hover</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Slider-Thumb-Stroke-Color-Pressed</div>
+      <div class="value">Borderless-Stroke-Color-Pressed</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="transparent color swatch"></div>
+      <div class="name">Slider-Thumb-Stroke-Color-Disabled</div>
+      <div class="value">Borderless-Stroke-Color-Disabled</div>
+      <div class="finalvalue">transparent</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Slider-Thumb-Stroke-Width</div>
+      <div class="value">Borderless-Stroke-Width</div>
+      <div class="finalvalue">0</div>
+
+      <h3>Ticks</h3>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">Slider-Ticks-Fill-Color-Rest</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Rest</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">Slider-Ticks-Fill-Color-Hover</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Hover</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">Slider-Ticks-Fill-Color-Pressed</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Pressed</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="color swatch" style="background-color: #ffffff; border: 1px solid #dddddd;"></div>
+      <div class="name">Slider-Ticks-Fill-Color-Disabled</div>
+      <div class="value">NeutralForegroundInvertedAccessible-Fill-Color-Disabled</div>
+      <div class="finalvalue">#ffffff</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Slider-Ticks-Layout-Height</div>
+      <div class="value"></div>
+      <div class="finalvalue">4</div>
+
+      <h3>Track</h3>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 98%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Empty-Rest</div>
+      <div class="value">NeutralBackground2-Fill-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 98%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Empty-Hover</div>
+      <div class="value">NeutralBackground2-Fill-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 86%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Empty-Pressed</div>
+      <div class="value">NeutralBackground2-Fill-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 86%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 94%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Empty-Disabled</div>
+      <div class="value">NeutralBackground2-Fill-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 94%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Full-Rest</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Rest</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Full-Hover</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Hover</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Full-Pressed</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Pressed</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="color swatch" style="background-color: hsl(0, 0%, 88%);"></div>
+      <div class="name">Slider-Track-Fill-Color-Full-Disabled</div>
+      <div class="value">NeutralStroke2-Stroke-Color-Disabled</div>
+      <div class="finalvalue">hsl(0, 0%, 88%)</div>
+
+      <div class="unknown swatch">&bull;</div>
+      <div class="name">Slider-Track-Layout-Height</div>
+      <div class="value"></div>
+      <div class="finalvalue">2</div>
+    </div>
+  </body>
+</html>
