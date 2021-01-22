@@ -424,6 +424,24 @@ As the name infers
 | icon           | ReactNode | Icon that is rendered with the menu item  |
 | secondaryLabel | text      | A secondary label i.e. keyboard shortcuts |
 
+### MenuItemCheckbox
+
+A variant of `MenuItem` that allows a multiple selection state based on the value that it represents
+
+| Prop name | Type | Details                                            |
+| --------- | ---- | -------------------------------------------------- |
+| name      | text | The name of the value that the checkbox represents |
+| value     | text | The value of the checkbox                          |
+
+### MenuItemRadio
+
+A variant of `MenuItem` that allows a single selection state based on the value that it represents
+
+| Prop name | Type | Details                                            |
+| --------- | ---- | -------------------------------------------------- |
+| name      | text | The name of the value that the checkbox represents |
+| value     | text | The value of the checkbox                          |
+
 ### SubMenuSplit
 
 A layout component that renders two `MeuItem`s in the same design as a split button. We consider both parts of the split button to be separate menu items to get the most straightforward keyboard and narration experience.
@@ -653,9 +671,9 @@ const menuCheckbox = (
     onSelectionChange={setSeelctedItems}
     trigger={trigger}
   >
-    <MenuItem index={1}>Option 1</MenuItem>
-    <MenuItem index={2}>Option 2</MenuItem>
-    <MenuItem index={3}>Option 3</MenuItem>
+    <MenuItemCheckbox name="checkbox1" value={1}>Option 1</MenuItemCheckbox>
+    <MenuItemCheckbox name="checkbox1" value={2}>Option 2</MenuItemCheckbox>
+    <MenuItemCheckbox name="checkbox2" value={3}>Option 3</MenuItemCheckbox>
   <Menu>
 )
 
@@ -667,14 +685,14 @@ const menuSelectableSections = (
     trigger={trigger}
   >
     <MenuGroup title="Checkbox section">
-      <MenuItem index={1}>Option 1</MenuItem>
-      <MenuItem index={2}>Option 2</MenuItem>
-      <MenuItem index={3}>Option 3</MenuItem>
+      <MenuItemCheckbox name="checkbox" value={1}>Option 1</MenuItem>
+      <MenuItemCheckbox name="checkbox" value={2}>Option 2</MenuItem>
+      <MenuItemCheckbox name="checkbox" value={3}>Option 3</MenuItem>
     </MenuGroup>
     <MenuGroup title="Radio section">
-      <MenuItem index={4}>Option 1</MenuItem>
-      <MenuItem index={5}>Option 2</MenuItem>
-      <MenuItem index={6}>Option 3</MenuItem>
+      <MenuItemRadio name="radio" value={1}>Option 1</MenuItemRadio>
+      <MenuItemRadio name="radio" value={2}>Option 2</MenuItemRadio>
+      <MenuItemRadio name="radio" value={3}>Option 3</MenuItemRadio>
     </MenuGroup>
   <Menu>
 )
