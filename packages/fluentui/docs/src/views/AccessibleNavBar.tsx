@@ -146,7 +146,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 <h3>Notes</h3>
 <ul>
 <li>NVDA sometimes (could not reproduce when) does not narrate the aria-label.</li>
-<li>This variant is preferred, because it is the least verbose.</li>
+<li>This variant is considered the best option, because it is the least verbose one.</li>
 </ul>
 
 <h2>role="group" and aria-label</h2>
