@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 22 Jan 2021 12:24:49 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.22",
+      "version": "1.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Re-exporting MenuContext from react-button to avoid fragility in package versions usage.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "58b29c4a4448e7c7228a0138ccfe8ee683729c27",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.21",
       "version": "1.0.0-beta.21",

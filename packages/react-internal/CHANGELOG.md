@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jan 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.36)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.35..@fluentui/react-internal_v8.0.0-beta.36)
+
+### Changes
+
+- Added generic type for ISelectableOption interface ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
 
 ## [8.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.35)
 
