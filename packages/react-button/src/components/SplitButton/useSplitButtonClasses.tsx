@@ -1,6 +1,6 @@
 import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
-import { ButtonSizeVariants } from '../Button/index';
+import { ButtonSizeVariants } from '../Button/useButtonClasses';
 import { SplitButtonState, SplitButtonVariants } from './SplitButton.types';
 
 const GlobalClassNames = {

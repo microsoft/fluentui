@@ -1,16 +1,18 @@
-import { withThemeProvider, themes } from '../src/decorators/withThemeProvider';
+import { withThemeProvider } from '../src/decorators/withThemeProvider';
+// import { withNorthstarProvider, themes } from '../src/decorators/withThemeProvider';
 
 export const globalTypes = {
-  theme: {
-    name: 'Theme',
-    description: 'Global theme for components',
-    defaultValue: 'Teams',
-    toolbar: {
-      icon: 'paintbrush',
-      items: Object.keys(themes),
-    },
-  },
-
+  // TODO: can remove? show all themes at once instead?
+  // theme: {
+  //   name: 'Theme',
+  //   description: 'Global theme for components',
+  //   defaultValue: 'Teams',
+  //   toolbar: {
+  //     icon: 'paintbrush',
+  //     items: Object.keys(themes),
+  //   },
+  // },
+  //
   // TODO: standardize from Nova interfaces
   // locale: {
   //   name: 'Locale',

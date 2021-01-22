@@ -5,12 +5,12 @@
 ```ts
 
 import { ColorTokens } from '@fluentui/theme';
-import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ComponentProps } from '@fluentui/react-compose/lib/next';
 import { FontTokens } from '@fluentui/theme';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
-import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ShorthandProps } from '@fluentui/react-compose/lib/next';
 import { SizeValue } from '@fluentui/theme';
 
 // @public
@@ -181,6 +181,12 @@ export type ExpandedState = {
     'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
     'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
     menu?: MenuButtonState['menu'];
+};
+
+// @public (undocumented)
+export const GlobalClassNames: {
+    root: string;
+    icon: string;
 };
 
 // @public

@@ -1,5 +1,5 @@
 import { SplitButton } from './SplitButton';
-import { Button } from '../Button/index';
+import { Button } from '../Button/Button';
 import { isConformant } from '../../common/isConformant';
 
 describe('SplitButton', () => {

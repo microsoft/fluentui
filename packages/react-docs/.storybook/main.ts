@@ -1,6 +1,13 @@
 module.exports = {
   stories: ['../../react-button/src/**/*.stories.tsx'],
-  addons: ['@storybook/addon-essentials'],
+  addons: [
+    {
+      name: '@storybook/addon-essentials',
+      options: {
+        backgrounds: false,
+      },
+    },
+  ],
 
   webpackFinal: async (config) => {
     // do mutation to the config

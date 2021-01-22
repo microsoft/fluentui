@@ -4,8 +4,8 @@ import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { SplitButtonProps } from './SplitButton.types';
 import { useSplitButton } from './useSplitButton';
 import { useSplitButtonClasses } from './useSplitButtonClasses';
-import { Button } from '../Button/index';
-import { MenuButton } from '../MenuButton/index';
+import { Button } from '../Button/Button';
+import { MenuButton } from '../MenuButton/MenuButton';
 import { renderSplitButton } from './renderSplitButton';
 
 /**
