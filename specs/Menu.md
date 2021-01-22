@@ -872,6 +872,10 @@ Accessibility behaviour is built into the spec as much as possible. This section
 
 The [MenuDivider](#menudivider) is a purely visual component. The component is only intended to be used as visual 'sugar'. When meaningful partitions [MenuItems](#menuitem) exists, [MenuGroup](#menugroup) should be used to provide the correct experience for narration.
 
+⚠️ When using [MenuSectionHeader](#menudivider)
+
+[MenuGroup](#menugroup) as a parent component ensures that correct `aria-labelledby` relationship is defined between the header and the group.
+
 ### Focus management
 
 ### Disabled menu items
