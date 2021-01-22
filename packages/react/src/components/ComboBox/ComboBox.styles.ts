@@ -10,6 +10,7 @@ import {
   hiddenContentStyle,
   getInputFocusStyle,
   getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastAdjustSelector,
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
@@ -52,7 +53,7 @@ const listOptionHighContrastStyles: IRawStyle = {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
-      MsHighContrastAdjust: 'none',
+      ...getHighContrastAdjustSelector(),
     },
   },
 };
@@ -62,7 +63,7 @@ const inputHighContrastStyles: IRawStyle = {
     [HighContrastSelector]: {
       color: 'WindowText',
       backgroundColor: 'Window',
-      MsHighContrastAdjust: 'none',
+      ...getHighContrastAdjustSelector(),
     },
   },
 };
@@ -190,7 +191,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastAdjustSelector(),
         },
       },
     };
@@ -211,7 +212,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
             backgroundColor: 'ButtonFace',
             borderColor: 'ButtonText',
             color: 'ButtonText',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastAdjustSelector(),
           },
         },
       },
@@ -307,7 +308,7 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
       backgroundColor: 'Window',
-      MsHighContrastAdjust: 'none',
+      ...getHighContrastAdjustSelector(),
       selectors: {
         ':after': {
           borderColor: 'Highlight',
@@ -383,7 +384,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'HighlightText',
             backgroundColor: 'Window',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastAdjustSelector(),
             selectors: {
               ':after': {
                 borderColor: 'Highlight',

@@ -1,5 +1,5 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector, IRawStyle } from '../../../Styling';
+import { ITheme, HighContrastSelector, IRawStyle, getHighContrastAdjustSelector } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 
 const splitButtonDividerBaseStyles = (): IRawStyle => {
@@ -159,7 +159,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           color: 'Window',
           backgroundColor: 'WindowText',
           borderColor: 'WindowText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastAdjustSelector(),
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
           selectors: {
@@ -194,7 +194,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           color: 'Window',
           backgroundColor: 'WindowText',
           borderColor: 'WindowText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastAdjustSelector(),
         },
       },
     },

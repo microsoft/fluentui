@@ -7,6 +7,7 @@ import {
   IRawStyle,
   AnimationStyles,
   HighContrastSelector,
+  getHighContrastAdjustSelector,
 } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
 
@@ -154,7 +155,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
                 background: 'Window',
                 color: 'WindowText',
                 outline: '1px solid Highlight',
-                MsHighContrastAdjust: 'none',
+                ...getHighContrastAdjustSelector(),
               },
             },
           },
@@ -164,7 +165,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
               [HighContrastSelector]: {
                 background: 'Window',
                 color: 'Highlight',
-                MsHighContrastAdjust: 'none',
+                ...getHighContrastAdjustSelector(),
               },
             },
           },
@@ -185,14 +186,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
                 [HighContrastSelector]: {
                   backgroundColor: 'WindowText',
                   color: 'Window',
-                  MsHighContrastAdjust: 'none',
+                  ...getHighContrastAdjustSelector(),
                 },
               },
             },
             [HighContrastSelector]: {
               backgroundColor: 'WindowText',
               color: 'Window',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastAdjustSelector(),
             },
           },
         }
@@ -212,14 +213,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
                 [HighContrastSelector]: {
                   color: 'Window',
                   background: 'Highlight',
-                  MsHighContrastAdjust: 'none',
+                  ...getHighContrastAdjustSelector(),
                 },
               },
             },
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'Window',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastAdjustSelector(),
             },
           },
         }
