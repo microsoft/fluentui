@@ -8,6 +8,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import config from '../config';
+import defaultEnvironmentVars from './defaultEnvironmentVars';
 
 const { paths } = config;
 const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
@@ -68,6 +69,7 @@ const webpackConfig: webpack.Configuration = {
         configFile: paths.docs('tsconfig.json'),
       },
     }),
+    new webpack.EnvironmentPlugin(defaultEnvironmentVars),
     new webpack.DefinePlugin(config.compiler_globals),
     new webpack.ContextReplacementPlugin(/node_modules[\\|/]typescript[\\|/]lib/, /typescript\.js/, false),
     new (CopyWebpackPlugin as any)({
