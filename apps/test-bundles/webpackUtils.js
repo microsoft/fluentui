@@ -49,6 +49,9 @@ function createWebpackConfig(entries) {
         entry: {
           [entryName]: entryPath,
         },
+        output: {
+          libraryTarget: 'umd',
+        },
         externals: {
           react: 'React',
           'react-dom': 'ReactDOM',
