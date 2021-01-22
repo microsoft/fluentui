@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Icon, SearchBox } from '@fluentui/react';
 import * as stylesImport from './IconGrid.module.scss';
-// import * as MDL2Icons from '@fluentui/react-icons-mdl2';
 const styles: any = stylesImport;
 
 export interface IIconGridProps {
@@ -11,7 +10,7 @@ export interface IIconGridProps {
   icons: { name: string; value?: JSX.Element }[];
 
   /**
-   * If we should render using `Icon` from Fabric
+   * Determines which iconset should be rendered
    */
   useIconsType: string;
 }
@@ -43,6 +42,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     let { searchQuery } = this.state;
 
     const icons = this._getItems();
+
     return (
       <div>
         <SearchBox
