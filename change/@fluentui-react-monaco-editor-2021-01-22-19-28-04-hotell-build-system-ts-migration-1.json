@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "chore: switch to single version policy with typescript",
+  "packageName": "@fluentui/react-monaco-editor",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-22T18:27:31.116Z"
+}
