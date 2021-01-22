@@ -23,10 +23,11 @@ storiesOf('SplitButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-SplitButton-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-SplitButton-button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
@@ -90,11 +91,11 @@ storiesOf('SplitButton Next - Block', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-SplitButton-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-SplitButton-button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
@@ -156,10 +157,11 @@ storiesOf('SplitButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-SplitButton-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-SplitButton-button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
