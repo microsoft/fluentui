@@ -103,6 +103,12 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
@@ -110,7 +116,6 @@ exports[`Suggestions renders a list properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -121,11 +126,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
               }
           data-is-focusable={true}
           id="sug-0"
@@ -237,13 +237,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -254,9 +257,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -368,13 +368,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -385,9 +388,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-2"
@@ -499,13 +499,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -516,9 +519,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -630,13 +630,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -647,9 +650,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-4"
@@ -761,13 +761,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -778,9 +781,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -892,13 +892,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -909,9 +912,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-6"
@@ -1023,13 +1023,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1040,9 +1043,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -1154,13 +1154,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1171,9 +1174,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-8"
@@ -1285,13 +1285,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1302,9 +1305,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -1416,13 +1416,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1433,9 +1436,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-10"
@@ -1547,13 +1547,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1564,9 +1567,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -1678,13 +1678,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1695,9 +1698,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-12"
@@ -1809,13 +1809,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1826,9 +1829,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-13"
@@ -1940,13 +1940,16 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -1957,9 +1960,6 @@ exports[`Suggestions renders a list properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -2111,6 +2111,12 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
@@ -2118,7 +2124,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2129,11 +2134,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
               }
           data-is-focusable={true}
           id="sug-0"
@@ -2245,13 +2245,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2262,9 +2265,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -2376,13 +2376,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2393,9 +2396,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-2"
@@ -2507,13 +2507,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2524,9 +2527,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -2638,13 +2638,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2655,9 +2658,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-4"
@@ -2769,13 +2769,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2786,9 +2789,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -2900,13 +2900,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -2917,9 +2920,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-6"
@@ -3031,13 +3031,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3048,9 +3051,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -3162,13 +3162,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3179,9 +3182,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-8"
@@ -3293,13 +3293,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3310,9 +3313,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -3424,13 +3424,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3441,9 +3444,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-10"
@@ -3555,13 +3555,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3572,9 +3575,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -3686,13 +3686,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3703,9 +3706,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-12"
@@ -3817,13 +3817,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3834,9 +3837,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-13"
@@ -3948,13 +3948,16 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -3965,9 +3968,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-14"
@@ -4096,13 +4096,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4113,9 +4116,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-0"
@@ -4227,13 +4227,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4244,9 +4247,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-1"
@@ -4358,13 +4358,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4375,9 +4378,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-2"
@@ -4489,13 +4489,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4506,9 +4509,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-3"
@@ -4620,13 +4620,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4637,9 +4640,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-4"
@@ -4751,13 +4751,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4768,9 +4771,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-5"
@@ -4882,13 +4882,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -4899,9 +4902,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-6"
@@ -5013,13 +5013,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5030,9 +5033,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-7"
@@ -5156,6 +5156,12 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
@@ -5163,7 +5169,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5174,11 +5179,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
               }
           data-is-focusable={true}
           id="sug-8"
@@ -5290,13 +5290,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5307,9 +5310,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-9"
@@ -5421,13 +5421,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5438,9 +5441,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-10"
@@ -5552,13 +5552,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5569,9 +5572,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-11"
@@ -5683,13 +5683,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5700,9 +5703,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-12"
@@ -5814,13 +5814,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5831,9 +5834,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-13"
@@ -5945,13 +5945,16 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
               }
               &:hover .ms-Button-icon {
@@ -5962,9 +5965,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               }
               &:active .ms-Button-icon {
                 color: #004578;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
               }
           data-is-focusable={true}
           id="sug-14"

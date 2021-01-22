@@ -1,8 +1,17 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Mon, 18 Jan 2021 12:35:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.36)
+
+Mon, 18 Jan 2021 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.0..@fluentui/azure-themes_v8.0.0-beta.36)
+
+### Changes
+
+- fix(azure-themes): dark mode themes are now correctly set as inverted ([PR #16377](https://github.com/microsoft/fluentui/pull/16377) by daparks@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.0)
 

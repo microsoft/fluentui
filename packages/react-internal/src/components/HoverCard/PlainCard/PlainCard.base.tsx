@@ -33,6 +33,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.escape) {
       this.props.onLeave && this.props.onLeave(ev);
     }
