@@ -37,7 +37,7 @@
     "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "bump:beachball": "beachball bump --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
-    "perf": "cross-env PERF=true gulp perf --times=100",
+    "perf": "cross-env PERF=true gulp perf --times=25",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
     "preinstall": "node ./scripts/use-yarn-please.js",
     "prelint": "yarn satisfied && yarn syncpack:list && node ./scripts/lint-files/index.js",

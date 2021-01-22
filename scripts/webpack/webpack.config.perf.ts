@@ -43,7 +43,7 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
+    // new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
     new (CopyWebpackPlugin as any)([
       {
         from: paths.perfSrc('index.html'),

@@ -1,5 +1,5 @@
 import { CAN_USE_CSS_VARIABLES, DEFINITION_LOOKUP_TABLE } from './constants';
-import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
+// import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
 import {
   MakeStylesDefinition,
   MakeStylesMatchedDefinitions,
@@ -19,27 +19,33 @@ export function makeStyles<Selectors, Tokens>(
     ...classNames: (string | undefined)[]
   ): string;
   function computeClasses(selectors: Selectors, options: MakeStylesOptions<Tokens>): string {
-    let tokens: Tokens | null;
-    let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
+    // let tokens: Tokens | null;
+    const resolvedDefinitions: MakeStylesResolvedDefinition<
+      Selectors,
+      Tokens
+    >[] = (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[];
 
-    // TODO: describe me
-    if (process.env.NODE_ENV === 'production') {
-      tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
-      resolvedDefinitions = CAN_USE_CSS_VARIABLES
-        ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
-        : resolveDefinitions(
-            (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-            tokens,
-            unstable_cssPriority,
-          );
-    } else {
-      tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
-      resolvedDefinitions = resolveDefinitions(
-        (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-        tokens,
-        unstable_cssPriority,
-      );
-    }
+    // // TODO: describe me
+    // if (process.env.NODE_ENV === 'production') {
+    //   tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
+    //   resolvedDefinitions = CAN_USE_CSS_VARIABLES
+    //     ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
+    //     : resolveDefinitions(
+    //         (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+    //         tokens,
+    //         unstable_cssPriority,
+    //       );
+    // } else {
+    //   tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
+    //   resolvedDefinitions = resolveDefinitions(
+    //     (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+    //     tokens,
+    //     unstable_cssPriority,
+    //   );
+    // }
+
+    // tokens = null;
+    // resolvedDefinitions = (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[];
 
     let nonMakeClasses: string = '';
     const overrides: MakeStylesMatchedDefinitions = {};

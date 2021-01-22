@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createDOMRenderer, makeStyles, makeOverrides } from '@fluentui/make-styles';
+import { createDOMRenderer, makeStyles } from '@fluentui/make-styles';
+import * as _ from 'lodash';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -194,18 +195,28 @@ const resolvedStyles = {
   ],
 };
 
-const useRootStyles = makeOverrides(resolvedStyles.rootStyles[0][2] as any);
-const useLabelStyles = makeOverrides(resolvedStyles.labelStyles[0][2] as any);
-const useMenuIconStyles = makeOverrides(resolvedStyles.menuIconStyles[0][2] as any);
+const useRootStyles = makeStyles(resolvedStyles.rootStyles as any);
+const useLabelStyles = makeStyles(resolvedStyles.labelStyles as any);
+const useMenuIconStyles = makeStyles(resolvedStyles.menuIconStyles as any);
 
 const makeStylesOptions = { renderer: createDOMRenderer(), tokens: {}, rtl: false };
 
-const Scenario = () => {
-  const rootClasses = useRootStyles(makeStylesOptions);
-  useLabelStyles(makeStylesOptions);
-  useMenuIconStyles(makeStylesOptions);
+const App = () => {
+  _.times(1000000, () => {
+    useRootStyles({}, makeStylesOptions);
+    useLabelStyles({}, makeStylesOptions);
+    useMenuIconStyles({}, makeStylesOptions);
 
-  return <button className={rootClasses}>HTML button</button>;
+    useRootStyles({}, makeStylesOptions);
+    useLabelStyles({}, makeStylesOptions);
+    useMenuIconStyles({}, makeStylesOptions);
+
+    useRootStyles({}, makeStylesOptions);
+    useLabelStyles({}, makeStylesOptions);
+    useMenuIconStyles({}, makeStylesOptions);
+  });
+
+  return null;
 };
 
-export default Scenario;
+export default App;

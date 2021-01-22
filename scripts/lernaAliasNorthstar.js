@@ -1,7 +1,13 @@
 const lernaAlias = require('lerna-alias');
 
 // northstar packages should pull these from npm, not the repo
-const excludedPackages = ['@fluentui/date-time-utilities', '@fluentui/dom-utilities', '@fluentui/react-compose'];
+const excludedPackages = [
+  '@fluentui/date-time-utilities',
+  '@fluentui/dom-utilities',
+  '@fluentui/utilities',
+  '@fluentui/merge-styles',
+  '@fluentui/react-compose',
+];
 
 module.exports = {
   jest: options => {

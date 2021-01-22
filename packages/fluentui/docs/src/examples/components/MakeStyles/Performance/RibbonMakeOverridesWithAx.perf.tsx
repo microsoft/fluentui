@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { createDOMRenderer, makeStyles, makeOverrides } from '@fluentui/make-styles';
+import { createDOMRenderer, ax, makeOverrides } from '@fluentui/make-styles';
+import * as _ from 'lodash';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -194,18 +195,65 @@ const resolvedStyles = {
   ],
 };
 
-const useRootStyles = makeOverrides(resolvedStyles.rootStyles[0][2] as any);
-const useLabelStyles = makeOverrides(resolvedStyles.labelStyles[0][2] as any);
-const useMenuIconStyles = makeOverrides(resolvedStyles.menuIconStyles[0][2] as any);
+const useStyles = makeOverrides({
+  root: resolvedStyles.rootStyles[0][2] as any,
+  disabled: resolvedStyles.rootStyles[1][2] as any,
+  checked: resolvedStyles.rootStyles[2][2] as any,
+  checkedHovered: resolvedStyles.rootStyles[3][2] as any,
+  checkedDisabled: resolvedStyles.rootStyles[4][2] as any,
+  expanded: resolvedStyles.rootStyles[5][2] as any,
+
+  label: resolvedStyles.labelStyles[0][2] as any,
+  menuIcon: resolvedStyles.menuIconStyles[0][2] as any,
+});
 
 const makeStylesOptions = { renderer: createDOMRenderer(), tokens: {}, rtl: false };
 
-const Scenario = () => {
-  const rootClasses = useRootStyles(makeStylesOptions);
-  useLabelStyles(makeStylesOptions);
-  useMenuIconStyles(makeStylesOptions);
+const props = {};
 
-  return <button className={rootClasses}>HTML button</button>;
+const App = () => {
+  _.times(1000000, () => {
+    const classes1 = useStyles(makeStylesOptions);
+    ax(
+      classes1.root,
+
+      props.disabled && classes1.disabled,
+      props.checked && classes1.checked,
+
+      props.checked && props.hovered && classes1.checkedHovered,
+      props.checked && props.disabled && classes1.checkedDisabled,
+
+      props.expanded && classes1.expanded,
+    );
+
+    const classes2 = useStyles(makeStylesOptions);
+    ax(
+      classes2.root,
+
+      props.disabled && classes2.disabled,
+      props.checked && classes2.checked,
+
+      props.checked && props.hovered && classes2.checkedHovered,
+      props.checked && props.disabled && classes2.checkedDisabled,
+
+      props.expanded && classes2.expanded,
+    );
+
+    const classes3 = useStyles(makeStylesOptions);
+    ax(
+      classes3.root,
+
+      props.disabled && classes3.disabled,
+      props.checked && classes3.checked,
+
+      props.checked && props.hovered && classes3.checkedHovered,
+      props.checked && props.disabled && classes3.checkedDisabled,
+
+      props.expanded && classes3.expanded,
+    );
+  });
+
+  return null;
 };
 
-export default Scenario;
+export default App;

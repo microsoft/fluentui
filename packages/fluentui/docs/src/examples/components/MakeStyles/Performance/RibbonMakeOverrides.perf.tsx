@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createDOMRenderer, makeStyles, makeOverrides } from '@fluentui/make-styles';
+import * as _ from 'lodash';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -194,18 +195,23 @@ const resolvedStyles = {
   ],
 };
 
-const useRootStyles = makeOverrides(resolvedStyles.rootStyles[0][2] as any);
-const useLabelStyles = makeOverrides(resolvedStyles.labelStyles[0][2] as any);
-const useMenuIconStyles = makeOverrides(resolvedStyles.menuIconStyles[0][2] as any);
+const useStyles = makeOverrides({
+  root: resolvedStyles.rootStyles[0][2] as any,
+
+  label: resolvedStyles.labelStyles[0][2] as any,
+  menuIcon: resolvedStyles.menuIconStyles[0][2] as any,
+});
 
 const makeStylesOptions = { renderer: createDOMRenderer(), tokens: {}, rtl: false };
 
-const Scenario = () => {
-  const rootClasses = useRootStyles(makeStylesOptions);
-  useLabelStyles(makeStylesOptions);
-  useMenuIconStyles(makeStylesOptions);
+const App = () => {
+  _.times(1000000, () => {
+    useStyles(makeStylesOptions);
+    useStyles(makeStylesOptions);
+    useStyles(makeStylesOptions);
+  });
 
-  return <button className={rootClasses}>HTML button</button>;
+  return null;
 };
 
-export default Scenario;
+export default App;

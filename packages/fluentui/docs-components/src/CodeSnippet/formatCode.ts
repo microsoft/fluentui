@@ -3,7 +3,7 @@ import * as _prettier from 'prettier/standalone';
 
 import babylon from 'prettier/parser-babylon';
 import html from 'prettier/parser-html';
-import typescript from 'prettier/parser-typescript';
+// import typescript from 'prettier/parser-typescript';
 
 import { CodeSnippetMode, CodeSnippetValue } from './types';
 
@@ -21,7 +21,7 @@ const prettierConfig = {
   plugins: {
     babylon,
     html,
-    typescript,
+    // typescript,
   },
 };
 
