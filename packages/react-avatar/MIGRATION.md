@@ -78,7 +78,7 @@ The v0 Avatar maps more closely to the converged Avatar.
 | -                          | -                | active             |
 | -                          | -                | activeDisplay      |
 | -                          | styles           | tokens             |
-| -                          | as               | -                  |
+| -                          | as               | as                 |
 | -                          | variables        | (tokens)           |
 | -                          | design           | (tokens)           |
 | -                          | accessibility    | -                  |
