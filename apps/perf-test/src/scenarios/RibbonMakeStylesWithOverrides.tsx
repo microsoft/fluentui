@@ -195,8 +195,8 @@ const resolvedStyles = {
 };
 
 const useRootStyles = makeStyles(resolvedStyles.rootStyles as any);
-const useLabelStyles = makeOverrides(resolvedStyles.labelStyles as any);
-const useMenuIconStyles = makeOverrides(resolvedStyles.menuIconStyles as any);
+const useLabelStyles = makeOverrides(resolvedStyles.labelStyles[0][3] as any);
+const useMenuIconStyles = makeOverrides(resolvedStyles.menuIconStyles[0][3] as any);
 
 const makeStylesOptions = { renderer: createDOMRenderer(), tokens: {}, rtl: false };
 

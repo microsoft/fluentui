@@ -9,7 +9,7 @@ export function makeOverrides<Tokens>(styleRule: MakeStylesStyleRule<Tokens>, un
 
   const insertionCacheByRenderer: Record<string, boolean> = {};
 
-  function computeClasses(options: MakeStylesOptions<Tokens>): string {
+  function computeOverrides(options: MakeStylesOptions<Tokens>): string {
     if (CAN_USE_CSS_VARIABLES) {
       if (resolvedClassNames !== null && insertionCacheByRenderer[options.renderer.id]) {
         return resolvedClassNames;
@@ -38,5 +38,5 @@ export function makeOverrides<Tokens>(styleRule: MakeStylesStyleRule<Tokens>, un
     return '';
   }
 
-  return computeClasses;
+  return computeOverrides;
 }
