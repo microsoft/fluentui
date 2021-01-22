@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { Icon, SearchBox } from '@fluentui/react';
 import * as stylesImport from './IconGrid.module.scss';
+// import * as MDL2Icons from '@fluentui/react-icons-mdl2';
 const styles: any = stylesImport;
 
 export interface IIconGridProps {
   /**
    * An array of icons.
    */
-  icons: { name: string }[];
+  icons: { name: string; value?: JSX.Element }[];
 
   /**
    * If we should render using `Icon` from Fabric
    */
-  useFabricIcons?: boolean;
+  useIconsType: string;
 }
 
 export interface IIconGridState {
@@ -42,7 +43,6 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     let { searchQuery } = this.state;
 
     const icons = this._getItems();
-
     return (
       <div>
         <SearchBox
@@ -63,24 +63,33 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     return icons.filter(icon => icon && icon.name && icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
   };
 
-  private _renderIcon = (icon: { name: string }, index?: number): JSX.Element => {
-    const { useFabricIcons } = this.props;
+  private _renderIcon = (icon: { name: string; value?: JSX.Element }, index?: number): JSX.Element => {
+    const { useIconsType } = this.props;
     let iconClassName = `ms-Icon ms-Icon--${icon.name}`;
     const iconRef = this._iconRefs[icon.name];
     if (iconRef.current && iconRef.current.offsetWidth > 80) {
       iconClassName += ' hoverIcon';
     }
-
-    return (
-      <li key={icon.name + index} aria-label={icon.name + ' icon'}>
-        {useFabricIcons ? (
-          <Icon iconName={icon.name} />
-        ) : (
-          <i ref={iconRef} className={iconClassName} title={icon.name} aria-hidden="true" />
-        )}
-        <span>{icon.name}</span>
-      </li>
-    );
+    switch (useIconsType) {
+      case 'fabric-font':
+        return (
+          <li key={icon.name + index} title={icon.name} aria-label={icon.name + ' icon'}>
+            <Icon iconName={icon.name} />
+          </li>
+        );
+      case 'fabric-svg':
+        return (
+          <li key={icon.name + index} title={icon.name} aria-label={icon.name + ' icon'}>
+            {icon.value}
+          </li>
+        );
+      case 'fabric-core':
+        return (
+          <li key={icon.name + index} aria-label={icon.name + ' icon'}>
+            <i ref={iconRef} className={iconClassName} title={icon.name} aria-hidden="true" />
+          </li>
+        );
+    }
   };
 
   private _onSearchQueryChanged = (ev, newValue: string): void => {

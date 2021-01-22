@@ -6,11 +6,24 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
+import * as MDL2Icons from '@fluentui/react-icons-mdl2';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/FabricIconsPage/docs';
 const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
 const fabricReactIcons = require('@fluentui/font-icons-mdl2/lib/data/AllIconNames.json');
+const fabricSVGIcons = [];
+for (const iconName in MDL2Icons) {
+  const component = MDL2Icons[iconName];
+  if (
+    typeof component === 'function' &&
+    iconName != 'createSvgIcon' &&
+    String(component).indexOf('return React.createElement') !== -1
+  ) {
+    component.key = 'iconName';
+    fabricSVGIcons.push({ name: iconName, value: component({}) });
+  }
+}
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
@@ -47,10 +60,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Pivot>
               <PivotItem headerText="Fluent UI React (font-based)" className={styles.iconGrid}>
-                <IconGrid icons={fabricReactIcons} useFabricIcons={true} />
+                <IconGrid icons={fabricReactIcons} useIconsType="fabric-font" />
+              </PivotItem>
+              <PivotItem headerText="Fluent UI React (svg-based)" className={styles.iconGrid}>
+                <IconGrid icons={fabricSVGIcons} useIconsType="fabric-svg" />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
-                <IconGrid icons={fabricCoreIcons} />
+                <IconGrid icons={fabricCoreIcons} useIconsType="fabric-core" />
               </PivotItem>
             </Pivot>
           ),
