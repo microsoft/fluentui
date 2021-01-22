@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.38",
+      "version": "1.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Dec 2020 12:38:05 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.22",
       "version": "1.0.0-beta.22",
