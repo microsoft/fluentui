@@ -169,21 +169,21 @@ describe('Breadcrumb', () => {
     expect(overfowItems[1].textContent).toEqual('TestText2');
   });
 
-  describe('additional prop propagation to breadcrumb items', () => {
+  describe('ARIA prop propagation to breadcrumb items', () => {
     it('for Link', () => {
       const itemsWithAdditionalProps: IBreadcrumbItem[] = [
         {
           key: 'ItemKey1',
           text: 'Item 1',
           href: '#',
-          'additional-prop': "I'm an additional prop",
+          'aria-label': "I'm an aria prop",
         },
       ];
 
       wrapper = mount(<Breadcrumb items={itemsWithAdditionalProps} />);
 
       const item = wrapper.find('LinkBase');
-      expect(item.prop('additional-prop')).toEqual("I'm an additional prop");
+      expect(item.prop('aria-label')).toEqual("I'm an aria prop");
     });
 
     it('for Tag', () => {
@@ -191,14 +191,14 @@ describe('Breadcrumb', () => {
         {
           key: 'ItemKey1',
           text: 'Item 1',
-          'additional-prop': "I'm an additional prop",
+          'aria-label': "I'm an aria prop",
         },
       ];
 
       wrapper = mount(<Breadcrumb items={itemsWithAdditionalProps} />);
 
       const item = wrapper.find('.ms-Breadcrumb-item');
-      expect(item.prop('additional-prop')).toEqual("I'm an additional prop");
+      expect(item.prop('aria-label')).toEqual("I'm an aria prop");
     });
   });
 });
