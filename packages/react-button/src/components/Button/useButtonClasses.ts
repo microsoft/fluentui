@@ -189,7 +189,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         },
 
         '&[aria-disabled=true]': {
-          pointerEvents: 'none',
           opacity: 'var(--button-disabled-opacity)',
           backgroundColor: 'var(--button-disabled-background)',
           color: 'var(--button-disabled-contentColor)',

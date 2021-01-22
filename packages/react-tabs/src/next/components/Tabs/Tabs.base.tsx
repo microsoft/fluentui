@@ -148,6 +148,7 @@ export const TabsBase: React.FunctionComponent<TabsProps> = React.forwardRef<HTM
     };
 
     const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         ev.preventDefault();
         updateSelectedItem(itemKey);

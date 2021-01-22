@@ -651,13 +651,16 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+                color: Highlight;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -705,9 +708,6 @@ Array [
               &:hover::before {
                 left: 0px;
                 right: 0px;
-              }
-              @media screen and (-ms-high-contrast: active){& {
-                color: Highlight;
               }
           data-content="My Files"
           data-is-focusable={true}
@@ -820,13 +820,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1000,13 +1002,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1180,13 +1184,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1372,13 +1378,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1561,13 +1569,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1720,13 +1730,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1879,13 +1891,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -2044,13 +2058,15 @@ Array [
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active){& {
+                border-color: Window;
+              }
               &:hover {
                 background-color: #f3f2f1;
                 color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
                 color: Highlight;
               }
               &:hover .ms-Button-icon {

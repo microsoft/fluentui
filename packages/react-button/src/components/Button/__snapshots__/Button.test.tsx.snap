@@ -170,7 +170,6 @@ exports[`Button renders a default state 1`] = `
         box-shadow: var(--button-disabled-boxShadow);
         color: var(--button-disabled-contentColor);
         opacity: var(--button-disabled-opacity);
-        pointer-events: none;
       }
       &[aria-disabled=true] .ms-Button-icon {
         color: var(--button-disabled-iconColor);
@@ -367,7 +366,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         box-shadow: var(--button-disabled-boxShadow);
         color: var(--button-disabled-contentColor);
         opacity: var(--button-disabled-opacity);
-        pointer-events: none;
       }
       &[aria-disabled=true] .ms-Button-icon {
         color: var(--button-disabled-iconColor);
