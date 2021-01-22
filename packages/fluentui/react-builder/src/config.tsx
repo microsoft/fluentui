@@ -465,7 +465,7 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
     type: displayName,
     moduleName: module,
     displayName,
-    props: { children: null },
+    props: { children: [] },
     ...jsonTreeElement,
   };
 };
