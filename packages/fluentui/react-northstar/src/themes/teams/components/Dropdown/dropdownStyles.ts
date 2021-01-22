@@ -251,7 +251,11 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     margin: 0,
     position: 'absolute',
     right: pxToRem(8),
-    top: pxToRem(8),
+    ...(p.multiple &&
+      p.hasItemsSelected && {
+        top: pxToRem(8),
+      }),
+
     color: v.color,
     ...(p.disabled && { color: v.disabledColor }),
   }),
