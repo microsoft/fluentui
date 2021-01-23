@@ -79,14 +79,10 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
         const MDL2Icons = await import('@fluentui/react-icons');
         this.setState({
           icons: Object.keys(MDL2Icons)
-            .map(key => {
-              const IconComponent = MDL2Icons[key];
-              if (
-                typeof IconComponent === 'function' &&
-                key !== 'createSvgIcon' &&
-                String(IconComponent).indexOf('return React.createElement') !== -1
-              ) {
-                return { name: key, value: <IconComponent /> };
+            .map((name): IIconInfo | undefined => {
+              const IconComponent = MDL2Icons[name];
+              if (typeof IconComponent === 'function' && /^[A-Z].*Icon$/.test(name)) {
+                return { name, icon: IconComponent };
               }
               return undefined;
             })
