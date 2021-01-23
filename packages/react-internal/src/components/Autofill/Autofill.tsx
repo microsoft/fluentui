@@ -356,5 +356,18 @@ function _doesTextStartWith(text: string, startWith: string): boolean {
   if (!text || !startWith) {
     return false;
   }
+
+  if (process.env.NODE_ENV !== 'production') {
+    for (const val of [text, startWith]) {
+      if (typeof val !== 'string') {
+        throw new Error(
+          `${
+            Autofill.name
+          } received non-string value(s) of type ${typeof val} from either input's value or suggestedDisplayValue`,
+        );
+      }
+    }
+  }
+
   return text.toLocaleLowerCase().indexOf(startWith.toLocaleLowerCase()) === 0;
 }
