@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "ToggleButton: Replacing use of pressed semanticColors with checked semanticColors for checked states.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-23T02:36:35.851Z"
+}
