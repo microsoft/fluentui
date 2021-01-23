@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Adding missing css variables for opacity in Button and borderColor in checked state of ToggleButton.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-21T03:13:39.757Z"
-}
