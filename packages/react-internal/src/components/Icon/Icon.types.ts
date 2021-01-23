@@ -21,13 +21,11 @@ export enum IconType {
   image = 1,
 
   /**
-   * Deprecated, use `default`.
    * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
    */
   Default = 100000,
 
   /**
-   * Deprecated, use `image`.
    * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
    */
   Image = 100001,

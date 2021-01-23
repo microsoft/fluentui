@@ -2153,11 +2153,11 @@ export interface IContextualMenuSubComponentStyles {
 
 // @public @deprecated (undocumented)
 export enum IconType {
-    // @deprecated
+    // @deprecated (undocumented)
     Default = 100000,
     // @deprecated
     default = 0,
-    // @deprecated
+    // @deprecated (undocumented)
     Image = 100001,
     // @deprecated
     image = 1
