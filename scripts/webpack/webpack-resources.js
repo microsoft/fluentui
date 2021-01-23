@@ -19,8 +19,7 @@ const { findGitRoot } = require('../monorepo/index');
 
 // @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
-const { EnvironmentPlugin } = require('webpack');
-const defaultEnvironmentVars = require('./defaultEnvironmentVars');
+const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
 
 console.log(`Webpack version: ${webpackVersion}`);
 
@@ -369,8 +368,7 @@ module.exports = {
 
 function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-  const plugins = [new EnvironmentPlugin(defaultEnvironmentVars)];
+  const plugins = [new webpack.DefinePlugin(getDefaultEnvironmentVars(isProduction))];
 
   if (isProduction && profile) {
     plugins.push(

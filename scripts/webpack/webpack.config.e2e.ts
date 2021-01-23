@@ -1,8 +1,8 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { webpack as lernaAliases } from '../lernaAliasNorthstar';
-import webpack, { EnvironmentPlugin } from 'webpack';
-import defaultEnvironmentVars from './defaultEnvironmentVars';
+import webpack from 'webpack';
+import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
 import config from '../config';
 
 const { paths } = config;
@@ -39,7 +39,7 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new EnvironmentPlugin(defaultEnvironmentVars),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         configFile: paths.e2e('tsconfig.json'),
