@@ -6,26 +6,10 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
-import * as MDL2Icons from '@fluentui/react-icons';
 
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
-const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
-const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
-const fabricSVGIcons = [];
-for (const iconName in MDL2Icons) {
-  if (MDL2Icons.hasOwnProperty(iconName)) {
-    const component = MDL2Icons[iconName];
-    if (
-      typeof component === 'function' &&
-      iconName !== 'createSvgIcon' &&
-      String(component).indexOf('return React.createElement') !== -1
-    ) {
-      component.key = 'iconName';
-      fabricSVGIcons.push({ name: iconName, value: component({}) });
-    }
-  }
-}
+
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
@@ -62,13 +46,13 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Pivot>
               <PivotItem headerText="Fluent UI React (font-based)" className={styles.iconGrid}>
-                <IconGrid icons={fabricReactIcons} useIconsType="fabric-font" />
+                <IconGrid iconType="font" />
               </PivotItem>
               <PivotItem headerText="Fluent UI React (svg-based)" className={styles.iconGrid}>
-                <IconGrid icons={fabricSVGIcons} useIconsType="fabric-svg" />
+                <IconGrid iconType="svg" />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>
-                <IconGrid icons={fabricCoreIcons} useIconsType="fabric-core" />
+                <IconGrid iconType="core" />
               </PivotItem>
             </Pivot>
           ),
