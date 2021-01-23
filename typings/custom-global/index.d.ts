@@ -8,6 +8,14 @@ declare module '*.scss' {
   export default styles;
 }
 
+/**
+ * Generic typings for JSON modules loaded with webpack.
+ */
+declare module 'json-loader!*.json' {
+  const content: { [key: string]: any } | any[];
+  export = content;
+}
+
 // These declarations are meant to represent the parts of Map/WeakMap/Set that exist in IE 11.
 // Therefore, some functionality (such as constructor parameters) is intentionally missing.
 
