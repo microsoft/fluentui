@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jan 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.22)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.21..@fluentui/react-button_v1.0.0-beta.22)
+
+### Changes
+
+- Button: Re-exporting MenuContext from react-button to avoid fragility in package versions usage. ([PR #16581](https://github.com/microsoft/fluentui/pull/16581) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.21)
 

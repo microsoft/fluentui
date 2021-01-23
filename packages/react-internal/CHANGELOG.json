@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Fri, 22 Jan 2021 12:24:49 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.36",
+      "version": "8.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Added generic type for ISelectableOption interface",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "d6e9619f1679e6a526411c80eaddf6daeee45205",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.35",
       "version": "8.0.0-beta.35",

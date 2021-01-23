@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jan 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.40)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.39..@fluentui/react_v8.0.0-beta.40)
+
+### Changes
+
+- Added generic type for IDropdownOption ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
 
 ## [8.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.39)
 
