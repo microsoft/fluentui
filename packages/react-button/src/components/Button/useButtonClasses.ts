@@ -72,6 +72,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         borderTopWidth: 'var(--button-borderTopWidth, var(--button-borderWidth))',
         borderBottomWidth: 'var(--button-borderBottomWidth, var(--button-borderWidth))',
         boxShadow: 'var(--button-boxShadow)',
+        opacity: 'var(--button-opacity)',
 
         width: 'var(--button-width)',
         maxWidth: 'var(--button-maxWidth)',
@@ -126,6 +127,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
           background: 'var(--button-highContrast-background)',
           borderColor: 'var(--button-highContrast-borderColor)',
           color: 'var(--button-highContrast-contentColor)',
+          opacity: 'var(--button-highContrast-opacity)',
 
           [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-highContrast-iconColor)',
@@ -203,6 +205,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
             background: 'var(--button-highContrast-disabled-background, var(--button-highContrast-background))',
             borderColor: 'var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor))',
             color: 'var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor))',
+            opacity: 'var(--button-highContrast-disabled-opacity, var(--button-highContrast-opacity))',
             [`.${GlobalClassNames.icon}`]: {
               color: 'var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor)',
             },
