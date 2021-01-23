@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Remove doNotLayer from Pivot/Tabs overflow menu",
+  "packageName": "@fluentui/react-tabs",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-23T00:14:16.401Z"
+}
