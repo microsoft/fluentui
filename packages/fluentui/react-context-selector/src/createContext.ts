@@ -41,7 +41,10 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
 export const createContext = <Value>(defaultValue: Value, options: CreateContextOptions = {}): Context<Value> => {
   const { strict = true } = options;
 
-  const context = React.createContext<ContextValue<Value>>(
+  const context = ((React.createContext as unknown) as (
+    defaultValue: any,
+    calcChangedBits?: () => number,
+  ) => React.Context<ContextValue<Value>>)(
     {
       get subscribe() {
         if (strict) {
@@ -60,10 +63,11 @@ export const createContext = <Value>(defaultValue: Value, options: CreateContext
     },
     calculateChangedBits,
   );
+
   context.Provider = createProvider<Value>(context.Provider) as any;
 
   // We don't support Consumer API
-  delete context.Consumer;
+  delete ((context as unknown) as Context<Value>).Consumer;
 
   return (context as unknown) as Context<Value>;
 };

@@ -6,6 +6,7 @@ import { Announced } from '@fluentui/react/lib/Announced';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { TooltipHost } from '@fluentui/react';
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -94,9 +95,11 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         minWidth: 16,
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
-        onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={classNames.fileIconImg} alt={item.fileType + ' file icon'} />;
-        },
+        onRender: (item: IDocument) => (
+          <TooltipHost content={`${item.fileType} file`}>
+            <img src={item.iconName} className={classNames.fileIconImg} alt={`${item.fileType} file icon`} />
+          </TooltipHost>
+        ),
       },
       {
         key: 'column2',

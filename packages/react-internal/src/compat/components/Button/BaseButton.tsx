@@ -727,6 +727,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>) => {
     // explicity cancelling event so click won't fire after this
+    // eslint-disable-next-line deprecation/deprecation
     if (this.props.disabled && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       ev.preventDefault();
       ev.stopPropagation();
@@ -784,6 +785,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   };
 
   private _onSplitButtonContainerKeyDown = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) {
       if (this._buttonElement.current) {
         this._buttonElement.current.click();
@@ -804,7 +806,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       this.props.onKeyDown(ev);
     }
 
+    // eslint-disable-next-line deprecation/deprecation
     const isUp = ev.which === KeyCodes.up;
+    // eslint-disable-next-line deprecation/deprecation
     const isDown = ev.which === KeyCodes.down;
 
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
@@ -892,8 +896,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     ev: React.KeyboardEvent<HTMLDivElement | HTMLAnchorElement | HTMLButtonElement>,
   ): boolean {
     if (this.props.menuTriggerKeyCode) {
+      // eslint-disable-next-line deprecation/deprecation
       return ev.which === this.props.menuTriggerKeyCode;
     } else if (this.props.menuProps) {
+      // eslint-disable-next-line deprecation/deprecation
       return ev.which === KeyCodes.down && (ev.altKey || ev.metaKey);
     }
 

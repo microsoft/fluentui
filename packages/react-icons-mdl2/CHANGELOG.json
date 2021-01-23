@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.10",
+      "version": "1.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Jan 2021 12:36:40 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.9",
       "version": "1.0.0-beta.9",
