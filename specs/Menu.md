@@ -64,9 +64,32 @@ The `ContextualMenu` component uses two styling properties not offered by `Callo
 
 The result being that `ContextualMenu's` positiong and styling risks being abused by developers inexperienced in the library. There is also no documentation on the v7 docsite that states `calloutProps` is actually overriden by props declared directly on `ContextualMenu`
 
-#### Prop mapping
+### Position/Alignment hints
 
-While this doc generally avoids large tables and tries to use positive reinforcement with readable code examples, the only way to provide a somewhat consistent comparison to positioning is with a mapping table to intended functionality.
+Both libraries provide an API that achieves the same end result for positioning and alignment. Below is a table that maps the v7 `DirectionalHint` with the v0 props of `position` and `alignment`
+
+| DirectionalHint (v7) | Position (v0) | Alignment (v0) |
+| -------------------- | ------------- | -------------- |
+| topLeftEdge          | above         | start          |
+| topCenter            | above         | center         |
+| topRightEdge         | above         | bottom         |
+| topAutoEdge          | above         |                |
+| bottomLeftEdge       | above         | start          |
+| bottomCenter         | below         | center         |
+| bottomRightEdge      | below         | bottom         |
+| bottomAutoEdge       | below         |                |
+| leftTopEdge          | before        | top            |
+| leftCenter           | before        | center         |
+| leftBottomEdge       | before        | bottom         |
+| rightTopEdge         | after         | before         |
+| rightCenter          | after         | center         |
+| rightBottomEdge      | after         | bottom         |
+
+First it's necessary to note the difference between the vocabulary used between the two. v7 will use `left` and `right` while v0 uses `before` and `after`. v0 vocabulary here is chosen to convey the appropriate meaning regardless of RTL by using the semantics of the conntent.
+
+In general the separation of both the position and alignment in v0 results in an API that is easier to use if a consumer only needs to modify one of the two props. However both try to achieve the same result in the end.
+
+It's important to note that if an incorrect pair of `position` and `align` are provided in v0, then `position` takes priority and `align` is set immediately to `center`
 
 ### Trigger vs target
 
