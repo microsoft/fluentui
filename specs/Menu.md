@@ -29,14 +29,44 @@ Note that the below code samples are not meant to be complete, but to highlight 
 
 `ContextualMenu` in v7 is a component that also exposes the API to control the positioning of the temporary popup surface that the Menu is rendered on. This aspect of the v7 component should be compared with the `Popup` component in v0 since the v0 `Menu` is created as a standalone component with no positioning properties.
 
-v0 uses the [OSS Popper.js library](https://popper.js.org/) while v7 uses a component based implementation `CalloutContent`. Below we provide the results of testing common positioning boundary/edge cases between the two.
+v0 uses the [OSS Popper.js library](https://popper.js.org/) while v7 uses a component based implementation `CalloutContent`. As a result, the API is very similar in intent and vocabulary as Popper.
 
-// TODO compare boudary/edge cases in positioning
+Below we provide the results of testing common positioning boundary/edge cases between the two.
 
-- flip
-- prevent overflow
-- offset from reference
-- tethering
+#### Positioning vs styling
+
+The biggest difference bewteen the two libraries is that v0 provides a purely positioning based API out of the `Popup` react component. v0 Provides no direct prop values that will style the popup container and any adjustments to stlying properties such as (but not limited to) dimensions/margin/padding/layoud are expected to be implmented through the styling system used throughout the library
+
+The `Callout` component has some styling helpers that affect the styling of the contents:
+
+- calloutMaxHeight
+- calloutMaxWidth
+- calloutWidth
+
+The `ContextualMenu` component uses two styling properties not offered by `Callout` (useTargetWidth, useTargetMinWidth) and also duplicates some of `Callout's` own positioning properties while also allowing a shorthand slot for the `Callout`
+
+```typescript
+<Contextualmenu
+  bounds
+  beakWidth
+  coverTarget
+  directionalHint
+  directionalHintFixed
+  directionalHintForRTL
+  doNotLayer
+  gapSpace
+  isBeakVisible
+
+  {/* All the above props can also be set here */}
+  calloutProps
+/>
+```
+
+The result being that `ContextualMenu's` positiong and styling risks being abused by developers inexperienced in the library. There is also no documentation on the v7 docsite that states `calloutProps` is actually overriden by props declared directly on `ContextualMenu`
+
+#### Prop mapping
+
+While this doc generally avoids large tables and tries to use positive reinforcement with readable code examples, the only way to provide a somewhat consistent comparison to positioning is with a mapping table to intended functionality.
 
 ### Trigger vs target
 
