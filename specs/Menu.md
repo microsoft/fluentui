@@ -33,7 +33,7 @@ v0 uses the [OSS Popper.js library](https://popper.js.org/) while v7 uses a comp
 
 Below we provide the results of testing common positioning boundary/edge cases between the two.
 
-#### Positioning vs styling
+#### Configuration consistency
 
 The biggest difference bewteen the two libraries is that v0 provides a purely positioning based API out of the `Popup` react component. v0 Provides no direct prop values that will style the popup container and any adjustments to stlying properties such as (but not limited to) dimensions/margin/padding/layoud are expected to be implmented through the styling system used throughout the library
 
@@ -68,28 +68,52 @@ The result being that `ContextualMenu's` positiong and styling risks being abuse
 
 Both libraries provide an API that achieves the same end result for positioning and alignment. Below is a table that maps the v7 `DirectionalHint` with the v0 props of `position` and `alignment`
 
-| DirectionalHint (v7) | Position (v0) | Alignment (v0) |
-| -------------------- | ------------- | -------------- |
-| topLeftEdge          | above         | start          |
-| topCenter            | above         | center         |
-| topRightEdge         | above         | bottom         |
-| topAutoEdge          | above         |                |
-| bottomLeftEdge       | above         | start          |
-| bottomCenter         | below         | center         |
-| bottomRightEdge      | below         | bottom         |
-| bottomAutoEdge       | below         |                |
-| leftTopEdge          | before        | top            |
-| leftCenter           | before        | center         |
-| leftBottomEdge       | before        | bottom         |
-| rightTopEdge         | after         | before         |
-| rightCenter          | after         | center         |
-| rightBottomEdge      | after         | bottom         |
+`DirectionalHint` can be passed to both `Callout` (which powers positioning) or directly to `ContextualMenu` (in two different ways). Whereas `position` and `alignment` are props of `Popup` in v0 and not used directly in `Menu` even for the positioning of its submenu.
+
+| DirectionalHint (v7) | position (v0) | align (v0) |
+| -------------------- | ------------- | ---------- |
+| topLeftEdge          | above         | start      |
+| topCenter            | above         | center     |
+| topRightEdge         | above         | bottom     |
+| topAutoEdge          | above         |            |
+| bottomLeftEdge       | above         | start      |
+| bottomCenter         | below         | center     |
+| bottomRightEdge      | below         | bottom     |
+| bottomAutoEdge       | below         |            |
+| leftTopEdge          | before        | top        |
+| leftCenter           | before        | center     |
+| leftBottomEdge       | before        | bottom     |
+| rightTopEdge         | after         | before     |
+| rightCenter          | after         | center     |
+| rightBottomEdge      | after         | bottom     |
 
 First it's necessary to note the difference between the vocabulary used between the two. v7 will use `left` and `right` while v0 uses `before` and `after`. v0 vocabulary here is chosen to convey the appropriate meaning regardless of RTL by using the semantics of the conntent.
 
 In general the separation of both the position and alignment in v0 results in an API that is easier to use if a consumer only needs to modify one of the two props. However both try to achieve the same result in the end.
 
-It's important to note that if an incorrect pair of `position` and `align` are provided in v0, then `position` takes priority and `align` is set immediately to `center`
+It's important to note that if an incorrect pair of `position` and `align` are provided in v0, then `position` takes priority and `align` is set to `center`
+
+#### Offset
+
+```typescript
+<ContextualMenu
+  // single number value
+  gap={100}
+/>
+
+<Popup
+  offset={[-100, 100]}
+/>
+
+// offset can also be a function of raw Popper properties
+const offsetFunction = ({
+  popper: PopperJs.Rect;
+  reference: PopperJs.Rect;
+  placement: PopperJs.Placement;
+}) => ([popper.width, -popper.height])
+```
+
+v7 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 uses a much more flexible API that not only supports a function to defer calculation at runtime, but also supports the offset of the `Popup` in both axes.
 
 ### Trigger vs target
 
