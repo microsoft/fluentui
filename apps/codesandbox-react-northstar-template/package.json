@@ -18,10 +18,10 @@
     "typescript": "3.7.2"
   },
   "dependencies": {
-    "@fluentui/accessibility": "^0.51.5",
-    "@fluentui/code-sandbox": "^0.51.5",
-    "@fluentui/react-bindings": "^0.51.5",
-    "@fluentui/react-northstar": "^0.51.5",
+    "@fluentui/accessibility": "^0.51.6",
+    "@fluentui/code-sandbox": "^0.51.6",
+    "@fluentui/react-bindings": "^0.51.6",
+    "@fluentui/react-northstar": "^0.51.6",
     "prettier": "~1.19.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
