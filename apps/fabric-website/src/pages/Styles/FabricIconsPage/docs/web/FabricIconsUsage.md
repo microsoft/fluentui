@@ -1,6 +1,6 @@
 You can use Fluent UI's icons in a few ways, depending on if you're using Fluent UI React or Fabric Core.
 
-### Fluent UI React
+### Fluent UI React: Font-based icons
 
 If you're using Fluent UI React, note that icons are not included in your bundle by default. To make the icons available, you'll need to initialize them by calling `initializeIcons` from the `@uifabric/icons` package. This is usually done at the root of your app:
 
@@ -50,6 +50,9 @@ Each SVG icon is wrapped with a React element and can be imported and used as fo
 ```ts
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+/*
+ * package renamed to '@fluentui/react-icons-mdl2' in version 8
+ */
 import { ChevronIcon } from '@fluentui/react-icons';
 
 ReactDOM.render(<ChevronIcon />, document.body.firstChild);
