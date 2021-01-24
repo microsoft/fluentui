@@ -42,6 +42,7 @@ The `Callout` component has some styling helpers that affect the styling of the 
 - calloutMaxHeight
 - calloutMaxWidth
 - calloutWidth
+- backgroundColor
 
 The `ContextualMenu` component uses two styling properties not offered by `Callout` (useTargetWidth, useTargetMinWidth) and also duplicates some of `Callout's` own positioning properties while also allowing a shorthand slot for the `Callout`
 
@@ -87,7 +88,7 @@ Both libraries provide an API that achieves the same end result for positioning 
 | rightCenter          | after         | center     |
 | rightBottomEdge      | after         | bottom     |
 
-First it's necessary to note the difference between the vocabulary used between the two. v7 will use `left` and `right` while v0 uses `before` and `after`. v0 vocabulary here is chosen to convey the appropriate meaning regardless of RTL by using the semantics of the conntent.
+First it's necessary to note the difference between the vocabulary used between the two. v7 will use `left` and `right` while v0 uses `before` and `after`. v0 vocabulary here is chosen to convey the appropriate meaning regardless of RTL by using the semantics of the conntent. It's also interesting to note that it's possible to supply an explicit RTL hint to v7 which is a flip by default. v0 will flip by default but requires the consumer to detect RTL scenarios and modify props in these situations
 
 In general the separation of both the position and alignment in v0 results in an API that is easier to use if a consumer only needs to modify one of the two props. However both try to achieve the same result in the end.
 
@@ -114,6 +115,33 @@ const offsetFunction = ({
 ```
 
 v7 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 uses a much more flexible API that not only supports a function to defer calculation at runtime, but also supports the offset of the `Popup` in both axes.
+
+#### Bounds and overflow
+
+#### Submenu positioning
+
+The default positioning for both v0 and v7 submenus is:
+
+- rightTopEdge (v7)
+- top-after (v0)
+
+Both will also flip appropriately when the overflow boundary is too small.
+
+The main difference between the two is that v0 submenu's position does not expose any way to customize or override the positioning of the submenu. However v7 allows every single customization as the root menu. It is very possible to do the below:
+
+```typescript
+const menuItems: IContextualMenuItem[] = [
+  {
+    key: 'newItem',
+    subMenuProps: {
+      // Any positioning props of `ContextualMenu` are usable
+      directionalHint: DirectionalHint.rightTopEdge,
+      // All `Callout` props as also usable
+      calloutProps: {...},
+      items: [...],
+    },
+  },
+```
 
 ### Trigger vs target
 
