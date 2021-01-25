@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-15",
+      "version": "0.8.2-15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Dec 2020 12:28:09 GMT",
       "tag": "@fluentui/react-avatar_v0.8.2-12",
       "version": "0.8.2-12",

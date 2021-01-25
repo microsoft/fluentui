@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## BREAKING CHANGES
 - `Form`: removed static properties: `Form.Field`, `Form.FieldCustom`, `Form.Label`, `Form.Message`, `Form.Input`, `Form.Checkbox`, `Form.Dropdown`, `Form.Button`, `Form.RadioGroup`, `Form.Slider`,`Form.Datepicker` @yuanboxue-amber ([#16546](https://github.com/microsoft/fluentui/pull/16546))
+- `Avatar`: removed static properties: `Avatar.Status`, `Avatar.StatusIcon`, `Avatar.Image`, `Avatar.Label`, `Avatar.Icon`  @yuanboxue-amber ([#16565](https://github.com/microsoft/fluentui/pull/16565))
 - `Tree`: removed management of `contentRef` for tree items. `TreeItem`: removed `selected`, `selectableParent` and `indeterminate` props @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
@@ -79,6 +80,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix click handler moving it from Menu Item Wrapper to Menu Item itself @assuncaocharles ([#16512](https://github.com/microsoft/fluentui/pull/16512))
 - Optimize `NumberListIcon` for bundled size @ling1726 ([#16473](https://github.com/microsoft/fluentui/pull/16473))
 - Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
+- Fix `mergeVariablesOverrides` to return `variables` if it's defined and `overrides` are not @assuncaocharles ([#16560](https://github.com/microsoft/fluentui/pull/16560))
+- Update `VideoProhibitedIcon` to Fluent style. @TanelVari ([#16559](https://github.com/microsoft/fluentui/pull/16559))
+- Fixed paddings for the `Input` with icons left/right. Using `CloseIcon` for clear indicator. Using CheckmarkCircleIcon for successIndicator. @TanelVari ([#16527](https://github.com/microsoft/fluentui/pull/16527))
+- Updated root padding for Dialog. @TanelVari ([#16528](https://github.com/microsoft/fluentui/pull/16528))
+- Fix `Accordion` title and content margins. @TanelVari ([#16533](https://github.com/microsoft/fluentui/pull/16533))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
@@ -156,6 +162,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add new sample images for use in Avatar examples @behowell ([#16129](https://github.com/microsoft/fluentui/pull/16129))
 - Added virtual cursor simulation to UI Builder. @adamsamec ([#15972](https://github.com/microsoft/fluentui/pull/15972))
 - Update `Form` examples to remove `control` prop and delete shorthand examples @assuncaocharles ([#16467](https://github.com/microsoft/fluentui/pull/16467))
+- Fix component tree in UI Builder @jurokapsiar ([#16587](https://github.com/microsoft/fluentui/pull/16587))
 
 ### Deprecations
 - Set as deprecated prop `control` in `Form.Field` and `fields`in `Form` @assuncaocharles ([#16474](https://github.com/microsoft/fluentui/pull/16474))
