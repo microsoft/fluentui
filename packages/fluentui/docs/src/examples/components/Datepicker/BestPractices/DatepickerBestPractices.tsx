@@ -6,7 +6,7 @@ import { link } from '../../../../utils/helpers';
 
 const doList = [
   <Text>
-    Use {link('Form.Datepicker', '/components/form/definition#usage-datepicker')} example for cases when you need to
+    Use {link('FormDatepicker', '/components/form/definition#usage-datepicker')} example for cases when you need to
     announce validation/requirement errors to the user.
   </Text>,
   'Add localization strings.',

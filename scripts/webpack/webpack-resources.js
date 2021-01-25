@@ -205,16 +205,8 @@ module.exports = {
               : output,
 
           externals: {
-            react: {
-              commonjs: 'react',
-              amd: 'react',
-              root: 'React',
-            },
-            'react-dom': {
-              commonjs: 'react-dom',
-              amd: 'react-dom',
-              root: 'ReactDOM',
-            },
+            react: 'React',
+            'react-dom': 'ReactDOM',
           },
 
           resolve: {
