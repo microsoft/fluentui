@@ -153,6 +153,7 @@ v0 `Popup` API is more consistent in this aspect and provides more control than 
 ```
 
 `ContextualMenu` or `Callout` has no notion of separate boundaries for flip or overflow, and auto behaviour is used for flip and overflow 'pushing'
+It should also be noted that `ContextualMenu` allows all of the same props to be passed to its submenus to custom tweak position for each submenu if necessary
 
 #### Submenu positioning
 
@@ -1010,6 +1011,41 @@ In the event that the selection method is a radio, the previous selected item mu
 | Keyboard | Space  | Toggle | Toggle the selection status of the menu item |
 | Keyboard | Enter  | Toggle | Toggle the selection status of the menu item |
 | Mouse    | Click  | Toggle | Toggle the selection status of the menu item |
+
+### Positioning
+
+### Placement + alignment
+
+A menu can be placed and aligned in any of the configurations allowed by current v0 and v7:
+
+- Before or after anchor element
+- Above or below anchor element
+- Aligned at top/bottom/left/right edge of anchor element
+- Aligned centered to the anchor element
+
+The above should result in 12 possible position hints in total
+
+#### Flip
+
+A menu should be positioned so that it will flip its positioning on a given axis if the boundary (e.g. viewport) gets to small that it might overflow
+
+#### Nudging
+
+A menu should be positioned so that if its boundary (e.g. viewport) might overflow, the placement of the popup should be 'nudged' closer into the boundary
+
+#### Anchor placement offset
+
+A menu should be positioned so that the distance with respect to the anchor element should be configurable on both axes.
+
+#### Inline vs portal rendering
+
+A menu should be positioned so that it can be rendered either out of order on the DOM (e.g. portal to body) or inline in DOM order.
+
+#### Submenu positioning
+
+The default positioning for a submenu should be the standard seen in both v7 and v0. Submenu should be placed after the menu item trigger and aligned with the top edge.
+
+Although this should not be recommended, for the purposes of compatibility with v7, all positioning aspects should be configurable for submenus.
 
 ## Accessibiltiy
 
