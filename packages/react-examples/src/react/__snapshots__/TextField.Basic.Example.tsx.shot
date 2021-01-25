@@ -1345,6 +1345,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             onMouseDown={[Function]}
             onMouseUp={[Function]}
             onPaste={[Function]}
+            title="A 10 digit number"
             type="text"
             value="mask: (___) ___ - ____"
           />

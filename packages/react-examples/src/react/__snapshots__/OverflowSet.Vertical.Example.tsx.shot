@@ -23,7 +23,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         }
   >
     <button
-      aria-label="Link 1"
+      aria-label="Add"
       className=
           ms-Button
           ms-Button--commandBar
@@ -176,7 +176,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         }
   >
     <button
-      aria-label="Link 2"
+      aria-label="Upload"
       className=
           ms-Button
           ms-Button--commandBar
@@ -329,7 +329,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
         }
   >
     <button
-      aria-label="Link 3"
+      aria-label="Share"
       className=
           ms-Button
           ms-Button--commandBar

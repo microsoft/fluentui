@@ -84,6 +84,7 @@ export const CardView: ICardComponent['view'] = props => {
   const _onKeyDown = (ev?: React.KeyboardEvent<HTMLElement>): void => {
     if (onKeyDown) {
       onKeyDown(ev);
+      // eslint-disable-next-line deprecation/deprecation
     } else if (onClick && ev && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
       // If onKeyDown is undefined and onClick has been passed, then replicate a Button's behavior by triggering the
       // onClick function on pressing down the 'Enter' and 'Space' keys.

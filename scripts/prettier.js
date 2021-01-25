@@ -13,9 +13,13 @@ const numberOfCpus = os.cpus().length / 2;
  */
 
 async function main() {
-  const runOnAllFiles = parsedArgs.all;
+  const { all: runOnAllFiles, check: checkMode } = parsedArgs;
 
-  console.log(`Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes):`);
+  console.log(
+    `Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes | in ${
+      checkMode ? 'check' : 'write'
+    } mode)`,
+  );
 
   /**
    * @type {Paths}
@@ -46,6 +50,10 @@ function parseArgs() {
         description: 'Run prettier on all files',
         boolean: true,
       },
+      check: {
+        description: 'Run prettier in check mode. useful for CI',
+        boolean: true,
+      },
     })
     .alias('h', 'help').argv;
 }
@@ -73,13 +81,10 @@ async function runOnChanged(options) {
     fileGroups.push(files.slice(chunkStart, chunkStart + numberOfCpus));
   }
 
-  console.log(files);
-  process.exit(1);
-
   await queue.addAll(
     fileGroups.map(group => () => {
       console.log(`Running for ${group.length} files!`);
-      runPrettier(group, true /*async*/);
+      runPrettier(group, { runAsync: true, check: parsedArgs.check });
     }),
   );
 }
@@ -92,10 +97,12 @@ async function runOnAll(options) {
   const { queue, paths } = options;
 
   // Run on groups of files so that the operations can run in parallel
-  await queue.add(() => runPrettierForFolder(paths.root, true, true));
+  await queue.add(() =>
+    runPrettierForFolder(paths.root, { runAsync: true, nonRecursive: true, check: parsedArgs.check }),
+  );
   await queue.addAll(
     ['apps', 'packages/!(fluentui)', 'packages/fluentui', '{.*,scripts,typings}'].map(name => () =>
-      runPrettierForFolder(name),
+      runPrettierForFolder(name, { check: parsedArgs.check }),
     ),
   );
 }

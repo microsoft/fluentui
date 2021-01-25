@@ -143,6 +143,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
     // and getting all the math and styles flipped correctly is tricky
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.left: {
         currentValue -= increment;

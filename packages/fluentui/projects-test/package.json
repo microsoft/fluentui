@@ -23,7 +23,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "tsc --noEmit",
+    "build": "gulp bundle:package:no-umd",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
     "test": "node -r @fluentui/scripts/babel/register src/index.ts"

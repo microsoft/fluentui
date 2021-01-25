@@ -27,8 +27,13 @@ export const buttonBehaviorDefinition: Rule[] = [
     .forProps({ disabled: true, loading: true })
     .doesNotHaveAttribute('disabled'),
   BehaviorRule.root()
-    .forProps({ disabled: true })
-    .hasAttribute('aria-disabled', 'true'),
+    .forProps({ disabledFocusable: true })
+    .hasAttribute('aria-disabled', 'true')
+    .doesNotHaveAttribute('disabled'),
+  BehaviorRule.root()
+    .forProps({ disabledFocusable: true })
+    .doesNotHaveAttribute('disabled')
+    .hide(),
   BehaviorRule.root()
     .forProps({ loading: true })
     .hasAttribute('aria-disabled', 'true'),

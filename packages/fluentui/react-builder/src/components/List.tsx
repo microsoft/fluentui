@@ -35,25 +35,12 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
     [filterRegexp],
   );
 
-  const titleComponent = (
-    Component,
-    {
-      content,
-      expanded,
-      hasSubtree,
-      treeSize,
-      selectable,
-      selectableParent,
-      selectionIndicator,
-      accessibility,
-      ...rest
-    },
-  ) => {
+  const titleComponent = (Component, { content, expanded, ...rest }) => {
     return (
-      <div {...rest}>
+      <Component {...rest}>
         {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
         {content}
-      </div>
+      </Component>
     );
   };
 
@@ -74,6 +61,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
                 id: info.displayName,
                 title: (
                   <Box
+                    as="span"
                     key={info.displayName}
                     onMouseDown={handleMouseDown(info)}
                     styles={{

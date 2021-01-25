@@ -114,6 +114,7 @@ export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps
   };
 
   private _onInputKeyDown(ev: React.KeyboardEvent<HTMLInputElement>): void {
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.backspace || ev.which === KeyCodes.del) {
       ev.stopPropagation();
     }

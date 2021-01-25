@@ -97,13 +97,16 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -151,9 +154,6 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="test"
       data-is-focusable={true}
@@ -266,13 +266,15 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -493,13 +495,16 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -547,9 +552,6 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -662,13 +664,15 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -878,13 +882,16 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -932,9 +939,6 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content=" (12)"
       data-is-focusable={true}
@@ -1047,13 +1051,15 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1218,13 +1224,15 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1453,13 +1461,16 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1507,9 +1518,6 @@ exports[`Tabs renders Tabs with overflow 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test 1"
       data-is-focusable={true}
@@ -1622,13 +1630,15 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1787,13 +1797,15 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2018,13 +2030,16 @@ exports[`Tabs renders large tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #0078d4;
             color: #ffffff;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2105,9 +2120,6 @@ exports[`Tabs renders large tab format correctly 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -2221,13 +2233,15 @@ exports[`Tabs renders large tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #0078d4;
             color: #ffffff;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2469,13 +2483,16 @@ exports[`Tabs renders large tabs correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2523,9 +2540,6 @@ exports[`Tabs renders large tabs correctly 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -2638,13 +2652,15 @@ exports[`Tabs renders large tabs correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2854,13 +2870,16 @@ exports[`Tabs renders tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #0078d4;
             color: #ffffff;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2941,9 +2960,6 @@ exports[`Tabs renders tab format correctly 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -3057,13 +3073,15 @@ exports[`Tabs renders tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #0078d4;
             color: #ffffff;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3304,13 +3322,16 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3358,9 +3379,6 @@ exports[`Tabs renders tabs as links correctly 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 1"
       data-is-focusable={true}
@@ -3473,13 +3491,15 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3686,13 +3706,15 @@ exports[`Tabs supports JSX expressions 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3846,13 +3868,16 @@ exports[`Tabs supports JSX expressions 1`] = `
             position: relative;
             top: 0px;
           }
+          @media screen and (-ms-high-contrast: active){& {
+            border-color: Window;
+            color: Highlight;
+          }
           &:hover {
             background-color: #f3f2f1;
             color: #201f1e;
             cursor: pointer;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
-            border-color: Highlight;
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3900,9 +3925,6 @@ exports[`Tabs supports JSX expressions 1`] = `
           &:hover::before {
             left: 0px;
             right: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){& {
-            color: Highlight;
           }
       data-content="Test Link 3"
       data-is-focusable={true}

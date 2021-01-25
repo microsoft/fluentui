@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.10)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.7..@fluentui/react-compose_v1.0.0-beta.10)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.7)
 
