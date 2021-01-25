@@ -119,6 +119,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `TvIcon`. @TanelVari ([#16207](https://github.com/microsoft/fluentui/pull/16207))
 - Added `CalendarAgendaIcon`, `ImageLibraryIcon`. @TanelVari ([#16293](https://github.com/microsoft/fluentui/pull/16293))
 - Added color tokens to be used for search term highlighting. Added default foreground7 and default background6 into Teams theme v1 and v2. @TanelVari ([#16391](https://github.com/microsoft/fluentui/pull/16391))
+- Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
 
 ### Documentation
 - Performance Tests with Roster prototype @vyhnalekl + @yuanboXue-amber ([#16412](https://github.com/microsoft/fluentui/pull/16412))
