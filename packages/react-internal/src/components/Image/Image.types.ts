@@ -75,10 +75,9 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
   coverStyle?: ImageCoverStyle;
 
   /**
-   * If true, use browser-level image lazy-loading.
-   * @defaultvalue false;
+   * Allows for browser-level image lazy-loading.
    */
-  lazyLoad?: boolean;
+  loading?: 'auto' | 'lazy' | 'eager';
 }
 
 /**

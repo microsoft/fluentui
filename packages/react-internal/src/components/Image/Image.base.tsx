@@ -97,7 +97,7 @@ export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<
       maximizeFrame,
       styles,
       theme,
-      lazyLoad,
+      loading,
     } = props;
     const coverStyle = useCoverStyle(props, loadState, imageElement, frameElement);
     const classNames = getClassNames(styles!, {
@@ -134,7 +134,7 @@ export const ImageBase: React.FunctionComponent<IImageProps> = React.forwardRef<
           src={src}
           alt={alt}
           role={role}
-          loading={lazyLoad ? 'lazy' : 'eager'}
+          loading={loading}
         />
       </div>
     );
