@@ -1,5 +1,5 @@
-<fast-design-system-provider style="height: 100%; overflow: hidden; display: flex; flex-direction: column;">
-  <fast-anchored-region
+<fluent-design-system-provider style="height: 100%; overflow: hidden; display: flex; flex-direction: column;">
+  <fluent-anchored-region
     anchor="anchor-fixed"
     vertical-positioning-mode="dynamic"
     vertical-scaling="anchor"
@@ -12,7 +12,7 @@
     <div style="height: 100%; width: 100%; background: blue;">
       outside
     </div>
-  </fast-anchored-region>
+  </fluent-anchored-region>
 
   <div
     style="
@@ -30,7 +30,7 @@
     <button id="anchor-fixed" style="margin-left: 200px; margin-top: 20px; height: 20px;">
       anchor in fixed container
     </button>
-    <fast-anchored-region
+    <fluent-anchored-region
       anchor="anchor-fixed"
       vertical-positioning-mode="dynamic"
       vertical-scaling="anchor"
@@ -41,7 +41,7 @@
       <div style="height: 100%; width: 100%; background: yellow;">
         inside
       </div>
-    </fast-anchored-region>
+    </fluent-anchored-region>
   </div>
 
   <div style="margin-top: 80px; overflow: auto; height: 100%;">
@@ -60,14 +60,14 @@
         <button id="anchor-default" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-default"
           viewport="viewport-default"
           vertical-positioning-mode="dynamic"
           horizontal-positioning-mode="dynamic"
         >
           <div style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -83,7 +83,7 @@
             "
     >
       <div style="height: 1000px; width: 1000px;">
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-locked"
           viewport="viewport-locked"
           vertical-positioning-mode="locktodefault"
@@ -92,9 +92,9 @@
           horizontal-default-position="right"
         >
           <div style="height: 150px; width: 150px; background: green;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
         <div style="position: relative; height: 0; width: 0;">
-          <fast-anchored-region
+          <fluent-anchored-region
             anchor="anchor-locked"
             viewport="viewport-locked"
             vertical-positioning-mode="locktodefault"
@@ -103,9 +103,9 @@
             horizontal-default-position="right"
           >
             <div style="height: 100px; width: 100px; background: yellow;"></div>
-          </fast-anchored-region>
+          </fluent-anchored-region>
         </div>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-locked"
           viewport="viewport-locked"
           vertical-positioning-mode="locktodefault"
@@ -114,7 +114,7 @@
           horizontal-default-position="right"
         >
           <div style="height: 50px; width: 50px; background: blue;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
         <div></div>
         <button id="anchor-locked" style="margin-left: 500px; margin-top: 500px;">
           anchor
@@ -137,7 +137,7 @@
         <button id="anchor-scaling-update" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           id="region-scaling-update"
           anchor="anchor-scaling-update"
           viewport="viewport-scaling-update"
@@ -147,7 +147,7 @@
           horizontal-scaling="fill"
         >
           <div style="height: 100%; width: 100%; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -166,7 +166,7 @@
         <button id="anchor-scaling-offset" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           id="region-scaling-offset"
           anchor="anchor-scaling-offset"
           viewport="viewport-scaling-offset"
@@ -176,7 +176,7 @@
           horizontal-scaling="fill"
         >
           <div style="height: 100%; width: 100%; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -195,7 +195,7 @@
         <button id="anchor-inset" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-inset"
           viewport="viewport-inset"
           vertical-positioning-mode="dynamic"
@@ -211,7 +211,7 @@
                             opacity: 0.5;
                         "
           ></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -230,7 +230,7 @@
         <button id="anchor-thresholds" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-thresholds"
           viewport="viewport-thresholds"
           vertical-positioning-mode="dynamic"
@@ -241,7 +241,7 @@
           horizontal-threshold="200"
         >
           <div style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -263,7 +263,7 @@
         <button id="toggle-anchor-anchor2">
           Set anchor 2
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           id="toggle-anchor-region"
           anchor="toggle-anchor-anchor1"
           viewport="viewport-toggle-anchor"
@@ -271,7 +271,7 @@
           horizontal-positioning-mode="dynamic"
         >
           <div style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -290,7 +290,7 @@
         <button id="anchor-toggle-positions" style="margin-left: 400px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           id="toggle-positions-region"
           anchor="anchor-toggle-positions"
           viewport="viewport-toggle-positions"
@@ -301,7 +301,7 @@
         >
           <div id="toggle-positions-small" style="height: 50px; width: 50px; background: yellow;" hidden="true"></div>
           <div id="toggle-positions-large" style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
         <div style="margin-top: 20px; display: flex; flex-direction: row;">
           <button id="toggle-positions-horizontal" style="margin-left: 250px; margin-top: 120px;">
             toggle horizontal
@@ -332,7 +332,7 @@
       dir="rtl"
     >
       <div style="height: 1000px; width: 1000px;">
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-rtl-dynamic"
           viewport="viewport-rtl-dynamic"
           vertical-positioning-mode="dynamic"
@@ -340,7 +340,7 @@
           horizontal-positioning-mode="dynamic"
         >
           <div style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
         <button id="anchor-rtl-dynamic" style="margin-right: 500px; margin-top: 500px;">
           anchor
         </button>
@@ -359,7 +359,7 @@
             "
     >
       <div style="height: 1000px; width: 1000px;">
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-anchor-sized"
           viewport="viewport-anchor-sized"
           vertical-positioning-mode="dynamic"
@@ -369,7 +369,7 @@
           horizontal-inset="true"
         >
           <div style="height: 100%; width: 100%; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
         <button id="anchor-anchor-sized" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
@@ -392,7 +392,7 @@
         <button id="anchor-rtl-fill" style="margin-right: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-rtl-fill"
           viewport="viewport-rtl-fill"
           vertical-positioning-mode="dynamic"
@@ -401,7 +401,7 @@
           horizontal-scaling="fill"
         >
           <div style="height: 100%; width: 100%; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -420,23 +420,23 @@
         <button id="anchor-se" style="margin-left: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-se"
           viewport="viewport-se"
           horizontal-positioning-mode="locktodefault"
           horizontal-default-position="start"
         >
           <div style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
 
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-se"
           viewport="viewport-se"
           horizontal-positioning-mode="locktodefault"
           horizontal-default-position="end"
         >
           <div style="height: 100px; width: 100px; background: green;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
 
@@ -456,27 +456,27 @@
         <button id="anchor-rtl-se" style="margin-right: 500px; margin-top: 500px;">
           anchor
         </button>
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-rtl-se"
           viewport="viewport-rtl-se"
           horizontal-positioning-mode="locktodefault"
           horizontal-default-position="start"
         >
           <div style="height: 100px; width: 100px; background: yellow;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
 
-        <fast-anchored-region
+        <fluent-anchored-region
           anchor="anchor-rtl-se"
           viewport="viewport-rtl-se"
           horizontal-positioning-mode="locktodefault"
           horizontal-default-position="end"
         >
           <div style="height: 100px; width: 100px; background: green;"></div>
-        </fast-anchored-region>
+        </fluent-anchored-region>
       </div>
     </div>
   </div>
-  <fast-anchored-region
+  <fluent-anchored-region
     anchor="anchor-fixed"
     vertical-positioning-mode="dynamic"
     vertical-scaling="anchor"
@@ -489,5 +489,5 @@
     <div style="height: 100%; width: 100%; background: blue; z-index: 11;">
       outside & fixed
     </div>
-  </fast-anchored-region>
-</fast-design-system-provider>
+  </fluent-anchored-region>
+</fluent-design-system-provider>
