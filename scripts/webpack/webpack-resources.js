@@ -231,9 +231,8 @@ module.exports = {
     const config = merge(
       {
         devServer: {
-          inline: true,
           port: 4322,
-          contentBase: outputPath,
+          static: outputPath,
         },
 
         mode: 'development',
