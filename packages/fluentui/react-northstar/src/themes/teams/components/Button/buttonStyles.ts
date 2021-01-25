@@ -57,13 +57,15 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           borderColor: v.borderColorHover,
         },
 
-        ':active': {
-          transition: ultraFast,
-          color: v.colorActive,
-          backgroundColor: v.backgroundColorActive,
-          borderColor: v.borderColorActive,
-          boxShadow: 'none',
-        },
+        ...(!p.disabledFocusable && {
+          ':active': {
+            transition: ultraFast,
+            color: v.colorActive,
+            backgroundColor: v.backgroundColorActive,
+            borderColor: v.borderColorActive,
+            boxShadow: 'none',
+          },
+        }),
 
         ':focus': borderFocusStyles[':focus'],
         ':focus-visible': {
@@ -129,11 +131,13 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
           borderColor: v.primaryBorderColor,
           boxShadow: v.primaryBoxShadow,
 
-          ':active': {
-            transition: ultraFast,
-            backgroundColor: v.primaryBackgroundColorActive,
-            boxShadow: 'none',
-          },
+          ...(!p.disabledFocusable && {
+            ':active': {
+              transition: ultraFast,
+              backgroundColor: v.primaryBackgroundColorActive,
+              boxShadow: 'none',
+            },
+          }),
 
           ':focus': borderFocusStyles[':focus'],
           ':focus-visible': {
@@ -152,11 +156,13 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
         borderColor: siteVariables.colorScheme.silver.border,
         color: siteVariables.colorScheme.silver.foreground,
 
-        ':active': {
-          transition: ultraFast,
-          backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
-          color: siteVariables.colorScheme.silver.foregroundHover,
-        },
+        ...(!p.disabledFocusable && {
+          ':active': {
+            transition: ultraFast,
+            backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
+            color: siteVariables.colorScheme.silver.foregroundHover,
+          },
+        }),
 
         ':hover': {
           backgroundColor: siteVariables.colorScheme.silver.backgroundHover,
@@ -170,17 +176,25 @@ export const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, Button
 
         ':focus-visible': {
           ...borderFocusStyles[':focus-visible'],
-          backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
-          color: siteVariables.colorScheme.silver.foregroundHover,
+          ...(!p.disabledFocusable && {
+            backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
+            color: siteVariables.colorScheme.silver.foregroundHover,
+          }),
         },
       }),
 
       // Overrides for "disabled" buttons
       ...(p.disabled && {
+        // pointer events intentionally not disabled for focusable disabled buttons
+        // so that hover events work
+        pointerEvents: 'none',
+      }),
+
+      // Overrides for "disabled" or "disabledFocusable" buttons
+      ...((p.disabled || p.disabledFocusable) && {
         cursor: 'default',
         color: v.colorDisabled,
         boxShadow: 'none',
-        pointerEvents: 'none',
         ':hover': {
           color: v.colorDisabled,
         },
