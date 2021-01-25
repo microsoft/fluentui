@@ -7,6 +7,7 @@
 import { Accordion } from '@microsoft/fast-foundation';
 import { AccordionItem } from '@microsoft/fast-foundation';
 import { Anchor } from '@microsoft/fast-foundation';
+import { AnchoredRegion } from '@microsoft/fast-foundation';
 import { Badge } from '@microsoft/fast-foundation';
 import { BaseProgress } from '@microsoft/fast-foundation';
 import { Breadcrumb } from '@microsoft/fast-foundation';
@@ -225,6 +226,9 @@ export const ambientShadow = "0 0 calc((var(--elevation) * 0.225px) + 2px) rgba(
 export type AnchorAppearance = ButtonAppearance | 'hypertext';
 
 // @public
+export const AnchoredRegionStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export const AnchorStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
@@ -437,6 +441,10 @@ export class FluentAnchor extends Anchor {
     connectedCallback(): void;
     // @internal
     defaultSlottedContentChanged(): void;
+}
+
+// @beta
+export class FluentAnchoredRegion extends AnchoredRegion {
 }
 
 // @public
