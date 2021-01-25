@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "image/feat: Add loading prop to Image component",
+  "packageName": "@fluentui/react-internal",
+  "email": "markokovacevic@email.cz",
+  "dependentChangeType": "patch",
+  "date": "2021-01-25T23:29:06.421Z"
+}
