@@ -24,13 +24,14 @@ export const FormInput = compose<'input', FormInputProps, FormInputStylesProps, 
     handledProps: ['label', 'labelPosition', 'required'],
     overrideStyles: true,
     slots: {
-      label: () => null,
       control: Input,
     },
-    slotProps: ({ errorMessage, label, labelPosition, required }) => ({
+    slotProps: ({ errorMessage, required, labelPosition }) => ({
+      label: {
+        required,
+      },
       control: {
         error: !!errorMessage,
-        label,
         labelPosition,
         required,
       },
