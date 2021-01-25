@@ -73,6 +73,12 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
    * aspect ratio for the image.
    */
   coverStyle?: ImageCoverStyle;
+
+  /**
+   * If true, use browser-level image lazy-loading.
+   * @defaultvalue false;
+   */
+  lazyLoad?: boolean;
 }
 
 /**
