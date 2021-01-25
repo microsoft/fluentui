@@ -1,6 +1,7 @@
-import { DEFINITION_LOOKUP_TABLE } from './constants';
 import { MakeStylesOptions, MakeStylesResolvedStyles, MakeStylesStyleRule } from './types';
-import { resolveStyleRules } from './runtime/resolveStyleRules';
+// import { resolveStyleRules } from './runtime/resolveStyleRules';
+import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
+import { hashString } from './runtime/utils/hashString';
 
 type ClassNamesMap = Record<string, string>;
 
@@ -29,16 +30,17 @@ export function makeOverrides<Tokens>(
 
     // eslint-disable-next-line guard-for-in
     for (const slotName in styleRules) {
-      const resolvedStyleRule: MakeStylesResolvedStyles =
-        process.env.NODE_ENV === 'production'
-          ? ((styleRules[slotName] as unknown) as MakeStylesResolvedStyles)
-          : resolveStyleRules(styleRules[slotName], unstable_cssPriority);
+      // const resolvedStyleRule: MakeStylesResolvedStyles =
+      //   process.env.NODE_ENV === 'production'
+      //     ? ((styleRules[slotName] as unknown) as MakeStylesResolvedStyles)
+      //     : resolveStyleRules(styleRules[slotName], unstable_cssPriority);
 
-      resolvedClassNames[slotName] = options.renderer.insertDefinitions(
-        DEFINITION_LOOKUP_TABLE,
-        resolvedStyleRule,
-        !!options.rtl,
-      );
+      const resolvedStyleRule: MakeStylesResolvedStyles = (styleRules[slotName] as unknown) as MakeStylesResolvedStyles;
+      const resultClasses = options.renderer.insertDefinitions(resolvedStyleRule, !!options.rtl);
+      const sequenceHash = SEQUENCE_PREFIX + hashString(resultClasses);
+
+      resolvedClassNames[slotName] = sequenceHash + ' ' + resultClasses;
+      DEFINITION_LOOKUP_TABLE[sequenceHash] = resolvedStyleRule;
     }
 
     insertionCacheByRenderer[options.renderer.id] = true;

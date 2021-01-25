@@ -1,5 +1,5 @@
-import { CAN_USE_CSS_VARIABLES, DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
-import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
+import { DEFINITION_LOOKUP_TABLE, SEQUENCE_PREFIX } from './constants';
+// import { createCSSVariablesProxy, resolveDefinitions } from './runtime/index';
 import { hashString } from './runtime/utils/hashString';
 import {
   MakeStylesDefinition,
@@ -15,27 +15,23 @@ export function makeStyles<Selectors, Tokens>(
   const cxCache: Record<string, string> = {};
 
   function computeClasses(selectors: Selectors, options: MakeStylesOptions<Tokens>): string {
-    let tokens: Tokens | null;
-    let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
+    // let tokens: Tokens | null;
+    // let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
+    //
+    // // TODO: describe me
+    // if (process.env.NODE_ENV === 'production') {
+    //   tokens = null;
+    //   resolvedDefinitions = (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[];
+    // } else {
+    //   tokens = createCSSVariablesProxy(options.tokens);
+    //   resolvedDefinitions = resolveDefinitions(
+    //     (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+    //     tokens,
+    //     unstable_cssPriority,
+    //   );
+    // }
 
-    // TODO: describe me
-    if (process.env.NODE_ENV === 'production') {
-      tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
-      resolvedDefinitions = CAN_USE_CSS_VARIABLES
-        ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
-        : resolveDefinitions(
-            (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-            tokens,
-            unstable_cssPriority,
-          );
-    } else {
-      tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
-      resolvedDefinitions = resolveDefinitions(
-        (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-        tokens,
-        unstable_cssPriority,
-      );
-    }
+    const resolvedDefinitions = (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[];
 
     let matchedIndexes = '';
     const matchedDefinitions: MakeStylesMatchedDefinitions[] = [];
@@ -52,7 +48,7 @@ export function makeStyles<Selectors, Tokens>(
     const cxCacheKey = options.renderer.id + matchedIndexes;
     const cxCacheElement = cxCache[cxCacheKey];
 
-    if (CAN_USE_CSS_VARIABLES && cxCacheElement !== undefined) {
+    if (cxCacheElement !== undefined) {
       return cxCacheElement;
     }
 
