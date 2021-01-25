@@ -14,10 +14,6 @@ storiesOf('MenuButton', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -26,6 +22,10 @@ storiesOf('MenuButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -142,10 +142,6 @@ storiesOf('MenuButton Next - Teams Theme', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -154,6 +150,10 @@ storiesOf('MenuButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
