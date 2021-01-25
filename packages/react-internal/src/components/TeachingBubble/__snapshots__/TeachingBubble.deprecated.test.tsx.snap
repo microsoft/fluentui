@@ -20,14 +20,12 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -583,7 +581,6 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",

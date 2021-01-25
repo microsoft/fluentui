@@ -130,6 +130,7 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   };
 
   const onKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.escape:
         customOnEscape?.(ev);
