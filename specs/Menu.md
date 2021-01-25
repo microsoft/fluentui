@@ -118,6 +118,42 @@ v7 positioning can only apply a numerical value to the first part position attri
 
 #### Bounds and overflow
 
+v0 `Popup` API is more consistent in this aspect and provides more control than the v7 `Callout`.
+
+```typescript
+<Popup
+...
+  flipBoundary={htmlElement}
+  overflowBoundary={htmlElement}
+  mountNode={htmlElement}
+/>
+```
+
+`Popup` provider 3 different properties to handle bounds and overflow:
+
+- flipBoundary - the bounds to calculate when to flip positioning of the popup
+- overflowBoundary - the bounds to shift the popup without overflowing
+- mountNode - where the popup is actually rendered in the DOM, by default this is a portal to a div in body
+
+```typescript
+<ContextualMenu
+  // pixel values for bounding rectangle
+  // defaults to target window as default bounding rectangle
+  bounds={{height: 0, width: 0, top: 0, left:0 , right: 0, bottom: 0}}
+  // callback for bounds
+  bounds{(target, targetWindow) => ({/*Same object as above*/})}
+  target={htmlElement}
+
+  // renders to a portal node on body
+  layerProps={/*ILayerProps*/}
+
+  // every single one of the above can all be declared here too
+  calloutProps={{bounds, target}}
+/>
+```
+
+`ContextualMenu` or `Callout` has no notion of separate boundaries for flip or overflow, and auto behaviour is used for flip and overflow 'pushing'
+
 #### Submenu positioning
 
 The default positioning for both v0 and v7 submenus is:
@@ -142,6 +178,14 @@ const menuItems: IContextualMenuItem[] = [
     },
   },
 ```
+
+#### Events
+
+v7 provides the following positioning event callbacks that might be used and should probably be supported for backwards compatibility:
+
+- onLayerMounted
+- onPositioned
+- onScroll
 
 ### Trigger vs target
 
