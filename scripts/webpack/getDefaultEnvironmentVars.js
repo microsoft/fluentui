@@ -11,8 +11,8 @@ const getVariables = options => {
 };
 
 module.exports = isProduction => ({
-  'proces.env': {
-    NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
+  'process.env': {
+    NODE_ENV: JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
 
     ...getVariables({
       DEPLOYBASEPATH: '',
