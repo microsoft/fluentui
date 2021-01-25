@@ -21,6 +21,7 @@ export const TooltipStyles = css`
     overflow: visible;
     height: 0;
     width: 0;
+    z-index: 10000;
   }
 
   .tooltip {
@@ -36,7 +37,6 @@ export const TooltipStyles = css`
     font-size: var(--type-ramp-base-font-size);
     line-height: var(--type-ramp-base-line-height);
     white-space: nowrap;
-    z-index: 10000;
   }
 
   fluent-anchored-region {
