@@ -11,6 +11,7 @@ import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 import { getTheme } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/merge-styles';
+import { getRTL } from '@fluentui/react/lib/Utilities';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -47,11 +48,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectNextSuggestion,
   } = useFloatingSuggestionItems(
     suggestions,
+    pickerSuggestionsProps?.footerItemsProps,
+    pickerSuggestionsProps?.headerItemsProps,
     selectedSuggestionIndex,
     selectedFooterIndex,
-    pickerSuggestionsProps?.footerItemsProps,
     selectedHeaderIndex,
-    pickerSuggestionsProps?.headerItemsProps,
     isSuggestionsVisible,
   );
 
@@ -108,6 +109,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     },
     getSelectedItems: () => {
       return getSelectedItems() as T[];
+    },
+    forceResolve: () => {
+      if (focusItemIndex >= 0) {
+        _onSuggestionSelected(undefined, suggestionItems[focusItemIndex]);
+        return true;
+      } else {
+        return false;
+      }
     },
   }));
 
@@ -170,6 +179,21 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       );
     } else {
       insertIndex = selectedItems.indexOf(item);
+    }
+
+    // If the drop is in the right half of the item, we want to drop at index+1
+    if (event && event.currentTarget) {
+      const targetElement = event.currentTarget as HTMLElement;
+      const halfwayPoint = targetElement.offsetLeft + targetElement.offsetWidth / 2;
+      if (getRTL()) {
+        if (event.pageX < halfwayPoint) {
+          insertIndex++;
+        }
+      } else {
+        if (event.pageX > halfwayPoint) {
+          insertIndex++;
+        }
+      }
     }
 
     event?.preventDefault();
@@ -250,6 +274,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     // Handle copy if focus is in the selected items list
     // This is a temporary work around, it has localization issues
     // we plan on rewriting how this works in the future
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.ctrlKey && ev.which === KeyCodes.c) {
       if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
         ev.preventDefault();
@@ -267,6 +292,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       }
     }
     // Handle delete of items via backspace
+    // eslint-disable-next-line deprecation/deprecation
     else if (ev.which === KeyCodes.backspace && selectedItems.length) {
       if (
         focusedItemIndices.length === 0 &&
@@ -296,6 +322,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
     if (isSuggestionsShown) {
+      // eslint-disable-next-line deprecation/deprecation
       const keyCode = ev.which;
       switch (keyCode) {
         case KeyCodes.escape:

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 19 Nov 2020 12:28:32 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.39)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.25..@fluentui/react-charting_v5.0.0-beta.39)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [5.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.25)
+
+Thu, 03 Dec 2020 12:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.18..@fluentui/react-charting_v5.0.0-beta.25)
+
+### Changes
+
+- Remove focus for horizental bar chart grey area ([PR #15948](https://github.com/microsoft/fluentui/pull/15948) by v-gorraj@microsoft.com)
 
 ## [5.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.18)
 

@@ -1,4 +1,4 @@
-import { isRestrictedDate, IRestrictedDatesOptions, ICalendarStrings } from '@fluentui/date-time-utilities';
+import { isRestrictedDate, IRestrictedDatesOptions, ICalendarStrings } from '../../utils/date-time-utilities';
 
 export const validateDate = (
   futureSelectedDate: Date,

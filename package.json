@@ -74,7 +74,7 @@
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
     "lerna": "^3.15.0",
-    "lage": "0.24.0",
+    "lage": "0.27.0",
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
@@ -102,6 +102,8 @@
     ]
   },
   "resolutions": {
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "eslint": "^7.1.0",
     "autoprefixer": "9.7.6",
     "copy-to-clipboard": "3.2.0"
@@ -153,6 +155,7 @@
           "@fluentui/react-bindings",
           "@fluentui/react-builder",
           "@fluentui/react-northstar",
+          "@fluentui/react-northstar-prototypes",
           "@fluentui/state",
           "@fluentui/styles"
         ],
@@ -161,7 +164,8 @@
           "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
-          "@fluentui/react-compose"
+          "@fluentui/react-compose",
+          "stylis"
         ]
       }
     ]

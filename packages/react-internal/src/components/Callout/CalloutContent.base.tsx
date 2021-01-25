@@ -427,6 +427,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       beakWidth,
       calloutWidth,
       calloutMaxWidth,
+      calloutMinWidth,
       finalHeight,
       hideOverflow = !!finalHeight,
       backgroundColor,
@@ -487,6 +488,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
       beakWidth,
       backgroundColor,
       calloutMaxWidth,
+      calloutMinWidth,
     });
 
     const overflowStyle: React.CSSProperties = {
@@ -544,16 +546,16 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
 CalloutContentBase.displayName = COMPONENT_NAME;
 
 function getBeakPosition(positions?: ICalloutPositionedInfo): React.CSSProperties {
-  const beakPostionStyle: React.CSSProperties = {
+  const beakPositionStyle: React.CSSProperties = {
     ...positions?.beakPosition?.elementPosition,
   };
 
-  if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
-    beakPostionStyle.left = BEAK_ORIGIN_POSITION.left;
-    beakPostionStyle.top = BEAK_ORIGIN_POSITION.top;
+  if (!beakPositionStyle.top && !beakPositionStyle.bottom && !beakPositionStyle.left && !beakPositionStyle.right) {
+    beakPositionStyle.left = BEAK_ORIGIN_POSITION.left;
+    beakPositionStyle.top = BEAK_ORIGIN_POSITION.top;
   }
 
-  return beakPostionStyle;
+  return beakPositionStyle;
 }
 
 function arePositionsEqual(positions: ICalloutPositionedInfo, newPosition: ICalloutPositionedInfo): boolean {

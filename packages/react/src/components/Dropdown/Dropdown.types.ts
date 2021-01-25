@@ -80,9 +80,10 @@ export interface IDropdownProps
 
   /**
    * Custom width for dropdown. If value is 0, width of the input field is used.
+   * If value is 'auto', width of the input field is used by default, and it can grow wider to fit the content.
    * @defaultvalue 0
    */
-  dropdownWidth?: number;
+  dropdownWidth?: number | 'auto';
 
   /**
    * Pass in ResponsiveMode to manually overwrite the way the Dropdown renders.
@@ -140,7 +141,7 @@ export interface IDropdownProps
 /**
  * {@docCategory Dropdown}
  */
-export interface IDropdownOption extends ISelectableOption {
+export interface IDropdownOption<T = any> extends ISelectableOption<T> {
   /**
    * Deprecated at v.65.1, use `selected` instead.
    * @deprecated Use `selected` instead.

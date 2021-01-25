@@ -1,8 +1,145 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jan 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.36)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.35..@fluentui/react-internal_v8.0.0-beta.36)
+
+### Changes
+
+- Added generic type for ISelectableOption interface ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
+
+## [8.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.35)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.34..@fluentui/react-internal_v8.0.0-beta.35)
+
+### Changes
+
+- Set focus state in FocusTrapZone even if onFocus and onBlur do not bubble ([PR #15804](https://github.com/microsoft/fluentui/pull/15804) by nsavas@microsoft.com)
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+- fix a typo in CalloutContent.base.tsx ([PR #15865](https://github.com/microsoft/fluentui/pull/15865) by lin.zh.ming.27@gmail.com)
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.34)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.33..@fluentui/react-internal_v8.0.0-beta.34)
+
+### Changes
+
+- Use GrayText for disabled Action Button in high contrast. ([PR #16188](https://github.com/microsoft/fluentui/pull/16188) by mathew.olinger@outlook.com)
+
+## [8.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.33)
+
+Mon, 18 Jan 2021 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.30..@fluentui/react-internal_v8.0.0-beta.33)
+
+### Changes
+
+- Fixes TextField custom error message rendering ([PR #16487](https://github.com/microsoft/fluentui/pull/16487) by sorgh@microsoft.com)
+
+## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.30)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.29..@fluentui/react-internal_v8.0.0-beta.30)
+
+### Changes
+
+- Fixes linux firefox persona/image rendering only the top left quarter of images (#16361) ([PR #16370](https://github.com/microsoft/fluentui/pull/16370) by mhuan13@gmail.com)
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.29)
+
+Thu, 07 Jan 2021 12:35:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.28..@fluentui/react-internal_v8.0.0-beta.29)
+
+### Changes
+
+- fix(Popup): use proper window from useWindow() hook ([PR #16394](https://github.com/microsoft/fluentui/pull/16394) by olfedias@microsoft.com)
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.28)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.27..@fluentui/react-internal_v8.0.0-beta.28)
+
+### Changes
+
+- Add calloutMinWidth props for Callout component ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.27)
+
+Mon, 21 Dec 2020 12:28:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.26..@fluentui/react-internal_v8.0.0-beta.27)
+
+### Changes
+
+- feat: add new property onRenderStar for Rating ([PR #15994](https://github.com/microsoft/fluentui/pull/15994) by qiuya@microsoft.com)
+
+## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.26)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.25..@fluentui/react-internal_v8.0.0-beta.26)
+
+### Changes
+
+- fix #15729: add type button to textfield of type password ([PR #15949](https://github.com/microsoft/fluentui/pull/15949) by mirco.zeiss@gmail.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.25)
+
+Mon, 14 Dec 2020 12:27:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.24..@fluentui/react-internal_v8.0.0-beta.25)
+
+### Changes
+
+- Pickers: add aria-label as an option to apply to the root combobox ([PR #16187](https://github.com/microsoft/fluentui/pull/16187) by joschect@microsoft.com)
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.24)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.23..@fluentui/react-internal_v8.0.0-beta.24)
+
+### Changes
+
+- fix narrator scan mode navigation for picker ([PR #16177](https://github.com/microsoft/fluentui/pull/16177) by kuanubha@microsoft.com)
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.23)
+
+Mon, 07 Dec 2020 12:29:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.21..@fluentui/react-internal_v8.0.0-beta.23)
+
+### Changes
+
+- SpinButton: Add onChange ([PR #16137](https://github.com/microsoft/fluentui/pull/16137) by elcraig@microsoft.com)
+
+## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.21)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.20..@fluentui/react-internal_v8.0.0-beta.21)
+
+### Changes
+
+- SpinButton: remove defaults for min and max ([PR #16109](https://github.com/microsoft/fluentui/pull/16109) by elcraig@microsoft.com)
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.20)
+
+Tue, 01 Dec 2020 12:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.19..@fluentui/react-internal_v8.0.0-beta.20)
+
+### Changes
+
+- SpinButton: Fix function component conversion issues revealed by eslint-plugin-react-hooks ([PR #15431](https://github.com/microsoft/fluentui/pull/15431) by czearing@outlook.com)
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.19)
+
+Thu, 26 Nov 2020 12:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.18..@fluentui/react-internal_v8.0.0-beta.19)
+
+### Changes
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #16011](https://github.com/microsoft/fluentui/pull/16011) by stefhan@microsoft.com)
 
 ## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.18)
 

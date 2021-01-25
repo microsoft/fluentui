@@ -199,7 +199,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
   ): JSX.Element => {
     const { minDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
-    const leftNavigationIcon = navigationIcons!.leftNavigation;
+    const leftNavigationIcon = getRTL() ? navigationIcons!.rightNavigation : navigationIcons!.leftNavigation;
 
     // determine if previous week in bounds
     const prevWeekInBounds = minDate
@@ -226,7 +226,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
   private _renderNextWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSX.Element => {
     const { maxDate, firstDayOfWeek, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
-    const rightNavigationIcon = navigationIcons!.rightNavigation;
+    const rightNavigationIcon = getRTL() ? navigationIcons!.leftNavigation : navigationIcons!.rightNavigation;
 
     // determine if next week in bounds
     const nextWeekInBounds = maxDate
@@ -276,6 +276,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
   };
 
   private _onWrapperKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.enter:
         ev.preventDefault();
@@ -292,6 +293,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
+      // eslint-disable-next-line deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.enter:
           callback();

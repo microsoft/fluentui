@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 18 Nov 2020 12:30:07 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.2-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-15)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-12..@fluentui/react-avatar_v0.8.2-15)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [0.8.2-12](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-12)
+
+Tue, 08 Dec 2020 12:28:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-7..@fluentui/react-avatar_v0.8.2-12)
+
+### Changes
+
+- Update and clean up Avatar stories for new example images ([PR #16135](https://github.com/microsoft/fluentui/pull/16135) by behowell@microsoft.com)
 
 ## [0.8.2-7](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-7)
 

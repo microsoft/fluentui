@@ -2,6 +2,36 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-15",
+      "version": "0.8.2-15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Dec 2020 12:28:09 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-12",
+      "version": "0.8.2-12",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update and clean up Avatar stories for new example images",
+            "author": "behowell@microsoft.com",
+            "commit": "79eb566725a38a28636271df1977b45a0a594c32",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:30:07 GMT",
       "tag": "@fluentui/react-avatar_v0.8.2-7",
       "version": "0.8.2-7",

@@ -270,9 +270,13 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   const onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
       if (
+        // eslint-disable-next-line deprecation/deprecation
         ev.which === KeyCodes.up ||
+        // eslint-disable-next-line deprecation/deprecation
         ev.which === KeyCodes.down ||
+        // eslint-disable-next-line deprecation/deprecation
         ev.which === KeyCodes.left ||
+        // eslint-disable-next-line deprecation/deprecation
         ev.which === KeyCodes.right
       ) {
         setNavigationTimeout();

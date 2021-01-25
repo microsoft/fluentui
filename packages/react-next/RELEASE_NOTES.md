@@ -1,1 +1,0 @@
-Content for `@fluentui/react` version 8 has been moved to the [release notes](https://github.com/microsoft/fluentui/wiki/Version-8%3A-Release-notes) and [migration guide](https://github.com/microsoft/fluentui/wiki/Version-8%3A-Migration-guide).

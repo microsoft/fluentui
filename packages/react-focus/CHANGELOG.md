@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Fri, 20 Nov 2020 12:32:25 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.15)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.12..@fluentui/react-focus_v8.0.0-beta.15)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.9)
+
+Thu, 26 Nov 2020 12:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.7..@fluentui/react-focus_v8.0.0-beta.9)
+
+### Changes
+
+- Removing dist/storybook from the npm output. ([PR #16062](https://github.com/microsoft/fluentui/pull/16062) by dzearing@hotmail.com)
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.7)
 

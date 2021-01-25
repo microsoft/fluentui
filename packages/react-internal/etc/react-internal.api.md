@@ -17,6 +17,7 @@ import { IFontStyles } from '@fluentui/style-utilities';
 import { IHTMLSlot } from '@fluentui/foundation-legacy';
 import { IObjectWithKey } from '@fluentui/utilities';
 import { IPoint } from '@fluentui/utilities';
+import { IProcessedStyleSet } from '@fluentui/style-utilities';
 import { IRawStyle } from '@fluentui/style-utilities';
 import { IRectangle } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
@@ -803,7 +804,7 @@ export function getColorFromString(inputColor: string): IColor | undefined;
 export function getContrastRatio(color1: IColor, color2: IColor): number;
 
 // @public
-export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any, string | ((props: any) => React.ReactElement<any, string | any | (new (props: any) => React.Component<any, any, any>)> | null) | (new (props: any) => React.Component<any, any, any>)> | null;
+export const getFontIcon: (iconName: string, className?: string | undefined, ariaLabel?: string | undefined) => React.ReactElement<any, any> | null;
 
 // @public
 export function getFullColorString(color: IColor): string;
@@ -1100,6 +1101,7 @@ export interface IBasePicker<T> {
 
 // @public
 export interface IBasePickerProps<T> extends React.Props<any> {
+    ['aria-label']?: string;
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
     createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T> | T;
@@ -1285,6 +1287,7 @@ export interface ICalloutContentStyleProps {
     backgroundColor?: string;
     beakWidth?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     overflowYHidden?: boolean;
@@ -1324,6 +1327,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     bounds?: IRectangle | ((target?: Target, targetWindow?: Window) => IRectangle | undefined);
     calloutMaxHeight?: number;
     calloutMaxWidth?: number;
+    calloutMinWidth?: number;
     calloutWidth?: number;
     className?: string;
     coverTarget?: boolean;
@@ -3860,6 +3864,7 @@ export type IPickerAriaIds = {
     selectedSuggestionAlert: string;
     selectedItems: string;
     suggestionList: string;
+    combobox: string;
 };
 
 // @public
@@ -4063,12 +4068,27 @@ export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, Reac
     // @deprecated
     min?: number;
     onChange?: (event: React.FormEvent<HTMLElement>, rating?: number) => void;
+    onRenderStar?: IRenderFunction<IRatingStarProps>;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
+}
+
+// @public (undocumented)
+export interface IRatingStarProps {
+    // (undocumented)
+    classNames: IProcessedStyleSet<IRatingStyles>;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    fillPercentage: number;
+    // (undocumented)
+    icon: string;
+    // (undocumented)
+    starNum?: number;
 }
 
 // @public (undocumented)
@@ -4327,9 +4347,9 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement> ext
 }
 
 // @public (undocumented)
-export interface ISelectableOption {
+export interface ISelectableOption<T = any> {
     ariaLabel?: string;
-    data?: any;
+    data?: T;
     disabled?: boolean;
     hidden?: boolean;
     id?: string;
@@ -4620,6 +4640,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
     max?: number;
     min?: number;
     onBlur?: React.FocusEventHandler<HTMLInputElement>;
+    onChange?: (event: React.SyntheticEvent<HTMLElement>, newValue?: string) => void;
     onDecrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
     onFocus?: React.FocusEventHandler<HTMLInputElement>;
     onIncrement?: (value: string, event?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => string | void;
