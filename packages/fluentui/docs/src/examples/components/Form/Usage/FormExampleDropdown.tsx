@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Dropdown, Button } from '@fluentui/react-northstar';
+import { Form, Dropdown, Button, FormField } from '@fluentui/react-northstar';
 
 const labelId = 'choose-friend-label';
 
@@ -9,7 +9,7 @@ const FormExample = () => (
       alert('Form submitted');
     }}
   >
-    <Form.Field
+    <FormField
       label={{ content: `Your best friend's name is:`, id: labelId }}
       control={{
         as: Dropdown,
@@ -20,7 +20,7 @@ const FormExample = () => (
       }}
       name="chooseFriend"
     />
-    <Form.Field control={{ as: Button, content: 'Submit' }} />
+    <FormField control={{ as: Button, content: 'Submit' }} />
   </Form>
 );
 

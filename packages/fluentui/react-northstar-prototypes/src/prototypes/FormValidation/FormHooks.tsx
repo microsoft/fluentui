@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form } from '@fluentui/react-northstar';
+import { Form, FormInput, FormDropdown, FormButton } from '@fluentui/react-northstar';
 import { useForm } from 'react-hook-form';
 
 const FormValidateHooks = () => {
@@ -25,7 +25,7 @@ const FormValidateHooks = () => {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Form.Input
+      <FormInput
         label="First Name"
         id="first-name-hooks"
         name="firstName"
@@ -36,7 +36,7 @@ const FormValidateHooks = () => {
         errorMessage={errors.firstName?.message}
         showSuccessIndicator={!errors.firstName && formState.touched.firstName}
       />
-      <Form.Dropdown
+      <FormDropdown
         onChange={(e, { value }) => {
           setValue('city', value);
           triggerValidation('city');
@@ -49,7 +49,7 @@ const FormValidateHooks = () => {
         items={['prague', 'new york']}
         errorMessage={errors.city?.message}
       />
-      <Form.Button content="Submit" />
+      <FormButton content="Submit" />
     </Form>
   );
 };
