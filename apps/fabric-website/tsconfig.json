@@ -9,6 +9,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "noImplicitThis": true,
