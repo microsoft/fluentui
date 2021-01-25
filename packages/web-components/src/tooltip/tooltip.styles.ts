@@ -52,13 +52,19 @@ export const TooltipStyles = css`
     flex-direction: column;
   }
 
-  fluent-anchored-region.top .tooltip::after {
+  fluent-anchored-region.top .tooltip::after,
+  fluent-anchored-region.bottom .tooltip::after,
+  fluent-anchored-region.left .tooltip::after,
+  fluent-anchored-region.right .tooltip::after {
     content: '';
     width: 12px;
     height: 12px;
     background: ${neutralForegroundRestBehavior.var};
     border-radius: calc(var(--corner-radius) * 1px);
     position: absolute;
+  }
+
+  fluent-anchored-region.top .tooltip::after {
     transform: rotate(45deg) translateX(-50%);
     bottom: 4px;
     left: 50%;
@@ -69,12 +75,6 @@ export const TooltipStyles = css`
   }
 
   fluent-anchored-region.bottom .tooltip::after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: ${neutralForegroundRestBehavior.var};
-    border-radius: calc(var(--corner-radius) * 1px);
-    position: absolute;
     transform: rotate(45deg) translateX(-50%);
     top: 12px;
     left: 50%;
@@ -85,12 +85,6 @@ export const TooltipStyles = css`
   }
 
   fluent-anchored-region.left .tooltip::after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: ${neutralForegroundRestBehavior.var};
-    border-radius: calc(var(--corner-radius) * 1px);
-    position: absolute;
     transform: rotate(45deg) translateY(-50%);
     top: 50%;
     right: 12px;
@@ -101,12 +95,6 @@ export const TooltipStyles = css`
   }
 
   fluent-anchored-region.right .tooltip::after {
-    content: '';
-    width: 12px;
-    height: 12px;
-    background: ${neutralForegroundRestBehavior.var};
-    border-radius: calc(var(--corner-radius) * 1px);
-    position: absolute;
     transform: rotate(45deg) translateY(-50%);
     top: 50%;
     left: 4px;
