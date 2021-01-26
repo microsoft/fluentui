@@ -3,7 +3,7 @@
 **Icon override provider for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 This component is used for providing overrides to the icons in `@fluentui/react-icons-mdl2` and `@fluentui/react-icons`.
-To import React Icon Provider components:
+Below is an example of how to do this:
 
 ```js
 import { IconProvider, createIconOverride } from '@fluentui/react-icon-provider';

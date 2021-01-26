@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "make react-icon-provider public",
+  "comment": "Creating @fluentui/react-icon-provider package and making it public",
   "packageName": "@fluentui/react-icon-provider",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
