@@ -9,6 +9,5 @@ export default {
 export * from './Button.default.story';
 export * from './Button.primary.story';
 export * from './Button.text.story';
-export * from './Button.size-small.story';
-export * from './Button.size-large.story';
+export * from './Button.size.story';
 export * from './Button.style-overrides.story';
