@@ -2,6 +2,21 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Sat, 23 Jan 2021 05:20:07 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.23",
+      "version": "1.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding missing css variables for opacity in Button and borderColor in checked state of ToggleButton.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a3a5f5331ea6691af6ef0197742247a9bc2e7859",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Jan 2021 12:24:49 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.22",
       "version": "1.0.0-beta.22",
