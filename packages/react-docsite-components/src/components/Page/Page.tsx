@@ -42,6 +42,11 @@ const scopedSettings: ICustomizations['scopedSettings'] = {
   Link: linkCustomizations,
 };
 
+const relatedLinkCustomizations: Partial<ILinkProps> = { underline: false };
+const relatedScopedSettings: ICustomizations['scopedSettings'] = {
+  MarkdownLink: relatedLinkCustomizations,
+};
+
 // TODO: I think this component should be templated to forward the TPlatform type to props.
 //        It can then be used in JSX like this:
 //        <Page<Platform> {...props} />
@@ -266,7 +271,14 @@ export class Page extends React.Component<IPageProps, IPageState> {
       let processedRelated: JSX.Element | ISideRailLink[] | undefined;
       if (typeof related === 'string') {
         // don't show section if the content is empty
-        processedRelated = related.trim() ? <Markdown>{related}</Markdown> : undefined;
+        processedRelated = related.trim() ? (
+          // Customizer ensures that the links in this section are not underlined
+          <Customizer scopedSettings={relatedScopedSettings}>
+            <Markdown>{related}</Markdown>
+          </Customizer>
+        ) : (
+          undefined
+        );
       } else {
         processedRelated = related;
       }
