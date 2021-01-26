@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add missing styles for disabled buttons",
+  "packageName": "office-ui-fabric-react",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-26T18:05:27.386Z"
+}
