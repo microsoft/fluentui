@@ -5521,7 +5521,7 @@ ansi-cyan@^0.1.1:
   dependencies:
     ansi-wrap "0.1.0"
 
-ansi-escapes@^3.0.0, ansi-escapes@^3.1.0, ansi-escapes@^3.2.0:
+ansi-escapes@^3.0.0, ansi-escapes@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-3.2.0.tgz#8780b98ff9dbf5638152d1f1fe5c1d7b4442976b"
   integrity sha512-cBhpre4ma+U0T1oM5fXg7Dy1Jw7zzwv7lt/GoCpr+hDQJoYnKVPLL4dCvSEFMmQurOQvSrwT7SL/DAlhBI97RQ==
@@ -12788,7 +12788,7 @@ handle-thing@^2.0.0:
   resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
   integrity sha512-d4sze1JNC454Wdo2fkuyzCr6aHcbL6PGGuFAz0Li/NcOm1tCHGnWDRmJP85dh9IhQErTc2svWFEX5xHIOo//kQ==
 
-handlebars@*, handlebars@^4.0.1, handlebars@^4.0.12, handlebars@^4.1.0, handlebars@^4.4.3, handlebars@^4.7.6:
+handlebars@*, handlebars@^4.0.1, handlebars@^4.1.0, handlebars@^4.4.3, handlebars@^4.7.6:
   version "4.7.6"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.7.6.tgz#d4c05c1baf90e9945f77aa68a7a219aa4a7df74e"
   integrity sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==
@@ -15569,7 +15569,7 @@ just-extend@^4.0.2:
   resolved "https://registry.yarnpkg.com/just-extend/-/just-extend-4.0.2.tgz#f3f47f7dfca0f989c55410a7ebc8854b07108afc"
   integrity sha512-FrLwOgm+iXrPV+5zDU6Jqu4gCRXbWEQg2O3SKONsWE4w7AXFRkryS53bpWdaL9cNol+AmR3AEYz6kn+o0fCPnw==
 
-"just-scripts-utils@>=1.1.1 <2.0.0":
+"just-scripts-utils@>=1.1.1 <2.0.0", just-scripts-utils@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-1.1.1.tgz#0dd86ad07301fdb5634844524021b78cc077f364"
   integrity sha512-pyb/1vHfgpZwHPqG2KJm92DbByjwqhZYOTFI1zRVtwEjDy0laxnqPl4+5Gp1NK+9u12W1OxK04iMjoQScXimsw==
@@ -15584,22 +15584,6 @@ just-extend@^4.0.2:
     semver "^7.0.0"
     tar "^6.1.0"
     yargs "^16.2.0"
-
-just-scripts-utils@^0.8.3:
-  version "0.8.3"
-  resolved "https://registry.yarnpkg.com/just-scripts-utils/-/just-scripts-utils-0.8.3.tgz#9af85102b110976c983476a1d4481205c63861ce"
-  integrity sha512-J8HhkNUdMJtpwT4+Grp+z3Cf1rVJNXCg6SENZEtDyDcLD3pleg6W9V3bZT+oJ7WC6UR/g3XkPg+l3nBx+eABzg==
-  dependencies:
-    fs-extra "^7.0.1"
-    glob "^7.1.3"
-    handlebars "^4.0.12"
-    jju "^1.4.0"
-    just-task-logger ">=0.3.0 <1.0.0"
-    marked "^0.6.0"
-    marked-terminal "^3.2.0"
-    semver "^5.6.0"
-    tar "^4.4.8"
-    yargs "^12.0.5"
 
 just-scripts@1.3.1:
   version "1.3.1"
@@ -15617,14 +15601,6 @@ just-scripts@1.3.1:
     run-parallel-limit "^1.0.6"
     supports-color "^8.1.0"
     webpack-merge "^5.7.3"
-
-"just-task-logger@>=0.3.0 <1.0.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/just-task-logger/-/just-task-logger-0.3.0.tgz#48f33a928a7acd6cf2d769bc00dc9cde4c1d871b"
-  integrity sha512-IA5M26L9Qv2aD5V+Wjkd5ILUTerr00RHKNxAg22JZRRHF89KeUVJ6LYNUaYBnxH7cGXlC37OftPO/eYwgqCpaQ==
-  dependencies:
-    chalk "^2.4.1"
-    yargs "^12.0.5"
 
 "just-task-logger@>=1.1.1 <2.0.0":
   version "1.1.1"
@@ -16897,18 +16873,6 @@ markdown-to-jsx@6.11.4, markdown-to-jsx@^6.9.1, markdown-to-jsx@^6.9.3:
     prop-types "^15.6.2"
     unquote "^1.1.0"
 
-marked-terminal@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/marked-terminal/-/marked-terminal-3.2.0.tgz#3fc91d54569332bcf096292af178d82219000474"
-  integrity sha512-Yr1yVS0BbDG55vx7be1D0mdv+jGs9AW563o/Tt/7FTsId2J0yqhrTeXAqq/Q0DyyXltIn6CSxzesQuFqXgafjQ==
-  dependencies:
-    ansi-escapes "^3.1.0"
-    cardinal "^2.1.1"
-    chalk "^2.4.1"
-    cli-table "^0.3.1"
-    node-emoji "^1.4.1"
-    supports-hyperlinks "^1.0.1"
-
 marked-terminal@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/marked-terminal/-/marked-terminal-4.1.0.tgz#01087372d3636dc7cb286475a1d6147187f500e0"
@@ -16925,11 +16889,6 @@ marked@^0.3.12:
   version "0.3.19"
   resolved "https://registry.yarnpkg.com/marked/-/marked-0.3.19.tgz#5d47f709c4c9fc3c216b6d46127280f40b39d790"
   integrity sha512-ea2eGWOqNxPcXv8dyERdSr/6FmzvWwzjMxpfGB/sbMccXoct+xY+YukPD+QTUZwyvK7BZwcr4m21WBOW41pAkg==
-
-marked@^0.6.0:
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/marked/-/marked-0.6.2.tgz#c574be8b545a8b48641456ca1dbe0e37b6dccc1a"
-  integrity sha512-LqxwVH3P/rqKX4EKGz7+c2G9r98WeM/SW34ybhgNGhUQNKtf1GmmSkJ6cDGJ/t6tiyae49qRkpyTw2B9HOrgUA==
 
 marked@^1.2.7:
   version "1.2.7"
@@ -17805,7 +17764,7 @@ node-dir@^0.1.10, node-dir@^0.1.17:
   dependencies:
     minimatch "^3.0.2"
 
-node-emoji@^1.10.0, node-emoji@^1.4.1:
+node-emoji@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/node-emoji/-/node-emoji-1.10.0.tgz#8886abd25d9c7bb61802a658523d1f8d2a89b2da"
   integrity sha512-Yt3384If5H6BYGVHiHwTL+99OzJKHhgp82S8/dktEK73T26BazdgZ4JZh92xSVtGNJvz9UbXdNAc5hcrXV42vw==
@@ -26361,7 +26320,7 @@ yargs@^11.0.0:
     y18n "^3.2.1"
     yargs-parser "^9.0.2"
 
-yargs@^12.0.1, yargs@^12.0.5:
+yargs@^12.0.1:
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-12.0.5.tgz#05f5997b609647b64f66b81e3b4b10a368e7ad13"
   integrity sha512-Lhz8TLaYnxq/2ObqHDql8dX8CJi97oHxrjUcYtzKbbykPtVW9WB+poxI+NM2UIzsMgNCZTIf0AQwsjK5yMAqZw==
