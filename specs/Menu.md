@@ -539,6 +539,10 @@ Sample usages will be give in the following section of this document [Sample cod
 
 The root level component serves as a simplified interface (sugar) for popup positioning and triggering.
 
+### MenuTrigger
+
+A non-visual component that wraps its child and configures them to be the trigger that will open a menu. This component should only accept one child
+
 ### MenuList
 
 This component is used internally by `Menu` and manages the context and layout its items.
@@ -591,18 +595,6 @@ A variant of `MenuItem` that allows a single selection state based on the value 
 | --------- | ---- | -------------------------------------------------- |
 | name      | text | The name of the value that the checkbox represents |
 | value     | text | The value of the checkbox                          |
-
-### SubMenuSplit
-
-A layout component that renders two `MeuItem`s in the same design as a split button. We consider both parts of the split button to be separate menu items to get the most straightforward keyboard and narration experience.
-
-Only the indicator part of the split button will control the submenu.
-
-| Prop name     | Type      | Details                                                  |
-| ------------- | --------- | -------------------------------------------------------- |
-| content       | ReactNode | The children that would normally be rendered in MenuItem |
-| icon          | ReactNode | Icon that is rendered with the menu item                 |
-| indicatorIcon | ReactNode | Icon that is rendered for the split button indicator     |
 
 ## Sample code
 
