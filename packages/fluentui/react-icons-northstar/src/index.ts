@@ -50,6 +50,7 @@ export { CanvasAddPageIcon } from './components/CanvasAddPageIcon';
 export { CallMissedLineIcon } from './components/CallMissedLineIcon';
 export { CallParkingIcon } from './components/CallParkingIcon';
 export { CastingIcon } from './components/CastingIcon';
+export { ChannelShareIcon } from './components/ChannelShareIcon';
 export { ChatIcon } from './components/ChatIcon';
 export { CheckmarkCircleIcon } from './components/CheckmarkCircleIcon';
 export { ChevronDownIcon } from './components/ChevronDownIcon';
