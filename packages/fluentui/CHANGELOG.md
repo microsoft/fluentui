@@ -19,6 +19,37 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ## BREAKING CHANGES
+- Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
+
+## Fixes
+- Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
+- Fix RadioGroup visual issues. Add `RadioButtonIcon`. Fix vertical RadioGroup alignment issue with custom content. Fix focus frame alignment for bare indicator. @TanelVari ([#16478](https://github.com/microsoft/fluentui/pull/16478))
+- Optimize `NumberListIcon` for bundled size @ling1726 ([#16473](https://github.com/microsoft/fluentui/pull/16473))
+- Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
+- Fix `mergeVariablesOverrides` to return `variables` if it's defined and `overrides` are not @assuncaocharles ([#16560](https://github.com/microsoft/fluentui/pull/16560))
+- Update `VideoProhibitedIcon` to Fluent style. @TanelVari ([#16559](https://github.com/microsoft/fluentui/pull/16559))
+- Fixed paddings for the `Input` with icons left/right. Using `CloseIcon` for clear indicator. Using CheckmarkCircleIcon for successIndicator. @TanelVari ([#16527](https://github.com/microsoft/fluentui/pull/16527))
+- Updated root padding for Dialog. @TanelVari ([#16528](https://github.com/microsoft/fluentui/pull/16528))
+- Fix `Accordion` title and content margins. @TanelVari ([#16533](https://github.com/microsoft/fluentui/pull/16533))
+
+## Features
+- Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
+
+## Performance
+
+## Documentation
+- Added virtual cursor simulation to UI Builder. @adamsamec ([#15972](https://github.com/microsoft/fluentui/pull/15972))
+- Update `Form` examples to remove `control` prop and delete shorthand examples @assuncaocharles ([#16467](https://github.com/microsoft/fluentui/pull/16467))
+- Fix component tree in UI Builder @jurokapsiar ([#16587](https://github.com/microsoft/fluentui/pull/16587))
+
+### Deprecations
+- Set as deprecated prop `control` in `Form.Field` and `fields`in `Form` @assuncaocharles ([#16474](https://github.com/microsoft/fluentui/pull/16474))
+
+<!--------------------------------[ v0.52.0 ]------------------------------- -->
+## [v0.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0) (2021-01-26)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.7..@fluentui/react-northstar_v0.52.0)
+
+## BREAKING CHANGES
 - `Form`: removed static properties: `Form.Field`, `Form.FieldCustom`, `Form.Label`, `Form.Message`, `Form.Input`, `Form.Checkbox`, `Form.Dropdown`, `Form.Button`, `Form.RadioGroup`, `Form.Slider`,`Form.Datepicker` @yuanboxue-amber ([#16546](https://github.com/microsoft/fluentui/pull/16546))
 - `Avatar`: removed static properties: `Avatar.Status`, `Avatar.StatusIcon`, `Avatar.Image`, `Avatar.Label`, `Avatar.Icon`  @yuanboxue-amber ([#16565](https://github.com/microsoft/fluentui/pull/16565))
 - `Tree`: removed management of `contentRef` for tree items. `TreeItem`: removed `selected`, `selectableParent` and `indeterminate` props @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
@@ -32,7 +63,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Styles from `Avatar` image slot were moved to exact component `AvatarImage` @assuncaocharles ([#16409](https://github.com/microsoft/fluentui/pull/16409))
 - Styles from `Avatar` image slot were moved to exact component `AvatarLabel` @assuncaocharles ([#16417](https://github.com/microsoft/fluentui/pull/16417))
 - Styles from `Avatar` icon slot were moved to exact component `AvatarIcon` @assuncaocharles ([#16428](https://github.com/microsoft/fluentui/pull/16428))
-- Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
 
 ### Fixes
 - Fix `useTree` by changing `env.NODE` to `env.NODE_ENV` @yuanboxue-amber ([#16630](https://github.com/microsoft/fluentui/pull/16630))
@@ -76,17 +106,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix implementation of getReactFiberFromNode to be compatible with React 17 @layershifter ([#16392](https://github.com/microsoft/fluentui/pull/16392))
 - Fix missing focus styles for carousel paddle @assuncaocharles ([#16460](https://github.com/microsoft/fluentui/pull/16460))
 - Do not add `aria-expanded="true"` for `trigger` slot when `MenuButton` has `contextMenu` @pompomon ([#16442](https://github.com/microsoft/fluentui/pull/16442))
-- Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
-- Fix RadioGroup visual issues. Add `RadioButtonIcon`. Fix vertical RadioGroup alignment issue with custom content. Fix focus frame alignment for bare indicator. @TanelVari ([#16478](https://github.com/microsoft/fluentui/pull/16478))
 - Fix type for `Accessibility` to allow function without props @ling1726 ([#16322](https://github.com/microsoft/fluentui/pull/16322))
 - Fix click handler moving it from Menu Item Wrapper to Menu Item itself @assuncaocharles ([#16512](https://github.com/microsoft/fluentui/pull/16512))
-- Optimize `NumberListIcon` for bundled size @ling1726 ([#16473](https://github.com/microsoft/fluentui/pull/16473))
-- Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
-- Fix `mergeVariablesOverrides` to return `variables` if it's defined and `overrides` are not @assuncaocharles ([#16560](https://github.com/microsoft/fluentui/pull/16560))
-- Update `VideoProhibitedIcon` to Fluent style. @TanelVari ([#16559](https://github.com/microsoft/fluentui/pull/16559))
-- Fixed paddings for the `Input` with icons left/right. Using `CloseIcon` for clear indicator. Using CheckmarkCircleIcon for successIndicator. @TanelVari ([#16527](https://github.com/microsoft/fluentui/pull/16527))
-- Updated root padding for Dialog. @TanelVari ([#16528](https://github.com/microsoft/fluentui/pull/16528))
-- Fix `Accordion` title and content margins. @TanelVari ([#16533](https://github.com/microsoft/fluentui/pull/16533))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
@@ -122,7 +143,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `TvIcon`. @TanelVari ([#16207](https://github.com/microsoft/fluentui/pull/16207))
 - Added `CalendarAgendaIcon`, `ImageLibraryIcon`. @TanelVari ([#16293](https://github.com/microsoft/fluentui/pull/16293))
 - Added color tokens to be used for search term highlighting. Added default foreground7 and default background6 into Teams theme v1 and v2. @TanelVari ([#16391](https://github.com/microsoft/fluentui/pull/16391))
-- Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
 
 ### Documentation
 - Performance Tests with Roster prototype @vyhnalekl + @yuanboXue-amber ([#16412](https://github.com/microsoft/fluentui/pull/16412))
@@ -163,12 +183,21 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Alert` - labelling dismiss action, to prevent narrate "unlabeled" button @kolaps33 ([#16092](https://github.com/microsoft/fluentui/pull/16092))
 - Update `Popup` best practices to describe how to pass `aria-labelledby` when `trapFocus` is `true` @assuncaocharles ([#16119](https://github.com/microsoft/fluentui/pull/16119))
 - Add new sample images for use in Avatar examples @behowell ([#16129](https://github.com/microsoft/fluentui/pull/16129))
-- Added virtual cursor simulation to UI Builder. @adamsamec ([#15972](https://github.com/microsoft/fluentui/pull/15972))
-- Update `Form` examples to remove `control` prop and delete shorthand examples @assuncaocharles ([#16467](https://github.com/microsoft/fluentui/pull/16467))
-- Fix component tree in UI Builder @jurokapsiar ([#16587](https://github.com/microsoft/fluentui/pull/16587))
 
-### Deprecations
-- Set as deprecated prop `control` in `Form.Field` and `fields`in `Form` @assuncaocharles ([#16474](https://github.com/microsoft/fluentui/pull/16474))
+<!--------------------------------[ v0.51.7 ]------------------------------- -->
+## [v0.51.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.7) (2021-01-25)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.6..@fluentui/react-northstar_v0.51.7)
+
+### Fixes
+- Fix incorrect fluent icons @notandrew ([#16594](https://github.com/microsoft/fluentui/pull/16594))
+
+<!--------------------------------[ v0.51.6 ]------------------------------- -->
+## [v0.51.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.6) (2021-01-18)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.5..@fluentui/react-northstar_v0.51.6)
+
+### Fixes
+- Optimize `NumberListIcon` for bundled size @ling1726 ([#16473](https://github.com/microsoft/fluentui/pull/16473))
+- Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
 
 <!--------------------------------[ v0.51.5 ]------------------------------- -->
 ## [v0.51.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.5) (2021-01-12)
