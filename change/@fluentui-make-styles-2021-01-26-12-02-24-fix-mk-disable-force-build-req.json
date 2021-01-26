@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "chore: disable a requirement of prebuilt styles for production builds",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-26T11:02:24.740Z"
+}

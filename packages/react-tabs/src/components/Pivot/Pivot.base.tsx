@@ -224,7 +224,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     const overflowMenuProps: IContextualMenuProps = React.useMemo(
       () => ({
         items: [],
-        doNotLayer: true,
         alignTargetEdge: true,
         directionalHint: DirectionalHint.bottomRightEdge,
       }),

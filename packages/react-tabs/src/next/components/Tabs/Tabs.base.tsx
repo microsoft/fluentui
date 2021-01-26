@@ -219,7 +219,6 @@ export const TabsBase: React.FunctionComponent<TabsProps> = React.forwardRef<HTM
     const overflowMenuProps: IContextualMenuProps = React.useMemo(
       () => ({
         items: [],
-        doNotLayer: true,
         alignTargetEdge: true,
         directionalHint: DirectionalHint.bottomRightEdge,
       }),
