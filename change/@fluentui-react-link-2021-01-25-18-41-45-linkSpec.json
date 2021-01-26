@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Link: Adding initial SPEC.md and MIGRATION.md and updating README.md.",
+  "packageName": "@fluentui/react-link",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-26T02:41:45.323Z"
+}
