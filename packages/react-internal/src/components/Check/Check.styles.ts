@@ -4,7 +4,7 @@ import {
   IStyle,
   getGlobalClassNames,
   IconFontSizes,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL } from '../../Utilities';
 
@@ -122,7 +122,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
           },
 
           [HighContrastSelector]: {
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

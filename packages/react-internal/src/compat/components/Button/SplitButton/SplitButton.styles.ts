@@ -6,7 +6,7 @@ import {
   getFocusStyle,
   IStyle,
   getEdgeChromiumNoHighContrastAdjustSelector,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../../../Styling';
 import { memoizeFunction } from '../../../../Utilities';
 
@@ -52,7 +52,7 @@ export const getStyles = memoizeFunction(
                   backgroundColor: 'Window',
                   border: '1px solid WindowText',
                   borderRightWidth: '0',
-                  ...getHighContrastAdjustSelector(),
+                  ...getHighContrastNoAdjustStyle(),
                 },
               },
             },
@@ -97,7 +97,7 @@ export const getStyles = memoizeFunction(
               [HighContrastSelector]: {
                 color: 'Window',
                 backgroundColor: 'WindowText',
-                ...getHighContrastAdjustSelector(),
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
@@ -110,7 +110,7 @@ export const getStyles = memoizeFunction(
               [HighContrastSelector]: {
                 color: 'Window',
                 backgroundColor: 'WindowText',
-                ...getHighContrastAdjustSelector(),
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },

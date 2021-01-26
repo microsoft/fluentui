@@ -7,7 +7,7 @@ import {
   HighContrastSelector,
   hiddenContentStyle,
   ITheme,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -277,7 +277,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       selectors: {
         [HighContrastSelector]: {
           background: 'transparent',
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },

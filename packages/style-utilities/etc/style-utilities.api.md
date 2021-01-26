@@ -95,7 +95,7 @@ export { FontSizes }
 
 export { FontWeights }
 
-// @public
+// @public @deprecated
 export function getEdgeChromiumNoHighContrastAdjustSelector(): {
     [EdgeChromiumHighContrastSelector]: IRawStyle;
 };
@@ -116,7 +116,7 @@ export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relativ
 export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): GlobalClassNames<T>;
 
 // @public
-export function getHighContrastAdjustSelector(): IRawStyle;
+export function getHighContrastNoAdjustStyle(): IRawStyle;
 
 // @public
 export function getIcon(name?: string): IIconRecord | undefined;

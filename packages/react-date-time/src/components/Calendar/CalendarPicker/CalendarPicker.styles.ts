@@ -7,7 +7,7 @@ import {
   IRawStyle,
   AnimationStyles,
   HighContrastSelector,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
 
@@ -155,7 +155,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
                 background: 'Window',
                 color: 'WindowText',
                 outline: '1px solid Highlight',
-                ...getHighContrastAdjustSelector(),
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
@@ -165,7 +165,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
               [HighContrastSelector]: {
                 background: 'Window',
                 color: 'Highlight',
-                ...getHighContrastAdjustSelector(),
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
@@ -186,14 +186,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
                 [HighContrastSelector]: {
                   backgroundColor: 'WindowText',
                   color: 'Window',
-                  ...getHighContrastAdjustSelector(),
+                  ...getHighContrastNoAdjustStyle(),
                 },
               },
             },
             [HighContrastSelector]: {
               backgroundColor: 'WindowText',
               color: 'Window',
-              ...getHighContrastAdjustSelector(),
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         }
@@ -213,14 +213,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
                 [HighContrastSelector]: {
                   color: 'Window',
                   background: 'Highlight',
-                  ...getHighContrastAdjustSelector(),
+                  ...getHighContrastNoAdjustStyle(),
                 },
               },
             },
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'Window',
-              ...getHighContrastAdjustSelector(),
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         }

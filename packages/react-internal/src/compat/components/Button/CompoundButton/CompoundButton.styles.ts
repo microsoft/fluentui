@@ -4,7 +4,7 @@ import {
   concatStyleSets,
   FontWeights,
   HighContrastSelector,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../../../Styling';
 import { memoizeFunction } from '../../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
@@ -87,7 +87,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             backgroundColor: 'WindowText',
             color: 'Window',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -109,7 +109,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -121,7 +121,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

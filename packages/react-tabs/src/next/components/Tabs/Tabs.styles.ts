@@ -6,7 +6,7 @@ import {
   IStyle,
   normalize,
   FontWeights,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
 
@@ -152,7 +152,7 @@ const getLinkStyles = (
                   fontWeight: FontWeights.semibold,
                   color: 'HighlightText',
                   background: 'Highlight',
-                  ...getHighContrastAdjustSelector(),
+                  ...getHighContrastNoAdjustStyle(),
                 },
               },
             },

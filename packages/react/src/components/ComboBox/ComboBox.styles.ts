@@ -10,7 +10,7 @@ import {
   hiddenContentStyle,
   getInputFocusStyle,
   getEdgeChromiumNoHighContrastAdjustSelector,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
@@ -53,7 +53,7 @@ const listOptionHighContrastStyles: IRawStyle = {
       backgroundColor: 'Highlight',
       borderColor: 'Highlight',
       color: 'HighlightText',
-      ...getHighContrastAdjustSelector(),
+      ...getHighContrastNoAdjustStyle(),
     },
   },
 };
@@ -63,7 +63,7 @@ const inputHighContrastStyles: IRawStyle = {
     [HighContrastSelector]: {
       color: 'WindowText',
       backgroundColor: 'Window',
-      ...getHighContrastAdjustSelector(),
+      ...getHighContrastNoAdjustStyle(),
     },
   },
 };
@@ -191,7 +191,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
           color: 'HighlightText',
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     };
@@ -212,7 +212,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
             backgroundColor: 'ButtonFace',
             borderColor: 'ButtonText',
             color: 'ButtonText',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -308,7 +308,7 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
       backgroundColor: 'Window',
-      ...getHighContrastAdjustSelector(),
+      ...getHighContrastNoAdjustStyle(),
       selectors: {
         ':after': {
           borderColor: 'Highlight',
@@ -384,7 +384,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'HighlightText',
             backgroundColor: 'Window',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
             selectors: {
               ':after': {
                 borderColor: 'Highlight',

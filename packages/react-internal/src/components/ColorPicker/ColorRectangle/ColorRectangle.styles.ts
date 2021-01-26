@@ -1,5 +1,5 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
-import { HighContrastSelector, getHighContrastAdjustSelector } from '../../../Styling';
+import { HighContrastSelector, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { hiddenContentStyle } from '@fluentui/style-utilities';
 
@@ -21,7 +21,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
 
         selectors: {
           [HighContrastSelector]: {
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
 
           [`.${IsFocusVisibleClassName} &:focus`]: {

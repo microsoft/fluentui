@@ -8,7 +8,7 @@ import {
   IRawStyle,
   keyframes,
   HighContrastSelector,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
@@ -114,7 +114,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
           color: 'WindowText',
           backgroundColor: 'Window',
           zIndex: 0,
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
         },
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLighter,
@@ -163,7 +163,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
             background: 'Highlight!important',
             color: 'HighlightText!important',
             borderColor: 'Highlight!important',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -221,7 +221,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
           background: 'WindowText!important',
           color: 'Window!important',
           borderColor: 'WindowText!important',
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },
@@ -272,7 +272,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         },
         [HighContrastSelector]: {
           backgroundColor: 'WindowText',
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },

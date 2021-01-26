@@ -2,7 +2,7 @@ import {
   getGlobalClassNames,
   getTheme,
   HighContrastSelector,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import {
   IFloatingSuggestionHeaderFooterItemStylesProps,
@@ -56,7 +56,7 @@ export const getStyles = (
           [HighContrastSelector]: {
             background: 'Highlight',
             color: 'HighlightText',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

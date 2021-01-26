@@ -4,7 +4,7 @@ import {
   getGlobalClassNames,
   getEdgeChromiumNoHighContrastAdjustSelector,
   IStyle,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
 
@@ -260,7 +260,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         color: checkmarkFontColor,
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'Window',
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     ],

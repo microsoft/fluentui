@@ -7,7 +7,7 @@ import {
   getGlobalClassNames,
   getFocusStyle,
   IconFontSizes,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
@@ -84,7 +84,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     color: semanticColors.messageText,
     selectors: {
       [HighContrastSelector]: {
-        ...getHighContrastAdjustSelector(),
+        ...getHighContrastNoAdjustStyle(),
         color: 'WindowText',
       },
     },
@@ -145,7 +145,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             },
           },
           [HighContrastSelector]: {
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
             background: highContrastBackgroundColor[messageBarType],
             border: '1px solid WindowText',
             color: 'WindowText',
@@ -180,7 +180,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       color: semanticColors[iconColor[messageBarType]],
       selectors: {
         [HighContrastSelector]: {
-          ...getHighContrastAdjustSelector(),
+          ...getHighContrastNoAdjustStyle(),
           color: 'WindowText',
         },
       },
@@ -195,7 +195,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         ...fonts.small,
         selectors: {
           [HighContrastSelector]: {
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

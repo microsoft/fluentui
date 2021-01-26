@@ -8,7 +8,7 @@ import {
   getScreenSelector,
   getGlobalClassNames,
   FontWeights,
-  getHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 import { IsFocusVisibleClassName } from '../../Utilities';
@@ -137,7 +137,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
-            ...getHighContrastAdjustSelector(),
+            ...getHighContrastNoAdjustStyle(),
           },
           [MediumScreenSelector]: {
             fontSize: chevronSmallFontSize,
