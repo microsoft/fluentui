@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "callout, messagebar and teachingbubble style updatets",
-  "packageName": "@fluentui/react-examples",
-  "email": "jagaheri@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-04T01:32:17.361Z"
-}
