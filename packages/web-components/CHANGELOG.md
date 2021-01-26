@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 20 Jan 2021 12:22:46 GMT and should not be manually modified.
+This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.6)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.5..@fluentui/web-components_v0.10.6)
+
+### Patches
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [0.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.5)
 

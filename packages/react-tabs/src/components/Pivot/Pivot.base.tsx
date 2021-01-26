@@ -151,6 +151,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     };
 
     const onKeyDown = (itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.enter) {
         ev.preventDefault();
         updateSelectedItem(itemKey);
