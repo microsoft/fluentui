@@ -604,16 +604,6 @@ Only the indicator part of the split button will control the submenu.
 | icon          | ReactNode | Icon that is rendered with the menu item                 |
 | indicatorIcon | ReactNode | Icon that is rendered for the split button indicator     |
 
-### SubMenu
-
-Creates a `Menu` component with `MenuItem` trigger and handles the positioning of the nested menu.
-
-| Prop name      | Type      | Details                                                  |
-| -------------- | --------- | -------------------------------------------------------- |
-| content        | ReactNode | The children that would normally be rendered in MenuItem |
-| icon           | ReactNode | Icon that is rendered with the menu item                 |
-| secondaryLabel | text      | A secondary label i.e. keyboard shortcuts                |
-
 ## Sample code
 
 The below samples do not represent the definitive props of the final implemented component, but represent the ideal final implementations. Can be subject to change during the implementation phase.
@@ -621,20 +611,20 @@ The below samples do not represent the definitive props of the final implemented
 ### Basic Menu
 
 ```typescript
-const trigger = <button> Open menu </button>
-
 const menu = (
-  <Menu trigger={trigger}>
-    <MenuItem>Option 1</MenuItem>
-    <MenuItem>Option 2</MenuItem>
-    <MenuItem>Option 3</MenuItem>
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
+    </MenuList>
   <Menu>
 )
 ```
 
 ```html
 <!-- expected DOM output  -->
-<!-- TODO positioning -->
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
@@ -646,20 +636,20 @@ const menu = (
 ### Menu items with icons
 
 ```typescript
-const trigger = <button> Open menu </button>
-
 const menu = (
-  <Menu trigger={trigger}>
-    <MenuItem icon={<FileIcon />}>Option 1</MenuItem>
-    <MenuItem icon={<BellIcon />}>Option 2</MenuItem>
-    <MenuItem icon={<LinkIcon />}>Option 3</MenuItem>
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem icon={<FileIcon />}>Option 1</MenuItem>
+      <MenuItem icon={<BellIcon />}>Option 2</MenuItem>
+      <MenuItem icon={<LinkIcon />}>Option 3</MenuItem>
+    </MenuList>
   <Menu>
 )
 ```
 
 ```html
 <!-- expected DOM output  -->
-<!-- TODO positioning -->
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">
@@ -680,17 +670,18 @@ const menu = (
 ### Sections
 
 ```typescript
-const trigger = <button> Open menu </button>
-
 const menu = (
-  <Menu trigger={trigger}>
-    <MenuItem>Option 1</MenuItem>
-    <MenuDivider />
-    <MenuGroup title="Section title">
-      <MenuItem>Section Option 1</MenuItem>
-      <MenuItem>Section Option 2</MenuItem>
-      <MenuItem>Section Option 3</MenuItem>
-    <MenuGroup />
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuDivider />
+      <MenuGroup title="Section title">
+        <MenuItem>Section Option 1</MenuItem>
+        <MenuItem>Section Option 2</MenuItem>
+        <MenuItem>Section Option 3</MenuItem>
+      <MenuGroup />
+    </MenuList>
   <Menu>
 )
 ```
@@ -715,18 +706,20 @@ const menu = (
 Custom section headings can also be used, but must be used within a [MenuGroup](#menugroup) to ensure correct narration experience
 
 ```typescript
-const trigger = <button> Open menu </button>
 
 const menu = (
-  <Menu trigger={trigger}>
-    <MenuItem>Option 1</MenuItem>
-    <MenuDivider />
-    <MenuGroup>
-      <MenuGroupHeader>{children}</MenuGroupHeader>
-      <MenuItem>Section Option 1</MenuItem>
-      <MenuItem>Section Option 2</MenuItem>
-      <MenuItem>Section Option 3</MenuItem>
-    <MenuGroup />
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuDivider />
+      <MenuGroup>
+        <MenuGroupHeader>{children}</MenuGroupHeader>
+        <MenuItem>Section Option 1</MenuItem>
+        <MenuItem>Section Option 2</MenuItem>
+        <MenuItem>Section Option 3</MenuItem>
+      <MenuGroup />
+    </MenuList>
   <Menu>
 )
 ```
@@ -751,30 +744,35 @@ const menu = (
 ### Submenus
 
 ```typescript
-const trigger = <button> Open menu </button>
-
 const menu = (
-  <Menu trigger={trigger}>
-    <MenuItem>Option 1</MenuItem>
-    <SubMenu content="Open submenu">
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
       <MenuItem>Option 1</MenuItem>
-      <MenuItem>Option 2</MenuItem>
-      <MenuItem>Option 3</MenuItem>
-    <SubMenu>
+      <Menu>
+        <MenuTrigger>
+          <MenuItem>Open submenu</MenuItem>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Option 1</MenuItem>
+          <MenuItem>Option 2</MenuItem>
+          <MenuItem>Option 3</MenuItem>
+        </MenuList>
+      </Menu>
+    </MenuList>
   <Menu>
 )
 ```
 
 ```html
 <!-- expected DOM output  -->
-<!-- TODO positioning -->
 <button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
 <div role="menu" aria-labelledby="trigger">
   <div role="menuitem" tabindex="0">Option 1</div>
   <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
 </div>
 
-<!-- TODO submenu positioning -->
+<!-- expected DOM output for submenu  -->
 <div role="menu" aria-labelledby="submenu-trigger">
   <div role="menuitem" tabindex="-1">Option 1</div>
   <div role="menuitem" tabindex="-1">Option 2</div>
@@ -819,11 +817,13 @@ const menuCheckbox = (
     kind="checkbox"
     selectedItems={selectedItems}
     onSelectionChange={setSeelctedItems}
-    trigger={trigger}
   >
-    <MenuItemCheckbox name="checkbox1" value={1}>Option 1</MenuItemCheckbox>
-    <MenuItemCheckbox name="checkbox1" value={2}>Option 2</MenuItemCheckbox>
-    <MenuItemCheckbox name="checkbox2" value={3}>Option 3</MenuItemCheckbox>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItemCheckbox name="checkbox1" value={1}>Option 1</MenuItemCheckbox>
+      <MenuItemCheckbox name="checkbox1" value={2}>Option 2</MenuItemCheckbox>
+      <MenuItemCheckbox name="checkbox2" value={3}>Option 3</MenuItemCheckbox>
+    </MenuList>
   <Menu>
 )
 
@@ -832,18 +832,20 @@ const menuSelectableSections = (
   <Menu
     selectedItems={selectedItems}
     onSelectionChange={setSeelctedItems}
-    trigger={trigger}
   >
-    <MenuGroup title="Checkbox section">
-      <MenuItemCheckbox name="checkbox" value={1}>Option 1</MenuItem>
-      <MenuItemCheckbox name="checkbox" value={2}>Option 2</MenuItem>
-      <MenuItemCheckbox name="checkbox" value={3}>Option 3</MenuItem>
-    </MenuGroup>
-    <MenuGroup title="Radio section">
-      <MenuItemRadio name="radio" value={1}>Option 1</MenuItemRadio>
-      <MenuItemRadio name="radio" value={2}>Option 2</MenuItemRadio>
-      <MenuItemRadio name="radio" value={3}>Option 3</MenuItemRadio>
-    </MenuGroup>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuGroup title="Checkbox section">
+        <MenuItemCheckbox name="checkbox" value={1}>Option 1</MenuItem>
+        <MenuItemCheckbox name="checkbox" value={2}>Option 2</MenuItem>
+        <MenuItemCheckbox name="checkbox" value={3}>Option 3</MenuItem>
+      </MenuGroup>
+      <MenuGroup title="Radio section">
+        <MenuItemRadio name="radio" value={1}>Option 1</MenuItemRadio>
+        <MenuItemRadio name="radio" value={2}>Option 2</MenuItemRadio>
+        <MenuItemRadio name="radio" value={3}>Option 3</MenuItemRadio>
+      </MenuGroup>
+    </MenuList>
   <Menu>
 )
 ```
@@ -884,12 +886,18 @@ const trigger = <button> Open menu </button>
 // basic checkbox example
 const menuSplitbutton= (
   <Menu trigger={trigger}>
-    <MenuItem>Option 1</MenuItem>
-    <SubmenuSplit content={/*ReactNode that would be inside MenuItem*/}>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
       <MenuItem>Option 1</MenuItem>
-      <MenuItem>Option 2</MenuItem>
-      <MenuItem>Option 3</MenuItem>
-    </SubmenuSplit>
+      <Menu>
+        <MenuTrigger>
+          <MenuItemSplit></MenuItemSplit>
+        </MenuTrigger>
+        <MenuItem>Option 1</MenuItem>
+        <MenuItem>Option 2</MenuItem>
+        <MenuItem>Option 3</MenuItem>
+      </Menu>
+    <MenuList>
   <Menu>
 )
 ```
