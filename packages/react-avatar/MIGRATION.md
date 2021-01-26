@@ -32,7 +32,7 @@ In cases where migration is possible, the following props will need to be rename
 - `presenceTitle` => NOT SUPPORTED - use the `badge` slot instead
 - `isOutOfOffice` => NOT SUPPORTED - use the `badge` slot instead
 - `showUnknownPersonaCoin` => NOT SUPPORTED - use the `icon` slot instead
-- `initialsColor` => _[TODO need to add prop for color]_
+- `initialsColor` => _[TODO need to add prop for color; see https://github.com/microsoft/fluentui/issues/16628]_
 - `showInitialsUntilImageLoad` => NOT SUPPORTED (this is the normal behavior of Avatar)
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `imageShouldStartVisible` => NOT SUPPORTED
@@ -46,7 +46,7 @@ The v0 Avatar maps more closely to the converged Avatar.
 
 - `variables` => Replaced by `tokens`
 - `design` => Replaced by `tokens`
-- `accessibility` => _TODO (Should no longer be necessary)_
+- `accessibility` => Not needed
 - `size` is converted from `SizeValue` to a number:
   - `size="smallest"` => `size={20}`
   - `size="smaller"` => `size={24}`
@@ -63,14 +63,14 @@ The v0 Avatar maps more closely to the converged Avatar.
 | text                       | name             | name               |
 | size (PersonaSize enum)    | size (SizeValue) | size (number)      |
 | coinSize                   | -                | customSize         |
-| imageUrl                   | image (S)        | image (slot)       |
+| imageUrl                   | image (slot)     | image (slot)       |
 | imageAlt                   | -                | -                  |
-| imageInitials              | label (S)        | label (slot)       |
+| imageInitials              | label (slot)     | label (slot)       |
 | -                          | getInitials      | getInitials        |
-| presence                   | status (S)       | badge (slot)       |
+| presence                   | status (slot)    | badge (slot)       |
 | presenceColors             | -                | -                  |
 | presenceTitle              | -                | -                  |
-| -                          | icon (S)         | icon (slot)        |
+| -                          | icon (slot)      | icon (slot)        |
 | -                          | -                | display            |
 | showUnknownPersonaCoin     | -                | -                  |
 | className                  | className        | className          |

@@ -25,7 +25,7 @@ The existing components are:
 
 Both the v8 and v0 components support displaying an image, initials, and an icon.
 
-The v8 `Persona` also supports the full name and extra detail text to the right of the image. The extra details is specifically out of scope for the `Avatar` control, and may be added to a future component that makes use of Avatar.
+The v8 `Persona` also supports the full name and extra detail text to the right of the image. The extra detail text is specifically out of scope for the `Avatar` control, and may be added to a future component that makes use of Avatar.
 
 The v8 `Persona` appears to not support a custom icon, and can only show the default person icon, or a "?" icon
 
@@ -93,6 +93,7 @@ From [Avatar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packag
 
 ### Slots
 
+- `as` - The root element of the Avatar.
 - `image` - The Avatar's image, if available.
 - `label` - The text shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
 - `icon` - Icon displayed when there's no image or intials available.
