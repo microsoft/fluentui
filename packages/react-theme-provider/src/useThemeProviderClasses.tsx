@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
-import { makeStyles } from './makeStyles';
+import { makeStyles } from './makeStyles.compat';
 import { ThemeProviderState } from './ThemeProvider.types';
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Theme } from './types';

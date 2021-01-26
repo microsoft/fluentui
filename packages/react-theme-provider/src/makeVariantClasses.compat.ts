@@ -2,7 +2,7 @@
 import { tokensToStyleObject } from './tokensToStyleObject';
 import { Variants, Theme } from '@fluentui/theme';
 import { IStyle } from '@fluentui/merge-styles';
-import { makeClasses } from './makeClasses';
+import { makeClasses } from './makeClasses.compat';
 
 /**
  * Calls a function with the argument, or returns the given object.

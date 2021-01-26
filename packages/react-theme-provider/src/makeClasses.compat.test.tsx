@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
-import { makeClasses } from './makeClasses';
+import { makeClasses } from './makeClasses.compat';
 import { safeMount } from '@fluentui/test-utilities';
 import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';
 import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';

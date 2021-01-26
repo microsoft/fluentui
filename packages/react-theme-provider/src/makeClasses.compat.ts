@@ -1,7 +1,7 @@
 import { IStyle } from '@fluentui/merge-styles';
 import { Theme } from '@fluentui/theme';
 import { applyClasses } from './applyClasses';
-import { makeStyles, UseStylesOptions } from './makeStyles';
+import { makeStyles, UseStylesOptions } from './makeStyles.compat';
 
 /**
  * The `makeClasses` helper encapsulates `makeStyles`, and given a style map which follows
