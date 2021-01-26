@@ -17,6 +17,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 <!--------------------------------[ v0.52.0 ]------------------------------- -->
 ## [v0.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0) (2021-01-26)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.7..@fluentui/react-northstar_v0.52.0)
 
 ## BREAKING CHANGES
 - `Form`: removed static properties: `Form.Field`, `Form.FieldCustom`, `Form.Label`, `Form.Message`, `Form.Input`, `Form.Checkbox`, `Form.Dropdown`, `Form.Button`, `Form.RadioGroup`, `Form.Slider`,`Form.Datepicker` @yuanboxue-amber ([#16546](https://github.com/microsoft/fluentui/pull/16546))
@@ -32,7 +33,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Styles from `Avatar` image slot were moved to exact component `AvatarImage` @assuncaocharles ([#16409](https://github.com/microsoft/fluentui/pull/16409))
 - Styles from `Avatar` image slot were moved to exact component `AvatarLabel` @assuncaocharles ([#16417](https://github.com/microsoft/fluentui/pull/16417))
 - Styles from `Avatar` icon slot were moved to exact component `AvatarIcon` @assuncaocharles ([#16428](https://github.com/microsoft/fluentui/pull/16428))
-
 
 ### Fixes
 - Fix `useTree` by changing `env.NODE` to `env.NODE_ENV` @yuanboxue-amber ([#16630](https://github.com/microsoft/fluentui/pull/16630))
@@ -78,7 +78,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not add `aria-expanded="true"` for `trigger` slot when `MenuButton` has `contextMenu` @pompomon ([#16442](https://github.com/microsoft/fluentui/pull/16442))
 - Fix type for `Accessibility` to allow function without props @ling1726 ([#16322](https://github.com/microsoft/fluentui/pull/16322))
 - Fix click handler moving it from Menu Item Wrapper to Menu Item itself @assuncaocharles ([#16512](https://github.com/microsoft/fluentui/pull/16512))
-- Optimize `NumberListIcon` for bundled size @ling1726 ([#16473](https://github.com/microsoft/fluentui/pull/16473))
 
 ### Features
 - Add 2.0 light and dark themes @jurokapsiar ([#15867](https://github.com/microsoft/fluentui/pull/15867))
@@ -154,6 +153,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Alert` - labelling dismiss action, to prevent narrate "unlabeled" button @kolaps33 ([#16092](https://github.com/microsoft/fluentui/pull/16092))
 - Update `Popup` best practices to describe how to pass `aria-labelledby` when `trapFocus` is `true` @assuncaocharles ([#16119](https://github.com/microsoft/fluentui/pull/16119))
 - Add new sample images for use in Avatar examples @behowell ([#16129](https://github.com/microsoft/fluentui/pull/16129))
+
+<!--------------------------------[ v0.51.7 ]------------------------------- -->
+## [v0.51.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.7) (2021-01-25)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.6..@fluentui/react-northstar_v0.51.7)
+
+### Fixes
+- Fix incorrect fluent icons @notandrew ([#16594](https://github.com/microsoft/fluentui/pull/16594))
 
 <!--------------------------------[ v0.51.6 ]------------------------------- -->
 ## [v0.51.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.51.6) (2021-01-18)
