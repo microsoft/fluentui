@@ -4274,13 +4274,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/memory-fs@*":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@types/memory-fs/-/memory-fs-0.3.2.tgz#5d4753f9b390cb077c8c8af97bc96463399ceccd"
-  integrity sha512-j5AcZo7dbMxHoOimcHEIh0JZe5e1b8q8AqGSpZJrYc7xOgCIP79cIjTdx5jSDLtySnQDwkDTqwlC7Xw7uXw7qg==
-  dependencies:
-    "@types/node" "*"
-
 "@types/mime@*":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/mime/-/mime-2.0.1.tgz#dc488842312a7f075149312905b5e3c0b054c79d"
@@ -4658,15 +4651,13 @@
     "@types/expect" "^1.20.4"
     "@types/node" "*"
 
-"@types/webpack-dev-middleware@^3.7.2":
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/@types/webpack-dev-middleware/-/webpack-dev-middleware-3.7.2.tgz#31030c7cca7f98d56debfd859bb57f9040f0d3c5"
-  integrity sha512-PvETiS//pjVZBK48aJfbxzT7+9LIxanbnk9eXXYUfefGyPdsCkNrMDxRlOVrBvxukXUhD5B6N/pkPMdWrtuFkA==
+"@types/webpack-dev-middleware@^4.1.0":
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/@types/webpack-dev-middleware/-/webpack-dev-middleware-4.1.0.tgz#3bf432f2ff2313b6470af21b748dd5d73dba5ec6"
+  integrity sha512-cG/RhZcpAmVCQi7sGMc7bFyYGA2Yzu/+pWxTJezs7z2asjGZJ7j+0/+t39AuxQQbEuABWgYAwolg/DysGEcLyA==
   dependencies:
     "@types/connect" "*"
-    "@types/memory-fs" "*"
     "@types/webpack" "*"
-    loglevel "^1.6.2"
 
 "@types/webpack-env@1.16.0":
   version "1.16.0"
@@ -16655,11 +16646,6 @@ log4js@^6.2.1:
     rfdc "^1.1.4"
     streamroller "^2.2.4"
 
-loglevel@^1.6.2:
-  version "1.6.6"
-  resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.6.6.tgz#0ee6300cc058db6b3551fa1c4bf73b83bb771312"
-  integrity sha512-Sgr5lbboAUBo3eXCSPL4/KoVz3ROKquOjcctxmHIt+vol2DrqTQe3SwkKKuYhEiWB5kYa13YyopJ69deJ1irzQ==
-
 lolex@^2.2.0:
   version "2.7.5"
   resolved "https://registry.yarnpkg.com/lolex/-/lolex-2.7.5.tgz#113001d56bfc7e02d56e36291cc5c413d1aa0733"
@@ -17259,7 +17245,7 @@ mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.19, mime-types@~2.1.24:
   dependencies:
     mime-db "1.40.0"
 
-mime-types@^2.1.27:
+mime-types@^2.1.27, mime-types@^2.1.28:
   version "2.1.28"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.28.tgz#1160c4757eab2c5363888e005273ecf79d2a0ecd"
   integrity sha512-0TO2yJ5YHYr7M2zzT7gDU1tbwHxEUWBCLt0lscSNpcdAfFyJOVEpRYNS7EXVcTLNj/25QO8gulHC5JtTzSE2UQ==
@@ -25578,6 +25564,18 @@ webpack-dev-middleware@^4.0.2:
     mem "^8.0.0"
     memfs "^3.2.0"
     mime-types "^2.1.27"
+    range-parser "^1.2.1"
+    schema-utils "^3.0.0"
+
+webpack-dev-middleware@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/webpack-dev-middleware/-/webpack-dev-middleware-4.1.0.tgz#f0c1f12ff4cd855b3b5eec89ee0f69bcc5336364"
+  integrity sha512-mpa/FY+DiBu5+r5JUIyTCYWRfkWgyA3/OOE9lwfzV9S70A4vJYLsVRKj5rMFEsezBroy2FmPyQ8oBRVW8QmK1A==
+  dependencies:
+    colorette "^1.2.1"
+    mem "^8.0.0"
+    memfs "^3.2.0"
+    mime-types "^2.1.28"
     range-parser "^1.2.1"
     schema-utils "^3.0.0"
 

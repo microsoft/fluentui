@@ -199,6 +199,7 @@ task('serve:docs:hot', async () => {
     app.use(
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
+        stats: 'errors-warnings',
       } as WebpackDevMiddleware.Options),
     );
 
