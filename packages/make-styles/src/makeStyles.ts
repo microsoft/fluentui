@@ -19,27 +19,27 @@ export function makeStyles<Selectors, Tokens>(
     ...classNames: (string | undefined)[]
   ): string;
   function computeClasses(selectors: Selectors, options: MakeStylesOptions<Tokens>): string {
-    let tokens: Tokens | null;
-    let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
-
-    // TODO: describe me
-    if (process.env.NODE_ENV === 'production') {
-      tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
-      resolvedDefinitions = CAN_USE_CSS_VARIABLES
-        ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
-        : resolveDefinitions(
-            (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-            tokens,
-            unstable_cssPriority,
-          );
-    } else {
-      tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
-      resolvedDefinitions = resolveDefinitions(
-        (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
-        tokens,
-        unstable_cssPriority,
-      );
-    }
+    // let tokens: Tokens | null;
+    // let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
+    //
+    // This requires a build step which is currently WIP
+    // if (process.env.NODE_ENV === 'production') {
+    //   tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
+    //   resolvedDefinitions = CAN_USE_CSS_VARIABLES
+    //     ? ((definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[])
+    //     : resolveDefinitions(
+    //         (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+    //         tokens,
+    //         unstable_cssPriority,
+    //       );
+    // } else {
+    const tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
+    const resolvedDefinitions = resolveDefinitions(
+      (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
+      tokens,
+      unstable_cssPriority,
+    );
+    // }
 
     let nonMakeClasses: string = '';
     const overrides: MakeStylesMatchedDefinitions = {};
