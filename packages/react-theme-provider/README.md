@@ -92,7 +92,7 @@ export const App = () => (
 
 ### useTheme
 
-Theme can be accessed using `useTheme` hook. If you are specifically accessing theme to create classes/styles, you can use `makeStyles` described below.
+Theme can be accessed using `useTheme` hook.
 
 ```jsx
 import { useTheme } from '@fluentui/react-theme-provider';
@@ -133,29 +133,6 @@ export const App = () => (
     <Content />
   </ThemeProvider>
 );
-```
-
-### Create classes for React components based on theme
-
-Theme can be accessed using the `makeStyles` hook. This hook abstracts rendering css given the theme object:
-
-```jsx
-import { makeStyles } from '@fluentui/react-theme-provider';
-
-const useFooStyles = makeStyles(theme => ({
-  root: {
-    background: theme.semanticColors.bodyBackground,
-    ':hover': {
-      background: theme.semanticColors.bodyBackgroundHovered,
-    },
-  },
-}));
-
-const Foo = props => {
-  const classes = useFooStyles();
-
-  return <div className={classes.root} />;
-};
 ```
 
 ## How does this change other existing ways of theming Fluent UI components?
