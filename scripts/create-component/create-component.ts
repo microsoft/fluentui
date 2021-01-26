@@ -263,6 +263,9 @@ const ignoreProjects = [
 const projectsWithStartCommand = Object.entries(allPackages)
   .filter(
     ([pkg, info]) =>
-      !ignoreProjects.includes(pkg) && info.packagePath.startsWith('packages') && !!info.packageJson.scripts?.start,
+      !ignoreProjects.includes(pkg) &&
+      info.packagePath.startsWith('packages') &&
+      info.packageJson.dependencies &&
+      info.packageJson.dependencies['@fluentui/react-compose'] != undefined,
   )
   .map(([pkg, info]) => ({ title: pkg, value: { pkg, command: 'start' } }));
