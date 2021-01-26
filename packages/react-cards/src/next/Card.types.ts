@@ -40,7 +40,7 @@ export type CardProps = ComponentProps &
 
     /** A card can have quiet styles. */
     // TODO: Is this the correct name? Appears as ghost in design spec.
-    quiet?: boolean;
+    ghost?: boolean;
 
     /** A card can show that it is currently selected or not. */
     // TODO: This should probably have a `defaultSelected` property at the same time.
