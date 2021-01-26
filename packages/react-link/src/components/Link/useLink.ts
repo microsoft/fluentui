@@ -11,7 +11,7 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>): any => {
-  const { as, className, disabled, href, onClick, styles, theme } = props;
+  const { as, className, disabled, href, onClick, styles, theme, underline } = props;
   const rootRef = React.useRef<HTMLDivElement | null>(null);
   const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
 
@@ -22,6 +22,7 @@ export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>)
     className,
     isButton: !href,
     isDisabled: disabled,
+    isUnderlined: underline,
     theme: theme!,
   });
 
