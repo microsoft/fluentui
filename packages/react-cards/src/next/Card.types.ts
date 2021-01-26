@@ -39,7 +39,7 @@ export type CardProps = ComponentProps &
     inverted?: boolean;
 
     /** A card can have ghost styles. */
-    ghost?: boolean;
+    quiet?: boolean;
 
     /** A card can show that it is currently selected or not. */
     // TODO: This should probably have a `defaultSelected` property at the same time.
