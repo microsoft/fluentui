@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@uifabric/experiments_v7.38.3",
+      "version": "7.38.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use role=\"presentation\" for all <div> elements in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "864226ae4099374d4ea82244597e67136af9aa91",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Jan 2021 12:31:09 GMT",
       "tag": "@uifabric/experiments_v7.38.2",
       "version": "7.38.2",

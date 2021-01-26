@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add high contrast overrides for Separator",
-  "packageName": "@fluentui/react-examples",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-25T14:41:00.840Z"
-}

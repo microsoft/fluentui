@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs(react-examples): explicitly add behavior to Link rendered as button",
-  "packageName": "@fluentui/react-examples",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-22T11:35:03.637Z"
-}

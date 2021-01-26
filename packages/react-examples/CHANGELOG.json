@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@fluentui/react-examples_v0.11.13",
+      "version": "0.11.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs(react-examples): explicitly add behavior to Link rendered as button",
+            "author": "martinhochel@microsoft.com",
+            "commit": "96d91cd4618fedce150c21580804c9e60b83052a",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Add high contrast overrides for Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "ee7e8ae5574b8367f83024e5dc32aca23d2fd31b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Jan 2021 12:31:09 GMT",
       "tag": "@fluentui/react-examples_v0.11.10",
       "version": "0.11.10",

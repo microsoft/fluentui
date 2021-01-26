@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 20 Jan 2021 12:31:09 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jan 2021 12:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.3)
+
+Tue, 26 Jan 2021 12:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.2..@uifabric/experiments_v7.38.3)
+
+### Patches
+
+- Use role="presentation" for all <div> elements in TilesList ([PR #15965](https://github.com/microsoft/fluentui/pull/15965) by tmichon@microsoft.com)
 
 ## [7.38.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.2)
 

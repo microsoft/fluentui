@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 20 Jan 2021 12:31:09 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jan 2021 12:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.13)
+
+Tue, 26 Jan 2021 12:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.10..@fluentui/react-examples_v0.11.13)
+
+### Patches
+
+- docs(react-examples): explicitly add behavior to Link rendered as button ([PR #16586](https://github.com/microsoft/fluentui/pull/16586) by martinhochel@microsoft.com)
+- Add high contrast overrides for Separator ([PR #16589](https://github.com/microsoft/fluentui/pull/16589) by andredias@microsoft.com)
 
 ## [0.11.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.10)
 

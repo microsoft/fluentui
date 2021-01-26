@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "office-ui-fabric-react_v7.157.0",
+      "version": "7.157.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add additional prop support to IBreadcrumbItems",
+            "author": "andredias@microsoft.com",
+            "commit": "10d8a5d25495826a081386d8520ffd86e7352d91",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add high contrast overrides for Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "ee7e8ae5574b8367f83024e5dc32aca23d2fd31b",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Jan 2021 12:31:09 GMT",
       "tag": "office-ui-fabric-react_v7.156.0",
       "version": "7.156.0",

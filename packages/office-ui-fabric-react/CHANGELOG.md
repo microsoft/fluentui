@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 20 Jan 2021 12:31:09 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jan 2021 12:25:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.157.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.157.0)
+
+Tue, 26 Jan 2021 12:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.156.0..office-ui-fabric-react_v7.157.0)
+
+### Minor changes
+
+- Add additional prop support to IBreadcrumbItems ([PR #16532](https://github.com/microsoft/fluentui/pull/16532) by andredias@microsoft.com)
+
+### Patches
+
+- Add high contrast overrides for Separator ([PR #16589](https://github.com/microsoft/fluentui/pull/16589) by andredias@microsoft.com)
 
 ## [7.156.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.156.0)
 
