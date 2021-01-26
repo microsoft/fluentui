@@ -4,6 +4,7 @@ import {
   accentFillActiveBehavior,
   accentFillHoverBehavior,
   accentFillRestBehavior,
+  elevation,
   neutralFillHoverBehavior,
   neutralFillInputActiveBehavior,
   neutralFillInputHoverBehavior,
@@ -16,6 +17,7 @@ import {
 
 export const TooltipStyles = css`
   :host {
+    --elevation: 11;
     position: relative;
     contain: layout;
     overflow: visible;
@@ -37,6 +39,7 @@ export const TooltipStyles = css`
     font-size: var(--type-ramp-base-font-size);
     line-height: var(--type-ramp-base-line-height);
     white-space: nowrap;
+    ${elevation}
   }
 
   fluent-anchored-region {
