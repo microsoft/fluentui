@@ -263,7 +263,7 @@ module.exports = {
             {
               test: [/\.tsx?$/],
               use: {
-                loader: resolve.sync('ts-loader'),
+                loader: 'ts-loader',
                 options: {
                   experimentalWatchApi: true,
                   transpileOnly: true,
