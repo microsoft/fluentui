@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header } from '@fluentui/react-northstar';
-import * as React from 'react';
+import { Header, ProviderConsumer } from '@fluentui/react-northstar';
 import { RouteProps } from 'react-router-dom';
 
 import { link } from '../utils/helpers';
@@ -19,7 +19,7 @@ type MarkdownPageProps = {
   };
 } & RouteProps;
 
-const components = {
+const components = siteVariables => ({
   a: ({ children, href }) => link(children, href),
   code: ({ className, children, fitted, label }) =>
     className ? (
@@ -27,21 +27,25 @@ const components = {
     ) : (
       <code>{children}</code>
     ),
-  h1: ({ children }) => <Header as="h1" content={children} />,
-  h2: ({ children }) => <Header as="h2" content={children} />,
-  h3: ({ children }) => <Header as="h3" content={children} />,
+  h1: ({ children }) => <Header as="h1" content={children} style={{ color: siteVariables.colors.grey[750] }} />,
+  h2: ({ children }) => <Header as="h2" content={children} style={{ color: siteVariables.colors.grey[750] }} />,
+  h3: ({ children }) => <Header as="h3" content={children} style={{ color: siteVariables.colors.grey[750] }} />,
   img: props => <img style={{ maxWidth: '100%' }} {...props} />,
-};
+});
 
-const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = props => {
+const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = (props, { siteVariables }) => {
   const { page } = props;
   const { default: Component, meta } = page;
 
   return (
     <DocPage title={meta.title}>
-      <MDXProvider components={components}>
-        <Component />
-      </MDXProvider>
+      <ProviderConsumer
+        render={({ siteVariables }) => (
+          <MDXProvider components={components(siteVariables)}>
+            <Component />
+          </MDXProvider>
+        )}
+      />
       <GuidesNavigationFooter previous={meta.previous} next={meta.next} />
     </DocPage>
   );
