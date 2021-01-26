@@ -9,6 +9,7 @@ const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpa
 export interface DigestConfig {
   configDir: string;
   outputDir: string;
+  resolveDirs?: string[];
 }
 
 // This is the default webpack config for creating story bundles for consumers.
@@ -18,9 +19,16 @@ export interface DigestConfig {
 // these paths need to be accurate for pathing into library distribution, not source.
 // is require.resolve the best thing to use here?
 export const defaultConfig = (digestConfig: DigestConfig) => {
+  const { resolveDirs } = digestConfig;
   // TODO: optimize configs to share common instances and remove usage of just (use webpack-merge directly)
   const bundle = webpackMerge.merge(
-    webpackConfig({}),
+    webpackConfig({
+      ...(resolveDirs && {
+        resolveLoader: {
+          modules: resolveDirs,
+        },
+      }),
+    }),
     htmlOverlay({
       // TODO: is require.resolve really needed here? path.join / __dirname instead?
       template: require.resolve('../assets/index.html'),

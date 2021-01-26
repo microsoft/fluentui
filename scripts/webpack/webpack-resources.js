@@ -85,6 +85,13 @@ function createEntryWithPolyfill(entry, config) {
 module.exports = {
   webpack,
 
+  /** Get the list of node_modules directories where loaders should be resolved */
+  getResolveLoaderDirs: () => [
+    'node_modules',
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../../node_modules'),
+  ],
+
   /**
    * @param {string} bundleName - Name for the bundle file. Usually either the unscoped name, or
    * the scoped name with a - instead of / between the parts.
@@ -248,11 +255,7 @@ module.exports = {
         },
 
         resolveLoader: {
-          modules: [
-            'node_modules',
-            path.join(__dirname, '../node_modules'),
-            path.join(__dirname, '../../node_modules'),
-          ],
+          modules: module.exports.getResolveLoaderDirs(),
         },
 
         devtool: 'eval',
