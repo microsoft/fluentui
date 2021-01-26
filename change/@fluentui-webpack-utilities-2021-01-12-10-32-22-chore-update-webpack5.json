@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+  "comment": "[BREAKING] Delete ManifestServicePlugin (file an issue if you were using it). Updating to webpack 5, latest typings, latest loaders and plugins.",
   "packageName": "@fluentui/webpack-utilities",
   "email": "dzearing@microsoft.com",
   "dependentChangeType": "patch",
