@@ -1,8 +1,8 @@
 import { EmbedVariables } from '../../../teams/components/Embed/embedVariables';
 
-export const embedVariables = (siteVars: any): Partial<EmbedVariables> => {
+export const embedVariables = (siteVariables: any): Partial<EmbedVariables> => {
   return {
-    controlColor: siteVars.bodyColor,
-    controlBackgroundColor: siteVars.bodyBackground,
+    controlColor: siteVariables.bodyColor,
+    controlBackgroundColor: siteVariables.bodyBackground,
   };
 };

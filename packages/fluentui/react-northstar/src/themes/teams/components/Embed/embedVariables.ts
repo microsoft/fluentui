@@ -10,13 +10,13 @@ export interface EmbedVariables {
   zIndex: number;
 }
 
-export const embedVariables = (siteVars: any): EmbedVariables => ({
-  controlColor: siteVars.colors.white,
+export const embedVariables = (siteVariables: any): EmbedVariables => ({
+  controlColor: siteVariables.colors.white,
   controlBackgroundColor: 'rgba(0, 0, 0, .25)',
   controlBackgroundSize: `${pxToRem(24)} ${pxToRem(24)}`,
 
   width: undefined,
   height: undefined,
-  focusBorderColor: siteVars.colors.brand[500],
-  zIndex: siteVars.zIndexes.foreground,
+  focusBorderColor: siteVariables.colors.brand[500],
+  zIndex: siteVariables.zIndexes.foreground,
 });
