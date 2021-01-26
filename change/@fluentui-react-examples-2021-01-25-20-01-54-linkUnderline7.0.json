@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating Link examples so they are underlined since the Link component is alongside other text.",
+  "packageName": "@fluentui/react-examples",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-26T04:01:54.496Z"
+}
