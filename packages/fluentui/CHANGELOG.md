@@ -19,6 +19,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 
 ## BREAKING CHANGES
+- `Form`: removed static properties: `Form.Field`, `Form.FieldCustom`, `Form.Label`, `Form.Message`, `Form.Input`, `Form.Checkbox`, `Form.Dropdown`, `Form.Button`, `Form.RadioGroup`, `Form.Slider`,`Form.Datepicker` @yuanboxue-amber ([#16546](https://github.com/microsoft/fluentui/pull/16546))
+- `Avatar`: removed static properties: `Avatar.Status`, `Avatar.StatusIcon`, `Avatar.Image`, `Avatar.Label`, `Avatar.Icon`  @yuanboxue-amber ([#16565](https://github.com/microsoft/fluentui/pull/16565))
 - `Tree`: removed management of `contentRef` for tree items. `TreeItem`: removed `selected`, `selectableParent` and `indeterminate` props @yuanboxue-amber ([#15831](https://github.com/microsoft/fluentui/pull/15831))
 - Delete `HierarchicalTree`, `HierarchicalTreeItem` and `HierarchicalTreeTitle` component @assuncaocharles ([#14515](https://github.com/microsoft/fluentui/pull/14515))
 - Styles from `listItemStyles` were moved to dedicated components @layershifter ([#14487](https://github.com/microsoft/fluentui/pull/14487))
@@ -34,6 +36,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Fix `useTree` by changing `env.NODE` to `env.NODE_ENV` @yuanboxue-amber ([#16630](https://github.com/microsoft/fluentui/pull/16630))
+- optimize largest icons used by calling @yuanboxue-amber ([#16590](https://github.com/microsoft/fluentui/pull/16590))
 - Fix selectable `Tree` where node with unselectable children displaying wrong selection state @yuanboxue-amber ([#16158](https://github.com/microsoft/fluentui/pull/16158))
 - Fix screen reader narrates incorrect items count for `toolbar` menu with radio group @yuanboxue-amber ([#15951](https://github.com/microsoft/fluentui/pull/15951))
 - Fix `treeAsListBehavior` to support multi-select `Tree` @yuanboxue-amber ([#15147](https://github.com/microsoft/fluentui/pull/15147))
@@ -119,6 +122,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `TvIcon`. @TanelVari ([#16207](https://github.com/microsoft/fluentui/pull/16207))
 - Added `CalendarAgendaIcon`, `ImageLibraryIcon`. @TanelVari ([#16293](https://github.com/microsoft/fluentui/pull/16293))
 - Added color tokens to be used for search term highlighting. Added default foreground7 and default background6 into Teams theme v1 and v2. @TanelVari ([#16391](https://github.com/microsoft/fluentui/pull/16391))
+- Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
 
 ### Documentation
 - Performance Tests with Roster prototype @vyhnalekl + @yuanboXue-amber ([#16412](https://github.com/microsoft/fluentui/pull/16412))
