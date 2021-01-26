@@ -138,18 +138,18 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /** The avatar can have a square shape. */
   square?: boolean;
 
-  /** Size of the avatar */
-  size?: AvatarSizeValue;
-
   /**
-   * If a non-standard size is needed, use customSize instead of size.
+   * Size of the avatar in pixels.
    *
-   * The dimensions of the avatar will be the given customSize, and the icon
-   * and font sizes will be based on the next-smaller AvatarSizeValue.
-   * For more fine-grained control over the font and icon sizes, use tokens:
-   * `tokens={{ fontSize: '...px', fontWeight: '...', iconSize: '...px' }}`
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and use the `width` and `height`
+   * tokens to override the display size, plus other size-related tokens if needed, such as `fontSize` and `iconSize`.
+   *
+   * For example, to set the avatar to 45px in size:
+   * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
    */
-  customSize?: number;
+  size?: AvatarSizeValue;
 
   /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
   getInitials?: (name: string, isRtl: boolean) => string;
@@ -162,8 +162,8 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
  * Sizes for the Avatar
  *
  * This is a restricted list based on design guidelines for the Avatar control.
- * It's recommended to use one of these sizes to conform to the design guidelines;
- * however, it is possible to specify a different value using the customSize property.
+ * It's recommended to use one of these sizes to conform to the design guidelines,
+ * but it is possible to render a different size using tokens.
  */
 export const avatarSizeValues = [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128] as const;
 export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 | ... | 128
