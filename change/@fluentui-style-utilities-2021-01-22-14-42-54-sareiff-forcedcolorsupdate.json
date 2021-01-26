@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "Update high contrast to support forced colors",
   "packageName": "@fluentui/style-utilities",
   "email": "sareiff@microsoft.com",
