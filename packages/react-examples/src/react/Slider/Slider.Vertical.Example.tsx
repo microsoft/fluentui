@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react-slider';
+import { Slider } from '@fluentui/react/lib/Slider';
 import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
 
 const stackStyles: Partial<IStackStyles> = { root: { height: 200 } };

@@ -1,3 +1,3 @@
-export * from './Toggle';
-
 import './version';
+
+export * from './Toggle';

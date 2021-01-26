@@ -9,7 +9,7 @@ import {
   IContextualMenuProps,
   IFocusZone,
 } from '@fluentui/react-internal';
-import { CommandButton, IButton } from '@fluentui/react-internal/lib/compat/Button';
+import { CommandButton, IButton } from '../../compat/Button';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 import { useOverflow } from '../../utilities/useOverflow';
 

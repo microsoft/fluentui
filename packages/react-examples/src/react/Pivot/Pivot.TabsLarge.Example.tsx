@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 
 export const PivotTabsLargeExample = () => (
   <div>

@@ -1,3 +1,3 @@
-export * from './Slider';
-
 import './version';
+
+export * from './Slider';

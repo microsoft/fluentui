@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxProps } from '@fluentui/react-checkbox';
+import { Checkbox, ICheckboxProps } from '@fluentui/react/lib/Checkbox';
 import { Link } from '@fluentui/react/lib/Link';
 import { Stack } from '@fluentui/react/lib/Stack';
 

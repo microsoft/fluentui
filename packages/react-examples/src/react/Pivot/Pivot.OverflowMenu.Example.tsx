@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Fabric, Icon, Label, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
-import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
+import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 
 export const PivotOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);

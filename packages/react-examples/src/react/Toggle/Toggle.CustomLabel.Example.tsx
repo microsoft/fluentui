@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '@fluentui/react-toggle/lib/Toggle';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';

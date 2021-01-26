@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, ILinkStyleProps } from '@fluentui/react-link/lib/next';
+import { Link, ILinkStyleProps } from '@fluentui/react-link';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Customizer } from '@fluentui/utilities';
 
