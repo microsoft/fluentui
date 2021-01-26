@@ -239,6 +239,7 @@ module.exports = {
 
         output: {
           filename: `[name].js`,
+          libraryTarget: 'umd',
           path: outputPath,
         },
 

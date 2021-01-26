@@ -13,9 +13,6 @@ module.exports = resources.createServeConfig(
     output: {
       filename: 'perf-test.js',
     },
-    optimization: {
-      concatenateModules: false,
-    },
   },
   'dist',
 );

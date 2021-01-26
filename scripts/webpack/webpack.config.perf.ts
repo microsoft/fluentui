@@ -2,7 +2,7 @@ import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import { argv } from 'yargs';
-import webpack, { EnvironmentPlugin } from 'webpack';
+import webpack from 'webpack';
 import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
 import config from '../config';
 
@@ -39,7 +39,7 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new EnvironmentPlugin(getDefaultEnvironmentVars()),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
     new ForkTsCheckerWebpackPlugin({
       typescript: {
         configFile: paths.e2e('tsconfig.json'),
