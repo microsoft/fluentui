@@ -249,7 +249,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   };
 
   private _onRenderItem = (item: IBreadcrumbItem) => {
-    const { as, href, onClick, isCurrentItem, role, text, ...additionalProps } = item;
+    const { as, href, onClick, isCurrentItem, text, ...additionalProps } = item;
 
     if (onClick || href) {
       return (
@@ -261,7 +261,6 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           aria-current={isCurrentItem ? 'page' : undefined}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this._onBreadcrumbClicked.bind(this, item)}
-          role={role}
         >
           <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
             {text}
