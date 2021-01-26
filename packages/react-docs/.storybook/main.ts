@@ -7,6 +7,7 @@ module.exports = {
         backgrounds: false,
       },
     },
+    '../src/addons/design-tokens/register',
   ],
 
   webpackFinal: async (config) => {

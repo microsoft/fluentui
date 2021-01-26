@@ -1,6 +1,10 @@
 import { withThemeProvider } from '../src/decorators/withThemeProvider';
 // import { withNorthstarProvider, themes } from '../src/decorators/withThemeProvider';
 
+export const parameters = {
+  layout: 'centered',
+};
+
 export const globalTypes = {
   // TODO: can remove? show all themes at once instead?
   // theme: {
