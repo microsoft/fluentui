@@ -1,5 +1,4 @@
 import * as path from 'path';
-import * as webpack from 'webpack';
 
 // TODO: remove just as a dependency. should only be a dev dependency when used.
 import { webpackConfig, webpackMerge, htmlOverlay } from 'just-scripts';
@@ -20,15 +19,11 @@ export interface DigestConfig {
 // is require.resolve the best thing to use here?
 export const defaultConfig = (digestConfig: DigestConfig) => {
   const { resolveDirs } = digestConfig;
+  const resolveLoaderConfig = resolveDirs ? { resolveLoader: { modules: resolveDirs } } : {};
+
   // TODO: optimize configs to share common instances and remove usage of just (use webpack-merge directly)
   const bundle = webpackMerge.merge(
-    webpackConfig({
-      ...(resolveDirs && {
-        resolveLoader: {
-          modules: resolveDirs,
-        },
-      }),
-    }),
+    webpackConfig(resolveLoaderConfig),
     htmlOverlay({
       // TODO: is require.resolve really needed here? path.join / __dirname instead?
       template: require.resolve('../assets/index.html'),
@@ -86,6 +81,7 @@ export const defaultConfig = (digestConfig: DigestConfig) => {
         stories: path.resolve(__dirname, '.'),
       },
     },
+    ...resolveLoaderConfig,
     optimization: {
       minimize: false,
     },
