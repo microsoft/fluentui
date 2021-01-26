@@ -63,10 +63,8 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     // due to their large bundle size.
     switch (this.props.iconType) {
       case 'font':
-        // The explicit json-loader! import helps prevent this from being processed by TS
-        // (we want only webpack to handle it)
         const fontIcons = (await import('@uifabric/icons/lib/data/AllIconNames.json')) as IIconInfo[];
-        // There's also a metadata entry in this file which doesn't have a name
+        // There's a metadata entry in this file which doesn't have a name
         this.setState({ icons: fontIcons.filter(icon => !!icon.name) });
         break;
 
