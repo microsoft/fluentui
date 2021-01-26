@@ -2788,6 +2788,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
     // @deprecated
     errorSrc?: string;
     imageFit?: ImageFit;
+    loading?: 'lazy' | 'eager';
     maximizeFrame?: boolean;
     onLoadingStateChange?: (loadState: ImageLoadState) => void;
     shouldFadeIn?: boolean;
