@@ -259,12 +259,10 @@ const ignoreProjects = [
   '@fluentui/theme',
   '@fluentui/webpack-utilities',
 ];
+
 const projectsWithStartCommand = Object.entries(allPackages)
-  .reduce((acc, [pkg, info]) => {
-    if (info.packageJson.scripts && info.packageJson.scripts.start && info.packagePath.startsWith('packages')) {
-      acc.push({ title: pkg, value: { pkg, command: 'start' } });
-    }
-    return acc;
-  }, [])
-  .filter(n => n && !ignoreProjects.includes(n.title))
-  .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
+  .filter(
+    ([pkg, info]) =>
+      !ignoreProjects.includes(pkg) && info.packagePath.startsWith('packages') && !!info.packageJson.scripts?.start,
+  )
+  .map(([pkg, info]) => ({ title: pkg, value: { pkg, command: 'start' } }));
