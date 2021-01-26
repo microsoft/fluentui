@@ -6,7 +6,7 @@ const defaultAvatar = (
   <Avatar
     image={{
       src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
-      alt: 'Profile picture of Matt',
+      alt: 'Profile picture of Robert',
     }}
     status={{
       color: 'green',
@@ -26,7 +26,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Avatar
       image={{
         src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
-        alt: 'Profile picture of Matt',
+        alt: 'Profile picture of Robert',
       }}
       status={{
         color: 'green',
@@ -40,7 +40,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Avatar
       image={{
         src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
-        alt: 'Profile picture of Matt',
+        alt: 'Profile picture of Robert',
       }}
       size="larger"
       status={{
@@ -54,7 +54,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Avatar
       image={{
         src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
-        alt: 'Profile picture of Matt',
+        alt: 'Profile picture of Robert',
       }}
       status={{
         color: 'green',
@@ -68,7 +68,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     <Avatar
       image={{
         src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
-        alt: 'Profile picture of Matt',
+        alt: 'Profile picture of Robert',
       }}
       size="larger"
       status={{

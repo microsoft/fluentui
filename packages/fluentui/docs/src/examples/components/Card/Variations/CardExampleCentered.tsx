@@ -9,7 +9,7 @@ const CardExampleCentered = () => (
         <Avatar
           image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
           label="Copy bandwidth"
-          name="Evie yundt"
+          name="Robert Tolbert"
           status="unknown"
         />
         <Text content="Title goes here" weight="bold" />

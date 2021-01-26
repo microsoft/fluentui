@@ -1,7 +1,7 @@
 import { Dropdown, Flex } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];
+const inputItems = ['Robert Tolbert', 'Wanda Howard', 'Tim Deboer', 'Amanda Brady'];
 
 const DropdownExampleDisabled = () => {
   return (

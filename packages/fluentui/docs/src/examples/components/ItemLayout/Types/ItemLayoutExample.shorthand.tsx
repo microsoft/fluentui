@@ -10,7 +10,7 @@ const ItemLayoutExampleShorthand = () => {
       media={
         <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />
       }
-      header="Irving Kuhic"
+      header="Robert Tolbert"
       headerMedia="7:26:56 AM"
       content="Program the sensor to the SAS alarm through the haptic SQL card!"
       contentMedia="!!"

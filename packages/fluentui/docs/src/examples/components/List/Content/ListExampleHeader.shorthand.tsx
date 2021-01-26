@@ -2,9 +2,9 @@ import * as React from 'react';
 import { List } from '@fluentui/react-northstar';
 
 const items = [
-  { key: 'irving', header: 'Irving Kuhic' },
-  { key: 'skyler', header: 'Skyler Parks' },
-  { key: 'dante', header: 'Dante Schneider' },
+  { key: 'irving', header: 'Robert Tolbert' },
+  { key: 'skyler', header: 'Celeste Burton' },
+  { key: 'dante', header: 'Cecil Folk' },
 ];
 
 const ListExample = () => <List items={items} />;

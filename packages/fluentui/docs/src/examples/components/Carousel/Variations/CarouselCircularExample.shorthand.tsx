@@ -2,10 +2,10 @@ import * as React from 'react';
 import { Carousel, Image } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Ade',
-  elliot: 'Portrait of Elliot',
-  kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan',
+  ade: 'Portrait of Allan',
+  elliot: 'Portrait of Carole',
+  kristy: 'Portrait of Elvia',
+  nan: 'Portrait of Kat',
 };
 const carouselItems = [
   {

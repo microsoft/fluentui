@@ -8,7 +8,7 @@ const carouselItems = [
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
-        alt={'Portrait of Ade'}
+        alt={'Portrait of Allan'}
       />
     ),
   },
@@ -18,7 +18,7 @@ const carouselItems = [
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
-        alt={'Portrait of Elliot'}
+        alt={'Portrait of Carole'}
       />
     ),
   },
@@ -28,7 +28,7 @@ const carouselItems = [
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
         fluid
-        alt={'Portrait of Kristy'}
+        alt={'Portrait of Elvia'}
       />
     ),
   },
@@ -38,7 +38,7 @@ const carouselItems = [
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
-        alt={'Portrait of Nan'}
+        alt={'Portrait of Kat'}
       />
     ),
   },

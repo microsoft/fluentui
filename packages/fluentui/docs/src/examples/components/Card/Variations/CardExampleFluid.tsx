@@ -9,7 +9,7 @@ const CardExample = () => (
         <Avatar
           image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
           label="Copy bandwidth"
-          name="Evie yundt"
+          name="Robert Tolbert"
           status="unknown"
         />
         <Flex column>

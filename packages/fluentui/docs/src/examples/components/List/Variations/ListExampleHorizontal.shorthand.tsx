@@ -6,17 +6,17 @@ const items = [
   {
     key: 'irving',
     media: <Status state="error" icon={<ErrorIcon />} />,
-    header: 'Irving Kuhic',
+    header: 'Robert Tolbert',
   },
   {
     key: 'skyler',
     media: <Status state="success" icon={<AcceptIcon />} />,
-    header: 'Skyler Parks',
+    header: 'Celeste Burton',
   },
   {
     key: 'dante',
     media: <Status />,
-    header: 'Dante Schneider',
+    header: 'Cecil Folk',
   },
 ];
 

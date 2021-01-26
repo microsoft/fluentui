@@ -28,7 +28,7 @@ const items = [
   {
     key: 'irving',
     media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />,
-    header: 'Irving Kuhic - Super long title here',
+    header: 'Robert Tolbert - Software Engineer III',
     headerMedia: '7:26:56 AM',
     content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
     contentMedia: '!!',
@@ -37,7 +37,7 @@ const items = [
   {
     key: 'skyler',
     media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg" avatar />,
-    header: 'Skyler Parks - Super long title here',
+    header: 'Celeste Burton - Senior Program Manager',
     headerMedia: '11:30:17 PM',
     content: 'Use the online FTP application to input the multi-byte application!',
     contentMedia: '!!',
@@ -46,7 +46,7 @@ const items = [
   {
     key: 'dante',
     media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />,
-    header: 'Dante Schneider - Super long title here',
+    header: 'Cecil Folk - Senior Program Manager III',
     headerMedia: '5:22:40 PM',
     content: 'The GB pixel is down, navigate the virtual interface!',
     contentMedia: '!!',

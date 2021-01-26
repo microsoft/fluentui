@@ -2,17 +2,17 @@ import * as React from 'react';
 import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Ade',
-  elliot: 'Portrait of Elliot',
-  kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan',
+  ade: 'Portrait of Allan',
+  elliot: 'Portrait of Carole',
+  kristy: 'Portrait of Elvia',
+  nan: 'Portrait of Kat',
 };
 
 const tabAriaLabel = {
-  ade: 'Ade',
-  elliot: 'Elliot',
-  kristy: 'Kristy',
-  nan: 'Nan',
+  ade: 'Allan',
+  elliot: 'Carole',
+  kristy: 'Elvia',
+  nan: 'Kat',
 };
 
 const carouselTextContent = (

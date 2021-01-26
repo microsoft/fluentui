@@ -14,20 +14,20 @@ const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
 export const ImageAppearanceShape = () => (
   <Stack horizontal>
     <Image
-      alt="Ade's avatar"
+      alt="Allan's avatar"
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
       height={200}
       width={200}
     />
     <Image
-      alt="Chris's avatar"
+      alt="Amanda's avatar"
       rounded
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
       height={200}
       width={200}
     />
     <Image
-      alt="Laura's avatar"
+      alt="Erik's avatar"
       circular
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
       height={200}
@@ -40,20 +40,20 @@ export const ImageVariationsBorder = () => (
   <Stack horizontal>
     <Stack horizontal>
       <Image
-        alt="Ade's avatar"
+        alt="Allan's avatar"
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         height={200}
         width={200}
       />
       <Image
-        alt="Chris's avatar"
+        alt="Amanda's avatar"
         rounded
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
         height={200}
         width={200}
       />
       <Image
-        alt="Laura's avatar"
+        alt="Erik's avatar"
         circular
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
         height={200}
@@ -62,14 +62,14 @@ export const ImageVariationsBorder = () => (
     </Stack>
     <Stack horizontal>
       <Image
-        alt="Ade's avatar"
+        alt="Allan's avatar"
         bordered
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         height={200}
         width={200}
       />
       <Image
-        alt="Chris's avatar"
+        alt="Amanda's avatar"
         bordered
         rounded
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
@@ -77,7 +77,7 @@ export const ImageVariationsBorder = () => (
         width={200}
       />
       <Image
-        alt="Laura's avatar"
+        alt="Erik's avatar"
         bordered
         circular
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg"
@@ -91,7 +91,7 @@ export const ImageVariationsBorder = () => (
 export const ImageVariationsFallback = () => (
   <Stack horizontal>
     <Image
-      alt="Ade's avatar"
+      alt="Allan's avatar"
       bordered
       src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
       height={200}

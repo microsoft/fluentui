@@ -668,7 +668,7 @@ describe('Dropdown', () => {
     });
 
     it('jumps to the item starting with the keys tapped in rapid succession', () => {
-      const items = ['Albert', 'Alfred', 'Alena', 'Ali'];
+      const items = ['Robert', 'Wanda', 'Tim', 'Amanda'];
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         items,
         defaultOpen: true,
