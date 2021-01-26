@@ -58,6 +58,16 @@ With active state indication:
 
 ## Variants
 
+### Color
+
+The Avatar supports color variants when displaying initials or an icon:
+
+- **Neutral** - Gray (default)
+- **Brand** - Brand colors from the theme
+- **Colorful** - Pick from a list of pre-defined Avatar colors. The color will be assigned based on a hash of the name
+  (to "randomly" assign a person a color). The color index can also be specified explicitly in case the use case
+  requires a different algorithm to pick the color.
+
 ### Shape
 
 The Avatar natively supports a circular and square shape. However, some use cases require a hexagon shape (e.g. to represent a bot). The hexagon will not be supported directly, but it is possible to style the Avatar with a hexagon background by using `tokens`:
@@ -131,6 +141,25 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    * @defaultvalue ring
    */
   activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
+
+  /**
+   * The color scheme used by the Avatar when displaying either an icon or initials.
+   * * neutral (default): gray
+   * * brand: color from the brand palette
+   * * colorful: pick a color from a set of pre-defined colors, based on a hash of the name prop. If another method is
+   *     needed to assign colors to avatars, use the colorIndex prop.
+   *
+   * @defaultvalue neutral
+   */
+  colorScheme?: 'neutral' | 'brand' | 'colorful';
+
+  /**
+   * When colorScheme="colorful", this specifies which color in the list of avatar colors to use.
+   * If colorIndex is out of bounds of the colors list, it will wrap around.
+   *
+   * If colorIndex is unset (default), it will be calculated based on a hash of the name prop.
+   */
+  colorIndex?: number;
 
   /** Badge to show the avatar's status. */
   badge?: ShorthandValue<BadgeProps>;

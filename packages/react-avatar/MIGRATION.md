@@ -32,7 +32,7 @@ In cases where migration is possible, the following props will need to be rename
 - `presenceTitle` => NOT SUPPORTED - use the `badge` slot instead
 - `isOutOfOffice` => NOT SUPPORTED - use the `badge` slot instead
 - `showUnknownPersonaCoin` => NOT SUPPORTED - use the `icon` slot instead
-- `initialsColor` => _[TODO need to add prop for color; see https://github.com/microsoft/fluentui/issues/16628]_
+- `initialsColor` => Use `colorScheme="colorful"` and if needed set the `colorIndex` prop
 - `showInitialsUntilImageLoad` => NOT SUPPORTED (this is the normal behavior of Avatar)
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `imageShouldStartVisible` => NOT SUPPORTED
