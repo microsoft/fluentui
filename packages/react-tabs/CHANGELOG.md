@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jan 2021 12:33:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.35)
+
+Tue, 26 Jan 2021 12:33:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.33..@fluentui/react-tabs_v1.0.0-beta.35)
+
+### Changes
+
+- Remove doNotLayer from Pivot/Tabs overflow menu ([PR #16596](https://github.com/microsoft/fluentui/pull/16596) by behowell@microsoft.com)
 
 ## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.33)
 

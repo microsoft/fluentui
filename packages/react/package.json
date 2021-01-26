@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.0.0-beta.41",
+  "version": "8.0.0-beta.42",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -67,7 +67,7 @@
     "@fluentui/react-internal": "^8.0.0-beta.36",
     "@fluentui/react-link": "^1.0.0-beta.34",
     "@fluentui/react-slider": "^1.0.0-beta.34",
-    "@fluentui/react-tabs": "^1.0.0-beta.34",
+    "@fluentui/react-tabs": "^1.0.0-beta.35",
     "@fluentui/react-toggle": "^1.0.0-beta.34",
     "@fluentui/set-version": "^8.0.0-beta.0",
     "@fluentui/utilities": "^8.0.0-beta.9",
