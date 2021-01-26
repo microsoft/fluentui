@@ -15,8 +15,8 @@
 # Changelog
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-<!--------------------------------[ v0.52.0-beta ]------------------------------- -->
-## [v0.52.0-beta](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0-beta) (2021-01-19)
+<!--------------------------------[ v0.52.0 ]------------------------------- -->
+## [v0.52.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0) (2021-01-26)
 
 ## BREAKING CHANGES
 - `Form`: removed static properties: `Form.Field`, `Form.FieldCustom`, `Form.Label`, `Form.Message`, `Form.Input`, `Form.Checkbox`, `Form.Dropdown`, `Form.Button`, `Form.RadioGroup`, `Form.Slider`,`Form.Datepicker` @yuanboxue-amber ([#16546](https://github.com/microsoft/fluentui/pull/16546))
