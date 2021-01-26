@@ -25,8 +25,8 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.0",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
+    "@types/react": "16.8.42",
+    "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.11",
+    "@fluentui/style-utilities": "^8.0.0-beta.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
