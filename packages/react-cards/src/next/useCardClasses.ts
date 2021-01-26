@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { Theme } from '@fluentui/react-theme-provider';
+import { makeVariantClasses } from '@fluentui/react-theme-provider/lib/makeVariantClasses.compat';
 import { CardState, CardVariants } from './Card.types';
 
 const GlobalClassNames = {
