@@ -19,7 +19,7 @@ module.exports = isProduction => ({
       E2E_PORT: 8082,
       OFFICIALRELEASE: false,
       PERF: false,
-      PERFPORT: 8081,
+      PERF_PORT: 8081,
       PORT: 8080,
       SCREENER_API_KEY: '',
       SKIP_ERRORS: false,
