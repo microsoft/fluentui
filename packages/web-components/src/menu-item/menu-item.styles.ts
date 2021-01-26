@@ -24,7 +24,7 @@ export const MenuItemStyles = css`
         white-space: nowrap;
         overflow: hidden;
         color: ${neutralForegroundRestBehavior.var};
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: currentcolor;
         cursor: pointer;
         font-family: var(--body-font);
         font-size: var(--type-ramp-base-font-size);
@@ -54,7 +54,7 @@ export const MenuItemStyles = css`
     :host(.disabled:hover) .start,
     :host(.disabled:hover) .end,
     :host(.disabled:hover)::slotted(svg) {
-        fill: ${neutralForegroundRestBehavior.var};
+        fill: currentcolor;
     }
 
     .content {
@@ -114,7 +114,7 @@ export const MenuItemStyles = css`
                 border-color: ${SystemColors.ButtonText};
                 box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${SystemColors.HighlightText};
                 color: ${SystemColors.HighlightText};
-                fill: ${SystemColors.HighlightText};
+                fill: currentcolor;
             }
             :host(.disabled),
             :host(.disabled:hover),
@@ -123,7 +123,7 @@ export const MenuItemStyles = css`
             :host(.disabled:hover)::slotted(svg) {
                 background: ${SystemColors.Canvas};
                 color: ${SystemColors.GrayText};
-                fill: ${SystemColors.GrayText};
+                fill: currentcolor;
                 opacity: 1;
             }
         `,

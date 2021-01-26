@@ -7,7 +7,6 @@ interface IHeatMapChartBasicExampleState {
 }
 
 export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartBasicExampleState> {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(props: any) {
     super(props);
     this.state = {

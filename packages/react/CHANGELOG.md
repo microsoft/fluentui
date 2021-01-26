@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 31 Dec 2020 12:30:02 GMT and should not be manually modified.
+This log was last generated on Fri, 22 Jan 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.40)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.39..@fluentui/react_v8.0.0-beta.40)
+
+### Changes
+
+- Added generic type for IDropdownOption ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
+
+## [8.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.39)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.34..@fluentui/react_v8.0.0-beta.39)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.34)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.34)
+
+### Changes
+
+- Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu ([PR #16078](https://github.com/microsoft/fluentui/pull/16078) by marwankhalili@hotmail.com)
 
 ## [8.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.32)
 

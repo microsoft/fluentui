@@ -33,6 +33,7 @@ import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
 import FocusTrapZone from './views/FocusTrapZoneDoc';
 import AutoFocusZone from './views/AutoFocusZoneDoc';
+import PerformanceTests from './views/PerformanceTests';
 import ButtonNameComputation from './views/ButtonNameComputation';
 import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
@@ -61,6 +62,7 @@ import {
   TextAreaAutoSize,
   MenuList,
   VirtualizedStickyTreePrototype,
+  RosterPrototype,
 } from '@fluentui/react-northstar-prototypes';
 
 const ExternalExampleLayout = React.lazy(() =>
@@ -107,6 +109,8 @@ const Routes = () => (
                 <Route exact path="/quick-start" component={QuickStart} />
 
                 <Route exact path="/prototype-instruction-message" component={InstructionMessagePrototype} />
+                <Route exact path="/perf-tests" component={PerformanceTests} />
+                <Route exact path="/prototype-roster" component={RosterPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />

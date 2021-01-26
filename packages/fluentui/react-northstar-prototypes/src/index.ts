@@ -63,3 +63,4 @@ export const TextAreaAutoSize = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/TextAreaAutoSize'),
 );
 export const MenuList = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/MenuList'));
+export const RosterPrototype = React.lazy(() => import(/* webpackChunkName: "prototypes" */ './prototypes/Roster'));
