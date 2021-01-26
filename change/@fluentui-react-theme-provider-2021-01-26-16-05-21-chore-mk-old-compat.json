@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "chore: move previous version of makeStyles to compat",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-26T15:05:21.483Z"
+}
