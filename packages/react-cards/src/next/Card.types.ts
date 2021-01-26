@@ -38,7 +38,8 @@ export type CardProps = ComponentProps &
     /** A card can have inverted background styles. */
     inverted?: boolean;
 
-    /** A card can have ghost styles. */
+    /** A card can have quiet styles. */
+    // TODO: Is this the correct name? Appears as ghost in design spec.
     quiet?: boolean;
 
     /** A card can show that it is currently selected or not. */
