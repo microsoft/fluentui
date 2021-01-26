@@ -95,6 +95,7 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
       styles,
       componentRef,
       keytipProps,
+      underline,
       ...restProps
     } = props;
 
