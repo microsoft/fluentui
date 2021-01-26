@@ -17,8 +17,9 @@ const mergeProps = makeMergeProps({ deepMerge: {{camelCase componentName}}Shorth
 export const use{{componentName}} = (props: {{componentName}}Props, ref: React.Ref<HTMLElement>, defaultProps?: {{componentName}}Props) => {
   // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = useMergedRefs(ref, React.useRef<HTMLElement>(null));
+  const defaultRef = React.useRef<HTMLElement>(null);
+  const resolvedRef = ref || defaultRef;
+
   const state = mergeProps(
     {
       ref: resolvedRef,
