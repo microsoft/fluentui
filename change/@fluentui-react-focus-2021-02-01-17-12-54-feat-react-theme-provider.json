@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "move FocusZone to react-internal",
+  "packageName": "@fluentui/react-focus",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-01T16:11:58.171Z"
+}

@@ -1,3 +1,3 @@
 import './version';
 
-export * from './components/FocusZone/index';
+export * from '@fluentui/react-internal/lib/components/FocusZone/index';

@@ -11,8 +11,6 @@ import { IComponentAs } from '@fluentui/utilities';
 import { IComponentStyles } from '@fluentui/foundation-legacy';
 import { ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
-import { IFocusZone } from '@fluentui/react-focus';
-import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@fluentui/style-utilities';
 import { IHTMLSlot } from '@fluentui/foundation-legacy';
 import { IObjectWithKey } from '@fluentui/utilities';
@@ -783,6 +781,44 @@ export const FocusTrapCallout: React.FunctionComponent<IFocusTrapCalloutProps>;
 export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     focusStack: string[];
 };
+
+// @public (undocumented)
+export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
+    constructor(props: IFocusZoneProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: IFocusZoneProps;
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(element: HTMLElement, forceAlignment?: boolean): boolean;
+    focusLast(): boolean;
+    static getOuterZones(): number;
+    // (undocumented)
+    render(): React.ReactNode;
+    setFocusAlignment(point: Point): void;
+    }
+
+// @public (undocumented)
+export enum FocusZoneDirection {
+    bidirectional = 2,
+    domOrder = 3,
+    horizontal = 1,
+    vertical = 0
+}
+
+// @public (undocumented)
+export const FocusZoneTabbableElements: {
+    none: 0;
+    all: 1;
+    inputOnly: 2;
+};
+
+// @public (undocumented)
+export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
 // @public
 export const FontIcon: React.FunctionComponent<IFontIconProps>;
@@ -2695,6 +2731,63 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
+}
+
+// @public
+export interface IFocusZone {
+    focus(forceIntoFirstElement?: boolean): boolean;
+    focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
+    focusLast(): boolean;
+    setFocusAlignment(point: Point): void;
+}
+
+// @public
+export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
+    allowFocusRoot?: boolean;
+    // @deprecated
+    allowTabKey?: boolean;
+    // @deprecated
+    ariaDescribedBy?: string;
+    // @deprecated
+    ariaLabelledBy?: string;
+    as?: React.ElementType;
+    checkForNoWrap?: boolean;
+    className?: string;
+    componentRef?: IRefObject<IFocusZone>;
+    // @deprecated
+    defaultActiveElement?: string;
+    defaultTabbableElement?: string | ((root: HTMLElement) => HTMLElement);
+    direction?: FocusZoneDirection;
+    disabled?: boolean;
+    // @deprecated
+    doNotAllowFocusEventToPropagate?: boolean;
+    // @deprecated
+    elementRef?: React.Ref<HTMLElement>;
+    // @deprecated
+    elementType?: any;
+    handleTabKey?: FocusZoneTabbableElements;
+    isCircularNavigation?: boolean;
+    // @deprecated
+    isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
+    // @deprecated
+    onBeforeFocus?: (childElement?: HTMLElement) => boolean;
+    onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+    // @deprecated
+    onFocusNotification?: () => void;
+    pagingSupportDisabled?: boolean;
+    preventDefaultWhenHandled?: boolean;
+    preventFocusRestoration?: boolean;
+    // @deprecated (undocumented)
+    rootProps?: React.HTMLAttributes<HTMLDivElement>;
+    shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
+    shouldFocusInnerElementWhenReceivedFocus?: boolean;
+    shouldFocusOnMount?: boolean;
+    shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
+    shouldRaiseClicks?: boolean;
+    shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
+    shouldResetActiveElementWhenTabFromZone?: boolean;
+    stopFocusPropagation?: boolean;
 }
 
 // @public
@@ -7561,7 +7654,6 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 
 export * from "@fluentui/font-icons-mdl2";
-export * from "@fluentui/react-focus";
 export * from "@fluentui/react-window-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";

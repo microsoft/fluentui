@@ -6,7 +6,6 @@
 
 import { IBaseProps } from '@fluentui/utilities';
 import { IComponentAs } from '@fluentui/utilities';
-import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IRectangle } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';

@@ -28,8 +28,10 @@ import {
   createMergedRef,
 } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/merge-styles';
-import { ThemeContext, Theme } from '@fluentui/react-theme-provider';
+import { Theme } from '@fluentui/theme';
 import { getTheme } from '@fluentui/style-utilities';
+
+import { ThemeContext } from '../../utilities/ThemeProvider';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
