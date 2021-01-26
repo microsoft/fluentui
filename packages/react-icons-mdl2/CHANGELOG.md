@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Sat, 23 Jan 2021 05:20:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.11)
+
+Sat, 23 Jan 2021 05:20:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.10..@fluentui/react-icons-mdl2_v1.0.0-beta.11)
+
+### Changes
+
+- remove branded icons from react-icons-mdl2 ([PR #15691](https://github.com/microsoft/fluentui/pull/15691) by ololubek@microsoft.com)
 
 ## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.10)
 

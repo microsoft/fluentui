@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Sat, 23 Jan 2021 05:20:07 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.11",
+      "version": "1.0.0-beta.11",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove branded icons from react-icons-mdl2",
+            "author": "ololubek@microsoft.com",
+            "commit": "136867b2a972823b6ef979bf712f426210c2af08",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.10",
       "version": "1.0.0-beta.10",

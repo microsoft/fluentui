@@ -15,10 +15,6 @@ storiesOf('SplitButton', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -27,6 +23,11 @@ storiesOf('SplitButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('.ms-SplitButton-button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-SplitButton-button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
@@ -90,11 +91,11 @@ storiesOf('SplitButton Next - Block', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-SplitButton-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-SplitButton-button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
@@ -148,10 +149,6 @@ storiesOf('SplitButton Next - Teams Theme', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -160,6 +157,11 @@ storiesOf('SplitButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('.ms-SplitButton-button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-SplitButton-button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
