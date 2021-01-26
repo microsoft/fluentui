@@ -2,6 +2,29 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 26 Jan 2021 12:33:19 GMT",
+      "tag": "@fluentui/web-components_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: change accordion item region to display block",
+            "author": "jes@microsoft.com",
+            "commit": "8abb40a4be05e733274a3917b4ae8ad61f90123d",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "set margin on separator slot",
+            "author": "khamu@microsoft.com",
+            "commit": "493869ffb80d5686c3971f092723912f72295ee6",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/web-components_v0.10.6",
       "version": "0.10.6",

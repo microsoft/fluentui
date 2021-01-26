@@ -20,7 +20,7 @@ function useGetItemById(flatTree: FlatTree): GetItemById {
   // We are assigning a callback during render as it can be used during render and in event handlers. In dev mode we
   // are freezing objects to prevent their mutations
   callbackRef.current = itemId =>
-    process.env.NODE === 'production' ? flatTree[itemId] : Object.freeze(flatTree[itemId]);
+    process.env.NODE_ENV === 'production' ? flatTree[itemId] : Object.freeze(flatTree[itemId]);
 
   return React.useCallback<GetItemById>((...args) => {
     return callbackRef.current(...args);

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: change accordion item region to display block",
-  "packageName": "@fluentui/web-components",
-  "email": "jes@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-21T18:24:48.511Z"
-}
