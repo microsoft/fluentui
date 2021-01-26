@@ -15,7 +15,7 @@ export const LinkBasicExample: React.FunctionComponent = () => {
           the link is rendered as a button
         </Link>
         . You can also use the disabled attribute to create a{' '}
-        <Link disabled={true} href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link" underline>
+        <Link disabled href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link" underline>
           disabled link.
         </Link>
       </Text>
