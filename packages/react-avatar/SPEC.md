@@ -122,10 +122,6 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /** Icon displayed when there's no image or intials available, or if `display="icon"`. */
   icon?: ShorthandValue<{}>;
 
-  /** What the avatar displays. This can be used to override the default behavior, for example to show the icon even
-   *  if the avatar has initials that could be shown as the label. */
-  display?: 'image' | 'label' | 'icon';
-
   /**
    * Optional activity indicator
    * * active: the avatar will be decorated according to activeDisplay
@@ -143,7 +139,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
   /**
-   * The color scheme used by the Avatar when displaying either an icon or initials.
+   * The color when displaying either an icon or initials.
    * * neutral (default): gray
    * * brand: color from the brand palette
    * * colorful: pick a color from a set of pre-defined colors, based on a hash of the name prop. If another method is
@@ -151,10 +147,10 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    *
    * @defaultvalue neutral
    */
-  colorScheme?: 'neutral' | 'brand' | 'colorful';
+  colorType?: 'neutral' | 'brand' | 'colorful';
 
   /**
-   * When colorScheme="colorful", this specifies which color in the list of avatar colors to use.
+   * When colorType="colorful", specifies which color in the list of avatar colors to use.
    * If colorIndex is out of bounds of the colors list, it will wrap around.
    *
    * If colorIndex is unset (default), it will be calculated based on a hash of the name prop.
