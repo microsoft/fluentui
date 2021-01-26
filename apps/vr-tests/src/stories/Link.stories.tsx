@@ -52,4 +52,14 @@ storiesOf('Link', module)
     <Link disabled styles={{ root: { fontSize: '14px' } }}>
       I'm rendered as a button because I have no href and am disabled
     </Link>
+  ))
+  .addStory('Underlined', () => (
+    <Link underline styles={{ root: { fontSize: '14px' } }}>
+      I'm rendered as a button because I have no href
+    </Link>
+  ))
+  .addStory('Underlined Disabled', () => (
+    <Link disabled underline styles={{ root: { fontSize: '14px' } }}>
+      I'm rendered as a button because I have no href and am disabled
+    </Link>
   ));

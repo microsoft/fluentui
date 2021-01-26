@@ -5708,6 +5708,7 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
+    underline?: boolean;
 }
 
 // @public (undocumented)
@@ -5718,6 +5719,8 @@ export interface ILinkStyleProps {
     isButton?: boolean;
     // (undocumented)
     isDisabled?: boolean;
+    // (undocumented)
+    isUnderlined?: boolean;
     // (undocumented)
     theme: ITheme;
 }

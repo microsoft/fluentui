@@ -41,12 +41,13 @@ export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
   }
 
   private _renderContent = (keytipAttributes: any = {}): JSX.Element => {
-    const { disabled, children, className, href, theme, styles } = this.props;
+    const { disabled, children, className, href, underline, theme, styles } = this.props;
 
     const classNames = getClassNames(styles!, {
       className,
       isButton: !href,
       isDisabled: disabled,
+      isUnderlined: underline,
       theme: theme!,
     });
 

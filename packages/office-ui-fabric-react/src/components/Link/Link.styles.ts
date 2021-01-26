@@ -6,7 +6,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
-  const { className, isButton, isDisabled, theme } = props;
+  const { className, isButton, isDisabled, isUnderlined, theme } = props;
   const { semanticColors } = theme;
 
   // Tokens
@@ -26,7 +26,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         outline: 'none',
         fontSize: 'inherit',
         fontWeight: 'inherit',
-        textDecoration: 'none',
+        textDecoration: isUnderlined ? 'underline' : 'none',
 
         selectors: {
           '.ms-Fabric--isFocusVisible &:focus': {
