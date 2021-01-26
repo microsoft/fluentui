@@ -31,11 +31,9 @@ const MarkdownBase: React.FunctionComponent<IMarkdownProps> = props => {
   const { styles, theme, children } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 
-  const content = (children as { default: React.ReactNode }).default ?? children;
-
   return (
     <div className={classNames.root}>
-      <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles, props)}>{content}</MarkdownToJsx>
+      <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles, props)}>{children}</MarkdownToJsx>
     </div>
   );
 };
