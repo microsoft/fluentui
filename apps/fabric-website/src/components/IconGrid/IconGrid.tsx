@@ -108,6 +108,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
         return (
           <li key={icon.name} title={icon.name} aria-label={icon.name + ' icon'}>
             <Icon iconName={icon.name} />
+            <span className={styles.iconName}>{icon.name}</span>
           </li>
         );
       case 'svg':
@@ -115,6 +116,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
         return (
           <li key={icon.name} title={icon.name} aria-label={icon.name + ' icon'}>
             <IconComponent />
+            <span className={styles.iconName}>{icon.name}</span>
           </li>
         );
       case 'core':
@@ -128,6 +130,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
         return (
           <li key={icon.name} aria-label={icon.name + ' icon'}>
             <i ref={iconRef} className={iconClassName} title={icon.name} aria-hidden="true" />
+            <span className={styles.iconName}>{icon.name}</span>
           </li>
         );
     }
