@@ -6,7 +6,7 @@
  * @typedef {import("webpack").Entry} WebpackEntry
  * @typedef {import("webpack").Module} WebpackModule
  */
-
+/** */
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
