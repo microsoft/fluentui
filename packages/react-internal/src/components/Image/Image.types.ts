@@ -77,7 +77,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
   /**
    * Allows for browser-level image lazy-loading.
    */
-  loading?: 'auto' | 'lazy' | 'eager';
+  loading?: 'lazy' | 'eager';
 }
 
 /**
