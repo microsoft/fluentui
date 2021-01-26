@@ -52,8 +52,8 @@ Displaying a badge (\*\*subject to change pending final spec for the `Badge` com
 With active state indication:
 
 ```jsx
-<Avatar name="Daisy Phillips" active={true} activeDisplay="ring-shadow" />
-<Avatar name="Robin Counts" active={false} activeDisplay="ring-shadow" />
+<Avatar name="Daisy Phillips" active="active" activeDisplay="ring-shadow" />
+<Avatar name="Robin Counts" active="inactive" />
 ```
 
 ## Variants
@@ -117,14 +117,16 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 
   /**
    * Optional activity indicator
-   * * true: the avatar will be decorated according to activeDisplay
-   * * false: the avatar will be reduced in size and partially transparent
-   * * undefined (default): normal display
+   * * active: the avatar will be decorated according to activeDisplay
+   * * inactive: the avatar will be reduced in size and partially transparent
+   * * unset: normal display
+   *
+   * @defaultvalue unset
    */
-  active?: boolean;
+  active?: 'active' | 'inactive' | 'unset';
 
   /**
-   * The type of visual treatment to use when `active="true"`
+   * The type of visual treatment to use when `active="active"`
    * @defaultvalue ring
    */
   activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
@@ -206,16 +208,16 @@ export type AvatarTokenSet = {
   /** Font size used by the icon */
   iconSize?: string;
 
-  /** Color of the ring when active=true and activeDisplay includes 'ring' */
+  /** Color of the ring when active="active" and activeDisplay includes 'ring' */
   activeRingColor?: string;
 
-  /** Color of the glow when active=true and activeDisplay includes 'glow' */
+  /** Color of the glow when active="active" and activeDisplay includes 'glow' */
   activeGlowColor?: string;
 
-  /** Opacity of the avatar when active=false */
+  /** Opacity of the avatar when active="inactive" */
   inactiveOpacity?: string;
 
-  /** Scale transform applied to the avatar when active=false */
+  /** Scale transform applied to the avatar when active="inactive" */
   inactiveScale?: string;
 };
 ```
