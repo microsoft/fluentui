@@ -22,6 +22,7 @@ export function makeStyles<Selectors, Tokens>(
     // let tokens: Tokens | null;
     // let resolvedDefinitions: MakeStylesResolvedDefinition<Selectors, Tokens>[];
     //
+    // This requires a build step which is currently WIP
     // if (process.env.NODE_ENV === 'production') {
     //   tokens = CAN_USE_CSS_VARIABLES ? null : options.tokens;
     //   resolvedDefinitions = CAN_USE_CSS_VARIABLES
