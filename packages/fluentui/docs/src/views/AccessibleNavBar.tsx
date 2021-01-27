@@ -124,7 +124,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           be narrated.
         </li>
         <li>
-          The role used for navigation bar items should allow the use of the aria-gselected attribute to indicate if the
+          The role used for navigation bar items should allow the use of the aria-selected attribute to indicate if the
           navigation bar item is selected.
         </li>
         <li>
@@ -141,7 +141,6 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h3>General notes</h3>
       <ul>
-        <li>The number of new items is not present on the buttons. It should be a part of the window title instead.</li>
         <li>
           The instruction message is narrated using aN aria-live element. The drawback of this solution is that the
           narration is queued, so if user tabs out and in to the navigation bar several times, the hint will be spoken
@@ -348,7 +347,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>
-          When entering the navagation bar content, the position and size is announced, which is not desired, especially
+          When entering the navigation bar content, the position and size is announced, which is not desired, especially
           because with JAWS and NVDA it's narrated before the navigation bar item. So to make the narration less
           verbose, this variant is rejected.
         </li>
