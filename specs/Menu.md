@@ -1051,6 +1051,23 @@ Although this should not be recommended, for the purposes of compatibility with 
 
 Accessibility behaviour is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
 
+## Migration
+
+The immediate candidates for adoption for a converged `Menu` component which are hinted at the beginning of the spec are:
+
+- [ContextualMenu](https://developer.microsoft.com/en-us/fluentui#/controls/web/contextualmenu) for v7
+- [Menu](https://fluentsite.z22.web.core.windows.net/0.52.0/components/menu/definition) for v0
+
+This component has characteristics that should probably be considered for the following components in terms of future migrations:
+
+- [Toolbar](https://fluentsite.z22.web.core.windows.net/0.52.0/components/toolbar/definition) in v0 which shares a menu component. The component itself also should use similar behaviour and interactions to `Menu`
+- [Dropdown](https://fluentsite.z22.web.core.windows.net/0.52.0/components/dropdown/definition) in v0 contains a menu. Dropdown semantics are different to that of standard menus in accessibility, but certain behaviours such as keyboard navigation and selection can be reused for such a component
+- [CommandBar](https://developer.microsoft.com/en-us/fluentui#/controls/web/commandbar) in v7 also contains a menu subcomponent as well as behaviour similar to `Menu` semantics
+- [Nav](https://developer.microsoft.com/en-us/fluentui#/controls/web/nav) in v7 could reuse certain behaviours in `Menu` such as keyboard navigation, but will use different DOM and aria semantics, this could be achieved through state hook variants or composition
+- [OverflowSet](https://developer.microsoft.com/en-us/fluentui#/controls/web/overflowset) in v7 contains a submenu component
+- [PivotSet](https://developer.microsoft.com/en-us/fluentui#/controls/web/pivot) could be considered as a component variant of `Menu`
+- [Breadcrumb](https://developer.microsoft.com/en-us/fluentui#/controls/web/breadcrumb) in v7 contains a submenu component and could also be considered as a component variant of `Menu
+
 ### Creating sections or groups within a menu
 
 ⚠️ When using [MenuDivider](#menudivider) without [MenuGroup](#menugroup)
