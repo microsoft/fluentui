@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Jan 2021 12:25:15 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jan 2021 12:24:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.157.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.157.1)
+
+Wed, 27 Jan 2021 12:24:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.157.0..office-ui-fabric-react_v7.157.1)
+
+### Patches
+
+- Selected footers in the FloatingPicker should have highlighting in high contrast mode ([PR #16618](https://github.com/microsoft/fluentui/pull/16618) by elvonspa@microsoft.com)
+- Add missing styles for disabled buttons ([PR #16645](https://github.com/microsoft/fluentui/pull/16645) by andredias@microsoft.com)
 
 ## [7.157.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.157.0)
 

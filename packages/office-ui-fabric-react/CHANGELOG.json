@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 27 Jan 2021 12:24:03 GMT",
+      "tag": "office-ui-fabric-react_v7.157.1",
+      "version": "7.157.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selected footers in the FloatingPicker should have highlighting in high contrast mode",
+            "author": "elvonspa@microsoft.com",
+            "commit": "8cf4e212432ffe6b061615fd0793d363bee3e8a2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "e79e6796a549b035dac99a6c29526f9da58b351d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jan 2021 12:25:15 GMT",
       "tag": "office-ui-fabric-react_v7.157.0",
       "version": "7.157.0",

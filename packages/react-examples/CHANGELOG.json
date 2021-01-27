@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 27 Jan 2021 12:24:03 GMT",
+      "tag": "@fluentui/react-examples_v0.11.14",
+      "version": "0.11.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(react v7): Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "e79e6796a549b035dac99a6c29526f9da58b351d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jan 2021 12:25:15 GMT",
       "tag": "@fluentui/react-examples_v0.11.13",
       "version": "0.11.13",
