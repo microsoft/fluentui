@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jan 2021 12:30:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.43)
+
+Wed, 27 Jan 2021 12:30:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.39..@fluentui/react-charting_v5.0.0-beta.43)
+
+### Changes
+
+- LineChart fixes backported from v7 branch ([PR #16634](https://github.com/microsoft/fluentui/pull/16634) by jakubkonka@microsoft.com)
 
 ## [5.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.39)
 

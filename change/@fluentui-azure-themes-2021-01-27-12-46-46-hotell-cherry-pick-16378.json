@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Icon button & disabled textbox style fix. Callout, messagebar and teachingbubble style updates. Azure theme fix: MessageBar, Callout and TeachingBubble (#16337). dark mode themes are now correctly set as inverted",
+  "packageName": "@fluentui/azure-themes",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-27T11:46:46.661Z"
+}
