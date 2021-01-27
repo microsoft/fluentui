@@ -27,6 +27,7 @@ describe('safeRequestAnimationFrame', () => {
   });
 
   afterEach(() => {
+    jest.runOnlyPendingTimers();
     jest.useRealTimers();
   });
 
@@ -35,7 +36,7 @@ describe('safeRequestAnimationFrame', () => {
 
     expect(rafCalled).toEqual(false);
 
-    jest.runTimersToTime(100);
+    jest.runOnlyPendingTimers();
 
     expect(rafCalled).toEqual(true);
   });
@@ -47,7 +48,7 @@ describe('safeRequestAnimationFrame', () => {
 
     wrapper.unmount();
 
-    jest.runTimersToTime(100);
+    jest.runOnlyPendingTimers();
 
     expect(rafCalled).toEqual(false);
   });
