@@ -278,12 +278,12 @@ See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/re
 
 ### States
 
-- **Display** - The Avatar will respect the `display` property to pick what content to show, if specified. Otherwise, it'll use the following priority:
+- **Display** - The Avatar will use the following priority:
 
-  - The `image` property.
-  - If no image is available (or it can't be loaded), then it will display initials derived from the `name` property.
-  - If no initials are available, display the provided `icon`.
-  - If no icon is provided, the default "person" icon will be used.
+  - The `image` property, if provided.
+  - The `icon` property, if provided.
+  - Initials derived from the `name` property (this is also displayed while the image is loading).
+  - If no `image`, `icon`, or `name` is provided, the default "person" icon will be used.
 
 - **Active** - The `active` property affects the display of the avatar if set. There will be an animation when switching between active and inactive.
   - `unset` - Display at normal size/opacity.
