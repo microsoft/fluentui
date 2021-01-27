@@ -17,7 +17,7 @@ export const formTextAreaClassName = 'ui-form__textarea';
  * An FormTextArea renders a TextArea wrapped by FormField.
  */
 export const FormTextArea = compose<
-  'input',
+  'textarea',
   FormTextAreaProps,
   FormTextAreaStylesProps,
   SelectedFormFieldCustomProps,
