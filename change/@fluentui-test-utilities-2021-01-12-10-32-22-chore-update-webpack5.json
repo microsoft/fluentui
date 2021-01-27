@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+  "packageName": "@fluentui/test-utilities",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-12T18:32:20.692Z"
+}

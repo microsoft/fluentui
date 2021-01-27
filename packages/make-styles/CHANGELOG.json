@@ -2,6 +2,21 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Wed, 27 Jan 2021 12:30:41 GMT",
+      "tag": "@fluentui/make-styles_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "chore: disable a requirement of prebuilt styles for production builds",
+            "author": "olfedias@microsoft.com",
+            "commit": "dcd96f10a477e62b93ba44d31549b36617f983bc",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Dec 2020 12:28:34 GMT",
       "tag": "@fluentui/make-styles_v0.3.0",
       "version": "0.3.0",

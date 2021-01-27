@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 27 Jan 2021 12:30:41 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.43",
+      "version": "5.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "LineChart fixes backported from v7 branch",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "540e928dec12666f9d13d30d1ab9000b77b33a14",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.39",
       "version": "5.0.0-beta.39",

@@ -8,8 +8,8 @@ import {
 import { VirtualizedListBasicExample } from './VirtualizedList.Basic.Example';
 import { VirtualizedListBasicExample2 } from './VirtualizedList.Basic2.Example';
 
-const VirtualizedListBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic.Example.tsx') as string;
-const VirtualizedListBasicExample2Code = require('!raw-loader!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic2.Example.tsx') as string;
+const VirtualizedListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic.Example.tsx') as string;
+const VirtualizedListBasicExample2Code = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/VirtualizedList/VirtualizedList.Basic2.Example.tsx') as string;
 
 export class VirtualizedListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -33,7 +33,7 @@ export class VirtualizedListPage extends React.Component<IComponentDemoPageProps
             sources={[
               require<
                 string
-              >('!raw-loader!@fluentui/react-experiments/src/components/VirtualizedList/VirtualizedList.types.ts'),
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/VirtualizedList/VirtualizedList.types.ts'),
             ]}
           />
         }
