@@ -212,6 +212,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         [HighContrastSelector]: {
           borderColor: 'WindowText',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       indeterminate && {
@@ -273,6 +274,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'WindowText',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       !reversed

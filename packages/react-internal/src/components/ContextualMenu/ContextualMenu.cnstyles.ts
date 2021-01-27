@@ -80,6 +80,7 @@ export const getMenuItemStyles = memoizeFunction(
             color: 'GrayText',
             opacity: 1,
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
