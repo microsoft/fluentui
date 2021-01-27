@@ -6,7 +6,7 @@ This Migration guide is a work in progress and is not yet ready for use.
 
 ## Migration from v8
 
-The existing `Persona` control supports many more props than the proposed `Avatar` control: notably the extra display text to the side of the image. As such, Avatar is only a direct replacement for Persona in cases where it was only being used to display the image (`hidePersonaDetails` is true). There is a plan to create a wrapper component EntityLayout (final name TBD) that supports placing text next to an Avatar, which is still being designed.
+The existing `Persona` control supports many more props than the `Avatar` control: notably the extra display text to the side of the image. As such, Avatar is only a direct replacement for Persona in cases where it was only being used to display the image (`hidePersonaDetails` is true). There is a plan to create a wrapper component EntityLayout (final name TBD) that supports placing text next to an Avatar, which is still being designed.
 
 In cases where migration is possible, the following props will need to be renamed:
 
@@ -27,13 +27,13 @@ In cases where migration is possible, the following props will need to be rename
 - `imageUrl` => `image`
 - `imageAlt` => Set `alt` on the `image` slot
 - `imageInitials` => `label` (or remove and have it calculated from `name`)
-- `presence` => NOT SUPPORTED - use the `badge` slot instead
-- `presenceColors` => NOT SUPPORTED - use the `badge` slot instead
-- `presenceTitle` => NOT SUPPORTED - use the `badge` slot instead
-- `isOutOfOffice` => NOT SUPPORTED - use the `badge` slot instead
-- `showUnknownPersonaCoin` => NOT SUPPORTED - use the `icon` slot instead
+- `presence` => Use the `Badge` component
+- `presenceColors` => Use the `Badge` component
+- `presenceTitle` => Use the `Badge` component
+- `isOutOfOffice` => Use the `Badge` component
+- `showUnknownPersonaCoin` => NOT SUPPORTED - Set the `icon` prop to an appropriate icon
 - `initialsColor` => Use `colorScheme="colorful"` and if needed set the `colorIndex` prop
-- `showInitialsUntilImageLoad` => NOT SUPPORTED (this is the normal behavior of Avatar)
+- `showInitialsUntilImageLoad` => (This is the normal behavior of Avatar)
 - `imageShouldFadeIn` => NOT SUPPORTED
 - `imageShouldStartVisible` => NOT SUPPORTED
 - `onPhotoLoadingStateChange` => NOT SUPPORTED
@@ -71,17 +71,16 @@ The v0 Avatar maps more closely to the converged Avatar.
 | presenceColors             | -                | -                  |
 | presenceTitle              | -                | -                  |
 | -                          | icon (slot)      | icon (slot)        |
-| -                          | -                | display            |
 | showUnknownPersonaCoin     | -                | -                  |
 | className                  | className        | className          |
 | -                          | square           | square             |
 | -                          | -                | active             |
 | -                          | -                | activeDisplay      |
-| -                          | styles           | tokens             |
-| -                          | as               | as                 |
+| -                          | styles           | (tokens)           |
 | -                          | variables        | (tokens)           |
 | -                          | design           | (tokens)           |
 | -                          | accessibility    | -                  |
+| -                          | as               | as                 |
 | secondaryText              | -                | -                  |
 | showSecondaryText          | -                | -                  |
 | tertiaryText               | -                | -                  |
