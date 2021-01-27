@@ -120,7 +120,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Requirements</h3>
       <ul>
         <li>
-          When the navigation bar content is entered, the instrukction message "To navigate use the arrow keys" should
+          When the navigation bar content is entered, the instruction message "To navigate use the arrow keys" should
           be narrated.
         </li>
         <li>
@@ -236,6 +236,70 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
+      <h2>&lt;li&gt; items</h2>
+      <ul onFocus={handleFocus} onBlur={handleBlur}>
+        <li>
+          <button className="item" tabIndex={0}>
+            Activities
+          </button>
+        </li>
+        <li>
+          <button className="item" tabIndex={-1}>
+            Chats
+          </button>
+        </li>
+        <li>
+          <button className="item" tabIndex={-1}>
+            Teams
+          </button>
+        </li>
+        <li>
+          <button className="item" tabIndex={-1}>
+            Calendar
+          </button>
+        </li>
+      </ul>
+      <h3>Notes</h3>
+      <ul>
+        <li>
+          When entering the navigation bar content, the position and size is announced, which is not desired, especially
+          because with JAWS and NVDA it's narrated before the navigation bar item. So to make the narration less
+          verbose, this variant is rejected.
+        </li>
+      </ul>
+
+      <h2>&lt;nav&gt; landmark</h2>
+      <nav aria-label="bar" onFocus={handleFocus} onBlur={handleBlur}>
+        <button className="item" tabIndex={0}>
+          Activities
+        </button>
+        <button className="item" tabIndex={-1}>
+          Chats
+        </button>
+        <button className="item" tabIndex={-1}>
+          Teams
+        </button>
+        <button className="item" tabIndex={-1}>
+          Calendar
+        </button>
+      </nav>
+
+      <h2>role="region"</h2>
+      <div role="region" aria-label="navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
+        <button className="item" tabIndex={0}>
+          Activities
+        </button>
+        <button className="item" tabIndex={-1}>
+          Chats
+        </button>
+        <button className="item" tabIndex={-1}>
+          Teams
+        </button>
+        <button className="item" tabIndex={-1}>
+          Calendar
+        </button>
+      </div>
+
       <h2>aria-label only</h2>
       <div aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0}>
@@ -285,73 +349,9 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           When entering the navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating
           the label but before narrating the navigation bar item.
         </li>
-        <li>This variant looks like the best solution.</li>
+        <li>This variant is accepted as  the best solution.</li>
       </ul>
 
-      <h2>&lt;li&gt; items</h2>
-      <ul onFocus={handleFocus} onBlur={handleBlur}>
-        <li>
-          <button className="item" tabIndex={0}>
-            Activities
-          </button>
-        </li>
-        <li>
-          <button className="item" tabIndex={-1}>
-            Chats
-          </button>
-        </li>
-        <li>
-          <button className="item" tabIndex={-1}>
-            Teams
-          </button>
-        </li>
-        <li>
-          <button className="item" tabIndex={-1}>
-            Calendar
-          </button>
-        </li>
-      </ul>
-
-      <h2>using "nav" tag </h2>
-      <nav aria-label="bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
-          Activities
-        </button>
-        <button className="item" tabIndex={-1}>
-          Chats
-        </button>
-        <button className="item" tabIndex={-1}>
-          Teams
-        </button>
-        <button className="item" tabIndex={-1}>
-          Calendar
-        </button>
-      </nav>
-
-      <h2>using "role" region </h2>
-      <div role="region" aria-label="navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
-          Activities
-        </button>
-        <button className="item" tabIndex={-1}>
-          Chats
-        </button>
-        <button className="item" tabIndex={-1}>
-          Teams
-        </button>
-        <button className="item" tabIndex={-1}>
-          Calendar
-        </button>
-      </div>
-
-      <h3>Notes</h3>
-      <ul>
-        <li>
-          When entering the navigation bar content, the position and size is announced, which is not desired, especially
-          because with JAWS and NVDA it's narrated before the navigation bar item. So to make the narration less
-          verbose, this variant is rejected.
-        </li>
-      </ul>
     </>
   );
 }; // End AccessibleNavBar
