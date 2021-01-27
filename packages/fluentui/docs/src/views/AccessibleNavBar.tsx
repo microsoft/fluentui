@@ -270,7 +270,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       </ul>
 
       <h2>&lt;nav&gt; landmark</h2>
-      <nav aria-label="bar" onFocus={handleFocus} onBlur={handleBlur}>
+      <nav aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0}>
           Activities
         </button>
@@ -284,6 +284,13 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           Calendar
         </button>
       </nav>
+
+      <h3>Notes</h3>
+      <ul>
+        <li>When entering the navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation landmark" after narrating the label but before narrating the focused navigation bar item.</li>
+        <li>Narrator does not read this landmark in any way, it just reads its aria-label.</li>
+        <li>Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.</li>
+      </ul>
 
       <h2>role="region"</h2>
       <div role="region" aria-label="navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
@@ -300,6 +307,13 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           Calendar
         </button>
       </div>
+
+      <h3>Notes</h3>
+      <ul>
+        <li>When entering the navigation bar content, both JAWS and NVDA announce "region after narrating the label but before narrating the focused navigation bar item.</li>
+        <li>JAWS in  the virtual cursor mode behaves as if the "region" role was not present on the navigation bar elemente.</li>
+        <li>Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.</li>
+      </ul>
 
       <h2>aria-label only</h2>
       <div aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
