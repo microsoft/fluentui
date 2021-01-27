@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "add forcedcolors support",
+  "packageName": "@fluentui/react-slider",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-27T19:55:31.507Z"
+}
