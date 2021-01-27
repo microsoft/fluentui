@@ -30,13 +30,16 @@ export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, Te
 
     ...(p.disabled && {
       pointerEvents: 'none',
-      backgroundColor: v.disabledBackgroundColor,
       color: v.disabledColor,
+      boxShadow: 'none',
     }),
 
     '::placeholder': {
       color: v.placeholderColor,
       opacity: 1, // undo Firefox default opacity
+      ...(p.disabled && {
+        color: v.disabledColor,
+      }),
     },
 
     ':focus': {
