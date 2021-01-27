@@ -112,15 +112,47 @@ From [Avatar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packag
 ### Props
 
 ```ts
-export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
+    /**
+   * The root element type of the Avatar.
+   *
+   * @defaultvalue span
+   */
+  as?: React.ElementType;
+
   /** The Avatar's image. */
   image?: ShorthandValue<{}>;
 
-  /** The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`. */
+  /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials`. */
   label?: ShorthandValue<{}>;
 
-  /** Icon displayed when there's no image or intials available, or if `display="icon"`. */
+  /** Icon displayed when there's no image. */
   icon?: ShorthandValue<{}>;
+
+  /** Badge to show the avatar's status. */
+  badge?: ShorthandValue<BadgeProps>;
+
+  /** The name used for displaying the initials of the avatar if the image is not provided. */
+  name?: string;
+
+  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
+  getInitials?: (name: string, isRtl: boolean) => string;
+
+  /**
+   * Size of the avatar in pixels.
+   *
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and use the `width` and `height`
+   * tokens to override the rendered size, plus other size-related tokens if needed, such as `fontSize` and `iconSize`.
+   *
+   * For example, to set the avatar to 45px in size:
+   * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
+   */
+  size?: AvatarSizeValue;
+
+  /** The avatar can have a square shape. */
+  square?: boolean;
 
   /**
    * Optional activity indicator
@@ -134,6 +166,7 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 
   /**
    * The type of visual treatment to use when `active="active"`
+   *
    * @defaultvalue ring
    */
   activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
@@ -142,8 +175,8 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    * The color when displaying either an icon or initials.
    * * neutral (default): gray
    * * brand: color from the brand palette
-   * * colorful: pick a color from a set of pre-defined colors, based on a hash of the name prop. If another method is
-   *     needed to assign colors to avatars, use the colorIndex prop.
+   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name prop.
+   *     If another method is needed to assign colors to avatars, use the colorIndex prop.
    *
    * @defaultvalue neutral
    */
@@ -153,34 +186,9 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    * When colorType="colorful", specifies which color in the list of avatar colors to use.
    * If colorIndex is out of bounds of the colors list, it will wrap around.
    *
-   * If colorIndex is unset (default), it will be calculated based on a hash of the name prop.
+   * @defaultvalue calculated based on a hash of the name prop.
    */
   colorIndex?: number;
-
-  /** Badge to show the avatar's status. */
-  badge?: ShorthandValue<BadgeProps>;
-
-  /** The name used for displaying the initials of the avatar if the image is not provided. */
-  name?: string;
-
-  /** The avatar can have a square shape. */
-  square?: boolean;
-
-  /**
-   * Size of the avatar in pixels.
-   *
-   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
-   *
-   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and use the `width` and `height`
-   * tokens to override the display size, plus other size-related tokens if needed, such as `fontSize` and `iconSize`.
-   *
-   * For example, to set the avatar to 45px in size:
-   * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
-   */
-  size?: AvatarSizeValue;
-
-  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
-  getInitials?: (name: string, isRtl: boolean) => string;
 
   /** Style tokens */
   tokens?: AvatarTokenSet;
@@ -278,9 +286,9 @@ See [MIGRATION.md](https://github.com/microsoft/fluentui/blob/master/packages/re
   - If no icon is provided, the default "person" icon will be used.
 
 - **Active** - The `active` property affects the display of the avatar if set. There will be an animation when switching between active and inactive.
-  - `(unset)` - Display at normal size/opacity.
-  - `false` - Reduce to 80% opacity, and 87.5% size.
-  - `true` - Adorn with an extra visual such as a ring and/or shadow, based on the `activeDisplay` property.
+  - `unset` - Display at normal size/opacity.
+  - `inactive` - Reduce to 80% opacity, and 87.5% size.
+  - `active` - Adorn with an extra visual such as a ring and/or shadow, based on the `activeDisplay` property.
 
 ### Interaction
 
