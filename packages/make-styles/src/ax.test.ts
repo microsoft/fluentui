@@ -71,6 +71,7 @@ describe('ax', () => {
   });
 
   it('warns if strings are not properly merged', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const error = jest.spyOn(console, 'error').mockImplementationOnce(() => {});
 
     const className1 = makeStyles([[null, { display: 'block' }]])({}, options);
