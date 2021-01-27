@@ -24,7 +24,6 @@
     "start:legacy": "just-scripts dev",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
