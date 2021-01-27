@@ -3,16 +3,12 @@ import { RectangleEdge } from '../../../Positioning';
 
 export interface IBeakProps extends React.RefAttributes<HTMLDivElement> {
   /**
-   * Beak width.
-   * @defaultvalue 18
-   * @deprecated Do not use.
+   * @deprecated Not used.
    */
   width?: number;
 
   /**
-   * Beak height.
-   * @defaultvalue 18
-   * @deprecated Do not use.
+   * @deprecated Not used.
    */
   height?: number;
 

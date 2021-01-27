@@ -37,7 +37,6 @@ export interface ISearchBoxProps
   placeholder?: string;
 
   /**
-   * Deprecated. Use `placeholder` instead.
    * @deprecated Use `placeholder` instead.
    */
   labelText?: string;
@@ -63,8 +62,7 @@ export interface ISearchBoxProps
   onEscape?: (ev?: any) => void;
 
   /**
-   * Deprecated at v0.52.2, use `onChange` instead.
-   * @deprecated Use `onChange` instead.
+   * @deprecated Use `onChange` instead. Deprecated at v0.52.2.
    */
   onChanged?: (newValue: any) => void;
 

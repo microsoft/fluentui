@@ -1333,7 +1333,7 @@ export interface IDocumentCardPreviewImage {
     // @deprecated
     accentColor?: string;
     componentRef?: IRefObject<{}>;
-    // @deprecated
+    // @deprecated (undocumented)
     errorImageSrc?: string;
     height?: number;
     iconSrc?: string;
@@ -1488,7 +1488,7 @@ export interface IDropdown {
 
 // @public (undocumented)
 export interface IDropdownOption<T = any> extends ISelectableOption<T> {
-    // @deprecated
+    // @deprecated (undocumented)
     isSelected?: boolean;
 }
 
@@ -1496,7 +1496,7 @@ export interface IDropdownOption<T = any> extends ISelectableOption<T> {
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
     dropdownWidth?: number | 'auto';
-    // @deprecated
+    // @deprecated (undocumented)
     isDisabled?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
@@ -1582,7 +1582,7 @@ export interface IGroup {
     hasMoreData?: boolean;
     isCollapsed?: boolean;
     isDropEnabled?: boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     isSelected?: boolean;
     isShowingAll?: boolean;
     key: string;
@@ -1608,7 +1608,7 @@ export interface IGroupDividerProps {
     indentWidth?: number;
     isCollapsedGroupSelectVisible?: boolean;
     isGroupLoading?: (group: IGroup) => boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     isSelected?: boolean;
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
@@ -1831,9 +1831,9 @@ export interface IGroupSpacerProps {
     count: number;
     indentWidth?: number;
     role?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
-    // @deprecated
+    // @deprecated (undocumented)
     theme?: ITheme;
 }
 

@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Clean up some prop comments and deprecated messages",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-21T05:50:40.919Z"
+}

@@ -147,7 +147,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     ariaDescription?: string;
     ariaHidden?: boolean;
     ariaLabel?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     buttonType?: ButtonType;
     checked?: boolean;
     className?: string;
@@ -177,7 +177,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     onRenderChildren?: IRenderFunction<IButtonProps>;
     onRenderDescription?: IRenderFunction<IButtonProps>;
     onRenderIcon?: IRenderFunction<IButtonProps>;
-    // @deprecated
+    // @deprecated (undocumented)
     onRenderMenu?: IRenderFunction<IContextualMenuProps>;
     onRenderMenuIcon?: IRenderFunction<IButtonProps>;
     onRenderText?: IRenderFunction<IButtonProps>;
@@ -187,7 +187,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     primaryDisabled?: boolean;
     // @deprecated
     renderPersistedMenuHiddenOnMount?: boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;
     split?: boolean;
@@ -197,7 +197,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     text?: string;
     theme?: ITheme;
     toggle?: boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     toggled?: boolean;
     uniqueId?: string | number;
 }
