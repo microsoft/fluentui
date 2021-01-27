@@ -19,6 +19,11 @@ export const Global = (props) => (
     </div>
 
     <div>
+      <h3>Brand Teams</h3>
+      <ColorRamp key={name} ramp={props.palette.brandTeams} />
+    </div>
+
+    <div>
       <h3>Contrast</h3>
       <ColorRamp
         key={name}
