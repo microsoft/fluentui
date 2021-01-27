@@ -1079,7 +1079,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #5c005c, #5c005c);
                           opacity: ;
                         }
@@ -1168,7 +1168,7 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }

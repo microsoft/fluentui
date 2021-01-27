@@ -291,7 +291,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -597,7 +597,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     content: linear-gradient(to right, red, red);
                     opacity: ;
                   }
@@ -1096,7 +1096,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1419,7 +1419,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1742,7 +1742,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -2065,7 +2065,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
