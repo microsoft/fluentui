@@ -41,6 +41,8 @@ const classNames = mergeStyleSets({
 export const IconImageSheetExample: React.FunctionComponent = () => {
   // ImageIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here (adding the prop `iconType={IconType.image}`).
+  // Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by text
+  // that conveys the same meaning.
   return (
     <div>
       <ImageIcon

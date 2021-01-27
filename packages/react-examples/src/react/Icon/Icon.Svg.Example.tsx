@@ -45,6 +45,8 @@ const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: stri
 
   // FontIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here.
+  // Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by text
+  // that conveys the same meaning.
   return (
     <FontIcon
       aria-label="Map icon"

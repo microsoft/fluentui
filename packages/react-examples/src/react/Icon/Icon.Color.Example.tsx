@@ -17,6 +17,8 @@ const classNames = mergeStyleSets({
 export const IconColorExample: React.FunctionComponent = () => {
   // FontIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here.
+  // Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by text
+  // that conveys the same meaning.
   return (
     <div>
       <FontIcon aria-label="Compass icon" role="img" iconName="CompassNW" className={classNames.deepSkyBlue} />
