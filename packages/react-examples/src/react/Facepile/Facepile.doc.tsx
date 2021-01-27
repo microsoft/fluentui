@@ -4,9 +4,9 @@ import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types
 import { FacepileBasicExample } from './Facepile.Basic.Example';
 import { FacepileOverflowExample } from './Facepile.Overflow.Example';
 
-const FacepileAddFaceExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Facepile/Facepile.AddFace.Example.tsx') as string;
-const FacepileBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Facepile/Facepile.Basic.Example.tsx') as string;
-const FacepileOverflowExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Facepile/Facepile.Overflow.Example.tsx') as string;
+const FacepileAddFaceExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/Facepile.AddFace.Example.tsx') as string;
+const FacepileBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/Facepile.Basic.Example.tsx') as string;
+const FacepileOverflowExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/Facepile.Overflow.Example.tsx') as string;
 
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',
@@ -29,10 +29,12 @@ export const FacepilePageProps: IDocPageProps = {
       view: <FacepileAddFaceExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Facepile/docs/FacepileOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/docs/FacepileOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/Facepile/docs/FacepileBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Facepile/docs/FacepileBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

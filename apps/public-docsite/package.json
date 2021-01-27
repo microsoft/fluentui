@@ -30,7 +30,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@types/node": "^10.3.2",
-    "@types/webpack-env": "1.15.1",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/react-monaco-editor": "^1.0.0-beta.42",
     "react-app-polyfill": "~1.0.1",

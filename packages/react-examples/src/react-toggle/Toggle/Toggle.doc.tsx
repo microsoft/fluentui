@@ -4,8 +4,8 @@ import { ToggleCustomLabelExample } from './Toggle.CustomLabel.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const ToggleBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/Toggle.Basic.Example.tsx') as string;
-const ToggleCustomLabelExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/Toggle.CustomLabel.Example.tsx') as string;
+const ToggleBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-toggle/Toggle/Toggle.Basic.Example.tsx') as string;
+const ToggleCustomLabelExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-toggle/Toggle/Toggle.CustomLabel.Example.tsx') as string;
 
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
@@ -23,10 +23,12 @@ export const TogglePageProps: IDocPageProps = {
       view: <ToggleCustomLabelExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

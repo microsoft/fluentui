@@ -40,7 +40,7 @@
     "react-document-title": "^2.0.3",
     "react-dom": "16.8.6",
     "react-hook-form": "^5.7.2",
-    "react-hot-loader": "^4.12.15",
+    "react-hot-loader": "^4.13.0",
     "react-markdown": "^4.0.8",
     "react-router-dom": "^5.2.0",
     "react-source-render": "4.0.0-1",
@@ -64,7 +64,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
-    "@types/webpack-env": "1.15.1",
+    "@types/webpack-env": "1.16.0",
     "gulp": "^4.0.2",
     "typescript": "3.7.2"
   },

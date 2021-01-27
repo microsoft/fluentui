@@ -40,7 +40,7 @@
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
-    "@types/webpack-env": "1.15.1",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/example-data": "^8.0.0-beta.1",
     "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.4",
