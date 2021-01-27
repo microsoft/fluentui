@@ -1169,7 +1169,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     font-size: inherit;
                     font-weight: inherit;
                     outline: none;
-                    text-decoration: none;
+                    text-decoration: underline;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;

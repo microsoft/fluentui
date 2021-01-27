@@ -43,7 +43,10 @@ export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = p
       </Stack>
       <p>
         For a list of Icons, visit our{' '}
-        <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/icons">Icon documentation</Link>.
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/icons" underline>
+          Icon documentation
+        </Link>
+        .
       </p>
     </div>
   );

@@ -32,7 +32,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => (
           <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
           <span>
             Go to{' '}
-            <Link keytipProps={keytipMap.LinkKeytip} href="http://www.bing.com" target="_blank">
+            <Link keytipProps={keytipMap.LinkKeytip} href="http://www.bing.com" target="_blank" underline>
               Bing
             </Link>
           </span>

@@ -49,6 +49,7 @@ $linkPadding: 16px;
     white-space: nowrap;
     position: relative;
     padding: 0 $linkPadding;
+    text-decoration: none;
 
     @include focus-border(2px);
   }
