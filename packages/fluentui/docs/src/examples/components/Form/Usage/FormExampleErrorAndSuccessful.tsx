@@ -24,7 +24,7 @@ const FormExampleErrorAndSatisfactory = () => (
       errorMessage="You can not fix this error"
       required
     />
-    <FormTextArea name="bio" id="bio" label="bio" errorMessage="You can not fix this error" />
+    <FormTextArea name="bio" id="bio" label="Bio" errorMessage="You can not fix this error" />
     <FormField>
       <FormLabel id="email-label" htmlFor="email-field">
         E-mail*
