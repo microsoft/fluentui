@@ -3,7 +3,6 @@ import { pxToRem } from '../../../../utils';
 export interface TextAreaVariables {
   backgroundColor: string;
   invertedBackgroundColor: string;
-  disabledBackgroundColor: string;
   disabledColor: string;
   borderColor: string;
   borderRadius: string;
@@ -29,8 +28,7 @@ export const textAreaVariables = (siteVars): TextAreaVariables => ({
   invertedBackgroundColor: siteVars.colorScheme.default.background,
   placeholderColor: siteVars.colorScheme.default.foreground1,
 
-  disabledBackgroundColor: siteVars.colorScheme.default.backgroundColorDisabled,
-  disabledColor: siteVars.colorScheme.default.colorDisabled,
+  disabledColor: siteVars.colorScheme.brand.foregroundDisabled,
 
   fontColor: siteVars.colorScheme.default.foreground,
   fontSize: siteVars.fontSizes.medium,
