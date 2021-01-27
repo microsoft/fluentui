@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Cherry-pick react-charting updates from v7",
+  "packageName": "@fluentui/react-charting",
+  "email": "jakubkonka@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-27T17:48:07.693Z"
+}
