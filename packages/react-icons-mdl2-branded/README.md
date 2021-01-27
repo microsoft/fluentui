@@ -2,7 +2,7 @@
 
 **React Icons Mdl2 Branded components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+This package is to hold the branded icons from the MDL2 icon set
 
 To import React Icons Mdl2 Branded components:
 
