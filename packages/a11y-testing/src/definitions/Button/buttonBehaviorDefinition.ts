@@ -17,26 +17,13 @@ export const buttonBehaviorDefinition: Rule[] = [
     .doesNotHaveAttribute('tabindex')
     .description(`if element is native 'button'.`),
   BehaviorRule.root()
-    .forProps({ disabled: true })
-    .hasAttribute('disabled'),
-  BehaviorRule.root()
-    .forProps({ disabled: true, as: 'div' })
-    .doesNotHaveAttribute('disabled')
-    .description(`if element is NOT native 'button'.`),
-  BehaviorRule.root()
-    .forProps({ disabled: true, loading: true })
-    .doesNotHaveAttribute('disabled'),
-  BehaviorRule.root()
     .forProps({ disabledFocusable: true })
-    .hasAttribute('aria-disabled', 'true')
-    .doesNotHaveAttribute('disabled'),
+
+    .hasAttribute('aria-disabled', 'true'),
   BehaviorRule.root()
     .forProps({ disabledFocusable: true })
     .doesNotHaveAttribute('disabled')
     .hide(),
-  BehaviorRule.root()
-    .forProps({ loading: true })
-    .hasAttribute('aria-disabled', 'true'),
   BehaviorRule.root()
     .forProps({ as: 'div' })
     .pressSpaceKey()
