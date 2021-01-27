@@ -5,9 +5,9 @@ import { CheckboxOtherExample } from './Checkbox.Other.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const CheckboxBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-checkbox/Checkbox/Checkbox.Basic.Example.tsx') as string;
-const CheckboxOtherExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-checkbox/Checkbox/Checkbox.Other.Example.tsx') as string;
-const CheckboxIndeterminateExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-checkbox/Checkbox/Checkbox.Indeterminate.Example.tsx') as string;
+const CheckboxBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-checkbox/Checkbox/Checkbox.Basic.Example.tsx') as string;
+const CheckboxOtherExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-checkbox/Checkbox/Checkbox.Other.Example.tsx') as string;
+const CheckboxIndeterminateExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-checkbox/Checkbox/Checkbox.Indeterminate.Example.tsx') as string;
 
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
@@ -32,10 +32,10 @@ export const CheckboxPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-checkbox/Checkbox/docs/CheckboxOverview.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-checkbox/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-checkbox/Checkbox/docs/CheckboxBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-checkbox/Checkbox/docs/CheckboxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

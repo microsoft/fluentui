@@ -11,9 +11,9 @@ import { VerticalBarChartBasicExample } from './VerticalBarChart.Basic.Example';
 import { VerticalBarChartStyledExample } from './VerticalBarChart.Styled.Example';
 import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Example';
 
-const VerticalBarChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
-const VerticalBarChartStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Styled.Example.tsx') as string;
-const VerticalBarChartDynamicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Dynamic.Example.tsx') as string;
+const VerticalBarChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
+const VerticalBarChartStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Styled.Example.tsx') as string;
+const VerticalBarChartDynamicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Dynamic.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -39,7 +39,7 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             sources={[
               require<
                 string
-              >('!raw-loader!@fluentui/react-charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
+              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
             ]}
           />
         }

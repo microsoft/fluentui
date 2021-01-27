@@ -55,7 +55,7 @@
     "@types/chai": "^4.2.11",
     "@types/karma": "^5.0.0",
     "@types/mocha": "^7.0.2",
-    "@types/webpack-env": "1.15.1",
+    "@types/webpack-env": "1.16.0",
     "chai": "^4.2.0",
     "circular-dependency-plugin": "^5.0.2",
     "esm": "^3.2.25",
@@ -93,6 +93,7 @@
     "webpack": "^4.43.0"
   },
   "dependencies": {
+    "lodash-es": "^4.17.20",
     "@microsoft/fast-colors": "^5.1.0",
     "@microsoft/fast-components-styles-msft": "^4.29.0",
     "@microsoft/fast-element": "^0.21.1",

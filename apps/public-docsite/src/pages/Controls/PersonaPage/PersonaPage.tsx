@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string
               }
             </Markdown>
           ),
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
               }
             </Markdown>
           ),

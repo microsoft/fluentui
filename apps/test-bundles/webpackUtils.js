@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const resources = require('@fluentui/scripts/webpack/webpack-resources');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const TerserPlugin = require('terser-webpack-plugin');
 
 function createWebpackConfig(entries) {
   return Object.keys(entries).map(entryName => {
@@ -52,6 +53,14 @@ function createWebpackConfig(entries) {
         externals: {
           react: 'React',
           'react-dom': 'ReactDOM',
+        },
+        optimization: {
+          minimize: true,
+          minimizer: [
+            new TerserPlugin({
+              extractComments: false,
+            }),
+          ],
         },
         plugins: [new BundleAnalyzerPlugin(anaylizerPluginOptions)],
       },
