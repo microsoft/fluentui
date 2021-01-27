@@ -142,6 +142,7 @@ TextArea.propTypes = {
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
   fluid: PropTypes.bool,
+  error: PropTypes.bool,
   resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
 };
 
