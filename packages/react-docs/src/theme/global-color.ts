@@ -64,20 +64,17 @@ export const selected = '#1AEBFF';
 
 // TODO: values should be set per product theme
 export const brand = {
-  // TODO: text HEX was wrong, copied CSS value from figma, confirm correct
   shade60: '#092C47',
-  // TODO: text HEX was wrong, copied CSS value from figma, confirm correct
   shade50: '#043862',
   shade40: '#004578',
   shade30: '#004C87',
   shade20: '#005A9E',
   shade10: '#106EBE',
   primary: '#0078D4',
-  tint10: '#2B88D8',
+  tint10: '#2899F5',
   tint20: '#3AA0F3',
   tint30: '#6CB8F6',
-  tint40: '#82C7FF',
-  tint50: '#C7E0F4',
-  tint60: '#DEECF9',
-  tint70: '#EFF6FC',
+  tint40: '#C7E0F4',
+  tint50: '#DEECF9',
+  tint60: '#EFF6FC',
 };

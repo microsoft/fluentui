@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { webLight } from '../src/theme/alias-color-web-light';
+import { webDark } from '../src/theme/alias-color-web-dark';
 import { webHighContrast } from '../src/theme/alias-color-web-high-contrast';
 import { ColorRamp } from '../src/components/ColorRamp';
 
@@ -13,6 +14,10 @@ export const Alias = (props) => (
     <div>
       <h3>Web Light</h3>
       <ColorRamp ramp={webLight} />
+    </div>
+    <div>
+      <h3>Web Dark</h3>
+      <ColorRamp ramp={webDark} />
     </div>
     <div>
       <h3>Web High Contrast</h3>
