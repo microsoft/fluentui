@@ -42,9 +42,13 @@ import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 
+import { ProgressIndicatorBasicExample } from '../components/progressindicator.stories.stories';
+
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
+      {/* <ProgressIndicatorBasicExample /> */}
+      <TextField label="Standard" multiline rows={3} />
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
