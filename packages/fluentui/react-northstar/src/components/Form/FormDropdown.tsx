@@ -25,7 +25,10 @@ export const FormDropdown = compose<'div', DropdownProps, FormDropdownStylesProp
     slots: {
       control: Dropdown,
     },
-    slotProps: ({ errorMessage }) => ({
+    slotProps: ({ errorMessage, inline }) => ({
+      control: {
+        inline,
+      },
       message: {
         error: !!errorMessage,
       },

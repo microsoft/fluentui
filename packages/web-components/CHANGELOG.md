@@ -1,8 +1,21 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Jan 2021 12:33:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.11.0)
+
+Tue, 26 Jan 2021 12:33:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.6..@fluentui/web-components_v0.11.0)
+
+### Minor changes
+
+- fix: change accordion item region to display block ([PR #16571](https://github.com/microsoft/fluentui/pull/16571) by jes@microsoft.com)
+
+### Patches
+
+- set margin on separator slot ([PR #16575](https://github.com/microsoft/fluentui/pull/16575) by khamu@microsoft.com)
 
 ## [0.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.6)
 

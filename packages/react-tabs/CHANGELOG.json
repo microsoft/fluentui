@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Tue, 26 Jan 2021 12:33:19 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.35",
+      "version": "1.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove doNotLayer from Pivot/Tabs overflow menu",
+            "author": "behowell@microsoft.com",
+            "commit": "21f0fdb42254e758cb935494c5a8721337fa8e02",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.33",
       "version": "1.0.0-beta.33",
