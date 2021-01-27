@@ -23,11 +23,6 @@ export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
     },
   };
 
-  if (process.env.NODE_ENV !== 'production' && props.loading) {
-    // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'LoadingButton';
-  }
-
   return definition;
 };
 
@@ -37,5 +32,4 @@ export type ButtonBehaviorProps = {
   /** A button can show it is currently unable to be interacted with. */
   disabled?: boolean;
   disabledFocusable?: boolean;
-  loading?: boolean;
 };
