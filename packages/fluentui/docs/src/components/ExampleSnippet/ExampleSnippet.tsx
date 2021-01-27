@@ -9,6 +9,7 @@ export type ExampleSnippetProps = {
 };
 
 const rootStyle = siteVariables => ({
+  color: siteVariables.bodyColor,
   background: siteVariables.bodyBackground,
   marginBottom: '2rem',
   boxShadow: '0 0 2px rgba(0, 0, 0, 0.2)',

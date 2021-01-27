@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import DocumentTitle from 'react-document-title';
-import { tabListBehavior, Header, Text, Flex, Menu } from '@fluentui/react-northstar';
+import { tabListBehavior, Header, Text, Flex, Menu, teamsTheme } from '@fluentui/react-northstar';
 import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 import { getFormattedHash } from '../../utils';
@@ -152,6 +152,13 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
             activeIndex={currentTabIndex}
             items={tabs}
             style={{ marginTop: '0.5rem', background: 'none', border: 'none' }}
+            variables={{
+              underlinedColorHover: teamsTheme.siteVariables.colors.black,
+              color: teamsTheme.siteVariables.colors.grey[500],
+              colorActive: teamsTheme.siteVariables.colors.black,
+              activeUnderlinedBorderBottomColor: teamsTheme.siteVariables.colors.black,
+              underlinedWrapperColorHover: teamsTheme.siteVariables.colors.black,
+            }}
             onItemClick={this.handleTabClick}
             accessibility={tabListBehavior}
           />

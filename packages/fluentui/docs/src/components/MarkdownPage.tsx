@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header, ProviderConsumer } from '@fluentui/react-northstar';
+import { Header, teamsTheme } from '@fluentui/react-northstar';
 import { RouteProps } from 'react-router-dom';
 
 import { link } from '../utils/helpers';
@@ -19,7 +19,7 @@ type MarkdownPageProps = {
   };
 } & RouteProps;
 
-const components = siteVariables => ({
+const components = teamsTheme => ({
   a: ({ children, href }) => link(children, href),
   code: ({ className, children, fitted, label }) =>
     className ? (
@@ -27,9 +27,15 @@ const components = siteVariables => ({
     ) : (
       <code>{children}</code>
     ),
-  h1: ({ children }) => <Header as="h1" content={children} style={{ color: siteVariables.colors.grey[750] }} />,
-  h2: ({ children }) => <Header as="h2" content={children} style={{ color: siteVariables.colors.grey[750] }} />,
-  h3: ({ children }) => <Header as="h3" content={children} style={{ color: siteVariables.colors.grey[750] }} />,
+  h1: ({ children }) => (
+    <Header as="h1" content={children} style={{ color: teamsTheme.siteVariables.colors.grey[750] }} />
+  ),
+  h2: ({ children }) => (
+    <Header as="h2" content={children} style={{ color: teamsTheme.siteVariables.colors.grey[750] }} />
+  ),
+  h3: ({ children }) => (
+    <Header as="h3" content={children} style={{ color: teamsTheme.siteVariables.colors.grey[750] }} />
+  ),
   img: props => <img style={{ maxWidth: '100%' }} {...props} />,
 });
 
@@ -39,13 +45,9 @@ const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = (props, { siteV
 
   return (
     <DocPage title={meta.title}>
-      <ProviderConsumer
-        render={({ siteVariables }) => (
-          <MDXProvider components={components(siteVariables)}>
-            <Component />
-          </MDXProvider>
-        )}
-      />
+      <MDXProvider components={components(teamsTheme)}>
+        <Component />
+      </MDXProvider>
       <GuidesNavigationFooter previous={meta.previous} next={meta.next} />
     </DocPage>
   );
