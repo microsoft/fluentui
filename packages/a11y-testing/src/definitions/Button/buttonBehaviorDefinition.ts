@@ -18,7 +18,6 @@ export const buttonBehaviorDefinition: Rule[] = [
     .description(`if element is native 'button'.`),
   BehaviorRule.root()
     .forProps({ disabledFocusable: true })
-
     .hasAttribute('aria-disabled', 'true'),
   BehaviorRule.root()
     .forProps({ disabledFocusable: true })
