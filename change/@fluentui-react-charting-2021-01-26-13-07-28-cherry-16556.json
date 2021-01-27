@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "LineChart fixes backported from v7 branch",
-  "packageName": "@fluentui/react-charting",
-  "email": "jakubkonka@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-26T12:07:28.833Z"
-}

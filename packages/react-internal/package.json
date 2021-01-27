@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-internal",
-  "version": "8.0.0-beta.36",
+  "version": "8.0.0-beta.37",
   "description": "Component internals for @fluentui/react.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,7 +38,7 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.15.1",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/example-data": "^8.0.0-beta.0",
+    "@fluentui/example-data": "^8.0.0-beta.1",
     "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.4",
     "@fluentui/test-utilities": "^8.0.0-beta.4",
     "@fluentui/react-conformance": "^1.0.0",
