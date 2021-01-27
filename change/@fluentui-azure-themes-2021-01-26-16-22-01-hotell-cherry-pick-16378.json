@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Azure theme fix: MessageBar, Callout and TeachingBubble (#16337)",
-  "packageName": "@fluentui/azure-themes",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-26T15:22:01.232Z"
-}
