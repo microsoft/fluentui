@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+  "packageName": "@fluentui/react-text",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-12T18:32:15.101Z"
+}

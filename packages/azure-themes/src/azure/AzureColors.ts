@@ -75,6 +75,7 @@ export namespace BaseColors {
   export const GRAY_595959 = '#595959';
   export const GRAY_605E5C = '#605E5C';
   export const GRAY_747474 = '#747474';
+  export const GRAY_797775 = '#797775';
   export const GRAY_808080 = '#808080';
   export const GRAY_8A8886 = '#8A8886';
   export const GRAY_979693 = '#979693';
@@ -201,7 +202,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
     disabled: {
       background: BaseColors.GRAY_F3F2F1,
-      border: BaseColors.GRAY_F3F2F1,
+      border: BaseColors.GRAY_252423,
       text: BaseColors.GRAY_A19F9D,
     },
     focus: {
@@ -209,8 +210,8 @@ export const DarkSemanticColors: IAzureSemanticColors = {
     },
   },
   disabledButton: {
-    background: BaseColors.GRAY_F3F2F1,
-    text: BaseColors.GRAY_A19F9D,
+    background: BaseColors.GRAY_252423,
+    text: BaseColors.GRAY_797775,
   },
   secondaryButton: {
     rest: {
@@ -251,6 +252,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.GRAY_808080,
+    background: BaseColors.GRAY_252423,
     disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.WHITE,
     accent: BaseColors.BLUE_106EBE,
@@ -310,6 +312,7 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.BLUE_2899F5,
+      border: BaseColors.BLUE_2899F5,
       text: BaseColors.BLACK,
       secondaryBackround: BaseColors.BLACK,
     },
@@ -430,6 +433,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.WHITE,
+    background: BaseColors.GRAY_111111,
     disabled: BaseColors.GRAY_808080_070,
     hover: BaseColors.WHITE,
     accent: BaseColors.BLUE_00FFFF,
@@ -489,6 +493,7 @@ export const HighContrastDarkSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.BLUE_00FFFF,
+      border: BaseColors.BLUE_00FFFF,
       text: BaseColors.BLACK,
       secondaryBackround: BaseColors.BLACK,
     },
@@ -609,6 +614,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.GRAY_323130,
+    background: BaseColors.WHITE,
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.BLUE_0078D4,
@@ -668,6 +674,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.BLUE_0078D4,
+      border: BaseColors.BLUE_0078D4,
       text: BaseColors.WHITE,
       secondaryBackround: BaseColors.WHITE,
     },
@@ -788,6 +795,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   },
   controlOutlines: {
     rest: BaseColors.BLACK,
+    background: BaseColors.WHITE,
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
     accent: BaseColors.PURPLE_800080,
@@ -847,6 +855,7 @@ export const HighContrastLightSemanticColors: IAzureSemanticColors = {
   teachingBubble: {
     rest: {
       background: BaseColors.PURPLE_800080,
+      border: BaseColors.PURPLE_800080,
       text: BaseColors.WHITE,
       secondaryBackround: BaseColors.WHITE,
     },

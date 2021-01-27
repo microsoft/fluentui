@@ -24,7 +24,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/PillButtonBarImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarImplementation.md') as string,
         },
       ];
   }

@@ -7,7 +7,6 @@ import * as path from 'path';
  */
 const commonArgs = (): JestTaskOptions => {
   const args: JestTaskOptions = argv();
-
   return {
     ...((process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME || args.runInBand) && { runInBand: true }),
     ...((args.u || args.updateSnapshot) && { updateSnapshot: true }),
@@ -22,7 +21,7 @@ const commonArgs = (): JestTaskOptions => {
     // Just specific config
     nodeArgs: args.nodeArgs,
     // pass forward positional args (to narrow down tests to be run)
-    _: args._,
+    _: (args._ || []).filter(arg => arg !== 'jest' && arg !== 'jest-watch'),
   };
 };
 
