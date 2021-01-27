@@ -45,7 +45,7 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
   /** A textarea can take the width of its container. */
   fluid?: boolean;
 
-  /** A text area can have error state */
+  /** A text area can have error state. */
   error?: boolean;
 }
 
