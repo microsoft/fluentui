@@ -27,6 +27,7 @@
     "codepen": "cd packages/react && node ../../scripts/local-codepen.js",
     "code-style": "lage code-style --verbose",
     "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
+    "create-component": "plop --plopfile ./scripts/create-component/create-component.ts --dest . --require ./scripts/ts-node-register",
     "change": "beachball change --scope \"!packages/fluentui/*\"",
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "generate-version-files": "yarn workspace @fluentui/scripts just generate-version-files",
