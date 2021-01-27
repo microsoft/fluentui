@@ -82,10 +82,10 @@ export const webHighContrast: AliasColorTokens = {
   strokeAccessibleInteractive: selected,
   strokeAccessibleDisabled: disabled,
 
-  neutralShadowAmbient: 'rgba (0,0,0,0.24)',
-  neutralShadowKey: 'rgba (0,0,0,0.28)',
-  neutralShadowAmbientLighter: 'rgba (0,0,0,0.12)',
-  neutralShadowKeyLighter: 'rgba (0,0,0,0.14)',
-  neutralShadowAmbientDarker: 'rgba (0,0,0,0.40)',
-  neutralShadowKeyDarker: 'rgba (0,0,0,0.48)',
+  neutralShadowAmbient: 'rgba(0,0,0,0.24)',
+  neutralShadowKey: 'rgba(0,0,0,0.28)',
+  neutralShadowAmbientLighter: 'rgba(0,0,0,0.12)',
+  neutralShadowKeyLighter: 'rgba(0,0,0,0.14)',
+  neutralShadowAmbientDarker: 'rgba(0,0,0,0.40)',
+  neutralShadowKeyDarker: 'rgba(0,0,0,0.48)',
 };

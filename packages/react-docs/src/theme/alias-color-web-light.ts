@@ -82,10 +82,10 @@ export const webLight: AliasColorTokens = {
   strokeAccessibleInteractive: 'transparent',
   strokeAccessibleDisabled: 'transparent',
 
-  neutralShadowAmbient: 'rgba (0,0,0,0.12)',
-  neutralShadowKey: 'rgba (0,0,0,0.14)',
-  neutralShadowAmbientLighter: 'rgba (0,0,0,0.06)',
-  neutralShadowKeyLighter: 'rgba (0,0,0,0.07)',
-  neutralShadowAmbientDarker: 'rgba (0,0,0,0.20)',
-  neutralShadowKeyDarker: 'rgba (0,0,0,0.24)',
+  neutralShadowAmbient: 'rgba(0,0,0,0.12)',
+  neutralShadowKey: 'rgba(0,0,0,0.14)',
+  neutralShadowAmbientLighter: 'rgba(0,0,0,0.06)',
+  neutralShadowKeyLighter: 'rgba(0,0,0,0.07)',
+  neutralShadowAmbientDarker: 'rgba(0,0,0,0.20)',
+  neutralShadowKeyDarker: 'rgba(0,0,0,0.24)',
 };

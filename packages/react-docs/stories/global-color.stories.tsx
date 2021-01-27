@@ -3,10 +3,10 @@ import * as palette from '../src/theme/global-color';
 import { ColorRamp } from '../src/components/ColorRamp';
 
 export default {
-  title: 'Fluent UI/Theme/Palette',
+  title: 'Fluent UI Theme/Colors/Global',
 };
 
-export const Palette = (props) => (
+export const Global = (props) => (
   <div style={{ display: 'flex' }}>
     <div>
       <h3>Grey</h3>
@@ -43,6 +43,6 @@ export const Palette = (props) => (
   </div>
 );
 
-Palette.args = {
+Global.args = {
   palette,
 };
