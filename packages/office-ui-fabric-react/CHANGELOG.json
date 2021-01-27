@@ -2,6 +2,79 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 27 Jan 2021 12:24:03 GMT",
+      "tag": "office-ui-fabric-react_v7.157.1",
+      "version": "7.157.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Selected footers in the FloatingPicker should have highlighting in high contrast mode",
+            "author": "elvonspa@microsoft.com",
+            "commit": "8cf4e212432ffe6b061615fd0793d363bee3e8a2",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "e79e6796a549b035dac99a6c29526f9da58b351d",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "office-ui-fabric-react_v7.157.0",
+      "version": "7.157.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add additional prop support to IBreadcrumbItems",
+            "author": "andredias@microsoft.com",
+            "commit": "10d8a5d25495826a081386d8520ffd86e7352d91",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add high contrast overrides for Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "ee7e8ae5574b8367f83024e5dc32aca23d2fd31b",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jan 2021 12:31:09 GMT",
+      "tag": "office-ui-fabric-react_v7.156.0",
+      "version": "7.156.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: Fix positioning issues that can cause tooltip to flash/not render",
+            "author": "jspurlin@microsoft.com",
+            "commit": "ce566670302c1a7f6422ba2fdfdc7be3e87aca38",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Toggle: fix label click target being too wide.",
+            "author": "xgao@microsoft.com",
+            "commit": "eb084935f3de59b5f63c83a030e682ff5d0712ff",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "(7.0)feat: add new property onRenderStar for Rating",
+            "author": "qiuya@microsoft.com",
+            "commit": "9a5fb7c04ccaa5e42113995a38caa8e8eda7c13a",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Dec 2020 12:25:12 GMT",
       "tag": "office-ui-fabric-react_v7.155.3",
       "version": "7.155.3",

@@ -12,17 +12,9 @@ import {
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '../../FocusZone';
-import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles } from './Rating.types';
+import { IRatingProps, RatingSize, IRatingStyleProps, IRatingStyles, IRatingStarProps } from './Rating.types';
 
 const getClassNames = classNamesFunction<IRatingStyleProps, IRatingStyles>();
-
-interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
-  fillPercentage: number;
-  disabled?: boolean;
-  readOnly?: boolean;
-  classNames: IProcessedStyleSet<IRatingStyles>;
-  icon?: string;
-}
 
 export interface IRatingState {
   rating: number | null | undefined;
@@ -86,6 +78,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       theme,
       icon = 'FavoriteStarFill',
       unselectedIcon = 'FavoriteStar',
+      onRenderStar,
     } = this.props;
 
     const id = this._id;
@@ -100,6 +93,9 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       theme: theme!,
     });
 
+    const renderStar = (starProps: IRatingStarProps, renderer?: IRatingProps['onRenderStar']) =>
+      renderer ? renderer(starProps) : <RatingStar key={starProps.starNum + 'rating'} {...starProps} />;
+
     for (let i = this._min as number; i <= (max as number); i++) {
       if (i !== 0) {
         const fillPercentage = this._getFillingPercentage(i);
@@ -108,6 +104,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           disabled,
           classNames: this._classNames,
           icon: fillPercentage > 0 ? icon : unselectedIcon,
+          starNum: i,
         };
 
         starIds.push(this._getStarId(i - 1));
@@ -128,7 +125,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
             type="button"
           >
             {this._getLabel(i)}
-            <RatingStar key={i + 'rating'} {...ratingStarProps} />
+            {renderStar(ratingStarProps, onRenderStar)}
           </button>,
         );
       }

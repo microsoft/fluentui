@@ -2,6 +2,36 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Fri, 22 Jan 2021 12:28:20 GMT",
+      "tag": "@uifabric/charting_v4.12.8",
+      "version": "4.12.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Line Chart: X axis callout for last circle issue resolved. Updated xAxisCalloutData for last circle",
+            "author": "v-jasha@microsoft.com",
+            "commit": "e0142825539f41b4a0d81d21608e2ed322c2388c",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:26:08 GMT",
+      "tag": "@uifabric/charting_v4.12.7",
+      "version": "4.12.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip disappear after click on escape issue fixed",
+            "author": "v-jasha@microsoft.com",
+            "commit": "cbdf616b9d2ec6df23df637fde6175d73455df73",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 03 Dec 2020 12:30:04 GMT",
       "tag": "@uifabric/charting_v4.11.0",
       "version": "4.11.0",

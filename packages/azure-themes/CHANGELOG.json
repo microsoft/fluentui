@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Fri, 15 Jan 2021 12:25:31 GMT",
+      "tag": "@uifabric/azure-themes_v7.6.5",
+      "version": "7.6.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(azure-themes): dark mode themes are now correctly set as inverted",
+            "author": "daparks@microsoft.com",
+            "commit": "c062e481608b009ef61ff2ba57c1b59b2a2b8ade",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Jan 2021 12:25:12 GMT",
       "tag": "@uifabric/azure-themes_v7.6.4",
       "version": "7.6.4",

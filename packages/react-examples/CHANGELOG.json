@@ -2,6 +2,99 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 27 Jan 2021 12:24:03 GMT",
+      "tag": "@fluentui/react-examples_v0.11.14",
+      "version": "0.11.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(react v7): Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "e79e6796a549b035dac99a6c29526f9da58b351d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@fluentui/react-examples_v0.11.13",
+      "version": "0.11.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs(react-examples): explicitly add behavior to Link rendered as button",
+            "author": "martinhochel@microsoft.com",
+            "commit": "96d91cd4618fedce150c21580804c9e60b83052a",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Add high contrast overrides for Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "ee7e8ae5574b8367f83024e5dc32aca23d2fd31b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jan 2021 12:31:09 GMT",
+      "tag": "@fluentui/react-examples_v0.11.10",
+      "version": "0.11.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots for toggle",
+            "author": "xgao@microsoft.com",
+            "commit": "eb084935f3de59b5f63c83a030e682ff5d0712ff",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "[UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks (#16210)",
+            "author": "chrp@microsoft.com",
+            "commit": "8b706813fe018da6110f4c4929372df0f8a2034b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jan 2021 12:22:30 GMT",
+      "tag": "@fluentui/react-examples_v0.11.8",
+      "version": "0.11.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Change Checkbox \"Custom-rendered label with a link\" example's link to be more descriptive ",
+            "author": "andredias@microsoft.com",
+            "commit": "45c2be37602d8c14034301db6306a90554d899a8",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jan 2021 12:24:00 GMT",
+      "tag": "@fluentui/react-examples_v0.11.7",
+      "version": "0.11.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update UnifiedPeoplePicker edit example with force resolve example",
+            "author": "elvonspa@microsoft.com",
+            "commit": "94effb912cf2217790dc84a0217fc7596aea11c7",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Update SelectedItemsList and UnifiedPicker edit examples with the new picker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c097452a72f35cba2ba2678d8463dc5cbf661f79",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Jan 2021 12:25:12 GMT",
       "tag": "@fluentui/react-examples_v0.11.6",
       "version": "0.11.6",

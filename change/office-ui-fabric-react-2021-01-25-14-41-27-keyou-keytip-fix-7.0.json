@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Port delayed keytip fix to onKeytipUpdated",
+  "packageName": "office-ui-fabric-react",
+  "email": "keyou@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-25T22:41:27.857Z"
+}

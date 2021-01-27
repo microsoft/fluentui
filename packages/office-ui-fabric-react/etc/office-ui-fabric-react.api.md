@@ -1868,7 +1868,7 @@ export interface IBreadcrumbData {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     href?: string;
     isCurrentItem?: boolean;
@@ -6899,12 +6899,29 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
     onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (rating: number) => void;
+    onRenderStar?: IRenderFunction<IRatingStarProps>;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
+}
+
+// @public (undocumented)
+export interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
+    // (undocumented)
+    classNames: IProcessedStyleSet<IRatingStyles>;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    fillPercentage: number;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    readOnly?: boolean;
+    // (undocumented)
+    starNum?: number;
 }
 
 // @public (undocumented)

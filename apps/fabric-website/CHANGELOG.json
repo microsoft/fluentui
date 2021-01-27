@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.13",
+      "version": "7.16.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update GetStartedDevelopSimple.md",
+            "author": "replituser@example.com",
+            "commit": "1689249239985c7e47369524f7d674c31fba40ef",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Nov 2020 12:27:20 GMT",
       "tag": "@uifabric/fabric-website_v7.15.51",
       "version": "7.15.51",

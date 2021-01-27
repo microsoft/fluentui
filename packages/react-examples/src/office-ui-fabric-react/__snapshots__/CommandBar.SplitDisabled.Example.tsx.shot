@@ -363,6 +363,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           vertical-align: top;
                           width: 32px;
                         }
+                        @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
+                          color: WindowText;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -779,6 +782,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           vertical-align: top;
                           width: 32px;
                         }
+                        @media screen and (-ms-high-contrast: active){& {
+                          background-color: Window;
+                          border: none;
+                          color: GrayText;
+                        }
+                        @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
+                          color: GrayText;
+                        }
                         &:hover {
                           background-color: #f3f2f1;
                           color: #201f1e;
@@ -799,14 +810,6 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
                           background-color: Window;
                           border-color: GrayText;
-                          color: GrayText;
-                        }
-                        @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
-                          color: GrayText;
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-color: Window;
-                          border: none;
                           color: GrayText;
                         }
                         @media screen and (forced-colors: active){& {

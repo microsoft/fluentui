@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 05 Jan 2021 12:25:12 GMT and should not be manually modified.
+This log was last generated on Fri, 15 Jan 2021 12:25:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.5](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.6.5)
+
+Fri, 15 Jan 2021 12:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.6.4..@uifabric/azure-themes_v7.6.5)
+
+### Patches
+
+- fix(azure-themes): dark mode themes are now correctly set as inverted ([PR #16378](https://github.com/microsoft/fluentui/pull/16378) by daparks@microsoft.com)
 
 ## [7.6.4](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.6.4)
 

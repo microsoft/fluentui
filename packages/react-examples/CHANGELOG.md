@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 05 Jan 2021 12:25:12 GMT and should not be manually modified.
+This log was last generated on Wed, 27 Jan 2021 12:24:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.14)
+
+Wed, 27 Jan 2021 12:24:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.13..@fluentui/react-examples_v0.11.14)
+
+### Patches
+
+- fix(react v7): Add missing styles for disabled buttons ([PR #16645](https://github.com/microsoft/fluentui/pull/16645) by andredias@microsoft.com)
+
+## [0.11.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.13)
+
+Tue, 26 Jan 2021 12:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.10..@fluentui/react-examples_v0.11.13)
+
+### Patches
+
+- docs(react-examples): explicitly add behavior to Link rendered as button ([PR #16586](https://github.com/microsoft/fluentui/pull/16586) by martinhochel@microsoft.com)
+- Add high contrast overrides for Separator ([PR #16589](https://github.com/microsoft/fluentui/pull/16589) by andredias@microsoft.com)
+
+## [0.11.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.10)
+
+Wed, 20 Jan 2021 12:31:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.8..@fluentui/react-examples_v0.11.10)
+
+### Patches
+
+- Update snapshots for toggle ([PR #16500](https://github.com/microsoft/fluentui/pull/16500) by xgao@microsoft.com)
+- [UPP] Add onSuggestionsShown and onSuggestionsHidden callbacks (#16210) ([PR #16540](https://github.com/microsoft/fluentui/pull/16540) by chrp@microsoft.com)
+
+## [0.11.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.8)
+
+Thu, 14 Jan 2021 12:22:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.7..@fluentui/react-examples_v0.11.8)
+
+### Patches
+
+- Change Checkbox "Custom-rendered label with a link" example's link to be more descriptive  ([PR #16448](https://github.com/microsoft/fluentui/pull/16448) by andredias@microsoft.com)
 
 ## [0.11.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.6)
 
