@@ -54,6 +54,7 @@ Current RangeSlider control in Azure Portal is more complex than the existing fl
 I have done some work as a POC for the RangeSlider. Here is the branch: https://github.com/microsoft/fluentui/compare/master...rockcs1992:shiche/range-slider?expand=1
 
 And here is screenshot on how it looks like
+https://mystuff.bublup.com/ui/landing_page?item_id=001-i-5f2f1a94-4182-4980-9eaf-69101a71519c
 
 ## Discarded proposal
 
