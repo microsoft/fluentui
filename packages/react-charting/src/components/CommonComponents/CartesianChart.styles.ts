@@ -1,5 +1,5 @@
 import { ICartesianChartStyleProps, ICartesianChartStyles } from './CartesianChart.types';
-import {} from '@fluentui/react/lib/Styling';
+import { HighContrastSelectorBlack } from '@fluentui/react/lib/Styling';
 import { isIE11 } from '@fluentui/react';
 
 const isIE11Var: boolean = isIE11();
