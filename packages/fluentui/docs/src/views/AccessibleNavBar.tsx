@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
+
 let timeout;
 
 const narrate = (message, priority = 'polite') => {
