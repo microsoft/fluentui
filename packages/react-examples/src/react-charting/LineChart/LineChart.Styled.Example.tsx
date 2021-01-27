@@ -70,6 +70,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
             strokeWidth={4}
             yMaxValue={90}
             hideLegend={true}
+            showXAxisLablesTooltip
             height={this.state.height}
             width={this.state.width}
             tickFormat={'%m/%d'}

@@ -225,16 +225,16 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
                         {
                           background-color: #E5E5E5;
-                          background-image: ;
                           border-color: #E5E5E5;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
                   />
@@ -314,16 +314,16 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
 
                         {
                           background-color: #0078D4;
-                          background-image: ;
                           border-color: #0078D4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078D4, #0078D4);
+                          content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
                   />
@@ -579,16 +579,16 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
                         {
                           background-color: #E5E5E5;
-                          background-image: ;
                           border-color: #E5E5E5;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
                   />
@@ -668,16 +668,16 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
 
                         {
                           background-color: #0078D4;
-                          background-image: ;
                           border-color: #0078D4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078D4, #0078D4);
+                          content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
                   />
@@ -1062,16 +1062,16 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
                         {
                           background-color: #E5E5E5;
-                          background-image: ;
                           border-color: #E5E5E5;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
                   />
@@ -1151,16 +1151,16 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
 
                         {
                           background-color: #0078D4;
-                          background-image: ;
                           border-color: #0078D4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078D4, #0078D4);
+                          content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
                   />
@@ -1420,16 +1420,16 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
                         {
                           background-color: #E5E5E5;
-                          background-image: ;
                           border-color: #E5E5E5;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #E5E5E5, #E5E5E5);
+                          content: linear-gradient(to right, #E5E5E5, #E5E5E5);
                           opacity: ;
                         }
                   />
@@ -1509,16 +1509,16 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
 
                         {
                           background-color: #0078D4;
-                          background-image: ;
                           border-color: #0078D4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078D4, #0078D4);
+                          content: linear-gradient(to right, #0078D4, #0078D4);
                           opacity: ;
                         }
                   />
