@@ -1353,6 +1353,7 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardPreview>;
     getOverflowDocumentCountText?: (overflowCount: number) => string;
+    maxDisplayCount?: number;
     previewImages: IDocumentCardPreviewImage[];
     styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
     theme?: ITheme;

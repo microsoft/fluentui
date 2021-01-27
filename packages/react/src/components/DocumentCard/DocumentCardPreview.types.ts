@@ -30,6 +30,12 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   getOverflowDocumentCountText?: (overflowCount: number) => string;
 
   /**
+   * Maximum number of document previews to display
+   * @default 3
+   */
+  maxDisplayCount?: number;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
