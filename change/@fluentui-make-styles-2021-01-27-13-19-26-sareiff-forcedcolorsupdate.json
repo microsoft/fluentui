@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update snapshots",
-  "packageName": "@fluentui/make-styles",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T21:19:24.259Z"
-}
