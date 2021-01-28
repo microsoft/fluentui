@@ -31,6 +31,7 @@ export * from './KeytipData';
 export * from './KeytipLayer';
 export * from './Label';
 export * from './Layer';
+export * from './Link';
 export * from './List';
 export * from './MarqueeSelection';
 export * from './MessageBar';

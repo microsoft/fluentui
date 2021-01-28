@@ -1,7 +1,6 @@
 import './version';
 export * from '@fluentui/react-checkbox';
 export * from '@fluentui/react-internal';
-export * from '@fluentui/react-link';
 export * from '@fluentui/react-slider';
 export * from '@fluentui/react-tabs';
 export * from '@fluentui/react-toggle';

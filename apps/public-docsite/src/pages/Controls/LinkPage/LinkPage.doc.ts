@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { LinkPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-link/Link/Link.doc';
+import { LinkPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Link/Link.doc';
 
 const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/LinkPage/docs/LinkRelated.md') as string;
 const componentUrl =
