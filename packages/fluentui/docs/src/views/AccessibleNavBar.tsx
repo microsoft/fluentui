@@ -125,8 +125,8 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           be narrated.
         </li>
         <li>
-          The role used for navigation bar items should allow the use of the aria-selected attribute to indicate if the
-          navigation bar item is selected.
+          The role used for navigation bar items should allow the use of the aria-pressed or aria-selected attribute to indicate if the
+          navigation bar item is pressed or selected.
         </li>
         <li>
           The narration should be as concise as possible. So the ARIA landmark (&lt;nav&gt;, role="navigation" or
@@ -138,6 +138,8 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           .{' '}
         </li>
         <li>The most important information should be narrated first if possible.</li>
+        <li>The new items (conversations, teams, etc.) count should be announced after the button name.</li>
+        <li>The narration of the new items count is implemented using aria-describedby so that the message is read as the last narration. This is implemented only in the last (accepted) variant.</li>
       </ul>
 
       <h3>General notes</h3>
@@ -160,7 +162,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button className="item" tabIndex={0}>
           Activities
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
         <button className="item" tabIndex={-1}>
@@ -184,7 +186,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button role="tab" className="item" tabIndex={0}>
           Activities
         </button>
-        <button role="tab" className="item" tabIndex={-1}>
+        <button role="tab" className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
         <button role="tab" className="item" tabIndex={-1}>
@@ -224,7 +226,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       </div>
       <h3>Notes</h3>
       <ul>
-        <li>The menuitem role does not allow the use of the aria-selected attribute so this variant is rejected.</li>
+        <li>The menuitem role does not allow the use of the aria-pressed or aria-selected attribute so this variant is rejected.</li>
         <li>When entering the navigation bar content, JAWS reads "menu" as the firs narration.</li>
         <li>When leaving the navigation bar content, JAWS reads "leaving menus".</li>
         <li>
@@ -245,7 +247,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           </button>
         </li>
         <li>
-          <button className="item" tabIndex={-1}>
+          <button className="item" tabIndex={-1} aria-pressed="true">
             Chats
           </button>
         </li>
@@ -274,7 +276,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button className="item" tabIndex={0}>
           Activities
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
         <button className="item" tabIndex={-1}>
@@ -297,7 +299,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button className="item" tabIndex={0}>
           Activities
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
         <button className="item" tabIndex={-1}>
@@ -320,7 +322,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button className="item" tabIndex={0}>
           Activities
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
         <button className="item" tabIndex={-1}>
@@ -343,12 +345,14 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button className="item" tabIndex={0}>
           Activities
         </button>
-        <button className="item" tabIndex={-1}>
+        <div><button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
           Chats
         </button>
-        <button className="item" tabIndex={-1}>
+              <div id="chats-desc" style={{position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden'}}>7 conversations with new messages</div></div>
+        <div><button className="item" tabIndex={-1} aria-describedby="teams-desc">
           Teams
         </button>
+              <div id="teams-desc" style={{position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden'}}>4 teams with new messages</div></div>
         <button className="item" tabIndex={-1}>
           Calendar
         </button>
@@ -366,7 +370,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
         <li>This variant is accepted as  the best solution.</li>
       </ul>
-
+      
     </>
   );
 }; // End AccessibleNavBar
