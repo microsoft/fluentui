@@ -1,6 +1,7 @@
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
 import { BaseColors } from '../AzureColors';
+import * as StyleConstants from '../Constants';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;
@@ -11,6 +12,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     container: {},
     pill: [
       {
+        height: StyleConstants.inputHeight,
         backgroundColor: semanticColors.bodyBackground,
         selectors: {
           '&:hover': {

@@ -52,6 +52,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdown: [
       {
         fontSize: theme.fonts.medium.fontSize,
+        minHeight: StyleConstants.dropDownItemHeight,
         color: semanticColors.inputText,
         selectors: {
           ':focus::after, :focus': {
