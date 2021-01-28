@@ -135,6 +135,7 @@ export const getStyles = memoizeFunction(
             color: 'GrayText',
             backgroundColor: 'Window',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
@@ -200,6 +201,7 @@ export const getStyles = memoizeFunction(
             backgroundColor: 'Window',
           },
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
 

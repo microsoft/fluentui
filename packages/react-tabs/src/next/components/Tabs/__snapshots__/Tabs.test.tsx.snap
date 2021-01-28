@@ -85,7 +85,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -97,7 +97,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -106,7 +106,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -148,7 +148,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -254,7 +254,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -266,7 +266,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -274,7 +274,7 @@ exports[`Tabs renders Tabs correctly when itemCount is a string 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -483,7 +483,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -495,7 +495,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -504,7 +504,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -546,7 +546,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -652,7 +652,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -664,7 +664,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -672,7 +672,7 @@ exports[`Tabs renders Tabs correctly with custom className 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -870,7 +870,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -882,7 +882,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -891,7 +891,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -933,7 +933,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -1039,7 +1039,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1051,7 +1051,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -1059,7 +1059,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1212,7 +1212,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1224,7 +1224,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -1232,7 +1232,7 @@ exports[`Tabs renders Tabs correctly with icon, text and count 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1449,7 +1449,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1461,7 +1461,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -1470,7 +1470,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1512,7 +1512,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -1618,7 +1618,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1630,7 +1630,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -1638,7 +1638,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -1785,7 +1785,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -1797,7 +1797,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -1805,7 +1805,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2018,7 +2018,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2030,7 +2030,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -2039,7 +2039,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2105,16 +2105,17 @@ exports[`Tabs renders large tab format correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&.is-selected {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
+            forced-color-adjust: none;
           }
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -2221,7 +2222,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2233,7 +2234,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -2241,7 +2242,7 @@ exports[`Tabs renders large tab format correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2307,11 +2308,12 @@ exports[`Tabs renders large tab format correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&.is-selected {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
+            forced-color-adjust: none;
           }
           &[data-is-overflowing='true'] {
             display: none;
@@ -2471,7 +2473,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2483,7 +2485,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -2492,7 +2494,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2534,7 +2536,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -2640,7 +2642,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2652,7 +2654,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -2660,7 +2662,7 @@ exports[`Tabs renders large tabs correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2858,7 +2860,7 @@ exports[`Tabs renders tab format correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -2870,7 +2872,7 @@ exports[`Tabs renders tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -2879,7 +2881,7 @@ exports[`Tabs renders tab format correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -2945,16 +2947,17 @@ exports[`Tabs renders tab format correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&.is-selected {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
+            forced-color-adjust: none;
           }
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -3061,7 +3064,7 @@ exports[`Tabs renders tab format correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -3073,7 +3076,7 @@ exports[`Tabs renders tab format correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -3081,7 +3084,7 @@ exports[`Tabs renders tab format correctly 1`] = `
             color: #ffffff;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3147,11 +3150,12 @@ exports[`Tabs renders tab format correctly 1`] = `
             background-color: #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&.is-selected {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
             -ms-high-contrast-adjust: none;
             background: Highlight;
             color: HighlightText;
             font-weight: 600;
+            forced-color-adjust: none;
           }
           &[data-is-overflowing='true'] {
             display: none;
@@ -3310,7 +3314,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -3322,7 +3326,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -3331,7 +3335,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3373,7 +3377,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {
@@ -3479,7 +3483,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -3491,7 +3495,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -3499,7 +3503,7 @@ exports[`Tabs renders tabs as links correctly 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3694,7 +3698,7 @@ exports[`Tabs supports JSX expressions 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -3706,7 +3710,7 @@ exports[`Tabs supports JSX expressions 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
           }
           &:hover {
@@ -3714,7 +3718,7 @@ exports[`Tabs supports JSX expressions 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3856,7 +3860,7 @@ exports[`Tabs supports JSX expressions 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -3868,7 +3872,7 @@ exports[`Tabs supports JSX expressions 1`] = `
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-color: Window;
             color: Highlight;
           }
@@ -3877,7 +3881,7 @@ exports[`Tabs supports JSX expressions 1`] = `
             color: #201f1e;
             cursor: pointer;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: Highlight;
           }
           &:hover .ms-Button-icon {
@@ -3919,7 +3923,7 @@ exports[`Tabs supports JSX expressions 1`] = `
           &[data-is-overflowing='true'] {
             display: none;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: Highlight;
           }
           &:hover::before {

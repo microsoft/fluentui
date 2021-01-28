@@ -50,7 +50,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -58,7 +58,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -79,17 +79,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -319,7 +319,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -335,16 +335,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -408,7 +408,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -424,16 +424,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -497,7 +497,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -513,16 +513,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
 
                         {
                           background-color: #00bcf2;
-                          background-image: ;
                           border-color: #00bcf2;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -603,7 +603,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -611,7 +611,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -632,17 +632,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -855,7 +855,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -871,16 +871,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     background-color: #0078d4;
-                    background-image: ;
                     border-color: #0078d4;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #0078d4, #0078d4);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, #0078d4, #0078d4);
                     opacity: ;
                   }
             />
@@ -944,7 +944,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -960,16 +960,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     background-color: #00188f;
-                    background-image: ;
                     border-color: #00188f;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #00188f, #00188f);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, #00188f, #00188f);
                     opacity: ;
                   }
             />
@@ -1033,7 +1033,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -1049,16 +1049,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
 
                   {
                     background-color: #00bcf2;
-                    background-image: ;
                     border-color: #00bcf2;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, #00bcf2, #00bcf2);
                     opacity: ;
                   }
             />
@@ -1136,7 +1136,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1144,7 +1144,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1165,17 +1165,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1367,7 +1367,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1375,7 +1375,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1396,17 +1396,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1636,7 +1636,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1652,16 +1652,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -1725,7 +1725,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1741,16 +1741,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -1814,7 +1814,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1830,16 +1830,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
 
                         {
                           background-color: #00bcf2;
-                          background-image: ;
                           border-color: #00bcf2;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -1920,7 +1920,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1928,7 +1928,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1949,17 +1949,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2189,7 +2189,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2205,16 +2205,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -2278,7 +2278,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2294,16 +2294,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -2367,7 +2367,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2383,16 +2383,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
 
                         {
                           background-color: #00bcf2;
-                          background-image: ;
                           border-color: #00bcf2;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -2473,7 +2473,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2481,7 +2481,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2502,17 +2502,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2742,7 +2742,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2758,16 +2758,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -2831,7 +2831,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2847,16 +2847,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -2920,7 +2920,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2936,16 +2936,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
 
                         {
                           background-color: #00bcf2;
-                          background-image: ;
                           border-color: #00bcf2;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
@@ -3026,7 +3026,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -3034,7 +3034,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -3055,17 +3055,17 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -3295,7 +3295,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -3311,16 +3311,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -3384,7 +3384,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -3400,16 +3400,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -3473,7 +3473,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -3489,16 +3489,16 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
 
                         {
                           background-color: #00bcf2;
-                          background-image: ;
                           border-color: #00bcf2;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00bcf2, #00bcf2);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
                   />
