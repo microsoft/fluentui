@@ -34,7 +34,7 @@ Current RangeSlider control in Azure Portal is more complex than the existing fl
 #### 3. Modify type definition for `onChange` and `onChanged` props to reflect range
 
 - If `ranged` is set to false, no changes for the existing API
-- If `ranged` is set to true, then the function signature of these two would be come `(value: [number, number]) => void`, `(event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void`. The two numbers in the tuple represents the lower value and upper value of the RangeSlider
+- If `ranged` is set to true, then the function signature of these two would be come `(value: [number, number]) => void`, `(event: MouseEvent | TouchEvent | KeyboardEvent, value: [number, number]) => void`. The two numbers in the tuple represents the lower value and upper value of the RangeSlider
 
 ### Props and Cons
 
