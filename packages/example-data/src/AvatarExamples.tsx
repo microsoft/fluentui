@@ -39,7 +39,7 @@ export const AvatarExamples = {
   name: nameAndImage.map(p => p.name),
   image: nameAndImage.map(p => p.image),
   activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
-  colorType: ['neutral', 'brand'],
+  colorVariant: ['neutral', 'brand'],
   /** A SVG hexagon data URL used by the CustomShape example */
   hexagon:
     'data:image/svg+xml;utf8,' +

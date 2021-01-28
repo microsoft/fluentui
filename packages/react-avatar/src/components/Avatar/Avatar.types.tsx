@@ -70,7 +70,7 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
    *
    * @defaultvalue neutral
    */
-  colorType?: 'neutral' | 'brand';
+  colorVariant?: 'neutral' | 'brand';
 
   /** Style tokens */
   tokens?: AvatarTokenSet;

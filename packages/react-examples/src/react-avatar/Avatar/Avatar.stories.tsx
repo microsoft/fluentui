@@ -71,8 +71,8 @@ export const Basic = () => (
       <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
     <StoryExample title="Brand color">
-      <Avatar colorType="brand" name={examples.name[4]} badge="info" />
-      <Avatar colorType="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+      <Avatar colorVariant="brand" name={examples.name[4]} badge="info" />
+      <Avatar colorVariant="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
     </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
@@ -99,7 +99,7 @@ export const AllSizes = () => (
       <AvatarExampleList names={examples.name} />
     </StoryExample>
     <StoryExample title="Initials, brand color">
-      <AvatarExampleList names={examples.name} colorType="brand" />
+      <AvatarExampleList names={examples.name} colorVariant="brand" />
     </StoryExample>
     <StoryExample title="Initials, square">
       <AvatarExampleList names={examples.name} square exampleIndex={1} />
@@ -111,7 +111,7 @@ export const AllSizes = () => (
       <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
     </StoryExample>
     <StoryExample title="Icon, brand color">
-      <AvatarExampleList icons={examples.icon} colorType="brand" exampleIndex={1} />
+      <AvatarExampleList icons={examples.icon} colorVariant="brand" exampleIndex={1} />
     </StoryExample>
   </>
 );
@@ -219,7 +219,7 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
-    useValueSelector('colorType', useValueSelectorState(examples.colorType)),
+    useValueSelector('colorVariant', useValueSelectorState(examples.colorVariant)),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];

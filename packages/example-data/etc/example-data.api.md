@@ -13,7 +13,7 @@ export const AvatarExamples: {
     readonly name: string[];
     readonly image: string[];
     readonly activeDisplay: readonly ["ring", "ring-shadow", "ring-glow", "shadow", "glow"];
-    readonly colorType: readonly ["neutral", "brand"];
+    readonly colorVariant: readonly ["neutral", "brand"];
     readonly hexagon: string;
 };
 
