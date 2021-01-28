@@ -56,15 +56,12 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         selectors: {
           '::placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
           },
           ':-ms-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
           },
           '::-webkit-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic',
           },
         },
       },
