@@ -79,7 +79,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               outline: transparent;
               position: absolute;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -117,14 +117,12 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           }
         >
           <div
-            onBlur={[Function]}
-            onFocus={[Function]}
+            onBlurCapture={[Function]}
             onFocusCapture={[Function]}
           >
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -152,7 +150,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -248,7 +245,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               outline: transparent;
               position: absolute;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -286,14 +283,12 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           }
         >
           <div
-            onBlur={[Function]}
-            onFocus={[Function]}
+            onBlurCapture={[Function]}
             onFocusCapture={[Function]}
           >
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -319,7 +314,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",

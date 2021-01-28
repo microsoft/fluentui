@@ -1,30 +1,12 @@
 import * as React from 'react';
-import { Form, Button, Input } from '@fluentui/react-northstar';
+import { Form, FormInput, FormCheckbox, FormButton } from '@fluentui/react-northstar';
 
 const FormExampleRtl = () => (
   <Form>
-    <Form.Field
-      label="الاسم الاول"
-      name="firstName"
-      id="first-name"
-      required
-      control={{
-        as: Input,
-        showSuccessIndicator: false,
-      }}
-    />
-    <Form.Field
-      label="الكنية"
-      name="lastName"
-      id="last-name"
-      required
-      control={{
-        as: Input,
-        showSuccessIndicator: false,
-      }}
-    />
-    <Form.Field label="أوافق على الشروط" control={{ as: 'input' }} type="checkbox" id="conditions" />
-    <Form.Field control={{ as: Button, content: 'خضع' }} />
+    <FormInput label="الاسم الاول" name="firstName" id="first-name" showSuccessIndicator={false} required />
+    <FormInput label="الكنية" name="lastName" id="last-name" required showSuccessIndicator={false} />
+    <FormCheckbox label="أوافق على الشروط" id="conditions" />
+    <FormButton content="خضع" />
   </Form>
 );
 

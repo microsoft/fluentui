@@ -2,6 +2,107 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.24",
+      "version": "1.0.0-beta.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "ToggleButton: Replacing use of pressed semanticColors with checked semanticColors for checked states.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "94b0ffe03b908aeeb1d318a8c8c05018a2f94790",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 23 Jan 2021 05:20:07 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.23",
+      "version": "1.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding missing css variables for opacity in Button and borderColor in checked state of ToggleButton.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a3a5f5331ea6691af6ef0197742247a9bc2e7859",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jan 2021 12:24:49 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.22",
+      "version": "1.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Re-exporting MenuContext from react-button to avoid fragility in package versions usage.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "58b29c4a4448e7c7228a0138ccfe8ee683729c27",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.21",
+      "version": "1.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Enable pointer-events so that tooltip can be attached to disabledFocusable Button.",
+            "author": "jukapsia@microsoft.com",
+            "commit": "08271834459c58e5beafc5e7b005591ee901aeb9",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jan 2021 12:31:15 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Button: Adding disabledFocusable prop to allow for scenarios where Button has disabled styling but is focusable.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "48d30d84067583480c05c690d842c79a4ee9f87d",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Dec 2020 12:28:01 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.17",
       "version": "1.0.0-beta.17",

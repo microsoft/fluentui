@@ -26,7 +26,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/BottomSheetImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetImplementation.md') as string,
         },
       ];
   }

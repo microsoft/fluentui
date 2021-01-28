@@ -8,7 +8,7 @@ import { tableRowBehavior } from './tableRowBehavior';
  * Adds role='table'.
  * Applies 'tableRowBehavior' for 'row' child component.
  */
-export const tableBehavior: Accessibility<TableBehaviorProps> = props => ({
+export const tableBehavior: Accessibility<TableBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'table',

@@ -48,6 +48,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
 
     label: [
       'ms-Toggle-label',
+      { display: 'inline-block' },
       disabled && {
         color: textDisabledColor,
         selectors: {
@@ -71,7 +72,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
     container: [
       'ms-Toggle-innerContainer',
       {
-        display: 'inline-flex',
+        display: 'flex',
         position: 'relative',
       },
     ],
@@ -135,6 +136,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
               [HighContrastSelector]: {
                 backgroundColor: 'Highlight',
               },
+              // eslint-disable-next-line deprecation/deprecation
               ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },

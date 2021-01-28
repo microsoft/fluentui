@@ -124,7 +124,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -174,7 +174,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -187,7 +187,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -199,7 +199,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -211,7 +211,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField0"
@@ -275,7 +275,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
               }
               @media screen and (forced-colors: active){& {
@@ -311,7 +311,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 padding-top: 0px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: GrayText;
               }
               @media screen and (forced-colors: active){& {
@@ -362,7 +362,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: GrayText;
                 }
@@ -375,7 +375,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -387,7 +387,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -399,7 +399,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             disabled={true}
@@ -495,7 +495,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -545,7 +545,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -558,7 +558,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -570,7 +570,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -582,7 +582,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField6"
@@ -684,7 +684,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -734,7 +734,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -747,7 +747,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -759,7 +759,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -771,7 +771,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField9"
@@ -839,7 +839,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -852,7 +852,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 right: -10px;
                 top: -5px;
               }
-              @media screen and (-ms-high-contrast: active){&:before {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                 color: WindowText;
                 right: -14px;
               }
@@ -900,7 +900,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -913,7 +913,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -925,7 +925,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -937,7 +937,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField12"
@@ -1034,7 +1034,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #a4262c;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -1085,7 +1085,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -1098,7 +1098,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -1110,7 +1110,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -1122,7 +1122,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField15"
@@ -1246,7 +1246,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -1296,7 +1296,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -1309,7 +1309,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -1321,7 +1321,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -1333,7 +1333,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField18"
@@ -1345,6 +1345,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
             onMouseDown={[Function]}
             onMouseUp={[Function]}
             onPaste={[Function]}
+            title="A 10 digit number"
             type="text"
             value="mask: (___) ___ - ____"
           />
@@ -1432,7 +1433,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -1482,7 +1483,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -1495,7 +1496,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -1507,7 +1508,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -1519,7 +1520,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField21"
@@ -1638,7 +1639,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -1688,7 +1689,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -1701,7 +1702,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -1713,7 +1714,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -1725,7 +1726,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField24"
@@ -1790,7 +1791,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
               }
               @media screen and (forced-colors: active){& {
@@ -1826,7 +1827,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 padding-top: 0px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: GrayText;
               }
               @media screen and (forced-colors: active){& {
@@ -1877,7 +1878,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: GrayText;
                 }
@@ -1890,7 +1891,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -1902,7 +1903,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -1914,7 +1915,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             disabled={true}
@@ -2011,7 +2012,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
               @media screen and (forced-colors: active){&:hover {
@@ -2061,7 +2062,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -2074,7 +2075,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -2086,7 +2087,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -2098,7 +2099,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField30"
@@ -2130,7 +2131,7 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
                   color: #106ebe;
                   outline: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }

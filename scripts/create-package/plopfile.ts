@@ -13,6 +13,7 @@ interface Answers {
   target: 'react' | 'node';
   description: string;
   hasTests?: boolean;
+  hasExamples?: boolean;
 }
 
 module.exports = (plop: NodePlopAPI) => {
@@ -49,12 +50,27 @@ module.exports = (plop: NodePlopAPI) => {
         default: true,
         when: answers => answers.target === 'node', // react always has tests
       },
+      {
+        type: 'confirm',
+        name: 'hasExamples',
+        message: 'Create example scaffolding?',
+        default: true,
+        when: answers => answers.target === 'react',
+      },
     ],
 
     actions: (answers: Answers): Actions => {
-      const { packageName, target, hasTests } = answers;
+      // hasTests should default to true / however under
+      // react package it get's set to undefined.
+      // we default hasTests to true in that scenario
+      const { hasTests = true } = answers;
+      answers = { ...answers, hasTests };
+
+      const { packageName, target, hasExamples } = answers;
 
       const destination = `packages/${packageName}`;
+      const exampleRoot = `packages/react-examples`;
+      const exampleDestination = `${exampleRoot}/src/${packageName}`;
       const globOptions: AddManyActionConfig['globOptions'] = { dot: true };
 
       // Get derived template parameters
@@ -81,13 +97,42 @@ module.exports = (plop: NodePlopAPI) => {
           destination,
           globOptions,
           data,
-          templateFiles: [`plop-templates-${target}/${hasTests ? '*' : '!(jest.config.js)'}`],
+          templateFiles: hasTests
+            ? [`plop-templates-${target}/**/*`]
+            : [`plop-templates-${target}/**/*`, `!(plop-templates-${target}/jest.config.js)`],
+        },
+        {
+          // Example files
+          type: 'addMany',
+          destination: exampleDestination,
+          globOptions,
+          data,
+          skip: () => {
+            if (!hasExamples) {
+              return 'Skipping example scaffolding';
+            }
+          },
+          skipIfExists: true,
+          base: `plop-templates-storybook`,
+          templateFiles: [`plop-templates-storybook/**/*`],
         },
         {
           // update package.json
           type: 'modify',
           path: `${destination}/package.json`,
           transform: packageJsonContents => updatePackageJson(packageJsonContents, answers),
+        },
+        {
+          // update example package.json
+          // update package.json
+          type: 'modify',
+          path: `${exampleRoot}/package.json`,
+          skip: () => {
+            if (!hasExamples) {
+              return 'Skipping react-examples package.json update';
+            }
+          },
+          transform: packageJsonContents => updateExamplePackageJson(packageJsonContents, data.packageNpmName),
         },
         {
           // update tsconfig.json
@@ -147,6 +192,17 @@ function updatePackageJson(packageJsonContents: string, answers: Answers): strin
     delete newPackageJson.scripts['update-snapshots'];
   }
 
+  return JSON.stringify(newPackageJson, null, 2);
+}
+
+function updateExamplePackageJson(packageJsonContents: string, packageNpmName: string): string {
+  const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
+  // add the new package to the dependency list
+  newPackageJson['dependencies'][packageNpmName] = '*';
+  // sort the entries
+  newPackageJson['dependencies'] = Object.entries(newPackageJson['dependencies'])
+    .sort()
+    .reduce((o, [k, v]) => ((o[k] = v), o), {});
   return JSON.stringify(newPackageJson, null, 2);
 }
 

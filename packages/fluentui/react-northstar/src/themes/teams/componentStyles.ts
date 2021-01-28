@@ -101,6 +101,7 @@ export { popupContentStyles as PopupContent } from './components/Popup/popupCont
 
 export { providerStyles as Provider } from './components/Provider/providerStyles';
 
+export { radioGroupStyles as RadioGroup } from './components/RadioGroup/radioGroupStyles';
 export { radioGroupItemStyles as RadioGroupItem } from './components/RadioGroup/radioGroupItemStyles';
 
 export { segmentStyles as Segment } from './components/Segment/segmentStyles';
@@ -154,6 +155,7 @@ export { carouselItemStyles as CarouselItem } from './components/Carousel/carous
 export { carouselNavigationStyles as CarouselNavigation } from './components/Carousel/carouselNavigationStyles';
 export { carouselNavigationItemStyles as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemStyles';
 export { carouselPaddleStyles as CarouselPaddle } from './components/Carousel/carouselPaddleStyles';
+export { carouselPaddlesContainerStyles as CarouselPaddlesContainer } from './components/Carousel/carouselPaddlesContainerStyles';
 
 export { tableStyles as Table } from './components/Table/tableStyles';
 export { tableRowStyles as TableRow } from './components/Table/tableRowStyles';

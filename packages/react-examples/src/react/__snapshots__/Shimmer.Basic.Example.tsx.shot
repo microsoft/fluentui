@@ -59,7 +59,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -140,10 +140,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -247,7 +247,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -328,10 +328,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -435,7 +435,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -516,10 +516,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -624,7 +624,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -707,7 +707,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 min-width: 24px;
                 width: 24px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
         >
@@ -718,7 +718,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                   display: block;
                   fill: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   fill: Window;
                 }
             height={24}
@@ -748,7 +748,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -778,10 +778,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -885,7 +885,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -968,7 +968,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 min-width: 24px;
                 width: 24px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
         >
@@ -979,7 +979,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                   display: block;
                   fill: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   fill: Window;
                 }
             height={24}
@@ -1009,7 +1009,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1039,10 +1039,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -1135,7 +1135,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1165,10 +1165,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -1261,7 +1261,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1291,10 +1291,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -1387,7 +1387,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1417,10 +1417,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -1524,7 +1524,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -1607,7 +1607,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 min-width: 24px;
                 width: 24px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
         >
@@ -1618,7 +1618,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                   display: block;
                   fill: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   fill: Window;
                 }
             height={24}
@@ -1648,7 +1648,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1678,10 +1678,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -1774,7 +1774,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1804,10 +1804,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -1900,7 +1900,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -1930,10 +1930,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -2026,7 +2026,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -2056,10 +2056,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -2164,7 +2164,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -2247,7 +2247,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 min-width: 24px;
                 width: 24px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
         >
@@ -2258,7 +2258,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                   display: block;
                   fill: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   fill: Window;
                 }
             height={24}
@@ -2288,7 +2288,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -2318,7 +2318,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 min-width: 15px;
                 width: 15px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
         >
@@ -2329,7 +2329,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                   display: block;
                   fill: #ffffff;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   fill: Window;
                 }
             height={15}
@@ -2359,7 +2359,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -2389,10 +2389,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -2485,7 +2485,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -2515,10 +2515,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 5px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -2611,7 +2611,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -2641,10 +2641,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 16px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -2737,7 +2737,7 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -2767,10 +2767,10 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
                 height: 10px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={

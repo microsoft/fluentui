@@ -17,15 +17,15 @@ import { ButtonToggleExample } from './Button.Toggle.Example';
 import { ButtonTokensExample } from './Button.Tokens.Example';
 import { ButtonVariantsExample } from './Button.Variants.Example';
 
-const ButtonExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Example.tsx') as string;
-const MenuButtonExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/MenuButton/MenuButton.Example.tsx') as string;
-const SplitButtonExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/SplitButton/SplitButton.Example.tsx') as string;
-const ButtonKeytipsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Keytips.Example.tsx') as string;
-const ButtonSlotsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Slots.Example.tsx') as string;
-const ButtonStylesExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Styles.Example.tsx') as string;
-const ButtonToggleExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Toggle.Example.tsx') as string;
-const ButtonTokensExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Tokens.Example.tsx') as string;
-const ButtonVariantsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Button/Button.Variants.Example.tsx') as string;
+const ButtonExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Example.tsx') as string;
+const MenuButtonExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/MenuButton/MenuButton.Example.tsx') as string;
+const SplitButtonExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/SplitButton/SplitButton.Example.tsx') as string;
+const ButtonKeytipsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Keytips.Example.tsx') as string;
+const ButtonSlotsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Slots.Example.tsx') as string;
+const ButtonStylesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Styles.Example.tsx') as string;
+const ButtonToggleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Toggle.Example.tsx') as string;
+const ButtonTokensExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Tokens.Example.tsx') as string;
+const ButtonVariantsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Button/Button.Variants.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -68,13 +68,15 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@fluentui/react-experiments/src/components/Button/Button.types.tsx'),
               require<
                 string
-              >('!raw-loader!@fluentui/react-experiments/src/components/Button/MenuButton/MenuButton.types.tsx'),
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Button/Button.types.tsx'),
               require<
                 string
-              >('!raw-loader!@fluentui/react-experiments/src/components/Button/SplitButton/SplitButton.types.tsx'),
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Button/MenuButton/MenuButton.types.tsx'),
+              require<
+                string
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Button/SplitButton/SplitButton.types.tsx'),
             ]}
           />
         }

@@ -14,6 +14,7 @@ export const DatePickerInputExample: React.FunctionComponent = () => {
 
   const onClick = React.useCallback((): void => {
     setValue(undefined);
+    datePickerRef.current?.focus();
   }, []);
 
   return (
@@ -24,15 +25,15 @@ export const DatePickerInputExample: React.FunctionComponent = () => {
         pressing Enter will open the DatePicker.
       </div>
       <DatePicker
+        componentRef={datePickerRef}
         label="Start date"
         allowTextInput
         ariaLabel="Select a date"
         value={value}
         onSelectDate={setValue as (date: Date | null | undefined) => void}
-        componentRef={datePickerRef}
         className={styles.control}
       />
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton aria-label="Clear the date input" onClick={onClick} text="Clear" />
     </div>
   );
 };

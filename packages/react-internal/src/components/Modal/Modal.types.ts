@@ -141,7 +141,7 @@ export interface IModalProps extends React.RefAttributes<HTMLDivElement>, IAcces
 
   /**
    * A callback function for when the Modal content is mounted on the overlay layer
-   * @deprecated Use layerProps.onLayerDidMount instead
+   * @deprecated Use `layerProps.onLayerDidMount` instead
    */
   onLayerDidMount?: () => void;
 

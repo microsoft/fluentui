@@ -76,8 +76,7 @@ export interface IDocumentCardPreviewImage {
   previewImageSrc?: string;
 
   /**
-   * Deprecated at v1.3.6, to be removed at \>= v2.0.0.
-   * @deprecated To be removed at v2.0.0.
+   * @deprecated To be removed at \>= v2.0.0.
    */
   errorImageSrc?: string;
 
@@ -106,8 +105,7 @@ export interface IDocumentCardPreviewImage {
   /**
    * Hex color value of the line below the preview, which should correspond to the document type.
    *
-   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
-   * @deprecated To be removed at v5.0.0.
+   * @deprecated To be removed at \>= v5.0.0.
    */
   accentColor?: string;
 

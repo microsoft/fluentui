@@ -14,10 +14,6 @@ storiesOf('ToggleButton', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('button')
-        .snapshot('checked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -26,6 +22,14 @@ storiesOf('ToggleButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('checked hovered', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -79,16 +83,19 @@ storiesOf('ToggleButton Next - Block', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
+        .click('button')
         .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('checked hovered', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -142,10 +149,6 @@ storiesOf('ToggleButton Next - Teams Theme', module)
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('button')
-        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -154,6 +157,14 @@ storiesOf('ToggleButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('checked hovered', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}

@@ -1,8 +1,58 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Fri, 08 Jan 2021 12:32:12 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.38)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.36..@fluentui/react-internal_v8.0.0-beta.38)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+- Port delayed keytip fix to onKeytipUpdated ([PR #16614](https://github.com/microsoft/fluentui/pull/16614) by keyou@microsoft.com)
+
+## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.36)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.35..@fluentui/react-internal_v8.0.0-beta.36)
+
+### Changes
+
+- Added generic type for ISelectableOption interface ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
+
+## [8.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.35)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.34..@fluentui/react-internal_v8.0.0-beta.35)
+
+### Changes
+
+- Set focus state in FocusTrapZone even if onFocus and onBlur do not bubble ([PR #15804](https://github.com/microsoft/fluentui/pull/15804) by nsavas@microsoft.com)
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+- fix a typo in CalloutContent.base.tsx ([PR #15865](https://github.com/microsoft/fluentui/pull/15865) by lin.zh.ming.27@gmail.com)
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.34)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.33..@fluentui/react-internal_v8.0.0-beta.34)
+
+### Changes
+
+- Use GrayText for disabled Action Button in high contrast. ([PR #16188](https://github.com/microsoft/fluentui/pull/16188) by mathew.olinger@outlook.com)
+
+## [8.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.33)
+
+Mon, 18 Jan 2021 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.30..@fluentui/react-internal_v8.0.0-beta.33)
+
+### Changes
+
+- Fixes TextField custom error message rendering ([PR #16487](https://github.com/microsoft/fluentui/pull/16487) by sorgh@microsoft.com)
 
 ## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.30)
 

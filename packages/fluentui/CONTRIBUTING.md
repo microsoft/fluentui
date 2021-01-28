@@ -150,7 +150,6 @@ I (@rymeskar) have been part of the FluentUI framework team for the past two mon
 - Changelog has a special format.
 - Always try to find the most relevant and similar component to get inspired by.
 - Try to extract [pure functions](https://en.wikipedia.org/wiki/Pure_function) outside of component's body; possibly into special files.
-- When developing date-time-utilities, one must run `yarn change` in the root and then `yarn update-api` in the date-time-utilities folder.
 - Don't name boolean flags with 'is' prefix.
 - `Yarn build` is not necessary when working with FluentUI. You should just call `yarn` (resolve packages) and then `yarn start` (start application).
 - For benchmarking JavaScript, one can use the https://jsperf.com .

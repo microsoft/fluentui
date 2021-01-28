@@ -195,7 +195,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     }
 
     if (!ev.defaultPrevented) {
+      // eslint-disable-next-line deprecation/deprecation
       const shouldOpen = this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
+      // eslint-disable-next-line deprecation/deprecation
       const shouldClose = !this.state.isCollapsed && ev.which === getRTLSafeKeyCode(KeyCodes.left, this.props.theme);
       if (shouldClose || shouldOpen) {
         this._toggleCollapse();

@@ -12,16 +12,16 @@ import { PivotOverrideExample } from './Pivot.Override.Example';
 import { PivotSeparateExample } from './Pivot.Separate.Example';
 import { PivotOverflowMenuExample } from './Pivot.OverflowMenu.Example';
 
-const PivotRemoveExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Remove.Example.tsx') as string;
-const PivotBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Basic.Example.tsx') as string;
-const PivotLargeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Large.Example.tsx') as string;
-const PivotTabsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Tabs.Example.tsx') as string;
-const PivotTabsLargeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.TabsLarge.Example.tsx') as string;
-const PivotOnChangeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.OnChange.Example.tsx') as string;
-const PivotIconCountExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.IconCount.Example.tsx') as string;
-const PivotOverrideExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Override.Example.tsx') as string;
-const PivotSeparateExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Separate.Example.tsx') as string;
-const PivotOverflowMenuExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.OverflowMenu.Example.tsx') as string;
+const PivotRemoveExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Remove.Example.tsx') as string;
+const PivotBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Basic.Example.tsx') as string;
+const PivotLargeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Large.Example.tsx') as string;
+const PivotTabsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Tabs.Example.tsx') as string;
+const PivotTabsLargeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.TabsLarge.Example.tsx') as string;
+const PivotOnChangeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.OnChange.Example.tsx') as string;
+const PivotIconCountExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.IconCount.Example.tsx') as string;
+const PivotOverrideExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Override.Example.tsx') as string;
+const PivotSeparateExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.Separate.Example.tsx') as string;
+const PivotOverflowMenuExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/Pivot.OverflowMenu.Example.tsx') as string;
 
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
@@ -79,12 +79,14 @@ export const PivotPageProps: IDocPageProps = {
       view: <PivotOverflowMenuExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotDonts.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-tabs/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativePropsForComponentName: 'PivotItem',
