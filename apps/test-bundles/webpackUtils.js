@@ -126,7 +126,7 @@ function buildNorthstarEntries(includeStats = true) {
   const distPath = path.dirname(require.resolve('@fluentui/react-northstar').replace('commonjs', 'es'));
   const componentsPath = path.resolve(distPath, 'components');
   fs.readdirSync(componentsPath).forEach(componentName => {
-    const isFolder = true;
+    const isFolder = fs.statSync(path.join(componentsPath, componentName)).isDirectory();
     if (isFolder) {
       const entryPath = path.join(componentsPath, componentName, `${componentName}.js`);
       entries[`fluentui-Northstar-${componentName}`] = {
