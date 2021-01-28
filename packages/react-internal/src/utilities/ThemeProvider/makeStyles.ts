@@ -1,4 +1,4 @@
-import { IStyle } from '@fluentui/merge-styles';
+import { IStyle } from '@fluentui/style-utilities';
 import { Theme } from '@fluentui/theme';
 import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';

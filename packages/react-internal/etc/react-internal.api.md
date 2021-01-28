@@ -28,7 +28,6 @@ import { ISelectionOptions } from '@fluentui/utilities';
 import { ISlotProp } from '@fluentui/foundation-legacy';
 import { ISlottableProps } from '@fluentui/foundation-legacy';
 import { IStyle } from '@fluentui/style-utilities';
-import { IStyle as IStyle_2 } from '@fluentui/merge-styles';
 import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
 import { IStyleFunction } from '@fluentui/utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
@@ -5648,7 +5647,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
 
 // @public
 export function makeStyles<TStyleSet extends {
-    [key: string]: IStyle_2;
+    [key: string]: IStyle;
 }>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
     [key in keyof TStyleSet]: string;
 };

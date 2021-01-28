@@ -6,19 +6,18 @@ import { ThemeProviderState } from './ThemeProvider.types';
 import { Theme } from '@fluentui/theme';
 
 const useThemeProviderStyles = makeStyles((theme: Theme) => {
-  const { tokens } = theme;
+  const { semanticColors, fonts } = theme;
 
-  // TODO: figure out how to handle tokens???
   return {
     body: [
       {
-        color: tokens?.body?.contentColor,
-        background: tokens?.color?.body?.background,
-        fontFamily: tokens?.body?.fontFamily,
-        fontWeight: tokens?.body?.fontWeight,
-        fontSize: tokens?.body?.fontSize,
-        MozOsxFontSmoothing: tokens?.body?.mozOsxFontSmoothing,
-        WebkitFontSmoothing: tokens?.body?.webkitFontSmoothing,
+        color: semanticColors.bodyText,
+        background: semanticColors.bodyBackground,
+        fontFamily: fonts.medium.fontFamily,
+        fontWeight: fonts.medium.fontWeight,
+        fontSize: fonts.medium.fontSize,
+        MozOsxFontSmoothing: fonts.medium.MozOsxFontSmoothing,
+        WebkitFontSmoothing: fonts.medium.WebkitFontSmoothing,
       },
     ],
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
