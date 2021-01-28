@@ -4,19 +4,22 @@
 
 ```ts
 
-import { IIconProps } from '@fluentui/react-internal/lib/Icon';
+import { BaseSlots } from '@fluentui/react-compose';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
 import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
+import { SlotProp } from '@fluentui/react-compose';
+import { SlotProps } from '@fluentui/react-compose';
 
 // @public (undocumented)
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: React.FunctionComponent<ICheckboxProps>;
+export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
 
 // @public
 export interface ICheckbox {
@@ -25,16 +28,22 @@ export interface ICheckbox {
     indeterminate: boolean;
 }
 
+// @public (undocumented)
+export type ICheckboxClasses = {
+    [key in keyof ICheckboxSlots]: string;
+};
+
 // @public
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
     ariaPositionInSet?: number;
     ariaSetSize?: number;
+    as?: React.ElementType;
     boxSide?: 'start' | 'end';
     checked?: boolean;
-    checkmarkIconProps?: IIconProps;
+    checkmark?: SlotProp<ISvgIconProps>;
     className?: string;
     componentRef?: IRefObject<ICheckbox>;
     defaultChecked?: boolean;
@@ -42,11 +51,36 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    label?: string;
+    label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    // @deprecated
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    // @deprecated
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React.HTMLAttributes<HTMLDivElement>>;
+
+// @public (undocumented)
+export interface ICheckboxSlots extends BaseSlots {
+    // (undocumented)
+    checkbox: React.ElementType;
+    // (undocumented)
+    checkmark: React.ElementType;
+    // (undocumented)
+    container: React.ElementType;
+    // (undocumented)
+    input: React.ElementType;
+    // (undocumented)
+    label: React.ElementType;
+}
+
+// @public (undocumented)
+export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
+    // (undocumented)
+    ref: React.Ref<HTMLElement>;
 }
 
 // @public (undocumented)

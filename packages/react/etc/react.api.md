@@ -9,8 +9,8 @@ import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
 import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
 import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
 import { IButtonStyles } from '@fluentui/react-internal/lib/compat/Button';
-import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
-import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
+import { ICheckboxStyleProps } from '@fluentui/react-internal/lib/Checkbox';
+import { ICheckboxStyles } from '@fluentui/react-internal/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react-internal/lib/Utilities';
 import { IDragDropContext } from '@fluentui/react-internal/lib/DragDrop';
 import { IDragDropEvents } from '@fluentui/react-internal/lib/DragDrop';
@@ -1921,7 +1921,6 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
-export * from "@fluentui/react-checkbox";
 export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";

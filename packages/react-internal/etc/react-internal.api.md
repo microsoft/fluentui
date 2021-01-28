@@ -440,6 +440,12 @@ export const Check: React.FunctionComponent<ICheckProps>;
 export const CheckBase: React.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
+export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+
+// @public (undocumented)
+export const CheckboxBase: React.FunctionComponent<ICheckboxProps>;
+
+// @public (undocumented)
 export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
 
 // @public (undocumented)
@@ -1364,6 +1370,65 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
     target?: Target;
     theme?: ITheme;
+}
+
+// @public
+export interface ICheckbox {
+    checked: boolean;
+    focus: () => void;
+    indeterminate: boolean;
+}
+
+// @public
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    ariaPositionInSet?: number;
+    ariaSetSize?: number;
+    boxSide?: 'start' | 'end';
+    checked?: boolean;
+    checkmarkIconProps?: IIconProps;
+    className?: string;
+    componentRef?: IRefObject<ICheckbox>;
+    defaultChecked?: boolean;
+    defaultIndeterminate?: boolean;
+    disabled?: boolean;
+    indeterminate?: boolean;
+    inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyleProps {
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
+    // (undocumented)
+    isUsingCustomLabelRender: boolean;
+    // (undocumented)
+    reversed?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyles {
+    checkbox?: IStyle;
+    checkmark?: IStyle;
+    input?: IStyle;
+    label?: IStyle;
+    root?: IStyle;
+    text?: IStyle;
 }
 
 // @public (undocumented)
