@@ -12,7 +12,7 @@ export interface EmbedVariables {
 
 export const embedVariables = (siteVariables: any): EmbedVariables => ({
   controlColor: siteVariables.colors.white,
-  controlBackgroundColor: 'rgba(0, 0, 0, .25)',
+  controlBackgroundColor: siteVariables.colors.onyx[900],
   controlBackgroundSize: `${pxToRem(24)} ${pxToRem(24)}`,
 
   width: undefined,
