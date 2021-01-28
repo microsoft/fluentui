@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Update high contrast to support forced colors",
+  "packageName": "@fluentui/react-charting",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-22T22:42:27.713Z"
+}

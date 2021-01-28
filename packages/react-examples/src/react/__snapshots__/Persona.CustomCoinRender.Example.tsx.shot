@@ -117,6 +117,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 20px;
                 position: absolute;
                 right: -2px;
@@ -124,7 +125,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                 top: auto;
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Highlight;
                 border-color: Window;
               }
@@ -153,7 +154,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
                   speak: none;
                   vertical-align: top;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name="SkypeCheck"
