@@ -40,7 +40,6 @@ export const AvatarExamples = {
   image: nameAndImage.map(p => p.image),
   display: ['label', 'image', 'icon'],
   activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
-  customSize: [13, 21, 34, 55, 89, 144],
   /** A SVG hexagon data URL used by the CustomShape example */
   hexagon:
     'data:image/svg+xml;utf8,' +
