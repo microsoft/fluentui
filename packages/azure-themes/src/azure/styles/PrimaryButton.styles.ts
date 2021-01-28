@@ -21,6 +21,11 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
+      selectors: {
+        '::after': {
+          outlineColor: `${semanticColors.primaryButtonText} !important`,
+        },
+      },
       backgroundColor: semanticColors.primaryButtonBackground,
       color: semanticColors.primaryButtonText,
       borderColor: extendedSemanticColors.primaryCompoundButtonBorder,
