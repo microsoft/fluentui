@@ -20,6 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## BREAKING CHANGES
 - Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
+- Renamed `Card` property `quiet` to `ghost` as per design spec. @TanelVari ([#16585](https://github.com/microsoft/fluentui/pull/16585))
 
 ## Fixes
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
