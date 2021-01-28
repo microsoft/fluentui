@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as palette from '../src/theme/global-color';
 import { ColorRamp } from '../src/components/ColorRamp';
+import { grey, brandColors, hyperlink, disabled, selected, black, white } from '@fluentui/react-theme';
 
 export default {
   title: 'Fluent UI Theme/Colors/Global',
@@ -10,17 +11,17 @@ export const Global = (props) => (
   <div style={{ display: 'flex' }}>
     <div>
       <h3>Grey</h3>
-      <ColorRamp key={name} ramp={props.palette.grey} />
+      <ColorRamp key={name} ramp={grey} />
     </div>
 
     <div>
       <h3>Brand</h3>
-      <ColorRamp key={name} ramp={props.palette.brand} />
+      <ColorRamp key={name} ramp={brandColors.web} />
     </div>
 
     <div>
       <h3>Brand Teams</h3>
-      <ColorRamp key={name} ramp={props.palette.brandTeams} />
+      <ColorRamp key={name} ramp={brandColors.teams} />
     </div>
 
     <div>
@@ -28,9 +29,9 @@ export const Global = (props) => (
       <ColorRamp
         key={name}
         ramp={{
-          hyperlink: palette.hyperlink,
-          disabled: palette.disabled,
-          selected: palette.selected,
+          hyperlink: hyperlink,
+          disabled: disabled,
+          selected: selected,
         }}
       />
     </div>
@@ -40,8 +41,8 @@ export const Global = (props) => (
       <ColorRamp
         key={name}
         ramp={{
-          black: palette.black,
-          white: palette.white,
+          black: black,
+          white: white,
         }}
       />
     </div>

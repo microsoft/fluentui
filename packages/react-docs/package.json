@@ -7,6 +7,7 @@
     "@babel/core": "^7.12.10",
     "@fluentui/design-tokens": "^1.0.0",
     "@fluentui/react-northstar": "^0.51.6",
+    "@fluentui/react-theme": "^0.1.0",
     "@fluentui/react-theme-provider": "^1.0.0-beta.14",
     "@storybook/addon-essentials": "^6.1.15",
     "@storybook/addons": "^6.1.15",
