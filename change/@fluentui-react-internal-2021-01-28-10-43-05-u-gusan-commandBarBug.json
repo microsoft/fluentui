@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Make CommandBarButtonAs take precedece over ButtonAs",
+  "packageName": "@fluentui/react-internal",
+  "email": "gusan@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-28T18:43:05.352Z"
+}
