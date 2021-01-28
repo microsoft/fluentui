@@ -35,7 +35,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
           jumpLinks: [
             // prettier-ignore
-            { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
+            { text: enDash + ' Fluent UI React (font)', url: 'fluent-ui-react-font-based-icons' },
+            { text: enDash + ' Fluent UI React (SVG)', url: 'fluent-ui-react-svg-based-icons' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
             { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-icons-tool' },
           ],
