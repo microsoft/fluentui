@@ -112,7 +112,7 @@ export const dropdownVariables = (siteVars): DropdownVariables => ({
   selectedItemColorHover: siteVars.colorScheme.default.foregroundHover,
   selectedItemIconColor: siteVars.colorScheme.default.foreground1,
   selectedItemIconColorHover: siteVars.colorScheme.brand.foregroundHover,
-  selectedItemsMaxWidth: pxToRem(132),
+  selectedItemsMaxWidth: pxToRem(140),
   selectedItemColorFocus: siteVars.bodyColor,
 
   selectedItemsMaxHeight: pxToRem(82),
