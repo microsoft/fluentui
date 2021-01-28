@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
-import { Theme, PartialTheme } from '@fluentui/theme';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { createTheme } from '@fluentui/theme';
+import { createTheme, Theme, PartialTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 const lightTheme = {
@@ -118,7 +117,7 @@ describe('ThemeProvider', () => {
     );
 
     const expectedTheme: Theme = createTheme(lightTheme);
-    expectedTheme.id = '0-1';
+    expectedTheme.id = '0-0';
 
     expect(resolvedTheme).toEqual(expectedTheme);
   });
