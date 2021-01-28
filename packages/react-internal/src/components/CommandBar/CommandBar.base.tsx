@@ -188,13 +188,10 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     // The prop types between these three possible implementations overlap enough that a force-cast is safe.
     let Type = DefaultButtonAs;
 
-    if (ButtonAs) {
-      Type = composeComponentAs(ButtonAs, Type);
-    }
-
-    // CommandBarButtonAs should take precedence over ButtonAs, since it belongs to the item
     if (CommandBarButtonAs) {
       Type = composeComponentAs(CommandBarButtonAs, Type);
+    } else if (ButtonAs) {
+      Type = composeComponentAs(ButtonAs, Type);
     }
 
     // Always pass the default implementation to the override so it may be composed.
