@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
 import {
+  ContactIcon,
   GroupIcon,
   CatIcon,
   IDBadgeIcon,
@@ -85,22 +86,22 @@ export const Basic = () => (
 export const AllSizes = () => (
   <>
     <StoryExample title="Image">
-      <AvatarExampleList display="image" />
+      <AvatarExampleList images={examples.image} />
     </StoryExample>
     <StoryExample title="Image, square">
-      <AvatarExampleList display="image" square exampleIndex={1} />
+      <AvatarExampleList images={examples.image} square exampleIndex={1} />
     </StoryExample>
     <StoryExample title="Initials">
-      <AvatarExampleList display="label" />
+      <AvatarExampleList names={examples.name} />
     </StoryExample>
     <StoryExample title="Initials, square">
-      <AvatarExampleList display="label" square exampleIndex={1} />
+      <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
     <StoryExample title="Icon">
-      <AvatarExampleList display="icon" />
+      <AvatarExampleList icons={examples.icon} />
     </StoryExample>
     <StoryExample title="Icon, square">
-      <AvatarExampleList display="icon" square exampleIndex={1} />
+      <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
     </StoryExample>
   </>
 );
@@ -108,22 +109,22 @@ export const AllSizes = () => (
 export const Active = () => (
   <>
     <StoryExample title="ring">
-      <AvatarExampleList display="image" active="active" activeDisplay="ring" exampleIndex={2} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring" exampleIndex={2} />
     </StoryExample>
     <StoryExample title="ring-shadow">
-      <AvatarExampleList display="image" active="active" activeDisplay="ring-shadow" exampleIndex={3} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring-shadow" exampleIndex={3} />
     </StoryExample>
     <StoryExample title="ring-glow">
-      <AvatarExampleList display="image" active="active" activeDisplay="ring-glow" exampleIndex={4} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring-glow" exampleIndex={4} />
     </StoryExample>
     <StoryExample title="shadow">
-      <AvatarExampleList display="image" active="active" activeDisplay="shadow" exampleIndex={5} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="shadow" exampleIndex={5} />
     </StoryExample>
     <StoryExample title="glow">
-      <AvatarExampleList display="image" active="active" activeDisplay="glow" exampleIndex={6} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="glow" exampleIndex={6} />
     </StoryExample>
     <StoryExample title="inactive">
-      <AvatarExampleList display="image" active="inactive" exampleIndex={7} />
+      <AvatarExampleList images={examples.image} active="inactive" exampleIndex={7} />
     </StoryExample>
   </>
 );
@@ -132,7 +133,7 @@ export const ActiveAnimation = () => {
   const [active, setActive] = React.useState(false);
   const [size, nextSize, prevSize] = useValueSelectorState(examples.size, 96);
   const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(examples.activeDisplay, 'ring');
-  const [display, nextDisplay, prevDisplay] = useValueSelectorState(examples.display, 'image');
+  const [display, nextDisplay, prevDisplay] = useValueSelectorState(['image', 'icon', 'label'], 'image');
 
   React.useEffect(() => {
     const id = setTimeout(() => setActive(true), 500);
@@ -145,11 +146,11 @@ export const ActiveAnimation = () => {
         <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Avatar
             size={size}
-            display={display}
             active={active ? 'active' : 'inactive'}
             activeDisplay={activeDisplay}
             name={examples.name[10]}
-            image={examples.image[10]}
+            image={display === 'image' && examples.image[10]}
+            icon={display === 'icon' && <ContactIcon />}
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
@@ -187,7 +188,6 @@ export const CustomShape = () => {
       <StoryExample title="Custom shape">
         <AvatarExampleList
           icon={<ChatBotIcon />}
-          display="icon"
           tokens={{
             width: 'calc(var(--avatar-height) * 1.125)',
             background: `url('${examples.hexagon}') 0px/contain no-repeat`,
@@ -209,7 +209,6 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
-    useValueSelector('display', useValueSelectorState(examples.display)),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];
@@ -242,8 +241,13 @@ export const AvatarPlayground = () => {
 /**
  * Generate a list of Avatars with sample properties
  */
-const AvatarExampleList: React.FC<AvatarProps & { exampleIndex?: number }> = props => {
-  const { exampleIndex = 0 } = props;
+const AvatarExampleList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+  icons?: readonly JSX.Element[];
+  exampleIndex?: number;
+}> = props => {
+  const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
 
   return (
@@ -252,11 +256,11 @@ const AvatarExampleList: React.FC<AvatarProps & { exampleIndex?: number }> = pro
         <Avatar
           key={size}
           size={size}
-          name={examples.name[(i + offset) % examples.name.length]}
-          image={examples.image[(i + offset) % examples.image.length]}
+          name={names && names[(i + offset) % names.length]}
+          image={images && images[(i + offset) % images.length]}
+          icon={icons && icons[(i + offset) % icons.length]}
           badge={examples.badge[(i + offset) % examples.badge.length]}
-          icon={examples.icon[(i + offset) % examples.icon.length]}
-          {...props}
+          {...restOfProps}
         />
       ))}
     </Stack>

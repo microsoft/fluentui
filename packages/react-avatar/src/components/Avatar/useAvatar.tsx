@@ -14,9 +14,8 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       as: 'span',
-      display: props.image ? 'image' : 'label',
       label: { as: 'span' },
-      image: { as: Image },
+      image: { as: props.image ? Image : nullRender },
       badge: { as: nullRender },
       size: defaultAvatarSize,
       getInitials: defaultGetInitials,
@@ -53,24 +52,21 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     }
   }
 
-  // Display the initials if there's no label
+  // If a label was not provided, use the following priority:
+  // icon => initials => default icon
   if (!state.label.children) {
-    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
-    if (initials) {
-      state.label.children = initials;
-    } else if (state.display === 'label') {
-      state.display = 'icon'; // If there are no initials or image, fall back to the icon
+    if (state.icon) {
+      state.label.children = state.icon;
+      state.hasIcon = true;
+    } else {
+      const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+      if (initials) {
+        state.label.children = initials;
+      } else {
+        state.label.children = <DefaultAvatarIcon />;
+        state.hasIcon = true;
+      }
     }
-  }
-
-  // Display the icon if requested
-  if (state.display === 'icon') {
-    state.label.children = state.icon || <DefaultAvatarIcon />;
-  }
-
-  // Don't show the image if it's not supposed to be displayed
-  if (state.display !== 'image') {
-    state.image = { as: nullRender };
   }
 
   return state;

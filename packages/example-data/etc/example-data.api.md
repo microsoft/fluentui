@@ -12,7 +12,6 @@ export const AvatarExamples: {
     }[];
     readonly name: string[];
     readonly image: string[];
-    readonly display: readonly ["label", "image", "icon"];
     readonly activeDisplay: readonly ["ring", "ring-shadow", "ring-glow", "shadow", "glow"];
     readonly hexagon: string;
 };

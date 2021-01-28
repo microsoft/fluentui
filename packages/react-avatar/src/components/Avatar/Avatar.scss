@@ -301,7 +301,7 @@ $default-inactiveScale: 0.875;
 }
 
 // Display modifiers
-._display_icon {
+._hasIcon {
   // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
   font-size: var(--avatar-iconSize, $default-iconSize);
   font-weight: initial;

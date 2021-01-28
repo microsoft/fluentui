@@ -76,7 +76,7 @@ describe('Avatar', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('prioritizes initials over icon', () => {
+  it('prioritizes icon over initials', () => {
     const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -96,24 +96,6 @@ describe('Avatar', () => {
 
   it('prioritizes image over initials and icon', () => {
     const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('respects display="icon"', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" display="icon" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('respects display="label"', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" display="label" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('respects display="image"', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" display="image" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
