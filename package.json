@@ -52,7 +52,7 @@
     "run:published": "node ./scripts/monorepo/runPublished.js",
     "satisfied": "satisfied --skip-invalid",
     "scrub": "node ./scripts/scrub.js",
-    "start:legacy": "yarn workspace @uifabric/public-docsite-resources start",
+    "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start": "node scripts/start.js",
     "start:northstar": "yarn workspace @fluentui/docs start",
     "start-exp": "yarn workspace @fluentui/react-experiments start",
