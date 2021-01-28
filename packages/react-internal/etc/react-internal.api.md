@@ -5532,6 +5532,56 @@ export interface IThemeSlotRule {
 }
 
 // @public (undocumented)
+export interface IToggle {
+    // (undocumented)
+    focus: () => void;
+}
+
+// @public
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
+    ariaLabel?: string;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    checked?: boolean;
+    componentRef?: IRefObject<IToggle>;
+    defaultChecked?: boolean;
+    disabled?: boolean;
+    inlineLabel?: boolean;
+    label?: string | JSX.Element;
+    // @deprecated (undocumented)
+    offAriaLabel?: string;
+    offText?: string;
+    // @deprecated (undocumented)
+    onAriaLabel?: string;
+    onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+    // @deprecated (undocumented)
+    onChanged?: (checked: boolean) => void;
+    onText?: string;
+    role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
+    styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export interface IToggleStyleProps {
+    checked?: boolean;
+    className?: string;
+    disabled?: boolean;
+    inlineLabel?: boolean;
+    onOffMissing?: boolean;
+    theme: ITheme;
+}
+
+// @public
+export interface IToggleStyles {
+    container: IStyle;
+    label: IStyle;
+    pill: IStyle;
+    root: IStyle;
+    text: IStyle;
+    thumb: IStyle;
+}
+
+// @public (undocumented)
 export interface ITooltip {
 }
 
@@ -6959,6 +7009,12 @@ export class ThemeGenerator {
 
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
+
+// @public (undocumented)
+export const Toggle: React.FunctionComponent<IToggleProps>;
+
+// @public (undocumented)
+export const ToggleBase: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
 export const Tooltip: React.FunctionComponent<ITooltipProps>;

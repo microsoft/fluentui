@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IToggleProps, IToggleStyleProps, IToggleStyles, IToggle } from './Toggle.types';
-import { Label } from '@fluentui/react-internal/lib/Label';
-import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@fluentui/utilities';
 import { useControllableValue, useId, useWarnings } from '@fluentui/react-hooks';
+import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@fluentui/utilities';
+import { Label } from '../Label/Label';
+import { IToggleProps, IToggleStyleProps, IToggleStyles, IToggle } from './Toggle.types';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
 
