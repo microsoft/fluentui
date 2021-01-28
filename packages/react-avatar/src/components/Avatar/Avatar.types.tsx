@@ -1,16 +1,50 @@
 import * as React from 'react';
 import { BadgeProps } from '../Badge/index';
-import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
+import { ShorthandValue } from '../utils/commonTypes';
 
-export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
+  /**
+   * The root element type of the Avatar.
+   *
+   * @defaultvalue span
+   */
+  as?: React.ElementType;
+
   /** The Avatar's image. */
   image?: ShorthandValue<{}>;
 
-  /** The label shown when there's no image. Defaults to the initials derived from `name` using `getInitials`. */
+  /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials` */
   label?: ShorthandValue<{}>;
 
-  /** Icon displayed when there's no image or intials available */
+  /** Icon displayed when there's no image. */
   icon?: ShorthandValue<{}>;
+
+  /** Badge to show the avatar's status. */
+  badge?: ShorthandValue<BadgeProps>;
+
+  /** The name used for displaying the initials of the avatar if the image is not provided. */
+  name?: string;
+
+  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
+  getInitials?: (name: string, isRtl: boolean) => string;
+
+  /**
+   * Size of the avatar in pixels.
+   *
+   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
+   *
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and use the `width` and `height`
+   * tokens to override the rendered size, plus other size-related tokens if needed, such as `fontSize` and `iconSize`.
+   *
+   * For example, to set the avatar to 45px in size:
+   * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
+   *
+   * @defaultvalue 32
+   */
+  size?: AvatarSizeValue;
+
+  /** The avatar can have a square shape. */
+  square?: boolean;
 
   /**
    * Optional activity indicator
@@ -24,34 +58,19 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 
   /**
    * The type of visual treatment to use when `active="active"`
+   *
    * @defaultvalue ring
    */
   activeDisplay?: 'ring' | 'shadow' | 'glow' | 'ring-shadow' | 'ring-glow';
 
-  /** Badge to show the avatar's status. */
-  badge?: ShorthandValue<BadgeProps>;
-
-  /** The name used for displaying the initials of the avatar if the image is not provided. */
-  name?: string;
-
-  /** The avatar can have a square shape. */
-  square?: boolean;
-
   /**
-   * Size of the avatar in pixels.
+   * The color when displaying either an icon or initials.
+   * * neutral (default): gray
+   * * brand: color from the brand palette
    *
-   * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
-   *
-   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and use the `width` and `height`
-   * tokens to override the display size, plus other size-related tokens if needed, such as `fontSize` and `iconSize`.
-   *
-   * For example, to set the avatar to 45px in size:
-   * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
+   * @defaultvalue neutral
    */
-  size?: AvatarSizeValue;
-
-  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
-  getInitials?: (name: string, isRtl: boolean) => string;
+  colorType?: 'neutral' | 'brand';
 
   /** Style tokens */
   tokens?: AvatarTokenSet;

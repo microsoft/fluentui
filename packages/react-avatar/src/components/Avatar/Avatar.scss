@@ -306,3 +306,8 @@ $default-inactiveScale: 0.875;
   font-size: var(--avatar-iconSize, $default-iconSize);
   font-weight: initial;
 }
+
+._colorType_brand {
+  --avatar-color: #{$color-default-neutralForegroundInverted};
+  --avatar-background: #{$color-default-brand};
+}

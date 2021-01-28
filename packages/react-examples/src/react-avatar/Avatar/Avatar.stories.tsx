@@ -70,6 +70,10 @@ export const Basic = () => (
       <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="success" />
       <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
+    <StoryExample title="Brand color">
+      <Avatar colorType="brand" name={examples.name[4]} badge="info" />
+      <Avatar colorType="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+    </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
         <Avatar name={examples.name[7]} active="active" />
@@ -94,6 +98,9 @@ export const AllSizes = () => (
     <StoryExample title="Initials">
       <AvatarExampleList names={examples.name} />
     </StoryExample>
+    <StoryExample title="Initials, brand color">
+      <AvatarExampleList names={examples.name} colorType="brand" />
+    </StoryExample>
     <StoryExample title="Initials, square">
       <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
@@ -102,6 +109,9 @@ export const AllSizes = () => (
     </StoryExample>
     <StoryExample title="Icon, square">
       <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
+    </StoryExample>
+    <StoryExample title="Icon, brand color">
+      <AvatarExampleList icons={examples.icon} colorType="brand" exampleIndex={1} />
     </StoryExample>
   </>
 );
@@ -209,6 +219,7 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
+    useValueSelector('colorType', useValueSelectorState(examples.colorType)),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];
