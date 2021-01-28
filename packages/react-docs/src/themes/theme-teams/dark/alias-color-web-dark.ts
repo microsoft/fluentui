@@ -1,5 +1,5 @@
-import { AliasColorTokens } from './types';
-import { grey, brand, white, black } from './global-color';
+import { AliasColorTokens } from '../../theme-base';
+import { grey, brand, white } from '../global/global-color';
 
 export const webDark: AliasColorTokens = {
   neutralForeground1: white,
@@ -10,7 +10,7 @@ export const webDark: AliasColorTokens = {
   neutralForeground2Selected: white,
   brandForeground2Hover: brand.tint20,
   brandForeground2Pressed: brand.tint10,
-  brandForeground2Selected: brand.tint10,
+  brandForeground2Selected: brand.tint20,
 
   neutralForeground3: grey[68],
   neutralForeground3Hover: grey[84],
@@ -24,10 +24,10 @@ export const webDark: AliasColorTokens = {
 
   neutralForegroundDisabled: grey[36],
 
-  brandForeground: brand.tint10,
-  brandForegroundHover: brand.tint30,
-  brandForegroundPressed: brand.tint20,
-  brandForegroundSelected: brand.tint10,
+  brandForeground: '#9EA2FF', // Name TBD
+  brandForegroundHover: '#C7C9FF', // Name TBD
+  brandForegroundPressed: '#B2B5FF', // Name TBD
+  brandForegroundSelected: '#9EA2FF', // Name TBD
 
   neutralForegroundInverted: white,
 
@@ -38,25 +38,25 @@ export const webDark: AliasColorTokens = {
   neutralBackground1Pressed: grey[18],
   neutralBackground1Selected: grey[20],
 
-  neutralBackground2: grey[12],
-  neutralBackground2Hover: grey[18],
-  neutralBackground2Pressed: grey[14],
-  neutralBackground2Selected: grey[16],
+  neutralBackground2: grey[14],
+  neutralBackground2Hover: grey[20],
+  neutralBackground2Pressed: grey[16],
+  neutralBackground2Selected: grey[18],
 
-  neutralBackground3: grey[8],
-  neutralBackground3Hover: grey[14],
-  neutralBackground3Pressed: grey[10],
-  neutralBackground3Selected: grey[12],
+  neutralBackground3: grey[12],
+  neutralBackground3Hover: grey[18],
+  neutralBackground3Pressed: grey[14],
+  neutralBackground3Selected: grey[16],
 
-  neutralBackground4: grey[4],
-  neutralBackground4Hover: grey[10],
-  neutralBackground4Pressed: grey[6],
-  neutralBackground4Selected: grey[8],
+  neutralBackground4: grey[8],
+  neutralBackground4Hover: grey[14],
+  neutralBackground4Pressed: grey[10],
+  neutralBackground4Selected: grey[12],
 
-  neutralBackground5: black,
-  neutralBackground5Hover: grey[14],
-  neutralBackground5Pressed: grey[10],
-  neutralBackground5Selected: grey[12],
+  neutralBackground5: grey[4],
+  neutralBackground5Hover: grey[10],
+  neutralBackground5Pressed: grey[6],
+  neutralBackground5Selected: grey[8],
 
   neutralBackground6: grey[20],
 

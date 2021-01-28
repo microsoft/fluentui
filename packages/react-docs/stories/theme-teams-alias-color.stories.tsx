@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { AliasColorTokens, webLight, webDark, webHighContrast } from '../src/themes/theme-base';
+import { AliasColorTokens, webLight, webHighContrast } from '../src/themes/theme-base';
+import { webDark } from '../src/themes/theme-teams';
 import { ColorRampItem } from '../src/components/ColorRamp';
 
 export default {
-  title: 'Fluent UI Theme/Colors/Alias',
+  title: 'Fluent UI Theme/Colors/Teams Alias',
 };
 
 const asliasNames: Array<keyof AliasColorTokens> = [
@@ -74,7 +75,7 @@ const asliasNames: Array<keyof AliasColorTokens> = [
   'neutralShadowKeyDarker',
 ];
 
-export const Alias = (props) => (
+export const TeamsAlias = (props) => (
   <div>
     <div style={{ display: 'flex' }}>
       <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Design Token</h3>
@@ -93,4 +94,4 @@ export const Alias = (props) => (
   </div>
 );
 
-Alias.args = {};
+TeamsAlias.args = {};

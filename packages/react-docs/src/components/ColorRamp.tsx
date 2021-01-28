@@ -8,27 +8,32 @@ export type ColorRampProps = {
 
 export type ColorRampItemProps = {
   /** Name of the color */
-  name: string;
+  name?: string;
 
   /** A CSS color value */
-  value: string;
+  value?: string;
 };
 
-const ColorRampItem = (props: ColorRampItemProps) => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'space-between',
-      padding: '1em',
-      background: props.value,
-      color: Color(props.value).isDark() ? '#fff' : '#000',
-      width: 250,
-    }}
-  >
-    <span>{props.name}</span>
-    <span>{props.value}</span>
-  </div>
-);
+export const ColorRampItem = (props: ColorRampItemProps) => {
+  const color = Color(props.value);
+  const isDark = color.isDark();
+  const isTransparent = color.object().alpha < 0.5;
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        padding: '1em',
+        background: props.value,
+        color: isTransparent ? '#000' : isDark ? '#fff' : '#000',
+        width: 250,
+      }}
+    >
+      {props.name && <span>{props.name}</span>}
+      {props.value && <span>{props.value}</span>}
+    </div>
+  );
+};
 
 /**
  * Renders a color ramp for documentation purposes.

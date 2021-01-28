@@ -1,12 +1,12 @@
 import * as React from 'react';
-import * as palette from '../src/themes/theme-base/global/global-color';
+import * as palette from '../src/themes/theme-teams/global/global-color';
 import { ColorRamp } from '../src/components/ColorRamp';
 
 export default {
-  title: 'Fluent UI Theme/Colors/Global',
+  title: 'Fluent UI Theme/Colors/Teams Global',
 };
 
-export const Global = (props) => (
+export const TeamsGlobal = (props) => (
   <div style={{ display: 'flex' }}>
     <div>
       <h3>Grey</h3>
@@ -43,6 +43,6 @@ export const Global = (props) => (
   </div>
 );
 
-Global.args = {
+TeamsGlobal.args = {
   palette,
 };
