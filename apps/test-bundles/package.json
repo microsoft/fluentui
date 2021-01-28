@@ -11,11 +11,11 @@
     "just": "just-scripts"
   },
   "dependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
-    "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react": "^8.0.0-beta.43",
-    "@fluentui/react-button": "^1.0.0-beta.23",
-    "@fluentui/react-compose": "^1.0.0-beta.10",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/keyboard-key": "^0.2.13-0",
+    "@fluentui/react": "^8.0.0-beta.44",
+    "@fluentui/react-button": "^1.0.0-beta.24",
+    "@fluentui/react-compose": "^1.0.0-beta.11",
     "@fluentui/scripts": "^1.0.0",
     "parallel-webpack": "^2.6.0",
     "webpack-bundle-analyzer": "^4.4.0",

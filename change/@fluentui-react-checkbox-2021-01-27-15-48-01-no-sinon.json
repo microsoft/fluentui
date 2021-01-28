@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove incorrect mock of requestAnimationFrame",
-  "packageName": "@fluentui/react-checkbox",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-01-27T23:47:32.279Z"
-}
