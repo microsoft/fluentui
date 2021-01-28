@@ -28,13 +28,25 @@ const components = teamsTheme => ({
       <code>{children}</code>
     ),
   h1: ({ children }) => (
-    <Header as="h1" content={children} style={{ color: teamsTheme.siteVariables.colors.grey[750] }} />
+    <Header
+      as="h1"
+      content={children}
+      styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
+    />
   ),
   h2: ({ children }) => (
-    <Header as="h2" content={children} style={{ color: teamsTheme.siteVariables.colors.grey[750] }} />
+    <Header
+      as="h2"
+      content={children}
+      styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
+    />
   ),
   h3: ({ children }) => (
-    <Header as="h3" content={children} style={{ color: teamsTheme.siteVariables.colors.grey[750] }} />
+    <Header
+      as="h3"
+      content={children}
+      styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
+    />
   ),
   img: props => <img style={{ maxWidth: '100%' }} {...props} />,
 });

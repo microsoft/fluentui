@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CodeSnippet, renderElementToJSX } from '@fluentui/docs-components';
-import { ProviderConsumer } from '@fluentui/react-northstar';
+import { Box } from '@fluentui/react-northstar';
 
 export type ExampleSnippetProps = {
   children?: React.ReactElement;
@@ -8,7 +8,7 @@ export type ExampleSnippetProps = {
   value?: string;
 };
 
-const rootStyle = siteVariables => ({
+const rootStyle = ({ theme: { siteVariables } }) => ({
   color: siteVariables.bodyColor,
   background: siteVariables.bodyBackground,
   marginBottom: '2rem',
@@ -29,14 +29,10 @@ const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = props => {
   const string = value || renderElementToJSX(element, !isFunctionWithoutValue);
 
   return (
-    <ProviderConsumer
-      render={({ siteVariables }) => (
-        <div style={rootStyle(siteVariables)}>
-          <CodeSnippet value={string} fitted />
-          {element && <div style={renderedStyle}>{element}</div>}
-        </div>
-      )}
-    />
+    <Box styles={rootStyle}>
+      <CodeSnippet value={string} fitted />
+      {element && <div style={renderedStyle}>{element}</div>}
+    </Box>
   );
 };
 
