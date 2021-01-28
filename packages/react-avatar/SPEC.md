@@ -103,7 +103,7 @@ From [Avatar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packag
 
 ### Slots
 
-- `as` - The root element of the Avatar.
+- `root` - The root element of the Avatar.
 - `image` - The Avatar's image, if available.
 - `label` - The text shown when there's no image. Defaults to the initials derived from `name` using `getInitials`.
 - `icon` - Icon displayed when there's no image or intials available.
@@ -113,7 +113,7 @@ From [Avatar.types.tsx](https://github.com/microsoft/fluentui/blob/master/packag
 
 ```ts
 export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
-    /**
+  /**
    * The root element type of the Avatar.
    *
    * @defaultvalue span
@@ -148,6 +148,8 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
    *
    * For example, to set the avatar to 45px in size:
    * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
+   *
+   * @defaultvalue 32
    */
   size?: AvatarSizeValue;
 
@@ -180,10 +182,10 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
    *
    * @defaultvalue neutral
    */
-  colorType?: 'neutral' | 'brand' | 'colorful';
+  colorVariant?: 'neutral' | 'brand' | 'colorful';
 
   /**
-   * When colorType="colorful", specifies which color in the list of avatar colors to use.
+   * When colorVariant="colorful", specifies which color in the list of avatar colors to use.
    * If colorIndex is out of bounds of the colors list, it will wrap around.
    *
    * @defaultvalue calculated based on a hash of the name prop.
@@ -207,8 +209,6 @@ export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 |
 
 /** Default Avatar size if not specified */
 export const defaultAvatarSize: AvatarSizeValue = 32;
-
-}
 ```
 
 ### Styling Tokens
