@@ -178,7 +178,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
             color:
               'var(--button-highContrast-pressed-contentColor, ' +
               'var(--button-highContrast-hovered-contentColor, ' +
-              'var(--button-highContarst-contentColor)))',
+              'var(--button-highContrast-contentColor)))',
             [`.${GlobalClassNames.icon}`]: {
               color:
                 'var(--button-highContrast-pressed-iconColor, ' +

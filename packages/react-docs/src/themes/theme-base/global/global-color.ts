@@ -62,7 +62,6 @@ export const hyperlink = '#FFFF00';
 export const disabled = '#3FF23F';
 export const selected = '#1AEBFF';
 
-// TODO: values should be set per product theme
 export const brand = {
   shade60: '#092C47',
   shade50: '#043862',
@@ -77,21 +76,4 @@ export const brand = {
   tint40: '#C7E0F4',
   tint50: '#DEECF9',
   tint60: '#EFF6FC',
-};
-
-// TODO: these colors are not approved yet
-export const brandTeams = {
-  shade60: '#323348',
-  shade50: '#393b5d', // TBD
-  shade40: '#3D3E66',
-  shade30: '#464775',
-  shade20: '#494B83',
-  shade10: '#52558f', // TBD
-  primary: '#6264A7',
-  tint10: '#8f95f8', // TBD
-  tint20: '#9EA2FF',
-  tint30: '#B2B5FF',
-  tint40: '#C7C9FF',
-  tint50: '#DBDCF0',
-  tint60: '#E9EAF6',
 };

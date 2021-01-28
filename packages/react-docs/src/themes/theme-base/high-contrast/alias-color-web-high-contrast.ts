@@ -1,5 +1,5 @@
-import { AliasColorTokens } from './types';
-import { black, disabled, hyperlink, selected, white } from './global-color';
+import { AliasColorTokens } from '../types';
+import { black, disabled, hyperlink, selected, white } from '../global/global-color';
 
 export const webHighContrast: AliasColorTokens = {
   neutralForeground1: white,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorRamp } from '../src/components/ColorRamp';
+import { ColorRampItem } from '../src/components/ColorRamp';
 import {
   teamsDefaultTheme,
   teamsDarkTheme,
@@ -40,20 +40,21 @@ export const Neutral = (props) => {
           <option value="web">Web branded</option>
         </select>
       </div>
-      <div style={{ display: 'flex' }}>
-        {/* TODO: Add column with alias names like in Figma? */}
-        <div>
-          <h3>Web Light</h3>
-          <ColorRamp ramp={themes[theme].default.neutralColorTokens} />
+      <div>
+        <div style={{ display: 'flex' }}>
+          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Design Token</h3>
+          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Web Light</h3>
+          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Web Dark</h3>
+          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Web High Contrast</h3>
         </div>
-        <div>
-          <h3>Web Dark</h3>
-          <ColorRamp ramp={themes[theme].dark.neutralColorTokens} />
-        </div>
-        <div>
-          <h3>Web High Contrast</h3>
-          <ColorRamp ramp={themes[theme].highContrast.neutralColorTokens} />
-        </div>
+        {Object.keys(themes[theme].default.neutralColorTokens).map((name) => (
+          <div key={name} style={{ display: 'flex' }}>
+            <div style={{ padding: '1em', width: 250, fontWeight: 'bold' }}>{name}</div>
+            <ColorRampItem value={themes[theme].default.neutralColorTokens[name]} />
+            <ColorRampItem value={themes[theme].dark.neutralColorTokens[name]} />
+            <ColorRampItem value={themes[theme].highContrast.neutralColorTokens[name]} />
+          </div>
+        ))}
       </div>
     </>
   );

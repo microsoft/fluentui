@@ -1,5 +1,5 @@
-import { AliasColorTokens } from './types';
-import { grey, brand, white } from './global-color';
+import { AliasColorTokens } from '../types';
+import { grey, brand, white } from '../global/global-color';
 
 export const webLight: AliasColorTokens = {
   neutralForeground1: grey[14],
