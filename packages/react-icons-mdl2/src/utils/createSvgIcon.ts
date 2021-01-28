@@ -17,18 +17,6 @@ const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<
           role: 'presentation',
           ['aria-hidden']: true,
         };
-    if (icons?.icons?.[displayName]) {
-      return React.createElement(
-        'span',
-        {
-          ...containerProps,
-          ...nativeProps,
-          className: css(classes.root, className),
-          style,
-        },
-        icons.icons[displayName],
-      );
-    }
     return React.createElement(
       'span',
       {
@@ -37,7 +25,7 @@ const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<
         className: css(classes.root, className),
         style,
       },
-      svg({ classes, props }),
+      icons?.icons?.[displayName] ? icons.icons[displayName] : svg({ classes, props }),
     );
   };
 
