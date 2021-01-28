@@ -2,125 +2,125 @@ import * as React from 'react';
 import { Carousel, Image } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Allan',
-  elliot: 'Portrait of Carole',
-  molly: 'Portrait of Johnie',
-  nan: 'Portrait of Kat',
+  allan: 'Portrait of Allan',
+  carole: 'Portrait of Carole',
+  johnie: 'Portrait of Johnie',
+  kat: 'Portrait of Kat',
 };
 const carouselItems = [
   {
-    key: 'ade',
-    id: 'ade',
+    key: 'allan',
+    id: 'allan',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
-        alt={imageAltTags.ade}
+        alt={imageAltTags.allan}
       />
     ),
     thumbnail: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
-        alt={imageAltTags.ade}
+        alt={imageAltTags.allan}
       />
     ),
-    'aria-label': imageAltTags.ade,
+    'aria-label': imageAltTags.allan,
   },
   {
-    key: 'elliot',
-    id: 'elliot',
+    key: 'carole',
+    id: 'carole',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
-        alt={imageAltTags.elliot}
+        alt={imageAltTags.carole}
       />
     ),
     thumbnail: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
-        alt={imageAltTags.elliot}
+        alt={imageAltTags.carole}
       />
     ),
-    'aria-label': imageAltTags.elliot,
+    'aria-label': imageAltTags.carole,
   },
   {
-    key: 'molly',
-    id: 'molly',
+    key: 'johnie',
+    id: 'johnie',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
         fluid
-        alt={imageAltTags.molly}
+        alt={imageAltTags.johnie}
       />
     ),
     thumbnail: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
         fluid
-        alt={imageAltTags.molly}
+        alt={imageAltTags.johnie}
       />
     ),
-    'aria-label': imageAltTags.molly,
+    'aria-label': imageAltTags.johnie,
   },
   {
-    key: 'nan',
-    id: 'nan',
+    key: 'kat',
+    id: 'kat',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
-        alt={imageAltTags.nan}
+        alt={imageAltTags.kat}
       />
     ),
     thumbnail: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
-        alt={imageAltTags.nan}
+        alt={imageAltTags.kat}
       />
     ),
-    'aria-label': imageAltTags.nan,
+    'aria-label': imageAltTags.kat,
   },
   {
-    key: 'elliot1',
-    id: 'elliot1',
+    key: 'carole1',
+    id: 'carole1',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
-        alt={imageAltTags.elliot}
+        alt={imageAltTags.carole}
       />
     ),
     thumbnail: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
-        alt={imageAltTags.elliot}
+        alt={imageAltTags.carole}
       />
     ),
-    'aria-label': imageAltTags.elliot,
+    'aria-label': imageAltTags.carole,
   },
   {
-    key: 'ade1',
-    id: 'ade1',
+    key: 'allan1',
+    id: 'allan1',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
-        alt={imageAltTags.ade}
+        alt={imageAltTags.allan}
       />
     ),
     thumbnail: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
-        alt={imageAltTags.ade}
+        alt={imageAltTags.allan}
       />
     ),
-    'aria-label': imageAltTags.ade,
+    'aria-label': imageAltTags.allan,
   },
 ];
 

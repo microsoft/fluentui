@@ -3,7 +3,7 @@ import { Carousel, Image } from '@fluentui/react-northstar';
 
 const carouselItems = [
   {
-    key: 'ade',
+    key: 'allan',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
@@ -13,7 +13,7 @@ const carouselItems = [
     ),
   },
   {
-    key: 'elliot',
+    key: 'carole',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
@@ -23,7 +23,7 @@ const carouselItems = [
     ),
   },
   {
-    key: 'kristy',
+    key: 'elvia',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
@@ -33,7 +33,7 @@ const carouselItems = [
     ),
   },
   {
-    key: 'nan',
+    key: 'kat',
     content: (
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
