@@ -1,4 +1,2 @@
-export * from './ITodo';
-export * from './ITodoTask';
-export * from './ITodoTabs';
-export * from './IDataProvider';
+export * from './TodoItemData';
+export * from './DataProviderApi';

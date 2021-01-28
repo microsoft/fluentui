@@ -2,19 +2,20 @@
   "compilerOptions": {
     "target": "es5",
     "outDir": "lib",
-    "module": "commonjs",
+    "module": "esnext",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
+    "importHelpers": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "noUnusedLocals": true,
     "preserveConstEnums": true,
     "strict": true,
     "skipLibCheck": true,
-    "lib": ["es5", "dom"],
-    "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["webpack-env", "custom-global"]
+    "lib": ["es5", "dom", "es2015.promise"],
+    "types": ["jest"]
   },
   "include": ["src"]
 }

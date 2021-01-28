@@ -1,77 +1,78 @@
 import * as React from 'react';
-import { Pivot, PivotItem, IPivotProps, PivotLinkSize } from '@fluentui/react/lib/Pivot';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { List } from '@fluentui/react/lib/List';
-import { KeyCodes } from '@fluentui/react/lib/Utilities';
-import TodoItem from './TodoItem';
-import { ITodoItem, ITodoItemProps, ITodoTabsProps } from '../types/index';
+import { Pivot, PivotItem, FocusZone, FocusZoneDirection, List, IListProps, KeyCodes } from '@fluentui/react';
+import { TodoItem } from './TodoItem';
+import { TodoItemData } from '../types/index';
 
-import * as stylesImport from './Todo.scss';
-const styles: any = stylesImport;
+import { tabsStyles } from './styles';
 import strings from './../strings';
 
-/**
- * The TodoTabs component using fabric-react component <Pivot> <List> <FocusZone>.
- *
- * Link of <Pivot>: https://developer.microsoft.com/en-us/fluentui#/controls/web/pivot
- * Link of <List>: https://developer.microsoft.com/en-us/fluentui#/controls/web/list
- * Link of <FocusZone>: https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone
- */
-export default class TodoTabs extends React.Component<ITodoTabsProps, {}> {
-  public render(): React.ReactElement<IPivotProps> | null {
-    const pivotArray: React.ReactElement<IPivotProps>[] = [];
+export interface TodoTabsProps {
+  /**
+   * The items rendered in the todo list.
+   * They will be filtered and displayed on the appropriate pivots based on completed status.
+   */
+  items: TodoItemData[];
 
-    const activeTasks: ITodoItem[] = this.props.items.filter((task: ITodoItem) => task.isComplete === false);
-    const completedTasks: ITodoItem[] = this.props.items.filter((task: ITodoItem) => task.isComplete === true);
-    const allTasks: ITodoItem[] = activeTasks.concat(completedTasks);
+  /**
+   * Callback for when an item's checkbox is checked or unchecekd.
+   * @param item - item for which the checkbox is checked or unchecked.
+   */
+  onToggleComplete: (item: TodoItemData) => void;
 
-    this._onRenderTodoItem = this._onRenderTodoItem.bind(this);
+  /**
+   * Callback for when an item is deleted.
+   * @param item - item for which the delete button is triggered.
+   */
+  onDeleteItem: (item: TodoItemData) => void;
+}
 
-    if (activeTasks.length > 0) {
-      pivotArray.push(this._renderPivotItemList(activeTasks, strings.todoListTabNameActive));
-    }
+export const TodoTabs: React.FunctionComponent<TodoTabsProps> = props => {
+  const { items, onDeleteItem, onToggleComplete } = props;
 
-    if (completedTasks.length > 0) {
-      pivotArray.push(this._renderPivotItemList(completedTasks, strings.todoListTabNameCompleted));
-    }
+  const onRenderItem = React.useCallback(
+    (item?: TodoItemData) => {
+      return item ? (
+        <TodoItem key={item.id} item={item} onToggleComplete={onToggleComplete} onDeleteItem={onDeleteItem} />
+      ) : null;
+    },
+    [onDeleteItem, onToggleComplete],
+  );
 
-    if (allTasks.length > 0) {
-      pivotArray.push(this._renderPivotItemList(allTasks, strings.todoListTabNameAllTasks));
-    }
-
-    return pivotArray.length > 0 ? (
-      <div className={styles.todoPivot}>
-        <Pivot linkSize={PivotLinkSize.large}>{pivotArray}</Pivot>
-      </div>
-    ) : null;
-  }
-
-  private _renderPivotItemList(tasks: ITodoItem[], tabName: string): React.ReactElement<IPivotProps> {
-    // @todo #219004 make shouldEnterInnerZone be rtl safe.
-    return (
-      <PivotItem headerText={`${tabName} (${tasks.length})`}>
-        <FocusZone direction={FocusZoneDirection.vertical} shouldEnterInnerZone={this._shouldEnterInnerZone}>
-          <List className={styles.todoList} items={tasks} onRenderCell={this._onRenderTodoItem} />
-        </FocusZone>
-      </PivotItem>
-    );
-  }
-
-  private _shouldEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
-    return ev.which === KeyCodes.right;
-  };
-
-  private _onRenderTodoItem(item?: ITodoItem): React.ReactElement<ITodoItemProps> | null {
-    if (item) {
-      return (
-        <TodoItem
-          key={item.id}
-          item={item}
-          onToggleComplete={this.props.onToggleComplete}
-          onDeleteItem={this.props.onDeleteItem}
-        />
-      );
-    }
+  if (items.length === 0) {
     return null;
   }
+
+  const activeTasks: TodoItemData[] = items.filter(task => !task.isComplete);
+  const completedTasks: TodoItemData[] = items.filter(task => task.isComplete);
+  const allTasks: TodoItemData[] = activeTasks.concat(completedTasks);
+
+  return (
+    <div className={tabsStyles.todoPivot}>
+      <Pivot>
+        {_renderPivotItemList(activeTasks, strings.active, onRenderItem)}
+        {_renderPivotItemList(completedTasks, strings.completed, onRenderItem)}
+        {_renderPivotItemList(allTasks, strings.allTasks, onRenderItem)}
+      </Pivot>
+    </div>
+  );
+};
+TodoTabs.displayName = 'TodoTabs';
+
+function _renderPivotItemList(
+  tasks: TodoItemData[],
+  tabName: string,
+  onRenderItem: IListProps<TodoItemData>['onRenderCell'],
+): React.ReactNode {
+  return (
+    <PivotItem headerText={`${tabName} (${tasks.length})`}>
+      <FocusZone direction={FocusZoneDirection.vertical} isInnerZoneKeystroke={_isInnerZoneKeystroke}>
+        <List className={tabsStyles.todoList} items={tasks} onRenderCell={onRenderItem} />
+      </FocusZone>
+    </PivotItem>
+  );
+}
+
+function _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  // eslint-disable-next-line deprecation/deprecation
+  return ev.which === KeyCodes.right;
 }

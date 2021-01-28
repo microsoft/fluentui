@@ -1,98 +1,94 @@
 import * as React from 'react';
+import { Checkbox, FocusZone, FocusZoneDirection, css, IIconProps } from '@fluentui/react';
 import { IconButton } from '@fluentui/react/lib/compat/Button';
-import { Checkbox } from '@fluentui/react/lib/Checkbox';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { css } from '@fluentui/react/lib/Utilities';
-import { ITodoItem, ITodoItemProps } from '../types/index';
+import { TodoItemData } from '../types/index';
 
-import * as stylesImport from './Todo.scss';
-const styles: any = stylesImport;
+import { itemStyles } from './styles';
 import strings from './../strings';
 
-/**
- * TodoItem component using fabric-react component <FocusZone> <Checkbox> <IconButton> <DocumentCardActivity>.
- *
- * Link of FocusZone: https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone
- * Link of Checkbox: https://developer.microsoft.com/en-us/fluentui#/controls/web/checkbox
- * Link of Button: https://developer.microsoft.com/en-us/fluentui#/controls/web/button
- * Link of DocumentCardActivity: https://developer.microsoft.com/en-us/fluentui#/controls/web/documentcard
- */
-export default class TodoItem extends React.Component<ITodoItemProps, {}> {
-  private static ANIMATION_TIMEOUT = 200;
+export interface TodoItemProps {
+  /** The item to render. */
+  item: TodoItemData;
 
-  private _animationTimeoutId!: number;
-  private _rowItem!: HTMLDivElement;
+  /** Callback for when this item's checkbox is checked or unchecked. */
+  onToggleComplete: (item: TodoItemData) => void;
 
-  constructor(props: ITodoItemProps) {
-    super(props);
+  /** Callback for when this item's delete button is triggered. */
+  onDeleteItem: (item: TodoItemData) => void;
+}
 
-    this._onCheckboxChange = this._onCheckboxChange.bind(this);
-    this._onDelete = this._onDelete.bind(this);
-  }
+const ANIMATION_TIMEOUT = 200;
+const clearIconProps: IIconProps = { iconName: 'Clear' };
 
-  public componentWillUnmount(): void {
-    window.clearTimeout(this._animationTimeoutId);
-  }
+// Used to control item animations
+// (const enums can cause problems when exported, but this one is okay since it's internal)
+const enum ItemState {
+  initial, // 0
+  completing, // 1
+  deleting, // 2
+  hidden, // 3
+}
+// TODO: Remove use of global classes for transitions
+const STATE_CLASSES = [
+  'ms-slideDownIn20', // initial
+  'ms-slideUpOut20', // completing
+  'ms-slideUpOut20', // deleting
+  itemStyles.isHidden, // hidden
+];
 
-  public render(): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    const className: string = css(
-      styles.todoItem,
-      this.props.item.isComplete === true ? styles.isCompleted : '',
-      'ms-Grid',
-      'ms-slideDownIn20',
-    );
+/** Individual item in a todo list, with complete and delete actions. */
+export const TodoItem: React.FunctionComponent<TodoItemProps> = props => {
+  const { item, onDeleteItem, onToggleComplete } = props;
 
-    return (
-      <div
-        role="row"
-        ref={(ref: HTMLDivElement) => (this._rowItem = ref)}
-        className={className}
-        aria-label={this._ariaLabel}
-        data-is-focusable={true}
-      >
-        <FocusZone direction={FocusZoneDirection.horizontal}>
-          <div className={css(styles.itemTaskRow, 'ms-Grid-row')}>
-            <Checkbox
-              label={this.props.item.title}
-              onChange={this._onCheckboxChange}
-              checked={!!this.props.item.isComplete}
-            />
-            <IconButton
-              className={styles.deleteButton}
-              iconProps={{ iconName: 'X' }}
-              onClick={this._onDelete}
-              title={strings.deleteItemTitle}
-              ariaLabel={strings.deleteItemAriaLabel}
-            />
-          </div>
-        </FocusZone>
-      </div>
-    );
-  }
+  const [itemState, setItemState] = React.useState<ItemState>(ItemState.initial);
 
-  private get _ariaLabel(): string {
-    const completeState: string = this.props.item.isComplete
-      ? strings.todoItemAriaLabelCheckedState
-      : strings.todoItemAriaLabelUncheckedState;
-    const titleString: string = strings.todoItemAriaLabelTitle + this.props.item.title;
-    return `${completeState} ${titleString}`;
-  }
+  const onComplete = React.useCallback(() => setItemState(ItemState.completing), []);
+  const onDelete = React.useCallback(() => {
+    setItemState(ItemState.deleting);
+  }, []);
 
-  private _onCheckboxChange(ev?: React.FormEvent<HTMLElement>, isChecked?: boolean): void {
-    this._handleWithAnimation(this.props.onToggleComplete, 'ms-slideUpOut20');
-  }
+  // Handle complete or delete animations and callbacks
+  React.useEffect(() => {
+    if (itemState !== ItemState.completing && itemState !== ItemState.deleting) {
+      return;
+    }
 
-  private _onDelete(event: React.MouseEvent<HTMLButtonElement>): void {
-    this._handleWithAnimation(this.props.onDeleteItem, 'ms-slideUpOut20');
-  }
+    const animationTimeout = setTimeout(() => {
+      const callback = itemState === ItemState.completing ? onToggleComplete : onDeleteItem;
+      callback(item);
+      setItemState(ItemState.hidden);
+    }, ANIMATION_TIMEOUT);
 
-  private _handleWithAnimation(callback: (task: ITodoItem) => void, animationClass: string): void {
-    this._rowItem.classList.add(animationClass);
+    return () => clearTimeout(animationTimeout);
+  }, [item, itemState, onDeleteItem, onToggleComplete]);
 
-    window.clearTimeout(this._animationTimeoutId);
-    this._animationTimeoutId = window.setTimeout(() => {
-      this._rowItem.classList.add(styles.isHidden);
-      callback(this.props.item);
-    }, TodoItem.ANIMATION_TIMEOUT);
-  }
+  return (
+    <div
+      role="row"
+      className={css(itemStyles.todoItem, item.isComplete && itemStyles.isCompleted, STATE_CLASSES[itemState])}
+      aria-label={_getAriaLabel(item)}
+      data-is-focusable={true}
+      data-item-id={item.id} // for automation
+    >
+      <FocusZone direction={FocusZoneDirection.horizontal}>
+        <div className={itemStyles.itemTaskRow}>
+          <Checkbox label={item.title} onChange={onComplete} checked={!!item.isComplete} />
+          <IconButton
+            className={itemStyles.deleteButton}
+            iconProps={clearIconProps}
+            onClick={onDelete}
+            title={strings.deleteItemTitle}
+            ariaLabel={strings.deleteItemAriaLabel}
+          />
+        </div>
+      </FocusZone>
+    </div>
+  );
+};
+TodoItem.displayName = 'TodoItem';
+
+function _getAriaLabel(item: TodoItemData): string {
+  const completeStateString = item.isComplete ? strings.completed : strings.active;
+  const titleString = strings.todoItemAriaLabelTitle + item.title;
+  return `${titleString}. ${completeStateString}`;
 }

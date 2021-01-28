@@ -4,7 +4,8 @@
  * @typedef {import("webpack").Configuration} WebpackConfig
  * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
  * @typedef {import("webpack").Entry} WebpackEntry
- * @typedef {import("webpack").Module} WebpackModule
+ * @typedef {import("webpack").ModuleOptions} WebpackModule
+ * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
 /** */
 const webpack = require('webpack');
@@ -308,7 +309,7 @@ module.exports = {
 
         plugins: [
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
-          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
         ],
       },
       customConfig,

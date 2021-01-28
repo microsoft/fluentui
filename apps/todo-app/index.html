@@ -1,3 +1,4 @@
+<!-- File served by `yarn start` -->
 <!DOCTYPE html>
 <html dir="ltr">
   <head>
@@ -6,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Todo App</title>
+    <!-- React globals -->
     <script
       type="text/javascript"
       src="//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js"
@@ -14,9 +16,16 @@
       type="text/javascript"
       src="//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js"
     ></script>
+    <!-- office-ui-fabric-core styling (should be removed in future) -->
+    <link
+      rel="stylesheet"
+      href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css"
+    />
   </head>
 
   <body>
+    <!-- App JS file (built by `yarn start` according to webpack.serve.config.js) -->
     <script type="text/javascript" src="todo-app.js"></script>
+    <!-- App content is appended to here -->
   </body>
 </html>
