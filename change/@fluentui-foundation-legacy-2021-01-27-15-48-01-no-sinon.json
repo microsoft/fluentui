@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove incorrect mock of requestAnimationFrame",
+  "packageName": "@fluentui/foundation-legacy",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-27T23:47:26.195Z"
+}

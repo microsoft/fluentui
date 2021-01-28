@@ -38,8 +38,7 @@
     "enzyme": "~3.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "sinon": "^4.1.3"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
     "@fluentui/react-compose": "^1.0.0-beta.10",

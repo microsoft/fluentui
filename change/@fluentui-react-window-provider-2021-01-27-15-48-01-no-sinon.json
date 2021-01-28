@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove incorrect mock of requestAnimationFrame",
+  "packageName": "@fluentui/react-window-provider",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-27T23:48:01.104Z"
+}

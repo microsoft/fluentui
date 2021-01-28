@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove sinon dependency",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-01-27T23:18:34.030Z"
+}
