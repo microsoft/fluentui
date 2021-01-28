@@ -20,7 +20,9 @@ _Include background research done for this component_
 ## Sample Code
 
 ```jsx
-  <Badge content={<Text>My Custom Badge</Text>} />
+  <Badge>
+    <Text>My Custom Badge</Text>
+  </Badge>
   <Badge
     status="success"
     style={{ position: 'absolute', top: -4, right: -4 }}
@@ -60,7 +62,7 @@ _Include background research done for this component_
 - _**Internal**_
 
 ```jsx
-<ElementType>{children || content}</ElementType>
+<ElementType>{children}</ElementType>
 ```
 
 - _**DOM**_
@@ -82,6 +84,10 @@ Optionally it can support both simultaneously by adding new shorthand `Badge` pr
 - _Migration from v0_
 
 `Badge` can be passed to `Avatar`'s `status` prop or be used by sharing same container.
+
+- _Specific Badges_
+
+`Badge` is base component that can be used to create custom `Badge` such as `PresenceBadge` or `CounterBadge` with specific behaviors.
 
 ## Behaviors
 
