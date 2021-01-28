@@ -26,7 +26,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PivotPage/docs/ios/PivotImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PivotPage/docs/ios/PivotImplementation.md') as string
               }
             </Markdown>
           ),

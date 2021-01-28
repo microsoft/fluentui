@@ -1,8 +1,17 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Mon, 26 Oct 2020 12:39:59 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.13)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.1..@fluentui/scheme-utilities_v8.0.0-beta.13)
+
+### Changes
+
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.1)
 

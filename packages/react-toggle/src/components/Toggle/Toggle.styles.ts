@@ -136,6 +136,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
               [HighContrastSelector]: {
                 backgroundColor: 'Highlight',
               },
+              // eslint-disable-next-line deprecation/deprecation
               ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },

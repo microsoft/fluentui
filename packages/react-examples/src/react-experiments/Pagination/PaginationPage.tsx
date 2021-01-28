@@ -10,10 +10,10 @@ import { PaginationButtonsBasicExample } from './Pagination.Buttons.Basic.Exampl
 import { PaginationButtonsCustomizationExample } from './Pagination.Buttons.Customization.Example';
 import { PaginationButtonsCustomizationRoundExample } from './Pagination.Buttons.Customization.Round.Example';
 import { PaginationComboBoxExample } from './Pagination.ComboBox.Example';
-const PaginationButtonsBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Basic.Example.tsx') as string;
-const PaginationButtonsCustomizationExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Customization.Example.tsx') as string;
-const PaginationButtonsCustomizationRoundExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Customization.Round.Example.tsx') as string;
-const PaginationComboBoxExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.ComboBox.Example.tsx') as string;
+const PaginationButtonsBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Basic.Example.tsx') as string;
+const PaginationButtonsCustomizationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Customization.Example.tsx') as string;
+const PaginationButtonsCustomizationRoundExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.Buttons.Customization.Round.Example.tsx') as string;
+const PaginationComboBoxExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Pagination/Pagination.ComboBox.Example.tsx') as string;
 
 export class PaginationPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -46,7 +46,9 @@ export class PaginationPage extends React.Component<IComponentDemoPageProps, {}>
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@fluentui/react-experiments/src/components/Pagination/Pagination.types.ts'),
+              require<
+                string
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Pagination/Pagination.types.ts'),
             ]}
           />
         }

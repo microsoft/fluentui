@@ -8,6 +8,7 @@ import {
   FormCheckbox,
   FormDatepicker,
   FormButton,
+  FormTextArea,
 } from '@fluentui/react-northstar';
 
 const items = [
@@ -35,6 +36,7 @@ const items = [
 const FormExampleComponents = () => (
   <Form>
     <FormInput label="First name" name="firstName" required />
+    <FormTextArea label="Bio" name="bio" />
     <FormDropdown label="City" items={['prague', 'new york']} />
     <FormRadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
     <FormSlider label="Bid the price" />

@@ -10,14 +10,14 @@ import { PersonaCustomCoinRenderExample } from './Persona.CustomCoinRender.Examp
 import { UnknownPersonaExample } from './Persona.UnknownPersona.Example';
 import { PersonaPresenceExample } from './Persona.Presence.Example';
 
-const PersonaInitialsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.Initials.Example.tsx') as string;
-const PersonaBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.Basic.Example.tsx') as string;
-const PersonaAlternateExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.Alternate.Example.tsx') as string;
-const PersonaColorsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.Colors.Example.tsx') as string;
-const PersonaCustomRenderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.CustomRender.Example.tsx') as string;
-const PersonaCustomCoinRenderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.CustomCoinRender.Example.tsx') as string;
-const UnknownPersonaExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.UnknownPersona.Example.tsx') as string;
-const PersonaPresenceExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Persona/Persona.Presence.Example.tsx') as string;
+const PersonaInitialsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.Initials.Example.tsx') as string;
+const PersonaBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.Basic.Example.tsx') as string;
+const PersonaAlternateExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.Alternate.Example.tsx') as string;
+const PersonaColorsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.Colors.Example.tsx') as string;
+const PersonaCustomRenderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.CustomRender.Example.tsx') as string;
+const PersonaCustomCoinRenderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.CustomCoinRender.Example.tsx') as string;
+const UnknownPersonaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.UnknownPersona.Example.tsx') as string;
+const PersonaPresenceExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/Persona.Presence.Example.tsx') as string;
 
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
@@ -65,8 +65,12 @@ export const PersonaPageProps: IDocPageProps = {
       view: <PersonaPresenceExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Persona/docs/PersonaOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Persona/docs/PersonaBestPractices.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/docs/PersonaOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Persona/docs/PersonaBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

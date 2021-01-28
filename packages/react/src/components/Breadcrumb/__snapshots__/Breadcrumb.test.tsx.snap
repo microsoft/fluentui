@@ -122,7 +122,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -140,7 +140,7 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       cursor: pointer;
                       text-decoration: none;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -219,9 +219,10 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -307,9 +308,10 @@ exports[`Breadcrumb rendering renders  correctly with custom overflow icon 1`] =
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -524,9 +526,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -612,9 +615,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -700,9 +704,10 @@ exports[`Breadcrumb rendering renders correctly 1`] = `
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -1232,9 +1237,10 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -1307,7 +1313,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1325,7 +1331,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       cursor: pointer;
                       text-decoration: none;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1540,7 +1546,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1558,7 +1564,7 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                       cursor: pointer;
                       text-decoration: none;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1773,7 +1779,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1791,7 +1797,7 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       cursor: pointer;
                       text-decoration: none;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1890,9 +1896,10 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -1978,9 +1985,10 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -2195,9 +2203,10 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;
@@ -2270,7 +2279,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -2288,7 +2297,7 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       cursor: pointer;
                       text-decoration: none;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -2387,9 +2396,10 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                       font-weight: normal;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
                       font-size: 8px;

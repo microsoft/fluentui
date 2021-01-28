@@ -68,7 +68,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               top: 3px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: 4px;
               left: 4px;
@@ -81,14 +81,14 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -211,7 +211,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               top: 3px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: 4px;
               left: 4px;
@@ -224,14 +224,14 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -354,7 +354,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               top: 3px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: 4px;
               left: 4px;
@@ -367,14 +367,14 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -501,7 +501,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               top: 3px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: 4px;
               left: 4px;
@@ -514,14 +514,14 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -591,7 +591,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
                   margin-top: 0;
                   text-align: center;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: GrayText;
                 }
             data-icon-name="More"
@@ -654,7 +654,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -670,7 +670,7 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           background-color: #f3f2f1;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }

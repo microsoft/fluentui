@@ -59,7 +59,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -149,10 +149,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   height: 40px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -245,7 +245,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-weight: 400;
                   height: 40px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -296,10 +296,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   height: 10px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -393,10 +393,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   height: 10px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -489,7 +489,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-weight: 400;
                   height: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -530,7 +530,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -620,7 +620,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   min-width: 40px;
                   width: 40px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
           >
@@ -631,7 +631,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     display: block;
                     fill: #ffffff;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     fill: Window;
                   }
               height={40}
@@ -661,7 +661,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-weight: 400;
                   height: 40px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -712,10 +712,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   height: 10px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -808,7 +808,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-weight: 400;
                   height: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -838,10 +838,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   height: 10px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -946,7 +946,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           & > * {
             transform: translateZ(0);
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -1036,10 +1036,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   height: 80px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -1132,7 +1132,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   font-weight: 400;
                   height: 80px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -1192,7 +1192,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     min-width: 40px;
                     width: 40px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
             >
@@ -1203,7 +1203,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                       display: block;
                       fill: #ffffff;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       fill: Window;
                     }
                 height={40}
@@ -1233,7 +1233,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     font-weight: 400;
                     height: 40px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1284,10 +1284,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1380,7 +1380,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     font-weight: 400;
                     height: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1410,10 +1410,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1528,10 +1528,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1624,7 +1624,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     font-weight: 400;
                     height: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1654,10 +1654,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1750,7 +1750,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     font-weight: 400;
                     height: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1780,10 +1780,10 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={

@@ -42,7 +42,7 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Use to set custom styling of the shimmerGap borders.
-   * @deprecated Use `styles` prop to leverage mergeStyle API.
+   * @deprecated Use `styles.root` instead.
    */
   borderStyle?: IRawStyle;
 }
@@ -64,7 +64,7 @@ export type IShimmerGapStyleProps = {
 
   /**
    * Styles to override borderStyles with custom ones.
-   * @deprecated in favor of mergeStyles API.
+   * @deprecated Use `styles.root` instead.
    */
   borderStyle?: IRawStyle;
 };

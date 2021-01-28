@@ -20,7 +20,7 @@ export interface ICoachmark {
  */
 export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   /**
-   * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
+   * Optional callback to access the `ICoachmark` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ICoachmark>;
@@ -43,7 +43,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Props to pass to the PositioningContainer component. Specify the `directionalHint` to indicate
    * on which edge the Coachmark/TeachingBubble should be positioned.
-   * @defaultvalue directionalHint: DirectionalHint.bottomAutoEdge
+   * @defaultvalue `{ directionalHint: DirectionalHint.bottomAutoEdge }`
    */
   positioningContainerProps?: IPositioningContainerProps;
 
@@ -54,7 +54,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   isPositionForced?: boolean;
 
   /**
-   * The starting collapsed state for the Coachmark.  Use `isCollapsed` instead.
+   * The starting collapsed state for the Coachmark.
    * @defaultvalue true
    * @deprecated Use `isCollapsed` instead.
    */
@@ -67,8 +67,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   isCollapsed?: boolean;
 
   /**
-   * The distance in pixels the mouse is located
-   * before opening up the Coachmark.
+   * The distance in pixels the mouse is located before opening up the Coachmark.
    * @defaultvalue 10
    */
   mouseProximityOffset?: number;
@@ -84,13 +83,11 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   onAnimationOpenEnd?: () => void;
 
   /**
-   * The width of the Beak component.
    * @deprecated No longer used.
    */
   beakWidth?: number;
 
   /**
-   * The height of the Beak component.
    * @deprecated No longer used.
    */
   beakHeight?: number;
@@ -113,13 +110,11 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   onMouseMove?: (e: MouseEvent) => void;
 
   /**
-   * The width of the Coachmark.
    * @deprecated No longer used.
    */
   width?: number;
 
   /**
-   * The height of the Coachmark.
    * @deprecated No longer used.
    */
   height?: number;
@@ -140,33 +135,36 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
   beaconColorTwo?: string;
 
   /**
-   * Text to announce to screen reader / narrator when Coachmark is displayed
+   * Text for screen reader to announce when Coachmark is displayed
    */
   ariaAlertText?: string;
 
   /**
-   * Ref for TeachingBubble
-   * @deprecated Coachmark uses `focusFirstChild` utility instead to focus on TeachingBubbleContent
+   * @deprecated Not used. Coachmark uses `focusFirstChild` utility instead to focus on TeachingBubbleContent.
    */
   teachingBubbleRef?: ITeachingBubble;
 
   /**
-   *  Defines the element id referencing the element containing label text for Coachmark.
+   * ID used for the internal element which contains label text for the Coachmark
+   * (don't render an element with this ID yourself).
    */
   ariaLabelledBy?: string;
 
   /**
-   * Defines the element id referencing the element containing the description for the Coachmark.
+   * ID used for the internal element which contains description text for the Coachmark
+   * (don't render an element with this ID yourself).
    */
   ariaDescribedBy?: string;
 
   /**
-   *  Defines the text content for the ariaLabelledBy element
+   * Defines the text content for the `ariaLabelledBy` element.
+   * Not used unless `ariaLabelledBy` is also provided.
    */
   ariaLabelledByText?: string;
 
   /**
-   * Defines the text content for the ariaDescribedBy element
+   * Defines the text content for the `ariaDescribedBy` element
+   * Not used unless `ariaDescribeddBy` is also provided.
    */
   ariaDescribedByText?: string;
 
@@ -223,7 +221,6 @@ export interface ICoachmarkStyleProps {
 
   /**
    * Is the Coachmark collapsed.
-   * Deprecated, use `isCollapsed` instead.
    * @deprecated Use `isCollapsed` instead.
    */
   collapsed?: boolean;
@@ -321,8 +318,7 @@ export interface ICoachmarkStyles {
 
   /**
    * The inner layer that components will be hosted in
-   * and primary purpose is scaling the layer down while the
-   * Coachmark collapsed.
+   * (primary purpose is scaling the layer down while the Coachmark collapses)
    */
   entityInnerHost: IStyle;
 
