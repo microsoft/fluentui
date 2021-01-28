@@ -82,6 +82,7 @@ export const DatePickerInputExample: React.FC = () => {
         onSelectDate={onSelectDate}
       />
       <DefaultButton
+        aria-label="Clear the date input"
         // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick}
         text="Clear"

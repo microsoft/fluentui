@@ -102,6 +102,7 @@ export const DatePickerFormatExample: React.FC = () => {
         parseDateFromString={onParseDateFromString}
       />
       <DefaultButton
+        aria-label="Clear the date input"
         // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick}
         text="Clear"

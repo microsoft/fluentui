@@ -258,6 +258,7 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
     </div>
   </div>
   <button
+    aria-label="Clear the date input"
     className=
         ms-Button
         ms-Button--default
