@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react-slider/lib/next';
-import { IStackTokens, Stack, IStackStyles } from '@fluentui/react/lib/Stack';
+import { Slider, IStackTokens, Stack, IStackStyles } from '@fluentui/react';
 
 const stackStyles: Partial<IStackStyles> = { root: { maxWidth: 300 } };
 const stackTokens: IStackTokens = { childrenGap: 20 };

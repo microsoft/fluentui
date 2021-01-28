@@ -5,6 +5,7 @@
 ```ts
 
 import { BaseSlots } from '@fluentui/react-compose';
+import { ClassFunction } from '@fluentui/react-compose';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
@@ -110,6 +111,12 @@ export interface ICheckboxStyles {
     root?: IStyle;
     text?: IStyle;
 }
+
+// @public (undocumented)
+export const useCheckbox: (props: ICheckboxProps, forwardedRef: React.Ref<HTMLElement>) => ICheckboxState;
+
+// @public (undocumented)
+export const useCheckboxClasses: ClassFunction[];
 
 
 // (No @packageDocumentation comment for this package)

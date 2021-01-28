@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { FocusRects } from '@fluentui/utilities';
-import { ISliderProps } from './Slider.types';
-import { Label } from '@fluentui/react-internal/lib/Label';
-import { useSlider } from './useSlider';
 import { useWarnings } from '@fluentui/react-hooks';
+import { FocusRects } from '@fluentui/utilities';
+import { Label } from '../Label/Label';
+import { ISliderProps } from './Slider.types';
+import { useSlider } from './useSlider';
 
 const COMPONENT_NAME = 'SliderBase';
 

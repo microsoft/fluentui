@@ -1,13 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { create } from '@fluentui/utilities/lib/test';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { mount, ReactWrapper } from 'enzyme';
+import { resetIds, KeyCodes } from '@fluentui/utilities';
+import { create } from '@fluentui/utilities/lib/test';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
-import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
+import { ONKEYDOWN_TIMEOUT_DURATION } from './useSlider';
 import { isConformant } from '../../common/isConformant';
-import { resetIds, KeyCodes } from '@fluentui/utilities';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;

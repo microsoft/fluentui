@@ -58,6 +58,7 @@ export * from './SelectedItemsList';
 export * from './Selection';
 export * from './Separator';
 export * from './Shimmer';
+export * from './Slider';
 export * from './SpinButton';
 export * from './Spinner';
 export * from './Stack';
