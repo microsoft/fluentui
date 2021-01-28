@@ -168,6 +168,7 @@
           "@fluentui/dom-utilities",
           "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
+          "@fluentui/keyboard-key",
           "@fluentui/react",
           "@fluentui/react-compose",
           "stylis"
