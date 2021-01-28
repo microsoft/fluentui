@@ -8,10 +8,6 @@ const { resetIds } = require('@fluentui/utilities');
 // Initialize icons.
 initializeIcons('');
 
-global.requestAnimationFrame = callback => {
-  setTimeout(callback, 0);
-};
-
 // Configure enzyme.
 configure({ adapter: new Adapter() });
 

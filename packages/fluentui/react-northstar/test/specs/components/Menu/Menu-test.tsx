@@ -165,20 +165,23 @@ describe('Menu', () => {
     });
 
     describe('variables', () => {
-      function checkMergedVariables(menu: ReactWrapper): void {
-        expect(
-          (menu
-            .find('MenuItem')
-            .first()
-            .prop('variables') as Function)(),
-        ).toEqual(expect.objectContaining({ a: 'menu', b: 'overwritten', c: 'item' }));
+      function checkMergedVariables(menu: ReactWrapper, isFunction = false): void {
+        const menuVariables = menu
+          .find('MenuItem')
+          .first()
+          .prop('variables');
+        const dividerVariables = menu
+          .find('MenuDivider')
+          .first()
+          .prop('variables');
 
-        expect(
-          (menu
-            .find('MenuDivider')
-            .first()
-            .prop('variables') as Function)(),
-        ).toEqual(expect.objectContaining({ a: 'menu', b: 'overwrittenInDivider', c: 'divider' }));
+        expect(isFunction ? (menuVariables as Function)() : menuVariables).toEqual(
+          expect.objectContaining({ a: 'menu', b: 'overwritten', c: 'item' }),
+        );
+
+        expect(isFunction ? (dividerVariables as Function)() : dividerVariables).toEqual(
+          expect.objectContaining({ a: 'menu', b: 'overwrittenInDivider', c: 'divider' }),
+        );
       }
 
       it('are passed from Menu to MenuItem and MenuDivider and correctly merged', () => {
@@ -214,7 +217,7 @@ describe('Menu', () => {
           />,
         );
 
-        checkMergedVariables(menu);
+        checkMergedVariables(menu, true);
       });
     });
 

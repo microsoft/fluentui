@@ -61,7 +61,7 @@ exports[`Button renders a default Button with content correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-width: 1px;
       }
       &:hover {
@@ -69,7 +69,7 @@ exports[`Button renders a default Button with content correctly 1`] = `
         border-color: #8a8886;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -78,20 +78,20 @@ exports[`Button renders a default Button with content correctly 1`] = `
         border-color: #8a8886;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
       &:active .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {

@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 14 Jan 2021 12:31:15 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.24)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.23..@fluentui/react-button_v1.0.0-beta.24)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- ToggleButton: Replacing use of pressed semanticColors with checked semanticColors for checked states. ([PR #16597](https://github.com/microsoft/fluentui/pull/16597) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.23)
+
+Sat, 23 Jan 2021 05:20:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.22..@fluentui/react-button_v1.0.0-beta.23)
+
+### Changes
+
+- Button: Adding missing css variables for opacity in Button and borderColor in checked state of ToggleButton. ([PR #16554](https://github.com/microsoft/fluentui/pull/16554) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.22)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.21..@fluentui/react-button_v1.0.0-beta.22)
+
+### Changes
+
+- Button: Re-exporting MenuContext from react-button to avoid fragility in package versions usage. ([PR #16581](https://github.com/microsoft/fluentui/pull/16581) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.21)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.19..@fluentui/react-button_v1.0.0-beta.21)
+
+### Changes
+
+- Button: Enable pointer-events so that tooltip can be attached to disabledFocusable Button. ([PR #16508](https://github.com/microsoft/fluentui/pull/16508) by jukapsia@microsoft.com)
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.19)
 

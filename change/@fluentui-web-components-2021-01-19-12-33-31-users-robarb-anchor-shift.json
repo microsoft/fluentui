@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixes content shifting when anchor has focus due to 2px bottom border",
-  "packageName": "@fluentui/web-components",
-  "email": "robarb@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-19T20:33:31.709Z"
-}

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
 import { create } from '@fluentui/utilities/lib/test';
-import * as sinon from 'sinon';
 import { resetIds } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 import { isConformant } from '../../common/isConformant';
@@ -134,7 +133,7 @@ describe('Toggle', () => {
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
-    const onSubmit = sinon.spy();
+    const onSubmit = jest.fn();
 
     const wrapper = mount(
       <form
@@ -151,7 +150,7 @@ describe('Toggle', () => {
     // simulate to change toggle state
     button.simulate('click');
     expect(button.getDOMNode().getAttribute('aria-checked')).toEqual('true');
-    expect(onSubmit.called).toEqual(false);
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 
   describe('aria-labelledby', () => {

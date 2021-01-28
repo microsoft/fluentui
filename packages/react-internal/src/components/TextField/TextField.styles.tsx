@@ -159,6 +159,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             [HighContrastSelector]: {
               borderColor: 'GrayText',
             },
+            // eslint-disable-next-line deprecation/deprecation
             ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
@@ -170,6 +171,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 [HighContrastSelector]: {
                   borderBottomColor: 'Highlight',
                 },
+                // eslint-disable-next-line deprecation/deprecation
                 ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
@@ -216,6 +218,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
                 [HighContrastSelector]: {
                   borderColor: 'Highlight',
                 },
+                // eslint-disable-next-line deprecation/deprecation
                 ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
@@ -234,6 +237,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           [HighContrastSelector]: {
             borderColor: 'GrayText',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
 

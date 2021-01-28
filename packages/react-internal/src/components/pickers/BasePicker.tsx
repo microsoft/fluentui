@@ -602,6 +602,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   };
 
   protected onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    // eslint-disable-next-line deprecation/deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
@@ -839,6 +840,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   protected _shouldFocusZoneEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
+      // eslint-disable-next-line deprecation/deprecation
       switch (ev.which) {
         case KeyCodes.up:
         case KeyCodes.down:
@@ -846,6 +848,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       }
     }
 
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.enter) {
       return true;
     }

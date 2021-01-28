@@ -1,4 +1,3 @@
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpack-plugin');
 const path = require('path');
 const findGitRoot = require('../monorepo/findGitRoot');
@@ -40,17 +39,16 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
         {
           loader: 'css-loader', // translates CSS into CommonJS
           options: {
-            modules: {
-              localIdentName: '[name]_[local]_[hash:base64:5]',
-            },
+            esModule: false,
+            modules: true,
             importLoaders: 2,
           },
         },
         {
           loader: 'postcss-loader',
           options: {
-            plugins: function() {
-              return [require('autoprefixer')];
+            postcssOptions: {
+              plugins: ['autoprefixer'],
             },
           },
         },
@@ -81,21 +79,7 @@ module.exports = (/** @type {webpack.Configuration} */ config) => {
     ...getResolveAlias(false, path.join(findGitRoot(), 'packages/react-examples')),
   };
 
-  config.plugins.push(
-    new HardSourceWebpackPlugin(),
-    new HardSourceWebpackPlugin.ExcludeModulePlugin([
-      {
-        // HardSource works with mini-css-extract-plugin but due to how
-        // mini-css emits assets, assets are not emitted on repeated builds with
-        // mini-css and hard-source together. Ignoring the mini-css loader
-        // modules, but not the other css loader modules, excludes the modules
-        // that mini-css needs rebuilt to output assets every time.
-        // https://github.com/mzgoddard/hard-source-webpack-plugin/issues/416
-        test: /mini-css-extract-plugin[\\/]dist[\\/]loader/,
-      },
-    ]),
-    new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
-  );
+  config.plugins.push(new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }));
 
   // Disable ProgressPlugin which logs verbose webpack build progress. Warnings and Errors are still logged.
   if (process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) {

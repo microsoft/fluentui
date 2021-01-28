@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { max as d3Max, bisector } from 'd3-array';
 import { clientPoint } from 'd3-selection';
+import { select as d3Select } from 'd3-selection';
 import { area as d3Area, stack as d3Stack, curveMonotoneX as d3CurveBasis, line as d3Line } from 'd3-shape';
 import { IPalette } from '@fluentui/react/lib/Styling';
-import { find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, find, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import {
   CartesianChart,
   IChartProps,
@@ -14,11 +15,22 @@ import {
   ILineChartPoints,
   IChildProps,
   IMargins,
+  IAreaChartStyleProps,
+  IAreaChartStyles,
 } from '../../index';
 import { warnDeprecations } from '@fluentui/react/lib/Utilities';
-import { calloutData, getXAxisType, ChartTypes, XAxisTypes, getTypeOfAxis } from '../../utilities/index';
+import {
+  calloutData,
+  getXAxisType,
+  ChartTypes,
+  XAxisTypes,
+  getTypeOfAxis,
+  tooltipOfXAxislabels,
+} from '../../utilities/index';
 import { ILegend, Legends } from '../Legends/index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
+
+const getClassNames = classNamesFunction<IAreaChartStyleProps, IAreaChartStyles>();
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const bisect = bisector((d: any) => d.x).left;
@@ -70,6 +82,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _xAxisRectScale: any;
   // determines if the given area chart has multiple stacked bar charts
   private _isMultiStackChart: boolean;
+  private _tooltipId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -94,6 +107,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._verticalLineId = getId('verticalLine_');
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
+    this._tooltipId = getId('AreaChartTooltipID');
   }
 
   public render(): JSX.Element {
@@ -333,9 +347,16 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : null;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _getGraphData = (xAxis: any, yAxis: any, containerHeight: number, containerWidth: number) => {
-    this._chart = this._drawGraph(containerHeight, xAxis, yAxis);
+  private _getGraphData = (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    xAxis: any,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    yAxis: any,
+    containerHeight: number,
+    containerWidth: number,
+    xElement: SVGElement | null,
+  ) => {
+    this._chart = this._drawGraph(containerHeight, xAxis, yAxis, xElement!);
   };
 
   private _onLegendClick(customMessage: string): void {
@@ -462,7 +483,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _drawGraph = (containerHeight: number, xScale: any, yScale: any): JSX.Element[] => {
+  private _drawGraph = (containerHeight: number, xScale: any, yScale: any, xElement: SVGElement): JSX.Element[] => {
     const points = this.props.data.lineChartData!;
     const area = d3Area()
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -556,6 +577,30 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         visibility={this.state.displayOfLine}
       />,
     );
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(xScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
+    }
     return graph;
   };
 

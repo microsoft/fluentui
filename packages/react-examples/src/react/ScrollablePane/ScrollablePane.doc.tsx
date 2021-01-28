@@ -4,8 +4,8 @@ import { ScrollablePaneDefaultExample } from './ScrollablePane.Default.Example';
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 import { ScrollablePaneDetailsListExample } from './ScrollablePane.DetailsList.Example';
 
-const ScrollablePaneDefaultExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ScrollablePane/ScrollablePane.Default.Example.tsx') as string;
-const ScrollablePaneDetailsListExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ScrollablePane/ScrollablePane.DetailsList.Example.tsx') as string;
+const ScrollablePaneDefaultExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/ScrollablePane.Default.Example.tsx') as string;
+const ScrollablePaneDetailsListExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/ScrollablePane.DetailsList.Example.tsx') as string;
 
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
@@ -28,10 +28,10 @@ export const ScrollablePanePageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneOverview.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/docs/ScrollablePaneBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

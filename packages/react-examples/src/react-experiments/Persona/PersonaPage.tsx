@@ -9,8 +9,8 @@ import {
 import { PersonaExample } from './Persona.Example';
 import { VerticalPersonaExample } from './VerticalPersona.Example';
 
-const PersonaExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Persona/Persona.Example.tsx') as string;
-const VerticalPersonaExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Persona/VerticalPersona.Example.tsx') as string;
+const PersonaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Persona/Persona.Example.tsx') as string;
+const VerticalPersonaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Persona/VerticalPersona.Example.tsx') as string;
 
 export const PersonaPage = (props: IComponentDemoPageProps) => {
   return (
@@ -31,10 +31,12 @@ export const PersonaPage = (props: IComponentDemoPageProps) => {
       propertiesTables={
         <PropertiesTableSet
           sources={[
-            require<string>('!raw-loader!@fluentui/react-experiments/src/components/Persona/Persona.types.ts'),
             require<
               string
-            >('!raw-loader!@fluentui/react-experiments/src/components/Persona/Vertical/VerticalPersona.types.ts'),
+            >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Persona/Persona.types.ts'),
+            require<
+              string
+            >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Persona/Vertical/VerticalPersona.types.ts'),
           ]}
         />
       }

@@ -3,7 +3,7 @@ import { LinkBasicExample } from './Link.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const LinkBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-link/Link/Link.Basic.Example.tsx') as string;
+const LinkBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-link/Link/Link.Basic.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
@@ -32,8 +32,12 @@ export const LinkPageProps: IDocPageProps = {
       },
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react-link/Link/docs/LinkOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react-link/Link/docs/LinkBestPractices.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-link/Link/docs/LinkOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-link/Link/docs/LinkBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

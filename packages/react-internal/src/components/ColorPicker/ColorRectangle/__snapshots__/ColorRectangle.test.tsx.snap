@@ -19,8 +19,9 @@ exports[`ColorRectangle renders correctly 1`] = `
         outline: none;
         position: relative;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
+        forced-color-adjust: none;
       }
       .ms-Fabric--isFocusVisible &:focus {
         outline: 1px solid #605e5c;
