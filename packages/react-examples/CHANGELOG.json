@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 28 Jan 2021 12:23:57 GMT",
+      "tag": "@fluentui/react-examples_v0.11.15",
+      "version": "0.11.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix chevron colour in high contrast for the Command Bar Split Disabled example",
+            "author": "andredias@microsoft.com",
+            "commit": "a59bbd3ecd4e0fa3a44bf350d6a5894b77f2d184",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jan 2021 12:24:03 GMT",
       "tag": "@fluentui/react-examples_v0.11.14",
       "version": "0.11.14",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix chevron colour in high contrast for the Command Bar Split Disabled example",
-  "packageName": "@fluentui/react-examples",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-26T15:12:52.979Z"
-}

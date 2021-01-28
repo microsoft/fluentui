@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 27 Jan 2021 12:24:03 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:23:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.15)
+
+Thu, 28 Jan 2021 12:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.14..@fluentui/react-examples_v0.11.15)
+
+### Patches
+
+- Fix chevron colour in high contrast for the Command Bar Split Disabled example ([PR #16635](https://github.com/microsoft/fluentui/pull/16635) by andredias@microsoft.com)
 
 ## [0.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.14)
 

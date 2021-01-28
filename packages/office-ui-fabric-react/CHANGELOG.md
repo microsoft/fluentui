@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 27 Jan 2021 12:24:03 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:23:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.157.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.157.2)
+
+Thu, 28 Jan 2021 12:23:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.157.1..office-ui-fabric-react_v7.157.2)
+
+### Patches
+
+- Port delayed keytip fix to onKeytipUpdated ([PR #16615](https://github.com/microsoft/fluentui/pull/16615) by keyou@microsoft.com)
+- Fix high contrast override for SplitButton ([PR #16635](https://github.com/microsoft/fluentui/pull/16635) by andredias@microsoft.com)
 
 ## [7.157.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.157.1)
 
