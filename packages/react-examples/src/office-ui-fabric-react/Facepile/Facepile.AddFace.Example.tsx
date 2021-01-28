@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Facepile, OverflowButtonType } from 'office-ui-fabric-react/lib/Facepile';
 import { facepilePersonas } from '@uifabric/example-data';
-import { Announced } from 'office-ui-fabric-react';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 
 const overflowButtonProps = {
   ariaLabel: 'More users',
