@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Checkbox, toggle, MessageBar dimensions and removing italic placeholder text",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-28T07:01:12.548Z"
+}
