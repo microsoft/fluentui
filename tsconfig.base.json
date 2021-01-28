@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "ES2015",
+    "lib": ["es2017", "dom"],
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "strictFunctionTypes": false,
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["node_modules/@types","./typings"],
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      "@fluentui/react-button": ["packages/react-button/src/index.ts"],
+      "@fluentui/set-version": ["packages/set-version/src/index.ts"],
+      "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
+      "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],
+      "@fluentui/react-shared-contexts": ["packages/react-shared-contexts/src/index.ts"],
+      "@fluentui/theme": ["packages/theme/src/index.ts"],
+      "@fluentui/style-utilities": ["packages/style-utilities/src/index.ts"],
+      "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
+      "@fluentui/react-hooks": ["packages/react-hooks/src/index.ts"],
+      "@fluentui/react-icons-mdl2": ["packages/react-icons-mdl2/src/index.ts"],
+      "@fluentui/react-stylesheets": ["packages/react-stylesheets/src/index.ts"],
+      "@fluentui/react-window-provider": ["packages/react-window-provider/src/index.ts"],
+      "@fluentui/react-compose": ["packages/react-compose/src/index.ts"],
+      "@fluentui/react-compose/lib/next/index": ["packages/react-compose/src/next/index.ts"],
+      "@fluentui/react": ["packages/react/src/index.ts"],
+      "@fluentui/react-internal": ["packages/react-internal/src/index.ts"],
+      "@fluentui/merge-styles": ["packages/merge-styles/src/index.ts"],
+      "@fluentui/utilities": ["packages/utilities/src/index.ts"],
+      "@fluentui/dom-utilities": ["packages/dom-utilities/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
