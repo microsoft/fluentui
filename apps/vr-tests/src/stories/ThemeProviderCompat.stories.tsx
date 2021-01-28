@@ -1,15 +1,13 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { loadTheme, createTheme } from '@fluentui/react';
+import { loadTheme, createTheme, Customizer } from '@fluentui/react';
 import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react';
 import { Button } from '@fluentui/react-button';
 import { FabricDecorator } from '../utilities/index';
 
-// TODO: update tests to only apply theme on react-* components
-
-storiesOf('ThemeProvider (react-theme-provider)', module)
+storiesOf('ThemeProvider (@fluentui/react)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
@@ -172,4 +170,54 @@ storiesOf('ThemeProvider with loadTheme', module)
     <LoadThemeTestButton buttonAs={Button} buttonProps={{ primary: true }}>
       Customized global theme
     </LoadThemeTestButton>
+  ));
+
+storiesOf('ThemeProvider with Customizer', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory('Customizer wraps ThemeProvider', () => (
+    <Customizer
+      settings={{
+        theme: createTheme({
+          semanticColors: { primaryButtonBackground: '#FFF', primaryButtonText: 'red' },
+        }),
+      }}
+    >
+      <PrimaryButton>Customized by Customizer</PrimaryButton>
+
+      <ThemeProvider
+        theme={{
+          semanticColors: {
+            primaryButtonBackground: '#000',
+          },
+        }}
+      >
+        <PrimaryButton>Customized by ThemeProvider</PrimaryButton>
+      </ThemeProvider>
+    </Customizer>
+  ))
+  .addStory('ThemeProvider wraps Customizer', () => (
+    <ThemeProvider
+      theme={{
+        semanticColors: {
+          primaryButtonBackground: '#FFF',
+          primaryButtonText: 'red',
+        },
+      }}
+    >
+      <PrimaryButton>Customized by ThemeProvider</PrimaryButton>
+      <Customizer
+        settings={{
+          theme: createTheme({
+            semanticColors: { primaryButtonBackground: '#000' },
+          }),
+        }}
+      >
+        <PrimaryButton>Customized by Customizer</PrimaryButton>
+      </Customizer>
+    </ThemeProvider>
   ));
