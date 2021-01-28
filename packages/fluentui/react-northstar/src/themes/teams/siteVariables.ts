@@ -54,6 +54,7 @@ export const lineHeightSmall = 1.3333;
 export const lineHeightMedium = 1.4286;
 export const lineHeightLarge = 1.3333;
 export const lineHeightLarger = 1.3333;
+export const lineHeightLargest = 1.3333;
 
 //
 // Z-INDEX
