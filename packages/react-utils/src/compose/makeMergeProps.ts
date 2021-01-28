@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css } from '../css';
+import { css } from '@fluentui/utilities';
 import { GenericDictionary } from './types';
 
 export type MergePropsOptions = {

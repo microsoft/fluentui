@@ -6,6 +6,12 @@
 
 import * as React from 'react';
 
+// @public (undocumented)
+export interface BaseSlots {
+    // (undocumented)
+    root: React.ElementType;
+}
+
 // @public
 export type ClassDictionary = Record<string, string>;
 
@@ -28,6 +34,9 @@ export const getSlots: (state: Record<string, any>, slotNames?: string[] | undef
     slotProps: Record<string, any>;
 };
 
+// @public (undocumented)
+export const makeClasses: (classes: Record<string, string>) => (state: Record<string, any>) => void;
+
 // @public
 export const makeMergeProps: <TState = Record<string, any>>(options?: MergePropsOptions) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
 
@@ -46,6 +55,13 @@ export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChil
 
 // @public (undocumented)
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+// @public (undocumented)
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+    [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+    root: TRootProps;
+};
 
 
 // (No @packageDocumentation comment for this package)

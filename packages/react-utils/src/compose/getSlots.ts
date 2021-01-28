@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '../getNativeElementProps';
-import { omit } from '../object';
+import { getNativeElementProps, omit } from '@fluentui/utilities';
 import { GenericDictionary } from './types';
 import { nullRender } from './nullRender';
 

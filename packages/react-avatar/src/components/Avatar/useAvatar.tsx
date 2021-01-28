@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { AvatarProps, defaultAvatarSize } from './Avatar.types';
 import { calcAvatarStyleProps } from './calcAvatarStyleProps';
 import { useMergedRefs } from '@fluentui/react-hooks';
