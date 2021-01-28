@@ -1,6 +1,7 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
+import * as StyleConstants from '../Constants';
 
 export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxStyles> => {
   const { disabled, checked, theme, indeterminate } = props;
@@ -19,6 +20,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
     ],
     checkbox: [
       {
+        width: StyleConstants.inputHeight,
+        height: StyleConstants.inputHeight,
         backgroundColor: semanticColors.bodyBackground,
         borderColor: extendedSemanticColors.checkBoxBorder,
         selectors: {
