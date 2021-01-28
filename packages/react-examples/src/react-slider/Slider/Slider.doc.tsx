@@ -4,8 +4,8 @@ import { SliderVerticalExample } from './Slider.Vertical.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const SliderBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-slider/Slider/Slider.Basic.Example.tsx') as string;
-const SliderVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-slider/Slider/Slider.Vertical.Example.tsx') as string;
+const SliderBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-slider/Slider/Slider.Basic.Example.tsx') as string;
+const SliderVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-slider/Slider/Slider.Vertical.Example.tsx') as string;
 
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
@@ -23,10 +23,12 @@ export const SliderPageProps: IDocPageProps = {
       view: <SliderVerticalExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react-slider/Slider/docs/SliderOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-slider/Slider/docs/SliderOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-slider/Slider/docs/SliderBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-slider/Slider/docs/SliderBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -53,13 +53,14 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement
   imageUrl?: string;
 
   /**
-   * Alt text for the image to use. Defaults to an empty string.
+   * Alt text for the image to use.
+   * @default `''` (empty string)
    */
   imageAlt?: string;
 
   /**
    * The user's initials to display in the image area when there is no image.
-   * @defaultvalue [Derived from text]
+   * @defaultvalue Derived from `text`
    */
   imageInitials?: string;
 
@@ -82,7 +83,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue [Derived from text]
+   * @defaultvalue Derived from `text`
    */
   initialsColor?: PersonaInitialsColor | string;
 
@@ -364,44 +365,43 @@ export interface IPersonaPresenceStyles {
  */
 export enum PersonaSize {
   /**
-   * `tiny` size has been deprecated in favor of standardized numeric sizing. Use `size8` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size8` instead.
    */
   tiny = 0,
 
   /**
-   *
-   * `extraExtraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size24` instead.
    */
   extraExtraSmall = 1,
 
   /**
-   * `extraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size32` instead.
    */
   extraSmall = 2,
 
   /**
-   * `small` size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size40` instead.
    */
   small = 3,
 
   /**
-   * `regular` size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size48` instead.
    */
   regular = 4,
 
   /**
-   * `large` size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size72` instead.
    */
   large = 5,
 
   /**
-   * `extraLarge` size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
+   * Deprecated in favor of standardized numeric sizing.
    * @deprecated Use `size100` instead.
    */
   extraLarge = 6,
@@ -412,14 +412,14 @@ export enum PersonaSize {
   size8 = 17,
 
   /**
-   * No `PersonaCoin` is rendered. Deprecated in favor of `size8` to align with design specifications.
-   * @deprecated Use `size8` instead. Will be removed in a future major release.
+   * No `PersonaCoin` is rendered. Deprecated to align with design specifications.
+   * @deprecated Use `size8` instead.
    */
   size10 = 9,
 
   /**
-   * Renders a 16px `PersonaCoin`. Deprecated due to not being in the design specification.
-   * @deprecated Will be removed in a future major release.
+   * Renders a 16px `PersonaCoin`.
+   * @deprecated Deprecated due to not being in the design specification.
    */
   size16 = 8,
 
@@ -429,8 +429,8 @@ export enum PersonaSize {
   size24 = 10,
 
   /**
-   * Renders a 28px `PersonaCoin`. Deprecated due to not being in the design specification.
-   * @deprecated Will be removed in a future major release.
+   * Renders a 28px `PersonaCoin`.
+   * @deprecated Deprecated due to not being in the design specification.
    */
   size28 = 7,
 
@@ -499,14 +499,14 @@ export enum PersonaInitialsColor {
   magenta = 9,
   purple = 10,
   /**
-   * Black can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
-   * @deprecated will be removed in a future major release.
+   * @deprecated `black` is a color that can result in offensive persona coins with some initials combinations,
+   * so it can only be set with overrides. Will be removed in a future major release.
    */
   black = 11,
   orange = 12,
   /**
-   * Red often has a special meaning, so it is considered a reserved color and can only be set with overrides.
-   * @deprecated will be removed in a future major release.
+   * @deprecated `red` is a color that often has a special meaning, so it is considered a reserved color and
+   * can only be set with overrides. Will be removed in a future major release.
    */
   red = 13,
   darkRed = 14,
@@ -522,7 +522,8 @@ export enum PersonaInitialsColor {
   warmGray = 20,
   coolGray = 21,
   /**
-   * Gray can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   * `gray` is a color that can result in offensive persona coins with some initials combinations,
+   * so it can only be set with overrides.
    */
   gray = 22,
   cyan = 23,

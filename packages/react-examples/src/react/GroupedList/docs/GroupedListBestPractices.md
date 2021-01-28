@@ -1,6 +1,6 @@
 ## FAQ
 
-### My List is not re-rendering when I mutate its items. What should I do?
+### My list is not re-rendering when I mutate its items! What should I do?
 
 To determine if the list within the grouped list should re-render its contents, the component performs a referential equality check within its `shouldComponentUpdate` method.
 This is done to minimize the performance overhead associating with re-rendering the virtualized List pages, as recommended by the [React documentation](https://reactjs.org/docs/optimizing-performance.html#the-power-of-not-mutating-data).

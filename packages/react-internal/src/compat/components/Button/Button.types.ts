@@ -28,10 +28,10 @@ export interface IButton {
    * Params are optional overrides to the ones defined in `menuProps` to apply to just this instance of
    * opening the menu.
    *
-   * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop.
-   * BaseButton implementation defaults to 'undefined'.
-   * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation
-   * defaults to `true`.
+   * @param shouldFocusOnContainer - override to the ContextualMenu `shouldFocusOnContainer` prop.
+   * BaseButton implementation defaults to `undefined`.
+   * @param shouldFocusOnMount - override to the ContextualMenu `shouldFocusOnMount` prop.
+   * BaseButton implementation defaults to `true`.
    */
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
@@ -46,7 +46,7 @@ export interface IButtonProps
   > {
   /* eslint-enable deprecation/deprecation */
   /**
-   * Optional callback to access the IButton interface. Use this instead of ref for accessing
+   * Optional callback to access the `IButton` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IButton>;
@@ -64,13 +64,13 @@ export interface IButtonProps
   href?: string;
 
   /**
-   * Changes the visual presentation of the button to be emphasized (if defined)
+   * Changes the visual presentation of the button to be emphasized.
    * @defaultvalue false
    */
   primary?: boolean;
 
   /**
-   * Unique id to identify the item. Typically a duplicate of key value.
+   * Unique ID to identify the item. Typically a duplicate of key value.
    */
   uniqueId?: string | number;
 
@@ -85,7 +85,7 @@ export interface IButtonProps
   allowDisabledFocus?: boolean;
 
   /**
-   * If set to true and if this is a splitButton (split == true) then the primary action of a split button is disabled.
+   * If set to true and this is a split button (`split` is true), the split button's primary action is disabled.
    */
   primaryDisabled?: boolean;
 
@@ -128,7 +128,7 @@ export interface IButtonProps
   ariaDescription?: string;
 
   /**
-   * If provided and is true it adds an 'aria-hidden' attribute instructing screen readers to ignore the element.
+   * If true, add an `aria-hidden` attribute instructing screen readers to ignore the element.
    */
   ariaHidden?: boolean;
 
@@ -144,9 +144,9 @@ export interface IButtonProps
   iconProps?: IIconProps;
 
   /**
-   * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks. Providing this in addition of onClick and setting the split property to true will
-   * render a SplitButton.
+   * Props for button menu. Providing this will default to showing the menu icon. See `menuIconProps` for overriding
+   * how the default icon looks. Providing this in addition to `onClick` and setting the `split` property to `true`
+   * will render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
 
@@ -156,8 +156,8 @@ export interface IButtonProps
   onAfterMenuDismiss?: () => void;
 
   /**
-   * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton.
-   * @defaultvalue false
+   * If set to true, and if `menuProps` and `onClick` are provided, the button will render as a SplitButton.
+   * @default false
    */
   split?: boolean;
 
@@ -207,8 +207,8 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Deprecated at v6.3.2, to be removed at \>= v7.0.0. Use `menuAs` instead.
-   * @deprecated Use `menuAs` instead.
+   * @deprecated Deprecated at v6.3.2, to be removed at \>= v7.0.0.
+   * Use `menuAs` instead.
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
@@ -219,41 +219,38 @@ export interface IButtonProps
 
   /**
    * Description of the action this button takes.
-   * Only used for compound buttons
+   * Only used for compound buttons.
    */
   secondaryText?: string;
 
   /**
-   * Deprecated at v1.2.3, to be removed at \>= v2.0.0. Use specific button component instead.
    * @defaultvalue ButtonType.default
-   * @deprecated Use specific button component instead.
+   * @deprecated Deprecated at v1.2.3, to be removed at \>= v2.0.0.
+   * Use specific button component instead.
    */
 
   buttonType?: ButtonType;
 
   /**
-   * Deprecated at v0.56.2, to be removed at \>= v1.0.0. Just pass in button props instead.
-   * they will be mixed into the button/anchor element rendered by the component.
-   * @deprecated Use button props instead.
+   * @deprecated Deprecated at v0.56.2, to be removed at \>= v1.0.0.
+   * Use native props on the Button itself instead.
+   * They will be mixed into the button/anchor element rendered by the component.
    */
   rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
-   * Any custom data the developer wishes to associate with the menu item.
-   * Deprecated, use `checked` if setting state.
-   * @deprecated unused, use `checked` if setting state.
+   * @deprecated No longer used. Use `checked` if setting state.
    */
   toggled?: boolean;
 
   /**
-   * Any custom data the developer wishes to associate with the menu item.
+   * Any custom data the developer wishes to associate with the button.
    */
   data?: any;
 
   /**
    * Method to provide the classnames to style a button.
-   * The default value for this prop is the getClassnames func
-   * defined in BaseButton.classnames.
+   * The default value for this prop is the `getClassnames` func defined in `BaseButton.classnames.ts`.
    * @defaultvalue getBaseButtonClassNames
    */
   getClassNames?: (
@@ -272,8 +269,7 @@ export interface IButtonProps
 
   /**
    * Method to provide the classnames to style a button.
-   * The default value for this prop is the getClassnames func
-   * defined in BaseButton.classnames.
+   * The default value for this prop is the `getClassnames` func defined in `BaseButton.classnames.ts`.
    * @defaultvalue getBaseSplitButtonClassNames
    */
   getSplitButtonClassNames?: (
@@ -285,8 +281,8 @@ export interface IButtonProps
 
   /**
    * Provides a custom KeyCode that can be used to open the button menu.
-   * The default KeyCode is the down arrow.
-   * A value of null can be provided to disable the key codes for opening the button menu.
+   * A value of `null` can be provided to disable opening the button menu with a key press.
+   * @default KeyCodes.down
    */
   menuTriggerKeyCode?: KeyCodes | null;
 
@@ -299,26 +295,26 @@ export interface IButtonProps
    * Menu will not be created or destroyed when opened or closed, instead it
    * will be hidden. This will improve perf of the menu opening but could potentially
    * impact overall perf by having more elements in the dom. Should only be used
-   * when perf is important.
+   * when menu perf is important.
+   *
    * Note: This may increase the amount of time it takes for the button itself to mount.
    */
   persistMenu?: boolean;
 
   /**
-   * If true, the persisted menu is rendered hidden when the button
-   * initially mounts. Non-persisted menus will
-   * not be in the component tree unless they are being shown
+   * If true, the persisted menu is rendered hidden when the button initially mounts.
+   * Non-persisted menus will not be in the component tree unless they are being shown.
    *
    * Note: This increases the time the button will take to mount, but
    * can improve perceived menu open perf. when the user opens the menu.
    *
-   * @defaultvalue undefined, equivalent to false
+   * @defaultvalue `undefined`, equivalent to false
    *
    * @deprecated There is known bug in Edge when this prop is true where scrollbars
    * overlap with the content when a menu is first rendered hidden.
-   * See: https://github.com/microsoft/fluentui/issues/9034
    * Please do not start using this. If you are already using this,
-   * please make sure that you are doing so only in non-Edge browsers
+   * please make sure that you are doing so only in non-Edge browsers.
+   * See: https://github.com/microsoft/fluentui/issues/9034
    */
   renderPersistedMenuHiddenOnMount?: boolean;
 
@@ -330,8 +326,7 @@ export interface IButtonProps
   splitButtonMenuProps?: IButtonProps;
 
   /**
-   * Style for the description text if applicable (for compound buttons.)
-   * Deprecated, use `secondaryText` instead.
+   * Style for the description text if applicable (for compound buttons).
    * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
@@ -352,9 +347,9 @@ export interface IButtonProps
  * {@docCategory CompatButton}
  */
 export enum ElementType {
-  /** <button> element. */
+  /** `button` element. */
   button = 0,
-  /** <a> element. */
+  /** `a` element. */
   anchor = 1,
 }
 
@@ -536,12 +531,12 @@ export interface IButtonStyles {
   menuIconChecked?: IStyle;
 
   /**
-   * Style for the description text if applicable (for compound buttons.)
+   * Style for the description text if applicable (for compound buttons).
    */
   description?: IStyle;
 
   /**
-   * Style for the description text if applicable (for compound buttons.)
+   * Style for the description text if applicable (for compound buttons).
    */
   secondaryText?: IStyle;
 

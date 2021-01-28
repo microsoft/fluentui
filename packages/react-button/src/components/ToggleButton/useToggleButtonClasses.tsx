@@ -94,12 +94,12 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
     return {
       root: {
         checked: {
-          background: semanticColors?.buttonBackgroundPressed,
+          background: semanticColors?.buttonBackgroundChecked,
           contentColor: semanticColors?.buttonTextChecked,
         },
 
         checkedHovered: {
-          background: semanticColors?.buttonBackgroundPressed,
+          background: semanticColors?.buttonBackgroundCheckedHovered,
           contentColor: semanticColors?.buttonTextCheckedHovered,
         },
 

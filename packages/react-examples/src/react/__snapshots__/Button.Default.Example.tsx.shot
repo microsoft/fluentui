@@ -65,7 +65,7 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -81,7 +81,7 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           background-color: #f3f2f1;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
@@ -181,7 +181,7 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -193,18 +193,19 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           position: relative;
           top: 0px;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
           border-color: WindowText;
           color: Window;
+          forced-color-adjust: none;
         }
         &:hover {
           background-color: #106ebe;
           border: 1px solid #106ebe;
           color: #ffffff;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           background-color: Highlight;
           border-color: Highlight;
           color: Window;
@@ -214,11 +215,12 @@ exports[`Component Examples renders Button.Default.Example.tsx correctly 1`] = `
           border: 1px solid #005a9e;
           color: #ffffff;
         }
-        @media screen and (-ms-high-contrast: active){&:active {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
           -ms-high-contrast-adjust: none;
           background-color: WindowText;
           border-color: WindowText;
           color: Window;
+          forced-color-adjust: none;
         }
     data-is-focusable={true}
     onClick={[Function]}

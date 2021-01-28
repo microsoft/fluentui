@@ -28,25 +28,25 @@ export interface ICheckboxProps
   extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
     React.RefAttributes<HTMLDivElement> {
   /**
-   * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
+   * Optional callback to access the `ICheckbox` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ICheckbox>;
 
   /**
-   * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
+   * Class name to provide on the root element, in addition to the `ms-Checkbox` class.
    */
   className?: string;
 
   /**
-   * Checked state. Mutually exclusive to "defaultChecked". Use this if you control the checked state at a higher
-   * level and plan to pass in the correct value based on handling onChange events and re-rendering.
+   * Checked state. Mutually exclusive with `defaultChecked`. Use this if you control the checked state at a higher
+   * level and plan to pass in the correct value based on handling `onChange` events and re-rendering.
    */
   checked?: boolean;
 
   /**
-   * Default checked state. Mutually exclusive to "checked". Use this if you want an uncontrolled component, and
-   * want the Checkbox instance to maintain its own state.
+   * Default checked state. Mutually exclusive with `checked`. Use this if you want an uncontrolled component,
+   * meaning the Checkbox instance maintains its own state.
    */
   defaultChecked?: boolean;
 
@@ -66,15 +66,15 @@ export interface ICheckboxProps
   onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
 
   /**
-   * Optional input props that will be mixed into the input element, *before* other props are applied. This allows
-   * you to extend the input element with additional attributes, such as data-automation-id needed for automation.
-   * Note that if you provide, for example, "disabled" as well as "inputProps.disabled", the former will take
-   * precedence over the later.
+   * Optional props that will be mixed into the input element, *before* other props are applied. This allows
+   * you to apply additional attributes to the input element, such as `data-automation-id` for automation.
+   * Note that if you provide, for example, `disabled` as well as `inputProps.disabled`, the former will take
+   * precedence over the latter.
    */
   inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
 
   /**
-   * Allows you to set the checkbox to be at the before (start) or after (end) the label.
+   * Determines whether the checkbox should be shown before the label (`start`) or after (`end`).
    * @defaultvalue 'start'
    */
   boxSide?: 'start' | 'end';
@@ -100,12 +100,12 @@ export interface ICheckboxProps
   ariaDescribedBy?: string;
 
   /**
-   * The position in the parent set (if in a set) for aria-posinset.
+   * The position in the parent set (if in a set) for `aria-posinset`.
    */
   ariaPositionInSet?: number;
 
   /**
-   * The total size of the parent set (if in a set) for aria-setsize.
+   * The total size of the parent set (if in a set) for `aria-setsize`.
    */
   ariaSetSize?: number;
 
@@ -126,18 +126,20 @@ export interface ICheckboxProps
 
   /**
    * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
-   * over checked or defaultChecked props given but does not affect checked state.
-   * This should not be a toggleable state. On load the checkbox will receive indeterminate visual state
-   * and after the first user click it should be removed by your supplied onChange callback
-   * function exposing the true state of the checkbox.
+   * over `checked` or `defaultChecked` props given but does not affect checked state.
+   *
+   * This should not be a toggleable state. On load, the checkbox will receive indeterminate visual state.
+   * After the first user click, your supplied `onChange` callback should remove the indeterminate state
+   * (without modifying the checked state), exposing the true state of the checkbox.
    */
   indeterminate?: boolean;
 
   /**
    * Optional uncontrolled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
-   * over checked or defaultChecked props given but does not affect checked state.
-   * This is not a toggleable state. On load the checkbox will receive indeterminate visual state
-   * and after the user's first click it will be removed exposing the true state of the checkbox.
+   * over `checked` or `defaultChecked` props given but does not affect checked state.
+   *
+   * This should not be a toggleable state. On load, the checkbox will receive indeterminate visual state.
+   * After the user's first click, it will be removed, exposing the true state of the checkbox.
    */
   defaultIndeterminate?: boolean;
 }
@@ -166,7 +168,7 @@ export interface ICheckboxStyles {
 
   /**
    * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
-   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   * This refers to the `<input type="checkbox">` element that is typically hidden and not rendered on screen.
    */
   input?: IStyle;
 

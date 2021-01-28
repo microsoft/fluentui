@@ -15,7 +15,7 @@ const _items: {}[] = [];
 const _selection = new Selection();
 // script to simulate drag so that drop hint is rendered
 // eslint-disable-next-line import/no-webpack-loader-syntax
-const dndScript = require('!raw-loader!../../dndSim.js') as string;
+const dndScript = require('!raw-loader?esModule=false!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
   {

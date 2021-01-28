@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { ILegend, Legends } from '../Legends/index';
-import { getId, find } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, find } from '@fluentui/react/lib/Utilities';
 import {
   CartesianChart,
   IBasestate,
@@ -13,12 +13,15 @@ import {
   IMargins,
   IRefArrayData,
   IColorFillBarsProps,
+  ILineChartStyleProps,
+  ILineChartStyles,
 } from '../../index';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
-import { calloutData, ChartTypes, getXAxisType, XAxisTypes } from '../../utilities/index';
+import { calloutData, ChartTypes, getXAxisType, XAxisTypes, tooltipOfXAxislabels } from '../../utilities/index';
 
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
+const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
 export interface IContainerValues {
   width: number;
@@ -60,6 +63,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _renderedColorFillBars: JSX.Element[];
   private _colorFillBars: IColorFillBarsProps[];
   private _colorFillBarsOpacity: number;
+  private _tooltipId: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -83,6 +87,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._lineId = getId('lineID');
     this._verticalLine = getId('verticalLine');
     this._colorFillBarPatternId = getId('colorFillBarPattern');
+    this._tooltipId = getId('LineChartTooltipId_');
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
       (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
@@ -123,6 +128,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       target: this.state.refSelected,
       isBeakVisible: false,
       gapSpace: 15,
+      onDismiss: this._closeCallout,
+      preventDismissOnEvent: () => true,
+      hidden: !(!this.props.hideTooltip && this.state.isCalloutVisible),
       ...this.props.calloutProps,
     };
     const tickParams = {
@@ -198,11 +206,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     yScale: NumericAxis,
     containerHeight: number,
     containerWidth: number,
+    xElement: SVGElement | null,
   ) => {
     this._xAxisScale = xScale;
     this._yAxisScale = yScale;
     this._renderedColorFillBars = this.props.colorFillBars ? this._createColorFillBars(containerHeight) : [];
-    this.lines = this._createLines();
+    this.lines = this._createLines(xElement!);
   };
 
   private _handleSingleLegendSelectionAction = (lineChartItem: ILineChartPoints | IColorFillBarsProps) => {
@@ -292,7 +301,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return legends;
   }
 
-  private _createLines(): JSX.Element[] {
+  private _closeCallout = () => {
+    this.setState({
+      isCalloutVisible: false,
+    });
+  };
+
+  private _createLines(xElement: SVGElement): JSX.Element[] {
     const lines = [];
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
@@ -359,7 +374,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
               onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData, circleId)}
               onMouseOut={this._handleMouseOut.bind(this, circleId, lineColor)}
-              onFocus={this._handleFocus.bind(this, lineId, x1, y1, lineColor, xAxisCalloutData, circleId)}
+              onFocus={() => this._handleFocus(lineId, x1, y1, lineColor, xAxisCalloutData, circleId)}
               onBlur={this._handleMouseOut.bind(this, circleId, lineColor)}
               onClick={this._onDataPointClick.bind(
                 this,
@@ -375,6 +390,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           );
           if (j + 1 === this._points[i].data.length) {
             const lastCircleId = `${circleId}${j}L`;
+            const lastCirlceXCallout = this._points[i].data[j].xAxisCalloutData;
             lines.push(
               <circle
                 id={lastCircleId}
@@ -383,10 +399,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 cx={this._xAxisScale(x2)}
                 cy={this._yAxisScale(y2)}
                 data-is-focusable={i === 0 ? true : false}
-                onMouseOver={this._handleHover.bind(this, x2, y2, lineColor, xAxisCalloutData, lastCircleId)}
-                onMouseMove={this._handleHover.bind(this, x2, y2, lineColor, xAxisCalloutData, lastCircleId)}
+                onMouseOver={this._handleHover.bind(this, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
+                onMouseMove={this._handleHover.bind(this, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onMouseOut={this._handleMouseOut.bind(this, lastCircleId, lineColor)}
-                onFocus={this._handleFocus.bind(this, lineId, x2, y2, lineColor, xAxisCalloutData, lastCircleId)}
+                onFocus={() => this._handleFocus(lineId, x2, y2, lineColor, lastCirlceXCallout, lastCircleId)}
                 onBlur={this._handleMouseOut.bind(this, lastCircleId, lineColor)}
                 onClick={this._onDataPointClick.bind(
                   this,
@@ -419,6 +435,30 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
           );
         }
       }
+    }
+    const classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+    });
+    // Removing un wanted tooltip div from DOM, when prop not provided.
+    if (!this.props.showXAxisLablesTooltip) {
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+    }
+    // Used to display tooltip at x axis labels.
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      const xAxisElement = d3Select(xElement).call(this._xAxisScale);
+      try {
+        document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
+        // eslint-disable-next-line no-empty
+      } catch (e) {}
+      const tooltipProps = {
+        tooltipCls: classNames.tooltip!,
+        id: this._tooltipId,
+        xAxis: xAxisElement,
+      };
+      xAxisElement && tooltipOfXAxislabels(tooltipProps);
     }
     return lines;
   }
@@ -490,7 +530,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     x: number | Date,
     y: number | string,
     lineColor: string,
-    xAxisCalloutData: string,
+    xAxisCalloutData: string | undefined,
     circleId: string,
   ) => {
     this._uniqueCallOutID = circleId;
@@ -525,7 +565,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     lineColor: string,
     xAxisCalloutData: string,
     circleId: string,
-    mouseEvent: React.MouseEvent<SVGPathElement>,
+    mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
     this._uniqueCallOutID = circleId;

@@ -103,7 +103,8 @@ export interface IPersonaCoinProps
   imageShouldStartVisible?: boolean;
 
   /**
-   * Alt text for the image to use. Defaults to an empty string.
+   * Alt text for the image to use.
+   * @default `''` (empty string)
    */
   imageAlt?: string;
 

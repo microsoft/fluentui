@@ -1,7 +1,7 @@
 export namespace ZIndexes {
   export const Nav: number = 1;
   /**
-   * @deprecated ScrollablePane
+   * @deprecated Do not use
    */
   export const ScrollablePane: number = 1;
   export const FocusStyle: number = 1;
