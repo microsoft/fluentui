@@ -121,6 +121,23 @@ function buildEntries(packageName, entries = {}, includeStats = true, onlyOwnCom
   return entries;
 }
 
+function buildNorthstarEntries(includeStats = true) {
+  const entries = {};
+  const distPath = path.dirname(require.resolve('@fluentui/react-northstar').replace('commonjs', 'es'));
+  const componentsPath = path.resolve(distPath, 'components');
+  fs.readdirSync(componentsPath).forEach(componentName => {
+    const isFolder = true;
+    if (isFolder) {
+      const entryPath = path.join(componentsPath, componentName, `${componentName}.js`);
+      entries[`fluentui-Northstar-${componentName}`] = {
+        entryPath,
+        includeStats,
+      };
+    }
+  });
+  return entries;
+}
+
 /**
  * Create entries for single top level import.
  */
@@ -135,4 +152,5 @@ module.exports = {
   createWebpackConfig,
   buildEntries,
   buildEntry,
+  buildNorthstarEntries,
 };

@@ -1,8 +1,11 @@
 // @ts-check
-const { createWebpackConfig, buildEntries, buildEntry } = require('./webpackUtils');
+const { createWebpackConfig, buildEntries, buildNorthstarEntries, buildEntry } = require('./webpackUtils');
 
 // Create entries for all top level imports.
-const entries = buildEntries('@fluentui/react');
+const entries = {
+  ...buildEntries('@fluentui/react'),
+  ...buildNorthstarEntries(),
+};
 // If/when we start working in react-next again, the bundle size tests should be set up like this
 // so that only the components directly within react-next are tested.
 // buildEntries(
