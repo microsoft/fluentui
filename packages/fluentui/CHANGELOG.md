@@ -35,6 +35,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Accordion` title and content margins. @TanelVari ([#16533](https://github.com/microsoft/fluentui/pull/16533))
 - Fix `TextArea` disabled styles to match `Input` disabled styles @assuncaocharles ([#16661](https://github.com/microsoft/fluentui/pull/16661))
 - Remove unused `paddleNextSize` and `paddlePreviousSize` variables @assuncaocharles ([#16665](https://github.com/microsoft/fluentui/pull/16665))
+- Define value for `largest` font-size in `siteVariables` @assuncaocharles ([#16693](https://github.com/microsoft/fluentui/pull/16693))
 
 ## Features
 - Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
