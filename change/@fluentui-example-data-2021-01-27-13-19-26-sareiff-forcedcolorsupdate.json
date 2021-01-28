@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update snapshots",
-  "packageName": "@fluentui/example-data",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T21:19:13.005Z"
-}

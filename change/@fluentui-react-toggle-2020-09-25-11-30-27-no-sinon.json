@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove sinon dependency from tests",
-  "packageName": "@fluentui/react-toggle",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-09-25T18:30:17.739Z"
-}
