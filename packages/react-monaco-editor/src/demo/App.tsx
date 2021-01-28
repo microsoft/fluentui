@@ -4,7 +4,7 @@ import { useBoolean } from '@fluentui/react-hooks';
 import { EditorWrapper } from '../components/EditorWrapper';
 import { SUPPORTED_PACKAGES } from '../utilities/index';
 
-const example = require('!raw-loader!../transpiler/examples/class.txt');
+const example = require('!raw-loader?esModule=false!../transpiler/examples/class.txt');
 
 const classNames = mergeStyleSets({
   component: {

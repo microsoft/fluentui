@@ -202,7 +202,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -219,7 +219,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border-color: #ffffff;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -336,7 +336,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -348,11 +348,12 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
                   border-color: WindowText;
                   color: Window;
+                  forced-color-adjust: none;
                 }
                 &:hover {
                   background-color: #deecf9;
@@ -360,7 +361,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border: 1px solid #106ebe;
                   color: #0078d4;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   background-color: Highlight;
                   border-color: Highlight;
                   color: Window;
@@ -375,11 +376,12 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   border: 1px solid #005a9e;
                   color: #0078d4;
                 }
-                @media screen and (-ms-high-contrast: active){&:active {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
                   border-color: WindowText;
                   color: Window;
+                  forced-color-adjust: none;
                 }
                 & .ms-Button-label {
                   -moz-osx-font-smoothing: grayscale;
@@ -488,7 +490,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -505,7 +507,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
               background: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }

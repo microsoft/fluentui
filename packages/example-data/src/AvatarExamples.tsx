@@ -1,17 +1,3 @@
-import * as React from 'react';
-import {
-  GroupIcon,
-  CatIcon,
-  IDBadgeIcon,
-  CalendarIcon,
-  TelemarketerIcon,
-  RoomIcon,
-  SkypeClockIcon,
-  SkypeCheckIcon,
-  SkypeMinusIcon,
-  SkypeArrowIcon,
-} from '@fluentui/react-icons-mdl2';
-
 const imageRoot = 'http://fabricweb.azureedge.net/fabric-website/assets/images/avatar';
 
 /** Sample names and images for use in Avatar examples */
@@ -52,26 +38,6 @@ export const AvatarExamples = {
   nameAndImage: nameAndImage,
   name: nameAndImage.map(p => p.name),
   image: nameAndImage.map(p => p.image),
-  icon: [
-    /* eslint-disable react/jsx-key */
-    <GroupIcon />,
-    <CatIcon />,
-    <CalendarIcon />,
-    <RoomIcon />,
-    <IDBadgeIcon />,
-    <TelemarketerIcon />,
-    /* eslint-enable react/jsx-key */
-  ],
-  badge: [
-    'success',
-    'warning',
-    'error',
-    'info',
-    { state: 'success', icon: { as: SkypeCheckIcon } },
-    { state: 'warning', icon: { as: SkypeClockIcon } },
-    { state: 'error', icon: { as: SkypeMinusIcon } },
-    { state: 'info', icon: { as: SkypeArrowIcon } },
-  ],
   display: ['label', 'image', 'icon'],
   activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
   customSize: [13, 21, 34, 55, 89, 144],

@@ -3,7 +3,7 @@ import { ColorPickerBasicExample } from './ColorPicker.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const ColorPickerBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ColorPicker/ColorPicker.Basic.Example.tsx') as string;
+const ColorPickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ColorPicker/ColorPicker.Basic.Example.tsx') as string;
 export const ColorPickerPageProps: IDocPageProps = {
   title: 'ColorPicker',
   componentName: 'ColorPicker',
@@ -15,10 +15,12 @@ export const ColorPickerPageProps: IDocPageProps = {
       view: <ColorPickerBasicExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/ColorPicker/docs/ColorPickerOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ColorPicker/docs/ColorPickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ColorPicker/docs/ColorPickerBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ColorPicker/docs/ColorPickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

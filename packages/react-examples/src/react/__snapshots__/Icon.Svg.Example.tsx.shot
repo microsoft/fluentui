@@ -3,7 +3,7 @@
 exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
 <div>
   <i
-    aria-hidden={true}
+    aria-label="OneDrive logo"
     className=
         ms-Icon
         {
@@ -19,7 +19,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
           width: 50px;
         }
     data-icon-name="onedrive-svg"
-    role="presentation"
+    role="img"
     style={
       Object {
         "fontFamily": undefined,
@@ -40,7 +40,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
-    aria-hidden={true}
+    aria-label="Yammer logo"
     className=
         ms-Icon
         {
@@ -60,7 +60,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
           fill: green;
         }
     data-icon-name="yammer-svg"
-    role="presentation"
+    role="img"
     style={
       Object {
         "fontFamily": undefined,
@@ -81,7 +81,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
-    aria-hidden={true}
+    aria-label="Map icon"
     className=
         ms-Icon
         {
@@ -106,7 +106,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
           fill: pink;
         }
     data-icon-name="borderblinds-svg"
-    role="presentation"
+    role="img"
     style={
       Object {
         "fontFamily": undefined,

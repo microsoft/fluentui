@@ -233,6 +233,22 @@
       },
       "sourceMaps": true,
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug create-package",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn create-package",
+      "cwd": "${workspaceFolder}",
+      "outputCapture": "std"
+    },
+    {
+      "name": "Debug create-component",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn create-component",
+      "cwd": "${workspaceFolder}",
+      "outputCapture": "std"
     }
   ]
 }

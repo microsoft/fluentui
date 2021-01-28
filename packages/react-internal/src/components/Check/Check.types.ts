@@ -12,7 +12,7 @@ export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
   componentRef?: IRefObject<ICheckProps>;
 
   /**
-   * Whether or not this menu item is currently checked.
+   * Whether the component is currently checked.
    * @defaultvalue false
    */
   checked?: boolean;

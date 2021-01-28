@@ -104,8 +104,8 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
   styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
 
   /**
-   * (Optional) Specify whether to use the "switch" role (ARIA 1.1) or the checkbox role (ARIA 1.0).
-   * If unspecified, defaults to "switch".
+   * Whether to use the 'switch' role (ARIA 1.1) or the 'checkbox' role (ARIA 1.0).
+   * @default 'switch'
    */
   role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
 }

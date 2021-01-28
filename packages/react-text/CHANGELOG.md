@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.3-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.3-15)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.1.3-14..@fluentui/react-text_v0.1.3-15)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
 
 ## [0.1.3-14](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.3-14)
 

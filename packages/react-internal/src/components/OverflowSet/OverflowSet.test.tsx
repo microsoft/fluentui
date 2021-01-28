@@ -3,7 +3,6 @@ import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
 import { create } from '@fluentui/utilities/lib/test';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import * as sinon from 'sinon';
 import { CommandBarButton } from '../../compat/Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
@@ -34,6 +33,8 @@ function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]
   return ktp ? ktp.keytip : undefined;
 }
 
+const noOp = (): any => undefined;
+
 const runAllTimers = () =>
   ReactTestUtils.act(() => {
     jest.runAllTimers();
@@ -42,35 +43,20 @@ const runAllTimers = () =>
 describe('OverflowSet', () => {
   describe('snapshot tests', () => {
     test('basicSnapshot', () => {
-      const onRenderItem = sinon.spy();
-      const onRenderOverflowButton = sinon.spy();
-      const component = create(
-        <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
-      );
+      const component = create(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={noOp} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('snapshot with classname', () => {
-      const onRenderItem = sinon.spy();
-      const onRenderOverflowButton = sinon.spy();
-      const component = create(
-        <OverflowSet className="foobar" onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
-      );
+      const component = create(<OverflowSet className="foobar" onRenderItem={noOp} onRenderOverflowButton={noOp} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     test('snapshot with classname and vertical layout', () => {
-      const onRenderItem = sinon.spy();
-      const onRenderOverflowButton = sinon.spy();
       const component = create(
-        <OverflowSet
-          className="foobar"
-          vertical={true}
-          onRenderItem={onRenderItem}
-          onRenderOverflowButton={onRenderOverflowButton}
-        />,
+        <OverflowSet className="foobar" vertical onRenderItem={noOp} onRenderOverflowButton={noOp} />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -84,21 +70,17 @@ describe('OverflowSet', () => {
   });
 
   it('does not render overflow when there are no overflow items', () => {
-    const onRenderItem = sinon.spy();
-    const onRenderOverflowButton = sinon.spy();
-    shallow(<OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />);
+    const onRenderOverflowButton = jest.fn();
+    shallow(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={onRenderOverflowButton} />);
 
-    expect(onRenderOverflowButton.called).toEqual(false);
+    expect(onRenderOverflowButton).not.toHaveBeenCalled();
   });
 
   it('does not render overflow when overflow items is an empty array', () => {
-    const onRenderItem = sinon.spy();
-    const onRenderOverflowButton = sinon.spy();
-    shallow(
-      <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />,
-    );
+    const onRenderOverflowButton = jest.fn();
+    shallow(<OverflowSet onRenderItem={noOp} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />);
 
-    expect(onRenderOverflowButton.called).toEqual(false);
+    expect(onRenderOverflowButton).not.toHaveBeenCalled();
   });
 
   describe('keytip tests', () => {
