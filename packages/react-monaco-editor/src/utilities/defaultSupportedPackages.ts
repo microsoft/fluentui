@@ -38,9 +38,7 @@ if (typesContext) {
     // as the filename.
     // (example path: '!raw-loader?esModule=false!@fluentui/react-monaco-editor/dist/types/utilities.d.ts')
     const unscopedName = dtsPath.match(/\/(.*?)\.d\.ts$/)![1];
-    const packageName = `${
-      ['react-focus', 'react'].indexOf(unscopedName) > -1 ? '@fluentui' : '@uifabric'
-    }/${unscopedName}`;
+    const packageName = `@fluentui/${unscopedName}`;
     const packageGroup =
       packageName === '@fluentui/example-data'
         ? exampleDataGroup

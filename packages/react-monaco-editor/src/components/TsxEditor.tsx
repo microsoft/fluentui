@@ -170,7 +170,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
     for (const pkg of group.packages) {
       const { packageName, loadTypes } = pkg;
       // Get the pretend @types package name
-      // (for a scoped package like @uifabric/utilities, this will be uifabric__utilities)
+      // (for a scoped package like @fluentui/utilities, this will be fluentui__utilities)
       const scopedMatch = packageName.match(/^@([^/]+)\/(.*)/);
       const typesPackageName = scopedMatch ? `${scopedMatch[1]}__${scopedMatch[2]}` : packageName;
 

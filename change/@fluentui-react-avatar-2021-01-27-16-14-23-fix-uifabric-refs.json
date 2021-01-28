@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fix some remaining references to @uifabric",
+  "packageName": "@fluentui/react-avatar",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-28T00:14:18.780Z"
+}
