@@ -14,7 +14,7 @@ const commonArgs = (): JestTaskOptions => {
     config: args.config,
     watch: args.watch,
     coverage: args.coverage,
-    passWithNoTests: args.passWithNoTests,
+    passWithNoTests: args.passWithNoTests === undefined ? true : args.passWithNoTests,
     testNamePattern: args.testNamePattern,
     testPathPattern: args.testPathPattern,
 
