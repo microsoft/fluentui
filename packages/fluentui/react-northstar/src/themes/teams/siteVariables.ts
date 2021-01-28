@@ -33,6 +33,7 @@ export const fontSizes = {
   medium: pxToRem(14),
   large: pxToRem(18),
   larger: pxToRem(24),
+  largest: pxToRem(30),
 };
 
 //
