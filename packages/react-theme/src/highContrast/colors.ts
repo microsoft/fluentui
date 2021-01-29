@@ -94,7 +94,7 @@ export function createNeutralColorTokens(customValues: Record<string, string> = 
   };
 }
 
-function createSharedColorTokens(customValues: Record<string, string> = {}): SharedColorTokens {
+function createSharedColorTokens(customValues: { [P in keyof NeutralColorTokens]?: string } = {}): SharedColorTokens {
   return {
     background1: white,
     background2: black,

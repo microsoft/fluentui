@@ -3,7 +3,7 @@ import { grey, white, black, sharedColors } from '../global';
 
 export function createNeutralColorTokens(
   brand: ColorVariants,
-  customValues: Record<string, string> = {},
+  customValues: { [P in keyof NeutralColorTokens]?: string } = {},
 ): NeutralColorTokens {
   return {
     neutralForeground1: white,
