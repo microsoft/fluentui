@@ -7,7 +7,6 @@ export const withThemeProvider = (Story, context) => {
   return (
     <FakeProvider theme={theme}>
       <Story />
-      <pre>{JSON.stringify(theme, null, 2)}</pre>
     </FakeProvider>
   );
 };

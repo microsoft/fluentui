@@ -1,60 +1,82 @@
 import * as React from 'react';
+import Color from 'color';
+
 import { ColorRampItem } from '../src/components/ColorRamp';
-import {
-  teamsLightTheme,
-  teamsDarkTheme,
-  teamsHighContrastTheme,
-  webLightTheme,
-  webDarkTheme,
-  webHighContrastTheme,
-} from '@fluentui/react-theme';
+import { webLightTheme, webDarkTheme } from '@fluentui/react-theme';
 
 export default {
   title: 'Fluent UI Theme/Colors/Alias',
 };
 
-export const Alias = (props) => {
-  const [theme, setTheme] = React.useState<string>('teams');
-  const onSelectTheme = (e) => {
-    setTheme(e.target.value);
-  };
+const buttonStyle = ({ active }): React.CSSProperties => ({
+  padding: '0.5em 1em',
+  width: 100,
+  fontWeight: !!active ? 'bold' : 'normal',
+  border: !!active ? '2px solid white' : '2px solid transparent',
+  borderRadius: 0,
+  outline: 'none ',
+});
 
-  const themes = {
-    teams: {
-      default: teamsLightTheme,
-      dark: teamsDarkTheme,
-      highContrast: teamsHighContrastTheme,
-    },
-    web: {
-      default: webLightTheme,
-      dark: webDarkTheme,
-      highContrast: webHighContrastTheme,
-    },
-  };
+export const Alias = (args, { globals: { theme } }) => {
+  const [color, setColor] = React.useState<string>('neutral');
+
+  const COLUMN_WIDTH = 250;
 
   return (
     <>
       <div>
-        <select value={theme} onChange={onSelectTheme}>
-          <option value="teams">Teams branded</option>
-          <option value="web">Web branded</option>
-        </select>
+        <button
+          style={{
+            background: webDarkTheme.neutralColorTokens.neutralBackground1,
+            color: webDarkTheme.neutralColorTokens.neutralForeground1,
+            ...buttonStyle({ active: color === 'neutral' }),
+          }}
+          onClick={() => setColor('neutral')}
+        >
+          neutral
+        </button>
+        {Object.keys(webLightTheme.sharedColorTokens).map((colorName) => (
+          <button
+            key={colorName}
+            style={{
+              background: webLightTheme.sharedColors[colorName].primary,
+              color:
+                webLightTheme.sharedColors[colorName][
+                  Color(webLightTheme.sharedColors[colorName].primary).isDark() ? 'tint60' : 'shade50'
+                ],
+              ...buttonStyle({ active: color === colorName }),
+            }}
+            onClick={() => setColor(colorName)}
+          >
+            {colorName}
+          </button>
+        ))}
       </div>
+
       <div>
         <div style={{ display: 'flex' }}>
-          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Design Token</h3>
-          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Web Light</h3>
-          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Web Dark</h3>
-          <h3 style={{ flex: 1, padding: '1em', margin: 0 }}>Web High Contrast</h3>
+          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Design Token</h3>
+          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Web Light</h3>
+          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Web Dark</h3>
+          <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Web High Contrast</h3>
         </div>
-        {Object.keys(themes[theme].default.neutralColorTokens).map((name) => (
-          <div key={name} style={{ display: 'flex' }}>
-            <div style={{ padding: '1em', width: 250, fontWeight: 'bold' }}>{name}</div>
-            <ColorRampItem value={themes[theme].default.neutralColorTokens[name]} />
-            <ColorRampItem value={themes[theme].dark.neutralColorTokens[name]} />
-            <ColorRampItem value={themes[theme].highContrast.neutralColorTokens[name]} />
-          </div>
-        ))}
+        {color === 'neutral'
+          ? Object.keys(theme.light.neutralColorTokens).map((name) => (
+              <div key={name} style={{ display: 'flex' }}>
+                <div style={{ padding: '1em', width: COLUMN_WIDTH, fontWeight: 'bold' }}>{name}</div>
+                <ColorRampItem value={theme.light.neutralColorTokens[name]} />
+                <ColorRampItem value={theme.dark.neutralColorTokens[name]} />
+                <ColorRampItem value={theme.highContrast.neutralColorTokens[name]} />
+              </div>
+            ))
+          : Object.keys(theme.light.sharedColorTokens[color]).map((name) => (
+              <div key={name} style={{ display: 'flex' }}>
+                <div style={{ padding: '1em', width: COLUMN_WIDTH, fontWeight: 'bold' }}>{name}</div>
+                <ColorRampItem value={theme.light.sharedColorTokens[color][name]} />
+                <ColorRampItem value={theme.dark.sharedColorTokens[color][name]} />
+                <ColorRampItem value={theme.highContrast.sharedColorTokens[color][name]} />
+              </div>
+            ))}
       </div>
     </>
   );

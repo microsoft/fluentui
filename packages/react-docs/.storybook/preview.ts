@@ -1,8 +1,27 @@
 import { withThemeProvider } from '../src/decorators/withThemeProvider';
 // import { withNorthstarProvider, themes } from '../src/decorators/withThemeProvider';
-import * as themeBase from '../src/themes/theme-base';
-import * as themeTeams from '../src/themes/theme-teams';
-import { mergeThemes } from '../src/themes/mergeThemes';
+import {
+  teamsLightTheme,
+  teamsDarkTheme,
+  teamsHighContrastTheme,
+  webLightTheme,
+  webDarkTheme,
+  webHighContrastTheme,
+} from '@fluentui/react-theme';
+
+const webThemes = {
+  debugName: 'webTheme',
+  light: webLightTheme,
+  dark: webDarkTheme,
+  highContrast: webHighContrastTheme,
+};
+
+const teamsThemes = {
+  debugName: 'teamsTheme',
+  light: teamsLightTheme,
+  dark: teamsDarkTheme,
+  highContrast: teamsHighContrastTheme,
+};
 
 export const parameters = {
   layout: 'centered',
@@ -12,12 +31,11 @@ export const globalTypes = {
   theme: {
     name: 'Theme',
     description: 'Global theme for components',
-    defaultValue: 'Teams',
+    defaultValue: webThemes,
     toolbar: {
-      icon: 'paintbrush',
       items: [
-        { title: 'theme-base', value: themeBase },
-        { title: 'theme-teams', value: mergeThemes(themeBase, themeTeams) },
+        { title: 'Web', value: webThemes },
+        { title: 'Teams', value: teamsThemes },
       ],
     },
   },
