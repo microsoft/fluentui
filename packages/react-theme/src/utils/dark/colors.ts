@@ -1,5 +1,5 @@
-import { NeutralColorTokens, ColorVariants, SharedColorTokens, GlobalSharedColors } from '../types';
-import { grey, white, black, sharedColors } from '../global';
+import { NeutralColorTokens, ColorVariants, SharedColorTokens, GlobalSharedColors } from '../../types';
+import { grey, white, black, sharedColors } from '../../global/index';
 
 export function createNeutralColorTokens(
   brand: ColorVariants,
