@@ -10,6 +10,13 @@ export const buttonBehaviorDefinition: Rule[] = [
     .doesNotHaveAttribute('role')
     .description(`if element is native button.`),
   BehaviorRule.root()
+    .forProps({ disabled: true })
+    .hasAttribute('disabled'),
+  BehaviorRule.root()
+    .forProps({ disabled: true, as: 'div' })
+    .doesNotHaveAttribute('disabled')
+    .description(`if element is NOT native 'button'.`),
+  BehaviorRule.root()
     .forProps({ as: 'div' })
     .hasAttribute('tabindex', '0')
     .description(`if element type is other than 'button'.`),
