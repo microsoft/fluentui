@@ -277,7 +277,7 @@ exports[`Modal renders Modal correctly 1`] = `
                 right: 0px;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border: 1px solid WindowText;
                 opacity: 0;
               }

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Clean up some prop comments and deprecated messages",
-  "packageName": "@fluentui/react-toggle",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-21T05:50:41.926Z"
-}

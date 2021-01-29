@@ -50,7 +50,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -58,7 +58,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -79,7 +79,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -89,7 +89,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -252,7 +252,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -276,7 +276,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -358,7 +358,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -366,7 +366,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -387,7 +387,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -397,7 +397,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -543,7 +543,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -567,7 +567,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     content: linear-gradient(to right, red, red);
                     opacity: ;
                   }
@@ -646,7 +646,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -654,7 +654,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -675,7 +675,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -685,7 +685,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -810,7 +810,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -818,7 +818,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -839,7 +839,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -849,7 +849,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1012,7 +1012,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1036,7 +1036,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1118,7 +1118,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1126,7 +1126,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1147,7 +1147,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1157,7 +1157,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1320,7 +1320,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1344,7 +1344,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1426,7 +1426,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1434,7 +1434,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1455,7 +1455,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1465,7 +1465,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1628,7 +1628,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1652,7 +1652,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
@@ -1734,7 +1734,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1742,7 +1742,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1763,7 +1763,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1773,7 +1773,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1936,7 +1936,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1960,7 +1960,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, red, red);
                           opacity: ;
                         }

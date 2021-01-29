@@ -132,7 +132,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -144,14 +144,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       border-color: Window;
                       border: 0px;
                     }
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -163,7 +163,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                    @media screen and (-ms-high-contrast: active){&:focus {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                       border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
@@ -283,7 +283,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -295,14 +295,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       border-color: Window;
                       border: 0px;
                     }
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -314,7 +314,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                    @media screen and (-ms-high-contrast: active){&:focus {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                       border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
@@ -471,7 +471,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -483,14 +483,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       border-color: Window;
                       border: 0px;
                     }
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -502,7 +502,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                    @media screen and (-ms-high-contrast: active){&:focus {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                       border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {
@@ -622,7 +622,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -634,14 +634,14 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       border-color: Window;
                       border: 0px;
                     }
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       color: Highlight;
                     }
                     &:hover .ms-Button-icon {
@@ -653,7 +653,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                    @media screen and (-ms-high-contrast: active){&:focus {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                       border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {

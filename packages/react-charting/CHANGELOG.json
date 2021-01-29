@@ -2,6 +2,47 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.44",
+      "version": "5.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Update high contrast to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "f9189e435dc8e73337ff40c54ac6af47567d9639",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "adding lines in vertical stacked bar chart complex combo chart (#15551)",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "f5914d8f52256a622280f0c8011fa2d602e95dec",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Cherry-pick react-charting updates from v7",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "9d3693f6f44b63320d91b6cdd5302e37357fe0ba",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 27 Jan 2021 12:30:41 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.43",
       "version": "5.0.0-beta.43",

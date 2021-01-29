@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 27 Jan 2021 12:30:41 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.44)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.43..@fluentui/react-charting_v5.0.0-beta.44)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+- adding lines in vertical stacked bar chart complex combo chart (#15551) ([PR #16639](https://github.com/microsoft/fluentui/pull/16639) by jakubkonka@microsoft.com)
+- Cherry-pick react-charting updates from v7 ([PR #16667](https://github.com/microsoft/fluentui/pull/16667) by jakubkonka@microsoft.com)
 
 ## [5.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.43)
 

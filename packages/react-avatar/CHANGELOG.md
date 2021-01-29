@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.2-17](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-17)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-15..@fluentui/react-avatar_v0.8.2-17)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Fix some remaining references to @uifabric ([PR #16679](https://github.com/microsoft/fluentui/pull/16679) by elcraig@microsoft.com)
 
 ## [0.8.2-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-15)
 
