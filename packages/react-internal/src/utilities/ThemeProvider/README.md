@@ -158,7 +158,7 @@ const Foo = props => {
 `Customizer` is now deprecated and you should replace it with `ThemeProvider`.
 `CustomizerContext` is now deprecated and you should replace it with `ThemeContext` or `useTheme` hook.
 
-Deprecations remain to be functional as is but they will be removed in Fluent UI v9 release.
+Deprecations will remain functional as is in Fluent UI v8 but will be removed during the Fluent UI v9 release.
 
 #### Replace settings prop
 
