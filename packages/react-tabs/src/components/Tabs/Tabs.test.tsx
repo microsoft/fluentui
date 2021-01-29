@@ -24,7 +24,6 @@ describe('Tabs', () => {
   isConformant({
     Component: Tabs,
     displayName: 'Tabs',
-    exportSubdir: 'next',
   });
 
   it('can be focused', () => {
