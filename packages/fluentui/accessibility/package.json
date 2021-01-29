@@ -6,7 +6,7 @@
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/keyboard-key": "^0.2.12",
+    "@fluentui/keyboard-key": "^0.2.13-0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use forced colors for high contrast",
-  "packageName": "@fluentui/react-toggle",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T02:37:25.532Z"
-}

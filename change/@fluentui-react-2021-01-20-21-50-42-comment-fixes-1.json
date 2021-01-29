@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Clean up some prop comments and deprecated messages",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-21T05:50:42.127Z"
-}

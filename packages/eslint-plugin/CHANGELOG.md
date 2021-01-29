@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.0-beta.1)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.0.0-beta.0..@fluentui/eslint-plugin_v1.0.0-beta.1)
+
+### Changes
+
+- Tweaking max-len exclusion matching. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.0-beta.0)
 

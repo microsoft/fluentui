@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Tweaking max-len exclusion matching.",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-19T21:04:02.100Z"
-}

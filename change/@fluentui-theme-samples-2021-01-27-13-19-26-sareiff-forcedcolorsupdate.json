@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "update snapshots",
-  "packageName": "@fluentui/theme-samples",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T21:19:26.621Z"
-}

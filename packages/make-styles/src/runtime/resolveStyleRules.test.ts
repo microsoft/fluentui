@@ -19,13 +19,13 @@ expect.addSnapshotSerializer({
   },
 });
 
+function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
+}
+
 describe('resolveStyleRules', () => {
   describe('classnames', () => {
-    it('generates unique classnames for preudo selectors', () => {
-      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
-      }
-
+    it('generates unique classnames for pseudo selectors', () => {
       const classnamesSet = new Set<string>();
 
       classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));
@@ -80,7 +80,7 @@ describe('resolveStyleRules', () => {
   describe('css', () => {
     it('resolves a single rule', () => {
       expect(resolveStyleRules({ color: 'red' })).toMatchInlineSnapshot(`
-        .fe3e8s9 {
+        .fe3e8s90 {
           color: red;
         }
       `);
@@ -88,10 +88,10 @@ describe('resolveStyleRules', () => {
 
     it('resolves multiple rules', () => {
       expect(resolveStyleRules({ backgroundColor: 'green', color: 'red' })).toMatchInlineSnapshot(`
-        .fcnqdeg {
+        .fcnqdeg0 {
           background-color: green;
         }
-        .fe3e8s9 {
+        .fe3e8s90 {
           color: red;
         }
       `);
@@ -99,7 +99,7 @@ describe('resolveStyleRules', () => {
 
     it('trims values to generate the same classes', () => {
       expect(resolveStyleRules({ color: 'red ' /* ends with a space */ })).toMatchInlineSnapshot(`
-        .fe3e8s9 {
+        .fe3e8s90 {
           color: red;
         }
       `);
@@ -115,16 +115,16 @@ describe('resolveStyleRules', () => {
           MozAnimation: 'initial',
         }),
       ).toMatchInlineSnapshot(`
-        .f1qux40 {
+        .f1qux400 {
           --foo: var(--bar);
         }
-        .f14u957 {
+        .f14u9570 {
           --fooBar: var(--barBaz);
         }
-        .f3xbvq9 {
+        .f3xbvq90 {
           background-color: red;
         }
-        .fr90kjk {
+        .fr90kjk0 {
           -moz-animation: initial;
         }
       `);
@@ -132,7 +132,7 @@ describe('resolveStyleRules', () => {
 
     it('performs expansion of shorthands', () => {
       expect(resolveStyleRules({ outline: '1px' })).toMatchInlineSnapshot(`
-        .fpvhumw {
+        .fpvhumw0 {
           outline-width: 1px;
         }
       `);
@@ -140,13 +140,13 @@ describe('resolveStyleRules', () => {
         .f1sbtcvk {
           padding-top: 5px;
         }
-        .fwiuce9 {
+        .fwiuce90 {
           padding-right: 5px;
         }
-        .rfwiuce9 {
+        .rfwiuce90 {
           padding-left: 5px;
         }
-        .fdghr9 {
+        .fdghr900 {
           padding-bottom: 5px;
         }
         .f15vdbe4 {
@@ -160,7 +160,7 @@ describe('resolveStyleRules', () => {
 
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
-        .f22iagw {
+        .f22iagw0 {
           display: flex;
         }
       `);
@@ -174,7 +174,7 @@ describe('resolveStyleRules', () => {
           top: undefined,
         }),
       ).toMatchInlineSnapshot(`
-        .f19g0ac {
+        .f19g0ac0 {
           z-index: 1;
         }
       `);
@@ -182,18 +182,37 @@ describe('resolveStyleRules', () => {
 
     it('handles RTL', () => {
       expect(resolveStyleRules({ left: '5px' })).toMatchInlineSnapshot(`
-        .f5b3q4t {
+        .f5b3q4t0 {
           left: 5px;
         }
-        .rf5b3q4t {
+        .rf5b3q4t0 {
           right: 5px;
         }
       `);
     });
 
+    it('handles RTL @noflip', () => {
+      expect(resolveStyleRules({ left: '5px /* @noflip */' })).toMatchInlineSnapshot(`
+        .fm76jd00 {
+          left: 5px;
+        }
+      `);
+    });
+
+    it('RTL @noflip will generate a different className', () => {
+      const classnamesSet = new Set<string>();
+
+      // Definitions with @noflip cannot be reused to usual ones as expected RTL styles will be different
+
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px' })));
+      classnamesSet.add(getFirstClassName(resolveStyleRules({ left: '5px /* @noflip */' })));
+
+      expect(classnamesSet.size).toBe(2);
+    });
+
     it('handles nested selectors', () => {
       expect(resolveStyleRules({ ':hover': { color: 'red' } })).toMatchInlineSnapshot(`
-        .faf35ka:hover {
+        .faf35ka0:hover {
           color: red;
         }
       `);
@@ -204,7 +223,7 @@ describe('resolveStyleRules', () => {
       `);
 
       expect(resolveStyleRules({ '[data-fluent="true"]': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fcopvey[data-fluent="true"] {
+        .fcopvey0[data-fluent="true"] {
           color: green;
         }
       `);
@@ -226,18 +245,18 @@ describe('resolveStyleRules', () => {
         }
       `);
       expect(resolveStyleRules({ '&.foo': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fe1zdmy.foo {
+        .fe1zdmy0.foo {
           color: green;
         }
       `);
 
       expect(resolveStyleRules({ '& #foo': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fie1itf #foo {
+        .fie1itf0 #foo {
           color: green;
         }
       `);
       expect(resolveStyleRules({ '&#foo': { color: 'green' } })).toMatchInlineSnapshot(`
-        .fwxog6r#foo {
+        .fwxog6r0#foo {
           color: green;
         }
       `);
@@ -245,7 +264,7 @@ describe('resolveStyleRules', () => {
 
     it('handles complex nested selectors', () => {
       expect(resolveStyleRules({ '& > :first-child': { '& svg': { color: 'red' } } })).toMatchInlineSnapshot(`
-        .fxfx2ih > :first-child svg {
+        .fxfx2ih0 > :first-child svg {
           color: red;
         }
       `);
@@ -258,7 +277,7 @@ describe('resolveStyleRules', () => {
           '@media screen and (max-width: 992px)': { color: 'red' },
         }),
       ).toMatchInlineSnapshot(`
-        .fka9v86 {
+        .fka9v860 {
           color: green;
         }
         @media screen and (max-width: 992px) {
@@ -280,11 +299,11 @@ describe('resolveStyleRules', () => {
           },
         }),
       ).toMatchInlineSnapshot(`
-        .fka9v86 {
+        .fka9v860 {
           color: green;
         }
         @media screen and (max-width: 992px) {
-          .f7wpa5l:hover {
+          .f7wpa5l0:hover {
             color: red;
           }
         }
@@ -301,7 +320,7 @@ describe('resolveStyleRules', () => {
           },
         }),
       ).toMatchInlineSnapshot(`
-        .fe3e8s9 {
+        .fe3e8s90 {
           color: red;
         }
         @media screen and (max-width: 992px) {
@@ -341,7 +360,7 @@ describe('resolveStyleRules', () => {
         body {
           color: green;
         }
-        body .fm1e7ra {
+        body .fm1e7ra0 {
           color: green;
         }
       `);
@@ -372,7 +391,7 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
-        .fkf6eed {
+        .fkf6eed0 {
           animation-name: f13owpa8;
         }
         .f1cpbl36 {
@@ -386,12 +405,12 @@ describe('resolveStyleRules', () => {
 
     it('allows to increase specificity', () => {
       expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
-        .fe3e8s91.fe3e8s91 {
+        .fe3e8s901.fe3e8s901 {
           color: red;
         }
       `);
       expect(resolveStyleRules({ color: 'red' }, 2)).toMatchInlineSnapshot(`
-        .fe3e8s92.fe3e8s92.fe3e8s92 {
+        .fe3e8s902.fe3e8s902.fe3e8s902 {
           color: red;
         }
       `);
@@ -418,20 +437,16 @@ describe('resolveStyleRules', () => {
 
     it('allows to increase for RTL', () => {
       expect(resolveStyleRules({ left: '5px' }, 1)).toMatchInlineSnapshot(`
-        .f5b3q4t1.f5b3q4t1 {
+        .f5b3q4t01.f5b3q4t01 {
           left: 5px;
         }
-        .rf5b3q4t1.rf5b3q4t1 {
+        .rf5b3q4t01.rf5b3q4t01 {
           right: 5px;
         }
       `);
     });
 
     it('generates unique classnames with different specificity', () => {
-      function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-        return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
-      }
-
       const classnamesSet = new Set<string>();
 
       classnamesSet.add(getFirstClassName(resolveStyleRules({ color: 'red' })));

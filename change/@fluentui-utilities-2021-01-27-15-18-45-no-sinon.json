@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove sinon dependency and setRenderSpy utility",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T23:18:45.028Z"
-}
