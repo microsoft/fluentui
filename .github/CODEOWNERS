@@ -35,8 +35,8 @@ azure-pipelines* @ecraig12345
 sizeauditor.json @aftab-hassan
 
 #### Fluent UI N*
-packages/a11y-rules/ @kolaps33 @jurokapsiar
-packages/a11y-testing/ @kolaps33 @jurokapsiar
+packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
+packages/a11y-testing/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
 packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
 
 #### Web Components
