@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving Checkbox from react-checkbox back to react-internal.",
+  "packageName": "@fluentui/react-checkbox",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-29T01:24:47.094Z"
+}

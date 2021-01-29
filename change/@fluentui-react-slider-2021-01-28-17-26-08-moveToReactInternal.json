@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving Slider from react-slider back to react-internal.",
+  "packageName": "@fluentui/react-slider",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-29T01:25:41.103Z"
+}

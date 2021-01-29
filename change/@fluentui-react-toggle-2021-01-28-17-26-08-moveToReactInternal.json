@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving Toggle from react-toggle back to react-internal.",
+  "packageName": "@fluentui/react-toggle",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-29T01:25:45.983Z"
+}
