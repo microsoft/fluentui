@@ -158,6 +158,8 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
               colorActive: siteVariables.colors.black,
               activeUnderlinedBorderBottomColor: siteVariables.colors.black,
               underlinedWrapperColorHover: siteVariables.colors.black,
+              backgroundColorActive: siteVariables.colors.black,
+              activeUnderlinedColor: siteVariables.colors.black,
             })}
             onItemClick={this.handleTabClick}
             accessibility={tabListBehavior}
