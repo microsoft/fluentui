@@ -21,5 +21,8 @@
     "storybook": "start-storybook -p 6006",
     "chromatic": "chromatic",
     "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^6.1.15"
   }
 }

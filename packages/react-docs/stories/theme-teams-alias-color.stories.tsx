@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { webDark } from '../src/themes/theme-teams';
 import { ColorRampItem } from '../src/components/ColorRamp';
 import { teamsLightTheme, teamsDarkTheme, teamsHighContrastTheme } from '@fluentui/react-theme';
 

@@ -1,6 +1,6 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../../utils/light/index';
-import { createShadowLevelTokens } from '../../utils/light/index';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global/index';
+import { createNeutralColorTokens, sharedColorTokens } from '../../utils/light';
+import { createShadowLevelTokens } from '../../utils/light';
+import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global';
 import { Theme } from '../../types';
 
 const common = {

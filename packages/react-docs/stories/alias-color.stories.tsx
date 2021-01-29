@@ -13,7 +13,7 @@ export default {
   title: 'Fluent UI Theme/Colors/Alias',
 };
 
-export const Neutral = (props) => {
+export const Alias = (props) => {
   const [theme, setTheme] = React.useState<string>('teams');
   const onSelectTheme = (e) => {
     setTheme(e.target.value);
@@ -60,4 +60,4 @@ export const Neutral = (props) => {
   );
 };
 
-Neutral.args = {};
+Alias.args = {};

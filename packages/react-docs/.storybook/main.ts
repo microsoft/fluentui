@@ -7,10 +7,11 @@ module.exports = {
         backgrounds: false,
       },
     },
+    '@storybook/addon-a11y',
     '../src/addons/design-tokens/register',
   ],
 
-  webpackFinal: async (config) => {
+  webpackFinal: async config => {
     config.module.rules.push({
       test: /\.js$/,
       enforce: 'pre',
