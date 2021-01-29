@@ -1,0 +1,21 @@
+import * as React from 'react';
+import { getSlots } from '@fluentui/react-utils';
+import { {{componentName}}State } from './{{componentName}}.types';
+import { {{camelCase componentName}}ShorthandProps } from './use{{componentName}}';
+
+/**
+ * Redefine the render function to add slots. Reuse the {{lowerCase componentName}} structure but add
+ * slots to children.
+ */
+export const render{{componentName}} = (state: {{componentName}}State) => {
+  const { slots, slotProps } = getSlots(state, {{camelCase componentName}}ShorthandProps);
+  const { children } = state;
+
+  const contentVisible = (children || slotProps.content?.children);
+
+  return (
+    <slots.root {...slotProps.root}>
+      {contentVisible && <slots.content {...slotProps.content} />}
+    </slots.root>
+  );
+};

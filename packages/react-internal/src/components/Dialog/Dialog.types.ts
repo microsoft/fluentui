@@ -22,8 +22,6 @@ export interface IDialogProps
     IWithResponsiveModeState,
     IAccessiblePopupProps {
   /**
-   * Optional callback to access the IDialog interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
    * @deprecated Unused, returns no value
    */
   componentRef?: IRefObject<IDialog>;
@@ -62,7 +60,6 @@ export interface IDialogProps
 
   /**
    * Whether the dialog is displayed.
-   * Deprecated, use `hidden` instead.
    * @defaultvalue false
    * @deprecated Use `hidden` instead
    */
@@ -107,7 +104,7 @@ export interface IDialogProps
   onLayerDidMount?: () => void;
 
   /**
-   * Deprecated at 0.81.2, use `onLayerDidMount` instead.
+   * Deprecated at 0.81.2.
    * @deprecated Use `onLayerDidMount` instead.
    */
   onLayerMounted?: () => void;

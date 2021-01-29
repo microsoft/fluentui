@@ -34,3 +34,14 @@ export type ShorthandProps<TProps extends ComponentProps = {}> =
       ComponentProps & {
         children?: TProps['children'] | ShorthandRenderFunction<TProps>;
       });
+
+export interface BaseSlots {
+  root: React.ElementType;
+}
+
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+  root: TRootProps;
+};

@@ -111,6 +111,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
           [HighContrastSelector]: {
             backgroundColor: 'highlight',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

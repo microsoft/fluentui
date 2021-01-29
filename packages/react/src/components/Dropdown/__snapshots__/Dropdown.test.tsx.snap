@@ -35,13 +35,13 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           border-color: #323130;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
           border-color: Highlight;
         }
         &:focus .ms-Dropdown-title {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
           color: Highlight;
         }
         &:focus:after {
@@ -56,14 +56,14 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           top: 0px;
           width: 100%;
         }
-        @media screen and (-ms-high-contrast: active){&:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
           color: Highlight;
         }
         &:active .ms-Dropdown-title {
           border-color: #0078d4;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
           border-color: Highlight;
         }
         &:hover .ms-Dropdown-caretDown {
@@ -72,7 +72,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
         &:focus .ms-Dropdown-caretDown {
           color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
           color: Highlight;
         }
         &:active .ms-Dropdown-caretDown {
@@ -212,13 +212,13 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           border-color: #323130;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
           border-color: Highlight;
         }
         &:focus .ms-Dropdown-title {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
           color: Highlight;
         }
         &:focus:after {
@@ -233,14 +233,14 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           top: 0px;
           width: 100%;
         }
-        @media screen and (-ms-high-contrast: active){&:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
           color: Highlight;
         }
         &:active .ms-Dropdown-title {
           border-color: #0078d4;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
           border-color: Highlight;
         }
         &:hover .ms-Dropdown-caretDown {
@@ -249,7 +249,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
         &:focus .ms-Dropdown-caretDown {
           color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
           color: Highlight;
         }
         &:active .ms-Dropdown-caretDown {

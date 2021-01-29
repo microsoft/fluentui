@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
-import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ComponentProps } from '@fluentui/react-utils';
 import { ColorTokens, SizeValue } from '@fluentui/theme';
 
 /* eslint-disable @typescript-eslint/naming-convention */
@@ -38,9 +38,8 @@ export type CardProps = ComponentProps &
     /** A card can have inverted background styles. */
     inverted?: boolean;
 
-    /** A card can have quiet styles. */
-    // TODO: Is this the correct name? Appears as ghost in design spec.
-    quiet?: boolean;
+    /** A card can have ghost styles. */
+    ghost?: boolean;
 
     /** A card can show that it is currently selected or not. */
     // TODO: This should probably have a `defaultSelected` property at the same time.

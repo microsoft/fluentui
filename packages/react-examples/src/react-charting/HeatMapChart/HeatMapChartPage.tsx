@@ -8,7 +8,7 @@ import {
 } from '@fluentui/react-docsite-components';
 import { HeatMapChartBasicExample } from './HeatMapChartBasic.Example';
 
-const HeatMapChartBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChartBasic.Example.tsx');
+const HeatMapChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/HeatMapChartBasic.Example.tsx');
 
 export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): React.ReactNode {
@@ -26,7 +26,9 @@ export class HeatMapChart extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@fluentui/react-charting/src/components/HeatMapChart/HeatMapChart.types.ts'),
+              require<
+                string
+              >('!raw-loader?esModule=false!@fluentui/react-charting/src/components/HeatMapChart/HeatMapChart.types.ts'),
             ]}
           />
         }

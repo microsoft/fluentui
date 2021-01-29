@@ -105,7 +105,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
 
   /**
    * The user's initials to display in the image area when there is no image.
-   * @defaultvalue [Derived from personaName]
+   * @defaultvalue Derived from `personaName`
    */
   imageInitials?: string;
 
@@ -118,7 +118,7 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
 
   /**
    * The background color when the user's initials are displayed.
-   * @defaultvalue [Derived from personaName]
+   * @defaultvalue Derived from `personaName`
    */
   initialsColor?: PersonaInitialsColor;
 

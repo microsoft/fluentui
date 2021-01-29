@@ -9,14 +9,14 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { TilesListBasicExample } from './TilesList.Basic.Example';
-const TilesListBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Basic.Example.tsx') as string;
+const TilesListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Basic.Example.tsx') as string;
 
 import { TilesListDocumentExample } from './TilesList.Document.Example';
-const TilesListDocumentExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Document.Example.tsx') as string;
+const TilesListDocumentExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Document.Example.tsx') as string;
 
 import { TilesListMediaExample } from './TilesList.Media.Example';
 
-const TilesListMediaExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Media.Example.tsx') as string;
+const TilesListMediaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/TilesList/TilesList.Media.Example.tsx') as string;
 
 export interface ITilesListPageState {
   size: 'small' | 'large';
@@ -59,7 +59,9 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@fluentui/react-experiments/src/components/TilesList/TilesList.types.ts'),
+              require<
+                string
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/TilesList/TilesList.types.ts'),
             ]}
           />
         }
