@@ -1,3 +1,6 @@
+/**
+ * Design tokens for neutral colors
+ */
 export type NeutralColorTokens = {
   // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1963%3A17486
   neutralForeground1: string;
@@ -67,6 +70,9 @@ export type NeutralColorTokens = {
   neutralShadowKeyDarker: string;
 };
 
+/**
+ * Design tokens available for shared colors
+ */
 export type SharedColorTokens = {
   background1: string;
   background2: string;
@@ -78,6 +84,9 @@ export type SharedColorTokens = {
   border2: string;
 };
 
+/**
+ * Possible color variant values
+ */
 export type ColorVariants = {
   shade50: string;
   shade40: string;
@@ -93,6 +102,9 @@ export type ColorVariants = {
   tint60: string;
 };
 
+/**
+ * All the global shared colors and their shade/tint variants
+ */
 export type GlobalSharedColors = {
   darkRed: ColorVariants;
   burgundy: ColorVariants;
@@ -144,7 +156,10 @@ export type GlobalSharedColors = {
   charcoal: ColorVariants;
 };
 
-export type BrandColors = {
+/**
+ * Brand color variants by product
+ */
+export type ProductBrandColors = {
   teams: ColorVariants;
   web: ColorVariants;
 };
@@ -196,12 +211,18 @@ export type StrokeWidths = {
   thickest: number;
 };
 
+/**
+ * Each shadow level has an ambient and key variant
+ */
 type ShadowTokenValue = {
   ambient: string;
   key: string;
 };
 
-export type ShadowTokens = {
+/**
+ * Design tokens for shadow levels
+ */
+export type ShadowLevelTokens = {
   shadow2: ShadowTokenValue;
   shadow4: ShadowTokenValue;
   shadow8: ShadowTokenValue;
@@ -210,6 +231,9 @@ export type ShadowTokens = {
   shadow64: ShadowTokenValue;
 };
 
+/**
+ * Theme object
+ */
 export type Theme = {
   sharedColors: GlobalSharedColors;
   sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens>;
@@ -219,5 +243,5 @@ export type Theme = {
   lineHeights: LineHeights;
   brandColors: ColorVariants;
   neutralColorTokens: NeutralColorTokens;
-  shadows?: ShadowTokens;
+  shadowLevels?: ShadowLevelTokens;
 };

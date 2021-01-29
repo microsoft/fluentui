@@ -1,5 +1,5 @@
 import { createNeutralColorTokens, sharedColorTokens } from './default';
-import { createShadowTokens } from './default/shadows';
+import { createShadowLevelTokens } from './default/shadows';
 import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from './global';
 import { Theme } from './types';
 
@@ -18,13 +18,19 @@ const webNeutralColorTokens = createNeutralColorTokens(brandColors.web);
 export const teamsDefaultTheme: Theme = {
   brandColors: brandColors.teams,
   neutralColorTokens: teamsNeutralColorTokens,
-  shadows: createShadowTokens(teamsNeutralColorTokens.neutralShadowAmbient, teamsNeutralColorTokens.neutralShadowKey),
+  shadowLevels: createShadowLevelTokens(
+    teamsNeutralColorTokens.neutralShadowAmbient,
+    teamsNeutralColorTokens.neutralShadowKey,
+  ),
   ...common,
 };
 
 export const webDefaultTheme: Theme = {
   brandColors: brandColors.web,
   neutralColorTokens: webNeutralColorTokens,
-  shadows: createShadowTokens(webNeutralColorTokens.neutralShadowAmbient, webNeutralColorTokens.neutralShadowKey),
+  shadowLevels: createShadowLevelTokens(
+    webNeutralColorTokens.neutralShadowAmbient,
+    webNeutralColorTokens.neutralShadowKey,
+  ),
   ...common,
 };
