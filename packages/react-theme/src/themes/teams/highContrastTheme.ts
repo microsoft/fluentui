@@ -1,0 +1,17 @@
+import { createNeutralColorTokens, sharedColorTokens } from '../highContrast';
+import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../global';
+import { Theme } from '../types';
+const common = {
+  sharedColors,
+  sharedColorTokens,
+  fontFamilies,
+  fontWeights,
+  fontSizes,
+  lineHeights,
+};
+
+export const teamsHighContrastTheme = {
+  brandColors: brandColors.teams,
+  neutralColorTokens: createNeutralColorTokens(brandColors.teams),
+  ...common,
+};

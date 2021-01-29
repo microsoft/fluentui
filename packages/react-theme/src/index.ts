@@ -1,4 +1,3 @@
-export * from './defaultThemes';
-export * from './darkThemes';
-export * from './highContrastThemes';
+export * from './themes';
+export * from './themes';
 export * from './global';
