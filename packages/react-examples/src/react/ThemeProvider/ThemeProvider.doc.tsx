@@ -4,13 +4,13 @@ import { ThemeProviderNestedExample } from './ThemeProvider.Nested.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const ThemeProviderBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-theme-provider/ThemeProvider/ThemeProvider.Basic.Example.tsx') as string;
-const ThemeProviderNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-theme-provider/ThemeProvider/ThemeProvider.Nested.Example.tsx') as string;
+const ThemeProviderBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/ThemeProvider.Basic.Example.tsx') as string;
+const ThemeProviderNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/ThemeProvider.Nested.Example.tsx') as string;
 
 export const ThemeProviderPageProps: IDocPageProps = {
   title: 'ThemeProvider',
   componentName: 'ThemeProvider',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-theme-provider/src/ThemeProvider',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/ThemeProvider',
   examples: [
     {
       title: 'Basic ThemeProvider',
@@ -25,10 +25,10 @@ export const ThemeProviderPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-theme-provider/ThemeProvider/docs/ThemeProviderOverview.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/docs/ThemeProviderOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-theme-provider/ThemeProvider/docs/ThemeProviderBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ThemeProvider/docs/ThemeProviderBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

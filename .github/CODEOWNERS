@@ -151,6 +151,9 @@ packages/react-internal/src/components/Text/ @khmakoto
 packages/react-internal/src/components/TextField/ @ecraig12345
 packages/react-internal/src/components/Tooltip/ @micahgodbolt
 
+## Theming and styling
+packages/react-internal/src/utilities/ThemeProvider @xugao
+
 ## Experiments
 packages/react-experiments/src/components/Pagination/ @caradong
 packages/react-experiments/src/components/Signals/ @ThomasMichon
