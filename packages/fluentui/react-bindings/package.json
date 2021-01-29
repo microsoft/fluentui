@@ -8,7 +8,6 @@
     "@babel/runtime": "^7.10.4",
     "@emotion/serialize": "^0.11.16",
     "@fluentui/accessibility": "^0.52.0",
-    "@fluentui/keyboard-key": "^0.2.13-0",
     "@fluentui/react-component-event-listener": "^0.52.0",
     "@fluentui/react-component-ref": "^0.52.0",
     "@fluentui/react-compose": "^0.19.6",
