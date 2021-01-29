@@ -1,7 +1,9 @@
-import { GenericDictionary, ClassDictionary } from './types';
-import { appendClasses } from '../appendClasses';
-import { createResolvedMap } from '../createClassResolver';
+import { ClassDictionary } from './types';
+import { GenericDictionary } from '../types';
+import { appendClasses } from './appendClasses';
+import { createResolvedMap } from './createClassResolver';
 
+// TODO remove once SCSS is fully removed from converged components
 export const makeClasses = (classes: ClassDictionary) => {
   // This is in creation time, so this will happen once per css file.
   const { slots, modifiers, enums } = createResolvedMap(classes);
