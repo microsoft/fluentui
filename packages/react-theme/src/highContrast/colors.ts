@@ -151,10 +151,10 @@ export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorToke
   hotPink: createSharedColorTokens(),
   magenta: createSharedColorTokens(),
   plum: createSharedColorTokens(),
-  lightGray: createSharedColorTokens(),
-  gray: createSharedColorTokens(), // TODO naming iteration -> clashing with grey
+  beige: createSharedColorTokens(),
+  mink: createSharedColorTokens(), // TODO naming iteration -> clashing with grey
   silver: createSharedColorTokens(),
   platinum: createSharedColorTokens(),
-  darkGray: createSharedColorTokens(),
+  anchor: createSharedColorTokens(),
   charcoal: createSharedColorTokens(),
 };
