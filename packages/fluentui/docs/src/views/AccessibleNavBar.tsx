@@ -139,7 +139,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
         <li>The most important information should be narrated first if possible.</li>
         <li>The new items (conversations, teams, etc.) count should be announced after the button name.</li>
-        <li>The narration of the new items count is implemented using aria-describedby so that the message is read as the last narration. This is implemented only in the last (accepted) variant.</li>
+        <li>The message regarding the new items count is implemented using aria-describedby so that this message is read as the last narration. This is demonstrated only in the last (accepted) variant.</li>
       </ul>
 
       <h3>General notes</h3>
@@ -153,6 +153,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           While no landmark is used to wrap the navigation bar, F6 should still work to be able to navigate to the
           navigation bar.
         </li>
+        <li>The accepted variant is the last one on this page.</li>
       </ul>
 
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -313,7 +314,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>When entering the navigation bar content, both JAWS and NVDA announce "region after narrating the label but before narrating the focused navigation bar item.</li>
-        <li>JAWS in  the virtual cursor mode behaves as if the "region" role was not present on the navigation bar elemente.</li>
+        <li>JAWS in the virtual cursor mode behaves as if the "region" role was not present on the navigation bar elemente.</li>
         <li>Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.</li>
       </ul>
 
@@ -340,7 +341,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
-      <h2>role="group" and aria-label</h2>
+      <h2>role="group" and aria-label (accepted variant)</h2>
       <div role="group" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0}>
           Activities
@@ -368,7 +369,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           When entering the navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating
           the label but before narrating the navigation bar item.
         </li>
-        <li>This variant is accepted as  the best solution.</li>
+        <li>This variant is accepted as the best solution.</li>
       </ul>
       
     </>
