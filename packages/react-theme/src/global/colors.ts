@@ -1,4 +1,4 @@
-import { GlobalSharedColors, ColorVariants, BrandColors } from '../types';
+import { GlobalSharedColors, ColorVariants, ProductBrandColors } from '../types';
 
 // Global Colors
 // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1297%3A14745
@@ -871,7 +871,7 @@ export const sharedColors: GlobalSharedColors = {
   charcoal,
 };
 
-export const brandColors: BrandColors = {
+export const brandColors: ProductBrandColors = {
   teams: brandTeams,
   web: brand,
 };
