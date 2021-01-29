@@ -2,6 +2,7 @@ import { GlobalSharedColors, ColorVariants, ProductBrandColors } from '../types'
 
 // Global Colors
 // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1297%3A14745
+// TODO export flat instead of objects for better tree shakeability
 
 export const grey = {
   0: '#000000',
