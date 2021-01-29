@@ -9,12 +9,11 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior, AccessibilityAttributes } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
 
 import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
