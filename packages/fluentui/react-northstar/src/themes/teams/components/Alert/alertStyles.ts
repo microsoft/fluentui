@@ -8,8 +8,6 @@ export const getIntentColorsFromProps = (
   v: AlertVariables,
   siteVars: SiteVariablesPrepared,
 ): ICSSInJSStyle => {
-  const { colors } = siteVars;
-
   if (p.danger) {
     return {
       color: v.dangerColor,

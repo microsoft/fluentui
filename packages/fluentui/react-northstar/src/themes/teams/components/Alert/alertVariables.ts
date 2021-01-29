@@ -43,10 +43,6 @@ export interface AlertVariables {
   oofBackgroundColor: string;
   oofBorderColor: string;
 
-  infoColor: string;
-  infoBackgroundColor: string;
-  infoBorderColor: string;
-
   successColor: string;
   successBackgroundColor: string;
   successBorderColor: string;
@@ -96,7 +92,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     borderStyle: 'solid',
     borderWidth: '1px',
     borderRadius: pxToRem(3),
-    backgroundColor: siteVars.colorScheme.default.background4, // $app-white
+    backgroundColor: siteVars.colorScheme.default.background4,
     borderColor: siteVars.colorScheme.default.border2,
     color: siteVars.colorScheme.default.foreground1,
     fontWeight: siteVars.fontWeightRegular,
@@ -119,33 +115,29 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     dismissActionColor: undefined,
     dismissiblePadding: `0 0 0 ${pxToRem(16)}`,
 
-    dangerColor: siteVars.colorScheme.yellow.foreground3,
-    dangerBackgroundColor: siteVars.colorScheme.yellow.background3,
-    dangerBorderColor: siteVars.colorScheme.yellow.border,
+    dangerColor: siteVars.colorScheme.red.foreground,
+    dangerBackgroundColor: siteVars.colorScheme.red.background1,
+    dangerBorderColor: siteVars.colorScheme.red.border,
 
     successColor: siteVars.colorScheme.green.foreground,
     successBackgroundColor: siteVars.colorScheme.green.background1,
     successBorderColor: siteVars.colorScheme.green.border,
 
-    warningColor: siteVars.colorScheme.red.foreground,
-    warningBackgroundColor: siteVars.colorScheme.red.background1,
-    warningBorderColor: siteVars.colorScheme.red.border,
+    warningColor: siteVars.colorScheme.yellow.foreground3,
+    warningBackgroundColor: siteVars.colorScheme.yellow.background1,
+    warningBorderColor: siteVars.colorScheme.yellow.border3,
 
     oof: false,
     oofColor: siteVars.colorScheme.pink.foreground,
     oofBackgroundColor: siteVars.colorScheme.pink.background,
     oofBorderColor: siteVars.colors.pink.border,
 
-    infoColor: siteVars.colors.grey[500],
-    infoBackgroundColor: siteVars.colors.grey[150],
-    infoBorderColor: siteVars.colors.grey[200],
-
     urgent: false,
     urgentColor: siteVars.colors.white,
     urgentBackgroundColor: siteVars.colorScheme.red.background3,
     urgentBorderColor: siteVars.colorScheme.red.background3,
 
-    headerFontWeight: siteVars.fontWeightBold,
+    headerFontWeight: siteVars.fontWeightSemibold,
     headerMargin: `0 ${pxToRem(10)} 0 0`,
 
     iconMargin: `0 ${pxToRem(10)} 0 0`,
