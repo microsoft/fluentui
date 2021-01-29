@@ -2,6 +2,21 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Fri, 29 Jan 2021 12:21:00 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.39",
+      "version": "8.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Tooltip: Fix positioning issues that can cause tooltip to flash/not render",
+            "author": "jspurlin@microsoft.com",
+            "commit": "922e0824b891cc1941ebaa23224c77c7a492113b",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.38",
       "version": "8.0.0-beta.38",

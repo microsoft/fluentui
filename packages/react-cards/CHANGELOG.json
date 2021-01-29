@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 29 Jan 2021 12:21:00 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.44",
+      "version": "1.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Renamed prop 'quiet' to 'ghost' for react-cards Card types",
+            "author": "tavari@microsoft.com",
+            "commit": "4870ec5a93f9b210ac1523f50f8652d7619a5e17",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.43",
       "version": "1.0.0-beta.43",

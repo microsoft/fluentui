@@ -14,10 +14,10 @@
   "dependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/make-styles": "^0.3.2-0",
-    "@fluentui/react": "^8.0.0-beta.44",
-    "@fluentui/react-avatar": "^0.8.2-17",
+    "@fluentui/react": "^8.0.0-beta.45",
+    "@fluentui/react-avatar": "^0.8.2-18",
     "@fluentui/react-button": "^1.0.0-beta.24",
-    "@fluentui/react-tabs": "^1.0.0-beta.37",
+    "@fluentui/react-tabs": "^1.0.0-beta.38",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",

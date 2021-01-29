@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Tooltip: Fix positioning issues that can cause tooltip to flash/not render",
-  "packageName": "@fluentui/react-internal",
-  "email": "jspurlin@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-20T00:21:23.596Z"
-}
