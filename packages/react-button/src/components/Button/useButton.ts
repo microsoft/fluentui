@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { ButtonProps, ButtonState } from './Button.types';
 import { useButtonState } from './useButtonState';
 

@@ -79,6 +79,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                         0 0 / 90% 100%
                         no-repeat`,
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

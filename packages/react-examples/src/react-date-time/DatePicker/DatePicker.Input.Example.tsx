@@ -33,7 +33,7 @@ export const DatePickerInputExample: React.FunctionComponent = () => {
         onSelectDate={setValue as (date: Date | null | undefined) => void}
         className={styles.control}
       />
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton aria-label="Clear the date input" onClick={onClick} text="Clear" />
     </div>
   );
 };

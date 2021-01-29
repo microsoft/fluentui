@@ -58,7 +58,7 @@ export const DatePickerFormatExample: React.FunctionComponent = () => {
         parseDateFromString={onParseDateFromString}
         className={styles.control}
       />
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton aria-label="Clear the date input" onClick={onClick} text="Clear" />
       <div>Selected date: {(value || '').toString()}</div>
     </div>
   );

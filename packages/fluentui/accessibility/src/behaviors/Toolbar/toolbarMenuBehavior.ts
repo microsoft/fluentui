@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
 import { toolbarMenuItemBehavior } from './toolbarMenuItemBehavior';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
 /**
  * @description

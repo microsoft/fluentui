@@ -25,11 +25,12 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -71,9 +72,10 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -98,8 +100,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar0"
       role="status"
@@ -145,11 +148,12 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(255, 0, 0, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -191,9 +195,10 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="ErrorBadge"
       >
@@ -218,8 +223,9 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar3"
       role="status"
@@ -264,11 +270,12 @@ exports[`MessageBar renders a info MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -310,9 +317,10 @@ exports[`MessageBar renders a info MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -337,8 +345,9 @@ exports[`MessageBar renders a info MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar1"
       role="status"
@@ -383,11 +392,12 @@ exports[`MessageBar renders a multiline MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -429,9 +439,10 @@ exports[`MessageBar renders a multiline MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -456,8 +467,9 @@ exports[`MessageBar renders a multiline MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar6"
       role="status"
@@ -503,11 +515,12 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(255, 0, 0, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -549,9 +562,10 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="ErrorBadge"
       >
@@ -576,8 +590,9 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar9"
       role="status"
@@ -622,11 +637,12 @@ exports[`MessageBar renders a multiline info MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -668,9 +684,10 @@ exports[`MessageBar renders a multiline info MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -695,8 +712,9 @@ exports[`MessageBar renders a multiline info MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar7"
       role="status"
@@ -742,11 +760,12 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(255, 0, 0, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -788,9 +807,10 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Warning"
       >
@@ -815,8 +835,9 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar10"
       role="status"
@@ -862,11 +883,12 @@ exports[`MessageBar renders a multiline success MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(48, 241, 73, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -908,9 +930,10 @@ exports[`MessageBar renders a multiline success MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Completed"
       >
@@ -935,8 +958,9 @@ exports[`MessageBar renders a multiline success MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar11"
       role="status"
@@ -982,11 +1006,12 @@ exports[`MessageBar renders a multiline warning MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(255, 254, 57, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -1028,9 +1053,10 @@ exports[`MessageBar renders a multiline warning MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -1055,8 +1081,9 @@ exports[`MessageBar renders a multiline warning MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar8"
       role="status"
@@ -1102,11 +1129,12 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(255, 0, 0, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -1148,9 +1176,10 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Warning"
       >
@@ -1175,8 +1204,9 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar4"
       role="status"
@@ -1222,11 +1252,12 @@ exports[`MessageBar renders a success MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(48, 241, 73, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -1268,9 +1299,10 @@ exports[`MessageBar renders a success MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Completed"
       >
@@ -1295,8 +1327,9 @@ exports[`MessageBar renders a success MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar5"
       role="status"
@@ -1342,11 +1375,12 @@ exports[`MessageBar renders a warning MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: rgba(255, 254, 57, 0.3);
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -1388,9 +1422,10 @@ exports[`MessageBar renders a warning MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -1415,8 +1450,9 @@ exports[`MessageBar renders a warning MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar2"
       role="status"

@@ -9,8 +9,8 @@ import {
 import { SidebarBasicExample } from './Sidebar.Basic.Example';
 import { SidebarCollapsibleExample } from './Sidebar.Collapsed.Example';
 
-const SidebarBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Sidebar/Sidebar.Basic.Example.tsx') as string;
-const SidebarCollpasibleExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Sidebar/Sidebar.Collapsed.Example.tsx') as string;
+const SidebarBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Sidebar/Sidebar.Basic.Example.tsx') as string;
+const SidebarCollpasibleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Sidebar/Sidebar.Collapsed.Example.tsx') as string;
 
 const exampleStyles: Partial<IExampleCardStyles> = {
   example: {
@@ -42,7 +42,9 @@ export class SidebarPage extends React.PureComponent<IComponentDemoPageProps> {
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!@fluentui/react-experiments/src/components/Sidebar/Sidebar.types.tsx'),
+              require<
+                string
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Sidebar/Sidebar.types.tsx'),
             ]}
           />
         }
