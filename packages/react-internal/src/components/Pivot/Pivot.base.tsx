@@ -4,8 +4,8 @@ import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCode
 import { CommandButton, IButton } from '../../compat/Button';
 import { useOverflow } from '../../utilities/useOverflow';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
-import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu';
-import { Icon } from '../Icon';
+import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
+import { Icon } from '../Icon/Icon';
 import { IPivot, IPivotItemProps, IPivotProps, IPivotStyleProps, IPivotStyles, PivotItem } from './index';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
