@@ -1,7 +1,6 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../default';
-import { createShadowLevelTokens } from '../default';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../global';
-import { Theme } from '../types';
+import { createNeutralColorTokens, sharedColorTokens, createShadowLevelTokens } from '../../default';
+import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global';
+import { Theme } from '../../types';
 
 const common = {
   sharedColors,
