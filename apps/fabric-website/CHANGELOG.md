@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 11 Nov 2020 12:27:20 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jan 2021 12:27:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.16](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.16)
+
+Fri, 29 Jan 2021 12:27:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.13..@uifabric/fabric-website_v7.16.16)
+
+### Patches
+
+- update public docsite icon documentation ([PR #16692](https://github.com/microsoft/fluentui/pull/16692) by ololubek@microsoft.com)
 
 ## [7.15.51](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.15.51)
 

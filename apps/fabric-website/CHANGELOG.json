@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 29 Jan 2021 12:27:21 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.16",
+      "version": "7.16.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update public docsite icon documentation",
+            "author": "ololubek@microsoft.com",
+            "commit": "0045651bc0a4b6fc67f0bd090559b0df0928e74c",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jan 2021 12:25:15 GMT",
       "tag": "@uifabric/fabric-website_v7.16.13",
       "version": "7.16.13",

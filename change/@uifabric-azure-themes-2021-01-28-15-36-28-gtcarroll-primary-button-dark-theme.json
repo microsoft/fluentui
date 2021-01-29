@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updated primary button styles to match fluentui",
-  "packageName": "@uifabric/azure-themes",
-  "email": "gtcarroll96@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-28T23:36:28.275Z"
-}
