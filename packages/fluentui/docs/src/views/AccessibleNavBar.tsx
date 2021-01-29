@@ -117,43 +117,21 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
   return (
     <>
       <h1>Accessible navigation bar prototype</h1>
-
-      <h3>Requirements</h3>
       <ul>
         <li>
-          When the navigation bar content is entered, the instruction message "To navigate use the arrow keys" should
-          be narrated.
+          This page demonstrates different variants of the navigation bar component of Microsoft Teams from the
+          accessibility point of view. Previously, this component was known as App bar, but this new version suggests
+          renaming it to "navigation bar"."
         </li>
         <li>
-          The role used for navigation bar items should allow the use of the aria-pressed or aria-selected attribute to indicate if the
-          navigation bar item is pressed or selected.
-        </li>
-        <li>
-          The narration should be as concise as possible. So the ARIA landmark (&lt;nav&gt;, role="navigation" or
-          another) and navigation bar item count or current position narration is not desired. The reason behind not
-          using the ARIA landmark is that{' '}
-          <a href="https://webaim.org/projects/screenreadersurvey8/">
-            landmarks in general ar rarely used by the users
+          For the new navigation bar requirements, additional notes, comparison with the previous version of the
+          navigation bar and conclusions, please check{' '}
+          <a href="https://ghe-us.microsoft.com/Microsoft-Design-System-Studio/taos/blob/main/App%20Bar/Accessibility.md">
+            this documentation site
           </a>
-          .{' '}
+          .
         </li>
-        <li>The most important information should be narrated first if possible.</li>
-        <li>The new items (conversations, teams, etc.) count should be announced after the button name.</li>
-        <li>The message regarding the new items count is implemented using aria-describedby so that this message is read as the last narration. This is demonstrated only in the last (accepted) variant.</li>
-      </ul>
-
-      <h3>General notes</h3>
-      <ul>
-        <li>
-          The instruction message is narrated using aN aria-live element. The drawback of this solution is that the
-          narration is queued, so if user tabs out and in to the navigation bar several times, the hint will be spoken
-          repeatedly several times as well.
-        </li>
-        <li>
-          While no landmark is used to wrap the navigation bar, F6 should still work to be able to navigate to the
-          navigation bar.
-        </li>
-        <li>The accepted variant is the last one on this page.</li>
+        <li>The accepted variant of the navigation bar is the last one on this page.</li>
       </ul>
 
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -187,7 +165,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button role="tab" className="item" tabIndex={0}>
           Activities
         </button>
-        <button role="tab" className="item" tabIndex={-1} aria-pressed="true">
+        <button role="tab" className="item" tabIndex={-1}>
           Chats
         </button>
         <button role="tab" className="item" tabIndex={-1}>
@@ -227,7 +205,10 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       </div>
       <h3>Notes</h3>
       <ul>
-        <li>The menuitem role does not allow the use of the aria-pressed or aria-selected attribute so this variant is rejected.</li>
+        <li>
+          The menuitem role does not allow the use of the aria-pressed or aria-selected attribute so this variant is
+          rejected.
+        </li>
         <li>When entering the navigation bar content, JAWS reads "menu" as the firs narration.</li>
         <li>When leaving the navigation bar content, JAWS reads "leaving menus".</li>
         <li>
@@ -290,9 +271,14 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h3>Notes</h3>
       <ul>
-        <li>When entering the navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation landmark" after narrating the label but before narrating the focused navigation bar item.</li>
+        <li>
+          When entering the navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation
+          landmark" after narrating the label but before narrating the focused navigation bar item.
+        </li>
         <li>Narrator does not read this landmark in any way, it just reads its aria-label.</li>
-        <li>Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.</li>
+        <li>
+          Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.
+        </li>
       </ul>
 
       <h2>role="region"</h2>
@@ -313,9 +299,17 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h3>Notes</h3>
       <ul>
-        <li>When entering the navigation bar content, both JAWS and NVDA announce "region after narrating the label but before narrating the focused navigation bar item.</li>
-        <li>JAWS in the virtual cursor mode behaves as if the "region" role was not present on the navigation bar elemente.</li>
-        <li>Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.</li>
+        <li>
+          When entering the navigation bar content, both JAWS and NVDA announce "region after narrating the label but
+          before narrating the focused navigation bar item.
+        </li>
+        <li>
+          JAWS in the virtual cursor mode behaves as if the "region" role was not present on the navigation bar
+          elemente.
+        </li>
+        <li>
+          Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.
+        </li>
       </ul>
 
       <h2>aria-label only</h2>
@@ -346,14 +340,42 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <button className="item" tabIndex={0}>
           Activities
         </button>
-        <div><button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
-          Chats
-        </button>
-              <div id="chats-desc" style={{position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden'}}>7 conversations with new messages</div></div>
-        <div><button className="item" tabIndex={-1} aria-describedby="teams-desc">
-          Teams
-        </button>
-              <div id="teams-desc" style={{position: 'absolute', left: '-10000px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden'}}>4 teams with new messages</div></div>
+        <div>
+          <button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
+            Chats
+          </button>
+          <div
+            id="chats-desc"
+            style={{
+              position: 'absolute',
+              left: '-10000px',
+              top: 'auto',
+              width: '1px',
+              height: '1px',
+              overflow: 'hidden',
+            }}
+          >
+            7 conversations with new messages
+          </div>
+        </div>
+        <div>
+          <button className="item" tabIndex={-1} aria-describedby="teams-desc">
+            Teams
+          </button>
+          <div
+            id="teams-desc"
+            style={{
+              position: 'absolute',
+              left: '-10000px',
+              top: 'auto',
+              width: '1px',
+              height: '1px',
+              overflow: 'hidden',
+            }}
+          >
+            4 teams with new messages
+          </div>
+        </div>
         <button className="item" tabIndex={-1}>
           Calendar
         </button>
@@ -371,7 +393,6 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
         <li>This variant is accepted as the best solution.</li>
       </ul>
-      
     </>
   );
 }; // End AccessibleNavBar
