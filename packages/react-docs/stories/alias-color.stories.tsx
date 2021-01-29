@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ColorRampItem } from '../src/components/ColorRamp';
 import {
-  teamsDefaultTheme,
+  teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  webDefaultTheme,
+  webLightTheme,
   webDarkTheme,
   webHighContrastTheme,
 } from '@fluentui/react-theme';
@@ -21,12 +21,12 @@ export const Neutral = (props) => {
 
   const themes = {
     teams: {
-      default: teamsDefaultTheme,
+      default: teamsLightTheme,
       dark: teamsDarkTheme,
       highContrast: teamsHighContrastTheme,
     },
     web: {
-      default: webDefaultTheme,
+      default: webLightTheme,
       dark: webDarkTheme,
       highContrast: webHighContrastTheme,
     },

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ColorRampItem } from '../src/components/ColorRamp';
 import {
-  teamsDefaultTheme,
+  teamsLightTheme,
   teamsDarkTheme,
   teamsHighContrastTheme,
-  webDefaultTheme,
+  webLightTheme,
   webDarkTheme,
   webHighContrastTheme,
 } from '@fluentui/react-theme';
@@ -19,19 +19,19 @@ export const Shared = (props) => {
     setTheme(e.target.value);
   };
 
-  const [variant, setVariant] = React.useState<string>('default');
+  const [variant, setVariant] = React.useState<string>('light');
   const onSelectVariant = (e) => {
     setVariant(e.target.value);
   };
 
   const themes = {
     teams: {
-      default: teamsDefaultTheme,
+      light: teamsLightTheme,
       dark: teamsDarkTheme,
       highContrast: teamsHighContrastTheme,
     },
     web: {
-      default: webDefaultTheme,
+      light: webLightTheme,
       dark: webDarkTheme,
       highContrast: webHighContrastTheme,
     },
@@ -47,7 +47,7 @@ export const Shared = (props) => {
           <option value="web">Web branded</option>
         </select>
         <select value={variant} onChange={onSelectVariant}>
-          <option value="default">Default</option>
+          <option value="light">Light</option>
           <option value="dark">Dark</option>
           <option value="highContrast">High contrast</option>
         </select>
