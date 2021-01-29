@@ -11,7 +11,7 @@ const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>): any => {
-  const { as, className, disabled, href, onClick, styles, theme } = props;
+  const { as, className, disabled, href, onClick, styles, theme, underline } = props;
   const rootRef = React.useRef<HTMLDivElement | null>(null);
   const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
 
@@ -22,6 +22,7 @@ export const useLink = (props: ILinkProps, forwardedRef: React.Ref<HTMLElement>)
     className,
     isButton: !href,
     isDisabled: disabled,
+    isUnderlined: underline,
     theme: theme!,
   });
 
@@ -72,7 +73,7 @@ const adjustPropsForRootType = (
   // Deconstruct the props so we remove props like `as`, `theme` and `styles`
   // as those will always be removed. We also take some props that are optional
   // based on the RootType.
-  const { as, disabled, target, href, theme, getStyles, styles, componentRef, ...restProps } = props;
+  const { as, disabled, target, href, theme, getStyles, styles, componentRef, underline, ...restProps } = props;
 
   // RootType will be a string if we're dealing with an html component
   if (typeof RootType === 'string') {

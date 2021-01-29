@@ -110,6 +110,12 @@ export interface ILinkProps
    */
   type?: string;
 
+  /**
+   * Whether the link is styled with an underline or not.
+   * Should be used when the link is placed alongside other text content.
+   */
+  underline?: boolean;
+
   /** Any other props for elements or a React component passed to `as` */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
@@ -122,6 +128,7 @@ export interface ILinkStyleProps {
   className?: string;
   isButton?: boolean;
   isDisabled?: boolean;
+  isUnderlined?: boolean;
   theme: ITheme;
 }
 

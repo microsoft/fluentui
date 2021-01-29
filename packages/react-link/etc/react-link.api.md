@@ -67,6 +67,7 @@ export interface ILinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement
     target?: string;
     theme?: ITheme;
     type?: string;
+    underline?: boolean;
 }
 
 // @public (undocumented)
@@ -77,6 +78,8 @@ export interface ILinkStyleProps {
     isButton?: boolean;
     // (undocumented)
     isDisabled?: boolean;
+    // (undocumented)
+    isUnderlined?: boolean;
     // (undocumented)
     theme: ITheme;
 }
