@@ -2,7 +2,6 @@
   "name": "@fluentui/react-utils",
   "version": "0.1.0",
   "description": "Fluent UI util package",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
