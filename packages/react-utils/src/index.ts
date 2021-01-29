@@ -1,3 +1,3 @@
 import './version';
 
-export * from './compose';
+export * from './compose/index';
