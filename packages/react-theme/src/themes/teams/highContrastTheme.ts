@@ -10,7 +10,7 @@ const common = {
   lineHeights,
 };
 
-export const teamsHighContrastTheme = {
+export const teamsHighContrastTheme: Theme = {
   brandColors: brandColors.teams,
   neutralColorTokens: createNeutralColorTokens(brandColors.teams),
   ...common,
