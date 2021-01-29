@@ -209,3 +209,15 @@ export type ShadowTokens = {
   shadow28: ShadowTokenValue;
   shadow64: ShadowTokenValue;
 };
+
+export type Theme = {
+  sharedColors: GlobalSharedColors;
+  sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens>;
+  fontSizes: FontSizes;
+  fontWeights: FontWeights;
+  fontFamilies: FontFamilies;
+  lineHeights: LineHeights;
+  brandColors: ColorVariants;
+  neutralColorTokens: NeutralColorTokens;
+  shadows?: ShadowTokens;
+};
