@@ -1,2 +1,2 @@
-export * from './teams';
-export * from './web';
+export * from './teams/index';
+export * from './web/index';
