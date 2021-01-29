@@ -47,13 +47,6 @@ storiesOf('ThemeProvider (react-theme-provider)', module)
       </ThemeProvider>
     </ThemeProvider>
   ))
-  .addStory('Customized styles', () => (
-    <ThemeProvider
-      theme={{ components: { PrimaryButton: { styles: { root: { background: '#000' } } } } }}
-    >
-      <Button primary>Customized styles</Button>
-    </ThemeProvider>
-  ))
   .addStory('Use variants on new button', () => (
     <ThemeProvider
       theme={{
