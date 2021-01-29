@@ -6,7 +6,7 @@ import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
 import { ThemeProvider } from '@fluentui/react';
 import { FabricDecorator } from '../utilities/index';
 
-storiesOf('ThemeProvider (@fluentui/react)', module)
+storiesOf('ThemeProvider', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
