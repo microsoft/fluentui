@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { useBoolean } from '@fluentui/react-hooks';
-import { Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { Tabs, TabItem } from '@fluentui/react-tabs';
 
 export const TabsRemoveExample = () => {
   const [showFirstItem, { toggle: toggleShowFirstItem }] = useBoolean(true);

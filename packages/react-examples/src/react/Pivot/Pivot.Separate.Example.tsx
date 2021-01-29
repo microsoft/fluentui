@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Pivot, PivotItem } from '@fluentui/react';
 
 const getTabId = (itemKey: string) => {
   return `ShapeColorPivot_${itemKey}`;

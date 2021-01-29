@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react';
-import { IPivotItemProps, Pivot, PivotItem } from '@fluentui/react-tabs';
+import { Label, IPivotItemProps, Pivot, PivotItem } from '@fluentui/react';
 
 export const PivotOnChangeExample = () => {
   const [lastHeader, setLastHeader] = React.useState<{ props: IPivotItemProps } | undefined>(undefined);

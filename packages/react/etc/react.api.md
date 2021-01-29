@@ -1925,7 +1925,6 @@ export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
 export * from "@fluentui/react-internal/lib/compat/Button";
-export * from "@fluentui/react-tabs";
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,7 +1,6 @@
 import './version';
 export * from '@fluentui/react-date-time';
 export * from '@fluentui/react-internal';
-export * from '@fluentui/react-tabs';
 export * from './Breadcrumb';
 export * from './Button';
 export * from './ComboBox';
