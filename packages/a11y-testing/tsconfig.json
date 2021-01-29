@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "composite": true,
     "baseUrl": ".",
     "outDir": "lib",
     "target": "es6",
