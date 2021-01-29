@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header, teamsTheme } from '@fluentui/react-northstar';
+import { Header } from '@fluentui/react-northstar';
 import { RouteProps } from 'react-router-dom';
 
 import { link } from '../utils/helpers';
@@ -19,7 +19,7 @@ type MarkdownPageProps = {
   };
 } & RouteProps;
 
-const components = teamsTheme => ({
+const components = {
   a: ({ children, href }) => link(children, href),
   code: ({ className, children, fitted, label }) =>
     className ? (
@@ -49,7 +49,7 @@ const components = teamsTheme => ({
     />
   ),
   img: props => <img style={{ maxWidth: '100%' }} {...props} />,
-});
+};
 
 const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = (props, { siteVariables }) => {
   const { page } = props;
@@ -57,7 +57,7 @@ const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = (props, { siteV
 
   return (
     <DocPage title={meta.title}>
-      <MDXProvider components={components(teamsTheme)}>
+      <MDXProvider components={components}>
         <Component />
       </MDXProvider>
       <GuidesNavigationFooter previous={meta.previous} next={meta.next} />
