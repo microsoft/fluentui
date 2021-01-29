@@ -59,7 +59,7 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-color: transparent;
         border-width: 1px;
       }
@@ -67,7 +67,7 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: transparent;
         color: Highlight;
       }
@@ -75,20 +75,20 @@ exports[`Button Variants renders a CommandBarButton correctly 1`] = `
         background-color: #edebe9;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: transparent;
         color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
       &:active .ms-Button-icon {
         color: #005a9e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Highlight;
       }
   onClick={[Function]}
@@ -177,7 +177,7 @@ exports[`Button Variants renders a DefaultButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-width: 1px;
       }
       &:hover {
@@ -185,7 +185,7 @@ exports[`Button Variants renders a DefaultButton correctly 1`] = `
         border-color: #8a8886;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -194,20 +194,20 @@ exports[`Button Variants renders a DefaultButton correctly 1`] = `
         border-color: #8a8886;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
       &:active .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -299,7 +299,7 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
         border-width: 1px;
@@ -309,7 +309,7 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         background-color: #106ebe;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Highlight;
         color: Window;
       }
@@ -317,20 +317,20 @@ exports[`Button Variants renders a PrimaryButton correctly 1`] = `
         background-color: #005a9e;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Highlight;
         color: Window;
       }
       &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Window;
       }
       &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -426,7 +426,7 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
         margin-left: 0px;
         margin-top: 5px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-width: 1px;
       }
       &:hover {
@@ -434,7 +434,7 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
         border-color: #8a8886;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -443,20 +443,20 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
         border-color: #8a8886;
         color: inherit;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
       &:active .ms-Button-icon {
         color: inherit;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -485,13 +485,13 @@ exports[`Button Variants renders a default CompoundButton correctly 1`] = `
         &:hover {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           color: Highlight;
         }
         &:active {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:active {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
           color: Highlight;
         }
   >
@@ -563,7 +563,7 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-width: 1px;
       }
       &:hover {
@@ -571,7 +571,7 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
         border-color: #c8c6c4;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -580,20 +580,20 @@ exports[`Button Variants renders a default MessageBarButton correctly 1`] = `
         border-color: #c8c6c4;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
       &:active .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -689,7 +689,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         margin-left: 0px;
         margin-top: 5px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         background-color: Window;
         border-color: GrayText;
         border-width: 1px;
@@ -700,7 +700,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -710,7 +710,7 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -718,13 +718,13 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -753,16 +753,16 @@ exports[`Button Variants renders a default disabled CompoundButton correctly 1`]
         &:hover {
           color: #a19f9d;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           color: GrayText;
         }
         &:active {
           color: #a19f9d;
         }
-        @media screen and (-ms-high-contrast: active){&:active {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
           color: GrayText;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           color: GrayText;
         }
   >
@@ -835,7 +835,7 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         background-color: Window;
         border-color: GrayText;
         border-width: 1px;
@@ -846,7 +846,7 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -856,7 +856,7 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -864,13 +864,13 @@ exports[`Button Variants renders a default disabled MessageBarButton correctly 1
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -963,7 +963,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-color: transparent;
         border-width: 1px;
         color: GrayText;
@@ -973,7 +973,7 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         border-color: transparent;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: transparent;
         color: GrayText;
       }
@@ -982,20 +982,20 @@ exports[`Button Variants renders a disabled ActionButton correctly 1`] = `
         border-color: transparent;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: transparent;
         color: GrayText;
       }
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
   disabled={true}
@@ -1083,7 +1083,7 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-color: transparent;
         border-width: 1px;
         color: GrayText;
@@ -1092,7 +1092,7 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
         background-color: #ffffff;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: transparent;
         color: GrayText;
       }
@@ -1100,20 +1100,20 @@ exports[`Button Variants renders a disabled CommandBarButton correctly 1`] = `
         background-color: #ffffff;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: transparent;
         color: GrayText;
       }
       &:hover .ms-Button-icon {
         color: #c8c6c4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #c8c6c4;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
   disabled={true}
@@ -1203,7 +1203,7 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         background-color: Window;
         border-color: GrayText;
         border-width: 1px;
@@ -1214,7 +1214,7 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -1224,7 +1224,7 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -1232,13 +1232,13 @@ exports[`Button Variants renders a disabled DefaultButton correctly 1`] = `
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1331,7 +1331,7 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 0px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: transparent;
@@ -1341,7 +1341,7 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
         background-color: #ffffff;
         border-color: transparent;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: transparent;
       }
@@ -1349,20 +1349,20 @@ exports[`Button Variants renders a disabled IconButton correctly 1`] = `
         background-color: #ffffff;
         border-color: transparent;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: transparent;
       }
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1456,7 +1456,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
@@ -1468,7 +1468,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -1478,7 +1478,7 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -1486,13 +1486,13 @@ exports[`Button Variants renders a disabled PrimaryButton correctly 1`] = `
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1589,7 +1589,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         margin-left: 0px;
         margin-top: 5px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
         border-width: 1px;
@@ -1600,7 +1600,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         border-color: #8a8886;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Highlight;
         border-color: Highlight;
         color: Window;
@@ -1610,7 +1610,7 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         border-color: #8a8886;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Highlight;
         border-color: Highlight;
         color: Window;
@@ -1618,13 +1618,13 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
       &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Window;
       }
       &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1654,16 +1654,16 @@ exports[`Button Variants renders a primary CompoundButton correctly 1`] = `
         &:hover {
           color: #ffffff;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           color: Window;
         }
         &:active {
           color: #ffffff;
         }
-        @media screen and (-ms-high-contrast: active){&:active {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
           color: Window;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           color: Window;
         }
   >
@@ -1736,7 +1736,7 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
         border-width: 1px;
@@ -1747,7 +1747,7 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
         border-color: #c8c6c4;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Highlight;
         border-color: Highlight;
         color: Window;
@@ -1757,7 +1757,7 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
         border-color: #c8c6c4;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Highlight;
         border-color: Highlight;
         color: Window;
@@ -1765,13 +1765,13 @@ exports[`Button Variants renders a primary MessageBarButton correctly 1`] = `
       &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Window;
       }
       &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1869,7 +1869,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         margin-left: 0px;
         margin-top: 5px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
@@ -1881,7 +1881,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -1891,7 +1891,7 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -1899,13 +1899,13 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -1935,16 +1935,16 @@ exports[`Button Variants renders a primary disabled CompoundButton correctly 1`]
         &:hover {
           color: #a19f9d;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           color: GrayText;
         }
         &:active {
           color: #a19f9d;
         }
-        @media screen and (-ms-high-contrast: active){&:active {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
           color: GrayText;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           color: GrayText;
         }
   >
@@ -2018,7 +2018,7 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
@@ -2030,7 +2030,7 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -2040,7 +2040,7 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
         border-color: #f3f2f1;
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -2048,13 +2048,13 @@ exports[`Button Variants renders a primary disabled MessageBarButton correctly 1
       &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
       &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -2147,7 +2147,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 8px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-color: transparent;
         border-width: 1px;
       }
@@ -2156,7 +2156,7 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         border-color: transparent;
         color: #0078d4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: transparent;
         color: Highlight;
       }
@@ -2165,20 +2165,20 @@ exports[`Button Variants renders an ActionButton correctly 1`] = `
         border-color: transparent;
         color: #000000;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         border-color: transparent;
         color: Highlight;
       }
       &:hover .ms-Button-icon {
         color: #0078d4;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
       &:active .ms-Button-icon {
         color: #000000;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Highlight;
       }
   onClick={[Function]}
@@ -2267,7 +2267,7 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
       & > *:not(:first-child) {
         margin-left: 0px;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
         border-color: transparent;
@@ -2277,7 +2277,7 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
         background-color: #f3f2f1;
         border-color: transparent;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         background-color: Highlight;
         border-color: transparent;
       }
@@ -2285,20 +2285,20 @@ exports[`Button Variants renders an IconButton correctly 1`] = `
         background-color: #edebe9;
         border-color: transparent;
       }
-      @media screen and (-ms-high-contrast: active){&:active {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
         background-color: Highlight;
         border-color: transparent;
       }
       &:hover .ms-Button-icon {
         color: #106ebe;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button-icon {
         color: Window;
       }
       &:active .ms-Button-icon {
         color: #005a9e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {

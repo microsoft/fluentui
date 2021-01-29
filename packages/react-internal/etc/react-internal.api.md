@@ -33,6 +33,7 @@ import { IStyleFunction } from '@fluentui/utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import { KeyCodes } from '@fluentui/utilities';
+import { PartialTheme } from '@fluentui/theme';
 import { Point } from '@fluentui/utilities';
 import * as React from 'react';
 import { ReactNode } from 'react';
@@ -42,6 +43,7 @@ import { SELECTION_CHANGE } from '@fluentui/utilities';
 import { SelectionDirection } from '@fluentui/utilities';
 import { SelectionMode } from '@fluentui/utilities';
 import { Target } from '@fluentui/react-hooks';
+import { Theme } from '@fluentui/theme';
 
 // @public (undocumented)
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
@@ -5643,6 +5645,13 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
     };
 }
 
+// @public
+export function makeStyles<TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
+    [key in keyof TStyleSet]: string;
+};
+
 // @public (undocumented)
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
 
@@ -6735,6 +6744,9 @@ export const TextStyles: ITextComponent['styles'];
 export const TextView: ITextComponent['view'];
 
 // @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
+
+// @public (undocumented)
 export class ThemeGenerator {
     static getThemeAsCode(slotRules: IThemeRules): any;
     static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
@@ -6744,6 +6756,17 @@ export class ThemeGenerator {
     static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }
+
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
+
+// @public
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+    applyTo?: 'element' | 'body' | 'none';
+    as?: React.ElementType;
+    ref?: React.Ref<HTMLElement>;
+    theme?: PartialTheme | Theme;
+}
 
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
@@ -6821,6 +6844,14 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
 // @public
+export type UseStylesOptions = {
+    theme?: Theme;
+};
+
+// @public
+export const useTheme: () => Theme;
+
+// @public
 export enum ValidationState {
     invalid = 2,
     valid = 0,
@@ -6833,7 +6864,6 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 export * from "@fluentui/font-icons-mdl2";
 export * from "@fluentui/react-focus";
-export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-window-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";

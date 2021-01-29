@@ -5,13 +5,13 @@
 ```ts
 
 import { ColorTokens } from '@fluentui/theme';
-import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ComponentProps } from '@fluentui/react-utils';
 import { FontTokens } from '@fluentui/theme';
 import { MenuContext } from '@fluentui/react-shared-contexts';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
-import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ShorthandProps } from '@fluentui/react-utils';
 import { SizeValue } from '@fluentui/theme';
 import { useMenuContext } from '@fluentui/react-shared-contexts';
 

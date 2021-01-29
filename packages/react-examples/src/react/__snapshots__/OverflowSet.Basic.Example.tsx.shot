@@ -56,41 +56,40 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             box-shadow: 0 0 0 1px #605e5c inset;
             outline: 1px auto #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             border-bottom: none;
             color: LinkText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             color: LinkText;
           }
           &:hover {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
             color: LinkText;
           }
           &:focus {
             color: #0078d4;
           }
-          @media screen and (-ms-high-contrast: active){&:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
             color: LinkText;
           }
       onClick={[Function]}
@@ -143,41 +142,40 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             box-shadow: 0 0 0 1px #605e5c inset;
             outline: 1px auto #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             border-bottom: none;
             color: LinkText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             color: LinkText;
           }
           &:hover {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
             color: LinkText;
           }
           &:focus {
             color: #0078d4;
           }
-          @media screen and (-ms-high-contrast: active){&:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
             color: LinkText;
           }
       onClick={[Function]}
@@ -230,41 +228,40 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             box-shadow: 0 0 0 1px #605e5c inset;
             outline: 1px auto #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             border-bottom: none;
             color: LinkText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
           &:active {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             color: LinkText;
           }
           &:hover {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             color: LinkText;
           }
           &:active:hover {
             color: #004578;
             text-decoration: underline;
           }
-          @media screen and (-ms-high-contrast: active){&:active:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
             color: LinkText;
           }
           &:focus {
             color: #0078d4;
           }
-          @media screen and (-ms-high-contrast: active){&:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
             color: LinkText;
           }
       onClick={[Function]}
@@ -331,7 +328,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -347,7 +344,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             background-color: #f3f2f1;
             color: #106ebe;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
