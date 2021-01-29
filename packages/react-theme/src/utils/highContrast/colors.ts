@@ -1,5 +1,5 @@
-import { NeutralColorTokens, SharedColorTokens, GlobalSharedColors } from '../types';
-import { black, disabled, hyperlink, selected, white } from '../global/index';
+import { NeutralColorTokens, SharedColorTokens, GlobalSharedColors } from '../../types';
+import { black, disabled, hyperlink, selected, white } from '../../global/index';
 
 export function createNeutralColorTokens(customValues: Record<string, string> = {}): NeutralColorTokens {
   return {

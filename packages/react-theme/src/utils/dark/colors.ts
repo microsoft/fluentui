@@ -1,111 +1,111 @@
-import { NeutralColorTokens, SharedColorTokens, ColorVariants, GlobalSharedColors } from '../types';
-import { grey, white, sharedColors } from '../global/index';
+import { NeutralColorTokens, ColorVariants, SharedColorTokens, GlobalSharedColors } from '../../types';
+import { grey, white, black, sharedColors } from '../../global/index';
 
 export function createNeutralColorTokens(
   brand: ColorVariants,
   customValues: { [P in keyof NeutralColorTokens]?: string } = {},
 ): NeutralColorTokens {
   return {
-    neutralForeground1: grey[14],
+    neutralForeground1: white,
 
-    neutralForeground2: grey[26],
-    neutralForeground2Hover: grey[14],
-    neutralForeground2Pressed: grey[14],
-    neutralForeground2Selected: grey[14],
-    brandForeground2Hover: brand.primary,
-    brandForeground2Pressed: brand.shade10,
-    brandForeground2Selected: brand.primary,
+    neutralForeground2: grey[84],
+    neutralForeground2Hover: white,
+    neutralForeground2Pressed: white,
+    neutralForeground2Selected: white,
+    brandForeground2Hover: brand.tint20,
+    brandForeground2Pressed: brand.tint10,
+    brandForeground2Selected: brand.tint10,
 
-    neutralForeground3: grey[38],
-    neutralForeground3Hover: grey[26],
-    neutralForeground3Pressed: grey[26],
-    neutralForeground3Selected: grey[26],
-    brandForeground3Hover: brand.primary,
-    brandForeground3Pressed: brand.shade10,
-    brandForeground3Selected: brand.primary,
+    neutralForeground3: grey[68],
+    neutralForeground3Hover: grey[84],
+    neutralForeground3Pressed: grey[84],
+    neutralForeground3Selected: grey[84],
+    brandForeground3Hover: brand.tint20,
+    brandForeground3Pressed: brand.tint10,
+    brandForeground3Selected: brand.tint20,
 
-    neutralForeground4: grey[50],
+    neutralForeground4: grey[52],
 
-    neutralForegroundDisabled: grey[74],
+    neutralForegroundDisabled: grey[36],
 
-    brandForeground: brand.shade10,
-    brandForegroundHover: brand.shade20,
-    brandForegroundPressed: brand.shade30,
-    brandForegroundSelected: brand.shade10,
+    brandForeground: brand.tint10,
+    brandForegroundHover: brand.tint30,
+    brandForegroundPressed: brand.tint20,
+    brandForegroundSelected: brand.tint10,
 
     neutralForegroundInverted: white,
 
     neutralForegroundInvertedAccessible: white,
 
-    neutralBackground1: white,
-    neutralBackground1Hover: grey[96],
-    neutralBackground1Pressed: grey[88],
-    neutralBackground1Selected: grey[92],
+    neutralBackground1: grey[16],
+    neutralBackground1Hover: grey[22],
+    neutralBackground1Pressed: grey[18],
+    neutralBackground1Selected: grey[20],
 
-    neutralBackground2: grey[98],
-    neutralBackground2Hover: grey[94],
-    neutralBackground2Pressed: grey[86],
-    neutralBackground2Selected: grey[90],
+    neutralBackground2: grey[12],
+    neutralBackground2Hover: grey[18],
+    neutralBackground2Pressed: grey[14],
+    neutralBackground2Selected: grey[16],
 
-    neutralBackground3: grey[96],
-    neutralBackground3Hover: grey[92],
-    neutralBackground3Pressed: grey[84],
-    neutralBackground3Selected: grey[88],
+    neutralBackground3: grey[8],
+    neutralBackground3Hover: grey[14],
+    neutralBackground3Pressed: grey[10],
+    neutralBackground3Selected: grey[12],
 
-    neutralBackground4: grey[94],
-    neutralBackground4Hover: grey[98],
-    neutralBackground4Pressed: grey[96],
-    neutralBackground4Selected: white,
+    neutralBackground4: grey[4],
+    neutralBackground4Hover: grey[10],
+    neutralBackground4Pressed: grey[6],
+    neutralBackground4Selected: grey[8],
 
-    neutralBackground5: grey[92],
-    neutralBackground5Hover: grey[96],
-    neutralBackground5Pressed: grey[94],
-    neutralBackground5Selected: grey[98],
+    neutralBackground5: black,
+    neutralBackground5Hover: grey[14],
+    neutralBackground5Pressed: grey[10],
+    neutralBackground5Selected: grey[12],
 
-    neutralBackground6: grey[90],
+    neutralBackground6: grey[20],
 
-    neutralBackgroundDisabled: grey[94],
+    neutralBackgroundDisabled: grey[8],
 
-    neutralStrokeAccessible: grey[38],
-    neutralStrokeAccessibleHover: grey[34],
-    neutralStrokeAccessiblePressed: grey[30],
-    neutralStrokeAccessibleSelected: brand.primary,
+    neutralStrokeAccessible: grey[68],
+    neutralStrokeAccessibleHover: grey[74],
+    neutralStrokeAccessiblePressed: grey[70],
+    neutralStrokeAccessibleSelected: brand.tint20,
 
-    neutralStroke1: grey[82],
-    neutralStroke1Hover: grey[78],
-    neutralStroke1Pressed: grey[70],
-    neutralStroke1Selected: grey[74],
+    neutralStroke1: grey[40],
+    neutralStroke1Hover: grey[46],
+    neutralStroke1Pressed: grey[42],
+    neutralStroke1Selected: grey[44],
 
-    neutralStroke2: grey[88],
+    neutralStroke2: grey[32],
 
-    neutralStroke3: grey[94],
+    neutralStroke3: grey[24],
 
-    neutralStrokeDisabled: grey[88],
+    neutralStrokeDisabled: grey[26],
 
     strokeAccessible: 'transparent',
     strokeAccessibleInteractive: 'transparent',
     strokeAccessibleDisabled: 'transparent',
 
-    neutralShadowAmbient: 'rgba(0,0,0,0.12)',
-    neutralShadowKey: 'rgba(0,0,0,0.14)',
-    neutralShadowAmbientLighter: 'rgba(0,0,0,0.06)',
-    neutralShadowKeyLighter: 'rgba(0,0,0,0.07)',
-    neutralShadowAmbientDarker: 'rgba(0,0,0,0.20)',
-    neutralShadowKeyDarker: 'rgba(0,0,0,0.24)',
+    neutralShadowAmbient: 'rgba(0,0,0,0.24)',
+    neutralShadowKey: 'rgba(0,0,0,0.28)',
+    neutralShadowAmbientLighter: 'rgba(0,0,0,0.12)',
+    neutralShadowKeyLighter: 'rgba(0,0,0,0.14)',
+    neutralShadowAmbientDarker: 'rgba(0,0,0,0.40)',
+    neutralShadowKeyDarker: 'rgba(0,0,0,0.48)',
     ...customValues,
   };
 }
 
 function createSharedColorTokens(color: ColorVariants, customValues: Record<string, string> = {}): SharedColorTokens {
   return {
-    background1: color.tint60,
-    background2: color.tint40,
+    background1: color.shade30,
+    background2: color.shade30,
     background3: color.primary,
-    foreground1: color.primary,
-    foreground2: color.shade30,
-    foreground3: color.primary,
-    borderActive: color.primary,
-    border2: color.primary,
+    foreground1: color.tint40,
+    foreground2: color.tint40,
+    foreground3: color.tint20,
+    borderActive: color.tint30,
+    border2: color.tint20,
     ...customValues,
   };
 }
