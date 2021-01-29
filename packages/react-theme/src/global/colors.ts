@@ -729,7 +729,7 @@ const plum: ColorVariants = {
   tint60: '#FAF0F6',
 };
 
-const lightGray: ColorVariants = {
+const beige: ColorVariants = {
   shade50: '#141313',
   shade40: '#252323',
   shade30: '#454241',
@@ -745,7 +745,7 @@ const lightGray: ColorVariants = {
 };
 
 // TODO naming iteration -> clashing with grey
-const gray: ColorVariants = {
+const mink: ColorVariants = {
   shade50: '#0F0E0E',
   shade40: '#1C1B1A',
   shade30: '#333231',
@@ -790,7 +790,7 @@ const platinum: ColorVariants = {
   tint60: '#F8F9FA',
 };
 
-const darkGray: ColorVariants = {
+const anchor: ColorVariants = {
   shade50: '#090A0B',
   shade40: '#111315',
   shade30: '#1F2427',
@@ -863,11 +863,11 @@ export const sharedColors: GlobalSharedColors = {
   hotPink,
   magenta,
   plum,
-  lightGray,
-  gray, // TODO naming iteration -> clashing with grey
+  beige,
+  mink, // TODO naming iteration -> clashing with grey
   silver,
   platinum,
-  darkGray,
+  anchor,
   charcoal,
 };
 

@@ -136,11 +136,11 @@ export type GlobalSharedColors = {
   hotPink: ColorVariants;
   magenta: ColorVariants;
   plum: ColorVariants;
-  lightGray: ColorVariants;
-  gray: ColorVariants;
+  beige: ColorVariants;
+  mink: ColorVariants;
   silver: ColorVariants;
   platinum: ColorVariants;
-  darkGray: ColorVariants;
+  anchor: ColorVariants;
   charcoal: ColorVariants;
 };
 
