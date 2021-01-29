@@ -14,22 +14,21 @@
   },
   "license": "MIT",
   "scripts": {
-    "bundle": "just-scripts bundle",
-    "clean": "just-scripts clean",
-    "update-api": "just-scripts update-api",
+    "build": "echo 'TODO: rollup & tsc --declaration && api-extractor'",
+    "clean": "rm -rf dist lib-{amd,commonjs,es-2015} .cache",
     "start": "yarn serve",
     "serve": "start-storybook --ci -c ./.storybook -p 6006",
     "test": "jest",
-    "build": "webpack -p",
-    "lint": "eslint",
-    "format": "prettier --write",
-    "format:check": "prettier --check"
+    "lint": "eslint --ext=.ts,.tsx src/",
+    "format": "prettier **/*.{ts,tsx,md,html,scss} --write",
+    "format:check": "yarn format --check"
   },
   "devDependencies": {
     "@fluentui/common-styles": "^1.0.0-beta.12",
     "@fluentui/eslint-plugin": "^1.0.0-beta.0",
     "@fluentui/react-conformance": "^1.0.0",
-    "@storybook/html": "^5.3.8",
+    "@fluentui/react": "8.0.0-beta.43",
+    "@storybook/react": "^5.3.8",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
@@ -43,7 +42,9 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
-    "jest": "24.9.0"
+    "jest": "24.9.0",
+    "eslint": "^7.1.0",
+    "prettier": "~1.19.1"
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.12",

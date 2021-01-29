@@ -16,10 +16,14 @@ export function getComponentDoc(componentPath: string, exportSubdir: string): Co
     // which can take multiple seconds in a large project. For better performance, we create a single
     // ts.Program per package and pass it to parseWithProgramProvider().
 
-    const tsconfigPath = ts.findConfigFile(process.cwd(), fs.existsSync);
+    const tsconfigPath =
+      ts.findConfigFile(componentPath, fs.existsSync) || ts.findConfigFile(process.cwd(), fs.existsSync);
+
     if (!tsconfigPath) {
       throw new Error('Cannot find tsconfig.json');
     }
+
+    console.log(`USING tsconfig at -> ${tsconfigPath}`);
 
     const compilerOptions = getCompilerOptions(tsconfigPath);
 
