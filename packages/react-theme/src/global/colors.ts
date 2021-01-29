@@ -390,7 +390,7 @@ const green: ColorVariants = {
   shade40: '#052505',
   shade30: '#094609',
   shade20: '#0c5f0c',
-  shade10: '##0f700f',
+  shade10: '#0f700f',
   primary: '#107c10',
   tint10: '#218d21',
   tint20: '#359c35',
@@ -531,7 +531,7 @@ const darkBlue: ColorVariants = {
   tint20: '#215d8b',
   tint30: '#4179a3',
   tint40: '#92b6d1',
-  tint50: '##c2d7e7',
+  tint50: '#c2d7e7',
   tint60: '#eff5f9',
 };
 
