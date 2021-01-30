@@ -4,6 +4,7 @@
 
 ```ts
 
+import * as CSS from 'csstype';
 import { EventGroup } from '@fluentui/utilities';
 import { IBaseProps } from '@fluentui/utilities';
 import { IComponent } from '@fluentui/foundation-legacy';
@@ -35,6 +36,7 @@ import { ITheme } from '@fluentui/style-utilities';
 import { KeyCodes } from '@fluentui/utilities';
 import { PartialTheme } from '@fluentui/theme';
 import { Point } from '@fluentui/utilities';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ReactNode } from 'react';
 import { Rectangle } from '@fluentui/utilities';
@@ -4728,8 +4730,10 @@ export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles
 // @public (undocumented)
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
+// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React_2.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     className?: string;
     disableShrink?: boolean;
