@@ -94,7 +94,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Element type the root element will use. Default is "div".
-   * @deprecated Use 'as' instead.
+   * @deprecated Use `as` instead.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   elementType?: any /* TODO should be `keyof React.ReactHTML`, tracking with https://github.com/Microsoft/TypeScript/issues/30050 */;
@@ -143,8 +143,8 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /**
-   * Deprecated at v1.12.1. DIV props provided to the FocusZone will be mixed into the root element.
-   * @deprecated DIV props provided to the FocusZone will be mixed into the root element.
+   * @deprecated Div props provided to the FocusZone will be mixed into the root element.
+   * Deprecated at v1.12.1.
    */
   rootProps?: React.HTMLAttributes<HTMLDivElement>;
 

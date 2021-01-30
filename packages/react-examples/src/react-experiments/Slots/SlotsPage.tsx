@@ -9,13 +9,13 @@ import { SlotsContentExample } from './Slots.Content.Example';
 import { SlotsStyledExample } from './Slots.Styled.Example';
 import { SlotsRecompositionExample } from './Slots.Recomposition.Example';
 
-const SlotsExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Example.tsx') as string;
-const SlotsAsyncExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Async.Example.tsx') as string;
-const SlotsRootExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Root.Example.tsx') as string;
-const SlotsIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Icon.Example.tsx') as string;
-const SlotsContentExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Content.Example.tsx') as string;
-const SlotsStyledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Styled.Example.tsx') as string;
-const SlotsRecompositionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Slots/Slots.Recomposition.Example.tsx') as string;
+const SlotsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Example.tsx') as string;
+const SlotsAsyncExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Async.Example.tsx') as string;
+const SlotsRootExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Root.Example.tsx') as string;
+const SlotsIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Icon.Example.tsx') as string;
+const SlotsContentExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Content.Example.tsx') as string;
+const SlotsStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Styled.Example.tsx') as string;
+const SlotsRecompositionExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slots/Slots.Recomposition.Example.tsx') as string;
 
 export class SlotsPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

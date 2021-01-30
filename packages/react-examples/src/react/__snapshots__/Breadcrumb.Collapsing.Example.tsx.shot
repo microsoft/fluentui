@@ -159,14 +159,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -174,7 +173,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -183,7 +182,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -191,13 +190,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -247,9 +246,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -327,14 +327,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -342,7 +341,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -351,7 +350,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -359,13 +358,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -415,9 +414,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -495,14 +495,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -510,7 +509,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -519,7 +518,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -527,13 +526,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -583,9 +582,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -663,14 +663,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -678,7 +677,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -687,7 +686,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -695,13 +694,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -751,9 +750,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -839,9 +839,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -920,14 +921,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -935,7 +935,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -944,7 +944,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -952,13 +952,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -1153,7 +1153,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -1171,7 +1171,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -1270,9 +1270,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -1350,14 +1351,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -1365,7 +1365,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -1374,7 +1374,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -1382,13 +1382,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -1438,9 +1438,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -1526,9 +1527,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -1607,14 +1609,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -1622,7 +1623,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -1631,7 +1632,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -1639,13 +1640,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -1844,14 +1845,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -1859,7 +1859,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -1868,7 +1868,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -1876,13 +1876,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {
@@ -1932,9 +1932,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -2008,7 +2009,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -2026,7 +2027,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -2125,9 +2126,10 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         font-weight: normal;
                         speak: none;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       @media only screen and (min-width: 480px) and (max-width: 639px){& {
                         font-size: 8px;
@@ -2206,14 +2208,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         box-shadow: 0 0 0 1px #605e5c inset;
                         outline: none;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                         outline: 1px solid WindowText;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        -ms-high-contrast-adjust: none;
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -2221,7 +2222,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         color: LinkText;
                       }
                       &:hover {
@@ -2230,7 +2231,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         cursor: pointer;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         color: Highlight;
                       }
                       &:active:hover {
@@ -2238,13 +2239,13 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         color: #323130;
                         text-decoration: none;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                         color: LinkText;
                       }
                       &:focus {
                         color: #201f1e;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         color: LinkText;
                       }
                       &::-moz-focus-inner {

@@ -1,6 +1,6 @@
 The entire color palette of the controls is themeable. We provide a set of sensible defaults, but you can override all colors individually. To do this, you must call `loadTheme()` with a custom theme object at app startup.
 
-## Using Themes
+### Using themes
 
 To use themes, an application must call `loadTheme()` immediately at app startup before any app code executes.
 Here is an example:
@@ -36,7 +36,7 @@ loadTheme({
 });
 ```
 
-## Customization
+### Customization
 
 You can also add some of your own customizations to the default theme.
 For example, you can set the `defaultFontStyle` property to modify every font variant

@@ -27,7 +27,7 @@ exports[`Spinner renders Spinner correctly 1`] = `
           height: 20px;
           width: 20px;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           border-top-color: Highlight;
         }
         @media screen and (forced-colors: active){& {

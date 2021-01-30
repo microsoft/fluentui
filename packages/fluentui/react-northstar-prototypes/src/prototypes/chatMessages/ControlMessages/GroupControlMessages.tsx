@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/accessibility';
 
 import { List, ChatMessageProps, Flex } from '@fluentui/react-northstar';
 import ControlMessage from './ControlMessage';

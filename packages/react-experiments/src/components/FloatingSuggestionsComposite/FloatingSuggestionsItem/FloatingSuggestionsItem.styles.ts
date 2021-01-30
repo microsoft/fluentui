@@ -1,4 +1,9 @@
-import { getGlobalClassNames, getTheme, HighContrastSelector } from '@fluentui/style-utilities';
+import {
+  getGlobalClassNames,
+  getTheme,
+  HighContrastSelector,
+  getHighContrastNoAdjustStyle,
+} from '@fluentui/style-utilities';
 import { IFloatingSuggestionItemStylesProps, IFloatingSuggestionItemStyles } from './FloatingSuggestionsItem.types';
 
 const GlobalClassNames = {
@@ -68,7 +73,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },
@@ -89,7 +94,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
           [HighContrastSelector]: {

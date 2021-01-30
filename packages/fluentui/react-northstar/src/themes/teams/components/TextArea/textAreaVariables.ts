@@ -3,7 +3,6 @@ import { pxToRem } from '../../../../utils';
 export interface TextAreaVariables {
   backgroundColor: string;
   invertedBackgroundColor: string;
-  disabledBackgroundColor: string;
   disabledColor: string;
   borderColor: string;
   borderRadius: string;
@@ -15,6 +14,7 @@ export interface TextAreaVariables {
   margin: string;
   padding: string;
   height: string;
+  borderColorError: string;
 }
 
 export const textAreaVariables = (siteVars): TextAreaVariables => ({
@@ -29,8 +29,7 @@ export const textAreaVariables = (siteVars): TextAreaVariables => ({
   invertedBackgroundColor: siteVars.colorScheme.default.background,
   placeholderColor: siteVars.colorScheme.default.foreground1,
 
-  disabledBackgroundColor: siteVars.colorScheme.default.backgroundColorDisabled,
-  disabledColor: siteVars.colorScheme.default.colorDisabled,
+  disabledColor: siteVars.colorScheme.brand.foregroundDisabled,
 
   fontColor: siteVars.colorScheme.default.foreground,
   fontSize: siteVars.fontSizes.medium,
@@ -38,4 +37,5 @@ export const textAreaVariables = (siteVars): TextAreaVariables => ({
   borderColorFocus: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
 
   height: 'auto',
+  borderColorError: siteVars.colorScheme.red.background,
 });

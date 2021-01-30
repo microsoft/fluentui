@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Moving Pivot from react-tabs back to react-internal.",
+  "packageName": "@fluentui/react-tabs",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-29T01:25:43.857Z"
+}

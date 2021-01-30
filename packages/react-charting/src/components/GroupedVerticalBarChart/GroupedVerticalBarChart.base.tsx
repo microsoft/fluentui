@@ -136,7 +136,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         xAxisType={this._isNumeric}
         datasetForXAxisDomain={this._xAxisLabels}
         tickParams={tickParams}
-        xAxisPadding={this.props.xAxisTickPadding || 5}
+        tickPadding={this.props.tickPadding || 5}
         maxOfYVal={this._yMax}
         svgFocusZoneProps={{
           direction: FocusZoneDirection.horizontal,
@@ -199,7 +199,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return shouldHighlight ? '' : '0.1';
   };
 
-  private _onBarHover = (pointData: IGVBarChartSeriesPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void => {
+  private _onBarHover = (pointData: IGVBarChartSeriesPoint, mouseEvent: React.MouseEvent<SVGElement>): void => {
     mouseEvent.persist();
     if (
       this.state.isLegendSelected === false ||
