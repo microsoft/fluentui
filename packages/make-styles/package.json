@@ -27,7 +27,8 @@
   "beachball": {
     "tag": "latest",
     "disallowedChangeTypes": [
-      "major"
+      "major",
+      "prerelease"
     ]
   },
   "devDependencies": {

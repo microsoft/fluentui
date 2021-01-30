@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeClasses } from '@fluentui/react-compose/lib/next/index';
+import { makeClasses } from '@fluentui/react-utils';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import { useBadge } from './useBadge';
 import { BadgeProps } from './Badge.types';

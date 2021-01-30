@@ -6,6 +6,7 @@
 
 import { BaseSlots } from '@fluentui/react-compose';
 import { ClassFunction } from '@fluentui/react-compose';
+import { ComponentWithAs } from '@fluentui/react-compose';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
@@ -20,7 +21,7 @@ import { SlotProps } from '@fluentui/react-compose';
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
+export const CheckboxBase: ComponentWithAs<'div', ICheckboxProps>;
 
 // @public
 export interface ICheckbox {

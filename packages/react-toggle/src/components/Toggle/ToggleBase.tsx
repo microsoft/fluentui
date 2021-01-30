@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { compose } from '@fluentui/react-compose';
+import { compose, ComponentWithAs } from '@fluentui/react-compose';
 import { IToggleProps } from './Toggle.types';
 import { useToggle } from './useToggle';
 
-export const ToggleBase = compose<'div', IToggleProps, {}, IToggleProps, {}>(
+export const ToggleBase: ComponentWithAs<'div', IToggleProps> = compose<'div', IToggleProps, {}, IToggleProps, {}>(
   (props, ref, options) => {
     const { state: toggleState } = options;
     const { state, slots, slotProps } = toggleState;

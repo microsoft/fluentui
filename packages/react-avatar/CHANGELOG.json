@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Fri, 29 Jan 2021 12:21:00 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-18",
+      "version": "0.8.2-18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Avatar SPEC.md, and initial MIGRATION.md and README.md",
+            "author": "behowell@microsoft.com",
+            "commit": "4015de7ab02ecc9d2a5672445653b2442ac6aa03",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/react-avatar_v0.8.2-17",
       "version": "0.8.2-17",

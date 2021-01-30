@@ -63,7 +63,7 @@ export class PaginationPage extends React.Component<IComponentDemoPageProps, {}>
               For cases when your application supports theming, Pagination component is equipped with everything you
               need to just load the custom theme to the application, and as long as the color palette you provide has an
               override for the{' '}
-              <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/colors">
+              <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/colors" underline>
                 <code>Fabric colors</code>
               </Link>{' '}
               used in Pagination, everything should be ok. If no theming is supported, then follow the example showing

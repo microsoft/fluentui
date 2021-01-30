@@ -4,6 +4,7 @@
 
 ```ts
 
+import { ComponentWithAs } from '@fluentui/react-compose';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IComponentAs } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
@@ -79,7 +80,7 @@ export interface IToggleStyles {
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: import("@fluentui/react-compose").ComponentWithAs<"div", IToggleProps>;
+export const ToggleBase: ComponentWithAs<'div', IToggleProps>;
 
 // @public (undocumented)
 export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => any;

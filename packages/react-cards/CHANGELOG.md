@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Jan 2021 12:21:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.44)
+
+Fri, 29 Jan 2021 12:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.43..@fluentui/react-cards_v1.0.0-beta.44)
+
+### Changes
+
+- Renamed prop 'quiet' to 'ghost' for react-cards Card types ([PR #16632](https://github.com/microsoft/fluentui/pull/16632) by tavari@microsoft.com)
 
 ## [1.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.43)
 
