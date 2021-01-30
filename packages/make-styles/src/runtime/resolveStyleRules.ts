@@ -9,7 +9,7 @@ import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
-import { isObject } from './utils/isObject';
+import { isRawStyle } from './utils/isRawStyle';
 import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 
@@ -68,7 +68,7 @@ export function resolveStyleRules(
       } else {
         result[key] = [className, css];
       }
-    } else if (isObject(value)) {
+    } else if (isRawStyle(value)) {
       if (isNestedSelector(property)) {
         resolveStyleRules(
           value,
@@ -87,12 +87,20 @@ export function resolveStyleRules(
 
         resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
       } else if (property === 'animationName') {
-        // TODO: support RTL!
-        const keyframe = compileKeyframeRule(value);
-        const animationName = HASH_PREFIX + hashString(keyframe);
+        const animationNames = Array.isArray(value) ? value : [value];
+        let keyframeCSS = '';
+        const animationName: string = animationNames
+          .map(val => {
+            const keyframe = compileKeyframeRule(val);
+            const name = HASH_PREFIX + hashString(keyframe);
+            keyframeCSS += `@keyframes ${name}{${keyframe}}`;
 
-        // TODO call Stylis for prefixing
-        const keyframeCSS = `@keyframes ${animationName}{${keyframe}}`;
+            return name;
+          })
+          .join(' ');
+
+        // TODO: support RTL
+        // TODO: support prefix - call Stylis for prefixing
 
         result[animationName] = [animationName, keyframeCSS /* rtlCSS */];
 

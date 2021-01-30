@@ -403,6 +403,59 @@ describe('resolveStyleRules', () => {
       `);
     });
 
+    fit('allows to define multiple keyframes', () => {
+      expect(
+        resolveStyleRules({
+          animationName: [
+            {
+              from: {
+                transform: 'rotate(0deg)',
+              },
+              to: {
+                transform: 'rotate(360deg)',
+              },
+            },
+            {
+              from: {
+                opacity: 0,
+              },
+              to: {
+                opacity: 1,
+              },
+            },
+          ],
+          animationIterationCount: 'infinite',
+          animationDuration: '5s',
+        }),
+      ).toMatchInlineSnapshot(`
+         @keyframes f13owpa8 {
+           from {
+             transform: rotate(0deg);
+           }
+           to {
+             transform: rotate(360deg);
+           }
+         }
+         @keyframes f1qa61cu {
+           from {
+             opacity: 0;
+           }
+           to {
+             opacity: 1;
+           }
+         }
+         .f18gdskf {
+           animation-name: f13owpa8 f1qa61cu;
+         }
+         .f1cpbl36 {
+           animation-iteration-count: infinite;
+         }
+         .f1t9cprh {
+           animation-duration: 5s;
+         }
+      `);
+    });
+
     it('allows to increase specificity', () => {
       expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
         .fe3e8s901.fe3e8s901 {
