@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { PivotPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-tabs/Pivot/Pivot.doc';
+import { PivotPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Pivot/Pivot.doc';
 
 const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PivotPage/docs/PivotRelated.md') as string;
 const componentUrl =
