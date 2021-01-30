@@ -45,6 +45,7 @@
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
+    "release:fluentui:custom": "yarn workspace @fluentui/scripts just fluentui:publish:custom",
     "release:fluentui:minor": "yarn workspace @fluentui/scripts just fluentui:publish:minor",
     "release:fluentui:patch": "yarn workspace @fluentui/scripts just fluentui:publish:patch",
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
