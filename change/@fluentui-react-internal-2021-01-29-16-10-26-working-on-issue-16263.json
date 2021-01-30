@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: StackItem now applies data- properties to rendered div element",
+  "comment": "allow passing native properties to the root element of StackItem",
   "packageName": "@fluentui/react-internal",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch",
