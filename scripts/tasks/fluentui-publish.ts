@@ -72,6 +72,19 @@ export function fluentuiLernaCustomPublish(version, tag) {
   }
 }
 
+const execCommandSync = (cwd, command, args) => {
+  const result = spawnSync(command, args, {
+    cwd,
+    shell: true,
+    stdio: 'pipe',
+    encoding: 'utf-8',
+  });
+  if (result.status) {
+    throw new Error(result.error?.stack || `'${command} ${args.join(' ')}' failed with status ${result.status}`);
+  }
+  return result.stdout;
+};
+
 async function fluentuiUpdateChangelog(bumpType) {
   const gitRoot = findGitRoot();
 
@@ -139,25 +152,21 @@ async function fluentuiUpdateChangelog(bumpType) {
   updateChangelog(newVersion);
 
   // commit change to git
-  const gitStageResult = spawnSync('git', ['add', './packages/fluentui/CHANGELOG.md'], {
-    cwd: gitRoot,
-    shell: true,
-    stdio: 'inherit',
-  });
-  if (gitStageResult.status) {
-    throw new Error(
-      gitStageResult.error?.stack || `staging updated CHANGELOG.md failed with status ${gitStageResult.status}`,
-    );
-  }
+  execCommandSync(gitRoot, 'git', ['add', './packages/fluentui/CHANGELOG.md']);
+  execCommandSync(gitRoot, 'git', ['commit', '-m', `"chore: prepare release react-northstar ${newVersion}"`]);
+}
 
-  const gitCommitResult = spawnSync('git', ['commit', '-m', `"chore: prepare release react-northstar ${newVersion}"`], {
-    cwd: gitRoot,
-    shell: true,
-    stdio: 'inherit',
-  });
-  if (gitCommitResult.status) {
-    throw new Error(
-      gitCommitResult.error?.stack || `committing updated CHANGELOG.md failed with status ${gitCommitResult.status}`,
-    );
-  }
+export function fluentuiPostPublishValidation() {
+  return function() {
+    const gitRoot = findGitRoot();
+    execCommandSync(gitRoot, 'git', ['reset', '--hard']); // sometimes lerna add gitHead in package.json after release
+    execCommandSync(gitRoot, 'yarn', ['scrub', '-y']);
+    execCommandSync(gitRoot, 'yarn', ['install']);
+    const gitStatus = execCommandSync(gitRoot, 'git', ['status']);
+    if (!gitStatus.includes('nothing to commit, working tree clean')) {
+      throw new Error(
+        `changes detected after installing the newly released fluentui version. This is likely to be caused by older fluentui used in some projects`,
+      );
+    }
+  };
 }

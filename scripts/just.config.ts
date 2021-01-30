@@ -20,7 +20,11 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { fluentuiLernaPublish, fluentuiLernaCustomPublish } from './tasks/fluentui-publish';
+import {
+  fluentuiLernaPublish,
+  fluentuiLernaCustomPublish,
+  fluentuiPostPublishValidation,
+} from './tasks/fluentui-publish';
 import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
@@ -107,6 +111,8 @@ export function preset() {
   });
   task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
   task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+
+  task('fluentui:publish:validation', fluentuiPostPublishValidation());
 
   task('ts:compile', () => {
     const args = getJustArgv();
