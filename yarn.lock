@@ -13540,6 +13540,16 @@ import-local@^3.0.2:
     pkg-dir "^4.2.0"
     resolve-cwd "^3.0.0"
 
+imports-loader@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/imports-loader/-/imports-loader-1.2.0.tgz#b06823d0bb42e6f5ff89bc893829000eda46693f"
+  integrity sha512-zPvangKEgrrPeqeUqH0Uhc59YqK07JqZBi9a9cQ3v/EKUIqrbJHY4CvUrDus2lgQa5AmPyXuGrWP8JJTqzE5RQ==
+  dependencies:
+    loader-utils "^2.0.0"
+    schema-utils "^3.0.0"
+    source-map "^0.6.1"
+    strip-comments "^2.0.1"
+
 imurmurhash@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/imurmurhash/-/imurmurhash-0.1.4.tgz#9218b9b2b928a238b13dc4fb6b6d576f231453ea"
@@ -23334,6 +23344,11 @@ strip-color@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/strip-color/-/strip-color-0.1.0.tgz#106f65d3d3e6a2d9401cac0eb0ce8b8a702b4f7b"
   integrity sha1-EG9l09PmotlAHKwOsM6LinArT3s=
+
+strip-comments@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/strip-comments/-/strip-comments-2.0.1.tgz#4ad11c3fbcac177a67a40ac224ca339ca1c1ba9b"
+  integrity sha512-ZprKx+bBLXv067WTCALv8SSz5l2+XhpYCsVtSqlMnkAXMWDq+/ekVbl1ghqP9rUHTzv6sm/DwCOiYutU/yp1fw==
 
 strip-eof@^1.0.0:
   version "1.0.0"
