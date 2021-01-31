@@ -1,5 +1,5 @@
 {
-  "type": "none",
+  "type": "prerelease",
   "comment": "create package for branded icons from react-icons-mdl2 package",
   "packageName": "@fluentui/react-icons-mdl2-branded",
   "email": "ololubek@microsoft.com",
