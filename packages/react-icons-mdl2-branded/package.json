@@ -24,7 +24,7 @@
     "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@fluentui/scripts": "^1.0.0",
@@ -33,8 +33,8 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/react-icons-mdl2": "^1.0.0-beta.11",
+    "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/react-icons-mdl2": "^1.0.0-beta.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
