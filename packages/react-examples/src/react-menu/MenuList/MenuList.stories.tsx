@@ -1,13 +1,23 @@
 import * as React from 'react';
 
-import { MenuList, MenuItem } from '@fluentui/react-menu';
+import { MenuList, MenuItem, FocusAbilityContextProvider } from '@fluentui/react-menu';
 
 export const MenuListExample = () => (
-  <MenuList>
-    <MenuItem index={0}>Item 1</MenuItem>
-    <MenuItem index={1}>Item 1</MenuItem>
-    <MenuItem index={2}>Item 1</MenuItem>
-    <MenuItem index={3}>Item 1</MenuItem>
-    <MenuItem index={4}>Item 1</MenuItem>
-  </MenuList>
+  <FocusAbilityContextProvider>
+    <MenuList>
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Item</MenuItem>
+    </MenuList>
+  </FocusAbilityContextProvider>
+);
+
+export const MenuListWithIconsExample = () => (
+  <FocusAbilityContextProvider>
+    <MenuList>
+      <MenuItem icon="X">Item</MenuItem>
+      <MenuItem icon="X">Item</MenuItem>
+      <MenuItem icon="X">Item</MenuItem>
+    </MenuList>
+  </FocusAbilityContextProvider>
 );
