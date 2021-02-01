@@ -50,8 +50,8 @@ exports[`MaskedTextField renders correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="TextField6"
-      id="TextFieldLabel8"
+      htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       With input mask
     </label>
@@ -91,7 +91,7 @@ exports[`MaskedTextField renders correctly 1`] = `
     >
       <input
         aria-invalid={false}
-        aria-labelledby="TextFieldLabel8"
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
@@ -172,7 +172,7 @@ exports[`MaskedTextField renders correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
-        id="TextField6"
+        id="TextField0"
         onBlur={[Function]}
         onChange={[Function]}
         onFocus={[Function]}
