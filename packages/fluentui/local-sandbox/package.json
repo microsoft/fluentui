@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "build:withdependencies": "yarn --cwd ../../.. build --scope=@fluentui/local-sandbox --include-filtered-dependencies",
-    "build": "webpack",
-    "build:production": "webpack -p",
+    "build:development": "webpack",
+    "build:production": "webpack --mode production",
     "serve": "node ./server.js"
   },
   "dependencies": {

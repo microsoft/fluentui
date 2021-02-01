@@ -9,7 +9,7 @@ type JustArguments<T extends Record<string, unknown>> = Arguments & T;
 export function webpack() {
   const args: JustArguments<Partial<{ production: boolean }>> = argv();
   return webpackCliTask({
-    webpackCliArgs: args.production ? ['--production'] : [],
+    webpackCliArgs: args.production ? ['--mode', 'production'] : [],
     nodeArgs: ['--max-old-space-size=4096'],
   });
 }
