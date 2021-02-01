@@ -3,7 +3,7 @@ import * as React from 'react';
 import { makeClasses } from './makeClasses';
 import { safeMount } from '@fluentui/test-utilities';
 import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';
-import { MergeStylesProvider } from './MergeStylesProvider';
+import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';
 
 describe('makeClasses', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();

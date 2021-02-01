@@ -2,8 +2,8 @@ import * as React from 'react';
 import { makeVariantClasses } from './makeVariantClasses';
 import { Stylesheet, InjectionMode } from '@fluentui/merge-styles';
 import { ReactWrapper } from 'enzyme';
-import { MergeStylesProvider } from './MergeStylesProvider';
-import { ThemeContext } from '@fluentui/react-internal/lib/utilities/ThemeProvider';
+import { MergeStylesProvider } from './styleRenderers/mergeStylesRenderer';
+import { ThemeContext } from './ThemeContext';
 import { safeMount } from '@fluentui/test-utilities';
 import { Theme } from './types';
 
