@@ -6,37 +6,38 @@ import { EOL } from 'os';
 
 import { findGitRoot } from '../monorepo/index';
 
-export function fluentuiLernaPublish(bumpType) {
-  return function() {
-    fluentuiUpdateChangelog(bumpType);
+export function fluentuiLernaPublish(bumpType, skipConfirm = false) {
+  fluentuiUpdateChangelog(bumpType);
 
-    const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
-    const lernaPublishArgs = [
-      'lerna',
-      'publish',
-      "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
-      '--no-git-reset',
-      '--force-publish',
-      '--registry',
-      argv().registry,
-      bumpType,
-    ];
+  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
+  const lernaPublishArgs = [
+    'lerna',
+    'publish',
+    "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
+    '--no-git-reset',
+    '--force-publish',
+    '--registry',
+    argv().registry,
+    bumpType,
+  ];
+  if (skipConfirm) {
+    lernaPublishArgs.push('--yes');
+  }
 
-    logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
+  logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
 
-    const result = spawnSync('yarn', lernaPublishArgs, {
-      cwd: fluentRoot,
-      shell: true,
-      stdio: 'inherit',
-    });
+  const result = spawnSync('yarn', lernaPublishArgs, {
+    cwd: fluentRoot,
+    shell: true,
+    stdio: 'inherit',
+  });
 
-    if (result.status) {
-      throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);
-    }
-  };
+  if (result.status) {
+    throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);
+  }
 }
 
-export function fluentuiLernaCustomPublish(version, tag) {
+export function fluentuiLernaCustomPublish(version, tag, skipConfirm = false) {
   fluentuiUpdateChangelog(version);
 
   if (!version) {
@@ -58,6 +59,9 @@ export function fluentuiLernaCustomPublish(version, tag) {
     '--dist-tag',
     tag,
   ];
+  if (skipConfirm) {
+    lernaPublishArgs.push('--yes');
+  }
 
   logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
 

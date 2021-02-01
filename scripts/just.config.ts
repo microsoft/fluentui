@@ -107,10 +107,19 @@ export function preset() {
     const args = getJustArgv();
     const version = args._?.[1];
     const tag = args['dist-tag'];
-    fluentuiLernaCustomPublish(version, tag);
+    const skipConfirm = args['yes'];
+    fluentuiLernaCustomPublish(version, tag, skipConfirm);
   });
-  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
-  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('fluentui:publish:patch', () => {
+    const args = getJustArgv();
+    const skipConfirm = args['yes'];
+    fluentuiLernaPublish('patch', skipConfirm);
+  });
+  task('fluentui:publish:minor', () => {
+    const args = getJustArgv();
+    const skipConfirm = args['yes'];
+    fluentuiLernaPublish('minor', skipConfirm);
+  });
 
   task('fluentui:publish:validation', fluentuiPostPublishValidation());
 
