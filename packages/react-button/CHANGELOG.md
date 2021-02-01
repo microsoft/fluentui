@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.25)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.24..@fluentui/react-button_v1.0.0-beta.25)
+
+### Changes
+
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by lingfan.gao@microsoft.com)
 
 ## [1.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.24)
 

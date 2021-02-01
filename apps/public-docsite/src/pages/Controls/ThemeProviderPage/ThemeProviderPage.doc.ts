@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { ThemeProviderPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-theme-provider/ThemeProvider/ThemeProvider.doc';
+import { ThemeProviderPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/ThemeProvider/ThemeProvider.doc';
 
 const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ThemeProviderPage/docs/ThemeProviderRelated.md') as string;
 

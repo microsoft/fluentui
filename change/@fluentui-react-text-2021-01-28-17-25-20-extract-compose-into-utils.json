@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Extract compose/next to react-utils",
-  "packageName": "@fluentui/react-text",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-28T17:25:20.228Z"
-}

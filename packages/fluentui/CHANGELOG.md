@@ -20,8 +20,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## BREAKING CHANGES
 - Remove unsupported values for `size` prop in `Button` component @notandrew ([#16416](https://github.com/microsoft/fluentui/pull/16416))
+- Removing logic from `buttonBehavior` related to loading state @kolaps33 ([#16663](https://github.com/microsoft/fluentui/pull/16663))
 - Renamed `Card` property `quiet` to `ghost` as per design spec. @TanelVari ([#16585](https://github.com/microsoft/fluentui/pull/16585))
 - Added `CarouselPaddlesContainer` to allow verticaly centering Paddles @assuncaocharles ([#16477](https://github.com/microsoft/fluentui/pull/16477))
+- Removed `@fluentui/keyboard-key` dependency from all packages. @xugao ([#16700](https://github.com/microsoft/fluentui/pull/16700))
 
 ## Fixes
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
@@ -36,6 +38,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `TextArea` disabled styles to match `Input` disabled styles @assuncaocharles ([#16661](https://github.com/microsoft/fluentui/pull/16661))
 - Remove unused `paddleNextSize` and `paddlePreviousSize` variables @assuncaocharles ([#16665](https://github.com/microsoft/fluentui/pull/16665))
 - Define value for `largest` font-size in `siteVariables` @assuncaocharles ([#16693](https://github.com/microsoft/fluentui/pull/16693))
+- Fix `Embed` playback control visuals. @TanelVari ([#16611](https://github.com/microsoft/fluentui/pull/16611))
+- Fixes for `Dropdown`. Fix clear indicator visual styles (focus border, using `CloseIcon`). Fix empty search result text style. Fix left/right padding for multiple selection labels. Using `ChevronDownIcon` for toggle indicator. @TanelVari ([#16522](https://github.com/microsoft/fluentui/pull/16522))
+- Fix docsite header colors for all themes. `ExampleSnippet` now honors theme colors for background and foreground. @TanelVari ([#16643](https://github.com/microsoft/fluentui/pull/16643))
 
 ## Features
 - Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
