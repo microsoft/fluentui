@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Moving Checkbox, Link, Pivot, Slider and Toggle from their respective @fluentui/react- packages back to @fluentui/react-internal.",
-  "packageName": "@fluentui/react-internal",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-29T01:25:26.715Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "MarkdownLink: Adding underline prop and setting it to true by default.",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-26T04:00:41.623Z"
-}

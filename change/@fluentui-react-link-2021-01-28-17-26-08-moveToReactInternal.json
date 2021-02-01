@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Moving Link from react-link back to react-internal.",
-  "packageName": "@fluentui/react-link",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-29T01:25:38.565Z"
-}
