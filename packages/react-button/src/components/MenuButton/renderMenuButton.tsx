@@ -9,7 +9,7 @@ import { menuButtonShorthandProps } from './useMenuButton';
  */
 export const renderMenuButton = (state: MenuButtonState) => {
   const { slots, slotProps } = getSlots(state, menuButtonShorthandProps);
-  const { iconOnly, children } = state;
+  const { children, expanded, iconOnly, persistMenu } = state;
 
   const contentVisible = !iconOnly && (children || slotProps.content?.children);
 
@@ -18,7 +18,7 @@ export const renderMenuButton = (state: MenuButtonState) => {
       <slots.icon {...slotProps.icon} />
       {contentVisible && <slots.content {...slotProps.content} />}
       {!iconOnly && <slots.menuIcon {...slotProps.menuIcon} />}
-      <slots.menu {...slotProps.menu} />
+      {(persistMenu || expanded) && <slots.menu {...slotProps.menu} />}
     </slots.root>
   );
 };
