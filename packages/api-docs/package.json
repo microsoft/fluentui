@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/api-docs",
   "version": "1.0.0",
-  "private": true,
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
