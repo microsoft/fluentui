@@ -160,13 +160,17 @@ export function fluentuiPostPublishValidation() {
   return function() {
     const gitRoot = findGitRoot();
     execCommandSync(gitRoot, 'git', ['reset', '--hard']); // sometimes lerna add gitHead in package.json after release
-    execCommandSync(gitRoot, 'yarn', ['scrub', '-y']);
-    execCommandSync(gitRoot, 'yarn', ['install']);
+
+    // sync fluent version
+    execCommandSync(gitRoot, 'yarn', ['syncpack:fix']);
     const gitStatus = execCommandSync(gitRoot, 'git', ['status']);
     if (!gitStatus.includes('nothing to commit, working tree clean')) {
-      throw new Error(
-        `changes detected after installing the newly released fluentui version. This is likely to be caused by older fluentui used in some projects`,
-      );
+      execCommandSync(gitRoot, 'git', ['add', '.']);
+      execCommandSync(gitRoot, 'git', ['commit', '-m', `"chore: fix dependencies after react-northstar release"`]);
+      execCommandSync(gitRoot, 'git', ['push']);
     }
+
+    // make sure there's no more than one fluent versions
+    execCommandSync(gitRoot, 'yarn', ['syncpack:list']);
   };
 }
