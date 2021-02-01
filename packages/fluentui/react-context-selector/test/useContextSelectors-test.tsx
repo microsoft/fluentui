@@ -20,7 +20,7 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props 
   return <div data-active={context.active} data-value={context.value} />;
 };
 
-describe('useContextSelectors', () => {
+xdescribe('useContextSelectors', () => {
   it('propogates values via Context', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: 1, value: 'foo' }}>
