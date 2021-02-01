@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeDecorator } from '@storybook/addons';
-import { ThemeProvider } from '@fluentui/react-internal/lib/utilities/ThemeProvider';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat';
 import { Theme } from '@fluentui/theme';
 import { useTheme } from '../knobs/useTheme';
 

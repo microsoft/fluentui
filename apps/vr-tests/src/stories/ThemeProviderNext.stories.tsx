@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 // TODO: restore back to ThemeProvider from @fluentui/react-theme-provider
-import { ThemeProvider } from '@fluentui/react-internal/lib/utilities/ThemeProvider';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat';
 import { Button } from '@fluentui/react-button';
 import { FabricDecorator } from '../utilities/index';
 

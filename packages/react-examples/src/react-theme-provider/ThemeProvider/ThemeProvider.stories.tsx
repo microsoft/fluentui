@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useTheme, ThemeContext, ThemeProvider } from '@fluentui/react-internal/lib/utilities/ThemeProvider';
+import { useTheme, ThemeContext, ThemeProvider } from '@fluentui/react-theme-provider/lib/compat';
 import { PartialTheme, Theme } from '@fluentui/theme';
 
 export default {

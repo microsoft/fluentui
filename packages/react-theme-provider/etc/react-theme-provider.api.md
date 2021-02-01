@@ -4,9 +4,6 @@
 
 ```ts
 
-// @public (undocumented)
-export const noop = "noop";
-
 
 // (No @packageDocumentation comment for this package)
 
