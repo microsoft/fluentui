@@ -238,6 +238,7 @@ module.exports = {
     const config = merge(
       {
         devServer: {
+          host: 'localhost',
           port: 4322,
           static: outputPath,
         },
