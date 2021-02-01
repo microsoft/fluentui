@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.40",
   "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,10 +38,10 @@
   "dependencies": {
     "@fluentui/react": "^8.0.0-beta.46",
     "@fluentui/react-internal": "^8.0.0-beta.40",
-    "@fluentui/react-examples": "^1.0.0",
+    "@fluentui/react-examples": "^1.0.0-beta.40",
     "@fluentui/theme": "^2.0.0-beta.13",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/api-docs": "^1.0.0",
+    "@fluentui/api-docs": "^1.0.0-beta.40",
     "@fluentui/react-docsite-components": "^8.0.0-beta.46",
     "@fluentui/react-experiments": "^8.0.0-beta.49",
     "@fluentui/public-docsite-resources": "1.0.0",

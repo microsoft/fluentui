@@ -1,5 +1,5 @@
 {
-  "type": "prelease",
+  "type": "prerelease",
   "comment": "Publishing public docsite output.",
   "packageName": "@fluentui/react-examples",
   "email": "dzearing@microsoft.com",
