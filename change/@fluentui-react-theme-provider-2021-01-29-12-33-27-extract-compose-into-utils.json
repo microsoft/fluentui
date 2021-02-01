@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Extract compose/next to react-utils",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-29T11:33:19.463Z"
-}

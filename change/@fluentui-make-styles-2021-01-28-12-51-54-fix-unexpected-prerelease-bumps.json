@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "add prerelease in disallowed change type for version packages and fix current versioning.",
-  "packageName": "@fluentui/make-styles",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-28T20:51:43.548Z"
-}
