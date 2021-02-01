@@ -80,6 +80,9 @@ export const Designer: React.FunctionComponent = () => {
     ? componentInfoContext.byDisplayName[selectedJSONTreeElement.displayName]
     : null;
 
+  const getShorthandComponentInfo = shorthandType =>
+    componentInfoContext.byDisplayName[shorthandType.replaceAll('Props', '')];
+
   const handleReset = React.useCallback(() => {
     /* eslint-disable-next-line no-alert */
     if (confirm('Lose your changes?')) {
@@ -168,6 +171,17 @@ export const Designer: React.FunctionComponent = () => {
         type: 'PROP_DELETE',
         component: jsonTreeElement,
         propName: name,
+      });
+    },
+    [dispatch],
+  );
+
+  const handlePropNavigate = React.useCallback(
+    ({ jsonTreeElement, path }) => {
+      dispatch({
+        type: 'PROP_NAVIGATE',
+        component: jsonTreeElement,
+        propPath: path,
       });
     },
     [dispatch],
@@ -569,8 +583,11 @@ export const Designer: React.FunctionComponent = () => {
               <Knobs
                 onPropChange={handlePropChange}
                 onPropDelete={handlePropDelete}
+                onPropNavigate={handlePropNavigate}
                 info={selectedComponentInfo}
                 jsonTreeElement={selectedJSONTreeElement}
+                propPath={state.propPath}
+                getShorthandComponentInfo={getShorthandComponentInfo}
               />
             )}
           </div>

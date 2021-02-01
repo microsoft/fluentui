@@ -521,6 +521,8 @@ const resolveProps = (input, cb) => {
     if (_.isPlainObject(value)) {
       if ((value as any).$$typeof === 'Symbol(react.element)') {
         acc[key] = renderJSONTreeToJSXElement(value as any, cb);
+      } else if ((value as any).$$typeof === 'shorthand') {
+        acc[key] = renderJSONTreeShorthand(value as any, cb);
       } else {
         acc[key] = resolveProps(value, cb);
       }
@@ -551,6 +553,19 @@ export const renderJSONTreeToJSXElement = (
     key: modifiedTree.uuid,
     'data-builder-id': modifiedTree.uuid,
   });
+};
+
+export const renderJSONTreeShorthand = (
+  tree: JSONTreeElement,
+  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = x => x,
+) => {
+  if (tree === null) {
+    return null;
+  }
+
+  const { props = null } = tree;
+
+  return resolveProps(props, iterator);
 };
 
 const packageImportList: Record<string, CodeSandboxImport> = {
