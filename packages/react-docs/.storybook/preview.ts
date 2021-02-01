@@ -24,7 +24,7 @@ const teamsThemes = {
 };
 
 export const parameters = {
-  layout: 'centered',
+  // layout: 'centered',
 };
 
 export const globalTypes = {

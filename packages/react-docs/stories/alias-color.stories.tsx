@@ -13,8 +13,11 @@ const buttonStyle = ({ active }): React.CSSProperties => ({
   width: 100,
   fontWeight: !!active ? 'bold' : 'normal',
   border: !!active ? '2px solid white' : '2px solid transparent',
+  transform: !!active ? 'scale(1.1)' : 'scale(1)',
+  transition: 'transform 0.2s ease-in-out',
   borderRadius: 0,
   outline: 'none ',
+  zIndex: !!active ? 1 : 0,
 });
 
 export const Alias = (args, { globals: { theme } }) => {

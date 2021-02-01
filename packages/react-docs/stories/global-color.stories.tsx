@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as palette from '../src/themes/theme-base/global/global-color';
 import { ColorRamp } from '../src/components/ColorRamp';
 import { grey, brandColors, hyperlink, disabled, selected, black, white } from '@fluentui/react-theme';
 
@@ -49,6 +48,4 @@ export const Global = (props) => (
   </div>
 );
 
-Global.args = {
-  palette,
-};
+Global.args = {};
