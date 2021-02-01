@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Publishing public docsite output.",
+  "packageName": "@fluentui/public-docsite",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-02-01T12:04:24.362Z"
+}
