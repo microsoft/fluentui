@@ -88,7 +88,7 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
 
   const isChild = !isParent;
   const parentDisplayName = isParent ? null : dirname;
-  // "Field" for "FormField" since it is accessed as "Form.Field" in the API
+  // for example, "Menu" for "ToolbarMenu" since it is accessed as "Toolbar.Menu" in the API
   const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName!, '');
 
   // "ListItem.js" is a subcomponent is the "List" directory

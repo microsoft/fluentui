@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "createTheme: fix bug when theme is inverted.",
-  "packageName": "@fluentui/theme",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-14T22:31:39.978Z"
-}

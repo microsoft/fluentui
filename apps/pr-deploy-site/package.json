@@ -1,5 +1,5 @@
 {
-  "name": "@uifabric/pr-deploy-site",
+  "name": "@fluentui/pr-deploy-site",
   "version": "1.0.0",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",

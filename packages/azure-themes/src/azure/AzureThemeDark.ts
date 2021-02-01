@@ -89,10 +89,10 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 
   // extended
   controlAccent: DarkSemanticColors.controlOutlines.accent,
+  controlBackground: DarkSemanticColors.controlOutlines.background,
   controlOutline: DarkSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: DarkSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: DarkSemanticColors.controlOutlines.hover,
-  iconButtonBackground: StyleConstants.transparent,
   iconButtonFill: DarkSemanticColors.primaryButton.rest.background,
   iconButtonFillHovered: DarkSemanticColors.primaryButton.hover.background,
   labelText: DarkSemanticColors.text.label,
@@ -114,6 +114,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusWarningText: DarkSemanticColors.text.body,
   statusWarningIcon: DarkSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: DarkSemanticColors.teachingBubble.rest.background,
+  teachingBubbleBorder: DarkSemanticColors.teachingBubble.rest.border,
   teachingBubblePrimaryButtonHover: DarkSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: DarkSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: DarkSemanticColors.teachingBubble.rest.text,
@@ -121,6 +122,7 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '0px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'solid',
   listUnderline: 'none',
   linkBorderStyle: 'dashed',
@@ -148,6 +150,7 @@ export const AzureThemeDark: Theme = createTheme({
     white: DarkSemanticColors.background, // shimmer elements
   },
   semanticColors: darkExtendedSemanticColors,
+  isInverted: true,
 });
 
 AzureThemeDark.components = AzureStyleSettings(AzureThemeDark);

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix slider disabled and readonly cursor",
-  "packageName": "@fluentui/web-components",
-  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-05T21:44:17.903Z"
-}

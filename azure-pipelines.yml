@@ -32,6 +32,7 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
+          yarn prettier $(targetBranch) --check
         displayName: do syncpack and lint-files checks
 
       ## Danger.js checks for Fluent UI N*
@@ -98,7 +99,7 @@ jobs:
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
-          yarn workspace @uifabric/pr-deploy-site generate:site
+          yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
 
       - publish: $(Build.ArtifactStagingDirectory)

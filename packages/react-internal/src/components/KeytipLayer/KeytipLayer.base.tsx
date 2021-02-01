@@ -509,6 +509,8 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     this._keytipTree.updateNode(keytipProps, uniqueID);
     this._setKeytips();
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      // Ensure existing children are still shown.
+      this._delayedKeytipQueue = this._delayedKeytipQueue.concat(this._keytipTree.currentKeytip?.children || []);
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
     }
   };

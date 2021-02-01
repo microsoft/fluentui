@@ -8,8 +8,8 @@ import { IStyleFunctionOrObject } from '../../Utilities';
  */
 export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
   /**
-   * @deprecated Use styles instead.
    * Optional function to generate the class names for the divider for custom styling
+   * @deprecated Use `styles` instead.
    */
   // eslint-disable-next-line deprecation/deprecation
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -49,9 +49,9 @@ export interface IVerticalDividerStyles {
 }
 
 /**
+ * Deprecated class names, previously used to provide customizations.
  * {@docCategory VerticalDivider}
- * @deprecated
- * Deprecated class names, used to be used to provider customizations, use IVerticalDividerStyles instead
+ * @deprecated Use IVerticalDividerStyles instead.
  */
 export interface IVerticalDividerClassNames {
   /**

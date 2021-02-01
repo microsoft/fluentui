@@ -7,7 +7,7 @@ import { FocusZoneDirection } from '../../focusZone/types';
  * Provides arrow key navigation in bidirectional direction.
  * Adds role='grid'.
  */
-export const datepickerCalendarGridBehavior: Accessibility<DatepickerCalendarGridBehaviorProps> = props => ({
+export const datepickerCalendarGridBehavior: Accessibility<DatepickerCalendarGridBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'grid',

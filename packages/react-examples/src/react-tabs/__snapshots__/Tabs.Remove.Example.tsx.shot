@@ -90,7 +90,7 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -102,13 +102,16 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+              color: Highlight;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -174,24 +177,22 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&.is-selected {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
               -ms-high-contrast-adjust: none;
               background: Highlight;
               color: HighlightText;
               font-weight: 600;
+              forced-color-adjust: none;
             }
             &[data-is-overflowing='true'] {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){&:before {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
               background-color: Highlight;
             }
             &:hover::before {
               left: 0px;
               right: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: Highlight;
             }
         data-content="Foo"
         data-is-focusable={true}
@@ -293,7 +294,7 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -305,13 +306,15 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -377,11 +380,12 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&.is-selected {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
               -ms-high-contrast-adjust: none;
               background: Highlight;
               color: HighlightText;
               font-weight: 600;
+              forced-color-adjust: none;
             }
             &[data-is-overflowing='true'] {
               display: none;
@@ -486,7 +490,7 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -498,13 +502,15 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -570,11 +576,12 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&.is-selected {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
               -ms-high-contrast-adjust: none;
               background: Highlight;
               color: HighlightText;
               font-weight: 600;
+              forced-color-adjust: none;
             }
             &[data-is-overflowing='true'] {
               display: none;
@@ -679,7 +686,7 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -691,13 +698,15 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #0078d4;
               color: #ffffff;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -763,11 +772,12 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&.is-selected {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-selected {
               -ms-high-contrast-adjust: none;
               background: Highlight;
               color: HighlightText;
               font-weight: 600;
+              forced-color-adjust: none;
             }
             &[data-is-overflowing='true'] {
               display: none;
@@ -966,7 +976,7 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -982,7 +992,7 @@ exports[`Component Examples renders Tabs.Remove.Example.tsx correctly 1`] = `
             background-color: #f3f2f1;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
             color: Highlight;
           }
