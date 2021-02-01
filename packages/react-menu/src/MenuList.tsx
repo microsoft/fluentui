@@ -1,12 +1,22 @@
 import * as React from 'react';
+import { createAbilityHelpers, getAbilityHelpersAttribute, getOutline } from 'ability-helpers';
 import { MenuListProvider } from './menuListContext';
 
 export const MenuList = React.forwardRef((props: { children: React.ReactNode }) => {
+  const ah = createAbilityHelpers(window);
+  const ahOutline = getOutline(ah);
+  ahOutline.setup();
+
   const { children } = props;
-  const [index, setIndex] = React.useState(0);
   const setOpen = () => null;
+  const setIndex = () => null;
+
   return (
-    <MenuListProvider value={{ triggerRef: null, setIndex, setOpen, currentIndex: index }}>{children}</MenuListProvider>
+    <MenuListProvider value={{ triggerRef: null, setIndex, setOpen, currentIndex: 0 }}>
+      <div role="menu" {...getAbilityHelpersAttribute({ root: {} })}>
+        {children}
+      </div>
+    </MenuListProvider>
   );
 });
 

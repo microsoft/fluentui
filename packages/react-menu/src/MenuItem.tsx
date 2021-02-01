@@ -1,16 +1,11 @@
 import * as React from 'react';
+import { getAbilityHelpersAttribute, Types } from 'ability-helpers';
 import { useMenuListContext } from './menuListContext';
 
 export const MenuItem = (props: { children: React.ReactNode; index: number }) => {
-  const { children, index } = props;
+  const { children } = props;
   const itemRef = React.useRef<HTMLDivElement>(null);
   const { currentIndex, setIndex } = useMenuListContext();
-
-  React.useEffect(() => {
-    if (index === currentIndex) {
-      itemRef.current?.focus();
-    }
-  }, [index, currentIndex]);
 
   const onKeyDown = (e: React.KeyboardEvent) => {
     switch (e.key) {
@@ -30,13 +25,7 @@ export const MenuItem = (props: { children: React.ReactNode; index: number }) =>
       role="menuitem"
       data-is-focusable="true"
       tabIndex={0}
-      style={{
-        cursor: 'pointer',
-        width: 80,
-        ...(currentIndex === index && {
-          background: 'grey',
-        }),
-      }}
+      {...getAbilityHelpersAttribute({ groupper: { isLimited: Types.GroupperFocusLimits.LimitedTrapFocus } })}
     >
       {children}
     </div>
