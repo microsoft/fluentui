@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Fri, 29 Jan 2021 12:21:00 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.45)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.44..@fluentui/react-cards_v1.0.0-beta.45)
+
+### Changes
+
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.44)
 

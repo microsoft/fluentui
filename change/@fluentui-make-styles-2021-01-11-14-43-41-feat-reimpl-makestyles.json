@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add ax() function to merge classes",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-11T13:43:41.940Z"
-}
