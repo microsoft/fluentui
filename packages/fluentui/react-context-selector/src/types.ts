@@ -5,15 +5,19 @@ export type Context<Value> = React.Context<Value> & {
   Consumer: never;
 };
 
-export type CreateContextOptions = {
-  strict?: boolean;
-};
-
-export type ContextListener<Value> = (value: Value) => void;
-
 export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedValue;
 
+export type ContextVersion = number;
+
 export type ContextValue<Value> = {
-  subscribe: (listener: ContextListener<Value>) => any;
-  value: Value;
+  STRUCT: {
+    /** TODO */
+    listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
+
+    /** TODO */
+    value: React.MutableRefObject<Value>;
+
+    /** TODO */
+    version: React.MutableRefObject<ContextVersion>;
+  };
 };
