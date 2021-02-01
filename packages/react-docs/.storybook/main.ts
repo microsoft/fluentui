@@ -23,6 +23,10 @@ module.exports = {
 
   // your Storybook configuration
   refs: {
+    paul: {
+      title: 'Paul Gildea',
+      url: 'https://wonderful-cliff-08b0cde1e.azurestaticapps.net',
+    },
     miro: {
       title: 'Miroslav Stastny',
       url: 'https://60088dd0e49a64002183357c-ncilogmlgq.chromatic.com',

@@ -1,10 +1,16 @@
-import { createNeutralColorTokens, sharedColorTokens, createShadowLevelTokens } from '../../utils/light/index';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global/index';
+import {
+  createNeutralColorTokens,
+  sharedColorTokens,
+  createShadowLevelTokens,
+  transparentColorTokens,
+  ghostColorTokens,
+} from '../../utils/light';
+import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global';
 import { Theme } from '../../types';
 
 const common = {
-  sharedColors,
-  sharedColorTokens,
+  sharedColors, // global.palette
+  sharedColorTokens, // alias.colors.darkRed
   fontFamilies,
   fontWeights,
   fontSizes,
@@ -16,6 +22,9 @@ const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams);
 export const teamsLightTheme: Theme = {
   brandColors: brandColors.teams,
   neutralColorTokens: teamsNeutralColorTokens,
+  // @ts-ignore
+  ghostColorTokens,
+  transparentColorTokens,
   shadowLevels: createShadowLevelTokens(
     teamsNeutralColorTokens.neutralShadowAmbient,
     teamsNeutralColorTokens.neutralShadowKey,

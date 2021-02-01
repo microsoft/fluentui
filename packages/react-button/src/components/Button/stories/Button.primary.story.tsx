@@ -5,11 +5,6 @@ import { ButtonProps } from '../Button.types';
 export default {
   title: 'Fluent UI Core/Button',
   component: Button,
-  argTypes: {
-    backgroundColor: {
-      control: 'color',
-    },
-  },
 };
 
 export const Primary = (props: ButtonProps) => <Button {...props} />;

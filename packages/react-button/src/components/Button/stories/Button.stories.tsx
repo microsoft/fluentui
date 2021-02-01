@@ -10,4 +10,5 @@ export * from './Button.default.story';
 export * from './Button.primary.story';
 export * from './Button.text.story';
 export * from './Button.size.story';
+export * from './Button.subtle.story';
 export * from './Button.style-overrides.story';

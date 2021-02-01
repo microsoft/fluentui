@@ -1,5 +1,5 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../../utils/highContrast/index';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global/index';
+import { createNeutralColorTokens, sharedColorTokens } from '../../utils/highContrast';
+import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global';
 import { Theme } from '../../types';
 const common = {
   sharedColors,
