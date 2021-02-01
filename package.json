@@ -166,7 +166,6 @@
         ],
         "dependencies": [
           "@fluentui/dom-utilities",
-          "@fluentui/date-time-utilities",
           "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-compose",

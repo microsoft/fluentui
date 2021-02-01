@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ImageProps } from './Image.types';
-import { makeClasses } from '@fluentui/react-compose/lib/next/index';
+import { makeClasses } from '@fluentui/react-utils';
 import { useInlineTokens } from '@fluentui/react-theme-provider';
 import * as classes from './Image.scss';
 import { useImage } from './useImage';

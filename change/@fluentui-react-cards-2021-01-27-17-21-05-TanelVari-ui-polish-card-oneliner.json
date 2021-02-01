@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Renamed prop 'quiet' to 'ghost' for react-cards Card types",
-  "packageName": "@fluentui/react-cards",
-  "email": "tavari@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T15:21:05.491Z"
-}

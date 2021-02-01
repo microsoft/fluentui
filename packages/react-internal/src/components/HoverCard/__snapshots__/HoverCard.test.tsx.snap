@@ -91,6 +91,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           Object {
             "filter": "opacity(0)",
             "opacity": 0,
+            "pointerEvents": "none",
           }
         }
         tabIndex={-1}
@@ -257,6 +258,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           Object {
             "filter": "opacity(0)",
             "opacity": 0,
+            "pointerEvents": "none",
           }
         }
         tabIndex={-1}

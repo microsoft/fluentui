@@ -31,7 +31,7 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
     styleElement,
 
     id: `d${lastIndex++}`,
-    insertDefinitions: function insertStyles(lookupTable, definitions, rtl): string {
+    insertDefinitions: function insertStyles(definitions, rtl): string {
       let classes = '';
 
       for (const propName in definitions) {
@@ -44,7 +44,7 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         const ruleClassName = rtl ? (rtlCSS ? RTL_PREFIX + className : className) : className;
 
         // Should be done always to return classes
-        classes += ' ' + ruleClassName; // adds useless empty string on beginning
+        classes += ruleClassName + ' ';
 
         if (renderer.insertionCache[ruleClassName]) {
           continue;
@@ -54,13 +54,12 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         const ruleCSS = rtl ? rtlCSS || css : css;
 
         renderer.insertionCache[ruleClassName] = true;
-        lookupTable[ruleClassName] = [propName, definition];
 
         (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
         renderer.index++;
       }
 
-      return classes;
+      return classes.slice(0, -1);
     },
   };
 

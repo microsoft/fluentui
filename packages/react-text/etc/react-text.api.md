@@ -4,17 +4,17 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ComponentProps } from '@fluentui/react-compose';
+import { BaseSlots } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utils';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/theme';
-import { SlotProps } from '@fluentui/react-compose';
+import { SlotProps } from '@fluentui/react-utils';
 
 // @public
 export const renderText: (state: TextProps) => JSX.Element;
 
 // @public (undocumented)
-export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttributes<HTMLElement>>;
+export const Text: React.ForwardRefExoticComponent<Pick<TextProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {

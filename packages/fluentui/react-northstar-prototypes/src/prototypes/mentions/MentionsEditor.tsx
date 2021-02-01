@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/accessibility';
 
 import { atMentionItems, AtMentionItem } from './dataMocks';
 import { insertTextAtCursorPosition } from './utils';

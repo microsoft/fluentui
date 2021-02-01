@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
