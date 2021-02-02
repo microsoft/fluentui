@@ -21,3 +21,16 @@ export type ContextValue<Value> = {
     version: React.MutableRefObject<ContextVersion>;
   };
 };
+
+export type ContextValues<Value> = {
+  STRUCT: {
+    /** TODO */
+    listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
+
+    /** TODO */
+    value: React.MutableRefObject<Value>;
+
+    /** TODO */
+    version: React.MutableRefObject<ContextVersion>;
+  };
+};

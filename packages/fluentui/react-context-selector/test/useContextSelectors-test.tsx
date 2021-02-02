@@ -85,9 +85,9 @@ describe('useContextSelectors', () => {
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.value).toBe('foo');
-    // expect(onUpdate).toBeCalledTimes(1);
+    expect(onUpdate).toBeCalledTimes(1);
 
-    // Match => update, (v.index: 1, p.index: 1)
+    // // Match => update, (v.index: 1, p.index: 1)
     act(() => {
       document.querySelector<HTMLElement>('.set-index')?.setAttribute('data-index', '1');
       document.querySelector<HTMLElement>('.change-value')?.setAttribute('data-value', 'foo');
@@ -96,9 +96,9 @@ describe('useContextSelectors', () => {
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.value).toBe('foo');
-    // expect(onUpdate).toBeCalledTimes(2);
+    expect(onUpdate).toBeCalledTimes(2);
 
-    // Match previous => no update, (v.index: 1, p.index: 1)
+    // // Match previous => no update, (v.index: 1, p.index: 1)
     act(() => {
       document.querySelector<HTMLElement>('.set-index')?.setAttribute('data-index', '1');
       document.querySelector<HTMLElement>('.change-value')?.setAttribute('data-value', 'foo');
@@ -107,7 +107,7 @@ describe('useContextSelectors', () => {
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.value).toBe('foo');
-    // expect(onUpdate).toBeCalledTimes(2);
+    expect(onUpdate).toBeCalledTimes(2);
 
     // Match => update, (v.value: 'bar')
     act(() => {
@@ -117,7 +117,7 @@ describe('useContextSelectors', () => {
       document.querySelector<HTMLElement>('.change-value')?.click();
     });
     expect(document.querySelector<HTMLElement>('.test-component')?.dataset.value).toBe('bar');
-    // expect(onUpdate).toBeCalledTimes(3);
+    expect(onUpdate).toBeCalledTimes(3);
   });
 
   it('updates are propogated inside React.memo()', () => {

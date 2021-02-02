@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
+import { Context, ContextSelector, ContextVersion, ContextValues } from './types';
 import { useIsomorphicLayoutEffect } from './utils';
 
 /**
@@ -16,7 +16,7 @@ export const useContextSelectors = <
   context: Context<Value>,
   selectors: Selectors,
 ): Record<Properties, SelectedValue> => {
-  const contextValue = React.useContext((context as unknown) as Context<ContextValue<Value>>);
+  const contextValue = React.useContext((context as unknown) as Context<ContextValues<Value>>);
 
   const {
     STRUCT: {
@@ -44,7 +44,7 @@ export const useContextSelectors = <
 
       if (payload[0] <= version) {
         const stateHasNotChanged = Object.keys(selectors).every((key: Properties) =>
-          Object.is(prevState[0][key] as SelectedValue, selected[key]),
+          Object.is(prevState[1][key] as SelectedValue, selected[key]),
         );
 
         if (stateHasNotChanged) {
@@ -55,11 +55,11 @@ export const useContextSelectors = <
       }
 
       try {
-        const statePayloadHasNotChanged = Object.keys(prevState[0]).every((key: Properties) => {
-          return Object.is(prevState[0][key] as SelectedValue, payload[1][key]);
+        const statePayloadHasChanged = Object.keys(prevState[0]).some((key: Properties) => {
+          return !Object.is(prevState[0][key] as SelectedValue, payload[1][key]);
         });
 
-        if (statePayloadHasNotChanged) {
+        if (!statePayloadHasChanged) {
           return prevState;
         }
 
@@ -85,11 +85,13 @@ export const useContextSelectors = <
     [value, selected] as const,
   );
 
-  if (!Object.is(state[1], selected)) {
-    // schedule re-render
-    // this is safe because it's self contained
-    dispatch(undefined);
-  }
+  Object.keys(selectors).forEach((key: Properties) => {
+    if (!Object.is(state[1][key], selected[key])) {
+      // schedule re-render
+      // this is safe because it's self contained
+      dispatch(undefined);
+    }
+  });
 
   useIsomorphicLayoutEffect(() => {
     listeners.push(dispatch);
