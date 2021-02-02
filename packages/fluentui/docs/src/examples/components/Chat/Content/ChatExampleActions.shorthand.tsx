@@ -35,7 +35,9 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg" />,
-    message: <Chat.Message actionMenu={actionMenu} content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    message: (
+      <Chat.Message actionMenu={actionMenu} content="Hi" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />
+    ),
     key: 'message-3',
   },
 ];
