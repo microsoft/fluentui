@@ -156,9 +156,10 @@
 
     <script type="text/javascript">
       // @ts-check
-      var isLocal = url.indexOf('localhost') !== -1 || url.indexOf('127.0.0.1') !== -1;
+      var hostname = location.hostname;
+      var isLocal = ['localhost', '[::]', '127.0.0.1'].indexOf(hostname) !== -1;
       var isDev = isLocal || getParameterByName('dev') === '1' || !!getParameterByName('strict');
-      var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
+      var isProduction = hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
       var devhost = getParameterByName('devhost');
       var entryPointFilename = 'fabric-sitev5';
       var appPath = '';

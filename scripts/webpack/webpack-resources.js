@@ -238,6 +238,7 @@ module.exports = {
     const config = merge(
       {
         devServer: {
+          // As of Webpack 5, this will open the browser at 127.0.0.1 by default
           host: 'localhost',
           port: 4322,
           static: outputPath,
