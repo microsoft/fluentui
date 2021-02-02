@@ -2101,7 +2101,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       id="checkbox-37"
       onBlur={[Function]}
@@ -2261,7 +2261,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       id="checkbox-38"
       onBlur={[Function]}
