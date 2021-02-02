@@ -19,9 +19,12 @@ for (const component of rootComponents) {
   rootComponentsExposes[`./lib/${component}`] = `@fluentui/react/src/${component}`;
 }
 
+// TODO: fork-ts-checker-webpack-plugin needs to be taught about the resolve alias -> pathmapping in order for the type checking to work
+process.env.SKIP_TYPECHECK = true;
+
 const myConfig = {
   output: {},
-  entry: {},
+  entry: './empty-entrypoint.js',
   mode: 'development',
   devtool: 'cheap-module-source-map',
   optimization: {
@@ -48,7 +51,7 @@ const myConfig = {
   },
   devServer: {
     port: 2345,
-    contentBase: 'dist',
+    static: './dist',
   },
 };
 
