@@ -162,9 +162,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (draggedIndex > -1) {
       indicesToRemove = focusedItemIndices.includes(draggedIndex) ? [...focusedItemIndices] : [draggedIndex];
     }
-    if (selectedItemsListProps.dropItemsAt) {
-      selectedItemsListProps.dropItemsAt(insertIndex, newItems, indicesToRemove);
-    }
+    selectedItemsListDropItemsAt?.(insertIndex, newItems, indicesToRemove);
     dropItemsAt(insertIndex, newItems, indicesToRemove);
     unselectAll();
     insertIndex = -1;
