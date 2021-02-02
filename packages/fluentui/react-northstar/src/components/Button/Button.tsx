@@ -160,7 +160,6 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         as,
         active,
         disabled,
-        loading,
         disabledFocusable,
       }),
       actionHandlers: {

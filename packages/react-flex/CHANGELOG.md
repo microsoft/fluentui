@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.2)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.2-15..@fluentui/react-flex_v0.2.2)
+
+### Patches
+
+- add prerelease in disallowed change type for version packages and fix current versioning. ([PR #16696](https://github.com/microsoft/fluentui/pull/16696) by xgao@microsoft.com)
 
 ## [0.2.2-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.2-15)
 

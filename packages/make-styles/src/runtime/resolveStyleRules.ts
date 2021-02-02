@@ -1,4 +1,3 @@
-import hashString from '@emotion/hash';
 import { convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
@@ -6,6 +5,7 @@ import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
 import { compileKeyframeRule } from './compileKeyframeRule';
+import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
@@ -46,7 +46,7 @@ export function resolveStyleRules(
         property,
         support,
         value,
-        unstable_cssPriority
+        unstable_cssPriority,
       });
 
       const rtl = convertProperty(property, value);
@@ -60,7 +60,7 @@ export function resolveStyleRules(
           property: rtl.key,
           support,
           value: rtl.value,
-          unstable_cssPriority
+          unstable_cssPriority,
         });
 
         // There is no sense to store RTL className as it's "r" + regular className

@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 import { Accessibility, AccessibilityDefinition } from '../../types';
 
 export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
@@ -7,8 +7,8 @@ export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
       root: {
         role: props.as === 'button' ? undefined : 'button',
         tabIndex: props.as === 'button' || props.disabled ? undefined : 0,
-        disabled: props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
-        'aria-disabled': props.disabledFocusable || props.loading,
+        disabled: props.as === 'button' ? props.disabled : undefined,
+        'aria-disabled': props.disabledFocusable,
       },
     },
 
@@ -24,11 +24,6 @@ export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
     },
   };
 
-  if (process.env.NODE_ENV !== 'production' && props.loading) {
-    // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'LoadingButton';
-  }
-
   return definition;
 };
 
@@ -38,5 +33,4 @@ export type ButtonBehaviorProps = {
   /** A button can show it is currently unable to be interacted with. */
   disabled?: boolean;
   disabledFocusable?: boolean;
-  loading?: boolean;
 };

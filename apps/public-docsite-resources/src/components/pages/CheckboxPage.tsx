@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { DemoPage } from '../DemoPage';
-import { CheckboxPageProps } from '@fluentui/react-examples/lib/react-checkbox/Checkbox/Checkbox.doc';
+import { CheckboxPageProps } from '@fluentui/react-examples/lib/react/Checkbox/Checkbox.doc';
 
 export const CheckboxPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

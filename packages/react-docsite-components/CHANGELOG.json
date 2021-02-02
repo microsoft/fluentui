@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.0.0-beta.46",
+      "version": "8.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "MarkdownLink: Adding underline prop and setting it to true by default.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "68e4055b14fad630bd2ba015103920b8dfbb649e",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/react-docsite-components_v8.0.0-beta.44",
       "version": "8.0.0-beta.44",

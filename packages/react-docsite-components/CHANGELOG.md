@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.46)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.44..@fluentui/react-docsite-components_v8.0.0-beta.46)
+
+### Changes
+
+- MarkdownLink: Adding underline prop and setting it to true by default. ([PR #16625](https://github.com/microsoft/fluentui/pull/16625) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.44)
 
