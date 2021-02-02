@@ -14,7 +14,7 @@ describe('makeStyles', () => {
     expect(computeClasses({}, { renderer, tokens: {} })).toBe('__1fslksb fe3e8s90 f1euv43f');
   });
 
-  fit('can make RTL keyframes', () => {
+  it('handles RTL for keyframes', () => {
     const computeClasses = makeStyles([
       [
         null,

@@ -41,11 +41,10 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         const className = definition[0];
         const rtlCSS = definition[2];
 
-        // Should be done always to return classes
-        const ruleClassName = className && (rtl ? (rtlCSS ? RTL_PREFIX + className : className) : className);
+        const ruleClassName = className && (rtl && rtlCSS ? RTL_PREFIX + className : className);
 
-        // Should be done always to return classes
         if (ruleClassName) {
+          // Should be done always to return classes even if they have been already inserted to DOM
           classes += ruleClassName + ' ';
         }
 

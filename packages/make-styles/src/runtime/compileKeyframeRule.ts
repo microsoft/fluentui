@@ -36,7 +36,7 @@ export function compileKeyframeRule(frames: MakeStyles): string {
   return css;
 }
 
-export function compileKeyframes(animationName: string, framesCSS: string): string {
+export function compileKeyframesCSS(animationName: string, framesCSS: string): string {
   const cssRule = `@keyframes ${animationName} {${framesCSS}}`;
   return serialize(compile(cssRule), middleware([prefixer, stringify]));
 }
