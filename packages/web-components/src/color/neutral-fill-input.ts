@@ -24,22 +24,44 @@ function neutralFillInputAlgorithm(indexResolver: DesignSystemResolver<number>):
   };
 }
 
+/**
+ * @internal
+ */
 export const neutralFillInputRest: SwatchRecipe = colorRecipeFactory(
   neutralFillInputAlgorithm(neutralFillInputRestDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillInputHover: SwatchRecipe = colorRecipeFactory(
   neutralFillInputAlgorithm(neutralFillInputHoverDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillInputActive: SwatchRecipe = colorRecipeFactory(
   neutralFillInputAlgorithm(neutralFillInputActiveDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillInputFocus: SwatchRecipe = colorRecipeFactory(
   neutralFillInputAlgorithm(neutralFillInputFocusDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillInputSelected: SwatchRecipe = colorRecipeFactory(
   neutralFillInputAlgorithm(neutralFillInputSelectedDelta),
 );
 
+/**
+ * @internal
+ */
 export const neutralFillInput: ColorRecipe<FillSwatchFamily> = colorRecipeFactory(
   (designSystem: DesignSystem): FillSwatchFamily => {
     return {

@@ -12,4 +12,7 @@ const neutralDividerAlgorithm: SwatchResolver = (designSystem: DesignSystem): Sw
   return getSwatch(index, palette);
 };
 
+/**
+ * @internal
+ */
 export const neutralDividerRest: SwatchRecipe = colorRecipeFactory<Swatch>(neutralDividerAlgorithm);

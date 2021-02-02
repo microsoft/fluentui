@@ -84,47 +84,91 @@ function accentFillAlgorithm(contrastTarget: number): DesignSystemResolver<FillS
   };
 }
 
+/**
+ * @internal
+ */
 export const accentFill: SwatchFamilyResolver<FillSwatchFamily> = colorRecipeFactory(accentFillAlgorithm(4.5));
 
+/**
+ * @internal
+ */
 export const accentFillLarge: SwatchFamilyResolver<FillSwatchFamily> = colorRecipeFactory(accentFillAlgorithm(3));
 
+/**
+ * @internal
+ */
 export const accentFillRest: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.rest,
   accentFill,
 );
+
+/**
+ * @internal
+ */
 export const accentFillHover: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.hover,
   accentFill,
 );
+
+/**
+ * @internal
+ */
 export const accentFillActive: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.active,
   accentFill,
 );
+
+/**
+ * @internal
+ */
 export const accentFillFocus: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.focus,
   accentFill,
 );
+
+/**
+ * @internal
+ */
 export const accentFillSelected: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.selected,
   accentFill,
 );
 
+/**
+ * @internal
+ */
 export const accentFillLargeRest: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.rest,
   accentFillLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentFillLargeHover: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.hover,
   accentFillLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentFillLargeActive: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.active,
   accentFillLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentFillLargeFocus: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.focus,
   accentFillLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentFillLargeSelected: SwatchRecipe = swatchFamilyToSwatchRecipeFactory<FillSwatchFamily>(
   SwatchFamilyType.selected,
   accentFillLarge,

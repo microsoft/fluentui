@@ -30,11 +30,13 @@ function accentForegroundCutFactory(targetContrast: number): SwatchRecipe {
 }
 
 /**
+ * @internal
  * Cut text for normal sized text, less than 18pt normal weight
  */
 export const accentForegroundCut: SwatchRecipe = accentForegroundCutFactory(4.5);
 
 /**
+ * @internal
  * Cut text for large sized text, greater than 18pt or 16pt and bold
  */
 export const accentForegroundCutLarge: SwatchRecipe = accentForegroundCutFactory(3);

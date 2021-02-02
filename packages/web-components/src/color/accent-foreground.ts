@@ -79,38 +79,75 @@ function accentForegroundAlgorithm(contrastTarget: number): DesignSystemResolver
   };
 }
 
+/**
+ * @internal
+ */
 export const accentForeground: SwatchFamilyResolver = colorRecipeFactory(accentForegroundAlgorithm(4.5));
+
+/**
+ * @internal
+ */
 export const accentForegroundLarge: SwatchFamilyResolver = colorRecipeFactory(accentForegroundAlgorithm(3));
 
+/**
+ * @internal
+ */
 export const accentForegroundRest: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.rest,
   accentForeground,
 );
+
+/**
+ * @internal
+ */
 export const accentForegroundHover: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.hover,
   accentForeground,
 );
+
+/**
+ * @internal
+ */
 export const accentForegroundActive: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.active,
   accentForeground,
 );
+
+/**
+ * @internal
+ */
 export const accentForegroundFocus: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.focus,
   accentForeground,
 );
 
+/**
+ * @internal
+ */
 export const accentForegroundLargeRest: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.rest,
   accentForegroundLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentForegroundLargeHover: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.hover,
   accentForegroundLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentForegroundLargeActive: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.active,
   accentForegroundLarge,
 );
+
+/**
+ * @internal
+ */
 export const accentForegroundLargeFocus: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.focus,
   accentForegroundLarge,

@@ -68,6 +68,7 @@ export type SwatchFamilyResolver<T extends SwatchFamily = SwatchFamily> = Design
 export type DesignSystemResolverFromSwatchResolver<T> = (resolver: SwatchResolver) => DesignSystemResolver<T>;
 
 /**
+ * @internal
  * The states that a swatch can have
  */
 export enum SwatchFamilyType {
@@ -113,6 +114,7 @@ export function colorRecipeFactory<T>(recipe: DesignSystemResolver<T>): ColorRec
 export type SwatchRecipe = ColorRecipe<Swatch>;
 
 /**
+ * @internal
  * Helper function to transform a SwatchFamilyResolver into simple ColorRecipe for simple use
  * use in stylesheets.
  */
@@ -168,6 +170,7 @@ export function parseColorString(color: string): ColorRGBA64 {
 }
 
 /**
+ * @internal
  * Determines if a string value represents a color
  * Supports #RRGGBB and rgb(r, g, b) formats
  */
@@ -176,6 +179,7 @@ export function isValidColor(color: string): boolean {
 }
 
 /**
+ * @internal
  * Determines if a color string matches another color.
  * Supports #RRGGBB and rgb(r, g, b) formats
  */
@@ -184,6 +188,7 @@ export function colorMatches(a: string, b: string): boolean {
 }
 
 /**
+ * @internal
  * Returns the contrast value between two color strings.
  * Supports #RRGGBB and rgb(r, g, b) formats.
  */
@@ -195,6 +200,7 @@ export const contrast: (a: string, b: string) => number = memoize(
 );
 
 /**
+ * @internal
  * Returns the relative luminance of a color. If the value is not a color, -1 will be returned
  * Supports #RRGGBB and rgb(r, g, b) formats
  */
@@ -202,6 +208,9 @@ export function luminance(color: string): number {
   return rgbToRelativeLuminance(parseColorString(color));
 }
 
+/**
+ * @internal
+ */
 export function designSystemResolverMax(...args: Array<DesignSystemResolver<number>>): DesignSystemResolver<number> {
   return (designSystem: DesignSystem): number =>
     Math.max.apply(
@@ -210,6 +219,9 @@ export function designSystemResolverMax(...args: Array<DesignSystemResolver<numb
     );
 }
 
+/**
+ * @internal
+ */
 export const clamp: (value: number, min: number, max: number) => number = (
   value: number,
   min: number,

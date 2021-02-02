@@ -31,11 +31,13 @@ function neutralForegroundToggleFactory(targetContrast: number): SwatchRecipe {
 }
 
 /**
+ * @internal
  * Toggle text for normal sized text, less than 18pt normal weight
  */
 export const neutralForegroundToggle: SwatchRecipe = neutralForegroundToggleFactory(4.5);
 
 /**
+ * @internal
  * Toggle text for large sized text, greater than 18pt or 16pt and bold
  */
 export const neutralForegroundToggleLarge: SwatchRecipe = neutralForegroundToggleFactory(3);

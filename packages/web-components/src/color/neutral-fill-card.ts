@@ -8,8 +8,19 @@ const neutralCardFillAlgorithm: SwatchResolver = (designSystem: DesignSystem): S
   return getSwatch(index - (index < offset ? offset * -1 : offset), neutralPalette(designSystem));
 };
 
+/**
+ * @internal
+ */
 export function neutralFillCard(designSystem: DesignSystem): Swatch;
+
+/**
+ * @internal
+ */
 export function neutralFillCard(backgroundResolver: SwatchResolver): SwatchResolver;
+
+/**
+ * @internal
+ */
 export function neutralFillCard(arg: any): any {
   if (typeof arg === 'function') {
     return (designSystem: DesignSystem): Swatch => {

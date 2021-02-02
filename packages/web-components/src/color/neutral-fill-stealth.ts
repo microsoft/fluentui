@@ -37,22 +37,44 @@ function neutralFillStealthAlgorithm(deltaResolver: DesignSystemResolver<number>
   };
 }
 
+/**
+ * @internal
+ */
 export const neutralFillStealthRest: ColorRecipe<Swatch> = colorRecipeFactory(
   neutralFillStealthAlgorithm(neutralFillStealthRestDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillStealthHover: ColorRecipe<Swatch> = colorRecipeFactory(
   neutralFillStealthAlgorithm(neutralFillStealthHoverDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillStealthActive: ColorRecipe<Swatch> = colorRecipeFactory(
   neutralFillStealthAlgorithm(neutralFillStealthActiveDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillStealthFocus: ColorRecipe<Swatch> = colorRecipeFactory(
   neutralFillStealthAlgorithm(neutralFillStealthFocusDelta),
 );
+
+/**
+ * @internal
+ */
 export const neutralFillStealthSelected: ColorRecipe<Swatch> = colorRecipeFactory(
   neutralFillStealthAlgorithm(neutralFillStealthSelectedDelta),
 );
 
+/**
+ * @internal
+ */
 export const neutralFillStealth: ColorRecipe<FillSwatchFamily> = colorRecipeFactory((designSystem: DesignSystem) => {
   return {
     rest: neutralFillStealthRest(designSystem),

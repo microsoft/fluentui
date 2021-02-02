@@ -26,6 +26,9 @@ const neutralFocusAlgorithm: SwatchResolver = swatchByContrast(backgroundColor)(
   neutralFocusIndexResolver,
 )(neutralFocusDirectionResolver)(neutralFocusContrastCondition);
 
+/**
+ * @internal
+ */
 export const neutralFocus: ColorRecipe<Swatch> = colorRecipeFactory(neutralFocusAlgorithm);
 
 function neutralFocusInnerAccentIndexResolver(
@@ -44,6 +47,9 @@ function neutralFocusInnerAccentDirectionResolver(
   return isDarkMode(designSystem) ? 1 : -1;
 }
 
+/**
+ * @internal
+ */
 export function neutralFocusInnerAccent(accentFillColor: DesignSystemResolver<string>): DesignSystemResolver<string> {
   return swatchByContrast(neutralFocus)(accentPalette)(neutralFocusInnerAccentIndexResolver(accentFillColor))(
     neutralFocusInnerAccentDirectionResolver,

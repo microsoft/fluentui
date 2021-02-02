@@ -46,6 +46,8 @@ export function palette(paletteType: PaletteType): DesignSystemResolver<Palette>
 /**
  * A function to find the index of a swatch in a specified palette. If the color is found,
  * otherwise it will return -1
+ *
+ * @internal
  */
 export function findSwatchIndex(
   paletteResolver: Palette | DesignSystemResolver<Palette>,
@@ -71,6 +73,8 @@ export function findSwatchIndex(
 /**
  * Returns the closest swatch in a palette to an input swatch.
  * If the input swatch cannot be converted to a color, 0 will be returned
+ *
+ * @internal
  */
 export function findClosestSwatchIndex(
   paletteResolver: Palette | DesignSystemResolver<Palette>,
@@ -122,6 +126,8 @@ export function findClosestSwatchIndex(
 }
 
 /**
+ * @public
+ * @privateRemarks
  * Determines if the design-system should be considered in "dark mode".
  * We're in dark mode if we have more contrast between #000000 and our background
  * color than #FFFFFF and our background color. That threshold can be expressed as a relative luminance
@@ -133,6 +139,8 @@ export function isDarkMode(designSystem: DesignSystem): boolean {
 }
 
 /**
+ * @internal
+ * @deprecated
  * Determines if the design-system should be considered in "light mode".
  */
 export function isLightMode(designSystem: DesignSystem): boolean {
@@ -140,6 +148,7 @@ export function isLightMode(designSystem: DesignSystem): boolean {
 }
 
 /**
+ * @internal
  * Safely retrieves an index of a palette. The index is clamped to valid
  * array indexes so that a swatch is always returned
  */
@@ -291,6 +300,7 @@ export function swatchByContrast(referenceColor: string | SwatchResolver) {
 }
 
 /**
+ * @internal
  * Resolves the index that the contrast search algorithm should start at
  */
 export function referenceColorInitialIndexResolver(
@@ -301,10 +311,16 @@ export function referenceColorInitialIndexResolver(
   return findClosestSwatchIndex(sourcePalette, referenceColor)(designSystem);
 }
 
+/**
+ * @internal
+ */
 export function findClosestBackgroundIndex(designSystem: DesignSystem): number {
   return findClosestSwatchIndex(neutralPalette, backgroundColor(designSystem))(designSystem);
 }
 
+/**
+ * @internal
+ */
 export function minContrastTargetFactory(targetContrast: number): (instanceContrast: number) => boolean {
   return (instanceContrast: number): boolean => instanceContrast >= targetContrast;
 }

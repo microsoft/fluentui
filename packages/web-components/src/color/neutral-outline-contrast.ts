@@ -18,6 +18,9 @@ import {
 
 import { accessibleAlgorithm } from './accessible-recipe';
 
+/**
+ * @internal
+ */
 export const neutralOutlineContrastAlgorithm: SwatchFamilyResolver = colorRecipeFactory(
   accessibleAlgorithm(
     neutralPalette,
@@ -29,19 +32,38 @@ export const neutralOutlineContrastAlgorithm: SwatchFamilyResolver = colorRecipe
   ),
 );
 
+/**
+ * @internal
+ */
 export const neutralOutlineContrast: ColorRecipe<SwatchFamily> = colorRecipeFactory(neutralOutlineContrastAlgorithm);
+
+/**
+ * @internal
+ */
 export const neutralOutlineContrastRest: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.rest,
   neutralOutlineContrast,
 );
+
+/**
+ * @internal
+ */
 export const neutralOutlineContrastHover: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.hover,
   neutralOutlineContrast,
 );
+
+/**
+ * @internal
+ */
 export const neutralOutlineContrastActive: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.active,
   neutralOutlineContrast,
 );
+
+/**
+ * @internal
+ */
 export const neutralOutlineContrastFocus: SwatchRecipe = swatchFamilyToSwatchRecipeFactory(
   SwatchFamilyType.focus,
   neutralOutlineContrast,

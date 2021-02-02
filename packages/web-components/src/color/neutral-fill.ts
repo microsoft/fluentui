@@ -35,12 +35,34 @@ function neutralFillAlgorithm(deltaResolver: DesignSystemResolver<number>): Desi
   };
 }
 
+/**
+ * @internal
+ */
 export const neutralFillRest: SwatchRecipe = colorRecipeFactory(neutralFillAlgorithm(neutralFillRestDelta));
+
+/**
+ * @internal
+ */
 export const neutralFillHover: SwatchRecipe = colorRecipeFactory(neutralFillAlgorithm(neutralFillHoverDelta));
+
+/**
+ * @internal
+ */
 export const neutralFillActive: SwatchRecipe = colorRecipeFactory(neutralFillAlgorithm(neutralFillActiveDelta));
+
+/**
+ * @internal
+ */
 export const neutralFillFocus: SwatchRecipe = colorRecipeFactory(neutralFillAlgorithm(neutralFillFocusDelta));
+
+/**
+ * @internal
+ */
 export const neutralFillSelected: SwatchRecipe = colorRecipeFactory(neutralFillAlgorithm(neutralFillSelectedDelta));
 
+/**
+ * @internal
+ */
 export const neutralFill: ColorRecipe<FillSwatchFamily> = colorRecipeFactory(
   (designSystem: DesignSystem): FillSwatchFamily => {
     return {

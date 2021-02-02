@@ -45,6 +45,7 @@ function indexToSwatchFamily(
 }
 
 /**
+ * @internal
  * Function to derive accessible colors from contrast and delta configuration.
  * Performs a simple contrast check against the colors and returns
  * the color that has the most contrast against the background. If contrast
