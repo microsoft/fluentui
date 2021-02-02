@@ -42,18 +42,22 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         const rtlCSS = definition[2];
 
         // Should be done always to return classes
-        if (className) {
-          const ruleClassName = rtl ? (rtlCSS ? RTL_PREFIX + className : className) : className;
+        const ruleClassName = className && (rtl ? (rtlCSS ? RTL_PREFIX + className : className) : className);
+
+        // Should be done always to return classes
+        if (ruleClassName) {
           classes += ruleClassName + ' ';
         }
-        if (renderer.insertionCache[propName]) {
+
+        const cacheKey = ruleClassName || propName;
+        if (renderer.insertionCache[cacheKey]) {
           continue;
         }
 
         const css = definition[1];
         const ruleCSS = rtl ? rtlCSS || css : css;
 
-        renderer.insertionCache[propName] = true;
+        renderer.insertionCache[cacheKey] = true;
 
         (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
         renderer.index++;
