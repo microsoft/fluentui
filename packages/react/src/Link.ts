@@ -1,1 +1,1 @@
-export * from '@fluentui/react-link/lib/Link';
+export * from '@fluentui/react-internal/lib/Link';

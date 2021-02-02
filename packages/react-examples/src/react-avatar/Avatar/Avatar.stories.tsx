@@ -1,10 +1,47 @@
 import * as React from 'react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
-import { GroupIcon, IDBadgeIcon, ChatBotIcon, SkypeCheckIcon } from '@fluentui/react-icons-mdl2';
+import {
+  GroupIcon,
+  CatIcon,
+  IDBadgeIcon,
+  CalendarIcon,
+  TelemarketerIcon,
+  RoomIcon,
+  ChatBotIcon,
+  SkypeClockIcon,
+  SkypeCheckIcon,
+  SkypeMinusIcon,
+  SkypeArrowIcon,
+} from '@fluentui/react-icons-mdl2';
 import { StoryExample } from '../utils/StoryExample';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { AvatarExamples as examples } from './AvatarExamples';
+import { AvatarExamples } from '@fluentui/example-data';
 import { useBoolean } from '@fluentui/react-hooks';
+
+const examples = {
+  ...AvatarExamples,
+  size: avatarSizeValues,
+  icon: [
+    /* eslint-disable react/jsx-key */
+    <GroupIcon />,
+    <CatIcon />,
+    <CalendarIcon />,
+    <RoomIcon />,
+    <IDBadgeIcon />,
+    <TelemarketerIcon />,
+    /* eslint-enable react/jsx-key */
+  ],
+  badge: [
+    'success',
+    'warning',
+    'error',
+    'info',
+    { state: 'success', icon: { as: SkypeCheckIcon } },
+    { state: 'warning', icon: { as: SkypeClockIcon } },
+    { state: 'error', icon: { as: SkypeMinusIcon } },
+    { state: 'info', icon: { as: SkypeArrowIcon } },
+  ],
+} as const;
 
 export const Basic = () => (
   <>
@@ -93,7 +130,7 @@ export const Active = () => (
 
 export const ActiveAnimation = () => {
   const [active, setActive] = React.useState(false);
-  const [size, nextSize, prevSize] = useValueSelectorState(avatarSizeValues, 96);
+  const [size, nextSize, prevSize] = useValueSelectorState(examples.size, 96);
   const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(examples.activeDisplay, 'ring');
   const [display, nextDisplay, prevDisplay] = useValueSelectorState(examples.display, 'image');
 
@@ -166,7 +203,7 @@ export const AvatarPlayground = () => {
   const [nameAndImage, nextNameAndImage, prevNameAndImage] = useValueSelectorState(examples.nameAndImage);
 
   const propSelectors = [
-    useValueSelector('size', useValueSelectorState(avatarSizeValues, 96), true),
+    useValueSelector('size', useValueSelectorState(examples.size, 96), true),
     useValueSelector('customSize', useValueSelectorState(examples.customSize)),
     useValueSelector('square', useValueSelectorState([true, false])),
     useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
@@ -208,11 +245,11 @@ export const AvatarPlayground = () => {
  */
 const AvatarExampleList: React.FC<AvatarProps & { exampleIndex?: number }> = props => {
   const { exampleIndex = 0 } = props;
-  const offset = exampleIndex * avatarSizeValues.length;
+  const offset = exampleIndex * examples.size.length;
 
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
-      {avatarSizeValues.map((size, i) => (
+      {examples.size.map((size, i) => (
         <Avatar
           key={size}
           size={size}

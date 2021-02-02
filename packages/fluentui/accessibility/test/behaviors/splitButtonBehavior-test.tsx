@@ -1,5 +1,4 @@
-import { splitButtonBehavior } from '@fluentui/accessibility';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { splitButtonBehavior, keyboardKey } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 
 function verifyKeys(supportedKeys, keysFromBehavior) {

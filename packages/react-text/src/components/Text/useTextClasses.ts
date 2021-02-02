@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { makeClasses } from '@fluentui/react-theme-provider';
+import { makeClasses } from '@fluentui/react-theme-provider/lib/compat/index';
 
 const GlobalClassNames = {
   root: 'ms-Text',

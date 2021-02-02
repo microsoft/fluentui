@@ -19,8 +19,7 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
       maxWidth: v.selectedItemsMaxWidth,
       display: 'inline-flex',
       alignItems: 'center',
-      // overflow: 'hidden',
-      padding: `0 ${pxToRem(4)} 0 ${pxToRem(4)}`,
+      padding: `0 ${pxToRem(8)}`,
       startPaddingLeft: '0px',
       lineHeight: pxToRem(20),
       borderRadius: pxToRem(9999),
@@ -73,13 +72,14 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     width: pxToRem(16),
     height: pxToRem(16),
     '& > :first-child': {
-      height: '100%',
-      width: '100%',
+      width: pxToRem(16),
+      height: pxToRem(16),
       '& svg': {
-        height: '100%',
-        width: '100%',
+        width: pxToRem(16),
+        height: pxToRem(16),
       },
     },
+
     cursor: 'pointer',
     color: v.selectedItemIconColor,
     ...getIconFillOrOutlineStyles({ outline: true }),

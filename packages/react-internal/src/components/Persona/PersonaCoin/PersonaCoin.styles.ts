@@ -1,5 +1,5 @@
 import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from '../Persona.types';
-import { HighContrastSelector, FontWeights, getGlobalClassNames } from '../../../Styling';
+import { HighContrastSelector, FontWeights, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { sizeBoolean, sizeToPixels } from '../PersonaConsts';
 
 const GlobalClassNames = {
@@ -122,7 +122,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
             color: 'WindowText',
             boxSizing: 'border-box',
             backgroundColor: 'Window !important',

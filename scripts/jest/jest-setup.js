@@ -1,5 +1,15 @@
 // @ts-check
 
+// Mock requestAnimationFrame and cancelAnimationFrame for all packages
+// @ts-ignore
+global.requestAnimationFrame = callback => {
+  return setTimeout(callback, 0);
+};
+// @ts-ignore
+global.cancelAnimationFrame = id => {
+  clearTimeout(id);
+};
+
 // Fail on warnings.
 const consoleWarn = console.warn;
 const consoleError = console.error;

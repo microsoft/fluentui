@@ -3,7 +3,7 @@ import { ContextualMenuPageProps as ExternalProps } from '@fluentui/react-exampl
 
 // const componentUrl =
 //   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ContextualMenuPage';
-const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ContextualMenuPage/docs/ContextualMenuRelated.md') as string;
+const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ContextualMenuPage/docs/ContextualMenuRelated.md') as string;
 
 export const ContextualMenuPageProps: TFabricPlatformPageProps = {
   web: {

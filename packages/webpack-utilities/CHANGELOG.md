@@ -1,8 +1,17 @@
 # Change Log - @fluentui/webpack-utilities
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.1)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.0..@fluentui/webpack-utilities_v8.0.0-beta.1)
+
+### Changes
+
+- [BREAKING] Delete ManifestServicePlugin (file an issue if you were using it). Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.0)
 
