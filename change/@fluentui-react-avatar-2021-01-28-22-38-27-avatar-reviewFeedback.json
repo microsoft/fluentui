@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "minor",
   "comment": "Remove customSize and display props; change active prop to enum; clean up AvatarProps",
   "packageName": "@fluentui/react-avatar",
   "email": "behowell@microsoft.com",
