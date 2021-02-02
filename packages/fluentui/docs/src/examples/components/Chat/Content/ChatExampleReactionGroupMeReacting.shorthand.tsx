@@ -17,7 +17,7 @@ const items: ShorthandCollection<ChatItemProps> = [
           items: reactions,
         }}
         content="Hello"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
       />
@@ -33,7 +33,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         reactionGroup={reactions}
         reactionGroupPosition="end"
         content="I'm back!"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
       />
@@ -41,7 +41,9 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg" />,
-    message: <Chat.Message reactionGroup={reactions} content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    message: (
+      <Chat.Message reactionGroup={reactions} content="Hi" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />
+    ),
     key: 'message-3',
   },
 ];

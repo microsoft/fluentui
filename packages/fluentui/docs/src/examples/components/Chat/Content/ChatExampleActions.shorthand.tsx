@@ -15,7 +15,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     attached: 'top',
     contentPosition: 'end',
     message: (
-      <Chat.Message actionMenu={actionMenu} content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />
+      <Chat.Message actionMenu={actionMenu} content="Hello" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />
     ),
     key: 'message-1',
   },
@@ -27,7 +27,7 @@ const items: ShorthandCollection<ChatItemProps> = [
       <Chat.Message
         actionMenu={actionMenu}
         content="I'm back!"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
       />

@@ -144,12 +144,12 @@ export const DRAGGING_ELEMENTS = {
               status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
             />
           ),
-          message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+          message: <FUI.Chat.Message content="Hi!" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
           attached: 'top',
           key: 'message-id-4',
         },
         {
-          message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+          message: <FUI.Chat.Message content="Hello!" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
           contentPosition: 'end',
           attached: true,
           key: 'message-id-2',

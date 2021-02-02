@@ -2,77 +2,89 @@ import * as React from 'react';
 import { Grid, Image } from '@fluentui/react-northstar';
 
 const images = [
-  <Image key="ade" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg" />,
-  <Image key="chris" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg" />,
+  <Image key="allan" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg" />,
   <Image
-    key="christian"
+    key="amanda"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
+  />,
+  <Image
+    key="cameron"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg"
   />,
   <Image
-    key="daniel"
+    key="carlos"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg"
   />,
   <Image
-    key="elliot"
+    key="carole"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
   />,
-  <Image key="elyse" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" />,
+  <Image key="cecil" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" />,
   <Image
-    key="helen"
+    key="celeste"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg"
   />,
   <Image
-    key="jenny"
+    key="colin"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ColinBallinger.jpg"
   />,
-  <Image key="joe" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/DaisyPhillips.jpg" />,
   <Image
-    key="justen"
+    key="daisy"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/DaisyPhillips.jpg"
+  />,
+  <Image
+    key="elliot"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElliotWoodward.jpg"
   />,
+  <Image key="elvia" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg" />,
+  <Image key="erik" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg" />,
+  <Image key="henry" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/HenryBrill.jpg" />,
   <Image
-    key="kristy"
-    fluid
-    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
-  />,
-  <Image key="laura" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ErikNason.jpg" />,
-  <Image key="matt" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/HenryBrill.jpg" />,
-  <Image
-    key="matthew"
+    key="isaac"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/IsaacFielder.jpg"
   />,
   <Image
-    key="molly"
+    key="johnie"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
   />,
-  <Image key="nan" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg" />,
-  <Image key="nom" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg" />,
+  <Image key="kat" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg" />,
   <Image
-    key="patrick"
+    key="katri"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatriAthokas.jpg"
+  />,
+  <Image
+    key="kevin"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KevinSturgis.jpg"
   />,
   <Image
-    key="rachel"
+    key="kristin"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KristinPatterson.jpg"
   />,
-  <Image key="steve" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/LydiaBauer.jpg" />,
+  <Image key="lydia" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/LydiaBauer.jpg" />,
   <Image
-    key="stevie"
+    key="mauricio"
     fluid
     src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MauricioAugust.jpg"
   />,
-  <Image key="tom" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MiguelGarcia.jpg" />,
-  <Image key="veronika" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MonaKane.jpg" />,
+  <Image
+    key="miguel"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MiguelGarcia.jpg"
+  />,
+  <Image key="mona" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/MonaKane.jpg" />,
 ];
 
 const GridExample = () => (

@@ -78,7 +78,7 @@ class CustomChatMessage extends React.Component {
             '& .actions': { opacity: 1 },
           },
         }}
-        author="Jane Doe"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         content={
           <div>

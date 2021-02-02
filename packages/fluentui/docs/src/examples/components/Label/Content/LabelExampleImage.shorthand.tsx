@@ -3,7 +3,7 @@ import { Label } from '@fluentui/react-northstar';
 
 const LabelExampleImageShorthand = () => (
   <Label
-    content="John Doe"
+    content="Cecil Folk"
     image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
   />
 );

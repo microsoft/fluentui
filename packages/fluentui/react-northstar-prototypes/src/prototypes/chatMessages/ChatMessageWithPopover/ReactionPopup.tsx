@@ -32,7 +32,7 @@ class ReactionPopup extends React.Component<ReactionProps, { open: boolean }> {
         content={{
           children: () => (
             <Menu
-              items={['Jane Doe', 'John Doe']}
+              items={['Robin Counts', 'Cecil Folk']}
               vertical
               variables={{ borderColor: 'transparent' }}
               onKeyDown={this.handleKeyDownOnMenu}

@@ -28,7 +28,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
   },
 ];
 
-const janeAvatar = {
+const robinAvatar = {
   image: 'public/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
@@ -87,7 +87,7 @@ const ChatWithPopover = () => {
             key: 'a',
             message: (
               <TeamsChatMessage
-                author="Jane Doe"
+                author="Robin Counts"
                 content={
                   <div>
                     <a href="/">Link</a> Hover me to see the actions <a href="/">Some Link</a>
@@ -99,13 +99,13 @@ const ChatWithPopover = () => {
                 timestamp="Yesterday, 10:15 PM"
               />
             ),
-            gutter: <Avatar {...janeAvatar} />,
+            gutter: <Avatar {...robinAvatar} />,
           },
           {
             key: 'b',
             message: (
               <TeamsChatMessage
-                author="Jane Doe"
+                author="Robin Counts"
                 content={
                   <div>
                     <a href="/">Link</a> Hover me to see the actions <a href="/">Some Link</a>
@@ -117,7 +117,7 @@ const ChatWithPopover = () => {
                 timestamp="Yesterday, 10:15 PM"
               />
             ),
-            gutter: <Avatar {...janeAvatar} />,
+            gutter: <Avatar {...robinAvatar} />,
           },
         ]}
       />

@@ -12,7 +12,13 @@ const items: ChatProps['items'] = [
     attached: 'top',
     contentPosition: 'end',
     message: (
-      <Chat.Message reactionGroup={reactions} content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />
+      <Chat.Message
+        reactionGroup={reactions}
+        content="Hello"
+        author="Cecil Folk"
+        timestamp="Yesterday, 10:15 PM"
+        mine
+      />
     ),
     key: 'message-1',
   },
@@ -24,7 +30,7 @@ const items: ChatProps['items'] = [
       <Chat.Message
         reactionGroup={[{ key: 'up', icon: <LikeIcon />, content: '8' }]}
         content="I'm back!"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
       />
@@ -47,7 +53,7 @@ const items: ChatProps['items'] = [
                 marginLeft: '5px',
               }}
             >
-              Jane John With a really long surname here
+              Robin Counts
             </Text>
             <Text
               styles={{

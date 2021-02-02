@@ -28,7 +28,7 @@ export const actionMenu = {
   ],
 };
 
-export const janeAvatar = {
+export const robinAvatar = {
   image: 'public/images/avatar/RobinCounts.jpg',
   status: {
     color: 'green',
@@ -38,34 +38,34 @@ export const janeAvatar = {
 
 export const replies: ThreadReplyProps[] = [
   {
-    avatar: janeAvatar,
+    avatar: robinAvatar,
     content: "Sure! Let's do it",
-    author: 'Joe Doe',
+    author: 'Robin Counts',
     timestamp: 'Yesterday, 10:15 PM',
     actionMenu,
   },
   {
-    avatar: janeAvatar,
+    avatar: robinAvatar,
     content: (
       <div>
         Amazing idea! What do you think about this place <a href="/">Letna beer garden</a>?
       </div>
     ),
-    author: 'Jane Doe',
+    author: 'Robin Counts',
     timestamp: 'Yesterday, 10:15 PM',
     actionMenu,
   },
   {
-    avatar: janeAvatar,
+    avatar: robinAvatar,
     content: 'I am for any place!',
-    author: 'Harry Potter',
+    author: 'Robin Counts',
     timestamp: 'Yesterday, 10:15 PM',
     actionMenu,
   },
   {
-    avatar: janeAvatar,
+    avatar: robinAvatar,
     content: 'Yay! Finally party!',
-    author: 'Bob Doe',
+    author: 'Robin Counts',
     timestamp: 'Yesterday, 10:15 PM',
     actionMenu,
   },

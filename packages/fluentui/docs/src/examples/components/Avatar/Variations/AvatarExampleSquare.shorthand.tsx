@@ -10,7 +10,7 @@ const AvatarExampleSquare = () => (
       status={{ color: 'green', icon: <AcceptIcon />, title: 'Available' }}
     />
     &emsp;
-    <Avatar name="John Doe" square status={{ color: 'red', title: 'Busy' }} />
+    <Avatar name="Cecil Folk" square status={{ color: 'red', title: 'Busy' }} />
     &emsp;
   </div>
 );

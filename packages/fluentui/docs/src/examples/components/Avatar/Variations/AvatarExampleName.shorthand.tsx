@@ -4,7 +4,7 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const AvatarExampleNameShorthand = () => (
   <Avatar
-    name="John Doe"
+    name="Cecil Folk"
     status={{
       color: 'green',
       icon: <AcceptIcon />,

@@ -95,7 +95,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="John Doe"
+        name="Cecil Folk"
         position="Guest"
         image={getAvatar(4)}
         status={{

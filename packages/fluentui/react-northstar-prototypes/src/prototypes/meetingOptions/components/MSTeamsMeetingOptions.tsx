@@ -14,7 +14,7 @@ export default () => {
           start={<CalendarIcon xSpacing="after" />}
           main={<Text content="10 January 2018, 12:00 PM - 1:00 PM" />}
         />
-        <Layout start={<UserFriendsIcon xSpacing="after" />} main={<Text content="John Doe" />} />
+        <Layout start={<UserFriendsIcon xSpacing="after" />} main={<Text content="Cecil Folk" />} />
         <TransparentDivider size={40} />
         <Header as="h3" content="Meeting Options" />
         <TransparentDivider />

@@ -11,7 +11,7 @@ const FormExample = () => (
   >
     <FormDropdown
       label={{ content: `Your best friend's name is:`, id: labelId }}
-      items={['John Doe', 'Dohn Joe', 'John Joe', 'Dohn Doe']}
+      items={['Cecil Folk', 'Folk Cecil', 'Cecil Folk', 'Folk Folk']}
       aria-labelledby={labelId}
       search={true}
       placeholder="Choose a friend"

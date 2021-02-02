@@ -5,21 +5,21 @@ export const groupControlMessageItems: ChatMessageProps[] = [
   {
     content: (
       <div>
-        <a href="/">John Doe</a> has added <a href="/">Jane Doe1</a> to the team
+        <a href="/">Cecil Folk</a> has added <a href="/">Robin Counts1</a> to the team
       </div>
     ),
   },
   {
     content: (
       <div>
-        <a href="/">John Doe</a> has added <a href="/">Jane Doe2</a> to the team
+        <a href="/">Cecil Folk</a> has added <a href="/">Robin Counts2</a> to the team
       </div>
     ),
   },
   {
     content: (
       <div>
-        <a href="/">John Doe</a> has added <a href="/">Jane Doe3</a> to the team
+        <a href="/">Cecil Folk</a> has added <a href="/">Robin Counts3</a> to the team
       </div>
     ),
   },
@@ -28,7 +28,7 @@ export const groupControlMessageItems: ChatMessageProps[] = [
 export const mainControlMessage: ChatMessageProps = {
   content: (
     <div>
-      <a href="/">John Doe</a> has added <a href="/">Jane Doe1</a> and 2 other to the team
+      <a href="/">Cecil Folk</a> has added <a href="/">Robin Counts1</a> and 2 other to the team
     </div>
   ),
 };

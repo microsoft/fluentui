@@ -20,7 +20,7 @@ const AvatarExampleSizeShorthand = () => (
             status={statusProps}
           />
           &emsp;
-          <Avatar size={size} name="John Doe" status={statusProps} />
+          <Avatar size={size} name="Cecil Folk" status={statusProps} />
           &emsp;
           <Avatar
             size={size}

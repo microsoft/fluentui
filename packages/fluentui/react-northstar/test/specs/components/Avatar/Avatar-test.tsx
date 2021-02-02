@@ -21,9 +21,9 @@ describe('Avatar', () => {
     });
 
     it('generateInitials removes the text inside brackets', () => {
-      expect(getInitials('John Doe (Working position)')).toEqual('JD');
-      expect(getInitials('John Doe {Working position}')).toEqual('JD');
-      expect(getInitials('John Doe [Working position]')).toEqual('JD');
+      expect(getInitials('Cecil Folk (Working position)')).toEqual('JD');
+      expect(getInitials('Cecil Folk {Working position}')).toEqual('JD');
+      expect(getInitials('Cecil Folk [Working position]')).toEqual('JD');
     });
 
     it('handles null inputs', () => {
