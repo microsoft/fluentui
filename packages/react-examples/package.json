@@ -71,6 +71,7 @@
     "@fluentui/react-slider": "^1.0.0-beta.39",
     "@fluentui/react-tabs": "^1.0.0-beta.40",
     "@fluentui/react-text": "^0.1.4",
+    "@fluentui/react-theme": "^0.2.0",
     "@fluentui/react-theme-provider": "^1.0.0-beta.19",
     "@fluentui/react-toggle": "^1.0.0-beta.39",
     "@fluentui/scheme-utilities": "^8.0.0-beta.13",
