@@ -1,4 +1,4 @@
-import { Provider } from '@fluentui/react-provider';
+import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme, teamsDarkTheme, webLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 
@@ -15,12 +15,12 @@ export const Direction = () => (
   <>
     <p>This example shows usage of "dir" attribute to change text direction.</p>
 
-    <Provider theme={teamsLightTheme}>
+    <FluentProvider theme={teamsLightTheme}>
       <div style={containerStyles}>Hello World!</div>
-    </Provider>
-    <Provider dir="rtl" theme={teamsLightTheme}>
+    </FluentProvider>
+    <FluentProvider dir="rtl" theme={teamsLightTheme}>
       <div style={containerStyles}>مرحبا بالعالم!</div>
-    </Provider>
+    </FluentProvider>
   </>
 );
 
@@ -29,19 +29,19 @@ export const DifferentThemes = () => (
     <p>This example shows usage of different themes with the same tokens set.</p>
 
     <h2>Teams Light Theme</h2>
-    <Provider theme={teamsLightTheme}>
+    <FluentProvider theme={teamsLightTheme}>
       <div style={containerStyles}>Hello World!</div>
-    </Provider>
+    </FluentProvider>
 
     <h2>Teams Dark Theme</h2>
-    <Provider theme={teamsDarkTheme}>
+    <FluentProvider theme={teamsDarkTheme}>
       <div style={containerStyles}>Hello World!</div>
-    </Provider>
+    </FluentProvider>
 
     <h2>Web Light Theme</h2>
-    <Provider theme={webLightTheme}>
+    <FluentProvider theme={webLightTheme}>
       <div style={containerStyles}>Hello World!</div>
-    </Provider>
+    </FluentProvider>
   </>
 );
 
@@ -49,8 +49,8 @@ export const ThemesMerge = () => (
   <>
     <p>This example shows theme composition and partial overrides of tokens.</p>
 
-    <Provider theme={teamsLightTheme}>
-      <Provider
+    <FluentProvider theme={teamsLightTheme}>
+      <FluentProvider
         theme={{
           neutralColorTokens: {
             neutralBackground1: 'salmon',
@@ -59,7 +59,7 @@ export const ThemesMerge = () => (
         }}
       >
         <div style={containerStyles}>Hello World!</div>
-      </Provider>
-    </Provider>
+      </FluentProvider>
+    </FluentProvider>
   </>
 );
