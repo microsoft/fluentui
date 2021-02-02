@@ -21,18 +21,14 @@ describe("neutralOutline", (): void => {
     const accentPalette: Palette = getAccentPalette(DesignSystemDefaults);
 
     it("should return by default", (): void => {
-        expect(neutralOutlineRest({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralOutlineRestDelta]
-        );
-        expect(neutralOutlineHover({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralOutlineHoverDelta]
-        );
-        expect(neutralOutlineActive({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralOutlineActiveDelta]
-        );
-        expect(neutralOutlineFocus({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralOutlineFocusDelta]
-        );
+        [
+            neutralOutlineActive,
+            neutralOutlineFocus,
+            neutralOutlineHover,
+            neutralOutlineRest,
+        ].forEach(fn => {
+            expect(neutralPalette).to.include(fn({} as DesignSystem));
+        });
     });
 
     it("should always return a color", (): void => {
@@ -45,28 +41,28 @@ describe("neutralOutline", (): void => {
 
     it("should return the same color from both implementations", (): void => {
         neutralPalette.concat(accentPalette).forEach((swatch: Swatch): void => {
-            expect(neutralOutlineRest(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralOutlineRest(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralOutlineRest(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralOutlineHover(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralOutlineHover(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralOutlineHover(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralOutlineActive(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralOutlineActive(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralOutlineActive(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralOutlineFocus(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralOutlineFocus(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralOutlineFocus(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
@@ -88,10 +84,10 @@ describe("neutralOutline", (): void => {
             );
             const focus: Swatch = neutralOutlineFocus(() => swatch)(DesignSystemDefaults);
 
-            expect(backplates.rest).to.be(rest);
-            expect(backplates.hover).to.be(hover);
-            expect(backplates.active).to.be(active);
-            expect(backplates.focus).to.be(focus);
+            expect(backplates.rest).to.equal(rest);
+            expect(backplates.hover).to.equal(hover);
+            expect(backplates.active).to.equal(active);
+            expect(backplates.focus).to.equal(focus);
         });
     });
 });

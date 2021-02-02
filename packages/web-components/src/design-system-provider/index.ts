@@ -1,5 +1,4 @@
 import { attr, css, nullableNumberConverter } from '@microsoft/fast-element';
-import { DensityOffset, neutralForegroundRest } from '@microsoft/fast-components-styles-msft';
 import { Direction } from '@microsoft/fast-web-utilities';
 import {
   CSSCustomPropertyBehavior,
@@ -8,7 +7,8 @@ import {
   designSystemProvider,
   DesignSystemProviderTemplate as template,
 } from '@microsoft/fast-foundation';
-import { DesignSystem, DesignSystemDefaults } from '../fluent-design-system';
+import { neutralForegroundRest } from '../color';
+import { DensityOffset, DesignSystem, DesignSystemDefaults } from '../fluent-design-system';
 import { DesignSystemProviderStyles as styles } from './design-system-provider.styles';
 
 const color = new CSSCustomPropertyBehavior(

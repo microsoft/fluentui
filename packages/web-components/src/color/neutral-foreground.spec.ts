@@ -9,15 +9,15 @@ import { contrast } from "./common";
 
 describe("neutralForeground", (): void => {
     it("should return a string when invoked with an object", (): void => {
-        expect(typeof neutralForegroundRest(DesignSystemDefaults)).to.be("string");
-        expect(typeof neutralForegroundHover(DesignSystemDefaults)).to.be("string");
-        expect(typeof neutralForegroundActive(DesignSystemDefaults)).to.be("string");
+        expect(typeof neutralForegroundRest(DesignSystemDefaults)).to.equal("string");
+        expect(typeof neutralForegroundHover(DesignSystemDefaults)).to.equal("string");
+        expect(typeof neutralForegroundActive(DesignSystemDefaults)).to.equal("string");
     });
 
     it("should return a function when invoked with a function", (): void => {
-        expect(typeof neutralForegroundRest(() => "#FFF")).to.be("function");
-        expect(typeof neutralForegroundHover(() => "#FFF")).to.be("function");
-        expect(typeof neutralForegroundActive(() => "#FFF")).to.be("function");
+        expect(typeof neutralForegroundRest(() => "#FFF")).to.equal("function");
+        expect(typeof neutralForegroundHover(() => "#FFF")).to.equal("function");
+        expect(typeof neutralForegroundActive(() => "#FFF")).to.equal("function");
     });
 
     it("should operate on default design system if no design system is supplied", (): void => {

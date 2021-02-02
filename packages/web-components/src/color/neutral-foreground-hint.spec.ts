@@ -15,7 +15,7 @@ describe("neutralForegroundHint", (): void => {
     const accentPalette: Palette = getAccentPalette(DesignSystemDefaults);
 
     it("should implement design system defaults", (): void => {
-        expect(neutralForegroundHint(undefined as any)).to.be("#767676");
+        expect(neutralForegroundHint(undefined as any)).to.equal("#767676");
     });
 
     neutralPalette.concat(accentPalette).forEach((swatch: Swatch): void => {
@@ -40,7 +40,7 @@ describe("neutralForegroundHint", (): void => {
                         backgroundColor: swatch,
                     })
                 )
-            ).to.be(neutralForegroundHint(() => swatch)(DesignSystemDefaults));
+            ).to.equal(neutralForegroundHint(() => swatch)(DesignSystemDefaults));
         });
     });
 

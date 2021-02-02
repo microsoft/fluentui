@@ -13,10 +13,7 @@ import { Breadcrumb } from '@microsoft/fast-foundation';
 import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
-import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
-import { DensityOffset } from '@microsoft/fast-components-styles-msft';
-import { DesignSystem } from '@microsoft/fast-components-styles-msft';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -47,14 +44,34 @@ import { TreeView } from '@microsoft/fast-foundation';
 // @internal (undocumented)
 export const AccentButtonStyles: ElementStyles;
 
+// Warning: (ae-forgotten-export) The symbol "SwatchFamilyResolver" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "FillSwatchFamily" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const accentFill: SwatchFamilyResolver<FillSwatchFamily>;
+
+// Warning: (ae-forgotten-export) The symbol "SwatchRecipe" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const accentFillActive: SwatchRecipe;
+
 // @public
 export const accentFillActiveBehavior: CSSCustomPropertyBehavior;
 
 // @public
 export const accentFillFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentFillHover: SwatchRecipe;
+
 // @public
 export const accentFillHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const accentFillLarge: SwatchFamilyResolver<FillSwatchFamily>;
+
+// @public (undocumented)
+export const accentFillLargeActive: SwatchRecipe;
 
 // @public
 export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior;
@@ -62,23 +79,50 @@ export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentFillLargeFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentFillLargeHover: SwatchRecipe;
+
 // @public
 export const accentFillLargeHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const accentFillLargeRest: SwatchRecipe;
 
 // @public
 export const accentFillLargeRestBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentFillLargeSelected: SwatchRecipe;
+
 // @public
 export const accentFillLargeSelectedBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const accentFillRest: SwatchRecipe;
 
 // @public
 export const accentFillRestBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentFillSelected: SwatchRecipe;
+
 // @public
 export const accentFillSelectedBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentForeground: SwatchFamilyResolver;
+
+// @public (undocumented)
+export const accentForegroundActive: SwatchRecipe;
+
 // @public
 export const accentForegroundActiveBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const accentForegroundCut: SwatchRecipe;
+
+// @public
+export const accentForegroundCutLarge: SwatchRecipe;
 
 // @public
 export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior;
@@ -86,8 +130,17 @@ export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentForegroundFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentForegroundHover: SwatchRecipe;
+
 // @public
 export const accentForegroundHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const accentForegroundLarge: SwatchFamilyResolver;
+
+// @public (undocumented)
+export const accentForegroundLargeActive: SwatchRecipe;
 
 // @public
 export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior;
@@ -95,11 +148,20 @@ export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentForegroundLargeFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentForegroundLargeHover: SwatchRecipe;
+
 // @public
 export const accentForegroundLargeHoverBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const accentForegroundLargeRest: SwatchRecipe;
+
 // @public
 export const accentForegroundLargeRestBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const accentForegroundRest: SwatchRecipe;
 
 // @public
 export const accentForegroundRestBehavior: CSSCustomPropertyBehavior;
@@ -149,6 +211,129 @@ export const CardStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const CheckboxStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export function createColorPalette(baseColor: any): string[];
+
+// @public
+export interface DesignSystem {
+    accentBaseColor: string;
+    // (undocumented)
+    accentFillActiveDelta: number;
+    // (undocumented)
+    accentFillFocusDelta: number;
+    // (undocumented)
+    accentFillHoverDelta: number;
+    accentFillRestDelta: number;
+    // (undocumented)
+    accentFillSelectedDelta: number;
+    // (undocumented)
+    accentForegroundActiveDelta: number;
+    // (undocumented)
+    accentForegroundFocusDelta: number;
+    // (undocumented)
+    accentForegroundHoverDelta: number;
+    accentForegroundRestDelta: number;
+    accentPalette: string[];
+    backgroundColor: string;
+    baseHeightMultiplier: number;
+    baseHorizontalSpacingMultiplier: number;
+    baseLayerLuminance: number;
+    cornerRadius: number;
+    density: number;
+    designUnit: number;
+    direction: Direction;
+    disabledOpacity: number;
+    elevatedCornerRadius?: number;
+    focusOutlineWidth: number;
+    neutralDividerRestDelta: number;
+    // (undocumented)
+    neutralFillActiveDelta: number;
+    neutralFillCardDelta: number;
+    // (undocumented)
+    neutralFillFocusDelta: number;
+    // (undocumented)
+    neutralFillHoverDelta: number;
+    // (undocumented)
+    neutralFillInputActiveDelta: number;
+    // (undocumented)
+    neutralFillInputFocusDelta: number;
+    // (undocumented)
+    neutralFillInputHoverDelta: number;
+    neutralFillInputRestDelta: number;
+    // (undocumented)
+    neutralFillInputSelectedDelta: number;
+    // (undocumented)
+    neutralFillRestDelta: number;
+    // (undocumented)
+    neutralFillSelectedDelta: number;
+    // (undocumented)
+    neutralFillStealthActiveDelta: number;
+    // (undocumented)
+    neutralFillStealthFocusDelta: number;
+    // (undocumented)
+    neutralFillStealthHoverDelta: number;
+    neutralFillStealthRestDelta: number;
+    // (undocumented)
+    neutralFillStealthSelectedDelta: number;
+    // (undocumented)
+    neutralFillToggleActiveDelta: number;
+    // (undocumented)
+    neutralFillToggleFocusDelta: number;
+    neutralFillToggleHoverDelta: number;
+    // (undocumented)
+    neutralForegroundActiveDelta: number;
+    // (undocumented)
+    neutralForegroundFocusDelta: number;
+    neutralForegroundHoverDelta: number;
+    // (undocumented)
+    neutralOutlineActiveDelta: number;
+    // (undocumented)
+    neutralOutlineFocusDelta: number;
+    // (undocumented)
+    neutralOutlineHoverDelta: number;
+    neutralOutlineRestDelta: number;
+    neutralPalette: string[];
+    outlineWidth: number;
+    // (undocumented)
+    typeRampBaseFontSize: string;
+    // (undocumented)
+    typeRampBaseLineHeight: string;
+    // (undocumented)
+    typeRampMinus1FontSize: string;
+    // (undocumented)
+    typeRampMinus1LineHeight: string;
+    typeRampMinus2FontSize: string;
+    // (undocumented)
+    typeRampMinus2LineHeight: string;
+    // (undocumented)
+    typeRampPlus1FontSize: string;
+    // (undocumented)
+    typeRampPlus1LineHeight: string;
+    // (undocumented)
+    typeRampPlus2FontSize: string;
+    // (undocumented)
+    typeRampPlus2LineHeight: string;
+    // (undocumented)
+    typeRampPlus3FontSize: string;
+    // (undocumented)
+    typeRampPlus3LineHeight: string;
+    // (undocumented)
+    typeRampPlus4FontSize: string;
+    // (undocumented)
+    typeRampPlus4LineHeight: string;
+    // (undocumented)
+    typeRampPlus5FontSize: string;
+    // (undocumented)
+    typeRampPlus5LineHeight: string;
+    // (undocumented)
+    typeRampPlus6FontSize: string;
+    // (undocumented)
+    typeRampPlus6LineHeight: string;
+}
+
+// @public
+export const DesignSystemDefaults: DesignSystem;
 
 // @public
 export const DialogStyles: import("@microsoft/fast-element").ElementStyles;
@@ -265,6 +450,8 @@ export class FluentDesignSystemProvider extends DesignSystemProvider implements 
     baseLayerLuminance: number;
     // (undocumented)
     cornerRadius: number;
+    // Warning: (ae-forgotten-export) The symbol "DensityOffset" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     density: DensityOffset;
     // (undocumented)
@@ -490,6 +677,9 @@ export const inlineEndBehavior: CSSCustomPropertyBehavior;
 // @public
 export const inlineStartBehavior: CSSCustomPropertyBehavior;
 
+// @public
+export function isDarkMode(designSystem: DesignSystem): boolean;
+
 // Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -504,11 +694,32 @@ export const MenuItemStyles: import("@microsoft/fast-element").ElementStyles;
 // @public
 export const MenuStyles: import("@microsoft/fast-element").ElementStyles;
 
+// @public (undocumented)
+export const neutralDividerRest: SwatchRecipe;
+
 // @public
 export const neutralDividerRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-forgotten-export) The symbol "ColorRecipe" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const neutralFill: ColorRecipe<FillSwatchFamily>;
+
+// @public (undocumented)
+export const neutralFillActive: SwatchRecipe;
+
 // @public
 export const neutralFillActiveBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-forgotten-export) The symbol "Swatch" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function neutralFillCard(designSystem: DesignSystem): Swatch;
+
+// Warning: (ae-forgotten-export) The symbol "SwatchResolver" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function neutralFillCard(backgroundResolver: SwatchResolver): SwatchResolver;
 
 // @public
 export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior;
@@ -516,8 +727,17 @@ export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillHover: SwatchRecipe;
+
 // @public
 export const neutralFillHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralFillInput: ColorRecipe<FillSwatchFamily>;
+
+// @public (undocumented)
+export const neutralFillInputActive: SwatchRecipe;
 
 // @public
 export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior;
@@ -525,17 +745,38 @@ export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillInputFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillInputHover: SwatchRecipe;
+
 // @public
 export const neutralFillInputHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralFillInputRest: SwatchRecipe;
 
 // @public
 export const neutralFillInputRestBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillInputSelected: SwatchRecipe;
+
+// @public (undocumented)
+export const neutralFillRest: SwatchRecipe;
+
 // @public
 export const neutralFillRestBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillSelected: SwatchRecipe;
+
 // @public
 export const neutralFillSelectedBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralFillStealth: ColorRecipe<FillSwatchFamily>;
+
+// @public (undocumented)
+export const neutralFillStealthActive: ColorRecipe<Swatch>;
 
 // @public
 export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior;
@@ -543,14 +784,29 @@ export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillStealthFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillStealthHover: ColorRecipe<Swatch>;
+
 // @public
 export const neutralFillStealthHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralFillStealthRest: ColorRecipe<Swatch>;
 
 // @public
 export const neutralFillStealthRestBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillStealthSelected: ColorRecipe<Swatch>;
+
 // @public
 export const neutralFillStealthSelectedBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralFillToggle: SwatchFamilyResolver;
+
+// @public (undocumented)
+export const neutralFillToggleActive: SwatchRecipe;
 
 // @public
 export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior;
@@ -558,17 +814,37 @@ export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillToggleFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFillToggleHover: SwatchRecipe;
+
 // @public
 export const neutralFillToggleHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralFillToggleRest: SwatchRecipe;
 
 // @public
 export const neutralFillToggleRestBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralFocus: ColorRecipe<Swatch>;
+
 // @public
 export const neutralFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-forgotten-export) The symbol "DesignSystemResolver" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function neutralFocusInnerAccent(accentFillColor: DesignSystemResolver<string>): DesignSystemResolver<string>;
+
 // @public
 export const neutralFocusInnerAccentBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralForeground: SwatchFamilyResolver;
+
+// @public (undocumented)
+export const neutralForegroundActive: SwatchRecipe;
 
 // @public
 export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior;
@@ -577,31 +853,64 @@ export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior;
 export const neutralForegroundFocusBehavior: CSSCustomPropertyBehavior;
 
 // @public
+export const neutralForegroundHint: SwatchRecipe;
+
+// @public
 export const neutralForegroundHintBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralForegroundHintLarge: SwatchRecipe;
 
 // @public
 export const neutralForegroundHintLargeBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralForegroundHover: SwatchRecipe;
+
 // @public
 export const neutralForegroundHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralForegroundRest: SwatchRecipe;
 
 // @public
 export const neutralForegroundRestBehavior: CSSCustomPropertyBehavior;
 
 // @public
+export const neutralForegroundToggle: SwatchRecipe;
+
+// @public
 export const neutralForegroundToggleBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralForegroundToggleLarge: SwatchRecipe;
 
 // @public
 export const neutralForegroundToggleLargeBehavior: CSSCustomPropertyBehavior;
 
 // @public
+export const neutralLayerCard: ColorRecipe<Swatch>;
+
+// @public
 export const neutralLayerCardBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralLayerCardContainer: ColorRecipe<Swatch>;
 
 // @public
 export const neutralLayerCardContainerBehavior: CSSCustomPropertyBehavior;
 
 // @public
+export const neutralLayerFloating: ColorRecipe<Swatch>;
+
+// @public
 export const neutralLayerFloatingBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralLayerL1: ColorRecipe<Swatch>;
+
+// @public
+export const neutralLayerL1Alt: ColorRecipe<Swatch>;
 
 // @public
 export const neutralLayerL1AltBehavior: CSSCustomPropertyBehavior;
@@ -610,22 +919,57 @@ export const neutralLayerL1AltBehavior: CSSCustomPropertyBehavior;
 export const neutralLayerL1Behavior: CSSCustomPropertyBehavior;
 
 // @public
+export const neutralLayerL2: ColorRecipe<Swatch>;
+
+// @public
 export const neutralLayerL2Behavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralLayerL3: ColorRecipe<Swatch>;
 
 // @public
 export const neutralLayerL3Behavior: CSSCustomPropertyBehavior;
 
 // @public
+export const neutralLayerL4: ColorRecipe<Swatch>;
+
+// @public
 export const neutralLayerL4Behavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-forgotten-export) The symbol "SwatchFamily" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export const neutralOutline: ColorRecipe<SwatchFamily>;
+
+// @public (undocumented)
+export const neutralOutlineActive: SwatchRecipe;
 
 // @public
 export const neutralOutlineActiveBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralOutlineContrast: ColorRecipe<SwatchFamily>;
+
+// @public (undocumented)
+export const neutralOutlineContrastActive: SwatchRecipe;
+
+// @public (undocumented)
+export const neutralOutlineContrastHover: SwatchRecipe;
+
+// @public (undocumented)
+export const neutralOutlineContrastRest: SwatchRecipe;
+
 // @public
 export const neutralOutlineFocusBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export const neutralOutlineHover: SwatchRecipe;
+
 // @public
 export const neutralOutlineHoverBehavior: CSSCustomPropertyBehavior;
+
+// @public (undocumented)
+export const neutralOutlineRest: SwatchRecipe;
 
 // @public
 export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior;
@@ -639,7 +983,20 @@ export const OptionStyles: import("@microsoft/fast-element").ElementStyles;
 export const OutlineButtonStyles: ElementStyles;
 
 // @public
-export function parseColorString(color: string): ColorRGBA64;
+export type Palette = Swatch[];
+
+// Warning: (ae-internal-missing-underscore) The name "palette" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated
+export function palette(paletteType: PaletteType): DesignSystemResolver<Palette>;
+
+// @public @deprecated
+export enum PaletteType {
+    // (undocumented)
+    accent = "accent",
+    // (undocumented)
+    neutral = "neutral"
+}
 
 // @public
 export const ProgressRingStyles: import("@microsoft/fast-element").ElementStyles;
@@ -664,6 +1021,14 @@ export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const SliderStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export enum StandardLuminance {
+    // (undocumented)
+    DarkMode = 0.23,
+    // (undocumented)
+    LightMode = 1
+}
 
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //

@@ -21,75 +21,66 @@ describe("neutralFillStealth", (): void => {
     const accentPalette: Palette = getAccentPalette(DesignSystemDefaults);
 
     it("should operate on design system defaults", (): void => {
-        expect(neutralFillStealthRest({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralFillStealthRestDelta]
-        );
-        expect(neutralFillStealthHover({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta]
-        );
-        expect(neutralFillStealthActive({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralFillStealthActiveDelta]
-        );
-        expect(neutralFillStealthFocus({} as DesignSystem)).to.be(
-            neutralPalette[DesignSystemDefaults.neutralFillStealthFocusDelta]
-        );
-        expect(neutralFillStealthSelected({} as DesignSystem)).to.be(
-            neutralPalette[
-                DesignSystemDefaults.neutralFillStealthRestDelta +
-                    DesignSystemDefaults.neutralFillStealthSelectedDelta
-            ]
-        );
+        [
+            neutralFillStealthActive,
+            neutralFillStealthFocus,
+            neutralFillStealthHover,
+            neutralFillStealthRest,
+            neutralFillStealthSelected,
+        ].forEach(fn => {
+            expect(neutralPalette).to.include(fn({} as DesignSystem));
+        });
     });
 
     it("should switch from dark to light after 10 swatches", (): void => {
-        expect(neutralFillStealthHover(DesignSystemDefaults)).to.be(
+        expect(neutralFillStealthHover(DesignSystemDefaults)).to.equal(
             neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta]
         );
         expect(
             neutralFillStealthHover(() => neutralPalette[1])(DesignSystemDefaults)
-        ).to.be(neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta + 1]);
+        ).to.equal(neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta + 1]);
         expect(
             neutralFillStealthHover(() => neutralPalette[2])(DesignSystemDefaults)
-        ).to.be(neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta + 2]);
+        ).to.equal(neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta + 2]);
         expect(
             neutralFillStealthHover(() => neutralPalette[9])(DesignSystemDefaults)
-        ).to.be(neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta + 9]);
+        ).to.equal(neutralPalette[DesignSystemDefaults.neutralFillStealthHoverDelta + 9]);
         expect(
             neutralFillStealthHover(() => neutralPalette[10])(DesignSystemDefaults)
-        ).to.be(neutralPalette[10 - DesignSystemDefaults.neutralFillStealthHoverDelta]);
+        ).to.equal(neutralPalette[10 - DesignSystemDefaults.neutralFillStealthHoverDelta]);
     });
 
     it("should return the same color from both implementations", (): void => {
         neutralPalette.concat(accentPalette).forEach((swatch: Swatch): void => {
-            expect(neutralFillStealthRest(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillStealthRest(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillStealthRest(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillStealthHover(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillStealthHover(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillStealthHover(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillStealthActive(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillStealthActive(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillStealthActive(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillStealthFocus(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillStealthFocus(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillStealthFocus(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillStealthSelected(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillStealthSelected(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillStealthSelected(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
@@ -120,11 +111,11 @@ describe("neutralFillStealth", (): void => {
                 DesignSystemDefaults
             );
 
-            expect(backplates.rest).to.be(rest);
-            expect(backplates.hover).to.be(hover);
-            expect(backplates.active).to.be(active);
-            expect(backplates.focus).to.be(focus);
-            expect(backplates.selected).to.be(selected);
+            expect(backplates.rest).to.equal(rest);
+            expect(backplates.hover).to.equal(hover);
+            expect(backplates.active).to.equal(active);
+            expect(backplates.focus).to.equal(focus);
+            expect(backplates.selected).to.equal(selected);
         });
     });
 });

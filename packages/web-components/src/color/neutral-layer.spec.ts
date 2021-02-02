@@ -36,20 +36,20 @@ const enum NeutralPaletteDarkModeOffsets {
 describe("neutralLayer", (): void => {
     describe("L1", (): void => {
         it("should return values from L1 when in light mode", (): void => {
-            expect(neutralLayerL1(lightModeDesignSystem)).to.be(
+            expect(neutralLayerL1(lightModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L1]
             );
         });
         it("should return values from L1 when in dark mode", (): void => {
-            expect(neutralLayerL1(darkModeDesignSystem)).to.be(
+            expect(neutralLayerL1(darkModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L1]
             );
         });
         it("should operate on a provided background color", (): void => {
-            expect(neutralLayerL1((): string => "#000000")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL1((): string => "#000000")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L1]
             );
-            expect(neutralLayerL1((): string => "#FFFFFF")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL1((): string => "#FFFFFF")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L1]
             );
         });
@@ -57,20 +57,20 @@ describe("neutralLayer", (): void => {
 
     describe("L2", (): void => {
         it("should return values from L2 when in light mode", (): void => {
-            expect(neutralLayerL2(lightModeDesignSystem)).to.be(
+            expect(neutralLayerL2(lightModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L2]
             );
         });
         it("should return values from L2 when in dark mode", (): void => {
-            expect(neutralLayerL2(darkModeDesignSystem)).to.be(
+            expect(neutralLayerL2(darkModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L2]
             );
         });
         it("should operate on a provided background color", (): void => {
-            expect(neutralLayerL2((): string => "#000000")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL2((): string => "#000000")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L2]
             );
-            expect(neutralLayerL2((): string => "#FFFFFF")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL2((): string => "#FFFFFF")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L2]
             );
         });
@@ -78,20 +78,20 @@ describe("neutralLayer", (): void => {
 
     describe("L3", (): void => {
         it("should return values from L3 when in light mode", (): void => {
-            expect(neutralLayerL3(lightModeDesignSystem)).to.be(
+            expect(neutralLayerL3(lightModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L3]
             );
         });
         it("should return values from L3 when in dark mode", (): void => {
-            expect(neutralLayerL3(darkModeDesignSystem)).to.be(
+            expect(neutralLayerL3(darkModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L3]
             );
         });
         it("should operate on a provided background color", (): void => {
-            expect(neutralLayerL3((): string => "#000000")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL3((): string => "#000000")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L3]
             );
-            expect(neutralLayerL3((): string => "#FFFFFF")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL3((): string => "#FFFFFF")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L3]
             );
         });
@@ -99,20 +99,20 @@ describe("neutralLayer", (): void => {
 
     describe("L4", (): void => {
         it("should return values from L4 when in light mode", (): void => {
-            expect(neutralLayerL4(lightModeDesignSystem)).to.be(
+            expect(neutralLayerL4(lightModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L4]
             );
         });
         it("should return values from L4 when in dark mode", (): void => {
-            expect(neutralLayerL4(darkModeDesignSystem)).to.be(
+            expect(neutralLayerL4(darkModeDesignSystem)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L4]
             );
         });
         it("should operate on a provided background color", (): void => {
-            expect(neutralLayerL4((): string => "#000000")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL4((): string => "#000000")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteDarkModeOffsets.L4]
             );
-            expect(neutralLayerL4((): string => "#FFFFFF")(DesignSystemDefaults)).to.be(
+            expect(neutralLayerL4((): string => "#FFFFFF")(DesignSystemDefaults)).to.equal(
                 DesignSystemDefaults.neutralPalette[NeutralPaletteLightModeOffsets.L4]
             );
         });
@@ -132,7 +132,7 @@ describe("neutralLayer", (): void => {
                 DesignSystemDefaults
             );
 
-            expect(color).not.to.be(neutralLayerFloating(DesignSystemDefaults));
+            expect(color).not.to.equal(neutralLayerFloating(DesignSystemDefaults));
             expect(DesignSystemDefaults.neutralPalette.includes(color)).to.be.ok;
         });
     });
@@ -149,7 +149,7 @@ describe("neutralLayer", (): void => {
                 DesignSystemDefaults
             );
 
-            expect(color).not.to.be(neutralLayerCardContainer(DesignSystemDefaults));
+            expect(color).not.to.equal(neutralLayerCardContainer(DesignSystemDefaults));
             expect(DesignSystemDefaults.neutralPalette.includes(color)).to.be.ok;
         });
     });
@@ -166,7 +166,7 @@ describe("neutralLayer", (): void => {
                 DesignSystemDefaults
             );
 
-            expect(color).not.to.be(neutralLayerCard(DesignSystemDefaults));
+            expect(color).not.to.equal(neutralLayerCard(DesignSystemDefaults));
             expect(DesignSystemDefaults.neutralPalette.includes(color)).to.be.ok;
         });
     });

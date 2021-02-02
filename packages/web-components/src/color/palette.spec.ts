@@ -151,10 +151,10 @@ describe("getSwatch", (): void => {
 
 describe("swatchByMode", (): void => {
     it("should operate on DesignSystemDefaults", (): void => {
-        expect(swatchByMode(neutralPalette)(0, 0)({} as DesignSystem)).to.be(
+        expect(swatchByMode(neutralPalette)(0, 0)({} as DesignSystem)).to.equal(
             DesignSystemDefaults.neutralPalette[0]
         );
-        expect(swatchByMode(accentPalette)(0, 0)({} as DesignSystem)).to.be(
+        expect(swatchByMode(accentPalette)(0, 0)({} as DesignSystem)).to.equal(
             DesignSystemDefaults.accentPalette[0]
         );
     });
@@ -174,7 +174,7 @@ describe("swatchByMode", (): void => {
 
 describe("swatchByContrast", (): void => {
     it("should return a function", (): void => {
-        expect(typeof swatchByContrast({} as any)).to.be("function");
+        expect(typeof swatchByContrast({} as any)).to.equal("function");
     });
     describe("indexResolver", (): void => {
         it("should pass a reference color as the first argument", (): void => {
@@ -289,7 +289,7 @@ describe("swatchByContrast", (): void => {
             swatchByContrast("#FFF")(() => sourcePalette)(indexResolver)(
                 directionResolver
             )(contrastCondition)(designSystem)
-        ).to.be(sourcePalette[0]);
+        ).to.equal(sourcePalette[0]);
     });
     it("should return the color at the last index when direction is 1 and no value satisfies the predicate", (): void => {
         const indexResolver: () => number = (): number => 0;
@@ -302,7 +302,7 @@ describe("swatchByContrast", (): void => {
             swatchByContrast("#FFF")(() => sourcePalette)(indexResolver)(
                 directionResolver
             )(contrastCondition)(designSystem)
-        ).to.be(sourcePalette[sourcePalette.length - 1]);
+        ).to.equal(sourcePalette[sourcePalette.length - 1]);
     });
     it("should return the color at the first index when direction is -1 and no value satisfies the predicate", (): void => {
         const sourcePalette: string[] = ["#111", "#222", "#333"];
@@ -315,7 +315,7 @@ describe("swatchByContrast", (): void => {
             swatchByContrast("#FFF")(() => sourcePalette)(indexResolver)(
                 directionResolver
             )(contrastCondition)(designSystem)
-        ).to.be(sourcePalette[sourcePalette.length - 1]);
+        ).to.equal(sourcePalette[sourcePalette.length - 1]);
     });
     it("should return the color at the last index when initialIndex is greater than the last index", (): void => {
         const sourcePalette: string[] = ["#111", "#222", "#333"];
@@ -328,7 +328,7 @@ describe("swatchByContrast", (): void => {
             swatchByContrast("#FFF")(() => sourcePalette)(indexResolver)(
                 directionResolver
             )(contrastCondition)(designSystem)
-        ).to.be(sourcePalette[sourcePalette.length - 1]);
+        ).to.equal(sourcePalette[sourcePalette.length - 1]);
     });
     it("should return the color at the first index when initialIndex is less than 0", (): void => {
         const sourcePalette: string[] = ["#111", "#222", "#333"];
@@ -341,6 +341,6 @@ describe("swatchByContrast", (): void => {
             swatchByContrast("#FFF")(() => sourcePalette)(indexResolver)(
                 directionResolver
             )(contrastCondition)(designSystem)
-        ).to.be(sourcePalette[0]);
+        ).to.equal(sourcePalette[0]);
     });
 });

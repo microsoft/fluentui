@@ -21,11 +21,15 @@ describe("neutralFillInput", (): void => {
     const accentPalette: Palette = getAccentPalette(DesignSystemDefaults);
 
     it("should operate on design system defaults", (): void => {
-        expect(neutralFillInputRest({} as DesignSystem)).to.be(neutralPalette[0]);
-        expect(neutralFillInputHover({} as DesignSystem)).to.be(neutralPalette[0]);
-        expect(neutralFillInputActive({} as DesignSystem)).to.be(neutralPalette[0]);
-        expect(neutralFillInputFocus({} as DesignSystem)).to.be(neutralPalette[0]);
-        expect(neutralFillInputSelected({} as DesignSystem)).to.be(neutralPalette[0]);
+        [
+            neutralFillInputActive,
+            neutralFillInputFocus,
+            neutralFillInputHover,
+            neutralFillInputRest,
+            neutralFillInputSelected,
+        ].forEach(fn => {
+            expect(neutralPalette).to.include(fn({} as DesignSystem));
+        });
     });
 
     it("should always be lighter than the background by the delta in light mode and darker in dark mode", (): void => {
@@ -34,7 +38,7 @@ describe("neutralFillInput", (): void => {
                 backgroundColor: neutralPalette[index],
             } as DesignSystem;
 
-            expect(neutralFillInputSelected(designSystem)).to.be(
+            expect(neutralFillInputSelected(designSystem)).to.equal(
                 neutralPalette[
                     clamp(
                         index -
@@ -50,35 +54,35 @@ describe("neutralFillInput", (): void => {
 
     it("should return the same color from both implementations", (): void => {
         neutralPalette.concat(accentPalette).forEach((swatch: Swatch): void => {
-            expect(neutralFillInputRest(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillInputRest(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillInputRest(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillInputHover(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillInputHover(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillInputHover(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillInputActive(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillInputActive(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillInputActive(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillInputFocus(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillInputFocus(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillInputFocus(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
                     })
                 )
             );
-            expect(neutralFillInputSelected(() => swatch)(DesignSystemDefaults)).to.be(
+            expect(neutralFillInputSelected(() => swatch)(DesignSystemDefaults)).to.equal(
                 neutralFillInputSelected(
                     Object.assign({}, DesignSystemDefaults, {
                         backgroundColor: swatch,
@@ -107,11 +111,11 @@ describe("neutralFillInput", (): void => {
                 DesignSystemDefaults
             );
 
-            expect(backplates.rest).to.be(rest);
-            expect(backplates.hover).to.be(hover);
-            expect(backplates.active).to.be(active);
-            expect(backplates.focus).to.be(focus);
-            expect(backplates.selected).to.be(selected);
+            expect(backplates.rest).to.equal(rest);
+            expect(backplates.hover).to.equal(hover);
+            expect(backplates.active).to.equal(active);
+            expect(backplates.focus).to.equal(focus);
+            expect(backplates.selected).to.equal(selected);
         });
     });
 });
