@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 28 Jan 2021 12:23:57 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 12:28:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.158.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.0)
+
+Tue, 02 Feb 2021 12:28:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.157.2..office-ui-fabric-react_v7.158.0)
+
+### Minor changes
+
+- StackItem: allow passing native properties to the root element ([PR #16743](https://github.com/microsoft/fluentui/pull/16743) by tristan.watanabe@gmail.com)
 
 ## [7.157.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.157.2)
 

@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 02 Feb 2021 12:28:03 GMT",
+      "tag": "office-ui-fabric-react_v7.158.0",
+      "version": "7.158.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "StackItem: allow passing native properties to the root element",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "eb0d9d683326f33dcb036e77bea50ca7fdbf63a5",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:23:57 GMT",
       "tag": "office-ui-fabric-react_v7.157.2",
       "version": "7.157.2",
