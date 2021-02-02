@@ -1,13 +1,11 @@
 import { CSSCustomPropertyBehavior, cssCustomPropertyBehaviorFactory } from '@microsoft/fast-foundation';
+import { Direction } from '@microsoft/fast-web-utilities';
 import {
-  accentBaseColor,
   accentFill,
   accentFillLarge,
   accentForeground,
   accentForegroundCut,
   accentForegroundLarge,
-  DesignSystem,
-  direction,
   neutralDividerRest,
   neutralFill,
   neutralFillCard,
@@ -30,8 +28,8 @@ import {
   neutralLayerL3,
   neutralLayerL4,
   neutralOutline,
-} from '@microsoft/fast-components-styles-msft';
-import { Direction } from '@microsoft/fast-web-utilities';
+} from '../color';
+import { accentBaseColor, DesignSystem, direction } from '../fluent-design-system';
 import { FluentDesignSystemProvider } from '../design-system-provider';
 
 /**
