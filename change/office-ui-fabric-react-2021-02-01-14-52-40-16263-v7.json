@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "StackItem: allow passing native properties to the root element",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-01T22:52:40.011Z"
+}
