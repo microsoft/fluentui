@@ -13,4 +13,9 @@ describe('makeStyles', () => {
     const computeClasses = makeStyles([[null, { color: 'red', position: 'absolute' }]]);
     expect(computeClasses({}, { renderer, tokens: {} })).toBe('__1fslksb fe3e8s90 f1euv43f');
   });
+
+  fit('RTL returns a single classname for a single style', () => {
+    const computeClasses = makeStyles([[null, { color: 'red' }]]);
+    expect(computeClasses({}, { renderer, tokens: {}, rtl: true })).toBe('__ncdyee0 fe3e8s90');
+  });
 });

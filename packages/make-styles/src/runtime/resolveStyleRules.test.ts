@@ -391,6 +391,14 @@ describe('resolveStyleRules', () => {
             transform: rotate(360deg);
           }
         }
+        @keyframes rf13owpa8 {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(-360deg);
+          }
+        }
         .fkf6eed0 {
           animation-name: f13owpa8;
         }
@@ -444,7 +452,15 @@ describe('resolveStyleRules', () => {
              opacity: 1;
            }
          }
-         .f18gdskf {
+         @keyframes rf13owpa8 {
+           from {
+             transform: rotate(0deg);
+           }
+           to {
+             transform: rotate(-360deg);
+           }
+         }
+         .f18gdskf { // TODO: RTL class is missing
            animation-name: f13owpa8 f1qa61cu;
          }
          .f1cpbl36 {

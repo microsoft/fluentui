@@ -1,4 +1,4 @@
-import { convertProperty } from 'rtl-css-js/core';
+import { convert, convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
 import { HASH_PREFIX, RTL_PREFIX } from '../constants';
@@ -89,11 +89,17 @@ export function resolveStyleRules(
       } else if (property === 'animationName') {
         const animationNames = Array.isArray(value) ? value : [value];
         let keyframeCSS = '';
+        let keyframeRtlCSS = '';
         const animationName: string = animationNames
           .map(val => {
             const keyframe = compileKeyframeRule(val);
             const name = HASH_PREFIX + hashString(keyframe);
             keyframeCSS += `@keyframes ${name}{${keyframe}}`;
+
+            const rtlKeyframe = compileKeyframeRule(convert(val));
+            if (keyframe !== rtlKeyframe) {
+              keyframeRtlCSS += `@keyframes ${RTL_PREFIX + name}{${rtlKeyframe}}`;
+            }
 
             return name;
           })
@@ -101,8 +107,7 @@ export function resolveStyleRules(
 
         // TODO: support RTL
         // TODO: support prefix - call Stylis for prefixing
-
-        result[animationName] = [animationName, keyframeCSS /* rtlCSS */];
+        result[animationName] = [animationName, keyframeCSS, keyframeRtlCSS || undefined];
 
         resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result);
       }
