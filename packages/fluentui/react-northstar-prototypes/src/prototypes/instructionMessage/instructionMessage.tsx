@@ -13,7 +13,7 @@ interface InstructionMessageProps {
 
 const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = props => {
   const { message, ...rest } = props;
-  const [areaId, setAreaId] = React.useState(null);
+  const [areaId, setAreaId] = React.useState(_.uniqueId('instruction-message-'));
   // const [areaFocusableElements, setAreaFocusableElements] = React.useState(null);
   // const [currentArea, setcurrentArea] = React.useState(null);
 
@@ -48,11 +48,8 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
       if (!areaId) {
         setAreaId(() => _.uniqueId('instruction-message-'));
       }
-      // setcurrentArea(document.querySelector(`#${areaId}`));
-      // setAreaFocusableElements(
-      //   currentArea?.querySelectorAll('a, button, input, textarea, select, details, [tabindex]'),
-      // );
-      if (!narrationHasHappened && Array.from(areaFocusableElements(currentArea())).includes(event.target)) {
+      const focElements = areaFocusableElements(currentArea());
+      if (!narrationHasHappened && focElements && Array.from(focElements).includes(event.target)) {
         narrate(message);
         narrationHasHappened = true;
       }
