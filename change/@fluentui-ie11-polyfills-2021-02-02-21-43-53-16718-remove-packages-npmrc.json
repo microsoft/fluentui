@@ -1,7 +1,7 @@
 {
-  "type": "minor",
+  "type": "none",
   "packageName": "@fluentui/ie11-polyfills",
   "email": "hantatsang@gmail.com",
-  "dependentChangeType": "patch",
+  "dependentChangeType": "none",
   "date": "2021-02-02T10:42:59.874Z"
 }
