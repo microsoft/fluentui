@@ -3,6 +3,8 @@ import { accentPalette as defaultAccentPalette, neutralPalette as defaultNeutral
 
 export type DesignSystemResolver<T, Y = DesignSystem> = (d: Y) => T;
 
+export type DensityOffset = -3 | -2 | -1 | 0 | 1 | 2 | 3;
+
 /**
  * Defines the properties in the FAST Design System
  * @public
