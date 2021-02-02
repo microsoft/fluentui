@@ -130,13 +130,12 @@ While the status badges proposed above would help clarify this, it might also be
 
 Some packages with this issue:
 
-| Package                    | Old name           | Notes                                                        |
-| -------------------------- | ------------------ | ------------------------------------------------------------ |
-| `react-cards`              | same               | see above                                                    |
-| `react-charting`           | `charting`         | no plan to converge                                          |
-| `react-date-time`          | `date-time`        | exported from FUIR v8                                        |
-| `react-docsite-components` | `example-app-base` | legacy doc site stuff, no plan to converge                   |
-| `react-experiments`        | `experiments`      | random mix of active/dead                                    |
-| `react-file-type-icons`    | `file-type-icons`  |                                                              |
-| `react-monaco-editor`      | `tsx-editor`       | react wrapper for monaco editor, probably won't converge     |
-| `react-theme`              | `theme`            | utility package which I think isn't involved in convergence? |
+| Package                    | Old name           | Notes                                                    |
+| -------------------------- | ------------------ | -------------------------------------------------------- |
+| `react-cards`              | same               | see above                                                |
+| `react-charting`           | `charting`         | no plan to converge                                      |
+| `react-date-time`          | `date-time`        | exported from FUIR v8                                    |
+| `react-docsite-components` | `example-app-base` | legacy doc site stuff, no plan to converge               |
+| `react-experiments`        | `experiments`      | random mix of active/dead                                |
+| `react-file-type-icons`    | `file-type-icons`  |                                                          |
+| `react-monaco-editor`      | `tsx-editor`       | react wrapper for monaco editor, probably won't converge |
