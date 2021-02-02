@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "UnifiedPicker typing should result in the first dropdown selection being selected",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T18:03:08.703Z"
-}

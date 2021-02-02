@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-theme",
+  "entries": [
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-theme_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: add basic theme utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "026320cfc0408dbc2d25d3959856d787ef21d344",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    }
+  ]
+}

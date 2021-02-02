@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use a compat version of ThemeProvider",
-  "packageName": "@fluentui/react-cards",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T16:11:41.345Z"
-}

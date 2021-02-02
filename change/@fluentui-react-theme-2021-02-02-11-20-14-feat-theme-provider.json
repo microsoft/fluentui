@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add basic theme utils",
-  "packageName": "@fluentui/react-theme",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-02T10:20:14.903Z"
-}

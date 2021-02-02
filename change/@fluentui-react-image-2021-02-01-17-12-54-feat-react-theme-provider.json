@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "use a compat version of ThemeProvider",
-  "packageName": "@fluentui/react-image",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T16:12:11.279Z"
-}

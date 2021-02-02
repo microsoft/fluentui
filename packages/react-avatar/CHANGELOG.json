@@ -2,6 +2,21 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.3",
+      "version": "0.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use a compat version of ThemeProvider",
+            "author": "olfedias@microsoft.com",
+            "commit": "27074a29ffdf4d437dc4d6fcb347effe9fcb195f",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Feb 2021 12:23:48 GMT",
       "tag": "@fluentui/react-avatar_v0.8.2",
       "version": "0.8.2",
