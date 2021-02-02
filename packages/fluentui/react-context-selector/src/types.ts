@@ -10,27 +10,17 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 export type ContextVersion = number;
 
 export type ContextValue<Value> = {
-  STRUCT: {
-    /** TODO */
-    listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
+  /** TODO */
+  listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
 
-    /** TODO */
-    value: React.MutableRefObject<Value>;
+  /** TODO */
+  value: React.MutableRefObject<Value>;
 
-    /** TODO */
-    version: React.MutableRefObject<ContextVersion>;
-  };
+  /** TODO */
+  version: React.MutableRefObject<ContextVersion>;
 };
 
-export type ContextValues<Value> = {
-  STRUCT: {
-    /** TODO */
-    listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
-
-    /** TODO */
-    value: React.MutableRefObject<Value>;
-
-    /** TODO */
-    version: React.MutableRefObject<ContextVersion>;
-  };
+export type ContextValues<Value> = ContextValue<Value> & {
+  /** TODO */
+  listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
 };

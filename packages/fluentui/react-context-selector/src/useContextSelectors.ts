@@ -19,11 +19,9 @@ export const useContextSelectors = <
   const contextValue = React.useContext((context as unknown) as Context<ContextValues<Value>>);
 
   const {
-    STRUCT: {
-      value: { current: value },
-      version: { current: version },
-      listeners,
-    },
+    value: { current: value },
+    version: { current: version },
+    listeners,
   } = contextValue;
 
   const selected = {} as Record<Properties, SelectedValue>;

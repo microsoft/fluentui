@@ -12,11 +12,9 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
 
     if (!contextValue.current) {
       contextValue.current = {
-        STRUCT: {
-          value: valueRef,
-          version: versionRef,
-          listeners: [],
-        },
+        value: valueRef,
+        version: versionRef,
+        listeners: [],
       };
     }
 
@@ -25,7 +23,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
       versionRef.current += 1;
 
       runWithNormalPriority(() => {
-        (contextValue.current as ContextValue<Value>).STRUCT.listeners.forEach(listener => {
+        (contextValue.current as ContextValue<Value>).listeners.forEach(listener => {
           listener([versionRef.current, props.value]);
         });
       });
@@ -44,11 +42,9 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
 
 export const createContext = <Value>(defaultValue: Value): Context<Value> => {
   const context = React.createContext<ContextValue<Value>>({
-    STRUCT: {
-      value: { current: defaultValue },
-      version: { current: -1 },
-      listeners: [],
-    },
+    value: { current: defaultValue },
+    version: { current: -1 },
+    listeners: [],
   });
 
   context.Provider = createProvider<Value>(context.Provider) as any;
