@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "braChartCustomData prop eexposed to Horizontal bar chart",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-02-02T11:12:58.166Z"
+}
