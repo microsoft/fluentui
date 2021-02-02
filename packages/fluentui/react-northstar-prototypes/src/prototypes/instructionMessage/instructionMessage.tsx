@@ -1,9 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import { useFluentContext } from '@fluentui/react-bindings';
-import { Box } from '@fluentui/react-northstar';
-
-let narrationHasHappened = false;
+import { Box, Ref } from '@fluentui/react-northstar';
 
 interface InstructionMessageProps {
   message: string;
@@ -12,18 +10,15 @@ interface InstructionMessageProps {
 }
 
 const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = props => {
-  const { message, ...rest } = props;
-  const [areaId, setAreaId] = React.useState(_.uniqueId('instruction-message-'));
-  // const [areaFocusableElements, setAreaFocusableElements] = React.useState(null);
-  // const [currentArea, setcurrentArea] = React.useState(null);
+  const { children, message, ...rest } = props;
 
+  const narrationHappened = React.useRef(false);
+  const instructionRef = React.useRef<HTMLElement>();
   const timeoutMessageNarrate = React.useRef<number>();
   const timeoutMessageRemove = React.useRef<number>();
   const context = useFluentContext();
-  const { children } = props;
-  const currentArea = () => document.querySelector(`#${areaId}`);
-  const areaFocusableElements = (currentArea: Element) =>
-    currentArea?.querySelectorAll('a, button, input, textarea, select, details, [tabindex]');
+  const areaFocusableElements = () =>
+    instructionRef?.current?.querySelectorAll('a, button, input, textarea, select, details, [tabindex]');
 
   const narrate = (instructionMessage, priority = 'polite') => {
     const element = document.createElement('div');
@@ -45,13 +40,10 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
 
   const handleFocus = React.useCallback(
     event => {
-      if (!areaId) {
-        setAreaId(() => _.uniqueId('instruction-message-'));
-      }
-      const focElements = areaFocusableElements(currentArea());
-      if (!narrationHasHappened && focElements && Array.from(focElements).includes(event.target)) {
+      const focElements = areaFocusableElements();
+      if (!narrationHappened.current && focElements && Array.from(focElements).includes(event.target)) {
         narrate(message);
-        narrationHasHappened = true;
+        narrationHappened.current = true;
       }
     },
     [areaFocusableElements],
@@ -59,18 +51,21 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
 
   const handleBlur = React.useCallback(
     event => {
-      if (areaFocusableElements && !Array.from(areaFocusableElements(currentArea())).includes(event.relatedTarget)) {
+      const focElements = areaFocusableElements();
+      if (areaFocusableElements && !Array.from(focElements).includes(event.relatedTarget)) {
         clearTimeout(timeoutMessageNarrate.current);
-        narrationHasHappened = false;
+        narrationHappened.current = false;
       }
     },
     [areaFocusableElements],
   );
 
   return (
-    <Box id={areaId} onFocus={handleFocus} onBlur={handleBlur} {...rest}>
-      {children}
-    </Box>
+    <Ref innerRef={instructionRef}>
+      <Box onFocus={handleFocus} onBlur={handleBlur} {...rest}>
+        {children}
+      </Box>
+    </Ref>
   );
 };
 
