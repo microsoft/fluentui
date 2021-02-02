@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePicker, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -55,6 +55,7 @@ const firstDayOfWeek = DayOfWeek.Sunday;
 
 export const DatePickerFormatExample: React.FC = () => {
   const [value, setValue] = React.useState<Date | null | undefined>(null);
+  const datePickerRef = React.useRef<IDatePicker>(null);
 
   const onSelectDate = (date: Date | null | undefined): void => {
     setValue(date);
@@ -62,6 +63,7 @@ export const DatePickerFormatExample: React.FC = () => {
 
   const onClick = (): void => {
     setValue(null);
+    datePickerRef.current?.focus();
   };
 
   const onParseDateFromString = (val: string): Date => {
@@ -84,6 +86,7 @@ export const DatePickerFormatExample: React.FC = () => {
         example, we are formatting and parsing dates as dd/MM/yy.
       </p>
       <DatePicker
+        componentRef={datePickerRef}
         className={controlClass.control}
         label="Start date"
         isRequired={false}
@@ -99,6 +102,7 @@ export const DatePickerFormatExample: React.FC = () => {
         parseDateFromString={onParseDateFromString}
       />
       <DefaultButton
+        aria-label="Clear the date input"
         // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick}
         text="Clear"

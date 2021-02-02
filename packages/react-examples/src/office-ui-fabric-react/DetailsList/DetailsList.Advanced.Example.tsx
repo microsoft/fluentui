@@ -46,7 +46,6 @@ const classNames = mergeStyleSets({
     headerDividerClass,
   ],
   linkField: {
-    display: 'block',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     maxWidth: '100%',
@@ -722,7 +721,11 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         column.isMultiline = true;
         column.minWidth = 200;
       } else if (column.key === 'name') {
-        column.onRender = (item: IExampleItem) => <Link data-selection-invoke={true}>{item.name}</Link>;
+        column.onRender = (item: IExampleItem) => (
+          <Link href="#" data-selection-invoke={true}>
+            {item.name}
+          </Link>
+        );
       } else if (column.key === 'key') {
         column.columnActionsMode = ColumnActionsMode.disabled;
         column.onRender = (item: IExampleItem) => (

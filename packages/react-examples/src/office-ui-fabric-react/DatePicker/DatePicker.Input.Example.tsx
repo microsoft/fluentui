@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePicker, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
@@ -51,6 +51,7 @@ const desc = 'This field is required. One of the support input formats is year d
 
 export const DatePickerInputExample: React.FC = () => {
   const [value, setValue] = React.useState<Date | null | undefined>(null);
+  const datePickerRef = React.useRef<IDatePicker>(null);
 
   const onSelectDate = (date: Date | null | undefined): void => {
     setValue(date);
@@ -58,6 +59,7 @@ export const DatePickerInputExample: React.FC = () => {
 
   const onClick = (): void => {
     setValue(null);
+    datePickerRef.current?.focus();
   };
 
   return (
@@ -67,6 +69,7 @@ export const DatePickerInputExample: React.FC = () => {
         click the TextField again will dismiss the DatePicker and allow text input.
       </p>
       <DatePicker
+        componentRef={datePickerRef}
         className={controlClass.control}
         label="Start date"
         isRequired={false}
@@ -79,6 +82,7 @@ export const DatePickerInputExample: React.FC = () => {
         onSelectDate={onSelectDate}
       />
       <DefaultButton
+        aria-label="Clear the date input"
         // eslint-disable-next-line react/jsx-no-bind
         onClick={onClick}
         text="Clear"

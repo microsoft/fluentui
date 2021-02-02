@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Cherry-pick of PRs #16497, #16496, #16494, #16479, #16430, #16475, #16463, #16495 and #16481",
+  "packageName": "@fluentui/react-examples",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-28T11:30:45.906Z"
+}

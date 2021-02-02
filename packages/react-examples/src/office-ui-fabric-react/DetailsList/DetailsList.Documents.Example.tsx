@@ -12,6 +12,7 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -100,9 +101,11 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         minWidth: 16,
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
-        onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={classNames.fileIconImg} alt={item.fileType + ' file icon'} />;
-        },
+        onRender: (item: IDocument) => (
+          <TooltipHost content={`${item.fileType} file`}>
+            <img src={item.iconName} className={classNames.fileIconImg} alt={`${item.fileType} file icon`} />
+          </TooltipHost>
+        ),
       },
       {
         key: 'column2',
