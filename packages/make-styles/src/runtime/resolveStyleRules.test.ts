@@ -366,12 +366,97 @@ describe('resolveStyleRules', () => {
       `);
     });
   });
+  it('allows to define keyframes', () => {
+    expect(
+      resolveStyleRules({
+        animationName: {
+          from: {
+            transform: 'rotate(0deg)',
+          },
+          to: {
+            transform: 'rotate(360deg)',
+          },
+        },
+        animationIterationCount: 'infinite',
+        animationDuration: '5s',
+      }),
+    ).toMatchInlineSnapshot(`
+      @-webkit-keyframes f13owpa8 {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes f13owpa8 {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+          -moz-transform: rotate(360deg);
+          -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @-webkit-keyframes rf13owpa8 {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(-360deg);
+          -moz-transform: rotate(-360deg);
+          -ms-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+        }
+      }
+      @keyframes rf13owpa8 {
+        from {
+          -webkit-transform: rotate(0deg);
+          -moz-transform: rotate(0deg);
+          -ms-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(-360deg);
+          -moz-transform: rotate(-360deg);
+          -ms-transform: rotate(-360deg);
+          transform: rotate(-360deg);
+        }
+      }
+      .fkf6eed0 {
+        animation-name: f13owpa8;
+      }
+      .rfkf6eed0 {
+        animation-name: rf13owpa8;
+      }
+      .f1cpbl36 {
+        animation-iteration-count: infinite;
+      }
+      .f1t9cprh {
+        animation-duration: 5s;
+      }
+    `);
+  });
 
-  describe('experimental', () => {
-    it('allows to define keyframes', () => {
-      expect(
-        resolveStyleRules({
-          animationName: {
+  it('allows to define multiple keyframes', () => {
+    expect(
+      resolveStyleRules({
+        animationName: [
+          {
             from: {
               transform: 'rotate(0deg)',
             },
@@ -379,193 +464,107 @@ describe('resolveStyleRules', () => {
               transform: 'rotate(360deg)',
             },
           },
-          animationIterationCount: 'infinite',
-          animationDuration: '5s',
-        }),
-      ).toMatchInlineSnapshot(`
-        @-webkit-keyframes f13owpa8 {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
-        @keyframes f13owpa8 {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(360deg);
-            -moz-transform: rotate(360deg);
-            -ms-transform: rotate(360deg);
-            transform: rotate(360deg);
-          }
-        }
-        @-webkit-keyframes rf13owpa8 {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -ms-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-          }
-        }
-        @keyframes rf13owpa8 {
-          from {
-            -webkit-transform: rotate(0deg);
-            -moz-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-          }
-          to {
-            -webkit-transform: rotate(-360deg);
-            -moz-transform: rotate(-360deg);
-            -ms-transform: rotate(-360deg);
-            transform: rotate(-360deg);
-          }
-        }
-        .fkf6eed0 {
-          animation-name: f13owpa8;
-        }
-        .rfkf6eed0 {
-          animation-name: rf13owpa8;
-        }
-        .f1cpbl36 {
-          animation-iteration-count: infinite;
-        }
-        .f1t9cprh {
-          animation-duration: 5s;
-        }
-      `);
-    });
-
-    it('allows to define multiple keyframes', () => {
-      expect(
-        resolveStyleRules({
-          animationName: [
-            {
-              from: {
-                transform: 'rotate(0deg)',
-              },
-              to: {
-                transform: 'rotate(360deg)',
-              },
+          {
+            from: {
+              opacity: 0,
             },
-            {
-              from: {
-                opacity: 0,
-              },
-              to: {
-                opacity: 1,
-              },
+            to: {
+              opacity: 1,
             },
-          ],
-          animationIterationCount: 'infinite',
-          animationDuration: '5s',
-        }),
-      ).toMatchInlineSnapshot(`
-         @-webkit-keyframes f13owpa8 {
-           from {
-             -webkit-transform: rotate(0deg);
-             -moz-transform: rotate(0deg);
-             -ms-transform: rotate(0deg);
-             transform: rotate(0deg);
-           }
-           to {
-             -webkit-transform: rotate(360deg);
-             -moz-transform: rotate(360deg);
-             -ms-transform: rotate(360deg);
-             transform: rotate(360deg);
-           }
+          },
+        ],
+        animationIterationCount: 'infinite',
+        animationDuration: '5s',
+      }),
+    ).toMatchInlineSnapshot(`
+       @-webkit-keyframes f13owpa8 {
+         from {
+           -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+           -ms-transform: rotate(0deg);
+           transform: rotate(0deg);
          }
-         @keyframes f13owpa8 {
-           from {
-             -webkit-transform: rotate(0deg);
-             -moz-transform: rotate(0deg);
-             -ms-transform: rotate(0deg);
-             transform: rotate(0deg);
-           }
-           to {
-             -webkit-transform: rotate(360deg);
-             -moz-transform: rotate(360deg);
-             -ms-transform: rotate(360deg);
-             transform: rotate(360deg);
-           }
+         to {
+           -webkit-transform: rotate(360deg);
+           -moz-transform: rotate(360deg);
+           -ms-transform: rotate(360deg);
+           transform: rotate(360deg);
          }
-         @-webkit-keyframes f1qa61cu {
-           from {
-             opacity: 0;
-           }
-           to {
-             opacity: 1;
-           }
+       }
+       @keyframes f13owpa8 {
+         from {
+           -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+           -ms-transform: rotate(0deg);
+           transform: rotate(0deg);
          }
-         @keyframes f1qa61cu {
-           from {
-             opacity: 0;
-           }
-           to {
-             opacity: 1;
-           }
+         to {
+           -webkit-transform: rotate(360deg);
+           -moz-transform: rotate(360deg);
+           -ms-transform: rotate(360deg);
+           transform: rotate(360deg);
          }
-         @-webkit-keyframes rf13owpa8 {
-           from {
-             -webkit-transform: rotate(0deg);
-             -moz-transform: rotate(0deg);
-             -ms-transform: rotate(0deg);
-             transform: rotate(0deg);
-           }
-           to {
-             -webkit-transform: rotate(-360deg);
-             -moz-transform: rotate(-360deg);
-             -ms-transform: rotate(-360deg);
-             transform: rotate(-360deg);
-           }
+       }
+       @-webkit-keyframes f1qa61cu {
+         from {
+           opacity: 0;
          }
-         @keyframes rf13owpa8 {
-           from {
-             -webkit-transform: rotate(0deg);
-             -moz-transform: rotate(0deg);
-             -ms-transform: rotate(0deg);
-             transform: rotate(0deg);
-           }
-           to {
-             -webkit-transform: rotate(-360deg);
-             -moz-transform: rotate(-360deg);
-             -ms-transform: rotate(-360deg);
-             transform: rotate(-360deg);
-           }
+         to {
+           opacity: 1;
          }
-         .f18gdskf {
-           animation-name: f13owpa8 f1qa61cu;
+       }
+       @keyframes f1qa61cu {
+         from {
+           opacity: 0;
          }
-         .rf18gdskf {
-           animation-name: rf13owpa8 f1qa61cu;
+         to {
+           opacity: 1;
          }
-         .f1cpbl36 {
-           animation-iteration-count: infinite;
+       }
+       @-webkit-keyframes rf13owpa8 {
+         from {
+           -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+           -ms-transform: rotate(0deg);
+           transform: rotate(0deg);
          }
-         .f1t9cprh {
-           animation-duration: 5s;
+         to {
+           -webkit-transform: rotate(-360deg);
+           -moz-transform: rotate(-360deg);
+           -ms-transform: rotate(-360deg);
+           transform: rotate(-360deg);
          }
-      `);
-    });
+       }
+       @keyframes rf13owpa8 {
+         from {
+           -webkit-transform: rotate(0deg);
+           -moz-transform: rotate(0deg);
+           -ms-transform: rotate(0deg);
+           transform: rotate(0deg);
+         }
+         to {
+           -webkit-transform: rotate(-360deg);
+           -moz-transform: rotate(-360deg);
+           -ms-transform: rotate(-360deg);
+           transform: rotate(-360deg);
+         }
+       }
+       .f18gdskf {
+         animation-name: f13owpa8 f1qa61cu;
+       }
+       .rf18gdskf {
+         animation-name: rf13owpa8 f1qa61cu;
+       }
+       .f1cpbl36 {
+         animation-iteration-count: infinite;
+       }
+       .f1t9cprh {
+         animation-duration: 5s;
+       }
+    `);
+  });
 
+  describe('experimental', () => {
     it('allows to increase specificity', () => {
       expect(resolveStyleRules({ color: 'red' }, 1)).toMatchInlineSnapshot(`
         .fe3e8s901.fe3e8s901 {

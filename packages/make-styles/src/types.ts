@@ -4,7 +4,6 @@ export interface MakeStyles extends CSSProperties {
   // TODO Questionable: how else would users target their own children?
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-  // TODO: experimental impl.
   animationName?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
