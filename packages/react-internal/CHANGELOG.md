@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.41)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.40..@fluentui/react-internal_v8.0.0-beta.41)
+
+### Changes
+
+- allow passing native properties to the root element of StackItem ([PR #16719](https://github.com/microsoft/fluentui/pull/16719) by tristan.watanabe@gmail.com)
 
 ## [8.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.40)
 
