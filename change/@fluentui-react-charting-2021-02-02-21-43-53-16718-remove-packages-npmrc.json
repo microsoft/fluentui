@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "refactor: remove unused .npmrc in packages",
+  "packageName": "@fluentui/react-charting",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2021-02-02T10:43:16.498Z"
+}
