@@ -1,9 +1,10 @@
 import React from 'react';
-import { Button } from './Button';
 import { UploadIcon } from '@fluentui/react-icons-mdl2';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 import { PartialTheme } from '@fluentui/theme';
 import { Stack, Text, ColorPicker, IColor } from '@fluentui/react';
+
+import { Button } from './Button';
 
 const getThemes = (brand: string) => {
   const lightTheme: PartialTheme = {
@@ -63,7 +64,7 @@ const ExampleBox = ({ title, theme }: { title: string; theme: PartialTheme }) =>
     >
       <Text variant="xLarge">{title}</Text>
       <Button icon={<UploadIcon />}>I am a button</Button>
-      <Button primary>I am a primary button</Button>
+      <Button pr>I am a primary button</Button>
     </Stack>
   </ThemeProvider>
 );
@@ -80,6 +81,7 @@ export const ThemeExample = () => {
 
       <ExampleBox title="Light" theme={lightTheme} />
       <ExampleBox title="Dark" theme={darkTheme} />
+      <Button />
     </Stack>
   );
 };

@@ -8,11 +8,12 @@
     "skipDefaultLibCheck": true,
     "sourceMap": true,
     "strict": true,
+    // need to turn off - ous some packages are not compliant
     "strictFunctionTypes": false,
     "moduleResolution": "node",
     "jsx": "preserve",
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["node_modules/@types","./typings"],
+    "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {

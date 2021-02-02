@@ -118,7 +118,6 @@
     "packages": [
       "apps/*",
       "packages/*",
-      "!packages/react-button",
       "scripts",
       "packages/fluentui/*"
     ],
