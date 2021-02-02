@@ -4,6 +4,47 @@
 
 ```ts
 
+import { PartialTheme } from '@fluentui/react-theme';
+import * as React from 'react';
+import { Theme } from '@fluentui/react-theme';
+
+// @public (undocumented)
+export const internal__ThemeContext: React.Context<ThemeProviderValue>;
+
+// @public (undocumented)
+export function renderThemeProvider(state: ThemeProviderState): JSX.Element;
+
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
+
+// @public (undocumented)
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    theme?: PartialTheme | Theme;
+}
+
+// @public (undocumented)
+export interface ThemeProviderState extends React.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    theme: Theme;
+}
+
+// @public (undocumented)
+export interface ThemeProviderValue extends Theme {
+}
+
+// @public (undocumented)
+export function useTheme(): ThemeProviderValue;
+
+// @public
+export function useThemeProvider(props: ThemeProviderProps, ref: React.Ref<HTMLElement>): {
+    state: ThemeProviderState;
+    render: typeof renderThemeProvider;
+};
+
+// @public (undocumented)
+export function useThemeProviderState(draftState: ThemeProviderState): void;
+
 
 // (No @packageDocumentation comment for this package)
 

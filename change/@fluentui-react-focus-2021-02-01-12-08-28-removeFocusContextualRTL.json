@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "FocusZone: Removing contextual RTL checks to get rid of react-theme-provider dependency from react-focus package.",
-  "packageName": "@fluentui/react-focus",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T20:08:28.166Z"
-}
