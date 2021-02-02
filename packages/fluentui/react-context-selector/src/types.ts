@@ -10,17 +10,17 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 export type ContextVersion = number;
 
 export type ContextValue<Value> = {
-  /** TODO */
+  /** List of listners to publish changes */
   listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
 
-  /** TODO */
+  /** Current state value */
   value: React.MutableRefObject<Value>;
 
-  /** TODO */
+  /** Version to compare if it should run dispatch ( publish ) */
   version: React.MutableRefObject<ContextVersion>;
 };
 
 export type ContextValues<Value> = ContextValue<Value> & {
-  /** TODO */
+  /** List of listners to publish changes */
   listeners: ((payload: readonly [ContextVersion, Record<string, Value>]) => void)[];
 };
