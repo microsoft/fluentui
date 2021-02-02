@@ -44,6 +44,7 @@ export interface IHorizontalBarChartProps {
 
   /**
    * This property tells how to show data text on top right of bar chart.
+   * If barChartCustomData props added, then this props will be overrided.
    * @default 'default'
    */
   chartDataMode?: ChartDataMode;
@@ -62,6 +63,14 @@ export interface IHorizontalBarChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * Custom text to the chart (right side of the chart)
+   * IChartProps will be available as props to the method prop.
+   * If this method not given, default values (IHorizontalDataPoint {x,y})
+   * will be used to disaply the data/text based on given chartModeData prop.
+   */
+  barChartCustomData?: IRenderFunction<IChartProps>;
 }
 
 export interface IHorizontalBarChartStyleProps {
