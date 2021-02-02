@@ -23,7 +23,7 @@ import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { TeachingBubbleBasicExample } from '@fluentui/react-examples/lib/react/TeachingBubble/TeachingBubble.Basic.Example';
 import { TextFieldBasicExample } from '@fluentui/react-examples/lib/react/TextField/TextField.Basic.Example';
-import { ToggleBasicExample } from '@fluentui/react-examples/lib/react-toggle/Toggle/Toggle.Basic.Example';
+import { ToggleBasicExample } from '@fluentui/react-examples/lib/react/Toggle/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '@fluentui/react-examples/lib/react/ProgressIndicator/ProgressIndicator.Basic.Example';
 
 export interface IColorsPageState {

@@ -6,7 +6,6 @@ import { useSlider } from './useSlider';
 import { useWarnings } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'SliderBase';
-export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 export const SliderBase: React.FunctionComponent<ISliderProps> = React.forwardRef<HTMLDivElement, ISliderProps>(
   (props, ref) => {

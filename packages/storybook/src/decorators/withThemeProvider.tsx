@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeDecorator } from '@storybook/addons';
-import { ThemeProvider, Theme } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
+import { Theme } from '@fluentui/theme';
 import { useTheme } from '../knobs/useTheme';
 
 const ThemeProviderWrapper: React.FunctionComponent<{ theme?: Theme | undefined }> = props => {

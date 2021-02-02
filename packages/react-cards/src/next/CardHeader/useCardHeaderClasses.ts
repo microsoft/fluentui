@@ -1,4 +1,4 @@
-import { makeClasses } from '@fluentui/react-theme-provider';
+import { makeClasses } from '@fluentui/react-theme-provider/lib/compat/index';
 import { CardSectionState } from '../CardSection/CardSection.types';
 
 const GlobalClassNames = {

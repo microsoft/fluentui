@@ -8,12 +8,12 @@ import { ChoiceGroupCustomExample } from './ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './ChoiceGroup.Icon.Example';
 
-const ChoiceGroupBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Basic.Example.tsx') as string;
-const ChoiceGroupControlledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Controlled.Example.tsx') as string;
-const ChoiceGroupLabelExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Label.Example.tsx') as string;
-const ChoiceGroupCustomExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Custom.Example.tsx') as string;
-const ChoiceGroupImageExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Image.Example.tsx') as string;
-const ChoiceGroupIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Icon.Example.tsx') as string;
+const ChoiceGroupBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Basic.Example.tsx') as string;
+const ChoiceGroupControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Controlled.Example.tsx') as string;
+const ChoiceGroupLabelExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Label.Example.tsx') as string;
+const ChoiceGroupCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Custom.Example.tsx') as string;
+const ChoiceGroupImageExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Image.Example.tsx') as string;
+const ChoiceGroupIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/ChoiceGroup.Icon.Example.tsx') as string;
 
 export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',
@@ -51,10 +51,12 @@ export const ChoiceGroupPageProps: IDocPageProps = {
       view: <ChoiceGroupCustomExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ChoiceGroup/docs/ChoiceGroupBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

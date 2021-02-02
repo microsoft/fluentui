@@ -26,7 +26,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/PopupMenuImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string,
         },
       ];
     case 'android':
@@ -34,7 +34,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/PopupMenuImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string,
         },
       ];
   }

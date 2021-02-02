@@ -9,14 +9,14 @@ import { ImageDefaultExample } from './Image.Default.Example';
 import { ImageMaximizeFrameExample } from './Image.MaximizeFrame.Example';
 import { ImageNoneExample } from './Image.None.Example';
 
-const ImageDefaultExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.Default.Example.tsx') as string;
-const ImageCenterExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.Center.Example.tsx') as string;
-const ImageContainExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.Contain.Example.tsx') as string;
-const ImageCoverExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.Cover.Example.tsx') as string;
-const ImageCenterContainExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.CenterContain.Example.tsx') as string;
-const ImageCenterCoverExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.CenterCover.Example.tsx') as string;
-const ImageNoneExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.None.Example.tsx') as string;
-const ImageMaximizeFrameExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Image/Image.MaximizeFrame.Example.tsx') as string;
+const ImageDefaultExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.Default.Example.tsx') as string;
+const ImageCenterExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.Center.Example.tsx') as string;
+const ImageContainExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.Contain.Example.tsx') as string;
+const ImageCoverExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.Cover.Example.tsx') as string;
+const ImageCenterContainExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.CenterContain.Example.tsx') as string;
+const ImageCenterCoverExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.CenterCover.Example.tsx') as string;
+const ImageNoneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.None.Example.tsx') as string;
+const ImageMaximizeFrameExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/Image.MaximizeFrame.Example.tsx') as string;
 
 export const ImagePageProps: IDocPageProps = {
   title: 'Image',
@@ -64,10 +64,14 @@ export const ImagePageProps: IDocPageProps = {
       view: <ImageMaximizeFrameExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Image/docs/ImageOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Image/docs/ImageBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react/Image/docs/ImageDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react/Image/docs/ImageDonts.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/docs/ImageOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/docs/ImageBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/docs/ImageDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Image/docs/ImageDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

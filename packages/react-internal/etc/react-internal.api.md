@@ -33,6 +33,7 @@ import { IStyleFunction } from '@fluentui/utilities';
 import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import { KeyCodes } from '@fluentui/utilities';
+import { PartialTheme } from '@fluentui/theme';
 import { Point } from '@fluentui/utilities';
 import * as React from 'react';
 import { ReactNode } from 'react';
@@ -42,6 +43,7 @@ import { SELECTION_CHANGE } from '@fluentui/utilities';
 import { SelectionDirection } from '@fluentui/utilities';
 import { SelectionMode } from '@fluentui/utilities';
 import { Target } from '@fluentui/react-hooks';
+import { Theme } from '@fluentui/theme';
 
 // @public (undocumented)
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
@@ -438,6 +440,12 @@ export const Check: React.FunctionComponent<ICheckProps>;
 
 // @public (undocumented)
 export const CheckBase: React.FunctionComponent<ICheckProps>;
+
+// @public (undocumented)
+export const Checkbox: React.FunctionComponent<ICheckboxProps>;
+
+// @public (undocumented)
+export const CheckboxBase: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
 export const ChoiceGroup: React.FunctionComponent<IChoiceGroupProps>;
@@ -914,7 +922,7 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
     // @deprecated
     activityDescriptionText?: string;
     activityIcon?: React.ReactNode;
-    activityPersonas?: Array<IPersonaSharedProps>;
+    activityPersonas?: IPersonaSharedProps[];
     animateBeaconSignal?: boolean;
     beaconColorOne?: string;
     beaconColorTwo?: string;
@@ -1366,6 +1374,65 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
     theme?: ITheme;
 }
 
+// @public
+export interface ICheckbox {
+    checked: boolean;
+    focus: () => void;
+    indeterminate: boolean;
+}
+
+// @public
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+    ariaDescribedBy?: string;
+    ariaLabel?: string;
+    ariaLabelledBy?: string;
+    ariaPositionInSet?: number;
+    ariaSetSize?: number;
+    boxSide?: 'start' | 'end';
+    checked?: boolean;
+    checkmarkIconProps?: IIconProps;
+    className?: string;
+    componentRef?: IRefObject<ICheckbox>;
+    defaultChecked?: boolean;
+    defaultIndeterminate?: boolean;
+    disabled?: boolean;
+    indeterminate?: boolean;
+    inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
+    label?: string;
+    onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
+    onRenderLabel?: IRenderFunction<ICheckboxProps>;
+    styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyleProps {
+    // (undocumented)
+    checked?: boolean;
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    indeterminate?: boolean;
+    // (undocumented)
+    isUsingCustomLabelRender: boolean;
+    // (undocumented)
+    reversed?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICheckboxStyles {
+    checkbox?: IStyle;
+    checkmark?: IStyle;
+    input?: IStyle;
+    label?: IStyle;
+    root?: IStyle;
+    text?: IStyle;
+}
+
 // @public (undocumented)
 export interface ICheckProps extends React.RefAttributes<HTMLDivElement> {
     // @deprecated (undocumented)
@@ -1423,6 +1490,7 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
 // @public (undocumented)
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
     checked?: boolean;
+    // @deprecated (undocumented)
     componentRef?: IRefObject<IChoiceGroupOption>;
     focused?: boolean;
     itemKey: string;
@@ -1524,9 +1592,9 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     ariaLabelledByText?: string;
     beaconColorOne?: string;
     beaconColorTwo?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     beakHeight?: number;
-    // @deprecated
+    // @deprecated (undocumented)
     beakWidth?: number;
     children?: React.ReactNode;
     className?: string;
@@ -1536,7 +1604,7 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     componentRef?: IRefObject<ICoachmark>;
     delayBeforeCoachmarkAnimation?: number;
     delayBeforeMouseOpen?: number;
-    // @deprecated
+    // @deprecated (undocumented)
     height?: number;
     isCollapsed?: boolean;
     isPositionForced?: boolean;
@@ -1551,10 +1619,10 @@ export interface ICoachmarkProps extends React.RefAttributes<HTMLDivElement> {
     preventFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<ICoachmarkStyleProps, ICoachmarkStyles>;
     target: HTMLElement | string | null;
-    // @deprecated
+    // @deprecated (undocumented)
     teachingBubbleRef?: ITeachingBubble;
     theme?: ITheme;
-    // @deprecated
+    // @deprecated (undocumented)
     width?: number;
 }
 
@@ -1925,7 +1993,7 @@ export interface IContextualMenuItem {
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     href?: string;
     iconProps?: IIconProps;
-    // @deprecated
+    // @deprecated (undocumented)
     inactive?: boolean;
     itemProps?: Partial<IContextualMenuItemProps>;
     // (undocumented)
@@ -2152,11 +2220,11 @@ export interface IContextualMenuSubComponentStyles {
 
 // @public @deprecated (undocumented)
 export enum IconType {
-    // @deprecated
+    // @deprecated (undocumented)
     Default = 100000,
     // @deprecated
     default = 0,
-    // @deprecated
+    // @deprecated (undocumented)
     Image = 100001,
     // @deprecated
     image = 1
@@ -2260,7 +2328,7 @@ export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithRe
     ariaLabelledById?: string;
     // @deprecated
     className?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     componentRef?: IRefObject<IDialog>;
     // @deprecated
     containerClassName?: string;
@@ -2765,7 +2833,7 @@ export interface IIconStyleProps {
 
 // @public (undocumented)
 export interface IIconStyles {
-    // @deprecated
+    // @deprecated (undocumented)
     imageContainer?: IStyle;
     // (undocumented)
     root?: IStyle;
@@ -2785,7 +2853,7 @@ export interface IImageIconProps extends React.HTMLAttributes<HTMLElement> {
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, React.RefAttributes<HTMLImageElement> {
     className?: string;
     coverStyle?: ImageCoverStyle;
-    // @deprecated
+    // @deprecated (undocumented)
     errorSrc?: string;
     imageFit?: ImageFit;
     maximizeFrame?: boolean;
@@ -3022,6 +3090,86 @@ export interface ILine extends IShimmerElement {
 }
 
 // @public (undocumented)
+export interface ILink {
+    focus(): void;
+}
+
+// @public @deprecated (undocumented)
+export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
+    [key: string]: any;
+    // (undocumented)
+    autoFocus?: boolean;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    download?: any;
+    // (undocumented)
+    form?: string;
+    // (undocumented)
+    formAction?: string;
+    // (undocumented)
+    formEncType?: string;
+    // (undocumented)
+    formMethod?: string;
+    // (undocumented)
+    formNoValidate?: boolean;
+    // (undocumented)
+    formTarget?: string;
+    // (undocumented)
+    href?: string;
+    // (undocumented)
+    hrefLang?: string;
+    // (undocumented)
+    media?: string;
+    // (undocumented)
+    name?: string;
+    // (undocumented)
+    rel?: string;
+    // (undocumented)
+    target?: string;
+    // (undocumented)
+    type?: string;
+    // (undocumented)
+    value?: string | string[] | number;
+}
+
+// @public
+export interface ILinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, React.RefAttributes<HTMLElement> {
+    [key: string]: any;
+    as?: React.ElementType;
+    componentRef?: IRefObject<ILink>;
+    disabled?: boolean;
+    href?: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+    rel?: string;
+    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
+    target?: string;
+    theme?: ITheme;
+    type?: string;
+    underline?: boolean;
+}
+
+// @public (undocumented)
+export interface ILinkStyleProps {
+    // (undocumented)
+    className?: string;
+    // (undocumented)
+    isButton?: boolean;
+    // (undocumented)
+    isDisabled?: boolean;
+    // (undocumented)
+    isUnderlined?: boolean;
+    // (undocumented)
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ILinkStyles {
+    // (undocumented)
+    root: IStyle;
+}
+
+// @public (undocumented)
 export interface IList {
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
@@ -3112,7 +3260,7 @@ export const ImageIcon: React.FunctionComponent<IImageIconProps>;
 // @public (undocumented)
 export enum ImageLoadState {
     error = 2,
-    // @deprecated
+    // @deprecated (undocumented)
     errorLoaded = 3,
     loaded = 1,
     notLoaded = 0
@@ -3348,7 +3496,7 @@ export interface INavLink {
     expandAriaLabel?: string;
     forceAnchor?: boolean;
     icon?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     iconClassName?: string;
     iconProps?: IIconProps;
     isExpanded?: boolean;
@@ -3565,7 +3713,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     allowTouchBodyScroll?: boolean;
     className?: string;
     closeButtonAriaLabel?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     componentId?: string;
     componentRef?: IRefObject<IPanel>;
     customWidth?: string;
@@ -3884,6 +4032,74 @@ export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement
 }
 
 // @public (undocumented)
+export interface IPivot {
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+    alwaysRender?: boolean;
+    ariaLabel?: string;
+    componentRef?: IRefObject<{}>;
+    headerButtonProps?: IButtonProps | {
+        [key: string]: string | number | boolean;
+    };
+    headerText?: string;
+    itemCount?: number | string;
+    itemIcon?: string;
+    itemKey?: string;
+    keytipProps?: IKeytipProps;
+    // @deprecated
+    linkText?: string;
+    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+}
+
+// @public (undocumented)
+export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+    className?: string;
+    componentRef?: React.RefObject<IPivot>;
+    defaultSelectedKey?: string;
+    getTabId?: (itemKey: string, index: number) => string;
+    headersOnly?: boolean;
+    linkFormat?: PivotLinkFormatType;
+    linkSize?: PivotLinkSizeType;
+    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    overflowBehavior?: 'none' | 'menu';
+    selectedKey?: string | null;
+    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    theme?: ITheme;
+}
+
+// @public (undocumented)
+export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
+    linkSize?: PivotLinkSizeType;
+    linkFormat?: PivotLinkFormatType;
+};
+
+// @public (undocumented)
+export interface IPivotStyles {
+    // (undocumented)
+    count: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    // (undocumented)
+    itemContainer?: IStyle;
+    // (undocumented)
+    link: IStyle;
+    // (undocumented)
+    linkContent: IStyle;
+    // (undocumented)
+    linkInMenu: IStyle;
+    // (undocumented)
+    linkIsSelected: IStyle;
+    // (undocumented)
+    overflowMenuButton: IStyle;
+    root: IStyle;
+    // (undocumented)
+    text: IStyle;
+}
+
+// @public (undocumented)
 export interface IPlainCard {
 }
 
@@ -4020,7 +4236,7 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
     progressHidden?: boolean;
     styles?: IStyleFunctionOrObject<IProgressIndicatorStyleProps, IProgressIndicatorStyles>;
     theme?: ITheme;
-    // @deprecated
+    // @deprecated (undocumented)
     title?: string;
 }
 
@@ -4273,10 +4489,10 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     defaultValue?: string;
     disableAnimation?: boolean;
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
-    // @deprecated
+    // @deprecated (undocumented)
     labelText?: string;
     onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
-    // @deprecated
+    // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
     onClear?: (ev?: any) => void;
     onEscape?: (ev?: any) => void;
@@ -4608,6 +4824,61 @@ export interface IShimmerStyles {
 }
 
 // @public (undocumented)
+export interface ISlider {
+    // (undocumented)
+    focus: () => void;
+    // (undocumented)
+    value: number | undefined;
+}
+
+// @public (undocumented)
+export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>, React.RefAttributes<HTMLDivElement> {
+    ariaLabel?: string;
+    ariaValueText?: (value: number) => string;
+    buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+    className?: string;
+    componentRef?: IRefObject<ISlider>;
+    defaultValue?: number;
+    disabled?: boolean;
+    label?: string;
+    max?: number;
+    min?: number;
+    onChange?: (value: number) => void;
+    onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
+    originFromZero?: boolean;
+    showValue?: boolean;
+    snapToStep?: boolean;
+    step?: number;
+    styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
+    theme?: ITheme;
+    value?: number;
+    valueFormat?: (value: number) => string;
+    vertical?: boolean;
+}
+
+// @public (undocumented)
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+    showTransitions?: boolean;
+    showValue?: boolean;
+    titleLabelClassName?: string;
+};
+
+// @public (undocumented)
+export interface ISliderStyles {
+    activeSection: IStyle;
+    container: IStyle;
+    inactiveSection: IStyle;
+    line: IStyle;
+    lineContainer: IStyle;
+    root: IStyle;
+    slideBox: IStyle;
+    thumb: IStyle;
+    titleLabel: IStyle;
+    valueLabel: IStyle;
+    zeroTick: IStyle;
+}
+
+// @public (undocumented)
 export interface ISpinButton {
     focus: () => void;
     value?: string;
@@ -4696,7 +4967,7 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
     size?: SpinnerSize;
     styles?: IStyleFunctionOrObject<ISpinnerStyleProps, ISpinnerStyles>;
     theme?: ITheme;
-    // @deprecated
+    // @deprecated (undocumented)
     type?: SpinnerType;
 }
 
@@ -4726,7 +4997,7 @@ export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 // @public (undocumented)
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     className?: string;
     disableShrink?: boolean;
@@ -5132,7 +5403,7 @@ export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement
     secondaryButtonProps?: IButtonProps;
     styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
     target?: Target;
-    // @deprecated (undocumented)
+    // @deprecated
     targetElement?: HTMLElement;
     theme?: ITheme;
 }
@@ -5334,6 +5605,56 @@ export interface IThemeSlotRule {
 }
 
 // @public (undocumented)
+export interface IToggle {
+    // (undocumented)
+    focus: () => void;
+}
+
+// @public
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
+    ariaLabel?: string;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    checked?: boolean;
+    componentRef?: IRefObject<IToggle>;
+    defaultChecked?: boolean;
+    disabled?: boolean;
+    inlineLabel?: boolean;
+    label?: string | JSX.Element;
+    // @deprecated (undocumented)
+    offAriaLabel?: string;
+    offText?: string;
+    // @deprecated (undocumented)
+    onAriaLabel?: string;
+    onChange?: (event: React.MouseEvent<HTMLElement>, checked?: boolean) => void;
+    // @deprecated (undocumented)
+    onChanged?: (checked: boolean) => void;
+    onText?: string;
+    role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
+    styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export interface IToggleStyleProps {
+    checked?: boolean;
+    className?: string;
+    disabled?: boolean;
+    inlineLabel?: boolean;
+    onOffMissing?: boolean;
+    theme: ITheme;
+}
+
+// @public
+export interface IToggleStyles {
+    container: IStyle;
+    label: IStyle;
+    pill: IStyle;
+    root: IStyle;
+    text: IStyle;
+    thumb: IStyle;
+}
+
+// @public (undocumented)
 export interface ITooltip {
 }
 
@@ -5427,7 +5748,7 @@ export interface IUniqueKeytip {
     uniqueID: string;
 }
 
-// @public @deprecated (undocumented)
+// @public @deprecated
 export interface IVerticalDividerClassNames {
     divider: string;
     wrapper: string;
@@ -5436,7 +5757,7 @@ export interface IVerticalDividerClassNames {
 // @public
 export interface IVerticalDividerProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
-    // @deprecated (undocumented)
+    // @deprecated
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
     styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;
     theme?: ITheme;
@@ -5598,6 +5919,12 @@ export const LayerBase: React.FunctionComponent<ILayerProps>;
 // @public (undocumented)
 export const LayerHost: React.FunctionComponent<ILayerHostProps>;
 
+// @public (undocumented)
+export const Link: React.FunctionComponent<ILinkProps>;
+
+// @public (undocumented)
+export const LinkBase: React.FunctionComponent<ILinkProps>;
+
 // @public
 export class List<T = any> extends React.Component<IListProps<T>, IListState<T>> implements IList {
     constructor(props: IListProps<T>);
@@ -5641,6 +5968,13 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
+
+// @public
+export function makeStyles<TStyleSet extends {
+    [key: string]: IStyle;
+}>(styleOrFunction: TStyleSet | ((theme: Theme) => TStyleSet)): (options?: UseStylesOptions) => {
+    [key in keyof TStyleSet]: string;
+};
 
 // @public (undocumented)
 export const MarqueeSelection: React.FunctionComponent<IMarqueeSelectionProps>;
@@ -5738,6 +6072,9 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
         createGenericItem: typeof createGenericItem;
     };
 }
+
+// @public (undocumented)
+export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 // @public (undocumented)
 export enum OpenCardMode {
@@ -5841,7 +6178,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps>;
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
-    // @deprecated
+    // @deprecated (undocumented)
     black = 11,
     // (undocumented)
     blue = 1,
@@ -5878,7 +6215,7 @@ export enum PersonaInitialsColor {
     pink = 8,
     // (undocumented)
     purple = 10,
-    // @deprecated
+    // @deprecated (undocumented)
     red = 13,
     // (undocumented)
     rust = 24,
@@ -5989,6 +6326,37 @@ export namespace personaSize {
     const // (undocumented)
     size120 = "120px";
 }
+
+// @public
+export const Pivot: React.FunctionComponent<IPivotProps>;
+
+// @public (undocumented)
+export const PivotBase: React.FunctionComponent<IPivotProps>;
+
+// @public (undocumented)
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
+    constructor(props: IPivotItemProps);
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// @public @deprecated (undocumented)
+export const enum PivotLinkFormat {
+    links = "links",
+    tabs = "tabs"
+}
+
+// @public
+export type PivotLinkFormatType = 'links' | 'tabs';
+
+// @public @deprecated (undocumented)
+export const enum PivotLinkSize {
+    large = "large",
+    normal = "normal"
+}
+
+// @public
+export type PivotLinkSizeType = 'normal' | 'large';
 
 // @public (undocumented)
 export const PlainCard: React.FunctionComponent<IPlainCardProps>;
@@ -6353,6 +6721,12 @@ export const sizeToPixels: {
     [key: number]: number;
 };
 
+// @public (undocumented)
+export const Slider: React.FunctionComponent<ISliderProps>;
+
+// @public (undocumented)
+export const SliderBase: React.FunctionComponent<ISliderProps>;
+
 // @public
 export const SpinButton: React.FunctionComponent<ISpinButtonProps>;
 
@@ -6378,11 +6752,11 @@ export enum SpinnerSize {
     xSmall = 0
 }
 
-// @public @deprecated
+// @public @deprecated (undocumented)
 export enum SpinnerType {
-    // @deprecated
+    // @deprecated (undocumented)
     large = 1,
-    // @deprecated
+    // @deprecated (undocumented)
     normal = 0
 }
 
@@ -6734,6 +7108,9 @@ export const TextStyles: ITextComponent['styles'];
 export const TextView: ITextComponent['view'];
 
 // @public (undocumented)
+export const ThemeContext: React.Context<Theme | undefined>;
+
+// @public (undocumented)
 export class ThemeGenerator {
     static getThemeAsCode(slotRules: IThemeRules): any;
     static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
@@ -6744,8 +7121,25 @@ export class ThemeGenerator {
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }
 
+// @public
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
+
+// @public
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
+    applyTo?: 'element' | 'body' | 'none';
+    as?: React.ElementType;
+    ref?: React.Ref<HTMLElement>;
+    theme?: PartialTheme | Theme;
+}
+
 // @public (undocumented)
 export function themeRulesStandardCreator(): IThemeRules;
+
+// @public (undocumented)
+export const Toggle: React.FunctionComponent<IToggleProps>;
+
+// @public (undocumented)
+export const ToggleBase: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
 export const Tooltip: React.FunctionComponent<ITooltipProps>;
@@ -6819,6 +7213,342 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
+// @public (undocumented)
+export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
+    root: {
+        className: string;
+        ref: React.Ref<HTMLDivElement>;
+    };
+    label: {
+        className: string;
+        children: string | undefined;
+        disabled: boolean;
+        htmlFor: string | undefined;
+    };
+    sliderBox: {
+        className: string;
+        role: string;
+        tabIndex: number | undefined;
+        'data-is-focusable': boolean;
+        id: string;
+        'aria-valuenow': number;
+        'aria-valuemin': number;
+        'aria-valuemax': number;
+        'aria-valuetext': string | undefined;
+        'aria-label': string | undefined;
+        'aria-disabled': boolean;
+    } | {
+        className: string;
+        role: string;
+        tabIndex: number | undefined;
+        'data-is-focusable': boolean;
+        defaultChecked?: boolean | undefined;
+        defaultValue?: string | number | readonly string[] | undefined;
+        suppressContentEditableWarning?: boolean | undefined;
+        suppressHydrationWarning?: boolean | undefined;
+        accessKey?: string | undefined;
+        contentEditable?: boolean | "inherit" | "true" | "false" | undefined;
+        contextMenu?: string | undefined;
+        dir?: string | undefined;
+        draggable?: boolean | "true" | "false" | undefined;
+        hidden?: boolean | undefined;
+        id: string;
+        lang?: string | undefined;
+        placeholder?: string | undefined;
+        slot?: string | undefined;
+        spellCheck?: boolean | "true" | "false" | undefined;
+        style?: React.CSSProperties | undefined;
+        title?: string | undefined;
+        translate?: "yes" | "no" | undefined;
+        radioGroup?: string | undefined;
+        about?: string | undefined;
+        datatype?: string | undefined;
+        inlist?: any;
+        prefix?: string | undefined;
+        property?: string | undefined;
+        resource?: string | undefined;
+        typeof?: string | undefined;
+        vocab?: string | undefined;
+        autoCapitalize?: string | undefined;
+        autoCorrect?: string | undefined;
+        autoSave?: string | undefined;
+        color?: string | undefined;
+        itemProp?: string | undefined;
+        itemScope?: boolean | undefined;
+        itemType?: string | undefined;
+        itemID?: string | undefined;
+        itemRef?: string | undefined;
+        results?: number | undefined;
+        security?: string | undefined;
+        unselectable?: "on" | "off" | undefined;
+        inputMode?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search" | undefined;
+        is?: string | undefined;
+        'aria-activedescendant'?: string | undefined;
+        'aria-atomic'?: boolean | "true" | "false" | undefined;
+        'aria-autocomplete'?: "none" | "inline" | "list" | "both" | undefined;
+        'aria-busy'?: boolean | "true" | "false" | undefined;
+        'aria-checked'?: boolean | "true" | "false" | "mixed" | undefined;
+        'aria-colcount'?: number | undefined;
+        'aria-colindex'?: number | undefined;
+        'aria-colspan'?: number | undefined;
+        'aria-controls'?: string | undefined;
+        'aria-current'?: boolean | "true" | "false" | "page" | "step" | "location" | "date" | "time" | undefined;
+        'aria-describedby'?: string | undefined;
+        'aria-details'?: string | undefined;
+        'aria-disabled': boolean | "true" | "false";
+        'aria-dropeffect'?: "none" | "copy" | "execute" | "link" | "move" | "popup" | undefined;
+        'aria-errormessage'?: string | undefined;
+        'aria-expanded'?: boolean | "true" | "false" | undefined;
+        'aria-flowto'?: string | undefined;
+        'aria-grabbed'?: boolean | "true" | "false" | undefined;
+        'aria-haspopup'?: boolean | "true" | "false" | "menu" | "listbox" | "tree" | "grid" | "dialog" | undefined;
+        'aria-hidden'?: boolean | "true" | "false" | undefined;
+        'aria-invalid'?: boolean | "true" | "false" | "grammar" | "spelling" | undefined;
+        'aria-keyshortcuts'?: string | undefined;
+        'aria-label': string | undefined;
+        'aria-labelledby'?: string | undefined;
+        'aria-level'?: number | undefined;
+        'aria-live'?: "off" | "assertive" | "polite" | undefined;
+        'aria-modal'?: boolean | "true" | "false" | undefined;
+        'aria-multiline'?: boolean | "true" | "false" | undefined;
+        'aria-multiselectable'?: boolean | "true" | "false" | undefined;
+        'aria-orientation'?: "horizontal" | "vertical" | undefined;
+        'aria-owns'?: string | undefined;
+        'aria-placeholder'?: string | undefined;
+        'aria-posinset'?: number | undefined;
+        'aria-pressed'?: boolean | "true" | "false" | "mixed" | undefined;
+        'aria-readonly'?: boolean | "true" | "false" | undefined;
+        'aria-relevant'?: "text" | "additions" | "additions text" | "all" | "removals" | undefined;
+        'aria-required'?: boolean | "true" | "false" | undefined;
+        'aria-roledescription'?: string | undefined;
+        'aria-rowcount'?: number | undefined;
+        'aria-rowindex'?: number | undefined;
+        'aria-rowspan'?: number | undefined;
+        'aria-selected'?: boolean | "true" | "false" | undefined;
+        'aria-setsize'?: number | undefined;
+        'aria-sort'?: "none" | "ascending" | "descending" | "other" | undefined;
+        'aria-valuemax': number;
+        'aria-valuemin': number;
+        'aria-valuenow': number;
+        'aria-valuetext': string | undefined;
+        children?: React.ReactNode;
+        dangerouslySetInnerHTML?: {
+            __html: string;
+        } | undefined;
+        onCopy?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
+        onCopyCapture?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
+        onCut?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
+        onCutCapture?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
+        onPaste?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
+        onPasteCapture?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
+        onCompositionEnd?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
+        onCompositionEndCapture?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
+        onCompositionStart?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
+        onCompositionStartCapture?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
+        onCompositionUpdate?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
+        onCompositionUpdateCapture?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
+        onFocus?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
+        onFocusCapture?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
+        onBlur?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
+        onBlurCapture?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
+        onChange?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onChangeCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onBeforeInput?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onBeforeInputCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onInput?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onInputCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onReset?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onResetCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onSubmit?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onSubmitCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onInvalid?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onInvalidCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
+        onLoad?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onError?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onErrorCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onKeyDown?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
+        onKeyDownCapture?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
+        onKeyPress?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
+        onKeyPressCapture?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
+        onKeyUp?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
+        onKeyUpCapture?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
+        onAbort?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onAbortCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onCanPlay?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onCanPlayCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onCanPlayThrough?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onCanPlayThroughCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onDurationChange?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onDurationChangeCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onEmptied?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onEmptiedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onEncrypted?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onEncryptedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onEnded?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onEndedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadedData?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadedDataCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadedMetadata?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadedMetadataCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadStart?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onLoadStartCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onPause?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onPauseCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onPlay?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onPlayCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onPlaying?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onPlayingCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onProgress?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onProgressCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onRateChange?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onRateChangeCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSeeked?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSeekedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSeeking?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSeekingCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onStalled?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onStalledCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSuspend?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSuspendCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onTimeUpdate?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onTimeUpdateCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onVolumeChange?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onVolumeChangeCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onWaiting?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onWaitingCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onAuxClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onAuxClickCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onClickCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onContextMenu?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onContextMenuCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onDoubleClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onDoubleClickCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onDrag?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragEnd?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragEndCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragEnter?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragEnterCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragExit?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragExitCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragLeave?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragLeaveCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragOver?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragOverCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragStart?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDragStartCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDrop?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onDropCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
+        onMouseDown?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseDownCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseEnter?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseLeave?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseMove?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseMoveCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseOut?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseOutCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseOver?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseOverCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseUp?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onMouseUpCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+        onSelect?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onSelectCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
+        onTouchCancel?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchCancelCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchEnd?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchEndCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchMove?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchMoveCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchStart?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onTouchStartCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
+        onPointerDown?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerDownCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerMove?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerMoveCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerUp?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerUpCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerCancel?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerCancelCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerEnter?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerEnterCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerLeave?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerLeaveCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerOver?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerOverCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerOut?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onPointerOutCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onGotPointerCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onGotPointerCaptureCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onLostPointerCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onLostPointerCaptureCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
+        onScroll?: ((event: React.UIEvent<HTMLDivElement, UIEvent>) => void) | undefined;
+        onScrollCapture?: ((event: React.UIEvent<HTMLDivElement, UIEvent>) => void) | undefined;
+        onWheel?: ((event: React.WheelEvent<HTMLDivElement>) => void) | undefined;
+        onWheelCapture?: ((event: React.WheelEvent<HTMLDivElement>) => void) | undefined;
+        onAnimationStart?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
+        onAnimationStartCapture?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
+        onAnimationEnd?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
+        onAnimationEndCapture?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
+        onAnimationIteration?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
+        onAnimationIterationCapture?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
+        onTransitionEnd?: ((event: React.TransitionEvent<HTMLDivElement>) => void) | undefined;
+        onTransitionEndCapture?: ((event: React.TransitionEvent<HTMLDivElement>) => void) | undefined;
+    };
+    container: {
+        className: string;
+    };
+    valueLabel: false | {
+        className: string;
+        children: string | number;
+        disabled: boolean;
+    };
+    thumb: {
+        ref: React.RefObject<HTMLSpanElement>;
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    };
+    zeroTick: false | {
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    } | undefined;
+    activeTrack: {
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    };
+    topInactiveTrack: {
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    };
+    bottomInactiveTrack: {
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    };
+    sliderLine: {
+        ref: React.RefObject<HTMLDivElement>;
+        className: string;
+    };
+};
+
+// @public
+export type UseStylesOptions = {
+    theme?: Theme;
+};
+
+// @public
+export const useTheme: () => Theme;
+
 // @public
 export enum ValidationState {
     invalid = 2,
@@ -6832,7 +7562,6 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 export * from "@fluentui/font-icons-mdl2";
 export * from "@fluentui/react-focus";
-export * from "@fluentui/react-theme-provider";
 export * from "@fluentui/react-window-provider";
 export * from "@fluentui/style-utilities";
 export * from "@fluentui/theme";
