@@ -2370,76 +2370,26 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.0.tgz#f62ce25a800e6b413d3aa562e8416cdc1ed9131c"
   integrity sha512-u4R/sfF4SoKSAyDWJaBSDuVo4aGf1BXntlEWukC+1ubH36C6JmmdLSyyip5TQZiTqjQIy3uctcbepPi7oGI0Rw==
 
-"@microsoft/fast-components-class-name-contracts-base@^4.8.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-components-class-name-contracts-base/-/fast-components-class-name-contracts-base-4.8.0.tgz#e59c85fd7ff88865d2c5bd6a8cf287232c1469f7"
-  integrity sha512-Dns5cmvh9zrFFeoy+hrqn+HvdtABi1uAXXbwudJCPQoBtnWqGeY7Y6iCLAq63h7xTbhi9SoFaOScTBkvpKXzYQ==
+"@microsoft/fast-element@^0.22.0":
+  version "0.22.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.22.0.tgz#7d873e44df660dd37778d479dc710c56e04e1e65"
+  integrity sha512-4ziV51w/flQvucZq9tksQR3vAa9Obvfjooh9fIQ1ylPPRjEzV5RZeBQl7g5cSIRXz170jOo4VLuajeClmZpV9w==
 
-"@microsoft/fast-components-class-name-contracts-msft@^4.9.0":
-  version "4.9.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-components-class-name-contracts-msft/-/fast-components-class-name-contracts-msft-4.9.0.tgz#d61fdc1ca2645f55cd3e0f76e2b171a15b0aafe9"
-  integrity sha512-RZCNylziTk+0G9wG1ngnGnojdyfXEAQTM6honXpXlvWz9b8YkN7aTsFP0xUzgMuKluSrMGQ1oG84p22DzieHxA==
+"@microsoft/fast-foundation@^1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.12.0.tgz#4e93afec56f800a2720517daca95d6f924acc492"
+  integrity sha512-pSeeXmiGTX68GU3cyOFJqCCjgqK2fo0xJYqPhk0ik4A5RAbX25lyY66eDbxjX3tUSe24qTZs43MzvRIx8ozsrg==
   dependencies:
-    "@microsoft/fast-components-class-name-contracts-base" "^4.8.0"
-
-"@microsoft/fast-components-styles-msft@^4.29.0":
-  version "4.29.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-components-styles-msft/-/fast-components-styles-msft-4.29.0.tgz#8549ae9d5f1bcbdcd60f174dde745ecf473fde5e"
-  integrity sha512-z5B/SAyffS7OONqja0isdp7ugE2L3+qK41e+6MlcYIaZ34h5x3ThOAjkSFWP4bAHXkYi2AOcTvfdnE+cIuwC/Q==
-  dependencies:
-    "@microsoft/fast-colors" "^5.1.0"
-    "@microsoft/fast-components-class-name-contracts-base" "^4.8.0"
-    "@microsoft/fast-components-class-name-contracts-msft" "^4.9.0"
-    "@microsoft/fast-jss-manager" "^4.2.0"
-    "@microsoft/fast-jss-utilities" "^4.8.0"
-    "@microsoft/fast-web-utilities" "^4.6.0"
-
-"@microsoft/fast-element@^0.21.1":
-  version "0.21.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.21.1.tgz#366fb006608819edf8053e0fbdb31618957b86a4"
-  integrity sha512-DZVu9KGtwP+vg9z6fAHpiPntPPFNj4ex6qBSsRLP5RP8akqD54OiUokRTJ9/JodIF7R9w34XLG3EJRD75LQwDQ==
-
-"@microsoft/fast-foundation@^1.11.1":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.11.1.tgz#d3e04c55be7a51b7cf38ef2acfe6eb3cbb0aec27"
-  integrity sha512-tRgx6MbfbyArzRhBwkki+MjB98tSbTRjgZ+pq3HiPtRE8leoi0kkNqcj+9+xuPSvzxU+u8eG2ySuOtTzk7VskA==
-  dependencies:
-    "@microsoft/fast-element" "^0.21.1"
-    "@microsoft/fast-web-utilities" "^4.7.0"
+    "@microsoft/fast-element" "^0.22.0"
+    "@microsoft/fast-web-utilities" "^4.7.1"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
     tslib "^1.13.0"
 
-"@microsoft/fast-jss-manager@^4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-jss-manager/-/fast-jss-manager-4.2.0.tgz#3d310b6f27435c4a57b6862c2b2273df6897ae06"
-  integrity sha512-2ubd6aOgBnF8CHzMnS9mzDAGPK9/3swgUf9fQ9tTWk6EIsdvwJw+auAzZEfM2xWWM6Tphyp+/XQFmMuvyO2ydw==
-  dependencies:
-    "@microsoft/fast-components-class-name-contracts-base" "^4.8.0"
-    csstype "^2.3.0"
-
-"@microsoft/fast-jss-utilities@^4.8.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-jss-utilities/-/fast-jss-utilities-4.8.0.tgz#aa2fce0f5ed29e0bc1bf4aaa8035d3fe6d2f6d06"
-  integrity sha512-gIkGUA07TjD2hlYJw79DChT+QkYtYLpdxquiGXYBfulI6JGkanAM7yRYYg9sSiKksYyZS7wgNfxA+DiVg5LYXA==
-  dependencies:
-    "@microsoft/fast-colors" "^5.1.0"
-    "@microsoft/fast-jss-manager" "^4.2.0"
-    "@microsoft/fast-web-utilities" "^4.6.0"
-    csstype "^2.3.0"
-    exenv-es6 "^1.0.0"
-
-"@microsoft/fast-web-utilities@^4.6.0":
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.6.0.tgz#b81dcbac1ed0ae9cbb0d759d599df6ce8f187fae"
-  integrity sha512-VB1YwsN8OM9usmaBZVCg8fBxyhAIYTP2Dtu2IL0N2dO37Pu84I0hLXhacRps6BbZXGDMz3LQIg8xF893hqwVuw==
-  dependencies:
-    exenv-es6 "^1.0.0"
-
-"@microsoft/fast-web-utilities@^4.7.0":
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.7.0.tgz#8ba4b3b790447fca715fd5d7c3f3779c035a7982"
-  integrity sha512-GnK0ofXnFg/n6DpRtzH2gDLxVRqVhgIyxUBKUOu/hBtnQyQ/0HHc5XxMgJxZXdWvCLluQVEFt93Wp+Hvolq40Q==
+"@microsoft/fast-web-utilities@^4.7.1":
+  version "4.7.1"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.7.1.tgz#c9ae712f2870152fded596a8d7edb97547331e96"
+  integrity sha512-o3oN15EdPKKBHBzcC2008eKjVBflMf44YPxkxEOwn7sFzZ2T6CNhTU7feUfSa4+97MeUI3GNn/Wb4YZK+sCeaw==
   dependencies:
     exenv-es6 "^1.0.0"
 
@@ -3800,6 +3750,18 @@
   dependencies:
     "@types/connect" "*"
     "@types/node" "*"
+
+"@types/chai-spies@^1.0.1":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@types/chai-spies/-/chai-spies-1.0.3.tgz#a52dc61af3853ec9b80965040811d15dfd401542"
+  integrity sha512-RBZjhVuK7vrg4rWMt04UF5zHYwfHnpk5mIWu3nQvU3AKGDixXzSjZ6v0zke6pBcaJqMv3IBZ5ibLWPMRDL0sLw==
+  dependencies:
+    "@types/chai" "*"
+
+"@types/chai@*":
+  version "4.2.14"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.14.tgz#44d2dd0b5de6185089375d976b4ec5caf6861193"
+  integrity sha512-G+ITQPXkwTrslfG5L/BksmbLUA0M1iybEsmCWPqzSxsRRhJZimBKJkoMi8fr/CPygPTj4zO5pJH7I2/cm9M7SQ==
 
 "@types/chai@^4.2.11":
   version "4.2.12"
@@ -7435,6 +7397,11 @@ ccount@^1.0.3:
   resolved "https://registry.yarnpkg.com/ccount/-/ccount-1.0.5.tgz#ac82a944905a65ce204eb03023157edf29425c17"
   integrity sha512-MOli1W+nfbPLlKEhInaxhRdp7KVLFxLN5ykwzHgLsLI3H3gs5jjFAK4Eoj3OzzcxCtumDaI8onoVDeQyWaNTkw==
 
+chai-spies@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/chai-spies/-/chai-spies-1.0.0.tgz#d16b39336fb316d03abf8c375feb23c0c8bb163d"
+  integrity sha512-elF2ZUczBsFoP07qCfMO/zeggs8pqCf3fZGyK5+2X4AndS8jycZYID91ztD9oQ7d/0tnS963dPkd0frQEThDsg==
+
 chai@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/chai/-/chai-4.2.0.tgz#760aa72cf20e3795e84b12877ce0e83737aa29e5"
@@ -8832,7 +8799,7 @@ cssstyle@^2.2.0:
   dependencies:
     cssom "~0.3.6"
 
-csstype@^2.2.0, csstype@^2.3.0, csstype@^2.5.5, csstype@^2.5.7, csstype@^2.6.7:
+csstype@^2.2.0, csstype@^2.5.5, csstype@^2.5.7, csstype@^2.6.7:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.8.tgz#0fb6fc2417ffd2816a418c9336da74d7f07db431"
   integrity sha512-msVS9qTuMT5zwAGCVm4mxfrZ18BNc6Csd0oJAtiFMZ1FAx1CCvy2+5MDmYoix63LM/6NDbNtodCiGYGmFgO0dA==
