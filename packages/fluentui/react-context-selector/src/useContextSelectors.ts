@@ -1,18 +1,6 @@
 import * as React from 'react';
-
-import { Context, ContextSelector, ContextValue } from './types';
+import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
 import { useIsomorphicLayoutEffect } from './utils';
-
-type UseSelectorsRef<
-  Value,
-  Properties extends string,
-  Selectors extends Record<Properties, ContextSelector<Value, SelectedValue>>,
-  SelectedValue extends any
-> = {
-  selectors: Selectors;
-  value: Value;
-  selected: Record<Properties, SelectedValue>;
-};
 
 /**
  * This hook returns context selected value by selectors.
@@ -45,17 +33,21 @@ export const useContextSelectors = <
 
   const [state, dispatch] = React.useReducer(
     (
-      prevState: readonly [Value /* contextValue */, SelectedValue /* selector(value) */],
+      prevState: readonly [Record<Properties, SelectedValue> /* contextValue */, SelectedValue /* selector(value) */],
       payload:
         | undefined // undefined from render below
-        | readonly [ContextVersion, Value], // from provider effect
+        | readonly [ContextVersion, Record<Properties, Value>], // from provider effect
     ) => {
       if (!payload) {
         return [value, selected] as const;
       }
 
       if (payload[0] <= version) {
-        if (Object.is(prevState[1], selected)) {
+        const stateHasNotChanged = Object.keys(selectors).every((key: Properties) =>
+          Object.is(prevState[0][key] as SelectedValue, selected[key]),
+        );
+
+        if (stateHasNotChanged) {
           return prevState; // bail out
         }
 
@@ -63,14 +55,25 @@ export const useContextSelectors = <
       }
 
       try {
-        if (Object.is(prevState[0], payload[1])) {
-          return prevState; // do not update
+        const statePayloadHasNotChanged = Object.keys(prevState[0]).every((key: Properties) => {
+          return Object.is(prevState[0][key] as SelectedValue, payload[1][key]);
+        });
+
+        if (statePayloadHasNotChanged) {
+          return prevState;
         }
 
-        const nextSelected = selector(payload[1]);
+        const nextSelected = {} as Record<Properties, SelectedValue>;
+        Object.keys(selectors).forEach((key: Properties) => {
+          nextSelected[key] = selectors[key](payload[1][key]);
+        });
 
-        if (Object.is(prevState[1], nextSelected)) {
-          return prevState; // do not update
+        const selecteddHasNotChanged = Object.keys(selectors).every((key: Properties) => {
+          return Object.is(prevState[1][key] as SelectedValue, nextSelected[key]);
+        });
+
+        if (selecteddHasNotChanged) {
+          return prevState;
         }
 
         return [payload[1], nextSelected] as const;
