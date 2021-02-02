@@ -1,4 +1,11 @@
 /**
+ * Recursive partial type.
+ */
+type RecursivePartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
+};
+
+/**
  * Design tokens for neutral colors
  */
 export type NeutralColorTokens = {
@@ -244,4 +251,16 @@ export type Theme = {
   brandColors: ColorVariants;
   neutralColorTokens: NeutralColorTokens;
   shadowLevels?: ShadowLevelTokens;
+};
+
+export type PartialTheme = {
+  sharedColors?: RecursivePartial<Theme['sharedColors']>;
+  sharedColorTokens?: RecursivePartial<Theme['sharedColorTokens']>;
+  fontSizes?: RecursivePartial<Theme['fontSizes']>;
+  fontWeights?: RecursivePartial<Theme['fontWeights']>;
+  fontFamilies?: RecursivePartial<Theme['fontFamilies']>;
+  lineHeights?: RecursivePartial<Theme['lineHeights']>;
+  brandColors?: RecursivePartial<Theme['brandColors']>;
+  neutralColorTokens?: RecursivePartial<Theme['neutralColorTokens']>;
+  shadowLevels?: RecursivePartial<Theme['shadowLevels']>;
 };
