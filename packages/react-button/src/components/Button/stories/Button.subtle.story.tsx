@@ -22,17 +22,17 @@ const style = `
 }
 
 .root {
-  background: var(--alias-ghost-background);
+  background: ${teamsLightTheme.ghostColorTokens.ghostBackground};
   border: none;
 }
 .root:hover {
-  background: var(--alias-ghost-background-hover);
+  background: ${teamsLightTheme.ghostColorTokens.ghostBackgroundHover};
 }
 .root:active {
-  background: var(--alias-ghost-background-pressed);
+  background: ${teamsLightTheme.ghostColorTokens.ghostBackgroundPressed};
 }
 .root.active {
-  background: var(--alias-ghost-background-selected);
+  background: ${teamsLightTheme.ghostColorTokens.ghostBackgroundSelected};
 }
 
 .content {

@@ -17,6 +17,18 @@ const webNeutralColorTokens = createNeutralColorTokens(brandColors.web);
 export const webDarkTheme: Theme = {
   brandColors: brandColors.web,
   neutralColorTokens: webNeutralColorTokens,
+  ghostColorTokens: {
+    ghostBackground: 'red',
+    ghostBackgroundHover: 'red',
+    ghostBackgroundPressed: 'red',
+    ghostBackgroundSelected: 'red',
+  },
+  transparentColorTokens: {
+    transparentBackground: 'rgba(255, 0, 0, 0.2)',
+    transparentBackgroundHover: 'rgba(255, 0, 0, 0.2)',
+    transparentBackgroundPressed: 'rgba(255, 0, 0, 0.2)',
+    transparentBackgroundSelected: 'rgba(255, 0, 0, 0.2)',
+  },
   shadowLevels: createShadowLevelTokens(
     webNeutralColorTokens.neutralShadowAmbientDarker,
     webNeutralColorTokens.neutralShadowKeyDarker,

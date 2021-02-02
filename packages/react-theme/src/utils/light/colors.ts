@@ -1,14 +1,21 @@
-import { NeutralColorTokens, SharedColorTokens, ColorVariants, GlobalSharedColors } from '../../types';
+import {
+  NeutralColorTokens,
+  SharedColorTokens,
+  ColorVariants,
+  GlobalSharedColors,
+  TransparentColorTokens,
+  GhostColorTokens,
+} from '../../types';
 import { grey, white, sharedColors } from '../../global';
 
-export const ghostColorTokens /*: GhostColorTokens*/ = {
+export const ghostColorTokens: GhostColorTokens = {
   ghostBackground: 'transparent',
   ghostBackgroundHover: grey[96],
   ghostBackgroundPressed: grey[88],
   ghostBackgroundSelected: grey[92],
 };
 
-export const transparentColorTokens /*: TransparentColorTokens*/ = {
+export const transparentColorTokens: TransparentColorTokens = {
   transparentBackground: 'transparent',
   transparentBackgroundHover: 'transparent',
   transparentBackgroundPressed: 'transparent',

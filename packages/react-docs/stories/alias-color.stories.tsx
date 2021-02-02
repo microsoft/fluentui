@@ -9,36 +9,44 @@ export default {
 };
 
 const buttonStyle = ({ active }): React.CSSProperties => ({
-  padding: '0.5em 1em',
-  width: 100,
-  fontWeight: !!active ? 'bold' : 'normal',
-  border: !!active ? '2px solid white' : '2px solid transparent',
-  transform: !!active ? 'scale(1.1)' : 'scale(1)',
-  transition: 'transform 0.2s ease-in-out',
+  position: 'relative',
+  verticalAlign: 'middle',
+  padding: 0,
+  margin: 0,
+  width: 40,
+  height: 40,
+  border: 'none',
+  boxShadow: !!active ? '0 0 0 1px white, 0 0 0 2px black' : 'none',
   borderRadius: 0,
   outline: 'none ',
-  zIndex: !!active ? 1 : 0,
+  zIndex: !!active ? 2 : 1,
 });
 
 export const Alias = (args, { globals: { theme } }) => {
   const [color, setColor] = React.useState<string>('neutral');
+  const [previewColor, setPreviewColor] = React.useState<string>(null);
 
   const COLUMN_WIDTH = 250;
+  const activeColor = previewColor || color;
 
   return (
     <>
       <div>
+        <h2 style={{ color: previewColor ? '#888' : '#000' }}>{activeColor}</h2>
         <button
           style={{
             background: webDarkTheme.neutralColorTokens.neutralBackground1,
             color: webDarkTheme.neutralColorTokens.neutralForeground1,
             ...buttonStyle({ active: color === 'neutral' }),
           }}
-          onClick={() => setColor('neutral')}
-        >
-          neutral
-        </button>
-        {Object.keys(webLightTheme.sharedColorTokens).map((colorName) => (
+          onClick={() => {
+            setColor('neutral');
+            setPreviewColor(null);
+          }}
+          onMouseEnter={() => setPreviewColor('neutral')}
+          onMouseLeave={() => setPreviewColor(null)}
+        />
+        {Object.keys(webLightTheme.sharedColorTokens).map(colorName => (
           <button
             key={colorName}
             style={{
@@ -49,10 +57,13 @@ export const Alias = (args, { globals: { theme } }) => {
                 ],
               ...buttonStyle({ active: color === colorName }),
             }}
-            onClick={() => setColor(colorName)}
-          >
-            {colorName}
-          </button>
+            onClick={() => {
+              setColor(colorName);
+              setPreviewColor(null);
+            }}
+            onMouseEnter={() => setPreviewColor(colorName)}
+            onMouseLeave={() => setPreviewColor(null)}
+          />
         ))}
       </div>
 
@@ -63,8 +74,8 @@ export const Alias = (args, { globals: { theme } }) => {
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Web Dark</h3>
           <h3 style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', margin: 0 }}>Web High Contrast</h3>
         </div>
-        {color === 'neutral'
-          ? Object.keys(theme.light.neutralColorTokens).map((name) => (
+        {activeColor === 'neutral'
+          ? Object.keys(theme.light.neutralColorTokens).map(name => (
               <div key={name} style={{ display: 'flex' }}>
                 <div style={{ padding: '1em', width: COLUMN_WIDTH, fontWeight: 'bold' }}>{name}</div>
                 <ColorRampItem value={theme.light.neutralColorTokens[name]} />
@@ -72,12 +83,12 @@ export const Alias = (args, { globals: { theme } }) => {
                 <ColorRampItem value={theme.highContrast.neutralColorTokens[name]} />
               </div>
             ))
-          : Object.keys(theme.light.sharedColorTokens[color]).map((name) => (
+          : Object.keys(theme.light.sharedColorTokens[activeColor]).map(name => (
               <div key={name} style={{ display: 'flex' }}>
                 <div style={{ padding: '1em', width: COLUMN_WIDTH, fontWeight: 'bold' }}>{name}</div>
-                <ColorRampItem value={theme.light.sharedColorTokens[color][name]} />
-                <ColorRampItem value={theme.dark.sharedColorTokens[color][name]} />
-                <ColorRampItem value={theme.highContrast.sharedColorTokens[color][name]} />
+                <ColorRampItem value={theme.light.sharedColorTokens[activeColor][name]} />
+                <ColorRampItem value={theme.dark.sharedColorTokens[activeColor][name]} />
+                <ColorRampItem value={theme.highContrast.sharedColorTokens[activeColor][name]} />
               </div>
             ))}
       </div>

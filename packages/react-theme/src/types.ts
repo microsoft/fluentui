@@ -231,6 +231,20 @@ export type ShadowLevelTokens = {
   shadow64: ShadowTokenValue;
 };
 
+export type GhostColorTokens = {
+  ghostBackground: string;
+  ghostBackgroundHover: string;
+  ghostBackgroundPressed: string;
+  ghostBackgroundSelected: string;
+};
+
+export type TransparentColorTokens = {
+  transparentBackground: string;
+  transparentBackgroundHover: string;
+  transparentBackgroundPressed: string;
+  transparentBackgroundSelected: string;
+};
+
 /**
  * Theme object
  */
@@ -244,4 +258,6 @@ export type Theme = {
   brandColors: ColorVariants;
   neutralColorTokens: NeutralColorTokens;
   shadowLevels?: ShadowLevelTokens;
+  ghostColorTokens: GhostColorTokens;
+  transparentColorTokens: TransparentColorTokens;
 };

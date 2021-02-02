@@ -12,6 +12,18 @@ const common = {
 
 export const webHighContrastTheme: Theme = {
   brandColors: brandColors.web,
+  ghostColorTokens: {
+    ghostBackground: 'red',
+    ghostBackgroundHover: 'red',
+    ghostBackgroundPressed: 'red',
+    ghostBackgroundSelected: 'red',
+  },
+  transparentColorTokens: {
+    transparentBackground: 'rgba(255, 0, 0, 0.2)',
+    transparentBackgroundHover: 'rgba(255, 0, 0, 0.2)',
+    transparentBackgroundPressed: 'rgba(255, 0, 0, 0.2)',
+    transparentBackgroundSelected: 'rgba(255, 0, 0, 0.2)',
+  },
   neutralColorTokens: createNeutralColorTokens(brandColors.web),
   ...common,
 };

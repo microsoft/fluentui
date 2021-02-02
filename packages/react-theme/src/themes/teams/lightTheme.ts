@@ -22,7 +22,6 @@ const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams);
 export const teamsLightTheme: Theme = {
   brandColors: brandColors.teams,
   neutralColorTokens: teamsNeutralColorTokens,
-  // @ts-ignore
   ghostColorTokens,
   transparentColorTokens,
   shadowLevels: createShadowLevelTokens(
