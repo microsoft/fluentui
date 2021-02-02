@@ -61,7 +61,7 @@ const PortalFrame: React.FunctionComponent<{
       <iframe
         ref={setFrameRef}
         style={{ height: 300, width: 600, border: 0, padding: 20 }}
-        title="An example of nested Provider in iframe"
+        title="An example of Provider in iframe"
       />
       {frameRef &&
         ReactDOM.createPortal(
