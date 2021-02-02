@@ -20,7 +20,7 @@ expect.addSnapshotSerializer({
 });
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
-  return resolvedStyles[Object.keys(resolvedStyles)[0]][0];
+  return resolvedStyles[Object.keys(resolvedStyles)[0]][0] as string;
 }
 
 describe('resolveStyleRules', () => {
@@ -383,24 +383,67 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-        @keyframes f13owpa8 {
+        @-webkit-keyframes f13owpa8 {
           from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
             transform: rotate(0deg);
           }
           to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
             transform: rotate(360deg);
+          }
+        }
+        @keyframes f13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-webkit-keyframes rf13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
           }
         }
         @keyframes rf13owpa8 {
           from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
             transform: rotate(0deg);
           }
           to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
             transform: rotate(-360deg);
           }
         }
         .fkf6eed0 {
           animation-name: f13owpa8;
+        }
+        .rfkf6eed0 {
+          animation-name: rf13owpa8;
         }
         .f1cpbl36 {
           animation-iteration-count: infinite;
@@ -411,7 +454,7 @@ describe('resolveStyleRules', () => {
       `);
     });
 
-    fit('allows to define multiple keyframes', () => {
+    it('allows to define multiple keyframes', () => {
       expect(
         resolveStyleRules({
           animationName: [
@@ -436,12 +479,40 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-         @keyframes f13owpa8 {
+         @-webkit-keyframes f13owpa8 {
            from {
+             -webkit-transform: rotate(0deg);
+             -moz-transform: rotate(0deg);
+             -ms-transform: rotate(0deg);
              transform: rotate(0deg);
            }
            to {
+             -webkit-transform: rotate(360deg);
+             -moz-transform: rotate(360deg);
+             -ms-transform: rotate(360deg);
              transform: rotate(360deg);
+           }
+         }
+         @keyframes f13owpa8 {
+           from {
+             -webkit-transform: rotate(0deg);
+             -moz-transform: rotate(0deg);
+             -ms-transform: rotate(0deg);
+             transform: rotate(0deg);
+           }
+           to {
+             -webkit-transform: rotate(360deg);
+             -moz-transform: rotate(360deg);
+             -ms-transform: rotate(360deg);
+             transform: rotate(360deg);
+           }
+         }
+         @-webkit-keyframes f1qa61cu {
+           from {
+             opacity: 0;
+           }
+           to {
+             opacity: 1;
            }
          }
          @keyframes f1qa61cu {
@@ -452,16 +523,39 @@ describe('resolveStyleRules', () => {
              opacity: 1;
            }
          }
-         @keyframes rf13owpa8 {
+         @-webkit-keyframes rf13owpa8 {
            from {
+             -webkit-transform: rotate(0deg);
+             -moz-transform: rotate(0deg);
+             -ms-transform: rotate(0deg);
              transform: rotate(0deg);
            }
            to {
+             -webkit-transform: rotate(-360deg);
+             -moz-transform: rotate(-360deg);
+             -ms-transform: rotate(-360deg);
              transform: rotate(-360deg);
            }
          }
-         .f18gdskf { // TODO: RTL class is missing
+         @keyframes rf13owpa8 {
+           from {
+             -webkit-transform: rotate(0deg);
+             -moz-transform: rotate(0deg);
+             -ms-transform: rotate(0deg);
+             transform: rotate(0deg);
+           }
+           to {
+             -webkit-transform: rotate(-360deg);
+             -moz-transform: rotate(-360deg);
+             -ms-transform: rotate(-360deg);
+             transform: rotate(-360deg);
+           }
+         }
+         .f18gdskf {
            animation-name: f13owpa8 f1qa61cu;
+         }
+         .rf18gdskf {
+           animation-name: rf13owpa8 f1qa61cu;
          }
          .f1cpbl36 {
            animation-iteration-count: infinite;

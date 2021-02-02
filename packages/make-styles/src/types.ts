@@ -22,7 +22,7 @@ export interface MakeStylesOptions<Tokens> {
 
 // Build time / runtime types
 
-export type MakeStylesResolvedRule = [/* className */ string, /* css */ string, /* rtlCSS */ string?];
+export type MakeStylesResolvedRule = [/* className */ string | undefined, /* css */ string, /* rtlCSS */ string?];
 
 export type MakeStylesResolvedDefinition<Selectors, Tokens> = [
   MakeStylesMatcher<Selectors>,

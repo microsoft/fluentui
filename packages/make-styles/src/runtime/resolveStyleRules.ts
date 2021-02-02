@@ -4,7 +4,7 @@ import { expand } from 'inline-style-expand-shorthand';
 import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
-import { compileKeyframeRule } from './compileKeyframeRule';
+import { compileKeyframeRule, compileKeyframes } from './compileKeyframeRule';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
@@ -20,6 +20,7 @@ export function resolveStyleRules(
   media = '',
   support = '',
   result: Record<string, MakeStylesResolvedRule> = {},
+  rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
   const expandedStyles = (expand(styles) as unknown) as MakeStyles;
   const properties = Object.keys(expandedStyles);
@@ -49,7 +50,7 @@ export function resolveStyleRules(
         unstable_cssPriority,
       });
 
-      const rtl = convertProperty(property, value);
+      const rtl = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
       const flippedInRtl = rtl.key !== property || rtl.value !== value;
 
       if (flippedInRtl) {
@@ -90,26 +91,28 @@ export function resolveStyleRules(
         const animationNames = Array.isArray(value) ? value : [value];
         let keyframeCSS = '';
         let keyframeRtlCSS = '';
-        const animationName: string = animationNames
-          .map(val => {
-            const keyframe = compileKeyframeRule(val);
-            const name = HASH_PREFIX + hashString(keyframe);
-            keyframeCSS += `@keyframes ${name}{${keyframe}}`;
+        const names = [];
+        const namesRtl = [];
+        for (const val of animationNames) {
+          const keyframe = compileKeyframeRule(val);
+          const name = HASH_PREFIX + hashString(keyframe);
+          keyframeCSS += compileKeyframes(name, keyframe);
+          names.push(name);
 
-            const rtlKeyframe = compileKeyframeRule(convert(val));
-            if (keyframe !== rtlKeyframe) {
-              keyframeRtlCSS += `@keyframes ${RTL_PREFIX + name}{${rtlKeyframe}}`;
-            }
+          const rtlKeyframe = compileKeyframeRule(convert(val));
+          if (keyframe !== rtlKeyframe) {
+            const nameRtl = RTL_PREFIX + name;
+            keyframeRtlCSS += compileKeyframes(nameRtl, rtlKeyframe);
+            namesRtl.push(nameRtl);
+          } else {
+            namesRtl.push(name);
+          }
+        }
 
-            return name;
-          })
-          .join(' ');
-
-        // TODO: support RTL
-        // TODO: support prefix - call Stylis for prefixing
-        result[animationName] = [animationName, keyframeCSS, keyframeRtlCSS || undefined];
-
-        resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result);
+        const animationName = names.join(' ');
+        const animationNameRtl = namesRtl.join(' ');
+        result[animationName] = [undefined, keyframeCSS, keyframeRtlCSS || undefined];
+        resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result, animationNameRtl);
       }
     }
   });
