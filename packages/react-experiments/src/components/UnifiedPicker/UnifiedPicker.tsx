@@ -477,7 +477,19 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         }
       }
     },
-    [addItems, clearQueryString, isSuggestionsShown, onInputChange, setQueryString, showPicker],
+    [
+      addItems,
+      clearQueryString,
+      isSuggestionsShown,
+      onInputChange,
+      setQueryString,
+      showPicker,
+      clearPickerSelectedIndex,
+      setFocusItemIndex,
+      focusItemIndex,
+      footerItemIndex,
+      headerItemIndex,
+    ],
   );
 
   const _onPaste = React.useCallback(
