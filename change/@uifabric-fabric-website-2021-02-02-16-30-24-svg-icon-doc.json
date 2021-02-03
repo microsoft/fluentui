@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "update icon documentation page with info about open source package",
+  "comment": "Updating icon documentation page with info about open source package",
   "packageName": "@uifabric/fabric-website",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
