@@ -1,10 +1,17 @@
 // @ts-check
-const { createWebpackConfig, buildEntries, buildNorthstarEntries, buildEntry } = require('./webpackUtils');
+const { createWebpackConfig, createEntries, createEntry, buildEntries, buildEntry } = require('./webpackUtils');
 
-// Create entries for all top level imports.
+// Create entries for all top level imports
+createEntries('@fluentui/react-northstar', true);
+createEntries('@fluentui/react', false);
+
+// Create entries for single top level import.
+createEntry('@fluentui/react-compose');
+createEntry('@fluentui/keyboard-key');
+
 const entries = {
   ...buildEntries('@fluentui/react'),
-  ...buildNorthstarEntries(),
+  ...buildEntries('@fluentui/react-northstar'),
 };
 // If/when we start working in react-next again, the bundle size tests should be set up like this
 // so that only the components directly within react-next are tested.
@@ -15,7 +22,6 @@ const entries = {
 //   true /* onlyOwnComponents */,
 // );
 
-// Create entries for single top level import.
 entries['react-compose'] = buildEntry('@fluentui/react-compose');
 entries['keyboard-key'] = buildEntry('@fluentui/keyboard-key');
 

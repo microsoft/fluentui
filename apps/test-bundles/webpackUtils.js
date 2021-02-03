@@ -1,6 +1,7 @@
 // @ts-check
 const path = require('path');
 const fs = require('fs');
+const mkdirp = require('mkdirp');
 const resources = require('@fluentui/scripts/webpack/webpack-resources');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
@@ -73,6 +74,47 @@ function createWebpackConfig(entries) {
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
+function createEntries(packageName, isNorthstar) {
+  const replacePath = isNorthstar ? ['commonjs', 'es'] : ['lib-commonjs', 'lib'];
+  const distPath = path.dirname(require.resolve(packageName).replace(replacePath[0], replacePath[1]));
+  const packagePath = path.resolve(distPath, isNorthstar ? 'components' : '');
+  fs.readdirSync(packagePath).forEach(itemName => {
+    const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
+    const isAllowedFile = itemName.match(/.js$/) && !TopLevelEntryFileExclusions.includes(itemName);
+
+    if ((!isAllowedFile && !(isNorthstar && isFolder)) || !itemName) {
+      return;
+    }
+
+    const item = isFolder ? itemName : itemName.replace(/.js$/, '');
+    const importStatement = `import { ${item} } from '${packageName}'; console.log(${item})`;
+    try {
+      const folderName = getFolderName(packageName);
+      if (!fs.existsSync(`fixtures/${folderName}`)) {
+        mkdirp.sync(`fixtures/${folderName}`);
+      }
+      const entryPath = path.join('fixtures/', folderName, `${item}.js`);
+      fs.writeFileSync(entryPath, importStatement, 'utf-8');
+    } catch (err) {
+      console.log(err);
+    }
+  });
+}
+
+function createEntry(packageName) {
+  try {
+    const importStatement = `import p from '${packageName}'; console.log(p)`;
+    const folderName = getFolderName(packageName);
+    if (!fs.existsSync(`fixtures/${folderName}`)) {
+      mkdirp.sync(`fixtures/${folderName}`);
+    }
+    const entryPath = path.join('fixtures/', folderName, 'index.js');
+    fs.writeFileSync(entryPath, importStatement, 'utf-8');
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 /**
  * Build webpack entries based on top level imports available in a package.
  *
@@ -86,55 +128,18 @@ const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'
  * for components which are just re-exported.
  */
 function buildEntries(packageName, entries = {}, includeStats = true, onlyOwnComponents = false) {
-  let packagePath = '';
-
-  try {
-    packagePath = path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib');
-  } catch (e) {
-    console.log(`The package "${packageName}" could not be resolved. Add it as a dependency to this project.`);
-    console.log(e);
-    return;
-  }
+  const folderName = getFolderName(packageName);
+  const packagePath = path.join('fixtures/', folderName);
 
   fs.readdirSync(packagePath).forEach(itemName => {
-    const isAllowedFile =
-      // is JS
-      itemName.match(/.js$/) &&
-      // not excluded
-      !TopLevelEntryFileExclusions.includes(itemName) &&
-      // if requested, has component implementation within this package (not re-export)
-      (!onlyOwnComponents || fs.existsSync(path.join(packagePath, 'components', itemName.replace('.js', ''))));
-
-    if (isAllowedFile) {
-      const entryName = itemName.replace(/.js$/, '');
-
-      // Replace commonjs paths with lib paths.
-      const entryPath = path.join(packagePath, itemName);
-
-      entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = {
-        entryPath,
-        includeStats,
-      };
-    }
+    const entryName = itemName.replace(/.js$/, '');
+    const entryPath = path.resolve(path.join(packagePath, itemName));
+    entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = {
+      entryPath: entryPath,
+      includeStats,
+    };
   });
 
-  return entries;
-}
-
-function buildNorthstarEntries(includeStats = true) {
-  const entries = {};
-  const distPath = path.dirname(require.resolve('@fluentui/react-northstar').replace('commonjs', 'es'));
-  const componentsPath = path.resolve(distPath, 'components');
-  fs.readdirSync(componentsPath).forEach(componentName => {
-    const isFolder = fs.statSync(path.join(componentsPath, componentName)).isDirectory();
-    if (isFolder) {
-      const entryPath = path.join(componentsPath, componentName, `${componentName}.js`);
-      entries[`fluentui-Northstar-${componentName}`] = {
-        entryPath,
-        includeStats,
-      };
-    }
-  });
   return entries;
 }
 
@@ -142,15 +147,22 @@ function buildNorthstarEntries(includeStats = true) {
  * Create entries for single top level import.
  */
 function buildEntry(packageName, includeStats = true) {
+  const folderName = getFolderName(packageName);
+  const entryPath = path.resolve(path.join('fixtures/', folderName));
   return {
-    entryPath: path.join(path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib'), 'index.js'),
+    entryPath: `${entryPath}/index.js`,
     includeStats,
   };
+}
+
+function getFolderName(packageName) {
+  return packageName.replace('@fluentui/', '');
 }
 
 module.exports = {
   createWebpackConfig,
   buildEntries,
   buildEntry,
-  buildNorthstarEntries,
+  createEntries,
+  createEntry,
 };
