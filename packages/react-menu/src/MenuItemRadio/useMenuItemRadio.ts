@@ -11,9 +11,7 @@ export const menuItemRadioShorthandProps = ['icon', 'checkmark'];
 
 const mergeProps = makeMergeProps<MenuItemRadioProps>({ deepMerge: menuItemRadioShorthandProps });
 
-/**
- * Given user props, returns state and render function for a Button.
- */
+/** Returns the props and state required to render the component */
 export const useMenuItemRadio = (
   props: MenuItemRadioProps,
   ref: React.Ref<HTMLElement>,

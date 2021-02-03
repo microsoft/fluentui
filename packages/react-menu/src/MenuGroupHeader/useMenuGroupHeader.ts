@@ -5,9 +5,7 @@ import { useMenuGroupContext } from '../menuGroupContext';
 
 const mergeProps = makeMergeProps<MenuGroupHeaderProps>();
 
-/**
- * Given user props, returns state and render function for a Button.
- */
+/** Returns the props and state required to render the component */
 export const useMenuGroupHeader = (
   props: MenuGroupHeaderProps,
   ref: React.Ref<HTMLElement>,

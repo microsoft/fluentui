@@ -11,9 +11,7 @@ export const menuItemCheckboxShorthandProps = ['icon', 'checkmark'];
 
 const mergeProps = makeMergeProps<MenuItemCheckboxProps>({ deepMerge: menuItemCheckboxShorthandProps });
 
-/**
- * Given user props, returns state and render function for a Button.
- */
+/** Returns the props and state required to render the component */
 export const useMenuItemCheckbox = (
   props: MenuItemCheckboxProps,
   ref: React.Ref<HTMLElement>,

@@ -4,9 +4,7 @@ import { MenuGroupDividerProps, MenuGroupDividerState } from './MenuGroupDivider
 
 const mergeProps = makeMergeProps<MenuGroupDividerProps>();
 
-/**
- * Given user props, returns state and render function for a Button.
- */
+/** Returns the props and state required to render the component */
 export const useMenuGroupDivider = (
   props: MenuGroupDividerProps,
   ref: React.Ref<HTMLElement>,

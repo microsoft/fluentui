@@ -5,9 +5,7 @@ import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
 const mergeProps = makeMergeProps<MenuGroupProps>();
 let count = 0;
 
-/**
- * Given user props, returns state and render function for a Button.
- */
+/** Returns the props and state required to render the component */
 export const useMenuGroup = (
   props: MenuGroupProps,
   ref: React.Ref<HTMLElement>,
