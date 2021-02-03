@@ -159,7 +159,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         outline: '1px solid ' + theme.palette.neutralSecondary,
         outlineOffset: '2px',
         [HighContrastSelector]: {
-          outline: '1px solid ActiveBorder',
+          outline: '1px solid WindowText',
         },
       },
     },

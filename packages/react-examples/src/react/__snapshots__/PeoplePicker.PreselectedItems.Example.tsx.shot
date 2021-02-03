@@ -1506,7 +1506,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-26"
@@ -1667,7 +1667,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-27"

@@ -4997,7 +4997,7 @@ export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 // @public (undocumented)
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     className?: string;
     disableShrink?: boolean;
