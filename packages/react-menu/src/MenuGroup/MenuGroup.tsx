@@ -8,9 +8,7 @@ import { renderMenuGroup } from './renderMenuGroup';
  * {@docCategory MenuGroup}
  */
 export const MenuGroup = React.forwardRef<HTMLElement, MenuGroupProps>((props, ref) => {
-  const state = useMenuGroup(props, ref, {
-    role: 'group',
-  });
+  const state = useMenuGroup(props, ref);
 
   return renderMenuGroup(state);
 });

@@ -24,6 +24,7 @@ export const useMenuGroup = (
       ref: resolvedRef,
       as: 'div',
       'aria-labelledby': headerId.current,
+      role: 'group',
     },
     defaultProps,
     resolveShorthandProps(props, []),
