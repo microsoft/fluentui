@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { OverflowSetPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/OverflowSet/OverflowSet.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/OverflowSetPage/docs/OverflowSetRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const OverflowSetPageProps: TFabricPlatformPageProps = {
   web: {

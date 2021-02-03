@@ -1,8 +1,14 @@
 import { ButtonPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Button/Button.doc';
 import { Platforms } from '../../../interfaces/Platforms';
-import { TPlatformPageProps } from '@fluentui/react-docsite-components/lib/index2';
+import { TPlatformPageProps, ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ButtonRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web Button', url: '#/controls/web/button' },
+  { text: 'iOS Button', url: '#/controls/ios/button' },
+  { text: 'Android Button', url: '#/controls/android/button' },
+  { text: 'macOS Button', url: '#/controls/mac/button' },
+  { text: 'Cross-platform Button', url: '#/controls/cross/button' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ButtonPage';
 

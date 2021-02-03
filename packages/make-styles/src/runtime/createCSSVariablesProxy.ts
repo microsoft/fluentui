@@ -11,7 +11,7 @@ export function createCSSVariablesProxy<Tokens>(tokens: Tokens): Tokens {
         return new Proxy({ ...target[key], value: (target.value ?? '') + '-' + key }, g);
       }
 
-      return `var(--theme${target.value ?? ''}-${key})`;
+      return `var(-${target.value ?? ''}-${key})`;
     },
   };
 

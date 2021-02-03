@@ -41,11 +41,11 @@
     "react-dom": ">=16.8.0 <17.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.47",
-    "@fluentui/react-internal": "^8.0.0-beta.41",
+    "@fluentui/react": "^8.0.0-beta.48",
+    "@fluentui/react-internal": "^8.0.0-beta.42",
     "@fluentui/theme": "^2.0.0-beta.13",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.0.0-beta.2",
+    "@fluentui/example-data": "^8.0.0-beta.3",
     "@fluentui/react-hooks": "^8.0.0-beta.10",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/react-monaco-editor": "^1.0.0-beta.46",

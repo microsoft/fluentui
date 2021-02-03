@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "SplitButton: Using menuButtonRef prop correctly when handling state.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T21:19:32.301Z"
-}

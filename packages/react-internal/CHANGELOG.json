@@ -2,6 +2,41 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.42",
+      "version": "8.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add high contrast overrides for the Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "893af25f5fe707f24438bf9b8530cea896e432a3",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Checkbox: border is now visible when element is in focus in High Contrast White Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "2e9c72c8b425341452e93c20e6ac34162d2edb38",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Update ColorPicker to announce clamping of RGBA values (#15855)",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "aa9dd6faf0da0c86b0d84213c93d7573ec2d75ba",
+            "package": "@fluentui/react-internal"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Feb 2021 12:21:54 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.41",
       "version": "8.0.0-beta.41",
