@@ -1,12 +1,21 @@
 {
   "name": "@fluentui/public-docsite",
   "version": "1.0.0",
-  "private": true,
   "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": true,
   "typings": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

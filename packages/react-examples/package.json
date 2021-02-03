@@ -1,13 +1,22 @@
 {
   "name": "@fluentui/react-examples",
   "version": "1.0.0",
-  "private": true,
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
