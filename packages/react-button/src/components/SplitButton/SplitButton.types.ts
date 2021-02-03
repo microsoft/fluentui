@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ShorthandProps } from '@fluentui/react-utils';
 import { ButtonProps, ButtonVariants } from '../Button/Button.types';
 import { MenuButtonProps, MenuButtonState, MenuButtonTokens } from '../MenuButton/MenuButton.types';
 

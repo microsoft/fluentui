@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "DocumentCardPreview: add maxDisplayCount prop",
+  "packageName": "@fluentui/react",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-27T15:57:24.833Z"
+}

@@ -37,18 +37,6 @@ describe('Button', () => {
       });
     });
 
-    describe('aria-disabled', () => {
-      test('is set to true, if disabled attribute is provided', () => {
-        const renderedComponent = mountWithProviderAndGetComponent(Button, <Button disabled />);
-        expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe('true');
-      });
-
-      test('is set to undefined, if disabled attribute is not provided', () => {
-        const renderedComponent = mountWithProviderAndGetComponent(Button, <Button />);
-        expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe(undefined);
-      });
-    });
-
     describe('HTML accessibility rules validation', () => {
       describe('icon button must have textual representation for screen readers', () => {
         test('with title', async () =>
@@ -90,43 +78,6 @@ describe('Button', () => {
             <Button as="div" accessibility={toggleButtonBehavior} />,
           );
           expect(getRenderedAttribute(renderedComponent, 'role', '')).toBe('button');
-        });
-      });
-
-      describe('aria-pressed', () => {
-        test('is set to true, if active attribute is provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            // @ts-ignore
-            <Button active="true" accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-pressed', '')).toBe('true');
-        });
-
-        test('is set to false, if active attribute is not provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            <Button accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-pressed', '')).toBe('false');
-        });
-      });
-
-      describe('aria-disabled', () => {
-        test('is set to true, if disabled attribute is provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            <Button disabled accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe('true');
-        });
-
-        test('is set to undefined, if disabled attribute is not provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            <Button accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe(undefined);
         });
       });
     });

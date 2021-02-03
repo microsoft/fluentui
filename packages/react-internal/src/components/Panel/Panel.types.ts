@@ -145,13 +145,12 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
 
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
-   * @defaultvalue The element.target that triggered the Panel.
+   * @defaultvalue The `element.target` that triggered the Panel.
    */
   elementToFocusOnDismiss?: HTMLElement;
 
   /**
    * Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone.
-   * Deprecated, use `focusTrapZoneProps`.
    * @defaultvalue false
    * @deprecated Use `focusTrapZoneProps`.
    */
@@ -160,14 +159,12 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Indicates whether Panel should force focus inside the focus trap zone.
    * If not explicitly specified, behavior aligns with FocusTrapZone's default behavior.
-   * Deprecated, use `focusTrapZoneProps`.
    * @deprecated Use `focusTrapZoneProps`.
    */
   forceFocusInsideTrap?: boolean;
 
   /**
    * Indicates the selector for first focusable item.
-   * Deprecated, use `focusTrapZoneProps`.
    * @deprecated Use `focusTrapZoneProps`.
    */
   firstFocusableSelector?: string;
@@ -233,8 +230,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   onRenderFooterContent?: IRenderFunction<IPanelProps>;
 
   /**
-   * Deprecated property. Serves no function.
-   * @deprecated Serves no function.
+   * @deprecated Not used.
    */
   componentId?: string;
 

@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 20 Jan 2021 12:22:46 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.50)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.47..@fluentui/react-experiments_v8.0.0-beta.50)
+
+### Changes
+
+- UnifiedPicker typing should result in the first dropdown selection being selected ([PR #16733](https://github.com/microsoft/fluentui/pull/16733) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.47)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.42..@fluentui/react-experiments_v8.0.0-beta.47)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+
+## [8.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.42)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.41..@fluentui/react-experiments_v8.0.0-beta.42)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.41)
 

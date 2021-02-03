@@ -41,7 +41,7 @@ export const KeytipsBasicExample: React.FunctionComponent = () => {
             <Toggle ref={toggleRef} onText="Yes" offText="No" />
             <span>
               Go to{' '}
-              <Link ref={linkRef} href="http://www.bing.com" target="_blank">
+              <Link ref={linkRef} href="http://www.bing.com" target="_blank" underline>
                 Bing
               </Link>
             </span>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 
 import { SplitButton } from 'src/components/SplitButton/SplitButton';
 import { splitButtonToggleClassName } from 'src/components/SplitButton/SplitButtonToggle';

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "refactor: remove unused .npmrc in packages",
+  "packageName": "@fluentui/react-hooks",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2021-02-02T10:43:25.767Z"
+}
