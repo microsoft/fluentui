@@ -89,8 +89,8 @@ While consumers are welcome to use individual component packages directly, we'll
 
 Sometime in the next couple months after version 8 release, add a `@fluentui/react-preview` package which exports _only_ converged components which have reached "80% ready"/preview status. Notes:
 
-- Exports will go away once they're moved to the suite
-  - "suite" here means `@fluentui/react`; promotion details discussed later
+- Once a component is ready to be exported from `@fluentui/react`, it will be removed from `@fluentui/react-preview`'s exports
+  - Details of criteria for promotion to `@fluentui/react` are discussed later.
 - Document clearly from the start that the stability is lower, and people can consume it if they're willing to accept that minor (or prerelease?) versions may sometimes contain breaking changes (to be clearly noted in the changelogs)
 - Either 1st or 3rd parties can use this if they're willing to accept the extra risk/work
 - Readme should be kept updated with status of each component
