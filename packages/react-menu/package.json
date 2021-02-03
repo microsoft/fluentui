@@ -44,6 +44,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/keyboard-key": "^0.2.13",
     "@fluentui/react-compose": "",
     "@fluentui/react-theme-provider": "",
     "@fluentui/react-utils": "^0.2.0",

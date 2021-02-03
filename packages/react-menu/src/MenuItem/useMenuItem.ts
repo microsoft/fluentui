@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
-import { useMenuItemState } from './useMenuItemState';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
 
 /**
@@ -28,8 +27,6 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>, d
     defaultProps,
     resolveShorthandProps(props, menuItemShorthandProps),
   );
-
-  useMenuItemState(state);
 
   return state as MenuItemState;
 };

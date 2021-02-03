@@ -4,18 +4,58 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utils';
 import * as React from 'react';
+import { ShorthandProps } from '@fluentui/react-utils';
+import { Types } from 'ability-helpers';
 
 // @public (undocumented)
-export const MenuItem: (props: {
+export interface FocusAbilityContext {
+    // (undocumented)
+    ah: Types.AbilityHelpersCore;
+    // (undocumented)
+    deloser: Types.DeloserAPI;
+    // (undocumented)
+    modalizer: Types.ModalizerAPI;
+}
+
+// @public (undocumented)
+export const FocusAbilityContextProvider: (props: {
     children: React.ReactNode;
-    index: number;
 }) => JSX.Element;
 
+// Warning: (ae-forgotten-export) The symbol "MenuGroupProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MenuGroup: React.ForwardRefExoticComponent<Pick<MenuGroupProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// Warning: (ae-forgotten-export) The symbol "MenuGroupHeaderProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MenuGroupHeader: React.ForwardRefExoticComponent<Pick<MenuGroupHeaderProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// Warning: (ae-forgotten-export) The symbol "MenuItemProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MenuItem: React.ForwardRefExoticComponent<Pick<MenuItemProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// Warning: (ae-forgotten-export) The symbol "MenuItemCheckboxProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MenuItemCheckbox: React.ForwardRefExoticComponent<Pick<MenuItemCheckboxProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// Warning: (ae-forgotten-export) The symbol "MenuItemRadioProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MenuItemRadio: React.ForwardRefExoticComponent<Pick<MenuItemRadioProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// Warning: (ae-forgotten-export) The symbol "MenuListProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MenuList: React.ForwardRefExoticComponent<Pick<MenuListProps, string | number> & React.RefAttributes<HTMLElement>>;
+
 // @public (undocumented)
-export const MenuList: React.ForwardRefExoticComponent<{
-    children: React.ReactNode;
-} & React.RefAttributes<unknown>>;
+export const useFocusAbilityContext: () => FocusAbilityContext | null;
 
 
 // (No @packageDocumentation comment for this package)

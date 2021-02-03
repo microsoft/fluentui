@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-const MenuGroupContext = React.createContext<MenuGroupContext>({ headerId: undefined });
+const MenuGroupContext = React.createContext<MenuGroupContext>({ headerId: '' });
 
 export interface MenuGroupContext {
-  headerId: string | undefined;
+  headerId: string;
 }
 
 export const MenuGroupContextProvider = MenuGroupContext.Provider;
