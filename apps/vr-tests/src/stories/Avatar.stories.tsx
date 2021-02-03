@@ -1,38 +1,63 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, AvatarSizeValue, avatarSizeValues } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
-import { GroupIcon, TelemarketerIcon, ChatBotIcon } from '@fluentui/react-icons-mdl2';
+import { ContactIcon, GroupIcon, TelemarketerIcon, ChatBotIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
 
 /** Renders an Avatar at every standard size */
-const AvatarList: React.FC<AvatarProps> = props => (
-  <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
-    {avatarSizeValues.map((size, i) => (
-      <Avatar
-        key={size}
-        size={size}
-        {...examples.nameAndImage[i % examples.nameAndImage.length]}
-        {...props}
-      />
-    ))}
-  </Stack>
-);
+const AvatarList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+}> = props => {
+  const { names, images, ...restOfProps } = props;
+  return (
+    <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
+      {avatarSizeValues.map((size, i) => (
+        <Avatar
+          key={size}
+          size={size}
+          name={names && names[i % names.length]}
+          image={images && images[i % images.length]}
+          {...restOfProps}
+        />
+      ))}
+    </Stack>
+  );
+};
+
+const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
+  { baseSize: 20, customSize: '13px' },
+  { baseSize: 20, customSize: '21px' },
+  { baseSize: 32, customSize: '34px' },
+  { baseSize: 48, customSize: '55px' },
+  { baseSize: 72, customSize: '89px' },
+  { baseSize: 128, customSize: '144px' },
+];
 
 /** Renders an Avatar at a few custom sizes */
-const AvatarCustomSizeList: React.FC<AvatarProps> = props => (
-  <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
-    {examples.customSize.map((size, i) => (
-      <Avatar
-        key={size}
-        customSize={size}
-        {...examples.nameAndImage[examples.nameAndImage.length - 1 - i]}
-        {...props}
-      />
-    ))}
-  </Stack>
-);
+const AvatarCustomSizeList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+}> = props => {
+  const { names, images, ...restOfProps } = props;
+
+  return (
+    <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
+      {customSizes.map(({ baseSize, customSize }, i) => (
+        <Avatar
+          key={customSize}
+          size={baseSize}
+          tokens={{ width: customSize, height: customSize }}
+          name={names && names[names.length - (i % names.length) - 1]}
+          image={images && images[images.length - (i % images.length) - 1]}
+          {...restOfProps}
+        />
+      ))}
+    </Stack>
+  );
+};
 
 storiesOf('Avatar', module)
   .addDecorator(story => (
@@ -64,32 +89,48 @@ storiesOf('Avatar', module)
       <Avatar name={examples.name[7]} image={examples.image[7]} badge="success" />
     </>
   ))
-  .addStory('size+name', () => <AvatarList display="label" />)
+  .addStory('size+name', () => <AvatarList names={examples.name} />)
   .addStory('size+icon+badge+square', () => (
-    <AvatarList display="icon" icon={<GroupIcon />} badge="warning" square />
+    <AvatarList icon={<GroupIcon />} badge="warning" square />
   ))
-  .addStory('size+image+badge', () => <AvatarList display="image" badge="error" />)
-  .addStory('size+inactive+badge', () => <AvatarList active={false} badge="info" />)
-  .addStory('size+active+badge', () => <AvatarList active badge="success" />)
-  .addStory('size+active+shadow', () => <AvatarList active activeDisplay="shadow" />)
-  .addStory('size+active+glow', () => <AvatarList active activeDisplay="glow" />)
-  .addStory('size+active+ring-shadow', () => <AvatarList active activeDisplay="ring-shadow" />)
-  .addStory('size+active+ring-glow', () => <AvatarList active activeDisplay="ring-glow" />)
-  .addStory('customSize+image', () => <AvatarCustomSizeList />)
-  .addStory('customSize+name+badge', () => <AvatarCustomSizeList display="label" badge="success" />)
-  .addStory('customSize+icon+active', () => <AvatarCustomSizeList display="icon" active />)
+  .addStory('size+image+badge', () => <AvatarList images={examples.image} badge="error" />)
+  .addStory('size+inactive+badge', () => (
+    <AvatarList images={examples.image} active="inactive" badge="info" />
+  ))
+  .addStory('size+active+badge', () => (
+    <AvatarList images={examples.image} active="active" badge="success" />
+  ))
+  .addStory('size+active+shadow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="shadow" />
+  ))
+  .addStory('size+active+glow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="glow" />
+  ))
+  .addStory('size+active+ring-shadow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="ring-shadow" />
+  ))
+  .addStory('size+active+ring-glow', () => (
+    <AvatarList images={examples.image} active="active" activeDisplay="ring-glow" />
+  ))
+  .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
+  .addStory('customSize+name+badge', () => (
+    <AvatarCustomSizeList names={examples.name} badge="success" />
+  ))
+  .addStory('customSize+icon+active', () => (
+    <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
+  ))
   .addStory('tokens', () => (
     <>
-      <Avatar name="First Last" active tokens={{ activeRingColor: 'tomato' }} />
+      <Avatar name="First Last" active="active" tokens={{ activeRingColor: 'tomato' }} />
       <Avatar
         name="First Last"
-        active
+        active="active"
         activeDisplay="glow"
         tokens={{ activeGlowColor: 'tomato' }}
       />
       <Avatar
         name="First Last"
-        active={false}
+        active="inactive"
         tokens={{
           inactiveOpacity: '0.5',
           inactiveScale: '0.67',
@@ -97,9 +138,11 @@ storiesOf('Avatar', module)
       />
       <Avatar
         name="First Last"
-        active
-        customSize={29}
+        active="active"
+        size={28}
         tokens={{
+          width: '29px',
+          height: '29px',
           borderRadius: '10px',
           fontFamily: '"Times New Roman", serif',
           fontSize: '19px',

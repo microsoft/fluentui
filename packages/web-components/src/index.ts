@@ -6,6 +6,7 @@ export * from './breadcrumb-item';
 export * from './button/';
 export * from './card/';
 export * from './checkbox/';
+export * from './color/';
 export * from './design-system-provider/';
 export * from './dialog/';
 export * from './divider/';
@@ -27,7 +28,8 @@ export * from './text-area/';
 export * from './text-field/';
 export * from './tree-item/';
 export * from './tree-view/';
+export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';
 
 // export styles and utils
 export * from './styles';
-export { parseColorString } from './color';
+export * from './color';

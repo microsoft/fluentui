@@ -1,7 +1,13 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { TextPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Text/Text.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/TextRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web Text', url: '#/controls/web/text' },
+  { text: 'iOS Text', url: '#/controls/ios/text' },
+  { text: 'Android Text', url: '#/controls/android/text' },
+  { text: 'Cross-platform Text', url: '#/controls/crossplatform/text' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/TextPage';
 
