@@ -13,7 +13,7 @@ export type ContextValue<Value> = {
   /** List of listners to publish changes */
   listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
 
-  /** Current state value */
+  /** Holds an actual value of React's context that will be propagated down for computations. */
   value: React.MutableRefObject<Value>;
 
   /** Version to compare if it should run dispatch ( publish ) */
