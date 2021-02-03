@@ -134,4 +134,10 @@ export type AvatarTokenSet = {
   inactiveScale?: string;
 };
 
-export type AvatarState = AvatarProps;
+export type AvatarState = AvatarProps & {
+  activeRing: boolean;
+  activeShadow: boolean;
+  activeGlow: boolean;
+
+  hasIcon: boolean;
+};

@@ -1,15 +1,26 @@
 import { createNeutralColorTokens, sharedColorTokens } from '../../utils/dark/index';
 import { createShadowLevelTokens } from '../../utils/light/index';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global/index';
+import {
+  brandColors,
+  sharedColors,
+  fontFamilies,
+  fontWeights,
+  fontSizes,
+  lineHeights,
+  borderRadius,
+  strokeWidths,
+} from '../../global/index';
 import { Theme } from '../../types';
 
 const common = {
+  borderRadius,
   sharedColors,
   sharedColorTokens,
   fontFamilies,
   fontWeights,
   fontSizes,
   lineHeights,
+  strokeWidths,
 };
 
 const webNeutralColorTokens = createNeutralColorTokens(brandColors.web);

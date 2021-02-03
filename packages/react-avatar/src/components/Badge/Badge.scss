@@ -42,9 +42,10 @@
 }
 
 .icon {
-  display: flex;
-  width: 75%;
-  height: 75%;
+  /* !important because styles are depend or insertion order */
+  display: flex !important;
+  width: 75% !important;
+  height: 75% !important;
 }
 
 ._state_success {
