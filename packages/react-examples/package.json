@@ -7,6 +7,9 @@
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",

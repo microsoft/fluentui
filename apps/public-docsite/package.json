@@ -6,6 +6,9 @@
   "module": "lib/index.js",
   "sideEffects": true,
   "typings": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
