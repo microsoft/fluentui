@@ -15,6 +15,7 @@ exports[`Icon renders Icon correctly 1`] = `
         speak: none;
       }
   data-icon-name="CompassNW"
+  role="img"
 >
   
 </i>

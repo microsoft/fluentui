@@ -17,7 +17,6 @@ exports[`FontIcon renders FontIcon correctly 1`] = `
         speak: none;
       }
   data-icon-name="CompassNW"
-  role="presentation"
   style={
     Object {
       "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -45,7 +44,6 @@ exports[`FontIcon renders FontIcon with children correctly 1`] = `
         speak: none;
       }
   data-icon-name="Upload"
-  role="presentation"
   style={
     Object {
       "fontFamily": "\\"FabricMDL2Icons\\"",
