@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "none",
   "comment": "refactor: remove unused .npmrc in packages",
   "packageName": "@fluentui/ie11-polyfills",
   "email": "hantatsang@gmail.com",
