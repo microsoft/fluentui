@@ -617,6 +617,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Red"
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -789,6 +790,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Green"
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -961,6 +963,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Blue"
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field
@@ -1133,6 +1136,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Alpha"
+                      aria-live="assertive"
                       autoComplete="off"
                       className=
                           ms-TextField-field

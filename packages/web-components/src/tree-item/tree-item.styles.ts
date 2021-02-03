@@ -8,7 +8,7 @@ import {
   forcedColorsStylesheetBehavior,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
-import { neutralFillStealthHover, neutralFillStealthSelected } from '@microsoft/fast-components-styles-msft';
+import { neutralFillStealthHover, neutralFillStealthSelected } from '../color';
 import {
   accentForegroundRestBehavior,
   heightNumber,

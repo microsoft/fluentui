@@ -20,7 +20,23 @@ export type Browser = {
 };
 
 export async function createChrome(): Promise<Browser> {
-  const browser = await puppeteer.launch(safeLaunchOptions());
+  const options = safeLaunchOptions();
+  let browser: puppeteer.Browser;
+  let attempt = 1;
+  while (!browser) {
+    try {
+      browser = await puppeteer.launch(options);
+    } catch (err) {
+      if (attempt === 5) {
+        console.error(`Puppeteer failed to launch after 5 attempts`);
+        throw err;
+      }
+      console.warn('Puppeteer failed to launch (will retry):');
+      console.warn(err);
+      attempt++;
+    }
+  }
+
   console.log(`Chromium version: ${await browser.version()}`);
 
   return {

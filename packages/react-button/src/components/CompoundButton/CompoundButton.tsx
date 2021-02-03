@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { CompoundButtonProps } from './CompoundButton.types';
 import { useCompoundButton } from './useCompoundButton';
 import { useCompoundButtonClasses } from './useCompoundButtonClasses';

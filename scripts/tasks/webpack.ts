@@ -53,36 +53,3 @@ export function webpackDevServer(
     }
   };
 }
-
-let server;
-export async function webpackDevServerWithCompileResolution() {
-  return async function() {
-    const webpack = (await import('webpack')).default;
-    const webpackDevServer = await import('webpack-dev-server');
-    return new Promise((resolve, reject) => {
-      const webpackConfig = require(path.resolve(process.cwd(), 'webpack.serve.config.js'));
-
-      const compiler = webpack(webpackConfig);
-      compiler.plugin('done', () => {
-        resolve();
-      });
-
-      const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-        stats: 'minimal',
-      });
-      server = new webpackDevServer(compiler, devServerOptions);
-      const port = webpackConfig.devServer.port;
-      server.listen(port, '127.0.0.1', () => {
-        console.log(`started server on http://localhost:${port}`);
-      });
-    });
-  };
-}
-
-webpackDevServerWithCompileResolution.done = async function() {
-  return new Promise((resolve, reject) => {
-    server.close(() => {
-      resolve();
-    });
-  });
-};
