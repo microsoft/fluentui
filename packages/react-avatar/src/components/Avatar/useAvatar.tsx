@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
-import { AvatarProps, defaultAvatarSize } from './Avatar.types';
+import { AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { getInitials as defaultGetInitials, nullRender, assertNever } from '@fluentui/utilities';
 import { Image } from '../Image/index';
@@ -10,7 +10,7 @@ export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'b
 
 const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
+export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
     {
       as: 'span',
@@ -23,7 +23,7 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     },
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
-  );
+  ) as AvatarState;
 
   // Add in props used for styling
   if (state.active !== undefined) {

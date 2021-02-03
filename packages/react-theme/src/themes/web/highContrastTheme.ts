@@ -26,4 +26,4 @@ export const webHighContrastTheme: Theme = {
   brandColors: brandColors.web,
   neutralColorTokens: createNeutralColorTokens(brandColors.web),
   ...common,
-};
+} as any;

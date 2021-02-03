@@ -26,4 +26,4 @@ export const teamsHighContrastTheme: Theme = {
   brandColors: brandColors.teams,
   neutralColorTokens: createNeutralColorTokens(brandColors.teams),
   ...common,
-};
+} as any;

@@ -140,4 +140,12 @@ export type AvatarState = AvatarProps & {
   activeGlow: boolean;
 
   hasIcon: boolean;
+
+  label: any;
+  image: any;
+  badge: any;
+
+  getInitials: (name: string, isRtl: boolean) => string;
+
+  ref: any;
 };
