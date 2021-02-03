@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "adding a flag to skip typecheck during webpack serve",
-  "packageName": "@fluentui/react",
-  "email": "kchau@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-02-02T21:56:27.473Z"
-}
