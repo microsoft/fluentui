@@ -344,6 +344,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       },
       checked && {
         borderColor: iconOrImageChoiceBorderCheckedColor,
+        border: `1px solid ${focusBorderColor}`,
       },
       (hasIcon || hasImage) &&
         !disabled && {
