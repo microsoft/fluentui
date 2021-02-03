@@ -417,6 +417,13 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           padding: '0 8px',
           width: '100%',
         },
+        input: {
+          selectors: {
+            [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+              outlineOffset: 'unset',
+            },
+          },
+        },
       },
       panel: {
         root: [panelClassName],
