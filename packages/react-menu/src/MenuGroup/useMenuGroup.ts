@@ -17,6 +17,7 @@ export const useMenuGroup = (
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const resolvedRef = ref || React.useRef();
+  // TODO better way to generate IDs
   const headerId = React.useRef<string>(`menu-group-${count++}`);
   const mergedProps = mergeProps(
     {
