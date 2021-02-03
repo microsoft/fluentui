@@ -6,6 +6,7 @@ export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessa
 export { checkboxVariables as Checkbox } from './components/Checkbox/checkboxVariables';
 export { dialogVariables as Dialog } from './components/Dialog/dialogVariables';
 export { dividerVariables as Divider } from './components/Divider/dividerVariables';
+export { embedVariables as Embed } from './components/Embed/embedVariables';
 export { headerVariables as Header } from './components/Header/headerVariables';
 export { inputVariables as Input } from './components/Input/inputVariables';
 export { menuVariables as Menu } from './components/Menu/menuVariables';

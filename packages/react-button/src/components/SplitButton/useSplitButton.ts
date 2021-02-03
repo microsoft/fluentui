@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utils';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 import { useMergedRefs } from '@fluentui/react-hooks';
 
@@ -27,6 +27,7 @@ export const useSplitButton = (
     circular,
     block,
     menu,
+    menuButtonRef,
     size,
     transparent,
     ...userProps
@@ -64,6 +65,7 @@ export const useSplitButton = (
 
       menuButton: {
         as: 'span',
+        ref: menuButtonRef,
         primary,
         ghost,
         circular,

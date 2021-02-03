@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
 export const TabsOnChangeExample = () => {
   const [lastTab, setLastTab] = React.useState<{ props: TabItemProps } | undefined>(undefined);

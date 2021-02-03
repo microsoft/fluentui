@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useButtonClasses } from './useButtonClasses';
 import { renderButton } from './renderButton';
 

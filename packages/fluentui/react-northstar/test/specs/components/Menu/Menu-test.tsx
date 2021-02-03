@@ -5,9 +5,14 @@ import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/s
 import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils';
 import { implementsCollectionShorthandProp } from '../../commonTests/implementsCollectionShorthandProp';
 import { MenuItem, MenuItemProps } from 'src/components/Menu/MenuItem';
-import { menuBehavior, menuAsToolbarBehavior, tabListBehavior, tabBehavior } from '@fluentui/accessibility';
+import {
+  menuBehavior,
+  menuAsToolbarBehavior,
+  tabListBehavior,
+  tabBehavior,
+  SpacebarKey,
+} from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
-import { SpacebarKey } from '@fluentui/keyboard-key';
 
 const menuImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Menu);
 

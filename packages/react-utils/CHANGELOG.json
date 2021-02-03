@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/react-utils",
+  "entries": [
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-utils_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-utils"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-utils_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Extract compose/next to react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "f4917ffe3172175eaa332448032d27c64319b679",
+            "package": "@fluentui/react-utils"
+          }
+        ]
+      }
+    }
+  ]
+}

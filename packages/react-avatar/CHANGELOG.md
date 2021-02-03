@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.0)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.3..@fluentui/react-avatar_v0.9.0)
+
+### Minor changes
+
+- Remove customSize and display props; change active prop to enum; clean up AvatarProps ([PR #16702](https://github.com/microsoft/fluentui/pull/16702) by behowell@microsoft.com)
+
+## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.3)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2..@fluentui/react-avatar_v0.8.3)
+
+### Patches
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
+
+## [0.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-18..@fluentui/react-avatar_v0.8.2)
+
+### Patches
+
+- add prerelease in disallowed change type for version packages and fix current versioning. ([PR #16696](https://github.com/microsoft/fluentui/pull/16696) by xgao@microsoft.com)
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by lingfan.gao@microsoft.com)
+
+## [0.8.2-18](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-18)
+
+Fri, 29 Jan 2021 12:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-17..@fluentui/react-avatar_v0.8.2-18)
+
+### Changes
+
+- Avatar SPEC.md, and initial MIGRATION.md and README.md ([PR #16524](https://github.com/microsoft/fluentui/pull/16524) by behowell@microsoft.com)
 
 ## [0.8.2-17](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-17)
 

@@ -2,6 +2,42 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.38",
+      "version": "1.0.0-beta.38",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.38",
+      "version": "1.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Adding underline prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "68e4055b14fad630bd2ba015103920b8dfbb649e",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Moving Link from react-link back to react-internal.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "76f6043e4123577e17fecf64f536841bf543d32b",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/react-link_v1.0.0-beta.36",
       "version": "1.0.0-beta.36",

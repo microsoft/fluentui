@@ -6,25 +6,32 @@ const renderer = createDOMRenderer();
 describe('makeStyles', () => {
   it('returns a single classname for a single style', () => {
     const computeClasses = makeStyles([[null, { color: 'red' }]]);
-    expect(computeClasses({}, { renderer, tokens: {} })).toBe(' fe3e8s9');
+    expect(computeClasses({}, { renderer, tokens: {} })).toBe('__ncdyee0 fe3e8s90');
   });
 
   it('returns multiple classnames for complex rules', () => {
     const computeClasses = makeStyles([[null, { color: 'red', position: 'absolute' }]]);
-    expect(computeClasses({}, { renderer, tokens: {} })).toBe(' fe3e8s9 f1euv43f');
+    expect(computeClasses({}, { renderer, tokens: {} })).toBe('__1fslksb fe3e8s90 f1euv43f');
   });
 
-  it('performs classnames concatenation', () => {
-    const computeClasses = makeStyles([[null, { color: 'red', position: 'absolute' }]]);
-    expect(computeClasses({}, { renderer, tokens: {} }, 'foo', 'bar')).toBe('foo bar  fe3e8s9 f1euv43f');
-  });
-
-  it('handles overrides', () => {
-    const baseClasses = makeStyles([[null, { color: 'red', position: 'absolute' }]]);
-    const overrides = makeStyles([[null, { color: 'green' }]]);
-
-    expect(baseClasses({}, { renderer, tokens: {} }, overrides({}, { renderer, tokens: {} }))).toBe(
-      '  fka9v86 f1euv43f',
-    );
+  it('handles RTL for keyframes', () => {
+    const computeClasses = makeStyles([
+      [
+        null,
+        {
+          animationName: {
+            from: {
+              transform: 'rotate(0deg)',
+            },
+            to: {
+              transform: 'rotate(360deg)',
+            },
+          },
+          animationIterationCount: 'infinite',
+          animationDuration: '5s',
+        },
+      ],
+    ]);
+    expect(computeClasses({}, { renderer, tokens: {}, rtl: true })).toBe('__la4fka0 rfkf6eed0 f1cpbl36 f1t9cprh');
   });
 });
