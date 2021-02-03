@@ -102,6 +102,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const {
     focusItemIndex,
+    setFocusItemIndex,
     suggestionItems,
     footerItemIndex,
     footerItems,
@@ -124,6 +125,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
       setInputValue(itemText);
       editingInput.current.focus();
     }
+    setFocusItemIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // We only want to run this once
 
