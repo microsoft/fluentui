@@ -5,10 +5,13 @@ import { runWithNormalPriority, useIsomorphicLayoutEffect } from './utils';
 
 const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) => {
   const Provider: React.FC<React.ProviderProps<Value>> = props => {
-    // TODO: write better descriptions
-    const valueRef = React.useRef(props.value); // value from props.value
-    const versionRef = React.useRef(0); // render/effect counter
-    const contextValue = React.useRef<ContextValue<Value>>(); // stable object to avoid context updates
+    // Holds an actual "props.value"
+    const valueRef = React.useRef(props.value);
+    // Used to sync context updates and avoid stale values, can be considered as render/effect counter of Provider.
+    const versionRef = React.useRef(0);
+    
+    // A stable object, is used to avoid context updates via mutation of its values.
+    const contextValue = React.useRef<ContextValue<Value>>();
 
     if (!contextValue.current) {
       contextValue.current = {
