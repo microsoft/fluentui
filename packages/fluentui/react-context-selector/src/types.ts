@@ -16,7 +16,7 @@ export type ContextValue<Value> = {
   /** Holds an actual value of React's context that will be propagated down for computations. */
   value: React.MutableRefObject<Value>;
 
-  /** Version to compare if it should run dispatch ( publish ) */
+  /** A version field is used to sync a context value and consumers. */
   version: React.MutableRefObject<ContextVersion>;
 };
 
