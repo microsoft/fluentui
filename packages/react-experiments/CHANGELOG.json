@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 22:54:59 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.51",
+      "version": "8.0.0-beta.51",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "SelectedItemsList EditableItem should have first item selected in picker on show",
+            "author": "elvonspa@microsoft.com",
+            "commit": "715f670a62ede40fd0d8cbe4d9d9724133a7c660",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 05:51:40 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.50",
       "version": "8.0.0-beta.50",

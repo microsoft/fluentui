@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 22:54:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.51)
+
+Wed, 03 Feb 2021 22:54:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.50..@fluentui/react-experiments_v8.0.0-beta.51)
+
+### Changes
+
+- SelectedItemsList EditableItem should have first item selected in picker on show ([PR #16777](https://github.com/microsoft/fluentui/pull/16777) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.50)
 

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "refactor: remove unused .npmrc in packages",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-02-03T10:08:54.140Z"
-}
