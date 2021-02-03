@@ -14,7 +14,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Hello"
-        author="Cecil Folk"
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         details={
           <>
