@@ -16,6 +16,7 @@ export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>, d
     {
       ref: resolvedRef,
       as: 'div',
+      role: 'menu',
     },
     defaultProps,
     resolveShorthandProps(props, []),
