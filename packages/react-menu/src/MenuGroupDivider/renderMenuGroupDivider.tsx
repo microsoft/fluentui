@@ -2,9 +2,7 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utils';
 import { MenuGroupDividerState } from './MenuGroupDivider.types';
 
-/**
- * Define the render function. Given the state of a button, renders it.
- */
+/** Function that renders the final JSX of the component  */
 export const renderMenuGroupDivider = (state: MenuGroupDividerState) => {
   const { slots, slotProps } = getSlots(state);
 

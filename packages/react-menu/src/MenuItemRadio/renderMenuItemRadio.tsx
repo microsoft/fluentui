@@ -3,9 +3,7 @@ import { getSlots } from '@fluentui/react-utils';
 import { MenuItemRadioState } from './MenuItemRadio.types';
 import { menuItemRadioShorthandProps } from './useMenuItemRadio';
 
-/**
- * Define the render function. Given the state of a button, renders it.
- */
+/** Function that renders the final JSX of the component  */
 export const renderMenuItemRadio = (state: MenuItemRadioState) => {
   const { slots, slotProps } = getSlots(state, menuItemRadioShorthandProps);
 

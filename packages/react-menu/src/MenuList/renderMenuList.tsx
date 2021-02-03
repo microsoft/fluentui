@@ -3,9 +3,7 @@ import { getSlots } from '@fluentui/react-utils';
 import { MenuListState } from './MenuList.types';
 import { MenuListProvider } from '../menuListContext';
 
-/**
- * Define the render function. Given the state of a button, renders it.
- */
+/** Function that renders the final JSX of the component  */
 export const renderMenuList = (state: MenuListState) => {
   const { slots, slotProps } = getSlots(state);
   const { onCheckedValuesChange, checkedValues } = state;

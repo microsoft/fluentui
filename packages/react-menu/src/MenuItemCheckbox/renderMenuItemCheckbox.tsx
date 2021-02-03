@@ -3,9 +3,7 @@ import { getSlots } from '@fluentui/react-utils';
 import { MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { menuItemCheckboxShorthandProps } from './useMenuItemCheckbox';
 
-/**
- * Define the render function. Given the state of a button, renders it.
- */
+/** Function that renders the final JSX of the component  */
 export const renderMenuItemCheckbox = (state: MenuItemCheckboxState) => {
   const { slots, slotProps } = getSlots(state, menuItemCheckboxShorthandProps);
 
