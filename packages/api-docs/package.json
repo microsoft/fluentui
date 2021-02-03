@@ -10,6 +10,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
