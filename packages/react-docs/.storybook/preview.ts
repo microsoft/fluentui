@@ -8,16 +8,19 @@ import {
   webHighContrastTheme,
   teamsHighContrastTheme,
 } from '@fluentui/react-theme';
+import { StorybookThemeGlobal } from '../src/types';
 
-const webThemes = {
+const webThemes: StorybookThemeGlobal = {
   debugName: 'webTheme',
+  friendlyName: 'Web',
   light: webLightTheme,
   dark: webDarkTheme,
   highContrast: webHighContrastTheme,
 };
 
-const teamsThemes = {
+const teamsThemes: StorybookThemeGlobal = {
   debugName: 'teamsTheme',
+  friendlyName: 'Teams',
   light: teamsLightTheme,
   dark: teamsDarkTheme,
   highContrast: teamsHighContrastTheme,
@@ -29,7 +32,7 @@ export const parameters = {
 
 export const globalTypes = {
   theme: {
-    name: 'Theme',
+    name: 'Brand',
     description: 'Global theme for components',
     defaultValue: webThemes,
     toolbar: {

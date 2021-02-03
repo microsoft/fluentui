@@ -2,7 +2,7 @@ import * as React from 'react';
 import Color from 'color';
 
 import { ColorRampItem } from '../src/components/ColorRamp';
-import { sharedColors, webDarkTheme, webLightTheme } from '@fluentui/react-theme';
+import { StorybookStoryContext } from '../src/types';
 
 export default {
   title: 'Fluent UI Theme/Colors/Alias',
@@ -38,7 +38,7 @@ const ColorButton = ({ style = {}, color, active, setPreviewColor, setColor, ...
   />
 );
 
-export const Alias = (args, { globals: { theme } }) => {
+export const Alias = (args, { globals: { theme } }: StorybookStoryContext) => {
   const [color, setColor] = React.useState<string>('neutral');
   const [previewColor, setPreviewColor] = React.useState<string>(null);
 
@@ -55,8 +55,8 @@ export const Alias = (args, { globals: { theme } }) => {
           setColor={setColor}
           setPreviewColor={setPreviewColor}
           style={{
-            background: webDarkTheme.alias.color.neutral.neutralBackground1,
-            color: webDarkTheme.alias.color.neutral.neutralForeground1,
+            background: theme.dark.alias.color.neutral.neutralBackground1,
+            color: theme.dark.alias.color.neutral.neutralForeground1,
           }}
         />
         <ColorButton color="ghost" active={color === 'ghost'} setColor={setColor} setPreviewColor={setPreviewColor}>
@@ -73,22 +73,28 @@ export const Alias = (args, { globals: { theme } }) => {
         <ColorButton color="brand" active={color === 'brand'} setColor={setColor} setPreviewColor={setPreviewColor}>
           B
         </ColorButton>
-        {Object.keys(sharedColors).map((colorName) => (
-          <ColorButton
-            key={colorName}
-            color={colorName}
-            active={color === colorName}
-            setColor={setColor}
-            setPreviewColor={setPreviewColor}
-            style={{
-              background: webLightTheme.global.palette[colorName].primary, // broken typing,
-              color:
-                webLightTheme.global.palette[colorName][
-                  Color(webLightTheme.global.palette[colorName].primary).isDark() ? 'tint60' : 'shade50'
-                ],
-            }}
-          />
-        ))}
+        {Object.keys(theme.light.global.palette)
+          // TODO: We iterate global.palette to show color swatches.
+          //       The selected swatch then is used to populate the alias grid.
+          //       But, global.palette has 'grey' and there is no alias.color.grey so it throws.
+          //       Filtering grey out here, but this means our structure is wrong.
+          .filter((key) => key !== 'grey')
+          .map((colorName) => (
+            <ColorButton
+              key={colorName}
+              color={colorName}
+              active={color === colorName}
+              setColor={setColor}
+              setPreviewColor={setPreviewColor}
+              style={{
+                background: theme.light.global.palette[colorName].primary, // broken typing
+                color:
+                  theme.light.global.palette[colorName][
+                    Color(theme.light.global.palette[colorName].primary).isDark() ? 'tint60' : 'shade50'
+                  ],
+              }}
+            />
+          ))}
       </div>
 
       <div>
@@ -100,7 +106,7 @@ export const Alias = (args, { globals: { theme } }) => {
         </div>
         {Object.keys(theme.light.alias.color[activeColor]).map((name) => (
           <div key={name} style={{ display: 'flex' }}>
-            <div style={{ padding: '1em', width: COLUMN_WIDTH, fontWeight: 'bold' }}>{name}</div>
+            <div style={{ flex: `0 0 ${COLUMN_WIDTH}px`, padding: '1em', fontWeight: 'bold' }}>{name}</div>
             <ColorRampItem value={theme.light.alias.color[activeColor][name]} />
             <ColorRampItem value={theme.dark.alias.color[activeColor][name]} />
             <ColorRampItem value={theme.highContrast.alias.color[activeColor][name]} />

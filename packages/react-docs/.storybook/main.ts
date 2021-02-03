@@ -2,16 +2,6 @@
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
-// interface WebpackConfig {
-//   module: {
-//     rules: {
-//       test: RegExp;
-//       enforce: string;
-//       use: string[];
-//     }[];
-//   };
-// }
-
 module.exports = {
   stories: ['../../react-button/src/**/*.stories.tsx', '../stories/**/*.stories.tsx'],
   addons: [
@@ -124,16 +114,3 @@ function useBabel() {
     ],
   };
 }
-
-// module.exports = {
-//   webpackFinal: async (config: WebpackConfig) => {
-//     config.module.rules.push({
-//       test: /\.js$/,
-//       enforce: 'pre',
-//       use: ['source-map-loader'],
-//     });
-//
-//     return config;
-//   },
-//
-// };

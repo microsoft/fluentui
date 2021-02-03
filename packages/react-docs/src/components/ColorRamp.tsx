@@ -23,7 +23,7 @@ export const ColorRampItem = (props: ColorRampItemProps) => {
       style={{
         display: 'flex',
         justifyContent: 'space-between',
-        padding: '1em',
+        padding: '1.5vh',
         background: props.value,
         color: isTransparent ? '#000' : isDark ? '#fff' : '#000',
         width: 250,
