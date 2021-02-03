@@ -22,7 +22,7 @@ export function resolveStyleRules(
   result: Record<string, MakeStylesResolvedRule> = {},
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles = (expand(styles) as unknown) as MakeStyles;
+  const expandedStyles: MakeStyles = expand(styles);
   const properties = Object.keys(expandedStyles);
 
   // TODO: => for-in loop

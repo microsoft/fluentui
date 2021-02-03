@@ -172,7 +172,7 @@ The perf test script also supports the following optional arguments:
 
 Here is an example of their use:
 
-`yarn just perf-test -- --scenarios SplitButton,SplitButtonNew --iterations 1000`
+`yarn just perf-test -- --scenarios Checkbox --iterations 1000`
 
 # Questions
 
