@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { MenuItemProps, MenuItemState } from './MenuItem.types';
+import { useMenuListContext } from '../menuListContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -17,6 +18,8 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>, d
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const resolvedRef = ref || React.useRef();
+  const { checkedValues, onCheckedValuesChange } = useMenuListContext();
+
   const state = mergeProps(
     {
       ref: resolvedRef,
@@ -27,6 +30,10 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>, d
     defaultProps,
     resolveShorthandProps(props, menuItemShorthandProps),
   );
+
+  if (checkedValues || onCheckedValuesChange) {
+    state.hasCheckMark = true;
+  }
 
   return state as MenuItemState;
 };

@@ -43,7 +43,5 @@ export const useMenuItemSelectable = (
     }
   };
 
-  state['aria-checked'] = state.checked ? true : false;
-
   return state;
 };

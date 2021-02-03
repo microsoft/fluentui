@@ -1,37 +1,32 @@
 import * as React from 'react';
 
-import {
-  MenuList,
-  MenuItem,
-  FocusAbilityContextProvider,
-  MenuGroup,
-  MenuGroupHeader,
-  MenuItemCheckbox,
-  MenuItemRadio,
-} from '@fluentui/react-menu';
+import { MenuList, MenuItem, MenuGroup, MenuGroupHeader, MenuItemCheckbox, MenuItemRadio } from '@fluentui/react-menu';
+import { teamsLightTheme } from '@fluentui/react-theme';
+import { FluentProvider } from '@fluentui/react-provider';
+import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 
 export const MenuListExample = () => (
-  <FocusAbilityContextProvider>
+  <FluentProvider theme={teamsLightTheme}>
     <MenuList>
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Item</MenuItem>
+      <MenuItem icon={<CutIcon />}>Item</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Item</MenuItem>
+      <MenuItem icon={<EditIcon />}>Item</MenuItem>
     </MenuList>
-  </FocusAbilityContextProvider>
+  </FluentProvider>
 );
 
 export const MenuListWithIconsExample = () => (
-  <FocusAbilityContextProvider>
+  <FluentProvider theme={teamsLightTheme}>
     <MenuList>
       <MenuItem icon="X">Item</MenuItem>
       <MenuItem icon="X">Item</MenuItem>
       <MenuItem icon="X">Item</MenuItem>
     </MenuList>
-  </FocusAbilityContextProvider>
+  </FluentProvider>
 );
 
 export const MenuListWithGroupExample = () => (
-  <FocusAbilityContextProvider>
+  <FluentProvider theme={teamsLightTheme}>
     <MenuList>
       <MenuItem icon="X">Item</MenuItem>
       <MenuItem icon="X">Item</MenuItem>
@@ -43,18 +38,18 @@ export const MenuListWithGroupExample = () => (
         <MenuItem icon="X">Item</MenuItem>
       </MenuGroup>
     </MenuList>
-  </FocusAbilityContextProvider>
+  </FluentProvider>
 );
 
 export const MenuListWithCheckboxes = () => {
-  const checkmark = <span>{String.fromCharCode(9989)}</span>;
+  const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
   const onChange = (name: string, items: string[]) => {
     setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
   return (
-    <FocusAbilityContextProvider>
+    <FluentProvider theme={teamsLightTheme}>
       <MenuList checkedValues={checkedValues} onCheckedValuesChange={onChange}>
         <MenuItemCheckbox name="checkbox" value="1" checkmark={checkmark}>
           Item
@@ -66,19 +61,19 @@ export const MenuListWithCheckboxes = () => {
           Item
         </MenuItemCheckbox>
       </MenuList>
-    </FocusAbilityContextProvider>
+    </FluentProvider>
   );
 };
 
 export const MenuListWithRadios = () => {
-  const checkmark = <span>{String.fromCharCode(9989)}</span>;
+  const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
   const onChange = (name: string, items: string[]) => {
     setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
   return (
-    <FocusAbilityContextProvider>
+    <FluentProvider theme={teamsLightTheme}>
       <MenuList checkedValues={checkedValues} onCheckedValuesChange={onChange}>
         <MenuItemRadio name="checkbox" value="1" checkmark={checkmark}>
           Item
@@ -90,6 +85,6 @@ export const MenuListWithRadios = () => {
           Item
         </MenuItemRadio>
       </MenuList>
-    </FocusAbilityContextProvider>
+    </FluentProvider>
   );
 };
