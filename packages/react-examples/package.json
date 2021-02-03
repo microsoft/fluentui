@@ -67,6 +67,7 @@
     "@fluentui/react-image": "^0.6.20",
     "@fluentui/react-internal": "^8.0.0-beta.42",
     "@fluentui/react-link": "^1.0.0-beta.38",
+    "@fluentui/react-make-styles": "^0.1.0",
     "@fluentui/react-shared-contexts": "^1.0.0-beta.5",
     "@fluentui/react-slider": "^1.0.0-beta.39",
     "@fluentui/react-tabs": "^1.0.0-beta.40",
