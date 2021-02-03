@@ -17,8 +17,6 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
   const timeoutMessageNarrate = React.useRef<number>();
   const timeoutMessageRemove = React.useRef<number>();
   const context = useFluentContext();
-  const areaFocusableElements = () =>
-    instructionRef?.current?.querySelectorAll('a, button, input, textarea, select, details, [tabindex]');
 
   const narrate = (instructionMessage, priority = 'polite') => {
     const element = document.createElement('div');
@@ -38,27 +36,19 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
     }, 2300);
   };
 
-  const handleFocus = React.useCallback(
-    event => {
-      const focElements = areaFocusableElements();
-      if (!narrationHappened.current && focElements && Array.from(focElements).includes(event.target)) {
-        narrate(message);
-        narrationHappened.current = true;
-      }
-    },
-    [areaFocusableElements],
-  );
+  const handleFocus = React.useCallback(() => {
+    if (!narrationHappened.current) {
+      narrate(message);
+      narrationHappened.current = true;
+    }
+  }, []);
 
-  const handleBlur = React.useCallback(
-    event => {
-      const focElements = areaFocusableElements();
-      if (areaFocusableElements && !Array.from(focElements).includes(event.relatedTarget)) {
-        clearTimeout(timeoutMessageNarrate.current);
-        narrationHappened.current = false;
-      }
-    },
-    [areaFocusableElements],
-  );
+  const handleBlur = React.useCallback(event => {
+    if (!event.currentTarget.contains(event.relatedTarget)) {
+      clearTimeout(timeoutMessageNarrate.current);
+      narrationHappened.current = false;
+    }
+  }, []);
 
   return (
     <Ref innerRef={instructionRef}>

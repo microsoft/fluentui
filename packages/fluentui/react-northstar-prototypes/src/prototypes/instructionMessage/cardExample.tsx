@@ -11,7 +11,6 @@ import {
   StarIcon,
   DownloadIcon,
   MoreIcon,
-  // screenReaderContainerStyles,
 } from '@fluentui/react-northstar';
 
 const names = [
@@ -87,24 +86,8 @@ const SampleCard = ({ index, ...unhandledProps }) => {
 
 const CardExampleFocusableGrid = () => {
   const navigationMessageId = 'navigationMessage';
-  // const defaultMessage = 'Press arrow keys to navigate between cards.';
-  // const [navigationMessage, setNavigationMessage] = React.useState(defaultMessage);
   const timeout = React.useRef();
   const cardsNumber = 18;
-
-  // const handleGridFocus = () => {
-  //   if (navigationMessage !== null) {
-  //     timeout.current = setTimeout(() => {
-  //       setNavigationMessage(null);
-  //     }, 3000);
-  //   }
-  // };
-
-  // const handleGridBlur = e => {
-  //   if (!e.currentTarget.contains(e.relatedTarget)) {
-  //     setNavigationMessage(defaultMessage);
-  //   }
-  // };
 
   const cleanup = () => {
     if (timeout.current) {
@@ -115,10 +98,6 @@ const CardExampleFocusableGrid = () => {
   React.useEffect(() => cleanup, []);
   return (
     <>
-      {/* <div id={navigationMessageId} style={screenReaderContainerStyles}>
-        {navigationMessage}
-      </div> */}
-      {/* <Grid accessibility={cardsContainerBehavior} columns={3} onFocus={handleGridFocus} onBlur={handleGridBlur}> */}
       <Grid accessibility={cardsContainerBehavior} columns={3}>
         {_.times(cardsNumber, i => {
           const nonZeroIndex = i + 1;
