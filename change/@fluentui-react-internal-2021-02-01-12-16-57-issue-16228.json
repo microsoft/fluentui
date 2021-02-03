@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Checkbox: border is now visible when element is in focus in High Contrast White Mode",
-  "packageName": "@fluentui/react-internal",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T20:16:57.832Z"
-}

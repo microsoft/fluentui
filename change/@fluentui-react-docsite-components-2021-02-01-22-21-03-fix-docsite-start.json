@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Fix localhost check in local demo",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-02-02T06:20:56.920Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Module federation innerloop experience",
-  "packageName": "@fluentui/react",
-  "email": "kchau@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-02T19:33:13.901Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Remove customSize and display props; change active prop to enum; clean up AvatarProps",
-  "packageName": "@fluentui/react-avatar",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-29T05:38:27.280Z"
-}

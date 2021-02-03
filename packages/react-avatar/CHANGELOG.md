@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.0)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.3..@fluentui/react-avatar_v0.9.0)
+
+### Minor changes
+
+- Remove customSize and display props; change active prop to enum; clean up AvatarProps ([PR #16702](https://github.com/microsoft/fluentui/pull/16702) by behowell@microsoft.com)
 
 ## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.3)
 
