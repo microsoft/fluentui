@@ -310,13 +310,13 @@ module.exports = {
         },
 
         plugins: [
-          ...(!process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [new ForkTsCheckerWebpackPlugin()] : []),
+          ...(!(process.env.TF_BUILD || process.env.SKIP_TYPECHECK) ? [new ForkTsCheckerWebpackPlugin()] : []),
           ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
         ],
       },
       customConfig,
     );
-
+    console.log(process.env.SKIP_TYPECHECK);
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;
   },
