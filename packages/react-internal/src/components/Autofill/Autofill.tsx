@@ -363,7 +363,8 @@ function _doesTextStartWith(text: string, startWith: string): boolean {
         throw new Error(
           `${
             Autofill.name
-          } received non-string value(s) of type ${typeof val} from either input's value or suggestedDisplayValue`,
+            // eslint-disable-next-line @fluentui/max-len
+          } received non-string value "${val}" of type ${typeof val} from either input's value or suggestedDisplayValue`,
         );
       }
     }
