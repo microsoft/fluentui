@@ -70,6 +70,7 @@ export const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
     alignItems: 'center',
     justifyContent: 'center',
     width: pxToRem(16),
+    minWidth: pxToRem(16),
     height: pxToRem(16),
     '& > :first-child': {
       width: pxToRem(16),
