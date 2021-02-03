@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.27)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.26..@fluentui/react-button_v1.0.0-beta.27)
+
+### Changes
+
+- SplitButton: Using menuButtonRef prop correctly when handling state. ([PR #16740](https://github.com/microsoft/fluentui/pull/16740) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.26)
 

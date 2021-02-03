@@ -10,6 +10,7 @@
   <body>
     <div id="content"></div>
     <script type="text/javascript">
+      // @ts-check
       window.FabricConfig = {
         // Uncommenting this prevents the fontfaces from being registered.
         // Alternatively you can specify a base url which contains the font/icon assets.
@@ -19,8 +20,7 @@
         // }
       };
 
-      var url = document.location.href;
-      var isLocalHost = url.indexOf('localhost') !== -1 || url.indexOf('127.0.0.1') !== -1;
+      var isLocal = ['localhost', '[::]', '127.0.0.1'].indexOf(location.hostname) !== -1;
 
       var isDev = getParameterByName('dev') === '1' || !!getParameterByName('strict');
       var minParam = getParameterByName('min');
@@ -38,7 +38,7 @@
 
       const scripts = [];
 
-      if (isLocalHost) {
+      if (isLocal) {
         scripts.push('./react.development.js');
         scripts.push('./react-dom.development.js');
       } else {

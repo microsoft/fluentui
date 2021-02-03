@@ -2,6 +2,27 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.0.0-beta.47",
+      "version": "8.0.0-beta.47",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix localhost check in local demo",
+            "author": "elcraig@microsoft.com",
+            "commit": "ca8e03e6f842bcfdb983a4d05dad6b37ce3e7dcf",
+            "package": "@fluentui/react-docsite-components"
+          },
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Feb 2021 12:23:48 GMT",
       "tag": "@fluentui/react-docsite-components_v8.0.0-beta.46",
       "version": "8.0.0-beta.46",
