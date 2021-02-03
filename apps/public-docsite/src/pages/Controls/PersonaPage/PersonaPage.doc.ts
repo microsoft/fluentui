@@ -1,7 +1,14 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { PersonaPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Persona/Persona.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PersonaPage/docs/PersonaRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web Persona', url: '#/controls/web/persona' },
+  { text: 'iOS Persona', url: '#/controls/ios/persona' },
+  { text: 'Android Persona', url: '#/controls/android/persona' },
+  { text: 'macOS Avatar', url: '#/controls/mac/avatar' },
+  { text: 'Cross-platform Persona', url: '#/controls/crossplatform/persona' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PersonaPage';
 
