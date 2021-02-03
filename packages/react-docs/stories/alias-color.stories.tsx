@@ -44,6 +44,7 @@ export const Alias = (args, { globals: { theme } }) => {
 
   const COLUMN_WIDTH = 250;
   const activeColor = previewColor || color;
+
   return (
     <>
       <div>

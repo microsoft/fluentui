@@ -23,6 +23,7 @@
     "build-storybook": "build-storybook"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^6.1.15"
+    "@storybook/addon-a11y": "^6.1.15",
+    "tsconfig-paths-webpack-plugin": "^3.3.0"
   }
 }

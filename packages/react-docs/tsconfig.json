@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "outDir": "dist",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom"],
+    "types": ["jest", "node", "webpack-env", "custom-global"]
+  },
+  "include": ["src"]
+}
