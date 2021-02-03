@@ -45,4 +45,6 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
       (e.target as HTMLElement).click();
     }
   };
+
+  state['aria-checked'] = state.checked;
 };
