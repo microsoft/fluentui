@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 12:24:38 GMT",
+      "tag": "@uifabric/experiments_v7.38.8",
+      "version": "7.38.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker should select first suggestion when user begins typing",
+            "author": "elvonspa@microsoft.com",
+            "commit": "898686fc85044e089c9a7a9bc95614ac03903a82",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jan 2021 12:25:15 GMT",
       "tag": "@uifabric/experiments_v7.38.3",
       "version": "7.38.3",

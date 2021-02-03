@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "UnifiedPicker should select first suggestion when user begins typing",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T23:30:05.292Z"
-}

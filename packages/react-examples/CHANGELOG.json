@@ -2,6 +2,27 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 12:24:38 GMT",
+      "tag": "@fluentui/react-examples_v0.11.18",
+      "version": "0.11.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry-pick of PRs #16497, #16496, #16494, #16479, #16430, #16475, #16463, #16495 and #16481",
+            "author": "andredias@microsoft.com",
+            "commit": "e404ed795ad649bef57cf46c1d01f238cb827c5e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "[v7.0]Checkbox: border is now visible when element is in focus in High Contrast White Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "be39749927e16ddf5120483c10f02b517244bb91",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:23:57 GMT",
       "tag": "@fluentui/react-examples_v0.11.15",
       "version": "0.11.15",

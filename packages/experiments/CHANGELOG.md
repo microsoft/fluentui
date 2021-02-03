@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 26 Jan 2021 12:25:15 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.8)
+
+Wed, 03 Feb 2021 12:24:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.3..@uifabric/experiments_v7.38.8)
+
+### Patches
+
+- UnifiedPicker should select first suggestion when user begins typing ([PR #16744](https://github.com/microsoft/fluentui/pull/16744) by elvonspa@microsoft.com)
 
 ## [7.38.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.3)
 

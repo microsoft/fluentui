@@ -2,6 +2,21 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 12:24:38 GMT",
+      "tag": "@uifabric/file-type-icons_v7.6.25",
+      "version": "7.6.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating the Fabric CDN url to point to latest version for pulling filetype icon images.",
+            "author": "caperez@microsoft.com",
+            "commit": "65db403ef1748737b86370e47e1ef8cd40574f51",
+            "package": "@uifabric/file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Dec 2020 12:28:21 GMT",
       "tag": "@uifabric/file-type-icons_v7.6.23",
       "version": "7.6.23",

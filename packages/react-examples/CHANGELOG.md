@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 28 Jan 2021 12:23:57 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.18)
+
+Wed, 03 Feb 2021 12:24:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.15..@fluentui/react-examples_v0.11.18)
+
+### Patches
+
+- Cherry-pick of PRs #16497, #16496, #16494, #16479, #16430, #16475, #16463, #16495 and #16481 ([PR #16677](https://github.com/microsoft/fluentui/pull/16677) by andredias@microsoft.com)
+- [v7.0]Checkbox: border is now visible when element is in focus in High Contrast White Mode ([PR #16747](https://github.com/microsoft/fluentui/pull/16747) by tristan.watanabe@gmail.com)
 
 ## [0.11.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.15)
 

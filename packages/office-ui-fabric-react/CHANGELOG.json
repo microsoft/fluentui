@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 12:24:38 GMT",
+      "tag": "office-ui-fabric-react_v7.158.1",
+      "version": "7.158.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[v7.0]Checkbox: border is now visible when element is in focus in High Contrast White Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "be39749927e16ddf5120483c10f02b517244bb91",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Feb 2021 12:28:03 GMT",
       "tag": "office-ui-fabric-react_v7.158.0",
       "version": "7.158.0",

@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Feb 2021 12:28:03 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.158.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.1)
+
+Wed, 03 Feb 2021 12:24:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.158.0..office-ui-fabric-react_v7.158.1)
+
+### Patches
+
+- [v7.0]Checkbox: border is now visible when element is in focus in High Contrast White Mode ([PR #16747](https://github.com/microsoft/fluentui/pull/16747) by tristan.watanabe@gmail.com)
 
 ## [7.158.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.0)
 
