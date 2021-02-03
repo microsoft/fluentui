@@ -198,6 +198,13 @@ export type FontFamilies = {
   numeric: string;
 };
 
+export type TextAlignments = {
+  start: string;
+  center: string;
+  end: string;
+  justify: string;
+};
+
 export type BorderRadius = {
   none: number;
   small: number;
@@ -217,7 +224,7 @@ export type StrokeWidths = {
 /**
  * Each shadow level has an ambient and key variant
  */
-type ShadowTokenValue = {
+type ShadowValue = {
   ambient: string;
   key: string;
 };
@@ -226,12 +233,12 @@ type ShadowTokenValue = {
  * Design tokens for shadow levels
  */
 export type ShadowLevelTokens = {
-  shadow2: ShadowTokenValue;
-  shadow4: ShadowTokenValue;
-  shadow8: ShadowTokenValue;
-  shadow16: ShadowTokenValue;
-  shadow28: ShadowTokenValue;
-  shadow64: ShadowTokenValue;
+  shadow2: ShadowValue;
+  shadow4: ShadowValue;
+  shadow8: ShadowValue;
+  shadow16: ShadowValue;
+  shadow28: ShadowValue;
+  shadow64: ShadowValue;
 };
 
 export type GhostColorTokens = {
@@ -246,23 +253,6 @@ export type TransparentColorTokens = {
   transparentBackgroundHover: string;
   transparentBackgroundPressed: string;
   transparentBackgroundSelected: string;
-};
-
-/**
- * Theme object
- */
-export type ThemeCompat = {
-  sharedColors: GlobalSharedColors;
-  sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens>;
-  fontSizes: FontSizes;
-  fontWeights: FontWeights;
-  fontFamilies: FontFamilies;
-  lineHeights: LineHeights;
-  brandColors: ColorVariants;
-  neutralColorTokens: NeutralColorTokens;
-  shadowLevels?: ShadowLevelTokens;
-  ghostColorTokens: BackgroundColorTokens;
-  transparentColorTokens: BackgroundColorTokens;
 };
 
 export type BackgroundColorTokens = {
@@ -350,6 +340,16 @@ export type Theme = {
       brand: BrandVariants; // Only the Theme brand, not all
       grey: Record<Greys, string>;
     };
+    type: {
+      fontSizes: FontSizes;
+      fontWeights: FontWeights;
+      fontFamilies: FontFamilies;
+      lineHeights: LineHeights;
+      alignment: TextAlignments;
+    };
+    borderRadius: BorderRadius;
+    shadow: ShadowLevelTokens;
+    strokeWidth: StrokeWidths;
   };
   alias: {
     color: Record<keyof GlobalSharedColors, SharedColorTokens> & {

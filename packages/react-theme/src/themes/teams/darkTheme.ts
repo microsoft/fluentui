@@ -5,31 +5,9 @@ import {
   sharedColorTokens,
   transparentColorTokens,
 } from '../../utils/dark';
-import { createShadowLevelTokens } from '../../utils/light';
-import {
-  brandColors,
-  sharedColors,
-  fontFamilies,
-  fontWeights,
-  fontSizes,
-  lineHeights,
-  grey,
-  black,
-  white,
-  hyperlink,
-  selected,
-  disabled,
-} from '../../global';
-import { Theme, ThemeCompat } from '../../types';
-
-const common = {
-  sharedColors,
-  sharedColorTokens,
-  fontFamilies,
-  fontWeights,
-  fontSizes,
-  lineHeights,
-};
+import { brandColors, grey } from '../../global';
+import { Theme } from '../../types';
+import { globalTheme } from './globalTheme';
 
 const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams, {
   neutralBackground2: grey[14],
@@ -53,33 +31,8 @@ const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams, {
   neutralBackground5Selected: grey[8],
 });
 
-export const teamsDarkThemeCompat: ThemeCompat = {
-  brandColors: brandColors.teams,
-  neutralColorTokens: teamsNeutralColorTokens,
-  ghostColorTokens,
-  transparentColorTokens,
-  shadowLevels: createShadowLevelTokens(
-    teamsNeutralColorTokens.neutralShadowAmbientDarker,
-    teamsNeutralColorTokens.neutralShadowKeyDarker,
-  ),
-  ...common,
-};
-
 export const teamsDarkTheme: Theme = {
-  global: {
-    color: {
-      black,
-      white,
-      hyperlink,
-      selected,
-      disabled,
-    },
-    palette: {
-      ...sharedColors,
-      brand: brandColors.teams,
-      grey,
-    },
-  },
+  global: globalTheme,
   alias: {
     color: {
       ...sharedColorTokens,
