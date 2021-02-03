@@ -1,6 +1,7 @@
 import { makeStyles } from '@fluentui/react-make-styles';
 import { MenuItemState } from './MenuItem.types';
 
+/** Styles for the root slot */
 export const useRootStyles = makeStyles([
   [
     null,
@@ -12,6 +13,7 @@ export const useRootStyles = makeStyles([
       height: '32px',
       display: 'flex',
       alignItems: 'center',
+      fontSize: theme.fontSizes.base[300],
 
       ':hover': {
         backgroundColor: theme.neutralColorTokens.neutralBackground1Hover,
@@ -24,26 +26,19 @@ export const useRootStyles = makeStyles([
   ],
 ]);
 
+/** Styles for the icon slot */
 export const useIconStyles = makeStyles([
   [
     null,
     () => ({
       width: '20px',
       height: '20px',
+      marginRight: '9px',
     }),
   ],
 ]);
 
-export const useCheckmarkStyles = makeStyles([
-  [
-    null,
-    () => ({
-      width: '16px',
-      height: '16px',
-    }),
-  ],
-]);
-
+/** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
   const rootClassName = useRootStyles({});
   const iconClassName = useIconStyles({});
@@ -51,6 +46,9 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   state.className = rootClassName;
 
   if (state.icon) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // TODO figure out typings
     state.icon.className = iconClassName;
   }
 };

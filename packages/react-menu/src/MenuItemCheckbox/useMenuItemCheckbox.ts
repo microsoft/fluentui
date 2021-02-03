@@ -2,7 +2,6 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuListContext } from '../menuListContext';
-import { getAbilityHelpersAttribute, Types } from 'ability-helpers';
 import { useMenuItemSelectable } from '../selectable';
 
 /**
@@ -24,7 +23,6 @@ export const useMenuItemCheckbox = (
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const resolvedRef = ref || React.useRef<HTMLElement>();
-  const ahProps = getAbilityHelpersAttribute({ groupper: { isLimited: Types.GroupperFocusLimits.Limited } });
   const mergedProps = mergeProps(
     {
       ref: resolvedRef,
@@ -33,7 +31,6 @@ export const useMenuItemCheckbox = (
       checkmark: { as: 'span' },
       role: 'menuitemcheckbox',
       tabIndex: 0,
-      ...ahProps,
     },
     defaultProps,
     resolveShorthandProps(props, menuItemCheckboxShorthandProps),

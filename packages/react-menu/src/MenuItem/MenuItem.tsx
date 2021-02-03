@@ -5,13 +5,13 @@ import { renderMenuItem } from './renderMenuItem';
 import { useMenuItemStyles } from './useMenuItemStyles';
 
 /**
- * Define a styled MenuItem, using the `useMenuItem` hook.
+ * Define a styled MenuItem, using the `useMenuItem` and `useMenuItemStyles` hook.
  * {@docCategory MenuItem}
  */
 export const MenuItem = React.forwardRef<HTMLElement, MenuItemProps>((props, ref) => {
   const state = useMenuItem(props, ref, {
     role: 'menuitem',
-    tabIndex: 0,
+    tabIndex: 0, // TODO keyboard navigation
   });
 
   useMenuItemStyles(state);

@@ -7,55 +7,166 @@
 import { ComponentProps } from '@fluentui/react-utils';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utils';
-import { Types } from 'ability-helpers';
 
-// @public (undocumented)
-export interface FocusAbilityContext {
-    // (undocumented)
-    ah: Types.AbilityHelpersCore;
-    // (undocumented)
-    deloser: Types.DeloserAPI;
-    // (undocumented)
-    modalizer: Types.ModalizerAPI;
-}
-
-// @public (undocumented)
-export const FocusAbilityContextProvider: (props: {
-    children: React.ReactNode;
-}) => JSX.Element;
-
-// Warning: (ae-forgotten-export) The symbol "MenuGroupProps" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const MenuGroup: React.ForwardRefExoticComponent<Pick<MenuGroupProps, string | number> & React.RefAttributes<HTMLElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuGroupHeaderProps" needs to be exported by the entry point index.d.ts
-//
+// @public
+export const MenuGroupDivider: React.ForwardRefExoticComponent<Pick<MenuGroupDividerProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface MenuGroupDividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public (undocumented)
+export interface MenuGroupDividerState extends MenuGroupDividerProps {
+}
+
 // @public
 export const MenuGroupHeader: React.ForwardRefExoticComponent<Pick<MenuGroupHeaderProps, string | number> & React.RefAttributes<HTMLElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemProps" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface MenuGroupHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public (undocumented)
+export interface MenuGroupHeaderState extends MenuGroupHeaderProps {
+}
+
+// @public (undocumented)
+export interface MenuGroupProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public (undocumented)
+export interface MenuGroupState extends MenuGroupProps {
+}
+
 // @public
 export const MenuItem: React.ForwardRefExoticComponent<Pick<MenuItemProps, string | number> & React.RefAttributes<HTMLElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemCheckboxProps" needs to be exported by the entry point index.d.ts
-//
 // @public
 export const MenuItemCheckbox: React.ForwardRefExoticComponent<Pick<MenuItemCheckboxProps, string | number> & React.RefAttributes<HTMLElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemRadioProps" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "MenuItemSelectableProps" needs to be exported by the entry point index.d.ts
 //
+// @public (undocumented)
+export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
+    // (undocumented)
+    checkmark?: ShorthandProps;
+}
+
+// @public
+export const menuItemCheckboxShorthandProps: string[];
+
+// Warning: (ae-forgotten-export) The symbol "MenuItemSelectableState" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemSelectableState {
+}
+
+// @public (undocumented)
+export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    icon?: ShorthandProps;
+}
+
 // @public
 export const MenuItemRadio: React.ForwardRefExoticComponent<Pick<MenuItemRadioProps, string | number> & React.RefAttributes<HTMLElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuListProps" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
+    // (undocumented)
+    checkmark?: ShorthandProps;
+    // (undocumented)
+    icon?: ShorthandProps;
+}
+
+// @public
+export const menuItemRadioShorthandProps: string[];
+
+// @public (undocumented)
+export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectableState {
+    // (undocumented)
+    ref?: React.Ref<HTMLDivElement>;
+}
+
+// @public
+export const menuItemShorthandProps: string[];
+
+// @public (undocumented)
+export interface MenuItemState extends MenuItemProps {
+}
+
 // @public
 export const MenuList: React.ForwardRefExoticComponent<Pick<MenuListProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const useFocusAbilityContext: () => FocusAbilityContext | null;
+export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    checkedValues?: Record<string, string[]>;
+    // (undocumented)
+    onCheckedValuesChange?: (name: string, value: string[]) => void;
+}
+
+// @public (undocumented)
+export interface MenuListState extends MenuListProps {
+}
+
+// @public
+export const renderMenuGroup: (state: MenuGroupState) => JSX.Element;
+
+// @public
+export const renderMenuGroupDivider: (state: MenuGroupDividerState) => JSX.Element;
+
+// @public
+export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSX.Element;
+
+// @public
+export const renderMenuItem: (state: MenuItemState) => JSX.Element;
+
+// @public
+export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSX.Element;
+
+// @public
+export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
+
+// @public
+export const renderMenuList: (state: MenuListState) => JSX.Element;
+
+// @public
+export const useIconStyles: (selectors: unknown) => string;
+
+// @public
+export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
+
+// @public
+export const useMenuGroupDivider: (props: MenuGroupDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupDividerProps | undefined) => MenuGroupDividerState;
+
+// @public (undocumented)
+export const useMenuGroupDividerStyles: (state: MenuGroupDividerState) => void;
+
+// @public
+export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps | undefined) => MenuGroupHeaderState;
+
+// @public (undocumented)
+export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => void;
+
+// @public
+export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;
+
+// @public
+export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemCheckboxProps | undefined) => MenuItemCheckboxState;
+
+// @public
+export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemRadioProps | undefined) => MenuItemRadioState;
+
+// @public
+export const useMenuItemStyles: (state: MenuItemState) => void;
+
+// @public
+export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
+
+// @public
+export const useRootStyles: (selectors: unknown) => string;
 
 
 // (No @packageDocumentation comment for this package)

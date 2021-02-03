@@ -1,10 +1,13 @@
 import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
-import { MenuItemCheckboxState } from '../MenuItemCheckbox/MenuItemCheckbox.types';
+import { MenuItemSelectableState } from './types';
 
-export const useMenuItemSelectable = (
-  state: MenuItemCheckboxState,
-  getNewCheckedItems: () => string[],
-): MenuItemCheckboxState => {
+/**
+ * Hook used to mutate state to handle selection logic for selectable menu items
+ *
+ * @param state Selectable menu item state
+ * @param getNewCheckedItems Callback that returns the new checked values for given menu item
+ */
+export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewCheckedItems: () => string[]) => {
   const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = state;
 
   const onSelectionChange = () => {
@@ -42,6 +45,4 @@ export const useMenuItemSelectable = (
       (e.target as HTMLElement).click();
     }
   };
-
-  return state;
 };

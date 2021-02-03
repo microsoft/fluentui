@@ -10,10 +10,12 @@ export const menuItemShorthandProps = ['icon', 'checkmark'];
 
 const mergeProps = makeMergeProps({ deepMerge: menuItemShorthandProps });
 
-/**
- * Given user props, returns state and render function for a Button.
- */
-export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps) => {
+/** Returns the props and state required to render the component */
+export const useMenuItem = (
+  props: MenuItemProps,
+  ref: React.Ref<HTMLElement>,
+  defaultProps?: MenuItemProps,
+): MenuItemState => {
   // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -25,7 +27,6 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>, d
       ref: resolvedRef,
       as: 'div',
       icon: { as: 'span' },
-      checkmark: { as: 'span' },
     },
     defaultProps,
     resolveShorthandProps(props, menuItemShorthandProps),
@@ -35,5 +36,5 @@ export const useMenuItem = (props: MenuItemProps, ref: React.Ref<HTMLElement>, d
     state.hasCheckMark = true;
   }
 
-  return state as MenuItemState;
+  return state;
 };

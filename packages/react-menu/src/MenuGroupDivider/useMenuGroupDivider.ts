@@ -1,28 +1,25 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
-import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
-import { useMenuGroupContext } from '../menuGroupContext';
+import { MenuGroupDividerProps, MenuGroupDividerState } from './MenuGroupDivider.types';
 
-const mergeProps = makeMergeProps<MenuGroupHeaderProps>();
+const mergeProps = makeMergeProps<MenuGroupDividerProps>();
 
 /**
  * Given user props, returns state and render function for a Button.
  */
-export const useMenuGroupHeader = (
-  props: MenuGroupHeaderProps,
+export const useMenuGroupDivider = (
+  props: MenuGroupDividerProps,
   ref: React.Ref<HTMLElement>,
-  defaultProps?: MenuGroupHeaderProps,
-): MenuGroupHeaderState => {
+  defaultProps?: MenuGroupDividerProps,
+): MenuGroupDividerState => {
   // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const resolvedRef = ref || React.useRef();
-  const { headerId } = useMenuGroupContext();
   const mergedProps = mergeProps(
     {
       ref: resolvedRef,
       as: 'div',
-      id: headerId,
       role: 'presentation ',
       'aria-hidden': true,
     },
