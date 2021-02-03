@@ -63,7 +63,7 @@ See open issues section.
 
 ### Centralize communication channels with early adoption partners
 
-We should make a private Teams channel within Fluent Community for internal partners who are working closely with us to try out the preview components. (It's possible that this could be expanded to external partners in the future.) This would be a very direct way for partners to share feedback and get support (from us or each other) with preview components. It would also make it easier for the whole team to see the feedback rather than it being highly compartmentalized.
+We should make a private Teams channel within Fluent Community for internal partners who are working closely with us to try out the preview components (it's possible that this could be expanded to external partners in the future). This would be a very direct way for partners to share feedback and get support (from us or each other) with preview components. It would also make it easier for the whole team to see the feedback rather than it being highly compartmentalized.
 
 ## Discarded Solutions
 
