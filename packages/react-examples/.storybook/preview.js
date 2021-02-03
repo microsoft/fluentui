@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
-import { withKeytipLayer, withStrictMode, withCompatThemeProvider } from '@fluentui/storybook';
+import { withFluentProvider, withKeytipLayer, withStrictMode, withCompatThemeProvider } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
@@ -27,6 +27,10 @@ if (
   ].includes('PACKAGE_NAME')
 ) {
   addDecorator(withCompatThemeProvider);
+  addDecorator(withStrictMode);
+}
+if (['react-avatar'].includes('PACKAGE_NAME')) {
+  addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }
 

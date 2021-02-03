@@ -134,4 +134,22 @@ export type AvatarTokenSet = {
   inactiveScale?: string;
 };
 
-export type AvatarState = AvatarProps;
+export type AvatarState = AvatarProps & {
+  activeRing: boolean;
+  activeShadow: boolean;
+  activeGlow: boolean;
+
+  hasIcon: boolean;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  label: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  image: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  badge: any;
+
+  getInitials: (name: string, isRtl: boolean) => string;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ref: any;
+};
