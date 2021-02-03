@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "SelectedItemsList EditableItem should have first item selected in picker on show",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-03T00:26:09.914Z"
+}
