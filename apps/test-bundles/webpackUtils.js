@@ -1,7 +1,6 @@
 // @ts-check
 const path = require('path');
-const fs = require('fs');
-const mkdirp = require('mkdirp');
+const fs = require('fs-extra');
 const resources = require('@fluentui/scripts/webpack/webpack-resources');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
@@ -74,29 +73,44 @@ function createWebpackConfig(entries) {
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
-function createEntries(packageName, isNorthstar) {
-  const replacePath = isNorthstar ? ['commonjs', 'es'] : ['lib-commonjs', 'lib'];
-  const distPath = path.dirname(require.resolve(packageName).replace(replacePath[0], replacePath[1]));
-  const packagePath = path.resolve(distPath, isNorthstar ? 'components' : '');
+function createFluentNorthstarFixtures() {
+  const packageName = '@fluentui/react-northstar';
+  const distPath = path.dirname(require.resolve(packageName).replace('commonjs', 'es'));
+  const packagePath = path.resolve(distPath, 'components');
   fs.readdirSync(packagePath).forEach(itemName => {
     const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
-    const isAllowedFile = itemName.match(/.js$/) && !TopLevelEntryFileExclusions.includes(itemName);
 
-    if ((!isAllowedFile && !(isNorthstar && isFolder)) || !itemName) {
-      return;
-    }
-
-    const item = isFolder ? itemName : itemName.replace(/.js$/, '');
-    const importStatement = `import { ${item} } from '${packageName}'; console.log(${item})`;
-    try {
-      const folderName = getFolderName(packageName);
-      if (!fs.existsSync(`fixtures/${folderName}`)) {
-        mkdirp.sync(`fixtures/${folderName}`);
+    if (isFolder && itemName) {
+      const importStatement = `import { ${itemName} } from '${packageName}'; console.log(${itemName})`;
+      try {
+        const folderName = getFolderName(packageName);
+        const entryPath = path.join('fixtures/', folderName, `${itemName}.js`);
+        fs.outputFileSync(entryPath, importStatement, 'utf-8');
+      } catch (err) {
+        console.log(err);
       }
-      const entryPath = path.join('fixtures/', folderName, `${item}.js`);
-      fs.writeFileSync(entryPath, importStatement, 'utf-8');
-    } catch (err) {
-      console.log(err);
+    }
+  });
+}
+
+function createFluentFixtures() {
+  const packageName = '@fluentui/react';
+  const distPath = path.dirname(require.resolve(packageName).replace('lib-commonjs', 'lib'));
+  const packagePath = path.resolve(distPath);
+  fs.readdirSync(packagePath).forEach(itemName => {
+    const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
+    const isAllowedFile = itemName && itemName.match(/.js$/) && !TopLevelEntryFileExclusions.includes(itemName);
+
+    if (isAllowedFile && !isFolder) {
+      const item = isFolder ? itemName : itemName.replace(/.js$/, '');
+      const importStatement = `import { ${item} } from '${packageName}'; console.log(${item})`;
+      try {
+        const folderName = getFolderName(packageName);
+        const entryPath = path.join('fixtures/', folderName, `${item}.js`);
+        fs.outputFileSync(entryPath, importStatement, 'utf-8');
+      } catch (err) {
+        console.log(err);
+      }
     }
   });
 }
@@ -105,11 +119,8 @@ function createEntry(packageName) {
   try {
     const importStatement = `import p from '${packageName}'; console.log(p)`;
     const folderName = getFolderName(packageName);
-    if (!fs.existsSync(`fixtures/${folderName}`)) {
-      mkdirp.sync(`fixtures/${folderName}`);
-    }
     const entryPath = path.join('fixtures/', folderName, 'index.js');
-    fs.writeFileSync(entryPath, importStatement, 'utf-8');
+    fs.outputFileSync(entryPath, importStatement, 'utf-8');
   } catch (err) {
     console.log(err);
   }
@@ -144,7 +155,7 @@ function buildEntries(packageName, entries = {}, includeStats = true, onlyOwnCom
 }
 
 /**
- * Create entries for single top level import.
+ * Build entries for single top level import.
  */
 function buildEntry(packageName, includeStats = true) {
   const folderName = getFolderName(packageName);
@@ -160,9 +171,10 @@ function getFolderName(packageName) {
 }
 
 module.exports = {
-  createWebpackConfig,
   buildEntries,
   buildEntry,
-  createEntries,
+  createFluentFixtures,
+  createFluentNorthstarFixtures,
   createEntry,
+  createWebpackConfig,
 };

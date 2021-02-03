@@ -1,9 +1,16 @@
 // @ts-check
-const { createWebpackConfig, createEntries, createEntry, buildEntries, buildEntry } = require('./webpackUtils');
+const {
+  buildEntries,
+  buildEntry,
+  createWebpackConfig,
+  createFluentFixtures,
+  createFluentNorthstarFixtures,
+  createEntry,
+} = require('./webpackUtils');
 
 // Create entries for all top level imports
-createEntries('@fluentui/react-northstar', true);
-createEntries('@fluentui/react', false);
+createFluentFixtures();
+createFluentNorthstarFixtures();
 
 // Create entries for single top level import.
 createEntry('@fluentui/react-compose');
@@ -13,6 +20,7 @@ const entries = {
   ...buildEntries('@fluentui/react'),
   ...buildEntries('@fluentui/react-northstar'),
 };
+
 // If/when we start working in react-next again, the bundle size tests should be set up like this
 // so that only the components directly within react-next are tested.
 // buildEntries(
