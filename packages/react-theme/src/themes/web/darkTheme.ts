@@ -1,7 +1,26 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../../utils/dark';
+import {
+  createBrandColorTokens,
+  createNeutralColorTokens,
+  ghostColorTokens,
+  sharedColorTokens,
+  transparentColorTokens,
+} from '../../utils/dark';
 import { createShadowLevelTokens } from '../../utils/light';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global';
-import { Theme } from '../../types';
+import {
+  brandColors,
+  sharedColors,
+  fontFamilies,
+  fontWeights,
+  fontSizes,
+  lineHeights,
+  black,
+  white,
+  hyperlink,
+  selected,
+  disabled,
+  grey,
+} from '../../global';
+import { Theme, ThemeCompat } from '../../types';
 
 const common = {
   sharedColors,
@@ -14,24 +33,40 @@ const common = {
 
 const webNeutralColorTokens = createNeutralColorTokens(brandColors.web);
 
-export const webDarkTheme: Theme = {
+export const webDarkThemeCompat: ThemeCompat = {
   brandColors: brandColors.web,
   neutralColorTokens: webNeutralColorTokens,
-  ghostColorTokens: {
-    ghostBackground: 'red',
-    ghostBackgroundHover: 'red',
-    ghostBackgroundPressed: 'red',
-    ghostBackgroundSelected: 'red',
-  },
-  transparentColorTokens: {
-    transparentBackground: 'rgba(255, 0, 0, 0.2)',
-    transparentBackgroundHover: 'rgba(255, 0, 0, 0.2)',
-    transparentBackgroundPressed: 'rgba(255, 0, 0, 0.2)',
-    transparentBackgroundSelected: 'rgba(255, 0, 0, 0.2)',
-  },
+  ghostColorTokens,
+  transparentColorTokens,
   shadowLevels: createShadowLevelTokens(
     webNeutralColorTokens.neutralShadowAmbientDarker,
     webNeutralColorTokens.neutralShadowKeyDarker,
   ),
   ...common,
+};
+
+export const webDarkTheme: Theme = {
+  global: {
+    color: {
+      black,
+      white,
+      hyperlink,
+      selected,
+      disabled,
+    },
+    palette: {
+      ...sharedColors,
+      brand: brandColors.web,
+      grey,
+    },
+  },
+  alias: {
+    color: {
+      ...sharedColorTokens,
+      neutral: webNeutralColorTokens,
+      ghost: ghostColorTokens,
+      transparent: transparentColorTokens,
+      brand: createBrandColorTokens(brandColors.web),
+    },
+  },
 };

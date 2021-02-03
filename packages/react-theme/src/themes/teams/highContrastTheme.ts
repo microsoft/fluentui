@@ -1,6 +1,25 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../../utils/highContrast';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global';
-import { Theme } from '../../types';
+import {
+  createBrandColorTokens,
+  createNeutralColorTokens,
+  ghostColorTokens,
+  sharedColorTokens,
+  transparentColorTokens,
+} from '../../utils/highContrast';
+import {
+  brandColors,
+  sharedColors,
+  fontFamilies,
+  fontWeights,
+  fontSizes,
+  lineHeights,
+  black,
+  white,
+  hyperlink,
+  selected,
+  disabled,
+  grey,
+} from '../../global';
+import { Theme, ThemeCompat } from '../../types';
 const common = {
   sharedColors,
   sharedColorTokens,
@@ -10,20 +29,38 @@ const common = {
   lineHeights,
 };
 
-export const teamsHighContrastTheme: Theme = {
+const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams);
+
+export const teamsHighContrastThemeCompat: ThemeCompat = {
   brandColors: brandColors.teams,
-  ghostColorTokens: {
-    ghostBackground: 'red',
-    ghostBackgroundHover: 'red',
-    ghostBackgroundPressed: 'red',
-    ghostBackgroundSelected: 'red',
-  },
-  transparentColorTokens: {
-    transparentBackground: 'rgba(255, 0, 0, 0.2)',
-    transparentBackgroundHover: 'rgba(255, 0, 0, 0.2)',
-    transparentBackgroundPressed: 'rgba(255, 0, 0, 0.2)',
-    transparentBackgroundSelected: 'rgba(255, 0, 0, 0.2)',
-  },
-  neutralColorTokens: createNeutralColorTokens(brandColors.teams),
+  ghostColorTokens,
+  transparentColorTokens,
+  neutralColorTokens: teamsNeutralColorTokens,
   ...common,
+};
+
+export const teamsHighContrastTheme: Theme = {
+  global: {
+    color: {
+      black,
+      white,
+      hyperlink,
+      selected,
+      disabled,
+    },
+    palette: {
+      ...sharedColors,
+      brand: brandColors.teams,
+      grey,
+    },
+  },
+  alias: {
+    color: {
+      ...sharedColorTokens,
+      neutral: teamsNeutralColorTokens,
+      ghost: ghostColorTokens,
+      transparent: transparentColorTokens,
+      brand: createBrandColorTokens(),
+    },
+  },
 };

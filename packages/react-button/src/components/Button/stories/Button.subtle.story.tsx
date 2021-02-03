@@ -15,24 +15,24 @@ const style = `
   --alias-ghost-background-hover: ${teamsLightTheme};
   --alias-ghost-background-pressed: ${teamsLightTheme};
   --alias-ghost-background-selected: ${teamsLightTheme};
-  --neutral-foreground2-interactive-brand: ${teamsLightTheme.neutralColorTokens.neutralForeground2};
+  --neutral-foreground2-interactive-brand: ${teamsLightTheme.alias.color.neutral.neutralForeground2};
   --button-background: ${teamsLightTheme};
   --button-background: ${teamsLightTheme};
   --button-background: ${teamsLightTheme};
 }
 
 .root {
-  background: ${teamsLightTheme.ghostColorTokens.ghostBackground};
+  background: ${teamsLightTheme.alias.color.ghost.background};
   border: none;
 }
 .root:hover {
-  background: ${teamsLightTheme.ghostColorTokens.ghostBackgroundHover};
+  background: ${teamsLightTheme.alias.color.ghost.backgroundHover};
 }
 .root:active {
-  background: ${teamsLightTheme.ghostColorTokens.ghostBackgroundPressed};
+  background: ${teamsLightTheme.alias.color.ghost.backgroundPressed};
 }
 .root.active {
-  background: ${teamsLightTheme.ghostColorTokens.ghostBackgroundSelected};
+  background: ${teamsLightTheme.alias.color.ghost.backgroundSelected};
 }
 
 .content {

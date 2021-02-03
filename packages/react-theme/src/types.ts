@@ -102,6 +102,8 @@ export type ColorVariants = {
   tint60: string;
 };
 
+export type BrandVariants = ColorVariants & { shade60: string };
+
 /**
  * All the global shared colors and their shade/tint variants
  */
@@ -122,12 +124,13 @@ export type GlobalSharedColors = {
   brown: ColorVariants;
   darkBrown: ColorVariants;
   lime: ColorVariants;
-  forrest: ColorVariants;
+  forest: ColorVariants;
   seafoam: ColorVariants;
   lightGreen: ColorVariants;
   green: ColorVariants;
   darkGreen: ColorVariants;
   lightTeal: ColorVariants;
+  teal: ColorVariants;
   darkTeal: ColorVariants;
   cyan: ColorVariants;
   steel: ColorVariants;
@@ -160,8 +163,8 @@ export type GlobalSharedColors = {
  * Brand color variants by product
  */
 export type ProductBrandColors = {
-  teams: ColorVariants;
-  web: ColorVariants;
+  teams: BrandVariants;
+  web: BrandVariants;
 };
 
 export type FontSizes = {
@@ -248,7 +251,7 @@ export type TransparentColorTokens = {
 /**
  * Theme object
  */
-export type Theme = {
+export type ThemeCompat = {
   sharedColors: GlobalSharedColors;
   sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens>;
   fontSizes: FontSizes;
@@ -258,6 +261,102 @@ export type Theme = {
   brandColors: ColorVariants;
   neutralColorTokens: NeutralColorTokens;
   shadowLevels?: ShadowLevelTokens;
-  ghostColorTokens: GhostColorTokens;
-  transparentColorTokens: TransparentColorTokens;
+  ghostColorTokens: BackgroundColorTokens;
+  transparentColorTokens: BackgroundColorTokens;
+};
+
+export type BackgroundColorTokens = {
+  background: string;
+  backgroundHover: string;
+  backgroundPressed: string;
+  backgroundSelected: string;
+};
+
+export type BrandColorTokens = {
+  brandBackground: string;
+  brandBackgroundHover: string;
+  brandBackgroundPressed: string;
+  brandBackgroundSelected: string;
+  brandBackgroundStatic: string;
+  // FIXME: the rest is unclear in the spec
+};
+
+export type Greys =
+  | 0
+  | 2
+  | 4
+  | 6
+  | 8
+  | 10
+  | 12
+  | 14
+  | 16
+  | 18
+  | 20
+  | 22
+  | 24
+  | 26
+  | 28
+  | 30
+  | 32
+  | 34
+  | 36
+  | 38
+  | 40
+  | 42
+  | 44
+  | 46
+  | 48
+  | 50
+  | 52
+  | 54
+  | 56
+  | 58
+  | 60
+  | 62
+  | 64
+  | 66
+  | 68
+  | 70
+  | 72
+  | 74
+  | 76
+  | 78
+  | 80
+  | 82
+  | 84
+  | 86
+  | 88
+  | 90
+  | 92
+  | 94
+  | 96
+  | 98
+  | 100;
+
+// TODO: do we want to split theme for better tree shaking? (MUI)
+// But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
+export type Theme = {
+  global: {
+    // TODO: this means "static", will not change with light/dark/contrast switch. better named static?
+    color: {
+      black: string;
+      white: string;
+      hyperlink: string;
+      disabled: string;
+      selected: string;
+    };
+    palette: GlobalSharedColors & {
+      brand: BrandVariants; // Only the Theme brand, not all
+      grey: Record<Greys, string>;
+    };
+  };
+  alias: {
+    color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
+      neutral: NeutralColorTokens;
+      ghost: BackgroundColorTokens;
+      transparent: BackgroundColorTokens;
+      brand: BrandColorTokens;
+    };
+  };
 };

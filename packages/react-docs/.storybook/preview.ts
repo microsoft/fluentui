@@ -1,12 +1,12 @@
 import { withThemeProvider } from '../src/decorators/withThemeProvider';
 // import { withNorthstarProvider, themes } from '../src/decorators/withThemeProvider';
 import {
-  teamsLightTheme,
-  teamsDarkTheme,
-  teamsHighContrastTheme,
   webLightTheme,
+  teamsLightTheme,
   webDarkTheme,
+  teamsDarkTheme,
   webHighContrastTheme,
+  teamsHighContrastTheme,
 } from '@fluentui/react-theme';
 
 const webThemes = {
