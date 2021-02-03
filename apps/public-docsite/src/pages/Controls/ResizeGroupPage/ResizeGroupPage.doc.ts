@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { ResizeGroupPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/ResizeGroup/ResizeGroup.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ResizeGroupPage/docs/ResizeGroupRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const ResizeGroupPageProps: TFabricPlatformPageProps = {
   web: {
