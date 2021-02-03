@@ -121,7 +121,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           This page demonstrates different variants of the navigation bar component of Microsoft Teams from the
           accessibility point of view. Previously, this component was known as App bar, but this new version suggests
-          renaming it to "navigation bar"."
+          renaming it to "navigation bar".
         </li>
         <li>
           For the new navigation bar requirements, additional notes, comparison with the previous version of the
@@ -138,16 +138,16 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h2>role="toolbar"</h2>
       <div role="toolbar" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
+        <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
         <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Teams
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Calendar
         </button>
       </div>
@@ -162,16 +162,16 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h2>role="tablist"</h2>
       <div role="tablist" onFocus={handleFocus} onBlur={handleBlur}>
-        <button role="tab" className="item" tabIndex={0}>
+        <button role="tab" className="item" tabIndex={0} aria-selected="false">
           Activities
         </button>
-        <button role="tab" className="item" tabIndex={-1}>
+        <button role="tab" className="item" tabIndex={-1} aria-selected="true">
           Chats
         </button>
-        <button role="tab" className="item" tabIndex={-1}>
+        <button role="tab" className="item" tabIndex={-1} aria-selected="false">
           Teams
         </button>
-        <button role="tab" className="item" tabIndex={-1}>
+        <button role="tab" className="item" tabIndex={-1} aria-selected="false">
           Calendar
         </button>
       </div>
@@ -224,7 +224,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       <h2>&lt;li&gt; items</h2>
       <ul onFocus={handleFocus} onBlur={handleBlur}>
         <li>
-          <button className="item" tabIndex={0}>
+          <button className="item" tabIndex={0} aria-pressed="false">
             Activities
           </button>
         </li>
@@ -234,12 +234,12 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           </button>
         </li>
         <li>
-          <button className="item" tabIndex={-1}>
+          <button className="item" tabIndex={-1} aria-pressed="false">
             Teams
           </button>
         </li>
         <li>
-          <button className="item" tabIndex={-1}>
+          <button className="item" tabIndex={-1} aria-pressed="false">
             Calendar
           </button>
         </li>
@@ -255,16 +255,16 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h2>&lt;nav&gt; landmark</h2>
       <nav aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
+        <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
         <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Teams
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Calendar
         </button>
       </nav>
@@ -273,26 +273,27 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
       <ul>
         <li>
           When entering the navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation
-          landmark" after narrating the label but before narrating the focused navigation bar item.
+          landmark" after narrating the label but before narrating the focused navigation bar item. Since the label we
+          want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is rejected.
         </li>
-        <li>Narrator does not read this landmark in any way, it just reads its aria-label.</li>
         <li>
-          Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.
+          Narrator does not read this landmark in any way, it just reads its aria-label. So this is another reason to
+          reject this variant.
         </li>
       </ul>
 
       <h2>role="region"</h2>
       <div role="region" aria-label="navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
+        <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
         <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Teams
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Calendar
         </button>
       </div>
@@ -305,25 +306,22 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
         <li>
           JAWS in the virtual cursor mode behaves as if the "region" role was not present on the navigation bar
-          elemente.
-        </li>
-        <li>
-          Per our requirements we don't want the navigation bar to create a landmark, so this variant is rejected.
+          elemente, so this variant is rejected.
         </li>
       </ul>
 
       <h2>aria-label only</h2>
       <div aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
+        <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
         <button className="item" tabIndex={-1} aria-pressed="true">
           Chats
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Teams
         </button>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Calendar
         </button>
       </div>
@@ -337,7 +335,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
 
       <h2>role="group" and aria-label (accepted variant)</h2>
       <div role="group" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
-        <button className="item" tabIndex={0}>
+        <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
         <div>
@@ -359,7 +357,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
           </div>
         </div>
         <div>
-          <button className="item" tabIndex={-1} aria-describedby="teams-desc">
+          <button className="item" tabIndex={-1} aria-pressed="false" aria-describedby="teams-desc">
             Teams
           </button>
           <div
@@ -376,7 +374,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
             4 teams with new messages
           </div>
         </div>
-        <button className="item" tabIndex={-1}>
+        <button className="item" tabIndex={-1} aria-pressed="false">
           Calendar
         </button>
       </div>
