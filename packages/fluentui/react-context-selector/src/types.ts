@@ -10,7 +10,7 @@ export type ContextSelector<Value, SelectedValue> = (value: Value) => SelectedVa
 export type ContextVersion = number;
 
 export type ContextValue<Value> = {
-  /** List of listners to publish changes */
+  /** Holds a set of subscribers from components. */
   listeners: ((payload: readonly [ContextVersion, Value]) => void)[];
 
   /** Holds an actual value of React's context that will be propagated down for computations. */
