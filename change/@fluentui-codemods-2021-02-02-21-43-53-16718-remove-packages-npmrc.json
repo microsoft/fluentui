@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "refactor: remove unused .npmrc in packages",
+  "packageName": "@fluentui/codemods",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2021-02-02T10:42:41.339Z"
+}

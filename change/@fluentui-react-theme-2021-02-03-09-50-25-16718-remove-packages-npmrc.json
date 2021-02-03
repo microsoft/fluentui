@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "Remove .npmrc files except at root",
+  "packageName": "@fluentui/react-theme",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "none",
+  "date": "2021-02-02T22:50:25.343Z"
+}
