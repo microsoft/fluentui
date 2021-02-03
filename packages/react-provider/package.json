@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/react-provider",
   "version": "0.1.0",
-  "description": "A package with Fluent UI React provider component",
-  "private": true,
+  "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
