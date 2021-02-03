@@ -4463,6 +4463,11 @@
   resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.1.tgz#d398d201eade0a88958dffdd13ca88f7a37546df"
   integrity sha512-OI9w+yqOhvT3Z9tF/4d+YVFbdYojotHMRfuKrVtAzeKu3L0kBiK6CnHADkNrfSeVOgkIMeg8OqIQFfcsm7HgCg==
 
+"@types/scheduler@^0.16.1":
+  version "0.16.1"
+  resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
+  integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
+
 "@types/semver@^5.5.0":
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-5.5.0.tgz#146c2a29ee7d3bae4bf2fcb274636e264c813c45"
@@ -21284,10 +21289,10 @@ scheduler@^0.13.6:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-scheduler@^0.14.0:
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.14.0.tgz#b392c23c9c14bfa2933d4740ad5603cc0d59ea5b"
-  integrity sha512-9CgbS06Kki2f4R9FjLSITjZo5BZxPsryiRNyL3LpvrM9WxcVmhlqAOc9E+KQbeI2nqej4JIIbOsfdL51cNb4Iw==
+scheduler@^0.20.1:
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
+  integrity sha512-LKTe+2xNJBNxu/QhHvDR14wUXHRQbVY5ZOYpOGWRzhydZUqrLb2JBvLPY7cAqFmqrWuDED0Mjk7013SZiOz6Bw==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

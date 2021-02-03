@@ -26,6 +26,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
  - Change `TreeTitle`'s `selectionIndicator` from visibility:hidden to display:none @yuanboxue-amber ([#16922](https://github.com/microsoft/fluentui/pull/16922))
  - Fix event handlers behavior and compatibility with portals in React 17 @layershifter ([#16514](https://github.com/microsoft/fluentui/pull/16514))
  - Fix `mergeVariablesOverrides` to return `variables` if it's defined and `overrides` are not @assuncaocharles ([#16560](https://github.com/microsoft/fluentui/pull/16560))
+ - Refactor `react-context-selector` to avoid React warnings @assuncaocharles ([#16714](https://github.com/microsoft/fluentui/pull/16714))
 
 
 <!--------------------------------[ v0.52.0 ]------------------------------- -->
