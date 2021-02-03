@@ -1,5 +1,5 @@
-import { createColorPalette } from '@microsoft/fast-components-styles-msft';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
+import { createColorPalette } from '../color/create-color-palette';
 import { FluentDesignSystemProvider } from '../design-system-provider';
 import CardTemplate from './fixtures/card.html';
 import { FluentCard } from './';

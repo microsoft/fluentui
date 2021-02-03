@@ -76,7 +76,7 @@ describe('Avatar', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('prioritizes initials over icon', () => {
+  it('prioritizes icon over initials', () => {
     const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -100,24 +100,6 @@ describe('Avatar', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('respects display="icon"', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" display="icon" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('respects display="label"', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" display="label" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
-  it('respects display="image"', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" display="image" />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
-
   it('displays a badge', () => {
     const component = renderer.create(<Avatar name="First Last" badge="success" />);
     const tree = component.toJSON();
@@ -125,7 +107,9 @@ describe('Avatar', () => {
   });
 
   it('handles customSize', () => {
-    const component = renderer.create(<Avatar name="First Last" customSize={33} />);
+    const component = renderer.create(
+      <Avatar name="First Last" size={32} tokens={{ width: '33px', height: '33px' }} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

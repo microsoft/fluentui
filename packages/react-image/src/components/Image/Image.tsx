@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ImageProps } from './Image.types';
 import { makeClasses } from '@fluentui/react-utils';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import * as classes from './Image.scss';
 import { useImage } from './useImage';
 
