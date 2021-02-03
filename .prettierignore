@@ -25,3 +25,4 @@ change
 
 # package specific files
 packages/web-components/**/*.spec.ts
+packages/web-components/src/default-palette.ts

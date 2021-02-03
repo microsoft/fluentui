@@ -1,5 +1,6 @@
 import { hyphenateProperty } from './utils/hyphenateProperty';
 import { MakeStyles } from '../types';
+import { compile, middleware, serialize, stringify, prefixer } from 'stylis';
 
 /* eslint-disable guard-for-in */
 
@@ -33,4 +34,9 @@ export function compileKeyframeRule(frames: MakeStyles): string {
   }
 
   return css;
+}
+
+export function compileKeyframesCSS(animationName: string, framesCSS: string): string {
+  const cssRule = `@keyframes ${animationName} {${framesCSS}}`;
+  return serialize(compile(cssRule), middleware([prefixer, stringify]));
 }

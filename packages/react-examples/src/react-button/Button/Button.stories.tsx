@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, ButtonProps, ButtonTokens, ButtonVariants } from '@fluentui/react-button';
-import { PartialTheme, ThemeProvider } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
+import { PartialTheme } from '@fluentui/theme';
 import * as classes from '../Button.stories.scss';
 
 /**

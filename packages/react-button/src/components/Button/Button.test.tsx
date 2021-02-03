@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
 import { Button } from './Button';
 import { GlobalClassNames } from './useButtonClasses';
+import { validateBehavior, ComponentTestFacade, buttonBehaviorDefinition } from '@fluentui/a11y-testing';
 
 describe('Button (isConformant)', () =>
   isConformant({
@@ -83,5 +84,11 @@ describe('Button', () => {
     wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
 
     expect(onClick).not.toHaveBeenCalled();
+  });
+
+  describe('AccessibilityButtonBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, {});
+    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
   });
 });
