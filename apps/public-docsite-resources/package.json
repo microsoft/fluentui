@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/public-docsite-resources",
-  "version": "1.0.0-beta.40",
+  "version": "1.0.0",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

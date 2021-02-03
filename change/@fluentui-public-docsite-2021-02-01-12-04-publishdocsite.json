@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "Publishing public docsite output.",
   "packageName": "@fluentui/public-docsite",
   "email": "dzearing@microsoft.com",
