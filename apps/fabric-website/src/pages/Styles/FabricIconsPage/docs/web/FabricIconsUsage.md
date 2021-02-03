@@ -41,9 +41,10 @@ const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Ad
 ReactDOM.render(<MyIconButton />, document.body.firstChild);
 ```
 
-### Fluent UI React: SVG-based icons
+### Fluent UI React: SVG-based icons (Now Open Source in v8)
 
 Fluent UI recently released an SVG-based icon set which allows you to import and bundle only the icons you need. This results in smaller bundle sizes compared to the font-based approach with `initializeIcons`, which downloads all icons by default.
+In v8, we are enabling more widespread use by open sourcing the core icon set. Be aware that any branded icons have been removed from `@fluentui/react-icons-mdl2`. If you need branding icons, please refer to the package `@fluentui/react-icons-mdl2-branded`.
 
 Each SVG icon is wrapped with a React element and can be imported and used as follows:
 
