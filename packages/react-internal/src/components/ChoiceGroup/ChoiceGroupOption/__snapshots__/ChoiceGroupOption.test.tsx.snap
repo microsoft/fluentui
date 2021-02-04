@@ -753,7 +753,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             is-checked
             {
               border-color: #0078d4;
-              border: 1px solid #605e5c;
               cursor: pointer;
               display: inline-block;
               margin-top: 0px;
@@ -1010,7 +1009,6 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             is-checked
             {
               border-color: #f3f2f1;
-              border: 1px solid #605e5c;
               cursor: default;
               display: inline-block;
               margin-top: 0px;
@@ -1574,7 +1572,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             {
               align-items: center;
               border-color: #0078d4;
-              border: 1px solid #605e5c;
+              border: 1px solid transparent;
               box-sizing: content-box;
               cursor: pointer;
               display: flex;
