@@ -2,7 +2,7 @@
   "type": "prerelease",
   "comment": "custom test area for horizontal bar chart added. By this, we can customize the right side test values to the chart. all files snaps updated",
   "packageName": "@fluentui/react-charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2021-02-04T05:16:25.078Z"
 }
