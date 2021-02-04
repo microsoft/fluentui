@@ -250,6 +250,7 @@ export const Alert: ComponentWithAs<'div', AlertProps> &
           defaultProps: () =>
             getA11yProps('actions', {
               className: alertSlotClassNames.actions,
+              size: 'small',
               styles: resolvedStyles.actions,
             }),
         })}
