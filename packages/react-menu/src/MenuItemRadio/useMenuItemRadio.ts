@@ -27,7 +27,7 @@ export const useMenuItemRadio = (
       as: 'div',
       icon: { as: 'span' },
       checkmark: { as: 'span' },
-      role: 'menuitemcheckbox',
+      role: 'menuitemradio',
       tabIndex: 0,
     },
     defaultProps,
