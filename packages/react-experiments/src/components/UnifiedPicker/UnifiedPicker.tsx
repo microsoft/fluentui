@@ -66,13 +66,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
 
   const [draggedIndex, setDraggedIndex] = React.useState<number>(-1);
-  const dragDropHelper = React.useMemo(
-    () =>
-      new DragDropHelper({
-        selection: selection,
-      }),
-    [selection],
-  );
+  const dragDropHelper = new DragDropHelper({
+    selection: selection,
+  });
 
   const {
     focusItemIndex,
@@ -273,7 +269,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedIndex(-1);
   };
 
-  const defaultDragDropEvents = React.useRef<IDragDropEvents>({
+  const defaultDragDropEvents: IDragDropEvents = {
     canDrop: _canDrop,
     canDrag: () => defaultDragDropEnabled,
     onDragEnter: _onDragEnter,
@@ -281,7 +277,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onDrop: _onDropList,
     onDragStart: _onDragStart,
     onDragEnd: _onDragEnd,
-  });
+  };
 
   const _onSuggestionSelected = React.useCallback(
     (ev: any, item: IFloatingSuggestionItemProps<T>) => {
@@ -512,7 +508,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onItemsRemoved: _onRemoveSelectedItems,
       replaceItem: _replaceItem,
       dragDropHelper: dragDropHelper,
-      dragDropEvents: dragDropEvents || defaultDragDropEvents.current,
+      dragDropEvents: dragDropEvents || defaultDragDropEvents,
     });
   };
 
