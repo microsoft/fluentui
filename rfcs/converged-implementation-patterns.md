@@ -39,7 +39,7 @@ This section is important as the motivation or problem statement is indepenent f
 In the end, please make sure to present a neutral Problem statement, rather than one that motivates a particular solution
 -->
 
-Many new developers might have questions on the patterns that we follow to write a React component. This RFC attempts to commit and possibbly improve our code patterns in writing so that there might be a reference for new (and old) members of the team.
+Many new developers might have questions on the patterns that we follow to write a React component. This RFC attempts to commit and possibly improve our code patterns in writing so that there might be a reference for new (and old) members of the team.
 
 ## Detailed Design or Proposal
 
