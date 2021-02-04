@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "ChoiceGroupOption: Focus border is now visible when option is selected",
+  "comment": "ChoiceGroup: Focus border now visible when focus method is called",
   "packageName": "@fluentui/react-internal",
   "email": "tristan.watanabe@gmail.com",
   "dependentChangeType": "patch",
