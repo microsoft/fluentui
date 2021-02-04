@@ -132,6 +132,9 @@ Hook that accepts state and applies classnames to props and any shorthand slot p
 
 Renders the correct JSX output of the component and its slots given the correct state.
 
+This should be a pure function whose sole responsibility is to render JSX from the provided state. No state mutation or processing
+should happen in this function, but rather done in the `useSample` hook
+
 ```typescript
 import { getSlots } from '@fluentui/react-utils'
 
