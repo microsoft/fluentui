@@ -59,7 +59,7 @@ Generally a component will have the following different files. Let us consider a
 
 Renders the correct JSX output of the component and its slots given the correct state.
 
-```typescript=
+```typescript
 export const renderSample = (state: SampleState) => {
   const { slots, slotProps } = getSlots(state);
 
@@ -77,7 +77,7 @@ Accepts the component props and handles and internal state that the component mi
 
 `State` here can be pretty broad, you could also consume context or create effects. This hook should be what the component relies on to function/render
 
-```typescript=
+```typescript
 /**
  * Defines the different slots that can be rendered in this component
  *
@@ -95,7 +95,6 @@ const mergeProps = makeMergeProps({ deepMerge: sampleShorthandProps });
  */
 export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defaultProps?: SampleProps) => {
   const resolvedRef = ref || React.useRef();
-  const { checkedValues, onCheckedValuesChange } = useMenuListContext();
 
   // merges the props we declare internally and what is passed in
   // by a consumer
@@ -133,7 +132,7 @@ Hook that accepts state and applies classnames to props and any shorthand slot p
 
 The 'final' product, simply forwards a ref and uses all the previous building blocks to expose the final component
 
-```typescript=
+```typescript
 export const Sample = React.forwardRef<HTMLElement, SampleProps>((props, ref) => {
   const state = useSample(props, ref);
   useSampleStyles(state);
