@@ -25,6 +25,7 @@ export type DesignerState = {
   selectedComponentInfo: ComponentInfo; // FIXME: should be computed in render?
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
   showCode: boolean;
+  activeTab: string | null;
   code: string | null; // only valid if showCode is set to true
   codeError: string | null;
   history: Array<JSONTreeElement>;
@@ -46,6 +47,7 @@ export type DesignerAction =
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
+  | { type: 'SWITCH_TAB'; tab: string }
   | { type: 'SOURCE_CODE_CHANGE'; code: string; jsonTree: JSONTreeElement }
   | { type: 'SOURCE_CODE_ERROR'; code: string; error: string }
   | { type: 'UNDO' }
@@ -190,6 +192,10 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       } catch (e) {
         console.error('Failed to convert tree to code.', e.toString());
       }
+      break;
+
+    case 'SWITCH_TAB':
+      draftState.activeTab = action.tab;
       break;
 
     case 'SOURCE_CODE_CHANGE':

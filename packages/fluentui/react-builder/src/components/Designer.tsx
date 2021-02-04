@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Text, Button, Divider } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
+import { Text, Button, Header } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, OptionsIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -70,6 +70,7 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElementUuid,
     showCode,
     code,
+    activeTab = 'add',
     codeError,
     insertComponent,
   } = state;
@@ -90,6 +91,13 @@ export const Designer: React.FunctionComponent = () => {
   const handleShowCodeChange = React.useCallback(
     showCode => {
       dispatch({ type: 'SHOW_CODE', show: showCode });
+    },
+    [dispatch],
+  );
+
+  const selectActiveTab = React.useCallback(
+    tab => {
+      dispatch({ type: 'SWITCH_TAB', tab: tab });
     },
     [dispatch],
   );
@@ -305,7 +313,6 @@ export const Designer: React.FunctionComponent = () => {
       style={{
         display: 'flex',
         flexDirection: 'column',
-        background: '#fff',
         width: '100vw',
         height: '100vh',
         overflow: 'hidden',
@@ -366,9 +373,58 @@ export const Designer: React.FunctionComponent = () => {
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
         <div
           style={{
+            background: '#FAF9F8',
+            borderRight: '1px solid #E1DFDD',
             display: 'flex',
             flexDirection: 'column',
-            minWidth: '12rem',
+            width: '3.4rem',
+            transition: 'opacity 0.2s',
+            position: 'relative',
+            ...(mode === 'use' && {
+              pointerEvents: 'none',
+              opacity: 0,
+            }),
+          }}
+        >
+          <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center', background: '#F3F2F1' }}>
+            <Button
+              iconOnly
+              text
+              labelledBy="Add Components"
+              style={{ marginLeft: '6px' }}
+              onClick={() => selectActiveTab('add')}
+            >
+              <AddIcon size="large" outline />
+            </Button>
+          </div>
+          <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center' }}>
+            <Button
+              iconOnly
+              text
+              labelledBy="Navigator"
+              style={{ marginLeft: '6px' }}
+              onClick={() => selectActiveTab('nav')}
+            >
+              <MenuIcon size="large" outline />
+            </Button>
+          </div>
+          <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center' }}>
+            <Button
+              iconOnly
+              text
+              labelledBy="Tokens"
+              style={{ marginLeft: '6px' }}
+              onClick={() => selectActiveTab('tokens')}
+            >
+              <OptionsIcon size="large" outline />
+            </Button>
+          </div>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: '22.85rem',
             transition: 'opacity 0.2s',
             ...(mode === 'use' && {
               pointerEvents: 'none',
@@ -376,30 +432,47 @@ export const Designer: React.FunctionComponent = () => {
             }),
           }}
         >
-          <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
-          <div role="complementary" aria-label="Component tree">
-            <Divider style={{ margin: '1rem' }} />
-            {jsonTree?.props?.children?.length > 0 ? (
-              <ComponentTree
-                tree={jsonTree}
-                selectedComponent={selectedComponent}
-                onSelectComponent={handleSelectComponent}
-                onCloneComponent={handleCloneComponent}
-                onMoveComponent={handleMoveComponent}
-                onDeleteSelectedComponent={handleDeleteSelectedComponent}
-                onAddComponent={handleOpenAddComponentDialog}
-              />
-            ) : (
-              <Button
-                text
-                content="Insert first component"
-                fluid
-                onClick={() => handleOpenAddComponentDialog('', 'first')}
-              />
-            )}
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              padding: '0 10px 0 20px',
+              borderBottom: '1px solid #E1DFDD',
+            }}
+          >
+            <Header as="h2" style={{ fontSize: '16px', fontWeight: '600' }}>
+              {activeTab == 'add' ? 'Add components' : activeTab == 'nav' ? 'Navigator' : 'Tokens'}
+            </Header>
           </div>
+          {activeTab == 'add' && (
+            <div>
+              <List style={{ overflowY: 'auto' }} onDragStart={handleDragStart} />
+              {jsonTree?.props?.children?.length === 0 && (
+                <Button
+                  text
+                  content="Insert first component"
+                  fluid
+                  onClick={() => handleOpenAddComponentDialog('', 'first')}
+                />
+              )}
+            </div>
+          )}
+          {activeTab == 'nav' && (
+            <div>
+              <div role="complementary" aria-label="Component tree">
+                <ComponentTree
+                  tree={jsonTree}
+                  selectedComponent={selectedComponent}
+                  onSelectComponent={handleSelectComponent}
+                  onCloneComponent={handleCloneComponent}
+                  onMoveComponent={handleMoveComponent}
+                  onDeleteSelectedComponent={handleDeleteSelectedComponent}
+                  onAddComponent={handleOpenAddComponentDialog}
+                />
+              </div>
+            </div>
+          )}
         </div>
-
         <div
           style={{
             display: 'flex',
@@ -461,9 +534,6 @@ export const Designer: React.FunctionComponent = () => {
               ]}
               style={{
                 flex: 1,
-                margin: '1rem',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-                transition: 'box-shadow 0.5s',
               }}
             >
               <ErrorBoundary code={code} jsonTree={jsonTree}>
