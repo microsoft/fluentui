@@ -78,7 +78,7 @@ module.exports = {
   refs: {
     paul: {
       title: 'Paul Gildea',
-      url: 'https://wonderful-cliff-08b0cde1e.azurestaticapps.net',
+      url: 'https://601b2cd750bc740021465ee7-tzoqlfsvyn.chromatic.com',
     },
     miro: {
       title: 'Miroslav Stastny',
