@@ -1,5 +1,11 @@
 pr:
-  - master
+  branches:
+    include:
+      - master
+  paths:
+    exclude:
+      - rfcs
+      - specs
 
 trigger:
   - master

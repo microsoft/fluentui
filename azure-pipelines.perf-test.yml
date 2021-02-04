@@ -1,6 +1,12 @@
 pr:
-  - master
-  - website-content
+  branches:
+    include:
+      - master
+      - website-content
+  paths:
+    exclude:
+      - rfcs
+      - specs
 
 trigger: none
 
