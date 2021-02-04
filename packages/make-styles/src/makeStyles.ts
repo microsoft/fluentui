@@ -61,9 +61,9 @@ export function makeStyles<Selectors, Tokens>(
     const resultDefinitions: MakeStylesMatchedDefinitions = Object.assign({}, ...matchedDefinitions);
 
     const resultClasses = options.renderer.insertDefinitions(resultDefinitions, !!options.rtl);
-    const sequenceHash = SEQUENCE_PREFIX + hashString(resultClasses);
 
-    const resultClassesWithHash = sequenceHash + ' ' + resultClasses;
+    const sequenceHash = resultClasses ? SEQUENCE_PREFIX + hashString(resultClasses) : '';
+    const resultClassesWithHash = resultClasses ? sequenceHash + ' ' + resultClasses : '';
 
     DEFINITION_LOOKUP_TABLE[sequenceHash] = resultDefinitions;
     cxCache[cxCacheKey] = resultClassesWithHash;

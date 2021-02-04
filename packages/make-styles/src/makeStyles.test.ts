@@ -34,4 +34,22 @@ describe('makeStyles', () => {
     ]);
     expect(computeClasses({}, { renderer, tokens: {}, rtl: true })).toBe('__la4fka0 rfkf6eed0 f1cpbl36 f1t9cprh');
   });
+
+  it('handles static css', () => {
+    const computeClasses = makeStyles([
+      [
+        null,
+        {
+          body: {
+            background: 'blue',
+          },
+          '.foo': {
+            background: 'yellow',
+            marginLeft: '5px',
+          },
+        },
+      ],
+    ]);
+    expect(computeClasses({}, { renderer, tokens: {} })).toBe('');
+  });
 });

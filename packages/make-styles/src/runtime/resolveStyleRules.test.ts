@@ -367,6 +367,46 @@ describe('resolveStyleRules', () => {
     });
   });
 
+  it('handles font-face', () => {
+    expect(
+      resolveStyleRules({
+        '@font-face': {
+          fontFamily: 'Open Sans',
+          src: `url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+               url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+        },
+      }),
+    ).toMatchInlineSnapshot(`
+      @font-face {
+        font-family: Open Sans;
+        src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+          url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+      }
+    `);
+  });
+
+  it('handles static css', () => {
+    expect(
+      resolveStyleRules({
+        body: {
+          background: 'blue',
+        },
+        '.foo': {
+          background: 'yellow',
+          marginLeft: '5px',
+        },
+      }),
+    ).toMatchInlineSnapshot(`
+      body {
+        background: blue;
+      }
+      .foo {
+        background: yellow;
+        margin-left: 5px;
+      }
+    `);
+  });
+
   describe('keyframes', () => {
     it('allows to define string as animationName', () => {
       expect(

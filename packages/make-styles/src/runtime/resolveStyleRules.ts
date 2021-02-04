@@ -4,7 +4,7 @@ import { expand } from 'inline-style-expand-shorthand';
 import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
-import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeRule';
+import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
@@ -12,6 +12,7 @@ import { isNestedSelector } from './utils/isNestedSelector';
 import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
+import { compileStaticCSS } from './compileStaticCSS';
 
 export function resolveStyleRules(
   styles: MakeStyles,
@@ -113,6 +114,11 @@ export function resolveStyleRules(
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
         resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
+      } else {
+        // static css (e.g. font-face)
+        const staticCSS = compileStaticCSS(property, value);
+        const staticCSSKey = HASH_PREFIX + hashString(staticCSS);
+        result[staticCSSKey] = [undefined, staticCSS /* no RTL support for static css */];
       }
     }
   });
