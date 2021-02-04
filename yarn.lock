@@ -6636,10 +6636,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.39.1:
-  version "1.39.1"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.39.1.tgz#f42008efffa0f31e58bc69130fae3fda068e52a8"
-  integrity sha512-+v7E358hbLdidvkzCy2hCeuJ/FiUMBhP3Wid2Pl3a4G/B8u+VtDgqop8kt+977PZwC7OVFA+Uw09QiI+BaNEiQ==
+beachball@^1.50.1:
+  version "1.50.1"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.50.1.tgz#4ed28f096fd9aa75deec69db160c29c6766a557b"
+  integrity sha512-/0iWk0D9Yrcs6P+J8KttCmQc4v8EE6KzY2cdRabDJPQWqmhO9gsMLj5EURPhKoI8Isy8SVKxGUQJLpYHlzYByw==
   dependencies:
     cosmiconfig "^6.0.0"
     execa "^4.0.3"
@@ -6652,7 +6652,9 @@ beachball@^1.39.1:
     prompts "~2.1.0"
     semver "^6.1.1"
     toposort "^2.0.2"
-    yargs-parser "^13.1.0"
+    uuid "^8.3.1"
+    workspace-tools "^0.10.2"
+    yargs-parser "^20.2.4"
 
 beeper@^1.0.0:
   version "1.1.1"
@@ -24733,20 +24735,15 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
-  integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
-
-uuid@^3.4.0:
+uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2, uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-uuid@^8.1.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.2.0.tgz#cb10dd6b118e2dada7d0cd9730ba7417c93d920e"
-  integrity sha512-CYpGiFTUrmI6OBMkAdjSDM0k5h8SkkiTP4WAjQgDgNB1S3Ou9VBEvr6q0Kv2H1mMk7IWfxYGpMH5sd5AvcIV2Q==
+uuid@^8.1.0, uuid@^8.3.1:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"
@@ -25786,7 +25783,7 @@ yargs-parser@^2.4.0:
     camelcase "^3.0.0"
     lodash.assign "^4.0.6"
 
-yargs-parser@^20.2.2, yargs-parser@^20.2.3:
+yargs-parser@^20.2.2, yargs-parser@^20.2.3, yargs-parser@^20.2.4:
   version "20.2.4"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
   integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==
