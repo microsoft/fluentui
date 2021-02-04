@@ -420,7 +420,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         input: {
           selectors: {
             [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-              outlineOffset: 'unset',
+              outlineOffset: '0px',
             },
           },
         },
