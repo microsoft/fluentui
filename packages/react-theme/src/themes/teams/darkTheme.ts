@@ -8,6 +8,7 @@ import {
 import { brandColors, grey } from '../../global';
 import { Theme } from '../../types';
 import { globalTheme } from './globalTheme';
+import { createShadowLevelTokens } from '../../utils/shadows';
 
 const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams, {
   neutralBackground2: grey[14],
@@ -41,5 +42,9 @@ export const teamsDarkTheme: Theme = {
       transparent: transparentColorTokens,
       brand: createBrandColorTokens(brandColors.teams),
     },
+    shadow: createShadowLevelTokens(
+      teamsNeutralColorTokens.neutralShadowAmbient,
+      teamsNeutralColorTokens.neutralShadowKey,
+    ),
   },
 };

@@ -4,13 +4,7 @@ import { textAlignments, fontFamilies, fontWeights, fontSizes, lineHeights } fro
 import { strokeWidths } from './strokeWidths';
 import { Theme, BrandVariants } from '../types';
 
-// TODO: global doesn't vary by light/dark/contrast, why utils are from light?
-import { createNeutralColorTokens, createShadowLevelTokens } from '../utils/light';
-
 export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
-  const { neutralShadowAmbient, neutralShadowKey } = createNeutralColorTokens(brand);
-  const shadow = createShadowLevelTokens(neutralShadowAmbient, neutralShadowKey);
-
   return {
     color: {
       black,
@@ -33,6 +27,5 @@ export const createGlobalTheme = (brand: BrandVariants): Theme['global'] => {
     },
     borderRadius: borderRadius,
     strokeWidth: strokeWidths,
-    shadow: shadow,
   };
 };

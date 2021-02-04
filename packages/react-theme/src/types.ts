@@ -222,23 +222,15 @@ export type StrokeWidths = {
 };
 
 /**
- * Each shadow level has an ambient and key variant
- */
-type ShadowValue = {
-  ambient: string;
-  key: string;
-};
-
-/**
  * Design tokens for shadow levels
  */
 export type ShadowLevelTokens = {
-  shadow2: ShadowValue;
-  shadow4: ShadowValue;
-  shadow8: ShadowValue;
-  shadow16: ShadowValue;
-  shadow28: ShadowValue;
-  shadow64: ShadowValue;
+  shadow2: string;
+  shadow4: string;
+  shadow8: string;
+  shadow16: string;
+  shadow28: string;
+  shadow64: string;
 };
 
 export type GhostColorTokens = {
@@ -348,7 +340,6 @@ export type Theme = {
       alignment: TextAlignments;
     };
     borderRadius: BorderRadius;
-    shadow: ShadowLevelTokens;
     strokeWidth: StrokeWidths;
   };
   alias: {
@@ -358,5 +349,6 @@ export type Theme = {
       transparent: BackgroundColorTokens;
       brand: BrandColorTokens;
     };
+    shadow: ShadowLevelTokens;
   };
 };
