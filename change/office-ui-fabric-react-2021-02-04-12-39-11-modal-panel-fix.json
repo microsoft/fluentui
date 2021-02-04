@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fixing the modal Panel outerclick issue",
+  "packageName": "office-ui-fabric-react",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-04T20:39:11.721Z"
+}
