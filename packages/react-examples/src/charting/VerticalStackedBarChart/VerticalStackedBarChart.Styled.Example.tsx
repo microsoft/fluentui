@@ -192,6 +192,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
                 />
               ) : null
             }
+            svgProps={{
+              'aria-label': 'Example chart with metadata per month',
+            }}
           />
         </div>
       </>
