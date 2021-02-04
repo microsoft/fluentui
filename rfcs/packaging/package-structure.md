@@ -101,24 +101,49 @@ We decided not to use the "insiders" naming since it has some specific connotati
 
 While consumers are welcome to use individual component packages directly, we'll also add one or possibly two new suite packages which export _only_ converged components.
 
-(Options are not in order of preference.)
+**Notes for all options:**
+
+- I'm using `Button` just for demonstration purposes (it could be any component)
+- "Version 9" means "eventual `@fluentui/react` version which includes some or all converged components" (we don't know yet if it will literally be version 9)
+- Options are not in order of preference
+- This always works regardless of the option chosen:
+
+```ts
+import { Button } from '@fluentui/react-button';
+```
 
 #### Option 1: `@fluentui/react-preview`
 
 (this was the initial proposal)
 
-Sometime in the next couple months after version 8 release, add a `@fluentui/react-preview` package which exports _only_ converged components which have reached "80% ready"/preview status. Notes:
+Sometime in the next couple months after version 8 release, add a `@fluentui/react-preview` package which exports **only** converged components that have reached "80% ready"/preview status but are **not** yet exported from `@fluentui/react`.
 
-- Once a component is ready to be exported from `@fluentui/react`, it will be removed from `@fluentui/react-preview`'s exports
-  - Details of criteria for promotion to `@fluentui/react` are discussed later.
-- Document clearly from the start that the stability is lower, and people can consume it if they're willing to accept that minor (or prerelease?) versions may sometimes contain breaking changes (to be clearly noted in the changelogs)
+We would document clearly from the start that stability is lower and **minor (or prerelease?) versions may sometimes have breaking changes** (to be clearly noted in the changelogs). People can consume the preview package if they're willing to accept this risk.
+
+```ts
+// While Button is "in preview" (but not GA)
+import { Button } from '@fluentui/react-preview';
+
+// After promotion to @fluentui/react (requirements discussed later)
+import { Button } from '@fluentui/react';
+// This no longer works
+/* ERROR */ import { Button } from '@fluentui/react-preview';
+```
+
+Notes:
+
+- Once a component is ready to be exported from `@fluentui/react`, it will be removed from `@fluentui/react-preview`'s exports (details of promotion criteria are discussed later).
 - Either 1st or 3rd parties can use this if they're willing to accept the extra risk/work
 - Readme should be kept updated with status of each component
-- If people prefer, they can use the individual preview component packages, but `@fluentui/react-preview` is the "one-stop shop" for previewing converged components
+- People can still use individual preview component packages if they prefer
+
+Advantages:
+
+- Provides a "one-stop shop" for previewing converged components
 
 Downsides:
 
-- This would potentially encourage people to take deps on things in production before they're ready, then be upset when there are breaks.
+- Might encourage people to take deps on things in production before they're ready, then be upset when there are breaks.
 - Kind of a "point in time" name and package
 
 #### Option 2: `@fluentui/react-components` (name tentative)
@@ -126,6 +151,16 @@ Downsides:
 This would only contain converged components which have reached stable/GA status.
 
 It could potentially co-exist with `@fluentui/react-preview` if we decide that type of package would be useful.
+
+```ts
+// After button is stable/GA
+import { Button } from '@fluentui/react-components';
+
+// After promotion to @fluentui/react (requirements discussed later)
+import { Button } from '@fluentui/react';
+// Still works
+import { Button } from '@fluentui/react-components';
+```
 
 Advantages:
 
@@ -138,6 +173,16 @@ Advantages:
 Due to partners' extensive dependencies on the v8 components that currently live in `@fluentui/react` (and the fact that it will take a long time to converge all components), we definitely can't just get rid of them all right away.
 
 However, it's possible that we could rename the old component suite to `@fluentui/react-legacy` or something, which would free up the `@fluentui/react` name in version 9 for new stuff.
+
+```ts
+// After button is stable/GA
+import { Button } from '@fluentui/react-components';
+
+// After promotion to @fluentui/react (requirements discussed later)
+import { Button } from '@fluentui/react';
+// Still works
+import { Button } from '@fluentui/react-components';
+```
 
 Advantages:
 
