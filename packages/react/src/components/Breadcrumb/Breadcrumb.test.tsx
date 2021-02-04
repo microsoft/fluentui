@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
 import { Icon } from '../../Icon';
 import { isConformant } from '../../common/isConformant';
+import { resetIds } from '@fluentui/utilities';
 
 describe('Breadcrumb', () => {
   const items: IBreadcrumbItem[] = [
@@ -15,6 +16,10 @@ describe('Breadcrumb', () => {
 
   let component: renderer.ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (component) {
