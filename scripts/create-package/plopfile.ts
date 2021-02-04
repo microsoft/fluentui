@@ -89,6 +89,8 @@ module.exports = (plop: NodePlopAPI) => {
         ),
       };
 
+      let hasError = false;
+
       return [
         {
           // Universal files
@@ -127,7 +129,11 @@ module.exports = (plop: NodePlopAPI) => {
           // update package.json
           type: 'modify',
           path: `${destination}/package.json`,
-          transform: packageJsonContents => updatePackageJson(packageJsonContents, answers),
+          transform: packageJsonContents => {
+            const [result, hasUpdateError] = updatePackageJson(packageJsonContents, answers);
+            hasError = hasError || hasUpdateError;
+            return result;
+          },
         },
         {
           // update example package.json
@@ -148,6 +154,12 @@ module.exports = (plop: NodePlopAPI) => {
           transform: tsconfigContents => updateTsconfig(tsconfigContents, hasTests),
         },
         () => {
+          if (hasError) {
+            console.error('There were one or more errors creating the package.');
+            console.error('Please look at the logs above, fix the issues, and then run `yarn` to link.');
+            return;
+          }
+
           console.log('\nPackage files created! Running yarn to link...\n');
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
@@ -163,35 +175,57 @@ module.exports = (plop: NodePlopAPI) => {
   });
 };
 
-function updatePackageJson(packageJsonContents: string, answers: Answers): string {
-  const { target, hasTests, publish } = answers;
+/**
+ * Replace empty version specs in `newPackageJson` with versions from `referencePackage`.
+ * Returns true if all versions were replaced, false if not.
+ */
+function replaceVersionsFromReference(
+  referencePackage: string,
+  newPackageJson: PackageJson,
+  answers: Answers,
+): boolean {
+  const { hasTests } = answers;
 
-  // Copy dep versions in package.json from actual current versions.
-  // This is preferable over hardcoding dependency versions to keep things in sync.
-  // As of writing, @fluentui/react-experiments also depends on all the packages the React template needs,
-  // so we grab the current versions from there (or @fluentui/codemods for the node template).
-  const referencePackage = target === 'node' ? 'codemods' : 'react-experiments';
   const referencePackageJson: PackageJson = fs.readJSONSync(
     path.join(root, 'packages', referencePackage, 'package.json'),
   );
-  const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
+
+  let hasError = false;
 
   for (const depType of ['dependencies', 'devDependencies', 'peerDependencies']) {
     if (!newPackageJson[depType]) {
       continue;
     }
-    for (const pkg of Object.keys(newPackageJson[depType])) {
-      if (!hasTests && /\b(jest|enzyme|test)\b/.test(pkg)) {
-        delete newPackageJson[depType][pkg];
-      } else if (referencePackageJson[depType]?.[pkg]) {
-        newPackageJson[depType][pkg] = referencePackageJson[depType][pkg];
+    for (const depPkg of Object.keys(newPackageJson[depType])) {
+      if (!hasTests && /\b(jest|enzyme|test)\b/.test(depPkg)) {
+        delete newPackageJson[depType][depPkg];
+      } else if (referencePackageJson[depType]?.[depPkg]) {
+        newPackageJson[depType][depPkg] = referencePackageJson[depType][depPkg];
       } else {
+        hasError = true;
         console.warn(
-          `Couldn't determine appropriate ${depType} version of ${pkg} from ${referencePackage} package.json`,
+          `Couldn't determine appropriate ${depType} version of ${depPkg} from ${referencePackage} package.json`,
         );
       }
     }
   }
+  return hasError;
+}
+
+/**
+ * Update new package's package.json.
+ * Returns `[updatedPackageJsonContents, hasError]`.
+ */
+function updatePackageJson(packageJsonContents: string, answers: Answers): [string, boolean] {
+  const { target, hasTests, publish } = answers;
+
+  // Copy dep versions in package.json from actual current versions.
+  // This is preferable over hardcoding dependency versions to keep things in sync.
+  // As of writing, @fluentui/react-image also depends on all the packages the React template needs,
+  // so we grab the current versions from there (or @fluentui/codemods for the node template).
+  const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
+  const referencePackage = target === 'node' ? 'codemods' : 'react-image';
+  const hasReplaceError = replaceVersionsFromReference(referencePackage, newPackageJson, answers);
 
   if (!hasTests) {
     delete newPackageJson.scripts['start-test'];
@@ -203,7 +237,7 @@ function updatePackageJson(packageJsonContents: string, answers: Answers): strin
     delete newPackageJson.private;
   }
 
-  return JSON.stringify(newPackageJson, null, 2);
+  return [JSON.stringify(newPackageJson, null, 2), hasReplaceError];
 }
 
 function updateExamplePackageJson(packageJsonContents: string, packageNpmName: string): string {
