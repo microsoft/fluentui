@@ -5,16 +5,35 @@ export default {
   title: 'Fluent UI Theme/Alias/Shadows',
 };
 
+const ShadowBox = (props) => (
+  <div
+    {...props}
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'column',
+      boxShadow: props.shadow,
+      height: '2rem',
+      fontFamily: 'monospace',
+      fontSize: 10,
+    }}
+  >
+    {props.shadow.split('),').map((line) => (
+      <div key={line}>{line}</div>
+    ))}
+  </div>
+);
+
 export const Shadows = (props, { globals: { theme } }: StorybookStoryContext) => {
-  console.log(theme.light.alias.shadow);
   return (
     <div
       style={{
         display: 'grid',
         gridTemplateColumns: 'auto 1fr 1fr 1fr',
-        gap: '40px',
+        gap: '80px',
         alignItems: 'center',
-        marginBottom: '4em',
+        marginBottom: '6em',
       }}
     >
       <h3 key="shadow-title">Shadow</h3>
@@ -23,9 +42,9 @@ export const Shadows = (props, { globals: { theme } }: StorybookStoryContext) =>
       <h3 key="shadow-title-hc">High Contrast</h3>
       {Object.keys(theme.light.alias.shadow).map((shadow) => [
         <div key={shadow}>{shadow}</div>,
-        <div key={`${shadow}-light`} style={{ boxShadow: theme.light.alias.shadow[shadow], height: '2em' }} />,
-        <div key={`${shadow}-dark`} style={{ boxShadow: theme.dark.alias.shadow[shadow], height: '2em' }} />,
-        <div key={`${shadow}-hc`} style={{ boxShadow: theme.highContrast.alias.shadow[shadow], height: '2em' }} />,
+        <ShadowBox key={`${shadow}-light`} shadow={theme.light.alias.shadow[shadow]} />,
+        <ShadowBox key={`${shadow}-dark`} shadow={theme.dark.alias.shadow[shadow]} />,
+        <ShadowBox key={`${shadow}-hc`} shadow={theme.highContrast.alias.shadow[shadow]} />,
       ])}
     </div>
   );
