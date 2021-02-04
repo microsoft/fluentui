@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ContextualMenu';
+export * from './components/ContextualMenu/index';
