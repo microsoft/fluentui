@@ -47,6 +47,7 @@
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
     "release:fluentui:minor": "yarn workspace @fluentui/scripts just fluentui:publish:minor",
     "release:fluentui:patch": "yarn workspace @fluentui/scripts just fluentui:publish:patch",
+    "release:fluentui:post-validation": "yarn workspace @fluentui/scripts just fluentui:publish:validation",
     "release:fluentui:pack-nightly": "yarn workspace @fluentui/scripts just fluentui:pack",
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",

@@ -20,7 +20,7 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { fluentuiLernaPublish, packFluentTarballs } from './tasks/fluentui-publish';
+import { fluentuiLernaPublish, packFluentTarballs, fluentuiPostPublishValidation } from './tasks/fluentui-publish';
 import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
@@ -99,8 +99,18 @@ export function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
 
-  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
-  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('fluentui:publish:minor', () => {
+    const args = getJustArgv();
+    const skipConfirm = args['yes'];
+    fluentuiLernaPublish('minor', skipConfirm);
+  });
+  task('fluentui:publish:patch', () => {
+    const args = getJustArgv();
+    const skipConfirm = args['yes'];
+    fluentuiLernaPublish('patch', skipConfirm);
+  });
+
+  task('fluentui:publish:validation', fluentuiPostPublishValidation());
   task('fluentui:pack', packFluentTarballs()); // pack all public fluent ui packages, used by ci to store nightly built artifacts
 
   task('ts:compile', () => {

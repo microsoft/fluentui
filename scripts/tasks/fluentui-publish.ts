@@ -5,32 +5,33 @@ import * as fs from 'fs';
 
 import { findGitRoot } from '../monorepo/index';
 
-export function fluentuiLernaPublish(bumpType) {
-  return function() {
-    const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
-    const lernaPublishArgs = [
-      'lerna',
-      'publish',
-      "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
-      '--no-git-reset',
-      '--force-publish',
-      '--registry',
-      argv().registry,
-      bumpType,
-    ];
+export function fluentuiLernaPublish(bumpType, skipConfirm = false) {
+  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
+  const lernaPublishArgs = [
+    'lerna',
+    'publish',
+    "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
+    '--no-git-reset',
+    '--force-publish',
+    '--registry',
+    argv().registry,
+    bumpType,
+  ];
+  if (skipConfirm) {
+    lernaPublishArgs.push('--yes');
+  }
 
-    logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
+  logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
 
-    const result = spawnSync('yarn', lernaPublishArgs, {
-      cwd: fluentRoot,
-      shell: true,
-      stdio: 'inherit',
-    });
+  const result = spawnSync('yarn', lernaPublishArgs, {
+    cwd: fluentRoot,
+    shell: true,
+    stdio: 'inherit',
+  });
 
-    if (result.status) {
-      throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);
-    }
-  };
+  if (result.status) {
+    throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);
+  }
 }
 
 const execCommandSync = (cwd: string, command: string, args: string[]) => {
@@ -45,6 +46,28 @@ const execCommandSync = (cwd: string, command: string, args: string[]) => {
   }
   return result.stdout;
 };
+
+export function fluentuiPostPublishValidation() {
+  return function() {
+    const gitRoot = findGitRoot();
+
+    const branch = execCommandSync(gitRoot, 'git', ['branch', '--show-current']);
+    execCommandSync(gitRoot, 'git', ['fetch', 'origin']);
+    execCommandSync(gitRoot, 'git', ['reset', '--hard', `origin/${branch}`]); // sometimes lerna add gitHead in package.json after release
+
+    // sync fluent version
+    execCommandSync(gitRoot, 'yarn', ['syncpack:fix']);
+    const gitStatus = execCommandSync(gitRoot, 'git', ['status']);
+    if (!gitStatus.includes('nothing to commit, working tree clean')) {
+      execCommandSync(gitRoot, 'git', ['add', `\*package.json`]);
+      execCommandSync(gitRoot, 'git', ['commit', '-m', `"chore: fix dependencies after react-northstar release"`]);
+      execCommandSync(gitRoot, 'git', ['push']);
+    }
+
+    // make sure there's no more than one fluent versions
+    execCommandSync(gitRoot, 'yarn', ['syncpack:list']);
+  };
+}
 
 // pack all public fluent ui packages, used by ci to store nightly built artifacts
 const PUBLIC_FLUENT_PACKAGES = [
