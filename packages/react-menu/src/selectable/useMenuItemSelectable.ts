@@ -37,7 +37,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
     }
 
     const keyCode = getCode(e);
-    if (!e.defaultPrevented && onClickCallback && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+    if (!e.defaultPrevented && (keyCode === EnterKey || keyCode === SpacebarKey)) {
       // Translate the keydown enter/space to a click.
       e.preventDefault();
       e.stopPropagation();

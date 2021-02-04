@@ -11,6 +11,15 @@ import { ShorthandProps } from '@fluentui/react-utils';
 // @public
 export const MenuGroup: React.ForwardRefExoticComponent<Pick<MenuGroupProps, string | number> & React.RefAttributes<HTMLElement>>;
 
+// @public (undocumented)
+export interface MenuGroupContext {
+    // (undocumented)
+    headerId: string;
+}
+
+// @public (undocumented)
+export const MenuGroupContextProvider: React.Provider<MenuGroupContext>;
+
 // @public
 export const MenuGroupDivider: React.ForwardRefExoticComponent<Pick<MenuGroupDividerProps, string | number> & React.RefAttributes<HTMLElement>>;
 
@@ -100,12 +109,25 @@ export interface MenuItemState extends MenuItemProps {
 export const MenuList: React.ForwardRefExoticComponent<Pick<MenuListProps, string | number> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
+export interface MenuListContext {
+    // (undocumented)
+    checkedValues?: Record<string, string[]>;
+    // (undocumented)
+    onCheckedValuesChange?: (name: string, value: string[]) => void;
+    // (undocumented)
+    triggerRef: React.RefObject<HTMLDivElement> | null;
+}
+
+// @public (undocumented)
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     // (undocumented)
     checkedValues?: Record<string, string[]>;
     // (undocumented)
     onCheckedValuesChange?: (name: string, value: string[]) => void;
 }
+
+// @public (undocumented)
+export const MenuListProvider: React.Provider<MenuListContext>;
 
 // @public (undocumented)
 export interface MenuListState extends MenuListProps {
@@ -138,6 +160,9 @@ export const useIconStyles: (selectors: unknown) => string;
 // @public
 export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
 
+// @public (undocumented)
+export const useMenuGroupContext: () => MenuGroupContext;
+
 // @public
 export const useMenuGroupDivider: (props: MenuGroupDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupDividerProps | undefined) => MenuGroupDividerState;
 
@@ -164,6 +189,9 @@ export const useMenuItemStyles: (state: MenuItemState) => void;
 
 // @public
 export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
+
+// @public (undocumented)
+export const useMenuListContext: () => MenuListContext;
 
 // @public
 export const useRootStyles: (selectors: unknown) => string;
