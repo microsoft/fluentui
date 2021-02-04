@@ -1,0 +1,7 @@
+{
+  "comment": "Publish react-provider",
+  "type": "patch",
+  "packageName": "@fluentui/react-provider",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
