@@ -3,10 +3,10 @@ import { ColorRamp } from '../src/components/ColorRamp';
 import { StorybookStoryContext } from '../src/types';
 
 export default {
-  title: 'Fluent UI Theme/Colors/Global',
+  title: 'Fluent UI Theme/Global/Colors',
 };
 
-export const Global = (props, { globals: { theme } }: StorybookStoryContext) => {
+export const Colors = (props, { globals: { theme } }: StorybookStoryContext) => {
   return (
     <div style={{ display: 'flex' }}>
       <div>
@@ -45,4 +45,4 @@ export const Global = (props, { globals: { theme } }: StorybookStoryContext) => 
   );
 };
 
-Global.args = {};
+Colors.args = {};

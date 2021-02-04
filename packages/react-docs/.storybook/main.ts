@@ -82,7 +82,7 @@ module.exports = {
     },
     miro: {
       title: 'Miroslav Stastny',
-      url: 'https://60088dd0e49a64002183357c-ncilogmlgq.chromatic.com',
+      url: 'https://60088dd0e49a64002183357c-xfkprfmjan.chromatic.com/',
     },
     justin: {
       title: 'Justin Slone',

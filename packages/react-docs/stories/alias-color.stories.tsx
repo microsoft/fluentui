@@ -5,7 +5,7 @@ import { ColorRampItem } from '../src/components/ColorRamp';
 import { StorybookStoryContext } from '../src/types';
 
 export default {
-  title: 'Fluent UI Theme/Colors/Alias',
+  title: 'Fluent UI Theme/Alias/Colors',
 };
 
 const buttonStyle = ({ active }): React.CSSProperties => ({
@@ -38,7 +38,7 @@ const ColorButton = ({ style = {}, color, active, setPreviewColor, setColor, ...
   />
 );
 
-export const Alias = (args, { globals: { theme } }: StorybookStoryContext) => {
+export const Colors = (args, { globals: { theme } }: StorybookStoryContext) => {
   const [color, setColor] = React.useState<string>('neutral');
   const [previewColor, setPreviewColor] = React.useState<string>(null);
 
@@ -70,7 +70,19 @@ export const Alias = (args, { globals: { theme } }: StorybookStoryContext) => {
         >
           T
         </ColorButton>
-        <ColorButton color="brand" active={color === 'brand'} setColor={setColor} setPreviewColor={setPreviewColor}>
+        <ColorButton
+          color="brand"
+          active={color === 'brand'}
+          setColor={setColor}
+          setPreviewColor={setPreviewColor}
+          style={{
+            background: theme.light.global.palette['brand'].primary, // broken typing
+            color:
+              theme.light.global.palette['brand'][
+                Color(theme.light.global.palette['brand'].primary).isDark() ? 'tint60' : 'shade50'
+              ],
+          }}
+        >
           B
         </ColorButton>
         {Object.keys(theme.light.global.palette)
@@ -78,7 +90,7 @@ export const Alias = (args, { globals: { theme } }: StorybookStoryContext) => {
           //       The selected swatch then is used to populate the alias grid.
           //       But, global.palette has 'grey' and there is no alias.color.grey so it throws.
           //       Filtering grey out here, but this means our structure is wrong.
-          .filter((key) => key !== 'grey')
+          .filter((key) => key !== 'grey' && key !== 'brand')
           .map((colorName) => (
             <ColorButton
               key={colorName}
@@ -117,4 +129,4 @@ export const Alias = (args, { globals: { theme } }: StorybookStoryContext) => {
   );
 };
 
-Alias.args = {};
+Colors.args = {};
