@@ -112,6 +112,7 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
       calloutProps={{
         directionalHint: DirectionalHint.topCenter,
       }}
+      // eslint-disable-next-line react/jsx-no-bind
       barChartCustomData={(props: IChartProps) => {
         return (
           <div>
