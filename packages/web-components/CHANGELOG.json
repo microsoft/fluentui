@@ -2,6 +2,28 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/web-components_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: move color recipes into fluent web component package",
+            "author": "chhol@microsoft.com",
+            "commit": "e4079adb2ab4fb09f58c71192665ff0b81e5f5ec",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/web-components_v0.11.0",
       "version": "0.11.0",

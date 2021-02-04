@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { RatingPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Rating/Rating.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/RatingPage/docs/RatingRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const RatingPageProps: TFabricPlatformPageProps = {
   web: {

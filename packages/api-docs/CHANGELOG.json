@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/api-docs",
+  "entries": [
+    {
+      "date": "Wed, 03 Feb 2021 22:54:59 GMT",
+      "tag": "@fluentui/api-docs_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publishing public docsite output.",
+            "author": "dzearing@microsoft.com",
+            "commit": "e24c3b46e24f2e7005d2d1cb93f4f8a8843a2070",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    }
+  ]
+}

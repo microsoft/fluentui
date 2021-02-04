@@ -286,7 +286,7 @@ export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
 // @public (undocumented)
-export const useButtonClasses: (state: ButtonState, options?: import("@fluentui/react-theme-provider").UseStylesOptions | undefined) => void;
+export const useButtonClasses: (state: ButtonState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
@@ -318,7 +318,7 @@ export { useMenuContext }
 export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
 
 // @public (undocumented)
-export const useSplitButtonClasses: (state: SplitButtonState, options?: import("@fluentui/react-theme-provider").UseStylesOptions | undefined) => void;
+export const useSplitButtonClasses: (state: SplitButtonState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
 export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;

@@ -1,13 +1,7 @@
 import * as React from 'react';
 
-import { Context, ContextSelector, ContextValue } from './types';
+import { Context, ContextSelector, ContextValue, ContextVersion } from './types';
 import { useIsomorphicLayoutEffect } from './utils';
-
-type UseSelectorRef<Value, SelectedValue> = {
-  selector: ContextSelector<Value, SelectedValue>;
-  selected: SelectedValue;
-  value: Value;
-};
 
 /**
  * This hook returns context selected value by selector.
@@ -18,39 +12,69 @@ export const useContextSelector = <Value, SelectedValue>(
   context: Context<Value>,
   selector: ContextSelector<Value, SelectedValue>,
 ): SelectedValue => {
-  const { subscribe, value } = React.useContext((context as unknown) as Context<ContextValue<Value>>);
-  const [, forceUpdate] = React.useReducer((c: number) => c + 1, 0) as [never, () => void];
+  const contextValue = React.useContext((context as unknown) as Context<ContextValue<Value>>);
 
-  const ref = React.useRef<UseSelectorRef<Value, SelectedValue>>();
+  const {
+    value: { current: value },
+    version: { current: version },
+    listeners,
+  } = contextValue;
   const selected = selector(value);
 
-  useIsomorphicLayoutEffect(() => {
-    ref.current = {
-      selector,
-      value,
-      selected,
-    };
-  });
-  useIsomorphicLayoutEffect(() => {
-    const callback = (nextState: Value) => {
-      try {
-        const reference: UseSelectorRef<Value, SelectedValue> = ref.current as NonNullable<
-          UseSelectorRef<Value, SelectedValue>
-        >;
+  const [state, dispatch] = React.useReducer(
+    (
+      prevState: readonly [Value /* contextValue */, SelectedValue /* selector(value) */],
+      payload:
+        | undefined // undefined from render below
+        | readonly [ContextVersion, Value], // from provider effect
+    ) => {
+      if (!payload) {
+        // early bail out when is dispatched during render
+        return [value, selected] as const;
+      }
 
-        if (reference.value === nextState || Object.is(reference.selected, reference.selector(nextState))) {
-          // not changed
-          return;
+      if (payload[0] <= version) {
+        if (Object.is(prevState[1], selected)) {
+          return prevState; // bail out
         }
+
+        return [value, selected] as const;
+      }
+
+      try {
+        if (Object.is(prevState[0], payload[1])) {
+          return prevState; // do not update
+        }
+
+        const nextSelected = selector(payload[1]);
+
+        if (Object.is(prevState[1], nextSelected)) {
+          return prevState; // do not update
+        }
+
+        return [payload[1], nextSelected] as const;
       } catch (e) {
         // ignored (stale props or some other reason)
       }
+      return [...prevState] as const; // schedule update
+    },
+    [value, selected] as const,
+  );
 
-      forceUpdate();
+  if (!Object.is(state[1], selected)) {
+    // schedule re-render
+    // this is safe because it's self contained
+    dispatch(undefined);
+  }
+
+  useIsomorphicLayoutEffect(() => {
+    listeners.push(dispatch);
+
+    return () => {
+      const index = listeners.indexOf(dispatch);
+      listeners.splice(index, 1);
     };
+  }, [listeners]);
 
-    return subscribe(callback);
-  }, [subscribe]);
-
-  return selected;
+  return state[1] as SelectedValue;
 };

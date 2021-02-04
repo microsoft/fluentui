@@ -1,11 +1,10 @@
 import { Properties as CSSProperties } from 'csstype';
 
-export interface MakeStyles extends CSSProperties {
+export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
   // TODO Questionable: how else would users target their own children?
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 
-  // TODO: experimental impl.
-  animationName?: any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  animationName?: object | string;
 }
 
 export type MakeStylesMatcher<Selectors> = ((selectors: Selectors) => boolean | undefined) | null;
@@ -22,7 +21,7 @@ export interface MakeStylesOptions<Tokens> {
 
 // Build time / runtime types
 
-export type MakeStylesResolvedRule = [/* className */ string, /* css */ string, /* rtlCSS */ string?];
+export type MakeStylesResolvedRule = [/* className */ string | undefined, /* css */ string, /* rtlCSS */ string?];
 
 export type MakeStylesResolvedDefinition<Selectors, Tokens> = [
   MakeStylesMatcher<Selectors>,
