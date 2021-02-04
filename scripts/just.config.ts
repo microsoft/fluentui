@@ -20,7 +20,7 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { fluentuiLernaPublish } from './tasks/fluentui-publish';
+import { fluentuiLernaPublish, packFluentTarballs } from './tasks/fluentui-publish';
 import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
@@ -101,6 +101,7 @@ export function preset() {
 
   task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
   task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
+  task('fluentui:pack', packFluentTarballs()); // pack all public fluent ui packages, used by ci to store nightly built artifacts
 
   task('ts:compile', () => {
     const args = getJustArgv();
