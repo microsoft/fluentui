@@ -101,6 +101,7 @@ packages/react/src/components/Announced/ @khmakoto
 packages/react/src/components/Breadcrumb/ @xugao
 packages/react/src/compat/components/Button/ @khmakoto
 packages/react/src/components/Calendar/ @lorejoh12 @pompomon
+packages/react/src/components/CalendarDayGrid/ @lorejoh12
 packages/react/src/components/Callout/ @joschect
 packages/react/src/components/Check/ @dzearing @xugao
 packages/react/src/components/Checkbox/ @khmakoto @xugao
@@ -156,6 +157,7 @@ packages/react/src/components/Text/ @khmakoto
 packages/react/src/components/TextField/ @ecraig12345
 packages/react/src/components/Toggle/ @khmakoto
 packages/react/src/components/Tooltip/ @micahgodbolt
+packages/react/src/components/WeeklyDayPicker/ @lorejoh12
 
 ## Theming and styling
 packages/react/src/utilities/ThemeProvider @xugao

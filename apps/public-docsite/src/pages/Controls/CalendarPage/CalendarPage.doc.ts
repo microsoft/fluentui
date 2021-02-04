@@ -1,5 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { CalendarPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-date-time/Calendar/Calendar.doc';
+import { CalendarPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Calendar/Calendar.doc';
 import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
 const related: ISideRailLink[] = [

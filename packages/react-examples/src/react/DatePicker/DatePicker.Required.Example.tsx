@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DatePicker } from '@fluentui/react-date-time';
-import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+import { DatePicker, mergeStyleSets } from '@fluentui/react';
 
 const styles = mergeStyleSets({
   root: { selectors: { '> *': { marginBottom: 15 } } },

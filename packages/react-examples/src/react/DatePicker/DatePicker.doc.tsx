@@ -9,19 +9,19 @@ import { DatePickerFormatExample } from './DatePicker.Format.Example';
 import { DatePickerBoundedExample } from './DatePicker.Bounded.Example';
 import { DatePickerExternalControlsExample } from './DatePicker.ExternalControls.Example';
 
-const DatePickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.Basic.Example.tsx') as string;
-const DatePickerDisabledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.Disabled.Example.tsx') as string;
-const DatePickerWeekNumbersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.WeekNumbers.Example.tsx') as string;
-const DatePickerRequiredExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.Required.Example.tsx') as string;
-const DatePickerInputExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.Input.Example.tsx') as string;
-const DatePickerFormatExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.Format.Example.tsx') as string;
-const DatePickerBoundedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.Bounded.Example.tsx') as string;
-const DatePickerExternalControlsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/DatePicker.ExternalControls.Example.tsx') as string;
+const DatePickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.Basic.Example.tsx') as string;
+const DatePickerDisabledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.Disabled.Example.tsx') as string;
+const DatePickerWeekNumbersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.WeekNumbers.Example.tsx') as string;
+const DatePickerRequiredExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.Required.Example.tsx') as string;
+const DatePickerInputExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.Input.Example.tsx') as string;
+const DatePickerFormatExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.Format.Example.tsx') as string;
+const DatePickerBoundedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.Bounded.Example.tsx') as string;
+const DatePickerExternalControlsExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/DatePicker.ExternalControls.Example.tsx') as string;
 
 export const DatePickerPageProps: IDocPageProps = {
   title: 'DatePicker',
   componentName: 'DatePicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-date-time/src/components/DatePicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/DatePicker',
   examples: [
     {
       title: 'Default DatePicker',
@@ -66,10 +66,10 @@ export const DatePickerPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/docs/DatePickerOverview.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/docs/DatePickerOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/DatePicker/docs/DatePickerBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DatePicker/docs/DatePickerBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

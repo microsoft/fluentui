@@ -6,7 +6,7 @@ import {
   addMonths,
   addYears,
   IDatePickerStyles,
-} from '@fluentui/react-date-time';
+} from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
 
 const datePickerStyles: Partial<IDatePickerStyles> = { root: { maxWidth: 300, marginTop: 15 } };

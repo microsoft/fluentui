@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { addMonths, addYears, addDays } from '@fluentui/date-time-utilities';
-import { Calendar } from '@fluentui/react-date-time';
+import { Calendar } from '@fluentui/react';
 import { useConst } from '@fluentui/react-hooks';
 
 export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () => {

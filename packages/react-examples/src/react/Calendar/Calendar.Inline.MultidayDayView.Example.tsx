@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Dropdown, IDropdownOption } from '@fluentui/react';
-import { Calendar } from '@fluentui/react-date-time';
+import { Calendar, Dropdown, IDropdownOption } from '@fluentui/react';
 import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({

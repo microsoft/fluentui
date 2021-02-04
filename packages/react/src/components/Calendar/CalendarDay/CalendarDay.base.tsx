@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, css, classNamesFunction } from '@fluentui/utilities';
-import { Icon } from '../../Icon';
+import { Icon } from '../../../Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { IProcessedStyleSet } from '@fluentui/style-utilities';

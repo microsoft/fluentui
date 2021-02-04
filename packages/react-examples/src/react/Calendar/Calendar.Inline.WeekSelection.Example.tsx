@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { addDays, getDateRangeArray } from '@fluentui/date-time-utilities';
-import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react-date-time';
+import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
 import { mergeStyleSets } from '@fluentui/style-utilities';
 
 const styles = mergeStyleSets({

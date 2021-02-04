@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar, ICalendarDayProps } from '@fluentui/react-date-time';
+import { Calendar, ICalendarDayProps } from '@fluentui/react';
 
 const calendarDayProps: Partial<ICalendarDayProps> = {
   customDayCellRef: (element, date, classNames) => {

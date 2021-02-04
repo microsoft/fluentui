@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Calendar } from '@fluentui/react-date-time';
+import { Calendar } from '@fluentui/react';
 
 export const CalendarInlineSixWeeksExample: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
