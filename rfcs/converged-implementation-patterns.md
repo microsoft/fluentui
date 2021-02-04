@@ -155,7 +155,7 @@ It can be very easy to unit test each separate concern without too much wirefram
 
 #### Cons
 
-Can be verbose, and might be too much so for simple components without lots of complex interaction
+Can be verbose, and might be too much so for simple components without lots of complex interaction.
 
 The use of `useComponentState` to merge props and state to become one 'uber' state seems to be a break of encapsulation and can cause confusion as to what is props and what is internal state.
 
