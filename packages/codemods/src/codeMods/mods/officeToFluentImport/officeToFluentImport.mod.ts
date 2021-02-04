@@ -42,6 +42,6 @@ const RepathOfficeToFluentImports: CodeMod = {
   },
   name: 'RepathOfficeImportsToFluent',
   version: '1.0.0',
-  enabled: false,
+  enabled: true,
 };
 export default RepathOfficeToFluentImports;
