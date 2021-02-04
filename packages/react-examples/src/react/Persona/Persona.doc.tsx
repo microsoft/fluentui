@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PersonaInitialsExample } from './Persona.Initials.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { PersonaBasicExample } from './Persona.Basic.Example';
 import { PersonaAlternateExample } from './Persona.Alternate.Example';
 import { PersonaColorsExample } from './Persona.Colors.Example';
@@ -22,7 +22,7 @@ const PersonaPresenceExampleCode = require('!raw-loader?esModule=false!@fluentui
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
   componentName: 'Persona',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Persona',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Persona',
   examples: [
     {
       title: 'Persona in various sizes',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { CalendarButtonExample } from './Calendar.Button.Example';
 import { CalendarInlineContiguousWorkWeekDaysExample } from './Calendar.Inline.ContiguousWorkWeekDays.Example';
 import { CalendarInlineCustomDayCellRefExample } from './Calendar.Inline.CustomDayCellRef.Example';

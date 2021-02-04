@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { LinkBasicExample } from './Link.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const LinkBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Link/Link.Basic.Example.tsx') as string;
 
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
   componentName: 'Link',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Link',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Link',
   examples: [
     {
       title: 'Link',

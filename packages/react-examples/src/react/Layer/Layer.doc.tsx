@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LayerBasicExample } from './Layer.Basic.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { LayerHostedExample } from './Layer.Hosted.Example';
 import { LayerCustomizedExample } from './Layer.Customized.Example';
 import { LayerNestedLayersExample } from './Layer.NestedLayers.Example';
@@ -13,7 +13,7 @@ const LayerNestedLayersExampleCode = require('!raw-loader?esModule=false!@fluent
 export const LayerPageProps: IDocPageProps = {
   title: 'Layer',
   componentName: 'Layer',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Layer',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Layer',
   examples: [
     {
       title: 'Basic layered content',

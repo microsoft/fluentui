@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PickerCustomResultExample } from './Picker.CustomResult.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { TagPickerBasicExample } from './TagPicker.Basic.Example';
 
 const TagPickerExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Pickers/TagPicker.Basic.Example.tsx') as string;
@@ -10,7 +10,7 @@ const PickerCustomResultExampleCode = require('!raw-loader?esModule=false!@fluen
 export const PickersPageProps: IDocPageProps = {
   title: 'Pickers',
   componentName: 'Pickers',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Pickers',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Pickers',
   examples: [
     {
       title: 'Tag Picker',
