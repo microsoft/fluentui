@@ -71,7 +71,6 @@ const PUBLIC_FLUENT_PACKAGES = [
 export function packFluentTarballs() {
   return function() {
     const gitRoot = findGitRoot();
-    fs.mkdirSync(path.resolve(gitRoot, 'fluentui-nightly'));
     const tempFolderForPacks = path.resolve(gitRoot, 'fluentui-nightly');
     fs.mkdirSync(tempFolderForPacks);
 

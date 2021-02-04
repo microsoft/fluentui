@@ -30,34 +30,45 @@ type CodeSandboxImport = {
   required: boolean;
 };
 
+const newestNightlyReleaseUrlPrefix = `https://fluentsite.blob.core.windows.net/nightly-builds/newest`;
+
+const getPackageVersion = (packageName: string, latestVersion: string) => {
+  // CI build tarballs from `npm pack` and publish them nightly to blob storage for fluent ui packages
+  // When building nightly release docsite, use these urls instead of the latest package version
+  if (process.env.NIGHTLYRELEASE) {
+    return `${newestNightlyReleaseUrlPrefix}/fluentui-${packageName}-${latestVersion}.tgz`;
+  }
+  return latestVersion;
+};
+
 export const imports: Record<string, CodeSandboxImport> = {
   '@fluentui/accessibility': {
-    version: accessibilityPackageJson.version,
+    version: getPackageVersion('accessibility', accessibilityPackageJson.version),
     module: Accessibility,
     required: false,
   },
   '@fluentui/code-sandbox': {
-    version: sandboxPackageJson.version,
+    version: getPackageVersion('code-sandbox', sandboxPackageJson.version),
     module: CodeSandbox,
     required: true,
   },
   '@fluentui/docs-components': {
-    version: docsComponentsPackageJson.version,
+    version: getPackageVersion('docs-components', docsComponentsPackageJson.version),
     module: DocsComponent,
     required: true,
   },
   '@fluentui/react-icons-northstar': {
-    version: projectPackageJson.version,
+    version: getPackageVersion('react-icons-northstar', projectPackageJson.version),
     module: FluentUIIcons,
     required: false,
   },
   '@fluentui/react-northstar': {
-    version: projectPackageJson.version,
+    version: getPackageVersion('react-northstar', projectPackageJson.version),
     module: FluentUI,
     required: true,
   },
   '@fluentui/react-bindings': {
-    version: projectPackageJson.dependencies['@fluentui/react-bindings'],
+    version: getPackageVersion('react-bindings', projectPackageJson.dependencies['@fluentui/react-bindings']),
     module: Bindings,
     required: false,
   },
