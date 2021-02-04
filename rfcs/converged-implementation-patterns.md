@@ -149,7 +149,7 @@ Utility types stored here
 
 #### Pros
 
-Since there is a separation of state, render, styling into different hooks/utility functions, it can be very easy for consumers to create their own custom component variants without needing to approach the library team and accommodate their custom requirements
+Since there is a separation of state, render, styling into different hooks/utility functions, it can be very easy for consumers to create their own custom component variants without needing to approach the library team and accommodate their custom requirements.
 
 It can be very easy to unit test each separate concern without too much wireframing/mocking
 
