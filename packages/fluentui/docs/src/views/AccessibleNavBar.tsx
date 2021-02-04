@@ -126,10 +126,14 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           For the new navigation bar requirements, additional notes, comparison with the previous version of the
           navigation bar and conclusions, please check{' '}
-          <a href="https://ghe-us.microsoft.com/Microsoft-Design-System-Studio/taos/blob/main/App%20Bar/Accessibility.md">
+          <a href="https://office.visualstudio.com/OC/_git/office-start?version=GBkyruebno%2Fappbar-spec&path=%2Fdocs%2FSpecs%2FApp-Bar%2FApp-Bar-Accessibility.md&_a=preview">
             this documentation site
           </a>
           .
+        </li>
+        <li>
+          Only the last variant on this page demonstrates the use of the new items count message (e.g. "7 conversations
+          with new messages").
         </li>
         <li>The accepted variant of the navigation bar is the last one on this page.</li>
       </ul>
@@ -253,7 +257,7 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
-      <h2>&lt;nav&gt; landmark</h2>
+      <h2>&lt;nav&gt; element</h2>
       <nav aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -279,6 +283,29 @@ export const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           Narrator does not read this landmark in any way, it just reads its aria-label. So this is another reason to
           reject this variant.
+        </li>
+      </ul>
+
+      <h2>role="navigation"</h2>
+      <div role="navigation" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
+        <button className="item" tabIndex={0} aria-pressed="false">
+          Activities
+        </button>
+        <button className="item" tabIndex={-1} aria-pressed="true">
+          Chats
+        </button>
+        <button className="item" tabIndex={-1} aria-pressed="false">
+          Teams
+        </button>
+        <button className="item" tabIndex={-1} aria-pressed="false">
+          Calendar
+        </button>
+      </div>
+
+      <h3>Notes</h3>
+      <ul>
+        <li>
+          This variant behaves the same way as the &lt;nav&gt; element variant, so it is rejected for the same reasons.
         </li>
       </ul>
 
