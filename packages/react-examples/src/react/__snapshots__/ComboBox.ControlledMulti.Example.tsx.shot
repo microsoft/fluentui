@@ -406,7 +406,6 @@ exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correct
                 text-align: center;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",

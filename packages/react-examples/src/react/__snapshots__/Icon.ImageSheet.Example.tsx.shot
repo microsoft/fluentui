@@ -3,7 +3,6 @@
 exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = `
 <div>
   <div
-    aria-label="OneNote file icon"
     className=
         ms-Icon
         ms-Icon-imageContainer
@@ -18,7 +17,6 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
           margin-left: 27px;
           width: 48px;
         }
-    role="img"
   >
     <div
       className=
@@ -43,6 +41,7 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
       }
     >
       <img
+        alt="OneNote file"
         className=
             ms-Image-image
             ms-Image-image--portrait
@@ -59,7 +58,6 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    aria-label="Check icon"
     className=
         ms-Icon
         ms-Icon-imageContainer
@@ -74,7 +72,6 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
           margin-left: 55px;
           width: 35px;
         }
-    role="img"
   >
     <div
       className=
@@ -99,6 +96,7 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
       }
     >
       <img
+        aria-label="Printer ready"
         className=
             ms-Image-image
             ms-Image-image--portrait
@@ -115,7 +113,6 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
     </div>
   </div>
   <div
-    aria-label="Lock icon"
     className=
         ms-Icon
         ms-Icon-imageContainer
@@ -130,7 +127,6 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
           margin-left: 65px;
           width: 35px;
         }
-    role="img"
   >
     <div
       className=
@@ -155,6 +151,7 @@ exports[`Component Examples renders Icon.ImageSheet.Example.tsx correctly 1`] = 
       }
     >
       <img
+        alt="Locked"
         className=
             ms-Image-image
             ms-Image-image--portrait
