@@ -195,7 +195,7 @@ export const AccentButtonStyles = css`
     }
 
     :host(.accent) .control:${focusVisible} {
-        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var};
+        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var}, 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var}
     }
 
     :host(.accent.disabled) {
