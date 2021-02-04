@@ -390,7 +390,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
               padding-right: 14px;
               padding-top: 0;
             }
-        data-focuszone-id="FocusZone7"
+        data-focuszone-id="FocusZone0"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -543,7 +543,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__8"
+                    id="id__1"
                   >
                     asdf
                   </span>
@@ -685,7 +685,7 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                           margin-top: 0;
                           white-space: nowrap;
                         }
-                    id="id__11"
+                    id="id__4"
                   >
                     asdf
                   </span>
