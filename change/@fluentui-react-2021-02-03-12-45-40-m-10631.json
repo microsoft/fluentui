@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add additional prop support to IBreadcrumbItems",
-  "packageName": "@fluentui/react",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-03T11:45:40.245Z"
-}

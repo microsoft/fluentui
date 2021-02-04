@@ -2,6 +2,21 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Thu, 04 Feb 2021 12:22:24 GMT",
+      "tag": "@fluentui/public-docsite_v1.0.3",
+      "version": "1.0.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update content in Themes doc page.",
+            "author": "xgao@microsoft.com",
+            "commit": "a0fe6eeaa4b9cc12e5130dafa16b3c494a2802b6",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 22:54:59 GMT",
       "tag": "@fluentui/public-docsite_v1.0.1",
       "version": "1.0.1",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update content in Themes doc page.",
-  "packageName": "@fluentui/react-examples",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-03T23:40:08.905Z"
-}
