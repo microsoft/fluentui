@@ -7,9 +7,9 @@ import {
   ICalendarYearStyleProps,
   ICalendarYearStyles,
 } from './CalendarYear.types';
-import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from '@fluentui/react-internal/lib/Utilities';
-import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
-import { Icon } from '@fluentui/react-internal/lib/Icon';
+import { KeyCodes, getRTL, classNamesFunction, css, format, IRefObject } from '../../../Utilities';
+import { FocusZone } from '../../../FocusZone';
+import { Icon } from '../../../Icon';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 import { defaultCalendarNavigationIcons } from '../defaults';
 

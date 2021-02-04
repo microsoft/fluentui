@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { WeeklyDayPickerBase } from './WeeklyDayPicker.base';
 import { styles } from './WeeklyDayPicker.styles';
-import { styled } from '@fluentui/react-internal/lib/Utilities';
+import { styled } from '../../Utilities';
 import { IWeeklyDayPickerProps } from './WeeklyDayPicker.types';
 
 export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps> = styled(

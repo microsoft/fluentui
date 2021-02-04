@@ -3,8 +3,8 @@ import { ICalendarProps } from '../../Calendar';
 import { DayOfWeek, FirstWeekOfYear, ICalendarStrings, IDateFormatting } from '@fluentui/date-time-utilities';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IBaseProps, IStyleFunctionOrObject, IComponentAs } from '@fluentui/utilities';
-import { ICalloutProps } from '@fluentui/react-internal/lib/Callout';
-import { ITextFieldProps } from '@fluentui/react-internal/lib/TextField';
+import { ICalloutProps } from '../../Callout';
+import { ITextFieldProps } from '../../TextField';
 
 /**
  * {@docCategory DatePicker}

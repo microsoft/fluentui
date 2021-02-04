@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getRTL, classNamesFunction } from '@fluentui/utilities';
-import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
+import { FocusZone } from '../../FocusZone';
 import {
   getDateRangeArray,
   getDayGrid,

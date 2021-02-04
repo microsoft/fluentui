@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from '@fluentui/react-internal/lib/FocusZone';
+import { FocusZone } from '../../../FocusZone';
 import {
   addYears,
   setMonth,
@@ -10,7 +10,7 @@ import {
   compareDatePart,
   DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
-import { Icon } from '@fluentui/react-internal/lib/Icon';
+import { Icon } from '../../../Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { css, getRTL, classNamesFunction, KeyCodes, format, getPropsWithDefaults } from '@fluentui/utilities';

@@ -16,7 +16,7 @@ import {
   DayOfWeek,
   DEFAULT_DATE_FORMATTING,
 } from '@fluentui/date-time-utilities';
-import { Icon } from '@fluentui/react-internal/lib/Icon';
+import { Icon } from '../../Icon';
 import { defaultWeeklyDayPickerStrings, defaultWeeklyDayPickerNavigationIcons } from './defaults';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
