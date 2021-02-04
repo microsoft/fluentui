@@ -78,6 +78,8 @@ Accepts the component props and handles and internal state that the component mi
 `State` here can be pretty broad, you could also consume context or create effects. This hook should be what the component relies on to function/render
 
 ```typescript
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+
 /**
  * Defines the different slots that can be rendered in this component
  *
@@ -142,8 +144,28 @@ export const Sample = React.forwardRef<HTMLElement, SampleProps>((props, ref) =>
 ```
 
 #### Sample.types.ts
+```typescript
+import * as React from 'react';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
 
-Utility types stored here
+// For a component all HTML attributes should be allowed to maximize consistencty with DOM
+export interface SampleProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /** Icon slot as a shorthand */
+  icon?: ShorthandProps;
+}
+
+// Component state extends props and also adds other internal state used in the lifecycle of the component
+// For example for a popup component tracking an `open` state as boolean
+export interface MenuItemState extends SampleProps {
+  open: boolean;
+  
+  otherState: object;
+  
+  otherState: number;
+}
+```
+
+NOTE: Currently `ComponentProp` inherits from a `GenericDictionary` that is essentially `Record<string, any>` which is essentially `any` :-(
 
 ### Pros and Cons
 
@@ -157,7 +179,7 @@ It can be very easy to unit test each separate concern without too much wirefram
 
 Can be verbose, and might be too much so for simple components without lots of complex interaction.
 
-The use of `useComponentState` to merge props and state to become one 'uber' state seems to be a break of encapsulation and can cause confusion as to what is props and what is internal state.
+The use of `useSampleState` to merge props and state to become one 'uber' state seems to be a break of encapsulation and can cause confusion as to what is props and what is internal state.
 
 <!-- Enumerate the pros and cons of the proposal. Make sure to think about and be clear on the cons or drawbacks of this propsoal. If there are multiple proposals include this for each. -->
 
