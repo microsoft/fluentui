@@ -19,6 +19,10 @@ function useRenderer(document: Document | undefined): MakeStylesRenderer {
 export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selectors, Theme>[]) {
   const getStyles = vanillaMakeStyles(definitions);
 
+  if (process.env.NODE_ENV === 'test') {
+    return () => 'makestyles';
+  }
+
   return function useClasses(selectors: Selectors) {
     const { dir, document } = useFluent();
     const theme = useTheme();
