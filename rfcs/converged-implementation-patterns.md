@@ -55,27 +55,18 @@ Generally a component will have the following different files. Let us consider a
 - renderSample.tsx
 - Sample.types.ts
 
-#### renderSample.tsx
+#### Sample.tsx
 
-Renders the correct JSX output of the component and its slots given the correct state.
+The 'final' product, simply forwards a ref and uses all the previous building blocks to expose the final component
 
 ```typescript
-import { getSlots } from '@fluentui/react-utils'
+export const Sample = React.forwardRef<HTMLElement, SampleProps>((props, ref) => {
+  const state = useSample(props, ref);
+  useSampleStyles(state);
 
-export const renderSample = (state: SampleState) => {
-  const { slots, slotProps } = getSlots(state);
-
-  return (
-    <slots.root {...slotProps.root}>
-      <slot.otherSlot {...slotProps.otherSlot} />
-    </slots.root>
-  );
-};
+  return renderSample(state);
+});
 ```
-
-The `state` stores all information on the slots/tags/JSX that should be rendered after processing by the relevant hook. The `getSlots` utility extracts known slot information such as tag names and props.
-
-See below for how `state` might contain useful props for rendering.
 
 #### useSample.ts
 
@@ -137,20 +128,31 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
 
 Hook that accepts state and applies classnames to props and any shorthand slot props to style the component and its slots
 
-#### Sample.tsx
+#### renderSample.tsx
 
-The 'final' product, simply forwards a ref and uses all the previous building blocks to expose the final component
+Renders the correct JSX output of the component and its slots given the correct state.
 
 ```typescript
-export const Sample = React.forwardRef<HTMLElement, SampleProps>((props, ref) => {
-  const state = useSample(props, ref);
-  useSampleStyles(state);
+import { getSlots } from '@fluentui/react-utils'
 
-  return renderSample(state);
-});
+export const renderSample = (state: SampleState) => {
+  const { slots, slotProps } = getSlots(state);
+
+  return (
+    <slots.root {...slotProps.root}>
+      <slot.otherSlot {...slotProps.otherSlot} />
+    </slots.root>
+  );
+};
 ```
 
+The `state` stores all information on the slots/tags/JSX that should be rendered after processing by the relevant hook. The `getSlots` utility extracts known slot information such as tag names and props.
+
+See below for how `state` might contain useful props for rendering.
+
 #### Sample.types.ts
+The below will probably be present in every component, other utility types are fair game if they are necessary.
+
 ```typescript
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
