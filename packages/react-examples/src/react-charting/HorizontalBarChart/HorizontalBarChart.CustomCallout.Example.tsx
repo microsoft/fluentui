@@ -113,6 +113,15 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
         directionalHint: DirectionalHint.topCenter,
       }}
       // eslint-disable-next-line react/jsx-no-bind
+      barChartCustomData={(props: IChartProps) => {
+        return (
+          <div>
+            <span style={{ fontWeight: 'bold' }}>19K</span>
+            <span>{'/ 45.9 T'}</span>
+          </div>
+        );
+      }}
+      // eslint-disable-next-line react/jsx-no-bind
       onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
         props ? (
           <ChartHoverCard
