@@ -2,6 +2,29 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 22:54:59 GMT",
+      "tag": "@fluentui/make-styles_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "makeStyles: finish up keyframes implementation",
+            "author": "xgao@microsoft.com",
+            "commit": "42df0bee0fa79499115ea1940cafc580f66c53ca",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "update proxy implementation to correspond to Provider CSS variables",
+            "author": "olfedias@microsoft.com",
+            "commit": "f5af8fdff38fc931c49b7cb6c03559f93e5135b5",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 05:51:40 GMT",
       "tag": "@fluentui/make-styles_v0.4.0",
       "version": "0.4.0",
