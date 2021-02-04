@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { Label } from '../../Label';
-import { classNamesFunction, find, getNativeProps, divProperties, IRefObject } from '../../Utilities';
+import {
+  classNamesFunction,
+  find,
+  getNativeProps,
+  divProperties,
+  IRefObject,
+  setFocusVisibility,
+} from '../../Utilities';
 import {
   IChoiceGroupOption,
   IChoiceGroupProps,
@@ -40,6 +47,7 @@ const useComponentRef = (
 
         if (elementToFocus) {
           elementToFocus.focus();
+          setFocusVisibility(true, elementToFocus as Element);
         }
       },
     }),
