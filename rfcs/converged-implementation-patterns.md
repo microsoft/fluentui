@@ -57,7 +57,7 @@ Generally a component will have the following different files. Let us consider a
 
 #### renderSample.tsx
 
-renders the correct JSX output of the component and its slots given the correct state.
+Renders the correct JSX output of the component and its slots given the correct state.
 
 ```typescript=
 export const renderSample = (state: SampleState) => {
