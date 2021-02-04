@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { MenuItemState } from './MenuItem.types';
 
 /** Styles for the root slot */
@@ -43,12 +43,12 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   const rootClassName = useRootStyles({});
   const iconClassName = useIconStyles({});
 
-  state.className = rootClassName;
+  state.className = ax(rootClassName, state.className);
 
   if (state.icon) {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     // TODO figure out typings
-    state.icon.className = iconClassName;
+    state.icon.className = ax(iconClassName, state.icon.className);
   }
 };

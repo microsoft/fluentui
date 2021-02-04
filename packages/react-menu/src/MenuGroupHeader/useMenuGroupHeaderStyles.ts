@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 const useHeaderStyles = makeStyles([
@@ -17,5 +17,5 @@ const useHeaderStyles = makeStyles([
 ]);
 
 export const useMenuGroupHeaderStyles = (state: MenuGroupHeaderState) => {
-  state.className = useHeaderStyles({});
+  state.className = ax(useHeaderStyles({}), state.className);
 };

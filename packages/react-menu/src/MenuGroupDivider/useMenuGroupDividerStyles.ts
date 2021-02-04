@@ -1,4 +1,4 @@
-import { makeStyles } from '@fluentui/react-make-styles';
+import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { MenuGroupDividerState } from './MenuGroupDivider.types';
 
 const useDividerStyles = makeStyles([
@@ -15,5 +15,5 @@ const useDividerStyles = makeStyles([
 ]);
 
 export const useMenuGroupDividerStyles = (state: MenuGroupDividerState) => {
-  state.className = useDividerStyles({});
+  state.className = ax(useDividerStyles({}), state.className);
 };
