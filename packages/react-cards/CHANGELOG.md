@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.46)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.45..@fluentui/react-cards_v1.0.0-beta.46)
+
+### Changes
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
+
+## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.45)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.44..@fluentui/react-cards_v1.0.0-beta.45)
+
+### Changes
+
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by olfedias@microsoft.com)
+
+## [1.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.44)
+
+Fri, 29 Jan 2021 12:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.43..@fluentui/react-cards_v1.0.0-beta.44)
+
+### Changes
+
+- Renamed prop 'quiet' to 'ghost' for react-cards Card types ([PR #16632](https://github.com/microsoft/fluentui/pull/16632) by tavari@microsoft.com)
+
+## [1.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.43)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.38..@fluentui/react-cards_v1.0.0-beta.43)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
 
 ## [1.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.38)
 

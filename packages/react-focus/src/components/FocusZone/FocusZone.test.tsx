@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { getCode, EnterKey } from '@fluentui/keyboard-key';
 import { setRTL, KeyCodes } from '@fluentui/utilities';
+import { resetIds } from '@fluentui/utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 import { isConformant } from '../../common/isConformant';
@@ -13,6 +14,10 @@ import { isConformant } from '../../common/isConformant';
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
   let host: HTMLElement;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (host) {

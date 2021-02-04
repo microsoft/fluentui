@@ -1,5 +1,6 @@
 import path from 'path';
 import { preset, series, task, argv } from '@fluentui/scripts';
+import { getResolveLoaderDirs } from '@fluentui/scripts/webpack/webpack-resources';
 
 preset();
 
@@ -15,6 +16,7 @@ function bundleStories() {
     await digestStories({
       configDir: path.join(__dirname, '.digest'),
       outputDir: path.join(__dirname, 'dist'),
+      resolveDirs: getResolveLoaderDirs(),
     });
   };
 }

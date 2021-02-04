@@ -31,7 +31,7 @@ export interface IChoiceGroupProps
   extends React.InputHTMLAttributes<HTMLElement | HTMLInputElement>,
     React.RefAttributes<HTMLDivElement> {
   /**
-   * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
+   * Optional callback to access the `IChoiceGroup` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IChoiceGroup>;
@@ -116,7 +116,7 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
 
   /**
    * Alt text if the option is an image.
-   * @default '' (empty string)
+   * @default `''` (empty string)
    */
   imageAlt?: string;
 

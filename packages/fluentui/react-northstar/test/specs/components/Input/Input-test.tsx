@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
 import * as faker from 'faker';
 import * as _ from 'lodash';

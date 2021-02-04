@@ -1,8 +1,35 @@
 # Change Log - @fluentui/example-data
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.0.0-beta.3)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.0.0-beta.2..@fluentui/example-data_v8.0.0-beta.3)
+
+### Changes
+
+- Update Avatar example data ([PR #16702](https://github.com/microsoft/fluentui/pull/16702) by behowell@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.0.0-beta.2)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.0.0-beta.1..@fluentui/example-data_v8.0.0-beta.2)
+
+### Changes
+
+- update snapshots ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.0.0-beta.1)
+
+Wed, 27 Jan 2021 12:30:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/example-data_v8.0.0-beta.0..@fluentui/example-data_v8.0.0-beta.1)
+
+### Changes
+
+- Add AvatarExamples to example-data package ([PR #16525](https://github.com/microsoft/fluentui/pull/16525) by behowell@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/example-data_v8.0.0-beta.0)
 

@@ -131,7 +131,7 @@ describe('TeachingBubble', () => {
     targetComponent: TeachingBubbleContent,
     // Problem: Ref is applied but not on root element
     // Solution: Ref should be applied to TeachingBubbleContent and the wrapper div should be removed.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   });
 
   it('merges callout classNames', () => {

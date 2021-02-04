@@ -10,7 +10,7 @@ const warningWhitelist = [
 ];
 
 export default {
-  external: ['lodash', 'lodash/fp', 'prop-types', 'react', 'react-dom', 'react-is'],
+  external: ['lodash', 'lodash/fp', 'prop-types', 'react', 'react-dom', 'react-is', 'scheduler'],
   input: 'app.js',
   onwarn: (warning, warn) => {
     if (warningWhitelist.includes(warning.code)) {
@@ -30,6 +30,7 @@ export default {
       react: 'React',
       'react-dom': 'ReactDOM',
       'react-is': 'ReactIs',
+      scheduler: 'Scheduler',
     },
     sourcemap: true,
   },

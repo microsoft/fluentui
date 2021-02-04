@@ -1,8 +1,18 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 18 Jan 2021 12:35:34 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.43)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.36..@fluentui/azure-themes_v8.0.0-beta.43)
+
+### Changes
+
+- Icon button & disabled textbox style fix. Callout, messagebar and teachingbubble style updates. Azure theme fix: MessageBar, Callout and TeachingBubble (#16337). dark mode themes are now correctly set as inverted ([PR #16638](https://github.com/microsoft/fluentui/pull/16638) by martinhochel@microsoft.com)
+- Fix some remaining references to @uifabric ([PR #16679](https://github.com/microsoft/fluentui/pull/16679) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.36)
 

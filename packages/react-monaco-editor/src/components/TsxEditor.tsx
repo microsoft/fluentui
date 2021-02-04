@@ -154,7 +154,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
       require.ensure([], require => {
         // raw-loader 0.x exports a single string, and later versions export a default.
         // The package.json specifies 0.x, but handle either just in case.
-        const result: string | { default: string } = require('!raw-loader!@types/react/index.d.ts');
+        const result: string | { default: string } = require('!raw-loader?esModule=false!@types/react/index.d.ts');
         typescriptDefaults.addExtraLib(
           typeof result === 'string' ? result : result.default,
           `${typesPrefix}/react/index.d.ts`,
@@ -170,7 +170,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
     for (const pkg of group.packages) {
       const { packageName, loadTypes } = pkg;
       // Get the pretend @types package name
-      // (for a scoped package like @uifabric/utilities, this will be uifabric__utilities)
+      // (for a scoped package like @fluentui/utilities, this will be fluentui__utilities)
       const scopedMatch = packageName.match(/^@([^/]+)\/(.*)/);
       const typesPackageName = scopedMatch ? `${scopedMatch[1]}__${scopedMatch[2]}` : packageName;
 

@@ -99,6 +99,7 @@ export const BreadcrumbItemStyles = css`
     .separator {
       display: flex;
       fill: ${neutralForegroundRestBehavior.var};
+      margin: 0 6px;
     }
 `.withBehaviors(
   accentForegroundActiveBehavior,

@@ -4,7 +4,7 @@ import { MarqueeSelectionBasicExample } from './MarqueeSelection.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const MarqueeSelectionBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/MarqueeSelection/MarqueeSelection.Basic.Example.tsx') as string;
+const MarqueeSelectionBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/MarqueeSelection.Basic.Example.tsx') as string;
 export const MarqueeSelectionPageProps: IDocPageProps = {
   title: 'MarqueeSelection',
   componentName: 'MarqueeSelection',
@@ -19,10 +19,10 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/MarqueeSelection/docs/MarqueeSelectionBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "0.3.0",
+  "version": "0.5.0",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,24 +22,24 @@
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
     "test": "just-scripts test",
-    "test:watch": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api"
+    "test:watch": "just-scripts jest-watch"
   },
   "beachball": {
     "tag": "latest",
     "disallowedChangeTypes": [
-      "major"
+      "major",
+      "prerelease"
     ]
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/stylis": "^4.0.0",
     "prettier": "~1.19.1"
   },
   "dependencies": {
     "@emotion/hash": "^0.8.0",
-    "@fluentui/set-version": "^8.0.0-beta.0",
+    "@fluentui/set-version": "^8.0.0-beta.1",
     "csstype": "^2.6.7",
     "inline-style-expand-shorthand": "^1.2.0",
     "rtl-css-js": "^1.14.0",
