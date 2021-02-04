@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "update Icon, FontIcon, ImageIcon, and createSvgIcon to add the img role, and update examples",
+  "packageName": "@fluentui/react-tabs",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-04T00:09:34.569Z"
+}
