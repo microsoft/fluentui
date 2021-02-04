@@ -60,6 +60,8 @@ Generally a component will have the following different files. Let us consider a
 Renders the correct JSX output of the component and its slots given the correct state.
 
 ```typescript
+import { getSlots } from '@fluentui/react-utils'
+
 export const renderSample = (state: SampleState) => {
   const { slots, slotProps } = getSlots(state);
 
@@ -70,6 +72,10 @@ export const renderSample = (state: SampleState) => {
   );
 };
 ```
+
+The `state` stores all information on the slots/tags/JSX that should be rendered after processing by the relevant hook. The `getSlots` utility extracts known slot information such as tag names and props.
+
+See below for how `state` might contain useful props for rendering.
 
 #### useSample.ts
 
