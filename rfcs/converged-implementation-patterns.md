@@ -108,6 +108,7 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
   // by a consumer
   const mergedProps = mergeProps(
     {
+      // This is essentially shorthand for the `root` slot
       ref: resolvedRef,
       as: 'div',
       icon: { as: 'span' },
