@@ -20,7 +20,7 @@ export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selector
   const getStyles = vanillaMakeStyles(definitions);
 
   if (process.env.NODE_ENV === 'test') {
-    return () => 'makestyles';
+    return () => '';
   }
 
   return function useClasses(selectors: Selectors) {
