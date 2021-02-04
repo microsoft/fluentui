@@ -21,7 +21,7 @@ _List contributors to the proposal here_
 
 Tries to commit the common component pattern to writing in the repo for future reference and track improvements
 
-Code samples included could possibly be applied to utility scripts to generate packages
+Code samples should applied to utility scripts to generate packages which will help to educate/enforce this pattern... until we want to change it :-)
 
 ## Background
 
@@ -90,9 +90,9 @@ const mergeProps = makeMergeProps({ deepMerge: sampleShorthandProps });
 /**
  * @parameter props -> these are normal React props for JSX components
  * @parameter ref -> In case someone wants a ref to the root DOM element
- * @parameter defaultProps -> safe default props
+ * @parameter defaultProps -> safe default props, we set defaults internally but if consumer wants component variants with different defaults, they can set them
  */
-export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defaultProps?: SampleProps) => {
+export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defaultProps?: SampleProps): SampleState => {
   const resolvedRef = ref || React.useRef();
 
   // merges the props we declare internally and what is passed in
@@ -138,6 +138,7 @@ should happen in this function, but rather done in the `useSample` hook
 ```typescript
 import { getSlots } from '@fluentui/react-utils'
 
+// state should come from `useSample` hook
 export const renderSample = (state: SampleState) => {
   const { slots, slotProps } = getSlots(state);
 
@@ -178,6 +179,7 @@ export interface MenuItemState extends SampleProps {
 ```
 
 NOTE: Currently `ComponentProp` inherits from a `GenericDictionary` that is essentially `Record<string, any>` which is essentially `any` :-(
+[see this comment thread](https://github.com/microsoft/fluentui/pull/16706#discussion_r568468291)
 
 ### Pros and Cons
 
