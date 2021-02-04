@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "0.3.2-0",
+  "version": "0.5.0",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,7 +27,8 @@
   "beachball": {
     "tag": "latest",
     "disallowedChangeTypes": [
-      "major"
+      "major",
+      "prerelease"
     ]
   },
   "devDependencies": {

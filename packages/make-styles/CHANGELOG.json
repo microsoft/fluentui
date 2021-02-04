@@ -2,6 +2,67 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 22:54:59 GMT",
+      "tag": "@fluentui/make-styles_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "makeStyles: finish up keyframes implementation",
+            "author": "xgao@microsoft.com",
+            "commit": "42df0bee0fa79499115ea1940cafc580f66c53ca",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "update proxy implementation to correspond to Provider CSS variables",
+            "author": "olfedias@microsoft.com",
+            "commit": "f5af8fdff38fc931c49b7cb6c03559f93e5135b5",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/make-styles_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/make-styles_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add ax() function to merge classes",
+            "author": "olfedias@microsoft.com",
+            "commit": "6436165fb77f0f0a85062b479945163a0618bdf9",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add prerelease in disallowed change type for version packages and fix current versioning.",
+            "author": "xgao@microsoft.com",
+            "commit": "9ec4369a9e7850d7ab37803f931d1a0cf30743a9",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/make-styles_v0.3.2-0",
       "version": "0.3.2-0",

@@ -12,6 +12,7 @@ interface Answers {
   packageName: string;
   target: 'react' | 'node';
   description: string;
+  publish: boolean;
   hasTests?: boolean;
   hasExamples?: boolean;
 }
@@ -56,6 +57,12 @@ module.exports = (plop: NodePlopAPI) => {
         message: 'Create example scaffolding?',
         default: true,
         when: answers => answers.target === 'react',
+      },
+      {
+        type: 'confirm',
+        name: 'publish',
+        message: 'Should the package be published right away?',
+        default: false,
       },
     ],
 
@@ -157,7 +164,7 @@ module.exports = (plop: NodePlopAPI) => {
 };
 
 function updatePackageJson(packageJsonContents: string, answers: Answers): string {
-  const { target, hasTests } = answers;
+  const { target, hasTests, publish } = answers;
 
   // Copy dep versions in package.json from actual current versions.
   // This is preferable over hardcoding dependency versions to keep things in sync.
@@ -190,6 +197,10 @@ function updatePackageJson(packageJsonContents: string, answers: Answers): strin
     delete newPackageJson.scripts['start-test'];
     delete newPackageJson.scripts.test;
     delete newPackageJson.scripts['update-snapshots'];
+  }
+
+  if (publish) {
+    delete newPackageJson.private;
   }
 
   return JSON.stringify(newPackageJson, null, 2);

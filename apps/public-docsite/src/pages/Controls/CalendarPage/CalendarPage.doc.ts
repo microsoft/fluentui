@@ -1,7 +1,12 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { CalendarPageProps as ExternalProps } from '@fluentui/react-examples/lib/react-date-time/Calendar/Calendar.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/CalendarPage/docs/CalendarRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web Calendar', url: '#/controls/web/calendar' },
+  { text: 'Android Calendar', url: '#/controls/android/calendar' },
+  { text: 'Android Date & Time Picker', url: '#/controls/android/date-time-picker) ' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/CalendarPage';
 

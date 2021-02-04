@@ -1,5 +1,4 @@
-import { KeyCombinations } from '@fluentui/accessibility';
-import { getCode } from '@fluentui/keyboard-key';
+import { KeyCombinations, getCode } from '@fluentui/accessibility';
 import * as React from 'react';
 
 const isKeyModifiersMatch = (modifierValue: boolean, combinationValue?: boolean) => {
