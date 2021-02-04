@@ -237,7 +237,6 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                 is-checked
                 {
                   border-color: #0078d4;
-                  border: 1px solid #605e5c;
                   cursor: pointer;
                   display: inline-block;
                   margin-top: 0px;
