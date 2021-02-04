@@ -33,7 +33,7 @@ pr:
       - <other relevant doc paths>
 ```
 
-_There's a PoC repo to test the ADO solution [here](https://github.com/andrefcdias/actions-test)._
+_There's a PoC repo to test the ADO solution [here](https://github.com/andrefcdias/actions-test) and a draft PR with the implementation [here](https://github.com/microsoft/fluentui/pull/16816)._
 
 ### Screener
 
