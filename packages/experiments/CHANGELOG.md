@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Feb 2021 12:22:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.9)
+
+Thu, 04 Feb 2021 12:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.8..@uifabric/experiments_v7.38.9)
+
+### Patches
+
+- SelectedItemsList EditableItem should have first item selected in picker on show ([PR #16778](https://github.com/microsoft/fluentui/pull/16778) by elvonspa@microsoft.com)
 
 ## [7.38.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.8)
 

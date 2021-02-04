@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 04 Feb 2021 12:22:41 GMT",
+      "tag": "@uifabric/experiments_v7.38.9",
+      "version": "7.38.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SelectedItemsList EditableItem should have first item selected in picker on show",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d8d96bc7f23924fe453429a502001511301da65f",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 12:24:38 GMT",
       "tag": "@uifabric/experiments_v7.38.8",
       "version": "7.38.8",
