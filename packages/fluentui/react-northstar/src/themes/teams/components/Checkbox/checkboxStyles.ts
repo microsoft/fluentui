@@ -118,7 +118,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
     backgroundRepeat: 'no-repeat',
 
     ...(p.checked &&
-      p.checked !== 'mixed' && {
+      p.checked && {
         borderColor: v.checkedBorderColor,
         backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
       }),
