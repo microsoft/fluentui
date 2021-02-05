@@ -217,6 +217,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.active === 'active' || s.active === 'inactive',
     {
       transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
+      // eslint-disable-next-line @fluentui/max-len
       transition: `transform ${animationTiming.ultraSlow} ${animations.fastEase}, opacity ${animationTiming.faster} ${animations.nullEasing}`,
 
       ':before': {
@@ -228,6 +229,7 @@ const useStyles = makeStyles<AvatarState>([
         right: 0,
 
         borderRadius: 'inherit',
+        // eslint-disable-next-line @fluentui/max-len
         transition: `margin ${animationTiming.ultraSlow} ${animations.fastEase}, opacity ${animationTiming.slower} ${animations.nullEasing}`,
       },
     },
@@ -237,11 +239,13 @@ const useStyles = makeStyles<AvatarState>([
     {
       opacity: '0.8',
       transform: 'scale(0.875)',
+      // eslint-disable-next-line @fluentui/max-len
       transition: `transform ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, opacity ${animationTiming.faster} ${animations.nullEasing}`,
 
       ':before': {
         margin: 0,
         opacity: 0,
+        // eslint-disable-next-line @fluentui/max-len
         transition: `margin ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, opacity ${animationTiming.slower} ${animations.nullEasing}`,
       },
     },
