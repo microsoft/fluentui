@@ -4,12 +4,12 @@ import { storiesOf } from '@storybook/react';
 import { CompoundButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('CompoundButton', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -89,7 +89,7 @@ storiesOf('CompoundButton', module)
 
 storiesOf('CompoundButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -161,7 +161,7 @@ storiesOf('CompoundButton Next - Block', module)
 
 storiesOf('CompoundButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()

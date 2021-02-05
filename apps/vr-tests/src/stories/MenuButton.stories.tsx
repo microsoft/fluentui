@@ -4,12 +4,12 @@ import { storiesOf } from '@storybook/react';
 import { MenuButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('MenuButton', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -71,7 +71,7 @@ storiesOf('MenuButton', module)
 
 storiesOf('MenuButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -137,7 +137,7 @@ storiesOf('MenuButton Next - Block', module)
 
 storiesOf('MenuButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()
