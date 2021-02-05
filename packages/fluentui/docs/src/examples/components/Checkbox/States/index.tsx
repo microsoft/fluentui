@@ -17,7 +17,7 @@ const States = () => (
     />
     <ComponentExample
       title="Mixed"
-      description="A checkbox can be mixed."
+      description="A checkbox can have mixed (indeterminate) state."
       examplePath="components/Checkbox/States/CheckboxExampleCheckedMixed"
     />
   </ExampleSection>
