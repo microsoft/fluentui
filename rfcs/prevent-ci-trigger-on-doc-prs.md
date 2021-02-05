@@ -57,7 +57,9 @@ _To be defined_
 
 ## Discarded Solutions
 
-N/A
+- Moving docs to the Wiki repo;
+
+  There is unfortunately no way of creating PRs for changes in the Wiki repo.
 
 ## Open Issues
 
