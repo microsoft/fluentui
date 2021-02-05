@@ -15,9 +15,7 @@ export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => (
     root: {
       'aria-checked': props.checked === 'mixed' ? 'mixed' : !!props.checked,
       'aria-disabled': props.disabled,
-      ...(!!props.controlsIds && {
-        'aria-controls': props.controlsIds,
-      }),
+      'aria-controls': props.controlsIds,
       role: 'checkbox',
       tabIndex: 0,
       [IS_FOCUSABLE_ATTRIBUTE]: true,
