@@ -136,11 +136,12 @@ This should be a pure function whose sole responsibility is to render JSX from t
 should happen in this function, but rather done in the `useSample` hook
 
 ```typescript
-import { getSlots } from '@fluentui/react-utils'
+import { getSlots } from '@fluentui/react-utils';
+import { sampleShorthandProps } from './useSample';
 
 // state should come from `useSample` hook
 export const renderSample = (state: SampleState) => {
-  const { slots, slotProps } = getSlots(state);
+  const { slots, slotProps } = getSlots(state, sampleShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
