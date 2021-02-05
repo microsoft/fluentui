@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Enable office-ui-fabric-react to fluentui repath",
+  "packageName": "@fluentui/codemods",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-05T16:44:28.957Z"
+}
