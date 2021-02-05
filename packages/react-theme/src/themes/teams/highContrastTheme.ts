@@ -4,8 +4,8 @@ import {
   ghostColorTokens,
   sharedColorTokens,
   transparentColorTokens,
-} from '../../utils/highContrast';
-import { brandColors } from '../../global';
+} from '../../utils/highContrast/index';
+import { brandColors } from '../../global/index';
 import { Theme } from '../../types';
 import { globalTheme } from './globalTheme';
 import { createShadowLevelTokens } from '../../utils/shadows';

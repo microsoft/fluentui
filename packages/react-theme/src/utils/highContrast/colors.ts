@@ -5,7 +5,7 @@ import {
   BackgroundColorTokens,
   BrandColorTokens,
 } from '../../types';
-import { black, disabled, hyperlink, selected, white } from '../../global';
+import { black, disabled, hyperlink, selected, white } from '../../global/index';
 
 export const ghostColorTokens: BackgroundColorTokens = {
   background: 'red',

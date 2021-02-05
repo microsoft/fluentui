@@ -7,7 +7,7 @@ import {
   BrandVariants,
   BrandColorTokens,
 } from '../../types';
-import { grey, white, sharedColors } from '../../global';
+import { grey, white, sharedColors } from '../../global/index';
 
 export const ghostColorTokens: BackgroundColorTokens = {
   background: 'transparent',
