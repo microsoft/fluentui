@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Add support for RangeSlider",
+  "packageName": "@fluentui/react-slider",
+  "email": "shi.cheng@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-05T21:31:53.175Z"
+}
