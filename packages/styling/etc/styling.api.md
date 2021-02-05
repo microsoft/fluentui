@@ -116,6 +116,9 @@ export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relativ
 export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): GlobalClassNames<T>;
 
 // @public
+export function getHighContrastNoAdjustStyle(): IRawStyle;
+
+// @public
 export function getIcon(name?: string): IIconRecord | undefined;
 
 // @public

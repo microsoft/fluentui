@@ -24,6 +24,16 @@ export function getScreenSelector(min: number, max: number): string {
 }
 
 /**
+ * The style which turns off high contrast adjustment in browsers.
+ */
+export function getHighContrastNoAdjustStyle(): IRawStyle {
+  return {
+    forcedColorAdjust: 'none',
+    MsHighContrastAdjust: 'none',
+  };
+}
+
+/**
  * The style which turns off high contrast adjustment in (only) Edge Chromium browser.
  */
 export function getEdgeChromiumNoHighContrastAdjustSelector(): { [EdgeChromiumHighContrastSelector]: IRawStyle } {
