@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
@@ -15,7 +15,7 @@ export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props 
     attributes: {
       trigger: {
         'aria-controls': props.open ? props.menuId : undefined,
-        'aria-expanded': props.open || undefined,
+        'aria-expanded': (props.open && !props.contextMenu) || undefined,
         'aria-haspopup': props.contextMenu ? undefined : 'true',
         id: props.triggerId,
         ...(!props.contextMenu && props.open && { tabIndex: -1 }),

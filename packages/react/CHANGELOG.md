@@ -1,8 +1,119 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 24 Nov 2020 12:29:52 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Feb 2021 12:22:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.49)
+
+Thu, 04 Feb 2021 12:22:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.48..@fluentui/react_v8.0.0-beta.49)
+
+### Changes
+
+- Add additional prop support to IBreadcrumbItems ([PR #16765](https://github.com/microsoft/fluentui/pull/16765) by andredias@microsoft.com)
+
+## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.48)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.46..@fluentui/react_v8.0.0-beta.48)
+
+### Changes
+
+- DocumentCardPreview: add maxDisplayCount prop ([PR #16666](https://github.com/microsoft/fluentui/pull/16666) by hantatsang@gmail.com)
+- Module federation innerloop experience ([PR #16771](https://github.com/microsoft/fluentui/pull/16771) by kchau@microsoft.com)
+
+## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.46)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.44..@fluentui/react_v8.0.0-beta.46)
+
+### Changes
+
+- Updating re-exports that pointed to @fluentui/react- packages to now point to @fluentui/react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.44)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.40..@fluentui/react_v8.0.0-beta.44)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. Also stop generating dist/manifest.json (file an issue if you were using it). ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+
+## [8.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.40)
+
+Fri, 22 Jan 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.39..@fluentui/react_v8.0.0-beta.40)
+
+### Changes
+
+- Added generic type for IDropdownOption ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
+
+## [8.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.39)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.34..@fluentui/react_v8.0.0-beta.39)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.34)
+
+Fri, 08 Jan 2021 12:32:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.34)
+
+### Changes
+
+- Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu ([PR #16078](https://github.com/microsoft/fluentui/pull/16078) by marwankhalili@hotmail.com)
+
+## [8.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.32)
+
+Thu, 31 Dec 2020 12:30:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.31..@fluentui/react_v8.0.0-beta.32)
+
+### Changes
+
+- Add a props for Dropdown component to enable adjust width to fit content ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+
+## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.31)
+
+Thu, 24 Dec 2020 12:35:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.27..@fluentui/react_v8.0.0-beta.31)
+
+### Changes
+
+- DetailsList: Fix group chevron alignment in single select mode ([PR #16289](https://github.com/microsoft/fluentui/pull/16289) by elcraig@microsoft.com)
+
+## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.27)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.25..@fluentui/react_v8.0.0-beta.27)
+
+### Changes
+
+- Button: Removing react-button Button from react-internal, re-exporting compat Button as regular Button. ([PR #16150](https://github.com/microsoft/fluentui/pull/16150) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.25)
+
+Fri, 04 Dec 2020 12:30:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.23..@fluentui/react_v8.0.0-beta.25)
+
+### Changes
+
+- Add combo box exports ([PR #16133](https://github.com/microsoft/fluentui/pull/16133) by dahajek@microsoft.com)
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.23)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.20..@fluentui/react_v8.0.0-beta.23)
+
+### Changes
+
+- Dropdown: fix option text truncation for single-select. ([PR #16096](https://github.com/microsoft/fluentui/pull/16096) by xgao@microsoft.com)
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.20)
 

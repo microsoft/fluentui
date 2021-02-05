@@ -9,8 +9,8 @@ import { IAutofillProps } from '@fluentui/react-internal/lib/Autofill';
 import { IBaseProps } from '@fluentui/react-internal/lib/Utilities';
 import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
 import { IButtonStyles } from '@fluentui/react-internal/lib/compat/Button';
-import { ICheckboxStyleProps } from '@fluentui/react-checkbox/lib/Checkbox';
-import { ICheckboxStyles } from '@fluentui/react-checkbox/lib/Checkbox';
+import { ICheckboxStyleProps } from '@fluentui/react-internal/lib/Checkbox';
+import { ICheckboxStyles } from '@fluentui/react-internal/lib/Checkbox';
 import { IComponentAs } from '@fluentui/react-internal/lib/Utilities';
 import { IDragDropContext } from '@fluentui/react-internal/lib/DragDrop';
 import { IDragDropEvents } from '@fluentui/react-internal/lib/DragDrop';
@@ -20,7 +20,7 @@ import { IFocusZoneProps } from '@fluentui/react-internal/lib/FocusZone';
 import { IIconProps } from '@fluentui/react-internal/lib/Icon';
 import { ILabelStyleProps } from '@fluentui/react-internal/lib/Label';
 import { ILabelStyles } from '@fluentui/react-internal/lib/Label';
-import { ILinkProps } from '@fluentui/react-link/lib/Link';
+import { ILinkProps } from '@fluentui/react-internal/lib/Link';
 import { IList } from '@fluentui/react-internal/lib/List';
 import { IListProps } from '@fluentui/react-internal/lib/List';
 import { ImageFit } from '@fluentui/react-internal/lib/Image';
@@ -359,7 +359,7 @@ export interface IBreadcrumbData {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     href?: string;
     isCurrentItem?: boolean;
@@ -514,9 +514,45 @@ export interface IComboBox {
 }
 
 // @public (undocumented)
+export interface IComboBoxClassNames {
+    // (undocumented)
+    callout: string;
+    // (undocumented)
+    container: string;
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    errorMessage: string;
+    // (undocumented)
+    header: string;
+    // (undocumented)
+    input: string;
+    // (undocumented)
+    label: string;
+    // (undocumented)
+    optionsContainer: string;
+    // (undocumented)
+    optionsContainerWrapper: string;
+    // (undocumented)
+    root: string;
+    // (undocumented)
+    screenReaderText: string;
+}
+
+// @public (undocumented)
 export interface IComboBoxOption extends ISelectableOption {
     styles?: Partial<IComboBoxOptionStyles>;
     useAriaLabelAsText?: boolean;
+}
+
+// @public (undocumented)
+export interface IComboBoxOptionClassNames {
+    // (undocumented)
+    optionText: string;
+    // (undocumented)
+    optionTextWrapper: string;
+    // (undocumented)
+    root: string;
 }
 
 // @public (undocumented)
@@ -537,7 +573,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     componentRef?: IRefObject<IComboBox>;
     dropdownMaxWidth?: number;
     dropdownWidth?: number;
-    // Warning: (ae-forgotten-export) The symbol "IComboBoxClassNames" needs to be exported by the entry point index.d.ts
     getClassNames?: (theme: ITheme, isOpen: boolean, disabled: boolean, required: boolean, focused: boolean, allowFreeForm: boolean, hasErrorMessage: boolean, className?: string) => IComboBoxClassNames;
     iconButtonProps?: IButtonProps;
     isButtonAriaHidden?: boolean;
@@ -1298,7 +1333,7 @@ export interface IDocumentCardPreviewImage {
     // @deprecated
     accentColor?: string;
     componentRef?: IRefObject<{}>;
-    // @deprecated
+    // @deprecated (undocumented)
     errorImageSrc?: string;
     height?: number;
     iconSrc?: string;
@@ -1318,6 +1353,7 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardPreview>;
     getOverflowDocumentCountText?: (overflowCount: number) => string;
+    maxDisplayCount?: number;
     previewImages: IDocumentCardPreviewImage[];
     styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
     theme?: ITheme;
@@ -1452,16 +1488,16 @@ export interface IDropdown {
 }
 
 // @public (undocumented)
-export interface IDropdownOption extends ISelectableOption {
-    // @deprecated
+export interface IDropdownOption<T = any> extends ISelectableOption<T> {
+    // @deprecated (undocumented)
     isSelected?: boolean;
 }
 
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
-    // @deprecated
+    dropdownWidth?: number | 'auto';
+    // @deprecated (undocumented)
     isDisabled?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
@@ -1547,7 +1583,7 @@ export interface IGroup {
     hasMoreData?: boolean;
     isCollapsed?: boolean;
     isDropEnabled?: boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     isSelected?: boolean;
     isShowingAll?: boolean;
     key: string;
@@ -1573,7 +1609,7 @@ export interface IGroupDividerProps {
     indentWidth?: number;
     isCollapsedGroupSelectVisible?: boolean;
     isGroupLoading?: (group: IGroup) => boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     isSelected?: boolean;
     loadingText?: string;
     onGroupHeaderClick?: (group: IGroup) => void;
@@ -1796,9 +1832,9 @@ export interface IGroupSpacerProps {
     count: number;
     indentWidth?: number;
     role?: string;
-    // @deprecated
+    // @deprecated (undocumented)
     styles?: IStyleFunctionOrObject<IGroupSpacerStyleProps, IGroupSpacerStyles>;
-    // @deprecated
+    // @deprecated (undocumented)
     theme?: ITheme;
 }
 
@@ -1886,15 +1922,10 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 }
 
 
-export * from "@fluentui/react-button";
-export * from "@fluentui/react-checkbox";
 export * from "@fluentui/react-date-time";
 export * from "@fluentui/react-internal";
 export * from "@fluentui/react-internal/lib/Selection";
-export * from "@fluentui/react-link";
-export * from "@fluentui/react-slider";
-export * from "@fluentui/react-tabs";
-export * from "@fluentui/react-toggle";
+export * from "@fluentui/react-internal/lib/compat/Button";
 
 // (No @packageDocumentation comment for this package)
 

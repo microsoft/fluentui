@@ -30,6 +30,12 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   getOverflowDocumentCountText?: (overflowCount: number) => string;
 
   /**
+   * Maximum number of document previews to display
+   * @default 3
+   */
+  maxDisplayCount?: number;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules
    */
   styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
@@ -76,8 +82,7 @@ export interface IDocumentCardPreviewImage {
   previewImageSrc?: string;
 
   /**
-   * Deprecated at v1.3.6, to be removed at \>= v2.0.0.
-   * @deprecated To be removed at v2.0.0.
+   * @deprecated To be removed at \>= v2.0.0.
    */
   errorImageSrc?: string;
 
@@ -106,8 +111,7 @@ export interface IDocumentCardPreviewImage {
   /**
    * Hex color value of the line below the preview, which should correspond to the document type.
    *
-   * Deprecated at v4.17.1, to be removed at \>= v5.0.0.
-   * @deprecated To be removed at v5.0.0.
+   * @deprecated To be removed at \>= v5.0.0.
    */
   accentColor?: string;
 

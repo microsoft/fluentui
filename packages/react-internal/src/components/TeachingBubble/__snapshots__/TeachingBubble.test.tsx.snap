@@ -33,7 +33,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           position: absolute;
           width: calc(100% + 1px);
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           border-color: WindowText;
           border-style: solid;
           border-width: 1px;
@@ -45,6 +45,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       Object {
         "filter": "opacity(0)",
         "opacity": 0,
+        "pointerEvents": "none",
       }
     }
     tabIndex={-1}
@@ -91,14 +92,12 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           tabIndex={-1}
         >
           <div
-            onBlur={[Function]}
-            onFocus={[Function]}
+            onBlurCapture={[Function]}
             onFocusCapture={[Function]}
           >
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -144,7 +143,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
             <div
               aria-hidden={true}
               data-is-visible={true}
-              onFocus={[Function]}
               style={
                 Object {
                   "pointerEvents": "none",
@@ -181,14 +179,12 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -259,7 +255,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -292,14 +287,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -476,7 +469,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -493,7 +486,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   border-color: #ffffff;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -610,7 +603,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -622,11 +615,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
                   border-color: WindowText;
                   color: Window;
+                  forced-color-adjust: none;
                 }
                 &:hover {
                   background-color: #deecf9;
@@ -634,7 +628,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   border: 1px solid #106ebe;
                   color: #0078d4;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   background-color: Highlight;
                   border-color: Highlight;
                   color: Window;
@@ -649,11 +643,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   border: 1px solid #005a9e;
                   color: #0078d4;
                 }
-                @media screen and (-ms-high-contrast: active){&:active {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                   -ms-high-contrast-adjust: none;
                   background-color: WindowText;
                   border-color: WindowText;
                   color: Window;
+                  forced-color-adjust: none;
                 }
                 & .ms-Button-label {
                   -moz-osx-font-smoothing: grayscale;
@@ -762,7 +757,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -779,7 +774,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               background: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -855,7 +850,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -888,14 +882,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -941,7 +933,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with calloutProps that dea
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -974,14 +965,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1056,7 +1045,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1089,14 +1077,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1205,7 +1191,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1275,14 +1260,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     </div>
   </div>
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1353,7 +1336,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1386,14 +1368,12 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
   tabIndex={-1}
 >
   <div
-    onBlur={[Function]}
-    onFocus={[Function]}
+    onBlurCapture={[Function]}
     onFocusCapture={[Function]}
   >
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",
@@ -1470,7 +1450,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
     <div
       aria-hidden={true}
       data-is-visible={true}
-      onFocus={[Function]}
       style={
         Object {
           "pointerEvents": "none",

@@ -16,7 +16,7 @@ import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
-import { getCode } from '@fluentui/keyboard-key';
+import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
@@ -120,6 +120,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'roster',
+    title: { content: 'Roster', as: NavLink, to: '/prototype-roster' },
+    public: false,
+  },
+  {
     id: 'searchpage',
     title: { content: 'Search Page', as: NavLink, to: '/prototype-search-page' },
     public: false,
@@ -141,6 +146,11 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'virtualized-tree',
     title: { content: 'VirtualizedTree', as: NavLink, to: '/virtualized-tree' },
+    public: true,
+  },
+  {
+    id: 'virtualized-sticky-tree',
+    title: { content: 'Virtualized StickyTree', as: NavLink, to: '/virtualized-sticky-tree' },
     public: true,
   },
   {
@@ -231,15 +241,6 @@ const baseTreeItems: TreeProps['items'] = [
           content: 'Icons',
           activeClassName: 'active',
           to: '/icon-viewer',
-        },
-      },
-      {
-        id: 'component-architecture',
-        title: {
-          as: NavLink,
-          content: 'Component Architecture',
-          activeClassName: 'active',
-          to: '/component-architecture',
         },
       },
       ...(process.env.NODE_ENV !== 'production'
@@ -563,6 +564,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           setActiveItemIds(activeItemIds);
         }}
       />
+      {/* TODO enable after we have data
+      <Flex column>
+        <NavLink to="/perf-tests" exact style={topItemTheme}>
+          <Box>Performance Tests</Box>
+        </NavLink>
+      </Flex> */}
     </Segment>
   );
 };

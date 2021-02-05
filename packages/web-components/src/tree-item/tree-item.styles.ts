@@ -1,6 +1,14 @@
 import { css } from '@microsoft/fast-element';
-import { disabledCursor, display, focusVisible, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import {
+  cssCustomPropertyBehaviorFactory,
+  DirectionalStyleSheetBehavior,
+  disabledCursor,
+  display,
+  focusVisible,
+  forcedColorsStylesheetBehavior,
+} from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
+import { neutralFillStealthHover, neutralFillStealthSelected } from '../color';
 import {
   accentForegroundRestBehavior,
   heightNumber,
@@ -13,6 +21,53 @@ import {
   neutralForegroundActiveBehavior,
   neutralForegroundRestBehavior,
 } from '../styles/index';
+
+import { FluentDesignSystemProvider } from '../design-system-provider/index';
+
+const ltr = css`
+  .expand-collapse-glyph {
+    transform: rotate(-45deg);
+  }
+  :host(.nested) .expand-collapse-button {
+    left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
+  }
+  :host([selected])::after {
+    left: calc(var(--focus-outline-width) * 1px);
+  }
+  :host([expanded]) > .positioning-region .expand-collapse-glyph {
+    transform: rotate(0deg);
+  }
+`;
+
+const rtl = css`
+  .expand-collapse-glyph {
+    transform: rotate(135deg);
+  }
+  :host(.nested) .expand-collapse-button {
+    right: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
+  }
+  :host([selected])::after {
+    right: calc(var(--focus-outline-width) * 1px);
+  }
+  :host([expanded]) > .positioning-region .expand-collapse-glyph {
+    transform: rotate(90deg);
+  }
+`;
+
+export const expandCollapseButtonSize =
+  '((var(--base-height-multiplier) / 2) * var(--design-unit)) + ((var(--design-unit) * var(--density)) / 2)';
+
+const expandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-stealth-hover-over-hover',
+  x => neutralFillStealthHover(neutralFillStealthHover)(x),
+  FluentDesignSystemProvider.findProvider,
+);
+
+const selectedExpandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-stealth-hover-over-selected',
+  x => neutralFillStealthHover(neutralFillStealthSelected)(x),
+  FluentDesignSystemProvider.findProvider,
+);
 
 export const TreeItemStyles = css`
     ${display('block')} :host {
@@ -36,7 +91,7 @@ export const TreeItemStyles = css`
     }
 
     :host(:${focusVisible}) .positioning-region {
-        border: ${neutralFocusBehavior.var} 1px solid;
+        border: ${neutralFocusBehavior.var} calc(var(--outline-width) * 1px) solid;
         border-radius: calc(var(--corner-radius) * 1px);
         color: ${neutralForegroundActiveBehavior.var};
     }
@@ -45,8 +100,8 @@ export const TreeItemStyles = css`
         display: flex;
         position: relative;
         box-sizing: border-box;
-        border: transparent 1px solid;
-        height: calc(${heightNumber} * 1px);
+        border: transparent calc(var(--outline-width) * 1px) solid;
+        height: calc((${heightNumber} + 1) * 1px);
     }
 
     .positioning-region::before {
@@ -65,12 +120,12 @@ export const TreeItemStyles = css`
     }
 
     .content-region {
-        display: flex;
+        display: inline-flex;
         align-items: center;
         white-space: nowrap;
         width: 100%;
         height: calc(${heightNumber} * 1px);
-        margin-inline-start: calc(var(--design-unit) * 2px + 2px);
+        margin-inline-start: calc(var(--design-unit) * 2px + 8px);
         font-size: var(--type-ramp-base-font-size);
         line-height: var(--type-ramp-base-line-height);
         font-weight: 400;
@@ -91,13 +146,14 @@ export const TreeItemStyles = css`
         ${
           /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
             update when density story is figured out */ ''
-        } width: var(--expand-collapse-button-size);
-        height: var(--expand-collapse-button-size);
+        } width: calc((${expandCollapseButtonSize} + (var(--design-unit) * 2)) * 1px);
+        height: calc((${expandCollapseButtonSize} + (var(--design-unit) * 2)) * 1px);
         padding: 0;
         display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        margin: 0 6px;
     }
 
     .expand-collapse-glyph {
@@ -111,10 +167,14 @@ export const TreeItemStyles = css`
     }
     .start,
     .end {
+        display: flex;
+        fill: currentcolor;
+    }
+
+     ::slotted(svg) {
         ${/* Glyph size is temporary -
             replace when glyph-size var is added */ ''} width: 16px;
         height: 16px;
-        fill: ${neutralForegroundRestBehavior.var};
     }
 
     .start {
@@ -142,8 +202,25 @@ export const TreeItemStyles = css`
         cursor: ${disabledCursor};
     }
 
+    :host(.nested) .content-region {
+      position: relative;
+      margin-inline-start: var(--expand-collapse-button-size);
+    }
+
+    :host(.nested) .expand-collapse-button {
+        position: absolute;
+    }
+
+    :host(.nested) .expand-collapse-button:hover {
+        background: ${expandCollapseHoverBehavior.var};
+    }
+
     :host([selected]) .positioning-region {
         background: ${neutralFillStealthSelectedBehavior.var};
+    }
+
+    :host([selected]) .expand-collapse-button:hover {
+      background: ${selectedExpandCollapseHoverBehavior.var};
     }
 
     :host([selected])::after {
@@ -157,19 +234,7 @@ export const TreeItemStyles = css`
           /* The french fry background needs to be calculated based on the selected background state for this control.
             We currently have no way of chaning that, so setting to accent-foreground-rest for the time being */ ''
         } background: ${accentForegroundRestBehavior.var};
-        ${/* value needs to be localized */ ''} left: calc(var(--focus-outline-width) * 1px);
         border-radius: calc(var(--corner-radius) * 1px);
-    }
-
-    :host(.nested) .content-region {
-        position: relative;
-        margin-inline-start: var(--expand-collapse-button-size);
-    }
-
-    :host(.nested) .expand-collapse-button {
-        position: absolute;
-        ${/* value needs to be localized  */ ''}
-        left: var(--expand-collapse-button-nested-width, calc(${heightNumber} * -1px));
     }
 
     ::slotted(fluent-tree-item) {
@@ -178,6 +243,7 @@ export const TreeItemStyles = css`
     }
 `.withBehaviors(
   accentForegroundRestBehavior,
+  expandCollapseHoverBehavior,
   neutralFillStealthSelectedBehavior,
   neutralFillStealthActiveBehavior,
   neutralFillStealthHoverBehavior,
@@ -186,12 +252,15 @@ export const TreeItemStyles = css`
   neutralFocusInnerAccentBehavior,
   neutralForegroundActiveBehavior,
   neutralForegroundRestBehavior,
+  selectedExpandCollapseHoverBehavior,
+  new DirectionalStyleSheetBehavior(ltr, rtl),
   forcedColorsStylesheetBehavior(
     css`
         :host {
             forced-color-adjust: none;
             border-color: transparent;
             background: ${SystemColors.Field};
+            color: ${SystemColors.FieldText};
         }
         :host .content-region {
             color: ${SystemColors.FieldText};
@@ -223,6 +292,7 @@ export const TreeItemStyles = css`
         :host(:${focusVisible}) .positioning-region {
             border-color: ${SystemColors.FieldText};
             box-shadow: 0 0 0 2px inset ${SystemColors.Field};
+            color: ${SystemColors.FieldText};
         }
         :host([disabled]) .content-region,
         :host([disabled]) .positioning-region:hover .content-region {
@@ -239,6 +309,17 @@ export const TreeItemStyles = css`
         }
         :host([disabled]) .positioning-region:hover {
             background: ${SystemColors.Field};
+        }
+        .expand-collapse-glyph,
+        .start,
+        .end {
+            fill: ${SystemColors.FieldText};
+        }
+        :host(.nested) .expand-collapse-button:hover {
+            background: ${SystemColors.Field};
+        }
+        :host(.nested) .expand-collapse-button:hover .expand-collapse-glyph {
+            fill: ${SystemColors.FieldText};
         }
         `,
   ),

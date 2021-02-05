@@ -70,7 +70,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * A callback for what should happen when a user clicks within the input area.
-   * @deprecated Please use onEmptyResolveSuggestions instead, as the suggestions aren't about
+   * @deprecated Please use `onEmptyResolveSuggestions` instead, as the suggestions aren't about
    * setting focus as they are about resolving suggestions when there is no input.
    */
   onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
@@ -172,6 +172,13 @@ export interface IBasePickerProps<T> extends React.Props<any> {
    * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
+
+  /**
+   * Optional aria-label that will be placed on the element that has the role "combobox"
+   * attached. Additionally aria-labelled by will get added to the supporting input element contained
+   * with in the combobox container
+   */
+  ['aria-label']?: string;
 
   /**
    * A callback to process a selection after the user selects something from the picker. If the callback returns null,

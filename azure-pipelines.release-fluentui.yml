@@ -33,8 +33,9 @@ steps:
       git config user.email "fluentui-internal@service.microsoft.com"
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
-  - script: |
-      npx midgard-yarn install
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
   - script: |
       PRODUCTION=true yarn build

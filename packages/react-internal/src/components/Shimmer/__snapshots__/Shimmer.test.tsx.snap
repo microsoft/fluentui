@@ -27,7 +27,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
         & > * {
           transform: translateZ(0);
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           background: WindowText
                                 linear-gradient(
                                   to right,
@@ -110,7 +110,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
               min-width: 30px;
               width: 30px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: Window;
             }
       >
@@ -121,7 +121,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
                 display: block;
                 fill: #ffffff;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 fill: Window;
               }
           height={30}
@@ -151,7 +151,7 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
               font-weight: 400;
               height: 16px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: Window;
               border-color: Window;
             }
@@ -181,10 +181,10 @@ exports[`Shimmer renders Shimmer correctly 1`] = `
               height: 20px;
               position: relative;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: Window;
             }
-            @media screen and (-ms-high-contrast: active){& > * {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
               fill: Window;
             }
         style={
@@ -291,7 +291,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
         & > * {
           transform: translateZ(0);
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           background: WindowText
                                 linear-gradient(
                                   to right,
@@ -381,10 +381,10 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 height: 40px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -477,7 +477,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 font-weight: 400;
                 height: 40px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }
@@ -528,10 +528,10 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 height: 10px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -625,10 +625,10 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 height: 10px;
                 position: relative;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
-              @media screen and (-ms-high-contrast: active){& > * {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                 fill: Window;
               }
           style={
@@ -721,7 +721,7 @@ exports[`Shimmer renders Shimmer with custom elements correctly 1`] = `
                 font-weight: 400;
                 height: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Window;
                 border-color: Window;
               }

@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerImplementation.md') as string
               }
             </Markdown>
           ),
@@ -43,7 +43,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerImplementation.md') as string
               }
             </Markdown>
           ),
@@ -58,7 +58,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/mac/DatePickerImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DatePickerPage/docs/mac/DatePickerImplementation.md') as string
               }
             </Markdown>
           ),

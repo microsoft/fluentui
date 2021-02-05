@@ -15,6 +15,7 @@ exports[`TagPicker renders correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone1"
+    id="combobox-id__0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -111,7 +112,7 @@ exports[`TagPicker renders correctly 1`] = `
                 &:hover .ms-TagItem-close {
                   color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             data-is-focusable={true}
@@ -181,7 +182,7 @@ exports[`TagPicker renders correctly 1`] = `
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -198,7 +199,7 @@ exports[`TagPicker renders correctly 1`] = `
                     background: #e1dfdd;
                     color: #323130;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
@@ -322,6 +323,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
           outline: none;
         }
     data-focuszone-id="FocusZone1"
+    id="combobox-id__0"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -418,7 +420,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                 &:hover .ms-TagItem-close {
                   color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             data-is-focusable={true}
@@ -488,7 +490,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -505,7 +507,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                     background: #e1dfdd;
                     color: #323130;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }

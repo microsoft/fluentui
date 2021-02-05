@@ -41,7 +41,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyWeights.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyWeights.md') as string
                 }
               </Markdown>
               {_renderWeightsTable(typeWeights)}
@@ -55,7 +55,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographySizes.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographySizes.md') as string
                 }
               </Markdown>
               {_renderSizesTable(typeSizes)}
@@ -65,12 +65,12 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/TypographyImplementation.md`,
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
         },
         {
           sectionName: 'Customization',
           editUrl: `${baseUrl}/web/TypographyCustomization.md`,
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
         },
       ];
   }

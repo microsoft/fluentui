@@ -1,4 +1,9 @@
-import { getGlobalClassNames, getTheme, HighContrastSelector } from '@fluentui/style-utilities';
+import {
+  getGlobalClassNames,
+  getTheme,
+  HighContrastSelector,
+  getHighContrastNoAdjustStyle,
+} from '@fluentui/style-utilities';
 import { IFloatingSuggestionItemStylesProps, IFloatingSuggestionItemStyles } from './FloatingSuggestionsItem.types';
 
 const GlobalClassNames = {
@@ -18,7 +23,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
 
   const { isSelected } = props;
   const { palette, semanticColors, fonts } = theme;
-  const { neutralDark, neutralTertiaryAlt, neutralSecondary } = palette;
+  const { neutralDark, neutralLight, neutralSecondary } = palette;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -68,7 +73,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },
@@ -84,8 +89,13 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         width: 32,
         selectors: {
           ':hover, :active': {
-            background: neutralTertiaryAlt,
+            background: neutralLight,
             color: neutralDark,
+            [HighContrastSelector]: {
+              background: 'Highlight',
+              color: 'HighlightText',
+              ...getHighContrastNoAdjustStyle(),
+            },
           },
           [HighContrastSelector]: {
             color: 'WindowText',

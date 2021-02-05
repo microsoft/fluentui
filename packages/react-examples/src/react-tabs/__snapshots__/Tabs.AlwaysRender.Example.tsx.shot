@@ -27,7 +27,7 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
             box-shadow: none;
             box-sizing: border-box;
             color: #323130;
-            display: block;
+            display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 600;
@@ -53,7 +53,7 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
       className=
           ms-Toggle-innerContainer
           {
-            display: inline-flex;
+            display: flex;
             position: relative;
           }
     >
@@ -102,10 +102,10 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
             &:hover .ms-Toggle-thumb {
               background-color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
             }
         data-is-focusable={true}
@@ -220,7 +220,7 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -232,13 +232,16 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+              color: Highlight;
+            }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -280,15 +283,12 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
             &[data-is-overflowing='true'] {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){&:before {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
               background-color: Highlight;
             }
             &:hover::before {
               left: 0px;
               right: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: Highlight;
             }
         data-content="Expensive component #1"
         data-is-focusable={true}
@@ -389,7 +389,7 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -401,13 +401,15 @@ exports[`Component Examples renders Tabs.AlwaysRender.Example.tsx correctly 1`] 
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {

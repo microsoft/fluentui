@@ -25,8 +25,10 @@ export const SelectStyles = css`
         background: ${neutralFillInputRestBehavior.var};
         border-radius: calc(var(--corner-radius) * 1px);
         border: calc(var(--outline-width) * 1px) solid ${neutralOutlineRestBehavior.var};
+        box-sizing: border-box;
         color: ${neutralForegroundRestBehavior.var};
         contain: contents;
+        height: calc(${heightNumber} * 1px);
         position: relative;
         user-select: none;
         min-width: 250px;
@@ -166,6 +168,7 @@ export const SelectStyles = css`
     .start,
     .end,
     .indicator,
+    .select-indicator,
     ::slotted(svg) {
         ${`` /* Glyph size is temporary - replace when glyph-size var is added */}
         fill: currentcolor;

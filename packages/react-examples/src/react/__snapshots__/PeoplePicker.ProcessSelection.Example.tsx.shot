@@ -16,6 +16,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
             outline: none;
           }
       data-focuszone-id="FocusZone1"
+      id="combobox-id__0"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
@@ -112,7 +113,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
         &:hover .ms-Checkbox-checkbox {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
@@ -122,19 +123,19 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
           color: #605e5c;
           opacity: 1;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
           color: WindowText;
         }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
           color: WindowText;
         }
   >
@@ -153,8 +154,8 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
             outline-offset: 2px;
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-2"
@@ -207,7 +208,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
             }
             @media screen and (forced-colors: active){& {
@@ -230,9 +231,10 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
                 opacity: 0;
                 speak: none;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 color: Window;
+                forced-color-adjust: none;
               }
           data-icon-name="CheckMark"
         >
@@ -249,7 +251,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
               line-height: 20px;
               margin-left: 4px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: WindowText;
             }
             @media screen and (forced-colors: active){& {
@@ -272,7 +274,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
         &:hover .ms-Checkbox-checkbox {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
@@ -282,19 +284,19 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
           color: #605e5c;
           opacity: 1;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
           color: WindowText;
         }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
           color: WindowText;
         }
   >
@@ -313,8 +315,8 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
             outline-offset: 2px;
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-3"
@@ -367,7 +369,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
             }
             @media screen and (forced-colors: active){& {
@@ -390,9 +392,10 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
                 opacity: 0;
                 speak: none;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 color: Window;
+                forced-color-adjust: none;
               }
           data-icon-name="CheckMark"
         >
@@ -409,7 +412,7 @@ exports[`Component Examples renders PeoplePicker.ProcessSelection.Example.tsx co
               line-height: 20px;
               margin-left: 4px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: WindowText;
             }
             @media screen and (forced-colors: active){& {

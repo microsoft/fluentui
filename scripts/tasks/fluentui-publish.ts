@@ -12,6 +12,7 @@ export function fluentuiLernaPublish(bumpType) {
       'publish',
       "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
       '--no-git-reset',
+      '--force-publish',
       '--registry',
       argv().registry,
       bumpType,

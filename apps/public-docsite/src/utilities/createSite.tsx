@@ -25,9 +25,6 @@ const corePackageVersion: string = (corePackageData && corePackageData.version) 
 // Initialize
 initializeIcons();
 
-// @TODO: This doesn't appear to do anything right now. Investigate removing.
-const isProduction = (process as any).argv.indexOf('--production') > -1;
-
 declare let Flight: any; // Flight & CDN configuration
 declare let __webpack_public_path__: string; // eslint-disable-line @typescript-eslint/naming-convention
 
@@ -35,11 +32,7 @@ if (!isLocal && Flight.baseCDNUrl) {
   __webpack_public_path__ = Flight.baseCDNUrl;
 }
 
-if (!isProduction) {
-  setBaseUrl('./dist/');
-} else {
-  setBaseUrl(__webpack_public_path__);
-}
+setBaseUrl(process.env.NODE_ENV !== 'production' ? './dist/' : __webpack_public_path__);
 
 let rootElement: HTMLElement;
 

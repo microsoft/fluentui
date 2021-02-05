@@ -49,16 +49,15 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
     },
     markdownList: {
       selectors: {
-        'ul li': [
+        li: [
           {
             fontSize: theme.fonts.medium.fontSize,
             padding: '4px 8px',
-            selectors: {
-              '&:hover': { background: theme.palette.neutralLight },
-            },
           },
           getFocusOutlineStyle(theme, 1),
         ],
+        // doing :hover styles together with li above applied them to root markdownList
+        'li:hover': { background: theme.palette.neutralLight },
       },
     },
     jumpLinkWrapper: {

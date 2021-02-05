@@ -1,5 +1,5 @@
 import { IButtonStyles } from './Button.types';
-import { ITheme, HighContrastSelector, IRawStyle } from '../../../Styling';
+import { ITheme, HighContrastSelector, IRawStyle, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 
 const splitButtonDividerBaseStyles = (): IRawStyle => {
@@ -18,9 +18,11 @@ export function standardStyles(theme: ITheme): IButtonStyles {
   const buttonBackground = s.buttonBackground;
   const buttonBackgroundPressed = s.buttonBackgroundPressed;
   const buttonBackgroundHovered = s.buttonBackgroundHovered;
+  const buttonBackgroundDisabled = s.buttonBackgroundDisabled;
 
   const buttonText = s.buttonText;
   const buttonTextHovered = s.buttonTextHovered;
+  const buttonTextDisabled = s.buttonTextDisabled;
   const buttonTextChecked = s.buttonTextChecked;
   const buttonTextCheckedHovered = s.buttonTextCheckedHovered;
 
@@ -62,6 +64,8 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     rootDisabled: {
+      color: buttonTextDisabled,
+      backgroundColor: buttonBackgroundDisabled,
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',
@@ -159,7 +163,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           color: 'Window',
           backgroundColor: 'WindowText',
           borderColor: 'WindowText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
           selectors: {
@@ -194,7 +198,7 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
           color: 'Window',
           backgroundColor: 'WindowText',
           borderColor: 'WindowText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },
@@ -215,6 +219,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootDisabled: {
+      color: s.primaryButtonTextDisabled,
+      backgroundColor: s.primaryButtonBackgroundDisabled,
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',

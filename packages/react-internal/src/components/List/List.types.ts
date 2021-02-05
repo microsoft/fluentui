@@ -199,10 +199,16 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    */
   renderedWindowsBehind?: number;
 
-  /** Index in items array to start rendering from. Defaults to 0. */
+  /**
+   * Index in `items` array to start rendering from.
+   * @default 0
+   */
   startIndex?: number;
 
-  /** Number of items to render. Defaults to items.length. */
+  /**
+   * Number of items to render.
+   * @default items.length
+   */
   renderCount?: number;
 
   /**

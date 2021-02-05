@@ -352,7 +352,7 @@ function _renderLinkTokens(
 
       if (token.linkedPage && token.linkedPageGroup) {
         return (
-          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)}>
+          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)} underline>
             <code>{token.text}</code>
           </Link>
         );

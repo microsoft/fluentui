@@ -5,15 +5,17 @@ import { iconClassNames } from '../utils/iconClassNames';
 
 export const GroupVideoCallGridIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg className={classes.svg} viewBox="8 8 16 16" role="presentation" focusable="false">
+    <svg role="presentation" focusable="false" viewBox="2 2 16 16" className={classes.svg}>
       <path
         className={cx(iconClassNames.outline, classes.outlinePart)}
-        d="M21.5,8A1.51,1.51,0,0,1,23,9.5v5a.51.51,0,0,1-.5.5h-6a.51.51,0,0,1-.5-.5v-6a.51.51,0,0,1,.5-.5Zm-7,8a.51.51,0,0,1,.5.5v6a.51.51,0,0,1-.5.5h-5A1.57,1.57,0,0,1,8,21.5v-5a.51.51,0,0,1,.5-.5ZM9,17v4.5a.51.51,0,0,0,.5.5H14V17Zm5.5-9a.51.51,0,0,1,.5.5v6a.51.51,0,0,1-.5.5h-6a.51.51,0,0,1-.5-.5v-5A1.54,1.54,0,0,1,9.5,8Zm-5,1a.51.51,0,0,0-.5.5V14h5V9Zm13,7a.51.51,0,0,1,.5.5v5A1.54,1.54,0,0,1,21.5,23h-5a.51.51,0,0,1-.5-.5v-6a.51.51,0,0,1,.5-.5ZM17,17v5h4.5a.51.51,0,0,0,.5-.5V17Zm0-8v5h5V9.5a.51.51,0,0,0-.5-.5Z"
+        d="M3 5.5C3 4.11929 4.11929 3 5.5 3H14.5C15.8807 3 17 4.11929 17 5.5V14.5C17 15.8807 15.8807 17 14.5 17H5.5C4.11929 17 3 15.8807 3 14.5V5.5ZM4 10.5V14.5C4 15.3284 4.67157 16 5.5 16H9.5V10.5H4ZM9.5 9.5V4H5.5C4.67157 4 4 4.67157 4 5.5V9.5H9.5ZM10.5 10.5V16H14.5C15.3284 16 16 15.3284 16 14.5V10.5H10.5ZM16 9.5V5.5C16 4.67157 15.3284 4 14.5 4H10.5V9.5H16Z"
       />
-      <path
-        className={cx(iconClassNames.filled, classes.filledPart)}
-        d="M21.5,8A1.51,1.51,0,0,1,23,9.5v5a.51.51,0,0,1-.5.5h-6a.51.51,0,0,1-.5-.5v-6a.51.51,0,0,1,.5-.5Zm-7,8a.51.51,0,0,1,.5.5v6a.51.51,0,0,1-.5.5h-5A1.57,1.57,0,0,1,8,21.5v-5a.51.51,0,0,1,.5-.5Zm0-8a.51.51,0,0,1,.5.5v6a.51.51,0,0,1-.5.5h-6a.51.51,0,0,1-.5-.5v-5A1.54,1.54,0,0,1,9.5,8Zm8,8a.51.51,0,0,1,.5.5v5A1.54,1.54,0,0,1,21.5,23h-5a.51.51,0,0,1-.5-.5v-6a.51.51,0,0,1,.5-.5Z"
-      />
+      <g className={cx(iconClassNames.filled, classes.filledPart)}>
+        <path d="M5.5 3C4.11929 3 3 4.11929 3 5.5V9.5H9.5V3H5.5Z" />
+        <path d="M9.5 10.5H3V14.5C3 15.8807 4.11929 17 5.5 17H9.5V10.5Z" />
+        <path d="M10.5 10.5H17V14.5C17 15.8807 15.8807 17 14.5 17H10.5V10.5Z" />
+        <path d="M17 9.5V5.5C17 4.11929 15.8807 3 14.5 3H10.5V9.5H17Z" />
+      </g>
     </svg>
   ),
   displayName: 'GroupVideoCallGridIcon',

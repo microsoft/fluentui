@@ -6,6 +6,7 @@ import {
   getFocusStyle,
   IStyle,
   getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../../../Styling';
 import { memoizeFunction } from '../../../../Utilities';
 
@@ -51,7 +52,7 @@ export const getStyles = memoizeFunction(
                   backgroundColor: 'Window',
                   border: '1px solid WindowText',
                   borderRightWidth: '0',
-                  MsHighContrastAdjust: 'none',
+                  ...getHighContrastNoAdjustStyle(),
                 },
               },
             },
@@ -96,7 +97,7 @@ export const getStyles = memoizeFunction(
               [HighContrastSelector]: {
                 color: 'Window',
                 backgroundColor: 'WindowText',
-                MsHighContrastAdjust: 'none',
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
@@ -109,7 +110,7 @@ export const getStyles = memoizeFunction(
               [HighContrastSelector]: {
                 color: 'Window',
                 backgroundColor: 'WindowText',
-                MsHighContrastAdjust: 'none',
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
@@ -139,6 +140,11 @@ export const getStyles = memoizeFunction(
         marginTop: 0,
         marginRight: 0,
         marginBottom: 0,
+        [HighContrastSelector]: {
+          '.ms-Button-menuIcon': {
+            color: 'WindowText',
+          },
+        },
       },
       splitButtonDivider: {
         ...splitButtonDividerBaseStyles,
@@ -205,6 +211,7 @@ export const getStyles = memoizeFunction(
             borderColor: 'GrayText',
             backgroundColor: 'Window',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

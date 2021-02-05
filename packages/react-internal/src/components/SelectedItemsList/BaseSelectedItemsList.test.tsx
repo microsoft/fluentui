@@ -34,7 +34,12 @@ describe('SelectedItemsList', () => {
       displayName: 'BaseSelectedItemsList',
       // Problem: Ref is not supported
       // Solution: Convert to FunctionComponent and support using forwardRef
-      disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
+      disabledTests: [
+        'has-top-level-file',
+        'component-handles-ref',
+        'component-has-root-ref',
+        'component-handles-classname',
+      ],
     });
 
     it('can remove items', () => {

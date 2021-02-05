@@ -24,6 +24,7 @@ describe('Rating', () => {
   isConformant({
     Component: Rating,
     displayName: 'Rating',
+    disabledTests: ['component-handles-classname'],
   });
 
   it('can change rating', () => {

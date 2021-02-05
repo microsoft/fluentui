@@ -35,7 +35,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <Markdown>
                 {
-                  require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsOverview.md') as string
+                  require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsOverview.md') as string
                 }
               </Markdown>
 
@@ -50,10 +50,17 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       Microsoft Office files.
                       <br />
                       <br />
-                      If you are looking for icons for command bars, navigation, status indicators, or similar, check
-                      out the <Link href="#/styles/web/icons">Fluent UI icons page</Link>. Alternatively, if you're
-                      looking for brand logos, or the icons of apps themselves, check out the{' '}
-                      <Link href="#/styles/web/office-brand-icons">Fluent UI brand icons page</Link>.
+                      If you're looking for icons for command bars, navigation, status indicators, or similar, check out
+                      the{' '}
+                      <Link href="#/styles/web/icons" underline>
+                        Fluent UI icons page
+                      </Link>
+                      . {/* comment to prevent eslint/prettier conflict */}Alternatively, if you're looking for brand
+                      logos, or the icons of apps themselves, check out the{' '}
+                      <Link href="#/styles/web/office-brand-icons" underline>
+                        Fluent UI brand icons page
+                      </Link>
+                      .
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -95,7 +102,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <Markdown>
                     {
-                      require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsFormat.md') as string
+                      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsFormat.md') as string
                     }
                   </Markdown>
                 </div>
@@ -129,7 +136,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
               }
             </Markdown>
           ),

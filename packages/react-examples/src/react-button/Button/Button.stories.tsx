@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, ButtonProps, ButtonTokens, ButtonVariants } from '@fluentui/react-button';
-import { PartialTheme, ThemeProvider } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
+import { PartialTheme } from '@fluentui/theme';
 import * as classes from '../Button.stories.scss';
 
 /**
@@ -49,8 +50,18 @@ const ButtonExamples = (props: ButtonProps) => (
 
 export const Buttons = () => (
   <Stack>
-    <Text>A button comes in default and `primary` flavors.</Text>
+    <Text>A button comes in default, `primary`, `ghost` and `transparent` flavors.</Text>
     <ButtonExamples />
+
+    <Text>A button can be focusable when disabled</Text>
+    <Stack horizontal>
+      <Button disabled icon="X" onClick={() => alert('You cannot see me')}>
+        Disabled, non-focusable button
+      </Button>
+      <Button disabled disabledFocusable icon="X" onClick={() => alert('You cannot see me')}>
+        Disabled, focusable button
+      </Button>
+    </Stack>
 
     <Text>A button can appear round using the `circular` prop.</Text>
     <ButtonExamples circular />

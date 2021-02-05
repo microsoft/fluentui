@@ -51,6 +51,16 @@ export const SplitButtons = () => (
     <Text variant="xLarge">A split button comes in default and `primary` variant.</Text>
     <SplitButtonExamples />
 
+    <Text variant="xLarge">A button can be focusable when disabled</Text>
+    <div className={classes.hStack}>
+      <SplitButton disabled icon="X">
+        Disabled, non-focusable button
+      </SplitButton>
+      <SplitButton disabled disabledFocusable icon="X">
+        Disabled, focusable button
+      </SplitButton>
+    </div>
+
     <Text variant="xLarge">A split button can appear round using the `circular` prop.</Text>
     <SplitButtonExamples circular />
 

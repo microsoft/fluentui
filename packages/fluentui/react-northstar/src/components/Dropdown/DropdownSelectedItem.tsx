@@ -2,6 +2,8 @@ import {
   Accessibility,
   dropdownSelectedItemBehavior,
   DropdownSelectedItemBehaviorProps,
+  getCode,
+  keyboardKey,
 } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -9,7 +11,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import {
   ComponentEventHandler,
   ShorthandValue,

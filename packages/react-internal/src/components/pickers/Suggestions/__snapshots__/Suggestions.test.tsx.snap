@@ -13,11 +13,7 @@ exports[`Suggestions renders a list properly 1`] = `
     className="ms-Suggestions-container"
     role="listbox"
   >
-    <div
-      aria-selected={true}
-      id="sug-0"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -46,6 +42,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={true}
           className=
               ms-Button
               ms-Button--action
@@ -94,7 +91,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -106,15 +103,22 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+                forced-color-adjust: none;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -125,18 +129,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
-              }
           data-is-focusable={true}
+          id="sug-0"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -160,11 +161,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-1"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -183,6 +180,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -229,7 +227,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -241,14 +239,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -259,16 +261,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-1"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -292,11 +293,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-2"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -315,6 +312,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -361,7 +359,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -373,14 +371,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -391,16 +393,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-2"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -424,11 +425,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-3"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -447,6 +444,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -493,7 +491,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -505,14 +503,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -523,16 +525,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-3"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -556,11 +557,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-4"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -579,6 +576,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -625,7 +623,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -637,14 +635,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -655,16 +657,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-4"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -688,11 +689,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-5"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -711,6 +708,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -757,7 +755,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -769,14 +767,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -787,16 +789,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-5"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -820,11 +821,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-6"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -843,6 +840,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -889,7 +887,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -901,14 +899,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -919,16 +921,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-6"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -952,11 +953,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-7"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -975,6 +972,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1021,7 +1019,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1033,14 +1031,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1051,16 +1053,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-7"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1084,11 +1085,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-8"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1107,6 +1104,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1153,7 +1151,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1165,14 +1163,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1183,16 +1185,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-8"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1216,11 +1217,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-9"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1239,6 +1236,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1285,7 +1283,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1297,14 +1295,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1315,16 +1317,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-9"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1348,11 +1349,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-10"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1371,6 +1368,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1417,7 +1415,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1429,14 +1427,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1447,16 +1449,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-10"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1480,11 +1481,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-11"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1503,6 +1500,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1549,7 +1547,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1561,14 +1559,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1579,16 +1581,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-11"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1612,11 +1613,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-12"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1635,6 +1632,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1681,7 +1679,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1693,14 +1691,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1711,16 +1713,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-12"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1744,11 +1745,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-13"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1767,6 +1764,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1813,7 +1811,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1825,14 +1823,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1843,16 +1845,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-13"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -1876,11 +1877,7 @@ exports[`Suggestions renders a list properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-14"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -1899,6 +1896,7 @@ exports[`Suggestions renders a list properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -1945,7 +1943,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1957,14 +1955,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1975,16 +1977,15 @@ exports[`Suggestions renders a list properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-14"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2036,11 +2037,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         }
     role="listbox"
   >
-    <div
-      aria-selected={true}
-      id="sug-0"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2069,6 +2066,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={true}
           className=
               ms-Button
               ms-Button--action
@@ -2117,7 +2115,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2129,15 +2127,22 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+                forced-color-adjust: none;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2148,18 +2153,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
-              }
           data-is-focusable={true}
+          id="sug-0"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2183,11 +2185,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-1"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2206,6 +2204,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -2252,7 +2251,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2264,14 +2263,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2282,16 +2285,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-1"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2315,11 +2317,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-2"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2338,6 +2336,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -2384,7 +2383,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2396,14 +2395,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2414,16 +2417,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-2"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2447,11 +2449,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-3"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2470,6 +2468,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -2516,7 +2515,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2528,14 +2527,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2546,16 +2549,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-3"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2579,11 +2581,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-4"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2602,6 +2600,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -2648,7 +2647,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2660,14 +2659,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2678,16 +2681,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-4"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2711,11 +2713,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-5"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2734,6 +2732,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -2780,7 +2779,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2792,14 +2791,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2810,16 +2813,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-5"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2843,11 +2845,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-6"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2866,6 +2864,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -2912,7 +2911,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2924,14 +2923,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2942,16 +2945,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-6"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -2975,11 +2977,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-7"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -2998,6 +2996,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3044,7 +3043,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3056,14 +3055,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3074,16 +3077,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-7"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3107,11 +3109,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-8"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3130,6 +3128,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3176,7 +3175,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3188,14 +3187,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3206,16 +3209,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-8"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3239,11 +3241,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-9"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3262,6 +3260,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3308,7 +3307,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3320,14 +3319,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3338,16 +3341,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-9"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3371,11 +3373,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-10"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3394,6 +3392,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3440,7 +3439,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3452,14 +3451,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3470,16 +3473,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-10"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3503,11 +3505,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-11"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3526,6 +3524,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3572,7 +3571,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3584,14 +3583,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3602,16 +3605,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-11"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3635,11 +3637,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-12"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3658,6 +3656,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3704,7 +3703,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3716,14 +3715,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3734,16 +3737,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-12"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3767,11 +3769,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-13"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3790,6 +3788,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3836,7 +3835,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3848,14 +3847,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3866,16 +3869,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-13"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -3899,11 +3901,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-14"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -3922,6 +3920,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -3968,7 +3967,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3980,14 +3979,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3998,16 +4001,15 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-14"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4048,11 +4050,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
     className="ms-Suggestions-container"
     role="listbox"
   >
-    <div
-      aria-selected={false}
-      id="sug-0"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4071,6 +4069,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4117,7 +4116,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4129,14 +4128,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4147,16 +4150,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-0"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4180,11 +4182,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-1"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4203,6 +4201,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4249,7 +4248,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4261,14 +4260,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4279,16 +4282,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-1"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4312,11 +4314,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-2"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4335,6 +4333,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4381,7 +4380,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4393,14 +4392,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4411,16 +4414,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-2"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4444,11 +4446,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-3"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4467,6 +4465,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4513,7 +4512,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4525,14 +4524,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4543,16 +4546,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-3"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4576,11 +4578,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-4"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4599,6 +4597,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4645,7 +4644,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4657,14 +4656,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4675,16 +4678,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-4"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4708,11 +4710,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-5"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4731,6 +4729,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4777,7 +4776,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4789,14 +4788,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4807,16 +4810,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-5"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4840,11 +4842,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-6"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4863,6 +4861,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -4909,7 +4908,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4921,14 +4920,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4939,16 +4942,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-6"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -4972,11 +4974,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-7"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -4995,6 +4993,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5041,7 +5040,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5053,14 +5052,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5071,16 +5074,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-7"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5104,11 +5106,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={true}
-      id="sug-8"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5137,6 +5135,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={true}
           className=
               ms-Button
               ms-Button--action
@@ -5185,7 +5184,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5197,15 +5196,22 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
+                background: Highlight;
+                border-color: Window;
+                color: HighlightText;
+                forced-color-adjust: none;
+              }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5216,18 +5222,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                -ms-high-contrast-adjust: none;
-                background: Highlight;
-                color: HighlightText;
-              }
           data-is-focusable={true}
+          id="sug-8"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5251,11 +5254,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-9"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5274,6 +5273,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5320,7 +5320,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5332,14 +5332,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5350,16 +5354,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-9"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5383,11 +5386,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-10"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5406,6 +5405,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5452,7 +5452,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5464,14 +5464,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5482,16 +5486,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-10"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5515,11 +5518,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-11"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5538,6 +5537,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5584,7 +5584,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5596,14 +5596,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5614,16 +5618,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-11"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5647,11 +5650,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-12"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5670,6 +5669,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5716,7 +5716,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5728,14 +5728,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5746,16 +5750,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-12"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5779,11 +5782,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-13"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5802,6 +5801,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5848,7 +5848,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5860,14 +5860,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5878,16 +5882,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-13"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span
@@ -5911,11 +5914,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
         </button>
       </div>
     </div>
-    <div
-      aria-selected={false}
-      id="sug-14"
-      role="option"
-    >
+    <div>
       <div
         className=
             ms-Suggestions-item
@@ -5934,6 +5933,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
             }
       >
         <button
+          aria-selected={false}
           className=
               ms-Button
               ms-Button--action
@@ -5980,7 +5980,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5992,14 +5992,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                border-color: Window;
+                color: WindowText;
+              }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
-                border-color: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -6010,16 +6014,15 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               &:active .ms-Button-icon {
                 color: #004578;
               }
-              @media screen and (-ms-high-contrast: active){& {
-                color: WindowText;
-              }
           data-is-focusable={true}
+          id="sug-14"
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
           onKeyUp={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
+          role="option"
           type="button"
         >
           <span

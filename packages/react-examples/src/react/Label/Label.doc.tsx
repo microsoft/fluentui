@@ -3,7 +3,7 @@ import { LabelBasicExample } from './Label.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const LabelBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Label/Label.Basic.Example.tsx') as string;
+const LabelBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Label/Label.Basic.Example.tsx') as string;
 
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',
@@ -16,8 +16,12 @@ export const LabelPageProps: IDocPageProps = {
       view: <LabelBasicExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Label/docs/LabelOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Label/docs/LabelBestPractices.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Label/docs/LabelOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Label/docs/LabelBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

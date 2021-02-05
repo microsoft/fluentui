@@ -3,11 +3,13 @@ import {
   FocusZoneTabbableElements,
   IS_ENTER_DISABLED_ATTRIBUTE,
   IS_FOCUSABLE_ATTRIBUTE,
+  getCode,
+  keyboardKey,
+  SpacebarKey,
 } from '@fluentui/accessibility';
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 

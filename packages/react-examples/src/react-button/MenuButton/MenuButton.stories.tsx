@@ -52,6 +52,16 @@ export const DefaultMenuButtons = () => {
       <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
       <MenuButtonExamples menu={<ContextualMenu {...menuProps} />} />
 
+      <Text variant="xLarge">A button can be focusable when disabled</Text>
+      <div className={classes.hStack}>
+        <MenuButton disabled icon="X">
+          Disabled, non-focusable button
+        </MenuButton>
+        <MenuButton disabled disabledFocusable icon="X">
+          Disabled, focusable button
+        </MenuButton>
+      </div>
+
       <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
       <MenuButtonExamples circular menu={<ContextualMenu {...menuProps} />} />
 

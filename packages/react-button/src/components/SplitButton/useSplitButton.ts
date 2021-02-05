@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utils';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 import { useMergedRefs } from '@fluentui/react-hooks';
 
@@ -22,19 +22,18 @@ export const useSplitButton = (
     primary,
     ghost,
     disabled,
+    disabledFocusable,
     loading,
     circular,
     block,
     menu,
+    menuButtonRef,
     size,
     transparent,
     ...userProps
   } = resolveShorthandProps(props, splitButtonShorthandProps);
 
   ref = useMergedRefs(ref, React.useRef<HTMLElement>(null));
-
-  // A split button should be disabled when disabled or loading.
-  const disabledOrLoading = disabled || loading;
 
   const state = mergeProps(
     {
@@ -46,7 +45,7 @@ export const useSplitButton = (
       primary,
       size,
       transparent,
-      'aria-disabled': disabledOrLoading,
+      'aria-disabled': disabled,
 
       button: {
         as: 'span',
@@ -54,7 +53,8 @@ export const useSplitButton = (
         primary,
         ghost,
         circular,
-        disabled: disabledOrLoading,
+        disabled,
+        disabledFocusable,
         loading,
         size,
         transparent,
@@ -65,11 +65,13 @@ export const useSplitButton = (
 
       menuButton: {
         as: 'span',
+        ref: menuButtonRef,
         primary,
         ghost,
         circular,
         size,
-        disabled: disabledOrLoading,
+        disabled,
+        disabledFocusable,
         loading,
         transparent,
         menu,

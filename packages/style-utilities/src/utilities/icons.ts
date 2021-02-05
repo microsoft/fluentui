@@ -38,8 +38,7 @@ export interface IIconOptions {
   disableWarnings: boolean;
 
   /**
-   * @deprecated
-   * Use 'disableWarnings' instead.
+   * @deprecated Use `disableWarnings` instead.
    */
   warnOnMissingIcons?: boolean;
 }

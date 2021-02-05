@@ -6,7 +6,7 @@ import { Box } from 'src/components/Box/Box';
 import { Popup, PopupEvents } from 'src/components/Popup/Popup';
 import { popupContentClassName } from 'src/components/Popup/PopupContent';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
-import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, KeyNames, SpacebarKey } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
 import { implementsPopperProps } from 'test/specs/commonTests/implementsPopperProps';
 
@@ -114,6 +114,16 @@ describe('Popup', () => {
 
       expect(spy).toHaveBeenCalledTimes(1);
       expect(spy.mock.calls[0][1]).toMatchObject({ open: true });
+    });
+
+    test('is not called on click when on is contextmenu and hover', () => {
+      const spy = jest.fn();
+
+      mountWithProvider(<Popup trigger={<button />} content="Hi" onOpenChange={spy} on={['context', 'hover']} />)
+        .find('button')
+        .simulate('click');
+
+      expect(spy).not.toHaveBeenCalled();
     });
 
     // https://github.com/microsoft/fluent-ui-react/pull/619
