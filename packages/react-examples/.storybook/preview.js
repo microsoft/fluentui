@@ -28,9 +28,6 @@ if (
 ) {
   addDecorator(withThemeProvider);
   addDecorator(withStrictMode);
-  addParameters({
-    options: {}
-  })
 }
 
 addParameters({
