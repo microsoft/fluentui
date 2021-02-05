@@ -173,18 +173,18 @@ export type ProductBrandColors = {
 
 export type FontSizes = {
   base: {
-    100: string;
-    200: string;
-    300: string;
-    400: string;
-    500: string;
-    600: string;
+    100: number;
+    200: number;
+    300: number;
+    400: number;
+    500: number;
+    600: number;
   };
   hero: {
-    700: string;
-    800: string;
-    900: string;
-    1000: string;
+    700: number;
+    800: number;
+    900: number;
+    1000: number;
   };
 };
 
@@ -203,19 +203,19 @@ export type FontFamilies = {
 };
 
 export type BorderRadius = {
-  none: string;
-  small: string;
-  medium: string;
-  large: string;
-  xLarge: string;
+  none: number;
+  small: number;
+  medium: number;
+  large: number;
+  xLarge: number;
   circular: string;
 };
 
 export type StrokeWidths = {
-  thin: string;
-  thick: string;
-  thicker: string;
-  thickest: string;
+  thin: number;
+  thick: number;
+  thicker: number;
+  thickest: number;
 };
 
 /**
@@ -242,7 +242,6 @@ export type ShadowLevelTokens = {
  * Theme object
  */
 export type Theme = {
-  borderRadius: BorderRadius;
   sharedColors: GlobalSharedColors;
   sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens>;
   fontSizes: FontSizes;
@@ -251,12 +250,10 @@ export type Theme = {
   lineHeights: LineHeights;
   brandColors: ColorVariants;
   neutralColorTokens: NeutralColorTokens;
-  shadowLevels: ShadowLevelTokens;
-  strokeWidths: StrokeWidths;
+  shadowLevels?: ShadowLevelTokens;
 };
 
 export type PartialTheme = {
-  borderRadius?: RecursivePartial<Theme['borderRadius']>;
   sharedColors?: RecursivePartial<Theme['sharedColors']>;
   sharedColorTokens?: RecursivePartial<Theme['sharedColorTokens']>;
   fontSizes?: RecursivePartial<Theme['fontSizes']>;
@@ -266,5 +263,4 @@ export type PartialTheme = {
   brandColors?: RecursivePartial<Theme['brandColors']>;
   neutralColorTokens?: RecursivePartial<Theme['neutralColorTokens']>;
   shadowLevels?: RecursivePartial<Theme['shadowLevels']>;
-  strokeWidths?: Partial<Theme['strokeWidths']>;
 };
