@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add missing HighContrast override to SplitButton",
-  "packageName": "@fluentui/react-internal",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-03T16:08:02.113Z"
-}

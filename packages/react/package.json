@@ -61,7 +61,7 @@
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.13",
     "@fluentui/react-date-time": "^8.0.0-beta.39",
     "@fluentui/react-hooks": "^8.0.0-beta.10",
-    "@fluentui/react-internal": "^8.0.0-beta.42",
+    "@fluentui/react-internal": "^8.0.0-beta.43",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/utilities": "^8.0.0-beta.10",
     "@microsoft/load-themed-styles": "^1.10.26",

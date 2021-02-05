@@ -2,6 +2,21 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react-make-styles_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Do not throw makestyles in tests",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "d27a96caa5a5cabb9ad2ed8d3bf4a466ad383d5b",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 22:54:59 GMT",
       "tag": "@fluentui/react-make-styles_v0.2.0",
       "version": "0.2.0",

@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Do not throw makestyles in tests",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T16:26:17.255Z"
-}

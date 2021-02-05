@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 04 Feb 2021 12:22:24 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v1.0.4)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v1.0.3..@fluentui/react-examples_v1.0.4)
+
+### Patches
+
+- Add missing styles for disabled buttons ([PR #16794](https://github.com/microsoft/fluentui/pull/16794) by andredias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+- Bump @fluentui/azure-themes to v8.0.0-beta.48 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+- Bump @fluentui/storybook to v1.0.0 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.48 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+- Bump @fluentui/react-charting to v5.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+- Bump @fluentui/react-docsite-components to v8.0.0-beta.49 ([PR #16792](https://github.com/microsoft/fluentui/pull/16792) by andredias@microsoft.com)
+- Bump @fluentui/react-experiments to v8.0.0-beta.53 ([PR #16792](https://github.com/microsoft/fluentui/pull/16792) by andredias@microsoft.com)
+- Bump @fluentui/theme-samples to v8.0.0-beta.48 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
 
 ## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v1.0.3)
 
