@@ -4,7 +4,7 @@
     <title>Fluent UI docsite shell</title>
     <meta
       name="description"
-      content="Docisite shell to handle multi-version support and redirects, should not be the end content for users"
+      content="Docisite shell to handle multi-version support and redirects, should not be the end content for users. This should only exist on the root of the static of website"
     />
     <script src="https://polyfill.io/v3/polyfill.min.js?features=fetch%2CURL"></script>
     <script src="https://cdn.jsdelivr.net/npm/compare-versions@3.6.0/index.min.js"></script>
@@ -16,16 +16,19 @@
       }
 
       function getAvailableVersionsFromManifest(manifest) {
-        const availabeVersions = Object.keys(manifest).reduce((versions, version) => {
-          if (manifest[version]) {
+        const availableVersions = Object.keys(manifest).reduce((versions, version) => {
+          if (version !== 'nightly' && manifest[version]) {
             versions.push(version);
           }
 
           return versions;
         }, []);
 
-        sortVersionsDescending(availabeVersions);
-        return availabeVersions;
+        sortVersionsDescending(availableVersions);
+        if (manifest.nightly) {
+          availableVersions.push('nightly'); // append nightly version in the end
+        }
+        return availableVersions;
       }
 
       function setRedirectInSessionStorage(href) {
@@ -50,7 +53,11 @@
         }
 
         let i = availableVersions.length - 1;
-        while (i >= 0 && window.compareVersions.compare(version, availableVersions[i], '>')) {
+        while (
+          i >= 0 &&
+          availableVersions[i] !== 'nightly' &&
+          window.compareVersions.compare(version, availableVersions[i], '>')
+        ) {
           i--;
         }
 
@@ -62,7 +69,14 @@
       }
 
       function redirectToDocsite(manifest) {
+        if (window.location.pathname.startsWith('/nightly')) {
+          setRedirectInSessionStorage(window.location.href);
+          window.location.pathname = '/nightly';
+          return;
+        }
+
         const fluentuiDocsiteVersions = getAvailableVersionsFromManifest(manifest);
+
         if (!sessionStorage.redirect) {
           window.location.pathname = '/' + fluentuiDocsiteVersions[0];
           return;

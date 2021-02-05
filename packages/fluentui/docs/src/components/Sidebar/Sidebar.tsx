@@ -29,6 +29,8 @@ type ComponentMenuItem = { displayName: string; type: string };
 
 const pkg = require('@fluentui/react-northstar/package.json');
 
+const version = window.location.pathname.split('/')[1] === 'nightly' ? 'nightly' : pkg.version;
+
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
@@ -489,7 +491,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
         <VersionDropdown width={props.width} />
-        <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
+        <CopyToClipboard value={`yarn add ${pkg.name}@${version}`} timeout={3000}>
           {(active, onClick) => (
             <Box
               as="code"
@@ -509,7 +511,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
                 }),
               }}
             >
-              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
+              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${version}`}
             </Box>
           )}
         </CopyToClipboard>
