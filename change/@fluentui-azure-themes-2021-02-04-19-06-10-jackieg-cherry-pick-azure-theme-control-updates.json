@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Cherry-picked commits from #16684",
+  "packageName": "@fluentui/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-05T03:06:10.039Z"
+}
