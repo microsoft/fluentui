@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "BasePicker: combobox role and id are removed when itemLimit is reached",
+  "packageName": "@fluentui/react-internal",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-05T18:46:15.081Z"
+}
