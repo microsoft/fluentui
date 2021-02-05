@@ -1193,7 +1193,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1209,16 +1209,16 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
 
                         {
                           background-color: #e81123;
-                          background-image: ;
                           border-color: #e81123;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #e81123, #e81123);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #e81123, #e81123);
                           opacity: ;
                         }
                   />
@@ -1282,7 +1282,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1298,16 +1298,16 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
 
                         {
                           background-color: #107c10;
-                          background-image: ;
                           border-color: #107c10;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #107c10, #107c10);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #107c10, #107c10);
                           opacity: ;
                         }
                   />

@@ -186,6 +186,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
           borderColor: 'GrayText',
           background: 'Window',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
@@ -196,6 +197,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
           borderColor: 'Highlight',
           background: 'Window',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
@@ -233,6 +235,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         [HighContrastSelector]: {
           borderColor: 'Highlight',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
@@ -358,6 +361,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
               [HighContrastSelector]: {
                 color: 'GrayText',
               },
+              // eslint-disable-next-line deprecation/deprecation
               ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },

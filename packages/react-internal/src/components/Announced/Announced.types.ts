@@ -9,12 +9,12 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 // eslint-disable-next-line deprecation/deprecation
 export interface IAnnouncedProps extends React.Props<AnnouncedBase>, React.HTMLAttributes<HTMLDivElement> {
   /**
-   * The status message provided as screen reader output
+   * The status message the screen reader should announce.
    */
   message?: string;
 
   /**
-   * Priority with which the screen reader should treat updates to this region
+   * Priority with which the screen reader should treat updates to this region.
    * @default 'polite'
    */
   'aria-live'?: 'off' | 'polite' | 'assertive';

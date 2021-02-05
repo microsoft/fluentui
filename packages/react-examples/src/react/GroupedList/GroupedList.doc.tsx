@@ -5,9 +5,9 @@ import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types
 import { GroupedListCustomExample } from './GroupedList.Custom.Example';
 import { GroupedListCustomCheckboxExample } from './GroupedList.CustomCheckbox.Example';
 
-const GroupedListBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/GroupedList/GroupedList.Basic.Example.tsx') as string;
-const GroupedListCustomExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/GroupedList/GroupedList.Custom.Example.tsx') as string;
-const GroupedListCustomCheckboxExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/GroupedList/GroupedList.CustomCheckbox.Example.tsx') as string;
+const GroupedListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/GroupedList.Basic.Example.tsx') as string;
+const GroupedListCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/GroupedList.Custom.Example.tsx') as string;
+const GroupedListCustomCheckboxExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/GroupedList.CustomCheckbox.Example.tsx') as string;
 
 export const GroupedListPageProps: IDocPageProps = {
   title: 'GroupedList',
@@ -30,10 +30,12 @@ export const GroupedListPageProps: IDocPageProps = {
       view: <GroupedListCustomCheckboxExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/GroupedList/docs/GroupedListBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

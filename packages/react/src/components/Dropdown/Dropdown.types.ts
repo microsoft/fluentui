@@ -122,8 +122,7 @@ export interface IDropdownProps
   notifyOnReselect?: boolean;
 
   /**
-   * Deprecated at v0.52.0, use `disabled` instead.
-   * @deprecated Use `disabled` instead.
+   * @deprecated Use `disabled` instead. Deprecated at v0.52.0.
    */
   isDisabled?: boolean;
 
@@ -141,10 +140,9 @@ export interface IDropdownProps
 /**
  * {@docCategory Dropdown}
  */
-export interface IDropdownOption extends ISelectableOption {
+export interface IDropdownOption<T = any> extends ISelectableOption<T> {
   /**
-   * Deprecated at v.65.1, use `selected` instead.
-   * @deprecated Use `selected` instead.
+   * @deprecated Use `selected` instead. Deprecated at v.65.1.
    */
   isSelected?: boolean;
 }

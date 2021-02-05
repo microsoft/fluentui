@@ -16,13 +16,17 @@ export const getStyles = memoizeFunction(
         color: theme.palette.neutralPrimary,
         backgroundColor: 'transparent',
         border: '1px solid transparent',
+        selectors: {
+          [HighContrastSelector]: {
+            borderColor: 'Window',
+          },
+        },
       },
 
       rootHovered: {
         color: theme.palette.themePrimary,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Highlight',
             color: 'Highlight',
           },
         },
@@ -48,6 +52,11 @@ export const getStyles = memoizeFunction(
         color: theme.palette.neutralTertiary,
         backgroundColor: 'transparent',
         borderColor: 'transparent',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'GrayText',
+          },
+        },
       },
 
       rootChecked: {

@@ -124,7 +124,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       showRoundOffXTickValues: true,
       xAxisCount: this.props.xAxisTickCount,
       xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.xAxisPadding,
+      tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
+      xAxisPadding: this.props.xAxisPadding,
     };
 
     const YAxisParams = {
@@ -298,10 +299,26 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           {calloutProps!.YValueHover &&
             calloutProps!.YValueHover.map((yValue: IYValueHover, index: number, yValues: IYValueHover[]) => {
               const isLast: boolean = index + 1 === yValues.length;
+              const { shouldDrawBorderBottom = false } = yValue;
               return (
                 <div
                   key={`callout-content-${index}`}
-                  style={yValueHoverSubCountsExists ? { display: 'inline-block' } : {}}
+                  style={
+                    yValueHoverSubCountsExists
+                      ? {
+                          display: 'inline-block',
+                          ...(shouldDrawBorderBottom && {
+                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+                            paddingBottom: '10px',
+                          }),
+                        }
+                      : {
+                          ...(shouldDrawBorderBottom && {
+                            borderBottom: `1px solid ${this.props.theme!.semanticColors.menuDivider}`,
+                            paddingBottom: '10px',
+                          }),
+                        }
+                  }
                 >
                   {this._getCalloutContent(yValue, index, yValueHoverSubCountsExists, isLast)}
                 </div>
@@ -391,7 +408,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     this._reqID = requestAnimationFrame(() => {
       let legendContainerHeight;
       if (this.props.hideLegend) {
-        legendContainerHeight = 32;
+        legendContainerHeight = 0;
       } else {
         const legendContainerComputedStyles = getComputedStyle(this.legendContainer);
         legendContainerHeight =

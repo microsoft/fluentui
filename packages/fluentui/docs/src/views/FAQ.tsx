@@ -25,7 +25,7 @@ export default () => (
             )}
           </li>
           <li>{link('How to use Links and React-Router?', '#how-to-use-links-and-react-router')}</li>
-          <li>{link('How can I set default value of Form.Field?', '#how-can-i-set-default-value-of-form-field')}</li>
+          <li>{link('How can I set default value of FormField?', '#how-can-i-set-default-value-of-form-field')}</li>
           <li>
             {link(
               'Is there an onLoad or equivalent event for Image components so I can run a function after an image loads?',
@@ -82,14 +82,14 @@ export default () => (
       }
     />
 
-    <Question content="How can I set default value of Form.Field?" />
+    <Question content="How can I set default value of FormField?" />
     <Answer
       content={
         <p>
           You need to set the default value on the component used in the control slot.
           <CodeSnippet
             value={`
-            <Form.Field control={{as: Input, defaultValue:'some value'}} />
+            <FormField control={{as: Input, defaultValue:'some value'}} />
             `}
           />
         </p>

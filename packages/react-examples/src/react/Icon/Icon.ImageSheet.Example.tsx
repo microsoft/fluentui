@@ -33,7 +33,7 @@ const classNames = mergeStyleSets({
     marginLeft: 65,
   },
   lockImage: {
-    width: -109,
+    left: -109,
     top: -5,
   },
 });
@@ -41,9 +41,13 @@ const classNames = mergeStyleSets({
 export const IconImageSheetExample: React.FunctionComponent = () => {
   // ImageIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here (adding the prop `iconType={IconType.image}`).
+  // Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by text
+  // that conveys the same meaning.
   return (
     <div>
       <ImageIcon
+        aria-label="OneNote file icon"
+        role="img"
         className={classNames.one}
         imageProps={{
           src: TestImages.iconOne,
@@ -51,6 +55,8 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         }}
       />
       <ImageIcon
+        aria-label="Check icon"
+        role="img"
         className={classNames.check}
         imageProps={{
           src: TestImages.iconOne,
@@ -58,6 +64,8 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         }}
       />
       <ImageIcon
+        aria-label="Lock icon"
+        role="img"
         className={classNames.lock}
         imageProps={{
           src: TestImages.iconOne,

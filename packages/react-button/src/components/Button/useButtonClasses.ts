@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { makeVariantClasses } from '@fluentui/react-theme-provider/lib/compat/index';
+import { Theme } from '@fluentui/theme';
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
 import { ButtonState, ButtonVariants } from './Button.types';
 
-const GlobalClassNames = {
+export const GlobalClassNames = {
   root: 'ms-Button',
   icon: 'ms-Button-icon',
 };
@@ -72,6 +73,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         borderTopWidth: 'var(--button-borderTopWidth, var(--button-borderWidth))',
         borderBottomWidth: 'var(--button-borderBottomWidth, var(--button-borderWidth))',
         boxShadow: 'var(--button-boxShadow)',
+        opacity: 'var(--button-opacity)',
 
         width: 'var(--button-width)',
         maxWidth: 'var(--button-maxWidth)',
@@ -126,6 +128,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
           background: 'var(--button-highContrast-background)',
           borderColor: 'var(--button-highContrast-borderColor)',
           color: 'var(--button-highContrast-contentColor)',
+          opacity: 'var(--button-highContrast-opacity)',
 
           [`.${GlobalClassNames.icon}`]: {
             color: 'var(--button-highContrast-iconColor)',
@@ -189,7 +192,6 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
         },
 
         '&[aria-disabled=true]': {
-          pointerEvents: 'none',
           opacity: 'var(--button-disabled-opacity)',
           backgroundColor: 'var(--button-disabled-background)',
           color: 'var(--button-disabled-contentColor)',
@@ -204,6 +206,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
             background: 'var(--button-highContrast-disabled-background, var(--button-highContrast-background))',
             borderColor: 'var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor))',
             color: 'var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor))',
+            opacity: 'var(--button-highContrast-disabled-opacity, var(--button-highContrast-opacity))',
             [`.${GlobalClassNames.icon}`]: {
               color: 'var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor)',
             },

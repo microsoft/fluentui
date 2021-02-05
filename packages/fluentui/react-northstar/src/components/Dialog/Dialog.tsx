@@ -1,4 +1,4 @@
-import { Accessibility, dialogBehavior, DialogBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   FocusTrapZoneProps,
@@ -17,7 +17,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+
 import { lockBodyScroll, unlockBodyScroll } from './utils';
 
 import {

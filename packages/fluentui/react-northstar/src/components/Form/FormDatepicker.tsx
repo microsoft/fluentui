@@ -3,7 +3,7 @@ import { commonPropTypes } from '../../utils';
 import { Datepicker, DatepickerProps } from '../Datepicker/Datepicker';
 import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 
-interface FormDatepickerOwnProps extends DatepickerProps {}
+interface FormDatepickerOwnProps extends Omit<DatepickerProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'
@@ -18,7 +18,7 @@ export const formDatepickerClassName = 'ui-form__datepicker';
  */
 export const FormDatepicker = compose<
   'div',
-  DatepickerProps,
+  FormDatepickerProps,
   FormDatepickerStylesProps,
   SelectedFormFieldCustomProps,
   {}

@@ -25,7 +25,7 @@ export const useChecked = <TDraftState extends CheckedState>(draftState: TDraftS
   // Ensure the right aria value is set to represent the checked state.
   const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
 
-  draftState[isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed'] = checkedValue;
+  draftState[isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed'] = !!checkedValue;
 
   draftState.onClick = React.useCallback(
     (ev: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Button } from './Button';
-import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
+import { Button } from './Button';
+import { GlobalClassNames } from './useButtonClasses';
+import { validateBehavior, ComponentTestFacade, buttonBehaviorDefinition } from '@fluentui/a11y-testing';
 
 describe('Button (isConformant)', () =>
   isConformant({
@@ -46,5 +48,47 @@ describe('Button', () => {
     rootRef.current?.focus();
 
     expect(document.activeElement).toEqual(rootRef.current);
+  });
+
+  it('can trigger a function by being clicked', () => {
+    const onClick = jest.fn();
+    wrapper = mount(<Button onClick={onClick}>Focus me</Button>);
+
+    wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
+
+    expect(onClick).toHaveBeenCalled();
+  });
+
+  it('does not trigger a function by being clicked when button is disabled', () => {
+    const onClick = jest.fn();
+    wrapper = mount(
+      <Button disabled onClick={onClick}>
+        I am a button
+      </Button>,
+    );
+
+    wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  it(`does not trigger a function by being clicked when button is disabled, even when disabledFocusable has been
+      provided`, () => {
+    const onClick = jest.fn();
+    wrapper = mount(
+      <Button disabled disabledFocusable onClick={onClick}>
+        I am a button
+      </Button>,
+    );
+
+    wrapper.find(`.${GlobalClassNames.root}`).simulate('click');
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  describe('AccessibilityButtonBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, {});
+    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
   });
 });

@@ -51,7 +51,8 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker>, Par
   navigationIcons?: IWeeklyDayPickerNavigationIcons;
 
   /**
-   * The initially selected date. If not provided, defaults to today's date
+   * The initially selected date.
+   * @default Today's date (`new Date()`)
    */
   initialDate?: Date;
 

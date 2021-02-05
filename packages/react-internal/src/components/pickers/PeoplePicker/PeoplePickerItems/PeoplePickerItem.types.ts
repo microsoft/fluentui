@@ -115,14 +115,14 @@ export interface IPeoplePickerItemSuggestionStyles {
 
 /**
  * PeoplePickerItemWithMenu props interface.
- * @deprecated Do not use. Will be removed in Fabric 7.0
+ * @deprecated Do not use. Will be removed in \>= 7.0
  */
 // eslint-disable-next-line deprecation/deprecation
 export interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {}
 
 /**
  * Extended interface from IPersonaProps to add `menuItems` property PeoplePickerItemWithMenu items.
- * @deprecated Do not use. Will be removed in Fabric 7.0
+ * @deprecated Do not use. Will be removed in \>= 7.0
  */
 export interface IPersonaWithMenu extends IPersonaProps {
   /** Additional menuItems to be rendered in a contextualMenu for each Persona. */

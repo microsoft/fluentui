@@ -6,9 +6,9 @@ import { CardVerticalExample } from './Card.Vertical.Example';
 import { CardHorizontalExample } from './Card.Horizontal.Example';
 import { CardConfigureExample } from './Card.Configure.Example';
 
-const CardVerticalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-cards/Card/Card.Vertical.Example.tsx') as string;
-const CardHorizontalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-cards/Card/Card.Horizontal.Example.tsx') as string;
-const CardConfigureExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-cards/Card/Card.Configure.Example.tsx') as string;
+const CardVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-cards/Card/Card.Vertical.Example.tsx') as string;
+const CardHorizontalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-cards/Card/Card.Horizontal.Example.tsx') as string;
+const CardConfigureExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-cards/Card/Card.Configure.Example.tsx') as string;
 
 export const CardPageProps: IDocPageProps = {
   title: 'Card',
@@ -31,10 +31,12 @@ export const CardPageProps: IDocPageProps = {
       view: <CardConfigureExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react-cards/Card/docs/CardOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-cards/Card/docs/CardOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react-cards/Card/docs/CardDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react-cards/Card/docs/CardDonts.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-cards/Card/docs/CardDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-cards/Card/docs/CardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

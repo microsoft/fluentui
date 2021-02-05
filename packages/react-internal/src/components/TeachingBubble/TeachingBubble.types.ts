@@ -89,8 +89,8 @@ export interface ITeachingBubbleProps extends React.RefAttributes<HTMLDivElement
   footerContent?: string | JSX.Element;
 
   /**
-   * @deprecated use target instead
    * Element to anchor the TeachingBubble to.
+   * @deprecated Use `target` instead
    */
   targetElement?: HTMLElement;
 

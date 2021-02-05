@@ -91,7 +91,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     pagingSupportDisabled?: boolean;
     preventDefaultWhenHandled?: boolean;
     preventFocusRestoration?: boolean;
-    // @deprecated
+    // @deprecated (undocumented)
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     shouldFocusInnerElementWhenReceivedFocus?: boolean;

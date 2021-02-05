@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
 
 /**
@@ -43,6 +43,13 @@ export type ButtonProps = ComponentProps &
 
     /** A button can show that it cannot be interacted with. */
     disabled?: boolean;
+
+    /**
+     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
+     * important to keep a consistent tab order for screen reader and keyboard users.
+     * @defaultvalue false
+     */
+    disabledFocusable?: boolean;
 
     /** A button can fill the width of its container. */
     block?: boolean;

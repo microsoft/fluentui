@@ -1852,6 +1852,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     let index = this._getPendingSelectedIndex(false /* includeCurrentPendingValue */);
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.enter:
         if (this._autofill.current && this._autofill.current.inputElement) {
@@ -1968,6 +1969,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
         // If end, update the values to respond to END
         // which goes to the last selectable option
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.which === KeyCodes.end) {
           index = currentOptions.length;
           directionToSearch = SearchDirection.backward;
@@ -1986,6 +1988,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       default:
         /* eslint-enable no-fallthrough */
         // are we processing a function key? if so bail out
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.which >= 112 /* F1 */ && ev.which <= 123 /* F12 */) {
           return;
         }
@@ -2016,6 +2019,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement | Autofill>): boolean {
+    // eslint-disable-next-line deprecation/deprecation
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -2043,6 +2047,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       return;
     }
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.space:
         // If we are not allowing freeform and are not autoComplete
@@ -2126,8 +2131,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // of the event unless we have a tab, escape, or function key
       if (
         ev !== null &&
+        // eslint-disable-next-line deprecation/deprecation
         ev.which !== KeyCodes.tab &&
+        // eslint-disable-next-line deprecation/deprecation
         ev.which !== KeyCodes.escape &&
+        // eslint-disable-next-line deprecation/deprecation
         (ev.which < 112 /* F1 */ || ev.which > 123) /* F12 */
       ) {
         ev.stopPropagation();

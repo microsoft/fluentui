@@ -253,7 +253,7 @@ function _flipToFit(
 
 /**
  * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges
- * into position, when alignTargetEdge is specified.
+ * into position, when `alignTargetEdge` is specified.
  */
 function _flipAlignmentEdge(
   elementEstimate: IElementPosition,
@@ -403,7 +403,7 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
 }
 
 /**
- * Retrieve the final value for the return edge of elementRectangle. If the elementRectangle is closer to one side
+ * Retrieve the final value for the return edge of `elementRectangle`. If the `elementRectangle` is closer to one side
  * of the bounds versus the other, the return edge is flipped to grow inward.
  */
 function _finalizeReturnEdge(

@@ -43,16 +43,13 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement>, 
   /**
    * Used to determine how the image is scaled and cropped to fit the frame.
    *
-   * @defaultvalue If both dimensions are provided, then the image is fit using ImageFit.scale.
+   * @defaultvalue If both dimensions are provided, then the image is fit using `ImageFit.scale`.
    * Otherwise, the image won't be scaled or cropped.
    */
   imageFit?: ImageFit;
 
   /**
-   * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead and
-   * re-render the Image with a difference src.
-   * @deprecated Use `onLoadingStateChange` instead and
-   * re-render the Image with a difference src.
+   * @deprecated Not used. Use `onLoadingStateChange` and re-render the Image with a different src.
    */
   errorSrc?: string;
 
@@ -155,10 +152,7 @@ export enum ImageLoadState {
   error = 2,
 
   /**
-   * Deprecated at v1.3.6, to replace the src in case of errors, use `onLoadingStateChange` instead
-   * and re-render the Image with a difference src.
-   * @deprecated Use `onLoadingStateChange` instead
-   * and re-render the Image with a difference src.
+   * @deprecated Not used. Use `onLoadingStateChange` and re-render the Image with a different src.
    */
   errorLoaded = 3,
 }

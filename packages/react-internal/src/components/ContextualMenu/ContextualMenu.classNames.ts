@@ -14,7 +14,7 @@ import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './Cont
 import { IContextualMenuSubComponentStyles } from './ContextualMenu.types';
 
 /**
- * @deprecated in favor of mergeStyles API.
+ * @deprecated Deprecated in favor of mergeStyles API.
  */
 export interface IContextualMenuClassNames {
   container: string;
@@ -26,7 +26,7 @@ export interface IContextualMenuClassNames {
 }
 
 /**
- * @deprecated in favor of mergeStyles API.
+ * @deprecated Deprecated in favor of mergeStyles API.
  */
 export interface IMenuItemClassNames {
   item: string;
@@ -91,15 +91,13 @@ const GlobalClassNames = {
 };
 
 /**
- * @deprecated To be removed in 7.0.
- * @internal
+ * @deprecated Will be removed in \>= 7.0.
  * This is a package-internal method that has been depended on.
  * It is being kept in this form for backwards compatibility.
- * It should be cleaned up in 7.0.
- *
- * TODO: Audit perf. impact of and potentially remove memoizeFunction.
- * https://github.com/microsoft/fluentui/issues/5534
+ * @internal
  */
+// TODO: Audit perf. impact of and potentially remove memoizeFunction.
+// https://github.com/microsoft/fluentui/issues/5534
 export const getItemClassNames = memoizeFunction(
   (
     theme: ITheme,

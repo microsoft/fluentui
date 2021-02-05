@@ -1,0 +1,21 @@
+import * as React from 'react';
+import { use{{componentName}} } from './use{{componentName}}';
+import { {{componentName}}Props } from './{{componentName}}.types';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
+import { use{{componentName}}Classes } from './use{{componentName}}Classes';
+import { render{{componentName}} } from './render{{componentName}}';
+
+/**
+ * Define a styled {{componentName}}, using the `use{{componentName}}` hook.
+ * {@docCategory {{componentName}} }
+ */
+export const {{componentName}} = React.forwardRef<HTMLElement, {{componentName}}Props>((props, ref) => {
+  const state = use{{componentName}}(props, ref);
+
+  use{{componentName}}Classes(state);
+  useInlineTokens(state, '--{{lowerCase componentName}}');
+
+  return render{{componentName}}(state);
+});
+
+{{componentName}}.displayName = '{{componentName}}';

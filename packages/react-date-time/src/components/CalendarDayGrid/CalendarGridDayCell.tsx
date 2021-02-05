@@ -49,14 +49,18 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
     let targetDate: Date | undefined = undefined;
     let direction = 1; // by default search forward
 
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.up) {
       targetDate = addWeeks(date, -1);
       direction = -1;
+      // eslint-disable-next-line deprecation/deprecation
     } else if (ev.which === KeyCodes.down) {
       targetDate = addWeeks(date, 1);
+      // eslint-disable-next-line deprecation/deprecation
     } else if (ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
       targetDate = addDays(date, -1);
       direction = -1;
+      // eslint-disable-next-line deprecation/deprecation
     } else if (ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
       targetDate = addDays(date, 1);
     }
@@ -194,6 +198,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
   };
 
   const onDayKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which === KeyCodes.enter) {
       onSelectDate?.(day.originalDate);
     } else {

@@ -3,7 +3,7 @@ import { Input, InputProps } from '../Input/Input';
 import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 import { commonPropTypes } from '../../utils';
 
-interface FormInputOwnProps extends InputProps {}
+interface FormInputOwnProps extends Omit<InputProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables' | 'label'
@@ -24,13 +24,14 @@ export const FormInput = compose<'input', FormInputProps, FormInputStylesProps, 
     handledProps: ['label', 'labelPosition', 'required'],
     overrideStyles: true,
     slots: {
-      label: () => null,
       control: Input,
     },
-    slotProps: ({ errorMessage, label, labelPosition, required }) => ({
+    slotProps: ({ errorMessage, required, labelPosition }) => ({
+      label: {
+        required,
+      },
       control: {
         error: !!errorMessage,
-        label,
         labelPosition,
         required,
       },

@@ -3,7 +3,7 @@ import { commonPropTypes } from '../../utils';
 import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 import { Slider, SliderProps } from '../Slider/Slider';
 
-interface FormSliderOwnProps extends SliderProps {}
+interface FormSliderOwnProps extends Omit<SliderProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables'

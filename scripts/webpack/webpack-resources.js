@@ -4,8 +4,8 @@
  * @typedef {import("webpack").Configuration} WebpackConfig
  * @typedef {WebpackConfig & { devServer?: object }} WebpackServeConfig
  * @typedef {import("webpack").Entry} WebpackEntry
- * @typedef {import("webpack").Module} WebpackModule
- * @typedef {import("webpack").Output} WebpackOutput
+ * @typedef {import("webpack").ModuleOptions} WebpackModule
+ * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
 /** */
 const webpack = require('webpack');
@@ -15,12 +15,13 @@ const resolve = require('resolve');
 /** @type {(c1: Partial<WebpackServeConfig>, c2: Partial<WebpackServeConfig>) => WebpackServeConfig} */
 const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 const getResolveAlias = require('./getResolveAlias');
 const { findGitRoot } = require('../monorepo/index');
 
 // @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
+const getDefaultEnvironmentVars = require('./getDefaultEnvironmentVars');
+
 console.log(`Webpack version: ${webpackVersion}`);
 
 const gitRoot = findGitRoot();
@@ -84,6 +85,13 @@ function createEntryWithPolyfill(entry, config) {
 
 module.exports = {
   webpack,
+
+  /** Get the list of node_modules directories where loaders should be resolved */
+  getResolveLoaderDirs: () => [
+    'node_modules',
+    path.resolve(__dirname, '../node_modules'),
+    path.resolve(__dirname, '../../node_modules'),
+  ],
 
   /**
    * @param {string} bundleName - Name for the bundle file. Usually either the unscoped name, or
@@ -231,15 +239,17 @@ module.exports = {
     const config = merge(
       {
         devServer: {
-          inline: true,
+          // As of Webpack 5, this will open the browser at 127.0.0.1 by default
+          host: 'localhost',
           port: 4322,
-          contentBase: outputPath,
+          static: outputPath,
         },
 
         mode: 'development',
 
         output: {
           filename: `[name].js`,
+          libraryTarget: 'umd',
           path: outputPath,
         },
 
@@ -248,11 +258,7 @@ module.exports = {
         },
 
         resolveLoader: {
-          modules: [
-            'node_modules',
-            path.join(__dirname, '../node_modules'),
-            path.join(__dirname, '../../node_modules'),
-          ],
+          modules: module.exports.getResolveLoaderDirs(),
         },
 
         devtool: 'eval',
@@ -282,6 +288,7 @@ module.exports = {
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
                   options: {
+                    esModule: false,
                     modules: true,
                     importLoaders: 2,
                   },
@@ -289,8 +296,8 @@ module.exports = {
                 {
                   loader: 'postcss-loader',
                   options: {
-                    plugins: function() {
-                      return [require('autoprefixer')];
+                    postcssOptions: {
+                      plugins: ['autoprefixer'],
                     },
                   },
                 },
@@ -303,9 +310,8 @@ module.exports = {
         },
 
         plugins: [
-          ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
-          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin()]),
-          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
+          ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
+          ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
         ],
       },
       customConfig,
@@ -350,6 +356,9 @@ module.exports = {
         // Use the aliases for react-examples since the examples and demo may depend on some things
         // that the package itself doesn't (and it will include the aliases for all the package's deps)
         alias: getResolveAlias(false /*useLib*/, reactExamples),
+        fallback: {
+          path: require.resolve('path-browserify'),
+        },
       },
     });
   },
@@ -357,8 +366,7 @@ module.exports = {
 
 function getPlugins(bundleName, isProduction, profile) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-
-  const plugins = [];
+  const plugins = [new webpack.DefinePlugin(getDefaultEnvironmentVars(isProduction))];
 
   if (isProduction && profile) {
     plugins.push(

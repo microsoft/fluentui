@@ -2,6 +2,157 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.49",
+      "version": "8.0.0-beta.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing ComponentConformance.test file and disabling component-handles-classname where necessary.",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Feb 2021 12:22:24 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.49",
+      "version": "8.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add additional prop support to IBreadcrumbItems",
+            "author": "andredias@microsoft.com",
+            "commit": "34f46ff4958fb82ad80071389c8b899803826e45",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.48",
+      "version": "8.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "DocumentCardPreview: add maxDisplayCount prop",
+            "author": "hantatsang@gmail.com",
+            "commit": "77f1decd96f3ac57a5b9ad60d47dff0be64f8c73",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Module federation innerloop experience",
+            "author": "kchau@microsoft.com",
+            "commit": "497df475f694d09d328fda3f02cee3bfe50c3e93",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "adding a flag to skip typecheck during webpack serve",
+            "author": "kchau@microsoft.com",
+            "commit": "e6a82d775f70ae734255bcd53423bdf5a1a5d71b",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.46",
+      "version": "8.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating re-exports that pointed to @fluentui/react- packages to now point to @fluentui/react-internal.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "76f6043e4123577e17fecf64f536841bf543d32b",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.44",
+      "version": "8.0.0-beta.44",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove sinon dependency",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins. Also stop generating dist/manifest.json (file an issue if you were using it).",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Clean up some prop comments and deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e22b74a17aa6a8ce8d354730717b9517cdef7cd",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Update high contrast to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "f9189e435dc8e73337ff40c54ac6af47567d9639",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jan 2021 12:24:49 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.40",
+      "version": "8.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Added generic type for IDropdownOption",
+            "author": "ashwin.gokhale98@gmail.com",
+            "commit": "d6e9619f1679e6a526411c80eaddf6daeee45205",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.39",
+      "version": "8.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 08 Jan 2021 12:32:12 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.34",
       "version": "8.0.0-beta.34",

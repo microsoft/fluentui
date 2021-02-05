@@ -119,6 +119,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
 
     // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
     // and getting all the math and styles flipped correctly is tricky
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.up: {
         this._isAdjustingSaturation = false;

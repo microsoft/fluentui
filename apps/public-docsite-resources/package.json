@@ -1,10 +1,19 @@
 {
   "name": "@fluentui/public-docsite-resources",
-  "version": "1.0.0",
-  "private": true,
+  "version": "1.0.2",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
   "sideEffects": [
     "*.global.*",
     "*Examples.*",
@@ -27,25 +36,25 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
-    "@types/webpack-env": "1.15.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.35",
-    "@fluentui/react-examples": "^1.0.0",
-    "@fluentui/react-internal": "^8.0.0-beta.31",
+    "@fluentui/react": "^8.0.0-beta.49",
+    "@fluentui/react-examples": "^1.0.4",
+    "@fluentui/react-internal": "^8.0.0-beta.43",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/api-docs": "^1.0.0",
-    "@fluentui/azure-themes": "^8.0.0-beta.34",
-    "@fluentui/react-docsite-components": "^8.0.0-beta.35",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta.10",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/theme-samples": "^8.0.0-beta.34",
-    "@fluentui/react-monaco-editor": "^1.0.0-beta.34",
-    "@types/react": "16.8.25",
+    "@fluentui/api-docs": "^1.0.1",
+    "@fluentui/azure-themes": "^8.0.0-beta.48",
+    "@fluentui/react-docsite-components": "^8.0.0-beta.49",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta.13",
+    "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/theme-samples": "^8.0.0-beta.48",
+    "@fluentui/react-monaco-editor": "^1.0.0-beta.48",
+    "@types/react": "16.9.42",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
     "tslib": "^1.10.0"

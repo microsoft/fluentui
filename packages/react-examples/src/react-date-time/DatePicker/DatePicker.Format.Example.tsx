@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker } from '@fluentui/react-date-time';
+import { DatePicker, IDatePicker } from '@fluentui/react-date-time';
 import { DefaultButton } from '@fluentui/react/lib/compat/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
@@ -14,9 +14,11 @@ const onFormatDate = (date?: Date): string => {
 
 export const DatePickerFormatExample: React.FunctionComponent = () => {
   const [value, setValue] = React.useState<Date | undefined>();
+  const datePickerRef = React.useRef<IDatePicker>(null);
 
   const onClick = React.useCallback((): void => {
     setValue(undefined);
+    datePickerRef.current?.focus();
   }, []);
 
   const onParseDateFromString = React.useCallback(
@@ -46,6 +48,7 @@ export const DatePickerFormatExample: React.FunctionComponent = () => {
         example, we are formatting and parsing dates as dd/MM/yy.
       </div>
       <DatePicker
+        componentRef={datePickerRef}
         label="Start date"
         allowTextInput
         ariaLabel="Select a date. Input format is day slash month slash year."
@@ -55,7 +58,7 @@ export const DatePickerFormatExample: React.FunctionComponent = () => {
         parseDateFromString={onParseDateFromString}
         className={styles.control}
       />
-      <DefaultButton onClick={onClick} text="Clear" />
+      <DefaultButton aria-label="Clear the date input" onClick={onClick} text="Clear" />
       <div>Selected date: {(value || '').toString()}</div>
     </div>
   );

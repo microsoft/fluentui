@@ -27,7 +27,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string
               }
             </Markdown>
           ),
@@ -42,7 +42,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string
               }
             </Markdown>
           ),

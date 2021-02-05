@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DemoPage } from '../DemoPage';
 
-import { PivotPageProps } from '@fluentui/react-examples/lib/react-tabs/Pivot/Pivot.doc';
+import { PivotPageProps } from '@fluentui/react-examples/lib/react/Pivot/Pivot.doc';
 
 export const PivotPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage

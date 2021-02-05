@@ -1002,6 +1002,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
     const isOpen = this.state.isOpen;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -1089,6 +1090,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         return;
       }
     }
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -1111,6 +1113,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    // eslint-disable-next-line deprecation/deprecation
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1138,6 +1141,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.up:
         if (containsExpandCollapseModifier) {

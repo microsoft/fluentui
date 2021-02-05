@@ -1,7 +1,7 @@
 import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-northstar';
 
-const controlMessagesGroupBehavior: Accessibility<ChatBehaviorProps> = props => {
-  const behaviorData = chatBehavior(props);
+const controlMessagesGroupBehavior: Accessibility<ChatBehaviorProps> = () => {
+  const behaviorData = chatBehavior();
 
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,

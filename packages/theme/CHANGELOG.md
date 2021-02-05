@@ -1,8 +1,35 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Tue, 01 Dec 2020 12:38:05 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.13)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.12..@fluentui/theme_v2.0.0-beta.13)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [2.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.12)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.11..@fluentui/theme_v2.0.0-beta.12)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [2.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.11)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.8..@fluentui/theme_v2.0.0-beta.11)
+
+### Changes
+
+- createTheme: fix bug when theme is inverted. ([PR #16484](https://github.com/microsoft/fluentui/pull/16484) by xgao@microsoft.com)
 
 ## [2.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.8)
 

@@ -51,6 +51,16 @@ export const CompoundButtons = () => (
     <Text>A CompoundButton comes in default and `primary` flavors.</Text>
     <CompoundButtonExamples />
 
+    <Text>A CompoundButton can be focusable when disabled</Text>
+    <Stack horizontal>
+      <CompoundButton disabled icon="X" secondaryContent="This is some secondary text">
+        Disabled, non-focusable button
+      </CompoundButton>
+      <CompoundButton disabled disabledFocusable icon="X" secondaryContent="This is some secondary text">
+        Disabled, focusable button
+      </CompoundButton>
+    </Stack>
+
     <Text>A CompoundButton can appear round using the `circular` prop.</Text>
     <CompoundButtonExamples circular />
 

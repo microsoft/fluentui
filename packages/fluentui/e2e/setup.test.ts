@@ -16,7 +16,20 @@ const launchOptions: puppeteer.LaunchOptions = safeLaunchOptions({
 });
 
 beforeAll(async () => {
-  browser = await puppeteer.launch(launchOptions);
+  let attempt = 1;
+  while (!browser) {
+    try {
+      browser = await puppeteer.launch(launchOptions);
+    } catch (err) {
+      if (attempt === 5) {
+        console.error(`Puppeteer failed to launch after 5 attempts`);
+        throw err;
+      }
+      console.warn('Puppeteer failed to launch (will retry):');
+      console.warn(err);
+      attempt++;
+    }
+  }
 });
 
 beforeEach(async () => {

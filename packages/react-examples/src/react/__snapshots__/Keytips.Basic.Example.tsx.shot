@@ -90,7 +90,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -102,13 +102,16 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+              color: Highlight;
+            }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -150,15 +153,12 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
             &[data-is-overflowing='true'] {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){&:before {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
               background-color: Highlight;
             }
             &:hover::before {
               left: 0px;
               right: 0px;
-            }
-            @media screen and (-ms-high-contrast: active){& {
-              color: Highlight;
             }
         data-content="Pivot 1"
         data-is-focusable={true}
@@ -262,7 +262,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -274,13 +274,15 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -424,7 +426,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -436,13 +438,15 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               position: relative;
               top: 0px;
             }
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              border-color: Window;
+            }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               color: Highlight;
             }
             &:hover .ms-Button-icon {
@@ -663,7 +667,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   &:hover:after {
                     border-color: #323130;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
                     border-color: Highlight;
                   }
               data-ktp-target={true}
@@ -709,7 +713,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       background-color: #0078d4;
                       color: #ffffff;
                     }
-                    @media screen and (-ms-high-contrast: active){&::selection {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&::selection {
                       background-color: Highlight;
                       border-color: Highlight;
                       color: HighlightText;
@@ -781,7 +785,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         top: 2px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -803,7 +807,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         background-color: #f3f2f1;
                         color: #323130;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -811,7 +815,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         background-color: #edebe9;
                         color: #323130;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         background-color: Highlight;
                         color: HighlightText;
                       }
@@ -921,7 +925,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         top: 2px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -943,7 +947,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         background-color: #f3f2f1;
                         color: #323130;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -951,7 +955,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         background-color: #edebe9;
                         color: #323130;
                       }
-                      @media screen and (-ms-high-contrast: active){&:active {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                         background-color: Highlight;
                         color: HighlightText;
                       }
@@ -1037,7 +1041,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               className=
                   ms-Toggle-innerContainer
                   {
-                    display: inline-flex;
+                    display: flex;
                     position: relative;
                   }
             >
@@ -1085,10 +1089,10 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     &:hover .ms-Toggle-thumb {
                       background-color: #201f1e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                       border-color: Highlight;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                     }
                 data-is-focusable={true}
@@ -1173,44 +1177,45 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     font-size: inherit;
                     font-weight: inherit;
                     outline: none;
-                    text-decoration: none;
+                    text-decoration: underline;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
                     box-shadow: 0 0 0 1px #605e5c inset;
                     outline: 1px auto #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: auto;
                     border-bottom: none;
+                    forced-color-adjust: auto;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                     color: LinkText;
                   }
                   &:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                     color: LinkText;
                   }
                   &:focus {
                     color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                     color: LinkText;
                   }
               href="http://www.bing.com"

@@ -10,7 +10,7 @@ import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
 /**
- * @deprecated Use the exported from the package level 'PeoplePickerItem'. Will be removed in Fabric 7.
+ * @deprecated Use `PeoplePickerItem` instead. Will be removed in \>= 7.0.
  */
 export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX.Element = (
   peoplePickerItemProps: IPeoplePickerItemSelectedProps,

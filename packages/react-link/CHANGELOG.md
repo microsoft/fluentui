@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.38)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.36..@fluentui/react-link_v1.0.0-beta.38)
+
+### Changes
+
+- Link: Adding underline prop. ([PR #16625](https://github.com/microsoft/fluentui/pull/16625) by humbertomakotomorimoto@gmail.com)
+- Moving Link from react-link back to react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.36)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.33..@fluentui/react-link_v1.0.0-beta.36)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+
+## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.33)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.30..@fluentui/react-link_v1.0.0-beta.33)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [1.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.30)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.1..@fluentui/react-link_v1.0.0-beta.30)
+
+### Changes
+
+- Improve handling of built-in Link props ([PR #16483](https://github.com/microsoft/fluentui/pull/16483) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.1)
 

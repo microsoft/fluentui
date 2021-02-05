@@ -32,6 +32,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
           [HighContrastSelector]: {
             color: 'GrayText',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

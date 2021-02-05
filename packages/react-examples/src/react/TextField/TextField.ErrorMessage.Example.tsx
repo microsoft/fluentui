@@ -1,13 +1,19 @@
 import * as React from 'react';
 import { TextField } from '@fluentui/react/lib/TextField';
-import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
+import { Stack, IStackTokens, IStackStyles } from '@fluentui/react/lib/Stack';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import { useBoolean } from '@fluentui/react-hooks';
+import { Icon, IIconStyles } from '@fluentui/react/lib/Icon';
+import { Text } from '@fluentui/react/lib/Text';
 
 const stackTokens: IStackTokens = {
   childrenGap: 20,
   maxWidth: 350,
 };
+
+const richErrorIconStyles: Partial<IIconStyles> = { root: { color: 'red' } };
+const richErrorStackStyles: Partial<IStackStyles> = { root: { height: 24 } };
+const richErrorStackTokens: IStackTokens = { childrenGap: 8 };
 
 const getErrorMessage = (value: string): string => {
   return value.length < 3 ? '' : `Input value length must be less than 3. Actual length is ${value.length}.`;
@@ -17,6 +23,17 @@ const getErrorMessagePromise = (value: string): Promise<string> => {
   return new Promise(resolve => {
     setTimeout(() => resolve(getErrorMessage(value)), 5000);
   });
+};
+
+const getRichErrorMessage = (value: string) => {
+  return value.length < 3 ? (
+    ''
+  ) : (
+    <Stack styles={richErrorStackStyles} verticalAlign="center" horizontal tokens={richErrorStackTokens}>
+      <Icon iconName="Error" styles={richErrorIconStyles} />
+      <Text variant="smallPlus">Input value length must be less than 3. Actual length is {value.length}.</Text>
+    </Stack>
+  );
 };
 
 export const TextFieldErrorMessageExample: React.FunctionComponent = () => {
@@ -81,6 +98,11 @@ export const TextFieldErrorMessageExample: React.FunctionComponent = () => {
             label="Uses the errorMessage property to set an error state"
             placeholder="This field always has an error"
             errorMessage="This is a statically set error message"
+          />
+          <TextField
+            label="Custom rich error message"
+            defaultValue="This value is too long"
+            onGetErrorMessage={getRichErrorMessage}
           />
         </>
       )}

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.20)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.19..@fluentui/react-image_v0.6.20)
+
+### Patches
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
+
+## [0.6.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.19)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.19-15..@fluentui/react-image_v0.6.19)
+
+### Patches
+
+- add prerelease in disallowed change type for version packages and fix current versioning. ([PR #16696](https://github.com/microsoft/fluentui/pull/16696) by xgao@microsoft.com)
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by lingfan.gao@microsoft.com)
+
+## [0.6.19-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.19-15)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.19-14..@fluentui/react-image_v0.6.19-15)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [0.6.19-14](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.19-14)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.18..@fluentui/react-image_v0.6.19-14)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [0.6.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.18)
 

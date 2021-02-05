@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey, EnterKey } from '../../keyboard-key';
 import { Accessibility, AriaRole } from '../../types';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';

@@ -2,6 +2,130 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-avatar_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove customSize and display props; change active prop to enum; clean up AvatarProps",
+            "author": "behowell@microsoft.com",
+            "commit": "9a6af0cc68eb641eea5b9f1dde2c0d1eb92a37c3",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.3",
+      "version": "0.8.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use a compat version of ThemeProvider",
+            "author": "olfedias@microsoft.com",
+            "commit": "27074a29ffdf4d437dc4d6fcb347effe9fcb195f",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2",
+      "version": "0.8.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add prerelease in disallowed change type for version packages and fix current versioning.",
+            "author": "xgao@microsoft.com",
+            "commit": "9ec4369a9e7850d7ab37803f931d1a0cf30743a9",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Extract compose/next to react-utils",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f4917ffe3172175eaa332448032d27c64319b679",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jan 2021 12:21:00 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-18",
+      "version": "0.8.2-18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Avatar SPEC.md, and initial MIGRATION.md and README.md",
+            "author": "behowell@microsoft.com",
+            "commit": "4015de7ab02ecc9d2a5672445653b2442ac6aa03",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-17",
+      "version": "0.8.2-17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Fix some remaining references to @uifabric",
+            "author": "elcraig@microsoft.com",
+            "commit": "8f6247d89836bc8577ff618a7593fc455b016e42",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-avatar_v0.8.2-15",
+      "version": "0.8.2-15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Dec 2020 12:28:09 GMT",
       "tag": "@fluentui/react-avatar_v0.8.2-12",
       "version": "0.8.2-12",

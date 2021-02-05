@@ -15,7 +15,6 @@
     "**/.git": true,
     "**/.DS_Store": true,
     "**/coverage": true,
-    "**/*.scss.ts": true,
     "**/.eslintcache": true
   },
   "files.watcherExclude": {
@@ -50,6 +49,7 @@
   "typescript.preferences.quoteStyle": "single",
   "typescript.tsdk": "./node_modules/typescript/lib",
   "files.associations": {
+    "**/package.json.hbs": "json",
     "**/*.json.hbs": "jsonc"
   },
   "[json]": {

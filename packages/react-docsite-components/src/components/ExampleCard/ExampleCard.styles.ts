@@ -1,4 +1,4 @@
-import { AnimationVariables, IRawStyle, getTheme } from '@fluentui/react/lib/Styling';
+import { AnimationVariables, IRawStyle, getTheme, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
@@ -37,6 +37,11 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     padding: '4px 12px',
     minWidth: 100,
     transition: `border ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`,
+    selectors: {
+      [HighContrastSelector]: {
+        borderColor: 'WindowText',
+      },
+    },
   };
 
   const codeButtonActiveStyles: IRawStyle = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useFocusRects } from '@fluentui/utilities';
 import { CardSectionProps } from '../CardSection/CardSection.types';
 import { useCardSection } from '../CardSection/useCardSection';

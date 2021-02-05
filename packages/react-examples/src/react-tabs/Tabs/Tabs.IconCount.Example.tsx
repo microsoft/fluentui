@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Icon, ILabelStyles, IStyleSet, Label } from '@fluentui/react';
-import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
   root: { marginTop: 10 },

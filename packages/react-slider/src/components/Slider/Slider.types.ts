@@ -107,39 +107,40 @@ export interface ISliderProps
    */
   ariaValueText?: (value: number) => string;
   /**
-   * Optional flag to render the slider vertically. Defaults to rendering horizontal.
+   * Whether to render the slider vertically.
+   * @default `false` (render horizontally)
    */
   vertical?: boolean;
 
   /**
-   * Optional flag to render the Slider as disabled.
+   * Whether to render the Slider as disabled.
    * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
-   * Optional flag to decide that thumb will snap to closest value while moving the slider
+   * Whether to decide that thumb will snap to closest value while moving the slider
    * @defaultvalue false
    */
   snapToStep?: boolean;
 
   /**
-   * Optional className to attach to the slider root element.
+   * Class name to attach to the slider root element.
    */
   className?: string;
 
   /**
-   * Optional mixin for additional props on the thumb button within the slider.
+   * Additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
   /**
-   * Optional function to format the slider value.
+   * Custom formatter for the slider value.
    */
   valueFormat?: (value: number) => string;
 
   /**
-   * Optional flag to attach the origin of slider to zero. Helpful when the range include negatives.
+   * Whether to attach the origin of slider to zero. Helpful when the range include negatives.
    * @defaultvalue false
    */
   originFromZero?: boolean;

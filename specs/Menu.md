@@ -1,731 +1,1085 @@
 # Menu
 
-## TODOS
+## Background
 
-- Get reviews
-- Write summary at end
-- Checkin to github
-- Write prototype
-- Finalize structure
-- Finalize API
-- Final review
+### Definition
 
-## Menu Basics
+This spec defines the default function of a `Menu` as an interactive component that displays a list of options that can be represented by a range possible states. Possible variants are defined in [the relevant section](#variants)
 
-A menu is a way of displaying items that a user may be able to interact with. Menus vary quite a bit based on implementation and usage. Some are horizontal, some have collapsable sections, and others are just a list. Likewise menu items are equally varied. Some may just convey information but cannot be interacted with like headers or dividers while others are either buttons, links, or expand into a submenu.
+The `Menu` should be displayed on a temporary surface that interrupts the normal flow of content. The temporary surface should be triggered by an external user action such as (but not limited to) a click on a button or other UI control.
 
-The w3 specifications for a menu suggest that it is only for user actions, not user input. Most varieties of menus interpret this as being for navigation.
+The interactions that result in the dismiss/removal of the `Menu` component should be configurable.
 
-Menus are often combined with a popover or similar floating component so the menu appears over other items and is subsequently dismissed.
+## Prior art
 
-### MenuItem
+As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([research proposal](https://github.com/WICG/open-ui/pull/249))
 
-Most menus have a concept of a specific menuitem. It is an integral part of the menu and will have some of its own sections throughout.
+## Comparison of `@fluentui/react` and `@fluentui/react-northstar`
 
-## References
+- All mentions of v7 or v8 == `@fluentui/react` ([docsite](https://developer.microsoft.com/en-us/fluentui#/))
+- All mentions of v0 == `@fluentui/react-northstar` ([docsite](https://fluentsite.z22.web.core.windows.net/))
 
-[CodeSandbox of implemented versions](https://codesandbox.io/s/menuexamples-uybsr)
+The most relevant comparison that can be achieved between the two libraries is between `ContextualMenu` in v7 and a combination of `Menu`, `Popup` and `ToolbarItem` in v0.
 
-- [Aria practices](https://www.w3.org/TR/wai-aria-1.1/#menu)
-- [Fabric](https://developer.microsoft.com/en-us/fabric#/controls/web/contextualmenu)
-- [Stardust](https://microsoft.github.io/fluent-ui-react/components/menu/definition)
-- [Material-ui](https://material-ui.com/components/menus/)
-- [Chakra-ui](https://chakra-ui.com/menu)
-- [AntDesign](https://ant.design/components/menu/)
-- [Jquery-ui](https://jqueryui.com/menu/)
-- [Carbon-ui](https://www.carbondesignsystem.com/components/overflow-menu/code)
-- [Fast-DNA](https://github.com/microsoft/fast-dna/blob/master/packages/fast-components-react-base/src/context-menu/context-menu.tsx)
-- [BluePrintJs](https://blueprintjs.com/docs/#core/components/menu)
+v0 suffers from a consistency issue that the control used in `Menu` and the menu variant of `ToolbarItem` are not actually the same component and have different behavior. However, semantically for the purposes of this spec, they representthe same control that will be implemented.
 
-### Notes from references:
+Note that the below code samples are not meant to be complete, but to highlight differences between the two libraries. Please refer to official docsites for actual API references.
 
-- Most render children, rather than passing a list of items in as props
-- Menu is usually a `<ul>` with `<li>` as children
-- Some are popout menus rather than just being a list, but most do not have an explicit popout.
-- Most have a concept of submenus, either explicitly or as a result of nested lists.
-- The line between list and menu is fuzzy.
+### Positioning
+
+`ContextualMenu` in v7 is a component that also exposes the API to control the positioning of the temporary popup surface that the Menu is rendered on. This aspect of the v7 component should be compared with the `Popup` component in v0 since the v0 `Menu` is created as a standalone component with no positioning properties.
+
+v0 uses the [OSS Popper.js library](https://popper.js.org/) while v7 uses a component based implementation `CalloutContent`. As a result, the API is very similar in intent and vocabulary as Popper.
+
+Below we provide the results of testing common positioning boundary/edge cases between the two.
+
+#### Configuration consistency
+
+The biggest difference bewteen the two libraries is that v0 provides a purely positioning based API out of the `Popup` react component. v0 Provides no direct prop values that will style the popup container and any adjustments to stlying properties such as (but not limited to) dimensions/margin/padding/layoud are expected to be implmented through the styling system used throughout the library
+
+The `Callout` component has some styling helpers that affect the styling of the contents:
+
+- calloutMaxHeight
+- calloutMaxWidth
+- calloutWidth
+- backgroundColor
+
+The `ContextualMenu` component uses two styling properties not offered by `Callout` (useTargetWidth, useTargetMinWidth) and also duplicates some of `Callout's` own positioning properties while also allowing a shorthand slot for the `Callout`
+
+```typescript
+<Contextualmenu
+  bounds
+  beakWidth
+  coverTarget
+  directionalHint
+  directionalHintFixed
+  directionalHintForRTL
+  doNotLayer
+  gapSpace
+  isBeakVisible
+
+  {/* All the above props can also be set here */}
+  calloutProps
+/>
+```
+
+The result being that `ContextualMenu's` positiong and styling risks being abused by developers inexperienced in the library. There is also no documentation on the v7 docsite that states `calloutProps` is actually overriden by props declared directly on `ContextualMenu`
+
+### Position/Alignment hints
+
+Both libraries provide an API that achieves the same end result for positioning and alignment. Below is a table that maps the v7 `DirectionalHint` with the v0 props of `position` and `alignment`
+
+`DirectionalHint` can be passed to both `Callout` (which powers positioning) or directly to `ContextualMenu` (in two different ways). Whereas `position` and `alignment` are props of `Popup` in v0 and not used directly in `Menu` even for the positioning of its submenu.
+
+| DirectionalHint (v7) | position (v0) | align (v0) |
+| -------------------- | ------------- | ---------- |
+| topLeftEdge          | above         | start      |
+| topCenter            | above         | center     |
+| topRightEdge         | above         | bottom     |
+| topAutoEdge          | above         |            |
+| bottomLeftEdge       | above         | start      |
+| bottomCenter         | below         | center     |
+| bottomRightEdge      | below         | bottom     |
+| bottomAutoEdge       | below         |            |
+| leftTopEdge          | before        | top        |
+| leftCenter           | before        | center     |
+| leftBottomEdge       | before        | bottom     |
+| rightTopEdge         | after         | before     |
+| rightCenter          | after         | center     |
+| rightBottomEdge      | after         | bottom     |
+
+First it's necessary to note the difference between the vocabulary used between the two. v7 will use `left` and `right` while v0 uses `before` and `after`. v0 vocabulary here is chosen to convey the appropriate meaning regardless of RTL by using the semantics of the conntent. It's also interesting to note that it's possible to supply an explicit RTL hint to v7 which is a flip by default. v0 will flip by default but requires the consumer to detect RTL scenarios and modify props in these situations
+
+In general the separation of both the position and alignment in v0 results in an API that is easier to use if a consumer only needs to modify one of the two props. However both try to achieve the same result in the end.
+
+It's important to note that if an incorrect pair of `position` and `align` are provided in v0, then `position` takes priority and `align` is set to `center`
+
+#### Offset
+
+```typescript
+<ContextualMenu
+  // single number value
+  gap={100}
+/>
+
+<Popup
+  offset={[-100, 100]}
+/>
+
+// offset can also be a function of raw Popper properties
+const offsetFunction = ({
+  popper: PopperJs.Rect;
+  reference: PopperJs.Rect;
+  placement: PopperJs.Placement;
+}) => ([popper.width, -popper.height])
+```
+
+v7 positioning can only apply a numerical value to the first part position attribute of `DirectionalHint`. v0 uses a much more flexible API that not only supports a function to defer calculation at runtime, but also supports the offset of the `Popup` in both axes.
+
+#### Bounds and overflow
+
+v0 `Popup` API is more consistent in this aspect and provides more control than the v7 `Callout`.
+
+```typescript
+<Popup
+...
+  flipBoundary={htmlElement}
+  overflowBoundary={htmlElement}
+  mountNode={htmlElement}
+/>
+```
+
+`Popup` provider 3 different properties to handle bounds and overflow:
+
+- flipBoundary - the bounds to calculate when to flip positioning of the popup
+- overflowBoundary - the bounds to shift the popup without overflowing
+- mountNode - where the popup is actually rendered in the DOM, by default this is a portal to a div in body
+
+```typescript
+<ContextualMenu
+  // pixel values for bounding rectangle
+  // defaults to target window as default bounding rectangle
+  bounds={{height: 0, width: 0, top: 0, left:0 , right: 0, bottom: 0}}
+  // callback for bounds
+  bounds{(target, targetWindow) => ({/*Same object as above*/})}
+  target={htmlElement}
+
+  // renders to a portal node on body
+  layerProps={/*ILayerProps*/}
+
+  // every single one of the above can all be declared here too
+  calloutProps={{bounds, target}}
+/>
+```
+
+`ContextualMenu` or `Callout` has no notion of separate boundaries for flip or overflow, and auto behaviour is used for flip and overflow 'pushing'
+It should also be noted that `ContextualMenu` allows all of the same props to be passed to its submenus to custom tweak position for each submenu if necessary
+
+#### Submenu positioning
+
+The default positioning for both v0 and v7 submenus is:
+
+- rightTopEdge (v7)
+- top-after (v0)
+
+Both will also flip appropriately when the overflow boundary is too small.
+
+The main difference between the two is that v0 submenu's position does not expose any way to customize or override the positioning of the submenu. However v7 allows every single customization as the root menu. It is very possible to do the below:
+
+```typescript
+const menuItems: IContextualMenuItem[] = [
+  {
+    key: 'newItem',
+    subMenuProps: {
+      // Any positioning props of `ContextualMenu` are usable
+      directionalHint: DirectionalHint.rightTopEdge,
+      // All `Callout` props as also usable
+      calloutProps: {...},
+      items: [...],
+    },
+  },
+```
+
+#### Events
+
+v7 provides the following positioning event callbacks that might be used and should probably be supported for backwards compatibility:
+
+- onLayerMounted
+- onPositioned
+- onScroll
+
+### Trigger vs target
+
+The v7 `ContextualMenu` has a prop `target` which is intended to be a ref to the DOM element that the positioning logic anchors to. The usage of this prop requires the visibility state of the component to be controlled using React state by the consumer. The same prop exists on the v0 `Popup` component that is intended to perform the same function.
+
+```typescript
+const buttonRef = React.useRef(<button />)
+// V7/8
+<ContextualMenu
+  ...
+  target={buttonRef}
+/>
+
+// v0 - shorthand
+<Popup
+  target={buttonRef}
+  content={...}
+/>
+```
+
+The v0 `Popup` component has an alternative prop, `trigger`, which accepts a React component. This prop simplifies the creation of temporary content by autocontrolling the open/dismiss functionality.
+
+```typescript
+// v0 - shorthand trigger
+<Popup
+  trigger={<Button />}
+  content={...}
+/>
+// v0 - children trigger
+<Popup content={...}>
+  <Button icon={<MoreIcon />} title="Show popup" />
+</Popup>
+```
+
+### Layout variations
+
+The v7 `ContextualMenu` only has one primary layout which is a vertical list of menu items.
+
+The v0 `Menu` component differs clearly in this that the default layout is a horizontal menu. To achieve the same layout as `ContextualMenu` (and the layout defined in this spec) it's necessary to use the `vertical` prop which is `false` by default.
+
+```typescript
+<Menu items={items} vertical />
+```
+
+### Open/Dismiss events
+
+The v7 `ContextualMenu` is intended to be used as a controlled component. The visibiltiy of the menu is controlled using the `hidden` prop whose value should be React state of the cosumer. A separate `onDismiss` prop can also be used that will be invoked during events where the callout tries to close, i.e. click outside the content.
+
+The v0 `Popup` should be compared here, since the v0 `Menu` does not handle open/dismiss events. `Popup` visibility can be controlled using the `open` prop. `Popup` provides a callback prop `onOpenChange` which can be used both to open and dismiss.
+
+As mentioned above, `Popup` implements an autocontrolled pattern which allows both controlled an uncontrolled variants to be used in its API.
+
+```typescript
+// v7 controlled ContextualMenu
+const [showContextualMenu, setShowContextualMenu] = React.useState(false);
+const onShowContextualMenu = () => setShowContextualMenu(true);
+const onHideContextualMenu = () => setShowContextualMenu(false);
+
+<ContextualMenu
+  hidden={!showContextualMenu}
+  onItemClick={onHideContextualMenu}
+  onDismiss={onHideContextualMenu
+/>;
+
+// v0 uncontrolled Popup
+const [open, setOpen] = React.useState(false);
+
+<Popup
+  onOpenChange={(e, props: PopupProps) => {/*react on changes*/}}
+  trigger={<Button icon={<OpenOutsideIcon />} title="Open popup" />}
+/>;
+
+// v0 controlled Popup - used with trigger disables autocontrol
+const [open, setOpen] = React.useState(false);
+
+<Popup
+  open={open}
+  onOpenChange={(e, props: PopupProps) => setOpen(!props.open)}
+  trigger={<Button icon={<OpenOutsideIcon />} title="Open popup" />}
+/>;
+```
+
+### Keyboard navigation
+
+Both v7 and v0 support arrow navigation in the menu, and home/end keys to jump to first and last items respectively.
+
+One interesting difference is that the v7 `ContextualMenu` will also tab through items. The v0 `Menu` on the other hand uses tab to focus in/out of the entire component.
+
+`ContextualMenu` will also allow disabled items to be focusable while navigating the list, while the v0 `Menu` does not permit this.
+
+### Selection state
+
+The v0 `Menu` component supports and `active` state and has a number of props to manage this state. However, this state only affects items visually and does not perform the same function as menu item checkboxes or radio items. The `active` state of menu items can both be controlled and autocontrolled
+
+```typescript
+// v0 autocontrolled active index with default
+<Menu defaultActiveIndex={0}>
+  <Menu.Item index={0}>
+    <Menu.ItemContent>Editorials</Menu.ItemContent>
+  </Menu.Item>
+</Menu>
+
+// v0 autocontrolled active index controlled
+<Menu activeIndex={0}>
+  <Menu.Item index={0}>
+    <Menu.ItemContent>Editorials</Menu.ItemContent>
+  </Menu.Item>
+</Menu>
+
+// shorthand variation
+const items = [
+  {
+    key: 'editorials',
+    content: 'Editorials',
+  },
+]
+<Menu defaultActiveIndex={0} items={items} />
+```
+
+In order to obtain semantically meaningful selection state in v0, the only possible way is to use a `Toolbar` component. The menu that is rendered in this component is completely different but supports both checkbox and radio selection states through the use of an `active` prop and must be controlled.
+
+```typescript
+// Toolbar with one item that opens a selectable menu
+const toolbarItems = [
+  {
+    icon: <MoreIcon />,
+    title: 'More',
+    menu: [
+      {
+        active: true,
+        content: 'Bold',
+        kind: 'toggle',
+        // kind: 'radio', // for radio
+        onClick: handleToggleClick,
+      },
+      {
+        active: false,
+        content: 'Italic',
+        kind: 'toggle',
+        // kind: 'radio', // for radio
+      },
+    ],
+    menuOpen,
+    onMenuOpenChange: (e, { menuOpen }) => setMenuOpen(menuOpen),
+  },
+]
+
+<Toolbar items={toolbarItems}>
+```
+
+The v7 `ContextualMenu` on the other hand, only supports the checkbox selection state implicitly. This behavior must be controlled by consumers and uses `canCheck` and `isChecked` props:
+
+```typescript
+const menuProps = {
+  shouldFocusOnMount: true,
+  items: [
+    {
+      text: 'New',
+      canCheck: true,
+      isChecked: true,
+      onClick: onToggleSelect,
+    },
+    {
+      text: 'Share',
+      canCheck: true,
+      isChecked: false,
+      onClick: onToggleSelect,
+    },
+  ],
+};
+
+// shorthand usage in a menu button
+<DefaultButton menuProps={menuProps} />;
+```
+
+### DOM output
+
+Below are some sample DOM outputs to compare for certain scenarios. Not all DOM attributes are reflected here, a subset have been chosen to provide easier reading and comparison.
+
+#### Basic menu
+
+Both the current v7 and v0 versions of this control use the `ul` and `li` combination along with content wrapper elements. This makes style overrides kind of complicated to target and also makes custom rendering difficult since there is the added complexity of targeting stricter DOM structures.
+
+`ul`/`li` combinations are also very strict in markdown and might not play well with newer concepts like virtualization and custom scrollbars where arbitrary `div` elements can be inserted into the DOM.
+
+In terms off A11y and narration there is effectively no difference in having a wrapping element or not. Would useful in the proposed new API to use a simpler DOM structure that provides more flexibility.
+
+```html
+<!-- v7 basic menu  -->
+<ul role="menu">
+  <li role="presentation">
+    <button role="menuitem" tabindex="0">
+      <div class="linkContent">
+        <span class="itemText">Editorials</span>
+      </div>
+    </button>
+  </li>
+  <li role="presentation">
+    <button role="menuitem" tabindex="-1">
+      <div class="linkContent">
+        <span class="itemText">Reviews</span>
+      </div>
+    </button>
+  </li>
+</ul>
+
+<!-- v0 basic menu  -->
+<ul role="menu">
+  <li role="presentation">
+    <a role="menuitem" tabindex="0">
+      <span class="menu__itemcontent">Editorials</span>
+    </a>
+  </li>
+  <li role="presentation">
+    <a role="menuitem" tabindex="-1">
+      <span class="menu__itemcontent">Reviews</span>
+    </a>
+  </li>
+</ul>
+```
+
+### Menu divider
+
+```html
+<!-- v7 divider item  -->
+<li role="separator" aria-hidden="true"></li>
+
+<!-- v0 divider item  -->
+<li role="presentation" class="menu__divider"></li>
+```
+
+### Custom rendering and data
+
+v7 provides render callbacks that can be used to render either the entire menu list or specific slots of menut items. Each call back provides the props avaialble to that slot and a `defaultRender` which allows to easily extend the original render, if required.
+
+```typescript
+// v7 custom rendering
+const menuProps = {
+  onRenderMenuList: (props: IContextualMenuListProps, defaultRenderer) => {},
+  onRenderSubMenu: (props: IContextualMenuProps, defaultRenderer) => {},
+  items: [
+    {
+      onRender: (
+        item: any,
+        dismissMenu: (ev?: any, dismissAll?: boolean) => void
+      ) => React.ReactNode
+    }
+    {onRenderContent: (props: IContextualMenuItemProps, defaultRenderer) => {}},
+    {onRenderIcon: (props: IContextualMenuItemProps, defaultRenderer) => {}},
+  ]
+}
+
+<ContextualMenu menuProps={menuProps}>
+```
+
+Custom data can also be associated with menu items
+
+```typescript
+const menuProps = {
+  items: [{
+    ...
+    data: { foo: "bar" }
+  }]
+}
+```
+
+v0 custom rendering through shorthand components is a consistent experience through all shorthand components, but provide a smaller API surface (whether this is simpler or less powerful can be subjective). Custom rendering in the case of the `Menu` component would be done through the use of `children` prop either through the standard React child component API or through shorthand as a callback function.
+
+```typescript
+// v0 shorthand children render callback
+const items = [
+  {
+    key: 'editorials',
+    children: (El, props) => <El>{props.key}</El>
+  },
+]
+
+<Menu defaultActiveIndex={0} items={items} />
+
+// v0 children API custom render
+<Menu>
+  <Menu.Item index={0}>
+    <Menu.ItemContent>Editorials</Menu.ItemContent>
+  </Menu.Item>
+  <Menu.Item index={1}>
+    CustomContent
+  </Menu.Item>
+  {/*Not recommended but definitely possible*/}
+  <div>custom item</div>
+</Menu>
+```
+
+## Variants
+
+### Nested menus
+
+A `Menu` should be able to trigger an additional instance of itself as a part of one or more of its options. The nested `Menu` component should have the same functional capabilities as the root `Menu` component.
+
+The actions that trigger the the nested `Menu` should be be consistent with the actions that can trigger any root `Menu` from a similar UI control.
+
+We advise that no more than two nested `Menu` components be used, but this spec does not functionally apply that constrain to the implementation of the `Menu` component.
+
+### Selection state
+
+A `Menu` should be able to track and represent the selection state of all or some of its options if required.
+
+When an options is associated with a selection state. The `Menu`, either root or nested, should control its dismiss behavior accordingly based on configuration.
+
+### Sections
+
+A `Menu` can be partitioned into sections using visible dividers in its list of options. Each section can contain a heading title that announces or briefly describes the options in the particular section
+
+### Secondary label
+
+An option of a `Menu` component should be able to declare additional secondary label that can provide additional context describing the option or its usage.
+
+For example a secondary label can be a label that shows a keyboard shortcut that will perform an equivalent action of the option of the `Menu` component.
+
+### Split option with nesting
+
+An option of a `Menu` component can trigger a nested `Menu` component and also perform its default action by splitting the option into two interactable areas that handle each action separately.
+
+### Disabled option(s)
+
+All options in a `Menu` component can be disabled and should provide a visible indication for this purpose. User interaction should be defined for disabled options
+
+### Scrollable
+
+A `Menu` should display a vertical scrollbar when the number of options exceeds the height of the component
+
+### Standalone/No surface
+
+A `Menu` can be used without the temporary popup surface and its trigger. This will allow `Menu` components to be permanent page content or used in custom surfaces with a wider range of UI components.
+
+### Custom content
+
+```
+This variant is still a work in progress and needs additional thought
+```
+
+Any custom content can be used in the rendering of the Menu, all interactions and accessibility is left to the discretion of the consumer.
 
 ## API
 
-### Prop comparison \(Stardust vs Fabric\)
+The `Menu` should implement a `children` based API as is the standard across all the surveyed alternatives as a part of Open UI research in [Prior Art](#prior-art). The component will leverage the use of `context` in the interaction and data flows of child components.
 
-_Note:_ I've skipped some of the boilerplate props like className.
+Sample usages will be give in the following section of this document [Sample code](#sample-code)
 
-#### Fabric
+### Menu
 
-##### Menu
+The root level component serves as a simplified interface (sugar) for popup positioning and triggering.
 
-| Prop Name                | Type                                                                                                                    | Description                                                |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------- |
-| target                   | Target                                                                                                                  | Target for positioning                                     |
-| directionalHint          | DirectionalHint                                                                                                         | How the menu should try to align itself                    |
-| gapSpace                 | number                                                                                                                  | Distance between menu and target                           |
-| beakWidth                | number                                                                                                                  | Width of the beak                                          |
-| useTargetWidth           | 'boolean'                                                                                                               | If the menu should match the targets width                 |
-| useTargetAsMinWidth      | boolean                                                                                                                 | see above                                                  |
-| bounds                   | IRectangle \| (target?: targetWindow?: Window)=>< IRectangle \| undefined                                               | The space that the menu can appear in                      |
-| directionalHintForRTL    | DirectionalHint                                                                                                         |
-| gapSpace                 | number                                                                                                                  | The space between the menu and its target                  |
-| beakWidth?               | number                                                                                                                  | The size of the beak that points                           |
-| isBeakVisible?           | boolean                                                                                                                 |                                                            |
-| coverTarget?             | boolean                                                                                                                 | If the menu should cover its target                        |
-| alignTargetEdge?         | boolean                                                                                                                 | If the menu should be aligned.                             |
-| items                    | IContextualMenuItem[]                                                                                                   | The list of items to be rendered                           |
-| labelElementId?          | string                                                                                                                  | The id of a label element for the menu                     |
-| shouldFocusOnMount?      | boolean                                                                                                                 |                                                            |
-| shouldFocusOnContainer?  | boolean                                                                                                                 |                                                            |
-| onDismiss?               | Event                                                                                                                   | callback for what should happen when menu is dismissed     | Not needed |
-| onItemClick?             | (ev?: React.MouseEvent<HTMLElement> \| React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean \| void |                                                            |
-| isSubMenu?               | boolean                                                                                                                 | whether or not the menu is owned by another menu           |
-| id?                      | string                                                                                                                  |                                                            |
-| ariaLabel?               | string                                                                                                                  |                                                            |
-| doNotLayer?              | boolean                                                                                                                 |                                                            |
-| directionalHintFixed?    | boolean                                                                                                                 |                                                            |
-| onMenuOpened?            | (contextualMenu?: IContextualMenuProps) => void                                                                         | callback for when the menu is opened                       |
-| onMenuDismissed?         | (contextualMenu?: IContextualMenuProps) => void                                                                         | callback for when the menu is completly dismissed          |
-| calloutProps?            | ICalloutProps                                                                                                           | passthrough props to the callout                           |
-| title?                   | string                                                                                                                  |                                                            |
-| getMenuClassNames?       | (theme: ITheme, className?: string) => IContextualMenuClassNames                                                        | styling function                                           |
-| onRenderSubMenu?         | IRenderFunction<IContextualMenuProps>                                                                                   | a different way of rendering the submenu                   |
-| onRenderMenuList?        | IRenderFunction<IContextualMenuListProps>                                                                               | a different way of rendering the list of items             |
-| subMenuHoverDelay?       | number                                                                                                                  | how long it should take for the submenu to open            |
-| contextualMenuItemAs?    | React.ComponentClass<IContextualMenuItemProps>                                                                          | React.StatelessComponent<IContextualMenuItemProps>         | a different way of rendering each item |
-| focusZoneProps?          | IFocusZoneProps                                                                                                         | passthrough props to control how the focus zone works      |
-| hidden?                  | boolean                                                                                                                 | if the menu should be hidden and not destroyed             |
-| shouldUpdateWhenHidden?  | boolean                                                                                                                 |                                                            |
-| delayUpdateFocusOnHover? | boolean                                                                                                                 | if focus should go to the menu items when they are hovered |
+### MenuTrigger
 
-##### Menuitem
+A non-visual component that wraps its child and configures them to be the trigger that will open a menu. This component should only accept one child
 
-| Prop Name                | Type                                                                                  | Description                                                                                                                                                                                                                                                                                                                                                                                  |
-| ------------------------ | ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| ariaLabel                | string                                                                                |                                                                                                                                                                                                                                                                                                                                                                                              |
-| canCheck                 | boolean                                                                               | Whether or not this menu item can be checked                                                                                                                                                                                                                                                                                                                                                 |
-| checked                  | boolean                                                                               | Whether or not this menu item is currently checked.                                                                                                                                                                                                                                                                                                                                          |
-| className                | string                                                                                | Additional CSS class to apply to the menu item.                                                                                                                                                                                                                                                                                                                                              |
-| componentRef             | IRefObject<IContextualMenuRenderItem>                                                 | Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.                                                                                                                                                                                                                                                                        |
-| customOnRenderListLength | number                                                                                | When rendering a custom menu component that is passed in, the component might also be a list of elements. We want to keep track of the correct index our menu is using based off of the length of the custom list. It is up to the user to increment the count for their list.                                                                                                               |
-| data                     | any                                                                                   | Any custom data the developer wishes to associate with the menu item.                                                                                                                                                                                                                                                                                                                        |
-| disabled                 | boolean                                                                               | false                                                                                                                                                                                                                                                                                                                                                                                        | Whether the menu item is disabled |
-| href                     | string                                                                                | Navigate to this URL when the menu item is clicked.                                                                                                                                                                                                                                                                                                                                          |
-| iconProps                | IIconProps                                                                            | Props for the Icon.                                                                                                                                                                                                                                                                                                                                                                          |
-| itemProps                | Partial<IContextualMenuItemProps>                                                     | Optional IContextualMenuItemProps overrides to customize behaviors such as item styling via styles.                                                                                                                                                                                                                                                                                          |
-| itemType                 | ContextualMenuItemType                                                                |
-| key                      | string                                                                                | Unique id to identify the item                                                                                                                                                                                                                                                                                                                                                               |
-| keytipProps              | IKeytipProps                                                                          | Keytip for this contextual menu item                                                                                                                                                                                                                                                                                                                                                         |
-| onClick                  | (ev?: React.MouseEvent<HTMLElement>                                                   | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean                                                                                                                                                                                                                                                                                                                     | void | Callback for when the menu item is invoked. If ev.preventDefault() is called in onClick, the click will not close the menu. Returning true will dismiss the menu even if ev.preventDefault() was called. |
-| onMouseDown              | (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void             | A function to be executed on mouse down. This is executed before an onClick event and can be used to interrupt native on click events as well. The click event should still handle the commands. This should only be used in special cases when react and non-react are mixed.                                                                                                               |
-| onRender                 | (item: any, dismissMenu: (ev?: any, dismissAll?: boolean) => void) => React.ReactNode | Method to custom render this menu item. For keyboard accessibility, the top-level rendered item should be a focusable element (like an anchor or a button) or have the data-is-focusable property set to true. The function receives a function that can be called to dismiss the menu as a second argument. This can be used to make sure that a custom menu item click dismisses the menu. |
-| onRenderIcon             | IRenderFunction<IContextualMenuItemProps>                                             | Custom render function for the menu item icon                                                                                                                                                                                                                                                                                                                                                |
-| primaryDisabled          | boolean                                                                               | false                                                                                                                                                                                                                                                                                                                                                                                        | If the menu item is a split button, this prop disables purely the primary action of the button. |
-| rel                      | string                                                                                | Link relation setting when using href. If target is \_blank, rel is defaulted to a value to prevent clickjacking.                                                                                                                                                                                                                                                                            |
-| role                     | string                                                                                | Optional override for the menu button's role. Defaults to menuitem or menuitemcheckbox.                                                                                                                                                                                                                                                                                                      |
-| secondaryText            | string                                                                                | Seconday description for the menu item to display                                                                                                                                                                                                                                                                                                                                            |
-| sectionProps             | IContextualMenuSection                                                                | Properties to apply to render this item as a section. This prop is mutually exclusive with subMenuProps.                                                                                                                                                                                                                                                                                     |
-| split                    | boolean                                                                               | false                                                                                                                                                                                                                                                                                                                                                                                        | Whether or not this menu item is a splitButton. |
-| subMenuProps             | IContextualMenuProps                                                                  | Properties to apply to a submenu to this item. The ContextualMenu will provide default values for target, onDismiss, isSubMenu, id, shouldFocusOnMount, directionalHint, className, and gapSpace, all of which can be overridden.                                                                                                                                                            |
-| submenuIconProps         | IIconProps                                                                            | Props for the Icon used for the chevron.                                                                                                                                                                                                                                                                                                                                                     |
-| target                   | string                                                                                | Target window when using href.                                                                                                                                                                                                                                                                                                                                                               |
-| text                     | string                                                                                | Text description for the menu item to display                                                                                                                                                                                                                                                                                                                                                |
-| title                    | string                                                                                | Optional title for displaying text when hovering over an item.                                                                                                                                                                                                                                                                                                                               |
+### MenuList
 
-#### Stardust
+This component is used internally by `Menu` and manages the context and layout its items.
 
-##### Menu
+`MenuList` can also be used separately as the standalone variant of the `Menu`, since it should not control popup positioning or triggers. It is the only component in the API that can be used standalone. Envisioned to be used with more complex popup or trigger scenarios where the `Menu` component does not provide enough control for these situations.
 
-| Prop Name          | Type                                                     | Description                                             |
-| ------------------ | -------------------------------------------------------- | ------------------------------------------------------- |
-| accessibility      | Accessibility                                            | Determines how the keyboard interacts with the menu     |
-| activeIndex        | number \| string                                         | Index of currently active item                          |
-| defaultActiveIndex | number \| string                                         | Default index of currently active item                  |
-| fluid              | boolean                                                  | whether or not the menu should fill its container       |
-| iconOnly           | boolean                                                  | whether or not the menu only has icons                  | Not needed |
-| items              | ShorthandCollection\<MenuItemProps, MenuShorthandKinds\> | The items that are to be rendered in the menu           |
-| onItemClick        | ComponentEventHandler\<MenuItemProps\>                   | Callback for what should happen when an item is clicked |
-| pills              | boolean                                                  | If the items should have rounded edges                  | not needed |
-| pointing           | boolean \| 'start' \| 'end'                              | The direction in which an item should point towards     |
-| primary            | boolean                                                  | Determines if the menu is primary or not, changes color |
-| secondary          | boolean                                                  | see above but secondary                                 |
-| underlined         | boolean                                                  | If the items should be underlined                       |
-| vertical           | boolean                                                  | How the menu should render, vertically or horizontally  |
-| submenu            | boolean                                                  | If the menu is a submenu or not                         |
-| indicator          | ShorthandValue\<IconProps\>                              | How the submenu icon should look                        |
+### MenuGroup
 
-##### Menuitem
+Creates a group inside a `MenuList`, setting up header layout and dividers between `MenuItems`.
 
-| Prop Name        | Type                                 | Description                                                                                                                          |
-| ---------------- | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| accessibility    | "menuItemBehavior" any               | Accessibility behavior if overridden by the user.                                                                                    |
-| active           | false \| boolean                     | A menu item can be active.                                                                                                           |
-| animation        | AnimationProp                        | Generic animation property that can be used for applying different theme animations.                                                 |
-| as               | "a" React.ElementType                | An element type to render as (string or component).                                                                                  |
-| className        | string                               | Additional CSS class name(s) to apply.                                                                                               |
-| content          | ReactNode                            | Shorthand for primary content.                                                                                                       |
-| defaultMenuOpen  | false \| boolean                     | Default menu open                                                                                                                    |
-| design           | ComponentDesign                      |                                                                                                                                      |
-| disabled         | false \| boolean                     | A menu item can show it is currently unable to be interacted with.                                                                   |
-| icon S           | ShorthandValue<IconProps>            | Name or shorthand for Menu Item Icon                                                                                                 |
-| iconOnly         | false \| boolean                     | A menu may have just icons.                                                                                                          |
-| inSubmenu        | false \| boolean                     | Indicates whether the menu item is part of submenu.                                                                                  |
-| index            | number                               | MenuItem index inside Menu.                                                                                                          |
-| indicator S      | ShorthandValue<IconProps>            | Shorthand for the submenu indicator.                                                                                                 |
-| itemPosition     | number                               | MenuItem position inside Menu (skipping separators).                                                                                 |
-| itemsCount       | number                               | MenuItem count inside Menu.                                                                                                          |
-| menu S           | ShorthandValue<MenuProps>            | ShorthandCollection<MenuItemProps, MenuShorthandKinds>                                                                               | Shorthand for the submenu. |
-| menuOpen         | false \| boolean                     | Indicates if the menu inside the item is open.                                                                                       |
-| onActiveChanged  | ComponentEventHandler                | Callback for setting the current menu item as active element in the menu.                                                            |
-| onBlur           | ComponentEventHandler                | Called after item blur.                                                                                                              |
-| onClick          | ComponentEventHandler                | Called on click.                                                                                                                     |
-| onFocus          | ComponentEventHandler                | Called after user's focus.                                                                                                           |
-| onMenuOpenChange | ComponentEventHandler                | Event for request to change 'open' value.                                                                                            |
-| pills            | false \| boolean                     | A menu can adjust its appearance to de-emphasize its contents.                                                                       |
-| pointing         | boolean \| enum                      | A menu can point to show its relationship to nearby content. For vertical menu, it can point to the start of the item or to the end. |
-| primary          | false \| boolean                     | The menu item can have primary type.                                                                                                 |
-| secondary        | false \| boolean                     | The menu item can have secondary type.                                                                                               |
-| styles           | ComponentSlotStyle                   | Additional CSS styles to apply to the component instance.                                                                            |
-| underlined       | false \| boolean                     | Menu items can by highlighted using underline.                                                                                       |
-| variables        | any                                  | Override for theme site variables to allow modifications of component styling via themes.                                            |
-| vertical         | false \| boolean                     | A vertical menu displays elements vertically.                                                                                        |
-| wrapper S        | {"as":"li"} ShorthandValue<BoxProps> | Shorthand for the wrapper component.                                                                                                 |
+The MenuGroup is also a useful component to declare different selection groups (checkbox/radio) in a `MenuList`.
 
-### Recommended Props
+| Prop name | Type | Details                                                                     |
+| --------- | ---- | --------------------------------------------------------------------------- |
+| title     | text | The title of of the section renders a [MenuGroupHeader](#menusectionheader) |
 
-Most props should be removed in favor of a composition model where the parent component passes in menuItems which contain content styled however they want.
+### MenuGroupHeader
 
-#### Menu component
+Creates a section header element with appropriate styling. Will set correct `aria-labelledby` relationship if it is instantiated within a [MenuGroup](#menugroup)
 
-Should extend `ul` props
+### MenuDivider
 
-| Prop Name   | Prop Type                     | Notes                                                                                                                                                                 |
-| ----------- | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| children    | `li | MenuItem | Divider`     | Text                                                                                                                                                                  |
-| orientation | enum: `vertical | horizontal` | Specifies how the menu is oriented.                                                                                                                                   |
-| onClick     | `onClickHandler`              | This is from the root UL props but it's worth noting that there shouldn't be a specific onMenuClick/onMenuItemClick handler. See [Behaviors](#On-Menu-Click) for more |
+Creates a divider element in the `MenuList` with correct HTML and aria semantics for divider.
 
-#### MenuItem component
+This divider is purely a visual cue. To ensure consistent narration experience across all screenreaders [MenuGroup](#menugroup) should be used
 
-Should extend `li` props
-Most of the other props exist as HTMLAttributes like `selected`, `checked`, `onClick`.
+### MenuItem
 
-| Prop Name | Prop Type                                                                                               | Notes                            |
-| --------- | ------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| children  | [Flow content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Flow_content) | No content should have on clicks |
+As the name infers
 
-#### SubmenuItem component
+| Prop name      | Type      | Details                                   |
+| -------------- | --------- | ----------------------------------------- |
+| icon           | ReactNode | Icon that is rendered with the menu item  |
+| secondaryLabel | text      | A secondary label i.e. keyboard shortcuts |
 
-Should extend MenuItems props but omit onClick
+### MenuItemCheckbox
 
-| Prop Name | Prop Type                                                                                               | Notes                            |
-| --------- | ------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| children  | [Flow content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Flow_content) | No content should have on clicks |
+A variant of `MenuItem` that allows a multiple selection state based on the value that it represents
 
-#### Submenu component
+| Prop name | Type | Details                                            |
+| --------- | ---- | -------------------------------------------------- |
+| name      | text | The name of the value that the checkbox represents |
+| value     | text | The value of the checkbox                          |
 
-| Prop Name | Prop Type                                                                                               | Notes                                              |
-| --------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| children  | [Flow content](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Flow_content) | No content should have on clicks                   |
-| open      | boolean                                                                                                 | whether or not this particular menu group is open. |
+### MenuItemRadio
 
-#### Submenu component
+A variant of `MenuItem` that allows a single selection state based on the value that it represents
 
-Should take in MenuProps
+| Prop name | Type | Details                                            |
+| --------- | ---- | -------------------------------------------------- |
+| name      | text | The name of the value that the checkbox represents |
+| value     | text | The value of the checkbox                          |
 
-#### Communication between Menu and MenuItems
+## Sample code
 
-To help provide additional information to menu items and their context, the menu should implement react context. This allows for synchronization between menu items. This also allows menu groups to pass their open status down to their children to determine how the sub items are rendered.
+The below samples do not represent the definitive props of the final implemented component, but represent the ideal final implementations. Can be subject to change during the implementation phase.
 
-Similarly Submenus should control their open state through context.
+### Basic Menu
 
-#### Discussion:
-
-This is a large departure from the way that both Stardust and Fabric implement menus but it is more in line with the way a lot of other frameworks menus work. Additionally I believe it gives a lot more flexibility through composition which removes some of the pressure to add many props.
-
-There should be a lot more discussion to see if this relaxed approach to props is appropriate. Additionally it could make SplitButton menu items difficult to implement.
-
-### Conversion Plan:
-
-#### Fabric to Fluent:
-
-##### Menu
-
-| Action to take/taken     | Property transitioned? | Breaking change? | Codemod/Shim created? |
-| ------------------------ | ---------------------- | ---------------- | --------------------- |
-| target                   | &#x274C;               | &#x274C;         | &#x274C;              |
-| directionalHint          | &#x274C;               | &#x274C;         | &#x274C;              |
-| gapSpace                 | &#x274C;               | &#x274C;         | &#x274C;              |
-| beakWidth                | &#x274C;               | &#x274C;         | &#x274C;              |
-| useTargetWidth           | &#x274C;               | &#x274C;         | &#x274C;              |
-| useTargetAsMinWidth      | &#x274C;               | &#x274C;         | &#x274C;              |
-| bounds                   | &#x274C;               | &#x274C;         | &#x274C;              |
-| directionalHintForRTL    | &#x274C;               | &#x274C;         | &#x274C;              |
-| gapSpace                 | &#x274C;               | &#x274C;         | &#x274C;              |
-| beakWidth?               | &#x274C;               | &#x274C;         | &#x274C;              |
-| isBeakVisible?           | &#x274C;               | &#x274C;         | &#x274C;              |
-| coverTarget?             | &#x274C;               | &#x274C;         | &#x274C;              |
-| alignTargetEdge?         | &#x274C;               | &#x274C;         | &#x274C;              |
-| items                    | &#x274C;               | &#x274C;         | &#x274C;              |
-| labelElementId?          | &#x274C;               | &#x274C;         | &#x274C;              |
-| shouldFocusOnMount?      | &#x274C;               | &#x274C;         | &#x274C;              |
-| shouldFocusOnContainer?  | &#x274C;               | &#x274C;         | &#x274C;              |
-| onDismiss?               | &#x274C;               | &#x274C;         | &#x274C;              |
-| onItemClick?             | &#x274C;               | &#x274C;         | &#x274C;              |
-| isSubMenu?               | &#x274C;               | &#x274C;         | &#x274C;              |
-| id?                      | &#x274C;               | &#x274C;         | &#x274C;              |
-| ariaLabel?               | &#x274C;               | &#x274C;         | &#x274C;              |
-| doNotLayer?              | &#x274C;               | &#x274C;         | &#x274C;              |
-| directionalHintFixed?    | &#x274C;               | &#x274C;         | &#x274C;              |
-| onMenuOpened?            | &#x274C;               | &#x274C;         | &#x274C;              |
-| onMenuDismissed?         | &#x274C;               | &#x274C;         | &#x274C;              |
-| calloutProps?            | &#x274C;               | &#x274C;         | &#x274C;              |
-| title?                   | &#x274C;               | &#x274C;         | &#x274C;              |
-| getMenuClassNames?       | &#x274C;               | &#x274C;         | &#x274C;              |
-| onRenderSubMenu?         | &#x274C;               | &#x274C;         | &#x274C;              |
-| onRenderMenuList?        | &#x274C;               | &#x274C;         | &#x274C;              |
-| subMenuHoverDelay?       | &#x274C;               | &#x274C;         | &#x274C;              |
-| contextualMenuItemAs?    | &#x274C;               | &#x274C;         | &#x274C;              |
-| focusZoneProps?          | &#x274C;               | &#x274C;         | &#x274C;              |
-| hidden?                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| shouldUpdateWhenHidden?  | &#x274C;               | &#x274C;         | &#x274C;              |
-| delayUpdateFocusOnHover? | &#x274C;               | &#x274C;         | &#x274C;              |
-
-##### Menuitem
-
-| Action to take/taken     | Property transitioned? | Breaking change? | Codemod/Shim created? |
-| ------------------------ | ---------------------- | ---------------- | --------------------- |
-| ariaLabel                | &#x274C;               | &#x274C;         | &#x274C;              |
-| canCheck                 | &#x274C;               | &#x274C;         | &#x274C;              |
-| checked                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| className                | &#x274C;               | &#x274C;         | &#x274C;              |
-| componentRef             | &#x274C;               | &#x274C;         | &#x274C;              |
-| customOnRenderListLength | &#x274C;               | &#x274C;         | &#x274C;              |
-| data                     | &#x274C;               | &#x274C;         | &#x274C;              |
-| disabled                 | &#x274C;               | &#x274C;         | &#x274C;              |
-| href                     | &#x274C;               | &#x274C;         | &#x274C;              |
-| iconProps                | &#x274C;               | &#x274C;         | &#x274C;              |
-| itemProps                | &#x274C;               | &#x274C;         | &#x274C;              |
-| itemType                 | &#x274C;               | &#x274C;         | &#x274C;              |
-| key                      | &#x274C;               | &#x274C;         | &#x274C;              |
-| keytipProps              | &#x274C;               | &#x274C;         | &#x274C;              |
-| onClick                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| onMouseDown              | &#x274C;               | &#x274C;         | &#x274C;              |
-| onRender                 | &#x274C;               | &#x274C;         | &#x274C;              |
-| onRenderIcon             | &#x274C;               | &#x274C;         | &#x274C;              |
-| primaryDisabled          | &#x274C;               | &#x274C;         | &#x274C;              |
-| rel                      | &#x274C;               | &#x274C;         | &#x274C;              |
-| role                     | &#x274C;               | &#x274C;         | &#x274C;              |
-| secondaryText            | &#x274C;               | &#x274C;         | &#x274C;              |
-| sectionProps             | &#x274C;               | &#x274C;         | &#x274C;              |
-| split                    | &#x274C;               | &#x274C;         | &#x274C;              |
-| subMenuProps             | &#x274C;               | &#x274C;         | &#x274C;              |
-| submenuIconProps         | &#x274C;               | &#x274C;         | &#x274C;              |
-| target                   | &#x274C;               | &#x274C;         | &#x274C;              |
-| text                     | &#x274C;               | &#x274C;         | &#x274C;              |
-| title                    | &#x274C;               | &#x274C;         | &#x274C;              |
-
-#### Stardust to Fluent
-
-##### Menu
-
-| Action to take/taken | Property transitioned? | Breaking change? | Codemod/Shim created? |
-| -------------------- | ---------------------- | ---------------- | --------------------- |
-| accessibility        | &#x274C;               | &#x274C;         | &#x274C;              |
-| activeIndex          | &#x274C;               | &#x274C;         | &#x274C;              |
-| defaultActiveIndex   | &#x274C;               | &#x274C;         | &#x274C;              |
-| fluid                | &#x274C;               | &#x274C;         | &#x274C;              |
-| iconOnly             | &#x274C;               | &#x274C;         | &#x274C;              |
-| items                | &#x274C;               | &#x274C;         | &#x274C;              |
-| onItemClick          | &#x274C;               | &#x274C;         | &#x274C;              |
-| pills                | &#x274C;               | &#x274C;         | &#x274C;              |
-| pointing             | &#x274C;               | &#x274C;         | &#x274C;              |
-| primary              | &#x274C;               | &#x274C;         | &#x274C;              |
-| secondary            | &#x274C;               | &#x274C;         | &#x274C;              |
-| underlined           | &#x274C;               | &#x274C;         | &#x274C;              |
-| vertical             | &#x274C;               | &#x274C;         | &#x274C;              |
-| submenu              | &#x274C;               | &#x274C;         | &#x274C;              |
-| indicator            | &#x274C;               | &#x274C;         | &#x274C;              |
-
-##### Menuitem
-
-| Action to take/taken | Property transitioned? | Breaking change? | Codemod/Shim created? |
-| -------------------- | ---------------------- | ---------------- | --------------------- |
-| accessibility        | &#x274C;               | &#x274C;         | &#x274C;              |
-| active               | &#x274C;               | &#x274C;         | &#x274C;              |
-| animation            | &#x274C;               | &#x274C;         | &#x274C;              |
-| as                   | &#x274C;               | &#x274C;         | &#x274C;              |
-| className            | &#x274C;               | &#x274C;         | &#x274C;              |
-| content              | &#x274C;               | &#x274C;         | &#x274C;              |
-| defaultMenuOpen      | &#x274C;               | &#x274C;         | &#x274C;              |
-| design               | &#x274C;               | &#x274C;         | &#x274C;              |
-| disabled             | &#x274C;               | &#x274C;         | &#x274C;              |
-| icon S               | &#x274C;               | &#x274C;         | &#x274C;              |
-| iconOnly             | &#x274C;               | &#x274C;         | &#x274C;              |
-| inSubmenu            | &#x274C;               | &#x274C;         | &#x274C;              |
-| index                | &#x274C;               | &#x274C;         | &#x274C;              |
-| indicator S          | &#x274C;               | &#x274C;         | &#x274C;              |
-| itemPosition         | &#x274C;               | &#x274C;         | &#x274C;              |
-| itemsCount           | &#x274C;               | &#x274C;         | &#x274C;              |
-| menu S               | &#x274C;               | &#x274C;         | &#x274C;              |
-| menuOpen             | &#x274C;               | &#x274C;         | &#x274C;              |
-| onActiveChanged      | &#x274C;               | &#x274C;         | &#x274C;              |
-| onBlur               | &#x274C;               | &#x274C;         | &#x274C;              |
-| onClick              | &#x274C;               | &#x274C;         | &#x274C;              |
-| onFocus              | &#x274C;               | &#x274C;         | &#x274C;              |
-| onMenuOpenChange     | &#x274C;               | &#x274C;         | &#x274C;              |
-| pills                | &#x274C;               | &#x274C;         | &#x274C;              |
-| pointing             | &#x274C;               | &#x274C;         | &#x274C;              |
-| primary              | &#x274C;               | &#x274C;         | &#x274C;              |
-| secondary            | &#x274C;               | &#x274C;         | &#x274C;              |
-| styles               | &#x274C;               | &#x274C;         | &#x274C;              |
-| underlined           | &#x274C;               | &#x274C;         | &#x274C;              |
-| variables            | &#x274C;               | &#x274C;         | &#x274C;              |
-| vertical             | &#x274C;               | &#x274C;         | &#x274C;              |
-| wrapper S            | &#x274C;               | &#x274C;         | &#x274C;              |
-
-### Notable things
-
-Based on my recommendations, the MenuItem ends up doing a lot of work compared to the Menu itself. The MenuItem would be responsible for managing whether or not its expanded, has a submenu, and any other state it might have.
-
-## DOM Structure
-
-### HTML DOM structure
-
-```HTML
-<ul role="menu">
-    <li role="menuitem">{"Item one"}</li>
-    <hr />
-    <li role="menuitem">{"Item two"}</li>
-    <li role="menuitem">
-        {"Item Three"}
-        <ul role="menu">
-            <li role="menuitem">{"SubItem one"}</li>
-            <li role="menuitem">{"SubItem two"}</li>
-        </ul>
-    </li>
-</ul>
+```typescript
+const menu = (
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
+    </MenuList>
+  <Menu>
+)
 ```
 
-### Stardust Dom Structure
-
-Note: Class names removed
-
-```HTML
-<ul role="menu" data-aa-class="Menu" >
-    <li role="presentation" data-aa-class="MenuItem__wrapper">
-        <a role="menuitem" tabindex="0" data-is-focusable="true" data-aa-class="MenuItem">
-        <span dir="auto" >Item one</span>
-        </a>
-    </li>
-    <li role="presentation" data-aa-class="MenuDivider" dir="auto"> | </li>
-    <li role="presentation" data-aa-class="MenuItem__wrapper" >
-        <a role="menuitem" tabindex="-1" data-is-focusable="true" data-aa-class="MenuItem">
-            <span dir="auto" >Item two</span>
-        </a>
-    </li>
-    <li role="presentation" data-aa-class="MenuItem__wrapper" >
-        <a role="menuitem" tabindex="0" aria-expanded="false" aria-haspopup="true" data-is-focusable="true" data-aa-class="MenuItem">
-            <span dir="auto">Item three</span>
-        </a>
-    </li>
-</ul>
-```
-
-### office-ui-fabric-react DOM Structure
-
-_Note:_ Some long class names removed
-
-```HTML
-<div data-focuszone-id="FocusZone159">
-   <ul role="menu">
-      <li role="presentation" class="ms-ContextualMenu-item item-127">
-         <button class="ms-ContextualMenu-link root-129" aria-posinset="1" aria-setsize="3" aria-disabled="false" role="menuitem" tabindex="0">
-            <div><span class="ms-ContextualMenu-itemText label-139">Item one</span></div>
-         </button>
-      </li>
-      <li role="separator" aria-hidden="true"></li>
-      <li role="presentation" class="ms-ContextualMenu-item item-127">
-         <button class="ms-ContextualMenu-link root-129" aria-posinset="2" aria-setsize="3" aria-disabled="false" role="menuitem" tabindex="-1">
-            <div class="ms-ContextualMenu-linkContent linkContent-133"><span class="ms-ContextualMenu-itemText label-139">Item two</span></div>
-         </button>
-      </li>
-      <li role="presentation" class="ms-ContextualMenu-item item-127">
-         <button class="ms-ContextualMenu-link root-129" aria-haspopup="true" aria-expanded="false" aria-posinset="3" aria-setsize="3" aria-disabled="false" role="menuitem" tabindex="-1">
-            <div class="ms-ContextualMenu-linkContent linkContent-133"><span>Item 3 (has submenu)</span><i data-icon-name="ChevronRight" aria-hidden="true" class="ms-ContextualMenu-submenuIcon subMenuIcon-151"></i></div>
-         </button>
-      </li>
-   </ul>
+```html
+<!-- expected DOM output  -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
 </div>
 ```
 
-### Fast-DNA DOM Structure
+### Menu items with icons
 
-```HTML
-<div role="menu" class="contextMenu-3-1-49">
-   <div tabindex="-1" class="contextMenuItem-3-1-50" role="menuitem">
-       <span class="contextMenuItem_contentRegion-3-1-51">Item one</span>
-   </div>
-   <hr tabindex="-1" class="divider-3-1-53">
-   <div tabindex="0" class="contextMenuItem-3-1-50" role="menuitem">
-       <span class="contextMenuItem_contentRegion-3-1-51">Item two</span>
-   </div>
-   <div tabindex="-1" class="contextMenuItem-3-1-50" role="menuitem">
-       <span class="contextMenuItem_contentRegion-3-1-51">Item three</span>
-   </div>
-   <div tabindex="-1" class="contextMenuItem-3-1-50" role="menuitem">
-       <span class="contextMenuItem_contentRegion-3-1-51">SubItem one</span>
-   </div>
-   <div tabindex="-1" class="contextMenuItem-3-1-50" role="menuitem">
-       <span class="contextMenuItem_contentRegion-3-1-51">SubItem Two</span>
-   </div>
+```typescript
+const menu = (
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem icon={<FileIcon />}>Option 1</MenuItem>
+      <MenuItem icon={<BellIcon />}>Option 2</MenuItem>
+      <MenuItem icon={<LinkIcon />}>Option 3</MenuItem>
+    </MenuList>
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">
+    <span role="presentation"><svg>FileIcon</svg></span>
+    Option 1
+  </div>
+  <div role="menuitem" tabindex="0">
+    <span role="presentation"><svg>BellIcon</svg></span>
+    Option 2
+  </div>
+  <div role="menuitem" tabindex="0">
+    <span role="presentation"><svg>LinkIcon</svg></span>
+    Option 3
+  </div>
 </div>
 ```
 
-#### Comments
+### Sections
 
-Fast-DNA is one of the only menus that doesn't use `li` elements.
-
-### MaterialUI
-
-_Note:_ Some long class names removed
-
-```HTML
-<ul class="MuiList-root MuiList-padding" role="menu" tabindex="-1" id="simple-menu">
-   <li tabindex="0" role="menuitem" aria-disabled="false">Item one<span class="MuiTouchRipple-root"></span></li>
-   <hr class="MuiDivider-root">
-   <li tabindex="-1" role="menuitem" aria-disabled="false">Item two<span class="MuiTouchRipple-root"></span></li>
-   <li tabindex="-1" role="menuitem" aria-disabled="false">Item three<span class="MuiTouchRipple-root"></span></li>
-   <li tabindex="-1" role="menuitem" aria-disabled="false">Subitem one<span class="MuiTouchRipple-root"></span></li>
-   <li tabindex="-1" role="menuitem" aria-disabled="false">Subitem Two<span class="MuiTouchRipple-root"></span></li>
-</ul>
+```typescript
+const menu = (
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuDivider />
+      <MenuGroup title="Section title">
+        <MenuItem>Section Option 1</MenuItem>
+        <MenuItem>Section Option 2</MenuItem>
+        <MenuItem>Section Option 3</MenuItem>
+      <MenuGroup />
+    </MenuList>
+  <Menu>
+)
 ```
 
-### AntDesign DOM Structure
-
-_Note:_ Some long class names removed
-
-```HTML
-<ul role="menu">
-   <li class="ant-menu-item" role="menuitem" style="padding-left: 24px;">Item one</li>
-   <li class=" ant-menu-item-divider"></li>
-   <li class="ant-menu-item" role="menuitem" style="padding-left: 24px;"> Item two</li>
-   <li class="ant-menu-submenu ant-menu-submenu-inline" role="menuitem">
-      <div class="ant-menu-submenu-title" aria-expanded="false" aria-haspopup="true" style="padding-left: 24px;">
-          <span>Item Three</span>
-          <i class="ant-menu-submenu-arrow"/>
-      </div>
-   </li>
-</ul>
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="separator" aria-hidden="true"></div>
+  <div role="group" aria-labelledby="sectionid">
+    <div role="presentation" aria-hidden="true" id="sectionid">Section title</div>
+    <div role="menuitem" tabindex="-1">Section Option 1</div>
+    <div role="menuitem" tabindex="-1">Section Option 2</div>
+    <div role="menuitem" tabindex="-1">Section Option 3</div>
+  </div>
+  <div role="separator"></div>
+</div>
 ```
 
-## Recommendations
+Custom section headings can also be used, but must be used within a [MenuGroup](#menugroup) to ensure correct narration experience
 
-### Recommended DOM Structure
+```typescript
 
-```HTML
+const menu = (
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuDivider />
+      <MenuGroup>
+        <MenuGroupHeader>{children}</MenuGroupHeader>
+        <MenuItem>Section Option 1</MenuItem>
+        <MenuItem>Section Option 2</MenuItem>
+        <MenuItem>Section Option 3</MenuItem>
+      <MenuGroup />
+    </MenuList>
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<!-- TODO positioning -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="separator" aria-hidden="true"></div>
+  <div role="group" aria-labelledby="sectionid">
+    <div role="presentation" aria-hidden="true" id="sectionid">children</div>
+    <div role="menuitem" tabindex="-1">Section Option 1</div>
+    <div role="menuitem" tabindex="-1">Section Option 2</div>
+    <div role="menuitem" tabindex="-1">Section Option 3</div>
+  </div>
+  <div role="separator"></div>
+</div>
+```
+
+### Submenus
+
+```typescript
+const menu = (
+  <Menu>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <Menu>
+        <MenuTrigger>
+          <MenuItem>Open submenu</MenuItem>
+        </MenuTrigger>
+        <MenuList>
+          <MenuItem>Option 1</MenuItem>
+          <MenuItem>Option 2</MenuItem>
+          <MenuItem>Option 3</MenuItem>
+        </MenuList>
+      </Menu>
+    </MenuList>
+  <Menu>
+)
+```
+
+```html
+<!-- expected DOM output  -->
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+</div>
+
+<!-- expected DOM output for submenu  -->
+<div role="menu" aria-labelledby="submenu-trigger">
+  <div role="menuitem" tabindex="-1">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
+</div>
+```
+
+### Standlone
+
+```typescript
+const [open] = React.useState(false);
+
+const menu = (
+  <CustomSurface open={open}>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <MenuItem>Option 2</MenuItem>
+      <MenuItem>Option 3</MenuItem>
+    <MenuList>
+  <CustomSurface>
+)
+```
+
+```html
+<!-- expected DOM output  -->
 <div role="menu">
-    <div role="menuitem">{"Item one"}</div>
-    <div role="presentation" />
-    <div role="menuitem">{"Item two"}</div>
-    <a role="menuitem" href="www.isALink.com"> link1 </a>
-    <div role="menuitem">
-        {"Item Three"}
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
+</div>
+```
+
+### Selection
+
+```typescript
+const trigger = <button> Open menu </button>
+const [selectedItems, setSelectedItems] = React.useState([]);
+
+// basic checkbox example
+const menuCheckbox = (
+  <Menu
+    kind="checkbox"
+    selectedItems={selectedItems}
+    onSelectionChange={setSeelctedItems}
+  >
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItemCheckbox name="checkbox1" value={1}>Option 1</MenuItemCheckbox>
+      <MenuItemCheckbox name="checkbox1" value={2}>Option 2</MenuItemCheckbox>
+      <MenuItemCheckbox name="checkbox2" value={3}>Option 3</MenuItemCheckbox>
+    </MenuList>
+  <Menu>
+)
+
+// leverage MenuGroup for different selection groups
+const menuSelectableSections = (
+  <Menu
+    selectedItems={selectedItems}
+    onSelectionChange={setSeelctedItems}
+  >
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuGroup title="Checkbox section">
+        <MenuItemCheckbox name="checkbox" value={1}>Option 1</MenuItem>
+        <MenuItemCheckbox name="checkbox" value={2}>Option 2</MenuItem>
+        <MenuItemCheckbox name="checkbox" value={3}>Option 3</MenuItem>
+      </MenuGroup>
+      <MenuGroup title="Radio section">
+        <MenuItemRadio name="radio" value={1}>Option 1</MenuItemRadio>
+        <MenuItemRadio name="radio" value={2}>Option 2</MenuItemRadio>
+        <MenuItemRadio name="radio" value={3}>Option 3</MenuItemRadio>
+      </MenuGroup>
+    </MenuList>
+  <Menu>
+)
+```
+
+```html
+<button aria-haspopup="true" aria-expanded="true" id="trigger">Open menu</button>
+
+<!-- expected DOM output for basic checkbox  -->
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
+  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
+  <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
+</div>
+
+<!-- expected DOM output for different selection groups  -->
+<div role="menu" aria-labelledby="trigger">
+  <div role="group" aria-label="Checkbox section">
+    <div role="presentation" aria-hidden="true">Checkbox section</div>
+    <div role="menuitemcheckbox" tabindex="0" aria-checked="true">Option 1</div>
+    <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 2</div>
+    <div role="menuitemcheckbox" tabindex="-1" aria-checked="false">Option 3</div>
+  </div>
+  <div role="separator"></div>
+  <div role="group" aria-label="Radio section">
+    <div role="presentation" aria-hidden="true">Radio section</div>
+    <div role="menuitemradio" tabindex="-1" aria-checked="true">Option 1</div>
+    <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 2</div>
+    <div role="menuitemradio" tabindex="-1" aria-checked="false">Option 3</div>
+  </div>
+</div>
+```
+
+### Split button
+
+```typescript
+const trigger = <button> Open menu </button>
+
+// basic checkbox example
+const menuSplitbutton= (
+  <Menu trigger={trigger}>
+    <MenuTrigger><button>Opem menu</button></MenuTrigger>
+    <MenuList>
+      <MenuItem>Option 1</MenuItem>
+      <Menu>
+        <MenuTrigger>
+          <MenuItemSplit></MenuItemSplit>
+        </MenuTrigger>
+        <MenuItem>Option 1</MenuItem>
+        <MenuItem>Option 2</MenuItem>
+        <MenuItem>Option 3</MenuItem>
+      </Menu>
+    <MenuList>
+  <Menu>
+)
+```
+
+```html
+<div role="menu" aria-labelledby="trigger">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trigger">Open submenu</div>
+</div>
+
+<!-- expected DOM output  -->
+<div role="menu">
+  <div role="menuitem" tabindex="0">Option 1</div>
+  <div role="presentation">
+    <div role="menuitem" tabindex="-1">content slot</div>
+    <div role="menuitem" tabindex="-1" aria-haspopup="true" aria-expanded="false" id="submenu-trgger">
+      <svg>indicator icon</svg>
     </div>
-        <!-->
-            I'm not sure if this is the right role or if it is actually a menu item. It should
-            probably be related to its parent's item in some way.
-        <-->
-    <div role="presentation">
-        <!-->
-            Note: Does not necessarily need to be part of the same dom
-            tree, could be floating.
-        <-->
-        <div role="menu">
-            <div role="menuitem">{"SubItem one"}</div>
-            <div role="menuitem">{"SubItem two"}</div>
-        </div>
-    </div>
-</ul>
+  </div>
+</div>
+
+<!-- TODO submenu positioning -->
+<div role="menu" aria-labelledby="submenu-trigger">
+  <div role="menuitem" tabindex="-1">Option 1</div>
+  <div role="menuitem" tabindex="-1">Option 2</div>
+  <div role="menuitem" tabindex="-1">Option 3</div>
+</div>
 ```
 
-### Recommended React Structure
+## Behaviors
 
-#### Shape when used
+### Useful references
 
-```TSX
-return <Menu>
-    <MenuItem onClick={callback}>{"Item one"}</MenuItem>
-    <Divider/>
-    <MenuItem>{"Item two"}</MenuItem>
-    <Submenu>
-    <SubmenuItem>{"Item two"}</SubmenuItem>
-        <SubmenuList>
-            <MenuItem>{"SubItem one"}</MenuItem>
-            <MenuItem>{"SubItem two"}</MenuItem>
-        </SubmenuList>
-    </SubMenu>
-</Menu>;
+The below references were used to decide n appropriate keyboard interactions from an a11y perspective.
+
+- https://www.w3.org/TR/wai-aria-practices/examples/menubar/menubar-1/menubar-1.html#
+- https://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html
+- https://www.w3.org/WAI/tutorials/menus/application-menus/
+
+### Menu open/dismiss
+
+A menu can be triggered by the following user interactions on the triggering/anchor element. Not all interactions should be supported at the same time, but the component must be able to support combinations of the below interactions.
+
+As a general rule, once the menu is closed the focus should return to the triggering element once the menu is closed unless the interaction would involve another focusable element.
+
+| Type     | Action     | Result  | Details                                                           | Focus after                                   |
+| -------- | ---------- | ------- | ----------------------------------------------------------------- | --------------------------------------------- |
+| Mouse    | Click      | Open    | Click on the trigger element                                      | First menuitem                                |
+| Mouse    | Hover      | Open    | Hover over the trigger element with delay                         | First menuitem                                |
+| Mouse    | LongPress  | Open    | MouseDown with delay, equivalent to right click for touch devices | First menuitem                                |
+| Mouse    | Click      | Open    | Right click for contextual menus                                  | First menuitem                                |
+| Keyboard | Enter      | Open    | Focus on trigger element and press Enter                          | First menuitem                                |
+| Keyboard | Space      | Open    | Focus on trigger element and press Space                          | First menuitem                                |
+| Keyboard | Shift+F10  | Open    | Focus on trigger element to open context menu (i.e. right click)  | First menuitem                                |
+| Keyboard | ArrowDown  | Open    | Focus on trigger element. Used in menu buttons                    | First menuitem                                |
+| Keyboard | ArrowUp    | Open    | Focus on trigger element. Used in menu buttons                    | Last menuitem                                 |
+| Mouse    | Click      | Dismiss | Click anywhere outside the component                              | menu trigger                                  |
+| Mouse    | Click      | Dismiss | Click on the trigger while the menu is open                       | menu trigger                                  |
+| Mouse    | Click      | Dismiss | Click on a menu item                                              | User defined - default menu trigger           |
+| Mouse    | MouseLeave | Dismiss | Mouse leaves the component after a delay                          | menu trigger                                  |
+| Keyboard | Enter      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
+| Keyboard | Space      | Dismiss | Invoked on a menu item                                            | User defined - default menu trigger           |
+| Keyboard | Esc        | Dismiss | Closes the menu                                                   | menu trigger                                  |
+| Keyboard | Tab        | Dismiss | Closes the menu and all submenus                                  | next tabbable element after menu trigger      |
+| Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                                  | previous tabbable element before menu trigger |
+
+### Submenu trigger/navigation
+
+A submenu can be triggered by the following user interactions on the triggering menu item. Not all interactions should be supported at the same time, but the component must be able to support combinations of the below interactions.
+
+As a general rule, once a submenu is dismissed without dismissing the menu, the focus should revert to the triggering menu item unless the interaction involves another focusable UI component.
+
+| Type     | Action     | Result  | Details                                                          | Focus after                                        |
+| -------- | ---------- | ------- | ---------------------------------------------------------------- | -------------------------------------------------- |
+| Mouse    | Click      | Open    | Click the menu item that contains a submenu                      | First menuitem in submenu                          |
+| Mouse    | Hover      | Open    | Hover over the menu item that contains a submenu with delay      | First menuitem in submenu                          |
+| Keyboard | Enter      | Open    | Focus on triggering menu item                                    | First menuitem in submenu                          |
+| Keyboard | Space      | Open    | Focus on triggering menu item                                    | Frist menuitem in submenu                          |
+| Keyboard | ArrowRight | Open    | Focus on triggering menu item                                    | First menuitem in submenu                          |
+| Mouse    | Click      | Dismiss | Click on an item in the submenu                                  |                                                    |
+| Keyboard | Space      | Dismiss | Invoked on a submenu item                                        |                                                    |
+| Keyboard | Space      | Dismiss | Invoked on a submenu item                                        |                                                    |
+| Mouse    | Click      | Dismiss | Click on a UI element that is not the submenu                    | Root menu trigger                                  |
+| Mouse    | MouseLeave | Dismiss | Mouse leaves the submenu or its triggering menu item after delay | Root menu trigger                                  |
+| Keyboard | ArrowLeft  | Dismiss | Closes the submenu                                               | menu item that contained submenu                   |
+| Keyboard | Esc        | Dismiss | Closes the submenu                                               | menu item that contained submenu                   |
+| Keyboard | Tab        | Dismiss | Closes the menu and all submenus                                 | Next tabbable element after root menu trigger      |
+| Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                                 | Previous tabbable element before root menu trigger |
+
+### Split button MenuItem submenu
+
+All of the above Mouse events in the [previous section](#submenu-trigger/navigation) should apply to the part of the split button that is intended to open a submenu.
+
+```
+Keyboard interaction for the split button menu item WIP and requires input from a11y champs
 ```
 
-#### Menu
+Once the the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) apply
 
-```TSX
-function() {
-    return (
-    <MenuContext.Provider value={menuState}>
-        <Slots.Root {...props} role={"menu"}>
-            {props.children}
-        </Slots.Root>
-    <MenuContext.Provider>);
-}
-```
+### Menu keyboard navigation
 
-#### MenuItem
+Keyboard interactions required to navigate the menu. The alphanumeric match interaction does not need to be supported in all cases, but should be supported as much as possible.
 
-```TSX
-function() {
-    return (
-    <Slots.Root {...props} role={"menuitem"}>
-        {props.children}
-    </Slots.Root>);
-}
-```
+| Type     | Action    | Result            | Details                                                               | Focus after                                |
+| -------- | --------- | ----------------- | --------------------------------------------------------------------- | ------------------------------------------ |
+| Keyboard | ArrowDown | Next Item         | Roving                                                                | Next item, if on last item then first      |
+| Keyboard | ArrowUp   | Previous Item     | Roving                                                                | Previous item, if on first item go to last |
+| Keyboard | Home      | First item        |                                                                       | First item                                 |
+| Keyboard | End       | Last item         |                                                                       | Last item                                  |
+| Keyboard | A-Z, 0-9  | Matched item      | Matches the first item that corresponds alphabetically or numerically | Matched item                               |
+| Mouse    | Hover     | Reveals scrollbar | If required, reveals scrollbar after delay                            | Keeps focus on existing item               | ### MenuItem selection |
 
-#### Submenu
+Below are the interactions that should be supported for all menu items that are required to handle a selection state.
 
-Maybe should be named SubmenuContext?
-Should submenu have its own context?
+In the event that the selection method is a radio, the previous selected item must be unselected.
 
-```TSX
-function() {
-return (
-    <OpenableContext.Provider value={submenuState}>
-        {props.children}
-    </OpenableContext.Provider>);
-}
-```
+| Type     | Action | Result | Details                                      |
+| -------- | ------ | ------ | -------------------------------------------- |
+| Keyboard | Space  | Toggle | Toggle the selection status of the menu item |
+| Keyboard | Enter  | Toggle | Toggle the selection status of the menu item |
+| Mouse    | Click  | Toggle | Toggle the selection status of the menu item |
 
-#### SubmenuList
+### Positioning
 
-```TSX
-function() {
-    const openableContext = React.useContext(OpenableContext);
-    return (openableContext.open &&
-    <Slots.Root {...menuProps}>
-        {props.children}
-    </Slots.Root>);
-}
-```
+### Placement + alignment
 
-#### SubmenuItem
+A menu can be placed and aligned in any of the configurations allowed by current v0 and v7:
 
-```TSX
-function() {
-    const openableContext = React.useContext(OpenableContext);
-    return (
-    <Slots.Root {...menuItemProps} onClick={openableContext.toggleOpen}>
-        {props.children}
-    </Slots.Root>);
-}
-```
+- Before or after anchor element
+- Above or below anchor element
+- Aligned at top/bottom/left/right edge of anchor element
+- Aligned centered to the anchor element
 
-### Slots
+The above should result in 12 possible position hints in total
 
-#### Menu
+#### Flip
 
-Since the Menu is only rendering its children, the only slot necessary is the one for the Root `div`. The rest can be passed in as children variants.
+A menu should be positioned so that it will flip its positioning on a given axis if the boundary (e.g. viewport) gets to small that it might overflow
 
-#### MenuItem
+#### Nudging
 
-Since the MenuItem is only rendering its children, the only slot necessary is the one for the Root `div`. The rest can be passed in as children.
+A menu should be positioned so that if its boundary (e.g. viewport) might overflow, the placement of the popup should be 'nudged' closer into the boundary
 
-#### SubmenuList
+#### Anchor placement offset
 
-Since the SubmenuList is effectively the same as the Menu, it should have only one slot for the Root `div` and for all intents and purposes should behave exactly the same as the Menu slot does.
+A menu should be positioned so that the distance with respect to the anchor element should be configurable on both axes.
 
-#### SubmenuItem
+#### Inline vs portal rendering
 
-Since the SubmenuItem is effectively the same as the MenuItem, it should have only one slot for the Root `div` and for all intents and purposes should behave exactly the same as the MenuItem slot does.
+A menu should be positioned so that it can be rendered either out of order on the DOM (e.g. portal to body) or inline in DOM order.
 
-### Behaviors
+#### Submenu positioning
 
-#### Menu
+The default positioning for a submenu should be the standard seen in both v7 and v0. Submenu should be placed after the menu item trigger and aligned with the top edge.
 
-The menu itself should be a list that renders menu items, it will provide context about its overall state but should not pass that directly into its items as props.
+Although this should not be recommended, for the purposes of compatibility with v7, all positioning aspects should be configurable for submenus.
 
-##### Orientation
+## Accessibiltiy
 
-The menu should provide some help for orienting its contents either vertically, like a left nav, or horizontally, like a nav bar. Ideally this will just be a prop that gets put into context so each item can decide how it should appear. It's possible that the menu should enforce direction itself.
+Accessibility behaviour is built into the spec as much as possible. This section addresses specific issues that don't fit well with the standard definition of the component.
 
-##### Focus
+## Migration
 
-By default Focus should go to the tab stops and it's up to each menuItem to decide if it has tabindex=0. An example of a menuItem that shouldn't be focusable would be a Divider.
+The immediate candidates for adoption for a converged `Menu` component which are hinted at the beginning of the spec are:
 
-However for the menu we should provide a focus wrapper that is able to track focus using role="menuitem" to determine what item should get focused.
+- [ContextualMenu](https://developer.microsoft.com/en-us/fluentui#/controls/web/contextualmenu) for v7
+- [Menu](https://fluentsite.z22.web.core.windows.net/0.52.0/components/menu/definition) for v0
 
-The menu does not need to provide a native way to be controlled without getting focus directly. Like above, there should be a simple utility wrapper that could be written to implement this.
+This component has characteristics that should probably be considered for the following components in terms of future migrations:
 
-##### On Menu Click
+- [Toolbar](https://fluentsite.z22.web.core.windows.net/0.52.0/components/toolbar/definition) in v0 which shares a menu component. The component itself also should use similar behaviour and interactions to `Menu`
+- [Dropdown](https://fluentsite.z22.web.core.windows.net/0.52.0/components/dropdown/definition) in v0 contains a menu. Dropdown semantics are different to that of standard menus in accessibility, but certain behaviours such as keyboard navigation and selection can be reused for such a component
+- [CommandBar](https://developer.microsoft.com/en-us/fluentui#/controls/web/commandbar) in v7 also contains a menu subcomponent as well as behaviour similar to `Menu` semantics
+- [Nav](https://developer.microsoft.com/en-us/fluentui#/controls/web/nav) in v7 could reuse certain behaviours in `Menu` such as keyboard navigation, but will use different DOM and aria semantics, this could be achieved through state hook variants or composition
+- [OverflowSet](https://developer.microsoft.com/en-us/fluentui#/controls/web/overflowset) in v7 contains a submenu component
+- [PivotSet](https://developer.microsoft.com/en-us/fluentui#/controls/web/pivot) could be considered as a component variant of `Menu`
+- [Breadcrumb](https://developer.microsoft.com/en-us/fluentui#/controls/web/breadcrumb) in v7 contains a submenu component and could also be considered as a component variant of `Menu
 
-Some implementations of menu have a general `onClick` function that is applied to all items as a way of getting more information.
+### Creating sections or groups within a menu
 
-Recommendation: There is not a need to have an `onClick` that is called whenever an item is clicked. Instead the root `menu` should take an `onClick` that will fire if a child's on click does not prevent default.
+⚠️ When using [MenuDivider](#menudivider) without [MenuGroup](#menugroup)
 
-#### Menu Items
+The [MenuDivider](#menudivider) is a purely visual component. The component is only intended to be used as visual 'sugar'. When meaningful partitions [MenuItems](#menuitem) exists, [MenuGroup](#menugroup) should be used to provide the correct experience for narration.
 
-##### On Item Click
+⚠️ When using [MenuSectionHeader](#menudivider)
 
-The on item click should be supplied individually by the consuming component
+[MenuGroup](#menugroup) as a parent component ensures that correct `aria-labelledby` relationship is defined between the header and the group.
 
-##### Focus
+### Focus management
 
-The menu item should change border and background color on focus.
+### Disabled menu items
 
-##### Hover
-
-The menu item should change border and background color on hover.
-
-An extra consideration needs to be made for forcing focus into the menu item on hover. Menus on most Microsoft desktop applications work this way. We should ensure there is a way to achieve this behavior through composition or props.
-
-#### Submenu Items
-
-A submenu item should have all of the same states and behaviors as menu items with the only difference being that submenu items lack an `onClick` callback.
-
-A submenu item needs to provide a way for menus to open on hover as many submenus have that behavior.
-
-##### Open
-
-A menu item should have a different state depending on if it is open or not.
-
-### Theming && customization
-
-The menu should have as few opinions on theming as possible, allowing the items to determine customizations as much as possible. There should also be a way to easily remove the theme entirely from the menu so the items can determine the look and feel.
-
-#### Menu Tokens
-
-None needed
-
-#### Menu Item Tokens
-
-| Token Name                 |
-| -------------------------- |
-| rootBackgroundColor        |
-| rootBorderColor            |
-| rootHoverBackgroundColor   |
-| rootFocusedBackgroundColor |
-| rootHoverBorderColor       |
-| rootFocusedBorderColor     |
-| rootOutlineColor           |
-| rootHoverOutlineColor      |
-| rootFocusedOutlineColor    |
-
-#### Submenu Item Tokens
-
-Extends menu item tokens
-
-| Token Name              |
-| ----------------------- |
-| rootOpenBackgroundColor |
-| rootOpenBorderColor     |
-
-### Composition
-
-The menu should consist of a list element, a `div`, which renders individual menu items. Each menu item consists of an element which renders with `role="menuitem"`
+Disabled menu items should be focusable

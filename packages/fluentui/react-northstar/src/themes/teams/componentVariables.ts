@@ -141,6 +141,7 @@ export { splitButtonToggleVariables as SplitButtonToggle } from './components/Sp
 
 export { carouselVariables as Carousel } from './components/Carousel/carouselVariables';
 export { carouselItemVariables as CarouselItem } from './components/Carousel/carouselItemVariables';
+export { carouselPaddlesContainerVariables as CarouselPaddlesContainer } from './components/Carousel/carouselPaddlesContainerVariables';
 export { carouselNavigationVariables as CarouselNavigation } from './components/Carousel/carouselNavigationVariables';
 export { carouselNavigationItemVariables as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemVariables';
 export { carouselPaddleVariables as CarouselPaddle } from './components/Carousel/carouselPaddleVariables';

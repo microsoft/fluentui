@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
 import { IToggleProps } from './Toggle.types';
@@ -72,26 +71,21 @@ describe('ToggleState', () => {
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
     let checked: boolean | undefined;
-    const onSubmit = sinon.spy();
+    const onSubmit = jest.fn((e: React.FormEvent<HTMLElement>) => {
+      e.preventDefault();
+    });
     const onChange: IToggleProps['onChange'] = (ev, toggled) => {
       checked = toggled;
     };
 
     const wrapper = mount(
-      <form
-        action="#"
-        onSubmit={e => {
-          onSubmit();
-          e.preventDefault();
-        }}
-      >
+      <form action="#" onSubmit={onSubmit}>
         <Toggle label="Label" onChange={onChange} />
       </form>,
     );
-    const button: any = wrapper.find('button');
     // simulate to change toggle state
-    button.simulate('click');
+    wrapper.find('button').simulate('click');
     expect(checked).toEqual(true);
-    expect(onSubmit.called).toEqual(false);
+    expect(onSubmit).not.toHaveBeenCalled();
   });
 });

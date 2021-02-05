@@ -282,7 +282,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){&:before {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                   background: Window;
                   border-color: Highlight;
                 }
@@ -306,7 +306,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 10px;
                 }
-                @media screen and (-ms-high-contrast: active){&:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                   border-color: Highlight;
                 }
                 @media screen and (forced-colors: active){&:after {
@@ -405,7 +405,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){&:before {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                   background: Window;
                   border-color: GrayText;
                 }
@@ -428,7 +428,7 @@ exports[`Component Examples renders ChoiceGroup.Controlled.Example.tsx correctly
                 & .ms-ChoiceFieldLabel {
                   color: #a19f9d;
                 }
-                @media screen and (-ms-high-contrast: active){& .ms-ChoiceFieldLabel {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-ChoiceFieldLabel {
                   color: GrayText;
                 }
                 @media screen and (forced-colors: active){& .ms-ChoiceFieldLabel {

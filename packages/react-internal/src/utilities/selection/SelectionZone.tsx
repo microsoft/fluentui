@@ -480,7 +480,9 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
     const isSelectionDisabled = this._isSelectionDisabled(target);
 
     const { selection } = this.props;
+    // eslint-disable-next-line deprecation/deprecation
     const isSelectAllKey = ev.which === KeyCodes.a && (this._isCtrlPressed || this._isMetaPressed);
+    // eslint-disable-next-line deprecation/deprecation
     const isClearSelectionKey = ev.which === KeyCodes.escape;
 
     // Ignore key downs from input elements.
@@ -530,16 +532,19 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
           }
           break;
         } else if (
+          // eslint-disable-next-line deprecation/deprecation
           (ev.which === KeyCodes.enter || ev.which === KeyCodes.space) &&
           (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'INPUT')
         ) {
           return false;
         } else if (target === itemRoot) {
+          // eslint-disable-next-line deprecation/deprecation
           if (ev.which === KeyCodes.enter) {
             // Items should be invokable even if selection is disabled.
             this._onInvokeClick(ev, index);
             ev.preventDefault();
             return;
+            // eslint-disable-next-line deprecation/deprecation
           } else if (ev.which === KeyCodes.space) {
             if (!isSelectionDisabled) {
               this._onToggleClick(ev, index);

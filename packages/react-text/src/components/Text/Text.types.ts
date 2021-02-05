@@ -1,4 +1,4 @@
-import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-compose';
+import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-utils';
 import { RecursivePartial } from '@fluentui/theme';
 import * as React from 'react';
 

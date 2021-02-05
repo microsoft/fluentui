@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.48)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.0-beta.46..@fluentui/react-monaco-editor_v1.0.0-beta.48)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [1.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.43)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.0-beta.38..@fluentui/react-monaco-editor_v1.0.0-beta.43)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Fix some remaining references to @uifabric ([PR #16679](https://github.com/microsoft/fluentui/pull/16679) by elcraig@microsoft.com)
+
+## [1.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.38)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.0-beta.0..@fluentui/react-monaco-editor_v1.0.0-beta.38)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.0)
 

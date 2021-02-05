@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 03 Dec 2020 12:32:57 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.49)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.47..@fluentui/react-charting_v5.0.0-beta.49)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [5.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.44)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.43..@fluentui/react-charting_v5.0.0-beta.44)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+- adding lines in vertical stacked bar chart complex combo chart (#15551) ([PR #16639](https://github.com/microsoft/fluentui/pull/16639) by jakubkonka@microsoft.com)
+- Cherry-pick react-charting updates from v7 ([PR #16667](https://github.com/microsoft/fluentui/pull/16667) by jakubkonka@microsoft.com)
+
+## [5.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.43)
+
+Wed, 27 Jan 2021 12:30:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.39..@fluentui/react-charting_v5.0.0-beta.43)
+
+### Changes
+
+- LineChart fixes backported from v7 branch ([PR #16634](https://github.com/microsoft/fluentui/pull/16634) by jakubkonka@microsoft.com)
+
+## [5.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.39)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.25..@fluentui/react-charting_v5.0.0-beta.39)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [5.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.25)
 

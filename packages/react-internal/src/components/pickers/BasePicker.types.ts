@@ -70,7 +70,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 
   /**
    * A callback for what should happen when a user clicks within the input area.
-   * @deprecated Please use onEmptyResolveSuggestions instead, as the suggestions aren't about
+   * @deprecated Please use `onEmptyResolveSuggestions` instead, as the suggestions aren't about
    * setting focus as they are about resolving suggestions when there is no input.
    */
   onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;

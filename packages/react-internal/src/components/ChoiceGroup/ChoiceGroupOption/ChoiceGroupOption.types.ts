@@ -8,8 +8,7 @@ import { IChoiceGroupOption } from '../ChoiceGroup.types';
  */
 export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'> {
   /**
-   * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
+   * @deprecated Not used.
    */
   componentRef?: IRefObject<IChoiceGroupOption>;
 
@@ -54,12 +53,12 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
   focused?: boolean;
 
   /**
-   * Theme (provided through customization)
+   * Theme (provided through customization).
    */
   theme?: ITheme;
 
   /**
-   * If true, it specifies that an option must be selected in the ChoiceGroup before submitting the form
+   * If true, an option must be selected in the ChoiceGroup.
    */
   required?: boolean;
 
@@ -71,7 +70,6 @@ export interface IChoiceGroupOptionProps extends Omit<IChoiceGroupOption, 'key'>
 
 /**
  * Defines props needed to construct styles.
- * This represents the simplified set of immutable things which control the class names.
  * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionStyleProps {
@@ -95,7 +93,7 @@ export interface IChoiceGroupOptionStyleProps {
 
   /**
    * Image sizes used when `hasImage` or `hasIcon` style props are enabled.
-   * @defaultvalue `{height: 32, width: 32 }`
+   * @defaultvalue `{ height: 32, width: 32 }`
    */
   imageSize?: { height: number; width: number };
 

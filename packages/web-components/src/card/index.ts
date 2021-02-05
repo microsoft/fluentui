@@ -6,7 +6,8 @@ import {
   designSystemProvider,
   CardTemplate as template,
 } from '@microsoft/fast-foundation';
-import { createColorPalette, DesignSystem, neutralFillCard } from '@microsoft/fast-components-styles-msft';
+import { createColorPalette, neutralFillCard } from '../color';
+import { DesignSystem } from '../fluent-design-system';
 import { CardStyles as styles } from './card.styles';
 
 /**

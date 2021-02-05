@@ -8,11 +8,11 @@ import { CalloutFocusTrapExample } from './Callout.FocusTrap.Example';
 import { CalloutDirectionalExample } from './Callout.Directional.Example';
 import { CalloutCoverExample } from './Callout.Cover.Example';
 
-const CalloutBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Callout/Callout.Basic.Example.tsx') as string;
-const StatusCalloutExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Callout/Callout.Status.Example.tsx') as string;
-const CalloutFocusTrapExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Callout/Callout.FocusTrap.Example.tsx') as string;
-const CalloutDirectionalExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Callout/Callout.Directional.Example.tsx') as string;
-const CalloutCoverExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Callout/Callout.Cover.Example.tsx') as string;
+const CalloutBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/Callout.Basic.Example.tsx') as string;
+const StatusCalloutExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/Callout.Status.Example.tsx') as string;
+const CalloutFocusTrapExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/Callout.FocusTrap.Example.tsx') as string;
+const CalloutDirectionalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/Callout.Directional.Example.tsx') as string;
+const CalloutCoverExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/Callout.Cover.Example.tsx') as string;
 
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
@@ -45,8 +45,12 @@ export const CalloutPageProps: IDocPageProps = {
       view: <CalloutFocusTrapExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Callout/docs/CalloutOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Callout/docs/CalloutBestPractices.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/docs/CalloutOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Callout/docs/CalloutBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

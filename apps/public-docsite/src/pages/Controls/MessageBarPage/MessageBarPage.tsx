@@ -24,7 +24,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/MessageBarImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarImplementation.md') as string,
         },
       ];
   }

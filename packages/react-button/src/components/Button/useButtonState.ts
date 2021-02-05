@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { ButtonState } from './Button.types';
 
 /**
@@ -11,17 +12,18 @@ export const useButtonState = (draftState: ButtonState) => {
     draftState.role = 'button';
 
     if (draftState.as !== 'a') {
-      const { onKeyDown, onClick } = draftState;
+      const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = draftState;
 
-      draftState['data-isFocusable'] = true;
+      draftState['data-is-focusable'] = true;
       draftState.tabIndex = 0;
 
       draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-        if (onKeyDown) {
-          onKeyDown(ev);
+        if (onKeyDownCallback) {
+          onKeyDownCallback(ev);
         }
 
-        if (!ev.defaultPrevented && onClick && (ev.which === 20 || ev.which === 13)) {
+        const keyCode = getCode(ev);
+        if (!ev.defaultPrevented && onClickCallback && (keyCode === EnterKey || keyCode === SpacebarKey)) {
           // Translate the keydown enter/space to a click.
           ev.preventDefault();
           ev.stopPropagation();
@@ -32,5 +34,22 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   }
 
-  draftState.disabled = draftState['aria-disabled'] = draftState.disabled || draftState.loading;
+  // Disallow click and keyboard events when component is disabled and eat events when disabledFocusable is set to true.
+  const { disabled, onKeyDown } = draftState;
+  if (disabled) {
+    draftState.onClick = undefined;
+  }
+  draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    const keyCode = getCode(ev);
+    if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      onKeyDown?.(ev);
+    }
+  };
+
+  draftState['aria-disabled'] = draftState.disabled || draftState.disabledFocusable;
+  draftState.disabled =
+    draftState.as === 'button' ? draftState['aria-disabled'] && !draftState.disabledFocusable : undefined;
 };

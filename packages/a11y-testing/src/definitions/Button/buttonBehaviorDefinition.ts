@@ -24,14 +24,15 @@ export const buttonBehaviorDefinition: Rule[] = [
     .doesNotHaveAttribute('disabled')
     .description(`if element is NOT native 'button'.`),
   BehaviorRule.root()
-    .forProps({ disabled: true, loading: true })
+    .forProps({ disabledFocusable: true })
+    .hasAttribute('aria-disabled', 'true'),
+  BehaviorRule.root()
+    .forProps({ disabledFocusable: true })
     .doesNotHaveAttribute('disabled'),
   BehaviorRule.root()
-    .forProps({ disabled: true })
-    .hasAttribute('aria-disabled', 'true'),
-  BehaviorRule.root()
-    .forProps({ loading: true })
-    .hasAttribute('aria-disabled', 'true'),
+    .forProps({ disabledFocusable: true })
+    .doesNotHaveAttribute('disabled')
+    .hide(),
   BehaviorRule.root()
     .forProps({ as: 'div' })
     .pressSpaceKey()

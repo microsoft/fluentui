@@ -5,11 +5,11 @@ import { SeparatorIconExample } from './Separator.Icon.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
 
-const SeparatorBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Separator/Separator.Basic.Example.tsx') as string;
+const SeparatorBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Basic.Example.tsx') as string;
 
-const SeparatorThemingExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Separator/Separator.Theming.Example.tsx') as string;
+const SeparatorThemingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Theming.Example.tsx') as string;
 
-const SeparatorIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Separator/Separator.Icon.Example.tsx') as string;
+const SeparatorIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Icon.Example.tsx') as string;
 
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
@@ -32,12 +32,16 @@ export const SeparatorPageProps: IDocPageProps = {
       view: <SeparatorIconExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Separator/docs/SeparatorOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/Separator/docs/SeparatorBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react/Separator/docs/SeparatorDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react/Separator/docs/SeparatorDonts.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorDos.md'),
+  donts: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/docs/SeparatorDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

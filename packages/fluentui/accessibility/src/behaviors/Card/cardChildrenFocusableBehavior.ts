@@ -2,7 +2,7 @@ import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneTabbableElements } from '../../focusZone/types';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 
 /**
  * @description

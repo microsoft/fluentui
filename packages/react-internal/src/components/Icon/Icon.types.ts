@@ -21,14 +21,12 @@ export enum IconType {
   image = 1,
 
   /**
-   * Deprecated, use `default`.
-   * @deprecated Use `default`.
+   * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
    */
   Default = 100000,
 
   /**
-   * Deprecated, use `image`.
-   * @deprecated Use `image`.
+   * @deprecated Icon type is inferred based on presence of `IIconProps.imageProps`
    */
   Image = 100001,
 }
@@ -92,7 +90,6 @@ export interface IIconStyles {
   root?: IStyle;
 
   /**
-   * Deprecated. Use `root`.
    * @deprecated Use `root`.
    */
   imageContainer?: IStyle;

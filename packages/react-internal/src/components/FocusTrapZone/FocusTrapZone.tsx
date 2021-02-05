@@ -80,6 +80,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     onFocus,
     onBlur,
     onFocusCapture,
+    onBlurCapture,
     enableAriaHiddenSiblings,
   } = props;
 
@@ -163,17 +164,9 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
     [disabled, focus, internalState],
   );
 
-  const onRootFocus = React.useCallback(
+  const onRootBlurCapture = React.useCallback(
     (ev: React.FocusEvent<HTMLDivElement>) => {
-      onFocus?.(ev);
-      internalState.hasFocus = true;
-    },
-    [onFocus, internalState],
-  );
-
-  const onRootBlur = React.useCallback(
-    (ev: React.FocusEvent<HTMLDivElement>) => {
-      onBlur?.(ev);
+      onBlurCapture?.(ev);
       let relatedTarget = ev.relatedTarget;
       if (ev.relatedTarget === null) {
         // In IE11, due to lack of support, event.relatedTarget is always
@@ -187,12 +180,20 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
         internalState.hasFocus = false;
       }
     },
-    [onBlur, doc, internalState],
+    [doc, internalState, onBlurCapture],
   );
 
   const onRootFocusCapture = React.useCallback(
     (ev: React.FocusEvent<HTMLDivElement>) => {
       onFocusCapture?.(ev);
+
+      if (ev.target === firstBumper.current) {
+        onBumperFocus(true);
+      } else if (ev.target === lastBumper.current) {
+        onBumperFocus(false);
+      }
+
+      internalState.hasFocus = true;
 
       if (ev.target !== ev.currentTarget && !(ev.target === firstBumper.current || ev.target === lastBumper.current)) {
         // every time focus changes within the trap zone, remember the focused element so that
@@ -200,7 +201,7 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
         internalState.previouslyFocusedElementInTrapZone = ev.target as HTMLElement;
       }
     },
-    [onFocusCapture, internalState],
+    [onFocusCapture, internalState, onBumperFocus],
   );
 
   const returnFocusToInitiator = React.useCallback((): void => {
@@ -357,12 +358,13 @@ export const FocusTrapZone: React.FunctionComponent<IFocusTrapZoneProps> & {
       ref={mergedRootRef}
       aria-labelledby={ariaLabelledBy}
       onFocusCapture={onRootFocusCapture}
-      onFocus={onRootFocus}
-      onBlur={onRootBlur}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onBlurCapture={onRootBlurCapture}
     >
-      <div {...bumperProps} ref={firstBumper} onFocus={() => onBumperFocus(true)} />
+      <div {...bumperProps} ref={firstBumper} />
       {children}
-      <div {...bumperProps} ref={lastBumper} onFocus={() => onBumperFocus(false)} />
+      <div {...bumperProps} ref={lastBumper} />
     </div>
   );
 }) as any;

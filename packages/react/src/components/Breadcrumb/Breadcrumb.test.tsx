@@ -4,6 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { Breadcrumb, IBreadcrumbItem } from './index';
 import { Icon } from '../../Icon';
 import { isConformant } from '../../common/isConformant';
+import { resetIds } from '@fluentui/utilities';
 
 describe('Breadcrumb', () => {
   const items: IBreadcrumbItem[] = [
@@ -15,6 +16,10 @@ describe('Breadcrumb', () => {
 
   let component: renderer.ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;
+
+  beforeEach(() => {
+    resetIds();
+  });
 
   afterEach(() => {
     if (component) {
@@ -95,7 +100,7 @@ describe('Breadcrumb', () => {
     displayName: 'Breadcrumb',
     // Problem: Doesn’t handle ref.
     // Solution: Add a ref to the root element.
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   });
 
   it('renders items with expected element type', () => {
@@ -170,5 +175,38 @@ describe('Breadcrumb', () => {
     expect(overfowItems).toHaveLength(2);
     expect(overfowItems[0].textContent).toEqual('TestText1');
     expect(overfowItems[1].textContent).toEqual('TestText2');
+  });
+
+  describe('ARIA prop propagation to breadcrumb items', () => {
+    it('for Link', () => {
+      const itemsWithAdditionalProps: IBreadcrumbItem[] = [
+        {
+          key: 'ItemKey1',
+          text: 'Item 1',
+          href: '#',
+          'aria-label': "I'm an aria prop",
+        },
+      ];
+
+      wrapper = mount(<Breadcrumb items={itemsWithAdditionalProps} />);
+
+      const item = wrapper.find('LinkBase');
+      expect(item.prop('aria-label')).toEqual("I'm an aria prop");
+    });
+
+    it('for Tag', () => {
+      const itemsWithAdditionalProps: IBreadcrumbItem[] = [
+        {
+          key: 'ItemKey1',
+          text: 'Item 1',
+          'aria-label': "I'm an aria prop",
+        },
+      ];
+
+      wrapper = mount(<Breadcrumb items={itemsWithAdditionalProps} />);
+
+      const item = wrapper.find('.ms-Breadcrumb-item');
+      expect(item.prop('aria-label')).toEqual("I'm an aria prop");
+    });
   });
 });

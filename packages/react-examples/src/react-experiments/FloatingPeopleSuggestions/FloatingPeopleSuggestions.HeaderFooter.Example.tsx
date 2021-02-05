@@ -186,6 +186,7 @@ export const FloatingPeopleSuggestionsHeaderFooterExample = (): JSX.Element => {
   };
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
+    // eslint-disable-next-line deprecation/deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.enter:

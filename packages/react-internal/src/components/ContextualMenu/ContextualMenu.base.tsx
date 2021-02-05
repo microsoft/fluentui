@@ -941,6 +941,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
 
     // On Mac, pressing escape dismisses all levels of native context menus
+    // eslint-disable-next-line deprecation/deprecation
     const dismissAllMenus = ev.which === KeyCodes.escape && (isMac() || isIOS());
 
     return this._keyHandler(ev, this._shouldHandleKeyDown, dismissAllMenus);
@@ -948,8 +949,10 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
   private _shouldHandleKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     return (
+      // eslint-disable-next-line deprecation/deprecation
       ev.which === KeyCodes.escape ||
       this._shouldCloseSubMenu(ev) ||
+      // eslint-disable-next-line deprecation/deprecation
       (ev.which === KeyCodes.up && (ev.altKey || ev.metaKey))
     );
   };
@@ -978,6 +981,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    // eslint-disable-next-line deprecation/deprecation
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1013,6 +1017,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
   private _shouldCloseSubMenu = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     const submenuCloseKey = getRTL(this.props.theme) ? KeyCodes.right : KeyCodes.left;
 
+    // eslint-disable-next-line deprecation/deprecation
     if (ev.which !== submenuCloseKey || !this.props.isSubMenu) {
       return false;
     }
@@ -1037,7 +1042,9 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     // If we have a modifier key being pressed, we do not want to move focus.
     // Otherwise, handle up and down keys.
     const hasModifier = !!(ev.altKey || ev.metaKey);
+    // eslint-disable-next-line deprecation/deprecation
     const isUp = ev.which === KeyCodes.up;
+    // eslint-disable-next-line deprecation/deprecation
     const isDown = ev.which === KeyCodes.down;
     if (!hasModifier && (isUp || isDown)) {
       const elementToFocus = isUp
@@ -1258,6 +1265,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
     if (
       !item.disabled &&
+      // eslint-disable-next-line deprecation/deprecation
       (ev.which === openKey || ev.which === KeyCodes.enter || (ev.which === KeyCodes.down && (ev.altKey || ev.metaKey)))
     ) {
       this.props.hoisted.openSubMenu(item, ev.currentTarget as HTMLElement, false);

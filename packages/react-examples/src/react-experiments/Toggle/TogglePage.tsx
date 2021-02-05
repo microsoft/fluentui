@@ -8,13 +8,13 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { ToggleExample } from './Toggle.Example';
-const ToggleExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Example.tsx') as string;
+const ToggleExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Example.tsx') as string;
 
 import { ToggleTokensObjectExample } from './Toggle.Tokens.Object.Example';
-const ToggleTokensObjectExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Tokens.Object.Example.tsx') as string;
+const ToggleTokensObjectExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Tokens.Object.Example.tsx') as string;
 
 import { ToggleTokensFunctionExample } from './Toggle.Tokens.Function.Example';
-const ToggleTokensFunctionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Tokens.Function.Example.tsx') as string;
+const ToggleTokensFunctionExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Toggle/Toggle.Tokens.Function.Example.tsx') as string;
 
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -37,19 +37,25 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@fluentui/react-experiments/src/components/Toggle/Toggle.types.ts')]}
+            sources={[
+              require<
+                string
+              >('!raw-loader?esModule=false!@fluentui/react-experiments/src/components/Toggle/Toggle.types.ts'),
+            ]}
           />
         }
         overview={
           <Markdown>
-            {require<string>('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleOverview.md')}
+            {require<
+              string
+            >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Toggle/docs/ToggleOverview.md')}
           </Markdown>
         }
         bestPractices={
           <Markdown>
             {require<
               string
-            >('!raw-loader!@fluentui/react-examples/src/react-toggle/Toggle/docs/ToggleBestPractices.md')}
+            >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Toggle/docs/ToggleBestPractices.md')}
           </Markdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}

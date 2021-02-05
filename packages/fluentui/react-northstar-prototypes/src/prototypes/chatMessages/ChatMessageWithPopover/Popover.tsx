@@ -21,8 +21,8 @@ interface PopoverState {
   focused: boolean;
 }
 
-const popoverBehavior: Accessibility = (props: any) => {
-  const behavior = menuAsToolbarBehavior(props);
+const popoverBehavior: Accessibility = () => {
+  const behavior = menuAsToolbarBehavior();
 
   behavior.focusZone.props.defaultTabbableElement = (root: HTMLElement): HTMLElement => {
     return root.querySelector('[aria-label="thumbs up"]');

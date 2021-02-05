@@ -12,7 +12,9 @@ export const red = '#f00';
 const createColorScheme = (customValues = {}) => {
   return {
     foreground: colors.white,
+    foreground1: colors.black,
     background: colors.black,
+    background1: colors.white,
     border: colors.white,
     shadow: colors.white,
 
@@ -54,6 +56,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground5: colors.grey[600],
     foreground6: colors.grey[750],
     foreground7: colors.black,
+    foreground8: colors.black,
 
     background: colors.black,
     background1: colors.black,
@@ -126,6 +129,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground2: accessibleYellow,
     foreground3: accessibleYellow,
     foreground4: colors.black,
+    foreground5: colors.black,
 
     background: colors.white,
     background1: colors.black,
@@ -133,6 +137,7 @@ export const colorScheme: ColorSchemeMapping = {
     background3: colors.black,
     background4: colors.black,
     background5: colors.white,
+    background6: colors.white,
 
     border: colors.white, // buttons
     border1: colors.white,
@@ -197,7 +202,9 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.white,
     foreground1: colors.black,
     foreground2: colors.white,
+    foreground3: colors.black,
     background: colors.white,
+    background1: colors.white,
     border: undefined,
     shadow: undefined,
     foregroundHover: undefined,
@@ -224,7 +231,9 @@ export const colorScheme: ColorSchemeMapping = {
   orange: createEmptyColorScheme({
     foreground: accessibleYellow,
     foreground1: accessibleYellow,
+    foreground2: colors.black,
     background: accessibleYellow,
+    background1: colors.white,
     border: accessibleCyan,
   }),
   pink: createEmptyColorScheme({
@@ -256,6 +265,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground: colors.white,
     foreground1: colors.black,
     foreground2: colors.black,
+    foreground3: colors.black,
     background: colors.white,
     background2: colors.white,
   }),

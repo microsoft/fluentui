@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-provider",
+  "entries": [
+    {
+      "date": "Thu, 04 Feb 2021 01:27:42 GMT",
+      "tag": "@fluentui/react-provider_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish react-provider",
+            "author": "elcraig@microsoft.com",
+            "commit": "aede2e41a6c803a46bd9eb7538542ee6b86ccd8f",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    }
+  ]
+}

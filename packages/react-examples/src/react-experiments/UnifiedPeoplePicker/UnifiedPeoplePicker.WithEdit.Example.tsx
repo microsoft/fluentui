@@ -72,6 +72,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const [peopleSelectedItems, setPeopleSelectedItems] = React.useState<IPersonaProps[]>([]);
   const [inputText, setInputText] = React.useState<string>('');
+  const [editingIndex, setEditingIndex] = React.useState(-1);
 
   const ref = React.useRef<any>();
 
@@ -128,13 +129,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     return suggestionList;
   };
 
-  const _isValid = React.useCallback((item: IPersonaProps): boolean => {
-    if (item.secondaryText) {
-      return true;
-    } else {
-      return false;
-    }
-  }, []);
+  const _isValid = React.useCallback((item: IPersonaProps): boolean => Boolean(item.secondaryText), []);
 
   const SelectedItemInternal = (props: ISelectedItemProps<IPersonaProps>) => (
     <SelectedPersona isValid={_isValid} {...props} />
@@ -169,6 +164,9 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
       ],
       itemComponent: TriggerOnContextMenu(SelectedItemInternal),
     }),
+    getIsEditing: (item, index) => index === editingIndex,
+    onEditingStarted: (item, index) => setEditingIndex(index),
+    onEditingCompleted: () => setEditingIndex(-1),
   });
 
   const _copyToClipboardWrapper = (item: IPersona) => {
@@ -315,6 +313,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
 
   const _onKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLDivElement>) => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.ctrlKey && ev.which === KeyCodes.k) {
         ev.preventDefault();
         // If the input has text, resolve that

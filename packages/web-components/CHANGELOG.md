@@ -1,8 +1,58 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 12 Jan 2021 12:36:40 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.0)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.11.0..@fluentui/web-components_v0.12.0)
+
+### Minor changes
+
+- feat: move color recipes into fluent web component package ([PR #16755](https://github.com/microsoft/fluentui/pull/16755) by chhol@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.11.0)
+
+Tue, 26 Jan 2021 12:33:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.6..@fluentui/web-components_v0.11.0)
+
+### Minor changes
+
+- fix: change accordion item region to display block ([PR #16571](https://github.com/microsoft/fluentui/pull/16571) by jes@microsoft.com)
+
+### Patches
+
+- set margin on separator slot ([PR #16575](https://github.com/microsoft/fluentui/pull/16575) by khamu@microsoft.com)
+
+## [0.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.6)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.5..@fluentui/web-components_v0.10.6)
+
+### Patches
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [0.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.5)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.4..@fluentui/web-components_v0.10.5)
+
+### Patches
+
+- Fixes content shifting when anchor has focus due to 2px bottom border ([PR #16538](https://github.com/microsoft/fluentui/pull/16538) by robarb@microsoft.com)
+
+## [0.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.4)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.3..@fluentui/web-components_v0.10.4)
+
+### Patches
+
+- fix: add hover state for expand collapse button in tree-item ([PR #16375](https://github.com/microsoft/fluentui/pull/16375) by jes@microsoft.com)
+- fix slider disabled and readonly cursor ([PR #16374](https://github.com/microsoft/fluentui/pull/16374) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
 
 ## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.3)
 
