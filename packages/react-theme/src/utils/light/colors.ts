@@ -1,5 +1,37 @@
-import { NeutralColorTokens, SharedColorTokens, ColorVariants, GlobalSharedColors } from '../../types';
+import {
+  NeutralColorTokens,
+  SharedColorTokens,
+  ColorVariants,
+  GlobalSharedColors,
+  BackgroundColorTokens,
+  BrandVariants,
+  BrandColorTokens,
+} from '../../types';
 import { grey, white, sharedColors } from '../../global/index';
+
+export const ghostColorTokens: BackgroundColorTokens = {
+  background: 'transparent',
+  backgroundHover: grey[96],
+  backgroundPressed: grey[88],
+  backgroundSelected: grey[92],
+};
+
+export const transparentColorTokens: BackgroundColorTokens = {
+  background: 'transparent',
+  backgroundHover: 'transparent',
+  backgroundPressed: 'transparent',
+  backgroundSelected: 'transparent',
+};
+
+export function createBrandColorTokens(brand: BrandVariants): BrandColorTokens {
+  return {
+    brandBackground: brand.primary,
+    brandBackgroundHover: brand.shade10,
+    brandBackgroundPressed: brand.shade40,
+    brandBackgroundSelected: brand.shade20,
+    brandBackgroundStatic: brand.primary,
+  };
+}
 
 export function createNeutralColorTokens(
   brand: ColorVariants,
@@ -127,12 +159,13 @@ export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorToke
   brown: createSharedColorTokens(sharedColors.brown),
   darkBrown: createSharedColorTokens(sharedColors.darkBrown),
   lime: createSharedColorTokens(sharedColors.lime),
-  forrest: createSharedColorTokens(sharedColors.forrest),
+  forest: createSharedColorTokens(sharedColors.forest),
   seafoam: createSharedColorTokens(sharedColors.seafoam),
   lightGreen: createSharedColorTokens(sharedColors.lightGreen),
   green: createSharedColorTokens(sharedColors.green),
   darkGreen: createSharedColorTokens(sharedColors.darkGreen),
   lightTeal: createSharedColorTokens(sharedColors.lightTeal),
+  teal: createSharedColorTokens(sharedColors.teal),
   darkTeal: createSharedColorTokens(sharedColors.darkTeal),
   cyan: createSharedColorTokens(sharedColors.cyan),
   steel: createSharedColorTokens(sharedColors.steel),

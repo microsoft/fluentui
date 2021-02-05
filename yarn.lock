@@ -1160,6 +1160,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@ctrl/tinycolor@^3.3.4":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.3.4.tgz#59691edd031eedc431bda1bdf601257c06289a40"
+  integrity sha512-8vmPV/nIULFDWsnJalQJDqFLC2uTPx6A/ASA2t27QGp+7oXnbWWXCe0uV8xasIH2rGbI/XoB2vmkdP/94WvMrw==
+
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"

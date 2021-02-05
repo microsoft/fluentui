@@ -1,25 +1,27 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../../utils/light/index';
-import { createShadowLevelTokens } from '../../utils/light/index';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global/index';
-import { Theme } from '../../types';
-
-const common = {
-  sharedColors,
+import {
+  createBrandColorTokens,
+  createNeutralColorTokens,
+  ghostColorTokens,
   sharedColorTokens,
-  fontFamilies,
-  fontWeights,
-  fontSizes,
-  lineHeights,
-};
+  transparentColorTokens,
+} from '../../utils/light/index';
 
-const webNeutralColorTokens = createNeutralColorTokens(brandColors.web);
+import { brandColors } from '../../global/index';
+import { Theme } from '../../types';
+import { globalTheme } from './globalTheme';
+import { createShadowLevelTokens } from '../../utils/shadows';
 
+const neutralColorTokens = createNeutralColorTokens(brandColors.web);
 export const webLightTheme: Theme = {
-  brandColors: brandColors.web,
-  neutralColorTokens: webNeutralColorTokens,
-  shadowLevels: createShadowLevelTokens(
-    webNeutralColorTokens.neutralShadowAmbient,
-    webNeutralColorTokens.neutralShadowKey,
-  ),
-  ...common,
+  global: globalTheme,
+  alias: {
+    color: {
+      ...sharedColorTokens,
+      neutral: neutralColorTokens,
+      ghost: ghostColorTokens,
+      transparent: transparentColorTokens,
+      brand: createBrandColorTokens(brandColors.web),
+    },
+    shadow: createShadowLevelTokens(neutralColorTokens.neutralShadowAmbient, neutralColorTokens.neutralShadowKey),
+  },
 };

@@ -1,5 +1,35 @@
-import { NeutralColorTokens, SharedColorTokens, GlobalSharedColors } from '../../types';
+import {
+  NeutralColorTokens,
+  SharedColorTokens,
+  GlobalSharedColors,
+  BackgroundColorTokens,
+  BrandColorTokens,
+} from '../../types';
 import { black, disabled, hyperlink, selected, white } from '../../global/index';
+
+export const ghostColorTokens: BackgroundColorTokens = {
+  background: 'red',
+  backgroundHover: 'red',
+  backgroundPressed: 'red',
+  backgroundSelected: 'red',
+};
+
+export const transparentColorTokens: BackgroundColorTokens = {
+  background: 'rgba(255, 0, 0, 0.2)',
+  backgroundHover: 'rgba(255, 0, 0, 0.2)',
+  backgroundPressed: 'rgba(255, 0, 0, 0.2)',
+  backgroundSelected: 'rgba(255, 0, 0, 0.2)',
+};
+
+export function createBrandColorTokens(): BrandColorTokens {
+  return {
+    brandBackground: white,
+    brandBackgroundHover: selected,
+    brandBackgroundPressed: selected,
+    brandBackgroundSelected: selected,
+    brandBackgroundStatic: black,
+  };
+}
 
 export function createNeutralColorTokens(customValues: Record<string, string> = {}): NeutralColorTokens {
   return {
@@ -125,12 +155,13 @@ export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorToke
   brown: createSharedColorTokens(),
   darkBrown: createSharedColorTokens(),
   lime: createSharedColorTokens(),
-  forrest: createSharedColorTokens(),
+  forest: createSharedColorTokens(),
   seafoam: createSharedColorTokens(),
   lightGreen: createSharedColorTokens(),
   green: createSharedColorTokens(),
   darkGreen: createSharedColorTokens(),
   lightTeal: createSharedColorTokens(),
+  teal: createSharedColorTokens(),
   darkTeal: createSharedColorTokens(),
   cyan: createSharedColorTokens(),
   steel: createSharedColorTokens(),
