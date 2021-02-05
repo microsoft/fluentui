@@ -386,84 +386,19 @@ const useBadgeStyles = makeStyles<AvatarState>([
     },
   ],
 
-  [
-    s => s.size === 20,
-    {
-      '--badge-size': 'calc(20px / 4)',
-    },
-  ],
-  [
-    s => s.size === 24,
-    {
-      '--badge-size': 'calc(24px / 4)',
-    },
-  ],
-  [
-    s => s.size === 28,
-    {
-      '--badge-size': 'calc(28px / 4)',
-    },
-  ],
-  [
-    s => s.size === 32,
-    {
-      '--badge-size': 'calc(32px / 4)',
-    },
-  ],
-  [
-    s => s.size === 36,
-    {
-      '--badge-size': 'calc(36px / 4)',
-    },
-  ],
-  [
-    s => s.size === 40,
-    {
-      '--badge-size': 'calc(40px / 4)',
-    },
-  ],
-  [
-    s => s.size === 48,
-    {
-      '--badge-size': 'calc(48px / 4)',
-    },
-  ],
-  [
-    s => s.size === 56,
-    {
-      '--badge-size': 'calc(56px / 4)',
-    },
-  ],
-  [
-    s => s.size === 64,
-    {
-      '--badge-size': 'calc(64px / 4)',
-    },
-  ],
-  [
-    s => s.size === 72,
-    {
-      '--badge-size': 'calc(72px / 4)',
-    },
-  ],
-  [
-    s => s.size === 96,
-    {
-      '--badge-size': 'calc(96px / 4)',
-    },
-  ],
-  [
-    s => s.size === 120,
-    {
-      '--badge-size': 'calc(120px / 4)',
-    },
-  ],
-  [
-    s => s.size === 128,
-    {
-      '--badge-size': 'calc(128px / 4)',
-    },
-  ],
+  [s => s.size === 20, { '--badge-size': 'calc(20px / 4)' }],
+  [s => s.size === 24, { '--badge-size': 'calc(24px / 4)' }],
+  [s => s.size === 28, { '--badge-size': 'calc(28px / 4)' }],
+  [s => s.size === 32, { '--badge-size': 'calc(32px / 4)' }],
+  [s => s.size === 36, { '--badge-size': 'calc(36px / 4)' }],
+  [s => s.size === 40, { '--badge-size': 'calc(40px / 4)' }],
+  [s => s.size === 48, { '--badge-size': 'calc(48px / 4)' }],
+  [s => s.size === 56, { '--badge-size': 'calc(56px / 4)' }],
+  [s => s.size === 64, { '--badge-size': 'calc(64px / 4)' }],
+  [s => s.size === 72, { '--badge-size': 'calc(72px / 4)' }],
+  [s => s.size === 96, { '--badge-size': 'calc(96px / 4)' }],
+  [s => s.size === 120, { '--badge-size': 'calc(120px / 4)' }],
+  [s => s.size === 128, { '--badge-size': 'calc(128px / 4)' }],
 ]);
 
 const useImageStyles = makeStyles<AvatarState>([
