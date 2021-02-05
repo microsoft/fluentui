@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Port forced colors method to V7",
+  "packageName": "@uifabric/styling",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-05T17:57:12.718Z"
+}
