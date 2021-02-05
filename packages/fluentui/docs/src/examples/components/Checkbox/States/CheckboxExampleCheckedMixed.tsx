@@ -1,7 +1,7 @@
 import { Checkbox, CheckboxProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const CheckboxExampleChecked = () => {
+const CheckboxExampleCheckedMixed = () => {
   const [lettuceChecked, setLettuceCheck] = React.useState(false);
   const [tomatoChecked, setTomatoCheck] = React.useState(false);
   let checked: CheckboxProps['checked'] = lettuceChecked && tomatoChecked;
@@ -39,4 +39,4 @@ const CheckboxExampleChecked = () => {
   );
 };
 
-export default CheckboxExampleChecked;
+export default CheckboxExampleCheckedMixed;

@@ -16,9 +16,9 @@ const States = () => (
       examplePath="components/Checkbox/States/CheckboxExampleDisabled"
     />
     <ComponentExample
-      title="Indeterminate"
-      description="A checkbox can be indeterminated."
-      examplePath="components/Checkbox/States/CheckboxExampleIndeterminate"
+      title="Mixed"
+      description="A checkbox can be mixed."
+      examplePath="components/Checkbox/States/CheckboxExampleCheckedMixed"
     />
   </ExampleSection>
 );
