@@ -5,6 +5,9 @@ import { initializeIcons } from '@fluentui/react/lib/Icons';
 // @ts-ignore
 import * as qs from 'querystring';
 
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
+
 const scenarios = require('./scenarios/scenarioList');
 
 initializeIcons();
@@ -40,11 +43,11 @@ if (renderType === 'virtual-rerender') {
   // It'd be interesting to root cause why at some point.
   // ReactDOM.render(<>{Array.from({ length: iterations }, () => (scenarios[scenario]))}</>, div);
   ReactDOM.render(
-    <div>
+    <FluentProvider theme={webLightTheme}>
       {Array.from({ length: iterations }, () => (
         <PerfTestScenario />
       ))}
-    </div>,
+    </FluentProvider>,
     div,
     () => div.appendChild(renderFinishedMarker),
   );
