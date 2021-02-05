@@ -45,7 +45,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
       [`& .${checkboxSlotClassNames.indicator}`]: {
         ...(!p.toggle && {
           ...(p.checked &&
-            !p.indeterminate && {
+            p.checked !== 'mixed' && {
               borderColor: v.checkedBackgroundHover,
               backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackgroundHover),
             }),
@@ -118,12 +118,12 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
     backgroundRepeat: 'no-repeat',
 
     ...(p.checked &&
-      !p.indeterminate && {
+      p.checked !== 'mixed' && {
         borderColor: v.checkedBorderColor,
         backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
       }),
 
-    ...(p.indeterminate && {
+    ...(p.checked === 'mixed' && {
       borderColor: v.checkedBorderColor,
       backgroundImage: checkboxIndicatorIndeterminateUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
@@ -135,14 +135,14 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
     ...(p.disabled &&
       p.checked &&
-      !p.indeterminate && {
+      p.checked !== 'mixed' && {
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked),
       }),
 
     ...(p.disabled &&
-      p.indeterminate && {
+      p.checked === 'mixed' && {
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorIndeterminateUrl(

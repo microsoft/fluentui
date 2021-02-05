@@ -69,9 +69,7 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   toggle?: boolean;
 }
 
-export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'> & {
-  indeterminate: boolean;
-};
+export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
 export const checkboxClassName = 'ui-checkbox';
 export const checkboxSlotClassNames: CheckboxSlotClassNames = {
   label: `${checkboxClassName}__label`,
@@ -101,7 +99,6 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     styles,
     toggle,
     variables,
-
     controlsIds,
   } = props;
 
@@ -130,7 +127,6 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     className: checkboxClassName,
     mapPropsToStyles: () => ({
       checked: state.checked,
-      indeterminate: checked === 'mixed',
       disabled,
       labelPosition,
       toggle,
