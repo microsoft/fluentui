@@ -103,7 +103,6 @@ const CalendarYearGridCell = React.forwardRef(
         onClick={!disabled ? onClick : undefined}
         onKeyDown={!disabled ? onKeyDown : undefined}
         disabled={disabled}
-        aria-label={String(year)}
         aria-selected={selected}
         ref={mergedRef}
         aria-readonly={true} // prevent grid from being "editable"
@@ -174,6 +173,12 @@ const CalendarYearGrid = React.forwardRef(
       animationDirection: animationDirection,
     });
 
+    const onRenderYear = (value: number) => {
+      return props.onRenderYear?.(value) ?? value;
+    };
+
+    const gridAriaLabel = `${onRenderYear(fromYear)} - ${onRenderYear(toYear)}`;
+
     let year = fromYear;
     const cells: React.ReactNode[][] = [];
 
@@ -187,7 +192,7 @@ const CalendarYearGrid = React.forwardRef(
 
     return (
       <FocusZone>
-        <div className={classNames.gridContainer} role="grid">
+        <div className={classNames.gridContainer} role="grid" aria-label={gridAriaLabel}>
           {cells.map((cellRow: React.ReactNode[], index: number) => {
             return (
               <div key={'yearPickerRow_' + index + '_' + fromYear} role="row" className={classNames.buttonRow}>
