@@ -11,7 +11,7 @@ export const StrokeWidth = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
     {Object.keys(global.strokeWidth).map((strokeWidth: keyof StrokeWidths) => [
       <div key={strokeWidth}>{strokeWidth}</div>,
-      <div key={`${strokeWidth}-value`} style={{ borderBottom: `${global.strokeWidth[strokeWidth]}px solid black` }} />,
+      <div key={`${strokeWidth}-value`} style={{ borderBottom: `${global.strokeWidth[strokeWidth]} solid black` }} />,
     ])}
   </div>
 );

@@ -24,7 +24,7 @@ export const BorderRadius = () => (
       <div
         key={`${radius}-col2`}
         style={{
-          border: `${global.strokeWidth.thin}px solid black`,
+          border: `${global.strokeWidth.thin} solid black`,
           width: '3em',
           height: '3em',
           borderRadius: global.borderRadius[radius],

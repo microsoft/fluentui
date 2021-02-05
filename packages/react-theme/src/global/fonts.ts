@@ -45,7 +45,9 @@ export const fontFamilies: FontFamilies = {
     // eslint-disable-next-line @fluentui/max-len
     "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
   monospace: "Consolas, 'Courier New', Courier, monospace",
-  numeric: 'Bahnschrift, $fontFamily-base',
+  numeric:
+    // eslint-disable-next-line @fluentui/max-len
+    "Bahnschrift, 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
 };
 
 export const textAlignments: TextAlignments = {

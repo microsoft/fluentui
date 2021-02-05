@@ -205,27 +205,40 @@ export type FontFamilies = {
   numeric: string;
 };
 
+export type TextAlignment =
+  | 'inherit'
+  | 'initial'
+  | 'revert'
+  | 'unset'
+  | 'center'
+  | 'end'
+  | 'start'
+  | 'justify'
+  | 'left'
+  | 'match-parent'
+  | 'right';
+
 export type TextAlignments = {
-  start: string;
-  center: string;
-  end: string;
-  justify: string;
+  start: TextAlignment;
+  center: TextAlignment;
+  end: TextAlignment;
+  justify: TextAlignment;
 };
 
 export type BorderRadius = {
-  none: number;
-  small: number;
-  medium: number;
-  large: number;
-  xLarge: number;
+  none: string;
+  small: string;
+  medium: string;
+  large: string;
+  xLarge: string;
   circular: string;
 };
 
 export type StrokeWidths = {
-  thin: number;
-  thick: number;
-  thicker: number;
-  thickest: number;
+  thin: string;
+  thick: string;
+  thicker: string;
+  thickest: string;
 };
 
 /**
