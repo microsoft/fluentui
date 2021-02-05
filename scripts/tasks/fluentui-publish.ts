@@ -122,6 +122,30 @@ const PUBLIC_FLUENT_PACKAGES = [
   'state',
   'styles',
 ];
+
+const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+
+const replaceDepVersionWithNightlyUrl = (packageRoot, packageName) => {
+  const packageJson = require(`@fluentui/${packageName}/package.json`);
+  const dependencies = packageJson.dependencies || {};
+  let hasFluentDependency = false;
+  for (const key of Object.keys(dependencies)) {
+    if (key.startsWith('@fluentui/')) {
+      const fluentPackageName = key.substring('@fluentui/'.length);
+      if (PUBLIC_FLUENT_PACKAGES.includes(fluentPackageName)) {
+        hasFluentDependency = true;
+        dependencies[
+          key
+        ] = `https://fluentsite.blob.core.windows.net/nightly-builds/${TODAY}/fluentui-${fluentPackageName}-${packageJson.version}.tgz`;
+      }
+    }
+  }
+
+  if (hasFluentDependency) {
+    fs.writeFileSync(path.resolve(packageRoot, 'package.json'), JSON.stringify(packageJson, null, 2));
+  }
+};
+
 export function packFluentTarballs() {
   return function() {
     const gitRoot = findGitRoot();
@@ -130,6 +154,7 @@ export function packFluentTarballs() {
 
     const packPackage = (packageName: string) => {
       const packageRoot = path.resolve(gitRoot, 'packages', 'fluentui', packageName);
+      replaceDepVersionWithNightlyUrl(packageRoot, packageName);
       execCommandSync(tempFolderForPacks, 'npm', ['pack', packageRoot]);
     };
 
