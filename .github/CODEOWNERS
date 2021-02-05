@@ -85,6 +85,7 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Component packages
+packages/react-menu/ @ling1726
 packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
 packages/react-checkbox/ @khmakoto @xugao
