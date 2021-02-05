@@ -147,6 +147,9 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
           [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
           [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
+          [`.${classNames.thumb}:focus::after`]: {
+            inset: '-3px',
+          },
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
@@ -166,6 +169,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     thumb: [
       classNames.thumb,
+      getFocusStyle(theme),
       {
         borderWidth: 2,
         borderStyle: 'solid',

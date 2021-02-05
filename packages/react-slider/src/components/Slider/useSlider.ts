@@ -13,6 +13,8 @@ import {
 } from '@fluentui/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
+const MIN_PREFIX = 'min';
+const MAX_PREFIX = 'max';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
@@ -162,6 +164,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       ) {
         setValue(roundedValue);
       }
+      props.onRangeChange?.([lowerValue, value]);
     } else {
       setValue(roundedValue);
     }
@@ -292,6 +295,15 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     disposeListeners();
   };
 
+  const onThumbFocus = (event: MouseEvent | TouchEvent): void => {
+    const id = (event.target as HTMLSpanElement)?.id;
+    if (id.startsWith(MIN_PREFIX)) {
+      shouldChangeLowerValueRef.current = true;
+    } else if (id.startsWith(MAX_PREFIX)) {
+      shouldChangeLowerValueRef.current = false;
+    }
+  };
+
   const disposeListeners = (): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
@@ -300,6 +312,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const onMouseDownProp: {} = disabled ? {} : { onMouseDown: onMouseDownOrTouchStart };
   const onTouchStartProp: {} = disabled ? {} : { onTouchStart: onMouseDownOrTouchStart };
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
+  const onFocusProp: {} = disabled ? {} : { onFocus: onThumbFocus };
 
   const thumbRef = React.useRef<HTMLSpanElement>(null);
   useComponentRef(props, thumbRef, value);
@@ -343,18 +356,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     disabled,
   };
 
-  const thumbProps = {
-    ref: thumbRef,
-    className: classNames.thumb,
-    style: getPositionStyles(valuePercent),
-  };
-
-  const lowerValueThumbProps = {
-    ref: lowerValueThumbRef,
-    className: classNames.thumb,
-    style: getPositionStyles(lowerValuePercent),
-  };
-
   const zeroTickProps = originFromZero && {
     className: classNames.zeroTick,
     style: getPositionStyles(originPercentOfLine),
@@ -375,22 +376,62 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     style: getTrackStyles(bottomSectionWidth),
   };
 
-  const sliderBoxProps = {
-    id,
-    'aria-valuenow': value,
-    'aria-valuemin': min,
-    'aria-valuemax': max,
-    'aria-valuetext': getAriaValueText(value),
-    'aria-label': ariaLabel || label,
-    'aria-disabled': disabled,
+  const eventProps = {
     ...onMouseDownProp,
     ...onTouchStartProp,
     ...onKeyDownProp,
     ...divButtonProps,
-    className: css(classNames.slideBox, buttonProps!.className),
+  };
+
+  const sliderProps = {
+    'aria-valuemin': min,
+    'aria-valuemax': max,
+    'aria-disabled': disabled,
     role: 'slider',
     tabIndex: disabled ? undefined : 0,
     'data-is-focusable': !disabled,
+  };
+
+  const sliderBoxProps = {
+    id,
+    className: css(classNames.slideBox, buttonProps!.className),
+    ...eventProps,
+    ...(!ranged && {
+      ...sliderProps,
+      'aria-valuenow': value,
+      'aria-valuetext': getAriaValueText(value),
+      'aria-label': ariaLabel || label,
+    }),
+  };
+
+  const thumbProps = {
+    ref: thumbRef,
+    className: classNames.thumb,
+    style: getPositionStyles(valuePercent),
+    ...(ranged && {
+      ...sliderProps,
+      ...eventProps,
+      ...onFocusProp,
+      id: `${MAX_PREFIX}-${id}`,
+      'aria-valuenow': value,
+      'aria-valuetext': getAriaValueText(value),
+      'aria-label': `${MAX_PREFIX} ${ariaLabel || label}`,
+    }),
+  };
+
+  const lowerValueThumbProps = {
+    ref: lowerValueThumbRef,
+    className: classNames.thumb,
+    style: getPositionStyles(lowerValuePercent),
+    ...(ranged && {
+      ...sliderProps,
+      ...eventProps,
+      ...onFocusProp,
+      id: `${MIN_PREFIX}-${id}`,
+      'aria-valuenow': lowerValue,
+      'aria-valuetext': getAriaValueText(lowerValue),
+      'aria-label': `${MIN_PREFIX} ${ariaLabel || label}`,
+    }),
   };
 
   const containerProps = {
