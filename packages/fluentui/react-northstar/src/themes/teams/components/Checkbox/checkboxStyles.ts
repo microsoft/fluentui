@@ -135,7 +135,7 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
     ...(p.disabled &&
       p.checked &&
-      p.checked !== 'mixed' && {
+       && {
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked),
