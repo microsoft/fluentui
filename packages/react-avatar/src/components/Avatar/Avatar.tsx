@@ -60,14 +60,14 @@ const useStyles = makeStyles<AvatarState>([
       position: 'relative',
       verticalAlign: 'middle',
 
-      borderRadius: tokens.borderRadius.circular,
+      borderRadius: tokens.global.borderRadius.circular,
 
       width: '32px',
       height: '32px',
 
-      fontFamily: tokens.fontFamilies.base,
-      fontSize: tokens.fontSizes.base[300],
-      fontWeight: tokens.fontWeights.semibold,
+      fontFamily: tokens.global.type.fontFamilies.base,
+      fontSize: tokens.global.type.fontSizes.base[300],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
 
@@ -77,8 +77,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '20px',
       height: '20px',
 
-      fontSize: tokens.fontSizes.base[100],
-      fontWeight: tokens.fontWeights.regular,
+      fontSize: tokens.global.type.fontSizes.base[100],
+      fontWeight: tokens.global.type.fontWeights.regular,
     }),
   ],
   [
@@ -87,8 +87,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '24px',
       height: '24px',
 
-      fontSize: tokens.fontSizes.base[100],
-      fontWeight: tokens.fontWeights.regular,
+      fontSize: tokens.global.type.fontSizes.base[100],
+      fontWeight: tokens.global.type.fontWeights.regular,
     }),
   ],
   [
@@ -97,8 +97,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '28px',
       height: '28px',
 
-      fontSize: tokens.fontSizes.base[200],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[200],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -107,8 +107,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '32px',
       height: '32px',
 
-      fontSize: tokens.fontSizes.base[300],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[300],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -117,8 +117,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '36px',
       height: '36px',
 
-      fontSize: tokens.fontSizes.base[300],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[300],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -127,8 +127,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '40px',
       height: '40px',
 
-      fontSize: tokens.fontSizes.base[300],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[300],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -137,8 +137,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '48px',
       height: '48px',
 
-      fontSize: tokens.fontSizes.base[400],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[400],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -147,8 +147,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '56px',
       height: '56px',
 
-      fontSize: tokens.fontSizes.base[400],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[400],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -157,8 +157,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '64px',
       height: '64px',
 
-      fontSize: tokens.fontSizes.base[500],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[500],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -167,8 +167,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '72px',
       height: '72px',
 
-      fontSize: tokens.fontSizes.base[500],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[500],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -177,8 +177,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '96px',
       height: '96px',
 
-      fontSize: tokens.fontSizes.base[500],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[500],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -187,8 +187,8 @@ const useStyles = makeStyles<AvatarState>([
       width: '120px',
       height: '120px',
 
-      fontSize: tokens.fontSizes.base[600],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[600],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
   [
@@ -197,20 +197,20 @@ const useStyles = makeStyles<AvatarState>([
       width: '128px',
       height: '128px',
 
-      fontSize: tokens.fontSizes.base[600],
-      fontWeight: tokens.fontWeights.semibold,
+      fontSize: tokens.global.type.fontSizes.base[600],
+      fontWeight: tokens.global.type.fontWeights.semibold,
     }),
   ],
 
-  [s => s.square, tokens => ({ borderRadius: tokens.borderRadius.medium })],
-  [s => s.square && (s.size === 20 || s.size === 24), tokens => ({ borderRadius: tokens.borderRadius.small })],
+  [s => s.square, tokens => ({ borderRadius: tokens.global.borderRadius.medium })],
+  [s => s.square && (s.size === 20 || s.size === 24), tokens => ({ borderRadius: tokens.global.borderRadius.small })],
   [
     s => s.square && (s.size === 56 || s.size === 64 || s.size === 72),
-    tokens => ({ borderRadius: tokens.borderRadius.large }),
+    tokens => ({ borderRadius: tokens.global.borderRadius.large }),
   ],
   [
     s => s.square && (s.size === 96 || s.size === 120 || s.size === 128),
-    tokens => ({ borderRadius: tokens.borderRadius.xLarge }),
+    tokens => ({ borderRadius: tokens.global.borderRadius.xLarge }),
   ],
 
   [
@@ -251,11 +251,11 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeRing,
     tokens => ({
       ':before': {
-        borderColor: tokens.neutralColorTokens.brandForeground, // TODO: use valid token
+        borderColor: tokens.alias.color.neutral.brandForeground, // TODO: use valid token
         borderStyle: 'solid',
-        borderWidth: tokens.strokeWidths.thick,
+        borderWidth: tokens.global.strokeWidth.thick,
 
-        margin: `calc(-2 * ${tokens.strokeWidths.thick})`,
+        margin: `calc(-2 * ${tokens.global.strokeWidth.thick})`,
       },
     }),
   ],
@@ -263,8 +263,8 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeRing && (s.size === 48 || s.size === 56 || s.size === 64),
     tokens => ({
       ':before': {
-        margin: `calc(-2 * ${tokens.strokeWidths.thicker})`,
-        borderWidth: tokens.strokeWidths.thicker,
+        margin: `calc(-2 * ${tokens.global.strokeWidth.thicker})`,
+        borderWidth: tokens.global.strokeWidth.thicker,
       },
     }),
   ],
@@ -272,8 +272,8 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeRing && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
     tokens => ({
       ':before': {
-        margin: `calc(-2 * ${tokens.strokeWidths.thickest})`,
-        borderWidth: tokens.strokeWidths.thickest,
+        margin: `calc(-2 * ${tokens.global.strokeWidth.thickest})`,
+        borderWidth: tokens.global.strokeWidth.thickest,
       },
     }),
   ],
@@ -281,33 +281,25 @@ const useStyles = makeStyles<AvatarState>([
   [
     s => s.activeShadow,
     tokens => ({
-      ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow8.ambient}, ${tokens.shadowLevels.shadow8.key}`,
-      },
+      ':before': { boxShadow: tokens.alias.shadow.shadow8 },
     }),
   ],
   [
     s => s.activeShadow && (s.size === 20 || s.size === 24 || s.size === 28),
     tokens => ({
-      ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow4.ambient}, ${tokens.shadowLevels.shadow4.key}`,
-      },
+      ':before': { boxShadow: tokens.alias.shadow.shadow4 },
     }),
   ],
   [
     s => s.activeShadow && (s.size === 48 || s.size === 56 || s.size === 64),
     tokens => ({
-      ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow16.ambient}, ${tokens.shadowLevels.shadow16.key}`,
-      },
+      ':before': { boxShadow: tokens.alias.shadow.shadow16 },
     }),
   ],
   [
     s => s.activeShadow && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
     tokens => ({
-      ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow28.ambient}, ${tokens.shadowLevels.shadow28.key}`,
-      },
+      ':before': { boxShadow: tokens.alias.shadow.shadow28 },
     }),
   ],
 
@@ -315,7 +307,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow,
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow8.ambient}, ${tokens.shadowLevels.shadow8.key}, 0 0 8px 2px ${tokens.neutralColorTokens.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow8}, 0 0 8px 2px ${tokens.alias.color.neutral.brandForeground}`,
       },
     }),
   ],
@@ -323,7 +315,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow && (s.size === 20 || s.size === 24 || s.size === 28),
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow4.ambient}, ${tokens.shadowLevels.shadow4.key}, 0 0 4px 2px ${tokens.neutralColorTokens.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow4}, 0 0 4px 2px ${tokens.alias.color.neutral.brandForeground}`,
       },
     }),
   ],
@@ -331,7 +323,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow && (s.size === 48 || s.size === 56 || s.size === 64),
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow16.ambient}, ${tokens.shadowLevels.shadow16.key}, 0 0 8px 2px ${tokens.neutralColorTokens.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow16}, 0 0 8px 2px ${tokens.alias.color.neutral.brandForeground}`,
       },
     }),
   ],
@@ -339,7 +331,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.shadowLevels.shadow28.ambient}, ${tokens.shadowLevels.shadow28.key}, 0 0 28px 4px ${tokens.neutralColorTokens.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow28}, 0 0 28px 4px ${tokens.alias.color.neutral.brandForeground}`,
       },
     }),
   ],
@@ -508,15 +500,15 @@ const useLabelStyles = makeStyles<AvatarState>([
       textAlign: 'center',
       borderRadius: 'inherit',
 
-      color: tokens.neutralColorTokens.neutralForeground3,
-      background: tokens.neutralColorTokens.neutralBackground6,
+      color: tokens.alias.color.neutral.neutralForeground3,
+      background: tokens.alias.color.neutral.neutralBackground6,
     }),
   ],
   [
     s => s.colorVariant === 'brand',
     tokens => ({
-      color: tokens.neutralColorTokens.neutralForegroundInverted,
-      background: tokens.neutralColorTokens.brandForeground,
+      color: tokens.alias.color.neutral.neutralForegroundInverted,
+      background: tokens.alias.color.neutral.brandForeground,
     }),
   ],
 ]);
