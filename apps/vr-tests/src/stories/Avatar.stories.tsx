@@ -5,6 +5,8 @@ import { Avatar, AvatarProps, AvatarSizeValue, avatarSizeValues } from '@fluentu
 import { Stack } from '@fluentui/react';
 import { ContactIcon, GroupIcon, TelemarketerIcon, ChatBotIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
+import { FluentProvider } from '@fluentui/react-provider';
+import { webLightTheme } from '@fluentui/react-theme';
 
 /** Renders an Avatar at every standard size */
 const AvatarList: React.FC<AvatarProps & {
@@ -61,15 +63,17 @@ const AvatarCustomSizeList: React.FC<AvatarProps & {
 
 storiesOf('Avatar', module)
   .addDecorator(story => (
-    <div style={{ display: 'flex' }}>
-      <Stack
-        className="testWrapper"
-        horizontal
-        tokens={{ childrenGap: '24px', padding: '24px', maxWidth: '750px' }}
-      >
-        {story()}
-      </Stack>
-    </div>
+    <FluentProvider theme={webLightTheme}>
+      <div style={{ display: 'flex' }}>
+        <Stack
+          className="testWrapper"
+          horizontal
+          tokens={{ childrenGap: '24px', padding: '24px', maxWidth: '750px' }}
+        >
+          {story()}
+        </Stack>
+      </div>
+    </FluentProvider>
   ))
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
