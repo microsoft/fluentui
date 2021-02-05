@@ -274,15 +274,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
           screenReaderText: legacyStyles.screenReaderOnly,
         };
-
     return (
       <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
-          role={'combobox'}
-          id={this._ariaMap.combobox}
+          role={this.canAddItems() ? 'combobox' : undefined}
+          id={this.canAddItems() ? this._ariaMap.combobox : undefined}
           aria-label={this.props['aria-label']}
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
