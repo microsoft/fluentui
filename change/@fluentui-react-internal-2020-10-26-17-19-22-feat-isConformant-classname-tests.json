@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Removing redundant conformance tests from ComponentConformance.test and disabling component-handles-classname where necessary.",
-  "packageName": "@fluentui/react-internal",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "patch",
-  "date": "2020-10-27T00:18:50.450Z"
-}

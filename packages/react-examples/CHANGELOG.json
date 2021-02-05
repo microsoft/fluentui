@@ -2,6 +2,109 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react-examples_v1.0.4",
+      "version": "1.0.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "8861d960cd98eed21ed8ca94293c9b0dba8a8070",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.49",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.0.0-beta.48",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.48",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-charting to v5.0.0-beta.49",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.0.0-beta.49",
+            "author": "andredias@microsoft.com",
+            "commit": "6cf32f99ceeea831227982cbe63e1e3e5c5be171",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-experiments to v8.0.0-beta.53",
+            "author": "andredias@microsoft.com",
+            "commit": "6cf32f99ceeea831227982cbe63e1e3e5c5be171",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/theme-samples to v8.0.0-beta.48",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-date-time to v8.0.0-beta.39",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.0-beta.18",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-internal to v8.0.0-beta.43",
+            "author": "andredias@microsoft.com",
+            "commit": "6cf32f99ceeea831227982cbe63e1e3e5c5be171",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.39",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.40",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.39",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Feb 2021 12:22:24 GMT",
       "tag": "@fluentui/react-examples_v1.0.3",
       "version": "1.0.3",

@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Disabling component-handles-classname test for CalendarDayGrid.",
-  "packageName": "@fluentui/react-date-time",
-  "email": "czearing@outlook.com",
-  "dependentChangeType": "none",
-  "date": "2020-10-27T00:17:26.867Z"
-}

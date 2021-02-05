@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add missing styles for disabled buttons",
-  "packageName": "@fluentui/react-examples",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T15:21:41.781Z"
-}
