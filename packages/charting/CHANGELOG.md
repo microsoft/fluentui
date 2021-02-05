@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 22 Jan 2021 12:28:20 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:26:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.13.0)
+
+Fri, 05 Feb 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.12.8..@uifabric/charting_v4.13.0)
+
+### Minor changes
+
+- CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers ([PR #16828](https://github.com/microsoft/fluentui/pull/16828) by mibes@microsoft.com)
 
 ## [4.12.8](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.12.8)
 

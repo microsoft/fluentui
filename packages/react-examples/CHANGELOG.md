@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:26:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.20)
+
+Fri, 05 Feb 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.18..@fluentui/react-examples_v0.11.20)
+
+### Patches
+
+- CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers ([PR #16828](https://github.com/microsoft/fluentui/pull/16828) by mibes@microsoft.com)
 
 ## [0.11.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.18)
 

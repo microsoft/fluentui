@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 05 Feb 2021 12:26:03 GMT",
+      "tag": "@fluentui/react-examples_v0.11.20",
+      "version": "0.11.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers",
+            "author": "mibes@microsoft.com",
+            "commit": "eee1754f0d92ee3c5fa8d68e9dfdcb03445b7df7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 12:24:38 GMT",
       "tag": "@fluentui/react-examples_v0.11.18",
       "version": "0.11.18",
