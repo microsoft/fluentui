@@ -34,13 +34,10 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   defaultChecked?: SupportedIntrinsicInputProps['defaultChecked'];
 
   /** A checkbox's checked state can be controlled. */
-  checked?: SupportedIntrinsicInputProps['checked'];
+  checked?: SupportedIntrinsicInputProps['checked'] | 'mixed';
 
   /** A checkbox's can be indeterminate by default. */
   defaultIndeterminate?: boolean;
-
-  /** A checkbox's can be indeterminate. */
-  indeterminate?: boolean;
 
   /** A indeterminate checkbox can have reference to ids which depends on. */
   controlsIds?: string;
@@ -75,10 +72,9 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   toggle?: boolean;
 }
 
-export type CheckboxStylesProps = Pick<
-  CheckboxProps,
-  'checked' | 'disabled' | 'labelPosition' | 'toggle' | 'indeterminate'
->;
+export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'> & {
+  indeterminate: boolean;
+};
 export const checkboxClassName = 'ui-checkbox';
 export const checkboxSlotClassNames: CheckboxSlotClassNames = {
   label: `${checkboxClassName}__label`,
@@ -115,7 +111,7 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
 
   const { state, actions } = useStateManager(createCheckboxManager, {
     mapPropsToInitialState: () => ({ checked: defaultChecked, indeterminate: defaultIndeterminate }),
-    mapPropsToState: () => ({ checked, indeterminate }),
+    mapPropsToState: () => ({ checked: checked === 'mixed' ? false : checked, indeterminate }),
   });
 
   const getA11Props = useAccessibility(props.accessibility, {
@@ -123,7 +119,7 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     mapPropsToBehavior: () => ({
       checked: state.checked,
       disabled,
-      indeterminate: state.indeterminate,
+      indeterminate: checked === 'mixed',
       controlsIds,
     }),
     actionHandlers: {
@@ -139,7 +135,7 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     className: checkboxClassName,
     mapPropsToStyles: () => ({
       checked: state.checked,
-      indeterminate: state.indeterminate,
+      indeterminate: checked === 'mixed',
       disabled,
       labelPosition,
       toggle,
@@ -225,9 +221,8 @@ Checkbox.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  checked: PropTypes.bool,
+  checked: PropTypes.oneOf([true, false, 'mixed']),
   defaultChecked: PropTypes.bool,
-  indeterminate: PropTypes.bool,
   defaultIndeterminate: PropTypes.bool,
   controlsIds: PropTypes.string,
   disabled: PropTypes.bool,
