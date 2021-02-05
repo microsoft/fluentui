@@ -15,7 +15,6 @@ export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => (
     root: {
       'aria-checked': props.checked === 'mixed' ? 'mixed' : !!props.checked,
       'aria-disabled': props.disabled,
-      'aria-controls': props.controlsIds,
       role: 'checkbox',
       tabIndex: 0,
       [IS_FOCUSABLE_ATTRIBUTE]: true,
@@ -33,8 +32,6 @@ export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => (
 export type CheckboxBehaviorProps = {
   /** Whether or not item is checked. */
   checked?: boolean | 'mixed';
-  /** ids of checkbox which the inderterminate checkbox depends on */
-  controlsIds?: string;
   /** If the checkbox is in disabled state. */
   disabled?: boolean;
 };

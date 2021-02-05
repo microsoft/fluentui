@@ -36,9 +36,6 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   /** A checkbox's checked state can be controlled. */
   checked?: SupportedIntrinsicInputProps['checked'] | 'mixed';
 
-  /** A indeterminate checkbox can have reference to ids which depends on. */
-  controlsIds?: string;
-
   /** A checkbox can appear disabled and be unable to change states. */
   disabled?: SupportedIntrinsicInputProps['disabled'];
 
@@ -99,7 +96,6 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     styles,
     toggle,
     variables,
-    controlsIds,
   } = props;
 
   const { state, actions } = useStateManager(createCheckboxManager, {
@@ -112,7 +108,6 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     mapPropsToBehavior: () => ({
       checked: state.checked,
       disabled,
-      controlsIds,
     }),
     actionHandlers: {
       performClick: (e: React.KeyboardEvent) => {
@@ -126,7 +121,7 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
     className: checkboxClassName,
     mapPropsToStyles: () => ({
-      checked: state.checked,
+      checked: checked === 'mixed' ? 'mixed' : state.checked,
       disabled,
       labelPosition,
       toggle,
@@ -210,7 +205,6 @@ Checkbox.propTypes = {
   }),
   checked: PropTypes.oneOf([true, false, 'mixed']),
   defaultChecked: PropTypes.bool,
-  controlsIds: PropTypes.string,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
