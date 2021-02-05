@@ -51,7 +51,6 @@ exports[`Avatar prioritizes icon over initials 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
@@ -75,7 +74,6 @@ exports[`Avatar prioritizes image over icon 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
@@ -117,7 +115,6 @@ exports[`Avatar prioritizes image over initials and icon 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
@@ -177,7 +174,6 @@ exports[`Avatar renders a default state 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
@@ -201,7 +197,6 @@ exports[`Avatar renders an icon 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
@@ -226,7 +221,6 @@ exports[`Avatar renders an icon if the name is not alphabetic 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
@@ -250,7 +244,6 @@ exports[`Avatar renders an image 1`] = `
     <span
       aria-hidden={true}
       className=""
-      role="presentation"
       style={Object {}}
     >
       <svg
