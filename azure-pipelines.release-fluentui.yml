@@ -1,74 +1,212 @@
 pr: none
 trigger: none
 
-# Customize build number to include major version
-# Example: fluentui_20190626.1
-name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
+schedules:
+  - cron: 0 3 * * *
+    branches:
+      include:
+        # todo change to master when merge
+        - test-release2
+
+resources:
+  repositories:
+    - repository: self
+      type: git
+      ref: master
 
 variables:
   - group: 'Github and NPM secrets'
   - name: docsiteVersion
-    value: empty
+    value: nightly
   - name: deployBasePath
-    value: empty
+    value: nightly
   - name: officialRelease
-    value: 1
+    value: true
+  - name: nightlyRelease
+    value: true
 
-pool: 'Self Host Ubuntu'
+jobs:
+  - job: Job_1
+    displayName: Build and Release Fluent Packages
+    # skip this job if publishDocsiteOnly is true
+    condition: and(succeeded(), eq(variables.publishDocsiteOnly, false))
+    pool:
+      name: Self Host Ubuntu
 
-steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+    steps:
+      - checkout: self
 
-  - script: |
-      ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
-      echo "##vso[task.setvariable variable=deployBasePath]$ver"
-      echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-      echo "Docsite base path published to for version $ver"
-    displayName: Set base path and version variables for job
-  - script: |
-      git config user.name "Fluent UI Build"
-      git config user.email "fluentui-internal@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-    displayName: Authenticate git for pushes
-  - task: Bash@3
-    inputs:
-      filePath: yarn-ci.sh
-    displayName: yarn
-  - script: |
-      PRODUCTION=true yarn build
-    displayName: yarn build
-  - script: |
-      NODE_ENV=production yarn build:fluentui:docs
-    displayName: yarn build:fluentui:docs
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish docsite as pipeline artifact'
-    inputs:
-      PathtoPublish: 'packages/fluentui/docs/dist'
-      ArtifactName: 'docsite_v$(docsiteVersion)'
+      - task: CmdLine@2
+        displayName: Authenticate Git credentials
+        inputs:
+          script: >-
+            git config user.name "Fluent UI Build"
 
-  - task: AzureUpload@2
-    displayName: Upload docs site
-    inputs:
-      SourcePath: 'packages/fluentui/docs/dist'
-      azureSubscription: 'UI Fabric (private)'
-      storage: fluentsite
-      ContainerName: '$web'
-      BlobPrefix: '$(deployBasePath)'
-      # uncomment to deploy to prod
-      # storage: fluentsite
-      # BlobPrefix: ''
-# No NPM release in CI for now
-#  - script: |
-#      yarn test
-#    displayName: yarn test
-#
-#  - script: |
-#      yarn lint
-#    displayName: yarn lint
-#
-#  - script: |
-#      yarn release:fluentui:$(bumpType)
-#    displayName: yarn release:fluentui:$(bumpType)
+            git config user.email "fluentui-internal@service.microsoft.com"
+
+            git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+
+      - task: CmdLine@2
+        displayName: Checkout branch
+        inputs:
+          script: >-
+            git checkout $(Build.SourceBranchName)
+
+            git pull
+
+      - task: NodeTool@0
+        displayName: Install Node.js
+        inputs:
+          versionSpec: 12.x
+
+      - task: YarnInstaller@0
+        displayName: Use Yarn 1.19.x
+        inputs:
+          versionSpec: 1.19.x
+          checkLatest: true
+
+      - task: Bash@3
+        displayName: Yarn
+        inputs:
+          filePath: yarn-ci.sh
+
+      - task: CmdLine@2
+        displayName: yarn buildci
+        inputs:
+          script: yarn buildci
+
+      - task: CmdLine@2
+        displayName: '[Nightly] Pack fluentui packages'
+        inputs:
+          script: >-
+            today=`date +%Y-%m-%d`
+
+            echo date today $today
+
+            echo "##vso[task.setvariable variable=date]$today"
+
+            yarn release:fluentui:pack-nightly
+
+      - task: AzureUpload@2
+        displayName: '[Nightly] Upload tarballs'
+        condition: and(succeeded(), eq(variables.publishToNPM, false))
+        inputs:
+          SourcePath: fluentui-nightly
+          ConnectedServiceNameARM: 4f791194-9458-4a18-9f9d-6a77ddb74b8c
+          StorageAccountRM: fluentsite
+          ContainerName: nightly-builds
+          # upload tarballs to folder named by today's date
+          BlobPrefix: $(date)
+          Gzip: false
+
+      - task: AzureUpload@2
+        displayName: '[Nightly] Upload tarballs as newest'
+        condition: and(succeeded(), eq(variables.publishToNPM, false))
+        inputs:
+          SourcePath: fluentui-nightly
+          ConnectedServiceNameARM: 4f791194-9458-4a18-9f9d-6a77ddb74b8c
+          StorageAccountRM: fluentsite
+          ContainerName: nightly-builds
+          # upload tarballs to folder named 'newest'. This folder is used by the nightly version of docsite to create codesandbox
+          BlobPrefix: newest
+          Gzip: false
+
+      - task: CmdLine@2
+        displayName: '[NPM] Publish to NPM'
+        condition: and(succeeded(), eq(variables.publishToNPM, true))
+        timeoutInMinutes: 2
+        inputs:
+          script: >-
+            yarn logout
+            export NPM_TOKEN=$(npmToken)
+
+            echo "@fluentui:registry=http://registry.npmjs.org/" > .npmrc
+            echo "registry=http://registry.npmjs.org/" >> .npmrc
+            echo //registry.npmjs.org/:_authToken=$(npmToken) >> .npmrc
+
+            touch packages/fluentui/.npmrc
+
+            echo "@fluentui:registry=http://registry.npmjs.org/" > packages/fluentui/.npmrc
+            echo "registry=http://registry.npmjs.org/" >> packages/fluentui/.npmrc
+            echo //registry.npmjs.org/:_authToken=$(npmToken) >> packages/fluentui/.npmrc
+
+            yarn release:fluentui:$(version) --yes
+
+            yarn release:fluentui:post-validation
+
+  - job: Job_2
+    displayName: Build and Publish Docsite
+    dependsOn: Job_1
+    # run this job when the previous job is succeeded or when publishDocsiteOnly is true
+    condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
+    pool:
+      name: Self Host Ubuntu
+
+    steps:
+      - checkout: self
+
+      - task: CmdLine@2
+        displayName: Authenticate Git credentials
+        inputs:
+          script: >-
+            git config user.name "Fluent UI Build"
+
+            git config user.email "fluentui-internal@service.microsoft.com"
+
+            git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+
+      - task: NodeTool@0
+        displayName: Install Node.js
+        inputs:
+          versionSpec: 12.x
+
+      - task: YarnInstaller@0
+        displayName: Use Yarn 1.19.x
+        inputs:
+          versionSpec: 1.19.x
+          checkLatest: true
+
+      - task: Bash@3
+        displayName: Yarn
+        inputs:
+          filePath: yarn-ci.sh
+
+      - task: CmdLine@2
+        displayName: '[NPM] Set base path and version'
+        condition: and(succeeded(), eq(variables.publishToNPM, true))
+        inputs:
+          script: >-
+            if [[ "$(publishToNPM)" == "true" ]]
+
+            then
+              ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
+              echo "Docsite base path published for version $ver"
+              echo "##vso[task.setvariable variable=deployBasePath]$ver"
+              echo "##vso[task.setvariable variable=docsiteVersion]$ver"
+              echo "##vso[task.setvariable variable=nightlyRelease]false"
+            fi
+
+      - task: CmdLine@2
+        displayName: Build
+        inputs:
+          script: >-
+            echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyRelease $(nightlyRelease)
+
+            PRODUCTION=true yarn build
+
+            NODE_ENV=production yarn build:fluentui:docs
+
+      - task: PublishPipelineArtifact@1
+        displayName: Publish Docsite as Pipeline Artifact
+        inputs:
+          path: packages/fluentui/docs/dist
+          artifactName: docsite_v$(docsiteVersion)
+
+      - task: AzureUpload@2
+        displayName: Upload to Azure
+        inputs:
+          SourcePath: packages/fluentui/docs/dist
+          ConnectedServiceNameARM: 4f791194-9458-4a18-9f9d-6a77ddb74b8c
+          StorageAccountRM: fluentsite
+          ContainerName: $web
+          BlobPrefix: $(deployBasePath)
