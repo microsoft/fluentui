@@ -81,7 +81,6 @@ export const FontWeight = () => (
   </div>
 );
 
-// FIXME: fix type in theme for textAlign
 export const TextAlignment = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
     <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
@@ -90,20 +89,7 @@ export const TextAlignment = () => (
         <div
           key={`${alignment}-value`}
           style={{
-            textAlign: global.type.alignment[alignment] as
-              | '-moz-initial'
-              | 'inherit'
-              | 'initial'
-              | 'revert'
-              | 'unset'
-              | 'center'
-              | 'end'
-              | 'start'
-              | 'justify'
-              | 'left'
-              | 'match-parent'
-              | 'right'
-              | undefined,
+            textAlign: global.type.alignment[alignment],
             backgroundColor: '#eee',
           }}
         >
