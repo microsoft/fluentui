@@ -98,6 +98,6 @@ describe('PersonaPresence', () => {
   isConformant({
     Component: PersonaPresence,
     displayName: 'PersonaPresence',
-    disabledTests: ['exported-top-level', 'has-top-level-file'],
+    disabledTests: ['exported-top-level', 'has-top-level-file', 'component-handles-classname'],
   });
 });
