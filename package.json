@@ -70,7 +70,7 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
-    "beachball": "^1.39.1",
+    "beachball": "^1.50.1",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",

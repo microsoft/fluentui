@@ -65,7 +65,7 @@ describe('Dialog', () => {
   isConformant({
     Component: Dialog,
     displayName: 'Dialog',
-    disabledTests: ['component-handles-ref', 'component-has-root-ref'],
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   });
 
   it('Fires dismissed after closing', () => {

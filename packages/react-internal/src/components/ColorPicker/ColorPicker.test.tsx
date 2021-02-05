@@ -7,6 +7,7 @@ import { ColorPicker } from './ColorPicker';
 import { ColorPickerBase, IColorPickerState } from './ColorPicker.base';
 import { IColorPickerProps, IColorPickerStrings } from './ColorPicker.types';
 import { IColor } from '../../utilities/color/interfaces';
+import { resetIds } from '../../Utilities';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mockEvent } from '../../common/testUtilities';
 import { ColorRectangleBase } from './ColorRectangle/ColorRectangle.base';
@@ -20,6 +21,11 @@ const white = getColorFromString('#ffffff')!;
 const AEAEAE = getColorFromString('#AEAEAE')!;
 
 describe('ColorPicker', () => {
+  beforeEach(() => {
+    // Resetting ids to create predictability in generated ids.
+    resetIds();
+  });
+
   let wrapper: ReactWrapper<IColorPickerProps, IColorPickerState, ColorPickerBase> | undefined;
   let colorPicker: ColorPickerBase | null = null;
   const colorPickerRef = (ref: ColorPickerBase | null) => {
