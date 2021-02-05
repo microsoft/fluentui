@@ -43,7 +43,7 @@ describe('ContextualMenu', () => {
     //
     // This test failure likely stems from Callout as it experiences the same error. The failing test should be
     // further investigated and re-enabled in a future pull request.
-    disabledTests: ['component-handles-ref'],
+    disabledTests: ['component-handles-ref', 'component-handles-classname'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {
