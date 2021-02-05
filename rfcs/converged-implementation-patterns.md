@@ -144,7 +144,7 @@ export const renderSample = (state: SampleState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slot.otherSlot {...slotProps.otherSlot} />
+      <slot.icon {...slotProps.icon} />
     </slots.root>
   );
 };
