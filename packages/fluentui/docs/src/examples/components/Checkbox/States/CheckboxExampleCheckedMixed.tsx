@@ -24,6 +24,7 @@ const CheckboxExampleCheckedMixed = () => {
           dispatch({ lettuce: checked, tomato: checked, ketchup: checked });
         }}
         label="All Sandwich Condiments selected"
+        id="all"
       />
       <Checkbox
         checked={sandwichState.lettuce}
