@@ -6,8 +6,8 @@ const doList = ['Add `controlsIds="id1 id2"` for indeterminate checkbox referrin
 
 const dontList = [];
 
-const CardBestPractices = () => {
+const CheckboxBestPractices = () => {
   return <ComponentBestPractices doList={doList} dontList={dontList} />;
 };
 
-export default CardBestPractices;
+export default CheckboxBestPractices;
