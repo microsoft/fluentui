@@ -12,6 +12,7 @@ import {
 } from '@fluentui/react-theme';
 import { ColorRampItem } from '../components/ColorRamp';
 
+// FIXME: hardcoded theme
 const theme = {
   light: teamsLightTheme,
   dark: teamsDarkTheme,
