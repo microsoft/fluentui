@@ -1,17 +1,30 @@
-import { createNeutralColorTokens, sharedColorTokens } from '../../utils/highContrast/index';
-import { brandColors, sharedColors, fontFamilies, fontWeights, fontSizes, lineHeights } from '../../global/index';
-import { Theme } from '../../types';
-const common = {
-  sharedColors,
+import {
+  createBrandColorTokens,
+  createNeutralColorTokens,
+  ghostColorTokens,
   sharedColorTokens,
-  fontFamilies,
-  fontWeights,
-  fontSizes,
-  lineHeights,
-};
+  transparentColorTokens,
+} from '../../utils/highContrast/index';
+import { brandColors } from '../../global/index';
+import { Theme } from '../../types';
+import { globalTheme } from './globalTheme';
+import { createShadowLevelTokens } from '../../utils/shadows';
+
+const teamsNeutralColorTokens = createNeutralColorTokens(brandColors.teams);
 
 export const teamsHighContrastTheme: Theme = {
-  brandColors: brandColors.teams,
-  neutralColorTokens: createNeutralColorTokens(brandColors.teams),
-  ...common,
+  global: globalTheme,
+  alias: {
+    color: {
+      ...sharedColorTokens,
+      neutral: teamsNeutralColorTokens,
+      ghost: ghostColorTokens,
+      transparent: transparentColorTokens,
+      brand: createBrandColorTokens(),
+    },
+    shadow: createShadowLevelTokens(
+      teamsNeutralColorTokens.neutralShadowAmbient,
+      teamsNeutralColorTokens.neutralShadowKey,
+    ),
+  },
 };
