@@ -2,35 +2,35 @@ import { FontFamilies, FontSizes, FontWeights, LineHeights } from '../types';
 
 export const fontSizes: FontSizes = {
   base: {
-    100: '10px',
-    200: '12px',
-    300: '14px',
-    400: '16px',
-    500: '20px',
-    600: '24px',
+    100: 10,
+    200: 12,
+    300: 14,
+    400: 16,
+    500: 20,
+    600: 24,
   },
   hero: {
-    700: '28px',
-    800: '32px',
-    900: '40px',
-    1000: '68px',
+    700: 28,
+    800: 32,
+    900: 40,
+    1000: 68,
   },
 };
 
 export const lineHeights: LineHeights = {
   base: {
-    100: '14px',
-    200: '16px',
-    300: '20px',
-    400: '22px',
-    500: '28px',
-    600: '32px',
+    100: 14,
+    200: 16,
+    300: 20,
+    400: 22,
+    500: 28,
+    600: 32,
   },
   hero: {
-    700: '36px',
-    800: '40px',
-    900: '52px',
-    1000: '92px',
+    700: 36,
+    800: 40,
+    900: 52,
+    1000: 92,
   },
 };
 
@@ -42,8 +42,7 @@ export const fontWeights: FontWeights = {
 
 // TODO find asset urls
 export const fontFamilies: FontFamilies = {
-  base:
-    "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
-  monospace: "Consolas, 'Courier New', Courier, monospace",
-  numeric: 'Bahnschrift, $fontFamily-base',
+  base: '',
+  monospace: '',
+  numeric: '',
 };
