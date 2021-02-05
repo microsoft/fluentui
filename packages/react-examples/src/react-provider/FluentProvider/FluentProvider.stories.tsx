@@ -52,9 +52,13 @@ export const ThemesMerge = () => (
     <FluentProvider theme={teamsLightTheme}>
       <FluentProvider
         theme={{
-          neutralColorTokens: {
-            neutralBackground1: 'salmon',
-            brandForeground: 'white',
+          alias: {
+            color: {
+              neutral: {
+                neutralBackground1: 'salmon',
+                brandForeground: 'white',
+              },
+            },
           },
         }}
       >

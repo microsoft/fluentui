@@ -328,6 +328,8 @@ export type Greys =
 export type Theme = {
   global: {
     // TODO: this means "static", will not change with light/dark/contrast switch. better named static?
+    // TODO: Shift: we should move global away from theme, this is not themable
+    //   ThemeProvider should not inject these css variables?
     color: {
       black: string;
       white: string;
@@ -361,14 +363,4 @@ export type Theme = {
 };
 
 // TODO: fix shape
-export type PartialTheme = {
-  sharedColors?: RecursivePartial<Theme['sharedColors']>;
-  sharedColorTokens?: RecursivePartial<Theme['sharedColorTokens']>;
-  fontSizes?: RecursivePartial<Theme['fontSizes']>;
-  fontWeights?: RecursivePartial<Theme['fontWeights']>;
-  fontFamilies?: RecursivePartial<Theme['fontFamilies']>;
-  lineHeights?: RecursivePartial<Theme['lineHeights']>;
-  brandColors?: RecursivePartial<Theme['brandColors']>;
-  neutralColorTokens?: RecursivePartial<Theme['neutralColorTokens']>;
-  shadowLevels?: RecursivePartial<Theme['shadowLevels']>;
-};
+export type PartialTheme = RecursivePartial<Theme>;
