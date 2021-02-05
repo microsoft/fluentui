@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-checked': !!props.indeterminate ? 'mixed' : !!props.checked,
+      'aria-checked': props.checked === 'mixed' ? 'mixed' : !!props.checked,
       'aria-disabled': props.disabled,
       ...(!!props.controlsIds && {
         'aria-controls': props.controlsIds,
@@ -34,9 +34,7 @@ export const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => (
 
 export type CheckboxBehaviorProps = {
   /** Whether or not item is checked. */
-  checked?: boolean;
-  /** Whether or not item is mixed state. */
-  indeterminate?: boolean;
+  checked?: boolean | 'mixed';
   /** ids of checkbox which the inderterminate checkbox depends on */
   controlsIds?: string;
   /** If the checkbox is in disabled state. */

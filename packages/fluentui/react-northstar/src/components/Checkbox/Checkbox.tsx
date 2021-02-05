@@ -115,7 +115,6 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     mapPropsToBehavior: () => ({
       checked: state.checked,
       disabled,
-      indeterminate: checked === 'mixed',
       controlsIds,
     }),
     actionHandlers: {
