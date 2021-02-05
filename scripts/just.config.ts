@@ -109,6 +109,13 @@ export function preset() {
     const skipConfirm = args['yes'];
     fluentuiLernaPublish('patch', skipConfirm);
   });
+  task('fluentui:publish:canary', () => {
+    // use this task to release canary verion. By default its npm tag will be 'beta'.
+    const args = getJustArgv();
+    const skipConfirm = args['yes'];
+    const tag = args['dist-tag'];
+    fluentuiLernaPublish('canary', skipConfirm, tag);
+  });
 
   task('fluentui:publish:validation', fluentuiPostPublishValidation());
   task('fluentui:pack', packFluentTarballs()); // pack all public fluent ui packages, used by ci to store nightly built artifacts

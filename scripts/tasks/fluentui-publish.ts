@@ -5,18 +5,49 @@ import * as fs from 'fs';
 
 import { findGitRoot } from '../monorepo/index';
 
-export function fluentuiLernaPublish(bumpType, skipConfirm = false) {
+export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCanary = 'beta') {
   const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
-  const lernaPublishArgs = [
-    'lerna',
-    'publish',
-    "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
-    '--no-git-reset',
-    '--force-publish',
-    '--registry',
-    argv().registry,
-    bumpType,
-  ];
+
+  let lernaPublishArgs: string[];
+  switch (bumpType) {
+    case 'patch':
+    case 'minor':
+      lernaPublishArgs = [
+        'lerna',
+        'publish',
+        "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
+        '--no-git-reset',
+        '--force-publish',
+        '--registry',
+        argv().registry,
+        bumpType,
+      ];
+      break;
+    case 'canary':
+      if (npmTagForCanary.includes('latest')) {
+        throw new Error(`Canary release cannot be published under latest tag`);
+      }
+      lernaPublishArgs = [
+        'lerna',
+        'publish',
+        'prerelease',
+        "--tag-version-prefix='@fluentui/react-northstar_v'",
+        '--no-push',
+        '--no-git-tag-version',
+        '--no-git-reset',
+        '--force-publish',
+        '--registry',
+        argv().registry,
+        '--dist-tag',
+        npmTagForCanary,
+        '--preid',
+        npmTagForCanary,
+      ];
+      break;
+    default:
+      throw new Error(`lerna publish gets invalid bump type ${bumpType}`);
+  }
+
   if (skipConfirm) {
     lernaPublishArgs.push('--yes');
   }
