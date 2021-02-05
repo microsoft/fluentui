@@ -384,8 +384,6 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const sliderProps = {
-    'aria-valuemin': min,
-    'aria-valuemax': max,
     'aria-disabled': disabled,
     role: 'slider',
     tabIndex: disabled ? undefined : 0,
@@ -398,6 +396,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ...eventProps,
     ...(!ranged && {
       ...sliderProps,
+      'aria-valuemin': min,
+      'aria-valuemax': max,
       'aria-valuenow': value,
       'aria-valuetext': getAriaValueText(value),
       'aria-label': ariaLabel || label,
@@ -413,6 +413,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       ...eventProps,
       ...onFocusProp,
       id: `${MAX_PREFIX}-${id}`,
+      'aria-valuemin': lowerValue,
+      'aria-valuemax': max,
       'aria-valuenow': value,
       'aria-valuetext': getAriaValueText(value),
       'aria-label': `${MAX_PREFIX} ${ariaLabel || label}`,
@@ -428,6 +430,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       ...eventProps,
       ...onFocusProp,
       id: `${MIN_PREFIX}-${id}`,
+      'aria-valuemin': min,
+      'aria-valuemax': value,
       'aria-valuenow': lowerValue,
       'aria-valuetext': getAriaValueText(lowerValue),
       'aria-label': `${MIN_PREFIX} ${ariaLabel || label}`,
