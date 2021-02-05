@@ -14,22 +14,22 @@ const CheckboxExampleChecked = () => {
         checked={checked}
         controlsIds="lettuce tomato"
         onChange={(e, { checked }) => {
-          setLettuceCheck(checked as boolean);
-          setTomatoCheck(checked as boolean);
+          setLettuceCheck(checked);
+          setTomatoCheck(checked);
         }}
         label="All Sandwich Condiments selected"
       />
       <Checkbox
         checked={lettuceChecked}
         onChange={(e, { checked }) => {
-          setLettuceCheck(checked as boolean);
+          setLettuceCheck(checked);
         }}
         id="lettuce"
         label="Lettuce"
       />
       <Checkbox
         onChange={(e, { checked }) => {
-          setTomatoCheck(checked as boolean);
+          setTomatoCheck(checked);
         }}
         id="tomato"
         checked={tomatoChecked}

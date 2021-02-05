@@ -56,14 +56,14 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onChange?: ComponentEventHandler<CheckboxProps>;
+  onChange?: ComponentEventHandler<Omit<CheckboxProps, 'checked'> & { checked: boolean }>;
 
   /**
    * Called after a checkbox is clicked.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onClick?: ComponentEventHandler<CheckboxProps>;
+  onClick?: ComponentEventHandler<Omit<CheckboxProps, 'checked'> & { checked: boolean }>;
 
   /** A checkbox can be formatted to show an "on or off" choice. */
   toggle?: boolean;
