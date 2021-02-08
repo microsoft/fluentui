@@ -7,7 +7,6 @@
 import { ComponentProps } from '@fluentui/react-utils';
 import { ObjectSlotProp } from '@fluentui/react-utils';
 import * as React from 'react';
-import { RefObjectFunction } from '@fluentui/react-hooks';
 import { ShorthandProps } from '@fluentui/react-utils';
 
 // @public
@@ -24,7 +23,7 @@ export const menuItemShorthandProps: string[];
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
     icon?: ObjectSlotProp<HTMLSpanElement>;
-    ref: RefObjectFunction<HTMLElement>;
+    ref: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -36,7 +35,7 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
 
 // @public (undocumented)
 export interface MenuListState extends MenuListProps {
-    ref: RefObjectFunction<HTMLElement>;
+    ref: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
