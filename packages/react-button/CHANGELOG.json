@@ -2,6 +2,65 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.28",
+      "version": "1.0.0-beta.28",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.20",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.27",
+      "version": "1.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "SplitButton: Using menuButtonRef prop correctly when handling state.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a9b240637a681a899f996547919e6b63a5a4f32a",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.26",
+      "version": "1.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "adding accessibility related tests into react-button package",
+            "author": "milanturon@centrum.cz",
+            "commit": "983940e05d287b0affc0c2ccbeef89415843ef35",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "use a compat version of ThemeProvider",
+            "author": "olfedias@microsoft.com",
+            "commit": "27074a29ffdf4d437dc4d6fcb347effe9fcb195f",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Feb 2021 12:23:48 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.25",
       "version": "1.0.0-beta.25",

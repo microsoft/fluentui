@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:23:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.49)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.48..@fluentui/react-cards_v1.0.0-beta.49)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.20 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
+
+## [1.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.48)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.46..@fluentui/react-cards_v1.0.0-beta.48)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.46)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.45..@fluentui/react-cards_v1.0.0-beta.46)
+
+### Changes
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.45)
 

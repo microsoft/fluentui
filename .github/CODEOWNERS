@@ -15,24 +15,25 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
-#### Core build stuff
+#### Build stuff
 scripts/ @dzearing @ecraig12345 @xugao
 scripts/babel/ @layershifter @miroslavstastny
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/webpack.config.* @layershifter @miroslavstastny
 package.json @ecraig12345 @dzearing @xugao
-prettier.config.js @ecraig12345
-webpack.config.js @ecraig12345
-webpack.serve.config.js @ecraig12345
-jest.config.js @ecraig12345
+yarn.lock @ecraig12345 @dzearing @xugao
+*.config.js @ecraig12345
+*.sh @ecraig12345
+*.yml @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
-azure-pipelines* @ecraig12345
+.git* @ecraig12345
+.codesandbox @ecraig12345
 .eslintrc.* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
-sizeauditor.json @aftab-hassan
+sizeauditor.json @aftab-hassan @ecraig12345
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
@@ -84,6 +85,7 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Component packages
+packages/react-menu/ @ling1726 @layershifter
 packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
 packages/react-checkbox/ @khmakoto @xugao

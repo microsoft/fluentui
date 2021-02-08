@@ -75,7 +75,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-0"
@@ -244,7 +244,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       id="checkbox-1"
@@ -380,7 +380,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       disabled={true}
@@ -516,7 +516,7 @@ exports[`Component Examples renders Checkbox.Basic.Example.tsx correctly 1`] = `
             outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-            outline: 1px solid ActiveBorder;
+            outline: 1px solid WindowText;
           }
       data-ktp-execute-target={true}
       disabled={true}

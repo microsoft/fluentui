@@ -359,7 +359,7 @@ export interface IBreadcrumbData {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     href?: string;
     isCurrentItem?: boolean;
@@ -1353,6 +1353,7 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
     className?: string;
     componentRef?: IRefObject<IDocumentCardPreview>;
     getOverflowDocumentCountText?: (overflowCount: number) => string;
+    maxDisplayCount?: number;
     previewImages: IDocumentCardPreviewImage[];
     styles?: IStyleFunctionOrObject<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>;
     theme?: ITheme;

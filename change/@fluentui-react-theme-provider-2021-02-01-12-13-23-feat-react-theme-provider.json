@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "move react-theme-provider utils to /compat",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T11:13:23.165Z"
-}

@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "allow passing native properties to the root element of StackItem",
-  "packageName": "@fluentui/react-internal",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-30T00:10:26.565Z"
-}

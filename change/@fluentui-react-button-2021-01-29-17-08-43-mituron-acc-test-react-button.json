@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "adding accessibility related tests into react-button package",
-  "packageName": "@fluentui/react-button",
-  "email": "milanturon@centrum.cz",
-  "dependentChangeType": "patch",
-  "date": "2021-01-29T16:08:43.464Z"
-}

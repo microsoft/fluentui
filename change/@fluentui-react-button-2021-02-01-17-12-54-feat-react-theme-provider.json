@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use a compat version of ThemeProvider",
-  "packageName": "@fluentui/react-button",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-02-01T16:11:19.725Z"
-}

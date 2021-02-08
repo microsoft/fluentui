@@ -2,6 +2,57 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.20",
+      "version": "1.0.0-beta.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.0",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "move react-theme-provider utils to /compat",
+            "author": "olfedias@microsoft.com",
+            "commit": "27074a29ffdf4d437dc4d6fcb347effe9fcb195f",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "feat: add converged Provider and basic theme utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "026320cfc0408dbc2d25d3959856d787ef21d344",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Feb 2021 12:23:48 GMT",
       "tag": "@fluentui/react-theme-provider_v1.0.0-beta.18",
       "version": "1.0.0-beta.18",

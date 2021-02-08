@@ -1,16 +1,14 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
 import { IComboBox, IComboBoxOption } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../SelectableOption';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@fluentui/test-utilities';
+import { safeCreate, safeMount } from '@fluentui/test-utilities';
 import { useKeytipRef } from '../../Keytips';
-import { mount } from 'enzyme';
-
-const ReactDOM = require('react-dom');
 
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
@@ -42,55 +40,53 @@ const returnUndefined = () => undefined;
 const createNodeMock = (el: React.ReactElement<{}>) => {
   return {
     __events__: {},
+    addEventListener: () => undefined,
+    removeEventListener: () => undefined,
   };
 };
 
 describe('ComboBox', () => {
-  const createPortal = ReactDOM.createPortal;
+  beforeAll(() => {
+    // Certain later tests mock ReactDOM.createPortal.
+    // Since this is the first test to call mount(), we have to mount something with the real
+    // version of createPortal first to allow some global setup to run properly (enzyme quirk/bug).
+    safeMount(<div />);
+  });
 
   beforeEach(() => {
-    ReactDOM.createPortal = jest.fn(element => {
-      return element;
-    });
+    resetIds();
   });
 
   it('Renders correctly', () => {
-    const component = renderer.create(<ComboBox options={DEFAULT_OPTIONS} text={'testValue'} />, { createNodeMock });
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    safeCreate(
+      <ComboBox options={DEFAULT_OPTIONS} text="testValue" />,
+      component => {
+        const tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+      },
+      { createNodeMock },
+    );
   });
 
   it('renders with a Keytip correctly', () => {
-    ReactDOM.createPortal = createPortal;
     const keytipProps = {
       content: 'A',
       keySequences: ['a'],
     };
 
     const TestComponent: React.FunctionComponent = () => {
-      const comboboxRef = useKeytipRef<HTMLDivElement>({ keytipProps });
-      return <ComboBox ariaDescribedBy="test-foo" options={DEFAULT_OPTIONS} ref={comboboxRef} />;
+      const keytipRef = useKeytipRef<HTMLDivElement>({ keytipProps });
+      return <ComboBox ariaDescribedBy="test-foo" options={DEFAULT_OPTIONS} ref={keytipRef} />;
     };
 
-    const wrapper = mount(<TestComponent />);
-    expect(wrapper.getDOMNode()).toMatchSnapshot();
-
-    wrapper.unmount();
-  });
-
-  it(`renders`, () => {
-    safeCreate(<ComboBox options={DEFAULT_OPTIONS} />, wrapper => {
-      expect(wrapper.root).toBeTruthy();
+    safeMount(<TestComponent />, wrapper => {
+      expect(wrapper.getDOMNode()).toMatchSnapshot();
     });
   });
 
   isConformant({
     Component: ComboBox,
     displayName: 'ComboBox',
-    // Problem: Currently doesn’t work with mount.
-    // Solution: Further investigate why ComboBox only works with create or fix customMount type
-    // in isConformant to work with other testing mount utilities such as create.
-    disabledTests: ['component-renders', 'component-handles-ref', 'component-has-root-ref'],
   });
 
   it('Can flip between enabled and disabled.', () => {
@@ -190,6 +186,8 @@ describe('ComboBox', () => {
   });
 
   it('Does not automatically add new options when allowFreeform is on in controlled case', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} onChange={returnUndefined} />, container => {
       const inputElement = container.root.findByType('input');
 
@@ -214,6 +212,8 @@ describe('ComboBox', () => {
   });
 
   it('Automatically adds new options when allowFreeform is on in uncontrolled case', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} />, container => {
       const inputElement = container.root.findByType('input');
 
@@ -253,6 +253,8 @@ describe('ComboBox', () => {
   });
 
   it('Can change items in uncontrolled case', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container => {
       // open combobox
       const buttonElement = container.root.findByType('button');
@@ -273,6 +275,8 @@ describe('ComboBox', () => {
   });
 
   it('Does not automatically change items in controlled case', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
       // open combobox
       const buttonElement = container.root.findByType('button');
@@ -293,6 +297,8 @@ describe('ComboBox', () => {
   });
 
   it('Multiselect does not mutate props', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} multiSelect />, container => {
       // open combobox
       const buttonElement = container.root.findByType('button');
@@ -367,6 +373,8 @@ describe('ComboBox', () => {
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete and allowFreeform on', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
       container => {
@@ -391,6 +399,8 @@ describe('ComboBox', () => {
   });
 
   it('Can insert an empty string in uncontrolled case with autoComplete off and allowFreeform on', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
       container => {
@@ -420,6 +430,8 @@ describe('ComboBox', () => {
     'Can insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete and allowFreeform on',
     () => {
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
       safeCreate(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
         container => {
@@ -454,6 +466,8 @@ describe('ComboBox', () => {
     'Can insert an empty string after removing a pending value in uncontrolled case ' +
       'with autoComplete off and allowFreeform on',
     () => {
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
       safeCreate(
         <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
         container => {
@@ -550,6 +564,7 @@ describe('ComboBox', () => {
 
   it('Call onMenuOpened when clicking on the button', () => {
     const onMenuOpenMock = jest.fn();
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
     safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
@@ -563,6 +578,7 @@ describe('ComboBox', () => {
 
   it('Opens on focus when openOnKeyboardFocus is true', () => {
     const onMenuOpenMock = jest.fn();
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
     safeCreate(
       <ComboBox defaultSelectedKey="1" openOnKeyboardFocus options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />,
@@ -577,6 +593,8 @@ describe('ComboBox', () => {
   });
 
   it('Call onMenuOpened when touch start on the input', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} onMenuOpen={returnUndefined} allowFreeform={true} />,
       container => {
@@ -681,6 +699,8 @@ describe('ComboBox', () => {
   });
 
   it('merges callout classNames', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(
       <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS} calloutProps={{ className: 'foo' }} />,
       container => {
@@ -701,6 +721,8 @@ describe('ComboBox', () => {
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     let updatedText: string | undefined;
     safeCreate(
       <ComboBox
@@ -723,6 +745,8 @@ describe('ComboBox', () => {
   });
 
   it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     let updatedText: string | undefined;
     safeCreate(
       <ComboBox
@@ -765,6 +789,8 @@ describe('ComboBox', () => {
   // });
 
   it('in multiSelect mode, defaultselected keys produce correct display input', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(
       <ComboBox
         multiSelect
@@ -798,6 +824,8 @@ describe('ComboBox', () => {
   });
 
   it('in multiSelect mode, input has correct value', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox multiSelect options={DEFAULT_OPTIONS} />, container => {
       const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
       const inputElement = comboBoxRoot.findByType('input');
@@ -824,6 +852,8 @@ describe('ComboBox', () => {
   });
 
   it('in multiSelect mode, input has correct value when multiSelectDelimiter specified', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     safeCreate(<ComboBox multiSelect multiSelectDelimiter="; " options={DEFAULT_OPTIONS} />, container => {
       const comboBoxRoot = findNodeWithClass(container, 'ms-ComboBox');
       const inputElement = comboBoxRoot.findByType('input');
@@ -850,6 +880,8 @@ describe('ComboBox', () => {
   });
 
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     const onItemClickMock = jest.fn();
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, container => {
       const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
@@ -867,6 +899,8 @@ describe('ComboBox', () => {
   });
 
   it('invokes optional onItemClick callback on option select', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     const onItemClickMock = jest.fn();
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, container => {
       const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
@@ -906,6 +940,8 @@ describe('ComboBox', () => {
   });
 
   it('test persistMenu, callout should exist before and after opening menu', () => {
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+
     const onMenuOpenMock = jest.fn();
     const onMenuDismissedMock = jest.fn();
 

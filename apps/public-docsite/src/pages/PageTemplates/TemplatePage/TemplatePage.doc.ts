@@ -1,4 +1,5 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
 // This file is where many of the commonly appearing properties are defined for each page.
 
@@ -10,8 +11,9 @@ const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/PageTemplates/TemplatePage';
 
 // If multiple platforms share the same related pages, those pages can be listed in a common 'Related' file.
-// NOTE: This points to a Markdown file that does NOT live in a platform folder.
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/PageTemplates/TemplatePage/docs/TemplateRelated.md');
+const related: ISideRailLink[] = [
+  // { text: 'Related 1', url: '#/controls/web/related1' },
+];
 
 // An object containing the page props for each platform. Remove as needed.
 // NOTE: A section won't render if the Markdown file imported here is empty.

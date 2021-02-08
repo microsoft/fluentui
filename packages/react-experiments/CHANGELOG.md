@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.53)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.51..@fluentui/react-experiments_v8.0.0-beta.53)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.51)
+
+Wed, 03 Feb 2021 22:54:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.50..@fluentui/react-experiments_v8.0.0-beta.51)
+
+### Changes
+
+- SelectedItemsList EditableItem should have first item selected in picker on show ([PR #16777](https://github.com/microsoft/fluentui/pull/16777) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.50)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.47..@fluentui/react-experiments_v8.0.0-beta.50)
+
+### Changes
+
+- UnifiedPicker typing should result in the first dropdown selection being selected ([PR #16733](https://github.com/microsoft/fluentui/pull/16733) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.47)
 

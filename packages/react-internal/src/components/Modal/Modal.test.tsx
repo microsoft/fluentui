@@ -19,6 +19,7 @@ describe('Modal', () => {
     displayName: 'Modal',
     requiredProps: { isOpen: true },
     componentPath: path.join(__dirname, 'Modal.ts'),
+    disabledTests: ['component-handles-classname'],
   });
 
   it('renders Modal correctly', () => {

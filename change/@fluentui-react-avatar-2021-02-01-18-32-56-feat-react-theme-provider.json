@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "use a compat version of ThemeProvider",
-  "packageName": "@fluentui/react-avatar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T17:32:54.107Z"
-}

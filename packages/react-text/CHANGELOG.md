@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:23:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.4)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.1.4..@fluentui/react-text_v0.1.4)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.20 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.4)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.1.3..@fluentui/react-text_v0.1.4)
+
+### Patches
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.3)
 

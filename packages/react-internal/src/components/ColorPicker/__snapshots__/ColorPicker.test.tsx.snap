@@ -581,6 +581,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -753,6 +754,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -925,6 +927,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1097,6 +1100,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1225,7 +1229,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
         }
   >
     <div
-      aria-describedby="ColorRectangle-description16"
+      aria-describedby="ColorRectangle-description0"
       aria-label="Saturation and brightness"
       aria-valuemax={100}
       aria-valuemin={0}
@@ -1278,7 +1282,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
               position: absolute;
               width: 1px;
             }
-        id="ColorRectangle-description16"
+        id="ColorRectangle-description0"
       >
         Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.
       </div>
@@ -1715,7 +1719,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField17"
+                    id="TextField1"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -1806,6 +1810,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -1887,7 +1892,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField20"
+                    id="TextField4"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -1978,6 +1983,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2059,7 +2065,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField23"
+                    id="TextField7"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -2150,6 +2156,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2231,7 +2238,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField26"
+                    id="TextField10"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -2322,6 +2329,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -2403,7 +2411,7 @@ exports[`ColorPicker renders correctly with preview 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField29"
+                    id="TextField13"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -2450,7 +2458,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
         }
   >
     <div
-      aria-describedby="ColorRectangle-description32"
+      aria-describedby="ColorRectangle-description0"
       aria-label="Saturation and brightness"
       aria-valuemax={100}
       aria-valuemin={0}
@@ -2503,7 +2511,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
               position: absolute;
               width: 1px;
             }
-        id="ColorRectangle-description32"
+        id="ColorRectangle-description0"
       >
         Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.
       </div>
@@ -2917,7 +2925,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField33"
+                    id="TextField1"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -3008,6 +3016,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3089,7 +3098,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField36"
+                    id="TextField4"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -3180,6 +3189,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3261,7 +3271,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField39"
+                    id="TextField7"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -3352,6 +3362,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3433,7 +3444,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField42"
+                    id="TextField10"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -3524,6 +3535,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Transparency"
+                    aria-live="assertive"
                     autoComplete="off"
                     className=
                         ms-TextField-field
@@ -3605,7 +3617,7 @@ exports[`ColorPicker renders correctly with transparency 1`] = `
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                           color: GrayText;
                         }
-                    id="TextField45"
+                    id="TextField13"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}

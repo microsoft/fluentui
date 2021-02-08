@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/codemods_v1.0.0-beta.3",
+      "version": "1.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 21 Jan 2021 12:36:12 GMT",
       "tag": "@fluentui/codemods_v1.0.0-beta.2",
       "version": "1.0.0-beta.2",

@@ -67,6 +67,10 @@ const webpackConfig: webpack.Configuration = {
       // https://gist.github.com/bvaughn/25e6233aeb1b4f0cdb8d8366e54a3977
       'react-dom$': 'react-dom/profiling',
       'scheduler/tracing': 'scheduler/tracing-profiling',
+
+      // Can be removed once Prettier will be upgraded to v2
+      // https://github.com/prettier/prettier/issues/6903
+      '@microsoft/typescript-etw': false,
     },
   },
   performance: {
