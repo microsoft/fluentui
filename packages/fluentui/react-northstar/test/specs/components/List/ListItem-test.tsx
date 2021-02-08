@@ -1,6 +1,5 @@
-import { selectableListItemBehavior } from '@fluentui/accessibility';
+import { selectableListItemBehavior, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 import * as React from 'react';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 

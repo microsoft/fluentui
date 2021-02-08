@@ -37,6 +37,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const {
     focusItemIndex,
+    setFocusItemIndex,
     suggestionItems,
     footerItemIndex,
     footerItems,
@@ -46,6 +47,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     showPicker,
     selectPreviousSuggestion,
     selectNextSuggestion,
+    clearPickerSelectedIndex,
   } = useFloatingSuggestionItems(
     suggestions,
     pickerSuggestionsProps?.footerItemsProps,
@@ -387,6 +389,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (!composing) {
       // update query string
       setQueryString(value);
+      // If we now have no query string, we want to deselect any selected item in the picker
+      if (value === '') {
+        clearPickerSelectedIndex();
+      }
+      // if nothing is selcted and the user has typed, selected the first picker item
+      else if (focusItemIndex === -1 && headerItemIndex === -1 && footerItemIndex === -1) {
+        setFocusItemIndex(0);
+      }
       !isSuggestionsShown ? showPicker(true) : null;
       if (!resultItemsList) {
         resultItemsList = [];

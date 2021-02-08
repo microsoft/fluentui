@@ -27,7 +27,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/ios/BottomNavigationImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/ios/BottomNavigationImplementation.md') as string
               }
             </Markdown>
           ),
@@ -41,7 +41,7 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
           content: (
             <Markdown>
               {
-                require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/android/BottomNavigationImplementation.md') as string
+                require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/BottomNavigationPage/docs/android/BottomNavigationImplementation.md') as string
               }
             </Markdown>
           ),

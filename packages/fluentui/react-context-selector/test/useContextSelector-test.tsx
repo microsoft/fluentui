@@ -1,5 +1,6 @@
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
-import { mount } from 'enzyme';
+import * as ReactDOM from 'react-dom';
+import { act } from 'react-dom/test-utils';
 import * as React from 'react';
 
 const TestContext = createContext<{ index: number }>({ index: -1 });
@@ -11,78 +12,89 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props 
     props.onUpdate && props.onUpdate();
   });
 
-  return <div data-active={active} />;
+  return <div className="test-component" data-active={active} />;
+};
+
+const TestProvider: React.FC = props => {
+  const [index, setIndex] = React.useState<number>(0);
+
+  return (
+    <div className="test-provider" onClick={() => setIndex(prevIndex => prevIndex + 1)}>
+      <TestContext.Provider value={{ index }}>{props.children}</TestContext.Provider>
+    </div>
+  );
 };
 
 describe('useContextSelector', () => {
-  it('propogates values via Context', () => {
-    const wrapper = mount(
-      <TestContext.Provider value={{ index: 1 }}>
-        <TestComponent index={1} />
-      </TestContext.Provider>,
-    );
+  let container: HTMLElement | null;
 
-    expect(wrapper.find('div').prop('data-active')).toBe(true);
+  beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(container as HTMLElement);
+    container = null;
   });
 
   it('updates only on selector match', () => {
     const onUpdate = jest.fn();
-    const wrapper = mount(
-      <TestContext.Provider value={{ index: 0 }}>
+    ReactDOM.render(
+      <TestProvider>
         <TestComponent index={1} onUpdate={onUpdate} />
-      </TestContext.Provider>,
+      </TestProvider>,
+      container,
     );
 
-    expect(wrapper.find('div').prop('data-active')).toBe(false);
-    expect(onUpdate).toBeCalledTimes(1);
+    act(() => {
+      // no-op to wait for effects
+    });
 
-    // No match, (v.index: 2, p.index: 1)
-    wrapper.setProps({ value: { index: 2 } });
-    expect(wrapper.find('div').prop('data-active')).toBe(false);
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
     expect(onUpdate).toBeCalledTimes(1);
 
     // Match => update, (v.index: 1, p.index: 1)
-    wrapper.setProps({ value: { index: 1 } });
-    expect(wrapper.find('div').prop('data-active')).toBe(true);
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
     expect(onUpdate).toBeCalledTimes(2);
 
-    // Match previous => no update, (v.index: 1, p.index: 1)
-    wrapper.setProps({ value: { index: 1 } });
-    expect(wrapper.find('div').prop('data-active')).toBe(true);
-    expect(onUpdate).toBeCalledTimes(2);
+    // No match, but update because "active" changed, (v.index: 2, p.index: 1)
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
+    expect(onUpdate).toBeCalledTimes(3);
+
+    // Match previous => no update, (v.index: 3, p.index: 1)
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
+    });
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
+    expect(onUpdate).toBeCalledTimes(3);
   });
 
   it('updates are propogated inside React.memo()', () => {
     // https://reactjs.org/docs/react-api.html#reactmemo
     // Will never pass updates
     const MemoComponent = React.memo(TestComponent, () => true);
-
     const onUpdate = jest.fn();
-    const wrapper = mount(
-      <TestContext.Provider value={{ index: 0 }}>
+
+    ReactDOM.render(
+      <TestProvider>
         <MemoComponent index={1} onUpdate={onUpdate} />
-      </TestContext.Provider>,
+      </TestProvider>,
+      container,
     );
 
-    wrapper.setProps({ value: { index: 1 } });
-    expect(wrapper.find('div').prop('data-active')).toBe(true);
-    expect(onUpdate).toBeCalledTimes(2);
-  });
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('false');
 
-  it('handles unsubscribe', () => {
-    const MemoComponent = React.memo(TestComponent);
-    const onUpdate = jest.fn();
-
-    const wrapper = mount(
-      <TestContext.Provider value={{ index: 0 }}>
-        <MemoComponent index={1} />
-        <MemoComponent index={2} key="2" onUpdate={onUpdate} />
-      </TestContext.Provider>,
-    );
-
-    wrapper.setProps({
-      children: [null, <MemoComponent index={2} key={2} onUpdate={onUpdate} />],
+    act(() => {
+      document.querySelector<HTMLElement>('.test-provider')?.click();
     });
-    expect(onUpdate).toBeCalledTimes(1);
+    expect(document.querySelector<HTMLElement>('.test-component')?.dataset.active).toBe('true');
+    expect(onUpdate).toBeCalledTimes(2);
   });
 });

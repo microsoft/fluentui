@@ -19,14 +19,13 @@ export interface ISpinnerProps extends React.HTMLAttributes<HTMLElement> {
   componentRef?: IRefObject<ISpinner>;
 
   /**
-   * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize` instead.
-   * @deprecated Use `SpinnerSize` instead.
+   * @deprecated Use `size` instead. Will be removed at \>= 2.0.0.
    */
   // eslint-disable-next-line deprecation/deprecation
   type?: SpinnerType;
 
   /**
-   * The size of Spinner to render. \{ extraSmall, small, medium, large \}
+   * The size of Spinner to render.
    * @defaultvalue SpinnerType.medium
    */
   size?: SpinnerSize;
@@ -98,26 +97,22 @@ export enum SpinnerSize {
 
 /**
  * Possible locations of the label in regards to the spinner
- * @defaultvalue bottom
  * {@docCategory Spinner}
  */
 export type SpinnerLabelPosition = 'top' | 'right' | 'bottom' | 'left';
 
 /**
- * Deprecated at v2.0.0, use `SpinnerSize` instead.
- * @deprecated Use `SpinnerSize` instead.
+ * @deprecated Use `SpinnerSize` instead. Will be removed at \>= 2.0.0.
  * {@docCategory Spinner}
  */
 export enum SpinnerType {
   /**
-   * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize.medium` instead.
-   * @deprecated Use `SpinnerSize.medium` instead.
+   * @deprecated Use `SpinnerSize.medium` instead. Will be removed at \>= 2.0.0.
    */
   normal = 0,
 
   /**
-   * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize.large` instead.
-   * @deprecated Use `SpinnerSize.large` instead.
+   * @deprecated Use `SpinnerSize.large` instead. Will be removed at \>= 2.0.0.
    */
   large = 1,
 }

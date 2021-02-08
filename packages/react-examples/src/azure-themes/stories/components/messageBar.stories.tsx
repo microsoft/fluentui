@@ -21,8 +21,8 @@ const choiceGroupStyles = {
   },
 };
 
-const DefaultExample = () => (
-  <MessageBar>
+const DefaultExample = (p: IExampleProps) => (
+  <MessageBar onDismiss={p.resetChoice}>
     Info/Default MessageBar.
     <Link href="www.bing.com" target="_blank">
       Visit our website.
@@ -163,7 +163,7 @@ export const MessageBarBasicExample: React.FunctionComponent = () => {
         />
       </StackItem>
       <Stack {...verticalStackProps}>
-        {(choice === 'default' || showAll) && <DefaultExample />}
+        {(choice === 'default' || showAll) && <DefaultExample resetChoice={resetChoice} />}
 
         {(choice === 'error' || showAll) && <ErrorExample resetChoice={resetChoice} />}
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { ResizeGroup } from './ResizeGroup';
 import { IResizeGroupState, getNextResizeGroupStateProvider, getMeasurementCache } from './ResizeGroup.base';
-import * as sinon from 'sinon';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
 
@@ -23,11 +22,11 @@ function onGrowScalingData(data: ITestScalingData): ITestScalingData {
   };
 }
 
-function getRequiredResizeGroupProps(): { data: {}; onReduceData: sinon.SinonStub; onRenderData: sinon.SinonStub } {
+function getRequiredResizeGroupProps() {
   return {
     data: {},
-    onReduceData: sinon.stub(),
-    onRenderData: sinon.stub(),
+    onReduceData: jest.fn(),
+    onRenderData: jest.fn(),
   };
 }
 
@@ -79,12 +78,12 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = {};
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
+      const getMeasuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub);
 
       expect(result).toEqual(undefined);
-      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('sets the renderedData when the contents fit', () => {
@@ -92,8 +91,8 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(25);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(25);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 50);
 
@@ -103,17 +102,17 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         resizeDirection: undefined,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
     });
 
     it('calls onReduceData and sets the next measuredData when contents do not fit', () => {
       const dataToMeasure = { index: 5 };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
-      resizeGroupProps.onReduceData.returns({ index: 4 });
+      resizeGroupProps.onReduceData.mockReturnValue({ index: 4 });
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(25);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(25);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 10);
 
@@ -122,7 +121,7 @@ describe('ResizeGroup', () => {
         dataToMeasure: { index: 4 },
         resizeDirection: 'shrink',
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
     });
 
     it('does not call getMeasuredElementBounds when the data has already been cached', () => {
@@ -134,7 +133,7 @@ describe('ResizeGroup', () => {
 
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 100);
 
@@ -144,7 +143,7 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         resizeDirection: undefined,
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('calls onReduceData multiple times when everything is in the cache', () => {
@@ -157,11 +156,14 @@ describe('ResizeGroup', () => {
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
-      resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
-      resizeGroupProps.onReduceData.onSecondCall().returns(dataArray[2]);
+      let callCount = 0;
+      resizeGroupProps.onReduceData = jest.fn(() => {
+        callCount++;
+        return callCount === 1 ? dataArray[1] : dataArray[2];
+      });
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 10);
 
@@ -171,7 +173,7 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         resizeDirection: undefined,
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('sets dataToMeasure when the current data is cached but the onReduceData result is not cached', () => {
@@ -182,10 +184,10 @@ describe('ResizeGroup', () => {
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
-      resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
+      resizeGroupProps.onReduceData.mockReturnValueOnce(dataArray[1]);
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 10);
 
@@ -194,7 +196,7 @@ describe('ResizeGroup', () => {
         measureContainer: false,
         resizeDirection: 'shrink',
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('renders the last measured data if onReduceData returns undefined', () => {
@@ -202,12 +204,12 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'shrink' };
-      resizeGroupProps.onReduceData.returns(undefined);
+      resizeGroupProps.onReduceData.mockReturnValue(undefined);
 
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
 
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(25);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(25);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 10);
 
@@ -217,7 +219,7 @@ describe('ResizeGroup', () => {
         measureContainer: false,
         resizeDirection: undefined,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
     });
 
     it('renders the last measured data in the cache if onReduceData returns undefined', () => {
@@ -229,11 +231,14 @@ describe('ResizeGroup', () => {
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
       const resizeGroupProps = getRequiredResizeGroupProps();
-      resizeGroupProps.onReduceData.onFirstCall().returns(dataArray[1]);
-      resizeGroupProps.onReduceData.onSecondCall().returns(undefined);
+      let callCount = 0;
+      resizeGroupProps.onReduceData = jest.fn(() => {
+        callCount++;
+        return callCount === 1 ? dataArray[1] : undefined;
+      });
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'shrink' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 10);
 
@@ -243,20 +248,20 @@ describe('ResizeGroup', () => {
         measureContainer: false,
         resizeDirection: undefined,
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('does not crash when the container size is set and there is no dataToMeasure', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
+      const getMeasuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, {}, getMeasuredElementWidthStub, 50);
 
       expect(result).toEqual({
         measureContainer: false,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('makes sure the contents still fit when the container width decreases', () => {
@@ -265,10 +270,10 @@ describe('ResizeGroup', () => {
       const renderedData = { foo: 'bar' };
       const resizeGroupProps = getRequiredResizeGroupProps();
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
+      const getMeasuredElementWidthStub = jest.fn();
 
       // Set the initial window width
-      getNextResizeGroupState(resizeGroupProps, {}, sinon.stub(), initialWidth);
+      getNextResizeGroupState(resizeGroupProps, {}, jest.fn(), initialWidth);
 
       // Pass in a state that reflects some rendered data
       const currentState = {
@@ -285,7 +290,7 @@ describe('ResizeGroup', () => {
         measureContainer: false,
         resizeDirection: 'shrink',
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('starts from the beginning when the container width increases and there is no onGrowData', () => {
@@ -294,10 +299,10 @@ describe('ResizeGroup', () => {
       const renderedData = { foo: 'bar' };
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' } };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
+      const getMeasuredElementWidthStub = jest.fn();
 
       // Set the initial window width
-      getNextResizeGroupState(resizeGroupProps, {}, sinon.stub(), initialWidth);
+      getNextResizeGroupState(resizeGroupProps, {}, jest.fn(), initialWidth);
 
       // Pass in a state that reflects some rendered data
       const currentState = {
@@ -317,7 +322,7 @@ describe('ResizeGroup', () => {
         resizeDirection: 'shrink',
         measureContainer: false,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('renders contents when the resizeDirection is grow, there is no onGrowData, and the contents fit', () => {
@@ -325,8 +330,8 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = getRequiredResizeGroupProps();
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(25);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(25);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 50);
 
@@ -336,18 +341,18 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         resizeDirection: undefined,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
     });
 
     // eslint-disable-next-line @fluentui/max-len
     it('sets resize direction to shrink when resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
       const dataToMeasure = { index: 8 };
       const resizeGroupProps = getRequiredResizeGroupProps();
-      resizeGroupProps.onReduceData.returns({ index: 7 });
+      resizeGroupProps.onReduceData.mockReturnValue({ index: 7 });
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(100);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(100);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 72);
 
@@ -356,19 +361,19 @@ describe('ResizeGroup', () => {
         dataToMeasure: { index: 7 },
         resizeDirection: 'shrink',
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
-      expect(resizeGroupProps.onReduceData.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
+      expect(resizeGroupProps.onReduceData).toHaveBeenCalledTimes(1);
     });
 
     it('measures the next state when the resizeDirection is grow and the dataToMeasure fits', () => {
       const dataToMeasure = { index: 1 };
-      const onGrowData = sinon.stub();
-      onGrowData.returns({ index: 2 });
+      const onGrowData = jest.fn();
+      onGrowData.mockReturnValue({ index: 2 });
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(25);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(25);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 50);
 
@@ -377,19 +382,19 @@ describe('ResizeGroup', () => {
         dataToMeasure: { index: 2 },
         resizeDirection: 'grow',
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
-      expect(onGrowData.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
+      expect(onGrowData).toHaveBeenCalledTimes(1);
     });
 
     it('renders the last measured contents when onGrowData returns undefined', () => {
       const dataToMeasure = { index: 1 };
-      const onGrowData = sinon.stub();
-      onGrowData.returns(undefined);
+      const onGrowData = jest.fn();
+      onGrowData.mockReturnValue(undefined);
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
-      getMeasuredElementWidthStub.returns(25);
+      const getMeasuredElementWidthStub = jest.fn();
+      getMeasuredElementWidthStub.mockReturnValue(25);
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, getMeasuredElementWidthStub, 40);
 
@@ -399,23 +404,23 @@ describe('ResizeGroup', () => {
         renderedData: dataToMeasure,
         resizeDirection: undefined,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(1);
-      expect(onGrowData.callCount).toEqual(1);
-      expect(resizeGroupProps.onReduceData.callCount).toEqual(0);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
+      expect(onGrowData).toHaveBeenCalledTimes(1);
+      expect(resizeGroupProps.onReduceData).toHaveBeenCalledTimes(0);
     });
 
     it('calls onGrowData when the container width increases and onGrowData is provided', () => {
       const initialWidth = 50;
       const increasedWidth = 60;
       const renderedData = { index: 3 };
-      const onGrowData = sinon.stub();
-      onGrowData.returns({ index: 4 });
+      const onGrowData = jest.fn();
+      onGrowData.mockReturnValue({ index: 4 });
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), data: { foo: 'initialData' }, onGrowData };
       const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-      const getMeasuredElementWidthStub = sinon.stub();
+      const getMeasuredElementWidthStub = jest.fn();
 
       // Set the initial window width
-      getNextResizeGroupState(resizeGroupProps, {}, sinon.stub(), initialWidth);
+      getNextResizeGroupState(resizeGroupProps, {}, jest.fn(), initialWidth);
 
       // Pass in a state that reflects some rendered data
       const currentState = {
@@ -435,8 +440,8 @@ describe('ResizeGroup', () => {
         resizeDirection: 'grow',
         measureContainer: false,
       });
-      expect(getMeasuredElementWidthStub.callCount).toEqual(0);
-      expect(onGrowData.callCount).toEqual(1);
+      expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(0);
+      expect(onGrowData).toHaveBeenCalledTimes(1);
     });
 
     it('does not call getMeasuredElementBounds when data has already been cached in the grow resizeDirection', () => {
@@ -446,10 +451,10 @@ describe('ResizeGroup', () => {
       measurementCache.addMeasurementToCache(dataToMeasure, 40);
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
-      const onGrowData = sinon.stub();
+      const onGrowData = jest.fn();
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
       const resizeGroupState: IResizeGroupState = { dataToMeasure, resizeDirection: 'grow' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 100);
 
@@ -459,7 +464,7 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         resizeDirection: undefined,
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it('calls onGrowData multiple times when everything is in the cache in the grow resizeDirection', () => {
@@ -484,7 +489,7 @@ describe('ResizeGroup', () => {
       };
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = stateProvider.getNextState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 100);
 
@@ -493,7 +498,7 @@ describe('ResizeGroup', () => {
         renderedData: dataArray[2],
         dataToMeasure: undefined,
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
 
     it(`sets dataToMeasure when the current data is in the cache but the onGrowData result is not in the cache
@@ -504,12 +509,12 @@ describe('ResizeGroup', () => {
       measurementCache.addMeasurementToCache(dataArray[0], 40);
       const getNextResizeGroupState = getNextResizeGroupStateProvider(measurementCache).getNextState;
 
-      const onGrowData = sinon.stub();
-      onGrowData.onFirstCall().returns(dataArray[1]);
+      const onGrowData = jest.fn();
+      onGrowData.mockReturnValueOnce(dataArray[1]);
       const resizeGroupProps = { ...getRequiredResizeGroupProps(), onGrowData };
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
-      const measuredElementWidthStub = sinon.stub();
+      const measuredElementWidthStub = jest.fn();
 
       const result = getNextResizeGroupState(resizeGroupProps, resizeGroupState, measuredElementWidthStub, 100);
 
@@ -518,7 +523,7 @@ describe('ResizeGroup', () => {
         measureContainer: false,
         resizeDirection: 'grow',
       });
-      expect(measuredElementWidthStub.callCount).toEqual(0);
+      expect(measuredElementWidthStub).toHaveBeenCalledTimes(0);
     });
   });
 
@@ -527,11 +532,11 @@ describe('ResizeGroup', () => {
     const renderedData = { index: 4 };
     const resizeGroupProps = getRequiredResizeGroupProps();
     const getNextResizeGroupState = getNextResizeGroupStateProvider().getNextState;
-    const getMeasuredElementWidthStub = sinon.stub();
-    getMeasuredElementWidthStub.returns(100);
+    const getMeasuredElementWidthStub = jest.fn();
+    getMeasuredElementWidthStub.mockReturnValue(100);
 
     // Set the initial window width
-    getNextResizeGroupState(resizeGroupProps, {}, sinon.stub(), initialWidth);
+    getNextResizeGroupState(resizeGroupProps, {}, jest.fn(), initialWidth);
 
     // Pass in a state that reflects some rendered data
     const currentState: IResizeGroupState = {
@@ -540,7 +545,7 @@ describe('ResizeGroup', () => {
       resizeDirection: 'grow',
     };
 
-    resizeGroupProps.onReduceData.returns({ index: 7 });
+    resizeGroupProps.onReduceData.mockReturnValue({ index: 7 });
 
     const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, initialWidth);
 
@@ -552,8 +557,8 @@ describe('ResizeGroup', () => {
       measureContainer: false,
       resizeDirection: 'shrink',
     });
-    expect(getMeasuredElementWidthStub.callCount).toEqual(1);
-    expect(resizeGroupProps.onReduceData.callCount).toEqual(1);
+    expect(getMeasuredElementWidthStub).toHaveBeenCalledTimes(1);
+    expect(resizeGroupProps.onReduceData).toHaveBeenCalledTimes(1);
   });
 
   it('does not render to the hidden div when there is no dataToMeasure', () => {
@@ -588,7 +593,7 @@ describe('ResizeGroup', () => {
       data: { scalingIndex: 8 },
       onReduceData: onReduceScalingData,
       onGrowData: onGrowScalingData,
-      onRenderData: sinon.stub(),
+      onRenderData: jest.fn(),
     };
 
     const stateProvider = getNextResizeGroupStateProvider();

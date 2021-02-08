@@ -152,6 +152,15 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
             activeIndex={currentTabIndex}
             items={tabs}
             style={{ marginTop: '0.5rem', background: 'none', border: 'none' }}
+            variables={siteVariables => ({
+              underlinedColorHover: siteVariables.colors.black,
+              color: siteVariables.colors.grey[500],
+              colorActive: siteVariables.colors.black,
+              activeUnderlinedBorderBottomColor: siteVariables.colors.black,
+              underlinedWrapperColorHover: siteVariables.colors.black,
+              backgroundColorActive: siteVariables.colors.black,
+              activeUnderlinedColor: siteVariables.colors.black,
+            })}
             onItemClick={this.handleTabClick}
             accessibility={tabListBehavior}
           />

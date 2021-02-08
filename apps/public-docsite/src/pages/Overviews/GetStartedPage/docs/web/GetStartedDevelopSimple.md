@@ -25,24 +25,32 @@ This scaffold uses the [Just](https://github.com/microsoft/just) build library. 
 
 ### Option 2: Create React App
 
-Fluent UI also provides a starter using [Create React App](https://facebook.github.io/create-react-app/), a popular development stack maintained by the creators of React.
+Fluent UI also provides a template for [Create React App](https://facebook.github.io/create-react-app/) which is
+a popular development stack maintained by the creators of React.
 
-Open a terminal, go to an appropriate folder, and clone the [starter repo](https://github.com/microsoft/create-react-app-uifabric):
+To get up and running, all you need is to boot Create React App using our `@fluentui/cra-template` template.
+To do this, open a terminal and run:
 
 ```shell
-git clone https://github.com/microsoft/create-react-app-uifabric.git my-app
-cd my-app
+# with npx
+npx create-react-app my-app --template @fluentui/cra-template
+
+# with npm
+npm init react-app my-app --template @fluentui/cra-template
+
+# with yarn
+yarn create react-app my-app --template @fluentui/cra-template
 ```
 
-Then install dependencies and start the app like this:
+Then you can start the app like this:
 
 ```shell
 # with npm (default)
-npm install
+cd my-app
 npm start
 
 # with yarn (optional)
-yarn
+cd my-app
 yarn start
 ```
 

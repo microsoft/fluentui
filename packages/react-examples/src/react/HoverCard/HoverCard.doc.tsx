@@ -7,11 +7,11 @@ import { HoverCardTargetExample } from './HoverCard.Target.Example';
 import { HoverCardInstantDismissExample } from './HoverCard.InstantDismiss.Example';
 import { HoverCardEventListenerTargetExample } from './HoverCard.EventListenerTarget.Example';
 
-const HoverCardBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/HoverCard/HoverCard.Basic.Example.tsx') as string;
-const HoverCardTargetExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/HoverCard/HoverCard.Target.Example.tsx') as string;
-const HoverCardPlainCardExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/HoverCard/HoverCard.PlainCard.Example.tsx') as string;
-const HoverCardInstantDismissExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/HoverCard/HoverCard.InstantDismiss.Example.tsx') as string;
-const HoverCardEventListenerTargetExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/HoverCard/HoverCard.EventListenerTarget.Example.tsx') as string;
+const HoverCardBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/HoverCard.Basic.Example.tsx') as string;
+const HoverCardTargetExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/HoverCard.Target.Example.tsx') as string;
+const HoverCardPlainCardExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/HoverCard.PlainCard.Example.tsx') as string;
+const HoverCardInstantDismissExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/HoverCard.InstantDismiss.Example.tsx') as string;
+const HoverCardEventListenerTargetExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/HoverCard.EventListenerTarget.Example.tsx') as string;
 
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
@@ -44,12 +44,16 @@ export const HoverCardPageProps: IDocPageProps = {
       view: <HoverCardEventListenerTargetExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDonts.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDos.md'),
+  donts: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/HoverCard/docs/HoverCardDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

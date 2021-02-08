@@ -45,9 +45,9 @@ export interface IDetailsItemProps {
   selectionMode?: SelectionMode | undefined;
 
   /**
-   * View port of the virtualized list
+   * Viewport of the virtualized list
    *
-   * @deprecated use rowWidth instead
+   * @deprecated Use `rowWidth` instead
    */
   viewport?: IViewport | undefined;
 

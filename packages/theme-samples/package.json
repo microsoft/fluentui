@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/theme-samples",
-  "version": "8.0.0-beta.41",
+  "version": "8.0.0-beta.48",
   "description": "Sample themes for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,13 +22,13 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.42",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/scheme-utilities": "^8.0.0-beta.12",
+    "@fluentui/react": "^8.0.0-beta.49",
+    "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/scheme-utilities": "^8.0.0-beta.13",
     "tslib": "^1.10.0"
   }
 }

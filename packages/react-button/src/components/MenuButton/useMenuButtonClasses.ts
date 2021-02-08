@@ -1,4 +1,5 @@
-import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { makeVariantClasses } from '@fluentui/react-theme-provider/lib/compat/index';
+import { Theme } from '@fluentui/theme';
 import { useButtonClasses } from '../Button/useButtonClasses';
 import { MenuButtonState, MenuButtonVariants } from './MenuButton.types';
 

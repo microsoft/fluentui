@@ -67,7 +67,6 @@ export interface INavProps {
 
   /**
    * Used to customize how content inside the group header is rendered
-   * @defaultvalue Default group header rendering
    */
   onRenderGroupHeader?: IRenderFunction<IRenderGroupHeaderProps>;
 
@@ -79,7 +78,6 @@ export interface INavProps {
 
   /**
    * Used to customize how content inside the link tag is rendered
-   * @defaultvalue Default link rendering
    */
   onRenderLink?: IRenderFunction<INavLink>;
 
@@ -117,7 +115,7 @@ export interface INavProps {
    * (Optional) The nav container aria label. The link name is prepended to this label.
    * If not provided, the aria label will default to the link name.
    *
-   * @deprecated - Use expandAriaLabel and collapseAriaLabel on groups instead
+   * @deprecated Use `expandAriaLabel` and `collapseAriaLabel` on groups instead
    */
   expandButtonAriaLabel?: string;
   /**
@@ -209,7 +207,6 @@ export interface INavLink {
   icon?: string;
 
   /**
-   * Deprecated. Use `iconProps.className` instead.
    * @deprecated Use `iconProps.className` instead.
    */
   iconClassName?: string;

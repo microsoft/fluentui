@@ -36,7 +36,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
   /**
    * Use to set custom styling of the shimmerCircle borders.
-   * @deprecated Use `styles` prop to leverage mergeStyle API.
+   * @deprecated Use `styles.root` instead.
    */
   borderStyle?: IRawStyle;
 }
@@ -58,7 +58,7 @@ export type IShimmerCircleStyleProps = {
 
   /**
    * Styles to override borderStyles with custom ones.
-   * @deprecated in favor of mergeStyles API.
+   * @deprecated Deprecated in favor of mergeStyles API.
    */
   borderStyle?: IRawStyle;
 };

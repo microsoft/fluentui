@@ -16,7 +16,7 @@ import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
-import { getCode } from '@fluentui/keyboard-key';
+import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';

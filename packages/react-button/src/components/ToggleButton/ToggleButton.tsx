@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ToggleButtonProps } from './ToggleButton.types';
 import { useToggleButton } from './useToggleButton';
 import { renderToggleButton } from './renderToggleButton';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useToggleButtonClasses } from './useToggleButtonClasses';
 
 /**

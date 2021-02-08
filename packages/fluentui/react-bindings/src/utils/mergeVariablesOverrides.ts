@@ -22,5 +22,5 @@ export function mergeVariablesOverrides(
     return mergeComponentVariables(variables, overrides);
   }
 
-return variables || overrides
+  return variables || overrides;
 }

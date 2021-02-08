@@ -97,10 +97,10 @@ Array [
             &:hover .ms-Toggle-thumb {
               background-color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
             }
         data-is-focusable={true}
@@ -548,7 +548,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -637,7 +637,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -667,10 +667,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -763,7 +763,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -813,7 +813,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -861,7 +861,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -950,7 +950,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -980,10 +980,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -1076,7 +1076,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1126,7 +1126,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1174,7 +1174,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -1263,7 +1263,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1293,10 +1293,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -1389,7 +1389,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1439,7 +1439,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1487,7 +1487,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -1576,7 +1576,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1606,10 +1606,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -1702,7 +1702,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1752,7 +1752,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1800,7 +1800,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -1889,7 +1889,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -1919,10 +1919,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -2015,7 +2015,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2065,7 +2065,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2113,7 +2113,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -2202,7 +2202,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2232,10 +2232,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -2328,7 +2328,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2378,7 +2378,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2426,7 +2426,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -2515,7 +2515,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2545,10 +2545,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -2641,7 +2641,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2691,7 +2691,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2739,7 +2739,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -2828,7 +2828,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -2858,10 +2858,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -2954,7 +2954,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3004,7 +3004,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3052,7 +3052,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -3141,7 +3141,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3171,10 +3171,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -3267,7 +3267,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3317,7 +3317,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3365,7 +3365,7 @@ Array [
                                 & > * {
                                   transform: translateZ(0);
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   background: WindowText
                                                         linear-gradient(
                                                           to right,
@@ -3454,7 +3454,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3484,10 +3484,10 @@ Array [
                                         height: 16px;
                                         position: relative;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         border-color: Window;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& > * {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                                         fill: Window;
                                       }
                                   style={
@@ -3580,7 +3580,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }
@@ -3630,7 +3630,7 @@ Array [
                                         font-weight: 400;
                                         height: 43px;
                                       }
-                                      @media screen and (-ms-high-contrast: active){& {
+                                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                         background-color: Window;
                                         border-color: Window;
                                       }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
-import { ComponentProps } from '@fluentui/react-compose/lib/next/index';
+import { ComponentProps } from '@fluentui/react-utils';
 import { ColorTokenSet } from '@fluentui/theme';
 
 /* eslint-disable @typescript-eslint/naming-convention */

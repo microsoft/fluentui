@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toggle",
-  "version": "1.0.0-beta.34",
+  "version": "1.0.0-beta.39",
   "description": "Fluent UI React Toggle component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,34 +21,32 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u",
     "test": "just-scripts test",
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.15.1",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "sinon": "^4.1.3"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.10",
-    "@fluentui/react-internal": "^8.0.0-beta.36",
-    "@fluentui/react-hooks": "^8.0.0-beta.9",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.12",
-    "@fluentui/utilities": "^8.0.0-beta.9",
+    "@fluentui/react-compose": "^1.0.0-beta.11",
+    "@fluentui/react-internal": "^8.0.0-beta.43",
+    "@fluentui/react-hooks": "^8.0.0-beta.10",
+    "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/style-utilities": "^8.0.0-beta.13",
+    "@fluentui/utilities": "^8.0.0-beta.10",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

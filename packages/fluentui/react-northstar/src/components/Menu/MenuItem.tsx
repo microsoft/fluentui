@@ -590,6 +590,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         vertical: props.vertical,
         primary: props.primary,
         on: props.on,
+        variables: props.variables,
       },
       menu: {
         accessibility: submenuBehavior,

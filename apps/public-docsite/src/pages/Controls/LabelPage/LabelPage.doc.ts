@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { LabelPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Label/Label.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/LabelPage/docs/LabelRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const LabelPageProps: TFabricPlatformPageProps = {
   web: {

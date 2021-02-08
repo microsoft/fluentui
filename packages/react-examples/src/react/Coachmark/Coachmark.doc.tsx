@@ -3,7 +3,7 @@ import * as React from 'react';
 import { CoachmarkBasicExample } from './Coachmark.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
-const CoachmarkBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Coachmark/Coachmark.Basic.Example.tsx') as string;
+const CoachmarkBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/Coachmark.Basic.Example.tsx') as string;
 export const CoachmarkPageProps: IDocPageProps = {
   title: 'Coachmark',
   componentName: 'Coachmark',
@@ -16,10 +16,12 @@ export const CoachmarkPageProps: IDocPageProps = {
       isScrollable: false,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Coachmark/docs/CoachmarkBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

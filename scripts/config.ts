@@ -102,7 +102,7 @@ const config = {
   // ----------------------------------
   // Compiler Configuration
   // ----------------------------------
-  compiler_devtool: __DEV__ && ('eval-source-map' as webpack.Options.Devtool),
+  compiler_devtool: __DEV__ && 'eval-source-map',
   compiler_mode: (__DEV__ ? 'development' : 'production') as webpack.Configuration['mode'],
   compiler_globals: {
     __DEV__,
@@ -110,6 +110,7 @@ const config = {
     __PROD__,
     __BASENAME__: JSON.stringify(__BASENAME__),
     __SKIP_ERRORS__,
+    global: {},
     'process.env': {
       NODE_ENV: JSON.stringify(env),
       SCREENER: !!process.env.SCREENER_API_KEY,

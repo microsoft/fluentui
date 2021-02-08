@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.10)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.9..@fluentui/utilities_v8.0.0-beta.10)
+
+### Changes
+
+- Remove sinon dependency and setRenderSpy utility ([PR #15249](https://github.com/microsoft/fluentui/pull/15249) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.9)
 

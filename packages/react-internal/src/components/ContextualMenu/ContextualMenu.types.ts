@@ -471,7 +471,7 @@ export interface IContextualMenuItem {
 
   /**
    * Additional styles to apply to the menu item
-   * @deprecated in favor of the `styles` prop to leverage mergeStyles API.
+   * @deprecated Use `styles` instead to leverage mergeStyles API.
    */
   style?: React.CSSProperties;
 
@@ -517,7 +517,8 @@ export interface IContextualMenuItem {
   onMouseDown?: (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * Optional override for the menu button's role. Defaults to `menuitem` or `menuitemcheckbox`.
+   * Optional override for the menu button's role.
+   * @default `menuitem` or `menuitemcheckbox`
    */
   role?: string;
 
@@ -549,8 +550,7 @@ export interface IContextualMenuItem {
   ariaDescribedBy?: string;
 
   /**
-   * This prop is no longer used. All contextual menu items are now focusable when disabled.
-   * @deprecated in 6.38.2 will be removed in 7.0.0
+   * @deprecated No longer used. All contextual menu items are now focusable when disabled.
    */
   inactive?: boolean;
 

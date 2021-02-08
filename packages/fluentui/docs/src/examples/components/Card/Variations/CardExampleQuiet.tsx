@@ -2,7 +2,7 @@ import { Avatar, Card, Flex, Image, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CardExampleQuiet = () => (
-  <Card aria-roledescription="card with avatar, image and text" quiet>
+  <Card aria-roledescription="card with avatar, image and text" ghost>
     <Card.Header>
       <Flex gap="gap.small">
         <Avatar
@@ -12,7 +12,7 @@ const CardExampleQuiet = () => (
           status="unknown"
         />
         <Flex column>
-          <Text content="Quiet card" weight="bold" />
+          <Text content="Ghost card" weight="bold" />
           <Text content="Secondary line" size="small" />
         </Flex>
       </Flex>

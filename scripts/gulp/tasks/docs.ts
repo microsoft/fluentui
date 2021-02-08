@@ -199,12 +199,7 @@ task('serve:docs:hot', async () => {
     app.use(
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
-        contentBase: paths.docsSrc(),
-        hot: process.env.NODE_ENV !== 'production',
-        quiet: false,
-        noInfo: true, // must be quite for hot middleware to show overlay
-        lazy: false,
-        stats: config.compiler_stats,
+        stats: 'errors-warnings',
       } as WebpackDevMiddleware.Options),
     );
 

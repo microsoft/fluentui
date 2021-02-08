@@ -1,5 +1,4 @@
-import { FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/accessibility';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { FocusZoneDirection, FocusZoneTabbableElements, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 
 import { TestDefinition, TestMethod, TestHelper } from './testHelper';
 

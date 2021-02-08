@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as path from 'path';
 import { createApp, Markdown, examplesOf } from '@fluentui/react-docsite-components';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
 import '@fluentui/ie11-polyfills';
 
 const req = require.context('../', true, /\.stories\.tsx$/, 'sync');
@@ -21,7 +21,7 @@ createApp(
   // Intro page
   () => (
     <div style={{ marginTop: -20, padding: 40 }}>
-      <Markdown>{require<string>('!raw-loader!@fluentui/react-button/README.md')}</Markdown>
+      <Markdown>{require<string>('!raw-loader?esModule=false!@fluentui/react-button/README.md')}</Markdown>
     </div>
   ),
   'React Button Examples',

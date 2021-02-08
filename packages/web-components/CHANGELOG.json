@@ -2,6 +2,58 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/web-components_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "correct focus visible outline on accent button and anchor styles",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "7e1723e57c7956e09c206327e2b79114a18a4492",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/web-components_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: move color recipes into fluent web component package",
+            "author": "chhol@microsoft.com",
+            "commit": "e4079adb2ab4fb09f58c71192665ff0b81e5f5ec",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/web-components_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Jan 2021 12:33:19 GMT",
       "tag": "@fluentui/web-components_v0.11.0",
       "version": "0.11.0",

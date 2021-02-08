@@ -15,7 +15,7 @@ import {
   ToolbarMenuItemShorthandKinds,
 } from '@fluentui/react-northstar';
 import { useEventListener } from '@fluentui/react-component-event-listener';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 

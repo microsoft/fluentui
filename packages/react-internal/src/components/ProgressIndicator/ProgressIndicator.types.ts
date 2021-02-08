@@ -55,8 +55,7 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
   ariaValueText?: string;
 
   /**
-   * Deprecated at v0.43.0, to be removed at \>= v0.53.0. Use `label` instead.
-   * @deprecated Use `label` instead.
+   * @deprecated Use `label` instead. Deprecated at v0.43.0, to be removed at \>= v0.53.0.
    */
   title?: string;
 

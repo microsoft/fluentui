@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Tue, 26 Jan 2021 12:33:19 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.39)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.37..@fluentui/react-tabs_v1.0.0-beta.39)
+
+### Changes
+
+- Remove react-theme-provider exports from react-tabs. ([PR #16698](https://github.com/microsoft/fluentui/pull/16698) by xgao@microsoft.com)
+- Moving Pivot from react-tabs back to react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.37)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.35..@fluentui/react-tabs_v1.0.0-beta.37)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
 
 ## [1.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.35)
 

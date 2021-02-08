@@ -345,6 +345,7 @@ export interface ITextFieldStyles {
 
   /**
    * Style for TextField wrapper element.
+   * Mainly useful for overriding border styles for underlined fields.
    */
   wrapper: IStyle;
 

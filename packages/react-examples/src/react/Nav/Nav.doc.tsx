@@ -5,10 +5,10 @@ import { NavFabricDemoAppExample } from './Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './Nav.Nested.Example';
 import { NavCustomGroupHeadersExample } from './Nav.CustomGroupHeaders.Example';
 
-const NavBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Nav/Nav.Basic.Example.tsx') as string;
-const NavFabricDemoAppExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
-const NavNestedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Nav/Nav.Nested.Example.tsx') as string;
-const NavCustomGroupHeadersExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
+const NavBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Basic.Example.tsx') as string;
+const NavFabricDemoAppExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.FabricDemoApp.Example.tsx') as string;
+const NavNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.Nested.Example.tsx') as string;
+const NavCustomGroupHeadersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/Nav.CustomGroupHeaders.Example.tsx') as string;
 
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
@@ -36,8 +36,10 @@ export const NavPageProps: IDocPageProps = {
       view: <NavCustomGroupHeadersExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Nav/docs/NavOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Nav/docs/NavBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/docs/NavOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Nav/docs/NavBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

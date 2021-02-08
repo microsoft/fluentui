@@ -37,8 +37,6 @@ export const embedStyles: ComponentSlotStylesPrepared<EmbedStylesProps, EmbedVar
     };
   },
   control: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    background: `0 no-repeat ${v.controlBackgroundColor}`,
-    backgroundPositionX: pxToRem(3),
     width: pxToRem(48),
     height: pxToRem(48),
     color: v.controlColor,
@@ -46,9 +44,12 @@ export const embedStyles: ComponentSlotStylesPrepared<EmbedStylesProps, EmbedVar
     padding: pxToRem(4),
     borderRadius: '50%',
 
+    backgroundColor: v.controlBackgroundColor,
     backgroundImage: playIndicatorUrl(v.controlColor),
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    backgroundSize: v.controlBackgroundSize,
+    backgroundPositionX: pxToRem(12),
 
     ...(p.active && {
       backgroundImage: pauseIndicatorUrl(v.controlColor),

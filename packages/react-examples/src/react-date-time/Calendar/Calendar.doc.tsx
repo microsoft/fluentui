@@ -14,19 +14,19 @@ import { CalendarInlineWeekNumbersExample } from './Calendar.Inline.WeekNumbers.
 import { CalendarInlineWeekSelectionExample } from './Calendar.Inline.WeekSelection.Example';
 import { CalendarInlineMonthSelectionExample } from './Calendar.Inline.MonthSelection.Example';
 
-const CalendarButtonExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Button.Example.tsx') as string;
-const CalendarInlineContiguousWorkWeekDaysExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.ContiguousWorkWeekDays.Example.tsx') as string;
-const CalendarInlineCustomDayCellRefExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.CustomDayCellRef.Example.tsx') as string;
-const CalendarInlineDateBoundariesExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.DateBoundaries.Example.tsx') as string;
-const CalendarInlineExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineMonthOnlyExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.MonthOnly.Example.tsx') as string;
-const CalendarInlineMultidayDayViewExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.MultidayDayView.Example.tsx') as string;
-const CalendarInlineNonContiguousWorkWeekDaysExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.NonContiguousWorkWeekDays.Example.tsx') as string;
-const CalendarInlineOverlaidMonthExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.OverlaidMonthPicker.Example.tsx') as string;
-const CalendarInlineSixWeeksExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.SixWeeks.tsx') as string;
-const CalendarInlineWeekNumbersExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.WeekNumbers.Example.tsx') as string;
-const CalendarInlineWeekSelectionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.WeekSelection.Example.tsx') as string;
-const CalendarInlineMonthSelectionExampleCode = require('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.MonthSelection.Example.tsx') as string;
+const CalendarButtonExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Button.Example.tsx') as string;
+const CalendarInlineContiguousWorkWeekDaysExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.ContiguousWorkWeekDays.Example.tsx') as string;
+const CalendarInlineCustomDayCellRefExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.CustomDayCellRef.Example.tsx') as string;
+const CalendarInlineDateBoundariesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.DateBoundaries.Example.tsx') as string;
+const CalendarInlineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.Example.tsx') as string;
+const CalendarInlineMonthOnlyExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.MonthOnly.Example.tsx') as string;
+const CalendarInlineMultidayDayViewExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.MultidayDayView.Example.tsx') as string;
+const CalendarInlineNonContiguousWorkWeekDaysExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.NonContiguousWorkWeekDays.Example.tsx') as string;
+const CalendarInlineOverlaidMonthExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.OverlaidMonthPicker.Example.tsx') as string;
+const CalendarInlineSixWeeksExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.SixWeeks.tsx') as string;
+const CalendarInlineWeekNumbersExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.WeekNumbers.Example.tsx') as string;
+const CalendarInlineWeekSelectionExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.WeekSelection.Example.tsx') as string;
+const CalendarInlineMonthSelectionExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/Calendar.Inline.MonthSelection.Example.tsx') as string;
 
 export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
@@ -101,10 +101,10 @@ export const CalendarPageProps: IDocPageProps = {
   ],
   overview: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/docs/CalendarOverview.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/docs/CalendarOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react-date-time/Calendar/docs/CalendarBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react-date-time/Calendar/docs/CalendarBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

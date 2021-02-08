@@ -91,7 +91,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -103,20 +103,22 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 border-color: Window;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -225,7 +227,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -237,17 +239,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -356,7 +359,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -368,17 +371,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -487,7 +491,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -499,17 +503,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -618,7 +623,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -630,17 +635,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -749,7 +755,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -761,17 +767,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -880,7 +887,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -892,17 +899,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1011,7 +1019,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1023,17 +1031,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1142,7 +1151,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1154,17 +1163,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1273,7 +1283,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1285,17 +1295,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1404,7 +1415,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1416,17 +1427,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1535,7 +1547,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1547,17 +1559,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1666,7 +1679,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1678,17 +1691,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1797,7 +1811,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1809,17 +1823,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -1928,7 +1943,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1940,17 +1955,18 @@ exports[`Suggestions renders a list properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2099,7 +2115,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2111,20 +2127,22 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 border-color: Window;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2233,7 +2251,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2245,17 +2263,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2364,7 +2383,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2376,17 +2395,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2495,7 +2515,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2507,17 +2527,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2626,7 +2647,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2638,17 +2659,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2757,7 +2779,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2769,17 +2791,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -2888,7 +2911,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -2900,17 +2923,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3019,7 +3043,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3031,17 +3055,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3150,7 +3175,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3162,17 +3187,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3281,7 +3307,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3293,17 +3319,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3412,7 +3439,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3424,17 +3451,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3543,7 +3571,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3555,17 +3583,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3674,7 +3703,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3686,17 +3715,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3805,7 +3835,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3817,17 +3847,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -3936,7 +3967,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -3948,17 +3979,18 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4084,7 +4116,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4096,17 +4128,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4215,7 +4248,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4227,17 +4260,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4346,7 +4380,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4358,17 +4392,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4477,7 +4512,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4489,17 +4524,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4608,7 +4644,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4620,17 +4656,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4739,7 +4776,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4751,17 +4788,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -4870,7 +4908,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -4882,17 +4920,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5001,7 +5040,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5013,17 +5052,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5144,7 +5184,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5156,20 +5196,22 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 border-color: Window;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover {
                 background: #c8c6c4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5278,7 +5320,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5290,17 +5332,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5409,7 +5452,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5421,17 +5464,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5540,7 +5584,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5552,17 +5596,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5671,7 +5716,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5683,17 +5728,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5802,7 +5848,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5814,17 +5860,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;
@@ -5933,7 +5980,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -5945,17 +5992,18 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: WindowText;
               }
               &:hover {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
+                forced-color-adjust: none;
               }
               &:hover .ms-Button-icon {
                 color: #0078d4;

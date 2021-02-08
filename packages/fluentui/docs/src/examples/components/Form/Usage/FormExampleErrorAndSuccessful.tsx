@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button, Input, FormField, FormLabel, FormMessage } from '@fluentui/react-northstar';
+import { Form, Button, Input, FormField, FormLabel, FormMessage, FormTextArea } from '@fluentui/react-northstar';
 import { PresenceAvailableIcon } from '@fluentui/react-icons-northstar';
 
 const FormExampleErrorAndSatisfactory = () => (
@@ -24,6 +24,7 @@ const FormExampleErrorAndSatisfactory = () => (
       errorMessage="You can not fix this error"
       required
     />
+    <FormTextArea name="bio" id="bio" label="Bio" errorMessage="You can not fix this error" />
     <FormField>
       <FormLabel id="email-label" htmlFor="email-field">
         E-mail*

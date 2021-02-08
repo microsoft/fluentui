@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.18)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.16..@fluentui/react-focus_v8.0.0-beta.18)
+
+### Changes
+
+- FocusZone: Removing contextual RTL checks to get rid of react-theme-provider dependency from react-focus package. ([PR #16736](https://github.com/microsoft/fluentui/pull/16736) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.16)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.15..@fluentui/react-focus_v8.0.0-beta.16)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.15)
 

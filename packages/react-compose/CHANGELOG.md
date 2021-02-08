@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.11)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.10..@fluentui/react-compose_v1.0.0-beta.11)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
 
 ## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.10)
 

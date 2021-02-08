@@ -11,7 +11,7 @@ import {
   AzureThemeLight,
   AzureCustomizationsLight,
   AzureCustomizationsDark,
-} from '@uifabric/azure-themes';
+} from '@fluentui/azure-themes';
 ```
 
 The theme may subsequently be set to either the Azure or Azure-Dark themes.

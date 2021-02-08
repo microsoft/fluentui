@@ -48,7 +48,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         top: 2px;
         z-index: 1;
       }
-      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
         bottom: -2px;
         left: -2px;
         outline-color: ButtonText;
@@ -64,7 +64,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         background-color: #f3f2f1;
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
@@ -214,7 +214,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                   outline: transparent;
                   position: absolute;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: WindowText;
                   border-style: solid;
                   border-width: 1px;
@@ -228,6 +228,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
               Object {
                 "filter": "opacity(0)",
                 "opacity": 0,
+                "pointerEvents": "none",
               }
             }
             tabIndex={-1}
@@ -371,38 +372,42 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                               background-color: #f3f2f1;
                               color: #201f1e;
                             }
-                            @media screen and (-ms-high-contrast: active){&:hover {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                               -ms-high-contrast-adjust: none;
                               background-color: Highlight;
                               border-color: Highlight;
                               color: HighlightText;
+                              forced-color-adjust: none;
                             }
                             &:active {
                               background-color: #edebe9;
                             }
-                            @media screen and (-ms-high-contrast: active){&:active {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                               -ms-high-contrast-adjust: none;
                               background-color: Highlight;
                               border-color: Highlight;
                               color: HighlightText;
+                              forced-color-adjust: none;
                             }
                             .ms-Fabric--isFocusVisible &:focus {
                               background-color: #ffffff;
                             }
-                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                               -ms-high-contrast-adjust: none;
                               background-color: Highlight;
                               border-color: Highlight;
                               color: HighlightText;
+                              forced-color-adjust: none;
                             }
                             .ms-Fabric--isFocusVisible &:focus:hover {
                               background-color: #ffffff;
                             }
-                            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:hover {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:hover {
                               -ms-high-contrast-adjust: none;
                               background-color: Highlight;
                               border-color: Highlight;
                               color: HighlightText;
+                              forced-color-adjust: none;
                             }
                             .ms-Fabric--isFocusVisible &:hover {
                               background: inherit;
@@ -473,7 +478,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                                 @media only screen and (min-width: 0px) and (max-width: 639px){& {
                                   font-size: 16px;
                                 }
-                                @media screen and (-ms-high-contrast: active){& {
+                                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                   color: HighlightText;
                                 }
                             data-icon-name="ChevronRight"

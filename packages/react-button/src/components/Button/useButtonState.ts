@@ -14,7 +14,7 @@ export const useButtonState = (draftState: ButtonState) => {
     if (draftState.as !== 'a') {
       const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = draftState;
 
-      draftState['data-isFocusable'] = true;
+      draftState['data-is-focusable'] = true;
       draftState.tabIndex = 0;
 
       draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
@@ -49,7 +49,7 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   };
 
-  draftState['aria-disabled'] = draftState.disabled;
+  draftState['aria-disabled'] = draftState.disabled || draftState.disabledFocusable;
   draftState.disabled =
     draftState.as === 'button' ? draftState['aria-disabled'] && !draftState.disabledFocusable : undefined;
 };
