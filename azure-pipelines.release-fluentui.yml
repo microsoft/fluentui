@@ -17,9 +17,9 @@ resources:
 variables:
   - group: 'Github and NPM secrets'
   - name: docsiteVersion
-    value: nightly
+    value: 0.0.0-nightly
   - name: deployBasePath
-    value: nightly
+    value: 0.0.0-nightly
   - name: officialRelease
     value: true
   - name: nightlyRelease
