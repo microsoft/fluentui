@@ -8,7 +8,7 @@ import { MenuItemProps, MenuItemState } from './MenuItem.types';
  */
 export const menuItemShorthandProps = ['icon'];
 
-const mergeProps = makeMergeProps({ deepMerge: menuItemShorthandProps });
+const mergeProps = makeMergeProps<MenuItemState>({ deepMerge: menuItemShorthandProps });
 
 /**
  * Returns the props and state required to render the component

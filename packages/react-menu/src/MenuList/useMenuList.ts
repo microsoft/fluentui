@@ -3,7 +3,7 @@ import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { MenuListProps, MenuListState } from './MenuList.types';
 
-const mergeProps = makeMergeProps();
+const mergeProps = makeMergeProps<MenuListState>();
 
 /**
  * Returns the props and state required to render the component
