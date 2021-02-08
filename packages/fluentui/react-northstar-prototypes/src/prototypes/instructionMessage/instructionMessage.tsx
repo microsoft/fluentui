@@ -2,6 +2,8 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { useFluentContext } from '@fluentui/react-bindings';
 import { Box, Ref } from '@fluentui/react-northstar';
+// fabric component
+// import { Announced } from '@fluentui/react/lib/Announced';
 
 interface InstructionMessageProps {
   message: string;
@@ -17,6 +19,8 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
   const timeoutMessageNarrate = React.useRef<number>();
   const timeoutMessageRemove = React.useRef<number>();
   const context = useFluentContext();
+  // fabric component
+  // const [shouldAnnounce, setShouldAnnounce] = React.useState<boolean>(false);
 
   const narrate = (instructionMessage, priority = 'polite') => {
     const element = document.createElement('div');
@@ -34,6 +38,12 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
     timeoutMessageRemove.current = context.target.defaultView.setTimeout(() => {
       document.body.removeChild(element);
     }, 2300);
+
+    timeoutMessageNarrate.current = context.target.defaultView.setTimeout(() => {
+      console.log('announcing...');
+      // fabric component
+      // setShouldAnnounce(true);
+    }, 2000);
   };
 
   const handleFocus = React.useCallback(() => {
@@ -46,6 +56,8 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
   const handleBlur = React.useCallback(event => {
     if (!event.currentTarget.contains(event.relatedTarget)) {
       clearTimeout(timeoutMessageNarrate.current);
+      // fabric component
+      // setShouldAnnounce(false);
       narrationHappened.current = false;
     }
   }, []);
@@ -54,6 +66,8 @@ const InstructionMessage: React.FunctionComponent<InstructionMessageProps> = pro
     <Ref innerRef={instructionRef}>
       <Box onFocus={handleFocus} onBlur={handleBlur} {...rest}>
         {children}
+        {/* fabric component */}
+        {/* {shouldAnnounce && <Announced message={message} aria-live={'assertive'} />} */}
       </Box>
     </Ref>
   );

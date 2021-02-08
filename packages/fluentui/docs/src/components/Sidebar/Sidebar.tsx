@@ -57,7 +57,7 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'instructionMessage',
     title: { content: 'Instruction Message', as: NavLink, to: '/prototype-instruction-message' },
-    public: false,
+    public: true,
   },
   {
     id: 'chatpane',

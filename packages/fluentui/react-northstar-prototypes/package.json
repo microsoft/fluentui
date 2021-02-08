@@ -9,12 +9,12 @@
     "@fluentui/accessibility": "^0.52.0",
     "@fluentui/code-sandbox": "^0.52.0",
     "@fluentui/docs-components": "^0.52.0",
+    "@fluentui/react": "^8.0.0-beta.18",
     "@fluentui/react-bindings": "^0.52.0",
     "@fluentui/react-component-event-listener": "^0.52.0",
     "@fluentui/react-component-ref": "^0.52.0",
     "@fluentui/react-icons-northstar": "^0.52.0",
     "@fluentui/react-northstar": "^0.52.0",
-    "tslib": "^1.10.0",
     "classnames": "^2.2.6",
     "copy-to-clipboard": "^3.2.0",
     "csstype": "^2.6.7",
@@ -28,7 +28,8 @@
     "react-hook-form": "^5.7.2",
     "react-textarea-autosize": "7.0.0",
     "react-virtualized": "^9.21.1",
-    "react-window": "^1.8.6"
+    "react-window": "^1.8.6",
+    "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta",
