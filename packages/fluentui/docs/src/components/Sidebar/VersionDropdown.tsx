@@ -64,6 +64,9 @@ export function VersionDropdown(props: { width: number }) {
       variables={{ width: `${props.width}px` }}
       items={versions}
       onChange={onChange}
+      // nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
+      // I prefer to keep it this way for tracking purpose
+      // The checking here is for version dropdown to display correctly for '0.0.0-nightly'
       value={window.location.pathname.split('/')[1] === '0.0.0-nightly' ? '0.0.0-nightly' : currentVersion}
       aria-label="Choose fluent version"
     />

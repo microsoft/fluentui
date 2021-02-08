@@ -29,6 +29,9 @@ type ComponentMenuItem = { displayName: string; type: string };
 
 const pkg = require('@fluentui/react-northstar/package.json');
 
+// nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
+// I prefer to keep it this way for tracking purpose
+// The checking here is for sidebar to display correctly for '0.0.0-nightly'
 const version = window.location.pathname.split('/')[1] === '0.0.0-nightly' ? '0.0.0-nightly' : pkg.version;
 
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
