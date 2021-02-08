@@ -249,7 +249,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       ? this._ariaMap.selectedSuggestionAlert
       : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
-
+    const canAddItems = this.canAddItems();
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
@@ -280,8 +280,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
-          role={this.canAddItems() ? 'combobox' : undefined}
-          id={this.canAddItems() ? this._ariaMap.combobox : undefined}
+          role={canAddItems ? 'combobox' : undefined}
+          id={canAddItems ? this._ariaMap.combobox : undefined}
           aria-label={this.props['aria-label']}
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
@@ -1003,7 +1003,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
       ? this._ariaMap.selectedSuggestionAlert
       : '';
     const suggestionsAvailable: string | undefined = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
-
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
     // Currently we can not remove the SASS styles from BasePicker class because it
