@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:23:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.4)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v1.0.3..@fluentui/public-docsite_v1.0.4)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v1.0.3 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
 
 ## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v1.0.3)
 

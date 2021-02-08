@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update converged theme shape",
-  "packageName": "@fluentui/react-theme",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

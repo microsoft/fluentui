@@ -2,6 +2,33 @@
   "name": "@fluentui/api-docs",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/api-docs_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.20",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v1.0.0-beta.28",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.49",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Feb 2021 12:20:17 GMT",
       "tag": "@fluentui/api-docs_v1.0.1",
       "version": "1.0.1",
