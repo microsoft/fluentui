@@ -84,7 +84,6 @@ jobs:
       - build-react
       - build-northstar
     steps:
-      - task:
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact Fabric'
         inputs:
@@ -104,10 +103,12 @@ jobs:
         displayName: 'Merge fabric and react-northstar to bundlesize.json'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
+        displayName: 'Publish Merged Bundle Size information'
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesize.json'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/merge/bundlesize.json'
           ArtifactName: bundlesize
+          publishLocation: FilePath
+          TargetPath: '$(Build.ArtifactStagingDirectory)/bundlesize.json'
 
   - job: lightrail
     pool: server
