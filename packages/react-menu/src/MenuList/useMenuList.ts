@@ -16,7 +16,6 @@ export const useMenuList = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      as: 'div',
       role: 'menu',
     },
     defaultProps,
