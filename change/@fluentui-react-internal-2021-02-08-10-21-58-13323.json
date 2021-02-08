@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "PersonaCoin: now accepts initialsTextColor prop which sets the text color of the Persona Coin",
+  "packageName": "@fluentui/react-internal",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-08T18:21:58.163Z"
+}
