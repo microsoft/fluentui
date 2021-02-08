@@ -47,7 +47,7 @@ Many new developers might have questions on the patterns that we follow to write
 
 ### Hook based architecture
 
-Generally a component will have the following different files. Let us consider a `Sample` component
+Generally a component will have the following different files. Let us consider a `Sample` component, it will contain following parts:
 
 - Sample.tsx
 - useSample.ts
