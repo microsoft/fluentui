@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Added additional pragma to set runtime to classic",
+  "packageName": "@fluentui/react-internal",
+  "email": "subs@appsparkler.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-08T05:36:00.876Z"
+}
