@@ -72,7 +72,7 @@ export const Sample = React.forwardRef<HTMLElement, SampleProps>((props, ref) =>
 
 Accepts the component props and handles the internal state that the component might need.
 
-`State` here can be pretty broad, you could also consume context or create effects. This hook should be what the component relies on to function/render
+`State` here can be pretty broad, you could also consume context or create side effects. This hook should be what the component relies on to function/render. All state operations will mutate `draftState` object.
 
 ```typescript
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
