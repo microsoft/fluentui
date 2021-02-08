@@ -5,6 +5,7 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utils';
+import { ObjectSlotProp } from '@fluentui/react-utils';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utils';
 
@@ -21,6 +22,7 @@ export const menuItemShorthandProps: string[];
 
 // @public (undocumented)
 export interface MenuItemState extends MenuItemProps {
+    icon?: ObjectSlotProp<HTMLSpanElement>;
 }
 
 // @public
@@ -41,7 +43,7 @@ export const renderMenuItem: (state: MenuItemState) => JSX.Element;
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
-export const useIconStyles: (selectors: unknown) => string;
+export const useIconStyles: (selectors: MenuItemState) => string;
 
 // @public
 export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;
@@ -53,7 +55,7 @@ export const useMenuItemStyles: (state: MenuItemState) => void;
 export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
 
 // @public
-export const useRootStyles: (selectors: unknown) => string;
+export const useRootStyles: (selectors: MenuItemState) => string;
 
 
 // (No @packageDocumentation comment for this package)

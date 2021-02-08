@@ -45,6 +45,11 @@ export type MergePropsOptions = {
     deepMerge?: string[];
 };
 
+// @public (undocumented)
+export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
+    children?: TProps['children'] | SlotPropRenderFunction<TProps>;
+};
+
 // @public
 export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: (keyof TProps)[]) => TProps;
 
@@ -55,6 +60,9 @@ export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChil
 
 // @public (undocumented)
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+// @public (undocumented)
+export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
 // @public (undocumented)
 export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {

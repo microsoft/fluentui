@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
-import { ObjectSlotProp } from '../../../react-compose/lib/types';
+import { ComponentProps, ShorthandProps, ObjectSlotProp } from '@fluentui/react-utils';
 
 export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
