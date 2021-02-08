@@ -21,8 +21,10 @@ jobs:
       - script: yarn build --to @fluentui/react @fluentui/react-button @fluentui/react-compose --no-cache
         displayName: yarn build to @fluentui/react
 
-      - script: PACKAGE=@fluentui/react yarn workspace test-bundles bundle:size
+      - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
+        env:
+          PACKAGE: @fluentui/react
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
@@ -55,8 +57,10 @@ jobs:
       - script: yarn build --to @fluentui/react-northstar --no-cache
         displayName: yarn build to @fluentui/react-northstar
 
-      - script: PACKAGE=@fluentui/react-northstar yarn workspace test-bundles bundle:size
+      - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
+        env:
+          PACKAGE: @fluentui/react-northstar
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
@@ -75,8 +79,28 @@ jobs:
 
   - job: lightrail
     pool: server
-    dependsOn: build
+    dependsOn:
+      - build-react
+      - build-northstar
     steps:
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download Pipeline Artifact Fabric'
+        inputs:
+          artifactName: 'bundlesizes-react'
+          targetPath: '$(Build.ArtifactStagingDirectory)/react'
+
+      - task: DownloadPipelineArtifact@2
+        displayName: 'Download Pipeline Artifact N*'
+        inputs:
+          artifactName: 'bundlesizes-northstar'
+          targetPath: '$(Build.ArtifactStagingDirectory)/react-northstar'
+
+      - script: 'chocolatey install jq'
+        displayName: 'Install jq'
+
+      - script: "jq -s 'reduce .[] as $item ({}; . * $item)' $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json $(Build.ArtifactStagingDirectory)/bundlesize.json"
+        displayName: 'Merge fabric and react-northstar to bundlesize.json'
+
       - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
         displayName: 'Size Auditor Check on LightRail'
         inputs:
