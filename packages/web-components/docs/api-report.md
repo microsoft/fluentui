@@ -13,7 +13,6 @@ import { Breadcrumb } from '@microsoft/fast-foundation';
 import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
-import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
@@ -1173,9 +1172,6 @@ export enum PaletteType {
     // (undocumented)
     neutral = "neutral"
 }
-
-// @public
-export function parseColorString(color: string): ColorRGBA64;
 
 // @public
 export const ProgressRingStyles: import("@microsoft/fast-element").ElementStyles;
