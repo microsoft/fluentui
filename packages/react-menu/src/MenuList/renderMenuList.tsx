@@ -4,7 +4,6 @@ import { MenuListState } from './MenuList.types';
 
 /**
  * Function that renders the final JSX of the component
- * @param state Component state
  */
 export const renderMenuList = (state: MenuListState) => {
   const { slots, slotProps } = getSlots(state);

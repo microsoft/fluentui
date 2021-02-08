@@ -5,7 +5,6 @@ import { menuItemShorthandProps } from './useMenuItem';
 
 /**
  * Function that renders the final JSX of the component
- * @param state Component state
  */
 export const renderMenuItem = (state: MenuItemState) => {
   const { slots, slotProps } = getSlots(state, menuItemShorthandProps);
