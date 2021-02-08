@@ -4,6 +4,57 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utils';
+import * as React from 'react';
+import { ShorthandProps } from '@fluentui/react-utils';
+
+// @public
+export const MenuItem: React.ForwardRefExoticComponent<Pick<MenuItemProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    icon?: ShorthandProps;
+}
+
+// @public
+export const menuItemShorthandProps: string[];
+
+// @public (undocumented)
+export interface MenuItemState extends MenuItemProps {
+}
+
+// @public
+export const MenuList: React.ForwardRefExoticComponent<Pick<MenuListProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public (undocumented)
+export interface MenuListState extends MenuListProps {
+}
+
+// @public
+export const renderMenuItem: (state: MenuItemState) => JSX.Element;
+
+// @public
+export const renderMenuList: (state: MenuListState) => JSX.Element;
+
+// @public
+export const useIconStyles: (selectors: unknown) => string;
+
+// @public
+export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;
+
+// @public
+export const useMenuItemStyles: (state: MenuItemState) => void;
+
+// @public
+export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
+
+// @public
+export const useRootStyles: (selectors: unknown) => string;
+
 
 // (No @packageDocumentation comment for this package)
 

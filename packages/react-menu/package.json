@@ -2,6 +2,7 @@
   "name": "@fluentui/react-menu",
   "version": "0.1.0",
   "description": "Fluent UI menu component",
+  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
@@ -34,7 +36,6 @@
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
-    "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -43,10 +44,15 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/theme": "^2.0.0-beta.13",
+    "@fluentui/keyboard-key": "^0.2.13",
     "@fluentui/react-compose": "^1.0.0-beta.11",
+    "@fluentui/react-hooks": "^8.0.0-beta.10",
+    "@fluentui/react-make-styles": "^0.2.1",
     "@fluentui/react-theme-provider": "^1.0.0-beta.19",
+    "@fluentui/react-utils": "^0.2.0",
     "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/theme": "^2.0.0-beta.13",
+    "@testing-library/react": "^11.2.5",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
@@ -54,12 +60,5 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
   }
 }
