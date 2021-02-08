@@ -172,9 +172,6 @@ export const useSampleStyles = (state: SampleState) => {
   state.className = ax(rootClassName, state.className);
 
   if (state.icon) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // currently shorthand slot typings are broken
     state.icon.className = ax(iconClassName, state.icon.className);
   }
 };
