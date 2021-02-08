@@ -152,7 +152,7 @@ export const useRootStyles = makeStyles<SampleState>([
 export const useIconStyles = makeStyles<SampleState>([
   [
     // Conditionally apply styles
-    (someState) => someState == 1 ? true : false,
+    (someState) => someState == 1,
     () => ({
       width: '20px',
       height: '20px',
