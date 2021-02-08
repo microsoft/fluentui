@@ -5,8 +5,7 @@ schedules:
   - cron: 0 3 * * *
     branches:
       include:
-        # todo change to master when merge
-        - test-release2
+        - master
 
 resources:
   repositories:
