@@ -1,24 +1,8 @@
 import * as React from 'react';
 import { CompoundButton, CompoundButtonProps } from '@fluentui/react-button';
-import * as classes from '../Button.stories.scss';
-
-/**
- * Temporary Stack until there's one in its own package.
- */
-const Stack = (props: React.PropsWithChildren<{ horizontal?: boolean }>) => {
-  const { horizontal, ...rest } = props;
-
-  return <div {...rest} className={horizontal ? classes.hStack : classes.vStack} />;
-};
-
-/**
- * Temporary Text until there's one in its own package.
- */
-// eslint-disable-next-line jsx-a11y/heading-has-content -- content passed via children
-const Text = (props: React.PropsWithChildren<{}>) => <h2 {...props} className={classes.text} />;
 
 const CompoundButtonExamples = (props: CompoundButtonProps) => (
-  <Stack horizontal>
+  <div>
     <CompoundButton {...props} icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
@@ -43,53 +27,53 @@ const CompoundButtonExamples = (props: CompoundButtonProps) => (
     <CompoundButton {...props} transparent disabled icon="O" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
-  </Stack>
+  </div>
 );
 
 export const CompoundButtons = () => (
-  <Stack>
-    <Text>A CompoundButton comes in default and `primary` flavors.</Text>
+  <div>
+    <h3>A CompoundButton comes in default and `primary` flavors.</h3>
     <CompoundButtonExamples />
 
-    <Text>A CompoundButton can be focusable when disabled</Text>
-    <Stack horizontal>
+    <h3>A CompoundButton can be focusable when disabled</h3>
+    <div>
       <CompoundButton disabled icon="X" secondaryContent="This is some secondary text">
         Disabled, non-focusable button
       </CompoundButton>
       <CompoundButton disabled disabledFocusable icon="X" secondaryContent="This is some secondary text">
         Disabled, focusable button
       </CompoundButton>
-    </Stack>
+    </div>
 
-    <Text>A CompoundButton can appear round using the `circular` prop.</Text>
+    <h3>A CompoundButton can appear round using the `circular` prop.</h3>
     <CompoundButtonExamples circular />
 
-    <Text>A CompoundButton can fill the width of its container using the `block` prop.</Text>
+    <h3>A CompoundButton can fill the width of its container using the `block` prop.</h3>
     <CompoundButtonExamples block />
 
-    <Text>A CompoundButton can contain only an icon using the `iconOnly` prop.</Text>
+    <h3>A CompoundButton can contain only an icon using the `iconOnly` prop.</h3>
     <CompoundButtonExamples iconOnly />
 
-    <Text>A CompoundButton can be both `circular` and `iconOnly`.</Text>
+    <h3>A CompoundButton can be both `circular` and `iconOnly`.</h3>
     <CompoundButtonExamples circular iconOnly />
 
-    <Text>An icon CompoundButton can format its Icon to appear before or after its content.</Text>
-    <Stack>
+    <h3>An icon CompoundButton can format its Icon to appear before or after its content.</h3>
+    <div>
       <CompoundButtonExamples iconPosition="before" />
       <CompoundButtonExamples iconPosition="after" />
-    </Stack>
+    </div>
 
-    <Text>A CompoundButton can show a loading indicator using the `loading` prop.</Text>
+    <h3>A CompoundButton can show a loading indicator using the `loading` prop.</h3>
     <CompoundButtonExamples loading />
 
-    <Text>A CompoundButton can be sized.</Text>
-    <Stack>
+    <h3>A CompoundButton can be sized.</h3>
+    <div>
       <CompoundButtonExamples size="smallest" />
       <CompoundButtonExamples size="smaller" />
       <CompoundButtonExamples size="small" />
       <CompoundButtonExamples size="large" />
       <CompoundButtonExamples size="larger" />
       <CompoundButtonExamples size="largest" />
-    </Stack>
-  </Stack>
+    </div>
+  </div>
 );

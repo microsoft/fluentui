@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
 import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, Text } from '@fluentui/react';
-import * as classes from '../Button.stories.scss';
 
 const menuProps: IContextualMenuProps = {
   directionalHint: DirectionalHint.bottomRightEdge,
@@ -18,7 +17,7 @@ const menuProps: IContextualMenuProps = {
 };
 
 const SplitButtonExamples = (props: SplitButtonProps) => (
-  <div className={classes.hStack}>
+  <div>
     <SplitButton {...props} menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
@@ -52,7 +51,7 @@ export const SplitButtons = () => (
     <SplitButtonExamples />
 
     <Text variant="xLarge">A button can be focusable when disabled</Text>
-    <div className={classes.hStack}>
+    <div>
       <SplitButton disabled icon="X">
         Disabled, non-focusable button
       </SplitButton>
@@ -77,7 +76,7 @@ export const SplitButtons = () => (
     <SplitButtonExamples loading />
 
     <Text variant="xLarge">A split button can be sized.</Text>
-    <div className={classes.vStack}>
+    <div>
       <SplitButtonExamples size="smallest" />
       <SplitButtonExamples size="smaller" />
       <SplitButtonExamples size="small" />

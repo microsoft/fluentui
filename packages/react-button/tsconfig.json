@@ -17,7 +17,10 @@
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"]
+    "types": ["jest", "webpack-env", "custom-global"],
+    "paths": {
+      "@fluentui/react-make-styles": ["../react-make-styles/src/index.ts"]
+    }
   },
   "include": ["src"]
 }

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
 import { Callout, ContextualMenu, IContextualMenuProps, Stack, Text } from '@fluentui/react';
 import { useMenuContext, MinimalMenuProps } from '@fluentui/react-shared-contexts';
-import * as classes from '../Button.stories.scss';
 
 const menuProps = {
   items: [
@@ -18,7 +17,7 @@ const menuProps = {
 };
 
 const MenuButtonExamples = (props: MenuButtonProps) => (
-  <div className={classes.hStack}>
+  <div>
     <MenuButton icon="O" {...props}>
       Hello, world
     </MenuButton>
@@ -53,7 +52,7 @@ export const DefaultMenuButtons = () => {
       <MenuButtonExamples menu={<ContextualMenu {...menuProps} />} />
 
       <Text variant="xLarge">A button can be focusable when disabled</Text>
-      <div className={classes.hStack}>
+      <div>
         <MenuButton disabled icon="X">
           Disabled, non-focusable button
         </MenuButton>
@@ -66,7 +65,7 @@ export const DefaultMenuButtons = () => {
       <MenuButtonExamples circular menu={<ContextualMenu {...menuProps} />} />
 
       <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
-      <div className={classes.vStack}>
+      <div>
         <MenuButtonExamples block menu={<ContextualMenu {...menuProps} />} />
       </div>
 
@@ -80,7 +79,7 @@ export const DefaultMenuButtons = () => {
       <MenuButtonExamples loading menu={<ContextualMenu {...menuProps} />} />
 
       <Text variant="xLarge">A button can be sized.</Text>
-      <div className={classes.vStack}>
+      <div>
         <MenuButtonExamples size="smallest" menu={<ContextualMenu {...menuProps} />} />
         <MenuButtonExamples size="smaller" menu={<ContextualMenu {...menuProps} />} />
         <MenuButtonExamples size="small" menu={<ContextualMenu {...menuProps} />} />
@@ -104,7 +103,7 @@ export const MenuButtonsWithMenuAsJsx = () => {
       <MenuButtonExamples circular menu={<JSXMenu />} />
 
       <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
-      <div className={classes.vStack}>
+      <div>
         <MenuButtonExamples block menu={<JSXMenu />} />
       </div>
 
@@ -118,7 +117,7 @@ export const MenuButtonsWithMenuAsJsx = () => {
       <MenuButtonExamples loading menu={<JSXMenu />} />
 
       <Text variant="xLarge">A button can be sized.</Text>
-      <div className={classes.vStack}>
+      <div>
         <MenuButtonExamples size="smallest" menu={<JSXMenu />} />
         <MenuButtonExamples size="smaller" menu={<JSXMenu />} />
         <MenuButtonExamples size="small" menu={<JSXMenu />} />
@@ -144,7 +143,7 @@ export const MenuButtonsWithMenuAsFunction = () => (
     <MenuButtonExamples circular menu={FunctionMenu} />
 
     <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
-    <div className={classes.vStack}>
+    <div>
       <MenuButtonExamples block menu={FunctionMenu} />
     </div>
 
@@ -158,7 +157,7 @@ export const MenuButtonsWithMenuAsFunction = () => (
     <MenuButtonExamples loading menu={FunctionMenu} />
 
     <Text variant="xLarge">A button can be sized.</Text>
-    <div className={classes.vStack}>
+    <div>
       <MenuButtonExamples size="smallest" menu={FunctionMenu} />
       <MenuButtonExamples size="smaller" menu={FunctionMenu} />
       <MenuButtonExamples size="small" menu={FunctionMenu} />
@@ -183,7 +182,7 @@ export const MenuButtonsWithCustomMenus = () => (
     <MenuButtonExamples circular menu={CustomMenu} />
 
     <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
-    <div className={classes.vStack}>
+    <div>
       <MenuButtonExamples block menu={CustomMenu} />
     </div>
 
@@ -197,7 +196,7 @@ export const MenuButtonsWithCustomMenus = () => (
     <MenuButtonExamples loading menu={CustomMenu} />
 
     <Text variant="xLarge">A button can be sized.</Text>
-    <div className={classes.vStack}>
+    <div>
       <MenuButtonExamples size="smallest" menu={CustomMenu} />
       <MenuButtonExamples size="smaller" menu={CustomMenu} />
       <MenuButtonExamples size="small" menu={CustomMenu} />

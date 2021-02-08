@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
 import { Stack, Text } from '@fluentui/react';
-import * as classes from '../Button.stories.scss';
 
 const ToggleButtonExamples = (props: ToggleButtonProps) => (
-  <div className={classes.hStack}>
+  <div>
     <ToggleButton {...props} icon="X">
       Hello, world
     </ToggleButton>
@@ -38,7 +37,7 @@ export const ToggleButtons = () => (
     <ToggleButtonExamples />
 
     <Text variant="xLarge">A button can be focusable when disabled</Text>
-    <div className={classes.hStack}>
+    <div>
       <ToggleButton disabled icon="X">
         Disabled, non-focusable button
       </ToggleButton>
@@ -51,7 +50,7 @@ export const ToggleButtons = () => (
     <ToggleButtonExamples circular />
 
     <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
-    <div className={classes.vStack}>
+    <div>
       <ToggleButtonExamples block />
     </div>
 
@@ -62,7 +61,7 @@ export const ToggleButtons = () => (
     <ToggleButtonExamples circular iconOnly />
 
     <Text variant="xLarge">An icon button can format its Icon to appear before or after its content.</Text>
-    <div className={classes.vStack}>
+    <div>
       <ToggleButtonExamples iconPosition="before" />
       <ToggleButtonExamples iconPosition="after" />
     </div>
@@ -71,7 +70,7 @@ export const ToggleButtons = () => (
     <ToggleButtonExamples loading />
 
     <Text variant="xLarge">A button can be sized.</Text>
-    <div className={classes.vStack}>
+    <div>
       <ToggleButtonExamples size="smallest" />
       <ToggleButtonExamples size="smaller" />
       <ToggleButtonExamples size="small" />
