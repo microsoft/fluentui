@@ -85,7 +85,7 @@ import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 export const sampleShorthandProps = ['icon'];
 
 // Creates a helper function to merge props while respecting slot props
-const mergeProps = makeMergeProps({ deepMerge: sampleShorthandProps });
+const mergeProps = makeMergeProps<SampleState>({ deepMerge: sampleShorthandProps });
 
 /**
  * @parameter props -> these are normal React props for JSX components
@@ -97,7 +97,7 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
 
   // merges the props we declare internally and what is passed in
   // by a consumer
-  const mergedProps = mergeProps(
+  const state = mergeProps(
     {
       // This is essentially shorthand for the `root` slot
       ref: resolvedRef,
@@ -139,7 +139,7 @@ export const useRootStyles = makeStyles<SampleState>([
   [
     null,
     theme => ({
-      backgroundColor: theme.neutralColorTokens.neutralBackground1,
+      backgroundColor: theme['select']['from']['theme']['docs'],
       paddingRight: '12px',
     }),
   ],
