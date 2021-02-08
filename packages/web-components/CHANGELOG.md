@@ -1,8 +1,26 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 26 Jan 2021 12:33:19 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:23:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.1)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.12.0..@fluentui/web-components_v0.12.1)
+
+### Patches
+
+- correct focus visible outline on accent button and anchor styles ([PR #16833](https://github.com/microsoft/fluentui/pull/16833) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.0)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.11.0..@fluentui/web-components_v0.12.0)
+
+### Minor changes
+
+- feat: move color recipes into fluent web component package ([PR #16755](https://github.com/microsoft/fluentui/pull/16755) by chhol@microsoft.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.11.0)
 

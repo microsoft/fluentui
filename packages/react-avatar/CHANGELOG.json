@@ -2,6 +2,44 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-avatar_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.20",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-avatar_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove customSize and display props; change active prop to enum; clean up AvatarProps",
+            "author": "behowell@microsoft.com",
+            "commit": "9a6af0cc68eb641eea5b9f1dde2c0d1eb92a37c3",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Feb 2021 12:21:54 GMT",
       "tag": "@fluentui/react-avatar_v0.8.3",
       "version": "0.8.3",

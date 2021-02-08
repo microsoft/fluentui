@@ -49,7 +49,7 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.0.0-beta.2",
     "@fluentui/react-hooks": "^8.0.0-beta.10",
-    "@fluentui/react-internal": "^8.0.0-beta.41",
+    "@fluentui/react-internal": "^8.0.0-beta.43",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/style-utilities": "^8.0.0-beta.13",
     "@fluentui/utilities": "^8.0.0-beta.10",

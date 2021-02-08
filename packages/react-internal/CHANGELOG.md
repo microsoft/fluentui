@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.43)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.42..@fluentui/react-internal_v8.0.0-beta.43)
+
+### Changes
+
+- Add missing HighContrast override to SplitButton ([PR #16792](https://github.com/microsoft/fluentui/pull/16792) by andredias@microsoft.com)
+- Add missing styles for disabled buttons ([PR #16794](https://github.com/microsoft/fluentui/pull/16794) by andredias@microsoft.com)
+
+## [8.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.42)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.41..@fluentui/react-internal_v8.0.0-beta.42)
+
+### Changes
+
+- Add high contrast overrides for the Separator ([PR #16705](https://github.com/microsoft/fluentui/pull/16705) by andredias@microsoft.com)
+- Checkbox: border is now visible when element is in focus in High Contrast White Mode ([PR #16739](https://github.com/microsoft/fluentui/pull/16739) by tristan.watanabe@gmail.com)
+- Update ColorPicker to announce clamping of RGBA values (#15855) ([PR #16709](https://github.com/microsoft/fluentui/pull/16709) by jakubkonka@microsoft.com)
 
 ## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.41)
 

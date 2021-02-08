@@ -66,6 +66,13 @@ export {
   accentFillLargeSelected,
 } from './accent-fill';
 
+export {
+  neutralContrastFill,
+  neutralContrastFillRest,
+  neutralContrastFillHover,
+  neutralContrastFillActive,
+} from './neutral-contrast-fill';
+
 export { neutralFillCard } from './neutral-fill-card';
 
 /**

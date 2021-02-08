@@ -2,12 +2,17 @@ import * as React from 'react';
 import { mount } from 'enzyme';
 import { KeyCodes } from '../../../Utilities';
 import { mockEvent } from '../../../common/testUtilities';
+import { resetIds } from '@fluentui/utilities';
 import { act } from 'react-dom/test-utils';
 import { MaskedTextField } from './MaskedTextField';
 import { safeCreate } from '@fluentui/test-utilities';
 import { isConformant } from '../../../common/isConformant';
 
 describe('MaskedTextField', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   it('renders correctly', () => {
     safeCreate(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />, component => {
       const tree = component.toJSON();

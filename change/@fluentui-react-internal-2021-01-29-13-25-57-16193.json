@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add high contrast overrides for the Separator",
-  "packageName": "@fluentui/react-internal",
-  "email": "andredias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-29T12:25:57.762Z"
-}

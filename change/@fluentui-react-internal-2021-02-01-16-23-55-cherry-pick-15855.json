@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update ColorPicker to announce clamping of RGBA values (#15855)",
-  "packageName": "@fluentui/react-internal",
-  "email": "jakubkonka@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-01T15:23:55.930Z"
-}

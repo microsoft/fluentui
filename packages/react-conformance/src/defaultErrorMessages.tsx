@@ -46,7 +46,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where there is no existing docblock in the componentPath.
     //
     // It appears that "displayName" doesn't have a docblock in the file:: "componentPath".
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Consider adding a descriptive 5 to 25 word docblock in "fileName".
     if (_.words(docblock.description).length === 0) {
       console.log(
@@ -69,7 +69,7 @@ export const defaultErrorMessages = {
     // It appears that "displayName" doesn't have a docblock between 5 and 25 words.
     // It has a word count of: "docBlockLength"
     // Here is "displayName"'s docblock: "docblock.description"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your docblock meets the required word count of 5 to 25 words.
     else {
       console.log(
@@ -102,7 +102,7 @@ export const defaultErrorMessages = {
     //
     // It appears that "Component" doesn't have a export in: "componentPath"
     // Here are the available exported component's from your file: "componentFile"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your component's "fileName" file contains an export for "displayName".
     // 2. Check to see if you component uses export default and consider enabling useDefaultExport in your
     // isConformant test.
@@ -135,7 +135,7 @@ export const defaultErrorMessages = {
     // It appears that displayName doesn't have a valid return.
     // It currently is receiving the requiredProps: "requiredProps"
     // Check to see if you are including all of the required props in your types file: "typesFile"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your are including all of the required props to render in isConformant.
     // 2. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
     // 3. Check to see if your component works as expected with mount and safeMount.
@@ -177,7 +177,7 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" doesn't have a valid return and is not receiving any requiredProps.
     // Check to see if you are missing any required props in your component's types file: "typesFile"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your are including all of the required props to render in isConformant requiredProps.
     // 2. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
     // 3. Check to see if your component works as expected with mount and safeMount.
@@ -219,7 +219,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the component's display name is undefined.
     //
     // It appears that "displayName" doesn't have a display name in: "componentPath"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
     // 2. Check to see if something is removing "displayName"'s displayName.
     if (componentDisplayName === (null || 'Styledundefined')) {
@@ -242,7 +242,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the component's display name doesn't match isConformant's displayName
     //
     // It appears that "displayName" doesn't have a correct display name. It received: "componentDisplayName"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that "fileName" contains "displayName".displayName = '"displayName"'
     else {
       console.log(
@@ -269,7 +269,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the ref is not defined when passed to the component.
     //
     // It appears that "displayName" doesn't have a defined ref value.
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Check if your component has a ref.
     // 2. If you component is a function component make sure that your are using forwardRef.
     // 3. Check if your component passes ref to an inner component and add targetComponent to isConformant in
@@ -289,12 +289,12 @@ export const defaultErrorMessages = {
 
   'component-has-root-ref': (componentInfo: ComponentDoc, testInfo: IsConformantOptions, error: string) => {
     const { displayName } = testInfo;
-    const { resolveInfo, failedError, testErrorInfo } = errorMessageColors;
+    const { resolveInfo } = errorMessageColors;
 
     // Message Description: Handles scenario where the ref doesn't match the DOM node.
     //
     // It appears that "displayName" doesn't have a ref that matches the components DOM node.
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that you are applying the ref to the root element in your component.
     // 2. Check if your component uses an element ref and add elementRefName: 'elementRef' to isConformant in
     //    your test file.
@@ -311,7 +311,107 @@ export const defaultErrorMessages = {
             `targetComponent`,
           )} to isConformant in your test file.`,
         ]) +
-        receivedErrorMessage('Expected:' + testErrorInfo(' ref') + ', Received: ' + failedError('DOM node ') + error),
+        receivedErrorMessage(error),
+    );
+  },
+
+  'component-handles-classname': (
+    testInfo: IsConformantOptions,
+    error: string,
+    testClassName: string,
+    classNames: string[] | undefined,
+    componentHTML: string,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, failedError, testErrorName } = errorMessageColors;
+
+    // Show part of the HTMl in the debug message if possible
+    const debugHTML = componentHTML.includes(testClassName)
+      ? componentHTML.substr(0, componentHTML.indexOf(testClassName) + 50) + '...'
+      : '';
+
+    // Message Description: Handles scenario where className prop doesn't exist or isn't applied on the component
+    //
+    // It appears that "displayName" doesn't have a properly applied className prop.
+    // After passing a test className "testComponentClassName" to "displayName" it received a className:
+    // className='"classNames"'
+    //
+    // The className should contain "testComponentClassName"
+    //
+    // Partial HTML: ...
+    //
+    // To resolve this issue:
+    // 1. Make sure that your component accepts a className prop.
+    // 2. Make sure that nothing is overwriting the className prop (it should be merged with defaults).
+    // 3. Make sure that your component is applying the className to the root.
+    console.log(
+      defaultErrorMessage(
+        `component-handles-classname`,
+        displayName,
+        `properly applied className prop.` +
+          paragraph(2) +
+          `After passing a test className ${testErrorInfo(`"${testClassName}"`)} to ${testErrorName(
+            displayName,
+          )} it received:` +
+          paragraph() +
+          failedError(`className='${formatObject(classNames || ['undefined'])}'`) +
+          paragraph(2) +
+          `The className should contain "${testClassName}"` +
+          (debugHTML ? `${paragraph(2)}Partial HTML:\n${debugHTML}` : ''),
+      ) +
+        resolveErrorMessages([
+          `Make sure that your component ${resolveInfo('accepts a className prop')}.`,
+          `Make sure that nothing is ${resolveInfo('overwriting')} the className prop ` +
+            `(it should be merged with defaults).`,
+          `Make sure that your ${resolveInfo('component is applying')} the className to the root.`,
+        ]) +
+        receivedErrorMessage(error),
+    );
+  },
+
+  'component-preserves-default-classname': (
+    testInfo: IsConformantOptions,
+    error: string,
+    testClassName: string,
+    defaultClassName: string,
+    classNames: string[] | undefined,
+  ) => {
+    const { displayName } = testInfo;
+    const { testErrorInfo, resolveInfo, failedError, testErrorName } = errorMessageColors;
+
+    // Message Description: Handles scenario where user-provided className overwrites default className.
+    //
+    // It appears that "displayName" overwrites default classNames with the user-supplied className.
+    // After passing a test className "testComponentClassName" to "displayName" it received a className:
+    // className='"classNames"'
+    //
+    // Since "displayName" has a default className: "defaultClassName" it should have been merged into:
+    // className='"classNames" "defaultClassName"'
+    //
+    // To resolve this issue:
+    // 1. Check the placement of your className and ensure that it is merged with defaults.
+    console.log(
+      defaultErrorMessage(
+        `component-handles-classname`,
+        displayName,
+        `overwrites default classNames with the user-supplied className.` +
+          paragraph(2) +
+          `After passing a test classname ${testErrorInfo(`"${testClassName}"`)} to ${testErrorName(
+            displayName,
+          )} it received a className:` +
+          paragraph() +
+          failedError(`className='${classNames?.join(' ')}'`) +
+          paragraph(2) +
+          `Since ${testErrorName(displayName)} has a default className: ${testErrorInfo(
+            defaultClassName,
+          )} it should have been merged into:` +
+          paragraph() +
+          testErrorInfo(`className="${classNames?.join(' ')} ${defaultClassName}"`),
+      ) +
+        resolveErrorMessages([
+          `Check the placement of your className and ensure that it is ${resolveInfo('merged')} with defaults.`,
+        ]) +
+        receivedErrorMessage(error),
     );
   },
 
@@ -324,7 +424,7 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" doesn't have a matching filename.
     // It received a filename called "filename" instead of "displayName".
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your component's filename matches the isConformant displayName: "displayName".
     console.log(
       defaultErrorMessage(
@@ -351,7 +451,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the displayName doesn't exist in the index file.
     //
     // It appears that "displayName" doesn't have a top level export in: "indexFile".
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your component's index'.ts file contains "export * from './"displayName"';
     // 2.Check if your component is internal and consider enabling isInternal in your isConformant test.
     console.log(
@@ -382,7 +482,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the displayName doesn't match the component's filename.
     //
     // It appears that "displayName" doesn't have a top level file in: "topLevelFile"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your component's index'.ts file contains "export * from './"displayName"';
     // 2.Check if your component is internal and consider enabling isInternal in your isConformant test.
     console.log(
@@ -411,7 +511,7 @@ export const defaultErrorMessages = {
     // Message Description: Handles scenario where the child component is not a static property of the parent..
     //
     // It appears that "displayName" doesn't have a existing static property in: "dirName"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Include the child component: "displayName" as a static property of the parent: "dirName".
     // 2.Check to see if "displayName" is a parent component but contained in a directory with a different name.
     console.log(
@@ -456,7 +556,7 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" doesn't have a aria attribute that uses kebab-casing.
     // The received aria attributes should be renamed to: "ariaPropsDif"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that Sliders aria attribute props are using kebab-case.
     console.log(
       defaultErrorMessage(
@@ -499,7 +599,7 @@ export const defaultErrorMessages = {
     //
     // It appears that "displayName" doesn't have a consistent callback name.
     // The received callback needs to be renamed: "callbackNames"
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Rename "displayName"'s callback props that don't end with "ed".
     // 2. Include the prop in TestOptions ignoreProps.
     console.log(
@@ -529,7 +629,7 @@ export const defaultErrorMessages = {
     // or pass as to the next component.
     //
     // It appears that "displayName" doesn't have a valid return.
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Check if you are missing any requiredProps within the isConformant in your test file.
     // 2. If your component handles a forwardRef you will need to enable isConformant's asPropHandlesRef.
     // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
@@ -561,7 +661,7 @@ export const defaultErrorMessages = {
     // or pass as to the next component.
     //
     // It appears that "displayName" doesn't have a valid return.
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Check if you are missing any requiredProps within the isConformant in your test file.
     // 2. If your component handles a forwardRef you will need to enable isConformant's asPropHandlesRef.
     // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
@@ -593,7 +693,7 @@ export const defaultErrorMessages = {
     // or pass as to the next component.
     //
     // It appears that "displayName" doesn't have a valid return.
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Check if you are missing any requiredProps within the isConformant in your test file.
     // 2. If your component handles a forwardRef you will need to enable isConformant's asPropHandlesRef.
     // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.
@@ -625,7 +725,7 @@ export const defaultErrorMessages = {
     // or pass as to the next component.
     //
     // It appears that "displayName" doesn't have a 'as' property that can render HTML tags.
-    // To Resolve this issue:
+    // To resolve this issue:
     // 1. Make sure that your component can correctly render as HTML tags.
     // 2. Check if you are missing any requiredProps within the isConformant in your test file.
     // 3. Make sure that your component's "displayName".base.tsx file contains a valid return statement.

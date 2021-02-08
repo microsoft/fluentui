@@ -18,9 +18,11 @@ export function standardStyles(theme: ITheme): IButtonStyles {
   const buttonBackground = s.buttonBackground;
   const buttonBackgroundPressed = s.buttonBackgroundPressed;
   const buttonBackgroundHovered = s.buttonBackgroundHovered;
+  const buttonBackgroundDisabled = s.buttonBackgroundDisabled;
 
   const buttonText = s.buttonText;
   const buttonTextHovered = s.buttonTextHovered;
+  const buttonTextDisabled = s.buttonTextDisabled;
   const buttonTextChecked = s.buttonTextChecked;
   const buttonTextCheckedHovered = s.buttonTextCheckedHovered;
 
@@ -62,6 +64,8 @@ export function standardStyles(theme: ITheme): IButtonStyles {
     },
 
     rootDisabled: {
+      color: buttonTextDisabled,
+      backgroundColor: buttonBackgroundDisabled,
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',
@@ -215,6 +219,8 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     rootDisabled: {
+      color: s.primaryButtonTextDisabled,
+      backgroundColor: s.primaryButtonBackgroundDisabled,
       selectors: {
         [HighContrastSelector]: {
           color: 'GrayText',

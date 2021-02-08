@@ -1,3 +1,0 @@
-- [iOS Chip](#/controls/ios/chip)
-- [Android Chip](#/controls/android/chip)
-- [Android PeoplePicker](#/controls/android/peoplepicker)
