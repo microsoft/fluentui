@@ -45,7 +45,7 @@ Many new developers might have questions on the patterns that we follow to write
 
 <!-- This is the bulk of the RFC. Explain the proposal or design in enough detail for the inteded audience to understand. -->
 
-### Hook based architecture.
+### Hook based architecture
 
 Generally a component will have the following different files. Let us consider a `Sample` component
 
