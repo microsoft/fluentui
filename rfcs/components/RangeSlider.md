@@ -40,7 +40,7 @@ Current RangeSlider control in Azure Portal is more complex than the existing fl
 
 #### Pros
 
-- Add new functionality additively on top of the Slider component so new existing functionalities are broken
+- Add new functionality additively on top of the Slider component so no existing functionalities are broken
 - Possible to reuse a lot of existing logic in order to make minimum change to the code
 - Provide new features to the component and make it suitable for more generic cases
 
