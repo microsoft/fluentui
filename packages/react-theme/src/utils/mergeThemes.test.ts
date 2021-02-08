@@ -7,12 +7,16 @@ describe('mergeThemes', () => {
     // TODO: we should not use real themes in tests
     const a: Theme = teamsLightTheme;
     const b: PartialTheme = {
-      brandColors: {
-        primary: 'red',
+      global: {
+        palette: {
+          brand: {
+            primary: 'red',
+          },
+        },
       },
     };
 
-    expect(mergeThemes(a, b).brandColors).toMatchInlineSnapshot(`
+    expect(mergeThemes(a, b).global.palette.brand).toMatchInlineSnapshot(`
       Object {
         "primary": "red",
         "shade10": "#52558f",
