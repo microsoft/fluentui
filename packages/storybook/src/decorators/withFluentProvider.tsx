@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import { useFluentTheme } from '../knobs/useFluentTheme';
 
-const ProviderWrapper: React.FunctionComponent<{ theme?: Theme | undefined }> = props => {
+const ProviderWrapper: React.FunctionComponent = props => {
   const { theme } = useFluentTheme();
 
   return <FluentProvider theme={theme}>{props.children}</FluentProvider>;
