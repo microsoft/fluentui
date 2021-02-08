@@ -23,5 +23,5 @@ export const useMenuList = (
     resolveShorthandProps(props, []),
   );
 
-  return state as MenuListState;
+  return state;
 };
