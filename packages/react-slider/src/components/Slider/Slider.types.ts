@@ -41,11 +41,6 @@ export interface ISliderProps
   label?: string;
 
   /**
-   * Whether the slider is a range Slider
-   */
-  ranged?: boolean;
-
-  /**
    * The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component.
    * This value is mutually exclusive to value. Use one or the other.
    */
@@ -90,11 +85,6 @@ export interface ISliderProps
    * Callback on mouse up or touch end
    */
   onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-
-  /**
-   * Callback on range change. Only effective when ranged is set to true
-   */
-  onRangeChange?: (range: [number, number]) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.

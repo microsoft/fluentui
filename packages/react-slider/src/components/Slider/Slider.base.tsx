@@ -24,12 +24,8 @@ export const SliderBase: React.FunctionComponent<ISliderProps> = React.forwardRe
       <div {...slotProps.root}>
         {slotProps && <Label {...slotProps.label} />}
         <div {...slotProps.container}>
-          {slotProps.valueLabel &&
-            props.ranged &&
-            (props.vertical ? <Label {...slotProps.valueLabel} /> : <Label {...slotProps.lowerValueLabel} />)}
           <div {...slotProps.sliderBox}>
             <div {...slotProps.sliderLine}>
-              {props.ranged && <span {...slotProps.lowerValueThumb} />}
               <span {...slotProps.thumb} />
               {slotProps.zeroTick && <span {...slotProps.zeroTick} />}
               <span {...slotProps.bottomInactiveTrack} />
@@ -37,11 +33,7 @@ export const SliderBase: React.FunctionComponent<ISliderProps> = React.forwardRe
               <span {...slotProps.topInactiveTrack} />
             </div>
           </div>
-          {slotProps.valueLabel && props.ranged && props.vertical ? (
-            <Label {...slotProps.lowerValueLabel} />
-          ) : (
-            <Label {...slotProps.valueLabel} />
-          )}
+          {slotProps.valueLabel && <Label {...slotProps.valueLabel} />}
         </div>
         <FocusRects />
       </div>

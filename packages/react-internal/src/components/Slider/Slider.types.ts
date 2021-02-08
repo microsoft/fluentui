@@ -87,9 +87,19 @@ export interface ISliderProps
   onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
 
   /**
+   * Callback on range change. Only effective when ranged is set to true
+   */
+  onRangeChange?: (range: [number, number]) => void;
+
+  /**
    * A description of the Slider for the benefit of screen readers.
    */
   ariaLabel?: string;
+
+  /**
+   * Whether the slider is a range Slider
+   */
+  ranged?: boolean;
 
   /**
    * A text description of the Slider number value for the benefit of screen readers.

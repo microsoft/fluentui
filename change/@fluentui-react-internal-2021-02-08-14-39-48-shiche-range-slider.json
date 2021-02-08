@@ -1,8 +1,8 @@
 {
   "type": "prerelease",
-  "comment": "Add support for RangeSlider",
+  "comment": "Merge branch 'master' into shiche/range-slider",
   "packageName": "@fluentui/react-internal",
   "email": "shi.cheng@microsoft.com",
   "dependentChangeType": "patch",
-  "date": "2021-02-05T21:31:36.152Z"
+  "date": "2021-02-08T19:39:41.673Z"
 }
