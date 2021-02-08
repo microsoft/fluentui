@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:26:55 GMT",
+      "tag": "@fluentui/react-examples_v0.11.21",
+      "version": "0.11.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding controls to story",
+            "author": "jagaheri@microsoft.com",
+            "commit": "374b0f945a190f56b67529fd48a8d556f4c8cb15",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Feb 2021 12:26:03 GMT",
       "tag": "@fluentui/react-examples_v0.11.20",
       "version": "0.11.20",

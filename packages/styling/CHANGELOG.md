@@ -1,8 +1,17 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:26:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.17.0)
+
+Mon, 08 Feb 2021 12:26:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.8..@uifabric/styling_v7.17.0)
+
+### Minor changes
+
+- Port forced colors method to V7 ([PR #16848](https://github.com/microsoft/fluentui/pull/16848) by sareiff@microsoft.com)
 
 ## [7.16.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.8)
 

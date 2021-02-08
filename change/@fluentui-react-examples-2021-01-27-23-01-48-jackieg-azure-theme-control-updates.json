@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding controls to story",
-  "packageName": "@fluentui/react-examples",
-  "email": "jagaheri@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-28T07:01:48.970Z"
-}

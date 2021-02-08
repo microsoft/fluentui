@@ -2,6 +2,21 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:26:55 GMT",
+      "tag": "@uifabric/styling_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Port forced colors method to V7",
+            "author": "sareiff@microsoft.com",
+            "commit": "97846f77f40111ab231352e7c7c32b009a43e0f4",
+            "package": "@uifabric/styling"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@uifabric/styling_v7.16.8",
       "version": "7.16.8",
