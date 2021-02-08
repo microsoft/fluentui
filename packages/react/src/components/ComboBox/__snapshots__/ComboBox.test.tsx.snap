@@ -351,6 +351,7 @@ exports[`ComboBox Renders correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="ChevronDown"
+          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -708,6 +709,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="ChevronDown"
+          role="presentation"
           style="font-family: \\"FabricMDL2Icons\\";"
         >
           

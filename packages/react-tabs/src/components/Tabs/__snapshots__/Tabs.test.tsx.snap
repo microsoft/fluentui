@@ -1901,6 +1901,7 @@ exports[`Tabs renders Tabs with overflow 1`] = `
                 text-align: center;
               }
           data-icon-name="More"
+          role="presentation"
           style={
             Object {
               "color": "inherit",
