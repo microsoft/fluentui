@@ -30,7 +30,7 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
     label?: string;
     max?: number;
     min?: number;
-    onChange?: (value: number) => void;
+    onChange?: (value: number, range?: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
     ranged?: boolean;
