@@ -126,7 +126,7 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
 
 #### useSampleClasses/useSampleStyles.ts
 
-Hook that accepts state and applies classnames to props and any shorthand slot props to style the component and its slots
+Hook that accepts state and applies classnames to props and any shorthand slot props to style the component and its slots.
 
 ```typescript
 import { makeStyles, ax } from '@fluentui/react-make-styles';
