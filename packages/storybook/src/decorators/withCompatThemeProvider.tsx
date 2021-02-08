@@ -17,8 +17,8 @@ const ThemeProviderWrapper: React.FunctionComponent<{ theme?: Theme | undefined 
   );
 };
 
-export const withThemeProvider = makeDecorator({
-  name: 'withThemeProvider',
+export const withCompatThemeProvider = makeDecorator({
+  name: 'withCompatThemeProvider',
   parameterName: 'theme',
   skipIfNoParametersOrOptions: false,
   wrapper: (storyFn, context, { options, parameters }) => {
