@@ -51,7 +51,7 @@ Generally a component will have the following different files. Let us consider a
 
 - `Sample.tsx`
 - `useSample.ts`
-- `useSampleClasses.ts`
+- `useSampleStyles.ts`
 - `renderSample.tsx`
 - `Sample.types.ts`
 
