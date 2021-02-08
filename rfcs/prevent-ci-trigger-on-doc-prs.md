@@ -6,7 +6,7 @@ _Contributors: @andrefcdias_
 
 ## Summary
 
-The purpose of this RFC is to find a solution to prevent unnecessary GitHub checks from running on PRs that only affect documentation.
+The purpose of this RFC is to find a solution to avoid unnecessary GitHub checks from running on PRs that only affect documentation to avoid wasteful resource usage and improve our DX.
 
 ## Problem statement
 
@@ -17,31 +17,20 @@ By avoiding these checks, we can prevent a wasteful CI pipeline and accelerate w
 
 ## Detailed Design or Proposal
 
-### Azure DevOps (Build, Deploy, SizeAuditor, Perf Analysis, BundleSize)
+The agreed solution is to extract our Wiki into its own separate repository and linking it with the fluentui repo wiki.
+This will allow us to avoid the issue altogether and even implement our own checks (like running Prettier as @layershifter suggested) with minimum effort.
 
-To prevent the builds, adding the following will prevent unnecessary triggers:
+Implementation would cover the following:
 
-```yaml
-pr:
-  branches:
-    include:
-      - master
-  paths:
-    exclude:
-      - rfcs
-      - specs
-      - <other relevant doc paths>
-```
+- Creating the fluentui-wiki repository
+- Linking this repository with https://github.com/microsoft/fluentui.wiki.git
+- Add documentation on how to contribute with the new workflow
 
-_There's a PoC repo to test the ADO solution [here](https://github.com/andrefcdias/actions-test) and a draft PR with the implementation [here](https://github.com/microsoft/fluentui/pull/16816)._
+And this details the new workflow mentioned above:
 
-### Screener
-
-_To be defined_
-
-### CodeSanbox
-
-_To be defined_
+- User forks https://github.com/microsoft/fluentui-wiki
+- Applies changes to for and creates a PR
+- Merged docs get reflected in the https://github.com/microsoft/fluentui.wiki.git
 
 ### Pros and Cons
 
@@ -53,13 +42,19 @@ _To be defined_
 
 #### Cons
 
-- None so far
+- New workflow of submitting docs through PRs in a different repo
+- Sending people from the @fluentui/react repo into @fluentui/react-wiki repo to contribute with docs
 
 ## Discarded Solutions
 
-- Moving docs to the Wiki repo;
+- Moving docs directly to the wiki repo;
 
   There is unfortunately no way of creating PRs for changes in the Wiki repo.
+
+- Avoiding the GitHub checks in our CI by excluding doc paths
+
+  Due to the branch protection rules, we are unable to avoid the execution of required checks.
+  CodeSandbox also did not support this at the time of writing this. Upon contacting their support, they added it to their backlog as a possible future feature.
 
 ## Open Issues
 
