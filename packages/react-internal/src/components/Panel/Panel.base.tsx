@@ -411,9 +411,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     if (this.isActive && panel && !ev.defaultPrevented) {
       if (!elementContains(panel, ev.target as HTMLElement)) {
         if (this.props.onOuterClick) {
-          if (!this.props.onOuterClick()) {
-            ev.preventDefault();
-          }
+          this.props.onOuterClick(ev);
         } else {
           this.dismiss(ev);
         }

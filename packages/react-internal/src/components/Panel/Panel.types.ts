@@ -197,7 +197,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Optional custom function to handle clicks outside this component
    */
-  onOuterClick?: () => boolean | void | undefined;
+  onOuterClick?: (ev?: React.MouseEvent<HTMLDivElement>) => boolean | void;
 
   /**
    * Optional custom renderer navigation region. Replaces the region that contains the close button.
