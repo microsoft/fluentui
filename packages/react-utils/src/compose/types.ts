@@ -11,18 +11,19 @@ export type GenericDictionary = Record<string, any>;
  */
 export type ClassDictionary = Record<string, string>;
 
-export interface ComponentProps extends GenericDictionary {
+export interface ComponentProps {
   as?: React.ElementType;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ref?: React.Ref<any>;
   className?: string;
+  children?: React.ReactNode;
 }
 
 // Shorthand types
 
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
-export type ShorthandProps<TProps extends ComponentProps = {}> =
+export type ShorthandProps<TProps extends ComponentProps> =
   | React.ReactChild
   | React.ReactNodeArray
   | React.ReactPortal
@@ -35,7 +36,7 @@ export type ShorthandProps<TProps extends ComponentProps = {}> =
         children?: TProps['children'] | ShorthandRenderFunction<TProps>;
       });
 
-export type ObjectShorthandProps<TProps extends GenericDictionary> = TProps & {
+export type ObjectShorthandProps<TProps extends ComponentProps> = TProps & {
   children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
