@@ -5,6 +5,8 @@ import {
   accentFillHoverBehavior,
   accentFillRestBehavior,
   elevation,
+  neutralContrastFillRestBehavior,
+  neutralContrastForegroundRestBehavior,
   neutralFillHoverBehavior,
   neutralFillInputActiveBehavior,
   neutralFillInputHoverBehavior,
@@ -30,8 +32,8 @@ export const TooltipStyles = css`
     box-sizing: border-box;
     border-radius: calc(var(--corner-radius) * 1px);
     border: calc(var(--outline-width) * 1px) solid transparent;
-    background: ${neutralForegroundRestBehavior.var};
-    color: ${neutralFillRestBehavior.var};
+    background: ${neutralContrastFillRestBehavior.var};
+    color: ${neutralContrastForegroundRestBehavior.var};
     padding: 4px 12px;
     height: fit-content;
     width: fit-content;
@@ -110,6 +112,8 @@ export const TooltipStyles = css`
   accentFillActiveBehavior,
   accentFillHoverBehavior,
   accentFillRestBehavior,
+  neutralContrastFillRestBehavior,
+  neutralContrastForegroundRestBehavior,
   neutralFillHoverBehavior,
   neutralFillInputActiveBehavior,
   neutralFillInputHoverBehavior,
