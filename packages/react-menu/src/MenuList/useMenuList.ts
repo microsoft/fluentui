@@ -8,7 +8,11 @@ const mergeProps = makeMergeProps<MenuListState>();
 /**
  * Returns the props and state required to render the component
  */
-export const useMenuList = (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps) => {
+export const useMenuList = (
+  props: MenuListProps,
+  ref: React.Ref<HTMLElement>,
+  defaultProps?: MenuListProps,
+): MenuListState => {
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
