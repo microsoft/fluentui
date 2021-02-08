@@ -97,7 +97,7 @@ jobs:
           ContainerName: nightly-builds
           # upload tarballs to folder named by today's date
           BlobPrefix: $(date)
-          Gzip: false
+          Gzip: true
 
       - task: AzureUpload@2
         displayName: '[Nightly] Upload tarballs as newest'
@@ -109,7 +109,7 @@ jobs:
           ContainerName: nightly-builds
           # upload tarballs to folder named 'newest'. This folder is used by the nightly version of docsite to create codesandbox
           BlobPrefix: newest
-          Gzip: false
+          Gzip: true
 
       - task: CmdLine@2
         displayName: '[NPM] Publish to NPM'
