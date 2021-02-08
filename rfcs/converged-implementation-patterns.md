@@ -93,7 +93,7 @@ const mergeProps = makeMergeProps({ deepMerge: sampleShorthandProps });
  * @parameter defaultProps -> safe default props, we set defaults internally but if consumer wants component variants with different defaults, they can set them
  */
 export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defaultProps?: SampleProps): SampleState => {
-  const resolvedRef = ref || React.useRef();
+  const resolvedRef = useMergedRefs(ref, React.useRef());
 
   // merges the props we declare internally and what is passed in
   // by a consumer
