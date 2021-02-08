@@ -130,14 +130,12 @@ const replaceDepVersionWithNightlyUrl = (packageRoot, packageName) => {
   const dependencies = packageJson.dependencies || {};
   let hasFluentDependency = false;
   for (const key of Object.keys(dependencies)) {
-    if (key.startsWith('@fluentui/')) {
+    if (key.startsWith('@fluentui/') && PUBLIC_FLUENT_PACKAGES.includes(fluentPackageName)) {
       const fluentPackageName = key.substring('@fluentui/'.length);
-      if (PUBLIC_FLUENT_PACKAGES.includes(fluentPackageName)) {
-        hasFluentDependency = true;
-        dependencies[
-          key
-        ] = `https://fluentsite.blob.core.windows.net/nightly-builds/${TODAY}/fluentui-${fluentPackageName}-${packageJson.version}.tgz`;
-      }
+      hasFluentDependency = true;
+      dependencies[
+        key
+      ] = `https://fluentsite.blob.core.windows.net/nightly-builds/${TODAY}/fluentui-${fluentPackageName}-${packageJson.version}.tgz`;
     }
   }
 
