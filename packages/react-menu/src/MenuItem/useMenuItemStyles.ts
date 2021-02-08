@@ -4,7 +4,7 @@ import { MenuItemState } from './MenuItem.types';
 /**
  * Styles for the root slot
  */
-export const useRootStyles = makeStyles([
+export const useRootStyles = makeStyles<MenuItemState>([
   [
     null,
     theme => ({
@@ -31,7 +31,7 @@ export const useRootStyles = makeStyles([
 /**
  * Styles for the icon slot
  */
-export const useIconStyles = makeStyles([
+export const useIconStyles = makeStyles<MenuItemState>([
   [
     null,
     () => ({
@@ -44,8 +44,8 @@ export const useIconStyles = makeStyles([
 
 /** Applies style classnames to slots */
 export const useMenuItemStyles = (state: MenuItemState) => {
-  const rootClassName = useRootStyles({});
-  const iconClassName = useIconStyles({});
+  const rootClassName = useRootStyles(state);
+  const iconClassName = useIconStyles(state);
 
   state.className = ax(rootClassName, state.className);
 
