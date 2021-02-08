@@ -117,8 +117,9 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
   const { contextValue } = React.useContext();
   React.useEffect(...);
 
-  // make an 'uber' state
-  const state = { someState, contextValue, ...mergedProps}
+  // enlarge the 'uber' state
+  state.someState = someState;
+  state.contextValue = contextValue;
 
   return state;
 };
