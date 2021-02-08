@@ -27,7 +27,7 @@ Code samples should applied to utility scripts to generate packages which will h
 
 <!-- If there is relevant background include it here -->
 
-Many new engineers can find it hard to adapt to a new codebase, especially when the coding patterns and practices are fairly new and in a constant state of flux
+Many new engineers can find it hard to adapt to a new codebase, especially when the coding patterns and practices are fairly new and in a constant state of flux.
 
 ## Problem statement
 
