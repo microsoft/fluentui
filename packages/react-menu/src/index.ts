@@ -1,3 +1,4 @@
 import './version';
 
-export * from './components/index';
+export * from './MenuItem';
+export * from './MenuList';
