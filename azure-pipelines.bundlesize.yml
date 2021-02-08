@@ -77,12 +77,14 @@ jobs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop-northstar
 
-  - job: lightrail
-    pool: server
+  - job: merge
+    pool:
+      vmImage: 'windows-2019'
     dependsOn:
       - build-react
       - build-northstar
     steps:
+      - task:
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact Fabric'
         inputs:
@@ -101,6 +103,17 @@ jobs:
       - script: "jq -s 'reduce .[] as $item ({}; . * $item)' $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json $(Build.ArtifactStagingDirectory)/bundlesize.json"
         displayName: 'Merge fabric and react-northstar to bundlesize.json'
 
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesize.json'
+          ArtifactName: bundlesize
+
+  - job: lightrail
+    pool: server
+    dependsOn:
+      - merge
+    steps:
       - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
         displayName: 'Size Auditor Check on LightRail'
         inputs:
