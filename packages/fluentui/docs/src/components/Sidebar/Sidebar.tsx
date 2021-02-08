@@ -14,7 +14,7 @@ import {
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
-import { VersionDropdown } from './VersionDropdown';
+import { VersionDropdown, FLUENT_NIGHTLY_VERSION } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
 import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
@@ -32,7 +32,8 @@ const pkg = require('@fluentui/react-northstar/package.json');
 // nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
 // I prefer to keep it this way for tracking purpose
 // The checking here is for sidebar to display correctly for '0.0.0-nightly'
-const version = window.location.pathname.split('/')[1] === '0.0.0-nightly' ? '0.0.0-nightly' : pkg.version;
+const version =
+  window.location.pathname.split('/')[1] === FLUENT_NIGHTLY_VERSION ? FLUENT_NIGHTLY_VERSION : pkg.version;
 
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');

@@ -4,6 +4,8 @@ import { gt, lt } from 'semver';
 
 const pkg = require('@fluentui/react-northstar/package.json');
 
+export const FLUENT_NIGHTLY_VERSION = '0.0.0-nightly';
+
 /**
  * A dropdown component that fetches available versions of the docsite from a hosted manifest file and renders available versions
  * Makes assumptions about docsite routing and hosting
@@ -51,7 +53,7 @@ export function VersionDropdown(props: { width: number }) {
   // https://<domain>/<version> should be the basename for each docsite in a multi version scenario
   const onChange = (_, data: DropdownProps) => {
     const versionInPath = window.location.pathname.split('/')[1];
-    if (versionInPath === currentVersion || versionInPath === '0.0.0-nightly') {
+    if (versionInPath === currentVersion || versionInPath === FLUENT_NIGHTLY_VERSION) {
       const newPath = window.location.pathname.replace(versionInPath, data.value as string);
       window.location.pathname = newPath;
     } else {
@@ -67,7 +69,9 @@ export function VersionDropdown(props: { width: number }) {
       // nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
       // I prefer to keep it this way for tracking purpose
       // The checking here is for version dropdown to display correctly for '0.0.0-nightly'
-      value={window.location.pathname.split('/')[1] === '0.0.0-nightly' ? '0.0.0-nightly' : currentVersion}
+      value={
+        window.location.pathname.split('/')[1] === FLUENT_NIGHTLY_VERSION ? FLUENT_NIGHTLY_VERSION : currentVersion
+      }
       aria-label="Choose fluent version"
     />
   );
