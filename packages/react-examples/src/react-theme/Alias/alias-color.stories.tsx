@@ -40,12 +40,18 @@ const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
 });
 
 const ColorButton: React.FunctionComponent<{
-  style?: React.CSSProperties;
   color: AliasColors;
   active: boolean;
   setPreviewColor: (color: AliasColors | null) => void;
   setColor: (color: AliasColors) => void;
-}> = ({ style = {}, color, active, setPreviewColor, setColor, ...rest }) => (
+} & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  style = {},
+  color,
+  active,
+  setPreviewColor,
+  setColor,
+  ...rest
+}) => (
   <button
     style={{
       ...style,
@@ -61,7 +67,7 @@ const ColorButton: React.FunctionComponent<{
   />
 );
 
-export const Colors = (/*args: object, { globals: { theme } }: StorybookStoryContext*/) => {
+export const Colors = () => {
   const [color, setColor] = React.useState<AliasColors>('neutral');
   const [previewColor, setPreviewColor] = React.useState<AliasColors | null>(null);
 
