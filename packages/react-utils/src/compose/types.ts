@@ -35,15 +35,13 @@ export type ShorthandProps<TProps extends ComponentProps = {}> =
         children?: TProps['children'] | ShorthandRenderFunction<TProps>;
       });
 
+export type ObjectShorthandProps<TProps extends GenericDictionary> = TProps & {
+  children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+};
+
 export interface BaseSlots {
   root: React.ElementType;
 }
-
-export type SlotPropRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
-
-export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
-  children?: TProps['children'] | SlotPropRenderFunction<TProps>;
-};
 
 export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
