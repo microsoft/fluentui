@@ -21,7 +21,6 @@ export const useMenuItem = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      as: 'div',
       icon: { as: 'span' },
     },
     defaultProps,
