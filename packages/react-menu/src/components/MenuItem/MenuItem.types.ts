@@ -16,5 +16,5 @@ export interface MenuItemState extends MenuItemProps {
   /**
    * Icon slot when processed by internal state
    */
-  icon?: ObjectSlotProp<HTMLSpanElement>; // TODO use correct props when there is a converged icon pkg
+  icon?: ObjectSlotProp<HTMLSpanElement>;
 }
