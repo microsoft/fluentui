@@ -124,7 +124,7 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
 };
 ```
 
-#### useSampleClasses/useSampleStyles.ts
+#### useSampleStyles.ts
 
 Hook that accepts state and applies classnames to props and any shorthand slot props to style the component and its slots.
 
@@ -135,7 +135,7 @@ import { SampleState } from './Sample.types';
 /**
 * Styles for the root slot
 */
-export const useRootStyles = makeStyles([
+export const useRootStyles = makeStyles<SampleState>([
   [
     null,
     theme => ({
@@ -148,7 +148,7 @@ export const useRootStyles = makeStyles([
 /**
 * Styles for the icon slot, uses state selectors from SampleState
 */
-export const useIconStyles = makeStyles<Pick<SampleState, 'someState'>>([
+export const useIconStyles = makeStyles<SampleState>([
   [
     // Conditionally apply styles
     (someState) => someState == 1 ? true : false,
@@ -164,8 +164,8 @@ export const useIconStyles = makeStyles<Pick<SampleState, 'someState'>>([
 * Applies style classnames to slots
 */
 export const useSampleStyles = (state: SampleState) => {
-  const rootClassName = useRootStyles({});
-  const iconClassName = useIconStyles({ someState: state.someState });
+  const rootClassName = useRootStyles(state);
+  const iconClassName = useIconStyles(state);
 
   // ax is a util that deduplicates classnames
   state.className = ax(rootClassName, state.className);
@@ -221,7 +221,7 @@ export interface SampleProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 
 // Component state extends props and also adds other internal state used in the lifecycle of the component
 // For example for a popup component tracking an `open` state as boolean
-export interface MenuItemState extends SampleProps {
+export interface SampleState extends SampleProps {
   ref: React.MutableRefObject<HTMLElement>;
 
   // once a slot is process in state it can only be an object
