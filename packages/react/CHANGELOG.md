@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
+This log was last generated on Thu, 04 Feb 2021 12:22:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.49)
+
+Thu, 04 Feb 2021 12:22:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.48..@fluentui/react_v8.0.0-beta.49)
+
+### Changes
+
+- Add additional prop support to IBreadcrumbItems ([PR #16765](https://github.com/microsoft/fluentui/pull/16765) by andredias@microsoft.com)
 
 ## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.48)
 

@@ -112,7 +112,12 @@ describe('SelectionZone - disabled touch targets', () => {
     requiredProps: { selection: new Selection() },
     // Problem: Doesn’t pass ref to the root element.
     // Solution: Ensure ref is passed correctly to the root element.
-    disabledTests: ['component-has-root-ref', 'component-handles-ref', 'has-top-level-file'],
+    disabledTests: [
+      'component-has-root-ref',
+      'component-handles-ref',
+      'has-top-level-file',
+      'component-handles-classname',
+    ],
   });
 
   it('toggles an item on click of toggle element', () => {

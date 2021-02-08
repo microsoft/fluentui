@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Implement basic MenuList example",
+  "packageName": "@fluentui/react-examples",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

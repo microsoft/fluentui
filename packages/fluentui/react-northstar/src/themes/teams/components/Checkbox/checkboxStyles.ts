@@ -3,6 +3,7 @@ import { CheckboxStylesProps, checkboxSlotClassNames } from '../../../../compone
 import { CheckboxVariables } from './checkboxVariables';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { checkboxIndicatorUrl } from './checkboxIndicatorUrl';
+import { checkboxIndicatorIndeterminateUrl } from './checkboxIndeterminateIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
 const commonToggleBeforeStyles = v => ({
@@ -43,10 +44,11 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
 
       [`& .${checkboxSlotClassNames.indicator}`]: {
         ...(!p.toggle && {
-          ...(p.checked && {
-            borderColor: v.checkedBackgroundHover,
-            backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackgroundHover),
-          }),
+          ...(p.checked &&
+            p.checked !== 'mixed' && {
+              borderColor: v.checkedBackgroundHover,
+              backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackgroundHover),
+            }),
           ...(!p.checked && {
             borderColor: v.borderColorHover,
           }),
@@ -115,9 +117,15 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
 
-    ...(p.checked && {
+    ...(p.checked &&
+      p.checked && {
+        borderColor: v.checkedBorderColor,
+        backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
+      }),
+
+    ...(p.checked === 'mixed' && {
       borderColor: v.checkedBorderColor,
-      backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground),
+      backgroundImage: checkboxIndicatorIndeterminateUrl(v.checkedIndicatorColor, v.checkedBackground),
     }),
 
     ...(p.disabled && {
@@ -130,6 +138,16 @@ export const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, Ch
         color: v.disabledCheckedIndicatorColor,
         borderColor: v.disabledBackgroundChecked,
         backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked),
+      }),
+
+    ...(p.disabled &&
+      p.checked === 'mixed' && {
+        color: v.disabledCheckedIndicatorColor,
+        borderColor: v.disabledBackgroundChecked,
+        backgroundImage: checkboxIndicatorIndeterminateUrl(
+          v.disabledCheckedIndicatorColor,
+          v.disabledBackgroundChecked,
+        ),
       }),
   }),
 

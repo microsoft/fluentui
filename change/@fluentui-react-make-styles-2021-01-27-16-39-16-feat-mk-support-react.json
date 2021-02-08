@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add makeStyles() bindings for React",
-  "packageName": "@fluentui/react-make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T15:39:16.807Z"
-}

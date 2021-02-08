@@ -1,6 +1,11 @@
 import * as React from 'react';
+import { unstable_NormalPriority as NormalPriority, unstable_runWithPriority as runWithPriority } from 'scheduler';
 
-// useLayoutEffect that does not show warning when server-side rendering, see Alex Reardon's article for more info
-// @see https://medium.com/@alexandereardon/uselayouteffect-and-ssr-192986cdcf7a
-export const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : /* istanbul ignore next */ React.useEffect;
+const isSSR =
+  typeof window === 'undefined' || /ServerSideRendering/.test(window.navigator && window.navigator.userAgent);
+
+export const useIsomorphicLayoutEffect = isSSR ? React.useEffect : React.useLayoutEffect;
+
+export function runWithNormalPriority(thunk: () => void) {
+  return runWithPriority(NormalPriority, thunk);
+}
