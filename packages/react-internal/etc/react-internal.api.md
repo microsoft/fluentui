@@ -3942,6 +3942,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    initialsTextColor?: string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     // @deprecated
