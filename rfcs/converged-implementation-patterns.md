@@ -128,6 +128,57 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
 
 Hook that accepts state and applies classnames to props and any shorthand slot props to style the component and its slots
 
+```typescript
+import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { SampleState } from './Sample.types';
+
+/**
+* Styles for the root slot
+*/
+export const useRootStyles = makeStyles([
+  [
+    null,
+    theme => ({
+      backgroundColor: theme.neutralColorTokens.neutralBackground1,
+      paddingRight: '12px',
+    }),
+  ],
+]);
+
+/**
+* Styles for the icon slot, uses state selectors from SampleState
+*/
+export const useIconStyles = makeStyles<Pick<SampleState, 'someState'>>([
+  [
+    // Conditionally apply styles
+    (someState) => someState == 1 ? true : false,
+    () => ({
+      width: '20px',
+      height: '20px',
+      marginRight: '9px',
+    }),
+  ],
+]);
+
+/**
+* Applies style classnames to slots
+*/
+export const useMenuItemStyles = (state: SampleState) => {
+  const rootClassName = useRootStyles({});
+  const iconClassName = useIconStyles({ someState: state.someState });
+
+  // ax is a util that deduplicates classnames
+  state.className = ax(rootClassName, state.className);
+
+  if (state.icon) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    // currently shorthand slot typings are broken
+    state.icon.className = ax(iconClassName, state.icon.className);
+  }
+};
+```
+
 #### renderSample.tsx
 
 Renders the correct JSX output of the component and its slots given the correct state.
