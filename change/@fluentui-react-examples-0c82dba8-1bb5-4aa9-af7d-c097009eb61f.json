@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Auto-generate react-menu",
+  "packageName": "@fluentui/react-examples",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
