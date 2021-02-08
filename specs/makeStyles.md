@@ -30,7 +30,7 @@ As both classes have the same one class specificity, the rule defined later in t
 As a consequence, there is a couple of restrictions:
 
 - Shorthand css properties (`margin`) must be expanded before merging (to `margin-top`, `margin-right`, `margin-bottom`, `margin-left`).
-- To apply any overrides, it is not possible to just concatenate classes. Style objects must be always deep merged and then the classes can be computed.
+- To apply any overrides, it is not possible to just concatenate classes. Style object are deeply nested as they can contain styles for pseudo elements (`::before`), pseudo classes (`:hover`) or nested elements (`& .indicator`). Therefore style objects must be always deep merged and then the classes can be computed.
 - Due to the previous point, when parent component is passing style overrides to a child component it needs to know what kind of component the child is.
   If that is a non-FUI component, parent must pass the overrides as a list of classnames. If the child is a FUI component, the overrides must me passes as `styles` object so that the child can merge the styles correctly.
   This can be complicated as there are scenarios where the parent does not know what child is will render (especially when the styles are not applied by the direct child but somewhere else down the tree).
@@ -41,6 +41,37 @@ As a consequence, there is a couple of restrictions:
 All application-owned style overrides are part of the Theme object. Most of those are just one-off overrides.
 This results in a huge object (several files and thousands of lines per component) which is not tree-shakeable.
 There is also unnecessary and confusing indirection when defining overrides and no support for dead code elimination.
+Overrides are defined far away from their usage, see the example bellow.
+
+```jsx
+// App
+<Provider theme={mergeThemes(theme.light, lightOverrides)}>
+  <App />
+</Provider>
+
+// Component usage - I need to go to a completely different file to find out what styles the variable overrides.
+<Button variables={{isMuteButton: true}} />
+
+// Theme overrides
+const lightOverrides = {
+  componentStyles: {
+    Button: {
+      root: ({variables}) => ({
+        // hundreds of overrides
+        ...(variables.isMuteButton && {
+          minWidth: '64px',
+        }),
+        // another hundreds of overrides
+      })
+    }
+    // all other components
+  }
+}
+
+const darkOverrides = {
+  // can have separate overrides for isMuteButton variable.
+}
+```
 
 #### Specificity is controlled by JS
 
@@ -65,7 +96,7 @@ For handling multiple levels of overrides, instead of using a special prop with 
 #### Limitations
 
 This approach looks good for style overrides, we are not sure this approach works the best for core component styles. Without that, we would have two different styling approaches in place.
-Although the object string concatenation is performant, it results in a lot of CSS code.
+Although the string concatenation is performant, it results in a lot of CSS code.
 
 ### v8 `makeStyles`
 
@@ -91,7 +122,7 @@ To style the component, combined classes are used in CSS as well:
 ```
 
 This is causing problems with overrides - assuming it is guaranteed that override classes are written bellow the component styles in the DOM, for most cases in this example, it is enough to have 1 class specificity for overrides to work correctly. The only case where the 1 class override does not work is for CSS properties in `.disabled.button`.
-Consumer does not know what specificity must be used for the overrides, this can also change between library versions.
+Consumer does not know what specificity must be used for the overrides, this can also change between library versions. Also different engineers can beak each other's styling.
 
 #### Stylesheet is generated build time
 
@@ -103,6 +134,8 @@ In runtime only the classes are applied based on props and state.
 The order of `makeStyles` calls defines the DOM insertion order. When `makeStyles` is called, it does NOT insert the CSS to DOM, but assigns a counter-based id to the associated styles. When `useStyles` returned by the `makeStyles` is called for the first time, it inserts the CSS to DOM in the order defined by the `makeStyles` call.
 
 For that to work as expected, you cannot export `makeStyles` to share styles in multiple different modules - that would lead to non-deterministic insertion order. The only way to share styles is to export the style object and have a dedicated `makeStyles` calls in all the modules which reuse the style object.
+
+The approach also currently does not support async API (`React.Suspense`) as there the modules evaluation order is non-deterministic. (Code example: https://codesandbox.io/s/kind-davinci-xvwxg)
 
 #### Inspired by Material UI
 
@@ -132,6 +165,7 @@ source = {
 In build time, this object can be processed (CSS expand, RTL...) and atomic CSS generated for each CSS property:
 
 ```js
+// ⚠️ This is proposed and simplified example output for the purpose of the spec, not the real build output ⚠️
 buildOutput = {
   color: { classname: 'abcd', css: '.abcd{color:red}' },
   marginTop: { classname: 'efgh', css: '.efgh{margin-top:0}' }, // CSS expand
@@ -184,12 +218,12 @@ IE11 does not support CSS variables. If we decide to support IE11, we will split
 
 ### Hash-based classnames
 
-We will use a hash (MurmurHash2) of the CSS property name and the value to generate a classname. That results in deterministic (=stable) classnames. With that we can support server side rendering.
+We will use a hash (MurmurHash2) of the CSS property name and the value to generate a classname. That results in deterministic (=stable) classnames. With that we can support server side rendering without issues with hydration (#3692).
 
 ### Passing overrides to children using `className`
 
-To avoid the ambivalence of using `className` vs `styles` props when passing overrides to children based on their type, we will use the dictionary sideeffect described in `useCSS` approach above.
-Parent component passes its overrides to a child as a list of classes in `className` prop. The child, takes the input classes and references the global dictionary to get back the necessary CSS attribute names to be able to perform the merge.
+To avoid the ambivalence of using `className` vs `styles` props when passing overrides to children based on their type, we will use the dictionary side effect described in `useCSS` approach above.
+Parent component passes its overrides to a child as a list of classes in `className` prop. The child, takes the input classes and references the global dictionary to get back the necessary CSS attribute names to be able to perform the merge - the merge is implemented in `ax()` function as described in #16411.
 
 #### Alternative 1: encode the CSS property name to the hash
 
@@ -206,34 +240,32 @@ If the global dictionary does not perform as expected, we might return back to t
 ### Another libraries using similar approach
 
 This has been inspired by [Facebook stylex talk](https://www.youtube.com/watch?v=9JZHodNR184).
-Similar approach is also used in Attlasian `compiled` v5.
+Similar approach is also used in Attlasian [compiled v5](https://github.com/atlassian-labs/compiled).
 
 ## Sample Code
 
 ```jsx
-
 // Button.tsx
 const useButtonStyles = makeStyles([
-	[null, { cursor: 'pointer' }], // always applied
-  [ props => props.primary, tokens => ({ backgroundColor: tokens.colors.primary.background })],
-  [ props => pros.disabled, { backgroundColor: 'gray' }]
+  [null, { cursor: 'pointer' }], // always applied
+  [props => props.primary, tokens => ({ backgroundColor: tokens.colors.primary.background })],
+  [props => pros.disabled, { backgroundColor: 'gray' }],
 ]);
 
-const Button = ({className, ...props}) => {
-	const classes = useButtonStyles(props, className);
-	return <button className={classes} {...props} />;
-}
+const Button = ({ className, ...props }) => {
+  const buttonClasses = useButtonStyles(props); // button styles
+  const mergedClasses = ax(buttonClasses, className); // merge with `className` = overrides from parent
+  return <button className={mergedClasses} {...props} />;
+};
 
 // ButtonUsage.tsx
-const useButtonOverrides = makeStyles([
-  [null, { backgroundColor: 'red' ],
-]);
+const useButtonOverrides = makeStyles([[null, { backgroundColor: 'red' }]]);
 
 const ButtonUsage = () => {
   const buttonOverrides = useButtonOverrides({});
 
-  return <Button classname={buttonOverrides}>I have always red background</Button>
-}
+  return <Button classname={buttonOverrides}>I have always red background</Button>;
+};
 ```
 
 ## Issues, open questions
@@ -254,7 +286,6 @@ const theme = {
   styles: {
     Button: { // id?
       styles: makeStyles({ ... }) // maybe?
-      }
     }
   }
 }
@@ -287,4 +318,5 @@ padding: var(--four-values-padding); // how can this be expanded to padding-top,
 
 ### Impact on bundle size
 
-What is the impact on bundle side having all the expanded styles in bundle?
+What is the impact on bundle size having all the expanded styles in bundle?
+Can we hash property keys (`display`,`display:hover`)?
