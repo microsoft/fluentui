@@ -49,11 +49,11 @@ Many new developers might have questions on the patterns that we follow to write
 
 Generally a component will have the following different files. Let us consider a `Sample` component, it will contain following parts:
 
-- Sample.tsx
-- useSample.ts
-- useSampleClasses/useSampleStyles.ts
-- renderSample.tsx
-- Sample.types.ts
+- `Sample.tsx`
+- `useSample.ts`
+- `useSampleClasses.ts`
+- `renderSample.tsx`
+- `Sample.types.ts`
 
 #### Sample.tsx
 
