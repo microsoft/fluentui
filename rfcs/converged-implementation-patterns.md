@@ -19,7 +19,7 @@ _List contributors to the proposal here_
 
 <!-- Explain the proposed change -->
 
-Tries to commit the common component pattern to writing in the repo for future reference and track improvements
+Tries to commit the common component pattern to writing in the repo for future reference and track improvements.
 
 Code samples should applied to utility scripts to generate packages which will help to educate/enforce this pattern... until we want to change it :-)
 
