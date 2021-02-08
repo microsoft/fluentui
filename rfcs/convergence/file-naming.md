@@ -44,7 +44,7 @@ Currently converged package contains following files:
 - `index.ts` - barrel / Public API surface
 - `Example.tsx` - (complete component to be used as is)
 - `useExample.ts` - (CONTROLLER/MODEL /main logic behind component - re-usable hook)
-- `useExampleClasses.ts` - (STYLES/ main logic for styling component - re-usable hook)
+- `useExampleStyles.ts` - (STYLES/ main logic for styling component - re-usable hook)
 - `useExampleRandom.tsx` - (some encapsulated logic - not really a hook)
 - `renderExample.tsx` - (VIEW/ main logic that handles rendering - re-usable hook)
 - `Example.types.ts` - (TYPES/ all TypeScript types used within package)
