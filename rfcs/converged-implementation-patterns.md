@@ -163,7 +163,7 @@ export const useIconStyles = makeStyles<Pick<SampleState, 'someState'>>([
 /**
 * Applies style classnames to slots
 */
-export const useMenuItemStyles = (state: SampleState) => {
+export const useSampleStyles = (state: SampleState) => {
   const rootClassName = useRootStyles({});
   const iconClassName = useIconStyles({ someState: state.someState });
 
