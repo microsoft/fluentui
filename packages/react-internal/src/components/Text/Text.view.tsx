@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
