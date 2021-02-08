@@ -211,7 +211,7 @@ The below will probably be present in every component, other utility types are f
 
 ```typescript
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utils';
 
 // For a component all HTML attributes should be allowed to maximize consistencty with DOM
 export interface SampleProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -222,6 +222,11 @@ export interface SampleProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 // Component state extends props and also adds other internal state used in the lifecycle of the component
 // For example for a popup component tracking an `open` state as boolean
 export interface MenuItemState extends SampleProps {
+  ref: React.MutableRefObject<HTMLElement>;
+
+  // once a slot is process in state it can only be an object
+  icon: ObjectShorthandProps;
+
   open: boolean;
   
   otherState: object;
