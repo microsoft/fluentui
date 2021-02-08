@@ -1,8 +1,8 @@
 {
-  "type": "none",
-  "comment": "chore: switch to single version policy with typescript",
+  "type": "patch",
+  "comment": "Remove typescript dependency",
   "packageName": "@fluentui/react-monaco-editor",
   "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none",
+  "dependentChangeType": "patch",
   "date": "2021-01-22T18:27:31.116Z"
 }
