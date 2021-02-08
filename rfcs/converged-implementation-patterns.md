@@ -109,7 +109,7 @@ export const useSample = (props: SampleProps, ref: React.Ref<HTMLElement>, defau
   );
 
   if (checkedValues || onCheckedValuesChange) {
-    mergedProps.hasCheckMark = true;
+    state.hasCheckMark = true;
   }
 
   // Anything else the component needs to manage its own state and render
