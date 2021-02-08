@@ -7,5 +7,5 @@ These are not production-ready components and **should never be used in product*
 To import React Menu components:
 
 ```js
-import { ComponentName } from '@fluentui/react-menu';
+import { MenuList, MenuItem } from '@fluentui/react-menu';
 ```
