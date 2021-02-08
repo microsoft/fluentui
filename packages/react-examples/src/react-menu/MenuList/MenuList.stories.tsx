@@ -21,7 +21,7 @@ const useContainerStyles = makeStyles([
     }),
   ],
 ]);
-const Container = (props: { children: React.ReactNode }) => {
+const Container: React.FC = props => {
   const classNames = useContainerStyles({});
   return <div className={classNames}>{props.children}</div>;
 };
