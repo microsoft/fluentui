@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@fluentui/react-hooks": "^8.0.0-beta.10",
+    "@fluentui/react-make-styles": "^0.2.2",
     "@fluentui/react-theme": "^0.2.0",
     "@fluentui/react-theme-provider": "^1.0.0-beta.19",
     "@fluentui/react-utils": "^0.2.0",

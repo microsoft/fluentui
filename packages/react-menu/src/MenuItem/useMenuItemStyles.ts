@@ -50,9 +50,6 @@ export const useMenuItemStyles = (state: MenuItemState) => {
   state.className = ax(rootClassName, state.className);
 
   if (state.icon) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    // TODO figure out typings
     state.icon.className = ax(iconClassName, state.icon.className);
   }
 };
