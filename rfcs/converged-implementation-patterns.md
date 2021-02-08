@@ -238,6 +238,14 @@ export interface SampleState extends SampleProps {
 NOTE: Currently `ComponentProp` inherits from a `GenericDictionary` that is essentially `Record<string, any>` which is essentially `any` :-(
 [see this comment thread](https://github.com/microsoft/fluentui/pull/16706#discussion_r568468291)
 
+#### Final API surface
+
+Of the above, we expect at least the following to be exported as the three pillars of a component:
+
+* `<Sample />` - component
+* `renderSample` - render function
+* `useSample` - component state hook
+
 ### Pros and Cons
 
 #### Pros
