@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix mergeThemes() to avoid object's mutation",
+  "packageName": "@fluentui/react-theme",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
