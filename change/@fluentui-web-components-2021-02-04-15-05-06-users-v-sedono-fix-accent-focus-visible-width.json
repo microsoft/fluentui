@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "correct focus visible outline on accent button and anchor styles",
-  "packageName": "@fluentui/web-components",
-  "email": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T23:05:06.344Z"
-}
