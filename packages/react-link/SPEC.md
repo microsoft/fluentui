@@ -55,50 +55,52 @@ The `Link` can also be custom rendered as something entirely different by replac
 ### Props
 
 ```ts
-export interface LinkProps extends ComponentProps, React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'>, {
-  /**
-   * URL the link points to. If not provided, the link renders as a button (unless that behavior is
-   * overridden using `as`).
-   */
-  href?: string;
+export type LinkProps = ComponentProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
+  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+    /**
+     * URL the link points to. If not provided, the link renders as a button (unless that behavior is
+     * overridden using `as`).
+     */
+    href?: string;
 
-  /**
-   * Where to open the linked URL. Common values are `_blank` (a new tab or window),
-   * `_self` (the current window/context), `_parent`, and `_top`.
-   */
-  target?: string;
+    /**
+     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
+     * `_self` (the current window/context), `_parent`, and `_top`.
+     */
+    target?: string;
 
-  /**
-   * Relationship to the linked URL (can be a space-separated list).
-   * Most common values are `noreferrer` and/or `noopener`.
-   */
-  rel?: string;
+    /**
+     * Relationship to the linked URL (can be a space-separated list).
+     * Most common values are `noreferrer` and/or `noopener`.
+     */
+    rel?: string;
 
-  /**
-   * Click handler for the link.
-   */
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+    /**
+     * Click handler for the link.
+     */
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
 
-  /**
-   * Whether the link is disabled.
-   */
-  disabled?: boolean;
+    /**
+     * Whether the link is disabled.
+     */
+    disabled?: boolean;
 
-  /**
-   * Built-in HTML attribute with different behavior depending on how the link is rendered.
-   * If rendered as `<a>`, hints at the MIME type.
-   * If rendered as `<button>`, override the type of button (`button` is the default).
-   */
-  type?: string;
+    /**
+     * Built-in HTML attribute with different behavior depending on how the link is rendered.
+     * If rendered as `<a>`, hints at the MIME type.
+     * If rendered as `<button>`, override the type of button (`button` is the default).
+     */
+    type?: string;
 
-  /**
-   * If true, changes styling when the link is being used alongside other text content.
-   */
-  inline?: string;
+    /**
+     * If true, changes styling when the link is being used alongside other text content.
+     */
+    inline?: string;
 
-  /** Style tokens */
-  tokens?: LinkTokenSet;
-}
+    /** Style tokens */
+    tokens?: RecursivePartial<LinkTokens>;
+  };
 ```
 
 ### Styling Tokens
