@@ -520,7 +520,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onFloatingSuggestionsDismiss = React.useCallback(
     (ev: React.MouseEvent): void => {
-      onFloatingSuggestionsDismiss?.();
+      onFloatingSuggestionsDismiss?.(ev);
       showPicker(false);
     },
     [onFloatingSuggestionsDismiss, showPicker],
