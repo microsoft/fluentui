@@ -1,11 +1,15 @@
 pr: none
 trigger: none
 
+# nightly build master branch at 3am
 schedules:
   - cron: 0 3 * * *
     branches:
       include:
         - master
+
+workspace:
+  clean: all
 
 resources:
   repositories:
@@ -24,7 +28,7 @@ variables:
   - name: nightlyRelease
     value: true
   # below are variables configurable at queue time, so they cannot appear in yml file
-  # - name: publishDocsiteOnly # set it to true to only run Job_2
+  # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
   # - name: publishOfficial # set it to true to publish package to npm, and publish docsite for official releases
   #   value: false
@@ -34,7 +38,7 @@ variables:
 pool: 'Self Host Ubuntu'
 
 jobs:
-  - job: Job_1
+  - job: Job_build_publish
     displayName: Build and Release Fluent Packages
     # skip this job if publishDocsiteOnly is true
     condition: and(succeeded(), eq(variables.publishDocsiteOnly, false))
@@ -136,10 +140,15 @@ jobs:
             yarn release:fluentui:$(version) --yes
 
             yarn release:fluentui:post-validation
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
 
-  - job: Job_2
+  - job: Job_build_publish_doc
     displayName: Build and Publish Docsite
-    dependsOn: Job_1
+    dependsOn: Job_build_publish
     # run this job when the previous job is succeeded or when publishDocsiteOnly is true
     condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
 
@@ -202,3 +211,9 @@ jobs:
           StorageAccountRM: fluentsite
           ContainerName: $web
           BlobPrefix: $(deployBasePath)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
