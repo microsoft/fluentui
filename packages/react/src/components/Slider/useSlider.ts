@@ -13,8 +13,8 @@ import {
 } from '@fluentui/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-const MIN_PREFIX = 'min';
-const MAX_PREFIX = 'max';
+export const MIN_PREFIX = 'min';
+export const MAX_PREFIX = 'max';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
@@ -45,12 +45,20 @@ const getLineSectionStylesFn = (vertical: boolean = false) => {
   return getSlotStyleFn(lengthString);
 };
 
-const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanElement>, value: number | undefined) => {
+const useComponentRef = (
+  props: ISliderProps,
+  thumb: React.RefObject<HTMLSpanElement>,
+  value: number | undefined,
+  range?: [number, number],
+) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({
       get value() {
         return value;
+      },
+      get range() {
+        return props.ranged ? range : undefined;
       },
       focus() {
         if (thumb.current) {
@@ -157,13 +165,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       // decided which thumb value to change
       if (shouldChangeLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
         setLowerValue(roundedValue);
+        props.onRangeChange?.([roundedValue, value]);
       } else if (
         !shouldChangeLowerValueRef.current &&
         (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
       ) {
         setValue(roundedValue);
+        props.onRangeChange?.([lowerValue, roundedValue]);
       }
-      props.onRangeChange?.([lowerValue, value]);
     } else {
       setValue(roundedValue);
     }
@@ -313,10 +322,10 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
   const onFocusProp: {} = disabled ? {} : { onFocus: onThumbFocus };
 
-  const thumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, thumbRef, value);
   const lowerValueThumbRef = React.useRef<HTMLSpanElement>(null);
   useComponentRef(props, lowerValueThumbRef, lowerValue);
+  const thumbRef = React.useRef<HTMLSpanElement>(null);
+  useComponentRef(props, thumbRef, value);
   const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
   const getTrackStyles = getLineSectionStylesFn(vertical);
   const originValue = originFromZero ? 0 : min;
