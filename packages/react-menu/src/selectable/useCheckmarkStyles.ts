@@ -1,4 +1,5 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { ObjectShorthandProps } from '@fluentui/react-utils';
 import { MenuItemSelectableState } from './types';
 
 /**
@@ -18,15 +19,11 @@ const useStyles = makeStyles([
 /**
  * Applies styles to a checkmark slot for selectable menu items
  */
-export const useCheckmarkStyles = (state: MenuItemSelectableState) => {
+export const useCheckmarkStyles = (
+  state: MenuItemSelectableState & { checkmark: ObjectShorthandProps<HTMLElement> },
+) => {
   const checkmarkClassName = useStyles({});
-  // Would use slots in the shared props/state but it doesn't extend properly when prop and state have the same
-  // key but different types
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (state.checkmark) {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     state.checkmark.className = ax(checkmarkClassName, state.checkmark.className);
   }
 };

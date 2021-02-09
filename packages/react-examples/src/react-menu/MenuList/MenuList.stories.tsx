@@ -1,8 +1,6 @@
 import * as React from 'react';
 
 import { MenuList, MenuItem, MenuItemCheckbox } from '@fluentui/react-menu';
-import { teamsLightTheme } from '@fluentui/react-theme';
-import { FluentProvider } from '@fluentui/react-provider';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
