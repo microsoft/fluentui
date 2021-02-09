@@ -102,10 +102,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
           }
       data-icon-name="ChevronLeft"
-    />
+    >
+      
+    </i>
   </button>
   <div
     className=
@@ -3179,10 +3187,18 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
           }
       data-icon-name="ChevronRight"
-    />
+    >
+      
+    </i>
   </button>
 </div>
 `;
@@ -3289,10 +3305,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
           }
       data-icon-name="ChevronLeft"
-    />
+    >
+      
+    </i>
   </button>
   <div
     className=
@@ -6358,10 +6382,18 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
       className=
 
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             display: inline-block;
+            font-family: "FabricMDL2Icons";
+            font-style: normal;
+            font-weight: normal;
+            speak: none;
           }
       data-icon-name="ChevronRight"
-    />
+    >
+      
+    </i>
   </button>
 </div>
 `;
