@@ -190,6 +190,14 @@ export interface DesignSystem {
   neutralOutlineHoverDelta: number;
   neutralOutlineActiveDelta: number;
   neutralOutlineFocusDelta: number;
+
+  /*
+   * Color swatch deltas for the neutral-contrast-fill recipe.
+   */
+  neutralContrastFillRestDelta: number;
+  neutralContrastFillHoverDelta: number;
+  neutralContrastFillActiveDelta: number;
+  neutralContrastFillFocusDelta: number;
 }
 
 /**
@@ -280,6 +288,11 @@ export const DesignSystemDefaults: DesignSystem = {
   neutralOutlineHoverDelta: 40,
   neutralOutlineActiveDelta: 16,
   neutralOutlineFocusDelta: 25,
+
+  neutralContrastFillRestDelta: 0,
+  neutralContrastFillHoverDelta: -3,
+  neutralContrastFillActiveDelta: 7,
+  neutralContrastFillFocusDelta: 0,
 };
 
 /**
@@ -451,3 +464,16 @@ export const neutralOutlineActiveDelta: DesignSystemResolver<number> = getDesign
 );
 
 export const neutralOutlineFocusDelta: DesignSystemResolver<number> = getDesignSystemValue('neutralOutlineFocusDelta');
+
+export const neutralContrastFillRestDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillRestDelta',
+);
+export const neutralContrastFillHoverDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillHoverDelta',
+);
+export const neutralContrastFillActiveDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillActiveDelta',
+);
+export const neutralContrastFillFocusDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillFocusDelta',
+);

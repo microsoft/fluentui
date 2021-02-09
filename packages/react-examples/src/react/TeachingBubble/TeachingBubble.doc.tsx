@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TeachingBubbleBasicExample } from './TeachingBubble.Basic.Example';
 import { TeachingBubbleWideExample } from './TeachingBubble.Wide.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { TeachingBubbleCondensedExample } from './TeachingBubble.Condensed.Example';
 import { TeachingBubbleIllustrationExample } from './TeachingBubble.Illustration.Example';
 import { TeachingBubbleWideIllustrationExample } from './TeachingBubble.WideIllustration.Example';
@@ -19,8 +19,7 @@ const TeachingBubbleMultiStepExampleCode = require('!raw-loader?esModule=false!@
 export const TeachingBubblePageProps: IDocPageProps = {
   title: 'TeachingBubble',
   componentName: 'TeachingBubble',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/TeachingBubble',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/TeachingBubble',
   examples: [
     {
       title: 'TeachingBubble Basic',

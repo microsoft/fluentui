@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { SwatchColorPickerBasicExample } from './SwatchColorPicker.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const SwatchColorPickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SwatchColorPicker/SwatchColorPicker.Basic.Example.tsx') as string;
 
 export const SwatchColorPickerPageProps: IDocPageProps = {
   title: 'SwatchColorPicker',
   componentName: 'SwatchColorPicker',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SwatchColorPicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SwatchColorPicker',
   examples: [
     {
       title: 'SwatchColorPicker',

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Sticky';
+export * from './components/Sticky/index';

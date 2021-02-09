@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { ChoiceGroupBasicExample } from './ChoiceGroup.Basic.Example';
 import { ChoiceGroupControlledExample } from './ChoiceGroup.Controlled.Example';
@@ -18,7 +18,7 @@ const ChoiceGroupIconExampleCode = require('!raw-loader?esModule=false!@fluentui
 export const ChoiceGroupPageProps: IDocPageProps = {
   title: 'ChoiceGroup',
   componentName: 'ChoiceGroup',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ChoiceGroup',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ChoiceGroup',
   examples: [
     {
       title: 'Basic ChoiceGroup',

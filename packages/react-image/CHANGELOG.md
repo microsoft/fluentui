@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Tue, 02 Feb 2021 12:21:54 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.21)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.20..@fluentui/react-image_v0.6.21)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.0 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.21 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+## [0.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.20)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.20..@fluentui/react-image_v0.6.20)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.20 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
 
 ## [0.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.20)
 
