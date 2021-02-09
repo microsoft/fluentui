@@ -20,6 +20,8 @@ const useStyles = makeStyles([
  */
 export const useCheckmarkStyles = (state: MenuItemSelectableState) => {
   const checkmarkClassName = useStyles({});
+  // Would love to use slots in the shared props/state but it doesn't extend properly when prop and state have the same
+  // key but different types
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   if (state.checkmark) {
