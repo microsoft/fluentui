@@ -7,7 +7,8 @@ import {
   designSystemProvider,
   DesignSystemProviderTemplate as template,
 } from '@microsoft/fast-foundation';
-import { neutralForegroundRest } from '../color';
+import { parseColorHexRGB } from '@microsoft/fast-colors';
+import { createColorPalette, neutralForegroundRest } from '../color';
 import { DensityOffset, DesignSystem, DesignSystemDefaults } from '../fluent-design-system';
 import { DesignSystemProviderStyles as styles } from './design-system-provider.styles';
 
@@ -77,11 +78,24 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
   }
 
   @designSystemProperty({
+    attribute: 'neutral-base-color',
+    cssCustomProperty: false,
+    default: DesignSystemDefaults.neutralBaseColor,
+  })
+  public neutralBaseColor: string;
+  protected neutralBaseColorChanged(oldValue: string, newValue: string): void {
+    this.neutralPalette = createColorPalette(parseColorHexRGB(newValue));
+  }
+
+  @designSystemProperty({
     attribute: 'accent-base-color',
     cssCustomProperty: false,
     default: DesignSystemDefaults.accentBaseColor,
   })
   public accentBaseColor: string;
+  protected accentBaseColorChanged(oldValue: string, newValue: string): void {
+    this.accentPalette = createColorPalette(parseColorHexRGB(newValue));
+  }
 
   @designSystemProperty({
     attribute: false,
