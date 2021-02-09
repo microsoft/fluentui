@@ -305,11 +305,12 @@ const useStyles = makeStyles<AvatarState>([
     }),
   ],
 
+  // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
   [
     s => s.activeGlow,
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow8}, 0 0 8px 2px ${tokens.alias.color.neutral.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)`,
       },
     }),
   ],
@@ -317,7 +318,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow && (s.size === 20 || s.size === 24 || s.size === 28),
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow4}, 0 0 4px 2px ${tokens.alias.color.neutral.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)`,
       },
     }),
   ],
@@ -325,7 +326,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow && (s.size === 48 || s.size === 56 || s.size === 64),
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow16}, 0 0 8px 2px ${tokens.alias.color.neutral.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)`,
       },
     }),
   ],
@@ -333,7 +334,7 @@ const useStyles = makeStyles<AvatarState>([
     s => s.activeGlow && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
     tokens => ({
       ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow28}, 0 0 28px 4px ${tokens.alias.color.neutral.brandForeground}`,
+        boxShadow: `${tokens.alias.shadow.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)`,
       },
     }),
   ],
@@ -445,7 +446,7 @@ const useLabelStyles = makeStyles<AvatarState>([
     s => s.colorVariant === 'brand',
     tokens => ({
       color: tokens.alias.color.neutral.neutralForegroundInverted,
-      background: tokens.alias.color.neutral.brandForeground,
+      background: tokens.alias.color.brand.brandBackground,
     }),
   ],
 ]);
