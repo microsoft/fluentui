@@ -84,7 +84,7 @@ function createFluentNorthstarFixtures() {
       const importStatement = `import { ${itemName} } from '${packageName}'; console.log(${itemName})`;
       try {
         const folderName = getFolderName(packageName);
-        const entryPath = path.join('fixtures/', folderName, `${itemName}.js`);
+        const entryPath = path.join('temp/fixtures/', folderName, `${itemName}.js`);
         fs.outputFileSync(entryPath, importStatement, 'utf-8');
       } catch (err) {
         console.log(err);
@@ -93,7 +93,7 @@ function createFluentNorthstarFixtures() {
   });
 }
 
-function createFluentFixtures() {
+function createFluentReactFixtures() {
   const packageName = '@fluentui/react';
   const distPath = path.dirname(require.resolve(packageName).replace('lib-commonjs', 'lib'));
   const packagePath = path.resolve(distPath);
@@ -106,7 +106,7 @@ function createFluentFixtures() {
       const importStatement = `import { ${item} } from '${packageName}'; console.log(${item})`;
       try {
         const folderName = getFolderName(packageName);
-        const entryPath = path.join('fixtures/', folderName, `${item}.js`);
+        const entryPath = path.join('temp/fixtures/', folderName, `${item}.js`);
         fs.outputFileSync(entryPath, importStatement, 'utf-8');
       } catch (err) {
         console.log(err);
@@ -119,7 +119,7 @@ function createEntry(packageName) {
   try {
     const importStatement = `import p from '${packageName}'; console.log(p)`;
     const folderName = getFolderName(packageName);
-    const entryPath = path.join('fixtures/', folderName, 'index.js');
+    const entryPath = path.join('temp/fixtures/', folderName, 'index.js');
     fs.outputFileSync(entryPath, importStatement, 'utf-8');
   } catch (err) {
     console.log(err);
@@ -134,13 +134,10 @@ function createEntry(packageName) {
  * and therefore slowing down CI significantly, setting this to true to avoid stats generation.
  * If bundle size is changed unexpectedly, developers can drill down deeper on the problem by
  * locally running bundle tests.
- * @param {boolean} [onlyOwnComponents] - If true, only run the tests for an entry point file if it
- * has a corresponding folder under `lib/components`. This eliminates duplicate bundle size tests
- * for components which are just re-exported.
  */
-function buildEntries(packageName, entries = {}, includeStats = true, onlyOwnComponents = false) {
+function buildEntries(packageName, entries = {}, includeStats = true) {
   const folderName = getFolderName(packageName);
-  const packagePath = path.join('fixtures/', folderName);
+  const packagePath = path.join('temp/fixtures/', folderName);
 
   fs.readdirSync(packagePath).forEach(itemName => {
     const entryName = itemName.replace(/.js$/, '');
@@ -159,7 +156,7 @@ function buildEntries(packageName, entries = {}, includeStats = true, onlyOwnCom
  */
 function buildEntry(packageName, includeStats = true) {
   const folderName = getFolderName(packageName);
-  const entryPath = path.resolve(path.join('fixtures/', folderName));
+  const entryPath = path.resolve(path.join('temp/fixtures/', folderName));
   return {
     entryPath: `${entryPath}/index.js`,
     includeStats,
@@ -173,7 +170,7 @@ function getFolderName(packageName) {
 module.exports = {
   buildEntries,
   buildEntry,
-  createFluentFixtures,
+  createFluentReactFixtures,
   createFluentNorthstarFixtures,
   createEntry,
   createWebpackConfig,

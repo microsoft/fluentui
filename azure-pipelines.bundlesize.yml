@@ -85,7 +85,7 @@ jobs:
       - build-northstar
     steps:
       - task: DownloadPipelineArtifact@2
-        displayName: 'Download Pipeline Artifact Fabric'
+        displayName: 'Download Pipeline Artifact React'
         inputs:
           artifactName: 'bundlesizes-react'
           targetPath: '$(Build.ArtifactStagingDirectory)/react'
@@ -100,7 +100,7 @@ jobs:
         displayName: 'Install jq'
 
       - script: "jq -s 'reduce .[] as $item ({}; . * $item)' $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > $(Build.ArtifactStagingDirectory)/bundlesize.json"
-        displayName: 'Merge fabric and react-northstar to bundlesize.json'
+        displayName: 'Merge React and React-Northstar to bundlesize.json'
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Merged Bundle Size information'
