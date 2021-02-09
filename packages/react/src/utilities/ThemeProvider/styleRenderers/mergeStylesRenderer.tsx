@@ -17,7 +17,6 @@ export const mergeStylesRenderer: StyleRenderer = {
   getId: () => _seed,
 
   renderStyles: (styleSet, options) => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return mergeCssSets((Array.isArray(styleSet) ? styleSet : [styleSet]) as any, options) as any;
   },
 
@@ -26,7 +25,6 @@ export const mergeStylesRenderer: StyleRenderer = {
   },
 
   renderKeyframes: keyframes => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return mergeKeyframes(keyframes as any);
   },
 };

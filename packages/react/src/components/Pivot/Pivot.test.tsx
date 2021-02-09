@@ -37,7 +37,6 @@ describe('Pivot', () => {
     );
 
     // Instruct FocusZone to treat all elements as visible.
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (HTMLElement.prototype as any).isVisible = true;
 
     try {
@@ -47,7 +46,6 @@ describe('Pivot', () => {
       expect(document.activeElement).toBeTruthy();
       expect(document.activeElement!.textContent?.trim()).toEqual('Link 1');
     } finally {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       delete (HTMLElement.prototype as any).isVisible;
     }
   });

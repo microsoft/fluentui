@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';

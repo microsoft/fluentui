@@ -20,7 +20,6 @@ const useThemeProviderStyles = makeStyles((theme: Theme) => {
         WebkitFontSmoothing: fonts.medium.WebkitFontSmoothing,
       },
     ],
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as Record<string, any>;
 });
 

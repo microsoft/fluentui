@@ -4,7 +4,6 @@ import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
   for (const key of path) {
     graphNode = graphNode.get(key);
@@ -17,7 +16,6 @@ const graphGet = (graphNode: Map<any, any>, path: any[]): any | undefined => {
   return graphNode;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const graphSet = (graphNode: Map<any, any>, path: any[], value: any) => {
   for (let i = 0; i < path.length - 1; i++) {
     const key = path[i];

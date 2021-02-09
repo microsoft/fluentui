@@ -301,7 +301,6 @@ describe('DatePicker', () => {
     datePicker
       .find(TextField)
       ?.props()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .onClick?.({} as any);
     const calendarProps = datePicker.find(Calendar).props();
 
@@ -358,7 +357,6 @@ describe('DatePicker', () => {
     datePicker
       .find(TextField)
       ?.props()
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .onClick?.({} as any);
 
     const calendarProps = datePicker.find(Calendar).props();

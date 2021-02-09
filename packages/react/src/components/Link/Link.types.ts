@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
@@ -20,7 +18,6 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   type?: string;
 
   // Anchor
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   download?: any;
   href?: string;
   hrefLang?: string;
@@ -41,7 +38,6 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   value?: string | string[] | number;
 
   /** Any other props for HTMLElements or a React component passed to `as` */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
@@ -117,7 +113,6 @@ export interface ILinkProps
   underline?: boolean;
 
   /** Any other props for elements or a React component passed to `as` */
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 

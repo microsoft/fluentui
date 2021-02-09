@@ -6,7 +6,6 @@ import { PivotItem } from './PivotItem';
 /**
  * {@docCategory Pivot}
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IPivot {
   /**
    * Sets focus to the first pivot tab.
@@ -17,7 +16,6 @@ export interface IPivot {
 /**
  * {@docCategory Pivot}
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
@@ -104,7 +102,6 @@ export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
 /**
  * {@docCategory Pivot}
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export interface IPivotStyles {
   /**
    * Style for the root element.
