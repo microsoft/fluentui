@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "SelectedItemsList EditableItem should have first item selected in picker on show",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-03T00:22:00.102Z"
-}

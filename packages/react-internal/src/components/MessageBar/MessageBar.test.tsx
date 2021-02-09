@@ -1,11 +1,16 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import { resetIds } from '@fluentui/utilities';
 import { MessageBar } from './MessageBar';
 import { MessageBarType } from './MessageBar.types';
 import { isConformant } from '../../common/isConformant';
 
 describe('MessageBar', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   const noop = () => {
     /* no-op */
   };

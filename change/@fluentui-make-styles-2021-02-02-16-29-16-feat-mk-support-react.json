@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update proxy implementation to correspond to Provider CSS variables",
-  "packageName": "@fluentui/make-styles",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-02T15:29:16.424Z"
-}

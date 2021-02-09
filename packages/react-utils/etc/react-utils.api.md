@@ -45,6 +45,11 @@ export type MergePropsOptions = {
     deepMerge?: string[];
 };
 
+// @public (undocumented)
+export type ObjectShorthandProps<TProps extends GenericDictionary> = TProps & {
+    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+};
+
 // @public
 export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: (keyof TProps)[]) => TProps;
 
