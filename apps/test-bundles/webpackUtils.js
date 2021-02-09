@@ -70,9 +70,12 @@ function createWebpackConfig(entries) {
   });
 }
 
-// Files which should not be considered top-level entries.
-const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
-
+/**
+ * Webpack will remove any unused import as a dead code (tree shaking).
+ * Thus we are creating temporary JS files with top-level component imports
+ * and console logging them. This will ensure that the code is active
+ * and that webpack bundles it correctly.
+ */
 function createFluentNorthstarFixtures() {
   const packageName = '@fluentui/react-northstar';
   const distPath = path.dirname(require.resolve(packageName).replace('commonjs', 'es'));
@@ -92,6 +95,9 @@ function createFluentNorthstarFixtures() {
     }
   });
 }
+
+// Files which should not be considered top-level entries.
+const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
 function createFluentReactFixtures() {
   const packageName = '@fluentui/react';
@@ -127,7 +133,7 @@ function createEntry(packageName) {
 }
 
 /**
- * Build webpack entries based on top level imports available in a package.
+ * Build webpack entries from created fixtures.
  *
  * @param {boolean} [includeStats] - Stats are generated and used by the size auditor report
  * to check more details on what caused the bundle size change. Due to stats generation being slow,
@@ -152,7 +158,7 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
 }
 
 /**
- * Build entries for single top level import.
+ * Build entries for single fixture with top level import.
  */
 function buildEntry(packageName, includeStats = true) {
   const folderName = getFolderName(packageName);
