@@ -85,6 +85,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     coinSize,
     styles,
     imageUrl,
+    initialsTextColor,
     isOutOfOffice,
     // eslint-disable-next-line deprecation/deprecation
     onRenderCoin = renderCoin,
@@ -138,7 +139,10 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
             <div
               className={mergeStyles(
                 classNames.initials,
-                !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(props) },
+                !showUnknownPersonaCoin && {
+                  backgroundColor: getPersonaInitialsColor(props),
+                  color: initialsTextColor,
+                },
               )}
               style={coinSizeStyle}
               aria-hidden="true"

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove compat Button imports",
-  "packageName": "@fluentui/react-docsite-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove compat Button imports",
-  "packageName": "@fluentui/azure-themes",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
