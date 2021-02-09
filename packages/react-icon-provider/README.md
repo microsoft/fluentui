@@ -2,8 +2,9 @@
 
 **Icon override provider for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-This component is used for providing overrides to the icons in `@fluentui/react-icons-mdl2`. This provider does not affect legacy icons or their overrides(`initializeIcons` and `registerIcons` from `@fluentui/font-icons-mdl2`).
-Below is an example of how to do this:
+This component is used for providing overrides to the icons in `@fluentui/react-icons-mdl2`. This provider does not affect legacy icons or their overrides (`initializeIcons` and `registerIcons` from `@fluentui/font-icons-mdl2`).
+
+Below is an example of how to override an icon:
 
 ```js
 import { IconProvider } from '@fluentui/react-icon-provider';
@@ -21,7 +22,7 @@ const override: IIconSubset = {
   },
 };
 
-const OverriddenFilterIcon = (
+const OverriddenFilterIcon = () => (
   <IconProvider icons={override}>
     <FilterIcon />
   </IconProvider>
