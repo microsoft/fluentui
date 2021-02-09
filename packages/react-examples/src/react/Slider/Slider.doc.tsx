@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { SliderBasicExample } from './Slider.Basic.Example';
 import { SliderVerticalExample } from './Slider.Vertical.Example';
+import { SliderRangedExample } from './Slider.Ranged.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const SliderBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Basic.Example.tsx') as string;
 const SliderVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Vertical.Example.tsx') as string;
+const SliderRangedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Slider/Slider.Ranged.Example.tsx') as string;
 
 export const SliderPageProps: IDocPageProps = {
   title: 'Slider',
@@ -21,6 +23,11 @@ export const SliderPageProps: IDocPageProps = {
       title: 'Vertical sliders',
       code: SliderVerticalExampleCode,
       view: <SliderVerticalExample />,
+    },
+    {
+      title: 'Vertical sliders',
+      code: SliderRangedExampleCode,
+      view: <SliderRangedExample />,
     },
   ],
   overview: require<
