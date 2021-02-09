@@ -1,5 +1,5 @@
 import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
-import { IButtonStyles } from '../../compat/Button';
+import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
 import { IStyle } from '../../Styling';
 

@@ -1,5 +1,5 @@
 import { getGlobalClassNames, getFocusStyle, HighContrastSelector } from '../../../Styling';
-import { ButtonGlobalClassNames } from '../../../compat/components/Button/BaseButton.classNames';
+import { ButtonGlobalClassNames } from '../../Button/BaseButton.classNames';
 import { ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getRTL } from '../../../Utilities';
 

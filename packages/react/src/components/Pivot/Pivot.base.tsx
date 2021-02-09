@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useControllableValue, useId } from '@fluentui/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
-import { CommandButton, IButton } from '../../compat/Button';
+import { CommandButton, IButton } from '../../Button';
 import { useOverflow } from '../../utilities/useOverflow';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IImageProps } from '../../Image';
-import { IButtonProps } from '../../compat/Button';
+import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';

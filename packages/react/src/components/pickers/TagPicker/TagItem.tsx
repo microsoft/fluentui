@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { styled, classNamesFunction } from '../../../Utilities';
-import { IconButton } from '../../../compat/Button';
+import { IconButton } from '../../../Button';
 
 import { ITagItemProps, ITagItemStyleProps, ITagItemStyles } from './TagPicker.types';
 import { getStyles } from './TagItem.styles';
