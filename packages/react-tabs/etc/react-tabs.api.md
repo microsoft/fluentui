@@ -4,8 +4,8 @@
 
 ```ts
 
-import { IButtonProps } from '@fluentui/react-internal/lib/compat/Button';
-import { IKeytipProps } from '@fluentui/react-internal';
+import { IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { IKeytipProps } from '@fluentui/react';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
@@ -13,13 +13,18 @@ import { IStyleFunctionOrObject } from '@fluentui/utilities';
 import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 
+// @public
+export type TabFormatType = 'links' | 'tabs';
+
 // @public (undocumented)
-export interface IPivot {
-    focus(): void;
+export class TabItem extends React.Component<TabItemProps, {}> {
+    constructor(props: TabItemProps);
+    // (undocumented)
+    render(): JSX.Element;
 }
 
 // @public (undocumented)
-export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface TabItemProps extends React.HTMLAttributes<HTMLDivElement> {
     alwaysRender?: boolean;
     ariaLabel?: string;
     componentRef?: IRefObject<{}>;
@@ -31,35 +36,47 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
     itemIcon?: string;
     itemKey?: string;
     keytipProps?: IKeytipProps;
-    // @deprecated
-    linkText?: string;
-    onRenderItemLink?: IRenderFunction<IPivotItemProps>;
+    onRenderTab?: IRenderFunction<TabItemProps>;
 }
 
+// @public
+export const Tabs: React.FunctionComponent<TabsProps>;
+
 // @public (undocumented)
-export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
+export const TabsBase: React.FunctionComponent<TabsProps>;
+
+// @public (undocumented)
+export interface TabsImperativeHandle {
+    focus(): void;
+}
+
+// @public
+export type TabSizeType = 'normal' | 'large';
+
+// @public (undocumented)
+export interface TabsProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     className?: string;
-    componentRef?: React.RefObject<IPivot>;
+    componentRef?: React.RefObject<TabsImperativeHandle>;
     defaultSelectedKey?: string;
     getTabId?: (itemKey: string, index: number) => string;
     headersOnly?: boolean;
-    linkFormat?: PivotLinkFormatType;
-    linkSize?: PivotLinkSizeType;
-    onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
+    onTabClick?: (item?: TabItem, ev?: React.MouseEvent<HTMLElement>) => void;
     overflowBehavior?: 'none' | 'menu';
     selectedKey?: string | null;
-    styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
+    styles?: IStyleFunctionOrObject<TabsStyleProps, TabsStyles>;
+    tabFormat?: TabFormatType;
+    tabSize?: TabSizeType;
     theme?: ITheme;
 }
 
 // @public (undocumented)
-export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> & Pick<IPivotProps, 'className'> & {
-    linkSize?: PivotLinkSizeType;
-    linkFormat?: PivotLinkFormatType;
+export type TabsStyleProps = Required<Pick<TabsProps, 'theme'>> & Pick<TabsProps, 'className'> & {
+    tabSize?: TabSizeType;
+    tabFormat?: TabFormatType;
 };
 
 // @public (undocumented)
-export interface IPivotStyles {
+export interface TabsStyles {
     // (undocumented)
     count: IStyle;
     // (undocumented)
@@ -67,50 +84,19 @@ export interface IPivotStyles {
     // (undocumented)
     itemContainer?: IStyle;
     // (undocumented)
-    link: IStyle;
-    // (undocumented)
-    linkContent: IStyle;
-    // (undocumented)
-    linkInMenu: IStyle;
-    // (undocumented)
-    linkIsSelected: IStyle;
-    // (undocumented)
     overflowMenuButton: IStyle;
     root: IStyle;
     // (undocumented)
+    tab: IStyle;
+    // (undocumented)
+    tabContent: IStyle;
+    // (undocumented)
+    tabInMenu: IStyle;
+    // (undocumented)
+    tabIsSelected: IStyle;
+    // (undocumented)
     text: IStyle;
 }
-
-// @public
-export const Pivot: React.FunctionComponent<IPivotProps>;
-
-// @public (undocumented)
-export const PivotBase: React.FunctionComponent<IPivotProps>;
-
-// @public (undocumented)
-export class PivotItem extends React.Component<IPivotItemProps, {}> {
-    constructor(props: IPivotItemProps);
-    // (undocumented)
-    render(): JSX.Element;
-}
-
-// @public @deprecated (undocumented)
-export const enum PivotLinkFormat {
-    links = "links",
-    tabs = "tabs"
-}
-
-// @public
-export type PivotLinkFormatType = 'links' | 'tabs';
-
-// @public @deprecated (undocumented)
-export const enum PivotLinkSize {
-    large = "large",
-    normal = "normal"
-}
-
-// @public
-export type PivotLinkSizeType = 'normal' | 'large';
 
 
 // (No @packageDocumentation comment for this package)

@@ -1,0 +1,71 @@
+{
+  "name": "@fluentui/react-theme",
+  "entries": [
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-theme_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mergeThemes() to avoid object's mutation",
+            "author": "olfedias@microsoft.com",
+            "commit": "e6a1c491a67b911cc285fcc9d89b6fca152aacd9",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-theme_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update converged theme shape",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-theme_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "add missing Jest config",
+            "author": "olfedias@microsoft.com",
+            "commit": "e68a6c887cbc45ddb111b6a0c3c8a21ab4a17256",
+            "package": "@fluentui/react-theme"
+          },
+          {
+            "comment": "Remove .npmrc files except at root",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-theme_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: add basic theme utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "026320cfc0408dbc2d25d3959856d787ef21d344",
+            "package": "@fluentui/react-theme"
+          }
+        ]
+      }
+    }
+  ]
+}

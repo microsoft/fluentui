@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove react-theme-provider dependency from react package.",
-  "packageName": "@fluentui/react-internal",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-28T19:40:45.967Z"
-}

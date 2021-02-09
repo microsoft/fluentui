@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Image';
+export * from './components/Image/index';

@@ -11,7 +11,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../compat/Button';
-import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
+import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualMenu';
@@ -249,28 +249,30 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   };
 
   private _onRenderItem = (item: IBreadcrumbItem) => {
-    if (item.onClick || item.href) {
+    const { as, href, onClick, isCurrentItem, text, ...additionalProps } = item;
+
+    if (onClick || href) {
       return (
         <Link
-          as={item.as}
+          {...additionalProps}
+          as={as}
           className={this._classNames.itemLink}
-          href={item.href}
-          aria-current={item.isCurrentItem ? 'page' : undefined}
+          href={href}
+          aria-current={isCurrentItem ? 'page' : undefined}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this._onBreadcrumbClicked.bind(this, item)}
-          role={item.role}
         >
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {item.text}
+          <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
+            {text}
           </TooltipHost>
         </Link>
       );
     } else {
-      const Tag = item.as || 'span';
+      const Tag = as || 'span';
       return (
-        <Tag className={this._classNames.item}>
-          <TooltipHost content={item.text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
-            {item.text}
+        <Tag {...additionalProps} className={this._classNames.item}>
+          <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} {...this.props.tooltipHostProps}>
+            {text}
           </TooltipHost>
         </Tag>
       );

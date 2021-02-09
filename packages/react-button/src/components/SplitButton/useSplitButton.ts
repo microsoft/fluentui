@@ -27,6 +27,7 @@ export const useSplitButton = (
     circular,
     block,
     menu,
+    menuButtonRef,
     size,
     transparent,
     ...userProps
@@ -64,6 +65,7 @@ export const useSplitButton = (
 
       menuButton: {
         as: 'span',
+        ref: menuButtonRef,
         primary,
         ghost,
         circular,

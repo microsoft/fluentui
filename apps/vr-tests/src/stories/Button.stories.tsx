@@ -4,7 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { Button } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('Button Next', module)
@@ -55,7 +55,7 @@ storiesOf('Button Next', module)
 
 storiesOf('Button Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -90,7 +90,7 @@ storiesOf('Button Next - Teams Theme', module)
 
 storiesOf('Button Next - With icon before content', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -153,7 +153,7 @@ storiesOf('Button Next - With icon before content', module)
 
 storiesOf('Button Next - With icon after content', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -219,7 +219,7 @@ storiesOf('Button Next - With icon after content', module)
 
 storiesOf('Button Next - Circular', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -285,7 +285,7 @@ storiesOf('Button Next - Circular', module)
 
 storiesOf('Button Next - Icon only', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -351,7 +351,7 @@ storiesOf('Button Next - Icon only', module)
 
 storiesOf('Button Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -417,7 +417,7 @@ storiesOf('Button Next - Block', module)
 
 storiesOf('Button Next - Inverted', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -483,7 +483,7 @@ storiesOf('Button Next - Inverted', module)
 
 storiesOf('Button Next - Loading', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -549,7 +549,7 @@ storiesOf('Button Next - Loading', module)
 
 storiesOf('Button Next - Sizes', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -605,7 +605,7 @@ storiesOf('Button Next - Sizes', module)
 
 storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()

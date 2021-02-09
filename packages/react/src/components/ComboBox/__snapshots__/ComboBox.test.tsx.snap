@@ -514,7 +514,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
           top: 0px;
         }
     data-ktp-target="ktp-a"
-    id="ComboBox4wrapper"
+    id="ComboBox0wrapper"
   >
     <input
       aria-autocomplete="both"
@@ -569,7 +569,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
       data-is-interactable="true"
       data-ktp-execute-target="ktp-a"
       data-lpignore="true"
-      id="ComboBox4-input"
+      id="ComboBox0-input"
       role="combobox"
       spellcheck="false"
       type="text"
@@ -721,7 +721,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
     aria-atomic="true"
     aria-hidden="true"
     aria-live="polite"
-    id="ComboBox4-error"
+    id="ComboBox0-error"
     role="region"
   />
 </div>

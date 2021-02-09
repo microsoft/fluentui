@@ -31,10 +31,13 @@ function getResolveAlias(useLib, cwd) {
 
   deps.forEach(({ packageJson: depPackageJson, packagePath: depPackagePath }) => {
     const depName = depPackageJson.name;
-    const entryPoint = depPackageJson.module || depPackageJson.main;
-
     if (excludedPackages.includes(depName)) {
       return;
+    }
+
+    let entryPoint = depPackageJson.module || depPackageJson.main;
+    if (!entryPoint && depName !== '@fluentui/common-styles') {
+      entryPoint = 'lib/index.js'; // guess this entry point
     }
 
     if (!entryPoint) {

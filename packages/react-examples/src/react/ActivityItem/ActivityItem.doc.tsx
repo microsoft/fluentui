@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ActivityItemBasicExample } from './ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './ActivityItem.Compact.Example';
@@ -11,7 +11,7 @@ const ActivityItemCompactExampleCode = require('!raw-loader?esModule=false!@flue
 export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ActivityItem',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ActivityItem',
   examples: [
     {
       title: 'Activity Items with Icons',

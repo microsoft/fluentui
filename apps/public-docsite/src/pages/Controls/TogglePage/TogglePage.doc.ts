@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
-import { TogglePageProps as ExternalProps } from '@fluentui/react-examples/lib/react-toggle/Toggle/Toggle.doc';
+import { TogglePageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Toggle/Toggle.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TogglePage/docs/ToggleRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const TogglePageProps: TFabricPlatformPageProps = {
   web: {

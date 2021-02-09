@@ -1,6 +1,13 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/AvatarPage/docs/AvatarRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'iOS Avatar', url: '#/controls/ios/avatar' },
+  { text: 'iOS Persona', url: '#/controls/ios/persona' },
+  { text: 'Android Avatar', url: '#/controls/android/avatar' },
+  { text: 'Android Persona', url: '#/controls/android/persona' },
+  { text: 'macOS Avatar', url: '#/controls/mac/avatar' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/AvatarPage';
 

@@ -5,9 +5,9 @@ steps:
       versionSpec: '12.x'
     displayName: 'Install Node.js'
 
-  - task: geeklearningio.gl-vsts-tasks-yarn.yarn-installer-task.YarnInstaller@3
-    displayName: 'Use Yarn 1.19.x'
+  - task: YarnInstaller@0
+    displayName: 'Use Yarn 1.22.x'
     inputs:
-      versionSpec: 1.19.x
-      checkLatest: true
+      versionSpec: 1.22.x
+      checkLatest: false
       includePrerelease: false

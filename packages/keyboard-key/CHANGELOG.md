@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-key
 
-This log was last generated on Thu, 02 Jul 2020 12:42:11 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.13](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.13)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-key_v0.2.13-0..@fluentui/keyboard-key_v0.2.13)
+
+### Patches
+
+- add prerelease in disallowed change type for version packages and fix current versioning. ([PR #16696](https://github.com/microsoft/fluentui/pull/16696) by xgao@microsoft.com)
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-key_v0.2.4)
 

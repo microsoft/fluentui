@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.39)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.37..@fluentui/react-checkbox_v1.0.0-beta.39)
+
+### Changes
+
+- Moving Checkbox from react-checkbox back to react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.37)
 

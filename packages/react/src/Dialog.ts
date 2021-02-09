@@ -1,1 +1,2 @@
-export * from '@fluentui/react-internal/lib/Dialog';
+export * from './components/Dialog/index';
+export { Dialog as default } from './components/Dialog/index';

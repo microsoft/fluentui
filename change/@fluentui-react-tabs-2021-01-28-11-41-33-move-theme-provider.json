@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove react-theme-provider exports from react-tabs.",
-  "packageName": "@fluentui/react-tabs",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-28T19:41:14.260Z"
-}

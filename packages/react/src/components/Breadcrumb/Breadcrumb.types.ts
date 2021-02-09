@@ -114,7 +114,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * {@docCategory Breadcrumb}
  */
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Text to display in the breadcrumb item.
    */

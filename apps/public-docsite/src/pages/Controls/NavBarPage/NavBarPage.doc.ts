@@ -1,6 +1,10 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/NavBarRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'iOS Navigation Bar', url: '#/controls/ios/navigationbar' },
+  { text: 'Android Top App Bar', url: '#/controls/android/topappbar' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/NavBarPage';
 

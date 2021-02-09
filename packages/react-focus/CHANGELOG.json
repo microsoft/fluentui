@@ -2,6 +2,51 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating snapshots.",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-focus_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "FocusZone: Removing contextual RTL checks to get rid of react-theme-provider dependency from react-focus package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "f38e9344e83936ae95a008116b9b63881f464944",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Jan 2021 12:25:56 GMT",
       "tag": "@fluentui/react-focus_v8.0.0-beta.16",
       "version": "8.0.0-beta.16",

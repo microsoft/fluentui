@@ -1,3 +1,3 @@
 import './version';
 
-export * from './Pivot';
+export * from './Tabs';

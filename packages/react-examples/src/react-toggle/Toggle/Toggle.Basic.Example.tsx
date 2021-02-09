@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '@fluentui/react-toggle/lib/Toggle';
+import { Toggle } from '@fluentui/react-toggle';
 import { Stack, IStackTokens } from '@fluentui/react/lib/Stack';
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
