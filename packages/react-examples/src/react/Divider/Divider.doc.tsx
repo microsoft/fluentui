@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { VerticalDividerBasicExample } from './VerticalDivider.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { VerticalDividerCustomExample } from './VerticalDivider.Custom.Example';
 
 const VerticalDividerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Divider/VerticalDivider.Basic.Example.tsx') as string;
@@ -11,7 +11,7 @@ const VerticalDividerCustomExampleCode = require('!raw-loader?esModule=false!@fl
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',
   componentName: 'Divider',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Divider',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Divider',
   examples: [
     {
       title: 'Vertical Divider',

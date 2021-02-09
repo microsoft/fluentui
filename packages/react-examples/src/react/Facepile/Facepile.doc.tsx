@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FacepileAddFaceExample } from './Facepile.AddFace.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { FacepileBasicExample } from './Facepile.Basic.Example';
 import { FacepileOverflowExample } from './Facepile.Overflow.Example';
 
@@ -11,7 +11,7 @@ const FacepileOverflowExampleCode = require('!raw-loader?esModule=false!@fluentu
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',
   componentName: 'Facepile',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Facepile',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Facepile',
   examples: [
     {
       title: 'Facepile with size, presence, and fade in options',

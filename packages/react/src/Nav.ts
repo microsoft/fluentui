@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Nav';
+export * from './components/Nav/index';

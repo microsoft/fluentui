@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/SelectableOption';
+export * from './utilities/selectableOption/index';

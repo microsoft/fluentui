@@ -13,7 +13,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.50",
+    "@fluentui/react": "^8.0.0-beta.51",
     "axe-core": "3.5.0",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",

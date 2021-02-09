@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { CalloutBasicExample } from './Callout.Basic.Example';
 import { StatusCalloutExample } from './Callout.Status.Example';
@@ -17,7 +17,7 @@ const CalloutCoverExampleCode = require('!raw-loader?esModule=false!@fluentui/re
 export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Callout',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Callout',
   examples: [
     {
       title: 'Default Callout',

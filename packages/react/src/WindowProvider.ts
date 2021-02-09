@@ -1,1 +1,2 @@
-export * from '@fluentui/react-internal/lib/WindowProvider';
+import './version';
+export * from '@fluentui/react-window-provider';

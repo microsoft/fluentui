@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.50)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.0-beta.49..@fluentui/react-monaco-editor_v1.0.0-beta.50)
+
+### Changes
+
+- Combine react-internal back into react, and update references ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.0-beta.49)
 
