@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { useButton } from './useButton';
-import { ButtonProps, ButtonState } from './Button.types';
+import { ButtonProps } from './Button.types';
 // import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 // import { useButtonClasses } from './useButtonClasses';
 import { renderButton } from './renderButton';
 import { makeStyles, ax } from '@fluentui/react-make-styles';
-import { Theme } from '@fluentui/react-theme';
+import { teamsLightTheme } from '@fluentui/react-theme';
+
+// import { Theme } from '@fluentui/react-theme';
 
 type ButtonSelectors = {
+  primary?: boolean;
   textOnly?: boolean;
   iconOnly?: boolean;
 };
@@ -16,7 +19,7 @@ const useRootClasses = makeStyles<ButtonSelectors>([
   [
     null,
     // TODO: why is theme not typed here?
-    (theme: Theme) => ({
+    {
       // TODO: how to define and access component variables that do not have globals/aliases?
       //       consider IE11 friendly way
       '--button-height': '32px',
@@ -31,7 +34,40 @@ const useRootClasses = makeStyles<ButtonSelectors>([
 
       padding: '0 var(--button-paddingX)',
       height: 'var(--button-height)',
-    }),
+
+      borderRadius: teamsLightTheme.global.borderRadius.medium,
+      borderWidth: teamsLightTheme.global.strokeWidth.thin,
+      borderColor: teamsLightTheme.alias.color.neutral.neutralStroke1,
+      background: teamsLightTheme.alias.color.neutral.neutralBackground1,
+      ':hover': {
+        background: teamsLightTheme.alias.color.neutral.neutralBackground1Hover,
+        borderColor: teamsLightTheme.alias.color.neutral.neutralStroke1Hover,
+        cursor: 'pointer',
+      },
+      ':active': {
+        borderColor: teamsLightTheme.alias.color.neutral.neutralStroke1Pressed,
+      },
+      // TODO: what to do with "selected"? Is this toggle button or some kind of active state?
+      // '.active': teamsLightTheme.alias.color.neutral.neutralStroke1Pressed,
+    },
+  ],
+  [
+    ({ primary }: ButtonSelectors) => primary,
+    (/*theme: Theme*/) => {
+      // eslint-disable-next-line no-console
+      console.log(teamsLightTheme);
+      return {
+        background: teamsLightTheme.alias.color.brand.brandBackground,
+        color: teamsLightTheme.alias.color.neutral.neutralForegroundInvertedAccessible,
+        ':hover': teamsLightTheme.alias.color.brand.brandBackgroundHover,
+        ':active': teamsLightTheme.alias.color.brand.brandBackgroundPressed,
+        // TODO: what to do with "selected"? Is this toggle button or some kind of active state?
+        // '.active': teamsLightTheme.alias.color.brand.brandBackgroundSelected,
+
+        // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
+        boxShadow: teamsLightTheme.alias.shadow.shadow4,
+      };
+    },
   ],
   [
     // TODO: why do I have to type selectors when the generic is passed to makeStyles<ButtonSelectors>?
@@ -48,6 +84,8 @@ const useRootClasses = makeStyles<ButtonSelectors>([
     {
       // TODO: Update button variables here or make dedicated iconOnly variables?
       padding: `var(--button-iconOnly-paddingX)`,
+      width: `var(--button-height)`,
+      textAlign: 'center',
     },
   ],
 ]);
@@ -55,10 +93,10 @@ const useRootClasses = makeStyles<ButtonSelectors>([
 const useContentClasses = makeStyles([
   [
     null,
-    (theme: Theme) => ({
+    (/*theme: Theme*/) => ({
       textOverflow: 'ellipsis',
       display: 'inline-block',
-      border: '1px solid gray',
+      // border: '1px solid gray',
       width: '100%',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
@@ -72,11 +110,18 @@ const useContentClasses = makeStyles([
  */
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const state = useButton(props, ref);
+
+  // TODO: fix children check for "empty" slots once useButton() updated
+  const hasContent = !!state?.content?.children;
+  const hasIcon = !!state?.icon?.children;
+
   const styleSelectors = {
-    // TODO: iconOnly selector not working...
-    iconOnly: !!state.icon && !(state.content || state.children),
-    textOnly: !!(state.content || state.children) && !state.icon,
+    primary: props.primary,
+    iconOnly: hasIcon && !hasContent,
+    textOnly: hasContent && !hasIcon,
   };
+
+  console.log(styleSelectors, state);
 
   // TODO: don't require "selectors"
   // TODO: rename "selectors" to "matchers", its CSS in JS and not CSS
