@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "add neutral-contrast-fill recipe",
-  "packageName": "@fluentui/web-components",
-  "email": "khamu@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T19:30:33.719Z"
-}

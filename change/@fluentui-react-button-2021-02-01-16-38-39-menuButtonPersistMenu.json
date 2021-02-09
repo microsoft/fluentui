@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "MenuButton: Adding persistMenu prop to allow for constant rendering of the Menu.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-02T00:38:39.870Z"
-}
