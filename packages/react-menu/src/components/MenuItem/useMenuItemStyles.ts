@@ -53,3 +53,8 @@ export const useMenuItemStyles = (state: MenuItemState) => {
     state.icon.className = ax(iconClassName, state.icon.className);
   }
 };
+
+/**
+ * DO NOT MERGE
+ */
+export const dummy = 'test';
