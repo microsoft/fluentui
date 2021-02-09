@@ -5,6 +5,7 @@ import { cssifyObject } from './utils/cssifyObject';
 export function compileKeyframeRule(frames: MakeStyles): string {
   let css: string = '';
 
+  // eslint-disable-next-line guard-for-in
   for (const percentage in frames) {
     css += `${percentage}{${cssifyObject(frames[percentage])}}`;
   }
