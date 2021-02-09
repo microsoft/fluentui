@@ -163,7 +163,7 @@ jobs:
             echo "Docsite base path published for version $ver"
             echo "##vso[task.setvariable variable=deployBasePath]$ver"
             echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-            echo "##vso[task.setvariable variable=nightlyRelease]false"
+            echo "##vso[task.setvariable variable=nightlyRelease]"
 
       - task: CmdLine@2
         displayName: Build

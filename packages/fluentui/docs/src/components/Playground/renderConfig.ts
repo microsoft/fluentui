@@ -35,7 +35,7 @@ const newestNightlyReleaseUrlPrefix = `https://fluentsite.blob.core.windows.net/
 const getPackageVersion = (packageName: string, latestVersion: string) => {
   // CI build tarballs from `npm pack` and publish them nightly to blob storage for fluent ui packages
   // When building nightly release docsite, use these urls instead of the latest package version
-  if (process.env.NIGHTLYRELEASE === 'true') {
+  if (process.env.NIGHTLYRELEASE) {
     return `${newestNightlyReleaseUrlPrefix}/fluentui-${packageName}-${latestVersion}.tgz`;
   }
   return latestVersion;
