@@ -130,6 +130,7 @@ task(
   parallel(
     'build:docs:toc',
     'build:docs:schema',
+    'build:docs:assets:component:info',
     series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
   ),
 );
@@ -289,4 +290,4 @@ task('watch:docs', series('watch:docs:component-menu-behaviors', 'watch:docs:oth
 // Default
 // ----------------------------------------
 
-task('docs', series('build:docs:assets', 'build:docs:assets:component:info', 'serve:docs:hot', 'watch:docs'));
+task('docs', series('build:docs:assets', 'serve:docs:hot', 'watch:docs'));
