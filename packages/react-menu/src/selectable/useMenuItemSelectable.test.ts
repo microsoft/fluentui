@@ -10,7 +10,7 @@ describe('useMenuItemSelectable', () => {
     name: 'name',
     value: 'value',
     checkedItems: ['1', '2', '3'],
-    onCheckedValuesChange: jest.fn(),
+    onCheckedValueChange: jest.fn(),
     checked: false,
     ...options,
   });
@@ -31,7 +31,7 @@ describe('useMenuItemSelectable', () => {
     expect(state['aria-checked']).toBe(checked);
   });
 
-  it('should not call onCheckedValuesChange if values did not change', () => {
+  it('should not call onCheckedValueChange if values did not change', () => {
     // Arrange
     const state: MenuItemSelectableState = createTestState();
 
@@ -39,7 +39,7 @@ describe('useMenuItemSelectable', () => {
     useMenuItemSelectable(state, () => [...state.checkedItems]);
 
     // Assert
-    expect(state.onCheckedValuesChange).not.toHaveBeenCalled();
+    expect(state.onCheckedValueChange).not.toHaveBeenCalled();
   });
 
   it.each(['onClick', 'onKeyDown'])('should set %s handler', action => {
@@ -57,7 +57,7 @@ describe('useMenuItemSelectable', () => {
     expect(typeof callback).toBe('function');
   });
 
-  it('should call onCheckedValuesChange if values changed', () => {
+  it('should call onCheckedValueChange if values changed', () => {
     // Arrange
     const state: MenuItemSelectableState = createTestState();
     const newValues = [...state.checkedItems, 'x'];
@@ -71,8 +71,8 @@ describe('useMenuItemSelectable', () => {
     }
 
     // Assert
-    expect(state.onCheckedValuesChange).toHaveBeenCalledTimes(1);
-    expect(state.onCheckedValuesChange).toHaveBeenCalledWith(state.name, newValues);
+    expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
+    expect(state.onCheckedValueChange).toHaveBeenCalledWith(state.name, newValues);
   });
 
   it.each([EnterKey, SpacebarKey])('should transform %s keydown to click', keyCode => {

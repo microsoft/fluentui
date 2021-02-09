@@ -20,7 +20,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
       return;
     }
 
-    state.onCheckedValuesChange(state.name, newCheckedItems);
+    state.onCheckedValueChange(state.name, newCheckedItems);
   };
 
   state.onClick = e => {

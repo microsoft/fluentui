@@ -2,12 +2,12 @@ import * as React from 'react';
 
 const MenuListContext = React.createContext<MenuListContext>({
   checkedValues: {},
-  onCheckedValuesChange: () => null,
+  onCheckedValueChange: () => null,
 });
 
 export interface MenuListContext {
   checkedValues?: Record<string, string[]>;
-  onCheckedValuesChange?: (name: string, value: string[]) => void;
+  onCheckedValueChange?: (name: string, items: string[]) => void;
 }
 
 export const MenuListProvider = MenuListContext.Provider;

@@ -30,7 +30,7 @@ export const menuItemCheckboxShorthandProps: string[];
 //
 // @public (undocumented)
 export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemState, MenuItemSelectableState {
-    checkmark?: ObjectShorthandProps<HTMLSpanElement>;
+    checkmark: ObjectShorthandProps<HTMLElement>;
     icon?: ObjectShorthandProps<HTMLElement>;
     // (undocumented)
     ref: React.MutableRefObject<HTMLElement>;
@@ -56,7 +56,7 @@ export const MenuList: React.ForwardRefExoticComponent<Pick<MenuListProps, React
 // @public (undocumented)
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     checkedValues?: Record<string, string[]>;
-    onCheckedValuesChange?: (name: string, value: string[]) => void;
+    onCheckedValueChange?: (name: string, checkedItems: string[]) => void;
 }
 
 // @public (undocumented)

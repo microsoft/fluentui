@@ -35,7 +35,7 @@ describe('MenuItemCheckbox', () => {
   const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContext> }) => {
     const contextValue: MenuListContext = {
       checkedValues: {},
-      onCheckedValuesChange: jest.fn(),
+      onCheckedValueChange: jest.fn(),
       ...(props.context && props.context),
     };
 
@@ -98,7 +98,7 @@ describe('MenuItemCheckbox', () => {
     const checkedValues = { [checkboxName]: checkedItems };
     const spy = jest.fn();
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues, onCheckedValuesChange: spy }}>
+      <TestMenuListContext context={{ checkedValues, onCheckedValueChange: spy }}>
         <MenuItemCheckbox name={checkboxName} value={'1'}>
           Checkbox
         </MenuItemCheckbox>

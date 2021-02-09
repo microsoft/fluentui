@@ -22,14 +22,14 @@ export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElemen
  */
 export interface MenuItemSelectableState extends MenuItemSelectableProps {
   /**
-   * Checked values for a give `name`
+   * Checked items for a value with `name`
    */
   checkedItems: string[];
 
   /**
-   * Callback when checked values changes for a given `name`
+   * Callback when checked items changes for a given value with `name`
    */
-  onCheckedValuesChange: (name: string, value: string[]) => void;
+  onCheckedValueChange: (name: string, checkedItems: string[]) => void;
 
   /**
    * Selectable is checked

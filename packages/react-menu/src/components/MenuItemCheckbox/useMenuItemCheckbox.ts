@@ -31,9 +31,9 @@ export const useMenuItemCheckbox = (
     resolveShorthandProps(props, menuItemCheckboxShorthandProps),
   );
 
-  const { checkedValues: { [state.name]: checkedItems = [] } = {}, onCheckedValuesChange } = useMenuListContext();
+  const { checkedValues: { [state.name]: checkedItems = [] } = {}, onCheckedValueChange } = useMenuListContext();
   state.checkedItems = checkedItems;
-  state.onCheckedValuesChange = onCheckedValuesChange || (() => null);
+  state.onCheckedValueChange = onCheckedValueChange || (() => null);
   state.checked = checkedItems.indexOf(state.value) !== -1;
 
   useMenuItemSelectable(state, () => {

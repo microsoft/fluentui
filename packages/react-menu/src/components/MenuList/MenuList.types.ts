@@ -3,9 +3,12 @@ import { ComponentProps } from '@fluentui/react-utils';
 
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * Callback when checked values change for a specific name
+   * Callback when checked items change for value with a name
+   *
+   * @param name the name of the value
+   * @param checkedItems the items for this value that are checked
    */
-  onCheckedValuesChange?: (name: string, value: string[]) => void;
+  onCheckedValueChange?: (name: string, checkedItems: string[]) => void;
 
   /**
    * Map of all checked values
