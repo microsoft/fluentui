@@ -38,8 +38,10 @@ export { default as ClassNotebookLogoInverseIcon } from './components/ClassNoteb
 export { default as ClassroomLogoIcon } from './components/ClassroomLogoIcon';
 export { default as CloudAddIcon } from './components/CloudAddIcon';
 export { default as CloudDownloadIcon } from './components/CloudDownloadIcon';
+export { default as CloudEditIcon } from './components/CloudEditIcon';
 export { default as CloudIcon } from './components/CloudIcon';
 export { default as CloudImportExportIcon } from './components/CloudImportExportIcon';
+export { default as CloudLinkIcon } from './components/CloudLinkIcon';
 export { default as CloudUploadIcon } from './components/CloudUploadIcon';
 export { default as CortanaLogoBeckonInnerIcon } from './components/CortanaLogoBeckonInnerIcon';
 export { default as CortanaLogoBeckonOuterIcon } from './components/CortanaLogoBeckonOuterIcon';
@@ -97,6 +99,7 @@ export { default as FabricTextHighlightIcon } from './components/FabricTextHighl
 export { default as FabricUnsyncFolderIcon } from './components/FabricUnsyncFolderIcon';
 export { default as FabricUserFolderIcon } from './components/FabricUserFolderIcon';
 export { default as FileTypeSolutionIcon } from './components/FileTypeSolutionIcon';
+export { default as FluidLogoIcon } from './components/FluidLogoIcon';
 export { default as FSharpIcon } from './components/FSharpIcon';
 export { default as FSharpLanguageIcon } from './components/FSharpLanguageIcon';
 export { default as GallatinLogoIcon } from './components/GallatinLogoIcon';
@@ -144,6 +147,7 @@ export { default as OutlookLogo16Icon } from './components/OutlookLogo16Icon';
 export { default as OutlookLogoIcon } from './components/OutlookLogoIcon';
 export { default as OutlookLogoInverse16Icon } from './components/OutlookLogoInverse16Icon';
 export { default as OutlookLogoInverseIcon } from './components/OutlookLogoInverseIcon';
+export { default as OutlookSpacesBucketIcon } from './components/OutlookSpacesBucketIcon';
 export { default as PlannerLogoIcon } from './components/PlannerLogoIcon';
 export { default as PowerApps2LogoIcon } from './components/PowerApps2LogoIcon';
 export { default as PowerAppsIcon } from './components/PowerAppsIcon';
