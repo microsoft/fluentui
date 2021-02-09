@@ -11,6 +11,7 @@ import {
   isControlled,
   getNativeProps,
   divProperties,
+  setFocusVisibility,
 } from '../../Utilities';
 import {
   IChoiceGroup,
@@ -164,6 +165,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     const elementToFocus = optionToFocus && document.getElementById(this._getOptionId(optionToFocus));
     if (elementToFocus) {
       elementToFocus.focus();
+      setFocusVisibility(true, elementToFocus as Element);
     }
   }
 
