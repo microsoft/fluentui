@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Memoize callbacks to reduce UPP re-renders",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-09T22:27:16.716Z"
+}
