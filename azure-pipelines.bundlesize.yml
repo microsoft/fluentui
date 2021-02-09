@@ -102,10 +102,8 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Merged Bundle Size information'
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)/merge/bundlesize.json'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesize.json'
           ArtifactName: bundlesize
-          publishLocation: FilePath
-          TargetPath: '$(Build.ArtifactStagingDirectory)/bundlesize.json'
 
   - job: lightrail
     pool: server
