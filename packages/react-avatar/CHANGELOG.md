@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Mon, 08 Feb 2021 12:23:08 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.1)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.9.0..@fluentui/react-avatar_v0.9.1)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.0 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.21 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
 
 ## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.0)
 

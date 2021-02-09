@@ -2,6 +2,21 @@
   "name": "test-bundles",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "test-bundles_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-button to v1.0.0-beta.29",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0f46d91d5de073dc025dc8a137a8caa2eda21a08",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Feb 2021 12:23:08 GMT",
       "tag": "test-bundles_v1.0.0",
       "version": "1.0.0",

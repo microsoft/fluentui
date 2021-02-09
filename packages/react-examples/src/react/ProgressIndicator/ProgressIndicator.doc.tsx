@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicatorBasicExample } from './ProgressIndicator.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ProgressIndicatorIndeterminateExample } from './ProgressIndicator.Indeterminate.Example';
 
 const ProgressIndicatorBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ProgressIndicator/ProgressIndicator.Basic.Example.tsx') as string;
@@ -10,8 +10,7 @@ const ProgressIndicatorIndeterminateExampleCode = require('!raw-loader?esModule=
 export const ProgressIndicatorPageProps: IDocPageProps = {
   title: 'ProgressIndicator',
   componentName: 'ProgressIndicator',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ProgressIndicator',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ProgressIndicator',
   examples: [
     {
       title: 'Default ProgressIndicator',

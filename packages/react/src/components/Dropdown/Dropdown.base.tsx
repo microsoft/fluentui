@@ -36,10 +36,7 @@ import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import {
-  ResponsiveMode,
-  IWithResponsiveModeState,
-} from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,
@@ -48,7 +45,7 @@ import {
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { getPropsWithDefaults } from '@fluentui/utilities';
-import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
+import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'Dropdown';
