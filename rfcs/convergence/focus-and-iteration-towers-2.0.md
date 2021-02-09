@@ -28,7 +28,7 @@ We propose that instead of growing /react and /react-northstar to be similar ove
 
 This independent set of components must support:
 
-- Easy migration from existing /react and /react-northstar components
+- A documented migration plan from existing /react and /react-northstar components
 - Partners must be able to pickup and use new converged components without needing a particular version of /react or /react-northstar
 - react-\* packages cannot depend on either /react or /react-northstar
 - Styling and theming stories are supported in both Teams and Office products and there is a path to address previously supported scenarios
