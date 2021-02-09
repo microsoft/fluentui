@@ -15,7 +15,10 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
   /** The Avatar's image. */
   image?: ShorthandProps<ImageProps>;
 
-  /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials`. */
+  /**
+   * The label shown when there's no image or icon. Defaults to the initials derived from `name` using
+   * `getInitials`.
+   */
   label?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** Icon displayed when there's no image. */
