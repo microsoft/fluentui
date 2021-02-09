@@ -196,6 +196,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
     menuIcon?: ShorthandProps;
     defaultExpanded?: boolean;
     expanded?: boolean;
+    persistMenu?: boolean;
     onMenuDismiss?: () => void;
 };
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
 import { css } from '@fluentui/react/lib/Utilities';

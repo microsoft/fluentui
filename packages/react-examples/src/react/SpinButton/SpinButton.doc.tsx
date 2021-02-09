@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { SpinButtonBasicExample } from './SpinButton.Basic.Example';
 import { SpinButtonCustomStyledExample } from './SpinButton.CustomStyled.Example';
@@ -19,7 +19,7 @@ const SpinButtonControlledExampleCode = require('!raw-loader?esModule=false!@flu
 export const SpinButtonPageProps: IDocPageProps = {
   title: 'SpinButton',
   componentName: 'SpinButton',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SpinButton',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SpinButton',
   examples: [
     {
       title: 'Basic SpinButton',

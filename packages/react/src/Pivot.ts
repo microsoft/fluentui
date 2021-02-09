@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Pivot';
+export * from './components/Pivot/index';

@@ -13,6 +13,9 @@ import consoleUtil from './utils/consoleUtil';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
+const hasAs = (componentInfo: ComponentDoc) =>
+  !!componentInfo.props.as && componentInfo.props.as.parent?.fileName !== 'react/index.d.ts';
+
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
@@ -328,7 +331,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as functional component or passes as to the next component */
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    if (hasAs(componentInfo)) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
         try {
           const {
@@ -365,7 +368,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as && !testInfo.asPropHandlesRef) {
+    if (hasAs(componentInfo) && !testInfo.asPropHandlesRef) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
         try {
           const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
@@ -396,7 +399,8 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Passes extra props to the component it renders as */
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    // 2nd check: React.AllHTMLAttributes can also include `as`
+    if (hasAs(componentInfo)) {
       it(`passes extra props to the component it is renders as`, () => {
         try {
           const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
@@ -423,7 +427,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders component as HTML tags */
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    if (hasAs(componentInfo)) {
       it(`renders component as HTML tags or passes "as" to the next component`, () => {
         try {
           // silence element nesting warnings

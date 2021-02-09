@@ -1,8 +1,21 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 08 Feb 2021 12:23:08 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.0)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.12.1..@fluentui/web-components_v0.13.0)
+
+### Minor changes
+
+- add neutral-contrast-fill recipe ([PR #16824](https://github.com/microsoft/fluentui/pull/16824) by khamu@microsoft.com)
+
+### Patches
+
+- fix: export missing parseColorString util ([PR #16876](https://github.com/microsoft/fluentui/pull/16876) by chhol@microsoft.com)
 
 ## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.1)
 

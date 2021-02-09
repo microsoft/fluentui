@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { TextFieldBasicExample } from './TextField.Basic.Example';
 import { TextFieldBorderlessExample } from './TextField.Borderless.Example';
 import { TextFieldCustomRenderExample } from './TextField.CustomRender.Example';
@@ -24,7 +24,7 @@ const TextFieldMaskedExampleCode = require('!raw-loader?esModule=false!@fluentui
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
   componentName: 'TextField',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/TextField',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/TextField',
   examples: [
     {
       title: 'Basic TextFields',

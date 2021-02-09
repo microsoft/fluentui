@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Stack, Link, ILinkStyleProps, ILinkStyles, ITheme, IStackProps } from '@fluentui/react';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
 import { IThemeRules, ThemeGenerator } from '@fluentui/react/lib/ThemeGenerator';
