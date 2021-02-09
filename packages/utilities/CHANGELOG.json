@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 12:26:30 GMT",
+      "tag": "@uifabric/utilities_v7.33.3",
+      "version": "7.33.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9c1e2c6da5ba65ced00465a991c89ac2373871e",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 29 Oct 2020 12:24:41 GMT",
       "tag": "@uifabric/utilities_v7.33.2",
       "version": "7.33.2",

@@ -1,8 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 12:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.158.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.3)
+
+Tue, 09 Feb 2021 12:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.158.1..office-ui-fabric-react_v7.158.3)
+
+### Patches
+
+- Fixing the modal Panel outerclick issue ([PR #16826](https://github.com/microsoft/fluentui/pull/16826) by ololubek@microsoft.com)
+- Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz) ([PR #16875](https://github.com/microsoft/fluentui/pull/16875) by elvonspa@microsoft.com)
 
 ## [7.158.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.1)
 

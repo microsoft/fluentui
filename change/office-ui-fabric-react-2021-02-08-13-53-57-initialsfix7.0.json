@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
-  "packageName": "office-ui-fabric-react",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-08T21:53:17.205Z"
-}

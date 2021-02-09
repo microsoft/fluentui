@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 12:26:30 GMT",
+      "tag": "office-ui-fabric-react_v7.158.3",
+      "version": "7.158.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing the modal Panel outerclick issue",
+            "author": "ololubek@microsoft.com",
+            "commit": "58fa58156875c6890da96b117b242b4b576a91b6",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9c1e2c6da5ba65ced00465a991c89ac2373871e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 12:24:38 GMT",
       "tag": "office-ui-fabric-react_v7.158.1",
       "version": "7.158.1",

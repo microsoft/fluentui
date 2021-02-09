@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
-  "packageName": "@uifabric/utilities",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-08T21:53:57.166Z"
-}

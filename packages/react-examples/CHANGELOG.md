@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 08 Feb 2021 12:26:55 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 12:26:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.22)
+
+Tue, 09 Feb 2021 12:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.21..@fluentui/react-examples_v0.11.22)
+
+### Patches
+
+- Modify Persona example and tests to cover the new initials behavior ([PR #16875](https://github.com/microsoft/fluentui/pull/16875) by elvonspa@microsoft.com)
 
 ## [0.11.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.21)
 

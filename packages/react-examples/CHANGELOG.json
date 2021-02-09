@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 12:26:30 GMT",
+      "tag": "@fluentui/react-examples_v0.11.22",
+      "version": "0.11.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify Persona example and tests to cover the new initials behavior",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9c1e2c6da5ba65ced00465a991c89ac2373871e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Feb 2021 12:26:55 GMT",
       "tag": "@fluentui/react-examples_v0.11.21",
       "version": "0.11.21",
