@@ -5,7 +5,7 @@ trigger:
   - master
 
 jobs:
-  - job: build-react
+  - job: build_react
     timeoutInMinutes: 75
     pool:
       vmImage: 'windows-2019'
@@ -38,7 +38,7 @@ jobs:
           PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: distdrop-react
 
-  - job: build-northstar
+  - job: build_northstar
     timeoutInMinutes: 75
     pool:
       vmImage: 'windows-2019'
@@ -78,8 +78,8 @@ jobs:
     pool:
       vmImage: 'windows-2019'
     dependsOn:
-      - build-react
-      - build-northstar
+      - build_react
+      - build_northstar
     steps:
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact React'
