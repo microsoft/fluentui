@@ -15,24 +15,25 @@
 # users just like we do for commit author emails.
 # docs/  docs@example.com
 
-#### Core build stuff
+#### Build stuff
 scripts/ @dzearing @ecraig12345 @xugao
 scripts/babel/ @layershifter @miroslavstastny
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/webpack.config.* @layershifter @miroslavstastny
 package.json @ecraig12345 @dzearing @xugao
-prettier.config.js @ecraig12345
-webpack.config.js @ecraig12345
-webpack.serve.config.js @ecraig12345
-jest.config.js @ecraig12345
+yarn.lock @ecraig12345 @dzearing @xugao
+*.config.js @ecraig12345
+*.sh @ecraig12345
+*.yml @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
-azure-pipelines* @ecraig12345
+.git* @ecraig12345
+.codesandbox @ecraig12345
 .eslintrc.* @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
-sizeauditor.json @aftab-hassan
+sizeauditor.json @aftab-hassan @ecraig12345
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
@@ -84,6 +85,7 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Component packages
+packages/react-menu/ @ling1726 @layershifter
 packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
 packages/react-checkbox/ @khmakoto @xugao
@@ -101,6 +103,7 @@ packages/react-internal/src/compat/components/Button/ @khmakoto
 packages/react-internal/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react-internal/src/components/Callout/ @joschect
 packages/react-internal/src/components/Check/ @dzearing @xugao
+packages/react-internal/src/components/Checkbox/ @khmakoto @xugao
 packages/react-internal/src/components/ChoiceGroup/ @ecraig12345
 packages/react-internal/src/components/Coachmark/ @leddie24
 packages/react-internal/src/components/ColorPicker/ @ecraig12345
@@ -122,6 +125,7 @@ packages/react-internal/src/components/Icon/ @dzearing @ecraig12345
 packages/react-internal/src/components/Image/ @dzearing
 packages/react-internal/src/components/Label/ @khmakoto
 packages/react-internal/src/components/Layer/  @ThomasMichon
+packages/react-internal/src/components/Link/ @khmakoto
 packages/react-internal/src/components/List/ @dzearing
 packages/react-internal/src/components/MarqueeSelection/ @dzearing
 packages/react-internal/src/components/MessageBar/ @ecraig12345
@@ -142,6 +146,7 @@ packages/react-internal/src/components/ResizeGroup/ @micahgodbolt
 packages/react-internal/src/components/SearchBox/ @ecraig12345
 packages/react-internal/src/components/Separator/ @joschemd @khmakoto
 packages/react-internal/src/components/Shimmer/ @Vitalius1
+packages/react-internal/src/components/Slider/ @joschect
 packages/react-internal/src/components/SpinButton/ @ecraig12345
 packages/react-internal/src/components/Spinner/ @xugao
 packages/react-internal/src/components/Stack/  @khmakoto
@@ -149,7 +154,11 @@ packages/react-internal/src/components/SwatchColorPicker/ @ecraig12345
 packages/react-internal/src/components/TeachingBubble/ @micahgodbolt
 packages/react-internal/src/components/Text/ @khmakoto
 packages/react-internal/src/components/TextField/ @ecraig12345
+packages/react-internal/src/components/Toggle/ @khmakoto
 packages/react-internal/src/components/Tooltip/ @micahgodbolt
+
+## Theming and styling
+packages/react-internal/src/utilities/ThemeProvider @xugao
 
 ## Experiments
 packages/react-experiments/src/components/Pagination/ @caradong

@@ -1,4 +1,11 @@
 /**
+ * Recursive partial type.
+ */
+type RecursivePartial<T> = {
+  [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
+};
+
+/**
  * Design tokens for neutral colors
  */
 export type NeutralColorTokens = {
@@ -102,6 +109,8 @@ export type ColorVariants = {
   tint60: string;
 };
 
+export type BrandVariants = ColorVariants & { shade60: string };
+
 /**
  * All the global shared colors and their shade/tint variants
  */
@@ -122,12 +131,13 @@ export type GlobalSharedColors = {
   brown: ColorVariants;
   darkBrown: ColorVariants;
   lime: ColorVariants;
-  forrest: ColorVariants;
+  forest: ColorVariants;
   seafoam: ColorVariants;
   lightGreen: ColorVariants;
   green: ColorVariants;
   darkGreen: ColorVariants;
   lightTeal: ColorVariants;
+  teal: ColorVariants;
   darkTeal: ColorVariants;
   cyan: ColorVariants;
   steel: ColorVariants;
@@ -160,24 +170,24 @@ export type GlobalSharedColors = {
  * Brand color variants by product
  */
 export type ProductBrandColors = {
-  teams: ColorVariants;
-  web: ColorVariants;
+  teams: BrandVariants;
+  web: BrandVariants;
 };
 
 export type FontSizes = {
   base: {
-    100: number;
-    200: number;
-    300: number;
-    400: number;
-    500: number;
-    600: number;
+    100: string;
+    200: string;
+    300: string;
+    400: string;
+    500: string;
+    600: string;
   };
   hero: {
-    700: number;
-    800: number;
-    900: number;
-    1000: number;
+    700: string;
+    800: string;
+    900: string;
+    1000: string;
   };
 };
 
@@ -195,53 +205,175 @@ export type FontFamilies = {
   numeric: string;
 };
 
+export type TextAlignment =
+  | 'inherit'
+  | 'initial'
+  | 'revert'
+  | 'unset'
+  | 'center'
+  | 'end'
+  | 'start'
+  | 'justify'
+  | 'left'
+  | 'match-parent'
+  | 'right';
+
+export type TextAlignments = {
+  start: TextAlignment;
+  center: TextAlignment;
+  end: TextAlignment;
+  justify: TextAlignment;
+};
+
 export type BorderRadius = {
-  none: number;
-  small: number;
-  medium: number;
-  large: number;
-  xLarge: number;
+  none: string;
+  small: string;
+  medium: string;
+  large: string;
+  xLarge: string;
   circular: string;
 };
 
 export type StrokeWidths = {
-  thin: number;
-  thick: number;
-  thicker: number;
-  thickest: number;
-};
-
-/**
- * Each shadow level has an ambient and key variant
- */
-type ShadowTokenValue = {
-  ambient: string;
-  key: string;
+  thin: string;
+  thick: string;
+  thicker: string;
+  thickest: string;
 };
 
 /**
  * Design tokens for shadow levels
  */
 export type ShadowLevelTokens = {
-  shadow2: ShadowTokenValue;
-  shadow4: ShadowTokenValue;
-  shadow8: ShadowTokenValue;
-  shadow16: ShadowTokenValue;
-  shadow28: ShadowTokenValue;
-  shadow64: ShadowTokenValue;
+  shadow2: string;
+  shadow4: string;
+  shadow8: string;
+  shadow16: string;
+  shadow28: string;
+  shadow64: string;
 };
 
-/**
- * Theme object
- */
-export type Theme = {
-  sharedColors: GlobalSharedColors;
-  sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens>;
-  fontSizes: FontSizes;
-  fontWeights: FontWeights;
-  fontFamilies: FontFamilies;
-  lineHeights: LineHeights;
-  brandColors: ColorVariants;
-  neutralColorTokens: NeutralColorTokens;
-  shadowLevels?: ShadowLevelTokens;
+export type GhostColorTokens = {
+  ghostBackground: string;
+  ghostBackgroundHover: string;
+  ghostBackgroundPressed: string;
+  ghostBackgroundSelected: string;
 };
+
+export type TransparentColorTokens = {
+  transparentBackground: string;
+  transparentBackgroundHover: string;
+  transparentBackgroundPressed: string;
+  transparentBackgroundSelected: string;
+};
+
+export type BackgroundColorTokens = {
+  background: string;
+  backgroundHover: string;
+  backgroundPressed: string;
+  backgroundSelected: string;
+};
+
+export type BrandColorTokens = {
+  brandBackground: string;
+  brandBackgroundHover: string;
+  brandBackgroundPressed: string;
+  brandBackgroundSelected: string;
+  brandBackgroundStatic: string;
+  // FIXME: the rest is unclear in the spec
+};
+
+export type Greys =
+  | 0
+  | 2
+  | 4
+  | 6
+  | 8
+  | 10
+  | 12
+  | 14
+  | 16
+  | 18
+  | 20
+  | 22
+  | 24
+  | 26
+  | 28
+  | 30
+  | 32
+  | 34
+  | 36
+  | 38
+  | 40
+  | 42
+  | 44
+  | 46
+  | 48
+  | 50
+  | 52
+  | 54
+  | 56
+  | 58
+  | 60
+  | 62
+  | 64
+  | 66
+  | 68
+  | 70
+  | 72
+  | 74
+  | 76
+  | 78
+  | 80
+  | 82
+  | 84
+  | 86
+  | 88
+  | 90
+  | 92
+  | 94
+  | 96
+  | 98
+  | 100;
+
+// TODO: do we want to split theme for better tree shaking? (MUI)
+// But will this end up in the bundle at all? It should be used only in makeStyles and should be removed during build
+export type Theme = {
+  global: {
+    // TODO: this means "static", will not change with light/dark/contrast switch. better named static?
+    // TODO: Shift: we should move global away from theme, this is not themable
+    //   ThemeProvider should not inject these css variables?
+    color: {
+      black: string;
+      white: string;
+      hyperlink: string;
+      disabled: string;
+      selected: string;
+    };
+    palette: GlobalSharedColors & {
+      brand: BrandVariants; // Only the Theme brand, not all
+      grey: Record<Greys, string>;
+    };
+    type: {
+      fontSizes: FontSizes;
+      fontWeights: FontWeights;
+      fontFamilies: FontFamilies;
+      lineHeights: LineHeights;
+      alignment: TextAlignments;
+    };
+    borderRadius: BorderRadius;
+    strokeWidth: StrokeWidths;
+  };
+  alias: {
+    color: Record<keyof GlobalSharedColors, SharedColorTokens> & {
+      neutral: NeutralColorTokens;
+      ghost: BackgroundColorTokens;
+      transparent: BackgroundColorTokens;
+      brand: BrandColorTokens;
+    };
+    shadow: ShadowLevelTokens;
+  };
+};
+
+// TODO: fix shape
+export type PartialTheme = RecursivePartial<Theme>;

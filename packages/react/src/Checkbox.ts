@@ -1,1 +1,1 @@
-export * from '@fluentui/react-checkbox/lib/Checkbox';
+export * from '@fluentui/react-internal/lib/Checkbox';

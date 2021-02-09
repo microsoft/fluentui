@@ -5,8 +5,13 @@ import { CommandBar } from './CommandBar';
 import { mount } from 'enzyme';
 import { IContextualMenuItem } from '../../ContextualMenu';
 import { isConformant } from '../../common/isConformant';
+import { resetIds } from '../../Utilities';
 
 describe('CommandBar', () => {
+  beforeEach(() => {
+    resetIds();
+  });
+
   afterEach(() => {
     for (let i = 0; i < document.body.children.length; i++) {
       if (document.body.children[i].tagName === 'DIV') {

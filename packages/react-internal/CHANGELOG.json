@@ -2,6 +2,127 @@
   "name": "@fluentui/react-internal",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.44",
+      "version": "8.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fixing modal Panel outer click issue",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.43",
+      "version": "8.0.0-beta.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing redundant conformance tests from ComponentConformance.test and disabling component-handles-classname where necessary.",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.0-beta.18",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react-internal"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Add missing HighContrast override to SplitButton",
+            "author": "andredias@microsoft.com",
+            "commit": "6cf32f99ceeea831227982cbe63e1e3e5c5be171",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "8861d960cd98eed21ed8ca94293c9b0dba8a8070",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.42",
+      "version": "8.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add high contrast overrides for the Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "893af25f5fe707f24438bf9b8530cea896e432a3",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Checkbox: border is now visible when element is in focus in High Contrast White Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "2e9c72c8b425341452e93c20e6ac34162d2edb38",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Update ColorPicker to announce clamping of RGBA values (#15855)",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "aa9dd6faf0da0c86b0d84213c93d7573ec2d75ba",
+            "package": "@fluentui/react-internal"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.41",
+      "version": "8.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "allow passing native properties to the root element of StackItem",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "f70a0143ec998a1e3b4820537dcee5325573f705",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-internal_v8.0.0-beta.40",
+      "version": "8.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove react-theme-provider dependency from react package.",
+            "author": "xgao@microsoft.com",
+            "commit": "4f9fe37e9be56a7e2ceb81eec8dbe9f7aa6a64be",
+            "package": "@fluentui/react-internal"
+          },
+          {
+            "comment": "Moving Checkbox, Link, Pivot, Slider and Toggle from their respective @fluentui/react- packages back to @fluentui/react-internal.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "76f6043e4123577e17fecf64f536841bf543d32b",
+            "package": "@fluentui/react-internal"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Jan 2021 12:21:00 GMT",
       "tag": "@fluentui/react-internal_v8.0.0-beta.39",
       "version": "8.0.0-beta.39",

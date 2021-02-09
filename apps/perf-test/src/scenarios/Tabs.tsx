@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { Tabs, TabItem } from '@fluentui/react-tabs';
 
 const Scenario = () => (
   <Tabs aria-label="Basic Tabs Example">

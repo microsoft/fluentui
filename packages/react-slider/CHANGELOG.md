@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.40)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.39..@fluentui/react-slider_v1.0.0-beta.40)
+
+### Changes
+
+- Bump @fluentui/react-internal to v8.0.0-beta.44 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+
+## [1.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.38)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.36..@fluentui/react-slider_v1.0.0-beta.38)
+
+### Changes
+
+- Moving Slider from react-slider back to react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.36)
 

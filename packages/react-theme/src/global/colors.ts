@@ -1,4 +1,4 @@
-import { GlobalSharedColors, ColorVariants, ProductBrandColors } from '../types';
+import { GlobalSharedColors, ColorVariants, ProductBrandColors, BrandVariants } from '../types';
 
 // Global Colors
 // https://www.figma.com/file/KB9oUjMKen2cKnyPG7RgdS/Design-tokens-superset?node-id=1297%3A14745
@@ -66,7 +66,7 @@ export const disabled = '#3FF23F';
 export const selected = '#1AEBFF';
 
 // TODO: values should be set per product theme
-const brand = {
+const brand: BrandVariants = {
   shade60: '#092C47',
   shade50: '#043862',
   shade40: '#004578',
@@ -83,7 +83,7 @@ const brand = {
 };
 
 // TODO: these colors are not approved yet
-const brandTeams = {
+const brandTeams: BrandVariants = {
   shade60: '#323348',
   shade50: '#393b5d', // TBD
   shade40: '#3D3E66',
@@ -340,7 +340,7 @@ const lime: ColorVariants = {
   tint60: '#f8fcf4',
 };
 
-const forrest: ColorVariants = {
+const forest: ColorVariants = {
   shade50: '#0C1501',
   shade40: '#162702',
   shade30: '#294903',
@@ -428,6 +428,21 @@ const lightTeal: ColorVariants = {
   tint40: '#A6E8ED',
   tint50: '#CEF3F5',
   tint60: '#F2FCFD',
+};
+
+const teal: ColorVariants = {
+  shade50: '#001516',
+  shade40: '#012729',
+  shade30: '#02494C',
+  shade20: '#026367',
+  shade10: '#02767A',
+  primary: '#038387',
+  tint10: '#159196',
+  tint20: '#2AA0A4',
+  tint30: '#4BB4B7',
+  tint40: '#9BD9DB',
+  tint50: '#C7EBEC',
+  tint60: '#F0FAFA',
 };
 
 const darkTeal: ColorVariants = {
@@ -838,12 +853,13 @@ export const sharedColors: GlobalSharedColors = {
   brown,
   darkBrown,
   lime,
-  forrest,
+  forest,
   seafoam,
   lightGreen,
   green,
   darkGreen,
   lightTeal,
+  teal,
   darkTeal,
   cyan,
   steel,

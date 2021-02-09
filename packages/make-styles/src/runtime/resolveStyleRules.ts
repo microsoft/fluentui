@@ -1,17 +1,17 @@
-import { convertProperty } from 'rtl-css-js/core';
+import { convert, convertProperty } from 'rtl-css-js/core';
 import { expand } from 'inline-style-expand-shorthand';
 
 import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
-import { compileKeyframeRule } from './compileKeyframeRule';
+import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeRule';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
 import { isNestedSelector } from './utils/isNestedSelector';
-import { isObject } from './utils/isObject';
 import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
+import { isObject } from './utils/isObject';
 
 export function resolveStyleRules(
   styles: MakeStyles,
@@ -20,6 +20,7 @@ export function resolveStyleRules(
   media = '',
   support = '',
   result: Record<string, MakeStylesResolvedRule> = {},
+  rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
   const expandedStyles = (expand(styles) as unknown) as MakeStyles;
   const properties = Object.keys(expandedStyles);
@@ -49,7 +50,7 @@ export function resolveStyleRules(
         unstable_cssPriority,
       });
 
-      const rtl = convertProperty(property, value);
+      const rtl = (rtlValue && { key: property, value: rtlValue }) || convertProperty(property, value);
       const flippedInRtl = rtl.key !== property || rtl.value !== value;
 
       if (flippedInRtl) {
@@ -68,6 +69,32 @@ export function resolveStyleRules(
       } else {
         result[key] = [className, css];
       }
+    } else if (property === 'animationName') {
+      const animationNames = Array.isArray(value) ? value : [value];
+      let keyframeCSS = '';
+      let keyframeRtlCSS = '';
+      const names = [];
+      const namesRtl = [];
+      for (const val of animationNames) {
+        const keyframe = compileKeyframeRule(val);
+        const name = HASH_PREFIX + hashString(keyframe);
+        keyframeCSS += compileKeyframesCSS(name, keyframe);
+        names.push(name);
+
+        const rtlKeyframe = compileKeyframeRule(convert(val));
+        if (keyframe !== rtlKeyframe) {
+          const nameRtl = RTL_PREFIX + name;
+          keyframeRtlCSS += compileKeyframesCSS(nameRtl, rtlKeyframe);
+          namesRtl.push(nameRtl);
+        } else {
+          namesRtl.push(name);
+        }
+      }
+
+      const animationName = names.join(' ');
+      const animationNameRtl = namesRtl.join(' ');
+      result[animationName] = [undefined, keyframeCSS, keyframeRtlCSS || undefined];
+      resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result, animationNameRtl);
     } else if (isObject(value)) {
       if (isNestedSelector(property)) {
         resolveStyleRules(
@@ -86,17 +113,6 @@ export function resolveStyleRules(
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
         resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
-      } else if (property === 'animationName') {
-        // TODO: support RTL!
-        const keyframe = compileKeyframeRule(value);
-        const animationName = HASH_PREFIX + hashString(keyframe);
-
-        // TODO call Stylis for prefixing
-        const keyframeCSS = `@keyframes ${animationName}{${keyframe}}`;
-
-        result[animationName] = [animationName, keyframeCSS /* rtlCSS */];
-
-        resolveStyleRules({ animationName }, unstable_cssPriority, pseudo, media, support, result);
       }
     }
   });

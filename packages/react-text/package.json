@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "0.1.3-15",
+  "version": "0.1.5",
   "description": "Fluent UI React Text component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -44,8 +44,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-theme-provider": "^1.0.0-beta.17",
-    "@fluentui/react-utils": "^0.1.0",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.21",
+    "@fluentui/react-utils": "^0.3.0",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/theme": "^2.0.0-beta.13",
     "@microsoft/load-themed-styles": "^1.10.26",
@@ -60,7 +60,8 @@
   "beachball": {
     "tag": "latest",
     "disallowedChangeTypes": [
-      "major"
+      "major",
+      "prerelease"
     ]
   }
 }

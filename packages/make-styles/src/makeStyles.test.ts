@@ -13,4 +13,25 @@ describe('makeStyles', () => {
     const computeClasses = makeStyles([[null, { color: 'red', position: 'absolute' }]]);
     expect(computeClasses({}, { renderer, tokens: {} })).toBe('__1fslksb fe3e8s90 f1euv43f');
   });
+
+  it('handles RTL for keyframes', () => {
+    const computeClasses = makeStyles([
+      [
+        null,
+        {
+          animationName: {
+            from: {
+              transform: 'rotate(0deg)',
+            },
+            to: {
+              transform: 'rotate(360deg)',
+            },
+          },
+          animationIterationCount: 'infinite',
+          animationDuration: '5s',
+        },
+      ],
+    ]);
+    expect(computeClasses({}, { renderer, tokens: {}, rtl: true })).toBe('__la4fka0 rfkf6eed0 f1cpbl36 f1t9cprh');
+  });
 });

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.50)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.49..@fluentui/react_v8.0.0-beta.50)
+
+### Changes
+
+- Bump @fluentui/react-date-time to v8.0.0-beta.40 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+
+## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.49)
+
+Thu, 04 Feb 2021 12:22:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.48..@fluentui/react_v8.0.0-beta.49)
+
+### Changes
+
+- Add additional prop support to IBreadcrumbItems ([PR #16765](https://github.com/microsoft/fluentui/pull/16765) by andredias@microsoft.com)
+
+## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.48)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.46..@fluentui/react_v8.0.0-beta.48)
+
+### Changes
+
+- DocumentCardPreview: add maxDisplayCount prop ([PR #16666](https://github.com/microsoft/fluentui/pull/16666) by hantatsang@gmail.com)
+- Module federation innerloop experience ([PR #16771](https://github.com/microsoft/fluentui/pull/16771) by kchau@microsoft.com)
+
+## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.46)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.44..@fluentui/react_v8.0.0-beta.46)
+
+### Changes
+
+- Updating re-exports that pointed to @fluentui/react- packages to now point to @fluentui/react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.44)
 

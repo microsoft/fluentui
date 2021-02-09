@@ -69,7 +69,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
           <div>
             <p>
               <code>TilesList</code> is a specialization of the{' '}
-              <Link href="#/examples/List">
+              <Link href="#/examples/List" underline>
                 <code>List</code>
               </Link>{' '}
               component. It is intended to represent items visually using one or more content-focused flowing grids.

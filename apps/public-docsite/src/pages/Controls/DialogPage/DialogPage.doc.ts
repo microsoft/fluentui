@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { DialogPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/Dialog/Dialog.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/DialogPage/docs/DialogRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const DialogPageProps: TFabricPlatformPageProps = {
   web: {

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.0.0-beta.45",
+  "version": "8.0.0-beta.50",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,7 +25,8 @@
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest -u"
+    "update-snapshots": "just-scripts jest -u",
+    "mf": "just-scripts mf"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
@@ -40,7 +41,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/example-data": "^8.0.0-beta.2",
+    "@fluentui/example-data": "^8.0.0-beta.3",
     "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.5",
     "@fluentui/test-utilities": "^8.0.0-beta.5",
     "@fluentui/webpack-utilities": "^8.0.0-beta.1",
@@ -58,14 +59,9 @@
   },
   "dependencies": {
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.13",
-    "@fluentui/react-checkbox": "^1.0.0-beta.38",
-    "@fluentui/react-date-time": "^8.0.0-beta.37",
+    "@fluentui/react-date-time": "^8.0.0-beta.40",
     "@fluentui/react-hooks": "^8.0.0-beta.10",
-    "@fluentui/react-internal": "^8.0.0-beta.39",
-    "@fluentui/react-link": "^1.0.0-beta.37",
-    "@fluentui/react-slider": "^1.0.0-beta.37",
-    "@fluentui/react-tabs": "^1.0.0-beta.38",
-    "@fluentui/react-toggle": "^1.0.0-beta.37",
+    "@fluentui/react-internal": "^8.0.0-beta.44",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/utilities": "^8.0.0-beta.10",
     "@microsoft/load-themed-styles": "^1.10.26",
