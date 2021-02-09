@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utils';
-import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable';
+import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
 import { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
 
 export interface MenuItemCheckboxProps

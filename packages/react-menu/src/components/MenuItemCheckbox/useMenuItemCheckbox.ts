@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { useMenuItemSelectable } from '../../selectable';
+import { useMenuItemSelectable } from '../../selectable/index';
 import { useMergedRefs } from '@fluentui/react-hooks';
 
 /**

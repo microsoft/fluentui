@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useMenuItemCheckbox } from './useMenuItemCheckbox';
 import { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 import { renderMenuItemCheckbox } from './renderMenuItemCheckbox';
-import { useCheckmarkStyles } from '../../selectable';
+import { useCheckmarkStyles } from '../../selectable/index';
 import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
 
 /**
