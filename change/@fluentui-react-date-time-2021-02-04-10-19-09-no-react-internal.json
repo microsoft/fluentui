@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "[BREAKING] Move components to @fluentui/react and re-export from there (working around a circular dependency)",
-  "packageName": "@fluentui/react-date-time",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T18:17:02.310Z"
-}
