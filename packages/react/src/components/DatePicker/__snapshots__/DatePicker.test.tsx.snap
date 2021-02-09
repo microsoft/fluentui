@@ -192,10 +192,15 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 ms-DatePicker-event--without-label
                 msDatePickerDisabled
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   cursor: pointer;
                   display: inline-block;
+                  font-family: "FabricMDL2Icons";
                   font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
                   line-height: 18px;
                   padding-bottom: 5px;
                   padding-left: 5px;
@@ -204,10 +209,13 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   pointer-events: initial;
                   position: absolute;
                   right: 4px;
+                  speak: none;
                 }
             data-icon-name="Calendar"
             onClick={[Function]}
-          />
+          >
+            
+          </i>
         </div>
       </div>
     </div>
