@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "[BREAKING] Remove compat exports; move Button back to old location",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
