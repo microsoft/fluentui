@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Combine react-internal back into react (and update references). Move react-date-time components into react to break circular dependency.",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T18:19:03.880Z"
-}
