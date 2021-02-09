@@ -182,7 +182,6 @@ jobs:
           script: >-
             echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyRelease $(nightlyRelease)
 
-            PRODUCTION=true yarn build
 
             NODE_ENV=production yarn build:fluentui:docs
 
