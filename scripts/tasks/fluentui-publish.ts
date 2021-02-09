@@ -101,63 +101,46 @@ export function fluentuiPostPublishValidation() {
 }
 
 // pack all public fluent ui packages, used by ci to store nightly built artifacts
-const PUBLIC_FLUENT_PACKAGES = [
-  'ability-attributes',
-  'accessibility',
-  'code-sandbox',
-  'docs-components',
-  'react-bindings',
-  'react-builder',
-  'react-component-event-listener',
-  'react-component-nesting-registry',
-  'react-component-ref',
-  'react-context-selector',
-  'react-icons-northstar',
-  'react-northstar-emotion-renderer',
-  'react-northstar-fela-renderer',
-  'react-northstar-styles-renderer',
-  'react-northstar',
-  'react-proptypes',
-  'react-telemetry',
-  'state',
-  'styles',
-];
-
-const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
-
-const replaceDepVersionWithNightlyUrl = (packageRoot, packageName) => {
-  const packageJson = require(`@fluentui/${packageName}/package.json`);
-  const dependencies = packageJson.dependencies || {};
-  let hasFluentDependency = false;
-  for (const key of Object.keys(dependencies)) {
-    if (key.startsWith('@fluentui/') && PUBLIC_FLUENT_PACKAGES.includes(fluentPackageName)) {
-      const fluentPackageName = key.substring('@fluentui/'.length);
-      hasFluentDependency = true;
-      dependencies[
-        key
-      ] = `https://fluentsite.blob.core.windows.net/nightly-builds/${TODAY}/fluentui-${fluentPackageName}-${packageJson.version}.tgz`;
-    }
-  }
-
-  if (hasFluentDependency) {
-    fs.writeFileSync(path.resolve(packageRoot, 'package.json'), JSON.stringify(packageJson, null, 2));
-  }
-};
-
 export function packFluentTarballs() {
   return function() {
     const gitRoot = findGitRoot();
-    const tempFolderForPacks = path.resolve(gitRoot, 'fluentui-nightly');
-    fs.mkdirSync(tempFolderForPacks);
+    const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
 
-    const packPackage = (packageName: string) => {
-      const packageRoot = path.resolve(gitRoot, 'packages', 'fluentui', packageName);
-      replaceDepVersionWithNightlyUrl(packageRoot, packageName);
-      execCommandSync(tempFolderForPacks, 'yarn', ['pack', packageRoot]);
+    const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+
+    const fluentPackages = JSON.parse(
+      execCommandSync(fluentRoot, '../../node_modules/.bin/lerna', ['ls', '--json']).toString(),
+    );
+    const fluentPackagesNames = fluentPackages.map(pkg => pkg.name);
+
+    const replaceDepVersionWithNightlyUrl = (packageLocation, packageName) => {
+      const packageJson = require(`${packageLocation}/package.json`);
+      const dependencies = packageJson.dependencies || {};
+      let hasFluentDependency = false;
+      for (const depPkg of Object.keys(dependencies)) {
+        if (fluentPackagesNames.includes(depPkg)) {
+          hasFluentDependency = true;
+          dependencies[depPkg] = `https://fluentsite.blob.core.windows.net/nightly-builds/${TODAY}/${depPkg.replace(
+            '@fluentui/',
+            'fluentui-',
+          )}-${packageJson.version}.tgz`;
+        }
+      }
+
+      if (hasFluentDependency) {
+        fs.writeFileSync(path.resolve(packageLocation, 'package.json'), JSON.stringify(packageJson, null, 2));
+      }
     };
 
-    PUBLIC_FLUENT_PACKAGES.forEach(packageName => {
-      packPackage(packageName);
+    // pack all fluent public packages into a directory named process.env.FLUENTUITARBALLS in workspace
+    const tempFolderForPacks = path.resolve(gitRoot, process.env.FLUENTUITARBALLS || 'fluentui-nightly');
+    fs.mkdirSync(tempFolderForPacks);
+
+    fluentPackages.forEach(fluentPackage => {
+      if (!fluentPackage.private) {
+        replaceDepVersionWithNightlyUrl(fluentPackage.location, fluentPackage.name);
+        execCommandSync(tempFolderForPacks, 'npm', ['pack', fluentPackage.location]);
+      }
     });
   };
 }

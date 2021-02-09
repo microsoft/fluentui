@@ -20,15 +20,19 @@ resources:
       ref: master
 
 variables:
+  # below are variables that cannot be configured at queue time
   - group: 'Github and NPM secrets'
-  - name: docsiteVersion
+  - name: docsiteVersion # used by docsite
     value: 0.0.0-nightly
-  - name: deployBasePath
+  - name: deployBasePath # used by docsite
     value: 0.0.0-nightly
-  - name: officialRelease
+  - name: officialRelease # used by docsite
     value: true
-  - name: nightlyRelease
+  - name: nightlyRelease # used by nightly built docsite to setup codesandbox correctly
     value: true
+  - name: fluentuiTarballs # temporary directory name under workspace root, used to store all fluent ui nightly built tarballs
+    value: fluentui-nightly
+
   # below are variables configurable at queue time, so they cannot appear in yml file
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
   #   value: false
@@ -91,7 +95,7 @@ jobs:
         displayName: '[Nightly] Upload tarballs'
         condition: and(succeeded(), eq(variables.publishOfficial, false))
         inputs:
-          SourcePath: fluentui-nightly
+          SourcePath: $(fluentuiTarballs)
           ConnectedServiceNameARM: 4f791194-9458-4a18-9f9d-6a77ddb74b8c
           StorageAccountRM: fluentsite
           ContainerName: nightly-builds
@@ -103,7 +107,7 @@ jobs:
         displayName: '[Nightly] Upload tarballs as newest'
         condition: and(succeeded(), eq(variables.publishOfficial, false))
         inputs:
-          SourcePath: fluentui-nightly
+          SourcePath: $(fluentuiTarballs)
           ConnectedServiceNameARM: 4f791194-9458-4a18-9f9d-6a77ddb74b8c
           StorageAccountRM: fluentsite
           ContainerName: nightly-builds
