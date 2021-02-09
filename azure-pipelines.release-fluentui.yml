@@ -1,9 +1,11 @@
 pr: none
 trigger: none
 
-# nightly build master branch at 3am
 schedules:
-  - cron: 0 3 * * *
+  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
+  - cron: '0 12 * * 1-5'
+    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
     branches:
       include:
         - master
@@ -46,15 +48,18 @@ jobs:
     steps:
       - checkout: self
 
-      - task: CmdLine@2
-        displayName: Authenticate Git credentials
+      - template: .devops/templates/tools.yml
+
+      - script: |
+          git config user.name "Fluent UI Build"
+          git config user.email "fluentui-internal@service.microsoft.com"
+          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+        displayName: Authenticate git for pushes
+
+      - task: Bash@3
         inputs:
-          script: >-
-            git config user.name "Fluent UI Build"
-
-            git config user.email "fluentui-internal@service.microsoft.com"
-
-            git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+          filePath: yarn-ci.sh
+        displayName: yarn
 
       - task: CmdLine@2
         displayName: Checkout branch
@@ -63,13 +68,6 @@ jobs:
             git checkout $(Build.SourceBranchName)
 
             git pull
-
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        displayName: Yarn
-        inputs:
-          filePath: yarn-ci.sh
 
       - task: CmdLine@2
         displayName: yarn buildci
@@ -155,16 +153,7 @@ jobs:
     steps:
       - checkout: self
 
-      - task: NodeTool@0
-        displayName: Install Node.js
-        inputs:
-          versionSpec: 12.x
-
-      - task: YarnInstaller@0
-        displayName: Use Yarn 1.19.x
-        inputs:
-          versionSpec: 1.19.x
-          checkLatest: true
+      - template: .devops/templates/tools.yml
 
       - task: Bash@3
         displayName: Yarn
