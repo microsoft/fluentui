@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { FocusTrapZoneBoxExample } from './FocusTrapZone.Box.Example';
 const FocusTrapZoneBoxExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.Example.tsx') as string;
@@ -23,8 +23,7 @@ const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader?esModule=fals
 export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
   componentName: 'FocusTrapZone',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/FocusTrapZone',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/FocusTrapZone',
   examples: [
     {
       title: 'Simple box',

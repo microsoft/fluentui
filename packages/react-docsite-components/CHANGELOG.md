@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.51)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.50..@fluentui/react-docsite-components_v8.0.0-beta.51)
+
+### Changes
+
+- Combine react-internal back into react, and update references ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.50)
 
