@@ -14,7 +14,7 @@ import {
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
-import { VersionDropdown, FLUENT_NIGHTLY_VERSION } from './VersionDropdown';
+import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
 import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
@@ -28,12 +28,6 @@ import componentInfoContext from '../../utils/componentInfoContext';
 type ComponentMenuItem = { displayName: string; type: string };
 
 const pkg = require('@fluentui/react-northstar/package.json');
-
-// nightly released docsite's package.json is the latest version instead of '0.0.0-nightly'.
-// I prefer to keep it this way for tracking purpose
-// The checking here is for sidebar to display correctly for '0.0.0-nightly'
-const version =
-  window.location.pathname.split('/')[1] === FLUENT_NIGHTLY_VERSION ? FLUENT_NIGHTLY_VERSION : pkg.version;
 
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
@@ -495,30 +489,32 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
         <VersionDropdown width={props.width} />
-        <CopyToClipboard value={`yarn add ${pkg.name}@${version}`} timeout={3000}>
-          {(active, onClick) => (
-            <Box
-              as="code"
-              onClick={onClick}
-              styles={{
-                display: 'block',
-                fontWeight: 'normal',
-                fontSize: '12px',
-                opacity: active ? 1 : 0.6,
-                color: active ? 'rgb(138, 255, 124)' : 'inherit',
-                marginTop: '10px',
-                cursor: 'pointer',
-                ...(!active && {
-                  ':hover': {
-                    opacity: 0.75,
-                  },
-                }),
-              }}
-            >
-              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${version}`}
-            </Box>
-          )}
-        </CopyToClipboard>
+        {process.env.NIGHTLYRELEASE === 'true' ? null : (
+          <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
+            {(active, onClick) => (
+              <Box
+                as="code"
+                onClick={onClick}
+                styles={{
+                  display: 'block',
+                  fontWeight: 'normal',
+                  fontSize: '12px',
+                  opacity: active ? 1 : 0.6,
+                  color: active ? 'rgb(138, 255, 124)' : 'inherit',
+                  marginTop: '10px',
+                  cursor: 'pointer',
+                  ...(!active && {
+                    ':hover': {
+                      opacity: 0.75,
+                    },
+                  }),
+                }}
+              >
+                {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
+              </Box>
+            )}
+          </CopyToClipboard>
+        )}
       </Flex>
       <Flex column>
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
