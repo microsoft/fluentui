@@ -46,7 +46,7 @@ export const MenuListWithIconsExample = () => (
 
 export const MenuListWithCheckboxes = () => {
   const checkmark = <AcceptIcon />;
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (name: string, items: string[]) => {
     setCheckedValues(s => ({ ...s, [name]: items }));
   };
@@ -54,13 +54,13 @@ export const MenuListWithCheckboxes = () => {
   return (
     <Container>
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-        <MenuItemCheckbox name="checkbox" value="1" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<CutIcon />} name="checkbox" value="1" checkmark={checkmark}>
           Item
         </MenuItemCheckbox>
-        <MenuItemCheckbox name="checkbox" value="2" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<PasteIcon />} name="checkbox" value="2" checkmark={checkmark}>
           Item
         </MenuItemCheckbox>
-        <MenuItemCheckbox name="checkbox" value="3" checkmark={checkmark}>
+        <MenuItemCheckbox icon={<EditIcon />} name="checkbox" value="3" checkmark={checkmark}>
           Item
         </MenuItemCheckbox>
       </MenuList>
