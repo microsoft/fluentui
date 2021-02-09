@@ -1,4 +1,5 @@
 import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
+import { useMenuListContext } from '../menuListContext';
 import { MenuItemSelectableState } from './types';
 
 /**
@@ -9,6 +10,11 @@ import { MenuItemSelectableState } from './types';
  */
 export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewCheckedItems: () => string[]) => {
   const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = state;
+  const { checkedValues: { [state.name]: checkedItems = [] } = {}, onCheckedValueChange } = useMenuListContext();
+
+  state.checkedItems = checkedItems;
+  state.onCheckedValueChange = onCheckedValueChange || (() => null);
+  state.checked = checkedItems.indexOf(state.value) !== -1;
 
   const onSelectionChange = () => {
     const newCheckedItems = getNewCheckedItems();

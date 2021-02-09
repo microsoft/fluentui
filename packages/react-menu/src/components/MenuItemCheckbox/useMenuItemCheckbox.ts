@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
-import { useMenuListContext } from '../../menuListContext';
 import { useMenuItemSelectable } from '../../selectable';
 import { useMergedRefs } from '@fluentui/react-hooks';
 
@@ -30,11 +29,6 @@ export const useMenuItemCheckbox = (
     defaultProps,
     resolveShorthandProps(props, menuItemCheckboxShorthandProps),
   );
-
-  const { checkedValues: { [state.name]: checkedItems = [] } = {}, onCheckedValueChange } = useMenuListContext();
-  state.checkedItems = checkedItems;
-  state.onCheckedValueChange = onCheckedValueChange || (() => null);
-  state.checked = checkedItems.indexOf(state.value) !== -1;
 
   useMenuItemSelectable(state, () => {
     const newCheckedItems = [...state.checkedItems];

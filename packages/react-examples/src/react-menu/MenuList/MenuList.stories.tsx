@@ -53,7 +53,7 @@ export const MenuListWithCheckboxes = () => {
 
   return (
     <Container>
-      <MenuList checkedValues={checkedValues} onCheckedValuesChange={onChange}>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
         <MenuItemCheckbox name="checkbox" value="1" checkmark={checkmark}>
           Item
         </MenuItemCheckbox>
