@@ -1,6 +1,10 @@
 import { EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { renderHook } from '@testing-library/react-hooks';
 import { MenuItemSelectableState } from './types';
 import { useMenuItemSelectable } from './useMenuItemSelectable';
+import { useMenuListContext } from '../menuListContext';
+
+jest.mock('../menuListContext');
 
 describe('useMenuItemSelectable', () => {
   const createTestState = (options: Partial<MenuItemSelectableState> = {}): MenuItemSelectableState => ({
@@ -9,34 +13,68 @@ describe('useMenuItemSelectable', () => {
     checkmark: {},
     name: 'name',
     value: 'value',
-    checkedItems: ['1', '2', '3'],
     onCheckedValueChange: jest.fn(),
-    checked: false,
     ...options,
   });
 
+  const checkedItems = ['1', '2', '3'];
+
   it.each([
-    [false, true],
-    [true, false],
+    [['1'], true],
+    [['2'], false],
     [undefined, false],
-    [undefined, true],
-  ])('should set aria-checked to checked state', (ariaChecked, checked) => {
+    [[], false],
+    [['3', '1', '2'], true],
+  ])('should set checked and aria-checked', (values, expected) => {
     // Arrange
-    const state: MenuItemSelectableState = createTestState({ 'aria-checked': ariaChecked, checked });
+    const state: MenuItemSelectableState = createTestState({ value: '1', name: 'test' });
+    (useMenuListContext as jest.Mock).mockReturnValue({ checkedValues: { test: values } });
 
     // Act
-    useMenuItemSelectable(state, jest.fn());
+    renderHook(() => useMenuItemSelectable(state, jest.fn()));
 
     // Assert
-    expect(state['aria-checked']).toBe(checked);
+    expect(state.checked).toBe(expected);
+    expect(state['aria-checked']).toBe(expected);
+  });
+
+  it('should call onCheckedValueChange if values changed', () => {
+    // Arrange
+    const state: MenuItemSelectableState = createTestState();
+    (useMenuListContext as jest.Mock).mockReturnValue({
+      onCheckedValueChange: jest.fn(),
+      checkedValues: { [state.name]: [...checkedItems] },
+    });
+    const newValues = [...checkedItems, 'x'];
+
+    // Act
+    renderHook(() => useMenuItemSelectable(state, () => newValues));
+    if (state.onClick) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      state.onClick(null);
+    }
+
+    // Assert
+    expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
+    expect(state.onCheckedValueChange).toHaveBeenCalledWith(state.name, newValues);
   });
 
   it('should not call onCheckedValueChange if values did not change', () => {
     // Arrange
     const state: MenuItemSelectableState = createTestState();
+    (useMenuListContext as jest.Mock).mockReturnValue({
+      onCheckedValueChange: jest.fn(),
+      checkedValues: { [state.name]: [...checkedItems] },
+    });
 
     // Act
-    useMenuItemSelectable(state, () => [...state.checkedItems]);
+    renderHook(() => useMenuItemSelectable(state, () => [...checkedItems]));
+    if (state.onClick) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      state.onClick(null);
+    }
 
     // Assert
     expect(state.onCheckedValueChange).not.toHaveBeenCalled();
@@ -47,7 +85,7 @@ describe('useMenuItemSelectable', () => {
     const state: MenuItemSelectableState = createTestState({ onKeyDown: undefined, onClick: undefined });
 
     // Act
-    useMenuItemSelectable(state, jest.fn());
+    renderHook(() => useMenuItemSelectable(state, jest.fn()));
 
     // Assert
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -55,24 +93,6 @@ describe('useMenuItemSelectable', () => {
     const callback = state[action];
     expect(callback).toBeDefined();
     expect(typeof callback).toBe('function');
-  });
-
-  it('should call onCheckedValueChange if values changed', () => {
-    // Arrange
-    const state: MenuItemSelectableState = createTestState();
-    const newValues = [...state.checkedItems, 'x'];
-
-    // Act
-    useMenuItemSelectable(state, () => newValues);
-    if (state.onClick) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      state.onClick(null);
-    }
-
-    // Assert
-    expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-    expect(state.onCheckedValueChange).toHaveBeenCalledWith(state.name, newValues);
   });
 
   it.each([EnterKey, SpacebarKey])('should transform %s keydown to click', keyCode => {
@@ -87,7 +107,7 @@ describe('useMenuItemSelectable', () => {
     };
 
     // Act
-    useMenuItemSelectable(state, jest.fn());
+    renderHook(() => useMenuItemSelectable(state, jest.fn()));
     if (state.onKeyDown) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
