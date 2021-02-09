@@ -23,7 +23,7 @@ export interface ComponentProps {
 
 export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
 
-export type ShorthandProps<TProps extends ComponentProps> =
+export type ShorthandProps<TProps extends ComponentProps = {}> =
   | React.ReactChild
   | React.ReactNodeArray
   | React.ReactPortal
@@ -36,7 +36,7 @@ export type ShorthandProps<TProps extends ComponentProps> =
         children?: TProps['children'] | ShorthandRenderFunction<TProps>;
       });
 
-export type ObjectShorthandProps<TProps extends ComponentProps> = TProps & {
+export type ObjectShorthandProps<TProps extends GenericDictionary> = TProps & {
   children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
