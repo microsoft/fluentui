@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.29)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.28..@fluentui/react-button_v1.0.0-beta.29)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.0 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- MenuButton: Adding persistMenu prop to allow for constant rendering of the Menu. ([PR #16742](https://github.com/microsoft/fluentui/pull/16742) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.28)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.27..@fluentui/react-button_v1.0.0-beta.28)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.20 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.27)
 

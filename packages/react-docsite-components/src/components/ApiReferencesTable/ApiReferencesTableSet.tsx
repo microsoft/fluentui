@@ -9,7 +9,7 @@ import {
   IMethod,
   IApiReferencesTableSetProps,
 } from './ApiReferencesTableSet.types';
-import { ITableRowJson, IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ITableRowJson, IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 import { jumpToAnchor } from '../../utilities/index2';
 import { getTokenResolver } from './tokenResolver';

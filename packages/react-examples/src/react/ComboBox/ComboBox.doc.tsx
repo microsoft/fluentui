@@ -6,7 +6,7 @@ import { ComboBoxVirtualizedExample } from './ComboBox.Virtualized.Example';
 import { ComboBoxErrorHandlingExample } from './ComboBox.ErrorHandling.Example';
 import { ComboBoxCustomStyledExample } from './ComboBox.CustomStyled.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const ComboBoxBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ComboBox/ComboBox.Basic.Example.tsx') as string;
 

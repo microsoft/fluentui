@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { KeytipsBasicExample } from './Keytips.Basic.Example';
 import { KeytipsButtonExample } from './Keytips.Button.Example';
 import { KeytipsCommandBarExample } from './Keytips.CommandBar.Example';
@@ -16,7 +16,7 @@ const KeytipsDynamicCode = require('!raw-loader?esModule=false!@fluentui/react-e
 export const KeytipsPageProps: IDocPageProps = {
   title: 'Keytips',
   componentName: 'Keytips',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Keytips',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Keytips',
   examples: [
     {
       title: 'Keytips on Buttons',

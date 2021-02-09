@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { SelectionBasicExample } from './Selection.Basic.Example';
 
 const SelectionBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Selection/Selection.Basic.Example.tsx') as string;

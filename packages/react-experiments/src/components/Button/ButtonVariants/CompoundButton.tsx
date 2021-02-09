@@ -4,7 +4,7 @@ import { composed } from '@fluentui/foundation-legacy/lib/next/composed';
 import { IComponent } from '@fluentui/foundation-legacy/lib/next/IComponent';
 import { IComponentStyles, IStylesFunction, ITokenFunction } from '@fluentui/foundation-legacy';
 import { Text, ITextStyles } from '@fluentui/react';
-import { parseGap } from '@fluentui/react-internal/lib/components/Stack/StackUtils';
+import { parseGap } from '@fluentui/react/lib/components/Stack/StackUtils';
 import { HighContrastSelector } from '../../../Styling';
 import { useButtonState as state } from '../Button.state';
 import { ButtonStyles, ButtonTokens } from '../Button.styles';

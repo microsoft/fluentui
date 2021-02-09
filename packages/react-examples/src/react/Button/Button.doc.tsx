@@ -12,7 +12,7 @@ import { ButtonScreenReaderExample } from './Button.ScreenReader.Example';
 import { ButtonSplitExample } from './Button.Split.Example';
 import { ButtonSplitCustomExample } from './Button.CustomSplit.Example';
 import { ButtonToggleExample } from './Button.Toggle.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const ButtonActionExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Action.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Button/Button.Anchor.Example.tsx') as string;
@@ -41,7 +41,7 @@ export interface IButtonDocPageProps {
 export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   title: 'Button',
   componentName: 'ButtonExample',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Button',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Button',
   examples: [
     {
       title: 'Default Button',
