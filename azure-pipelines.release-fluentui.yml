@@ -60,16 +60,7 @@ jobs:
 
             git pull
 
-      - task: NodeTool@0
-        displayName: Install Node.js
-        inputs:
-          versionSpec: 12.x
-
-      - task: YarnInstaller@0
-        displayName: Use Yarn 1.19.x
-        inputs:
-          versionSpec: 1.19.x
-          checkLatest: true
+      - template: .devops/templates/tools.yml
 
       - task: Bash@3
         displayName: Yarn
