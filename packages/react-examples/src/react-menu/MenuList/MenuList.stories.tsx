@@ -27,27 +27,23 @@ const Container: React.FC = props => {
 };
 
 export const MenuListExample = () => (
-  <FluentProvider theme={teamsLightTheme}>
-    <Container>
-      <MenuList>
-        <MenuItem>Item</MenuItem>
-        <MenuItem>Item</MenuItem>
-        <MenuItem>Item</MenuItem>
-      </MenuList>
-    </Container>
-  </FluentProvider>
+  <Container>
+    <MenuList>
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Item</MenuItem>
+      <MenuItem>Item</MenuItem>
+    </MenuList>
+  </Container>
 );
 
 export const MenuListWithIconsExample = () => (
-  <FluentProvider theme={teamsLightTheme}>
-    <Container>
-      <MenuList>
-        <MenuItem icon={<CutIcon />}>Item</MenuItem>
-        <MenuItem icon={<PasteIcon />}>Item</MenuItem>
-        <MenuItem icon={<EditIcon />}>Item</MenuItem>
-      </MenuList>
-    </Container>
-  </FluentProvider>
+  <Container>
+    <MenuList>
+      <MenuItem icon={<CutIcon />}>Item</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Item</MenuItem>
+      <MenuItem icon={<EditIcon />}>Item</MenuItem>
+    </MenuList>
+  </Container>
 );
 
 export const MenuListWithCheckboxes = () => {
@@ -58,20 +54,18 @@ export const MenuListWithCheckboxes = () => {
   };
 
   return (
-    <FluentProvider theme={teamsLightTheme}>
-      <Container>
-        <MenuList checkedValues={checkedValues} onCheckedValuesChange={onChange}>
-          <MenuItemCheckbox name="checkbox" value="1" checkmark={checkmark}>
-            Item
-          </MenuItemCheckbox>
-          <MenuItemCheckbox name="checkbox" value="2" checkmark={checkmark}>
-            Item
-          </MenuItemCheckbox>
-          <MenuItemCheckbox name="checkbox" value="3" checkmark={checkmark}>
-            Item
-          </MenuItemCheckbox>
-        </MenuList>
-      </Container>
-    </FluentProvider>
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValuesChange={onChange}>
+        <MenuItemCheckbox name="checkbox" value="1" checkmark={checkmark}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox name="checkbox" value="2" checkmark={checkmark}>
+          Item
+        </MenuItemCheckbox>
+        <MenuItemCheckbox name="checkbox" value="3" checkmark={checkmark}>
+          Item
+        </MenuItemCheckbox>
+      </MenuList>
+    </Container>
   );
 };
