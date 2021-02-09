@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-experiments",
-  "version": "8.0.0-beta.50",
+  "version": "8.0.0-beta.54",
   "description": "Experimental React components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -50,8 +50,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.48",
-    "@fluentui/react-internal": "^8.0.0-beta.42",
+    "@fluentui/react": "^8.0.0-beta.50",
+    "@fluentui/react-internal": "^8.0.0-beta.44",
     "@fluentui/theme": "^2.0.0-beta.13",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.0.0-beta.3",

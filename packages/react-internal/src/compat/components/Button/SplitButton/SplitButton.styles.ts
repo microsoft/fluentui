@@ -140,6 +140,11 @@ export const getStyles = memoizeFunction(
         marginTop: 0,
         marginRight: 0,
         marginBottom: 0,
+        [HighContrastSelector]: {
+          '.ms-Button-menuIcon': {
+            color: 'WindowText',
+          },
+        },
       },
       splitButtonDivider: {
         ...splitButtonDividerBaseStyles,

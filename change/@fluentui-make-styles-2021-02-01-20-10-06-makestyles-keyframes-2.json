@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "makeStyles: finish up keyframes implementation",
-  "packageName": "@fluentui/make-styles",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-02T04:10:06.714Z"
-}
