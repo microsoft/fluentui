@@ -153,7 +153,7 @@ export function packFluentTarballs() {
     const packPackage = (packageName: string) => {
       const packageRoot = path.resolve(gitRoot, 'packages', 'fluentui', packageName);
       replaceDepVersionWithNightlyUrl(packageRoot, packageName);
-      execCommandSync(tempFolderForPacks, 'npm', ['pack', packageRoot]);
+      execCommandSync(tempFolderForPacks, 'yarn', ['pack', packageRoot]);
     };
 
     PUBLIC_FLUENT_PACKAGES.forEach(packageName => {
