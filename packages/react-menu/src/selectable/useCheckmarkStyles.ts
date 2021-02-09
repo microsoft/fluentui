@@ -1,7 +1,9 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { MenuItemSelectableState } from './types';
 
-/** Style hook for checkmark icons */
+/**
+ * Style hook for checkmark icons
+ */
 const useStyles = makeStyles([
   [
     null,
@@ -13,7 +15,9 @@ const useStyles = makeStyles([
   ],
 ]);
 
-/** Applies styles to a checkmark slot for selectable menu items */
+/**
+ * Applies styles to a checkmark slot for selectable menu items
+ */
 export const useCheckmarkStyles = (state: MenuItemSelectableState) => {
   const checkmarkClassName = useStyles({});
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment

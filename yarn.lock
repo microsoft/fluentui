@@ -19599,7 +19599,7 @@ pretty-error@^2.1.1:
     renderkid "^2.0.1"
     utila "~0.4"
 
-pretty-format@24.9.0, pretty-format@^24.8.0, pretty-format@^24.9.0, pretty-format@^25.1.0, pretty-format@^26.6.2:
+pretty-format@^24.8.0, pretty-format@^24.9.0, pretty-format@^25.1.0, pretty-format@^26.6.2:
   version "24.9.0"
   resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-24.9.0.tgz#12fac31b37019a4eea3c11aa9a959eb7628aa7c9"
   integrity sha512-00ZMZUiHaJrNfk33guavqgvfJS30sLYf0f8+Srklv0AMPodGGHcoHgksZ3OThYnIvOd+8yMCn0YiEOogjlgsnA==

@@ -1,6 +1,8 @@
 import * as React from 'react';
 
-/** Props for selecatble menu items */
+/**
+ * Props for selecatble menu items
+ */
 export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Follows input convention
@@ -15,14 +17,22 @@ export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElemen
   value: string;
 }
 
-/** State for selectable menu items */
+/**
+ * State for selectable menu items
+ */
 export interface MenuItemSelectableState extends MenuItemSelectableProps {
-  /** Checked values for a give `name` */
+  /**
+   * Checked values for a give `name`
+   */
   checkedItems: string[];
 
-  /** Callback when checked values changes for a given `name` */
+  /**
+   * Callback when checked values changes for a given `name`
+   */
   onCheckedValuesChange: (name: string, value: string[]) => void;
 
-  /** Selectable is checked */
+  /**
+   * Selectable is checked
+   */
   checked: boolean;
 }
