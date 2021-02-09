@@ -16,7 +16,11 @@ const useStyles = makeStyles([
 /** Applies styles to a checkmark slot for selectable menu items */
 export const useCheckmarkStyles = (state: MenuItemSelectableState) => {
   const checkmarkClassName = useStyles({});
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   if (state.checkmark) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     state.checkmark.className = ax(checkmarkClassName, state.checkmark.className);
   }
 };
