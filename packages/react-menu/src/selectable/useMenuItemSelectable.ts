@@ -15,6 +15,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
   state.checkedItems = checkedItems;
   state.onCheckedValueChange = onCheckedValueChange || (() => null);
   state.checked = checkedItems.indexOf(state.value) !== -1;
+  state['aria-checked'] = state.checked;
 
   const onSelectionChange = () => {
     const newCheckedItems = getNewCheckedItems();
@@ -51,6 +52,4 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
       (e.target as HTMLElement).click();
     }
   };
-
-  state['aria-checked'] = state.checked;
 };

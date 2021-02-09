@@ -9,7 +9,7 @@ export const renderMenuItemCheckbox = (state: MenuItemCheckboxState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      {state.checked && <slots.checkmark {...slotProps.checkmark} />}
+      <slots.checkmark {...slotProps.checkmark} />
       <slots.icon {...slotProps.icon} />
       {state.children}
     </slots.root>

@@ -5,13 +5,20 @@ import { MenuItemSelectableState } from './types';
 /**
  * Style hook for checkmark icons
  */
-const useStyles = makeStyles([
+const useStyles = makeStyles<MenuItemSelectableState>([
   [
     null,
     () => ({
       width: '16px',
       height: '16px',
       marginRight: '9px',
+      visibility: 'hidden',
+    }),
+  ],
+  [
+    state => state.checked,
+    () => ({
+      visibility: 'visible',
     }),
   ],
 ]);
@@ -24,7 +31,7 @@ const useStyles = makeStyles([
 export const useCheckmarkStyles = (
   state: MenuItemSelectableState & { checkmark: ObjectShorthandProps<HTMLElement> },
 ) => {
-  const checkmarkClassName = useStyles({});
+  const checkmarkClassName = useStyles(state);
   if (state.checkmark) {
     state.checkmark.className = ax(checkmarkClassName, state.checkmark.className);
   }
