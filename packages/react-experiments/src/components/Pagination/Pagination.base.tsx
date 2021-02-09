@@ -6,7 +6,7 @@ import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPagination
 import { ComboBox, IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { IProcessedStyleSet } from '../../Styling';
-import { DirectionalHint } from '@fluentui/react-internal/lib/common/DirectionalHint';
+import { DirectionalHint } from '@fluentui/react/lib/common/DirectionalHint';
 
 const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
 

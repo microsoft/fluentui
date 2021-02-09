@@ -16,7 +16,7 @@ import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
 
 import { List, IListProps } from '../../List';
-import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IViewport } from '../../utilities/decorators/withViewport';
 
 export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
   /** GroupedList resolved class names */

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add ObjectSlot type",
-  "packageName": "@fluentui/react-utils",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
