@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Move react-date-time docs into react package; update references to react-internal to point to react",
-  "packageName": "@fluentui/react-examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T18:18:43.995Z"
-}

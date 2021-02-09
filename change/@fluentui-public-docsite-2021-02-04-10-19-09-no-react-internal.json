@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Combine react-internal back into react, and update references",
-  "packageName": "@fluentui/public-docsite",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T18:16:29.583Z"
-}

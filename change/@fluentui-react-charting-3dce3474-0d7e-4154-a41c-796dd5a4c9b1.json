@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove unused eslint-disables",
-  "packageName": "@fluentui/react-charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

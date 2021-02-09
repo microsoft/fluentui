@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Combine react-internal back into react, and update references",
-  "packageName": "@fluentui/webpack-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-04T18:19:09.079Z"
-}

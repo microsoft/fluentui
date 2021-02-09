@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 12:24:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.51)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.50..@fluentui/react_v8.0.0-beta.51)
+
+### Changes
+
+- ChoiceGroup: Focus border now visible when focus method is called ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by tristan.watanabe@gmail.com)
+- Combine react-internal back into react (and update references). Move react-date-time components into react to break circular dependency. ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
+- Stack/Text: Added additional pragma to set jsxRuntime to classic ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by subs@appsparkler.com)
 
 ## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.50)
 
