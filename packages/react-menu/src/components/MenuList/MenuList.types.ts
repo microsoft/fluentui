@@ -5,8 +5,8 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
   /**
    * Callback when checked items change for value with a name
    *
-   * @param name the name of the value
-   * @param checkedItems the items for this value that are checked
+   * @param name - the name of the value
+   * @param checkedItems - the items for this value that are checked
    */
   onCheckedValueChange?: (name: string, checkedItems: string[]) => void;
 
