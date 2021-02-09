@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavBasicExample } from './Nav.Basic.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { NavFabricDemoAppExample } from './Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './Nav.Nested.Example';
 import { NavCustomGroupHeadersExample } from './Nav.CustomGroupHeaders.Example';
@@ -13,7 +13,7 @@ const NavCustomGroupHeadersExampleCode = require('!raw-loader?esModule=false!@fl
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
   componentName: 'Nav',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Nav',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Nav',
   examples: [
     {
       title: 'Basic nav with sample links',

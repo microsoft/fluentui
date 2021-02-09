@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { CommandBarBasicExample } from './CommandBar.Basic.Example';
 import { CommandBarButtonAsExample } from './CommandBar.ButtonAs.Example';
 import { IndividualCommandBarButtonAsExampleWrapper } from './CommandBar.CommandBarButtonAs.Example';
@@ -20,7 +20,7 @@ const CommandBarLazyExampleCode = require('!raw-loader?esModule=false!@fluentui/
 export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',
   componentName: 'CommandBar',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/CommandBar',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/CommandBar',
   examples: [
     {
       title: 'CommandBar with overflowing menu items',

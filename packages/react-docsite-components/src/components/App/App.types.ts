@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle, IStyleFunctionOrObject, Theme } from '@fluentui/react';
-import { IWithResponsiveModeState } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '@fluentui/react/lib/utilities/decorators/withResponsiveMode';
 import { INavLink, INavLinkGroup, INavStyleProps } from '@fluentui/react/lib/Nav';
 import { IPanelStyleProps } from '@fluentui/react/lib/Panel';
 import { IAppThemes } from '../../utilities/theme';

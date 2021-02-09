@@ -8,8 +8,8 @@ import {
   Icon,
   IContextualMenuProps,
   IFocusZone,
-} from '@fluentui/react-internal';
-import { CommandButton, IButton } from '@fluentui/react-internal/lib/compat/Button';
+} from '@fluentui/react';
+import { CommandButton, IButton } from '@fluentui/react/lib/compat/Button';
 import { TabsImperativeHandle, TabItemProps, TabsProps, TabsStyleProps, TabsStyles, TabItem } from './index';
 import { useOverflow } from '../../utilities/useOverflow';
 

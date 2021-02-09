@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Text';
+export * from './components/Text/index';

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Icons';
+export * from '@fluentui/font-icons-mdl2';

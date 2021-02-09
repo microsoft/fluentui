@@ -1,12 +1,24 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 04 Feb 2021 12:22:24 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
 
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.50)
+
+Tue, 09 Feb 2021 00:56:52 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.49..@fluentui/react_v8.0.0-beta.50)
+
+### Changes
+
+- Bump @fluentui/react-date-time to v8.0.0-beta.40 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+- Fixing modal Panel outer click issue ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+- Add missing HighContrast override to SplitButton ([PR #16792](https://github.com/microsoft/fluentui/pull/16792) by andredias@microsoft.com)
+- Add missing styles for disabled buttons ([PR #16794](https://github.com/microsoft/fluentui/pull/16794) by andredias@microsoft.com)
+
 ## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.49)
 
-Thu, 04 Feb 2021 12:22:24 GMT 
+Thu, 04 Feb 2021 12:22:24 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.48..@fluentui/react_v8.0.0-beta.49)
 
 ### Changes
@@ -15,26 +27,51 @@ Thu, 04 Feb 2021 12:22:24 GMT
 
 ## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.48)
 
-Wed, 03 Feb 2021 05:51:40 GMT 
+Wed, 03 Feb 2021 05:51:40 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.46..@fluentui/react_v8.0.0-beta.48)
+
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.41..@fluentui/react-internal_v8.0.0-beta.42)
 
 ### Changes
 
+- Add high contrast overrides for the Separator ([PR #16705](https://github.com/microsoft/fluentui/pull/16705) by andredias@microsoft.com)
+- Checkbox: border is now visible when element is in focus in High Contrast White Mode ([PR #16739](https://github.com/microsoft/fluentui/pull/16739) by tristan.watanabe@gmail.com)
+- Update ColorPicker to announce clamping of RGBA values (#15855) ([PR #16709](https://github.com/microsoft/fluentui/pull/16709) by jakubkonka@microsoft.com)
 - DocumentCardPreview: add maxDisplayCount prop ([PR #16666](https://github.com/microsoft/fluentui/pull/16666) by hantatsang@gmail.com)
 - Module federation innerloop experience ([PR #16771](https://github.com/microsoft/fluentui/pull/16771) by kchau@microsoft.com)
 
+## [8.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.47)
+
+Tue, 02 Feb 2021 12:21:54 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.46..@fluentui/react_v8.0.0-beta.47)
+
+### Changes
+
+- allow passing native properties to the root element of StackItem ([PR #16719](https://github.com/microsoft/fluentui/pull/16719) by tristan.watanabe@gmail.com)
+
 ## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.46)
 
-Mon, 01 Feb 2021 12:23:48 GMT 
+Mon, 01 Feb 2021 12:23:48 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.44..@fluentui/react_v8.0.0-beta.46)
 
 ### Changes
 
+- Remove react-theme-provider dependency from react package. ([PR #16698](https://github.com/microsoft/fluentui/pull/16698) by xgao@microsoft.com)
+- Moving Checkbox, Link, Pivot, Slider and Toggle from their respective @fluentui/react- packages back to @fluentui/react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
 - Updating re-exports that pointed to @fluentui/react- packages to now point to @fluentui/react-internal. ([PR #16701](https://github.com/microsoft/fluentui/pull/16701) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.45)
+
+Fri, 29 Jan 2021 12:21:00 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.44..@fluentui/react_v8.0.0-beta.45)
+
+### Changes
+
+- Tooltip: Fix positioning issues that can cause tooltip to flash/not render ([PR #16541](https://github.com/microsoft/fluentui/pull/16541) by jspurlin@microsoft.com)
 
 ## [8.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.44)
 
-Thu, 28 Jan 2021 12:25:56 GMT 
+Thu, 28 Jan 2021 12:25:56 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.40..@fluentui/react_v8.0.0-beta.44)
 
 ### Changes
@@ -42,64 +79,133 @@ Thu, 28 Jan 2021 12:25:56 GMT
 - Updating to webpack 5, latest typings, latest loaders and plugins. Also stop generating dist/manifest.json (file an issue if you were using it). ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
 - Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
 - Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+- Port delayed keytip fix to onKeytipUpdated ([PR #16614](https://github.com/microsoft/fluentui/pull/16614) by keyou@microsoft.com)
 
 ## [8.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.40)
 
-Fri, 22 Jan 2021 12:24:49 GMT 
+Fri, 22 Jan 2021 12:24:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.39..@fluentui/react_v8.0.0-beta.40)
 
 ### Changes
 
-- Added generic type for IDropdownOption ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
+- Added generic type for ISelectableOption interface ([PR #15488](https://github.com/microsoft/fluentui/pull/15488) by ashwin.gokhale98@gmail.com)
 
 ## [8.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.39)
 
-Thu, 21 Jan 2021 12:36:12 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.34..@fluentui/react_v8.0.0-beta.39)
+Thu, 21 Jan 2021 12:36:12 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/@fluentui/react-internal_v8.0.0-beta.34..@fluentui/react_v8.0.0-beta.39)
 
 ### Changes
 
+- Set focus state in FocusTrapZone even if onFocus and onBlur do not bubble ([PR #15804](https://github.com/microsoft/fluentui/pull/15804) by nsavas@microsoft.com)
 -  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+- fix a typo in CalloutContent.base.tsx ([PR #15865](https://github.com/microsoft/fluentui/pull/15865) by lin.zh.ming.27@gmail.com)
+
+## [8.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.38)
+
+Wed, 20 Jan 2021 12:22:46 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.33..@fluentui/react-internal_v8.0.0-beta.34)
+
+### Changes
+
+- Use GrayText for disabled Action Button in high contrast. ([PR #16188](https://github.com/microsoft/fluentui/pull/16188) by mathew.olinger@outlook.com)
+
+## [8.0.0-beta.37](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.37)
+
+Mon, 18 Jan 2021 12:35:34 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.34..@fluentui/react-internal_v8.0.0-beta.33)
+
+### Changes
+
+- Fixes TextField custom error message rendering ([PR #16487](https://github.com/microsoft/fluentui/pull/16487) by sorgh@microsoft.com)
 
 ## [8.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.34)
 
-Fri, 08 Jan 2021 12:32:12 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.34)
+Fri, 08 Jan 2021 12:32:12 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.33..@fluentui/react_v8.0.0-beta.34)
 
 ### Changes
 
 - Fixed ComboBox onBlur was not submitting pending value when relatedTarget is an ancestor to menu ([PR #16078](https://github.com/microsoft/fluentui/pull/16078) by marwankhalili@hotmail.com)
+- Fixes linux firefox persona/image rendering only the top left quarter of images (#16361) ([PR #16370](https://github.com/microsoft/fluentui/pull/16370) by mhuan13@gmail.com)
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.33)
+
+Thu, 07 Jan 2021 12:35:30 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.32..@fluentui/react_v8.0.0-beta.33)
+
+### Changes
+
+- fix(Popup): use proper window from useWindow() hook ([PR #16394](https://github.com/microsoft/fluentui/pull/16394) by olfedias@microsoft.com)
 
 ## [8.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.32)
 
-Thu, 31 Dec 2020 12:30:02 GMT 
+Thu, 31 Dec 2020 12:30:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.31..@fluentui/react_v8.0.0-beta.32)
 
 ### Changes
 
 - Add a props for Dropdown component to enable adjust width to fit content ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
+- Add calloutMinWidth props for Callout component ([PR #16298](https://github.com/microsoft/fluentui/pull/16298) by qizheqi@microsoft.com)
 
 ## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.31)
 
-Thu, 24 Dec 2020 12:35:10 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.27..@fluentui/react_v8.0.0-beta.31)
+Thu, 24 Dec 2020 12:35:10 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.30..@fluentui/react_v8.0.0-beta.31)
 
 ### Changes
 
 - DetailsList: Fix group chevron alignment in single select mode ([PR #16289](https://github.com/microsoft/fluentui/pull/16289) by elcraig@microsoft.com)
 
+## [8.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.30)
+
+Mon, 21 Dec 2020 12:28:34 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.29..@fluentui/react_v8.0.0-beta.30)
+
+### Changes
+
+- feat: add new property onRenderStar for Rating ([PR #15994](https://github.com/microsoft/fluentui/pull/15994) by qiuya@microsoft.com)
+
+## [8.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.29)
+
+Fri, 18 Dec 2020 12:27:55 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.28..@fluentui/react_v8.0.0-beta.29)
+
+### Changes
+
+- fix #15729: add type button to textfield of type password ([PR #15949](https://github.com/microsoft/fluentui/pull/15949) by mirco.zeiss@gmail.com)
+
+## [8.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.28)
+
+Mon, 14 Dec 2020 12:27:38 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.27..@fluentui/react_v8.0.0-beta.28)
+
+### Changes
+
+- Pickers: add aria-label as an option to apply to the root combobox ([PR #16187](https://github.com/microsoft/fluentui/pull/16187) by joschect@microsoft.com)
+
 ## [8.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.27)
 
-Wed, 09 Dec 2020 12:27:00 GMT 
+Wed, 09 Dec 2020 12:27:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.25..@fluentui/react_v8.0.0-beta.27)
 
 ### Changes
 
 - Button: Removing react-button Button from react-internal, re-exporting compat Button as regular Button. ([PR #16150](https://github.com/microsoft/fluentui/pull/16150) by humbertomakotomorimoto@gmail.com)
+- fix narrator scan mode navigation for picker ([PR #16177](https://github.com/microsoft/fluentui/pull/16177) by kuanubha@microsoft.com)
+
+## [8.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.26)
+
+Mon, 07 Dec 2020 12:29:34 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.25..@fluentui/react_v8.0.0-beta.26)
+
+### Changes
+
+- SpinButton: Add onChange ([PR #16137](https://github.com/microsoft/fluentui/pull/16137) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.25)
 
-Fri, 04 Dec 2020 12:30:32 GMT 
+Fri, 04 Dec 2020 12:30:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.23..@fluentui/react_v8.0.0-beta.25)
 
 ### Changes
@@ -108,62 +214,136 @@ Fri, 04 Dec 2020 12:30:32 GMT
 
 ## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.23)
 
-Wed, 02 Dec 2020 12:37:40 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.20..@fluentui/react_v8.0.0-beta.23)
+Wed, 02 Dec 2020 12:37:40 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.22..@fluentui/react_v8.0.0-beta.23)
 
 ### Changes
 
 - Dropdown: fix option text truncation for single-select. ([PR #16096](https://github.com/microsoft/fluentui/pull/16096) by xgao@microsoft.com)
+- SpinButton: remove defaults for min and max ([PR #16109](https://github.com/microsoft/fluentui/pull/16109) by elcraig@microsoft.com)
+
+## [8.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.22)
+
+Tue, 01 Dec 2020 12:38:05 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.21..@fluentui/react_v8.0.0-beta.22)
+
+### Changes
+
+- SpinButton: Fix function component conversion issues revealed by eslint-plugin-react-hooks ([PR #15431](https://github.com/microsoft/fluentui/pull/15431) by czearing@outlook.com)
+
+## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.21)
+
+Thu, 26 Nov 2020 12:28:18 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.20..@fluentui/react_v8.0.0-beta.21)
+
+### Changes
+
+- Only attempt to handle keydown event for tooltip close if the tooltip is currently open ([PR #16011](https://github.com/microsoft/fluentui/pull/16011) by stefhan@microsoft.com)
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.20)
 
-Tue, 24 Nov 2020 12:29:52 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.18..@fluentui/react_v8.0.0-beta.20)
+Tue, 24 Nov 2020 12:29:52 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.19..@fluentui/react_v8.0.0-beta.20)
 
 ### Changes
 
 - GroupedList: Allow passing of rootListProps to allow passing attributes to parent list (#15772) ([PR #16034](https://github.com/microsoft/fluentui/pull/16034) by noloyola@microsoft.com)
+- Add interface for onRestoreFocus params ([PR #15941](https://github.com/microsoft/fluentui/pull/15941) by elcraig@microsoft.com)
+- SearchBox: Don't prevent Esc from propagating if the box is empty. Also fix infinite recursion in onKeyDown. ([PR #16018](https://github.com/microsoft/fluentui/pull/16018) by behowell@microsoft.com)
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.19)
+
+Mon, 23 Nov 2020 12:31:40 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.18..@fluentui/react_v8.0.0-beta.19)
+
+### Changes
+
+- Fixed SearchBox maximum call stack size on keydown ([PR #16028](https://github.com/microsoft/fluentui/pull/16028) by richardkooiman@hotmail.com)
 
 ## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.18)
 
-Fri, 20 Nov 2020 12:32:25 GMT 
+Fri, 20 Nov 2020 12:32:25 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.17..@fluentui/react_v8.0.0-beta.18)
 
 ### Changes
 
 - Fix display issue with Dropdown when using Chrome Translate ([PR #15984](https://github.com/microsoft/fluentui/pull/15984) by behowell@microsoft.com)
+- Keyboard focus should be visible in selected footers in pickers in high contrast ([PR #15985](https://github.com/microsoft/fluentui/pull/15985) by elvonspa@microsoft.com)
+- ContextualMenu: remove unnecessary resize check ([PR #15584](https://github.com/microsoft/fluentui/pull/15584) by joschect@microsoft.com)
 
 ## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.17)
 
-Thu, 19 Nov 2020 12:28:32 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.8..@fluentui/react_v8.0.0-beta.17)
+Thu, 19 Nov 2020 12:28:32 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.14..@fluentui/react_v8.0.0-beta.17)
 
 ### Changes
 
 - Add text to breacrumb overflow items ([PR #15977](https://github.com/microsoft/fluentui/pull/15977) by pbelsal@gmail.com)
+- improve Text variant style inheritance ([PR #15942](https://github.com/microsoft/fluentui/pull/15942) by blaymist@gmail.com)
+
+## [8.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.14)
+
+Mon, 16 Nov 2020 12:31:52 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.13..@fluentui/react_v8.0.0-beta.14)
+
+### Changes
+
+- Avoid React.Children traversal for early return cases ([PR #15503](https://github.com/microsoft/fluentui/pull/15503) by KevinTCoughlin@users.noreply.github.com)
+
+## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.13)
+
+Fri, 13 Nov 2020 12:33:46 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.12..@fluentui/react_v8.0.0-beta.13)
+
+### Changes
+
+- Add support for ariaDescription in contextual menu items ([PR #15770](https://github.com/microsoft/fluentui/pull/15770) by sareiff@microsoft.com)
+- Modify Persona example and tests to cover the new initials behavior ([PR #15880](https://github.com/microsoft/fluentui/pull/15880) by elvonspa@microsoft.com)
+- Add missing exports to API ([PR #15882](https://github.com/microsoft/fluentui/pull/15882) by dahajek@microsoft.com)
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.12)
+
+Tue, 10 Nov 2020 12:30:36 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.11..@fluentui/react_v8.0.0-beta.12)
+
+### Changes
+
+- Updating Modal to a function component within react. ([PR #15569](https://github.com/microsoft/fluentui/pull/15569) by czearing@outlook.com)
+
+## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.11)
+
+Fri, 06 Nov 2020 12:34:34 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.8..@fluentui/react_v8.0.0-beta.11)
+
+### Changes
+
+- ContextualMenu: Using MenuContext.Consumer to consume context pvovided by MenuButton. ([PR #15826](https://github.com/microsoft/fluentui/pull/15826) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.8)
 
-Tue, 03 Nov 2020 12:32:23 GMT 
+Tue, 03 Nov 2020 12:32:23 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.7..@fluentui/react_v8.0.0-beta.8)
 
 ### Changes
 
 - Add aria-hidden to error section ([PR #15794](https://github.com/microsoft/fluentui/pull/15794) by dahajek@microsoft.com)
+- Layer: fix not rendering into targeted host element defined by hostId prop. ([PR #15756](https://github.com/microsoft/fluentui/pull/15756) by xgao@microsoft.com)
 
 ## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.7)
 
-Mon, 02 Nov 2020 12:32:47 GMT 
+Mon, 02 Nov 2020 12:32:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.6..@fluentui/react_v8.0.0-beta.7)
 
 ### Changes
 
 - Combobox: Allow combobox to handle the inner focus aspects of itself before calling the passed in onItemClick callback or calling setSelectedItem ([PR #15791](https://github.com/microsoft/fluentui/pull/15791) by jspurlin@microsoft.com)
 - Remove references to custom Omit helper ([PR #15790](https://github.com/microsoft/fluentui/pull/15790) by elcraig@microsoft.com)
+- Update SpinButton to inherit Fabric font styles. ([PR #15724](https://github.com/microsoft/fluentui/pull/15724) by lesliewilliams234@gmail.com)
+- SplitButton: Fix ariaDescription behavior so that it is correctly picked up by screen-readers. ([PR #15797](https://github.com/microsoft/fluentui/pull/15797) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.6)
 
-Fri, 30 Oct 2020 12:33:11 GMT 
+Fri, 30 Oct 2020 12:33:11 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.5..@fluentui/react_v8.0.0-beta.6)
 
 ### Changes
@@ -172,20 +352,97 @@ Fri, 30 Oct 2020 12:33:11 GMT
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.5)
 
-Thu, 29 Oct 2020 12:34:59 GMT 
-[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.2..@fluentui/react_v8.0.0-beta.5)
+Thu, 29 Oct 2020 12:34:59 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.4..@fluentui/react_v8.0.0-beta.5)
 
 ### Changes
 
 - Export all from react-window-provider. ([PR #15738](https://github.com/microsoft/fluentui/pull/15738) by xgao@microsoft.com)
 
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.4)
+
+Wed, 28 Oct 2020 12:32:24 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.3..@fluentui/react_v8.0.0-beta.4)
+
+### Changes
+
+- Port TextField reveal password feature to master ([PR #15720](https://github.com/microsoft/fluentui/pull/15720) by elcraig@microsoft.com)
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.3)
+
+Tue, 27 Oct 2020 12:35:09 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.2..@fluentui/react_v8.0.0-beta.3)
+
+### Changes
+
+- ResizeGroup: Improve perf by making sure resize data state change is batched. ([PR #15701](https://github.com/microsoft/fluentui/pull/15701) by xgao@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.2)
+
+Mon, 26 Oct 2020 12:39:59 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.1..@fluentui/react_v8.0.0-beta.2)
+
+### Changes
+
+- Adding a forwardRef to Separator within react. ([PR #15678](https://github.com/microsoft/fluentui/pull/15678) by czearing@outlook.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.1)
+
+Fri, 23 Oct 2020 23:25:40 GMT
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.0..@fluentui/react_v8.0.0-beta.1)
+
+### Changes
+
+- SelectionZone: Adding an optional className prop ([PR #15652](https://github.com/microsoft/fluentui/pull/15652) by nebhatna@microsoft.com)
+
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.0)
 
-Fri, 23 Oct 2020 03:26:15 GMT 
+Fri, 23 Oct 2020 03:26:15 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.142.0..@fluentui/react_v8.0.0-beta.0)
 
 ### Changes
 
+- Add react package ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Example updates. ([PR #15337](https://github.com/microsoft/fluentui/pull/15337) by dzearing@hotmail.com)
+- Moving FocusTrapZone and Modal from react-next to react. ([PR #15368](https://github.com/microsoft/fluentui/pull/15368) by humbertomakotomorimoto@gmail.com)
+- Move TextField "next" changes back to main package ([PR #15370](https://github.com/microsoft/fluentui/pull/15370) by elcraig@microsoft.com)
+- Moving SwatchColorPicker and ButtonGrid from react-next to react. ([PR #15373](https://github.com/microsoft/fluentui/pull/15373) by czearing@outlook.com)
+- Move ChoiceGroup v8 changes to react ([PR #15387](https://github.com/microsoft/fluentui/pull/15387) by elcraig@microsoft.com)
+- move Image component from react-next to react ([PR #15367](https://github.com/microsoft/fluentui/pull/15367) by ololubek@microsoft.com)
+- Moving react-next SearchBox to react. ([PR #15385](https://github.com/microsoft/fluentui/pull/15385) by czearing@outlook.com)
+- move persona to react ([PR #15386](https://github.com/microsoft/fluentui/pull/15386) by joschect@microsoft.com)
+- Move Fabric from react-next to react ([PR #15388](https://github.com/microsoft/fluentui/pull/15388) by ololubek@microsoft.com)
+- Moving react-next OverflowSet to react package. ([PR #15389](https://github.com/microsoft/fluentui/pull/15389) by czearing@outlook.com)
+- Moving react-next MessageBar to react. ([PR #15393](https://github.com/microsoft/fluentui/pull/15393) by czearing@outlook.com)
+- Move v8 Rating changes to from react-next to react ([PR #15398](https://github.com/microsoft/fluentui/pull/15398) by elcraig@microsoft.com)
+- Move v8 Coachmark changes from react-next to react ([PR #15400](https://github.com/microsoft/fluentui/pull/15400) by elcraig@microsoft.com)
+- Move v8 ResizeGroup changes from react-next to react ([PR #15401](https://github.com/microsoft/fluentui/pull/15401) by elcraig@microsoft.com)
+- Moving react-next Shimmer to react package. ([PR #15407](https://github.com/microsoft/fluentui/pull/15407) by czearing@outlook.com)
+- Moving react-next SpinButton to react. ([PR #15408](https://github.com/microsoft/fluentui/pull/15408) by czearing@outlook.com)
+- Moving react-next TeachingBubble to react package. ([PR #15411](https://github.com/microsoft/fluentui/pull/15411) by czearing@outlook.com)
+- ContextualMenu: Move to react ([PR #15448](https://github.com/microsoft/fluentui/pull/15448) by joschect@microsoft.com)
+- Moving react-next SelectedItemsList to react package. ([PR #15430](https://github.com/microsoft/fluentui/pull/15430) by czearing@outlook.com)
+- Popup: Replacing version in react with version from react-next. ([PR #15436](https://github.com/microsoft/fluentui/pull/15436) by humbertomakotomorimoto@gmail.com)
+- FloatingPickers: Move to react ([PR #15458](https://github.com/microsoft/fluentui/pull/15458) by joschect@microsoft.com)
+- Callout: move to react ([PR #15455](https://github.com/microsoft/fluentui/pull/15455) by joschect@microsoft.com)
+- Moving react-next Layer into react package. ([PR #15481](https://github.com/microsoft/fluentui/pull/15481) by czearing@outlook.com)
+- Re-export FocusZone directly from react-focus ([PR #15515](https://github.com/microsoft/fluentui/pull/15515) by elcraig@microsoft.com)
+- Don't ship a bundle of this package alone ([PR #15414](https://github.com/microsoft/fluentui/pull/15414) by elcraig@microsoft.com)
+- SpinButton: fix component typing, ref and remove keytipProps. ([PR #15534](https://github.com/microsoft/fluentui/pull/15534) by xgao@microsoft.com)
+- Deprecate Fabric. ([PR #15539](https://github.com/microsoft/fluentui/pull/15539) by xgao@microsoft.com)
+- Changing BaseButton's wrapper span to a fragment. ([PR #15558](https://github.com/microsoft/fluentui/pull/15558) by czearing@outlook.com)
+- Rename @uifabric/styling to @fluentui/style-utilities ([PR #15567](https://github.com/microsoft/fluentui/pull/15567) by elcraig@microsoft.com)
+- Export getMenuStyles from ContextualMenu ([PR #15573](https://github.com/microsoft/fluentui/pull/15573) by xgao@microsoft.com)
+- Moves Button export to compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- rename @uifabric/foundation to @fluentui/foundation-legacy ([PR #15595](https://github.com/microsoft/fluentui/pull/15595) by xgao@microsoft.com)
+- CommandBar: Fixing incorrect aria role. ([PR #15614](https://github.com/microsoft/fluentui/pull/15614) by humbertomakotomorimoto@gmail.com)
+- SearchBox: Making role on root div opt in. ([PR #15621](https://github.com/microsoft/fluentui/pull/15621) by humbertomakotomorimoto@gmail.com)
+- Adding a forwardRef to Check (ref-conformance) ([PR #15622](https://github.com/microsoft/fluentui/pull/15622) by czearing@outlook.com)
+- Adding a forwardRef to ContextualMenu (ref-conformance) ([PR #15625](https://github.com/microsoft/fluentui/pull/15625) by czearing@outlook.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- ChoiceGroup option props cleanup ([PR #15399](https://github.com/microsoft/fluentui/pull/15399) by elcraig@microsoft.com)
+- Delete old Calendar and DatePicker ([PR #15644](https://github.com/microsoft/fluentui/pull/15644) by elcraig@microsoft.com)
+- Adding a forwardRef to VerticalDivider within react. ([PR #15654](https://github.com/microsoft/fluentui/pull/15654) by czearing@outlook.com)
 - Ensure GroupedList version is invalidated when parent list is invalidated ([PR #15439](https://github.com/microsoft/fluentui/pull/15439) by tmichon@microsoft.com)
 - Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
 - Export @fluentui/theme and react-theme-provider. Remove Foundation exports. ([PR #15354](https://github.com/microsoft/fluentui/pull/15354) by xgao@microsoft.com)
@@ -203,7 +460,7 @@ Fri, 23 Oct 2020 03:26:15 GMT
 - Rename @uifabric/example-date to @fluentui/example-data ([PR #15618](https://github.com/microsoft/fluentui/pull/15618) by ololubek@microsoft.com)
 - GroupedList: Fixing issue where paging new data into existing groups did not trigger re-render. ([PR #15628](https://github.com/microsoft/fluentui/pull/15628) by humbertomakotomorimoto@gmail.com)
 - Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
-- Re-export Calendar and DatePicker from date-time-utilities ([PR #15644](https://github.com/microsoft/fluentui/pull/15644) by elcraig@microsoft.com)
+- Delete old Calendar and DatePicker, re-export Calendar and DatePicker from date-time-utilities ([PR #15644](https://github.com/microsoft/fluentui/pull/15644) by elcraig@microsoft.com)
 - Rename @uifabric/date-time to @fluentui/react-date-time ([PR #15659](https://github.com/microsoft/fluentui/pull/15659) by elcraig@microsoft.com)
 
 ## [7.142.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.142.0)

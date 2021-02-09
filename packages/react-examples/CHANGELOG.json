@@ -2,6 +2,171 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-examples_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Implement basic MenuList example",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "chore: rename withProvider to withCompatProvider",
+            "author": "olfedias@microsoft.com",
+            "commit": "b6e11cbb2ee4037c927927560e0e78b1e1f8e377",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v0.9.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-menu to v0.2.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "e6a1c491a67b911cc285fcc9d89b6fca152aacd9",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.4",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v0.1.3",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-image to v0.6.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-text to v0.1.5",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-button to v1.0.0-beta.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-internal to v8.0.0-beta.44",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-date-time to v8.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.50",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.0.0-beta.49",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/storybook to v1.0.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.50",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-charting to v5.0.0-beta.50",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.0.0-beta.50",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-experiments to v8.0.0-beta.54",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/theme-samples to v8.0.0-beta.49",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.41",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-flex to v0.2.3",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Feb 2021 12:23:08 GMT",
       "tag": "@fluentui/react-examples_v1.0.5",
       "version": "1.0.5",
