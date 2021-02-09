@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { IIconProps, IContextualMenuProps } from '@fluentui/react';
 
 const emojiIcon: IIconProps = { iconName: 'Emoji2' };

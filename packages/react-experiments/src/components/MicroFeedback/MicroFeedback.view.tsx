@@ -1,6 +1,6 @@
 /** @jsx withSlots */
 import { Callout, FocusZone, FocusZoneDirection, List, Stack, Text } from '@fluentui/react';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { Button } from '../Button/Button';
 import { IButtonTokens } from '../Button/Button.types';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';

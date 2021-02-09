@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IBaseProps, initializeComponentRef } from '@fluentui/react/lib/Utilities';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { TextField, ITextField } from '@fluentui/react/lib/TextField';
 import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;

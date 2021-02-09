@@ -19,7 +19,7 @@ import {
   Toggle,
   Text,
 } from '@fluentui/react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
 import { CollapsibleSectionRecursiveExample } from '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example';
 

@@ -9,7 +9,7 @@ import {
   IconButton,
   IButtonProps,
   CommandBarButton,
-} from '@fluentui/react/lib/compat/Button';
+} from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
   iconProps: {
