@@ -44,12 +44,6 @@ const siteInfo = [
     title: 'Checkbox',
   },
   {
-    package: '@fluentui/react-date-time',
-    link: './react-date-time/storybook/index.html',
-    icon: 'PrimaryCalendar',
-    title: 'Date/Time',
-  },
-  {
     package: '@fluentui/react-image',
     link: './react-image/storybook/index.html',
     icon: 'FileImage',

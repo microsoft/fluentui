@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ScrollablePaneDefaultExample } from './ScrollablePane.Default.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ScrollablePaneDetailsListExample } from './ScrollablePane.DetailsList.Example';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ScrollablePane/ScrollablePane.Default.Example.tsx') as string;
@@ -10,8 +10,7 @@ const ScrollablePaneDetailsListExampleCode = require('!raw-loader?esModule=false
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
   componentName: 'ScrollablePane',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ScrollablePane',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ScrollablePane',
   examples: [
     {
       title: 'Default',

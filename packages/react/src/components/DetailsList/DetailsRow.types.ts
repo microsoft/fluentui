@@ -4,7 +4,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.types';
 import { ISelection, SelectionMode } from '../../Selection';
 import { IDragDropHelper, IDragDropEvents } from '../../DragDrop';
-import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';

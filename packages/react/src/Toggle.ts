@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Toggle';
+export * from './components/Toggle/index';
