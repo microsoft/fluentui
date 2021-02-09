@@ -31,13 +31,13 @@ variables:
   # - name: version # version to publish to npm; only make sense when publishOfficial=true
   #   value: canary # value can only be canary/patch/minor
 
+pool: 'Self Host Ubuntu'
+
 jobs:
   - job: Job_1
     displayName: Build and Release Fluent Packages
     # skip this job if publishDocsiteOnly is true
     condition: and(succeeded(), eq(variables.publishDocsiteOnly, false))
-    pool:
-      name: Self Host Ubuntu
 
     steps:
       - checkout: self
@@ -151,8 +151,6 @@ jobs:
     dependsOn: Job_1
     # run this job when the previous job is succeeded or when publishDocsiteOnly is true
     condition: or(succeeded(), eq(variables.publishDocsiteOnly, true))
-    pool:
-      name: Self Host Ubuntu
 
     steps:
       - checkout: self
@@ -178,21 +176,16 @@ jobs:
         condition: and(succeeded(), eq(variables.publishOfficial, true))
         inputs:
           script: >-
-            if [[ "$(publishOfficial)" == "true" ]]
 
-            then
+            ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
 
-              ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
+            echo "Docsite base path published for version $ver"
 
-              echo "Docsite base path published for version $ver"
+            echo "##vso[task.setvariable variable=deployBasePath]$ver"
 
-              echo "##vso[task.setvariable variable=deployBasePath]$ver"
+            echo "##vso[task.setvariable variable=docsiteVersion]$ver"
 
-              echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-
-              echo "##vso[task.setvariable variable=nightlyRelease]false"
-
-            fi
+            echo "##vso[task.setvariable variable=nightlyRelease]false"
 
       - task: CmdLine@2
         displayName: Build
