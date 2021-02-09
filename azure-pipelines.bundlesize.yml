@@ -96,16 +96,19 @@ jobs:
       - script: 'chocolatey install jq'
         displayName: 'Install jq'
 
-      - script: 'md apps\test-bundles'
-        displayName: 'Create folder'
-
-      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > apps/test-bundles/bundlesizes.json
+      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
         displayName: 'Merge React and React-Northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Merged Bundle Size information'
         inputs:
-          PathtoPublish: 'apps/test-bundles/bundlesizes.json'
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesizes.json'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Artifact dist folder upon build for debug'
+        inputs:
+          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          ArtifactName: distdrop
 
   - job: lightrail
     pool: server
