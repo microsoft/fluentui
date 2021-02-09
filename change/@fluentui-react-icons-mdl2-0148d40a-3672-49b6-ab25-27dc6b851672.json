@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "update icon-provider version in react-icons-mdl2 package",
+  "comment": "Add ability to override icons using @fluentui/react-icon-provider",
   "packageName": "@fluentui/react-icons-mdl2",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
