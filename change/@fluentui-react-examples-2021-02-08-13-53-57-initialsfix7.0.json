@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Modify Persona example and tests to cover the new initials behavior",
+  "packageName": "@fluentui/react-examples",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-08T21:53:41.606Z"
+}
