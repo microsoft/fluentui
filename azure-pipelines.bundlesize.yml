@@ -21,7 +21,7 @@ jobs:
       - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
         env:
-          PACKAGE: @fluentui/react
+          PACKAGE: '@fluentui/react'
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
@@ -57,7 +57,7 @@ jobs:
       - script: yarn workspace test-bundles bundle:size
         displayName: yarn bundle test-bundles
         env:
-          PACKAGE: @fluentui/react-northstar
+          PACKAGE: '@fluentui/react-northstar'
 
       - script: yarn bundlesizecollect
         displayName: 'Collate Bundle Size Information'
