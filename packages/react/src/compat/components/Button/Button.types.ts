@@ -10,7 +10,7 @@ import { IStyle, ITheme } from '../../../Styling';
 import { IKeytipProps } from '../../../Keytip';
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export interface IButton {
   /**
@@ -37,7 +37,7 @@ export interface IButton {
 }
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 /* eslint-disable deprecation/deprecation */
 export interface IButtonProps
@@ -344,7 +344,7 @@ export interface IButtonProps
 }
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export enum ElementType {
   /** `button` element. */
@@ -354,7 +354,7 @@ export enum ElementType {
 }
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export enum ButtonType {
   normal = 0,
@@ -367,7 +367,7 @@ export enum ButtonType {
 }
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export interface IButtonStyles {
   /**

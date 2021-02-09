@@ -37,7 +37,6 @@ module.exports = {
       'ColorPicker',
       'ComboBox',
       'CommandBar',
-      'CompatButton',
       'ContextualMenu',
       'DatePicker',
       'DetailsList',

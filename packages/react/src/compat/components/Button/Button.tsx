@@ -11,7 +11,7 @@ import { PrimaryButton } from './PrimaryButton/PrimaryButton';
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated Use the individual *Button components instead.
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export class Button extends React.Component<IButtonProps, {}> {
   constructor(props: IButtonProps) {

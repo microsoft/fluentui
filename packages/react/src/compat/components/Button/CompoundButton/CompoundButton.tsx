@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.types';
 import { getStyles } from './CompoundButton.styles';
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 @customizable('CompoundButton', ['theme', 'styles'], true)
 export class CompoundButton extends React.Component<IButtonProps, {}> {

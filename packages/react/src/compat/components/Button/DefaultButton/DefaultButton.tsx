@@ -5,7 +5,7 @@ import { IButtonProps } from '../Button.types';
 import { getStyles } from './DefaultButton.styles';
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 @customizable('DefaultButton', ['theme', 'styles'], true)
 export class DefaultButton extends React.Component<IButtonProps, {}> {

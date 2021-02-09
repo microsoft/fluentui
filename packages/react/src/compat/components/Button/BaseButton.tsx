@@ -33,7 +33,7 @@ import { KeytipData } from '../../../KeytipData';
 import { IKeytipProps } from '../../../Keytip';
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
@@ -41,7 +41,7 @@ export interface IBaseButtonProps extends IButtonProps {
 }
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export interface IBaseButtonState {
   menuHidden: boolean;
@@ -51,7 +51,7 @@ const TouchIdleDelay = 500; /* ms */
 const COMPONENT_NAME = 'BaseButton';
 
 /**
- * {@docCategory CompatButton}
+ * {@docCategory Button}
  */
 export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonState> implements IButton {
   private get _isSplitButton(): boolean {
