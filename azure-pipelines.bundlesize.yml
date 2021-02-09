@@ -96,13 +96,16 @@ jobs:
       - script: 'chocolatey install jq'
         displayName: 'Install jq'
 
-      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > apps/test-bundles/dist/bundlesizes.json
+      - script: 'md apps\test-bundles'
+        displayName: 'Create folder'
+
+      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > apps/test-bundles/bundlesizes.json
         displayName: 'Merge React and React-Northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Merged Bundle Size information'
         inputs:
-          PathtoPublish: apps/test-bundles/dist/bundlesizes.json
+          PathtoPublish: 'apps/test-bundles/bundlesizes.json'
 
   - job: lightrail
     pool: server
