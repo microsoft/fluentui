@@ -9,7 +9,7 @@ import {
   IContextualMenuProps,
   IFocusZone,
 } from '@fluentui/react';
-import { CommandButton, IButton } from '@fluentui/react/lib/compat/Button';
+import { CommandButton, IButton } from '@fluentui/react/lib/Button';
 import { TabsImperativeHandle, TabItemProps, TabsProps, TabsStyleProps, TabsStyles, TabItem } from './index';
 import { useOverflow } from '../../utilities/useOverflow';
 

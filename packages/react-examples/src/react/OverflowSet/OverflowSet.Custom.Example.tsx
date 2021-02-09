@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IOverflowSetItemProps, OverflowSet, Checkbox } from '@fluentui/react';
-import { CommandBarButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
 const noOp = () => undefined;
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, FocusZone, FontWeights, HighContrastSelector } from '@fluentui/react';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { INavPage } from '../Nav/index';
 import { IPlatformPickerProps, IPlatform } from './PlatformPicker.types';
 import * as styles from './PlatformPicker.module.scss';

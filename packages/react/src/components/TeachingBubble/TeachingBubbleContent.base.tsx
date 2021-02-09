@@ -6,7 +6,7 @@ import {
   ITeachingBubbleStyles,
   ITeachingBubble,
 } from './TeachingBubble.types';
-import { PrimaryButton, DefaultButton, IconButton } from '../../compat/Button';
+import { PrimaryButton, DefaultButton, IconButton } from '../../Button';
 import { Stack } from '../../Stack';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { Image } from '../../Image';

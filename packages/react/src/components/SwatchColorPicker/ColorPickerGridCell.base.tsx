@@ -3,8 +3,8 @@ import { ITheme, mergeStyleSets, IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, memoizeFunction } from '../../Utilities';
 import { getColorFromString } from '../../Color';
 import { ButtonGridCell } from '../../utilities/ButtonGrid/ButtonGridCell';
-import { getStyles as getActionButtonStyles } from '../../compat/components/Button/ActionButton/ActionButton.styles';
-import { IButtonClassNames } from '../../compat/components/Button/BaseButton.classNames';
+import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
+import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,

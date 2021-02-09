@@ -1,7 +1,7 @@
 import { ITheme, concatStyleSets } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
-import { IButtonStyles } from '../../compat/Button';
-import { getStyles as getBaseButtonStyles } from '../../compat/components/Button/BaseButton.styles';
+import { IButtonStyles } from '../../Button';
+import { getStyles as getBaseButtonStyles } from '../Button/BaseButton.styles';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, className?: string, customStyles?: IButtonStyles): IButtonStyles => {

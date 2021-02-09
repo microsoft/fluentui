@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandBarButton } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton } from '@fluentui/react/lib/Button';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
 import { DirectionalHint, TooltipHost } from '@fluentui/react';
 

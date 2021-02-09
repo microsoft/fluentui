@@ -20,7 +20,7 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { CommandButton } from '../../compat/Button';
+import { CommandButton } from '../../Button';
 import {
   DropdownMenuItemType,
   IDropdownOption,

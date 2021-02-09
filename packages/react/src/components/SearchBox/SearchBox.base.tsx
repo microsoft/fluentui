@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles, ISearchBox } from './SearchBox.types';
 import { KeyCodes, classNamesFunction, getNativeProps, inputProperties } from '../../Utilities';
 import { useControllableValue, useId, useMergedRefs, useWarnings } from '@fluentui/react-hooks';
-import { IconButton, IButtonProps, IButtonStyles } from '../../compat/Button';
+import { IconButton, IButtonProps, IButtonStyles } from '../../Button';
 import { Icon, IIconProps } from '../../Icon';
 
 const COMPONENT_NAME = 'SearchBox';

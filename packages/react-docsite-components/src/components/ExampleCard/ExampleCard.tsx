@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandButton } from '@fluentui/react/lib/compat/Button';
+import { CommandButton } from '@fluentui/react/lib/Button';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { styled, Theme, ThemeProvider, classNamesFunction, css, warn, memoizeFunction } from '@fluentui/react';
 import { ISchemeNames, IProcessedStyleSet } from '@fluentui/react/lib/Styling';

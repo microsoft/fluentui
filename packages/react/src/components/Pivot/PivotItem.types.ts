@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IRefObject, IRenderFunction } from '@fluentui/utilities';
-import { IButtonProps } from '../../compat/Button';
+import { IButtonProps } from '../../Button';
 import { IKeytipProps } from '../Keytip/Keytip.types';
 
 /**
