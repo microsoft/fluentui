@@ -2,7 +2,7 @@ import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { AvatarState } from './Avatar.types';
 
 //
-// TODO: All animation consts should go to theme?
+// TODO: All animation constants should go to theme or globals?
 //
 
 const animationDuration = {

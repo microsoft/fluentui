@@ -5,7 +5,7 @@ import { renderImage } from './renderImage';
 
 const mergeProps = makeMergeProps<ImageState>();
 
-export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps) => {
+export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps): ImageState => {
   const state = mergeProps(
     {
       as: 'img',

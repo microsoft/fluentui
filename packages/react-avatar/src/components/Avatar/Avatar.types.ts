@@ -1,8 +1,10 @@
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utils';
 import * as React from 'react';
-import { BadgeProps } from '../Badge/index';
-import { ShorthandValue } from '../utils/commonTypes';
 
-export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
+import { BadgeProps } from '../Badge/index';
+import { ImageProps } from '../Image/index';
+
+export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The root element type of the Avatar.
    *
@@ -11,16 +13,16 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
   as?: React.ElementType;
 
   /** The Avatar's image. */
-  image?: ShorthandValue<{}>;
+  image?: ShorthandProps<ImageProps>;
 
-  /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials` */
-  label?: ShorthandValue<{}>;
+  /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials`. */
+  label?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** Icon displayed when there's no image. */
-  icon?: ShorthandValue<{}>;
+  icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** Badge to show the avatar's status. */
-  badge?: ShorthandValue<BadgeProps>;
+  badge?: ShorthandProps<BadgeProps>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;
@@ -71,9 +73,6 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultvalue neutral
    */
   colorVariant?: 'neutral' | 'brand';
-
-  /** Style tokens */
-  tokens?: AvatarTokenSet;
 }
 
 /**
@@ -90,66 +89,19 @@ export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 |
 /** Default Avatar size if not specified */
 export const defaultAvatarSize: AvatarSizeValue = 32;
 
-/**
- * Style tokens for the Avatar
- */
-export type AvatarTokenSet = {
-  /** Width of the avatar */
-  width?: string;
-
-  /** Height of the avatar */
-  height?: string;
-
-  /** Background shown behind the initials or icon */
-  background?: string;
-
-  /** Color of the initials or icon */
-  color?: string;
-
-  /** Border radius */
-  borderRadius?: string;
-
-  /** Font used by the initials */
-  fontFamily?: string;
-
-  /** Font size used by the initials */
-  fontSize?: string;
-
-  /** Font weight used by the initials */
-  fontWeight?: string;
-
-  /** Font size used by the icon */
-  iconSize?: string;
-
-  /** Color of the ring when active="active" and activeDisplay includes 'ring' */
-  activeRingColor?: string;
-
-  /** Color of the glow when active="active" and activeDisplay includes 'glow' */
-  activeGlowColor?: string;
-
-  /** Opacity of the avatar when active="inactive" */
-  inactiveOpacity?: string;
-
-  /** Scale transform applied to the avatar when active="inactive" */
-  inactiveScale?: string;
-};
-
-export type AvatarState = AvatarProps & {
+export type AvatarState = Omit<AvatarProps, 'label' | 'icon' | 'image' | 'badge' | 'getInitials'> & {
   activeRing: boolean;
   activeShadow: boolean;
   activeGlow: boolean;
 
   hasIcon: boolean;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  label: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  image: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  badge: any;
+  label: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  icon: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  image: ObjectShorthandProps<React.HTMLAttributes<ImageProps>>;
+  badge: ObjectShorthandProps<React.HTMLAttributes<BadgeProps>>;
 
-  getInitials: (name: string, isRtl: boolean) => string;
+  getInitials: NonNullable<AvatarProps['getInitials']>;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ref: any;
+  ref: React.MutableRefObject<HTMLElement>;
 };
