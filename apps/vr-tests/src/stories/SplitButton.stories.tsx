@@ -5,12 +5,12 @@ import { SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { ThemeProvider } from '@fluentui/react';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('SplitButton', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -78,7 +78,7 @@ storiesOf('SplitButton', module)
 
 storiesOf('SplitButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -144,7 +144,7 @@ storiesOf('SplitButton Next - Block', module)
 
 storiesOf('SplitButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()

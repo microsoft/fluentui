@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-internal
 
-This log was last generated on Wed, 03 Feb 2021 05:51:40 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.44)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.43..@fluentui/react-internal_v8.0.0-beta.44)
+
+### Changes
+
+- Fixing modal Panel outer click issue ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+
+## [8.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.43)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-internal_v8.0.0-beta.42..@fluentui/react-internal_v8.0.0-beta.43)
+
+### Changes
+
+- Add missing HighContrast override to SplitButton ([PR #16792](https://github.com/microsoft/fluentui/pull/16792) by andredias@microsoft.com)
+- Add missing styles for disabled buttons ([PR #16794](https://github.com/microsoft/fluentui/pull/16794) by andredias@microsoft.com)
 
 ## [8.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-internal_v8.0.0-beta.42)
 

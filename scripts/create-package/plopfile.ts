@@ -3,6 +3,8 @@ import { Actions } from 'node-plop';
 import * as path from 'path';
 import * as fs from 'fs-extra';
 import * as jju from 'jju';
+import _ from 'lodash';
+import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { findGitRoot, PackageJson } from '../monorepo/index';
 
@@ -12,6 +14,7 @@ interface Answers {
   packageName: string;
   target: 'react' | 'node';
   description: string;
+  publish: boolean;
   hasTests?: boolean;
   hasExamples?: boolean;
 }
@@ -57,6 +60,12 @@ module.exports = (plop: NodePlopAPI) => {
         default: true,
         when: answers => answers.target === 'react',
       },
+      {
+        type: 'confirm',
+        name: 'publish',
+        message: 'Should the package be published right away?',
+        default: false,
+      },
     ],
 
     actions: (answers: Answers): Actions => {
@@ -81,6 +90,8 @@ module.exports = (plop: NodePlopAPI) => {
           (substr, index) => (index > 0 ? ' ' : '') + substr.replace('-', '').toUpperCase(),
         ),
       };
+
+      let hasError = false;
 
       return [
         {
@@ -120,7 +131,11 @@ module.exports = (plop: NodePlopAPI) => {
           // update package.json
           type: 'modify',
           path: `${destination}/package.json`,
-          transform: packageJsonContents => updatePackageJson(packageJsonContents, answers),
+          transform: packageJsonContents => {
+            const { newPackageJson, hasError: hasUpdateError } = updatePackageJson(packageJsonContents, answers);
+            hasError = hasError || hasUpdateError;
+            return newPackageJson;
+          },
         },
         {
           // update example package.json
@@ -141,10 +156,22 @@ module.exports = (plop: NodePlopAPI) => {
           transform: tsconfigContents => updateTsconfig(tsconfigContents, hasTests),
         },
         () => {
+          if (hasError) {
+            console.error(
+              chalk.red.bold(
+                '\nThere were one or more errors creating the package.\n' +
+                  'Please look at the logs above, fix the issues, and then run `yarn` to link.',
+              ),
+            );
+            return;
+          }
+
           console.log('\nPackage files created! Running yarn to link...\n');
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
-            console.error('Something went wrong with running yarn. Please check previous logs for details');
+            console.error(
+              chalk.red.bold('Something went wrong with running yarn. Please check previous logs for details'),
+            );
             process.exit(1);
           }
           return 'Packages linked!';
@@ -156,35 +183,63 @@ module.exports = (plop: NodePlopAPI) => {
   });
 };
 
-function updatePackageJson(packageJsonContents: string, answers: Answers): string {
-  const { target, hasTests } = answers;
+/**
+ * Replace empty version specs in `newPackageJson` with versions from `referencePackages`.
+ * Returns true if all versions were replaced, false if not.
+ */
+function replaceVersionsFromReference(
+  referencePackages: string[],
+  newPackageJson: PackageJson,
+  answers: Answers,
+): boolean {
+  const { hasTests } = answers;
+  const depTypes = ['dependencies', 'devDependencies', 'peerDependencies'] as const;
 
-  // Copy dep versions in package.json from actual current versions.
-  // This is preferable over hardcoding dependency versions to keep things in sync.
-  // As of writing, @fluentui/react-experiments also depends on all the packages the React template needs,
-  // so we grab the current versions from there (or @fluentui/codemods for the node template).
-  const referencePackage = target === 'node' ? 'codemods' : 'react-experiments';
-  const referencePackageJson: PackageJson = fs.readJSONSync(
-    path.join(root, 'packages', referencePackage, 'package.json'),
+  // Read the package.json files of the given reference packages and combine into one object.
+  // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
+  const referenceDeps: Pick<PackageJson, 'dependencies' | 'devDependencies' | 'peerDependencies'> = _.merge(
+    {},
+    ...referencePackages.map(pkg =>
+      _.pick(fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')), ...depTypes),
+    ),
   );
-  const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
+  console.dir(referenceDeps);
 
-  for (const depType of ['dependencies', 'devDependencies', 'peerDependencies']) {
+  let hasError = false;
+
+  for (const depType of depTypes) {
     if (!newPackageJson[depType]) {
       continue;
     }
-    for (const pkg of Object.keys(newPackageJson[depType])) {
-      if (!hasTests && /\b(jest|enzyme|test)\b/.test(pkg)) {
-        delete newPackageJson[depType][pkg];
-      } else if (referencePackageJson[depType]?.[pkg]) {
-        newPackageJson[depType][pkg] = referencePackageJson[depType][pkg];
+    for (const depPkg of Object.keys(newPackageJson[depType])) {
+      if (!hasTests && /\b(jest|enzyme|test|react-conformance)\b/.test(depPkg)) {
+        delete newPackageJson[depType][depPkg];
+      } else if (referenceDeps[depType]?.[depPkg]) {
+        newPackageJson[depType][depPkg] = referenceDeps[depType][depPkg];
       } else {
+        hasError = true;
         console.warn(
-          `Couldn't determine appropriate ${depType} version of ${pkg} from ${referencePackage} package.json`,
+          chalk.yellow(
+            `Couldn't determine appropriate ${depType} version of ${depPkg} from ${referencePackages.join(
+              ' or ',
+            )} package.json`,
+          ),
         );
       }
     }
   }
+  return hasError;
+}
+
+function updatePackageJson(packageJsonContents: string, answers: Answers) {
+  const { target, hasTests, publish } = answers;
+
+  // Copy dep versions in package.json from actual current version specs.
+  // This is preferable over hardcoding dependency versions to keep things in sync.
+  // The reference package(s) may need to be updated over time as dependency lists change.
+  const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
+  const referencePackages = target === 'node' ? ['codemods'] : ['react-button', 'react-image'];
+  const hasError = replaceVersionsFromReference(referencePackages, newPackageJson, answers);
 
   if (!hasTests) {
     delete newPackageJson.scripts['start-test'];
@@ -192,7 +247,11 @@ function updatePackageJson(packageJsonContents: string, answers: Answers): strin
     delete newPackageJson.scripts['update-snapshots'];
   }
 
-  return JSON.stringify(newPackageJson, null, 2);
+  if (publish) {
+    delete newPackageJson.private;
+  }
+
+  return { newPackageJson: JSON.stringify(newPackageJson, null, 2), hasError };
 }
 
 function updateExamplePackageJson(packageJsonContents: string, packageNpmName: string): string {

@@ -2,6 +2,51 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.50",
+      "version": "8.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-date-time to v8.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.49",
+      "version": "8.0.0-beta.49",
+      "comments": {
+        "none": [
+          {
+            "comment": "Removing ComponentConformance.test file and disabling component-handles-classname where necessary.",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Feb 2021 12:22:24 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.49",
+      "version": "8.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add additional prop support to IBreadcrumbItems",
+            "author": "andredias@microsoft.com",
+            "commit": "34f46ff4958fb82ad80071389c8b899803826e45",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 05:51:40 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.48",
       "version": "8.0.0-beta.48",

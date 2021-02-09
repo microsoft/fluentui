@@ -52,7 +52,7 @@ describe('Callout', () => {
     Component: Callout,
     displayName: 'Callout',
     targetComponent: CalloutContent,
-    disabledTests: ['component-handles-ref'],
+    disabledTests: ['component-handles-ref', 'component-handles-classname'],
   });
 
   it('target id strings does not throw exception', () => {

@@ -28,7 +28,8 @@ export const useContextSelector = <Value, SelectedValue>(
         | undefined // undefined from render below
         | readonly [ContextVersion, Value], // from provider effect
     ) => {
-      if (!payload) { // early bail out when is dispatched during render
+      if (!payload) {
+        // early bail out when is dispatched during render
         return [value, selected] as const;
       }
 

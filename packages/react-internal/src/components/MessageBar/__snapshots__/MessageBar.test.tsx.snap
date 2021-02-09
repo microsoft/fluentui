@@ -227,7 +227,7 @@ exports[`MessageBar renders a error MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar3"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -349,7 +349,7 @@ exports[`MessageBar renders a info MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar1"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -471,7 +471,7 @@ exports[`MessageBar renders a multiline MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar6"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -594,7 +594,7 @@ exports[`MessageBar renders a multiline error MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar9"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -716,7 +716,7 @@ exports[`MessageBar renders a multiline info MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar7"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -839,7 +839,7 @@ exports[`MessageBar renders a multiline severeWarning MessageBar correctly 1`] =
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar10"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -962,7 +962,7 @@ exports[`MessageBar renders a multiline success MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar11"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -1085,7 +1085,7 @@ exports[`MessageBar renders a multiline warning MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar8"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -1208,7 +1208,7 @@ exports[`MessageBar renders a severeWarning MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar4"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -1331,7 +1331,7 @@ exports[`MessageBar renders a success MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar5"
+      id="MessageBar0"
       role="status"
     >
       <span
@@ -1454,7 +1454,7 @@ exports[`MessageBar renders a warning MessageBar correctly 1`] = `
             -ms-high-contrast-adjust: none;
             forced-color-adjust: none;
           }
-      id="MessageBar2"
+      id="MessageBar0"
       role="status"
     >
       <span

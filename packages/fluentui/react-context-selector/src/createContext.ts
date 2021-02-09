@@ -9,7 +9,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
     const valueRef = React.useRef(props.value);
     // Used to sync context updates and avoid stale values, can be considered as render/effect counter of Provider.
     const versionRef = React.useRef(0);
-    
+
     // A stable object, is used to avoid context updates via mutation of its values.
     const contextValue = React.useRef<ContextValue<Value>>();
 
