@@ -58,11 +58,17 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/date-time-utilities": "^8.0.0-beta.2",
+    "@fluentui/foundation-legacy": "^8.0.0-beta.13",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.13",
-    "@fluentui/react-date-time": "^8.0.0-beta.40",
+    "@fluentui/merge-styles": "^8.0.0-beta.4",
+    "@fluentui/react-focus": "^8.0.0-beta.18",
     "@fluentui/react-hooks": "^8.0.0-beta.10",
-    "@fluentui/react-internal": "^8.0.0-beta.44",
+    "@fluentui/react-shared-contexts": "^1.0.0-beta.5",
+    "@fluentui/react-window-provider": "^2.0.0-beta.5",
     "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/style-utilities": "^8.0.0-beta.13",
+    "@fluentui/theme": "^2.0.0-beta.13",
     "@fluentui/utilities": "^8.0.0-beta.10",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^1.10.0"

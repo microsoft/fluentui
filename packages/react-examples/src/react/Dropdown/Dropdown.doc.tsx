@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { DropdownBasicExample } from './Dropdown.Basic.Example';
 import { DropdownControlledExample } from './Dropdown.Controlled.Example';

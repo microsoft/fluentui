@@ -25,7 +25,6 @@ const dependencies = [
   '@fluentui/react-button',
   '@fluentui/react-charting',
   '@fluentui/react-checkbox',
-  '@fluentui/react-date-time',
   '@fluentui/react-experiments',
   '@fluentui/react-image',
   '@fluentui/react-link',

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ColorPicker';
+export * from './components/ColorPicker/index';

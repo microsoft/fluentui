@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DialogBasicExample } from './Dialog.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { DialogLargeHeaderExample } from './Dialog.LargeHeader.Example';
 import { DialogBlockingExample } from './Dialog.Blocking.Example';
 import { DialogTopOffsetFixedExample } from './Dialog.TopOffsetFixed.Example';
@@ -16,7 +16,7 @@ const DialogModelessExampleCode = require('!raw-loader?esModule=false!@fluentui/
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
   componentName: 'Dialog',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Dialog',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Dialog',
   examples: [
     {
       title: 'Default Dialog',

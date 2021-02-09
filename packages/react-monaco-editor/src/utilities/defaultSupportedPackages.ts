@@ -65,7 +65,7 @@ if (typesContext) {
     { packageName: '@fluentui/foundation-legacy', loadTypes },
     { packageName: '@fluentui/merge-styles', loadTypes },
     { packageName: '@fluentui/react', loadTypes },
-    { packageName: '@fluentui/react-date-time-utilities', loadTypes },
+    { packageName: '@fluentui/date-time-utilities', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@fluentui/style-utilities', loadTypes },
     { packageName: '@fluentui/utilities', loadTypes },

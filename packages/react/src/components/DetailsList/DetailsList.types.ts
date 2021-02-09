@@ -7,7 +7,7 @@ import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
 import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
-import { IWithViewportProps, IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IWithViewportProps, IViewport } from '../../utilities/decorators/withViewport';
 import { IList, IListProps, ScrollToMode } from '../../List';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';

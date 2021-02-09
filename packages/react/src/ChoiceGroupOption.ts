@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ChoiceGroupOption';
+export * from './components/ChoiceGroup/ChoiceGroupOption/index';

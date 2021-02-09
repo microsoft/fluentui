@@ -41,7 +41,7 @@ describe('Top Level Component File Conformance', () => {
   // make sure that there is a version import in each corresponding top level component file
   topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
-    const packageName = componentPackageMap[componentName] || '@fluentui/react-internal';
+    const packageName = componentPackageMap[componentName] || '@fluentui/react';
 
     it(`${componentName} imports the ${packageName} version file`, () => {
       (window as any).__packages__ = null;
