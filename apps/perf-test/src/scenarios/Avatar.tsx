@@ -5,6 +5,8 @@ import { webLightTheme } from '@fluentui/react-theme';
 
 const Scenario = () => <Avatar />;
 
-Scenario.decorator = (children: React.ReactNode) => <FluentProvider theme={webLightTheme}>{children}</FluentProvider>;
+Scenario.decorator = (props: { children: React.ReactNode }) => (
+  <FluentProvider theme={webLightTheme}>{props.children}</FluentProvider>
+);
 
 export default Scenario;
