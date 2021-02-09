@@ -1,14 +1,13 @@
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
-// @ts-ignore No typings :(
 import * as prettier from 'prettier';
 
 expect.addSnapshotSerializer({
   test(value) {
     return value?.nodeName === '#document';
   },
-  print(value: Document) {
+  serialize(value: Document) {
     function reduceRules(sheet: CSSStyleSheet | undefined) {
       return Array.from(sheet?.cssRules || []).reduce<string>((acc, rule) => {
         return `${acc}${rule.cssText}`;

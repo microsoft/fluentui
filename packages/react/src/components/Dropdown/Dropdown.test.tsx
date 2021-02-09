@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { ReactTestRenderer } from 'react-test-renderer';
 import { create } from '@fluentui/utilities/lib/test';
@@ -10,7 +9,7 @@ import { KeyCodes, resetIds } from '../../Utilities';
 import { Dropdown } from './Dropdown';
 import { DropdownMenuItemType, IDropdownOption, IDropdown } from './Dropdown.types';
 import { isConformant } from '../../common/isConformant';
-import { safeCreate } from '@fluentui/test-utilities';
+import { safeCreate, safeMount } from '@fluentui/test-utilities';
 
 const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
@@ -321,41 +320,41 @@ describe('Dropdown', () => {
     it('can be programmatically focused when tabIndex=-1, and will select the first valid item', () => {
       const dropdown = React.createRef<IDropdown>();
 
-      const container = document.createElement('div');
-      document.body.appendChild(container);
+      safeMount(
+        <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} data-test-attr />,
+        wrapper2 => {
+          const field = wrapper2.find('.ms-Dropdown');
+          // For some reason in react 17/jest 25 this won't work without mocking with either enzyme or react-dom
+          (field.getDOMNode() as any).focus = () => field.simulate('focus');
+          dropdown.current!.focus(false);
 
-      // in enzyme, when we call the programmatic focus(), it does not trigger the onFocus callback of the div
-      // being focused. Utilize JSDOM instead.
-      ReactDOM.render(
-        <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
-        container,
+          const titleElement = wrapper2.find('.ms-Dropdown-title');
+          expect(titleElement).toHaveLength(1);
+          expect(titleElement.text()).toEqual('1');
+        },
+        true /* attach */,
       );
-
-      dropdown.current!.focus(false);
-
-      const titleElement = container.querySelector('.ms-Dropdown-title') as HTMLElement;
-      // for some reason, JSDOM does not return innerText of 1 so we have to use innerHTML instead.
-      expect(titleElement.innerHTML).toEqual('1');
     });
 
     it('opens and focuses/selects first selectable option when focus(true) is called', () => {
       const dropdown = React.createRef<IDropdown>();
 
-      const container = document.createElement('div');
-      document.body.appendChild(container);
+      safeMount(
+        <Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />,
+        wrapper2 => {
+          expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
 
-      ReactTestUtils.act(() => {
-        ReactDOM.render(<Dropdown componentRef={dropdown} label="testgroup" options={DEFAULT_OPTIONS} />, container);
-      });
+          const field = wrapper2.find('.ms-Dropdown');
+          // For some reason in react 17/jest 25 this won't work without mocking with either enzyme or react-dom
+          (field.getDOMNode() as any).focus = () => field.simulate('focus');
+          dropdown.current!.focus(true);
 
-      expect(document.body.querySelector('.ms-Dropdown-item')).toBeNull();
-
-      ReactTestUtils.act(() => {
-        dropdown.current!.focus(true);
-      });
-      const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
-      expect(firstDropdownItem).not.toBeNull();
-      expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
+          const firstDropdownItem = document.body.querySelector('.ms-Dropdown-item');
+          expect(firstDropdownItem).not.toBeNull();
+          expect(firstDropdownItem!.getAttribute('aria-selected')).toBe('true');
+        },
+        true /* attach */,
+      );
     });
 
     it('selects the first valid item on Home keypress', () => {

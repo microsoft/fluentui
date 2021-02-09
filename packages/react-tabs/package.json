@@ -29,6 +29,7 @@
     "@fluentui/common-styles": "^1.0.0-beta.15",
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/react-conformance": "^1.0.0",
+    "@fluentui/test-utilities": "^8.0.0-beta.5",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",

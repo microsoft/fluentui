@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { KeyCodes, resetIds } from '../../Utilities';
 import { ComboBox } from './ComboBox';
@@ -196,7 +195,7 @@ describe('ComboBox', () => {
 
       // open combobox
       const buttonElement = container.root.findByType('button');
-      ReactTestUtils.act(() => {
+      renderer.act(() => {
         buttonElement?.props?.onClick();
       });
 
@@ -222,7 +221,7 @@ describe('ComboBox', () => {
 
       // open combobox
       const buttonElement = container.root.findByType('button');
-      ReactTestUtils.act(() => {
+      renderer.act(() => {
         buttonElement?.props?.onClick();
       });
 
@@ -708,7 +707,7 @@ describe('ComboBox', () => {
           node => node.type === 'button' && node.props?.className?.includes?.('ms-ComboBox'),
         );
 
-        ReactTestUtils.act(() => {
+        renderer.act(() => {
           buttonElement?.props?.onClick?.();
         });
 
@@ -904,7 +903,7 @@ describe('ComboBox', () => {
     const onItemClickMock = jest.fn();
     safeCreate(<ComboBox options={DEFAULT_OPTIONS} onItemClick={onItemClickMock} />, container => {
       const caretElement = findNodeWithClass(container, 'ms-ComboBox-CaretDown-button');
-      ReactTestUtils.act(() => {
+      renderer.act(() => {
         caretElement?.props?.onClick?.();
       });
       const button = findNodeWithClass(container, 'ms-ComboBox-option', true);
@@ -963,13 +962,13 @@ describe('ComboBox', () => {
 
         // Open combobox
         const buttonElement = comboBoxRoot.findByType('button');
-        ReactTestUtils.act(() => {
+        renderer.act(() => {
           buttonElement?.props?.onClick();
         });
         expect(onMenuOpenMock.mock.calls.length).toBe(1);
 
         // Close combobox
-        ReactTestUtils.act(() => {
+        renderer.act(() => {
           buttonElement?.props?.onClick();
         });
         expect(onMenuDismissedMock.mock.calls.length).toBe(1);

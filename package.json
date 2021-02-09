@@ -71,6 +71,7 @@
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "^25.0.0",
+    "@types/prettier": "^1.19.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "babel-jest": "^25.0.0",
     "beachball": "^1.50.1",

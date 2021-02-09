@@ -69,6 +69,13 @@ function customColumnDivider(
 }
 
 describe('DetailsList', () => {
+  afterEach(() => {
+    if ((setTimeout as any).mock) {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
+    }
+  });
+
   it('renders List correctly with onRenderDivider props', () => {
     const component = renderer.create(
       <DetailsList
@@ -179,14 +186,13 @@ describe('DetailsList', () => {
       () => {
         expect(component).toBeTruthy();
         component!.focusIndex(2);
-        setTimeout(() => {
-          expect(
-            (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
-          ).toEqual('2');
-          expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
-        }, 0);
-        jest.runOnlyPendingTimers();
+        jest.runAllTimers();
+        expect(
+          (document.activeElement as HTMLElement).querySelector('[data-automationid=DetailsRowCell]')!.textContent,
+        ).toEqual('2');
+        expect((document.activeElement as HTMLElement).className.split(' ')).toContain('ms-DetailsRow');
       },
+      true /* attach */,
     );
   });
 
@@ -361,6 +367,7 @@ describe('DetailsList', () => {
         expect((document.activeElement as HTMLElement).textContent).toEqual('4');
         expect((document.activeElement as HTMLElement).className.split(' ')).toContain('test-column');
       },
+      true /* attach */,
     );
   });
 
@@ -401,6 +408,7 @@ describe('DetailsList', () => {
         }, 0);
         jest.runOnlyPendingTimers();
       },
+      true /* attach */,
     );
   });
 

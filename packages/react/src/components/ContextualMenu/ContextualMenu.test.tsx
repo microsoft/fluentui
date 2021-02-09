@@ -14,6 +14,7 @@ import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './Contextu
 import { DefaultButton, IButton } from '../../Button';
 import { IRenderFunction, resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
+import { safeRender } from '@fluentui/test-utilities';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -1122,40 +1123,42 @@ describe('ContextualMenu', () => {
     });
 
     it('Menu should correctly return focus to previously focused element when dismissed and document has focus', () => {
-      const temp = ReactTestUtils.renderIntoDocument<HTMLDivElement>(
+      safeRender(
         <div>
           <DefaultButton menuProps={{ items: menu }} text="but" id="btn" />
         </div>,
-      ) as HTMLElement;
+        temp => {
+          // Get and make sure that the button is the active element
+          const btn = temp.querySelector('#btn')! as HTMLElement;
+          expect(btn).not.toEqual(null);
+          btn.focus();
+          expect(document.activeElement).toEqual(btn);
 
-      // Get and make sure that the button is the active element
-      const btn = temp.querySelector('#btn')! as HTMLElement;
-      expect(btn).not.toEqual(null);
-      btn.focus();
-      expect(document.activeElement).toEqual(btn);
+          // Click the button and make sure that the menu has opened
+          ReactTestUtils.act(() => {
+            ReactTestUtils.Simulate.click(btn);
+          });
+          const cm = document.querySelector('.ms-ContextualMenu-Callout');
+          expect(cm).not.toEqual(null);
 
-      // Click the button and make sure that the menu has opened
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.click(btn);
-      });
-      const cm = document.querySelector('.ms-ContextualMenu-Callout');
-      expect(cm).not.toEqual(null);
+          // Get an item from the menu and make sure it's focused
+          const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
+          const menuItem = menuList.querySelector('button');
+          menuItem!.focus();
+          expect(document.activeElement).toEqual(menuItem);
+          ReactTestUtils.act(() => {
+            ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.escape });
+          });
 
-      // Get an item from the menu and make sure it's focused
-      const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
-      const menuItem = menuList.querySelector('button');
-      menuItem!.focus();
-      expect(document.activeElement).toEqual(menuItem);
-      ReactTestUtils.act(() => {
-        ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.escape });
-      });
+          // Ensure that the Menu has closed and that focus has returned to the button
+          expect(document.querySelector('.ms-ContextualMenu-Callout')).toBeNull();
 
-      // Ensure that the Menu has closed and that focus has returned to the button
-      expect(document.querySelector('.ms-ContextualMenu-Callout')).toBeNull();
-
-      if (document.hasFocus()) {
-        expect(document.activeElement).toEqual(btn);
-      }
+          if (document.hasFocus()) {
+            expect(document.activeElement).toEqual(btn);
+          }
+        },
+        true /* attach */,
+      );
     });
   });
 

@@ -12,6 +12,7 @@ import { TextField } from './TextField';
 import { TextFieldBase, ITextFieldState } from './TextField.base';
 import { ITextFieldProps, ITextFieldStyles, ITextField } from './TextField.types';
 import { isConformant } from '../../common/isConformant';
+import { safeMount } from '@fluentui/test-utilities';
 
 /**
  * The currently rendered ITextField.
@@ -824,7 +825,7 @@ describe('TextField', () => {
   });
 
   it('sets focus to the input via ITextField focus', () => {
-    wrapper = mount(<TextField componentRef={textFieldRef} />);
+    wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
     const inputEl = wrapper.find('input').getDOMNode();
 
     textField!.focus();
@@ -833,7 +834,7 @@ describe('TextField', () => {
   });
 
   it('blurs the input via ITextField blur', () => {
-    wrapper = mount(<TextField componentRef={textFieldRef} />);
+    wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
     const inputEl = wrapper.find('input').getDOMNode();
 
     textField!.focus();
@@ -864,45 +865,58 @@ describe('TextField', () => {
   });
 
   it('maintains focus when switching single to multi line and back', () => {
-    wrapper = mountAttached(<TextField componentRef={textFieldRef} />);
-    // focus input
-    textField!.focus();
-    let input = wrapper.find('input').getDOMNode();
-    expect(document.activeElement).toBe(input);
+    safeMount(
+      <TextField componentRef={textFieldRef} />,
+      wrapper2 => {
+        // focus input
+        // textField!.focus(); // doesn't work with react 17/jest 25
+        wrapper2.find('input').simulate('focus');
+        let input = wrapper2.find('input').getDOMNode();
+        expect(document.activeElement).toBe(input);
 
-    // switch to multiline
-    wrapper.setProps({ multiline: true });
-    // verify still focused
-    const textarea = wrapper.find('textarea').getDOMNode();
-    expect(document.activeElement).toBe(textarea);
+        // switch to multiline
+        wrapper2.setProps({ multiline: true });
+        // verify still focused
+        const textarea = wrapper2.find('textarea').getDOMNode();
+        expect(document.activeElement).toBe(textarea);
 
-    // back to single line
-    wrapper.setProps({ multiline: false });
-    // verify still focused
-    input = wrapper.find('input').getDOMNode();
-    expect(document.activeElement).toBe(input);
+        // back to single line
+        wrapper2.setProps({ multiline: false });
+        // verify still focused
+        input = wrapper2.find('input').getDOMNode();
+        expect(document.activeElement).toBe(input);
+      },
+      true /* attach */,
+    );
   });
 
   it('maintains selection when switching single to multi line and back', () => {
     const start = 1;
     const end = 3;
-    wrapper = mountAttached(<TextField componentRef={textFieldRef} defaultValue="some text" />);
-    // select
-    textField!.focus();
-    textField!.setSelectionRange(start, end);
-    expect(textField!.selectionStart).toBe(start);
-    expect(textField!.selectionEnd).toBe(end);
 
-    // switch to multiline
-    wrapper.setProps({ multiline: true });
-    // verify still selected
-    expect(textField!.selectionStart).toBe(start);
-    expect(textField!.selectionEnd).toBe(end);
+    safeMount(
+      <TextField componentRef={textFieldRef} defaultValue="some text" />,
+      wrapper2 => {
+        // select
+        // textField!.focus(); // doesn't work with react 17/jest 25
+        wrapper2.find('input').simulate('focus');
+        textField!.setSelectionRange(start, end);
+        expect(textField!.selectionStart).toBe(start);
+        expect(textField!.selectionEnd).toBe(end);
 
-    // back to single line
-    wrapper.setProps({ multiline: false });
-    // verify still selected
-    expect(textField!.selectionStart).toBe(start);
-    expect(textField!.selectionEnd).toBe(end);
+        // switch to multiline
+        wrapper2.setProps({ multiline: true });
+        // verify still selected
+        expect(textField!.selectionStart).toBe(start);
+        expect(textField!.selectionEnd).toBe(end);
+
+        // back to single line
+        wrapper2.setProps({ multiline: false });
+        // verify still selected
+        expect(textField!.selectionStart).toBe(start);
+        expect(textField!.selectionEnd).toBe(end);
+      },
+      true /* attached */,
+    );
   });
 });
