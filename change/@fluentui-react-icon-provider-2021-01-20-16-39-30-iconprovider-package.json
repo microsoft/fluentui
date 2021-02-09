@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Creating @fluentui/react-icon-provider package and making it public",
-  "packageName": "@fluentui/react-icon-provider",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-21T00:39:30.586Z"
-}

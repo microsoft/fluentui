@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding override capability to createSvgIcon factory method",
-  "packageName": "@fluentui/react-icons-mdl2",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-20T17:54:13.076Z"
-}
