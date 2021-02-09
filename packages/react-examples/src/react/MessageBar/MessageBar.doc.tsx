@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { MessageBarBasicExample } from './MessageBar.Basic.Example';
 
@@ -9,7 +9,7 @@ const MessageBarBasicExampleCode = require('!raw-loader?esModule=false!@fluentui
 export const MessageBarPageProps: IDocPageProps = {
   title: 'MessageBar',
   componentName: 'MessageBar',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/MessageBar',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/MessageBar',
   examples: [
     {
       title: 'Various MessageBar types',

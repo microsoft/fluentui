@@ -1,1 +1,1 @@
-export * from './components/DatePicker/index';
+export * from '@fluentui/react/lib/DatePicker';

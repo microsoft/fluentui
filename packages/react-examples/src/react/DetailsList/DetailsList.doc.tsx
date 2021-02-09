@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps, IExample } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps, IExample } from '@fluentui/react/lib/common/DocPage.types';
 
 import { DetailsListBasicExample } from './DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Basic.Example.tsx') as string;

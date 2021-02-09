@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { loadTheme, createTheme, Customizer } from '@fluentui/react';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { ThemeProvider } from '@fluentui/react';
 import { FabricDecorator } from '../utilities/index';
 

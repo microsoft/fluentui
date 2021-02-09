@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DocumentCardBasicExample } from './DocumentCard.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { DocumentCardCompactExample } from './DocumentCard.Compact.Example';
 import { DocumentCardCompleteExample } from './DocumentCard.Complete.Example';
 import { DocumentCardImageExample } from './DocumentCard.Image.Example';

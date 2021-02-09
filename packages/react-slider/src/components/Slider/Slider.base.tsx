@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FocusRects } from '@fluentui/utilities';
 import { ISliderProps } from './Slider.types';
-import { Label } from '@fluentui/react-internal/lib/Label';
+import { Label } from '@fluentui/react/lib/Label';
 import { useSlider } from './useSlider';
 import { useWarnings } from '@fluentui/react-hooks';
 

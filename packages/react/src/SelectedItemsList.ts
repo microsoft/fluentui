@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/SelectedItemsList';
+export * from './components/SelectedItemsList/index';

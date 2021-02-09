@@ -137,7 +137,7 @@ describe('_supportedPackageToGlobalMap', () => {
       '@fluentui/foundation-legacy': 'FluentUIReact',
       '@fluentui/merge-styles': 'FluentUIReact',
       '@fluentui/react': 'FluentUIReact',
-      '@fluentui/react-date-time-utilities': 'FluentUIReact',
+      '@fluentui/date-time-utilities': 'FluentUIReact',
       '@fluentui/react-focus': 'FluentUIReact',
       '@fluentui/react-hooks': 'FluentUIReactHooks',
       '@fluentui/style-utilities': 'FluentUIReact',

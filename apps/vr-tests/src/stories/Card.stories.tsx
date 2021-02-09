@@ -23,7 +23,7 @@ import {
   Text,
   ITextStyles,
 } from '@fluentui/react';
-import { ActionButton } from '@fluentui/react/lib/compat/Button';
+import { ActionButton } from '@fluentui/react/lib/Button';
 
 const cardClicked = (): void => {
   /** no-impl **/

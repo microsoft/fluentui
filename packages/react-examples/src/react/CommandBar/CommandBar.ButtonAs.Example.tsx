@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CommandBar, ICommandBarItemProps } from '@fluentui/react/lib/CommandBar';
-import { CommandBarButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton, IButtonProps, IButtonStyles } from '@fluentui/react/lib/Button';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import {
   IContextualMenuItemProps,
@@ -9,7 +9,6 @@ import {
   IContextualMenuStyles,
 } from '@fluentui/react/lib/ContextualMenu';
 import { getTheme, concatStyleSets } from '@fluentui/react/lib/Styling';
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
 
 const theme = getTheme();
