@@ -30,5 +30,5 @@ export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemSt
   /**
    * Slot for the checkmark indicator
    */
-  checkmark?: ObjectShorthandProps<HTMLElement>;
+  checkmark: ObjectShorthandProps<HTMLElement>;
 }
