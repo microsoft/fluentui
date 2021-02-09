@@ -180,8 +180,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
     event?.preventDefault();
-    if (props.onDropAutoFill) {
-      props.onDropAutoFill(event);
+    if (onDropAutoFill) {
+      onDropAutoFill(event);
     } else {
       insertIndex = selectedItems.length;
       _onDropInner(event?.dataTransfer);
@@ -227,7 +227,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (dataTransfer) {
       const data = dataTransfer.items;
       for (let i = 0; i < data.length; i++) {
-        if (data[i].kind === 'string' && data[i].type === props.customClipboardType) {
+        if (data[i].kind === 'string' && data[i].type === customClipboardType) {
           isDropHandled = true;
           data[i].getAsString((dropText: string) => {
             if (deserializeItemsFromDrop) {
@@ -252,10 +252,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     setDraggedIndex(draggedItemIndex);
     if (event) {
       const dataList = event?.dataTransfer?.items;
-      if (serializeItemsForDrag && props.customClipboardType) {
+      if (serializeItemsForDrag && customClipboardType) {
         const draggedItems = focusedItemIndices.includes(draggedItemIndex) ? [...getSelectedItems()] : [item];
         const dragText = serializeItemsForDrag(draggedItems);
-        dataList?.add(dragText, props.customClipboardType);
+        dataList?.add(dragText, customClipboardType);
       }
     }
   };
@@ -514,7 +514,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onItemsRemoved: _onRemoveSelectedItems,
       replaceItem: _replaceItem,
       dragDropHelper: dragDropHelper,
-      dragDropEvents: props.dragDropEvents ? props.dragDropEvents : defaultDragDropEvents,
+      dragDropEvents: dragDropEvents ? dragDropEvents : defaultDragDropEvents,
     });
   };
 
@@ -555,7 +555,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _renderFloatingPicker = () =>
     onRenderFloatingSuggestions({
       ...floatingSuggestionProps,
-      pickerWidth: props.floatingSuggestionProps.pickerWidth ? props.floatingSuggestionProps.pickerWidth : '300px',
+      pickerWidth: pickerWidth || '300px',
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,
