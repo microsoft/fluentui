@@ -323,9 +323,9 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const onFocusProp: {} = disabled ? {} : { onFocus: onThumbFocus };
 
   const lowerValueThumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, lowerValueThumbRef, lowerValue);
+  useComponentRef(props, lowerValueThumbRef, lowerValue, [lowerValue, value]);
   const thumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, thumbRef, value);
+  useComponentRef(props, thumbRef, value, [lowerValue, value]);
   const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
   const getTrackStyles = getLineSectionStylesFn(vertical);
   const originValue = originFromZero ? 0 : min;

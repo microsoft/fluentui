@@ -9,6 +9,8 @@ export interface ISlider {
   value: number | undefined;
 
   focus: () => void;
+
+  range?: [number, number];
 }
 
 /**
