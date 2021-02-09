@@ -1,5 +1,8 @@
 import * as React from 'react';
+import { AvatarExamples } from '@fluentui/example-data';
+import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
+import { useBoolean } from '@fluentui/react-hooks';
 import {
   ContactIcon,
   GroupIcon,
@@ -8,16 +11,13 @@ import {
   CalendarIcon,
   TelemarketerIcon,
   RoomIcon,
-  ChatBotIcon,
   SkypeClockIcon,
   SkypeCheckIcon,
   SkypeMinusIcon,
   SkypeArrowIcon,
 } from '@fluentui/react-icons-mdl2';
+
 import { StoryExample } from '../utils/StoryExample';
-import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { AvatarExamples } from '@fluentui/example-data';
-import { useBoolean } from '@fluentui/react-hooks';
 
 const examples = {
   ...AvatarExamples,
@@ -178,34 +178,6 @@ export const ActiveAnimation = () => {
         </Stack>
       </Stack>
     </ThemeProvider>
-  );
-};
-
-export const CustomSizes = () => (
-  <StoryExample title="Custom size">
-    <Avatar name={examples.name[11]} badge="success" size={20} tokens={{ width: '13px', height: '13px' }} />
-    <Avatar image={examples.image[12]} badge="warning" size={20} tokens={{ width: '21px', height: '21px' }} />
-    <Avatar name={examples.name[13]} badge="error" size={32} tokens={{ width: '34px', height: '34px' }} />
-    <Avatar image={examples.image[14]} badge="info" size={48} tokens={{ width: '55px', height: '55px' }} />
-    <Avatar name={examples.name[15]} badge="warning" size={72} tokens={{ width: '89px', height: '89px' }} />
-    <Avatar image={examples.image[16]} badge="success" size={128} tokens={{ width: '144px', height: '144px' }} />
-  </StoryExample>
-);
-
-export const CustomShape = () => {
-  return (
-    <>
-      <StoryExample title="Custom shape">
-        <AvatarExampleList
-          icon={<ChatBotIcon />}
-          tokens={{
-            width: 'calc(var(--avatar-height) * 1.125)',
-            background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-            borderRadius: '0',
-          }}
-        />
-      </StoryExample>
-    </>
   );
 };
 
