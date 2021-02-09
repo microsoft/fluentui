@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import { MenuList, MenuItem } from '@fluentui/react-menu';
+import { MenuList, MenuItem, MenuItemCheckbox } from '@fluentui/react-menu';
 import { teamsLightTheme } from '@fluentui/react-theme';
 import { FluentProvider } from '@fluentui/react-provider';
-import { CutIcon, PasteIcon, EditIcon } from '@fluentui/react-icons-mdl2';
+import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useContainerStyles = makeStyles([
@@ -49,3 +49,29 @@ export const MenuListWithIconsExample = () => (
     </Container>
   </FluentProvider>
 );
+
+export const MenuListWithCheckboxes = () => {
+  const checkmark = <AcceptIcon />;
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
+  const onChange = (name: string, items: string[]) => {
+    setCheckedValues(s => ({ ...s, [name]: items }));
+  };
+
+  return (
+    <FluentProvider theme={teamsLightTheme}>
+      <Container>
+        <MenuList checkedValues={checkedValues} onCheckedValuesChange={onChange}>
+          <MenuItemCheckbox name="checkbox" value="1" checkmark={checkmark}>
+            Item
+          </MenuItemCheckbox>
+          <MenuItemCheckbox name="checkbox" value="2" checkmark={checkmark}>
+            Item
+          </MenuItemCheckbox>
+          <MenuItemCheckbox name="checkbox" value="3" checkmark={checkmark}>
+            Item
+          </MenuItemCheckbox>
+        </MenuList>
+      </Container>
+    </FluentProvider>
+  );
+};
