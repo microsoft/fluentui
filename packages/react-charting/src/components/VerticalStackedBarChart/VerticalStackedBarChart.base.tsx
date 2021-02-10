@@ -692,7 +692,7 @@ export class VerticalStackedBarChartBase extends React.Component<
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
-          'data-is-focusable': true,
+          'data-is-focusable': !this.props.hideTooltip,
           'aria-labelledby': `toolTip${this._calloutId}`,
           onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
@@ -746,7 +746,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       });
       const groupRef: IRefArrayData = {};
       const stackFocusProps = shouldFocusWholeStack && {
-        'data-is-focusable': true,
+        'data-is-focusable': !this.props.hideTooltip,
         'aria-labelledby': `toolTip${this._calloutId}`,
         onMouseOver: this._onStackHover.bind(this, singleChartData),
         onMouseMove: this._onStackHover.bind(this, singleChartData),

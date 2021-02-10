@@ -466,7 +466,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           className={this._classNames.opacityChangeOnHover}
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
-          data-is-focusable={true}
+          data-is-focusable={!this.props.hideTooltip}
           height={Math.max(yBarScale(point.y), 0)}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
@@ -515,14 +515,14 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
           y={containerHeight - this.margins.bottom! - yBarScale(point.y)}
           width={this._barWidth}
           height={Math.max(yBarScale(point.y), 0)}
-          aria-labelledby={this._calloutId}
+          aria-labelledby={`toolTip${this._calloutId}`}
           ref={(e: SVGRectElement) => {
             this._refCallback(e, point.legend!);
           }}
           onMouseOver={this._onBarHover.bind(this, point, colorScale(point.y))}
           onMouseLeave={this._onBarLeave}
           onBlur={this._onBarLeave}
-          data-is-focusable={true}
+          data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
           fill={point.color ? point.color : colorScale(point.y)}
         />
