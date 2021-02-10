@@ -2,7 +2,7 @@ import * as React from 'react';
 import { List } from '@fluentui/react/lib/List';
 import { Link } from '@fluentui/react/lib/Link';
 import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { Label } from '@fluentui/react/lib/Label';
 import { styled, classNamesFunction } from '@fluentui/react/lib/Utilities';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonProps } from '@fluentui/react/lib/Button';
 import { TeachingBubble } from '@fluentui/react/lib/TeachingBubble';
 import { useBoolean } from '@fluentui/react-hooks';
 

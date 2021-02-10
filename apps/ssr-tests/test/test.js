@@ -17,7 +17,7 @@ library.setSSR(true);
 library.setRTL(false);
 
 // Assume a large screen.
-let responsiveLib = require('@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode');
+let responsiveLib = require('@fluentui/react/lib/utilities/decorators/withResponsiveMode');
 responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
 // Initialize icons.

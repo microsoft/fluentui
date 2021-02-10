@@ -3,7 +3,7 @@ import { PropertiesTableSet } from '../../PropertiesTable/index';
 import { MessageBar } from '@fluentui/react';
 import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
-import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 import { ApiReferencesTableSet } from '../../ApiReferencesTable/index';
 
 export interface IImplementationSectionProps extends IPageSectionPropsWithSectionName {

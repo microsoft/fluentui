@@ -66,6 +66,13 @@ export {
   accentFillLargeSelected,
 } from './accent-fill';
 
+export {
+  neutralContrastFill,
+  neutralContrastFillRest,
+  neutralContrastFillHover,
+  neutralContrastFillActive,
+} from './neutral-contrast-fill';
+
 export { neutralFillCard } from './neutral-fill-card';
 
 /**
@@ -107,3 +114,4 @@ export { neutralFocus, neutralFocusInnerAccent } from './neutral-focus';
  */
 export { isDarkMode, palette, PaletteType, Palette } from './palette';
 export { createColorPalette } from './create-color-palette';
+export { parseColorString } from './common';
