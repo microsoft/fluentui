@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating icon documentation page with info about open source package",
-  "packageName": "@uifabric/fabric-website",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-03T00:30:24.691Z"
-}

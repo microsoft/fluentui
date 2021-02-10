@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "[v7.0]ChoiceGroup: Focus border is now visible when focus method is called",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-09T18:08:53.068Z"
-}

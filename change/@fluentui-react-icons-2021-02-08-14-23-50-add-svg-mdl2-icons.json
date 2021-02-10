@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding five svg icons for OWA",
-  "packageName": "@fluentui/react-icons",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-08T22:23:50.135Z"
-}

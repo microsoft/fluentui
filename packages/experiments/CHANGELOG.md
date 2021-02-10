@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 04 Feb 2021 12:22:41 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.12)
+
+Wed, 10 Feb 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.9..@uifabric/experiments_v7.38.12)
+
+### Patches
+
+- Memoize callbacks to reduce UPP re-renders ([PR #16906](https://github.com/microsoft/fluentui/pull/16906) by elvonspa@microsoft.com)
 
 ## [7.38.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.9)
 

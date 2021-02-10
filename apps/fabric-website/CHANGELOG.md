@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 29 Jan 2021 12:27:21 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.23](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.23)
+
+Wed, 10 Feb 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.16..@uifabric/fabric-website_v7.16.23)
+
+### Patches
+
+- Updating icon documentation page with info about open source package ([PR #16779](https://github.com/microsoft/fluentui/pull/16779) by ololubek@microsoft.com)
 
 ## [7.16.16](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.16)
 

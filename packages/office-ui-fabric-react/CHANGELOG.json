@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "office-ui-fabric-react_v7.159.0",
+      "version": "7.159.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[v7.0]ChoiceGroup: Focus border is now visible when focus method is called",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "169645be467f7e7f5c8a98927f1e0a2182d7dcf1",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "PersonaCoin: now accepts initialsTextColor prop which sets the text color of the Persona Coin",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "1f39dd8e8d6da183ff5d4fb96426e54723d638cd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Feb 2021 12:26:30 GMT",
       "tag": "office-ui-fabric-react_v7.158.3",
       "version": "7.158.3",

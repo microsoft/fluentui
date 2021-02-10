@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.23",
+      "version": "7.16.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating icon documentation page with info about open source package",
+            "author": "ololubek@microsoft.com",
+            "commit": "cd81a07c4219a169f6c7c760ca940eb33b948e48",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Jan 2021 12:27:21 GMT",
       "tag": "@uifabric/fabric-website_v7.16.16",
       "version": "7.16.16",

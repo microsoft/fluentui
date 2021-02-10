@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "@uifabric/experiments_v7.38.12",
+      "version": "7.38.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize callbacks to reduce UPP re-renders",
+            "author": "elvonspa@microsoft.com",
+            "commit": "15dfd17559f39669f95062b2a5ee2e0d69c2f13d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 04 Feb 2021 12:22:41 GMT",
       "tag": "@uifabric/experiments_v7.38.9",
       "version": "7.38.9",

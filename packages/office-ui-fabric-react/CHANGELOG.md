@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 09 Feb 2021 12:26:30 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.159.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.159.0)
+
+Wed, 10 Feb 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.158.3..office-ui-fabric-react_v7.159.0)
+
+### Minor changes
+
+- PersonaCoin: now accepts initialsTextColor prop which sets the text color of the Persona Coin ([PR #16908](https://github.com/microsoft/fluentui/pull/16908) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- [v7.0]ChoiceGroup: Focus border is now visible when focus method is called ([PR #16897](https://github.com/microsoft/fluentui/pull/16897) by tristan.watanabe@gmail.com)
 
 ## [7.158.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.3)
 

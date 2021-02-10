@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "PersonaCoin: now accepts initialsTextColor prop which sets the text color of the Persona Coin",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-10T00:05:28.805Z"
-}
