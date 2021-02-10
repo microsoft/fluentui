@@ -1694,6 +1694,7 @@ Dropdown.propTypes = {
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,
+  a11ySelectedItemsMessage: PropTypes.string,
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 
