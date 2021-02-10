@@ -34,7 +34,7 @@ const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinSty
 const getInitialsStyles = memoizeFunction(
   (
     className: string,
-    initialsBackgroundColor: PersonaInitialsColor | string | undefined,
+    initialsColor: PersonaInitialsColor | string | undefined,
     initialsTextColor: string | undefined,
     text: string | undefined,
     primaryText: string | undefined,
@@ -43,7 +43,7 @@ const getInitialsStyles = memoizeFunction(
     mergeStyles(
       className,
       !showUnknownPersonaCoin && {
-        backgroundColor: getPersonaInitialsColor(text, initialsBackgroundColor, primaryText),
+        backgroundColor: getPersonaInitialsColor({ text, initialsColor, primaryText }),
         color: initialsTextColor,
       },
     ),
