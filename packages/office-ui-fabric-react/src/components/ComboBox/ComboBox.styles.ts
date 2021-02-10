@@ -494,6 +494,7 @@ export const getStyles = memoizeFunction(
             [HighContrastSelector]: {
               color: 'GrayText',
             },
+            // eslint-disable-next-line deprecation/deprecation
             ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },

@@ -211,6 +211,7 @@ export const getStyles = memoizeFunction(
             borderColor: 'GrayText',
             backgroundColor: 'Window',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

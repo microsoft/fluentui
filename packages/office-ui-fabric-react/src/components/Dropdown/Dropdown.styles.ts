@@ -319,6 +319,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             color: 'GrayText',
             backgroundColor: 'Window',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
@@ -341,7 +342,11 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       { color: palette.neutralSecondary, fontSize: fonts.small.fontSize, pointerEvents: 'none' },
       disabled && {
         color: semanticColors.disabledText,
-        selectors: { [HighContrastSelector]: { color: 'GrayText' }, ...getEdgeChromiumNoHighContrastAdjustSelector() },
+        selectors: {
+          [HighContrastSelector]: { color: 'GrayText' },
+          // eslint-disable-next-line deprecation/deprecation
+          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+        },
       },
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
@@ -396,6 +401,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           [HighContrastSelector]: {
             color: 'GrayText',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

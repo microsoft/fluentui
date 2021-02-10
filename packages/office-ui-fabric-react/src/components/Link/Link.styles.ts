@@ -65,6 +65,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           [HighContrastSelector]: {
             color: 'LinkText',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

@@ -37,6 +37,7 @@ export function getHighContrastNoAdjustStyle(): IRawStyle {
 
 /**
  * The style which turns off high contrast adjustment in (only) Edge Chromium browser.
+ * @deprecated Use `getHighContrastNoAdjustStyle`
  */
 export function getEdgeChromiumNoHighContrastAdjustSelector(): { [EdgeChromiumHighContrastSelector]: IRawStyle } {
   return {
