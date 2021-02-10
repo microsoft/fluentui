@@ -3,7 +3,7 @@
  */
 
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ScrollablePane } from '@fluentui/react/lib/ScrollablePane';
 import { concatStyleSets, ITheme } from '@fluentui/react/lib/Styling';

@@ -45,7 +45,6 @@ const mfConfig = {
       filename: 'remoteEntry.js',
       exposes: {
         ...rootComponentsExposes,
-        './lib/compat/Button': '@fluentui/react/src/compat/Button',
         '.': '@fluentui/react/src/index',
         './lib/index': '@fluentui/react/src/index',
       },

@@ -3,7 +3,7 @@ import { SeparatorBasicExample } from './Separator.Basic.Example';
 import { SeparatorThemingExample } from './Separator.Theming.Example';
 import { SeparatorIconExample } from './Separator.Icon.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const SeparatorBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Separator/Separator.Basic.Example.tsx') as string;
 
@@ -14,7 +14,7 @@ const SeparatorIconExampleCode = require('!raw-loader?esModule=false!@fluentui/r
 export const SeparatorPageProps: IDocPageProps = {
   title: 'Separator',
   componentName: 'Separator',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Separator',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Separator',
   examples: [
     {
       title: 'Basic Separator with Text',

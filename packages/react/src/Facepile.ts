@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Facepile';
+export * from './components/Facepile/index';

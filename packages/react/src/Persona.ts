@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Persona';
+export * from './components/Persona/index';

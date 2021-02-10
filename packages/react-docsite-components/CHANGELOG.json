@@ -2,6 +2,36 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 12:24:19 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.0.0-beta.51",
+      "version": "8.0.0-beta.51",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Combine react-internal back into react, and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "47b42efbbe9e869864973f3b2cb717e6112b8106",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.0.0-beta.50",
+      "version": "8.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.50",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/react-docsite-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Feb 2021 12:20:17 GMT",
       "tag": "@fluentui/react-docsite-components_v8.0.0-beta.49",
       "version": "8.0.0-beta.49",

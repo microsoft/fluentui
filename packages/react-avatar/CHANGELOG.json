@@ -2,6 +2,37 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-avatar_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "encoding change in _tokens.scss",
+            "author": "olfedias@microsoft.com",
+            "commit": "b6e11cbb2ee4037c927927560e0e78b1e1f8e377",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 08 Feb 2021 12:23:08 GMT",
       "tag": "@fluentui/react-avatar_v0.9.0",
       "version": "0.9.0",
