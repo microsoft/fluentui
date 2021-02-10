@@ -417,7 +417,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {
                           children: renderWeekRow(week),
-                          'date-range-type': dateRangeType,
+                          isRowSelectionActive: dateRangeType === DateRangeType.Week,
                           key: week[0].key,
                         }),
                     }),

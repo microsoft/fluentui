@@ -9,7 +9,7 @@ export const datepickerCalendarGridRowStyles: ComponentSlotStylesPrepared<
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
-      ...(p.isWeekSelectionActive && {
+      ...(p.isRowSelectionActive && {
         [`:hover .${datepickerCalendarCellButtonClassName}`]: {
           backgroundColor: v.calendarCellHoverBackgroundColor,
           color: v.calendarCellHoverColor,

@@ -1,14 +1,13 @@
 import { compose } from '@fluentui/react-bindings';
 import { commonPropTypes } from '../../utils';
 import { BoxProps, Box } from '../Box/Box';
-import { DateRangeType } from '../../utils/date-time-utilities';
 
 export type DatepickerCalendarGridRowProps = {
-  ['date-range-type']?: DateRangeType;
+  isRowSelectionActive?: boolean;
 };
 
 export type DatepickerCalendarGridRowStylesProps = {
-  isWeekSelectionActive: boolean;
+  isRowSelectionActive?: boolean;
 };
 
 export const datepickerCalendarGridRowClassName = 'ui-datepicker__calendargridrow';
@@ -24,9 +23,10 @@ export const DatepickerCalendarGridRow = compose<
 >(Box, {
   className: datepickerCalendarGridRowClassName,
   displayName: 'DatepickerCalendarGridRow',
+  handledProps: ['isRowSelectionActive'],
   overrideStyles: true,
-  mapPropsToStylesProps: p => ({
-    isWeekSelectionActive: p['date-range-type'] === DateRangeType.Week,
+  mapPropsToStylesProps: ({ isRowSelectionActive }) => ({
+    isRowSelectionActive,
   }),
   shorthandConfig: {
     mappedProp: 'content',
