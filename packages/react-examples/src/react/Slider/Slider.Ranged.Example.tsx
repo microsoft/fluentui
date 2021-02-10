@@ -7,8 +7,6 @@ const sliderAriaValueText = (value: number) => `${value} percent`;
 const sliderValueFormat = (value: number) => `${value}%`;
 
 export const SliderRangedExample: React.FunctionComponent = () => {
-  const [sliderValue, setSliderValue] = React.useState(0);
-  const sliderOnChange = (value: number) => setSliderValue(value);
   const onRangeChange = (range: [number, number]) => {
     console.log(range);
   };
