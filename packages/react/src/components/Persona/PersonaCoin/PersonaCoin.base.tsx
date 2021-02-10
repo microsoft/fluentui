@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   classNamesFunction,
   divProperties,
+  memoizeFunction,
   getInitials,
   getNativeProps,
   getRTL,
@@ -22,6 +23,7 @@ import {
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
 import { useWarnings } from '@fluentui/react-hooks';
+import { mergeStyleSets } from '@fluentui/merge-styles';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
@@ -85,6 +87,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     coinSize,
     styles,
     imageUrl,
+    initialsColor,
     initialsTextColor,
     isOutOfOffice,
     // eslint-disable-next-line deprecation/deprecation
@@ -95,7 +98,9 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     presence,
     presenceTitle,
     presenceColors,
+    primaryText,
     showInitialsUntilImageLoads,
+    text,
     theme,
     size,
   } = props;
@@ -124,6 +129,17 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     showUnknownPersonaCoin,
   });
 
+  const getInitialsStyles = memoizeFunction(
+    (className, primaryText, text, initialsBackgroundColor, initialsTextColor) =>
+      mergeStyles(
+        className,
+        !showUnknownPersonaCoin && {
+          backgroundColor: getPersonaInitialsColor(primaryText, text, initialsBackgroundColor),
+          color: initialsTextColor,
+        },
+      ),
+  );
+
   const shouldRenderInitials = Boolean(
     imageLoadState !== ImageLoadState.loaded &&
       ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || imageLoadState === ImageLoadState.error || hideImage),
@@ -137,13 +153,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
         <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
           {shouldRenderInitials && (
             <div
-              className={mergeStyles(
-                classNames.initials,
-                !showUnknownPersonaCoin && {
-                  backgroundColor: getPersonaInitialsColor(props),
-                  color: initialsTextColor,
-                },
-              )}
+              className={getInitialsStyles(classNames.initials, primaryText, text, initialsColor, initialsTextColor)}
               style={coinSizeStyle}
               aria-hidden="true"
             >
