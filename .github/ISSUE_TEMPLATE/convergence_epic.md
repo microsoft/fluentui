@@ -32,6 +32,10 @@ completed as part of converging a component. More info can be found here: https:
 - [ ] Respects API principles, shorthands and slots handling
 - [ ] No dependency on v0/v7
 - [ ] Add tests - Conformance, Unit, and VR
+  - [ ] Conformance tests
+  - [ ] Unit tests
+  - [ ] VR tests
+  - [ ] Accessibility behavior tests 
 - [ ] Write README.md covering basic usage
 - [ ] Write initial MIGRATION.md guide (include v8 and v0)
 - [ ] **Deliverable:** Experimental component ready for partner use
