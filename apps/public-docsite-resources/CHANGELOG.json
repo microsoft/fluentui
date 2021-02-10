@@ -2,6 +2,45 @@
   "name": "@fluentui/public-docsite-resources",
   "entries": [
     {
+      "date": "Wed, 10 Feb 2021 12:20:53 GMT",
+      "tag": "@fluentui/public-docsite-resources_v1.0.5",
+      "version": "1.0.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.52",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.0.0-beta.51",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.0.0-beta.52",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Bump @fluentui/react-monaco-editor to v1.0.0-beta.51",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Bump @fluentui/theme-samples to v8.0.0-beta.51",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Feb 2021 12:24:19 GMT",
       "tag": "@fluentui/public-docsite-resources_v1.0.5",
       "version": "1.0.5",
