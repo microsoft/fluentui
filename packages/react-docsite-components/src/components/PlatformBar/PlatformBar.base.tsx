@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction, FocusZone, Icon, TooltipHost } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { IPlatformBarProps, IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
 import { IPlatform } from '../PlatformPicker/index';
 import { INavPage } from '../Nav/index';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import MarkdownToJsx, { MarkdownProps as MarkdownToJsxProps } from 'markdown-to-jsx';
 import { Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { DisplayToggle } from '../DisplayToggle/index';
 import * as MDTable from '../MarkdownTable/index';
 import { MarkdownCode } from './MarkdownCode';
