@@ -38,7 +38,7 @@ const getInitialsStyles = memoizeFunction(
     initialsTextColor: string | undefined,
     text: string | undefined,
     primaryText: string | undefined,
-    showUnknownPersonaCoin: boolean,
+    showUnknownPersonaCoin: boolean | undefined,
   ) =>
     mergeStyles(
       className,
