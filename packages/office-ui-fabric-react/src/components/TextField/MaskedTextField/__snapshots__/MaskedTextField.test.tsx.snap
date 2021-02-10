@@ -82,7 +82,7 @@ exports[`MaskedTextField renders correctly 1`] = `
           &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
           @media screen and (forced-colors: active){&:hover {
@@ -132,7 +132,7 @@ exports[`MaskedTextField renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background: Window;
               color: WindowText;
             }
@@ -145,7 +145,7 @@ exports[`MaskedTextField renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
@@ -157,7 +157,7 @@ exports[`MaskedTextField renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
@@ -169,7 +169,7 @@ exports[`MaskedTextField renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
         id="TextField0"

@@ -266,7 +266,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -310,8 +310,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
@@ -818,7 +819,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -862,8 +863,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -1264,7 +1266,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -1308,8 +1310,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -1710,7 +1713,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -1754,8 +1757,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -2156,7 +2160,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -2200,8 +2204,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -2602,7 +2607,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -2646,8 +2651,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -3048,7 +3054,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -3092,8 +3098,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -3494,7 +3501,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -3538,8 +3545,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -3940,7 +3948,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -3984,8 +3992,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -4386,7 +4395,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -4430,8 +4439,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -4832,7 +4842,7 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -4876,8 +4886,9 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"

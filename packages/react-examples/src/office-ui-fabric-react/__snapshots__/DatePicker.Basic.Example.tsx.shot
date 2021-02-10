@@ -85,7 +85,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                 &:hover {
                   border-color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                 }
                 @media screen and (forced-colors: active){&:hover {
@@ -136,7 +136,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                   &::-ms-clear {
                     display: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background: Window;
                     color: WindowText;
                   }
@@ -149,7 +149,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                     color: GrayText;
                   }
                   &:-ms-input-placeholder {
@@ -161,7 +161,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                     color: GrayText;
                   }
                   &::-ms-input-placeholder {
@@ -173,7 +173,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
               id="DatePicker0-label"
@@ -297,13 +297,13 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             border-color: #323130;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:focus .ms-Dropdown-title {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
             color: Highlight;
           }
           &:focus:after {
@@ -318,14 +318,14 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             top: 0px;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){&:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
             color: Highlight;
           }
           &:active .ms-Dropdown-title {
             border-color: #0078d4;
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
             border-color: Highlight;
           }
           &:hover .ms-Dropdown-caretDown {
@@ -334,7 +334,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
           &:focus .ms-Dropdown-caretDown {
             color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
             color: Highlight;
           }
           &:active .ms-Dropdown-caretDown {

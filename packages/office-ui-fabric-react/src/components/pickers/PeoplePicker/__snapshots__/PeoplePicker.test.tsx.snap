@@ -200,7 +200,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                 &:hover {
                   background: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: 1px solid WindowText;
                 }
             data-is-focusable={true}
@@ -339,6 +339,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                             border: 2px solid #ffffff;
                             bottom: -2px;
                             box-sizing: content-box;
+                            forced-color-adjust: none;
                             height: 8px;
                             position: absolute;
                             right: -2px;
@@ -346,7 +347,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                             top: auto;
                             width: 8px;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             background-color: Highlight;
                             border-color: Window;
                           }
@@ -536,7 +537,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     bottom: -2px;
                     left: -2px;
                     outline-color: ButtonText;
@@ -553,7 +554,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     background: #c8c6c4;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
