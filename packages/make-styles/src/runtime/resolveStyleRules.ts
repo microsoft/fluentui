@@ -113,8 +113,6 @@ export function resolveStyleRules(
         const combinedSupportQuery = generateCombinedQuery(support, property.slice(9).trim());
 
         resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
-      } else {
-        // TODO: what about static css (e.g. font-face)?
       }
     }
   });
