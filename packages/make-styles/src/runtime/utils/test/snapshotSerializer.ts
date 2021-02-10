@@ -4,7 +4,7 @@ import * as prettier from 'prettier';
 import { MakeStylesResolvedRule } from '../../../types';
 import { isObject } from '../isObject';
 
-export const cssRulesSerializer = {
+export const cssRulesSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   test(value: any) {
     return Array.isArray(value);
@@ -14,7 +14,7 @@ export const cssRulesSerializer = {
   },
 };
 
-export const makeStylesRulesSerializer = {
+export const makeStylesRulesSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   test(value: any) {
     return isObject(value);
