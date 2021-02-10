@@ -41,13 +41,11 @@ export const useRootStyles = makeStyles<BadgeState>([
   [
     s => s.size === 'medium',
     theme => ({
-      minWidth: '20px',
+      height: '20px',
       alignItems: 'center',
       justifyContent: 'center',
       gap: '4px',
       border: '1px',
-      paddingTop: '4px',
-      paddingBottom: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
     }),
