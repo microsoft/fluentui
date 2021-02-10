@@ -1,51 +1,44 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeOverrides } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const useBasicStyles = makeStyles<{ primary?: boolean }>([
-  [
-    null,
-    theme => ({
-      border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
-      backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      color: theme.alias.color.neutral.neutralForeground1,
+const useBasicStyles = makeOverrides({
+  root: theme => ({
+    border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
+    backgroundColor: theme.alias.color.neutral.neutralBackground1,
+    color: theme.alias.color.neutral.neutralForeground1,
 
-      margin: '5px',
-      padding: '5px',
-    }),
-  ],
-  [
-    s => s.primary,
-    theme => ({
-      borderColor: theme.alias.color.neutral.brandForeground,
-      color: theme.alias.color.neutral.brandForeground,
-    }),
-  ],
-]);
+    margin: '5px',
+    padding: '5px',
+  }),
 
-const useOverrideStyles = makeStyles<{}>([
-  [
-    null,
-    () => ({
-      color: 'red',
-      borderColor: 'red',
-    }),
-  ],
-]);
+  primary: theme => ({
+    borderColor: theme.alias.color.neutral.brandForeground,
+    color: theme.alias.color.neutral.brandForeground,
+  }),
+});
+
+const useOverrideStyles = makeOverrides({
+  root: {
+    color: 'red',
+    borderColor: 'red',
+  },
+});
 
 const Container: React.FC<{ className?: string; primary?: boolean }> = props => {
-  const className = ax(useBasicStyles({ primary: props.primary }), props.className);
+  const classes = useBasicStyles();
+  const className = ax(classes.root, props.primary && classes.primary, props.className);
 
   return <div className={className}>{props.children}</div>;
 };
 
 const ContainerWithOverrides: React.FC = props => {
-  const className = useOverrideStyles({});
+  const classes = useOverrideStyles();
 
   return (
-    <Container className={className} primary>
+    <Container className={classes.root} primary>
       {props.children}
     </Container>
   );
