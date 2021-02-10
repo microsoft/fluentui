@@ -32,6 +32,8 @@ export function compileCSS(options: CompileCSSOptions): string {
     const globalSelector = /global\((.+)\)/.exec(pseudo)?.[1];
     const shouldIncludeClassName = pseudo.indexOf('&') === pseudo.length - 1;
 
+    // TODO: should we support case when className is not included
+    // given same functionality is supported by `makeStaticStyles`?
     const cssRule = shouldIncludeClassName
       ? `${globalSelector} { .${className} ${cssDeclaration} }`
       : `${globalSelector} ${cssDeclaration}`;
