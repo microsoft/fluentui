@@ -12,6 +12,12 @@ describe('Icon', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders Icon with aria-labelledby', () => {
+    const component = renderer.create(<Icon iconName="Upload" aria-labelledby="id" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders Icon correctly using iconName', () => {
     const component = renderer.create(<Icon iconName="Upload" />);
     const tree = component.toJSON();
@@ -20,6 +26,20 @@ describe('Icon', () => {
 
   it('renders Icon with imageProps correctly', () => {
     const component = renderer.create(<Icon iconName="CompassNW" imageProps={{ src: TestImages.iconOne }} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Icon with named image correctly', () => {
+    const component = renderer.create(
+      <Icon
+        iconName="Upload"
+        imageProps={{
+          src: TestImages.iconOne,
+          alt: 'icon one',
+        }}
+      />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

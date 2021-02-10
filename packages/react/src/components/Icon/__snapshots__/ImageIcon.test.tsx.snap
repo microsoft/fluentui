@@ -1,0 +1,296 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageIcon renders ImageIcon correctly 1`] = `
+<div
+  aria-hidden={true}
+  className=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      alt=""
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`ImageIcon renders ImageIcon correctly with container aria-label 1`] = `
+<div
+  className=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      alt="image one"
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`ImageIcon renders ImageIcon correctly with container aria-labelledby 1`] = `
+<div
+  className=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      aria-labelledby="id"
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`ImageIcon renders ImageIcon correctly with image aria-label 1`] = `
+<div
+  className=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      aria-label="image one"
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`ImageIcon renders ImageIcon correctly with image title 1`] = `
+<div
+  className=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+      title="\\"image one"
+    />
+  </div>
+</div>
+`;
+
+exports[`ImageIcon renders named ImageIcon correctly 1`] = `
+<div
+  className=
+      ms-Icon
+      ms-Icon-imageContainer
+      {
+        display: inline-block;
+      }
+      {
+        overflow: hidden;
+      }
+>
+  <div
+    className=
+        ms-Image
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          overflow: hidden;
+        }
+    style={
+      Object {
+        "height": undefined,
+        "width": undefined,
+      }
+    }
+  >
+    <img
+      alt="image one"
+      className=
+          ms-Image-image
+          ms-Image-image--portrait
+          is-notLoaded
+          is-fadeIn
+          {
+            display: block;
+            opacity: 0;
+          }
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-one.png"
+    />
+  </div>
+</div>
+`;

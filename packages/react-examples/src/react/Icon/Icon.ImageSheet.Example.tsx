@@ -57,7 +57,7 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         className={classNames.check}
         imageProps={{
           src: TestImages.iconOne,
-          'aria-label': 'Printer ready',
+          alt: 'Printer ready',
           className: css(classNames.image, classNames.checkImage),
         }}
       />
@@ -66,6 +66,7 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         className={classNames.lock}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'Locked',
           className: css(classNames.image, classNames.lockImage),
         }}
       />
