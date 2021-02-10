@@ -459,7 +459,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         else if (focusItemIndex === -1 && headerItemIndex === -1 && footerItemIndex === -1) {
           setFocusItemIndex(0);
         }
-        !isSuggestionsShown ? showPicker(true) : null;
+        // suggestions isn't showing and we haven't just cleared the input, show the picker
+        !isSuggestionsShown && value !== '' ? showPicker(true) : null;
         if (!resultItemsList) {
           resultItemsList = [];
         }
