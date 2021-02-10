@@ -152,11 +152,9 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'HighlightText!important',
-                background: 'Highlight!important',
-              },
+            [HighContrastSelector]: {
+              color: 'HighlightText!important',
+              background: 'Highlight!important',
             },
           },
           [HighContrastSelector]: {
