@@ -14,7 +14,23 @@ export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRu
 
 export type MakeStylesDefinition<Selectors, Tokens> = [MakeStylesMatcher<Selectors>, MakeStylesStyleRule<Tokens>];
 
-export type MakeStaticStyles = MakeStylesBase | string;
+export type MakeStaticStyles =
+  | (MakeStylesBase & {
+      '@font-face'?: {
+        fontFamily: string;
+        src: string;
+
+        fontFeatureSettings?: string;
+        fontStretch?: string;
+        fontStyle?: string;
+        fontVariant?: string;
+        fontVariationSettings?: string;
+        fontWeight?: number | string;
+
+        unicodeRange?: string;
+      };
+    })
+  | string;
 export type MakeStaticStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStaticStyles;
 export type MakeStaticStylesStyleRule<Tokens> = MakeStaticStyles | MakeStaticStylesStyleFunctionRule<Tokens>;
 

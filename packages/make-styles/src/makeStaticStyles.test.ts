@@ -15,7 +15,7 @@ describe('makeStaticStyles', () => {
     resetDOMRenderer();
   });
 
-  it('handles static css', () => {
+  it('handles static styles', () => {
     const useStyles = makeStaticStyles({
       body: {
         background: 'blue',
@@ -42,7 +42,7 @@ describe('makeStaticStyles', () => {
     `);
   });
 
-  it('handles string type static css', () => {
+  it('handles css string', () => {
     const useStyles = makeStaticStyles('body {background: red;}');
 
     useStyles({ renderer, tokens: {} });
