@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "fix merge to correctly handle array value.",
+  "packageName": "@fluentui/utilities",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-10T03:33:49.546Z"
+}
