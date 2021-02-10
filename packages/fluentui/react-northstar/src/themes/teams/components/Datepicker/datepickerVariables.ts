@@ -64,5 +64,5 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarHeaderLabelPaddingLeft: pxToRem(10),
   calendarHeaderLabelFontWeight: siteVars.fontWeightBold,
 
-  calendarMinHeight: pxToRem(282),
+  calendarMinHeight: pxToRem(268),
 });
