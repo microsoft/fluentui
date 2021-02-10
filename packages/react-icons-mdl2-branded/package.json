@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-mdl2-branded",
-  "version": "1.0.0-beta.0",
+  "version": "0.1.0",
   "description": "Branded SVG icons from the MDL2 icon set",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,7 +12,7 @@
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
-  "license": "Microsoft Fabric Assets License",
+  "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
