@@ -16,7 +16,7 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (
 
   const {
     size = DEFAULT_PERSONA_COIN_SIZE,
-    coinColor = getPersonaInitialsColor(personaProps.text, personaProps.initialsColor),
+    coinColor = getPersonaInitialsColor(personaProps),
     initialsColor = 'white',
   } = props;
 

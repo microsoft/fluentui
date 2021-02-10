@@ -109,25 +109,20 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
 
 /** @deprecated Use `getPersonaInitialsColor` */
 export function initialsColorPropToColorCode(props: IPersonaProps): string {
-  const { primaryText, text, initialsColor } = props;
-  return getPersonaInitialsColor(text, initialsColor, primaryText);
+  return getPersonaInitialsColor(props);
 }
 
 /**
  * Gets the hex color string (prefixed with #) for the given persona props.
  * This is the logic used internally by the Persona control.
- * @param text - name text
- * @param initialsColor - background color
- * @param primaryText - primary text
+ * @param props - Current persona props
  * @returns Hex color string prefixed with #
  */
-export function getPersonaInitialsColor(
-  text: string | undefined,
-  initialsColor?: PersonaInitialsColor | string,
-  primaryText?: string,
-): string {
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string {
+  // eslint-disable-next-line deprecation/deprecation
+  const { primaryText, text } = props;
+  let { initialsColor } = props;
   let initialsColorCode: string;
-
   if (typeof initialsColor === 'string') {
     initialsColorCode = initialsColor;
   } else {
