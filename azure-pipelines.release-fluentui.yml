@@ -59,7 +59,7 @@ jobs:
         displayName: Authenticate git for pushes
 
       - task: CmdLine@2
-        displayName: Checkout branch
+        displayName: Checkout branch for version pushes
         condition: and(succeeded(), eq(variables.publishOfficial, true))
         inputs:
           script: |
@@ -78,7 +78,7 @@ jobs:
           script: yarn buildci
 
       - task: CmdLine@2
-        displayName: '[Nightly] Pack fluentui packages'
+        displayName: '[Nightly] Pack fluentui packages to ArtifactStagingDirectory'
         condition: and(succeeded(), eq(variables.publishOfficial, false))
         inputs:
           script: |
