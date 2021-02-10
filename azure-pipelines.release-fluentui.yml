@@ -27,8 +27,6 @@ variables:
     value: true
   - name: nightlyRelease # used by nightly built docsite to setup codesandbox correctly
     value: true
-  - name: fluentuiTarballs # temporary directory name under workspace root, used to store all fluent ui nightly built tarballs
-    value: fluentui-nightly
 
   # below are variables configurable at queue time, so they cannot appear in yml file
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
@@ -89,7 +87,7 @@ jobs:
         displayName: '[Nightly] Upload tarballs'
         condition: and(succeeded(), eq(variables.publishOfficial, false))
         inputs:
-          SourcePath: $(fluentuiTarballs)
+          SourcePath: $(Build.ArtifactStagingDirectory)
           azureSubscription: 'UI Fabric (private)'
           storage: fluentsite
           ContainerName: nightly-builds
@@ -100,7 +98,7 @@ jobs:
         displayName: '[Nightly] Upload tarballs as newest'
         condition: and(succeeded(), eq(variables.publishOfficial, false))
         inputs:
-          SourcePath: $(fluentuiTarballs)
+          SourcePath: $(Build.ArtifactStagingDirectory)
           azureSubscription: 'UI Fabric (private)'
           storage: fluentsite
           ContainerName: nightly-builds
@@ -131,11 +129,7 @@ jobs:
 
             yarn release:fluentui:post-validation
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
+      - template: .devops/templates/cleanup.yml
 
   - job: Job_build_publish_doc
     workspace:
@@ -187,8 +181,4 @@ jobs:
           BlobPrefix: $(deployBasePath)
           Gzip: true
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: $(Build.SourcesDirectory)
-          Contents: '**/*'
-        condition: always()
+      - template: .devops/templates/cleanup.yml

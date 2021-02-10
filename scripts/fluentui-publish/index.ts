@@ -110,7 +110,7 @@ export function packFluentTarballs() {
   );
   const fluentPackagesNames = fluentPackages.map(pkg => pkg.name);
 
-  const replaceDepVersionWithNightlyUrl = (packageLocation, packageName) => {
+  const replaceDepVersionWithNightlyUrl = packageLocation => {
     const packageJson = require(`${packageLocation}/package.json`);
     const dependencies = packageJson.dependencies || {};
     let hasFluentDependency = false;
@@ -129,13 +129,16 @@ export function packFluentTarballs() {
     }
   };
 
-  // pack all fluent public packages into a directory named process.env.FLUENTUITARBALLS in workspace
-  const tempFolderForPacks = path.resolve(gitRoot, process.env.FLUENTUITARBALLS || 'fluentui-nightly');
-  fs.mkdirSync(tempFolderForPacks);
+  // pack all fluent public packages into azure pipeline Build.ArtifactStagingDirectory
+  // This directory is purged before each new build
+  if (!process.env.BUILD_ARTIFACTSTAGINGDIRECTORY) {
+    throw new Error(`Cannot find environment variable BUILD_ARTIFACTSTAGINGDIRECTORY`);
+  }
+  const tempFolderForPacks = path.resolve(gitRoot, process.env.BUILD_ARTIFACTSTAGINGDIRECTORY);
 
   fluentPackages.forEach(fluentPackage => {
     if (!fluentPackage.private) {
-      replaceDepVersionWithNightlyUrl(fluentPackage.location, fluentPackage.name);
+      replaceDepVersionWithNightlyUrl(fluentPackage.location);
       execCommandSync(tempFolderForPacks, 'npm', ['pack', fluentPackage.location]);
     }
   });
