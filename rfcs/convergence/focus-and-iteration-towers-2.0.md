@@ -77,6 +77,9 @@ Visual representing this:
 ### Cons
 
 - :-1: Several small packages may prove difficult to manage over time, especially regarding when to major-bump them
+  - Issue here is that Major bumping shared utilities will force everything that depends on them to bump. This leads to unexpected and potentially confusing major bumps on packages that don't contain changes.
+  - It's also would become difficult over time to communicate which versions of packages are compatible with each other
+  - This con can be avoided by using Lockstep versioning on all packages and releasing them together
 - :-1: To stay on the cutting edge requires customers to import from multiple packages
 
 ## Open Issues or follow up
