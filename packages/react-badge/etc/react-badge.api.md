@@ -4,6 +4,45 @@
 
 ```ts
 
+import { ComponentProps } from '@fluentui/react-utils';
+import * as React from 'react';
+import { SizeValue } from '@fluentui/theme';
+
+// @public (undocumented)
+export const Badge: React.ForwardRefExoticComponent<Pick<BadgeProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    circular?: boolean;
+    color?: string;
+    filled?: boolean;
+    ghost?: boolean;
+    inverted?: boolean;
+    outline?: boolean;
+    rounded?: boolean;
+    size?: SizeValue;
+    tint?: boolean;
+}
+
+// @public (undocumented)
+export const badgeShorthandProps: never[];
+
+// @public (undocumented)
+export interface BadgeState extends BadgeProps {
+}
+
+// @public
+export const renderBadge: (state: BadgeState) => JSX.Element;
+
+// @public (undocumented)
+export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => Record<string, any>;
+
+// @public
+export const useBadgeStyles: (state: BadgeState) => void;
+
+// @public
+export const useRootStyles: (selectors: BadgeState) => string;
+
 
 // (No @packageDocumentation comment for this package)
 

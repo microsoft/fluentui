@@ -11,6 +11,8 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, default
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
+      circular: true,
+      size: 'medium',
     },
     defaultProps,
     resolveShorthandProps(props, badgeShorthandProps),

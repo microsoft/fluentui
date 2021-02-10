@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
-import { withKeytipLayer, withStrictMode, withCompatThemeProvider } from '@fluentui/storybook';
+import { withKeytipLayer, withStrictMode, withCompatThemeProvider, withFluentProvider } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
@@ -27,6 +27,11 @@ if (
   ].includes('PACKAGE_NAME')
 ) {
   addDecorator(withCompatThemeProvider);
+  addDecorator(withStrictMode);
+}
+
+if (['react-badge'].includes('PACKAGE_NAME')) {
+  addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }
 

@@ -14,7 +14,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="smallest"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
@@ -24,7 +23,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="smaller"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
@@ -34,7 +32,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="small"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
@@ -44,7 +41,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="medium"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
@@ -54,7 +50,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="large"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
@@ -64,7 +59,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="larger"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
@@ -74,7 +68,6 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
       size="largest"
       style={{
         backgroundColor: 'green',
-        color: 'white',
       }}
     >
       1
