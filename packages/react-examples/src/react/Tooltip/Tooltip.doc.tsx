@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { TooltipCustomExample } from './Tooltip.Custom.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { TooltipBasicExample } from './Tooltip.Basic.Example';
 import { TooltipDisplayExample } from './Tooltip.Display.Example';
 import { TooltipInteractiveExample } from './Tooltip.Interactive.Example';
@@ -18,7 +18,7 @@ const TooltipAbsolutePositionExampleCode = require('!raw-loader?esModule=false!@
 export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
   componentName: 'Tooltip',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Tooltip',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Tooltip',
   examples: [
     {
       title: 'Default Tooltip',

@@ -32,11 +32,7 @@ export default function loader(source) {
     const reactPackageJson = fs.readJSONSync(path.resolve(__dirname, '../../react/package.json'));
     // get unscoped dep names
     const reactDeps = Object.keys(reactPackageJson.dependencies).map(d => d.split('/')[1] || d);
-    const reactDepsWithExamples = [
-      ...packagesWithExamples.filter(p => reactDeps.includes(p)),
-      // Lower-level component packages re-exported by react-internal
-      'react-focus',
-    ];
+    const reactDepsWithExamples = packagesWithExamples.filter(p => reactDeps.includes(p));
     source = source.replace(/REACT_DEPS/g, reactDepsWithExamples.join('|'));
   }
 

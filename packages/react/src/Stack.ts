@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Stack';
+export * from './components/Stack/index';

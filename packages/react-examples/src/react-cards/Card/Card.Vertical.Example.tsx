@@ -11,7 +11,7 @@ import {
   Text,
   ITextStyles,
 } from '@fluentui/react';
-import { ActionButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { ActionButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
 const alertClicked = (): void => {
   alert('Clicked');

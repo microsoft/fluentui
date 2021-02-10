@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/TeachingBubble';
+export * from './components/TeachingBubble/index';

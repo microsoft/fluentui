@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 // Vertical Stack Examples
 import { VerticalStackBasicExample } from './Stack.Vertical.Basic.Example';
@@ -73,7 +73,7 @@ const HorizontalStackConfigureExampleCode = require('!raw-loader?esModule=false!
 export const StackPageProps: IDocPageProps = {
   title: 'Stack',
   componentName: 'Stack',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Stack',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Stack',
   examples: [
     {
       title: 'Basic Vertical Stack',

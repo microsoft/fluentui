@@ -1160,6 +1160,11 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@ctrl/tinycolor@^3.3.4":
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.3.4.tgz#59691edd031eedc431bda1bdf601257c06289a40"
+  integrity sha512-8vmPV/nIULFDWsnJalQJDqFLC2uTPx6A/ASA2t27QGp+7oXnbWWXCe0uV8xasIH2rGbI/XoB2vmkdP/94WvMrw==
+
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
@@ -2370,26 +2375,26 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-colors/-/fast-colors-5.1.0.tgz#f62ce25a800e6b413d3aa562e8416cdc1ed9131c"
   integrity sha512-u4R/sfF4SoKSAyDWJaBSDuVo4aGf1BXntlEWukC+1ubH36C6JmmdLSyyip5TQZiTqjQIy3uctcbepPi7oGI0Rw==
 
-"@microsoft/fast-element@^0.22.0":
-  version "0.22.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.22.0.tgz#7d873e44df660dd37778d479dc710c56e04e1e65"
-  integrity sha512-4ziV51w/flQvucZq9tksQR3vAa9Obvfjooh9fIQ1ylPPRjEzV5RZeBQl7g5cSIRXz170jOo4VLuajeClmZpV9w==
+"@microsoft/fast-element@^0.22.2":
+  version "0.22.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-0.22.2.tgz#69fca858e707e916d626e854677d5a813d20372c"
+  integrity sha512-CG5ZrCGz7PoNA1LJY2QisnQGybTXphsu+SaP3jcPxPUtQSNYqM0jSbny8RslaWDw/MrwjDy6dchZWq2113WgfQ==
 
-"@microsoft/fast-foundation@^1.12.0":
-  version "1.12.0"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.12.0.tgz#4e93afec56f800a2720517daca95d6f924acc492"
-  integrity sha512-pSeeXmiGTX68GU3cyOFJqCCjgqK2fo0xJYqPhk0ik4A5RAbX25lyY66eDbxjX3tUSe24qTZs43MzvRIx8ozsrg==
+"@microsoft/fast-foundation@^1.14.0":
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-1.14.0.tgz#f3806fbf3d817516e891f185ef5189fc789f5c1e"
+  integrity sha512-7RpNkG9jJhgs9ZEOmpXgKrCJy6iN2dNFQkPkYrA+p1VV5/xKAZm5Ag0vS8FrHtkmB4OWLhhmWqvUtQpI0qjJYA==
   dependencies:
-    "@microsoft/fast-element" "^0.22.0"
-    "@microsoft/fast-web-utilities" "^4.7.1"
+    "@microsoft/fast-element" "^0.22.2"
+    "@microsoft/fast-web-utilities" "^4.7.3"
     "@microsoft/tsdoc-config" "^0.13.4"
     tabbable "^4.0.0"
     tslib "^1.13.0"
 
-"@microsoft/fast-web-utilities@^4.7.1":
-  version "4.7.1"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.7.1.tgz#c9ae712f2870152fded596a8d7edb97547331e96"
-  integrity sha512-o3oN15EdPKKBHBzcC2008eKjVBflMf44YPxkxEOwn7sFzZ2T6CNhTU7feUfSa4+97MeUI3GNn/Wb4YZK+sCeaw==
+"@microsoft/fast-web-utilities@^4.7.3":
+  version "4.7.3"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-4.7.3.tgz#5bbea4d4b1a1e18f5b1f9eeab01bd7f149479631"
+  integrity sha512-vico2DeOyeeht4kLl9Z8gO9LbK2IcBlnZLuLf87Hkjcu7yLvhWrJL/KR0qmVtz42bRIx3FEMQYHi7/RkcwNF5A==
   dependencies:
     exenv-es6 "^1.0.0"
 
@@ -6636,10 +6641,10 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.39.1:
-  version "1.39.1"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.39.1.tgz#f42008efffa0f31e58bc69130fae3fda068e52a8"
-  integrity sha512-+v7E358hbLdidvkzCy2hCeuJ/FiUMBhP3Wid2Pl3a4G/B8u+VtDgqop8kt+977PZwC7OVFA+Uw09QiI+BaNEiQ==
+beachball@^1.50.1:
+  version "1.50.1"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.50.1.tgz#4ed28f096fd9aa75deec69db160c29c6766a557b"
+  integrity sha512-/0iWk0D9Yrcs6P+J8KttCmQc4v8EE6KzY2cdRabDJPQWqmhO9gsMLj5EURPhKoI8Isy8SVKxGUQJLpYHlzYByw==
   dependencies:
     cosmiconfig "^6.0.0"
     execa "^4.0.3"
@@ -6652,7 +6657,9 @@ beachball@^1.39.1:
     prompts "~2.1.0"
     semver "^6.1.1"
     toposort "^2.0.2"
-    yargs-parser "^13.1.0"
+    uuid "^8.3.1"
+    workspace-tools "^0.10.2"
+    yargs-parser "^20.2.4"
 
 beeper@^1.0.0:
   version "1.1.1"
@@ -24733,20 +24740,15 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
-uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2:
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
-  integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
-
-uuid@^3.4.0:
+uuid@^3.0.0, uuid@^3.0.1, uuid@^3.1.0, uuid@^3.3.2, uuid@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-uuid@^8.1.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.2.0.tgz#cb10dd6b118e2dada7d0cd9730ba7417c93d920e"
-  integrity sha512-CYpGiFTUrmI6OBMkAdjSDM0k5h8SkkiTP4WAjQgDgNB1S3Ou9VBEvr6q0Kv2H1mMk7IWfxYGpMH5sd5AvcIV2Q==
+uuid@^8.1.0, uuid@^8.3.1:
+  version "8.3.2"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
+  integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
 
 v8-compile-cache@^2.0.3:
   version "2.1.0"
@@ -25786,7 +25788,7 @@ yargs-parser@^2.4.0:
     camelcase "^3.0.0"
     lodash.assign "^4.0.6"
 
-yargs-parser@^20.2.2, yargs-parser@^20.2.3:
+yargs-parser@^20.2.2, yargs-parser@^20.2.3, yargs-parser@^20.2.4:
   version "20.2.4"
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
   integrity sha512-WOkpgNhPTlE73h4VFAFsOnomJVaovO8VqLDzy5saChRBFQFBoMYirowyW+Q9HB4HFF4Z7VZTiG3iSzJJA29yRA==

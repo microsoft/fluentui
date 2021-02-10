@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { PeoplePickerNormalExample } from './PeoplePicker.Normal.Example';
 import { PeoplePickerCompactExample } from './PeoplePicker.Compact.Example';
@@ -20,7 +20,7 @@ const PeoplePickerControlledExampleCode = require('!raw-loader?esModule=false!@f
 export const PeoplePickerPageProps: IDocPageProps = {
   title: 'PeoplePicker',
   componentName: 'PeoplePicker',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/PeoplePicker',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/PeoplePicker',
   examples: [
     {
       title: 'Normal People Picker',
@@ -59,7 +59,7 @@ export const PeoplePickerPageProps: IDocPageProps = {
     },
   ],
   propertiesTablesSources: [
-    require<string>('!raw-loader?esModule=false!@fluentui/react-internal/src/components/pickers/BasePicker.types.ts'),
+    require<string>('!raw-loader?esModule=false!@fluentui/react/src/components/pickers/BasePicker.types.ts'),
   ],
   overview: require<
     string

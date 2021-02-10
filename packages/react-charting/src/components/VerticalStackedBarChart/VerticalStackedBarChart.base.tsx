@@ -246,7 +246,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     return lineLegends;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createLines = (
     xScale: NumericScale,
     yScale: NumericScale,
@@ -839,7 +838,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     return this._createBar(xBarScale, yBarScale, containerHeight, xElement);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
