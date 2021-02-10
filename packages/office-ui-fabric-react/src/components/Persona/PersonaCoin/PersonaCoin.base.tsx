@@ -74,6 +74,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       coinSize,
       styles,
       imageUrl,
+      initialsTextColor,
       isOutOfOffice,
       /* eslint-disable deprecation/deprecation */
       onRenderCoin = this._onRenderCoin,
@@ -127,7 +128,10 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
               <div
                 className={mergeStyles(
                   classNames.initials,
-                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(this.props) },
+                  !showUnknownPersonaCoin && {
+                    backgroundColor: getPersonaInitialsColor(this.props),
+                    color: initialsTextColor,
+                  },
                 )}
                 style={coinSizeStyle}
                 aria-hidden="true"
