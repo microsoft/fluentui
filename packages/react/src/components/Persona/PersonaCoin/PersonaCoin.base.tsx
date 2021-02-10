@@ -116,7 +116,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     presence,
     presenceTitle,
     presenceColors,
-
+    // eslint-disable-next-line deprecation/deprecation
     primaryText,
     showInitialsUntilImageLoads,
     text,
