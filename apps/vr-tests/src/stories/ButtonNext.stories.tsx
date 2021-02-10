@@ -9,6 +9,7 @@ import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withCompatThemeProvider())
   .addDecorator(story => (
     <Screener
       steps={new Steps()
