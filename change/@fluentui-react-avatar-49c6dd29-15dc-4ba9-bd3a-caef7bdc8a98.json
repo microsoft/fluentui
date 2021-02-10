@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update Icon, FontIcon, ImageIcon, and createSvgIcon to add the img role, and update examples",
-  "packageName": "@fluentui/react-avatar",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}
