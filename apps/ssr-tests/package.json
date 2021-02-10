@@ -24,7 +24,7 @@
     "raw-loader": "^4.0.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
-    "webpack": "^5.12.3"
+    "webpack": "^5.21.2"
   },
   "dependencies": {
     "tslib": "^1.10.0"
