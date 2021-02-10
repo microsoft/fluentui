@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 09 Feb 2021 12:24:19 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Feb 2021 12:20:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v1.1.1)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v1.1.1..@fluentui/react-examples_v1.1.1)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/azure-themes to v8.0.0-beta.51 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/storybook to v1.0.0 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-charting to v5.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-docsite-components to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-slider to v1.0.0-beta.42 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-tabs to v1.0.0-beta.43 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-toggle to v1.0.0-beta.42 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme-samples to v8.0.0-beta.51 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-experiments to v8.0.0-beta.56 ([PR #16830](https://github.com/microsoft/fluentui/pull/16830) by elvonspa@microsoft.com)
 
 ## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v1.1.1)
 
