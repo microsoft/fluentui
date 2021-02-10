@@ -109,9 +109,8 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
-  buttonRef?: React.RefObject<HTMLButtonElement>;
-
   'data-is-focusable': boolean;
+  ref: React.RefObject<HTMLButtonElement>;
 }
 
 /**

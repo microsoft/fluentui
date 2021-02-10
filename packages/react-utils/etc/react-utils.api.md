@@ -23,8 +23,6 @@ export interface ComponentProps {
     children?: React.ReactNode;
     // (undocumented)
     className?: string;
-    // (undocumented)
-    ref?: React.Ref<any>;
 }
 
 // @public

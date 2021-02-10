@@ -13,8 +13,6 @@ export type ClassDictionary = Record<string, string>;
 
 export interface ComponentProps {
   as?: React.ElementType;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ref?: React.Ref<any>;
   className?: string;
   children?: React.ReactNode;
 }
