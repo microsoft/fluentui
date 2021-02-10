@@ -95,7 +95,7 @@ export { FontSizes }
 
 export { FontWeights }
 
-// @public
+// @public @deprecated
 export function getEdgeChromiumNoHighContrastAdjustSelector(): {
     [EdgeChromiumHighContrastSelector]: IRawStyle;
 };
