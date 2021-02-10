@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;

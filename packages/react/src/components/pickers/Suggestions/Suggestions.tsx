@@ -9,7 +9,7 @@ import {
   styled,
 } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IButton } from '../../../compat/Button';
+import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { Announced } from '../../../Announced';
 import {

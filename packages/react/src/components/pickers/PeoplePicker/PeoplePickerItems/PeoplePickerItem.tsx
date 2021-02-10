@@ -9,7 +9,7 @@ import {
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
 } from '../../../../Persona';
-import { IconButton } from '../../../../compat/Button';
+import { IconButton } from '../../../../Button';
 import { ValidationState } from '../../BasePicker.types';
 import {
   IPeoplePickerItemSelectedProps,

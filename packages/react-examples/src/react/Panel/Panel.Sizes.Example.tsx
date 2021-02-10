@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Link } from '@fluentui/react/lib/Link';

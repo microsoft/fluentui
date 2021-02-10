@@ -85,7 +85,7 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Component packages
-packages/react-menu/ @ling1726 @layershifter @microsoft/fluent-ui
+packages/react-menu/ @ling1726 @layershifter
 packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
 packages/react-checkbox/ @khmakoto @xugao
@@ -99,7 +99,7 @@ packages/react-toggle/ @xugao
 packages/react/src/components/ActivityItem/ @xugao
 packages/react/src/components/Announced/ @khmakoto
 packages/react/src/components/Breadcrumb/ @xugao
-packages/react/src/compat/components/Button/ @khmakoto
+packages/react/src/components/Button/ @khmakoto
 packages/react/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react/src/components/CalendarDayGrid/ @lorejoh12
 packages/react/src/components/Callout/ @joschect
