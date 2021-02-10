@@ -116,15 +116,15 @@ export function initialsColorPropToColorCode(props: IPersonaProps): string {
 /**
  * Gets the hex color string (prefixed with #) for the given persona props.
  * This is the logic used internally by the Persona control.
- * @param primaryText - Current Persona primary text
- * @param text - Current Persona text
  * @param initialsColor - Current Persona background color
+ * @param text - Current Persona text
+ * @param primaryText - Current Persona primary text
  * @returns Hex color string prefixed with #
  */
 export function getPersonaInitialsColor(
-  primaryText: string | undefined,
-  text: string | undefined,
   initialsColor: PersonaInitialsColor | string | undefined,
+  text: string | undefined,
+  primaryText: string | undefined,
 ): string {
   let initialsColorCode: string;
 

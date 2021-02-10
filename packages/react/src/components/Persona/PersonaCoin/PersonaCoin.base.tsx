@@ -23,7 +23,6 @@ import {
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
 import { useWarnings } from '@fluentui/react-hooks';
-import { mergeStyleSets } from '@fluentui/merge-styles';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>({
   // There can be many PersonaCoin rendered with different sizes.
@@ -130,11 +129,11 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
   });
 
   const getInitialsStyles = memoizeFunction(
-    (className, primaryText, text, initialsBackgroundColor, initialsTextColor) =>
+    (className, initialsBackgroundColor, initialsTextColor, text, primaryText) =>
       mergeStyles(
         className,
         !showUnknownPersonaCoin && {
-          backgroundColor: getPersonaInitialsColor(primaryText, text, initialsBackgroundColor),
+          backgroundColor: getPersonaInitialsColor(initialsBackgroundColor, text, primaryText),
           color: initialsTextColor,
         },
       ),
@@ -153,7 +152,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
         <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
           {shouldRenderInitials && (
             <div
-              className={getInitialsStyles(classNames.initials, primaryText, text, initialsColor, initialsTextColor)}
+              className={getInitialsStyles(classNames.initials, initialsColor, initialsTextColor, text, primaryText)}
               style={coinSizeStyle}
               aria-hidden="true"
             >
