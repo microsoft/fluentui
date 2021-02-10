@@ -45,6 +45,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updating various icons, `ArrowSortIcon`, `BreakoutRoomIcon`, `CalendarAgendaIcon`, `CallControlCloseTrayIcon`, `PlayIcon`, `TenantPersonalIcon` @notandrew ([#16723](https://github.com/microsoft/fluentui/pull/16723))
 - Export treeContext from `Tree` @yuanboxue-amber ([#16891](https://github.com/microsoft/fluentui/pull/16891))
 - Add missing prop type for `Dropdown` @pompomon ([#16920](https://github.com/microsoft/fluentui/pull/16920))
+- Change `TreeTitle`'s `selectionIndicator` from visibility:hidden to display:none @yuanboxue-amber ([#16922](https://github.com/microsoft/fluentui/pull/16922))
 
 ## Features
 - Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
