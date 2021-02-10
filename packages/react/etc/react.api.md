@@ -7366,6 +7366,8 @@ export interface ISlider {
     // (undocumented)
     focus: () => void;
     // (undocumented)
+    range?: [number, number];
+    // (undocumented)
     value: number | undefined;
 }
 
@@ -8618,6 +8620,9 @@ export const MAX_COLOR_VALUE = 100;
 // @public
 export const MAX_HEX_LENGTH = 6;
 
+// @public (undocumented)
+export const MAX_PREFIX = "max";
+
 // @public
 export const MAX_RGBA_LENGTH = 3;
 
@@ -8657,6 +8662,9 @@ export enum MessageBarType {
 
 // @public
 export const MIN_HEX_LENGTH = 3;
+
+// @public (undocumented)
+export const MIN_PREFIX = "min";
 
 // @public
 export const MIN_RGBA_LENGTH = 1;
