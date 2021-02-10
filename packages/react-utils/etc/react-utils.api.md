@@ -50,7 +50,7 @@ export type ObjectShorthandProps<TProps extends ComponentProps> = TProps & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
-// @public (undocumented)
+// @public
 export const renderShorthandChildren: <TProps>(children: ObjectShorthandProps<TProps>["children"], props: TProps, Component: React.ElementType<TProps>) => {} | null | undefined;
 
 // @public
