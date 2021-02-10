@@ -17,6 +17,7 @@ import {
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
   IPersonaPresenceProps,
+  PersonaInitialsColor,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
 } from '../Persona.types';
@@ -29,6 +30,24 @@ const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinSty
   // Therefore setting a larger cache size.
   cacheSize: 100,
 });
+
+const getInitialsStyles = memoizeFunction(
+  (
+    className: string,
+    initialsBackgroundColor: PersonaInitialsColor | string | undefined,
+    initialsTextColor: string | undefined,
+    text: string | undefined,
+    primaryText: string | undefined,
+    showUnknownPersonaCoin: boolean,
+  ) =>
+    mergeStyles(
+      className,
+      !showUnknownPersonaCoin && {
+        backgroundColor: getPersonaInitialsColor(text, initialsBackgroundColor, primaryText),
+        color: initialsTextColor,
+      },
+    ),
+);
 
 const DEFAULT_PROPS = {
   size: PersonaSize.size48,
@@ -97,6 +116,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     presence,
     presenceTitle,
     presenceColors,
+
     primaryText,
     showInitialsUntilImageLoads,
     text,
@@ -128,17 +148,6 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
     showUnknownPersonaCoin,
   });
 
-  const getInitialsStyles = memoizeFunction(
-    (className, initialsBackgroundColor, initialsTextColor, text, primaryText) =>
-      mergeStyles(
-        className,
-        !showUnknownPersonaCoin && {
-          backgroundColor: getPersonaInitialsColor(text, initialsBackgroundColor, primaryText),
-          color: initialsTextColor,
-        },
-      ),
-  );
-
   const shouldRenderInitials = Boolean(
     imageLoadState !== ImageLoadState.loaded &&
       ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || imageLoadState === ImageLoadState.error || hideImage),
@@ -152,7 +161,14 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
         <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
           {shouldRenderInitials && (
             <div
-              className={getInitialsStyles(classNames.initials, initialsColor, initialsTextColor, text, primaryText)}
+              className={getInitialsStyles(
+                classNames.initials,
+                initialsColor,
+                initialsTextColor,
+                text,
+                primaryText,
+                showUnknownPersonaCoin,
+              )}
               style={coinSizeStyle}
               aria-hidden="true"
             >
