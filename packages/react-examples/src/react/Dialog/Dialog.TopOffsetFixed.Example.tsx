@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dialog, DialogFooter } from '@fluentui/react/lib/Dialog';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';
 import { useBoolean } from '@fluentui/react-hooks';
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { CommandBar } from '@fluentui/react/lib/CommandBar';
-import { DefaultButton, PrimaryButton, IconButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, PrimaryButton, IconButton } from '@fluentui/react/lib/Button';
 import { Dropdown } from '@fluentui/react/lib/Dropdown';
 import { Icon } from '@fluentui/react/lib/Icon';
 import { Link } from '@fluentui/react/lib/Link';

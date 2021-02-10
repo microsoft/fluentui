@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseButton, IButtonProps } from '../../compat/Button';
+import { BaseButton, IButtonProps } from '../../Button';
 import { customizable, nullRender } from '../../Utilities';
 import { getStyles } from './FacepileButton.styles';
 

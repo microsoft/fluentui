@@ -4,7 +4,7 @@
 
 ```ts
 
-import { IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { IButtonProps } from '@fluentui/react/lib/Button';
 import { IKeytipProps } from '@fluentui/react';
 import { IRefObject } from '@fluentui/utilities';
 import { IRenderFunction } from '@fluentui/utilities';

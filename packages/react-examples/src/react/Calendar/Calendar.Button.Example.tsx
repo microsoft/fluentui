@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Calendar, FocusTrapZone, Callout, DirectionalHint } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { useBoolean } from '@fluentui/react-hooks';
 
 export const CalendarButtonExample: React.FunctionComponent = () => {
