@@ -1,6 +1,9 @@
 pr: none
 trigger: none
 
+# Example: fluentui_20190626.1
+name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
+
 schedules:
   # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
