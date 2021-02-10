@@ -20,6 +20,7 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
         '--force-publish',
         '--registry',
         'https://registry.npmjs.org',
+        '--no-verify-access',
         bumpType,
       ];
       break;
@@ -42,6 +43,7 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
         npmTagForCanary,
         '--preid',
         npmTagForCanary,
+        '--no-verify-access',
       ];
       break;
     default:
@@ -142,6 +144,9 @@ export function packFluentTarballs() {
       execCommandSync(tempFolderForPacks, 'npm', ['pack', fluentPackage.location]);
     }
   });
+
+  // some packages.json maybe modified, discard these changes
+  execCommandSync(gitRoot, 'git', ['checkout', '-f']);
 }
 
 function run() {
