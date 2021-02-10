@@ -6,7 +6,8 @@ import { argv } from 'yargs';
 import { findGitRoot } from '../monorepo/index';
 
 export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCanary = 'beta') {
-  const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
+  const gitRoot = findGitRoot();
+  const fluentRoot = path.resolve(gitRoot, 'packages', 'fluentui');
 
   let lernaPublishArgs: string[];
   switch (bumpType) {
@@ -33,7 +34,6 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
         'publish',
         'prerelease',
         "--tag-version-prefix='@fluentui/react-northstar_v'",
-        '--no-push',
         '--no-git-tag-version',
         '--no-git-reset',
         '--force-publish',
@@ -61,6 +61,17 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
     shell: true,
     stdio: 'inherit',
   });
+
+  if (bumpType === 'canary') {
+    // in canary release lerna doesn't push the version change in lerna.json to remote
+    execCommandSync(gitRoot, 'git', ['add', `packages/fluentui/lerna.json`]);
+    execCommandSync(gitRoot, 'git', [
+      'commit',
+      '-m',
+      `"chore: update lerna.json after react-northstar canary release"`,
+    ]);
+    execCommandSync(gitRoot, 'git', ['push']);
+  }
 
   if (result.status) {
     throw new Error(result.error?.stack || `lerna publish failed with status ${result.status}`);

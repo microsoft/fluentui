@@ -60,7 +60,8 @@ jobs:
         condition: and(succeeded(), eq(variables.publishOfficial, true))
         inputs:
           script: |
-            git checkout $(Build.SourceBranch)
+            BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
+            git checkout $BRANCH_NAME
             git pull
 
       - task: Bash@3
@@ -113,17 +114,13 @@ jobs:
           script: |
             yarn logout
 
-            export NPM_TOKEN=$(npmToken)
-
-            echo "@fluentui:registry=http://registry.npmjs.org/" > .npmrc
-            echo "registry=http://registry.npmjs.org/" >> .npmrc
-            echo //registry.npmjs.org/:_authToken=$(npmToken) >> .npmrc
+            NPM_TOKEN=$(npmToken)
 
             touch packages/fluentui/.npmrc
 
             echo "@fluentui:registry=http://registry.npmjs.org/" > packages/fluentui/.npmrc
             echo "registry=http://registry.npmjs.org/" >> packages/fluentui/.npmrc
-            echo //registry.npmjs.org/:_authToken=$(npmToken) >> packages/fluentui/.npmrc
+            echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> packages/fluentui/.npmrc
 
             yarn release:fluentui:$(version) --yes
 
@@ -149,10 +146,21 @@ jobs:
 
       - task: CmdLine@2
         displayName: 'Set base path and version'
-        condition: and(succeeded(), eq(variables.publishOfficial, true))
+        condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.version, 'canary'))
         inputs:
           script: |
             ver=`node -p "require('./packages/fluentui/react-northstar/package.json').version"`
+            echo "Docsite base path published for version $ver"
+            echo "##vso[task.setvariable variable=deployBasePath]$ver"
+            echo "##vso[task.setvariable variable=docsiteVersion]$ver"
+            echo "##vso[task.setvariable variable=nightlyRelease]"
+
+      - task: CmdLine@2
+        displayName: 'Set base path and version for canary'
+        condition: and(succeeded(), eq(variables.publishOfficial, true), eq(variables.version, 'canary'))
+        inputs:
+          script: |
+            ver=`node -p "require('./packages/fluentui/lerna.json').version"`
             echo "Docsite base path published for version $ver"
             echo "##vso[task.setvariable variable=deployBasePath]$ver"
             echo "##vso[task.setvariable variable=docsiteVersion]$ver"
