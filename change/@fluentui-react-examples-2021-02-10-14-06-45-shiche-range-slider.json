@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update Slider doc page",
+  "packageName": "@fluentui/react-examples",
+  "email": "shi.cheng@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-10T19:06:35.942Z"
+}
