@@ -10,7 +10,7 @@ This section summarises previous approaches and their pros and cons.
 
 ### v0 approach
 
-`@fluentui/react-northstar` (aka v0 aka Stardust) uses CSS-in-JS. [FelaJS](https://github.com/robinweser/fela) CSS-in-JS library is used.
+`@fluentui/react-northstar` (aka v0 aka Stardust) uses CSS-in-JS. [Fela](https://github.com/robinweser/fela) CSS-in-JS library is used.
 
 #### Fela uses atomic CSS classes
 
@@ -25,7 +25,7 @@ This section summarises previous approaches and their pros and cons.
 
 #### Two CSS classes setting the same property cannot be applied to the same element
 
-If there are two classes setting the same CSS property (`.r {color: red}` and `.b {color: blue}` those can never be applied to the same element.
+If there are two classes setting the same CSS property (`.r {color: red}` and `.b {color: blue}`) those can never be applied to the same element.
 As both classes have the same one class specificity, the rule defined later in the DOM will win. As the insertion order is non-deterministic, the resulting style would be non-deterministic as well.
 As a consequence, there is a couple of restrictions:
 
@@ -34,7 +34,7 @@ As a consequence, there is a couple of restrictions:
 - Due to the previous point, when parent component is passing style overrides to a child component it needs to know what kind of component the child is.
   If that is a non-FUI component, parent must pass the overrides as a list of classnames. If the child is a FUI component, the overrides must me passes as `styles` object so that the child can merge the styles correctly.
   This can be complicated as there are scenarios where the parent does not know what child is will render (especially when the styles are not applied by the direct child but somewhere else down the tree).
-- When overrides are passed from parent to child, the whole styles must be re-evaluated in runtime every time. Child can cache evaluated styles and classnames based on (limited) set of input props and state. And FUI components do that. But once style overrides are passed to the component the overrides and component styles object must be deep merged.
+- When overrides are passed from parent to child, the whole styles must be re-evaluated in runtime every time. Child can cache evaluated styles and classnames based on (limited) set of input props and state. And FUI components do that. But once style overrides are passed to the componentm the overrides (`styles` or `variables`) and component styles object must be deep merged.
 
 #### Application overrides are part of the theme object
 
@@ -91,7 +91,7 @@ For handling multiple levels of overrides, instead of using a special prop with 
 3. The child calls `useCSS` to apply its own overrides and also passes it the class from parent.
 4. `useCSS` finds the style object in the dictionary, merges the original style object with the child's style overrides and returns the new classname. Instead of performing an expensive object deep merge, it just concatenates the two stringified style objects and depends on the-latest-wins CSS rule.
 
-![](makeStyles-useCss.png)
+![useCSS usage of global dictionary for styles merging](makeStyles-useCss.png)
 
 #### Limitations
 
@@ -153,7 +153,7 @@ The expensive part in v0 styling approach is the style evaluation - processing s
 As an input, there is a style object:
 
 ```js
-source = {
+const source = {
   color: 'red',
   margin: '0 10px 0 0',
   ':hover': {
@@ -166,7 +166,7 @@ In build time, this object can be processed (CSS expand, RTL...) and atomic CSS 
 
 ```js
 // ⚠️ This is proposed and simplified example output for the purpose of the spec, not the real build output ⚠️
-buildOutput = {
+const buildOutput = {
   color: { classname: 'abcd', css: '.abcd{color:red}' },
   marginTop: { classname: 'efgh', css: '.efgh{margin-top:0}' }, // CSS expand
   marginRight: { classname: 'ijkl', css: '.ijkl{margin-right:10px}', rtlCss: '.rijkl{margin-left:10px}' }, // expand, RTL
@@ -178,7 +178,7 @@ buildOutput = {
 This object uses CSS property names as keys, builds "compound" string keys for nested objects to flatten the output. With that approach, it should be quite cheap to apply overrides. It is not necessary to read the object values, we just need to shallow apply (merge) the override object on top of the base object. No style processing is necessary:
 
 ```js
-merged = {
+const merged = {
   ...baseClasses,
   ...overrideClasses,
 ```
@@ -191,10 +191,10 @@ The output styles of a component change based on its props and state.
 For that the `makeStyles` call accepts an array of items where each item is a `[matcher; styles]` pair:
 
 ```js
-useStyles = makeStyles([
-	[matcher1, styles1],
-	[matcher2, styles2],
-  ...
+const useStyles = makeStyles([
+  [matcher1, styles1],
+  [matcher2, styles2],
+  // etc.
 ]);
 ```
 
@@ -228,7 +228,7 @@ Parent component passes its overrides to a child as a list of classes in `classN
 #### Alternative 1: encode the CSS property name to the hash
 
 Instead of using the global dictionary side effect, we can use part of the hash in the classname to encode the CSS property:
-![](makeStyles-classname.png)
+![Classname composed of property hash and CSS value hash](makeStyles-classname.png)
 
 Then when merging in a child, we can merge the classes by replacing previous classnames with the same CSS property hash.
 This approach makes the classnames longer and according to the test does not make the merging any faster.
