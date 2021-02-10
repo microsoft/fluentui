@@ -133,7 +133,7 @@ export const PersonaCoinBase: React.FunctionComponent<IPersonaCoinProps> = React
       mergeStyles(
         className,
         !showUnknownPersonaCoin && {
-          backgroundColor: getPersonaInitialsColor(initialsBackgroundColor, text, primaryText),
+          backgroundColor: getPersonaInitialsColor(text, initialsBackgroundColor, primaryText),
           color: initialsTextColor,
         },
       ),
