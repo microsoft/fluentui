@@ -148,13 +148,13 @@ export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
 export const hiddenContentStyle: IRawStyle;
 
 // @public (undocumented)
-export const HighContrastSelector = "@media screen and (-ms-high-contrast: active)";
+export const HighContrastSelector = "@media screen and (-ms-high-contrast: active), (forced-colors: active)";
 
 // @public (undocumented)
-export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black)";
+export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black)";
 
 // @public (undocumented)
-export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white)";
+export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white)";
 
 export { IAnimationStyles }
 

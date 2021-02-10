@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getTheme, HighContrastSelector } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme, HighContrastSelector, getHighContrastNoAdjustStyle } from '@uifabric/styling';
 import {
   IFloatingSuggestionHeaderFooterItemStylesProps,
   IFloatingSuggestionHeaderFooterItemStyles,
@@ -51,7 +51,7 @@ export const getStyles = (
           [HighContrastSelector]: {
             background: 'Highlight',
             color: 'HighlightText',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

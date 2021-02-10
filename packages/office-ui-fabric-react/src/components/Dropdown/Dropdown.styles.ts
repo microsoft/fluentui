@@ -12,6 +12,7 @@ import {
   getScreenSelector,
   ScreenWidthMinMedium,
   getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -37,7 +38,7 @@ const DROPDOWN_ITEM_HEIGHT = 36;
 
 const highContrastAdjustMixin = {
   [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
-    MsHighContrastAdjust: 'none',
+    ...getHighContrastNoAdjustStyle(),
   },
 };
 

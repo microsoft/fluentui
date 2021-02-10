@@ -1,5 +1,11 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, FontWeights, HighContrastSelector } from '../../../Styling';
+import {
+  ITheme,
+  concatStyleSets,
+  FontWeights,
+  HighContrastSelector,
+  getHighContrastNoAdjustStyle,
+} from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
@@ -81,7 +87,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             backgroundColor: 'WindowText',
             color: 'Window',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -103,7 +109,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -115,7 +121,7 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

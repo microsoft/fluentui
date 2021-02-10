@@ -4,6 +4,7 @@ import {
   getGlobalClassNames,
   getEdgeChromiumNoHighContrastAdjustSelector,
   IStyle,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
@@ -259,7 +260,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         color: checkmarkFontColor,
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'Window',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     ],
