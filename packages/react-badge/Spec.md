@@ -1,4 +1,4 @@
-# [Badge](https://github.com/microsoft/fluentui/issues/16254)
+# [Badge](https://github.com/microsoft/fluentui/issues/16925)
 
 ## Background
 
