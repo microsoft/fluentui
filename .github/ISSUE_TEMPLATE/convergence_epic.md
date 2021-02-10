@@ -26,6 +26,11 @@ completed as part of converging a component. More info can be found here: https:
 
 - [ ] Implement component
 - [ ] Add storybook stories
+- [ ] Using hooks
+- [ ] Using makeStyles
+- [ ] Respects Figma tokens (and using provider)
+- [ ] Respects API principles, shorthands and slots handling
+- [ ] No dependency on v0/v7
 - [ ] Add tests - Conformance, Unit, and VR
 - [ ] Write README.md covering basic usage
 - [ ] Write initial MIGRATION.md guide (include v8 and v0)
