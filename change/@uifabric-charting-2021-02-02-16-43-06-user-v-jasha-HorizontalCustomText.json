@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-02T11:12:58.166Z"
+}

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+  "packageName": "@fluentui/react-examples",
+  "email": "v-jasha@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2021-02-02T11:13:06.215Z"
+}
