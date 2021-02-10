@@ -214,7 +214,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -229,7 +229,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       &:hover {
                         color: #0078d4;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -242,10 +242,10 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       &:active .ms-Button-icon {
                         color: #004578;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         border: 0px;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         border: 1px solid WindowText;
                       }
                       .ms-Nav-compositeLink:hover & {
@@ -371,7 +371,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         bottom: -2px;
                         left: -2px;
                         outline-color: ButtonText;
@@ -386,7 +386,7 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       &:hover {
                         color: #0078d4;
                       }
-                      @media screen and (-ms-high-contrast: active){&:hover {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
@@ -399,10 +399,10 @@ exports[`Nav render Nav with overrides correctly 1`] = `
                       &:active .ms-Button-icon {
                         color: #004578;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         border: 0px;
                       }
-                      @media screen and (-ms-high-contrast: active){&:focus {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                         border: 1px solid WindowText;
                       }
                       .ms-Nav-compositeLink:hover & {
@@ -590,7 +590,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       top: 1px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -605,7 +605,7 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:hover {
                       color: #0078d4;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -618,10 +618,10 @@ exports[`Nav renders Nav correctly 1`] = `
                     &:active .ms-Button-icon {
                       color: #004578;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       border: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){&:focus {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                       border: 1px solid WindowText;
                     }
                     .ms-Nav-compositeLink:hover & {

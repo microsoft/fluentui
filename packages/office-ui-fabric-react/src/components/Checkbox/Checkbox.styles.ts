@@ -4,6 +4,7 @@ import {
   getGlobalClassNames,
   getEdgeChromiumNoHighContrastAdjustSelector,
   IStyle,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
@@ -211,6 +212,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         [HighContrastSelector]: {
           borderColor: 'WindowText',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       indeterminate && {
@@ -259,7 +261,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         color: checkmarkFontColor,
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'Window',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     ],
@@ -272,6 +274,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'WindowText',
         },
+        // eslint-disable-next-line deprecation/deprecation
         ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       !reversed

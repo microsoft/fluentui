@@ -102,7 +102,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -118,7 +118,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -217,7 +217,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -233,7 +233,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -342,7 +342,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 &:hover {
                   border-color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                 }
                 @media screen and (forced-colors: active){&:hover {
@@ -392,7 +392,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   &::-ms-clear {
                     display: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background: Window;
                     color: WindowText;
                   }
@@ -405,7 +405,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                     color: GrayText;
                   }
                   &:-ms-input-placeholder {
@@ -417,7 +417,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                     color: GrayText;
                   }
                   &::-ms-input-placeholder {
@@ -429,7 +429,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
               id="TextField7"
@@ -487,7 +487,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -503,7 +503,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -569,7 +569,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               outline: transparent;
               position: relative;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border: none;
             }
             &::-moz-focus-inner {
@@ -586,7 +586,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 3px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               border: none;
               bottom: -2px;
               left: -2px;
@@ -603,28 +603,29 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               border-top-right-radius: 0;
               border: none;
             }
-            @media screen and (-ms-high-contrast: active){& .ms-Button--primary {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Button--primary {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               border-right-width: 0;
               border: 1px solid WindowText;
               color: WindowText;
+              forced-color-adjust: none;
             }
             & .ms-Button--primary + .ms-Button {
               border: none;
             }
-            @media screen and (-ms-high-contrast: active){& .ms-Button--primary + .ms-Button {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Button--primary + .ms-Button {
               border-left-width: 0;
               border: 1px solid WindowText;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Button--primary {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button--primary {
               background-color: Highlight;
               color: Window;
             }
             &:hover .ms-Button.is-disabled {
               color: #a19f9d;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Button.is-disabled {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Button.is-disabled {
               background-color: Window;
               border-color: GrayText;
               color: GrayText;
@@ -691,7 +692,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
@@ -707,7 +708,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -799,10 +800,10 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 &:hover {
                   background-color: #edebe9;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
-                @media screen and (-ms-high-contrast: active){& .ms-Button-menuIcon {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Button-menuIcon {
                   color: WindowText;
                 }
             data-is-focusable={false}
@@ -892,7 +893,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   top: 8px;
                   width: 1px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: WindowText;
                 }
             onClick={[Function]}
@@ -980,7 +981,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -996,7 +997,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1095,7 +1096,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1111,7 +1112,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -1220,7 +1221,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                 &:hover {
                   border-color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   border-color: Highlight;
                 }
                 @media screen and (forced-colors: active){&:hover {
@@ -1270,7 +1271,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                   &::-ms-clear {
                     display: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background: Window;
                     color: WindowText;
                   }
@@ -1283,7 +1284,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                     color: GrayText;
                   }
                   &:-ms-input-placeholder {
@@ -1295,7 +1296,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                     color: GrayText;
                   }
                   &::-ms-input-placeholder {
@@ -1307,7 +1308,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
               id="TextField26"
@@ -1365,7 +1366,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1381,7 +1382,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               background-color: #f3f2f1;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }

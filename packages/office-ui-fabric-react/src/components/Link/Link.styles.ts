@@ -65,6 +65,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           [HighContrastSelector]: {
             color: 'LinkText',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
@@ -73,6 +74,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           [HighContrastSelector]: {
             // This is mainly for MessageBar, which sets MsHighContrastAdjust: none by default
             MsHighContrastAdjust: 'auto',
+            forcedColorAdjust: 'auto',
           },
         },
       },

@@ -48,7 +48,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
             position: absolute;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-bottom: 1px solid WindowText;
           }
     />
@@ -65,7 +65,7 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
             transition: width .15s linear;
             width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background-color: highlight;
           }
           @media screen and (forced-colors: active){& {
@@ -144,7 +144,7 @@ exports[`ProgressIndicator renders React content 1`] = `
             position: absolute;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-bottom: 1px solid WindowText;
           }
     />
@@ -161,7 +161,7 @@ exports[`ProgressIndicator renders React content 1`] = `
             transition: width .3s ease;
             width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background-color: highlight;
             background: highlight;
           }
@@ -241,7 +241,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
             position: absolute;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-bottom: 1px solid WindowText;
           }
     />
@@ -258,7 +258,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
             transition: width .3s ease;
             width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background-color: highlight;
             background: highlight;
           }
@@ -322,7 +322,7 @@ exports[`ProgressIndicator renders with no label or description 1`] = `
             position: absolute;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-bottom: 1px solid WindowText;
           }
     />
@@ -339,7 +339,7 @@ exports[`ProgressIndicator renders with no label or description 1`] = `
             transition: width .3s ease;
             width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             background-color: highlight;
             background: highlight;
           }

@@ -91,12 +91,13 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 height: 40px;
                 line-height: 40px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: Window !important;
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+                forced-color-adjust: none;
               }
               & i {
                 font-weight: 600;
@@ -296,12 +297,13 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 height: 72px;
                 line-height: 72px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 background-color: Window !important;
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+                forced-color-adjust: none;
               }
               & i {
                 font-weight: 600;

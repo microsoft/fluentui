@@ -59,7 +59,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               pointer-events: none;
               word-wrap: break-word;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: GrayText;
             }
             @media screen and (forced-colors: active){& {
@@ -98,7 +98,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             right: 0px;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             color: GrayText;
           }
     >
@@ -143,7 +143,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             &:after {
               border-color: #f3f2f1;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: GrayText;
             }
         data-lpignore={true}
@@ -173,7 +173,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             &:after {
               border-color: #f3f2f1;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: GrayText;
             }
       >
@@ -227,7 +227,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -251,7 +251,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               &:focus {
                 outline: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
                 opacity: 1;
               }
@@ -307,7 +307,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     margin-top: 0px;
                     text-align: center;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: GrayText;
                   }
               data-icon-name="ChevronUpSmall"
@@ -372,7 +372,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -396,7 +396,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
               &:focus {
                 outline: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 color: GrayText;
                 opacity: 1;
               }
@@ -452,7 +452,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     margin-top: 0px;
                     text-align: center;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: GrayText;
                   }
               data-icon-name="ChevronDownSmall"

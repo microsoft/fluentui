@@ -87,7 +87,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -104,7 +104,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -144,14 +144,14 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
             .ms-Fabric--isFocusVisible &:focus {
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&:before {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
               background-color: Highlight;
             }
             &:hover::before {
               left: 0px;
               right: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               color: Highlight;
             }
         data-content="My Files"
@@ -253,7 +253,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -270,7 +270,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -409,7 +409,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -426,7 +426,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -604,7 +604,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
           top: 2px;
           z-index: 1;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           bottom: -2px;
           left: -2px;
           outline-color: ButtonText;
@@ -620,7 +620,7 @@ exports[`Component Examples renders Pivot.Override.Example.tsx correctly 1`] = `
           background-color: #f3f2f1;
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }

@@ -67,6 +67,7 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
           [HighContrastSelector]: {
             borderTopColor: 'Highlight',
           },
+          // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },

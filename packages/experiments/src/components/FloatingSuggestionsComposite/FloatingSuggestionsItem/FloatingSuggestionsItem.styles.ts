@@ -1,4 +1,4 @@
-import { getGlobalClassNames, getTheme, HighContrastSelector } from '@uifabric/styling';
+import { getGlobalClassNames, getTheme, HighContrastSelector, getHighContrastNoAdjustStyle } from '@uifabric/styling';
 import { IFloatingSuggestionItemStylesProps, IFloatingSuggestionItemStyles } from './FloatingSuggestionsItem.types';
 
 const GlobalClassNames = {
@@ -68,7 +68,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },
