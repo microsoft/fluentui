@@ -20,7 +20,6 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { fluentuiLernaPublish, packFluentTarballs, fluentuiPostPublishValidation } from './tasks/fluentui-publish';
 import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
@@ -98,27 +97,6 @@ export function preset() {
   task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
-
-  task('fluentui:publish:minor', () => {
-    const args = getJustArgv();
-    const skipConfirm = args['yes'];
-    fluentuiLernaPublish('minor', skipConfirm);
-  });
-  task('fluentui:publish:patch', () => {
-    const args = getJustArgv();
-    const skipConfirm = args['yes'];
-    fluentuiLernaPublish('patch', skipConfirm);
-  });
-  task('fluentui:publish:canary', () => {
-    // use this task to release canary verion. By default its npm tag will be 'beta'.
-    const args = getJustArgv();
-    const skipConfirm = args['yes'];
-    const tag = args['dist-tag'];
-    fluentuiLernaPublish('canary', skipConfirm, tag);
-  });
-
-  task('fluentui:publish:validation', fluentuiPostPublishValidation());
-  task('fluentui:pack', packFluentTarballs()); // pack all public fluent ui packages, used by ci to store nightly built artifacts
 
   task('ts:compile', () => {
     const args = getJustArgv();
