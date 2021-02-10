@@ -17,14 +17,6 @@ export const SliderRangedExample: React.FunctionComponent = () => {
       <Slider ranged label="Range slider" min={0} max={100} defaultValue={10} onRangeChange={onRangeChange} />
       <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue disabled ranged />
       <Slider
-        label="Controlled example"
-        max={10}
-        value={sliderValue}
-        showValue
-        // eslint-disable-next-line react/jsx-no-bind
-        onChange={sliderOnChange}
-      />
-      <Slider
         label="Example with formatted value"
         max={100}
         ariaValueText={sliderAriaValueText}
