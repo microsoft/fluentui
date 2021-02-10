@@ -61,7 +61,7 @@ export interface DatepickerCalendarProps extends UIComponentProps, Partial<ICale
   calendarGridRow?: ShorthandValue<DatepickerCalendarGridRowProps>;
 
   /**
-   * The currently selected date range.
+   * The currently selected date range, currently only supports week.
    */
   selectedDateRange?: Date[];
 
@@ -331,7 +331,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
         }),
     });
 
-  const renderCellButton = (day: IDay, week: IDay[]) =>
+  const renderCellButton = (day: IDay, dateRange: IDay[]) =>
     createShorthand(DatepickerCalendarCellButton, calendarCellButton, {
       defaultProps: () =>
         getA11yProps('calendarCell', {
@@ -353,7 +353,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
           _.invoke(props, 'onDateChange', e, {
             ...props,
             value: day,
-            selectedDateRange: dateRangeType === DateRangeType.Week ? week : [day],
+            selectedDateRange: dateRangeType !== DateRangeType.Day ? dateRange : [day],
           });
           _.invoke(predefinedProps, 'onClick', e, predefinedProps);
         },
