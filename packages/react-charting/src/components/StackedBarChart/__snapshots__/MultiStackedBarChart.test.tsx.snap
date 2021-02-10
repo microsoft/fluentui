@@ -1426,7 +1426,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
-              data-is-focusable={true}
+              data-is-focusable={false}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -1452,7 +1452,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
-              data-is-focusable={true}
+              data-is-focusable={false}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -1543,7 +1543,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
-              data-is-focusable={true}
+              data-is-focusable={false}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
@@ -1569,7 +1569,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
                     stroke-width: 2px;
                     stroke: #ffffff;
                   }
-              data-is-focusable={true}
+              data-is-focusable={false}
               onBlur={[Function]}
               onClick={[Function]}
               onFocus={[Function]}
