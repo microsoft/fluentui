@@ -5,6 +5,7 @@ import { isConformant } from '../../common/isConformant';
 describe('SplitButton', () => {
   isConformant({
     Component: SplitButton,
+    disabledTests: ['as-renders-fc', 'as-renders-html'],
     displayName: 'SplitButton',
     targetComponent: Button,
   });
