@@ -2,10 +2,10 @@
   "name": "@fluentui/public-docsite",
   "version": "1.0.1",
   "description": "The official website for the Fluent UI project.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
   "sideEffects": true,
-  "typings": "lib/index.d.ts",
+  "main": "lib-commonjs/root.js",
+  "module": "lib/root.js",
+  "typings": "lib/root.d.ts",
   "publishConfig": {
     "access": "public"
   },
