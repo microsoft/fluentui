@@ -401,7 +401,7 @@ export const defaultTests: TestObject = {
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     // 2nd check: React.AllHTMLAttributes can also include `as`
     if (hasAs(componentInfo)) {
-      xit(`passes extra props to the component it is renders as`, () => {
+      it(`passes extra props to the component it is renders as`, () => {
         try {
           const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
 
@@ -428,7 +428,7 @@ export const defaultTests: TestObject = {
   /** If it has "as" prop: Renders component as HTML tags */
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     if (hasAs(componentInfo)) {
-      xit(`renders component as HTML tags or passes "as" to the next component`, () => {
+      it(`renders component as HTML tags or passes "as" to the next component`, () => {
         try {
           // silence element nesting warnings
           consoleUtil.disableOnce();
