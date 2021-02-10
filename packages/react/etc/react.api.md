@@ -1204,7 +1204,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
 // @public
-export function getPersonaInitialsColor(text: string | undefined, initialsColor?: PersonaInitialsColor | string, primaryText?: string): string;
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
