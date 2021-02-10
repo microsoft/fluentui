@@ -123,7 +123,7 @@ function createFluentReactFixtures() {
 
 function createEntry(packageName) {
   try {
-    const importStatement = `import p from '${packageName}'; console.log(p)`;
+    const importStatement = `import * as p from '${packageName}'; console.log(p)`;
     const folderName = getFolderName(packageName);
     const entryPath = path.join('temp/fixtures/', folderName, 'index.js');
     fs.outputFileSync(entryPath, importStatement, 'utf-8');
