@@ -1,23 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore No typings :(
-import * as prettier from 'prettier';
-
 import { resolveStyleRules } from './resolveStyleRules';
 import { MakeStylesResolvedRule } from '../types';
-import { isObject } from './utils/isObject';
+import { makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
 
-expect.addSnapshotSerializer({
-  test(value) {
-    return isObject(value);
-  },
-  print(value: Record<string, MakeStylesResolvedRule>) {
-    return Object.keys(value).reduce((acc, property) => {
-      const rule: MakeStylesResolvedRule = value[property];
-
-      return prettier.format(acc + rule[1] + (rule[2] || ''), { parser: 'css' }).trim();
-    }, '');
-  },
-});
+expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
   return resolvedStyles[Object.keys(resolvedStyles)[0]][0] as string;
@@ -365,46 +350,6 @@ describe('resolveStyleRules', () => {
         }
       `);
     });
-  });
-
-  it('handles font-face', () => {
-    expect(
-      resolveStyleRules({
-        '@font-face': {
-          fontFamily: 'Open Sans',
-          src: `url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
-               url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
-        },
-      }),
-    ).toMatchInlineSnapshot(`
-      @font-face {
-        font-family: Open Sans;
-        src: url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
-          url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
-      }
-    `);
-  });
-
-  it('handles static css', () => {
-    expect(
-      resolveStyleRules({
-        body: {
-          background: 'blue',
-        },
-        '.foo': {
-          background: 'yellow',
-          marginLeft: '5px',
-        },
-      }),
-    ).toMatchInlineSnapshot(`
-      body {
-        background: blue;
-      }
-      .foo {
-        background: yellow;
-        margin-left: 5px;
-      }
-    `);
   });
 
   describe('keyframes', () => {

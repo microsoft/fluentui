@@ -12,7 +12,6 @@ import { isNestedSelector } from './utils/isNestedSelector';
 import { isSupportQuerySelector } from './utils/isSupportQuerySelector';
 import { normalizeNestedProperty } from './utils/normalizeNestedProperty';
 import { isObject } from './utils/isObject';
-import { compileStaticCSS } from './compileStaticCSS';
 
 export function resolveStyleRules(
   styles: MakeStyles,
@@ -115,10 +114,7 @@ export function resolveStyleRules(
 
         resolveStyleRules(value, unstable_cssPriority, pseudo, media, combinedSupportQuery, result);
       } else {
-        // static css (e.g. font-face)
-        const staticCSS = compileStaticCSS(property, value);
-        const staticCSSKey = HASH_PREFIX + hashString(staticCSS);
-        result[staticCSSKey] = [undefined, staticCSS /* no RTL support for static css */];
+        // TODO: what about static css (e.g. font-face)?
       }
     }
   });

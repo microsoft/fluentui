@@ -1,9 +1,10 @@
 import { Properties as CSSProperties } from 'csstype';
 
-export interface MakeStyles extends Omit<CSSProperties, 'animationName'> {
+export interface MakeStylesBase extends CSSProperties {
   // TODO Questionable: how else would users target their own children?
   [key: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
-
+}
+export interface MakeStyles extends Omit<MakeStylesBase, 'animationName'> {
   animationName?: object | string;
 }
 
@@ -12,6 +13,10 @@ export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
 
 export type MakeStylesDefinition<Selectors, Tokens> = [MakeStylesMatcher<Selectors>, MakeStylesStyleRule<Tokens>];
+
+export type MakeStaticStyles = MakeStylesBase | string;
+export type MakeStaticStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStaticStyles;
+export type MakeStaticStylesStyleRule<Tokens> = MakeStaticStyles | MakeStaticStylesStyleFunctionRule<Tokens>;
 
 export interface MakeStylesOptions<Tokens> {
   rtl?: boolean;
