@@ -109,7 +109,7 @@ function createFluentReactFixtures() {
 
     if (isAllowedFile && !isFolder) {
       const item = isFolder ? itemName : itemName.replace(/.js$/, '');
-      const importStatement = `import { ${item} } from '${packageName}'; console.log(${item})`;
+      const importStatement = `import * as p from '${distPath}/${item}'; console.log(p)`;
       try {
         const folderName = getFolderName(packageName);
         const entryPath = path.join('temp/fixtures/', folderName, `${item}.js`);
