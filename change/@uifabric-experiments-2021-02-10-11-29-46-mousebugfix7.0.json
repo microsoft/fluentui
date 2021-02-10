@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix bug where moue selected suggestions did not work in DefaultEditingItem",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-10T19:29:46.774Z"
+}
