@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Narrator issues fixed in bar charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-02-10T06:03:53.974Z"
+}
