@@ -44,7 +44,7 @@ A second `inline` variant is provided for scenarios where body text is going to 
 
 A `Link` renders as different HTML tags depending on the whether a value has been passed for the `href` property or not. If a value has been passed to the `href` property, then the `Link` renders as an `<a>` HTML tag. Conversely, if the `href` property is left `undefined` the `Link` renders as a `<button>` HTML tag.
 
-The `Link` can also be custom rendered as something entirely different by replacing the `root` slot with the preferred element to be rendered.
+The `Link` can also be custom rendered as something entirely different by replacing the `root` slot with the preferred element to be rendered via the `as` prop.
 
 ## API
 
@@ -67,12 +67,14 @@ export type LinkProps = ComponentProps &
     /**
      * Where to open the linked URL. Common values are `_blank` (a new tab or window),
      * `_self` (the current window/context), `_parent`, and `_top`.
+     * This prop is only applied if `href` is set.
      */
     target?: string;
 
     /**
      * Relationship to the linked URL (can be a space-separated list).
      * Most common values are `noreferrer` and/or `noopener`.
+     * This prop is only applied if `href` is set.
      */
     rel?: string;
 

@@ -16,7 +16,6 @@ The existing `Link` control supports a very similar set of props to the one bein
 ## Migration from v0
 
 v0 does not currently export a `Link` component.
-The v0 Avatar maps more closely to the converged Avatar.
 
 ## Property mapping
 
