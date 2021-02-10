@@ -134,6 +134,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      initialsTextColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
       // eslint-disable-next-line deprecation/deprecation
@@ -157,6 +158,7 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      initialsTextColor,
       onPhotoLoadingStateChange,
       onRenderCoin,
       onRenderInitials,
@@ -188,7 +190,6 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
         {props.children}
       </div>
     );
-
     return (
       <div
         {...divProps}
