@@ -46,9 +46,12 @@ export type MergePropsOptions = {
 };
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends GenericDictionary> = TProps & {
+export type ObjectShorthandProps<TProps extends ComponentProps> = TProps & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
+
+// @public (undocumented)
+export const renderShorthandChildren: <TProps>(children: ObjectShorthandProps<TProps>["children"], props: TProps, Component: React.ElementType<TProps>) => {} | null | undefined;
 
 // @public
 export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: string[]) => TProps;

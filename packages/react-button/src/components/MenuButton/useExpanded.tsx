@@ -3,6 +3,7 @@ import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
 import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
 import { MenuContext, MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { MenuButtonState } from './MenuButton.types';
+import { renderShorthandChildren } from '@fluentui/react-utils';
 
 export type ExpandedState = {
   ref?: React.Ref<unknown>;
@@ -83,13 +84,12 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
 
   // Assign extra props to the menu slot.
   draftState.menu = {
-    children: draftState.menu ? (
-      typeof draftState.menu.children === 'function' ? (
-        draftState.menu.children(menuProps)
-      ) : (
+    children:
+      typeof draftState.menu?.children === 'object' ? (
         <MenuContext.Provider value={menuProps}>{draftState.menu.children}</MenuContext.Provider>
-      )
-    ) : null,
+      ) : (
+        renderShorthandChildren(draftState.menu?.children, menuProps, 'div')
+      ),
   };
 
   draftState['aria-expanded'] = expandedValue;
