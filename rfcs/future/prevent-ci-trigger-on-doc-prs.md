@@ -53,7 +53,7 @@ And this details the new workflow mentioned above:
 
 - Avoiding the GitHub checks in our CI by excluding doc paths
 
-  Due to the branch protection rules, we are unable to avoid the execution of required checks.
+  Due to the branch protection rules, we are unable to avoid the execution of required checks. Another limitation is our current tooling (no ability to implement content aware pipeline).
   CodeSandbox also did not support this at the time of writing this. Upon contacting their support, they added it to their backlog as a possible future feature.
 
 ## Open Issues
