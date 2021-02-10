@@ -51,7 +51,6 @@ jobs:
     steps:
       - template: .devops/templates/tools.yml
 
-      # TODO remove it status
       - script: |
           git config user.name "Fluent UI Build"
           git config user.email "fluentui-internal@service.microsoft.com"
