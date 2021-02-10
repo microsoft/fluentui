@@ -20,7 +20,7 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
         '--force-publish',
         '--registry',
         'https://registry.npmjs.org',
-        '--no-verify-access',
+        '--no-verify-access', // reason for --no-verify-access: Lerna doesn't work with NPM automation tokens (https://github.com/lerna/lerna/issues/2788)
         bumpType,
       ];
       break;
