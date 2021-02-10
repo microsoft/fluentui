@@ -1,4 +1,5 @@
 import { compile, middleware, serialize, stringify } from 'stylis';
+import { compileCSSRule } from './compileStaticCSS';
 import { hyphenateProperty } from './utils/hyphenateProperty';
 
 interface CompileCSSOptions {
@@ -48,6 +49,6 @@ export function compileCSS(options: CompileCSSOptions): string {
       cssRule = `@supports ${support} { ${cssRule} }`;
     }
 
-    return serialize(compile(cssRule), middleware([stringify]));
+    return compileCSSRule(cssRule);
   }
 }

@@ -146,6 +146,9 @@ describe('resolveStyleRules', () => {
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
         .f22iagw0 {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
           display: flex;
         }
       `);
@@ -362,12 +365,15 @@ describe('resolveStyleRules', () => {
         }),
       ).toMatchInlineSnapshot(`
         .fc59ano0 {
+          -webkit-animation-name: fade-in slide-out;
           animation-name: fade-in slide-out;
         }
         .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
         }
         .f1t9cprh {
+          -webkit-animation-duration: 5s;
           animation-duration: 5s;
         }
       `);
@@ -445,15 +451,19 @@ describe('resolveStyleRules', () => {
           }
         }
         .fkf6eed0 {
+          -webkit-animation-name: f13owpa8;
           animation-name: f13owpa8;
         }
         .rfkf6eed0 {
+          -webkit-animation-name: rf13owpa8;
           animation-name: rf13owpa8;
         }
         .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
         }
         .f1t9cprh {
+          -webkit-animation-duration: 5s;
           animation-duration: 5s;
         }
       `);
@@ -557,15 +567,19 @@ describe('resolveStyleRules', () => {
           }
         }
         .f18gdskf {
+          -webkit-animation-name: f13owpa8 f1qa61cu;
           animation-name: f13owpa8 f1qa61cu;
         }
         .rf18gdskf {
+          -webkit-animation-name: rf13owpa8 f1qa61cu;
           animation-name: rf13owpa8 f1qa61cu;
         }
         .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
         }
         .f1t9cprh {
+          -webkit-animation-duration: 5s;
           animation-duration: 5s;
         }
       `);

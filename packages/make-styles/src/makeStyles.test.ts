@@ -79,12 +79,15 @@ describe('makeStyles', () => {
         }
       }
       .rfkf6eed0 {
+        -webkit-animation-name: rf13owpa8;
         animation-name: rf13owpa8;
       }
       .f1cpbl36 {
+        -webkit-animation-iteration-count: infinite;
         animation-iteration-count: infinite;
       }
       .f1t9cprh {
+        -webkit-animation-duration: 5s;
         animation-duration: 5s;
       }
     `);
