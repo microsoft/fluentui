@@ -1,5 +1,5 @@
 import { IStyle } from '@fluentui/merge-styles';
-import { Theme } from '@fluentui/theme';
+import { Theme } from './types';
 import { applyClasses } from './applyClasses';
 import { makeStyles, UseStylesOptions } from './makeStyles';
 

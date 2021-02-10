@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import { useCustomizationSettings } from '@fluentui/utilities';
-import { ITheme, createTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { ThemeContext } from './ThemeContext';
 import { Theme } from './types';
 
 /**
  * Get theme from CustomizerContext or Customizations singleton.
  */
-function useCompatTheme(): ITheme | undefined {
+function useCompatTheme(): Theme | undefined {
   return useCustomizationSettings(['theme']).theme;
 }
 
