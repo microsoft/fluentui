@@ -46,7 +46,7 @@ export type MergePropsOptions = {
 };
 
 // @public (undocumented)
-export type ObjectShorthandProps<TProps extends ComponentProps> = TProps & {
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
     children?: TProps['children'] | ShorthandRenderFunction<TProps>;
 };
 
