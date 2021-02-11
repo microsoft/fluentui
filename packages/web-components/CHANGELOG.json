@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/web-components_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: use exact version for typescript devDep",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 02:38:00 GMT",
       "tag": "@fluentui/web-components_v0.13.1",
       "version": "0.13.1",

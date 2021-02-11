@@ -52,7 +52,7 @@
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.14",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/theme-samples": "^8.0.0-beta.52",
-    "@fluentui/react-monaco-editor": "^1.0.0-beta.52",
+    "@fluentui/react-monaco-editor": "^1.0.0",
     "@types/react": "16.9.42",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",

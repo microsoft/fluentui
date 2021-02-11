@@ -47,7 +47,7 @@
     "@fluentui/example-data": "^8.0.0-beta.3",
     "@fluentui/react-hooks": "^8.0.0-beta.11",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/react-monaco-editor": "^1.0.0-beta.52",
+    "@fluentui/react-monaco-editor": "^1.0.0",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",

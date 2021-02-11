@@ -41,7 +41,7 @@
     "@types/node": "^10.3.2",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-monaco-editor": "^1.0.0-beta.52",
+    "@fluentui/react-monaco-editor": "^1.0.0",
     "react-app-polyfill": "~1.0.1",
     "write-file-webpack-plugin": "^4.1.0"
   },
