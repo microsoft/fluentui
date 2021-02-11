@@ -17,10 +17,11 @@ describe('Avatar', () => {
   });
 
   isConformant({
+    asPropHandlesRef: true,
     componentPath: path.join(__dirname, 'Avatar.tsx'),
     Component: Avatar,
     displayName: 'Avatar',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
+    disabledTests: ['has-docblock'],
   });
 
   /**

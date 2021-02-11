@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: use exact version for typescript devDep",
-  "packageName": "@fluentui/web-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2021-01-22T18:28:04.050Z"
-}

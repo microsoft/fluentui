@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Improved support for design system neutral color - Added a neutralBaseColor property in the design system - Update neutralPalette and accentPalette when respective baseColor changes - Updated Card to base background color on local neutralPalette - Updated Card stories to illustrate use cases",
+  "packageName": "@fluentui/web-components",
+  "email": "brheston@microsoft.com",
+  "dependentChangeType": "patch"
+}

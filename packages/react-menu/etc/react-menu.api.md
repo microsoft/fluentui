@@ -10,7 +10,7 @@ import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utils';
 
 // @public
-export const MenuItem: React.ForwardRefExoticComponent<Pick<MenuItemProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+export const MenuItem: React.ForwardRefExoticComponent<MenuItemProps & React.RefAttributes<HTMLElement>>;
 
 // @public
 export const MenuItemCheckbox: React.ForwardRefExoticComponent<Pick<MenuItemCheckboxProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
@@ -38,7 +38,7 @@ export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemSt
 
 // @public (undocumented)
 export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    icon?: ShorthandProps;
+    icon?: ShorthandProps<HTMLElement>;
 }
 
 // @public
@@ -73,7 +73,7 @@ export interface MenuItemState extends MenuItemProps {
 }
 
 // @public
-export const MenuList: React.ForwardRefExoticComponent<Pick<MenuListProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
