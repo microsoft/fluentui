@@ -10,6 +10,10 @@ describe('MenuItemRadio', () => {
   isConformant({
     asPropHandlesRef: true,
     Component: MenuItemRadio,
+    requiredProps: {
+      name: 'radio',
+      value: '1',
+    },
     displayName: 'MenuItemRadio',
   });
 

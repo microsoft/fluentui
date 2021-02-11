@@ -10,6 +10,10 @@ describe('MenuItemCheckbox conformance', () => {
   isConformant({
     asPropHandlesRef: true,
     Component: MenuItemCheckbox,
+    requiredProps: {
+      name: 'checkbox',
+      value: '1',
+    },
     displayName: 'MenuItemCheckbox',
   });
 
