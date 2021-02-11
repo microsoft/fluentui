@@ -8,8 +8,8 @@ const AlertExampleDismissActions = () => {
   return (
     <Alert
       actions={[
-        { content: 'Privacy policy', primary: true, key: 'privacy', size: 'small' },
-        { content: 'Dismiss', onClick: () => setVisible(false), key: 'dismiss', size: 'small' },
+        { content: 'Privacy policy', primary: true, key: 'privacy' },
+        { content: 'Dismiss', onClick: () => setVisible(false), key: 'dismiss' },
       ]}
       content="Let everyone know that they're being recorded"
       visible={visible}

@@ -40,7 +40,6 @@ export const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissA
       height: v.dismissActionSize,
       minWidth: v.dismissActionSize,
       color: v.dismissActionColor || 'currentColor',
-      fill: v.dismissActionColor || 'currentColor',
       outline: 0,
       padding: 0,
       borderWidth: 0,
