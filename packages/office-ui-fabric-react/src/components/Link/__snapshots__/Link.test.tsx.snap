@@ -103,8 +103,6 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-bottom: none;
         color: LinkText;
-      }
-      @media screen and (forced-colors: active){& {
         forced-color-adjust: none;
       }
       &:active {
@@ -243,8 +241,6 @@ exports[`Link renders Link with no href as a button 1`] = `
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-bottom: none;
         color: LinkText;
-      }
-      @media screen and (forced-colors: active){& {
         forced-color-adjust: none;
       }
       &:active {
@@ -366,8 +362,6 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-bottom: none;
         color: LinkText;
-      }
-      @media screen and (forced-colors: active){& {
         forced-color-adjust: none;
       }
       &:link {
@@ -428,8 +422,6 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         border-bottom: none;
         color: LinkText;
-      }
-      @media screen and (forced-colors: active){& {
         forced-color-adjust: none;
       }
       &:active {

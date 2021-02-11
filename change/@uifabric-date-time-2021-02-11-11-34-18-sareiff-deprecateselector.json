@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Remove use of getEdgeChromiumNoHighContrastAdjustSelector",
+  "packageName": "@uifabric/date-time",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-11T19:34:13.355Z"
+}

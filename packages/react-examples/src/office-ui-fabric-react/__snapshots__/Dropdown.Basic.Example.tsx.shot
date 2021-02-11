@@ -259,9 +259,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
             word-wrap: break-word;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             color: GrayText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       id="Dropdown1-label"
@@ -386,11 +385,10 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
               white-space: nowrap;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background-color: Window;
               border: 1px solid GrayText;
               color: GrayText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         id="Dropdown1-option"
@@ -426,9 +424,8 @@ exports[`Component Examples renders Dropdown.Basic.Example.tsx correctly 1`] = `
                 speak: none;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: GrayText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-icon-name="ChevronDown"

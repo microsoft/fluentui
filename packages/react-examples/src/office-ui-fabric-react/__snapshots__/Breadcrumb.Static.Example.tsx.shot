@@ -335,8 +335,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {
@@ -594,8 +592,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                       @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         border-bottom: none;
                         color: LinkText;
-                      }
-                      @media screen and (forced-colors: active){& {
                         forced-color-adjust: none;
                       }
                       &:active {

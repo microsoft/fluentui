@@ -7,7 +7,7 @@ import {
   normalize,
   getPlaceholderStyles,
   IconFontSizes,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
@@ -158,9 +158,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           selectors: {
             [HighContrastSelector]: {
               borderColor: 'GrayText',
+              ...getHighContrastNoAdjustStyle(),
             },
-            // eslint-disable-next-line deprecation/deprecation
-            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
         !disabled && {
@@ -170,9 +169,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               selectors: {
                 [HighContrastSelector]: {
                   borderBottomColor: 'Highlight',
+                  ...getHighContrastNoAdjustStyle(),
                 },
-                // eslint-disable-next-line deprecation/deprecation
-                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
           },
@@ -217,9 +215,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               selectors: {
                 [HighContrastSelector]: {
                   borderColor: 'Highlight',
+                  ...getHighContrastNoAdjustStyle(),
                 },
-                // eslint-disable-next-line deprecation/deprecation
-                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
           },
@@ -236,9 +233,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'GrayText',
+            ...getHighContrastNoAdjustStyle(),
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
 
         cursor: 'default',

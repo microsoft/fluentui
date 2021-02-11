@@ -1,11 +1,5 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import {
-  HighContrastSelector,
-  getGlobalClassNames,
-  getEdgeChromiumNoHighContrastAdjustSelector,
-  IStyle,
-  getHighContrastNoAdjustStyle,
-} from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames, IStyle, getHighContrastNoAdjustStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -211,9 +205,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         ':after': indeterminate ? indeterminateDotStyles : null,
         [HighContrastSelector]: {
           borderColor: 'WindowText',
+          ...getHighContrastNoAdjustStyle(),
         },
-        // eslint-disable-next-line deprecation/deprecation
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       indeterminate && {
         borderColor: checkboxBorderIndeterminateColor,
@@ -273,9 +266,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         lineHeight: '20px',
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'WindowText',
+          ...getHighContrastNoAdjustStyle(),
         },
-        // eslint-disable-next-line deprecation/deprecation
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       !reversed
         ? {

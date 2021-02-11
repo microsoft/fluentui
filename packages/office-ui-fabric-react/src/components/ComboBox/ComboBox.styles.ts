@@ -9,7 +9,6 @@ import {
   getPlaceholderStyles,
   hiddenContentStyle,
   getInputFocusStyle,
-  getEdgeChromiumNoHighContrastAdjustSelector,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
@@ -493,9 +492,8 @@ export const getStyles = memoizeFunction(
           selectors: {
             [HighContrastSelector]: {
               color: 'GrayText',
+              ...getHighContrastNoAdjustStyle(),
             },
-            // eslint-disable-next-line deprecation/deprecation
-            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
       ],
