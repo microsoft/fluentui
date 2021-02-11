@@ -86,7 +86,7 @@ describe('MenuItemRadio', () => {
     );
 
     // Assert
-    expect(container.querySelector('[role="menuitemradio"')?.getAttribute('aria-checked')).toEqual('true');
+    expect(container.querySelector('[role="menuitemradio"]')?.getAttribute('aria-checked')).toEqual('true');
   });
 
   it('should check radio on click', () => {
@@ -104,7 +104,7 @@ describe('MenuItemRadio', () => {
     );
 
     // Act
-    const menuitem = container.querySelector('[role="menuitemradio"');
+    const menuitem = container.querySelector('[role="menuitemradio"]');
     menuitem && fireEvent.click(menuitem);
 
     // Assert
