@@ -1,21 +1,11 @@
 {
   "name": "@fluentui/public-docsite",
-  "version": "1.0.6",
+  "version": "8.0.0-beta.0",
   "description": "The official website for the Fluent UI project.",
   "sideEffects": true,
   "main": "lib-commonjs/root.js",
   "module": "lib/root.js",
   "typings": "lib/root.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -47,13 +37,13 @@
   },
   "dependencies": {
     "@fluentui/react": "^8.0.0-beta.52",
-    "@fluentui/react-examples": "^1.1.1",
+    "@fluentui/react-examples": "^8.0.0-beta.0",
     "@fluentui/theme": "^2.0.0-beta.13",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/api-docs": "^1.0.2",
+    "@fluentui/api-docs": "^8.0.0-beta.0",
     "@fluentui/react-docsite-components": "^8.0.0-beta.52",
     "@fluentui/react-experiments": "^8.0.0-beta.56",
-    "@fluentui/public-docsite-resources": "1.0.5",
+    "@fluentui/public-docsite-resources": "^8.0.0-beta.0",
     "@fluentui/react-file-type-icons": "^8.0.0-beta.15",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.13",
     "@fluentui/set-version": "^8.0.0-beta.1",
