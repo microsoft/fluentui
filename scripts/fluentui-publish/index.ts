@@ -43,7 +43,7 @@ export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCan
         npmTagForCanary,
         '--preid',
         npmTagForCanary,
-        '--no-verify-access',
+        '--no-verify-access', // Lerna doesn't work with NPM automation tokens (https://github.com/lerna/lerna/issues/2788)
       ];
       break;
     default:
