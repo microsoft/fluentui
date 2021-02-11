@@ -84,7 +84,10 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
   })
   public neutralBaseColor: string;
   protected neutralBaseColorChanged(oldValue: string, newValue: string): void {
-    this.neutralPalette = createColorPalette(parseColorHexRGB(newValue));
+    const color = parseColorHexRGB(newValue);
+    if (color) {
+      this.neutralPalette = createColorPalette(color);
+    }
   }
 
   @designSystemProperty({
@@ -94,7 +97,10 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
   })
   public accentBaseColor: string;
   protected accentBaseColorChanged(oldValue: string, newValue: string): void {
-    this.accentPalette = createColorPalette(parseColorHexRGB(newValue));
+    const color = parseColorHexRGB(newValue);
+    if (color) {
+      this.accentPalette = createColorPalette(color);
+    }
   }
 
   @designSystemProperty({
