@@ -4,7 +4,7 @@ import {
   HighContrastSelector,
   AnimationVariables,
   getFocusStyle,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL } from '@uifabric/utilities';
 
@@ -147,8 +147,9 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
           [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
           [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+          [HighContrastSelector]: {
+            forcedColorAdjust: 'none',
+          },
         },
       },
       vertical

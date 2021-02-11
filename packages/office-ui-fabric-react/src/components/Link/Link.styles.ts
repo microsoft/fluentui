@@ -1,4 +1,5 @@
-import { getEdgeChromiumNoHighContrastAdjustSelector, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -64,9 +65,8 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'LinkText',
+            forcedColorAdjust: 'none',
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       !isButton && {
