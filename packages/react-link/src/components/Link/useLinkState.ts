@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { LinkState } from './Link.types';
 
 /**
@@ -6,13 +7,28 @@ import { LinkState } from './Link.types';
  * @param state - Link draft state to mutate.
  */
 export const useLinkState = (state: LinkState) => {
-  const { as, disabled, disabledFocusable, href, onClick, type } = state;
+  const { as, disabled, disabledFocusable, href, onClick, onKeyDown: onKeyDownCallback, type } = state;
 
   state.onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
     if (disabled) {
       ev.preventDefault();
     } else {
       onClick?.(ev);
+    }
+  };
+
+  const onKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+    const keyCode = getCode(ev);
+    const isEnterOrSpaceKey = keyCode === EnterKey || keyCode === SpacebarKey;
+    if (disabled && isEnterOrSpaceKey) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      onKeyDownCallback?.(ev);
+
+      if (onClick && isEnterOrSpaceKey) {
+        (ev.target as HTMLElement).click();
+      }
     }
   };
 
@@ -31,8 +47,17 @@ export const useLinkState = (state: LinkState) => {
       if (as === 'button') {
         state.type = type ? type : 'button';
       }
+      // Add keydown event handler for all other elements
+      else {
+        state.onKeyDown = onKeyDown;
+      }
     }
   }
+  // Add keydown event handler for all other elements
+  else {
+    state.onKeyDown = onKeyDown;
+  }
+
   // Add aria attributes
   state['aria-disabled'] = disabled || disabledFocusable;
   state.disabled = as === 'a' || as === 'button' ? disabled && !disabledFocusable : undefined;
