@@ -112,6 +112,6 @@ describe('MenuItemCheckbox', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(checkboxName, [...expectedResult]);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), checkboxName, [...expectedResult]);
   });
 });

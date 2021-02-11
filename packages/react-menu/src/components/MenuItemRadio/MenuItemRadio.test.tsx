@@ -109,7 +109,7 @@ describe('MenuItemRadio', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(radioName, [radioValue]);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, [radioValue]);
   });
 
   it('should uncheck other radio on click', () => {
@@ -132,6 +132,6 @@ describe('MenuItemRadio', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(radioName, [radioValue]);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, [radioValue]);
   });
 });

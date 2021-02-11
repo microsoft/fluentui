@@ -32,7 +32,6 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
   };
 
   state.onClick = e => {
-    e.persist();
     if (onClickCallback) {
       onClickCallback(e);
     }
@@ -42,13 +41,11 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
 
   state.onKeyDown = e => {
     if (onKeyDownCallback) {
-      e.persist();
       onKeyDownCallback(e);
     }
 
     const keyCode = getCode(e);
     if (!e.defaultPrevented && (keyCode === EnterKey || keyCode === SpacebarKey)) {
-      e.persist();
       onSelectionChange(e);
     }
   };
