@@ -2,8 +2,7 @@ import * as React from 'react';
 import { useMenuItemCheckbox } from './useMenuItemCheckbox';
 import { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 import { renderMenuItemCheckbox } from './renderMenuItemCheckbox';
-import { useCheckmarkStyles } from '../../selectable/index';
-import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
+import { useMenuItemCheckBoxStyles } from './useMenuItemCheckboxStyles';
 
 /**
  * Define a styled MenuItemCheckbox, using the `useMenuItemCheckbox` hook.
@@ -11,8 +10,7 @@ import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
  */
 export const MenuItemCheckbox = React.forwardRef<HTMLElement, MenuItemCheckboxProps>((props, ref) => {
   const state = useMenuItemCheckbox(props, ref);
-  useMenuItemStyles(state);
-  useCheckmarkStyles(state);
+  useMenuItemCheckBoxStyles(state);
 
   return renderMenuItemCheckbox(state);
 });

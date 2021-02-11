@@ -3,7 +3,7 @@ import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/
 import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
 
 /**
- * {@docCategory MenuItemRadio\}
+ * {@docCategory MenuItemRadio}
  */
 export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
   icon?: ShorthandProps;
@@ -12,7 +12,7 @@ export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes
 }
 
 /**
- * {@docCategory MenuItemRadio\}
+ * {@docCategory MenuItemRadio}
  */
 export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectableState {
   ref: React.MutableRefObject<HTMLElement>;

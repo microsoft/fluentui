@@ -8,6 +8,7 @@ import { MenuListContext, MenuListProvider } from '../../menuListContext';
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
+    asPropHandlesRef: true,
     Component: MenuItemCheckbox,
     displayName: 'MenuItemCheckbox',
   });

@@ -3,6 +3,9 @@ import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/
 import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
 import { MenuItemProps, MenuItemState } from '../MenuItem/MenuItem.types';
 
+/**
+ * {@docCategory MenuItemCheckbox}
+ */
 export interface MenuItemCheckboxProps
   extends ComponentProps,
     React.HTMLAttributes<HTMLElement>,
@@ -19,6 +22,9 @@ export interface MenuItemCheckboxProps
   checkmark?: ShorthandProps;
 }
 
+/**
+ * {@docCategory MenuItemCheckbox}
+ */
 export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemState, MenuItemSelectableState {
   ref: React.MutableRefObject<HTMLElement>;
 

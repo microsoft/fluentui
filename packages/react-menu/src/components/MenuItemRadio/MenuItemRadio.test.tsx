@@ -8,6 +8,7 @@ import { MenuListContext, MenuListProvider } from '../../menuListContext';
 
 describe('MenuItemRadio', () => {
   isConformant({
+    asPropHandlesRef: true,
     Component: MenuItemRadio,
     displayName: 'MenuItemRadio',
   });

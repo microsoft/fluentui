@@ -2,8 +2,7 @@ import * as React from 'react';
 import { useMenuItemRadio } from './useMenuItemRadio';
 import { MenuItemRadioProps } from './MenuItemRadio.types';
 import { renderMenuItemRadio } from './renderMenuItemRadio';
-import { useMenuItemStyles } from '../MenuItem/useMenuItemStyles';
-import { useCheckmarkStyles } from '../../selectable/index';
+import { useMenuItemRadioStyles } from './useMenuItemRadioStyles';
 
 /**
  * Define a styled MenuItemRadio, using the `useMenuItemRadio` hook.
@@ -11,8 +10,7 @@ import { useCheckmarkStyles } from '../../selectable/index';
  */
 export const MenuItemRadio = React.forwardRef<HTMLElement, MenuItemRadioProps>((props, ref) => {
   const state = useMenuItemRadio(props, ref);
-  useMenuItemStyles(state);
-  useCheckmarkStyles(state);
+  useMenuItemRadioStyles(state);
 
   return renderMenuItemRadio(state);
 });

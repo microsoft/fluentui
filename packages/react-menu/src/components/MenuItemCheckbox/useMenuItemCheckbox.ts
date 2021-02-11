@@ -20,7 +20,6 @@ export const useMenuItemCheckbox = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      as: 'div',
       icon: { as: 'span' },
       checkmark: { as: 'span' },
       role: 'menuitemcheckbox',

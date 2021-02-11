@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemSelectable } from '../../selectable/index';
+import { useMergedRefs } from '@fluentui/react-hooks';
 
 /**
  * Consts listing which props are shorthand props.
@@ -18,14 +19,9 @@ export const useMenuItemRadio = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuItemRadioProps,
 ): MenuItemRadioState => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef<HTMLElement>();
   const state = mergeProps(
     {
-      ref: resolvedRef,
-      as: 'div',
+      ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
       icon: { as: 'span' },
       checkmark: { as: 'span' },
       role: 'menuitemradio',
