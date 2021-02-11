@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Memoize callbacks to reduce UPP re-renders",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-02T17:54:29.739Z"
-}

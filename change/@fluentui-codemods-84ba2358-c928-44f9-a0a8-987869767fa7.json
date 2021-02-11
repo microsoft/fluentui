@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Disable unneeded codemods",
+  "packageName": "@fluentui/codemods",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

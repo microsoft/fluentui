@@ -36,8 +36,8 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.0.0-beta.2",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
-    "@fluentui/react": "^8.0.0-beta.51",
-    "@fluentui/react-cards": "^1.0.0-beta.51",
+    "@fluentui/react": "^8.0.0-beta.52",
+    "@fluentui/react-cards": "^1.0.0-beta.52",
     "@fluentui/react-focus": "^8.0.0-beta.18",
     "@fluentui/react-theme-provider": "^1.0.0-beta.21",
     "@fluentui/style-utilities": "^8.0.0-beta.13",
