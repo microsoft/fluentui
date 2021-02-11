@@ -42,6 +42,28 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
 }
 
 // @public
+export const MenuItemRadio: React.ForwardRefExoticComponent<Pick<MenuItemRadioProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+
+// @public
+export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
+    // (undocumented)
+    checkmark?: ShorthandProps;
+    // (undocumented)
+    icon?: ShorthandProps;
+}
+
+// @public
+export const menuItemRadioShorthandProps: string[];
+
+// @public
+export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectableState {
+    checkmark: ObjectShorthandProps<HTMLElement>;
+    icon?: ObjectShorthandProps<HTMLElement>;
+    // (undocumented)
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
 export const menuItemShorthandProps: string[];
 
 // @public (undocumented)
@@ -71,6 +93,9 @@ export const renderMenuItem: (state: MenuItemState) => JSX.Element;
 export const renderMenuItemCheckbox: (state: MenuItemCheckboxState) => JSX.Element;
 
 // @public
+export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
+
+// @public
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
@@ -81,6 +106,9 @@ export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, de
 
 // @public
 export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemCheckboxProps | undefined) => MenuItemCheckboxState;
+
+// @public
+export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemRadioProps | undefined) => MenuItemRadioState;
 
 // @public
 export const useMenuItemStyles: (state: MenuItemState) => void;
