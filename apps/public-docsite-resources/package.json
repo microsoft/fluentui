@@ -4,16 +4,6 @@
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
   "sideEffects": [
     "*.global.*",
     "*Examples.*",
