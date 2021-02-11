@@ -91,6 +91,5 @@ module.exports = {
       'Toggle',
       'Tooltip',
     ],
-    'react-cards': ['Card'],
   },
 };
