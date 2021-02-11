@@ -14,12 +14,12 @@ export interface MenuItemCheckboxProps
   /**
    * Icon slot rendered before children content
    */
-  icon?: ShorthandProps;
+  icon?: ShorthandProps<HTMLElement>;
 
   /**
    * Slot for the checkmark indicator
    */
-  checkmark?: ShorthandProps;
+  checkmark?: ShorthandProps<HTMLElement>;
 }
 
 /**

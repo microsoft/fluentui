@@ -13,14 +13,14 @@ import { ShorthandProps } from '@fluentui/react-utils';
 export const MenuItem: React.ForwardRefExoticComponent<MenuItemProps & React.RefAttributes<HTMLElement>>;
 
 // @public
-export const MenuItemCheckbox: React.ForwardRefExoticComponent<Pick<MenuItemCheckboxProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+export const MenuItemCheckbox: React.ForwardRefExoticComponent<MenuItemCheckboxProps & React.RefAttributes<HTMLElement>>;
 
 // Warning: (ae-forgotten-export) The symbol "MenuItemSelectableProps" needs to be exported by the entry point index.d.ts
 //
 // @public (undocumented)
 export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
-    checkmark?: ShorthandProps;
-    icon?: ShorthandProps;
+    checkmark?: ShorthandProps<HTMLElement>;
+    icon?: ShorthandProps<HTMLElement>;
 }
 
 // @public
@@ -42,14 +42,14 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
 }
 
 // @public
-export const MenuItemRadio: React.ForwardRefExoticComponent<Pick<MenuItemRadioProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+export const MenuItemRadio: React.ForwardRefExoticComponent<MenuItemRadioProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
     // (undocumented)
-    checkmark?: ShorthandProps;
+    checkmark?: ShorthandProps<HTMLElement>;
     // (undocumented)
-    icon?: ShorthandProps;
+    icon?: ShorthandProps<HTMLElement>;
 }
 
 // @public

@@ -9,6 +9,9 @@ import { MenuListContext, MenuListProvider } from '../../menuListContext';
 describe('MenuItemRadio', () => {
   isConformant({
     asPropHandlesRef: true,
+    // TODO fix generics in conformance
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     Component: MenuItemRadio,
     requiredProps: {
       name: 'radio',

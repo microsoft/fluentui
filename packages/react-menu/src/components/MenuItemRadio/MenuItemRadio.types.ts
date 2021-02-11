@@ -6,9 +6,9 @@ import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectab
  * {@docCategory MenuItemRadio}
  */
 export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
-  icon?: ShorthandProps;
+  icon?: ShorthandProps<HTMLElement>;
 
-  checkmark?: ShorthandProps;
+  checkmark?: ShorthandProps<HTMLElement>;
 }
 
 /**
