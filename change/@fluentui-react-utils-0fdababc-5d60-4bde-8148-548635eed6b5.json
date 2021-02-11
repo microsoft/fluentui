@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix root slot props passing everything",
+  "packageName": "@fluentui/react-utils",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
