@@ -11,8 +11,8 @@ export interface AlertVariables {
   borderColor: string;
   color: string;
   fontWeight: FontWeightProperty;
+  minHeight: string;
   padding: string;
-  heightValue: string;
 
   hoverBorderColor: string;
   hoverBackgroundColor: string;
@@ -86,7 +86,7 @@ export interface AlertVariables {
 }
 
 export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables => {
-  const heightValue = pxToRem(28);
+  const minHeight = pxToRem(28);
 
   return {
     borderStyle: 'solid',
@@ -96,7 +96,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     borderColor: siteVars.colorScheme.default.border2,
     color: siteVars.colorScheme.default.foreground1,
     fontWeight: siteVars.fontWeightRegular,
-    heightValue,
+    minHeight,
     padding: `0 ${pxToRem(16)}`,
 
     actionsMargin: pxToRem(5),
@@ -111,7 +111,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     dismissActionHoverOuterBorderColor: undefined,
     dismissActionHoverZIndex: undefined,
 
-    dismissActionSize: heightValue,
+    dismissActionSize: minHeight,
     dismissActionColor: undefined,
     dismissiblePadding: `0 0 0 ${pxToRem(16)}`,
 

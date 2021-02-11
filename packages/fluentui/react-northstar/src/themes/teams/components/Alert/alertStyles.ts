@@ -71,7 +71,7 @@ export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVar
     borderStyle: v.borderStyle,
     borderWidth: v.borderWidth,
     borderRadius: v.borderRadius,
-    height: v.heightValue,
+    minHeight: v.minHeight,
     padding: v.padding,
     fontWeight: v.fontWeight,
     visibility: 'visible',
