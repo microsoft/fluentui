@@ -109,6 +109,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     if (!group) {
       return null;
     }
+
+    const groupLabel = `${group.name} (${group.count}${group.hasMoreData ? '+' : ''})`;
+
     return (
       <div
         className={this._classNames.root}
@@ -121,8 +124,9 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         aria-rowindex={ariaRowIndex}
         data-is-focusable={true}
         onKeyUp={this._onKeyUp}
-        aria-label={group.ariaLabel || group.name}
+        aria-label={group.ariaLabel || groupLabel}
         aria-expanded={!this.state.isCollapsed}
+        aria-selected={canSelectGroup ? currentlySelected : undefined}
         aria-level={groupLevel + 1}
       >
         <div className={this._classNames.groupHeaderContainer} role="presentation">
