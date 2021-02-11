@@ -26,7 +26,11 @@ describe('MenuItemCheckbox conformance', () => {
    * Note: see more visual regression tests for MenuItemCheckbox in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<MenuItemCheckbox>Default MenuItemCheckbox</MenuItemCheckbox>);
+    const component = renderer.create(
+      <MenuItemCheckbox name="checkbox" value="1">
+        Default MenuItemCheckbox
+      </MenuItemCheckbox>,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

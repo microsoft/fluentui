@@ -26,7 +26,11 @@ describe('MenuItemRadio', () => {
    * Note: see more visual regression tests for MenuItemRadio in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<MenuItemRadio>Default MenuItemRadio</MenuItemRadio>);
+    const component = renderer.create(
+      <MenuItemRadio name="radio" value="1">
+        Default MenuItemRadio
+      </MenuItemRadio>,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
