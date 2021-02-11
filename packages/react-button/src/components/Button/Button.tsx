@@ -17,9 +17,10 @@ import { Theme } from '@fluentui/react-theme';
 // =================================================
 
 type ButtonSelectors = {
+  iconOnly?: boolean;
   primary?: boolean;
   textOnly?: boolean;
-  iconOnly?: boolean;
+  textWithIcon?: boolean;
 };
 
 type Slot = {
@@ -43,6 +44,8 @@ type ButtonTokens = {
   // TODO: what do we want to do with tokens for slots, just prefix them with slot name?
   iconWidth: string;
   iconHeight: string;
+  iconBeforeSpacing: string;
+  iconAfterSpacing: string;
 
   color: string;
   content2Color: string;
@@ -84,6 +87,7 @@ type ButtonVariantTokens = {
 // TODO: These are named in design specs but not hoisted to global/alias yet.
 //       We're tracking these here to determine how we can hoist them.
 const buttonSpacing = {
+  smaller: '4px',
   small: '6px',
   large: '12px',
 };
@@ -91,6 +95,10 @@ const buttonSpacing = {
 // =================================================
 // Theme Values
 // =================================================
+
+// isLiteralValue()
+// isGlobalValue()
+// isAliasValue()
 
 // We do not want a combinatorial explosion of component variables for variants (bg, bgPrimary, etc)
 // We want a fixed interface of variables for a given component and to alter those between variants
@@ -118,8 +126,13 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
 
     backgroundActive: theme.alias.color.neutral.neutralBackground1Pressed,
     borderColorActive: theme.alias.color.neutral.neutralStroke1Pressed,
+
+    iconBeforeSpacing: buttonSpacing.small,
+    iconAfterSpacing: buttonSpacing.smaller,
   },
-  textOnly: {},
+  textOnly: {
+    paddingX: buttonSpacing.large,
+  },
   // TODO: Would be ideal to automate a check to ensure when a variant is accessed, all the tokens are accessed as well.
   //       If not, it means there is cruft in the variant tokens definition.
   //       All tokens in a variant should be mapped to some style property.
@@ -177,6 +190,9 @@ const useRootClasses = makeStyles<ButtonSelectors>([
 
         display: 'inline-flex',
         alignItems: 'center',
+        // TODO: 1) ask designers what our vertical align strategy is
+        //       2) enforce with conformance for inline elements
+        verticalAlign: 'text-bottom',
         margin: 0,
 
         padding: `${buttonTokens.base.paddingX} ${buttonTokens.base.paddingY}`,
@@ -217,11 +233,11 @@ const useRootClasses = makeStyles<ButtonSelectors>([
         boxShadow: buttonTokens.primary.shadow,
 
         ':hover': {
-          background: buttonTokens.primary.background,
+          background: buttonTokens.primary.backgroundHover,
         },
 
         ':active': {
-          background: buttonTokens.primary.background,
+          background: buttonTokens.primary.backgroundPressed,
           // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
           boxShadow: buttonTokens.primary.boxShadow,
         },
@@ -236,9 +252,8 @@ const useRootClasses = makeStyles<ButtonSelectors>([
       const buttonTokens = makeButtonTokens(theme);
 
       return {
-        // TODO:  CSS in JS styles are not typed
-        minWidth: `var(--button-minWidth)`,
-        maxWidth: `var(--button-maxWidth)`,
+        minWidth: buttonTokens.textOnly.minWidth,
+        maxWidth: buttonTokens.textOnly.maxWidth,
       };
     },
   ],
@@ -253,6 +268,16 @@ const useRootClasses = makeStyles<ButtonSelectors>([
         //       1) using height for width to ensure square/circular
         //       2) is it ok to use base tokens in iconOnly?
         width: buttonTokens.base.height,
+      };
+    },
+  ],
+  [
+    ({ textWithIcon }) => textWithIcon,
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        gap: buttonTokens.base.iconBeforeSpacing,
       };
     },
   ],
@@ -282,7 +307,7 @@ const useRootClasses = makeStyles<ButtonSelectors>([
   ],
 ]);
 
-const useContentClasses = makeStyles([
+const useContentClasses = makeStyles<ButtonSelectors>([
   [
     null,
     {
@@ -346,6 +371,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
     primary: props.primary,
     iconOnly: hasIcon && !hasContent,
     textOnly: hasContent && !hasIcon,
+    textWithIcon: hasIcon && hasContent,
   };
 
   useButtonClasses(state, styleSelectors);

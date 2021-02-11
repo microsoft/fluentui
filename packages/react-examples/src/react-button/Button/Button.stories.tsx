@@ -83,13 +83,45 @@ export const Size = () => (
 //
 const AppearanceExample = (props: ButtonProps) => (
   <>
+    <Button {...props} icon={<CalendarIcon />} />
+    <br />
     <Button {...props}>Text</Button>
     <Button {...props} icon={<CalendarIcon />}>
       Text
     </Button>
-    <Button {...props} icon={<CalendarIcon />} />
+    <Button {...props} icon={<CalendarIcon />} iconPosition="after">
+      Text
+    </Button>
+    <br />
+    <Button {...props} secondaryContent="Secondary string">
+      Primary string
+    </Button>
+    <Button {...props} icon={<CalendarIcon />} secondaryContent="Secondary string">
+      Primary string
+    </Button>
     {/* TODO: get theme from storybook global state */}
-    <div>{JSON.stringify(makeButtonTokens(useTheme()), null, 2)}</div>
+    <pre
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'auto 1fr',
+        gridColumnGap: '1em',
+      }}
+    >
+      {Object.entries(makeButtonTokens(useTheme())).map(([variant, tokens]) => (
+        <>
+          <strong key={variant}>{variant}</strong>
+          <div key={variant + ':spacer'} />
+          {Object.entries(tokens).map(([name, value]) => [
+            <div key={`${variant}:${name}`} style={{ paddingLeft: '1em' }}>
+              {name}
+            </div>,
+            <div key={`${variant}:${name}:${value}`} style={{ paddingLeft: '1em' }}>
+              {value}
+            </div>,
+          ])}
+        </>
+      ))}
+    </pre>
   </>
 );
 
