@@ -2788,7 +2788,7 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@storybook/addon-a11y@^6.0.0-alpha.1":
+"@storybook/addon-a11y@6.0.0-alpha.1":
   version "6.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/@storybook/addon-a11y/-/addon-a11y-6.0.0-alpha.1.tgz#ba0f8c61b5587c9fe55c81a9d344d435edfb7a58"
   integrity sha512-NYz3rXCXHHuVrMvloOVK76oDWrcrdgV3HVNByfz4KcgNFyGrwdO/H0DmkNzSqwhqJKFxu3G+O5fkopcCichc+g==
@@ -2810,7 +2810,7 @@
     ts-dedent "^1.1.0"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-actions@^5.3.8":
+"@storybook/addon-actions@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.3.8.tgz#0f0deb16725ba14f161fe692d0f2240f43ec22e1"
   integrity sha512-em67VfeuDPJhRlPykPbf8ks1eVyEBsm/FakqxsETagEmYs738777ZVKlBSTgF/BfZTiu8AOZUFKq9Zevne4/uw==
@@ -2830,7 +2830,7 @@
     react-inspector "^4.0.0"
     uuid "^3.3.2"
 
-"@storybook/addon-info@^5.3.8":
+"@storybook/addon-info@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-info/-/addon-info-5.3.8.tgz#edd4959653fde2e7ca8ba3f1a192599e41a31e47"
   integrity sha512-3XaluhIJeHrzQVYZL8/fsYBRf4vWVU84uED7iq443TmY3B+n7uCY37iZHYPSio7b4HdWam8zGQyHfZeVktfykQ==
@@ -2851,7 +2851,7 @@
     react-lifecycles-compat "^3.0.4"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-knobs@^5.3.8":
+"@storybook/addon-knobs@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-5.3.8.tgz#c011ef54925a552e4f3c245deffec012dc51779c"
   integrity sha512-QjJ0VMWFuzTFMl7j7p4y1hpYWQ3E8jIv7K2EyBvx+0PHX1ytwGTlTDs+KA84SVvVHT4kwGHVEqJ0SvFFaLDxqg==
@@ -2875,7 +2875,7 @@
     react-lifecycles-compat "^3.0.4"
     react-select "^3.0.8"
 
-"@storybook/addon-options@^5.3.8":
+"@storybook/addon-options@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/addon-options/-/addon-options-5.3.8.tgz#f722943cfcea8e18e257049018f88be21d89f61a"
   integrity sha512-J9Bz1whjxQQ9dOdjhLjzuVVvJu46/xmMZrlfYuZ6npUIDir4HX5jmI6gfcG5RZGbbQqGUFT1OCQ46oQHZFFUow==
@@ -3019,7 +3019,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/channels@5.3.8", "@storybook/channels@^5.3.8":
+"@storybook/channels@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-5.3.8.tgz#778696b791e49c19b8de95c4bfb0ebb363745059"
   integrity sha512-nYcBRUE5k855saNqTRU8X2p6QEDE28T05rinJTC2IOZA+iemrZNSobe56lAXBuNZk4vQFuJQb0Caxuu9o4+ADw==
@@ -3223,7 +3223,7 @@
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core@5.3.8", "@storybook/core@^5.3.8":
+"@storybook/core@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/core/-/core-5.3.8.tgz#7748875afdddc9fb0ca24d0b712cc9c25fcaad9d"
   integrity sha512-srMeSseUrSmh4pTe9DBD7IdFcLZoIm5r2cnH0nzPNpbrCknegW1LLLuVmSz8wLjobIrU/GYs6AO0VxKDnnbXuw==
@@ -3335,7 +3335,7 @@
     pretty-hrtime "^1.0.3"
     regenerator-runtime "^0.13.3"
 
-"@storybook/react@^5.3.8":
+"@storybook/react@5.3.8":
   version "5.3.8"
   resolved "https://registry.yarnpkg.com/@storybook/react/-/react-5.3.8.tgz#6b2fcbc890363669531d42035ed7f5de79f99cb7"
   integrity sha512-nxW3KBxOdGlRbI2q0dueRdpIc4/nUiMjvZAeNgDBoYGetmdeTq5dudNJsdSqdruy/2GdgrW3KUb27wPRMDAfLQ==
