@@ -6,7 +6,7 @@ class SelectableListControlledExample extends React.Component<any, any> {
 
   items = [
     {
-      key: 'irving',
+      key: 'robert',
       media: (
         <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />
       ),
@@ -15,7 +15,7 @@ class SelectableListControlledExample extends React.Component<any, any> {
       content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
     },
     {
-      key: 'skyler',
+      key: 'celeste',
       media: (
         <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg" avatar />
       ),
@@ -24,7 +24,7 @@ class SelectableListControlledExample extends React.Component<any, any> {
       content: 'Use the online FTP application to input the multi-byte application!',
     },
     {
-      key: 'dante',
+      key: 'cecil',
       media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />,
       header: 'Cecil Folk',
       headerMedia: '5:22:40 PM',

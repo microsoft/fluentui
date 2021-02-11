@@ -4,17 +4,17 @@ import { ErrorIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
-    key: 'irving',
+    key: 'robert',
     media: <Status state="error" icon={<ErrorIcon />} />,
     header: 'Robert Tolbert',
   },
   {
-    key: 'skyler',
+    key: 'celeste',
     media: <Status state="success" icon={<AcceptIcon />} />,
     header: 'Celeste Burton',
   },
   {
-    key: 'dante',
+    key: 'cecil',
     media: <Status />,
     header: 'Cecil Folk',
   },

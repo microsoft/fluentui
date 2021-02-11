@@ -26,7 +26,7 @@ const actions = (
 
 const items = [
   {
-    key: 'irving',
+    key: 'robert',
     media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />,
     header: 'Robert Tolbert - Software Engineer III',
     headerMedia: '7:26:56 AM',
@@ -35,7 +35,7 @@ const items = [
     endMedia: actions,
   },
   {
-    key: 'skyler',
+    key: 'celeste',
     media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg" avatar />,
     header: 'Celeste Burton - Senior Program Manager',
     headerMedia: '11:30:17 PM',
@@ -44,7 +44,7 @@ const items = [
     endMedia: actions,
   },
   {
-    key: 'dante',
+    key: 'cecil',
     media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />,
     header: 'Cecil Folk - Senior Program Manager III',
     headerMedia: '5:22:40 PM',

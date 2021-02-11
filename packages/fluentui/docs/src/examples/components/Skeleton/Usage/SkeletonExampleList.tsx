@@ -40,7 +40,7 @@ const SkeletonExampleList = () => {
                 <Skeleton.Line width="100px" />
               </Skeleton>
             ) : (
-              'Irving Kuhic'
+              'Robert Tolbert'
             )
           }
           content={

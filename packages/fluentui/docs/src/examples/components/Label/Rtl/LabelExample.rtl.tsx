@@ -10,7 +10,7 @@ const LabelExampleRtl = () => (
       src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
       avatar: true,
     }}
-    icon={<CloseIcon {...{}} />}
+    icon={<CloseIcon />}
   />
 );
 

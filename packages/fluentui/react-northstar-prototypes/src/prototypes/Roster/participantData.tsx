@@ -37,7 +37,7 @@ const participants = [
     id: '1',
     title: (
       <Participant
-        name="Irving Kuhic"
+        name="Allan Munger"
         position="Software Engineer"
         isMuted
         image={getAvatar(0)}
@@ -53,7 +53,7 @@ const participants = [
     id: '2',
     title: (
       <Participant
-        name="Skyler Parks"
+        name="Amanda Brady"
         position="Product Manager"
         image={getAvatar(1)}
         status={{
@@ -67,7 +67,7 @@ const participants = [
     id: '3',
     title: (
       <Participant
-        name="Adam Parks"
+        name="Cameron Evans"
         position="Manager"
         isMuted
         image={getAvatar(2)}
@@ -83,7 +83,7 @@ const participants = [
     title: (
       <Participant
         isTalking
-        name="Dante Schneider"
+        name="Carlos Slattery"
         image={getAvatar(3)}
         position="Guest"
         status={{ color: 'gray', title: 'unknown' }}
@@ -110,7 +110,7 @@ const participants = [
     title: (
       <Participant
         isTalking
-        name="Talking Jim"
+        name="Carole Poland"
         position="Guest"
         image={getAvatar(5)}
         status={{
@@ -124,7 +124,7 @@ const participants = [
     id: '7',
     title: (
       <Participant
-        name="Tiana kohler"
+        name="Celeste Burton"
         position="Software Engineer"
         isMuted
         image={getAvatar(6)}
@@ -139,7 +139,7 @@ const participants = [
     id: '8',
     title: (
       <Participant
-        name="Vernie haley"
+        name="Colin Ballinger"
         position="Product Manager"
         isMuted
         image={getAvatar(7)}
@@ -154,7 +154,7 @@ const participants = [
     id: '9',
     title: (
       <Participant
-        name="Cecile johns"
+        name="Daisy Phillips"
         position="Software Engineer"
         isMuted
         image={getAvatar(8)}
@@ -170,7 +170,7 @@ const participants = [
     title: (
       <Participant
         isTalking
-        name="Sigmund terry"
+        name="Elliot Woodward"
         image={getAvatar(9)}
         position="Manager"
         status={{
@@ -185,7 +185,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Aurore von"
+        name="Charlotte Waltson"
         position="Guest"
         image={getAvatar(10)}
         status={{
@@ -200,7 +200,7 @@ const participants = [
     title: (
       <Participant
         isTalking
-        name="Rocky walsh"
+        name="Elvia Atkins"
         position="Guest"
         image={getAvatar(11)}
         status={{
@@ -214,7 +214,7 @@ const participants = [
     id: '13',
     title: (
       <Participant
-        name="Cecile johns"
+        name="Erik Nason"
         position="Software Engineer"
         isTalking
         image={getAvatar(12)}
@@ -230,7 +230,7 @@ const participants = [
     title: (
       <Participant
         isTalking
-        name="Clementina predovic"
+        name="Henry Brill"
         image={getAvatar(13)}
         position="Manager"
         status={{
@@ -245,7 +245,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Robin huel"
+        name="Isaac Fielder"
         position="Guest"
         image={getAvatar(14)}
         status={{
@@ -260,7 +260,7 @@ const participants = [
     title: (
       <Participant
         isTalking
-        name="Rocky walsh"
+        name="Kat Larsson"
         position="Guest"
         image={getAvatar(15)}
         status={{
@@ -274,7 +274,7 @@ const participants = [
     id: '17',
     title: (
       <Participant
-        name="Dena langosh"
+        name="Katri Athokas"
         position="Product Manager"
         isMuted
         image={getAvatar(16)}
@@ -289,7 +289,7 @@ const participants = [
     id: '18',
     title: (
       <Participant
-        name="Felicity littel"
+        name="Johnie McConnell"
         position="Software Engineer"
         isMuted
         image={getAvatar(17)}
@@ -305,7 +305,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Bobby metz"
+        name="Kristin Patterson"
         image={getAvatar(18)}
         position="Manager"
         status={{
@@ -320,7 +320,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Aurore von"
+        name="Lydia Bauer"
         position="Guest"
         image={getAvatar(19)}
         status={{
@@ -335,7 +335,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Baby runolfsson"
+        name="Mauricio August"
         position="Guest"
         image={getAvatar(20)}
         status={{
@@ -349,7 +349,7 @@ const participants = [
     id: '22',
     title: (
       <Participant
-        name="Lucienne fisher"
+        name="Miguel Garcia"
         position="Software Engineer"
         image={getAvatar(21)}
         status={{
@@ -364,7 +364,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Jaydon dibbert"
+        name="Mona Kane"
         image={getAvatar(22)}
         position="Manager"
         status={{
@@ -379,7 +379,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Amya o'conner"
+        name="Robert Tolbert"
         position="Guest"
         image={getAvatar(23)}
         status={{
@@ -394,7 +394,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Henriette von"
+        name="Robin Counts"
         position="Guest"
         image={getAvatar(24)}
         status={{
@@ -409,7 +409,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Corene macejkovic"
+        name="Tim Deboer"
         position="Guest"
         image={getAvatar(25)}
         status={{
@@ -424,7 +424,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Mireya heathcote"
+        name="Wanda Howard"
         position="Guest"
         image={getAvatar(26)}
         status={{
@@ -438,7 +438,7 @@ const participants = [
     id: '28',
     title: (
       <Participant
-        name="Danyka ferry"
+        name="Cecil Folk"
         isTalking
         position="Software Engineer"
         image={getAvatar(27)}
@@ -454,7 +454,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Lea bogisich"
+        name="Allan Munger"
         image={getAvatar(28)}
         position="Manager"
         status={{
@@ -469,7 +469,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Alvah kuhic"
+        name="Amanmda Brady"
         position="Guest"
         image={getAvatar(29)}
         status={{
@@ -484,7 +484,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Julius weber"
+        name="Ashley McCarthy"
         position="Guest"
         image={getAvatar(30)}
         status={{
@@ -498,7 +498,7 @@ const participants = [
     id: '32',
     title: (
       <Participant
-        name="Lisandro wunsch"
+        name="Cameron Evans"
         position="Software Engineer"
         isMuted
         image={getAvatar(31)}
@@ -514,7 +514,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Rogelio runolfsson"
+        name="Carlos Slattery"
         image={getAvatar(32)}
         position="Manager"
         status={{
@@ -529,7 +529,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Rebecca yundt"
+        name="Carole Poland"
         position="Guest"
         image={getAvatar(33)}
         status={{
@@ -544,7 +544,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Clair lang"
+        name="Celeste Burton"
         position="Guest"
         image={getAvatar(34)}
         status={{
@@ -558,7 +558,7 @@ const participants = [
     id: '36',
     title: (
       <Participant
-        name="Aubree rodriguez"
+        name="Colin Ballinger"
         position="Software Engineer"
         image={getAvatar(35)}
         status={{
@@ -573,7 +573,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Jaydon dibbert"
+        name="Daisy Phillips"
         image={getAvatar(36)}
         position="Manager"
         status={{
@@ -588,7 +588,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Sonia funk"
+        name="Elliot Woodward"
         image={getAvatar(37)}
         position="Manager"
         status={{
@@ -603,7 +603,7 @@ const participants = [
     title: (
       <Participant
         isMuted
-        name="Marjolaine cummerata"
+        name="Elvia Atkins"
         position="Guest"
         image={getAvatar(38)}
         status={{

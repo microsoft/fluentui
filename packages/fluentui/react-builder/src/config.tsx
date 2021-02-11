@@ -265,21 +265,21 @@ export const DRAGGING_ELEMENTS = {
     props: {
       items: [
         {
-          key: 'irving',
+          key: 'robert',
           media: <FUI.Image src="public/images/avatar/RobertTolbert.jpg" avatar />,
           header: 'Robert Tolbert',
           headerMedia: '7:26:56 AM',
           content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
         },
         {
-          key: 'skyler',
+          key: 'celeste',
           media: <FUI.Image src="public/images/avatar/CelesteBurton.jpg" avatar />,
           header: 'Celeste Burton',
           headerMedia: '11:30:17 PM',
           content: 'Use the online FTP application to input the multi-byte application!',
         },
         {
-          key: 'dante',
+          key: 'cecil',
           media: <FUI.Image src="public/images/avatar/CecilFolk.jpg" avatar />,
           header: 'Cecil Folk',
           headerMedia: '5:22:40 PM',

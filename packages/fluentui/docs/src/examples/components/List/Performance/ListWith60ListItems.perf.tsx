@@ -11,7 +11,7 @@ const robinAvatar = {
   image: `data:image/jpeg;base64,${avatars.ade}`,
   status: { color: 'green', icon: <AcceptIcon /> },
 };
-const headers = ['Irving Kuhic', 'Skyler Parks', 'Dante Schneider'];
+const headers = ['Robert Tolbert', 'Celeste Burton', 'Cecil Folk'];
 const headerMedias = ['7:26:56 AM', '11:30:17 PM', '5:22:40 PM'];
 const contents = [
   'Program the sensor to the SAS alarm through the haptic SQL card!',
