@@ -417,6 +417,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     ],
   );
 
+  React.useEffect(() => {
+    const inputElement = input.current?.inputElement;
+    inputElement?.addEventListener('keydown', _onInputKeyDown as () => void);
+
+    return () => {
+      inputElement?.removeEventListener('keydown', _onInputKeyDown as () => void);
+    };
+  });
+
   const _onCopy = React.useCallback(
     (ev: React.ClipboardEvent<HTMLInputElement>) => {
       if (focusedItemIndices.length > 0 && selectedItemsListGetItemCopyText) {
@@ -612,7 +621,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   }
                   disabled={false}
                   onPaste={_onPaste}
-                  onKeyDown={_onInputKeyDown}
                 />
               </div>
             )}
