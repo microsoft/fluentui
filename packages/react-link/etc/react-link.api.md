@@ -4,6 +4,72 @@
 
 ```ts
 
+import { ColorTokens } from '@fluentui/theme';
+import { ColorTokenSet } from '@fluentui/theme';
+import { ComponentProps } from '@fluentui/react-utils';
+import { FontTokens } from '@fluentui/theme';
+import * as React from 'react';
+import { RecursivePartial } from '@fluentui/theme';
+
+// @public
+export const Link: React.ForwardRefExoticComponent<Pick<LinkProps, string | number> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type LinkProps = ComponentProps & React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+    href?: string;
+    target?: string;
+    rel?: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+    disabled?: boolean;
+    type?: string;
+    inline?: string;
+    tokens?: RecursivePartial<LinkTokens>;
+};
+
+// @public
+export const linkShorthandProps: never[];
+
+// @public (undocumented)
+export interface LinkState extends LinkProps {
+    // (undocumented)
+    linkRef?: React.RefObject<HTMLElement>;
+}
+
+// @public (undocumented)
+export type LinkTokens = ColorTokens & FontTokens & {
+    textDecoration?: string;
+    visited?: ColorTokenSet;
+    focused?: {
+        textDecoration: string;
+    };
+    hovered?: {
+        textDecoration: string;
+    };
+    pressed?: {
+        textDecoration: string;
+    };
+    disabled?: {
+        textDecoration: string;
+    };
+};
+
+// @public (undocumented)
+export type LinkVariants<TTokens = LinkTokens> = {
+    root?: TTokens;
+};
+
+// @public
+export const renderLink: (state: LinkState) => JSX.Element;
+
+// @public
+export const useLink: (props: LinkProps, ref: React.Ref<HTMLElement>, defaultProps?: LinkProps | undefined) => LinkState;
+
+// @public (undocumented)
+export const useLinkClasses: (state: LinkState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+
+// @public
+export const useLinkState: (draftState: LinkState) => void;
+
 
 // (No @packageDocumentation comment for this package)
 
