@@ -56,10 +56,7 @@ jobs:
         displayName: yarn
 
       - script: |
-          for i in {1..1500000}
-          do
-            echo "$i - Testing console log output Testing console log output Testing console log output Testing console log output Testing console log output "
-          done
+          yarn lage screener --to vr-tests --debug --no-cache
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
