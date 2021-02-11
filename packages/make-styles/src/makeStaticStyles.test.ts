@@ -60,6 +60,30 @@ describe('makeStaticStyles', () => {
     `);
   });
 
+  it('handles caching to avoid duplicated styles', () => {
+    const useStyles = makeStaticStyles({
+      body: {
+        background: 'blue',
+      },
+    });
+
+    const useStyles2 = makeStaticStyles({
+      body: {
+        background: 'blue',
+      },
+    });
+
+    useStyles({ renderer });
+    useStyles({ renderer });
+    useStyles2({ renderer });
+
+    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+      body {
+        background: blue;
+      }
+    `);
+  });
+
   it('can use with makeStyles', () => {
     const useStaticStyles = makeStaticStyles({
       '@font-face': {
