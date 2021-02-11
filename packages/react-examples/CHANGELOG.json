@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@fluentui/react-examples_v0.11.24",
+      "version": "0.11.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "37f1996872b4d7b9a94fe45dc0d52e5f2be77c94",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Feb 2021 12:26:30 GMT",
       "tag": "@fluentui/react-examples_v0.11.22",
       "version": "0.11.22",

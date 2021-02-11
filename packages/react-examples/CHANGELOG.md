@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Tue, 09 Feb 2021 12:26:30 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.24)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.22..@fluentui/react-examples_v0.11.24)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
 
 ## [0.11.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.22)
 

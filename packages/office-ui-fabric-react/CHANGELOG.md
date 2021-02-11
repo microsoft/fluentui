@@ -1,8 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.160.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.0)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.159.0..office-ui-fabric-react_v7.160.0)
+
+### Minor changes
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
+
+### Patches
+
+- add role of menu to the ul element of a section item ([PR #16932](https://github.com/microsoft/fluentui/pull/16932) by makopch@microsoft.com)
 
 ## [7.159.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.159.0)
 

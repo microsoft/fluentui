@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "office-ui-fabric-react_v7.160.0",
+      "version": "7.160.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add role of menu to the ul element of a section item",
+            "author": "makopch@microsoft.com",
+            "commit": "bc8fd8d5d9313451d84a0d3f00dc2cd8d7463db4",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Feb 2021 12:25:19 GMT",
       "tag": "office-ui-fabric-react_v7.159.0",
       "version": "7.159.0",

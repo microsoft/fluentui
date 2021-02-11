@@ -2,6 +2,29 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@uifabric/charting_v4.14.0",
+      "version": "4.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "37f1996872b4d7b9a94fe45dc0d52e5f2be77c94",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Feb 2021 12:26:03 GMT",
       "tag": "@uifabric/charting_v4.13.0",
       "version": "4.13.0",

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.13](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.13)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.12..@uifabric/experiments_v7.38.13)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
 
 ## [7.38.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.12)
 

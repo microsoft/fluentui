@@ -1,8 +1,21 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Fri, 05 Feb 2021 12:26:03 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.14.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.14.0)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.13.0..@uifabric/charting_v4.14.0)
+
+### Minor changes
+
+- barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart ([PR #16763](https://github.com/microsoft/fluentui/pull/16763) by v-jasha@microsoft.com)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
 
 ## [4.13.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.13.0)
 

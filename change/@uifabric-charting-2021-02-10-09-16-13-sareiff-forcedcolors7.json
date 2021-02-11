@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update high contract to support forced colors",
-  "packageName": "@uifabric/charting",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-10T17:15:12.025Z"
-}

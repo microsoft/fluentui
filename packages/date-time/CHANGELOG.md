@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 31 Dec 2020 12:29:36 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.16](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.16)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.5..@uifabric/date-time_v7.19.16)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
 
 ## [7.19.5](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.5)
 

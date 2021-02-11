@@ -2,6 +2,21 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@uifabric/utilities_v7.33.4",
+      "version": "7.33.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix merge to correctly handle array value.",
+            "author": "xgao@microsoft.com",
+            "commit": "2055d4a1a268b2fefa0f1e64854ac3f31b9d49b9",
+            "package": "@uifabric/utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Feb 2021 12:26:30 GMT",
       "tag": "@uifabric/utilities_v7.33.3",
       "version": "7.33.3",

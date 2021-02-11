@@ -1,8 +1,17 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 09 Feb 2021 12:26:30 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.33.4](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.4)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/utilities_v7.33.3..@uifabric/utilities_v7.33.4)
+
+### Patches
+
+- fix merge to correctly handle array value. ([PR #16910](https://github.com/microsoft/fluentui/pull/16910) by xgao@microsoft.com)
 
 ## [7.33.3](https://github.com/microsoft/fluentui/tree/@uifabric/utilities_v7.33.3)
 
