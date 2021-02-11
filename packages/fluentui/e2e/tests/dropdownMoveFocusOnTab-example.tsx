@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Dropdown, dropdownItemClassName, dropdownSlotClassNames } from '@fluentui/react-northstar';
 
-const inputItems = [
+export const inputItems = [
   'Robert Tolbert',
   'Wanda Howard',
   'Tim Deboer',
