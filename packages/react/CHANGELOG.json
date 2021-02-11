@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.53",
+      "version": "8.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] Remove compat exports; move Button back to old location",
+            "author": "elcraig@microsoft.com",
+            "commit": "70b63061357489ccc43878d0d0b054953690d5b2",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Feb 2021 12:20:53 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.52",
       "version": "8.0.0-beta.52",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 02:38:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.1)
+
+Thu, 11 Feb 2021 02:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.13.0..@fluentui/web-components_v0.13.1)
+
+### Patches
+
+- remove duplicate color export from web components package ([PR #16941](https://github.com/microsoft/fluentui/pull/16941) by chhol@microsoft.com)
 
 ## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.0)
 
