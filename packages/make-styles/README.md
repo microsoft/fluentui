@@ -76,6 +76,31 @@ const masks = {
 
 It also made code complicated for understanding and debugging.
 
+### How about static styles?
+
+There is a separate API `makeStaticStyles` for this case.
+
+It can be used to register styles object:
+
+```jsx=
+makeStaticStyles({
+  '@font-face': {
+    fontFamily: 'Open Sans',
+    src: `url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+         url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+  },
+  body: {
+    background: 'red',
+  },
+});
+```
+
+Or string:
+
+```jsx=
+makeStaticStyles('body { background: red; } .foo { color: green; }');
+```
+
 # Proposed build structure
 
 ```
