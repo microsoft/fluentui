@@ -37,7 +37,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     ghost?: boolean | undefined;
     transparent?: boolean | undefined;
     size?: "small" | "medium" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
-    tokens?: import("@fluentui/theme").RecursivePartial<import("./Button.types").ButtonTokens> | undefined;
+    tokens?: import("@fluentui/react-theme-provider/lib/compat").RecursivePartial<import("./Button.types").ButtonTokens> | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
