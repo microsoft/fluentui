@@ -22,7 +22,6 @@ export const datepickerCalendarCellButtonStyles: ComponentSlotStylesPrepared<
       height: '100%',
       width: '100%',
 
-      borderRadius: v.calendarCellBorderRadius,
       cursor: 'pointer',
       border: v.calendarCellBorder,
 

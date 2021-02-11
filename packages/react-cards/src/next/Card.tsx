@@ -12,7 +12,7 @@ export const Card = React.forwardRef<HTMLElement, CardProps>((props, ref) => {
   const { render, state } = useCard(props, ref);
 
   useCardClasses(state);
-  useFocusRects(state.ref as any);
+  useFocusRects(state.ref);
   useInlineTokens(state, '--card');
 
   return render(state);

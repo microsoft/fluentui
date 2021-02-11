@@ -75,7 +75,8 @@
     "lerna": "^3.15.0",
     "lint-staged": "^10.2.9",
     "satisfied": "^1.1.1",
-    "syncpack": "^5.6.10"
+    "syncpack": "^5.6.10",
+    "typescript": "3.7.2"
   },
   "license": "MIT",
   "workspaces": {
