@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 02:38:00 GMT",
+      "tag": "@fluentui/web-components_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove duplicate color export from web components package",
+            "author": "chhol@microsoft.com",
+            "commit": "abe60136582d21dafec4f192b41be8bbe940487f",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Feb 2021 00:56:52 GMT",
       "tag": "@fluentui/web-components_v0.13.0",
       "version": "0.13.0",
