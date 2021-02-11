@@ -141,8 +141,9 @@ exports[`Slider renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-          & .ms-Slider-thumb:focus::after {
-            inset: -3px;
+          & .ms-Slider-thumb[role="slider"]:focus::after {
+            inset: 4px;
+            outline-offset: 8px;
           }
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
@@ -348,7 +349,7 @@ exports[`Slider renders range slider correctly 1`] = `
         }
     htmlFor="Slider0"
   >
-    I am a range slider
+    I am a ranged slider
   </label>
   <div
     className=
@@ -474,8 +475,9 @@ exports[`Slider renders range slider correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-          & .ms-Slider-thumb:focus::after {
-            inset: -3px;
+          & .ms-Slider-thumb[role="slider"]:focus::after {
+            inset: 4px;
+            outline-offset: 8px;
           }
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
@@ -496,7 +498,7 @@ exports[`Slider renders range slider correctly 1`] = `
       >
         <span
           aria-disabled={false}
-          aria-label="min I am a range slider"
+          aria-label="min I am a ranged slider"
           aria-valuemax={0}
           aria-valuemin={0}
           aria-valuenow={0}
@@ -549,7 +551,7 @@ exports[`Slider renders range slider correctly 1`] = `
         />
         <span
           aria-disabled={false}
-          aria-label="max I am a range slider"
+          aria-label="max I am a ranged slider"
           aria-valuemax={10}
           aria-valuemin={0}
           aria-valuenow={0}
