@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.53)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.52..@fluentui/react-charting_v5.0.0-beta.53)
+
+### Changes
+
+- custom test area(right side of the chart) for horizontal bar chart added. By this, we can customize the right side test values to the chart. all files snaps updated ([PR #16810](https://github.com/microsoft/fluentui/pull/16810) by v-jasha@microsoft.com)
+- Narrator issues fixed in bar charts ([PR #16914](https://github.com/microsoft/fluentui/pull/16914) by v-jasha@microsoft.com)
+
+## [5.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.52)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.51..@fluentui/react-charting_v5.0.0-beta.52)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+
+## [5.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.51)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.50..@fluentui/react-charting_v5.0.0-beta.51)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.51 ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by tristan.watanabe@gmail.com)
 
 ## [5.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.50)
 

@@ -4,7 +4,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Coachmark } from '@fluentui/react/lib/Coachmark';
 import { IComponentAsProps, IComponentAs } from '@fluentui/react/lib/Utilities';
 import { TeachingBubbleContent } from '@fluentui/react/lib/TeachingBubble';
-import { CommandBarButton, IButtonProps } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton, IButtonProps } from '@fluentui/react/lib/Button';
 
 interface IIndividualCommandBarButtonAsExampleProps {
   onDismissCoachmark: () => void;

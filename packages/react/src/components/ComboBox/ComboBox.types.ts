@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { IStyle, ITheme } from '../../Styling';
-import { IButtonStyles, IButtonProps } from '../../compat/Button';
+import { IButtonStyles, IButtonProps } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IAutofillProps } from '../../Autofill';

@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.43)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.0-beta.42..@fluentui/react-date-time_v8.0.0-beta.43)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.53 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+## [8.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.42)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.0-beta.41..@fluentui/react-date-time_v8.0.0-beta.42)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.41)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.0-beta.40..@fluentui/react-date-time_v8.0.0-beta.41)
+
+### Changes
+
+- [BREAKING] Move components to @fluentui/react and re-export from there (working around a circular dependency) ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.40)
 

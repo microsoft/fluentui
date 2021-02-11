@@ -11,7 +11,7 @@ import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType, IContextualMenuListProps } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-import { DefaultButton, IButton } from '../../compat/Button';
+import { DefaultButton, IButton } from '../../Button';
 import { IRenderFunction, resetIds } from '@fluentui/utilities';
 import { isConformant } from '../../common/isConformant';
 

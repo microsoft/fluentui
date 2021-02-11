@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DatePicker, addDays, mergeStyleSets } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const styles = mergeStyleSets({
   root: { maxWidth: 300, selectors: { '> *': { marginBottom: 15 } } },

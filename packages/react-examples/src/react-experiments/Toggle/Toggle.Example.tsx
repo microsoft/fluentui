@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Toggle, IToggle } from '@fluentui/react-experiments';
 import { Label, Spinner } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export interface IToggleExampleState {
   checked: boolean;

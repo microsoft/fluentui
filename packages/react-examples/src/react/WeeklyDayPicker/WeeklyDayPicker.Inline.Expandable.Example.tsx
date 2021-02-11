@@ -2,7 +2,7 @@ import * as React from 'react';
 import { WeeklyDayPicker, DayOfWeek, addDays, defaultWeeklyDayPickerStrings } from '@fluentui/react';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 export interface IWeeklyDayPickerInlineExpandableExampleState {
   selectedDate?: Date;

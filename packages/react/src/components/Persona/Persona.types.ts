@@ -87,6 +87,11 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<HTMLDivElement
    */
   initialsColor?: PersonaInitialsColor | string;
 
+  /**
+   * The text color when the user's initials are displayed
+   */
+  initialsTextColor?: string;
+
   /** The colors to be used for the presence-icon and it's background */
   presenceColors?: {
     available: string;

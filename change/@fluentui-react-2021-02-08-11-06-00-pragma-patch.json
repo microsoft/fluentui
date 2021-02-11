@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Stack/Text: Added additional pragma to set jsxRuntime to classic",
-  "packageName": "@fluentui/react",
-  "email": "subs@appsparkler.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-08T05:36:00.876Z"
-}

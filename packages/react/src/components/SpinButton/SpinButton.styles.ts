@@ -6,7 +6,7 @@ import {
   IconFontSizes,
   getInputFocusStyle,
 } from '../../Styling';
-import { IButtonStyles } from '../../compat/Button';
+import { IButtonStyles } from '../../Button';
 
 import { ISpinButtonStyles, ISpinButtonStyleProps } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
