@@ -1,32 +1,24 @@
-import { CAN_USE_CSS_VARIABLES } from './constants';
-import { createCSSVariablesProxy } from './runtime/index';
 import { resolveStaticStyleRules } from './runtime/resolveStaticStyleRules';
-import { MakeStaticStylesStyleRule, MakeStylesOptions, MakeStaticStylesStyleFunctionRule } from './types';
+import { MakeStaticStylesOptions, MakeStaticStyles } from './types';
 
 /**
  * Register static css.
  * @param styles styles object or string.
  */
-export function makeStaticStyles<Tokens>(styles: MakeStaticStylesStyleRule<Tokens>) {
+export function makeStaticStyles(styles: MakeStaticStyles) {
   const styleCache: Record<string, true> = {};
 
-  function computeClasses(options: MakeStylesOptions<Tokens>): void {
-    // TODO: remove proxy
-    const tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
-
-    const styleRules =
-      typeof styles === 'function' ? (styles as MakeStaticStylesStyleFunctionRule<Tokens>)(tokens) : styles;
-    const resolvedStyleRule = resolveStaticStyleRules(styleRules);
+  function useStaticStyles(options: MakeStaticStylesOptions): void {
+    const resolvedStyleRules = resolveStaticStyleRules(styles);
 
     const cacheKey = options.renderer.id;
-    const cacheValue = styleCache[cacheKey];
-    if (cacheValue) {
+    if (styleCache[cacheKey]) {
       return;
     }
 
-    options.renderer.insertDefinitions(resolvedStyleRule, !!options.rtl);
+    options.renderer.insertDefinitions(resolvedStyleRules, false /** static rules do not support RTL transforms */);
     styleCache[cacheKey] = true;
   }
 
-  return computeClasses;
+  return useStaticStyles;
 }

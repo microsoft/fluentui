@@ -1,16 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore No typings :(
 import * as prettier from 'prettier';
-import { MakeStylesResolvedRule } from '../../../types';
-import { isObject } from '../isObject';
+import { MakeStylesResolvedRule } from '../../types';
+import { isObject } from '../../runtime/utils/isObject';
 
 export const cssRulesSerializer: jest.SnapshotSerializerPlugin = {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   test(value: any) {
-    return Array.isArray(value);
+    return Array.isArray(value) || typeof value === 'string';
   },
   print(value: string[]) {
-    return prettier.format(value.join(''), { parser: 'css' }).trim();
+    return prettier.format(Array.isArray(value) ? value.join('') : value, { parser: 'css' }).trim();
   },
 };
 

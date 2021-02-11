@@ -1,5 +1,5 @@
 import { resolveStaticStyleRules } from './resolveStaticStyleRules';
-import { makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
+import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
@@ -42,5 +42,16 @@ describe('resolveStaticStyleRules', () => {
           margin-left: 5px;
         }
       `);
+  });
+
+  it('handles css string', () => {
+    expect(resolveStaticStyleRules('body {background: red;} div {color: green;}')).toMatchInlineSnapshot(`
+      body {
+        background: red;
+      }
+      div {
+        color: green;
+      }
+    `);
   });
 });

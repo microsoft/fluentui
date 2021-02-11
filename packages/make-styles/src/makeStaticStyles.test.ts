@@ -1,9 +1,11 @@
 import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStaticStyles } from './makeStaticStyles';
-import { cssRulesSerializer } from './runtime/utils/test/snapshotSerializer';
+import { cssRulesSerializer, makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
+import { makeStyles } from './makeStyles';
 
 expect.addSnapshotSerializer(cssRulesSerializer);
+expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 describe('makeStaticStyles', () => {
   let renderer: MakeStylesDOMRenderer;
@@ -27,7 +29,8 @@ describe('makeStaticStyles', () => {
       },
     });
 
-    useStyles({ renderer, tokens: {} });
+    useStyles({ renderer });
+    useStyles({ renderer }); // call twice to test caching logic
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       body {
@@ -43,13 +46,51 @@ describe('makeStaticStyles', () => {
   });
 
   it('handles css string', () => {
-    const useStyles = makeStaticStyles('body {background: red;}');
+    const useStyles = makeStaticStyles('body {background: red;} div {color: green;}');
 
-    useStyles({ renderer, tokens: {} });
+    useStyles({ renderer });
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       body {
         background: red;
+      }
+      div {
+        color: green;
+      }
+    `);
+  });
+
+  it('can use with makeStyles', () => {
+    const useStaticStyles = makeStaticStyles({
+      '@font-face': {
+        fontFamily: 'Open Sans',
+        src: `url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+      },
+    });
+
+    const useStyles = makeStyles([
+      [
+        null,
+        {
+          fontFamily: 'Open Sans',
+          fontSize: '16px',
+        },
+      ],
+    ]);
+
+    useStaticStyles({ renderer });
+    expect(useStyles({}, { renderer, tokens: {} })).toBe('__xgtdzt0 fy9yzz70 f4ybsrx0');
+
+    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+      @font-face {
+        font-family: Open Sans;
+        src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+      }
+      .fy9yzz70 {
+        font-family: Open Sans;
+      }
+      .f4ybsrx0 {
+        font-size: 16px;
       }
     `);
   });

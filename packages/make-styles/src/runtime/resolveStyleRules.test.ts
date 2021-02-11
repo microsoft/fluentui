@@ -1,6 +1,6 @@
 import { resolveStyleRules } from './resolveStyleRules';
 import { MakeStylesResolvedRule } from '../types';
-import { makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
+import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
