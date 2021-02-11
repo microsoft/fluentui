@@ -85,10 +85,10 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
   // Assign extra props to the menu slot.
   draftState.menu = {
     children:
-      typeof draftState.menu?.children === 'object' ? (
-        <MenuContext.Provider value={menuProps}>{draftState.menu.children}</MenuContext.Provider>
-      ) : (
+      typeof draftState.menu?.children === 'function' ? (
         renderShorthandChildren(draftState.menu?.children, menuProps, 'div')
+      ) : (
+        <MenuContext.Provider value={menuProps}>{draftState.menu?.children}</MenuContext.Provider>
       ),
   };
 
