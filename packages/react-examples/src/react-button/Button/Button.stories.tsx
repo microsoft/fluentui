@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Button, ButtonProps, ButtonTokens, ButtonVariants } from '@fluentui/react-button';
+import { useTheme } from '@fluentui/react-theme-provider';
+import { Button, ButtonProps, makeButtonTokens } from '@fluentui/react-button';
 import { CalendarIcon, PencilReplyIcon } from '@fluentui/react-icons-mdl2';
+import { FluentProvider } from '../../../../react-provider/src';
 
 // import { ThemeProvider } from '@fluentui/react-theme-provider';
 // import { PartialTheme } from '@fluentui/theme';
@@ -50,6 +52,7 @@ export const HitTarget = () => (
 //
 const SizeExample = ({ size }: { size?: string }) => (
   <>
+    <h4>{size}</h4>
     <Button size={size}>Text</Button>
     <Button size={size} icon={<PencilReplyIcon />}>
       Text
@@ -85,6 +88,8 @@ const AppearanceExample = (props: ButtonProps) => (
       Text
     </Button>
     <Button {...props} icon={<CalendarIcon />} />
+    {/* TODO: get theme from storybook global state */}
+    <div>{JSON.stringify(makeButtonTokens(useTheme()), null, 2)}</div>
   </>
 );
 
@@ -112,6 +117,13 @@ export const Loading = () => (
   <Button loading icon={<CalendarIcon />}>
     Text
   </Button>
+);
+
+// TODO: nest these usage examples somewhere outside of the component's "spec" examples
+export const usageOverrideTokens = () => (
+  <FluentProvider theme={{ button: { height: '100px' } } as any}>
+    <Button icon={<CalendarIcon />} />
+  </FluentProvider>
 );
 
 //
