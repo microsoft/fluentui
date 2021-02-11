@@ -2,6 +2,27 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.53",
+      "version": "5.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "custom test area(right side of the chart) for horizontal bar chart added. By this, we can customize the right side test values to the chart. all files snaps updated",
+            "author": "v-jasha@microsoft.com",
+            "commit": "664cdcd6419b4e441ade8944321d10d03f6819f5",
+            "package": "@fluentui/react-charting"
+          },
+          {
+            "comment": "Narrator issues fixed in bar charts",
+            "author": "v-jasha@microsoft.com",
+            "commit": "8130f9466f9a5539042e07bbc65efa2d5a3f3a34",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Feb 2021 12:20:53 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.52",
       "version": "5.0.0-beta.52",

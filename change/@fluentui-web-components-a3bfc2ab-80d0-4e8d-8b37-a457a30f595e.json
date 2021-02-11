@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove duplicate color export from web components package",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}

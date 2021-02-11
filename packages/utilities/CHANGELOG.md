@@ -1,8 +1,17 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.11)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.10..@fluentui/utilities_v8.0.0-beta.11)
+
+### Changes
+
+- fix merge to correctly handle array value. ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.10)
 
