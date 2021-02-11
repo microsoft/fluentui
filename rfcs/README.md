@@ -33,7 +33,7 @@ The React RFC Process sums it up nicely[1]
 
 ### 2. Review
 
-A key purpose of the review phase is to seek feedback to help improve your idea. You the author are ultimately accountable for the proposal and it's impact. Reviewers can, through comments, help you make the best decision you can. Throughout this review and process it is important that we strive to avoid both [Design by Committee](https://en.wikipedia.org/wiki/Design_by_committee) and [Diffusion of Responsibility](https://en.wikipedia.org/wiki/Diffusion_of_responsibility).
+A key purpose of the review phase is to seek feedback to help improve your idea. You the author are ultimately accountable for the proposal and its impact. Reviewers can, through comments, help you make the best decision you can. Throughout this review and process it is important that we strive to avoid both [Design by Committee](https://en.wikipedia.org/wiki/Design_by_committee) and [Diffusion of Responsibility](https://en.wikipedia.org/wiki/Diffusion_of_responsibility).
 
 - Seek support and integrate feedback.
   - It is the responsibility of the author(s) to read, consider, and respond to all feedback in a timely manner. This does not mean all feedback must be integrated into the proposal, but it must be considered.
