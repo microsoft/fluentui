@@ -47,7 +47,7 @@ export const MenuListWithIconsExample = () => (
 export const MenuListWithCheckboxes = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = (name: string, items: string[]) => {
+  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
     setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
@@ -71,7 +71,7 @@ export const MenuListWithCheckboxes = () => {
 export const MenuListWithRadios = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = (name: string, items: string[]) => {
+  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
     setCheckedValues(s => ({ ...s, [name]: items }));
   };
 

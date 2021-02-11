@@ -29,7 +29,7 @@ export interface MenuItemSelectableState extends MenuItemSelectableProps {
   /**
    * Callback when checked items changes for a given value with `name`
    */
-  onCheckedValueChange: (name: string, checkedItems: string[]) => void;
+  onCheckedValueChange: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
 
   /**
    * Selectable is checked

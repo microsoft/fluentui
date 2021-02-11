@@ -8,7 +8,7 @@ const MenuListContext = React.createContext<MenuListContext>({
 // TODO add context selector to reduce the number of rerenders
 export interface MenuListContext {
   checkedValues?: Record<string, string[]>;
-  onCheckedValueChange?: (name: string, items: string[]) => void;
+  onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, items: string[]) => void;
 }
 
 export const MenuListProvider = MenuListContext.Provider;

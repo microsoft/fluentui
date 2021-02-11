@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
 import { useMenuListContext } from '../menuListContext';
 import { MenuItemSelectableState } from './types';
@@ -17,7 +18,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
   state.checked = checkedItems.indexOf(state.value) !== -1;
   state['aria-checked'] = state.checked;
 
-  const onSelectionChange = () => {
+  const onSelectionChange = (e: React.MouseEvent | React.KeyboardEvent) => {
     const newCheckedItems = getNewCheckedItems();
 
     if (
@@ -27,7 +28,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
       return;
     }
 
-    state.onCheckedValueChange(state.name, newCheckedItems);
+    state.onCheckedValueChange(e, state.name, newCheckedItems);
   };
 
   state.onClick = e => {
@@ -35,7 +36,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
       onClickCallback(e);
     }
 
-    onSelectionChange();
+    onSelectionChange(e);
   };
 
   state.onKeyDown = e => {

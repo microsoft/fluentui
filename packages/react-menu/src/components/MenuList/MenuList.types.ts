@@ -8,7 +8,7 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
    * @param name - the name of the value
    * @param checkedItems - the items for this value that are checked
    */
-  onCheckedValueChange?: (name: string, checkedItems: string[]) => void;
+  onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
 
   /**
    * Map of all checked values
