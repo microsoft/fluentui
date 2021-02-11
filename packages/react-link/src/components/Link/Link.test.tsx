@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Link } from './Link';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { Link } from './Link';
 
 describe('Link', () => {
   isConformant({
