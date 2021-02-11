@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated typings",
+  "packageName": "@fluentui/react-button",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

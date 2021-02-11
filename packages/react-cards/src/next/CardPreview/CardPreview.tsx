@@ -9,7 +9,7 @@ export const CardPreview = React.forwardRef<HTMLElement, CardSectionProps>((prop
   const { render, state } = useCardSection(props, ref);
 
   useCardPreviewClasses(state);
-  useFocusRects(state.ref as any);
+  useFocusRects(state.ref);
   useInlineTokens(state, '--cardPreview');
 
   return render(state);

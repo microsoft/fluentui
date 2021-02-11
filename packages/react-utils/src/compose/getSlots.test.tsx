@@ -96,4 +96,11 @@ describe('getSlots', () => {
       slotProps: { root: {}, input: { children: null } },
     });
   });
+
+  it('should use `div` as default root element', () => {
+    expect(getSlots({ icon: { children: 'foo' }, customProp: 'bar' }, ['icon'])).toEqual({
+      slots: { root: 'div', icon: 'span' },
+      slotProps: { root: {}, icon: { children: 'foo' } },
+    });
+  });
 });

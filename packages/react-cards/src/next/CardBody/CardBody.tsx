@@ -9,7 +9,7 @@ export const CardBody = React.forwardRef<HTMLElement, CardSectionProps>((props, 
   const { render, state } = useCardSection(props, ref);
 
   useCardBodyClasses(state);
-  useFocusRects(state.ref as any);
+  useFocusRects(state.ref);
   useInlineTokens(state, '--cardBody');
 
   return render(state);

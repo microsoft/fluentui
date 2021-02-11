@@ -24,8 +24,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.3.2",
-    "@types/webpack": "4.41.26",
-    "typescript": "3.7.2"
+    "@types/webpack": "4.41.26"
   },
   "publishConfig": {
     "access": "public"

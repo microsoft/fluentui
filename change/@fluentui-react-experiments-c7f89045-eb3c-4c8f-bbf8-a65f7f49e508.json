@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix bug where mouse selected suggestions did not work in the DefaultEditingItem",
+  "packageName": "@fluentui/react-experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch"
+}
