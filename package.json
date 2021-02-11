@@ -70,15 +70,23 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
+    "@types/jest": "24.9.1",
+    "@types/jest-axe": "3.2.2",
     "beachball": "^1.50.1",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
+    "jest": "24.9.0",
+    "jest-cli": "24.9.0",
+    "jest-axe": "3.3.0",
+    "jest-environment-jsdom": "24.9.0",
+    "jest-watch-typeahead": "0.4.2",
     "lage": "0.27.0",
     "lerna": "^3.15.0",
     "lint-staged": "^10.2.9",
     "satisfied": "^1.1.1",
     "syncpack": "^5.6.10",
+    "ts-jest": "24.0.1",
     "typescript": "3.7.2"
   },
   "license": "MIT",
