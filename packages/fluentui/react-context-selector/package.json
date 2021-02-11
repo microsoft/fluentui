@@ -16,8 +16,7 @@
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
     "react-is": "^16.6.3",
-    "scheduler": "^0.20.1",
-    "typescript": "3.7.2"
+    "scheduler": "^0.20.1"
   },
   "peerDependencies": {
     "react": "^16.8.0",

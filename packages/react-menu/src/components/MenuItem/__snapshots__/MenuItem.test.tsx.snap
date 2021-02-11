@@ -3,12 +3,6 @@
 exports[`MenuItem renders a default state 1`] = `
 <div
   className=""
-  icon={
-    Object {
-      "as": "span",
-      "className": "",
-    }
-  }
   role="menuitem"
   tabIndex={0}
 >

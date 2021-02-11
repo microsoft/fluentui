@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Remove compat Button imports",
+  "comment": "UnifiedPicker: Don't show picker after input is cleared",
   "packageName": "@fluentui/react-experiments",
-  "email": "elcraig@microsoft.com",
+  "email": "elvonspa@microsoft.com",
   "dependentChangeType": "patch"
 }

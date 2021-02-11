@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update change files",
-  "packageName": "@fluentui/react-icon-provider",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

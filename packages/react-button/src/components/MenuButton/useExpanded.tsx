@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
 import { useControllableValue, useMergedRefs } from '@fluentui/react-hooks';
-import { MenuContext, MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { MenuButtonState } from './MenuButton.types';
 
 export type ExpandedState = {
@@ -75,22 +74,11 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
     // TODO: should we re-focus the root?
   }, [onMenuDismiss, setExpandedValue]);
 
-  const menuProps: MinimalMenuProps = {
-    hidden: !expandedValue,
-    onDismiss,
-    target: rootRef,
-  };
-
-  // Assign extra props to the menu slot.
-  draftState.menu = {
-    children: draftState.menu ? (
-      typeof draftState.menu.children === 'function' ? (
-        draftState.menu.children(menuProps)
-      ) : (
-        <MenuContext.Provider value={menuProps}>{draftState.menu.children}</MenuContext.Provider>
-      )
-    ) : null,
-  };
+  if (draftState.menu) {
+    draftState.menu.hidden = !expandedValue;
+    draftState.menu.onDismiss = onDismiss;
+    draftState.menu.target = rootRef;
+  }
 
   draftState['aria-expanded'] = expandedValue;
   draftState['aria-haspopup'] = true;
