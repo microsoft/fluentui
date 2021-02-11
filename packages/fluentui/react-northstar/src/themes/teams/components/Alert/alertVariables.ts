@@ -34,10 +34,6 @@ export interface AlertVariables {
   dangerBackgroundColor: string;
   dangerBorderColor: string;
 
-  warningColor: string;
-  warningBackgroundColor: string;
-  warningBorderColor: string;
-
   oof: boolean;
   oofColor: string;
   oofBackgroundColor: string;
@@ -51,6 +47,10 @@ export interface AlertVariables {
   urgentColor: string;
   urgentBackgroundColor: string;
   urgentBorderColor: string;
+
+  warningColor: string;
+  warningBackgroundColor: string;
+  warningBorderColor: string;
 
   headerFontWeight: FontWeightProperty;
   headerMargin: string;
