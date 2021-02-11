@@ -68,6 +68,11 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
           selectors: {
             ':hover': {
               background: palette.themeLight,
+              [HighContrastSelector]: {
+                background: 'Highlight',
+                color: 'HighlightText',
+                ...getHighContrastNoAdjustStyle(),
+              },
             },
             [HighContrastSelector]: {
               background: 'Highlight',
@@ -88,13 +93,10 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         selectors: {
           ':hover': {
             [HighContrastSelector]: {
-              background: 'Highlight',
-              color: 'HighlightText',
+              background: 'Window',
+              color: 'WindowText',
               ...getHighContrastNoAdjustStyle(),
             },
-          },
-          [HighContrastSelector]: {
-            color: 'WindowText',
           },
         },
       },
