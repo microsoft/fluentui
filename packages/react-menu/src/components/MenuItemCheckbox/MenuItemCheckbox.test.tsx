@@ -87,7 +87,7 @@ describe('MenuItemCheckbox', () => {
     );
 
     // Assert
-    expect(container.querySelector('[role="menuitemcheckbox"')?.getAttribute('aria-checked')).toEqual('true');
+    expect(container.querySelector('[role="menuitemcheckbox"]')?.getAttribute('aria-checked')).toEqual('true');
   });
 
   it.each([
@@ -107,7 +107,7 @@ describe('MenuItemCheckbox', () => {
     );
 
     // Act
-    const menuitem = container.querySelector('[role="menuitemcheckbox"');
+    const menuitem = container.querySelector('[role="menuitemcheckbox"]');
     menuitem && fireEvent.click(menuitem);
 
     // Assert
