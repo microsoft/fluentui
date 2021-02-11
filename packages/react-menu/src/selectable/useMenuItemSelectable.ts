@@ -32,6 +32,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
   };
 
   state.onClick = e => {
+    e.persist();
     if (onClickCallback) {
       onClickCallback(e);
     }
@@ -41,16 +42,14 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
 
   state.onKeyDown = e => {
     if (onKeyDownCallback) {
+      e.persist();
       onKeyDownCallback(e);
     }
 
     const keyCode = getCode(e);
     if (!e.defaultPrevented && (keyCode === EnterKey || keyCode === SpacebarKey)) {
-      // Translate the keydown enter/space to a click.
-      e.preventDefault();
-      e.stopPropagation();
-
-      (e.target as HTMLElement).click();
+      e.persist();
+      onSelectionChange(e);
     }
   };
 };

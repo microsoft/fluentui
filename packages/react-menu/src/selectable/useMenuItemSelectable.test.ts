@@ -52,12 +52,12 @@ describe('useMenuItemSelectable', () => {
     if (state.onClick) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      state.onClick(null);
+      state.onClick({ persist: jest.fn() });
     }
 
     // Assert
     expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
-    expect(state.onCheckedValueChange).toHaveBeenCalledWith(state.name, newValues);
+    expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), state.name, newValues);
   });
 
   it('should not call onCheckedValueChange if values did not change', () => {
@@ -73,7 +73,7 @@ describe('useMenuItemSelectable', () => {
     if (state.onClick) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      state.onClick(null);
+      state.onClick({ persist: jest.fn() });
     }
 
     // Assert
@@ -95,19 +95,21 @@ describe('useMenuItemSelectable', () => {
     expect(typeof callback).toBe('function');
   });
 
-  it.each([EnterKey, SpacebarKey])('should transform %s keydown to click', keyCode => {
+  it.each([EnterKey, SpacebarKey])('should toggle selection on %s keydown', keyCode => {
     // Arrange
     const state: MenuItemSelectableState = createTestState();
+    (useMenuListContext as jest.Mock).mockReturnValue({
+      onCheckedValueChange: jest.fn(),
+      checkedValues: { [state.name]: [...checkedItems] },
+    });
     const event = {
       defaultPrevented: false,
-      target: { click: jest.fn() },
-      stopPropagation: jest.fn(),
-      preventDefault: jest.fn(),
       keyCode,
+      persist: jest.fn(),
     };
 
     // Act
-    renderHook(() => useMenuItemSelectable(state, jest.fn()));
+    renderHook(() => useMenuItemSelectable(state, () => []));
     if (state.onKeyDown) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
@@ -115,6 +117,7 @@ describe('useMenuItemSelectable', () => {
     }
 
     // Assert
-    expect(event.target.click).toHaveBeenCalledTimes(1);
+    expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
+    expect(state.onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), state.name, []);
   });
 });
