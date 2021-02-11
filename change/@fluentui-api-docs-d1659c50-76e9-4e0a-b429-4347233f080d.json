@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove compat Button imports",
+  "packageName": "@fluentui/api-docs",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
