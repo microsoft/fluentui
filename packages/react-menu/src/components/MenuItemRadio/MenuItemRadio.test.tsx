@@ -127,7 +127,7 @@ describe('MenuItemRadio', () => {
     );
 
     // Act
-    const menuitem = container.querySelector('[role="menuitemradio"');
+    const menuitem = container.querySelector('[role="menuitemradio"]');
     menuitem && fireEvent.click(menuitem);
 
     // Assert
