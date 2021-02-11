@@ -29,8 +29,8 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
-          ArtifactName: bundlesizes-react
+          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
+          ArtifactName: bundlesize-react
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact dist folder upon build for debug'
@@ -62,8 +62,8 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
-          ArtifactName: bundlesizes-northstar
+          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
+          ArtifactName: bundlesize-northstar
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact dist folder upon build for debug'
@@ -81,19 +81,19 @@ jobs:
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact React'
         inputs:
-          artifactName: 'bundlesizes-react'
+          artifactName: 'bundlesize-react'
           targetPath: '$(Build.ArtifactStagingDirectory)/react'
 
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact N*'
         inputs:
-          artifactName: 'bundlesizes-northstar'
+          artifactName: 'bundlesize-northstar'
           targetPath: '$(Build.ArtifactStagingDirectory)/react-northstar'
 
       - script: 'chocolatey install jq'
         displayName: 'Install jq'
 
-      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
+      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
         displayName: 'Merge React and React-Northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
