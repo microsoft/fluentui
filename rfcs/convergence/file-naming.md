@@ -45,7 +45,6 @@ Currently converged package contains following files:
 - `Example.tsx` - (complete component to be used as is)
 - `useExample.ts` - (CONTROLLER/MODEL /main logic behind component - re-usable hook)
 - `useExampleStyles.ts` - (STYLES/ main logic for styling component - re-usable hook)
-- `useExampleRandom.tsx` - (some encapsulated logic - not really a hook)
 - `renderExample.tsx` - (VIEW/ main logic that handles rendering - re-usable hook)
 - `Example.types.ts` - (TYPES/ all TypeScript types used within package)
 
@@ -54,7 +53,7 @@ Currently converged package contains following files:
 - inconsistent file naming
   - some files contain suffix (`.types`)
   - some files have `.ts` some `.tsx` what's the difference ?
-  - some files are PascalCased, some camelCased
+  - some files are _PascalCased_, some _camelCased_
 - not explicitly communicating the intent
   - what does `use` mean ?
     - seasoned react dev will probably guess that it's a hook. Thing is, that this file might export more that 1 hook.
@@ -73,11 +72,9 @@ Currently converged package contains following files:
 | Example.tsx         | example.ts          | `export const Example = () => {..}`                                                 | To enforce rendering logic only within `.view.` type file/s. TS will enforce this by default. Not extremely picky on this one, we can use `.tsx` as well to match extension with test/story - priority is to be consistent                                                                                                |
 | Example.test.tsx    | example.spec.tsx    | `describe->it`                                                                      | Integration test on JSDOM level (jest) for whole component                                                                                                                                                                                                                                                                |
 | storybook (NONE)    | example.stories.tsx | `export const Example = () => {..}`                                                 | Specific file type for Storybook consumption. Main "starting" point for inner loop - daily development.                                                                                                                                                                                                                   |
-| mdx (NONE)          | example.stories.mdx | ---                                                                                 | Markdown(MDX) for consumer facing documentation(mainly for storybook at the moment, but can be transformed to any other tool that can parse MDX).                                                                                                                                                                         |
-| renderExample.tsx   | example.view.tsx    | `export const render = () => {..}`                                                  | `.render` might work as well, to match symbol name.                                                                                                                                                                                                                                                                       |
+| renderExample.tsx   | example.view.tsx    | `export const renderExample = () => {..}`                                           | `.render` might work as well, to match symbol name.                                                                                                                                                                                                                                                                       |
 | useExample.ts       | example.hook.ts     | `export const useExample = () => {}`                                                | main logic encapsulated under hook -> name should be the same as encapsulated component (in our case `example`)                                                                                                                                                                                                           |
 | useExampleStyles.ts | example.styles.ts   | `export const useStyles = makeStyles(); export const useIconStyles = makeStyles();` | with `makeStyles` 1 to N hooks for particular component styling needs. Why we currently use a solution that provides hooks, having `.styles` could be a good enough convention to explicitly communicate the intent. (if we switch implementation in the future we wouldn't need to change the type name as it's generic) |
-| useExampleRandom.ts | example.utils.ts    | `export const foo = () => {}`                                                       | aggregated set of reusable utils used within other parts of component implementation. Note there are no real react hooks!                                                                                                                                                                                                 |
 | Example.types.ts    | example.types.ts    | `export type Foo = {}; export interface Hello {}`                                   | aggregated set of reusable type definitions used within other parts of component/also might be re-exported for public API surface                                                                                                                                                                                         |
 
 ### Explanation
@@ -90,8 +87,8 @@ Currently converged package contains following files:
   - `.view`
   - `.styles`
   - `.types`
-  - `.utils`
   - `.stories`
+  - `.utils`
   - invent additional type names if you must but take care not to create too many
 
 **Why?**
