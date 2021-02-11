@@ -98,17 +98,6 @@ jobs:
           BlobPrefix: $(date) # upload tarballs to folder named by today's date
           Gzip: true
 
-      - task: AzureUpload@2
-        displayName: '[Nightly] Upload tarballs as newest'
-        condition: and(succeeded(), eq(variables.publishOfficial, false))
-        inputs:
-          SourcePath: $(Build.ArtifactStagingDirectory)
-          azureSubscription: 'UI Fabric (private)'
-          storage: fluentsite
-          ContainerName: nightly-builds
-          BlobPrefix: newest # upload tarballs to folder named 'newest'. This folder is used by the nightly version of docsite to create codesandbox
-          Gzip: true
-
       - task: CmdLine@2
         displayName: '[NPM] Publish to NPM'
         condition: and(succeeded(), eq(variables.publishOfficial, true))
