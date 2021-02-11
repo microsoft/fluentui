@@ -5,6 +5,7 @@ const MenuListContext = React.createContext<MenuListContext>({
   onCheckedValueChange: () => null,
 });
 
+// TODO add context selector to reduce the number of rerenders
 export interface MenuListContext {
   checkedValues?: Record<string, string[]>;
   onCheckedValueChange?: (name: string, items: string[]) => void;
