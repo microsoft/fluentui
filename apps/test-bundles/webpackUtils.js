@@ -123,6 +123,7 @@ function createFluentReactFixtures() {
 
 function createEntry(packageName) {
   try {
+    // import everything from a single package
     const importStatement = `import * as p from '${packageName}'; console.log(p)`;
     const folderName = getFolderName(packageName);
     const entryPath = path.join('temp/fixtures/', folderName, 'index.js');
