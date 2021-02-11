@@ -21,6 +21,7 @@ There are a few aspects to the proposed solution, involving a mix of code moves 
     - To break a cycle: `react-date-time` components move into `react`, and `react-date-time` re-exports them
   - Open question: should we make code location or naming changes to any other `react-*` packages which still contain legacy components?
 - Add badges to package readmes to clarify GA/preview/dev status
+- Use semver to help communicate status
 
 ## Problem statement
 
@@ -105,6 +106,22 @@ Notes:
 
 - Charting and maybe experiments would probably fall into the "preview (legacy)" category
 - Suite packages should list which components are converged or not
+
+### Use semver to help communicate status
+
+New packages should be created with version `0.1.0`. While the open source community (and even this repo) is extremely inconsistent in its use of `0.x` versions, that is in theory the "standard" way to indicate that a package is not production-ready.
+
+For packages which already have a `-beta` version greater than 0 published for various reasons, such as `react-button` or `react-cards`, we should keep those on a prerelease tag after the version 8 release to indicate that they're not yet official releases. Preferably `-alpha` (or `-dev`?) but if we need to continue using `-beta` that's fine.
+
+#### Open question: what npm `dist-tags` to use?
+
+- For in-development packages?
+  - `0.x`?
+  - `1.0.0-beta.x` or `8.0.0-beta.x`?
+  - Should we change anything about existing `latest` tag?
+- For in-preview packages (if we keep this notion)?
+  - `next`?
+  - `beta`?
 
 ## Discarded Solutions
 
