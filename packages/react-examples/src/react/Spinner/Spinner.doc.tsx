@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { SpinnerBasicExample } from './Spinner.Basic.Example';
 import { SpinnerLabeledExample } from './Spinner.Labeled.Example';
 
@@ -10,7 +10,7 @@ const SpinnerLabeledExampleCode = require('!raw-loader?esModule=false!@fluentui/
 export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',
   componentName: 'Spinner',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Spinner',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Spinner',
   examples: [
     {
       title: 'Spinner sizes',

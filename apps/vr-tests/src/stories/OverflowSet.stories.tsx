@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { Fabric, OverflowSet, IOverflowSetItemProps } from '@fluentui/react';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 const onRenderItem = (item: IOverflowSetItemProps) => item.name;
 const onRenderOverflowButton = (overflowItems: any[]) => {

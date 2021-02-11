@@ -246,7 +246,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     return lineLegends;
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _createLines = (
     xScale: NumericScale,
     yScale: NumericScale,
@@ -692,8 +691,8 @@ export class VerticalStackedBarChartBase extends React.Component<
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
-          'data-is-focusable': true,
-          'aria-labelledby': this._calloutId,
+          'data-is-focusable': !this.props.hideTooltip,
+          'aria-labelledby': `toolTip${this._calloutId}`,
           onMouseOver: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseMove: this._onRectHover.bind(this, singleChartData.xAxisPoint, point, color),
           onMouseLeave: this._handleMouseOut,
@@ -746,7 +745,8 @@ export class VerticalStackedBarChartBase extends React.Component<
       });
       const groupRef: IRefArrayData = {};
       const stackFocusProps = shouldFocusWholeStack && {
-        'data-is-focusable': true,
+        'data-is-focusable': !this.props.hideTooltip,
+        'aria-labelledby': `toolTip${this._calloutId}`,
         onMouseOver: this._onStackHover.bind(this, singleChartData),
         onMouseMove: this._onStackHover.bind(this, singleChartData),
         onMouseLeave: this._handleMouseOut,
@@ -838,7 +838,6 @@ export class VerticalStackedBarChartBase extends React.Component<
     return this._createBar(xBarScale, yBarScale, containerHeight, xElement);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getGraphData = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,

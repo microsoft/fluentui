@@ -2,7 +2,7 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { memoizeFunction, ITheme, concatStyleSets } from '@fluentui/react';
 import { ISidebarStyles, SidebarStylingConstants } from './Sidebar.types';
 

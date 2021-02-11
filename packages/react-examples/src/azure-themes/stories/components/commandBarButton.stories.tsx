@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuProps, IIconProps, Stack, IStackStyles } from '@fluentui/react';
-import { CommandBarButton } from '@fluentui/react/lib/compat/Button';
+import { CommandBarButton } from '@fluentui/react/lib/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

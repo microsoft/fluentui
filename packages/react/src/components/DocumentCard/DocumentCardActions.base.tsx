@@ -6,7 +6,7 @@ import {
   IDocumentCardActionsStyleProps,
   IDocumentCardActionsStyles,
 } from './DocumentCardActions.types';
-import { IconButton } from '../../compat/Button';
+import { IconButton } from '../../Button';
 import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>();

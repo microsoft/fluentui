@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IconBasicExample } from './Icon.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { IconSvgExample } from './Icon.Svg.Example';
 import { IconColorExample } from './Icon.Color.Example';
 import { IconImageSheetExample } from './Icon.ImageSheet.Example';
@@ -16,7 +16,7 @@ const IconSvgFactoryExampleCode = require('!raw-loader?esModule=false!@fluentui/
 export const IconPageProps: IDocPageProps = {
   title: 'Icon',
   componentName: 'Icon',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Icon',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Icon',
   examples: [
     {
       title: 'Icon',

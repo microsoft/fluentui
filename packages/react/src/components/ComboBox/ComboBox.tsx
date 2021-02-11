@@ -27,7 +27,7 @@ import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from 
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
-import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../compat/Button';
+import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../Button';
 import { ICalloutProps } from '../../Callout';
 import { useMergedRefs } from '@fluentui/react-hooks';
 

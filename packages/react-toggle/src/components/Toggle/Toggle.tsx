@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { compose } from '@fluentui/react-compose';
-import { Label } from '@fluentui/react-internal/lib/Label';
+import { Label } from '@fluentui/react/lib/Label';
 import { getGlobalClassNames, ITheme } from '@fluentui/style-utilities';
 import { css, memoizeFunction, styled } from '@fluentui/utilities';
 import { ToggleBase } from './ToggleBase';
