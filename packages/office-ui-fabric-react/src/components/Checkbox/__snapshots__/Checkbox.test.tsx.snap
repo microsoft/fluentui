@@ -120,10 +120,9 @@ exports[`Checkbox renders checked correctly 1`] = `
             width: 20px;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background: Highlight;
             border-color: Highlight;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -163,9 +162,8 @@ exports[`Checkbox renders checked correctly 1`] = `
             margin-left: 4px;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -310,9 +308,8 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
             border-color: WindowText;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             border-color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -352,9 +349,8 @@ exports[`Checkbox renders indeterminate correctly 1`] = `
             margin-left: 4px;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -473,9 +469,8 @@ exports[`Checkbox renders unchecked correctly 1`] = `
             width: 20px;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             border-color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >
@@ -515,9 +510,8 @@ exports[`Checkbox renders unchecked correctly 1`] = `
             margin-left: 4px;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             color: WindowText;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
     >

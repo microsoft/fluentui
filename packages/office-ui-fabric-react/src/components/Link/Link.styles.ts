@@ -1,5 +1,4 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
-import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {

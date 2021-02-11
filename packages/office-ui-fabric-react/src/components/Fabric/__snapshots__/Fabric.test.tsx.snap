@@ -158,9 +158,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -200,9 +199,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 margin-left: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -340,9 +338,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -382,9 +379,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   margin-right: 4px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -522,9 +518,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     width: 20px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -564,9 +559,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     margin-left: 4px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -707,9 +701,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -749,9 +742,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 margin-right: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -889,9 +881,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -931,9 +922,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   margin-left: 4px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -1071,9 +1061,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     width: 20px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1113,9 +1102,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     margin-right: 4px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1261,9 +1249,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1303,9 +1290,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 margin-left: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1443,9 +1429,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -1485,9 +1470,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   margin-right: 4px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -1625,9 +1609,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     width: 20px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1667,9 +1650,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     margin-left: 4px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1810,9 +1792,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1852,9 +1833,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 margin-right: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1992,9 +1972,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2034,9 +2013,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   margin-left: 4px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2174,9 +2152,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     width: 20px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2216,9 +2193,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     margin-right: 4px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2364,9 +2340,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2406,9 +2381,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 margin-left: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2546,9 +2520,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2588,9 +2561,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   margin-right: 4px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2728,9 +2700,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     width: 20px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2770,9 +2741,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     margin-left: 4px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2913,9 +2883,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2955,9 +2924,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 margin-right: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -3095,9 +3063,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   width: 20px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -3137,9 +3104,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   margin-left: 4px;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -3277,9 +3243,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     width: 20px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -3319,9 +3284,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     margin-right: 4px;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
