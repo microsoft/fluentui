@@ -898,10 +898,11 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="0"
+                        aria-label="0 (100)"
                         aria-level={1}
                         aria-rowcount={11}
                         aria-rowindex={2}
+                        aria-selected={false}
                         className=
                             ms-GroupHeader
                             {
@@ -1287,6 +1288,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         </div>
                       </div>
                       <div
+                        aria-label="0"
                         className="ms-List"
                         id="GroupedListSection3"
                         role="rowgroup"

@@ -905,6 +905,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                         </div>
                       </div>
                       <div
+                        aria-label="group 0"
                         className="ms-List"
                         id="GroupedListSection3"
                         role="rowgroup"

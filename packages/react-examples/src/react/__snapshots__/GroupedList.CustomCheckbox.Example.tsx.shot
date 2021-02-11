@@ -80,9 +80,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 0"
+                    aria-label="group 0 (3)"
                     aria-level={1}
                     aria-posinset={1}
+                    aria-selected={false}
                     aria-setsize={3}
                     className=
                         ms-GroupHeader
@@ -439,6 +440,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     </div>
                   </div>
                   <div
+                    aria-label="group 0"
                     className="ms-List"
                     id="GroupedListSection2"
                     role="group"
@@ -2069,9 +2071,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 1"
+                    aria-label="group 1 (3)"
                     aria-level={1}
                     aria-posinset={2}
+                    aria-selected={false}
                     aria-setsize={3}
                     className=
                         ms-GroupHeader
@@ -2428,6 +2431,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     </div>
                   </div>
                   <div
+                    aria-label="group 1"
                     className="ms-List"
                     id="GroupedListSection4"
                     role="group"
@@ -4058,9 +4062,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 2"
+                    aria-label="group 2 (3)"
                     aria-level={1}
                     aria-posinset={3}
+                    aria-selected={false}
                     aria-setsize={3}
                     className=
                         ms-GroupHeader
@@ -4417,6 +4422,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     </div>
                   </div>
                   <div
+                    aria-label="group 2"
                     className="ms-List"
                     id="GroupedListSection6"
                     role="group"

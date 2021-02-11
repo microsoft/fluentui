@@ -137,6 +137,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
                         id="GroupedListSection117"
                         role="rowgroup"
@@ -207,6 +208,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
                         id="GroupedListSection118"
                         role="rowgroup"
@@ -401,6 +403,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
                         id="GroupedListSection117"
                         role="rowgroup"
@@ -479,6 +482,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
                         id="GroupedListSection118"
                         role="rowgroup"
@@ -681,6 +685,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 1
                       </div>
                       <div
+                        aria-label="one 1"
                         className="ms-List"
                         id="GroupedListSection110"
                         role="rowgroup"
@@ -741,6 +746,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 2
                       </div>
                       <div
+                        aria-label="one 2"
                         className="ms-List"
                         id="GroupedListSection111"
                         role="rowgroup"
@@ -801,6 +807,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 3
                       </div>
                       <div
+                        aria-label="one 3"
                         className="ms-List"
                         id="GroupedListSection112"
                         role="rowgroup"
@@ -861,6 +868,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 4
                       </div>
                       <div
+                        aria-label="one 4"
                         className="ms-List"
                         id="GroupedListSection113"
                         role="rowgroup"
@@ -1045,6 +1053,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 1
                       </div>
                       <div
+                        aria-label="one 1"
                         className="ms-List"
                         id="GroupedListSection110"
                         role="rowgroup"
@@ -1105,6 +1114,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 2
                       </div>
                       <div
+                        aria-label="one 2"
                         className="ms-List"
                         id="GroupedListSection111"
                         role="rowgroup"
@@ -1165,6 +1175,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 3
                       </div>
                       <div
+                        aria-label="one 3"
                         className="ms-List"
                         id="GroupedListSection112"
                         role="rowgroup"
@@ -1225,6 +1236,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 4
                       </div>
                       <div
+                        aria-label="one 4"
                         className="ms-List"
                         id="GroupedListSection113"
                         role="rowgroup"
@@ -1409,6 +1421,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
                         id="GroupedListSection114"
                         role="rowgroup"
@@ -1487,6 +1500,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
                         id="GroupedListSection115"
                         role="rowgroup"
@@ -1689,6 +1703,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
                         id="GroupedListSection114"
                         role="rowgroup"
@@ -1767,6 +1782,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
                         id="GroupedListSection115"
                         role="rowgroup"
@@ -6891,7 +6907,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="Group 0"
+                        aria-label="Group 0 (2)"
                         aria-level={1}
                         aria-rowcount={3}
                         aria-rowindex={2}
@@ -7103,6 +7119,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                       </div>
                       <div
+                        aria-label="Group 0"
                         className="ms-List"
                         id="GroupedListSection18"
                         role="rowgroup"
@@ -7517,7 +7534,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="Group 1"
+                        aria-label="Group 1 (3)"
                         aria-level={1}
                         aria-rowcount={3}
                         aria-rowindex={3}
@@ -7729,6 +7746,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                       </div>
                       <div
+                        aria-label="Group 1"
                         className="ms-List"
                         id="GroupedListSection19"
                         role="rowgroup"
