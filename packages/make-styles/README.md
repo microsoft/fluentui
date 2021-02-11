@@ -101,6 +101,26 @@ Or string:
 makeStaticStyles('body { background: red; } .foo { color: green; }');
 ```
 
+Or array of styles object/string:
+
+```jsx=
+makeStaticStyles([
+  {
+    '@font-face': {
+      fontFamily: 'Open Sans',
+      src: `url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+          url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+    },
+  },
+  {
+    '@font-face': {
+      fontFamily: 'My Font',
+      src: `url(my_font.woff)`,
+    },
+  },
+});
+```
+
 # Proposed build structure
 
 ```

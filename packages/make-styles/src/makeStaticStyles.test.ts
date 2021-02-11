@@ -30,7 +30,6 @@ describe('makeStaticStyles', () => {
     });
 
     useStyles({ renderer });
-    useStyles({ renderer }); // call twice to test caching logic
 
     expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
       body {
@@ -41,6 +40,36 @@ describe('makeStaticStyles', () => {
       .foo {
         background: yellow;
         margin-left: 5px;
+      }
+    `);
+  });
+
+  it('handles styles array', () => {
+    const useStyles = makeStaticStyles([
+      {
+        '@font-face': {
+          fontFamily: 'Open Sans',
+          src: `url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+        },
+      },
+      {
+        '@font-face': {
+          fontFamily: 'My Font',
+          src: `url(my-font.woff)`,
+        },
+      },
+    ]);
+
+    useStyles({ renderer });
+
+    expect(getCSSRules(renderer.styleElement)).toMatchInlineSnapshot(`
+      @font-face {
+        font-family: Open Sans;
+        src: url("/fonts/OpenSans-Regular-webfont.woff") format("woff");
+      }
+      @font-face {
+        font-family: My Font;
+        src: url(my-font.woff);
       }
     `);
   });
