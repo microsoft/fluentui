@@ -1,5 +1,5 @@
 import { dropdownSlotClassNames } from '@fluentui/react-northstar';
-import { selectors, inputItems } from './dropdownMoveFocusOnTab-example';
+import { selectors } from './dropdownMoveFocusOnTab-example';
 
 const triggerButton = `.${selectors.triggerButtonClass}`;
 const nextFocusableSibling = `#${selectors.nextFocusableSibling}`;
@@ -33,7 +33,7 @@ describe('Dropdown', () => {
 
     it('closes dropdown on outside click', async () => {
       await e2e.clickOn(triggerButton);
-      await e2e.expectCount(listItem, inputItems.length);
+      await e2e.expectCount(listItem, 0);
 
       await e2e.clickOn(previousFocusableSibling);
       await e2e.expectCount(listItem, 0);
