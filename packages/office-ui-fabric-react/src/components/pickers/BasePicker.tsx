@@ -248,7 +248,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       ? this._ariaMap.selectedSuggestionAlert
       : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
-
     const canAddItems = this.canAddItems();
 
     // TODO
