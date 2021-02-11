@@ -11,7 +11,9 @@ export type CardSectionProps = ComponentProps &
     fitted?: boolean;
   };
 
-export interface CardSectionState extends CardSectionProps {}
+export interface CardSectionState extends CardSectionProps {
+  ref: React.RefObject<HTMLElement>;
+}
 
 export interface CardSectionSlots extends BaseSlots {}
 

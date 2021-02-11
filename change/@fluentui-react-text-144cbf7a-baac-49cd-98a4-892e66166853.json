@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updated typings",
+  "packageName": "@fluentui/react-text",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

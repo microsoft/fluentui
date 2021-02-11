@@ -14,7 +14,7 @@ import { SlotProps } from '@fluentui/react-utils';
 export const renderText: (state: TextProps) => JSX.Element;
 
 // @public (undocumented)
-export const Text: React.ForwardRefExoticComponent<Pick<TextProps, string | number> & React.RefAttributes<HTMLElement>>;
+export const Text: React.ForwardRefExoticComponent<TextProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {
