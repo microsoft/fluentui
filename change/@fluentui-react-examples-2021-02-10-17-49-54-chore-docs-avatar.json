@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "updating names",
+  "packageName": "@fluentui/react-examples",
+  "email": "andmarti@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-11T01:49:54.505Z"
+}
