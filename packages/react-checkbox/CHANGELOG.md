@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-checkbox
 
-This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.40)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-checkbox_v1.0.0-beta.39..@fluentui/react-checkbox_v1.0.0-beta.40)
+
+### Changes
+
+- Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.13 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [1.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-checkbox_v1.0.0-beta.39)
 

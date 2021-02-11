@@ -109,7 +109,8 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
-  buttonRef?: React.RefObject<HTMLButtonElement>;
+  'data-is-focusable': boolean;
+  ref: React.RefObject<HTMLButtonElement>;
 }
 
 /**
@@ -117,6 +118,7 @@ export interface ButtonState extends ButtonProps {
  */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
+    padding?: string;
     paddingLeft?: string;
     paddingRight?: string;
     paddingTop?: string;

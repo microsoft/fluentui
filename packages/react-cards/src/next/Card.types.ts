@@ -50,7 +50,7 @@ export type CardProps = ComponentProps &
  * {@docCategory Card}
  */
 export interface CardState extends CardProps {
-  cardRef: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 /**

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 21 Jan 2021 12:36:12 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.4)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.3..@fluentui/codemods_v1.0.0-beta.4)
+
+### Changes
+
+- Disable unneeded codemods ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.2)
 

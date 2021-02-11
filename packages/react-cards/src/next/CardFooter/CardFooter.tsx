@@ -9,7 +9,7 @@ export const CardFooter = React.forwardRef<HTMLElement, CardSectionProps>((props
   const { render, state } = useCardSection(props, ref);
 
   useCardFooterClasses(state);
-  useFocusRects(state.ref as any);
+  useFocusRects(state.ref);
   useInlineTokens(state, '--cardFooter');
 
   return render(state);

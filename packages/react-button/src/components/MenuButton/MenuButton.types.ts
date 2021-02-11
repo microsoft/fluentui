@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-utils';
+import { ShorthandProps, ObjectShorthandProps, ComponentProps } from '@fluentui/react-utils';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
@@ -10,7 +9,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   /**
    * Menu that is displayed when the button is pressed.
    */
-  menu?: ShorthandProps;
+  menu?: ShorthandProps<MinimalMenuProps & ComponentProps>;
 
   /**
    * Menu icon that indicates that this button has a menu that can be expanded.
@@ -47,7 +46,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
 };
 
 export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
-  menu?: React.PropsWithChildren<MinimalMenuProps>;
+  menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
 }
 
 /**

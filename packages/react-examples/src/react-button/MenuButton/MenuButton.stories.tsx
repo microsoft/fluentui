@@ -135,36 +135,38 @@ const FunctionMenu = (props: MinimalMenuProps) => {
   return !hidden ? <ContextualMenu {...(rest as IContextualMenuProps)} {...menuProps} /> : null;
 };
 
+const shorthandChildrenRender = { children: (Component: any, props: MinimalMenuProps) => <FunctionMenu {...props} /> };
+
 export const MenuButtonsWithMenuAsFunction = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
-    <MenuButtonExamples menu={FunctionMenu} />
+    <MenuButtonExamples menu={shorthandChildrenRender} />
 
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
-    <MenuButtonExamples circular menu={FunctionMenu} />
+    <MenuButtonExamples circular menu={shorthandChildrenRender} />
 
     <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
     <div className={classes.vStack}>
-      <MenuButtonExamples block menu={FunctionMenu} />
+      <MenuButtonExamples block menu={shorthandChildrenRender} />
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
-    <MenuButtonExamples iconOnly menu={FunctionMenu} />
+    <MenuButtonExamples iconOnly menu={shorthandChildrenRender} />
 
     <Text>A button can be both `circular` and `iconOnly`.</Text>
-    <MenuButtonExamples circular iconOnly menu={FunctionMenu} />
+    <MenuButtonExamples circular iconOnly menu={shorthandChildrenRender} />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
-    <MenuButtonExamples loading menu={FunctionMenu} />
+    <MenuButtonExamples loading menu={shorthandChildrenRender} />
 
     <Text variant="xLarge">A button can be sized.</Text>
     <div className={classes.vStack}>
-      <MenuButtonExamples size="smallest" menu={FunctionMenu} />
-      <MenuButtonExamples size="smaller" menu={FunctionMenu} />
-      <MenuButtonExamples size="small" menu={FunctionMenu} />
-      <MenuButtonExamples size="large" menu={FunctionMenu} />
-      <MenuButtonExamples size="larger" menu={FunctionMenu} />
-      <MenuButtonExamples size="largest" menu={FunctionMenu} />
+      <MenuButtonExamples size="smallest" menu={shorthandChildrenRender} />
+      <MenuButtonExamples size="smaller" menu={shorthandChildrenRender} />
+      <MenuButtonExamples size="small" menu={shorthandChildrenRender} />
+      <MenuButtonExamples size="large" menu={shorthandChildrenRender} />
+      <MenuButtonExamples size="larger" menu={shorthandChildrenRender} />
+      <MenuButtonExamples size="largest" menu={shorthandChildrenRender} />
     </div>
   </Stack>
 );
@@ -174,36 +176,38 @@ const CustomMenu = (props: MinimalMenuProps) => {
   return !hidden ? <Callout {...(rest as IContextualMenuProps)}>This is a custom menu</Callout> : null;
 };
 
-export const MenuButtonsWithCustomMenus = () => (
+const customMenuChildrenRender = { children: (Component: any, props: MinimalMenuProps) => <CustomMenu {...props} /> };
+
+export const MenuButtonsWithcustomMenuChildrenRenders = () => (
   <Stack gap={20}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
-    <MenuButtonExamples menu={CustomMenu} />
+    <MenuButtonExamples menu={customMenuChildrenRender} />
 
     <Text variant="xLarge">A button can appear round using the `circular` prop.</Text>
-    <MenuButtonExamples circular menu={CustomMenu} />
+    <MenuButtonExamples circular menu={customMenuChildrenRender} />
 
     <Text variant="xLarge">A button can fill the width of its container using the `block` prop.</Text>
     <div className={classes.vStack}>
-      <MenuButtonExamples block menu={CustomMenu} />
+      <MenuButtonExamples block menu={customMenuChildrenRender} />
     </div>
 
     <Text variant="xLarge">A button can contain only an icon using the `iconOnly` prop.</Text>
-    <MenuButtonExamples iconOnly menu={CustomMenu} />
+    <MenuButtonExamples iconOnly menu={customMenuChildrenRender} />
 
     <Text>A button can be both `circular` and `iconOnly`.</Text>
-    <MenuButtonExamples circular iconOnly menu={CustomMenu} />
+    <MenuButtonExamples circular iconOnly menu={customMenuChildrenRender} />
 
     <Text variant="xLarge">A button can show a loading indicator using the `loading` prop.</Text>
-    <MenuButtonExamples loading menu={CustomMenu} />
+    <MenuButtonExamples loading menu={customMenuChildrenRender} />
 
     <Text variant="xLarge">A button can be sized.</Text>
     <div className={classes.vStack}>
-      <MenuButtonExamples size="smallest" menu={CustomMenu} />
-      <MenuButtonExamples size="smaller" menu={CustomMenu} />
-      <MenuButtonExamples size="small" menu={CustomMenu} />
-      <MenuButtonExamples size="large" menu={CustomMenu} />
-      <MenuButtonExamples size="larger" menu={CustomMenu} />
-      <MenuButtonExamples size="largest" menu={CustomMenu} />
+      <MenuButtonExamples size="smallest" menu={customMenuChildrenRender} />
+      <MenuButtonExamples size="smaller" menu={customMenuChildrenRender} />
+      <MenuButtonExamples size="small" menu={customMenuChildrenRender} />
+      <MenuButtonExamples size="large" menu={customMenuChildrenRender} />
+      <MenuButtonExamples size="larger" menu={customMenuChildrenRender} />
+      <MenuButtonExamples size="largest" menu={customMenuChildrenRender} />
     </div>
   </Stack>
 );
