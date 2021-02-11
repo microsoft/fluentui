@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.30)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.29..@fluentui/react-button_v1.0.0-beta.30)
+
+### Changes
+
+- Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.13 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [1.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.29)
 

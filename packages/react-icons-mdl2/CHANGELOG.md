@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.13)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.12..@fluentui/react-icons-mdl2_v1.0.0-beta.13)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v0.1.1 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+### Changes
+
+- Add ability to override icons using @fluentui/react-icon-provider ([PR #16519](https://github.com/microsoft/fluentui/pull/16519) by ololubek@microsoft.com)
+- Adding svg icon to be consumed by OWA ([PR #16879](https://github.com/microsoft/fluentui/pull/16879) by ololubek@microsoft.com)
 
 ## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.12)
 

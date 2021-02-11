@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.39",
+      "version": "1.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Adding initial SPEC.md and MIGRATION.md and updating README.md.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "51da21921173b0f7c8c3c1ea3485d243cc312b40",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 05:51:40 GMT",
       "tag": "@fluentui/react-link_v1.0.0-beta.38",
       "version": "1.0.0-beta.38",

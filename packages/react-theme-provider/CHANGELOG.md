@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.22)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.21..@fluentui/react-theme-provider_v1.0.0-beta.22)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [1.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.21)
 

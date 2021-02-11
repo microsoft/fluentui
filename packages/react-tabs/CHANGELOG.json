@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-tabs_v1.0.0-beta.44",
+      "version": "1.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove compat Button imports",
+            "author": "elcraig@microsoft.com",
+            "commit": "70b63061357489ccc43878d0d0b054953690d5b2",
+            "package": "@fluentui/react-tabs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Feb 2021 12:20:53 GMT",
       "tag": "@fluentui/react-tabs_v1.0.0-beta.43",
       "version": "1.0.0-beta.43",
