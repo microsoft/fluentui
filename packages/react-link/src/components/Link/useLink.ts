@@ -9,12 +9,12 @@ import { useLinkState } from './useLinkState';
  */
 export const linkShorthandProps = [];
 
-const mergeProps = makeMergeProps({ deepMerge: linkShorthandProps });
+const mergeProps = makeMergeProps<LinkState>({ deepMerge: linkShorthandProps });
 
 /**
  * Given user props, returns state and render function for a Link.
  */
-export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>, defaultProps?: LinkProps) => {
+export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>, defaultProps?: LinkProps): LinkState => {
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
@@ -26,5 +26,5 @@ export const useLink = (props: LinkProps, ref: React.Ref<HTMLElement>, defaultPr
 
   useLinkState(state);
 
-  return state as LinkState;
+  return state;
 };
