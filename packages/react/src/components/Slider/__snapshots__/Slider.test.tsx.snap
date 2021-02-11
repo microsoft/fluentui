@@ -141,7 +141,7 @@ exports[`Slider renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-          @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             forced-color-adjust: none;
           }
       data-is-focusable={true}

@@ -5,7 +5,6 @@ import {
   concatStyleSets,
   getFocusStyle,
   IStyle,
-  getEdgeChromiumNoHighContrastAdjustSelector,
   getHighContrastNoAdjustStyle,
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
@@ -210,9 +209,8 @@ export const getStyles = memoizeFunction(
             color: 'GrayText',
             borderColor: 'GrayText',
             backgroundColor: 'Window',
+            ...getHighContrastNoAdjustStyle(),
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
     };
