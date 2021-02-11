@@ -44,7 +44,7 @@ export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTML
 // @public
 export const MenuItemRadio: React.ForwardRefExoticComponent<Pick<MenuItemRadioProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
 
-// @public
+// @public (undocumented)
 export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemSelectableProps {
     // (undocumented)
     checkmark?: ShorthandProps;
@@ -55,7 +55,7 @@ export interface MenuItemRadioProps extends ComponentProps, React.HTMLAttributes
 // @public
 export const menuItemRadioShorthandProps: string[];
 
-// @public
+// @public (undocumented)
 export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectableState {
     checkmark: ObjectShorthandProps<HTMLElement>;
     icon?: ObjectShorthandProps<HTMLElement>;
