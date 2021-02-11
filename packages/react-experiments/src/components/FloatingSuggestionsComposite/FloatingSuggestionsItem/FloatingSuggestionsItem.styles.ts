@@ -98,6 +98,22 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
           },
         },
       },
+      isSelected && [
+        classNames.isSelected,
+        {
+          background: palette.themeLighter,
+          selectors: {
+            ':hover': {
+              background: palette.themeLight,
+            },
+            [HighContrastSelector]: {
+              background: 'Highlight',
+              color: 'HighlightText',
+              ...getHighContrastNoAdjustStyle(),
+            },
+          },
+        },
+      ],
     ],
     displayText: [
       classNames.displayText,
