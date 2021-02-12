@@ -13,7 +13,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.53",
+    "@fluentui/react": "^8.0.0-beta.54",
     "axe-core": "3.5.0",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^2.0.1",
@@ -34,7 +34,7 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/sarif": "^2.1.1",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta.14",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta.15",
     "@fluentui/scripts": "^1.0.0"
   }
 }
