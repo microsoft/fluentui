@@ -1,8 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.14](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.14)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.13..@uifabric/experiments_v7.38.14)
+
+### Patches
+
+- Fix bug where moue selected suggestions did not work in DefaultEditingItem ([PR #16930](https://github.com/microsoft/fluentui/pull/16930) by elvonspa@microsoft.com)
+- UnifiedPicker: Don't show picker after input is cleared ([PR #16936](https://github.com/microsoft/fluentui/pull/16936) by elvonspa@microsoft.com)
+- Use add and remove eventlistener for keydown in the UnifiedPicker ([PR #16955](https://github.com/microsoft/fluentui/pull/16955) by elvonspa@microsoft.com)
+- Deprecating Button, MenuButton, SplitButton, Slider and Toggle. ([PR #16962](https://github.com/microsoft/fluentui/pull/16962) by humbertomakotomorimoto@gmail.com)
 
 ## [7.38.13](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.13)
 

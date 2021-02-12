@@ -1,8 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.17](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.17)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.16..@uifabric/date-time_v7.19.17)
+
+### Patches
+
+- Remove use of getEdgeChromiumNoHighContrastAdjustSelector ([PR #16951](https://github.com/microsoft/fluentui/pull/16951) by sareiff@microsoft.com)
 
 ## [7.19.16](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.16)
 

@@ -1,8 +1,17 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.115.18](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.115.18)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/react-cards_v0.115.17..@uifabric/react-cards_v0.115.18)
+
+### Patches
+
+- Deprecating Card. ([PR #16962](https://github.com/microsoft/fluentui/pull/16962) by humbertomakotomorimoto@gmail.com)
 
 ## [0.115.17](https://github.com/microsoft/fluentui/tree/@uifabric/react-cards_v0.115.17)
 

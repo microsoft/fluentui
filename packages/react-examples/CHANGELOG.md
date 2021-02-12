@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.25)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.24..@fluentui/react-examples_v0.11.25)
+
+### Patches
+
+- Remove use of getEdgeChromiumNoHighContrastAdjustSelector ([PR #16951](https://github.com/microsoft/fluentui/pull/16951) by sareiff@microsoft.com)
+- Disabling deprecation lint rule in examples using deprecated components. ([PR #16962](https://github.com/microsoft/fluentui/pull/16962) by humbertomakotomorimoto@gmail.com)
 
 ## [0.11.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.24)
 

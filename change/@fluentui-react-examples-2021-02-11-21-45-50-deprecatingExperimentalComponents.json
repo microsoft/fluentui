@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Disabling deprecation lint rule in examples using deprecated components.",
-  "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-12T05:45:50.146Z"
-}

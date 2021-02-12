@@ -2,6 +2,21 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/date-time_v7.19.17",
+      "version": "7.19.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove use of getEdgeChromiumNoHighContrastAdjustSelector",
+            "author": "sareiff@microsoft.com",
+            "commit": "e49b873eb8467a43bf53067d01151d6fb9e37356",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:25:26 GMT",
       "tag": "@uifabric/date-time_v7.19.16",
       "version": "7.19.16",
