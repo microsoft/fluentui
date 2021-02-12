@@ -3,7 +3,7 @@ import { AvatarState } from './Avatar.types';
 
 //
 // TODO: All animation constants should go to theme or globals?
-//
+// https://github.com/microsoft/fluentui/issues/16372#issuecomment-778240665
 
 const animationDuration = {
   duration50: '50ms',
