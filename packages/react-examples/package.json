@@ -64,7 +64,7 @@
     "@fluentui/react-icons-mdl2": "^1.0.0-beta.13",
     "@fluentui/react-image": "^0.6.22",
     "@fluentui/react-link": "^1.0.0-beta.39",
-    "@fluentui/react-make-styles": "^0.2.5",
+    "@fluentui/react-make-styles": "^0.2.5-0",
     "@fluentui/react-menu": "^0.2.1",
     "@fluentui/react-provider": "^0.1.4",
     "@fluentui/react-shared-contexts": "^1.0.0-beta.5",
