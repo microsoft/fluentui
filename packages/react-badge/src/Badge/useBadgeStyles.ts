@@ -11,6 +11,8 @@ export const useRootStyles = makeStyles<BadgeState>([
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: theme.alias.color.brand.brandBackground,
+      borderColor: theme.alias.color.brand.brandBackground,
       color: theme.global.color.white,
     }),
   ],
@@ -33,70 +35,76 @@ export const useRootStyles = makeStyles<BadgeState>([
   [
     s => s.size === 'small',
     theme => ({
-      width: '16px',
+      minWidth: '4px',
       height: '16px',
-      fontSize: '10px',
+      paddingRight: '6px',
+      paddingLeft: '6px',
+      gap: '4px',
+      fontSize: '8px',
     }),
   ],
   [
     s => s.size === 'medium',
     theme => ({
       height: '20px',
-      alignItems: 'center',
-      justifyContent: 'center',
+      minWidth: '4px',
       gap: '4px',
-      border: '1px',
       paddingRight: '8px',
       paddingLeft: '8px',
+      fontSize: '12px',
     }),
   ],
   [
     s => s.size === 'large',
     theme => ({
-      width: '24px',
+      minWidth: '8px',
       height: '24px',
+      paddingRight: '8px',
+      paddingLeft: '8px',
       fontSize: '12px',
+      gap: '6px',
     }),
   ],
   [
-    s => s.size === 'larger',
+    s => s.size === 'larger' || s.size === 'largest',
     theme => ({
-      width: '32px',
+      minWidth: '8px',
       height: '32px',
+      paddingRight: '12px',
+      paddingLeft: '12px',
+      gap: '6px',
       fontSize: '12px',
+      border: '2px',
     }),
   ],
+  [s => s.shape === 'circular', theme => ({ borderRadius: theme.global.borderRadius.circular })],
+  [s => s.shape === 'rounded', theme => ({ borderRadius: theme.global.borderRadius.medium })],
   [
-    s => s.size === 'largest',
-    theme => ({
-      width: '32px',
-      height: '32px',
-      fontSize: '12px',
+    s => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
+    theme => ({ borderRadius: theme.global.borderRadius.small }),
+  ],
+]);
+
+/**
+ * Styles for the icon slot
+ */
+export const useIconStyles = makeStyles<BadgeState>([
+  [
+    s => !s.children,
+    () => ({
+      position: 'absolute',
     }),
-  ],
-  [s => s.circular, theme => ({ borderRadius: theme.global.borderRadius.circular })],
-  [s => s.rounded, theme => ({ borderRadius: theme.global.borderRadius.medium })],
-  [s => s.status === 'success', theme => ({ backgroundColor: theme.global.palette.green.primary })],
-  [s => s.status === 'accent', theme => ({ backgroundColor: theme.global.palette.blue.primary })],
-  [s => s.status === 'danger', theme => ({ backgroundColor: theme.global.palette.cranberry.primary })],
-  [
-    s => s.status === 'warning',
-    theme => ({ backgroundColor: theme.global.palette.yellow.primary, color: theme.global.color.black }),
-  ],
-  [s => s.status === 'severe', theme => ({ backgroundColor: theme.global.palette.darkOrange.primary })],
-  [s => s.status === 'important', theme => ({ backgroundColor: theme.global.palette.grey[14] })],
-  [
-    s => s.status === 'informative',
-    theme => ({ backgroundColor: theme.global.palette.grey[92], color: theme.global.palette.grey[38] }),
-  ],
-  [
-    s => s.status === 'subtle',
-    theme => ({ backgroundColor: theme.global.color.white, color: theme.global.color.black }),
   ],
 ]);
 
 /** Applies style classnames to slots */
 export const useBadgeStyles = (state: BadgeState) => {
   state.className = ax(useRootStyles(state), state.className);
-  return state
+  const iconClassName = useIconStyles(state);
+
+  if (state.icon) {
+    state.icon.className = ax(iconClassName, state.icon.className);
+  }
+
+  return state;
 };

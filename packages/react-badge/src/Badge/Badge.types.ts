@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utils';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 export type BadgeStatus =
@@ -12,6 +12,10 @@ export type BadgeStatus =
   | 'informative'
   | 'subtle';
 
+export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+
+export type BadgeShape = 'rounded' | 'square' | 'circular';
+
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /** A Badge can be sized. */
   size?: SizeValue;
@@ -22,28 +26,21 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   /** A Badge can have different colors. */
   color?: string;
 
-  /** A Badge can have rounded conners */
-  rounded?: boolean;
+  /** A Badge can be square, circular or rounded */
+  shape?: BadgeShape;
 
-  /** A Badge can be circular */
-  circular?: boolean;
+  /** A Badge can be filled, outline, ghost, inverted */
+  variant?: BadgeVariant;
 
-  /** A Badge can be filled */
-  filled?: boolean;
+  /**
+   * Icon slot
+   */
+  icon?: ShorthandProps<HTMLElement>;
 
-  /** A Badge can be outline */
-  outline?: boolean;
-
-  /** A Badge can be ghost */
-  ghost?: boolean;
-
-  /** A Badge can be inverted */
-  inverted?: boolean;
-
-  /** A Badge can be tint */
-  tint?: boolean;
+  iconPosition?: 'before' | 'after';
 }
 
 export interface BadgeState extends BadgeProps {
   ref: React.MutableRefObject<HTMLElement>;
+  icon?: ObjectShorthandProps<HTMLSpanElement>;
 }

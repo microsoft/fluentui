@@ -11,8 +11,9 @@ export const renderMenuItem = (state: MenuItemState) => {
 
   return (
     <slots.root {...slotProps.root}>
-      <slots.icon {...slotProps.icon} />
+      {state.iconPosition === 'before' && <slots.icon {...slotProps.icon} />}
       {state.children}
+      {state.iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
     </slots.root>
   );
 };

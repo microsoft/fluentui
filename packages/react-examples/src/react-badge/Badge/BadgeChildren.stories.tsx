@@ -5,73 +5,83 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
   <div
     style={{
       display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
+      flexDirection: 'column',
+      gap: '8px',
     }}
   >
-    <Badge
-      {...props}
-      size="smallest"
+    <div
       style={{
-        backgroundColor: 'green',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
       }}
     >
-      1
-    </Badge>
-    <Badge
-      {...props}
-      size="smaller"
+      <Badge size="smallest">1</Badge>
+      <Badge size="smaller">1</Badge>
+      <Badge size="small">1</Badge>
+      <Badge size="medium">1</Badge>
+      <Badge size="large">1</Badge>
+      <Badge size="larger">1</Badge>
+      <Badge size="largest">1</Badge>
+    </div>
+    <div
       style={{
-        backgroundColor: 'green',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
       }}
     >
-      1
-    </Badge>
-    <Badge
-      {...props}
-      size="small"
+      <Badge shape="square" size="smallest">
+        1
+      </Badge>
+      <Badge shape="square" size="smaller">
+        1
+      </Badge>
+      <Badge shape="square" size="small">
+        1
+      </Badge>
+      <Badge shape="square" size="medium">
+        1
+      </Badge>
+      <Badge shape="square" size="large">
+        1
+      </Badge>
+      <Badge shape="square" size="larger">
+        1
+      </Badge>
+      <Badge shape="square" size="largest">
+        1
+      </Badge>
+    </div>
+    <div
       style={{
-        backgroundColor: 'green',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
       }}
     >
-      1
-    </Badge>
-    <Badge
-      {...props}
-      size="medium"
-      style={{
-        backgroundColor: 'green',
-      }}
-    >
-      1
-    </Badge>
-    <Badge
-      {...props}
-      size="large"
-      style={{
-        backgroundColor: 'green',
-      }}
-    >
-      1
-    </Badge>
-    <Badge
-      {...props}
-      size="larger"
-      style={{
-        backgroundColor: 'green',
-      }}
-    >
-      1
-    </Badge>
-    <Badge
-      {...props}
-      size="largest"
-      style={{
-        backgroundColor: 'green',
-      }}
-    >
-      1
-    </Badge>
+      <Badge shape="rounded" size="smallest">
+        1
+      </Badge>
+      <Badge shape="rounded" size="smaller">
+        1
+      </Badge>
+      <Badge shape="rounded" size="small">
+        1
+      </Badge>
+      <Badge shape="rounded" size="medium">
+        1
+      </Badge>
+      <Badge shape="rounded" size="large">
+        1
+      </Badge>
+      <Badge shape="rounded" size="larger">
+        1
+      </Badge>
+      <Badge shape="rounded" size="largest">
+        1
+      </Badge>
+    </div>
   </div>
 );
 

@@ -11,55 +11,13 @@ const BadgeAppearanceExamples = (props: BadgeProps) => (
         alignItems: 'center',
       }}
     >
-      <Badge
-        {...props}
-        size="smallest"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="smaller"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="small"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="medium"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="large"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="larger"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="largest"
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
+      <Badge size="smallest" />
+      <Badge size="smaller" />
+      <Badge size="small" />
+      <Badge size="medium" />
+      <Badge size="large" />
+      <Badge size="larger" />
+      <Badge size="largest" />
     </div>
     <h2>Square</h2>
     <div
@@ -69,62 +27,13 @@ const BadgeAppearanceExamples = (props: BadgeProps) => (
         alignItems: 'center',
       }}
     >
-      <Badge
-        {...props}
-        size="smallest"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="smaller"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="small"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="medium"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="large"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="larger"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="largest"
-        circular={false}
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
+      <Badge size="smallest" shape="square" />
+      <Badge size="smaller" shape="square" />
+      <Badge size="small" shape="square" />
+      <Badge size="medium" shape="square" />
+      <Badge size="large" shape="square" />
+      <Badge size="larger" shape="square" />
+      <Badge size="largest" shape="square" />
     </div>
     <h2>Rounded</h2>
     <div
@@ -134,62 +43,13 @@ const BadgeAppearanceExamples = (props: BadgeProps) => (
         alignItems: 'center',
       }}
     >
-      <Badge
-        {...props}
-        size="smallest"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="smaller"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="small"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="medium"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="large"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="larger"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
-      <Badge
-        {...props}
-        size="largest"
-        rounded
-        style={{
-          backgroundColor: 'green',
-        }}
-      />
+      <Badge size="smallest" shape="rounded" />
+      <Badge size="smaller" shape="rounded" />
+      <Badge size="small" shape="rounded" />
+      <Badge size="medium" shape="rounded" />
+      <Badge size="large" shape="rounded" />
+      <Badge size="larger" shape="rounded" />
+      <Badge size="largest" shape="rounded" />
     </div>
   </>
 );

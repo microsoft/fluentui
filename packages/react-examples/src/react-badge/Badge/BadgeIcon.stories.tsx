@@ -10,76 +10,13 @@ const BadgeIconExamples = (props: BadgeProps) => (
       alignItems: 'center',
     }}
   >
-    <Badge
-      {...props}
-      size="smallest"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
-    <Badge
-      {...props}
-      size="smaller"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
-    <Badge
-      {...props}
-      size="small"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
-    <Badge
-      {...props}
-      size="medium"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
-    <Badge
-      {...props}
-      size="large"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
-    <Badge
-      {...props}
-      size="larger"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
-    <Badge
-      {...props}
-      size="largest"
-      style={{
-        backgroundColor: 'green',
-        color: 'white',
-      }}
-    >
-      <AcceptIcon />
-    </Badge>
+    <Badge size="smallest" icon={<AcceptIcon />} />
+    <Badge size="smaller" icon={<AcceptIcon />} />
+    <Badge size="small" icon={<AcceptIcon />} />
+    <Badge size="medium" icon={<AcceptIcon />} />
+    <Badge size="large" icon={<AcceptIcon />} />
+    <Badge size="larger" icon={<AcceptIcon />} />
+    <Badge size="largest" icon={<AcceptIcon />} />
   </div>
 );
 

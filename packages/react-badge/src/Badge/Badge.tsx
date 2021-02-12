@@ -10,3 +10,5 @@ export const Badge = React.forwardRef<HTMLElement, BadgeProps>((props, ref) => {
 
   return renderBadge(state);
 });
+
+Badge.displayName = 'Badge';
