@@ -1,6 +1,5 @@
 import { EdgeChromiumHighContrastSelector } from '@fluentui/style-utilities';
-import { makeVariantClasses } from '@fluentui/react-theme-provider/lib/compat/index';
-import { Theme } from '@fluentui/theme';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ToggleButtonState, ToggleButtonVariants } from './ToggleButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
 
