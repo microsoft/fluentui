@@ -14,6 +14,10 @@ import { Label } from '@fluentui/react/lib/Label';
 import { TooltipHost } from '@fluentui/react/lib/Tooltip';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { Async, EventGroup, FocusRects } from '@fluentui/utilities';
+
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export interface ISliderState {
   value?: number;
   renderedValue?: number;
@@ -22,8 +26,10 @@ export interface ISliderState {
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 const COMPONENT_NAME = 'Slider';
 
+/** @deprecated */
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
+/** @deprecated */
 export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,

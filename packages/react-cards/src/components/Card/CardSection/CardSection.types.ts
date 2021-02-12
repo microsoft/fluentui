@@ -1,87 +1,22 @@
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '@fluentui/foundation-legacy';
-import { IStackProps, IStackSlots, IStackTokens } from '@fluentui/react/lib/Stack';
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
+import * as React from 'react';
+import { BaseSlots, SlotProps } from '@fluentui/react-compose';
+import { ComponentProps } from '@fluentui/react-utils';
+import { ColorTokenSet } from '@fluentui/react-theme-provider/lib/compat/index';
 
-/**
- * {@docCategory Card}
- */
-export type ICardSectionComponent = IComponent<
-  ICardSectionProps,
-  ICardSectionTokens,
-  ICardSectionStyles,
-  ICardSectionViewProps
->;
+/* eslint-disable @typescript-eslint/naming-convention */
 
-// These types are redundant with ICardSectionComponent but are needed until TS function return widening issue
-// is resolved: https://github.com/Microsoft/TypeScript/issues/241
-// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type CardSectionProps = ComponentProps &
+  React.HTMLAttributes<HTMLDivElement> & {
+    /** A card section can be fitted, without any space above or below it. */
+    fitted?: boolean;
+  };
 
-/**
- * {@docCategory Card}
- */
-export type ICardSectionTokenReturnType = ReturnType<Extract<ICardSectionComponent['tokens'], Function>>;
-
-/**
- * {@docCategory Card}
- */
-export type ICardSectionStylesReturnType = ReturnType<Extract<ICardSectionComponent['styles'], Function>>;
-
-/**
- * {@docCategory Card}
- */
-export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
-
-/**
- * {@docCategory Card}
- */
-export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {}
-
-/**
- * {@docCategory Card}
- */
-export interface ICardSection {}
-
-/**
- * {@docCategory Card}
- */
-export interface ICardSectionProps
-  extends ICardSectionSlots,
-    Pick<
-      IStackProps,
-      | 'as'
-      | 'horizontal'
-      | 'reversed'
-      | 'horizontalAlign'
-      | 'verticalAlign'
-      | 'verticalFill'
-      | 'disableShrink'
-      | 'grow'
-      | 'wrap'
-    >,
-    IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>,
-    IBaseProps<ICardSection> {
-  /**
-   * Determines if the CardSection should disregard the children margin specified by Card.
-   */
-  fill?: boolean;
+export interface CardSectionState extends CardSectionProps {
+  ref: React.RefObject<HTMLElement>;
 }
 
-/**
- * {@docCategory Card}
- */
-export interface ICardSectionViewProps extends ICardSectionProps {}
+export interface CardSectionSlots extends BaseSlots {}
 
-/**
- * {@docCategory Card}
- */
-export interface ICardSectionTokens extends IStackTokens {
-  /**
-   * Defines the margin to be applied to the CardSection relative to its container.
-   */
-  margin?: number | string;
-}
+export type CardSectionSlotProps = SlotProps<CardSectionSlots, CardSectionProps, React.HTMLAttributes<HTMLDivElement>>;
 
-/**
- * {@docCategory Card}
- */
-export type ICardSectionStyles = IComponentStyles<ICardSectionSlots>;
+export type CardSectionTokens = ColorTokenSet & {};
