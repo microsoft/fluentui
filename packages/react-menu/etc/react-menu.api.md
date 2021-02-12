@@ -27,10 +27,10 @@ export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-
 // @public
 export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
-// @public
+// @public (undocumented)
 export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {};
 
-// @public
+// @public (undocumented)
 export interface MenuGroupHeaderState extends MenuGroupHeaderProps {
     // (undocumented)
     ref?: React.MutableRefObject<HTMLElement>;
