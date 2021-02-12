@@ -90,6 +90,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: false,
   },
   {
+    id: 'accessible-teams',
+    title: { content: 'Accessible Teams', as: NavLink, to: '/prototype-accessible-teams' },
+    public: true,
+  },
+  {
     id: 'alerts',
     title: { content: 'Alerts', as: NavLink, to: '/prototype-alerts' },
     public: false,
