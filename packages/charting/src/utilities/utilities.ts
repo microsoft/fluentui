@@ -293,7 +293,17 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  * This methos creates an object for those 2 charts.
  * @param values
  */
-export function calloutData(values: ILineChartPoints[]) {
+
+type dataPoint = {
+  legend: string;
+  y: number;
+  x: number | Date | string;
+  color: string;
+  yAxisCalloutData: string;
+  index?: number;
+};
+
+export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   let combinedResult: {
     legend: string;
     y: number;
@@ -302,39 +312,33 @@ export function calloutData(values: ILineChartPoints[]) {
     yAxisCalloutData?: string | { [id: string]: number };
   }[] = [];
 
-  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
+  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
     const elements = element.data.map((ele: ILineChartDataPoint) => {
-      return { legend: element.legend, ...ele, color: element.color };
+      return { legend: element.legend, ...ele, color: element.color, index: element.index };
     });
     combinedResult = combinedResult.concat(elements);
   });
 
   const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach(
-    (
-      e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
-      index: number,
-    ) => {
-      e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
-      const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
-      combinedResult
-        .slice(index + 1)
-        .forEach(
-          (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-            e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
-            if (e1.x === e2.x) {
-              filteredValues.push({
-                legend: e2.legend,
-                y: e2.y,
-                color: e2.color,
-                yAxisCalloutData: e2.yAxisCalloutData,
-              });
-            }
-          },
-        );
-      result.push({ x: e1.x, values: filteredValues });
-    },
-  );
+  combinedResult.forEach((e1: dataPoint, index: number) => {
+    e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
+    const filteredValues = [
+      { legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData, index: e1.index },
+    ];
+    combinedResult.slice(index + 1).forEach((e2: dataPoint) => {
+      e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
+      if (e1.x === e2.x) {
+        filteredValues.push({
+          legend: e2.legend,
+          y: e2.y,
+          color: e2.color,
+          yAxisCalloutData: e2.yAxisCalloutData,
+          index: e2.index,
+        });
+      }
+    });
+    result.push({ x: e1.x, values: filteredValues });
+  });
   return getUnique(result, 'x');
 }
 
@@ -855,4 +859,66 @@ export const getTypeOfAxis = (p: string | number | Date, isXAsix: boolean): XAxi
         return YAxisType.DateAxis;
     }
   }
+};
+
+/**
+ * we need to make sure that if we add any property to this, then
+ * we need to also add that in  pointTypes below and vise-versa
+ */
+
+export enum Points {
+  circle,
+  square,
+  triangle,
+  diamond,
+  pyramid,
+  hexagon,
+  pentagon,
+  octagon,
+}
+
+export type PointTypes = {
+  [key in number]: {
+    /**
+     * For certian shapes like pentagon, hexagon and octagon.
+     * the width of the bouding box increase by the time of the
+     * length of the side, so when we want to render a pentagon
+     * having each side of length 7 units we need to decrease it's
+     * units by width ratio so that the bounding box width of the pentagon
+     * stays as 7
+     */
+    widthRatio: number;
+  };
+};
+
+/**
+ * we need to make sure that if we add any property to this, then
+ * we need to also add that in enum Point and vise-versa
+ */
+
+export const pointTypes: PointTypes = {
+  [Points.circle]: {
+    widthRatio: 1,
+  },
+  [Points.square]: {
+    widthRatio: 1,
+  },
+  [Points.triangle]: {
+    widthRatio: 1,
+  },
+  [Points.diamond]: {
+    widthRatio: 1,
+  },
+  [Points.pyramid]: {
+    widthRatio: 1,
+  },
+  [Points.hexagon]: {
+    widthRatio: 2,
+  },
+  [Points.pentagon]: {
+    widthRatio: 1.168,
+  },
+  [Points.octagon]: {
+    widthRatio: 2.414,
+  },
 };
