@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItemRadio renders a default state 1`] = `
+<div
+  aria-checked={false}
+  className=""
+  name="radio"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="menuitemradio"
+  tabIndex={0}
+>
+  Default MenuItemRadio
+</div>
+`;

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.15)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.14..@fluentui/theme_v2.0.0-beta.15)
+
+### Changes
+
+- [BREAKING] Remove theming logic/interface which are unrelated to v8 release. ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
 
 ## [2.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.14)
 

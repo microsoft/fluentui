@@ -2,6 +2,29 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-image_v0.6.22",
+      "version": "0.6.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.23",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react-image_v0.6.21",
       "version": "0.6.21",
