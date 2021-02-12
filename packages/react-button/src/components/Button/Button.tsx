@@ -6,6 +6,7 @@ import { ButtonProps } from './Button.types';
 import { renderButton } from './renderButton';
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
+import { useTheme } from '@fluentui/react-theme-provider';
 
 /**
  * Note, this file is written as a monolith for now to ease development.
@@ -44,8 +45,7 @@ type ButtonTokens = {
   // TODO: what do we want to do with tokens for slots, just prefix them with slot name?
   iconWidth: string;
   iconHeight: string;
-  iconBeforeSpacing: string;
-  iconAfterSpacing: string;
+  iconSpacing: string;
 
   color: string;
   content2Color: string;
@@ -67,6 +67,7 @@ type ButtonTokens = {
 
 type ButtonVariants =
   | 'base'
+  | 'compound'
   | 'textOnly'
   | 'iconOnly'
   | 'primary'
@@ -108,7 +109,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     // When they are shown in the token UI, we need to make it clear there is no global/alias mapping support
     height: '32px',
     paddingX: buttonSpacing.large,
-    paddingY: buttonSpacing.large,
+    paddingY: '0',
     minWidth: '96px',
     maxWidth: '280px',
 
@@ -127,11 +128,15 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     backgroundActive: theme.alias.color.neutral.neutralBackground1Pressed,
     borderColorActive: theme.alias.color.neutral.neutralStroke1Pressed,
 
-    iconBeforeSpacing: buttonSpacing.small,
-    iconAfterSpacing: buttonSpacing.smaller,
+    iconSpacing: buttonSpacing.small,
+    iconWidth: '20px',
+    iconHeight: '20px',
+  },
+  compound: {
+    paddingY: buttonSpacing.large,
   },
   textOnly: {
-    paddingX: buttonSpacing.large,
+    // paddingX: buttonSpacing.large,
   },
   // TODO: Would be ideal to automate a check to ensure when a variant is accessed, all the tokens are accessed as well.
   //       If not, it means there is cruft in the variant tokens definition.
@@ -142,14 +147,13 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     // TODO: we already have min/max width, should we really introduce a "width" as well?
     minWidth: '32px',
     maxWidth: '32px',
-    iconWidth: '20px',
-    iconHeight: '20px',
   },
   primary: {
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
     // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
 
     background: theme.alias.color.brand.brandBackground,
+    borderColor: 'transparent',
     backgroundHover: theme.alias.color.brand.brandBackgroundHover,
     backgroundPressed: theme.alias.color.brand.brandBackgroundPressed,
 
@@ -190,13 +194,18 @@ const useRootClasses = makeStyles<ButtonSelectors>([
 
         display: 'inline-flex',
         alignItems: 'center',
-        // TODO: 1) ask designers what our vertical align strategy is
-        //       2) enforce with conformance for inline elements
+        justifyContent: 'center',
+        gap: buttonTokens.base.iconSpacing,
+        // // TODO: 1) ask designers what our vertical align strategy is
+        // //       2) enforce with conformance for inline elements
         verticalAlign: 'text-bottom',
         margin: 0,
 
-        padding: `${buttonTokens.base.paddingX} ${buttonTokens.base.paddingY}`,
+        padding: `${buttonTokens.base.paddingY} ${buttonTokens.base.paddingX}`,
         height: buttonTokens.base.height,
+
+        minWidth: buttonTokens.base.minWidth,
+        maxWidth: buttonTokens.base.maxWidth,
 
         color: buttonTokens.base.color,
         borderStyle: 'solid',
@@ -229,6 +238,7 @@ const useRootClasses = makeStyles<ButtonSelectors>([
       return {
         background: buttonTokens.primary.background,
         color: buttonTokens.primary.color,
+        border: buttonTokens.primary.borderColor,
         // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
         boxShadow: buttonTokens.primary.shadow,
 
@@ -239,7 +249,7 @@ const useRootClasses = makeStyles<ButtonSelectors>([
         ':active': {
           background: buttonTokens.primary.backgroundPressed,
           // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
-          boxShadow: buttonTokens.primary.boxShadow,
+          boxShadow: buttonTokens.primary.shadow,
         },
 
         // TODO: focus
@@ -264,20 +274,8 @@ const useRootClasses = makeStyles<ButtonSelectors>([
 
       return {
         padding: buttonTokens.iconOnly.paddingX,
-        // TODO: strange pattern here:
-        //       1) using height for width to ensure square/circular
-        //       2) is it ok to use base tokens in iconOnly?
-        width: buttonTokens.base.height,
-      };
-    },
-  ],
-  [
-    ({ textWithIcon }) => textWithIcon,
-    theme => {
-      const buttonTokens = makeButtonTokens(theme);
-
-      return {
-        gap: buttonTokens.base.iconBeforeSpacing,
+        minWidth: buttonTokens.iconOnly.minWidth,
+        maxWidth: buttonTokens.iconOnly.maxWidth,
       };
     },
   ],
@@ -310,32 +308,42 @@ const useRootClasses = makeStyles<ButtonSelectors>([
 const useContentClasses = makeStyles<ButtonSelectors>([
   [
     null,
-    {
+    theme => ({
       textOverflow: 'ellipsis',
-      display: 'inline-block',
-      width: '100%',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-    },
-  ],
-  [
-    ({ iconOnly }) => iconOnly,
-    {
-      textAlign: 'center',
-    },
+      // TODO: This is "Body, Strong (?)" token in the design spec (14px size, 20px line, semibold weight)
+      //       There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
+      fontWeight: theme.global.type.fontWeights.semibold,
+      fontSize: theme.global.type.fontSizes.base[300],
+      lineHeight: theme.global.type.lineHeights.base[300],
+    }),
   ],
 ]);
 
-// const useButton = props => {
-//   const state = {};
-//   return state;
-// };
+const useIconClasses = makeStyles<ButtonSelectors>([
+  [
+    null,
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: buttonTokens.base.iconHeight,
+        width: buttonTokens.base.iconWidth,
+      };
+    },
+  ],
+]);
 
 const useButtonClasses = (state: ButtonState, selectors: ButtonSelectors) => {
   // TODO: don't require "selectors"
   // TODO: rename "selectors" to "matchers", its CSS in JS and not CSS
   state.className = ax(state.className, useRootClasses(selectors));
   state.content.className = ax(state.content.className, useContentClasses(selectors));
+  state.icon.className = ax(state.icon.className, useIconClasses(selectors));
 };
 
 // export const renderButton = (state: ButtonState) => {
@@ -367,15 +375,26 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   const hasContent = !!state?.content?.children;
   const hasIcon = !!state?.icon?.children;
 
+  const iconOnly = hasIcon && !hasContent
   const styleSelectors = {
     primary: props.primary,
-    iconOnly: hasIcon && !hasContent,
+    iconOnly: iconOnly,
     textOnly: hasContent && !hasIcon,
     textWithIcon: hasIcon && hasContent,
   };
 
-  useButtonClasses(state, styleSelectors);
+  // TODO: consider that we can actually apply tokens without needing to go through style matchers somehow
+  //       just needs to still allow user to override and win
+  // const buttonTokens = makeButtonTokens(useTheme());
+  // const tokens = {}
+  // if (iconOnly) {
+  //   Object.assign(tokens, buttonTokens.iconOnly)
+  // }
+  //
+  // state.style = tokens
+  // console.log(tokens)
 
+  useButtonClasses(state, styleSelectors);
   // useButtonClasses(state);
   // useInlineTokens(state, '--button');
 

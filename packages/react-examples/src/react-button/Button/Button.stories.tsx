@@ -101,6 +101,8 @@ const TokenTable = ({
 
   const cellStyle = { padding: '0 2px', background: '#FFF' };
 
+  // TODO: highlight red variant cells that duplicate base
+
   return (
     <pre
       style={{

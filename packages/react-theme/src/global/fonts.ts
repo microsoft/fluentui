@@ -1,5 +1,6 @@
 import { FontFamilies, FontSizes, FontWeights, LineHeights, TextAlignments } from '../types';
 
+// TODO: normalize singular/plural names in our theme. Suggested singular so usage reads well.
 export const fontSizes: FontSizes = {
   base: {
     100: '10px',
