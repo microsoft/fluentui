@@ -6,6 +6,8 @@ import { ButtonStyles as styles } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
+/* eslint-disable deprecation/deprecation */
+
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette, semanticColors } = theme;
 
@@ -65,6 +67,10 @@ const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButt
   props.disabled && disabledTokens,
 ];
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CommandBarButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'CommandBarButton',
   slots,

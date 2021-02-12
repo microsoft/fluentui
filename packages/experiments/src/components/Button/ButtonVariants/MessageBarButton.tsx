@@ -13,6 +13,8 @@ import {
 } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
+/* eslint-disable deprecation/deprecation */
+
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { palette } = theme;
 
@@ -40,12 +42,17 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   };
 };
 
+/** @deprecated */
 export const MessageBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const regularTokens = (ButtonTokens as ITokenFunction<IButtonViewProps, IButtonTokens>)(props, theme);
 
   return [regularTokens, baseTokens, props.disabled && disabledTokens];
 };
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const MessageBarButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'MessageBarButton',
   slots,

@@ -6,10 +6,14 @@ import { getNativeProps, anchorProperties, buttonProperties } from '../../../Uti
 
 import { IActionableComponent, IActionableViewProps } from './Actionable.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const ActionableSlots: IActionableComponent['slots'] = props => ({
   root: props.href ? 'a' : 'button',
 });
 
+/** @deprecated */
 export const ActionableView: IActionableComponent['view'] = (props, slots) => {
   const { children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 

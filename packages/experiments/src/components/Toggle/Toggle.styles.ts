@@ -1,6 +1,8 @@
 import { IToggleComponent, IToggleStylesReturnType, IToggleTokenReturnType } from './Toggle.types';
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector, IStyle } from '../../Styling';
 
+/* eslint-disable deprecation/deprecation */
+
 const GlobalClassNames = {
   root: 'ms-Toggle',
   label: 'ms-Toggle-label',
@@ -65,12 +67,14 @@ const toggleCheckedDisabledTokens: IToggleComponent['tokens'] = (props, theme): 
   };
 };
 
+/** @deprecated */
 export const ToggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType => [
   props.checked && toggleCheckedVariables,
   props.disabled && [toggleDisabledTokens, props.checked && toggleCheckedDisabledTokens],
   !props.disabled && [toggleEnabledTokens, props.checked && toggleCheckedEnabledTokens],
 ];
 
+/** @deprecated */
 export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): IToggleStylesReturnType => {
   const { className, disabled, checked } = props;
 
