@@ -44,4 +44,6 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   tint?: boolean;
 }
 
-export interface BadgeState extends BadgeProps {}
+export interface BadgeState extends BadgeProps {
+  ref: React.MutableRefObject<HTMLElement>
+}
