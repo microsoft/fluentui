@@ -81,49 +81,87 @@ export const Size = () => (
 //
 // Appearance
 //
-const AppearanceExample = (props: ButtonProps) => (
-  <>
-    <Button {...props} icon={<CalendarIcon />} />
-    <br />
-    <Button {...props}>Text</Button>
-    <Button {...props} icon={<CalendarIcon />}>
-      Text
-    </Button>
-    <Button {...props} icon={<CalendarIcon />} iconPosition="after">
-      Text
-    </Button>
-    <br />
-    <Button {...props} secondaryContent="Secondary string">
-      Primary string
-    </Button>
-    <Button {...props} icon={<CalendarIcon />} secondaryContent="Secondary string">
-      Primary string
-    </Button>
-    {/* TODO: get theme from storybook global state */}
+const TokenTable = ({
+  variantTokens,
+}: {
+  variantTokens: {
+    [variant: string]: { [token: string]: string };
+  };
+}) => {
+  const variants = Object.keys(variantTokens);
+  const tokens = Object.values(variantTokens).reduce((acc, tokens) => {
+    Object.keys(tokens).forEach(token => {
+      if (!acc.includes(token)) {
+        acc.push(token);
+      }
+    });
+
+    return acc;
+  }, []);
+
+  const cellStyle = { padding: '0 2px', background: '#FFF' };
+
+  return (
     <pre
       style={{
         display: 'grid',
-        gridTemplateColumns: 'auto 1fr',
-        gridColumnGap: '1em',
+        gridTemplateColumns: `repeat(${variants.length + 1}, minmax(min-content, 1fr)`,
+        gridTemplateRows: `repeat(${tokens.length}, fit-content)`,
+        gridGap: '1px',
+        padding: '1px',
+        fontSize: '12px',
+        background: '#eee',
       }}
     >
-      {Object.entries(makeButtonTokens(useTheme())).map(([variant, tokens]) => (
-        <>
-          <strong key={variant}>{variant}</strong>
-          <div key={variant + ':spacer'} />
-          {Object.entries(tokens).map(([name, value]) => [
-            <div key={`${variant}:${name}`} style={{ paddingLeft: '1em' }}>
-              {name}
-            </div>,
-            <div key={`${variant}:${name}:${value}`} style={{ paddingLeft: '1em' }}>
-              {value}
-            </div>,
-          ])}
-        </>
+      <div>Tokens</div>
+      {variants.map(variant => (
+        <strong key={variant} style={cellStyle}>
+          {variant}
+        </strong>
       ))}
+      {tokens.map(token => [
+        <strong key={token} style={cellStyle}>
+          {token}
+        </strong>,
+        ...variants.map(variant => {
+          return (
+            <div key={`${variant}:${token}`} style={cellStyle}>
+              {variantTokens[variant][token]}
+            </div>
+          );
+        }),
+      ])}
     </pre>
-  </>
-);
+  );
+};
+
+const AppearanceExample = (props: ButtonProps) => {
+  // TODO: get theme from storybook global state
+  const buttonTokens = makeButtonTokens(useTheme());
+
+  return (
+    <>
+      <Button {...props} icon={<CalendarIcon />} />
+      <br />
+      <Button {...props}>Text</Button>
+      <Button {...props} icon={<CalendarIcon />}>
+        Text
+      </Button>
+      <Button {...props} icon={<CalendarIcon />} iconPosition="after">
+        Text
+      </Button>
+      <br />
+      <Button {...props} secondaryContent="Secondary string">
+        Primary string
+      </Button>
+      <Button {...props} icon={<CalendarIcon />} secondaryContent="Secondary string">
+        Primary string
+      </Button>
+      {/* TODO: move to Storybook addon */}
+      <TokenTable variantTokens={buttonTokens} />
+    </>
+  );
+};
 
 export const Primary = () => <AppearanceExample primary />;
 export const Default = () => <AppearanceExample />;
