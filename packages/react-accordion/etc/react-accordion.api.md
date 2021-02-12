@@ -8,7 +8,7 @@ import { ComponentProps } from '@fluentui/react-utils';
 import * as React from 'react';
 
 // @public
-export const Accordion: React.ForwardRefExoticComponent<Pick<AccordionProps, React.ReactText> & React.RefAttributes<HTMLElement>>;
+export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
