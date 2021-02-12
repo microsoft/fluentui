@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/theme_v2.0.0-beta.15",
+      "version": "2.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] Remove theming logic/interface which are unrelated to v8 release.",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/theme_v2.0.0-beta.14",
       "version": "2.0.0-beta.14",

@@ -2,6 +2,35 @@
   "name": "@fluentui/public-docsite-resources",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/public-docsite-resources_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Website: Removing Card page from the website.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e0b427b2868e2ff0e9e2870bc8bd7977f0a6aede",
+            "package": "@fluentui/public-docsite-resources"
+          },
+          {
+            "comment": "Changing version to pre-release.",
+            "author": "dzearing@microsoft.com",
+            "commit": "e226efa45d5b2bbeac7141ce081fc8bfd704a65c",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.0.0-beta.1",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/public-docsite-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/public-docsite-resources_v1.0.6",
       "version": "1.0.6",

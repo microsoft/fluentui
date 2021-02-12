@@ -29,6 +29,10 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
+if (['react-menu'].includes('PACKAGE_NAME')) {
+  addDecorator(withFluentProvider);
+  addDecorator(withStrictMode);
+}
 
 if (['react-badge'].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package.",
-  "packageName": "@fluentui/react-flex",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch"
-}
