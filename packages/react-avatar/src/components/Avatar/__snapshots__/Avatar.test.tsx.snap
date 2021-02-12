@@ -29,19 +29,6 @@ exports[`Avatar displays custom initials via getInitials 1`] = `
 </span>
 `;
 
-exports[`Avatar handles customSize 1`] = `
-<span
-  className=""
-  name="First Last"
->
-  <span
-    className=""
-  >
-    FL
-  </span>
-</span>
-`;
-
 exports[`Avatar prioritizes icon over initials 1`] = `
 <span
   className=""
