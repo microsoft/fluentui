@@ -97,7 +97,5 @@ export const useRootStyles = makeStyles<BadgeState>([
 
 /** Applies style classnames to slots */
 export const useBadgeStyles = (state: BadgeState) => {
-  const rootClassName = useRootStyles(state);
-
-  state.className = ax(rootClassName, state.className);
+  state.className = ax(useRootStyles(state), state.className);
 };
