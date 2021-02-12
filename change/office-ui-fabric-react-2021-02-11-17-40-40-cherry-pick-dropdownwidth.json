@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Dropdown: cherry pick #16298",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-12T01:40:40.712Z"
+}
