@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "cleanup ref usages, remove unused types",
+  "packageName": "@fluentui/react-image",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
