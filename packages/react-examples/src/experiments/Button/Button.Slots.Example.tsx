@@ -9,6 +9,8 @@ import {
 } from '@uifabric/experiments/lib/MenuButton';
 import { ISplitButtonProps, ISplitButtonTokens, SplitButton } from '@uifabric/experiments/lib/SplitButton';
 
+/* eslint-disable deprecation/deprecation */
+
 interface IRibbonMenuButtonProps extends IMenuButtonProps {
   vertical?: boolean;
 }

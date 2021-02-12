@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { IToggleComponent, IToggleTokenReturnType, Toggle } from '@uifabric/experiments';
 
+/* eslint-disable deprecation/deprecation */
+
 const toggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType => {
   return {
     ...(props.checked ? { textColor: 'green' } : { textColor: 'red' }),

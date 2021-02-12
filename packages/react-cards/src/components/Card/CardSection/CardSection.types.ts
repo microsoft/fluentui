@@ -2,7 +2,11 @@ import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } fro
 import { IStackProps, IStackSlots, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 
+/* eslint-disable deprecation/deprecation */
+
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export type ICardSectionComponent = IComponent<
@@ -17,31 +21,43 @@ export type ICardSectionComponent = IComponent<
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export type ICardSectionTokenReturnType = ReturnType<Extract<ICardSectionComponent['tokens'], Function>>;
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export type ICardSectionStylesReturnType = ReturnType<Extract<ICardSectionComponent['styles'], Function>>;
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {}
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export interface ICardSection {}
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export interface ICardSectionProps
@@ -62,26 +78,36 @@ export interface ICardSectionProps
     IBaseProps<ICardSection> {
   /**
    * Determines if the CardSection should disregard the children margin specified by Card.
+   * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+   * future.
    */
   fill?: boolean;
 }
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export interface ICardSectionViewProps extends ICardSectionProps {}
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export interface ICardSectionTokens extends IStackTokens {
   /**
    * Defines the margin to be applied to the CardSection relative to its container.
+   * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+   * future.
    */
   margin?: number | string;
 }
 
 /**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Card}
  */
 export type ICardSectionStyles = IComponentStyles<ICardSectionSlots>;

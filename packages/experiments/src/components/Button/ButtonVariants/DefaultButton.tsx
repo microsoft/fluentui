@@ -14,6 +14,9 @@ import {
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const DefaultButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   !!props.href && hrefTokens,
@@ -23,6 +26,10 @@ export const DefaultButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.disabled && disabledTokens,
 ];
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const DefaultButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'DefaultButton',
   slots,

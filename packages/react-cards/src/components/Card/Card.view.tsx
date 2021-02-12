@@ -10,6 +10,9 @@ import { ICardItemProps } from './CardItem/CardItem.types';
 import { CardSection } from './CardSection/CardSection';
 import { ICardSectionProps } from './CardSection/CardSection.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
     root: Stack,

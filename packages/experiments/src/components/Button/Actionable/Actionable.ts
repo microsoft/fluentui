@@ -6,6 +6,12 @@ import { IActionableProps } from './Actionable.types';
 import { useActionableState as state } from './Actionable.state';
 import { ActionableSlots as slots, ActionableView as view } from './Actionable.view';
 
+/* eslint-disable deprecation/deprecation */
+
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const Actionable: React.FunctionComponent<IActionableProps> = composed({
   displayName: 'Actionable',
   slots,
@@ -15,4 +21,8 @@ export const Actionable: React.FunctionComponent<IActionableProps> = composed({
   view,
 });
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export default Actionable;

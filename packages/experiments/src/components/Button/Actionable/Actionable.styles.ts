@@ -2,6 +2,9 @@ import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IActionableComponent, IActionableStylesReturnType, IActionableTokenReturnType } from './Actionable.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const baseTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => {
   const { semanticColors } = theme;
 
@@ -22,6 +25,7 @@ export const baseTokens: IActionableComponent['tokens'] = (props, theme): IActio
   };
 };
 
+/** @deprecated */
 export const disabledTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => {
   const { semanticColors } = theme;
 
@@ -40,6 +44,7 @@ export const disabledTokens: IActionableComponent['tokens'] = (props, theme): IA
   };
 };
 
+/** @deprecated */
 export const ActionableTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => [
   baseTokens,
   props.disabled && disabledTokens,
@@ -49,6 +54,7 @@ const GlobalClassNames = {
   msActionable: 'ms-Actionable',
 };
 
+/** @deprecated */
 export const ActionableStyles: IActionableComponent['styles'] = (props, theme, tokens): IActionableStylesReturnType => {
   const { className } = props;
 

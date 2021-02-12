@@ -3,6 +3,8 @@ import { Button, MenuButton, IMenuButtonProps, SplitButton } from '@uifabric/exp
 import { Stack, IStackTokens } from 'office-ui-fabric-react';
 import { buildKeytipConfigMap, IKeytipConfig, IKeytipConfigMap } from 'office-ui-fabric-react/lib/Keytips';
 
+/* eslint-disable deprecation/deprecation */
+
 const btnExecute = (el: HTMLElement) => {
   el.click();
 };

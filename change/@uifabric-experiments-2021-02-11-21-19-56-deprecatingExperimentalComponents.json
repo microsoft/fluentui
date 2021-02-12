@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Deprecating Button, MenuButton, SplitButton, Slider and Toggle.",
+  "packageName": "@uifabric/experiments",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-12T05:18:58.936Z"
+}

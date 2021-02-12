@@ -6,6 +6,9 @@ import { withSlots, getSlots } from '../../Foundation';
 import { inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleComponent, IToggleProps, IToggleSlots } from './Toggle.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const ToggleView: IToggleComponent['view'] = props => {
   const {
     as: RootType = 'div',

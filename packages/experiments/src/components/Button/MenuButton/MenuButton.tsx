@@ -6,6 +6,12 @@ import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuBu
 import { IMenuButtonProps } from './MenuButton.types';
 import { MenuButtonSlots as slots, MenuButtonView as view } from './MenuButton.view';
 
+/* eslint-disable deprecation/deprecation */
+
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const MenuButton: React.FunctionComponent<IMenuButtonProps> = composed({
   displayName: 'MenuButton',
   slots,
@@ -15,4 +21,8 @@ export const MenuButton: React.FunctionComponent<IMenuButtonProps> = composed({
   view,
 });
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export default MenuButton;

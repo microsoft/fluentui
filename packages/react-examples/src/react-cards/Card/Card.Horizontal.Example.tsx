@@ -3,6 +3,8 @@ import * as React from 'react';
 import { Card, ICardTokens, ICardSectionStyles, ICardSectionTokens } from '@uifabric/react-cards';
 import { FontWeights, Icon, IIconStyles, Image, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 const alertClicked = (): void => {
   alert('Clicked');
 };

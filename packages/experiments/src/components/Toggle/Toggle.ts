@@ -5,6 +5,12 @@ import { useToggleState as state } from './Toggle.state';
 import { IToggleProps } from './Toggle.types';
 import { createComponent } from '../../Foundation';
 
+/* eslint-disable deprecation/deprecation */
+
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const Toggle: React.FunctionComponent<IToggleProps> = createComponent(ToggleView, {
   displayName: 'Toggle',
   state,
