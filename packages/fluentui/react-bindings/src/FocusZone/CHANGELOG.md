@@ -27,7 +27,6 @@ This is a list of changes made to this Stardust copy of FocusZone in comparison 
 - Use always `getDocument` to correctly define current document object @sophieH29 ([#1820](https://github.com/stardust-ui/react/pull/1820))
 - Fix element reference memory leaks - Fabric PR 11618 @jurokapsiar ([#2270](https://github.com/microsoft/fluent-ui-react/pull/2270))
 - Adding aria-hidden to bumper elements so that they are not read by screen readers @khmakoto ([#14376](https://github.com/microsoft/fluentui/pull/14376))
-- Removing `FocusZone` type from event callbacks @khmakoto ([#16952](https://github.com/microsoft/fluentui/pull/16952))
 
 ### Features
 - Add embed mode for FocusZone and new Chat behavior ([#233](https://github.com/stardust-ui/react/pull/233))
@@ -84,6 +83,7 @@ This is a list of changes made to the Stardust copy of FocusTrapZone in comparis
 ### BREAKING CHANGES
 - Allow using `firstFocusableSelector` for all type of selectors, not only class names @sophieH29 ([#1732](https://github.com/stardust-ui/react/pull/1732))
 - Do not force focus inside focus trap zone on outside focus @sophieH29 ([#1930](https://github.com/stardust-ui/react/pull/1930))
+- Removing `FocusZone` type from event callbacks @khmakoto ([#16952](https://github.com/microsoft/fluentui/pull/16952))
 
 ### Fixes
 - Do not focus trigger on outside click @sophieH29 ([#627](https://github.com/stardust-ui/react/pull/627))
