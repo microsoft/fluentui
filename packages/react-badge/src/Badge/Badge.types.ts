@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utils';
-import { SizeValue } from '@fluentui/theme';
+import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 export type BadgeStatus =
   | 'success'
@@ -45,5 +45,5 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 }
 
 export interface BadgeState extends BadgeProps {
-  ref: React.MutableRefObject<HTMLElement>
+  ref: React.MutableRefObject<HTMLElement>;
 }
