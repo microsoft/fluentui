@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Removing react-cards from api-docs generation.",
+  "packageName": "@fluentui/api-docs",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-11T23:12:52.474Z"
+}

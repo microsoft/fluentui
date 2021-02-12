@@ -101,6 +101,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -121,6 +122,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -141,6 +143,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -165,6 +168,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -185,6 +189,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -205,6 +210,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -654,6 +660,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout12"
             className=
 
                 {
@@ -674,6 +681,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout12"
             className=
 
                 {
@@ -694,6 +702,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout12"
             className=
 
                 {
@@ -718,6 +727,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout12"
             className=
 
                 {
@@ -738,6 +748,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout12"
             className=
 
                 {
@@ -758,6 +769,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout12"
             className=
 
                 {
@@ -1187,6 +1199,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout4"
             className=
 
                 {
@@ -1207,6 +1220,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout4"
             className=
 
                 {
@@ -1227,6 +1241,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout4"
             className=
 
                 {
@@ -1251,6 +1266,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout4"
             className=
 
                 {
@@ -1271,6 +1287,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout4"
             className=
 
                 {
@@ -1291,6 +1308,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout4"
             className=
 
                 {
@@ -1418,12 +1436,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout8"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
@@ -1438,12 +1457,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout8"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00188f"
             height={0}
             onBlur={[Function]}
@@ -1458,12 +1478,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout8"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
@@ -1482,12 +1503,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout8"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
@@ -1502,12 +1524,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout8"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00188f"
             height={0}
             onBlur={[Function]}
@@ -1522,12 +1545,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout8"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
@@ -1971,6 +1995,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout16"
             className=
 
                 {
@@ -1991,6 +2016,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout16"
             className=
 
                 {
@@ -2011,6 +2037,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout16"
             className=
 
                 {
@@ -2035,6 +2062,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout16"
             className=
 
                 {
@@ -2055,6 +2083,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout16"
             className=
 
                 {
@@ -2075,6 +2104,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout16"
             className=
 
                 {
@@ -2524,6 +2554,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout20"
             className=
 
                 {
@@ -2544,6 +2575,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout20"
             className=
 
                 {
@@ -2564,6 +2596,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout20"
             className=
 
                 {
@@ -2588,6 +2621,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout20"
             className=
 
                 {
@@ -2608,6 +2642,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout20"
             className=
 
                 {
@@ -2628,6 +2663,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout20"
             className=
 
                 {
@@ -3077,6 +3113,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -3097,6 +3134,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -3117,6 +3155,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -3141,6 +3180,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -3161,6 +3201,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -3181,6 +3222,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {

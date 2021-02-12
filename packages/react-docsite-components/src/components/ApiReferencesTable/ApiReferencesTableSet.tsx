@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { ActionButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
 import { ApiReferencesTable, gapTokens } from './ApiReferencesTable';

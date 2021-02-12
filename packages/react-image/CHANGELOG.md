@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Tue, 09 Feb 2021 00:56:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.21)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.21..@fluentui/react-image_v0.6.21)
+
+### Changes
+
+- Bump @fluentui/react-compose to v1.0.0-beta.12 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.22 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-utils to v0.3.1-0 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [0.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.21)
 

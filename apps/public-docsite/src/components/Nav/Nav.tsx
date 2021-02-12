@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CollapsibleSection } from '@fluentui/react-experiments';
 import { css, FocusZone, Icon, IIconProps, ISearchBoxStyles, Link, SearchBox, getFocusStyle } from '@fluentui/react';
-import { IButtonStyles, IconButton } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
 import {
   isPageActive,
   hasActiveChild,

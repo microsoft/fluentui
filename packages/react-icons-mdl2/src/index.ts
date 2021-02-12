@@ -1546,6 +1546,7 @@ export { default as TextBoxIcon } from './components/TextBoxIcon';
 export { default as TextCalloutIcon } from './components/TextCalloutIcon';
 export { default as TextDocumentEditIcon } from './components/TextDocumentEditIcon';
 export { default as TextDocumentIcon } from './components/TextDocumentIcon';
+export { default as TextDocumentSettingsIcon } from './components/TextDocumentSettingsIcon';
 export { default as TextDocumentSharedIcon } from './components/TextDocumentSharedIcon';
 export { default as TextFieldIcon } from './components/TextFieldIcon';
 export { default as TextOverflowIcon } from './components/TextOverflowIcon';

@@ -1108,10 +1108,12 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
             position: relative;
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: GrayText;
             border: none;
             color: GrayText;
+            forced-color-adjust: none;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -1158,9 +1160,6 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Button--primary + .ms-Button {
             border-left-width: 0;
             border: 1px solid WindowText;
-          }
-          @media screen and (forced-colors: active){& {
-            forced-color-adjust: none;
           }
       data-is-focusable={true}
       onFocusCapture={[Function]}

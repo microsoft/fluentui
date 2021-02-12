@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DatePicker, IDatePicker, mergeStyleSets } from '@fluentui/react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const styles = mergeStyleSets({
   root: { selectors: { '> *': { marginBottom: 15 } } },

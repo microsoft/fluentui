@@ -1,5 +1,3 @@
-import { ColorRGBA64 } from '@microsoft/fast-colors';
-import { createColorPalette } from '../color/create-color-palette';
 import { FluentDesignSystemProvider } from '../design-system-provider';
 import CardTemplate from './fixtures/card.html';
 import { FluentCard } from './';
@@ -13,10 +11,3 @@ export default {
 };
 
 export const Card = (): string => CardTemplate;
-
-document.addEventListener('readystatechange', e => {
-  if (document.readyState === 'complete') {
-    const red = document.getElementById('red') as FluentDesignSystemProvider;
-    red.neutralPalette = createColorPalette(new ColorRGBA64(1, 0, 0));
-  }
-});

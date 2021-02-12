@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove references to getEdgeChromiumNoHighContrastAdjustSelector",
+  "packageName": "@fluentui/react-examples",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "patch"
+}

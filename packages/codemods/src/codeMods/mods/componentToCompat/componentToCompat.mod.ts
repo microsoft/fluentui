@@ -27,7 +27,7 @@ const ComponentToCompat: CodeMod = {
   },
   name: 'ComponentToCompat',
   version: '1.0.0',
-  enabled: true,
+  enabled: false, // No longer needed; remains for demo purposes
 };
 
 export default ComponentToCompat;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonProps } from '../../compat/Button';
+import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 import { IKeytipProps } from '../../Keytip';
 

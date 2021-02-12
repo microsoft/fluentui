@@ -3,7 +3,7 @@ import { IContextualMenuItem } from './ContextualMenu.types';
 import { IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonStyles } from '../../compat/Button';
+import { IButtonStyles } from '../../Button';
 
 /**
  * {@docCategory ContextualMenu}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Webpack dependency updated.",
+  "packageName": "@fluentui/webpack-utilities",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}

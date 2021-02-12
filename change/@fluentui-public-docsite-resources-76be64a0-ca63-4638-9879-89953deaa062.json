@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Website: Removing Card page from the website.",
+  "packageName": "@fluentui/public-docsite-resources",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}

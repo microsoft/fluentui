@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove references to getEdgeChromiumNoHighContrastAdjustSelector",
+  "packageName": "@fluentui/react",
+  "email": "sareiff@microsoft.com",
+  "dependentChangeType": "patch"
+}

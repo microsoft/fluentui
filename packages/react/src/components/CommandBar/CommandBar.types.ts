@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IContextualMenuItem } from '../../ContextualMenu';
-import { IButtonStyles, IButtonProps } from '../../compat/Button';
+import { IButtonStyles, IButtonProps } from '../../Button';
 import { ICommandBarData } from './CommandBar.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';

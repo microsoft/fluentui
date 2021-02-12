@@ -19,7 +19,7 @@ import {
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandBarButton, IButtonProps } from '../../compat/Button';
+import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
 import { getCommandButtonStyles } from './CommandBar.styles';
 
