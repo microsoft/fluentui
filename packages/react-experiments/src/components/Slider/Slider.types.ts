@@ -35,7 +35,8 @@ export interface ISliderMarks {
 }
 
 /**
- * @deprecated
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
  * {@docCategory Slider}
  */
 export interface ISliderProps extends React.ClassAttributes<SliderBase> {
