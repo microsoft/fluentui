@@ -119,11 +119,27 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
               flex-grow: 1;
               height: 28px;
               line-height: 28px;
+              outline: transparent;
               padding-bottom: 0;
               padding-left: 8px;
               padding-right: 8px;
               padding-top: 0;
+              position: relative;
               width: auto;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
             }
             &:active .ms-Slider-active {
               background-color: #005a9e;
@@ -173,6 +189,9 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            & .ms-Slider-thumb:focus::after {
+              inset: -3px;
+            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -220,13 +239,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
             data-is-focusable={true}
@@ -273,13 +292,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
             data-is-focusable={true}
@@ -506,11 +525,30 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
               flex-grow: 1;
               height: 28px;
               line-height: 28px;
+              outline: transparent;
               padding-bottom: 0;
               padding-left: 8px;
               padding-right: 8px;
               padding-top: 0;
+              position: relative;
               width: auto;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            & .ms-Slider-thumb:focus::after {
+              inset: -3px;
             }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
@@ -556,13 +594,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -607,13 +645,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
@@ -835,11 +873,27 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
               flex-grow: 1;
               height: 28px;
               line-height: 28px;
+              outline: transparent;
               padding-bottom: 0;
               padding-left: 8px;
               padding-right: 8px;
               padding-top: 0;
+              position: relative;
               width: auto;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
             }
             &:active .ms-Slider-active {
               background-color: #005a9e;
@@ -889,6 +943,9 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            & .ms-Slider-thumb:focus::after {
+              inset: -3px;
+            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -936,13 +993,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
             data-is-focusable={true}
@@ -989,13 +1046,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
             data-is-focusable={true}
@@ -1210,11 +1267,27 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
               flex-grow: 1;
               height: 28px;
               line-height: 28px;
+              outline: transparent;
               padding-bottom: 0;
               padding-left: 8px;
               padding-right: 8px;
               padding-top: 0;
+              position: relative;
               width: auto;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
             }
             &:active .ms-Slider-active {
               background-color: #005a9e;
@@ -1264,6 +1337,9 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
+            & .ms-Slider-thumb:focus::after {
+              inset: -3px;
+            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -1311,13 +1387,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
             data-is-focusable={true}
@@ -1364,13 +1440,13 @@ exports[`Component Examples renders Slider.Ranged.Example.tsx correctly 1`] = `
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
                   border: 1px solid #ffffff;
-                  bottom: -3px;
+                  bottom: 1px;
                   content: "";
-                  left: -3px;
+                  left: 1px;
                   outline: 1px solid #605e5c;
                   position: absolute;
-                  right: -3px;
-                  top: -3px;
+                  right: 1px;
+                  top: 1px;
                   z-index: 1;
                 }
             data-is-focusable={true}

@@ -141,10 +141,6 @@ exports[`Slider renders correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-          & .ms-Slider-thumb[role="slider"]:focus::after {
-            inset: 4px;
-            outline-offset: 8px;
-          }
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
@@ -177,26 +173,11 @@ exports[`Slider renders correctly 1`] = `
                 box-sizing: border-box;
                 display: block;
                 height: 16px;
-                outline: transparent;
                 position: absolute;
                 top: -6px;
                 transform: translateX(-50%);
                 transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                 width: 16px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
-                outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
-                z-index: 1;
               }
           style={
             Object {
@@ -405,27 +386,11 @@ exports[`Slider renders range slider correctly 1`] = `
             flex-grow: 1;
             height: 28px;
             line-height: 28px;
-            outline: transparent;
             padding-bottom: 0;
             padding-left: 8px;
             padding-right: 8px;
             padding-top: 0;
-            position: relative;
             width: auto;
-          }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 1px;
-            content: "";
-            left: 1px;
-            outline: 1px solid #605e5c;
-            position: absolute;
-            right: 1px;
-            top: 1px;
-            z-index: 1;
           }
           &:active .ms-Slider-active {
             background-color: #005a9e;
@@ -475,10 +440,6 @@ exports[`Slider renders range slider correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-          & .ms-Slider-thumb[role="slider"]:focus::after {
-            inset: 4px;
-            outline-offset: 8px;
-          }
           @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
@@ -526,13 +487,13 @@ exports[`Slider renders range slider correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -3px;
                 content: "";
-                left: 1px;
+                left: -3px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -3px;
+                top: -3px;
                 z-index: 1;
               }
           data-is-focusable={true}
@@ -579,13 +540,13 @@ exports[`Slider renders range slider correctly 1`] = `
               }
               .ms-Fabric--isFocusVisible &:focus:after {
                 border: 1px solid #ffffff;
-                bottom: 1px;
+                bottom: -3px;
                 content: "";
-                left: 1px;
+                left: -3px;
                 outline: 1px solid #605e5c;
                 position: absolute;
-                right: 1px;
-                top: 1px;
+                right: -3px;
+                top: -3px;
                 z-index: 1;
               }
           data-is-focusable={true}
