@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
-import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
+import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
  * {@docCategory Button}

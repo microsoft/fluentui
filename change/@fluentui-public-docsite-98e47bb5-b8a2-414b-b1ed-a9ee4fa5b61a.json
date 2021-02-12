@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Website: Removing Card page from the website.",
+  "packageName": "@fluentui/public-docsite",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}

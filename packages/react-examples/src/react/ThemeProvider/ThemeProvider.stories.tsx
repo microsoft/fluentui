@@ -6,25 +6,16 @@ export default {
 };
 
 const lightTheme: PartialTheme = {
-  tokens: {
-    color: {
-      body: {
-        background: 'white',
-        contentColor: 'black',
-        fontFamily: 'Segoe UI',
-      },
-    },
+  semanticColors: {
+    bodyBackground: 'white',
+    bodyText: 'black',
   },
 };
 
 const darkTheme: PartialTheme = {
-  tokens: {
-    color: {
-      body: {
-        background: 'black',
-        contentColor: 'white',
-      },
-    },
+  semanticColors: {
+    bodyBackground: 'black',
+    bodyText: 'white',
   },
 };
 

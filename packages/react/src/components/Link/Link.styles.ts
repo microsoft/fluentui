@@ -1,4 +1,4 @@
-import { getHighContrastNoAdjustStyle, getGlobalClassNames, HighContrastSelector } from '@fluentui/style-utilities';
+import { getGlobalClassNames, HighContrastSelector } from '@fluentui/style-utilities';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -64,7 +64,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'LinkText',
-            ...getHighContrastNoAdjustStyle(),
+            forcedColorAdjust: 'none',
           },
         },
       },

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package.",
+  "packageName": "@fluentui/react-examples",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "patch"
+}
