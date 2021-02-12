@@ -1,7 +1,8 @@
 import { HASH_PREFIX } from '../constants';
 import { MakeStaticStyles, MakeStylesResolvedRule } from '../types';
 import { hashString } from './utils/hashString';
-import { compileCSSRules, compileStaticCSS } from './compileStaticCSS';
+import { compileStaticCSS } from './compileStaticCSS';
+import { compileCSSRules } from './compileCSS';
 
 export function resolveStaticStyleRules(
   styles: MakeStaticStyles,

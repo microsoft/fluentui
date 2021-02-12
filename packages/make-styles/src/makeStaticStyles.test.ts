@@ -113,7 +113,7 @@ describe('makeStaticStyles', () => {
     `);
   });
 
-  it('can use with makeStyles', () => {
+  it('can be used with makeStyles', () => {
     const useStaticStyles = makeStaticStyles({
       '@font-face': {
         fontFamily: 'Open Sans',

@@ -92,6 +92,20 @@ makeStaticStyles({
   body: {
     background: 'red',
   },
+
+  /**
+   * ⚠️ nested and pseudo selectors are not supported for this scenario via nesting
+   *
+   * Not supported:
+   * .some {
+   *   .class { ... },
+   *   ':hover': { ... }
+   * }
+   *
+   * Supported:
+   * '.some.class': { ... }
+   * '.some.class:hover': { ... }
+   */
 });
 ```
 
