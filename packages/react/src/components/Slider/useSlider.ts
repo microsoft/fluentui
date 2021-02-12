@@ -117,6 +117,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     vertical,
     showTransitions: useShowTransitions,
     showValue,
+    ranged,
     theme: theme!,
   });
 

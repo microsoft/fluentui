@@ -27,7 +27,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
-  const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
+  const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue, ranged } = props;
   const { semanticColors } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -130,7 +130,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     slideBox: [
       classNames.slideBox,
-      getFocusStyle(theme),
+      !ranged && getFocusStyle(theme),
       {
         background: 'transparent',
         border: 'none',
@@ -147,10 +147,6 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           [`:hover .${classNames.thumb}`]: slideBoxActiveThumbStyles,
           [`:active .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
           [`:hover .${classNames.zeroTick}`]: slideBoxActiveZeroTickStyles,
-          [`.${classNames.thumb}[role="slider"]:focus::after`]: {
-            inset: '4px',
-            outlineOffset: '8px',
-          },
           // eslint-disable-next-line deprecation/deprecation
           ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
@@ -171,7 +167,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     ],
     thumb: [
       classNames.thumb,
-      getFocusStyle(theme),
+      ranged && getFocusStyle(theme, { inset: -4 }),
       {
         borderWidth: 2,
         borderStyle: 'solid',

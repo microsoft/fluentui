@@ -7399,7 +7399,7 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
 }
 
 // @public (undocumented)
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical' | 'ranged'> & {
     showTransitions?: boolean;
     showValue?: boolean;
     titleLabelClassName?: string;
