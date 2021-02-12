@@ -26,7 +26,7 @@ const scenario = queryParams.scenario ? (queryParams.scenario as string) : defau
 const renderType = queryParams.renderType;
 
 const PerfTestScenario = scenarios[scenario];
-const PerfTestDecorator = scenarios[scenario].decorator || 'div';
+const PerfTestDecorator = PerfTestScenario.decorator || 'div';
 
 if (renderType === 'virtual-rerender') {
   for (let i = 0; i < iterations - 1; i++) {
