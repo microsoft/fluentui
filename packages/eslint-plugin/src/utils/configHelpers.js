@@ -14,7 +14,7 @@ const testFiles = [
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
-const configFiles = ['/just.config.ts', '/gulpfile.ts', '/*.js', '/.*.js', '/config', '/scripts', '/tasks'];
+const configFiles = ['./just.config.ts', './gulpfile.ts', './*.js', './.*.js', './config', './scripts', './tasks'];
 
 /**
  * Whether linting is running in context of lint-staged (which should disable rules requiring
@@ -118,5 +118,18 @@ module.exports = {
         rules,
       },
     ];
+  },
+
+  findGitRoot: () => {
+    let cwd = process.cwd();
+    const root = path.parse(cwd).root;
+    while (cwd !== root) {
+      // .git is usually a folder, but it's a file in worktrees
+      if (fs.existsSync(path.join(cwd, '.git'))) {
+        return cwd;
+      }
+      cwd = path.dirname(cwd);
+    }
+    return cwd;
   },
 };
