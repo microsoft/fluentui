@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "\"BasePicker: combobox role and id are removed when itemLimit is reached\"",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}

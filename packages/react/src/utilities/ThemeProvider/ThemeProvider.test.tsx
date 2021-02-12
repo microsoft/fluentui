@@ -6,26 +6,17 @@ import { mount } from 'enzyme';
 import { createTheme, Theme, PartialTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
 
-const lightTheme = {
-  stylesheets: [],
-  tokens: {
-    color: {
-      body: {
-        background: 'white',
-        contentColor: 'black',
-      },
-    },
+const lightTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: 'white',
+    bodyText: 'black',
   },
 };
 
-const darkTheme = {
-  tokens: {
-    color: {
-      body: {
-        background: 'black',
-        contentColor: 'white',
-      },
-    },
+const darkTheme: PartialTheme = {
+  semanticColors: {
+    bodyBackground: 'black',
+    bodyText: 'white',
   },
 };
 
@@ -44,10 +35,8 @@ describe('ThemeProvider', () => {
 
   it('can handle a partial theme', () => {
     const partialTheme: PartialTheme = {
-      tokens: {
-        foo: {
-          background: 'red',
-        },
+      palette: {
+        themePrimary: 'red',
       },
     };
 

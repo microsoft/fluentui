@@ -19,8 +19,7 @@
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "react-is": "^16.6.3",
-    "typescript": "3.7.2"
+    "react-is": "^16.6.3"
   },
   "files": [
     "dist"

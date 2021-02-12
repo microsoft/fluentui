@@ -1,4 +1,4 @@
-import { Tokens, Theme, RecursivePartial } from '../types/Theme';
+import { Tokens, Theme, RecursivePartial } from './types';
 import { merge } from '@fluentui/utilities';
 
 /**

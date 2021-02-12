@@ -155,9 +155,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               border-color: WindowText;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -198,9 +197,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -338,9 +336,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               border-color: WindowText;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -381,9 +378,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -492,9 +488,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               border-color: WindowText;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: GrayText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -535,9 +530,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: GrayText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -678,9 +672,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               border-color: WindowText;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -721,9 +714,8 @@ exports[`Component Examples renders Checkbox.Indeterminate.Example.tsx correctly
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >

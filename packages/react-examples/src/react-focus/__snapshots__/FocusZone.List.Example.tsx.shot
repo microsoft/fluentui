@@ -383,9 +383,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -592,9 +591,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -1079,9 +1077,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -1288,9 +1285,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -1775,9 +1771,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -1984,9 +1979,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -2471,9 +2465,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -2680,9 +2673,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -3167,9 +3159,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -3376,9 +3367,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -3863,9 +3853,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -4072,9 +4061,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -4559,9 +4547,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -4768,9 +4755,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -5255,9 +5241,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -5464,9 +5449,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -5951,9 +5935,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -6160,9 +6143,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -6647,9 +6629,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
@@ -6856,9 +6837,8 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                    -ms-high-contrast-adjust: none;
                     border-color: Highlight;
-                  }
-                  @media screen and (forced-colors: active){&:hover {
                     forced-color-adjust: none;
                   }
             >
