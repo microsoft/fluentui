@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps } from '@fluentui/react-utils';
-import { ColorTokens, SizeValue } from '@fluentui/theme';
+import { ColorTokens, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
@@ -50,7 +50,7 @@ export type CardProps = ComponentProps &
  * {@docCategory Card}
  */
 export interface CardState extends CardProps {
-  cardRef: React.RefObject<HTMLDivElement>;
+  ref: React.RefObject<HTMLDivElement>;
 }
 
 /**

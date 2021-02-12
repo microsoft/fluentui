@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabs",
-  "version": "1.0.0-beta.44",
+  "version": "1.0.0-beta.45",
   "description": "Fluent UI React Tabs component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.0-beta.14",
+    "@fluentui/common-styles": "^1.0.0-beta.15",
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
@@ -43,10 +43,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.53",
+    "@fluentui/react": "^8.0.0-beta.54",
     "@fluentui/react-hooks": "^8.0.0-beta.11",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/style-utilities": "^8.0.0-beta.14",
+    "@fluentui/style-utilities": "^8.0.0-beta.15",
     "@fluentui/utilities": "^8.0.0-beta.11",
     "tslib": "^1.10.0"
   },

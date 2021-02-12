@@ -758,7 +758,7 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
                 background-color: Highlight;
               }
-              @media screen and (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-is-focusable={true}
@@ -1244,10 +1244,9 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 width: 20px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 background: Highlight;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-ktp-target={true}
@@ -1288,9 +1287,8 @@ exports[`Component Examples renders Facepile.Basic.Example.tsx correctly 1`] = `
                 margin-left: 4px;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >

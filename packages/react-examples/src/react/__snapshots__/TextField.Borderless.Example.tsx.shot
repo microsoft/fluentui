@@ -78,9 +78,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               border-bottom-color: #323130;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
               border-bottom-color: Highlight;
-            }
-            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -145,9 +144,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -280,9 +278,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               width: 100%;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: GrayText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -313,9 +310,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 word-wrap: break-word;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: GrayText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           htmlFor="TextField3"
@@ -352,9 +348,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 text-align: left;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: GrayText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -491,9 +486,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               border-bottom-color: #323130;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
               border-bottom-color: Highlight;
-            }
-            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -563,9 +557,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -771,9 +764,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -957,9 +949,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >

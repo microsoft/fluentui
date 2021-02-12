@@ -219,9 +219,8 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
               width: 0px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background-color: highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         role="progressbar"

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.1)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v1.0.3..@fluentui/api-docs_v8.0.0-beta.1)
+
+### Changes
+
+- Removing react-cards from api-docs generation. ([PR #16953](https://github.com/microsoft/fluentui/pull/16953) by humbertomakotomorimoto@gmail.com)
+- Changing version to pre-release. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
 
 ## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v1.0.3)
 
