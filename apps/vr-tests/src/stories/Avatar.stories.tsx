@@ -6,7 +6,7 @@ import { Stack } from '@fluentui/react';
 import { GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
 
-import { FluentDecorator } from '../utilities/index';
+import { FluentProviderDecorator } from '../utilities/index';
 
 /** Renders an Avatar at every standard size */
 const AvatarList: React.FC<AvatarProps & {
@@ -41,7 +41,7 @@ storiesOf('Avatar', module)
       </Stack>
     </div>
   ))
-  .addDecorator(FluentDecorator)
+  .addDecorator(FluentProviderDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}
