@@ -15,6 +15,9 @@ export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTM
 }
 
 // @public (undocumented)
+export const accordionShorthandProps: string[];
+
+// @public (undocumented)
 export interface AccordionState extends AccordionProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
