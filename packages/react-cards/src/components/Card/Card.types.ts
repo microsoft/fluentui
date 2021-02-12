@@ -3,8 +3,6 @@ import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps } from '@fluentui/react-utils';
 import { ColorTokens, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
-/* eslint-disable @typescript-eslint/naming-convention */
-
 /**
  * {@docCategory Card}
  */

@@ -29,6 +29,7 @@ export const useCardState = (draftState: CardState) => {
       if (draftState.onClick) {
         const eventCode = getCode(ev);
         if (eventCode === EnterKey || eventCode === SpacebarKey) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           draftState.onClick(ev as any);
         }
       }
