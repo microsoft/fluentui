@@ -3,7 +3,7 @@ import { BadgeProps, BadgeState } from './Badge.types';
 import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utils';
 import { useMergedRefs } from '@fluentui/react-hooks';
 
-export const badgeShorthandProps = ['icon'];
+export const badgeShorthandProps: (keyof BadgeProps)[] = ['icon'];
 
 const mergeProps = makeMergeProps<BadgeState>({ deepMerge: badgeShorthandProps });
 
