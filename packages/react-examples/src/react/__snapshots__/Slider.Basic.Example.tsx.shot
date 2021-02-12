@@ -160,9 +160,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            & .ms-Slider-thumb:focus::after {
-              inset: -3px;
-            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -195,26 +192,11 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
-                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
                 }
             style={
               Object {
@@ -464,9 +446,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            & .ms-Slider-thumb:focus::after {
-              inset: -3px;
-            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -499,26 +478,11 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
-                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
                 }
             style={
               Object {
@@ -726,9 +690,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
               top: 1px;
               z-index: 1;
             }
-            & .ms-Slider-thumb:focus::after {
-              inset: -3px;
-            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -757,26 +718,11 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
-                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: GrayText;
@@ -1038,9 +984,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            & .ms-Slider-thumb:focus::after {
-              inset: -3px;
-            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -1073,26 +1016,11 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
-                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
                 }
             style={
               Object {
@@ -1342,9 +1270,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            & .ms-Slider-thumb:focus::after {
-              inset: -3px;
-            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -1377,26 +1302,11 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
-                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
                 }
             style={
               Object {
@@ -1646,9 +1556,6 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
               background-color: Highlight;
             }
-            & .ms-Slider-thumb:focus::after {
-              inset: -3px;
-            }
             @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
@@ -1681,26 +1588,11 @@ exports[`Component Examples renders Slider.Basic.Example.tsx correctly 1`] = `
                   box-sizing: border-box;
                   display: block;
                   height: 16px;
-                  outline: transparent;
                   position: absolute;
                   top: -6px;
                   transform: translateX(-50%);
                   transition: left 0.367s cubic-bezier(.1,.9,.2,1);
                   width: 16px;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 1px;
-                  content: "";
-                  left: 1px;
-                  outline: 1px solid #605e5c;
-                  position: absolute;
-                  right: 1px;
-                  top: 1px;
-                  z-index: 1;
                 }
             style={
               Object {
