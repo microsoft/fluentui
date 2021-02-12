@@ -43,12 +43,12 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.11",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.19",
+    "@fluentui/react-compose": "^1.0.0-beta.12",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.23",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/react-hooks": "^8.0.0-beta.11",
-    "@fluentui/react-make-styles": "^0.2.2",
-    "@fluentui/react-utils": "^0.2.0",
+    "@fluentui/react-make-styles": "^0.2.5",
+    "@fluentui/react-utils": "^0.3.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
