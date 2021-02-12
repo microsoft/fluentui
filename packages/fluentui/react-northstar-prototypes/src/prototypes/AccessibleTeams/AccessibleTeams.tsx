@@ -133,6 +133,8 @@ const AccessibleTeams: React.FunctionComponent = () => {
       <input
         type="text"
         role="combobox"
+        aria-controls=""
+        aria-expanded="false"
         aria-label="Look for messages, files, and more. Or type / for a list of commands."
       />
 
@@ -205,6 +207,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
       <h2>Conversations</h2>
       <div role="region" aria-label="Chat content">
         <h3>November 9, 2020</h3>
+        {/* eslint-disable-next-line */}
         <img alt="Profile picture of Michael Night" />
         <div>Available</div>
         <div>Michael Night</div>
