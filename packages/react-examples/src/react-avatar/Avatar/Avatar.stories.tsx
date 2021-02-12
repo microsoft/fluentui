@@ -4,18 +4,20 @@ import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
 import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
+  CalendarIcon,
+  CatIcon,
+  ChatBotIcon,
   ContactIcon,
   GroupIcon,
-  CatIcon,
   IDBadgeIcon,
-  CalendarIcon,
-  TelemarketerIcon,
   RoomIcon,
-  SkypeClockIcon,
-  SkypeCheckIcon,
-  SkypeMinusIcon,
   SkypeArrowIcon,
+  SkypeCheckIcon,
+  SkypeClockIcon,
+  SkypeMinusIcon,
+  TelemarketerIcon,
 } from '@fluentui/react-icons-mdl2';
+import { makeStyles } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
 
@@ -43,6 +45,17 @@ const examples = {
     { state: 'info', icon: { as: SkypeArrowIcon } },
   ],
 } as const;
+
+const useRootHexagonalOverrides = makeStyles([[null, { borderRadius: '0' }]]);
+const useLabelHexagonalOverrides = makeStyles([
+  [
+    null,
+    {
+      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+      borderRadius: '0',
+    },
+  ],
+]);
 
 export const Basic = () => (
   <>
@@ -178,6 +191,17 @@ export const ActiveAnimation = () => {
         </Stack>
       </Stack>
     </ThemeProvider>
+  );
+};
+
+export const CustomShape = () => {
+  const rootOverrides = useRootHexagonalOverrides({});
+  const labelOverrides = useLabelHexagonalOverrides({});
+
+  return (
+    <StoryExample title="Custom shape">
+      <AvatarExampleList className={rootOverrides} icon={<ChatBotIcon />} label={{ className: labelOverrides }} />
+    </StoryExample>
   );
 };
 
