@@ -46,7 +46,6 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-stylesheets": "^1.0.0-beta.5",
     "@fluentui/theme": "^2.0.0-beta.14",
     "@fluentui/react-window-provider": "^2.0.0-beta.5",
     "@fluentui/react-hooks": "^8.0.0-beta.11",
