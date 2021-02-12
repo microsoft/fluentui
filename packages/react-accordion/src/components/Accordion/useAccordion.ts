@@ -3,7 +3,9 @@ import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { AccordionProps, AccordionState } from './Accordion.types';
 
-const mergeProps = makeMergeProps<AccordionState>();
+export const accordionShorthandProps: string[] = [];
+
+const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -16,10 +18,9 @@ export const useAccordion = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      role: 'accordion',
     },
     defaultProps,
-    resolveShorthandProps(props, []),
+    resolveShorthandProps(props, accordionShorthandProps),
   );
 
   return state;
