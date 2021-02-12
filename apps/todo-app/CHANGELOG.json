@@ -2,6 +2,21 @@
   "name": "todo-app",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.54",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "bfc63e446500e60e38ac0ac0a023c7721152a832",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "todo-app_v1.0.0",
       "version": "1.0.0",

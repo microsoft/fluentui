@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "UnifiedPicker: Don't show picker after input is cleared",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

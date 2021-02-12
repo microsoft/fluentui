@@ -2,6 +2,39 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.54",
+      "version": "8.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "\"BasePicker: combobox role and id are removed when itemLimit is reached\"",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "bfc63e446500e60e38ac0ac0a023c7721152a832",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "remove references to getEdgeChromiumNoHighContrastAdjustSelector",
+            "author": "sareiff@microsoft.com",
+            "commit": "134e650bf99677113786055bfb66af38ae6ed58d",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "935a4ef58834a7682851e608af484293445b75d5",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.53",
       "version": "8.0.0-beta.53",

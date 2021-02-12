@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.54)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.53..@fluentui/react_v8.0.0-beta.54)
+
+### Changes
+
+- "BasePicker: combobox role and id are removed when itemLimit is reached" ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+- Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package. ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+- remove references to getEdgeChromiumNoHighContrastAdjustSelector ([PR #16957](https://github.com/microsoft/fluentui/pull/16957) by sareiff@microsoft.com)
+- PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render ([PR #16931](https://github.com/microsoft/fluentui/pull/16931) by tristan.watanabe@gmail.com)
 
 ## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.53)
 

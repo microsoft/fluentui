@@ -2,6 +2,43 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-menu_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated typings",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "1a358e08d1a3a767e5018b671d5509d82642179d",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "none": [
+          {
+            "comment": "fix snapshots",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-menu"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.23",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-menu"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.5",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-menu"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react-menu_v0.2.0",
       "version": "0.2.0",
