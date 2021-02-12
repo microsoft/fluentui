@@ -46,7 +46,7 @@
     "@fluentui/react-compose": "^1.0.0-beta.11",
     "@fluentui/react-theme-provider": "^1.0.0-beta.19",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/react-hooks": "^8.0.0-beta.10",
+    "@fluentui/react-hooks": "^8.0.0-beta.11",
     "@fluentui/react-make-styles": "^0.2.2",
     "@fluentui/react-utils": "^0.2.0",
     "tslib": "^1.10.0"
