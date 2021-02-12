@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "FocusZone: Removing FocusZone type from event callbacks.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}

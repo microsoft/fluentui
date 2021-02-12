@@ -83,6 +83,7 @@ This is a list of changes made to the Stardust copy of FocusTrapZone in comparis
 ### BREAKING CHANGES
 - Allow using `firstFocusableSelector` for all type of selectors, not only class names @sophieH29 ([#1732](https://github.com/stardust-ui/react/pull/1732))
 - Do not force focus inside focus trap zone on outside focus @sophieH29 ([#1930](https://github.com/stardust-ui/react/pull/1930))
+- Removing `FocusZone` type from event callbacks @khmakoto ([#16952](https://github.com/microsoft/fluentui/pull/16952))
 
 ### Fixes
 - Do not focus trigger on outside click @sophieH29 ([#627](https://github.com/stardust-ui/react/pull/627))
