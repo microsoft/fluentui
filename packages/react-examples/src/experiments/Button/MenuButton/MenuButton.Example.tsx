@@ -2,6 +2,8 @@ import * as React from 'react';
 import { MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 const menuProps: IMenuButtonProps['menu'] = {
   items: [
     {
