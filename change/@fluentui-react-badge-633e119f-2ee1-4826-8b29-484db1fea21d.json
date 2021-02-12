@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(Badge): add converged badge",
+  "packageName": "@fluentui/react-badge",
+  "email": "junioassuncaocharles@gmail.com",
+  "dependentChangeType": "patch"
+}
