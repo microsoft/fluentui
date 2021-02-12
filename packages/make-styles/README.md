@@ -82,7 +82,7 @@ There is a separate API `makeStaticStyles` for this case.
 
 It can be used to register styles object:
 
-```jsx=
+```ts
 makeStaticStyles({
   '@font-face': {
     fontFamily: 'Open Sans',
@@ -111,13 +111,13 @@ makeStaticStyles({
 
 Or string:
 
-```jsx=
+```ts
 makeStaticStyles('body { background: red; } .foo { color: green; }');
 ```
 
 Or array of styles object/string:
 
-```jsx=
+```ts
 makeStaticStyles([
   {
     '@font-face': {
