@@ -2,6 +2,35 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.54",
+      "version": "1.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updated typings",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "1a358e08d1a3a767e5018b671d5509d82642179d",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.53",
       "version": "1.0.0-beta.53",

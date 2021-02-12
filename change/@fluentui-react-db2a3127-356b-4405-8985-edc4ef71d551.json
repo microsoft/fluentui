@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

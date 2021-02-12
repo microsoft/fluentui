@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "1.0.0-beta.22",
+  "version": "1.0.0-beta.23",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/react-conformance": "^1.0.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.14",
+    "@fluentui/style-utilities": "^8.0.0-beta.15",
     "@fluentui/test-utilities": "^8.0.0-beta.5",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
@@ -47,11 +47,11 @@
   },
   "dependencies": {
     "@fluentui/react-stylesheets": "^1.0.0-beta.5",
-    "@fluentui/theme": "^2.0.0-beta.14",
+    "@fluentui/theme": "^2.0.0-beta.15",
     "@fluentui/react-window-provider": "^2.0.0-beta.5",
     "@fluentui/react-hooks": "^8.0.0-beta.11",
     "@fluentui/react-theme": "^0.3.1",
-    "@fluentui/react-utils": "^0.3.1-0",
+    "@fluentui/react-utils": "^0.3.1",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
     "@fluentui/utilities": "^8.0.0-beta.11",

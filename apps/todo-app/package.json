@@ -20,7 +20,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.53",
+    "@fluentui/react": "^8.0.0-beta.54",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",

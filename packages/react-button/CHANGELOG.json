@@ -2,6 +2,43 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.31",
+      "version": "1.0.0-beta.31",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updated typings",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "1a358e08d1a3a767e5018b671d5509d82642179d",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package..",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.13",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.30",
       "version": "1.0.0-beta.30",
