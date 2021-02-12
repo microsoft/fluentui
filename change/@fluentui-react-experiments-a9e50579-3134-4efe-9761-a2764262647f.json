@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Removing Button, MenuButton, SplitButton and Toggle components. Deprecating Slider component. Updating MicroFeedback component to use Button in @fluentui/react instead of the removed Button in @fluentui/react-experiments.",
+  "comment": "[BREAKING] Removing Button, MenuButton, SplitButton and Toggle components. Deprecating Slider component. Updating MicroFeedback component to use Button in @fluentui/react instead of the removed Button in @fluentui/react-experiments.",
   "packageName": "@fluentui/react-experiments",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch"
