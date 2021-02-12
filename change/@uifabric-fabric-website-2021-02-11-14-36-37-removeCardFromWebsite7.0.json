@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Website: Removing Card page from the website.",
+  "packageName": "@uifabric/fabric-website",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-11T22:35:56.675Z"
+}
