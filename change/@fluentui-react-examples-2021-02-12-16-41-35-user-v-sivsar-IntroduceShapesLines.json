@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "making changes to support the new feature",
+  "packageName": "@fluentui/react-examples",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-02-12T11:11:35.432Z"
+}

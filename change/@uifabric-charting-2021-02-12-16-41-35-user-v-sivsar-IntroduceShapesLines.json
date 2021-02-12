@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "introducing the prop allowMultipleShapesFor, when set to true allows shape the data point",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2021-02-12T11:11:12.254Z"
+}
