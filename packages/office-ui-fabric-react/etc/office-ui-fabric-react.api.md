@@ -4567,7 +4567,7 @@ export interface IDropdownOption extends ISelectableOption {
 // @public (undocumented)
 export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDivElement> {
     defaultSelectedKeys?: string[] | number[];
-    dropdownWidth?: number;
+    dropdownWidth?: number | 'auto';
     // @deprecated
     isDisabled?: boolean;
     keytipProps?: IKeytipProps;
