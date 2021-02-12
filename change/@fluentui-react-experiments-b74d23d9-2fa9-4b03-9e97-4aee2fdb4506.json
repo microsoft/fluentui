@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use add and removeeventlistener for keydown in the UnifiedPicker",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

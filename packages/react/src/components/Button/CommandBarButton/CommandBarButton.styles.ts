@@ -4,7 +4,7 @@ import {
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
@@ -128,15 +128,15 @@ export const getStyles = memoizeFunction(
             selectors: {
               [HighContrastSelector]: {
                 color: 'GrayText',
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
           [HighContrastSelector]: {
             color: 'GrayText',
             backgroundColor: 'Window',
+            ...getHighContrastNoAdjustStyle(),
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
 
@@ -199,10 +199,9 @@ export const getStyles = memoizeFunction(
             color: 'GrayText',
             border: 'none',
             backgroundColor: 'Window',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
-        // eslint-disable-next-line deprecation/deprecation
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
 
       splitButtonMenuButtonChecked: {

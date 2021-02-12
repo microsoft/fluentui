@@ -1,22 +1,12 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "1.0.3",
+  "version": "8.0.0-beta.1",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -36,12 +26,11 @@
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.0.0-beta.2",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
-    "@fluentui/react": "^8.0.0-beta.53",
-    "@fluentui/react-cards": "^1.0.0-beta.53",
-    "@fluentui/react-focus": "^8.0.0-beta.19",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.22",
-    "@fluentui/style-utilities": "^8.0.0-beta.14",
-    "@fluentui/theme": "^2.0.0-beta.14",
+    "@fluentui/react": "^8.0.0-beta.54",
+    "@fluentui/react-focus": "^8.0.0-beta.20",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.23",
+    "@fluentui/style-utilities": "^8.0.0-beta.15",
+    "@fluentui/theme": "^2.0.0-beta.15",
     "@fluentui/utilities": "^8.0.0-beta.11",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
