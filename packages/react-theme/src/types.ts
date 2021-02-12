@@ -78,6 +78,11 @@ export type NeutralColorTokens = {
 };
 
 /**
+ * A ramp of size values.
+ */
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+/**
  * Design tokens available for shared colors
  */
 export type SharedColorTokens = {
