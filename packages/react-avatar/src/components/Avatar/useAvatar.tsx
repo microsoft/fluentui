@@ -6,7 +6,7 @@ import { getInitials as defaultGetInitials, nullRender, assertNever } from '@flu
 import { Image } from '../Image/index';
 import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
 
-export const avatarShorthandProps = ['label', 'image', 'badge'];
+export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
 const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
