@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adss Accordion Component",
+  "packageName": "@fluentui/react-accordion",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
