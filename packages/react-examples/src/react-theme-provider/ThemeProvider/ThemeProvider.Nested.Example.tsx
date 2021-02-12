@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProvider, PartialTheme } from '@fluentui/react/lib/Theme';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const lightTheme: PartialTheme = {
   semanticColors: {

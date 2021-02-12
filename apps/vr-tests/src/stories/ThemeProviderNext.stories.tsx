@@ -13,7 +13,11 @@ storiesOf('ThemeProvider (react-theme-provider)', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default theme', () => <Button primary>Default theme</Button>)
+  .addStory('Default theme', () => (
+    <ThemeProvider>
+      <Button primary>Default theme</Button>
+    </ThemeProvider>
+  ))
   .addStory('Customized theme', () => (
     <ThemeProvider
       theme={{

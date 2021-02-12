@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionButton } from '../../compat/Button';
+import { ActionButton } from '../../Button';
 import { buttonStyles } from './Nav.styles';
 import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';

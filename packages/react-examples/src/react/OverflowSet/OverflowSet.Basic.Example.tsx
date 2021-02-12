@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Link } from '@fluentui/react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from '@fluentui/react/lib/OverflowSet';
 

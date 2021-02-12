@@ -2,7 +2,7 @@ import {
   HighContrastSelector,
   getFocusStyle,
   FontWeights,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
@@ -135,9 +135,8 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
               ],
               [HighContrastSelector]: {
                 backgroundColor: 'Highlight',
+                ...getHighContrastNoAdjustStyle(),
               },
-              // eslint-disable-next-line deprecation/deprecation
-              ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },
         ],

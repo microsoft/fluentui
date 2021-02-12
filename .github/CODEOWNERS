@@ -27,13 +27,20 @@ yarn.lock @ecraig12345 @dzearing @xugao
 *.yml @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
-LICENSE @ecraig12345
-.git* @ecraig12345
 .codesandbox @ecraig12345
+.devops @ecraig12345
 .eslintrc.* @ecraig12345
+.gitattributes @ecraig12345
+.githooks @ecraig12345
+.gitignore @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
+.vscode @ecraig12345
 sizeauditor.json @aftab-hassan @ecraig12345
+
+#### Repo stuff
+LICENSE @justSlone
+.github @justSlone
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
@@ -46,7 +53,7 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 #### Apps
 # component-demo/
 public-docsite/ @ecraig12345
-public-docsite-resources/ @ecraig12345
+public-docsite-resources/ @ecraig12345 @justSlone
 perf-test/ @JasonGore @xugao
 # ssr-tests/
 # test-bundle-button/ @dzearing
@@ -99,7 +106,7 @@ packages/react-toggle/ @xugao
 packages/react/src/components/ActivityItem/ @xugao
 packages/react/src/components/Announced/ @khmakoto
 packages/react/src/components/Breadcrumb/ @xugao
-packages/react/src/compat/components/Button/ @khmakoto
+packages/react/src/components/Button/ @khmakoto
 packages/react/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react/src/components/CalendarDayGrid/ @lorejoh12
 packages/react/src/components/Callout/ @joschect

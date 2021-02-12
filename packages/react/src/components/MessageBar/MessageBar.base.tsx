@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DelayedRender, classNamesFunction, getNativeProps, htmlElementProperties, css } from '../../Utilities';
-import { IconButton } from '../../compat/Button';
+import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 import { useId, useBoolean } from '@fluentui/react-hooks';

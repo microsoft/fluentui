@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { classNamesFunction, css, warnDeprecations, initializeComponentRef } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
-import { IconButton } from '../../compat/Button';
+import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { IDialogFooterProps } from './DialogFooter.types';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';

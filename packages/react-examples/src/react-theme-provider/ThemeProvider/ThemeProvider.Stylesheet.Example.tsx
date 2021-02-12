@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ThemeProvider, PartialTheme } from '@fluentui/react/lib/Theme';
+import { ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider/lib/compat/index';
 
 const themeWithStylesheets: PartialTheme = {
   stylesheets: [`.foo { font-family: 'Courier New'; }`],

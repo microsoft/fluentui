@@ -16,13 +16,13 @@ export interface BaseSlots {
 export type ClassDictionary = Record<string, string>;
 
 // @public (undocumented)
-export interface ComponentProps extends GenericDictionary {
+export interface ComponentProps {
     // (undocumented)
     as?: React.ElementType;
     // (undocumented)
-    className?: string;
+    children?: React.ReactNode;
     // (undocumented)
-    ref?: React.Ref<any>;
+    className?: string;
 }
 
 // @public
@@ -51,7 +51,7 @@ export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & 
 };
 
 // @public
-export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: (keyof TProps)[]) => TProps;
+export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: string[]) => TProps;
 
 // @public (undocumented)
 export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | (TProps & ComponentProps & {

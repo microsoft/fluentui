@@ -60,6 +60,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -68,8 +69,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       style={
@@ -531,6 +530,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -539,8 +539,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       style={
@@ -947,6 +945,7 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             transform: translateZ(0);
           }
           @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background: WindowText
                                   linear-gradient(
                                     to right,
@@ -955,8 +954,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                                     transparent 100%)
                                   0 0 / 90% 100%
                                   no-repeat;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       style={
