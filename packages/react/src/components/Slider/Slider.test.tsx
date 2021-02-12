@@ -35,7 +35,7 @@ describe('Slider', () => {
   });
 
   it('renders range slider correctly', () => {
-    const component = create(<Slider label="I am a ranged slider" ranged />);
+    const component = create(<Slider label="I am a ranged slider" ranged defaultValue={5} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
