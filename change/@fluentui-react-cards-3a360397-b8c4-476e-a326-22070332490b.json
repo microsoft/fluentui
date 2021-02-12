@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Removing previous experimental implementation of Card and moving the version in the next folder to be the default export.",
+  "comment": "[BREAKING] Removing previous experimental implementation of Card and moving the version in the next folder to be the default export.",
   "packageName": "@fluentui/react-cards",
   "email": "humbertomakotomorimoto@gmail.com",
   "dependentChangeType": "patch"
