@@ -2,3 +2,4 @@
 // The checked in version is a placeholder only and will not be updated.
 import { setVersion } from '@fluentui/set-version';
 setVersion('@fluentui/react-utilities', '0.0.0');
+

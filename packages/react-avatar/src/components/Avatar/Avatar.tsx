@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAvatar } from './useAvatar';
 import { AvatarProps } from './Avatar.types';
-import { makeClasses } from '@fluentui/react-utils';
+import { makeClasses } from '@fluentui/react-utilities';
 import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useFocusRects, nullRender } from '@fluentui/utilities';
 import * as classes from './Avatar.scss';
