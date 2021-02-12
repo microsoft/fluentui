@@ -38,6 +38,9 @@ export type ConfigHelpers = {
    * (or empty array for lint-staged)
    */
   getTypeInfoRuleOverrides: (rules: Linter.RulesRecord, tsconfigPath?: string) => Linter.ConfigOverride[];
+
+  /** Finds the root folder of the git repo */
+  findGitRoot: () => string;
 };
 
 declare const configHelpers: ConfigHelpers;

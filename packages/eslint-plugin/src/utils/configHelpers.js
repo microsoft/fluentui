@@ -119,4 +119,17 @@ module.exports = {
       },
     ];
   },
+
+  findGitRoot: () => {
+    const cwd = process.cwd();
+    const root = path.parse(cwd).root;
+    let found = false;
+    while (!found && cwd !== root) {
+      // .git is usually a folder, but it's a file in worktrees
+      if (fs.existsSync(path.join(cwd, '.git'))) {
+        return path.dirname(cwd);
+      }
+    }
+    return cwd;
+  },
 };
