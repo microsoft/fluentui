@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[BREAKING] Built files use commonjs only. Also add attach option to safeMount.",
+  "packageName": "@fluentui/test-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
