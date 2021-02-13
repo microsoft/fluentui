@@ -3,7 +3,7 @@ import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/
 import { SizeValue } from '@fluentui/react-theme';
 
 /**
- * {@docCategory Badge\}
+ * {@docCategory Badge}
  */
 export type BadgeStatus =
   | 'success'
@@ -16,17 +16,17 @@ export type BadgeStatus =
   | 'subtle';
 
 /**
- * {@docCategory Badge\}
+ * {@docCategory Badge}
  */
 export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
 
 /**
- * {@docCategory Badge\}
+ * {@docCategory Badge}
  */
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
 /**
- * {@docCategory Badge\}
+ * {@docCategory Badge}
  */
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -61,7 +61,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 }
 
 /**
- * {@docCategory Badge\}
+ * {@docCategory Badge}
  */
 export interface BadgeState extends BadgeProps {
   /**
