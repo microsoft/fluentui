@@ -47,7 +47,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   /**
    * A Badge can be filled, outline, ghost, inverted
    */
-  variant?: BadgeVariant;
+  appearance?: BadgeVariant;
 
   /**
    * Icon slot
