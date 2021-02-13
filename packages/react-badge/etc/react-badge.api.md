@@ -5,40 +5,54 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utils';
+import { ObjectShorthandProps } from '@fluentui/react-utils';
 import * as React from 'react';
-import { SizeValue } from '@fluentui/theme';
+import { ShorthandProps } from '@fluentui/react-utils';
+import { SizeValue } from '@fluentui/react-theme';
 
-// @public (undocumented)
-export const Badge: React.ForwardRefExoticComponent<Pick<BadgeProps, string | number> & React.RefAttributes<HTMLElement>>;
+// @public
+export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
+// @public
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    circular?: boolean;
     color?: string;
-    filled?: boolean;
-    ghost?: boolean;
-    inverted?: boolean;
-    outline?: boolean;
-    rounded?: boolean;
+    icon?: ShorthandProps<HTMLElement>;
+    iconPosition?: 'before' | 'after';
+    shape?: BadgeShape;
     size?: SizeValue;
-    tint?: boolean;
+    status?: BadgeStatus;
+    variant?: BadgeVariant;
 }
 
-// @public (undocumented)
-export const badgeShorthandProps: never[];
+// @public
+export type BadgeShape = 'rounded' | 'square' | 'circular';
 
-// @public (undocumented)
+// @public
+export const badgeShorthandProps: string[];
+
+// @public
 export interface BadgeState extends BadgeProps {
+    icon?: ObjectShorthandProps<HTMLSpanElement>;
+    ref: React.MutableRefObject<HTMLElement>;
 }
+
+// @public
+export type BadgeStatus = 'success' | 'warning' | 'severe' | 'accent' | 'danger' | 'important' | 'informative' | 'subtle';
+
+// @public
+export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
 
 // @public
 export const renderBadge: (state: BadgeState) => JSX.Element;
 
-// @public (undocumented)
-export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => Record<string, any>;
+// @public
+export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;
 
 // @public
-export const useBadgeStyles: (state: BadgeState) => void;
+export const useBadgeStyles: (state: BadgeState) => BadgeState;
+
+// @public
+export const useIconStyles: (selectors: BadgeState) => string;
 
 // @public
 export const useRootStyles: (selectors: BadgeState) => string;
