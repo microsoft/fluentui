@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "updating avatar test",
+  "packageName": "@fluentui/react-examples",
+  "email": "andmarti@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-13T00:43:28.276Z"
+}
