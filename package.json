@@ -70,6 +70,7 @@
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
     "beachball": "^1.50.1",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
