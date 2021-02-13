@@ -1,8 +1,8 @@
-const path = require('path');
+// @ts-check
 const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
 
-const config = createConfig({
-  snapshotSerializers: [path.resolve(__dirname)],
+module.exports = createConfig({
+  customConfig: {
+    snapshotSerializers: [__dirname],
+  },
 });
-
-module.exports = config;

@@ -1,9 +1,6 @@
-let { createConfig, resolveMergeStylesSerializer } = require('@fluentui/scripts/jest/jest-resources');
-let path = require('path');
+// @ts-check
+const { createConfig } = require('@fluentui/scripts/jest/jest-resources');
 
-const config = createConfig({
-  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-  snapshotSerializers: [resolveMergeStylesSerializer()],
+module.exports = createConfig({
+  useEnzyme: true,
 });
-
-module.exports = config;

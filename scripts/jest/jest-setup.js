@@ -1,5 +1,7 @@
 // @ts-check
 
+// Jest setup file for all packages except those under packages/fluentui.
+
 // Mock requestAnimationFrame and cancelAnimationFrame for all packages
 // @ts-ignore
 global.requestAnimationFrame = callback => {
@@ -9,6 +11,13 @@ global.requestAnimationFrame = callback => {
 global.cancelAnimationFrame = id => {
   clearTimeout(id);
 };
+
+try {
+  const { resetIds } = require('@fluentui/utilities');
+  resetIds();
+} catch {
+  // if attempting this throws, it probably wasn't needed for this package
+}
 
 // Fail on warnings.
 const consoleWarn = console.warn;

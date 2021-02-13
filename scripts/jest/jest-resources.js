@@ -42,47 +42,69 @@ module.exports = {
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$',
   }),
   jestAliases,
-  createConfig: customConfig =>
-    merge(
-      {
-        moduleNameMapper: {
-          'ts-jest': resolve.sync('ts-jest'),
-          '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
-          KeyCodes: path.resolve(__dirname, 'jest-mock.js'),
-          ...jestAliases(),
-        },
+  /**
+   * @param {object} [options]
+   * @param {Partial<jest.InitialOptions>} [options.customConfig]
+   * @param {boolean} [options.useEnzyme] - Whether to set up the enzyme adapter (via `setupFiles`)
+   * @param {boolean} [options.disableIconWarnings] - Whether to disable icon registration warnings (via `setupFiles`)
+   * @param {boolean} [options.initializeIcons] - Whether to call `initializeIcons` from `@fluentui/font-icons-mdl2`
+   * (via `setupFiles`)
+   * @param {boolean} [options.useMergeStylesSerializer] - Whether to use `@fluentui/jest-serializer-merge-styles`
+   * as a snapshot serializer
+   */
+  createConfig: (options = {}) => {
+    const { customConfig, useEnzyme, disableIconWarnings, initializeIcons, useMergeStylesSerializer } = options;
 
-        transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/dist'),
-        },
-
-        transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
-
-        reporters: [path.resolve(__dirname, './jest-reporter.js')],
-
-        testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
-        moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
-
-        setupFiles: [path.resolve(__dirname, 'jest-setup.js')],
-
-        moduleDirectories: [
-          'node_modules',
-          path.resolve(packageRoot, 'node_modules'),
-          path.resolve(__dirname, '../node_modules'),
-        ],
-
-        globals: {
-          'ts-jest': {
-            tsConfig: path.resolve(packageRoot, 'tsconfig.json'),
-            packageJson: path.resolve(packageRoot, 'package.json'),
-            diagnostics: false,
-          },
-        },
-
-        testURL: 'http://localhost',
-
-        watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    /** @type {jest.InitialOptions} */
+    const defaultConfig = {
+      moduleNameMapper: {
+        'ts-jest': resolve.sync('ts-jest'),
+        '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
+        KeyCodes: path.resolve(__dirname, 'jest-mock.js'),
+        ...jestAliases(),
       },
-      customConfig,
-    ),
+
+      transform: {
+        '.(ts|tsx)': resolve.sync('ts-jest/dist'),
+      },
+
+      transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
+
+      reporters: [path.resolve(__dirname, './jest-reporter.js')],
+
+      testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
+      moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
+
+      setupFiles: [
+        path.resolve(__dirname, 'jest-setup.js'),
+        ...(useEnzyme ? [path.resolve(__dirname, 'jest-setup-enzyme.js')] : []),
+        ...(disableIconWarnings ? [path.resolve(__dirname, 'jest-setup-icon-warnings.js')] : []),
+        ...(initializeIcons ? [path.resolve(__dirname, 'jest-setup-initialize-icons.js')] : []),
+      ],
+
+      moduleDirectories: [
+        'node_modules',
+        path.resolve(packageRoot, 'node_modules'),
+        path.resolve(__dirname, '../node_modules'),
+      ],
+
+      globals: {
+        'ts-jest': {
+          tsConfig: path.resolve(packageRoot, 'tsconfig.json'),
+          packageJson: path.resolve(packageRoot, 'package.json'),
+          diagnostics: false,
+        },
+      },
+
+      testURL: 'http://localhost',
+
+      watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+
+      ...(useMergeStylesSerializer && {
+        snapshotSerializers: [module.exports.resolveMergeStylesSerializer()],
+      }),
+    };
+
+    return merge(defaultConfig, customConfig);
+  },
 };
