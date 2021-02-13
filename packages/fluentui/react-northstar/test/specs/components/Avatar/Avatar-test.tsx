@@ -17,7 +17,7 @@ describe('Avatar', () => {
 
   describe('generateInitials', () => {
     it('generateInitials should show just the initials of the first and last words in the name', () => {
-      expect(getInitials('Cecil MiddleName Folk')).toEqual('JD');
+      expect(getInitials('Cecil MiddleName Folk')).toEqual('CF');
     });
 
     it('generateInitials removes the text inside brackets', () => {
