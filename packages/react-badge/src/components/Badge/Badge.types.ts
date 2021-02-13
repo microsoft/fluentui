@@ -18,7 +18,7 @@ export type BadgeStatus =
 /**
  * {@docCategory Badge}
  */
-export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
 
 /**
  * {@docCategory Badge}
@@ -47,7 +47,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   /**
    * A Badge can be filled, outline, ghost, inverted
    */
-  appearance?: BadgeVariant;
+  appearance?: BadgeAppearances;
 
   /**
    * Icon slot
