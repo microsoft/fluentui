@@ -23,7 +23,6 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/color-check": "0.0.0",
-    "@types/jest": "~24.9.0",
     "@types/markdown-to-jsx": "6.11.0",
     "@types/react": "16.9.42",
     "@types/react-custom-scrollbars": "^4.0.5",
