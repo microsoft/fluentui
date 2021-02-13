@@ -105,7 +105,7 @@ A Presence Badge represents someone's availbility or status
 
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
-## API
+#### API
 
 | Property Name   | Type      | Default Value | Description                                                    |
 | --------------- | --------- | ------------- | -------------------------------------------------------------- |
