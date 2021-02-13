@@ -1,21 +1,11 @@
 {
   "name": "@fluentui/public-docsite",
-  "version": "1.0.7",
+  "version": "8.0.0-beta.1",
   "description": "The official website for the Fluent UI project.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
   "sideEffects": true,
-  "typings": "lib/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
+  "main": "lib-commonjs/root.js",
+  "module": "lib/root.js",
+  "typings": "lib/root.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -41,23 +31,23 @@
     "@types/node": "^10.3.2",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/react-monaco-editor": "^1.0.0",
+    "@fluentui/react-monaco-editor": "^1.0.1-0",
     "react-app-polyfill": "~1.0.1",
     "write-file-webpack-plugin": "^4.1.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.53",
-    "@fluentui/react-examples": "^1.1.2",
-    "@fluentui/theme": "^2.0.0-beta.14",
+    "@fluentui/react": "^8.0.0-beta.54",
+    "@fluentui/react-examples": "^8.0.0-beta.1",
+    "@fluentui/theme": "^2.0.0-beta.15",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/api-docs": "^1.0.3",
-    "@fluentui/react-docsite-components": "^8.0.0-beta.53",
-    "@fluentui/react-experiments": "^8.0.0-beta.57",
-    "@fluentui/public-docsite-resources": "1.0.6",
-    "@fluentui/react-file-type-icons": "^8.0.0-beta.16",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta.14",
+    "@fluentui/api-docs": "^8.0.0-beta.1",
+    "@fluentui/react-docsite-components": "^8.0.0-beta.54",
+    "@fluentui/react-experiments": "^8.0.0-beta.58",
+    "@fluentui/public-docsite-resources": "^8.0.0-beta.1",
+    "@fluentui/react-file-type-icons": "^8.0.0-beta.17",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta.15",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/theme-samples": "^8.0.0-beta.52",
+    "@fluentui/theme-samples": "^8.0.0-beta.53",
     "@fluentui/utilities": "^8.0.0-beta.11",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",

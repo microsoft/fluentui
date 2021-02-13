@@ -1,19 +1,9 @@
 {
   "name": "@fluentui/public-docsite-resources",
-  "version": "1.0.6",
+  "version": "8.0.0-beta.1",
   "description": "Fluent UI React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
-  "publishConfig": {
-    "access": "public"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
   "sideEffects": [
     "*.global.*",
     "*Examples.*",
@@ -43,16 +33,16 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.53",
-    "@fluentui/react-examples": "^1.1.2",
+    "@fluentui/react": "^8.0.0-beta.54",
+    "@fluentui/react-examples": "^8.0.0-beta.1",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/api-docs": "^1.0.3",
-    "@fluentui/azure-themes": "^8.0.0-beta.52",
-    "@fluentui/react-docsite-components": "^8.0.0-beta.53",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta.14",
+    "@fluentui/api-docs": "^8.0.0-beta.1",
+    "@fluentui/azure-themes": "^8.0.0-beta.53",
+    "@fluentui/react-docsite-components": "^8.0.0-beta.54",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta.15",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/theme-samples": "^8.0.0-beta.52",
-    "@fluentui/react-monaco-editor": "^1.0.0",
+    "@fluentui/theme-samples": "^8.0.0-beta.53",
+    "@fluentui/react-monaco-editor": "^1.0.1-0",
     "@types/react": "16.9.42",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",

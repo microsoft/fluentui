@@ -2,6 +2,21 @@
   "name": "@fluentui/common-styles",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.15",
+      "version": "1.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.15",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/common-styles_v1.0.0-beta.14",
       "version": "1.0.0-beta.14",

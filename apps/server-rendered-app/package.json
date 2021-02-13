@@ -27,10 +27,10 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta.14",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta.15",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/react": "^8.0.0-beta.53",
+    "@fluentui/react": "^8.0.0-beta.54",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

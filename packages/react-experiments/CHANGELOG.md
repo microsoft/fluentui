@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.58)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.57..@fluentui/react-experiments_v8.0.0-beta.58)
+
+### Changes
+
+- UnifiedPicker: Don't show picker after input is cleared ([PR #16937](https://github.com/microsoft/fluentui/pull/16937) by elvonspa@microsoft.com)
+- Use add and removeeventlistener for keydown in the UnifiedPicker ([PR #16954](https://github.com/microsoft/fluentui/pull/16954) by elvonspa@microsoft.com)
+- Fix bug where mouse selected suggestions did not work in the DefaultEditingItem ([PR #16929](https://github.com/microsoft/fluentui/pull/16929) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.57)
 
