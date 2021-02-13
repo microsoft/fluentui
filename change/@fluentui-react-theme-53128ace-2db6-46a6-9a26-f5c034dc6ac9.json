@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "feat(Badge): change",
+  "comment": "feat(Badge): add sizevalues type",
   "packageName": "@fluentui/react-theme",
   "email": "junioassuncaocharles@gmail.com",
   "dependentChangeType": "patch"
