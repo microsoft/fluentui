@@ -2,6 +2,8 @@ import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle, IRawStyle } from '../../Styling';
 import { getRTL } from '@fluentui/utilities';
 
+/* eslint-disable deprecation/deprecation */
+
 const tickLabelSpacing = 13;
 
 const GlobalClassNames = {
@@ -34,6 +36,7 @@ function getHighContrastSelector(systemColor: string): IRawStyle {
   };
 }
 
+/** @deprecated */
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue } = props;
   const { semanticColors } = theme;

@@ -6,10 +6,10 @@
 
 ### Source code
 
-[NavigationController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Navigation/NavigationController.swift)
+[NavigationController](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Navigation/NavigationController.swift)
 
-[SearchBar](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/SearchBar.swift)
+[SearchBar](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/SearchBar.swift)
 
 ### Sample code
 
-[NavigationController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/NavigationControllerDemoController.swift)
+[NavigationController demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/NavigationControllerDemoController.swift)
