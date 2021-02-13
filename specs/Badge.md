@@ -93,7 +93,7 @@ Optionally it can support both simultaneously by adding new shorthand `Badge` pr
 
 A Presence Badge represents someone's availbility or status
 
-## API
+#### API
 
 | Property Name | Type      | Default Value | Description                                                                                |
 | ------------- | --------- | ------------- | ------------------------------------------------------------------------------------------ |
