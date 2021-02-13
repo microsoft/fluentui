@@ -89,9 +89,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 
 - _Migration from v8_
 
-Initially the `PersonaPresence` enum that is used to create the `Badge` in the `Persona` component can still be used to define the set of options that can be passed to the new `Badge` component.
-Optionally it can support both simultaneously by adding new shorthand `Badge` prop to `Persona` and allowing it to be the `badge` slot over the `presence` or `Badge` could be used separately and share same container as
-`Persona` component.
+`Badge` can be passed to `Avatar`'s `badge` slot. The `PresenceBadge` will be the best replacement for `Persona` presence mapping status, icon and colors. 
 
 - _Migration from v0_
 
