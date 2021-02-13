@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-13T02:15:57.406Z"
+}
