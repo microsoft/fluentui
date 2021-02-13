@@ -85,7 +85,7 @@ Optionally it can support both simultaneously by adding new shorthand `Badge` pr
 
   - Include meaningful descriptions when using color to represent meaning in a badge. If relying on color only [unread dot] ensure that non-visual information is included using aria-describedby
 
-- _Variants_
+## Variants
 
 `Badge` is base component that can be used to create custom `Badge` such as `PresenceBadge` or `CounterBadge` with specific behaviors.
 
