@@ -3,9 +3,6 @@ import { getSlots } from '@fluentui/react-utils';
 import { BadgeState } from './Badge.types';
 import { badgeShorthandProps } from './useBadge';
 
-/**
- * Function that renders the final JSX of the component
- */
 export const renderBadge = (state: BadgeState) => {
   const { slots, slotProps } = getSlots(state, badgeShorthandProps);
 
