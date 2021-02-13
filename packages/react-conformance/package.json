@@ -44,7 +44,7 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "enzyme": "^3.0.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^1.0.0",
-    "jest": "^24.0.0",
+    "jest": "^25.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0",
     "typescript": "^3.5.0"

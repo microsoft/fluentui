@@ -29,6 +29,6 @@
   "peerDependencies": {
     "enzyme": "^3.0.0",
     "react": ">=16.8.0 <17.0.0",
-    "jest": "^24.0.0"
+    "jest": "^25.0.0"
   }
 }

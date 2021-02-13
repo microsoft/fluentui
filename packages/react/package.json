@@ -44,7 +44,6 @@
     "@fluentui/react-conformance": "^1.0.0",
     "chalk": "^2.1.0",
     "glob": "^7.1.2",
-    "jest-snapshot": "~24.9.0",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
