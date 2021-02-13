@@ -27,13 +27,41 @@ A badge is an additional visual descriptor for UI elements. It can be used to de
 - Size: `smallest`, `smaller`, `small`, `medium`, `large`, `larger`.
 - Styles: `filled`, `outline`, `ghost`, `tint`, `inverted filled`
 
-## API
+## PROPS
 
-| Property Name | Type   | Default Value | Description                         |
-| ------------- | ------ | ------------- | ----------------------------------- |
-| `size`        | `enum` | `medium`      | The Badge size                      |
-| `shape`       | `enum` | `rounded`     | The Badge can have different shapes |
-| `variant`     | `enum` | `filled`      | The Badge different style variants  |
+```typescript
+
+export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+
+export type BadgeShape = 'rounded' | 'square' | 'circular';
+
+export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * A Badge can be sized.
+   */
+  size?: SizeValue;
+
+  /**
+   * A Badge can be square, circular or rounded
+   */
+  shape?: BadgeShape;
+
+  /**
+   * A Badge can be filled, outline, ghost, inverted
+   */
+  appearance?: BadgeVariant;
+
+  /**
+   * Icon slot
+   */
+  icon?: ShorthandProps<HTMLElement>;
+
+  /**
+   * Position for Icon to be rendered
+   */
+  iconPosition?: 'before' | 'after';
+}
+```
 
 ## Structure
 
