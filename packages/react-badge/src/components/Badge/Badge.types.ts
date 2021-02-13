@@ -40,11 +40,6 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
   status?: BadgeStatus;
 
   /**
-   * A Badge can have different colors.
-   */
-  color?: string;
-
-  /**
    * A Badge can be square, circular or rounded
    */
   shape?: BadgeShape;
