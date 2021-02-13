@@ -67,7 +67,7 @@ Optionally it can support both simultaneously by adding new shorthand `Badge` pr
 
 - _Migration from v0_
 
-`Badge` can be passed to `Avatar`'s `badge` prop or be used by sharing same container.
+`Badge` can be passed to `Avatar`'s `badge` slot.
 
 ## Behaviors
 
