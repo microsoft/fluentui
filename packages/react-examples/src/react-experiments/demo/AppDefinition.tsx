@@ -9,12 +9,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../Button/ButtonPage').ButtonPage,
-          key: 'Button',
-          name: 'Button',
-          url: '#/examples/button',
-        },
-        {
           component: require<any>('../CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
           name: 'CollapsibleSection',
@@ -87,12 +81,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/slider',
         },
         {
-          component: require<any>('../Slots/SlotsPage').SlotsPage,
-          key: 'Slots',
-          name: 'Slots',
-          url: '#/examples/slots',
-        },
-        {
           component: require<any>('../Tile/TilePage').TilePage,
           key: 'Tile',
           name: 'Tile',
@@ -103,12 +91,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'TilesList',
           name: 'TilesList',
           url: '#/examples/tileslist',
-        },
-        {
-          component: require<any>('../Toggle/TogglePage').TogglePage,
-          key: 'Toggle',
-          name: 'Toggle',
-          url: '#/examples/toggle',
         },
         {
           component: require<any>('../VirtualizedList/VirtualizedListPage').VirtualizedListPage,
