@@ -26,7 +26,12 @@ export const TextFieldBasicExample: React.FunctionComponent = () => {
         <TextField label="With an icon" iconProps={iconProps} />
         <TextField label="With placeholder" placeholder="Please enter text here" />
         <TextField label="Disabled with placeholder" disabled placeholder="I am disabled" />
-        <TextField label="Password with reveal button" type="password" canRevealPassword />
+        <TextField
+          label="Password with reveal button"
+          type="password"
+          canRevealPassword
+          revealPasswordAriaLabel="Reveal/hide password"
+        />
       </Stack>
     </Stack>
   );

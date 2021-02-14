@@ -202,6 +202,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       styles,
       autoAdjustHeight,
       canRevealPassword,
+      revealPasswordAriaLabel,
       type,
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
@@ -244,7 +245,12 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
             {iconProps && <Icon className={classNames.icon} {...iconProps} />}
             {hasRevealButton && (
               // Explicitly set type="button" since the default button type within a form is "submit"
-              <button className={classNames.revealButton} onClick={this._onRevealButtonClick} type="button">
+              <button
+                aria-label={revealPasswordAriaLabel || ''}
+                className={classNames.revealButton}
+                onClick={this._onRevealButtonClick}
+                type="button"
+              >
                 <span className={classNames.revealSpan}>
                   <Icon
                     className={classNames.revealIcon}
@@ -648,7 +654,7 @@ function _browserNeedsRevealButton() {
 
     if (win?.navigator) {
       // Edge, Chromium Edge
-      const isEdge = /Edg/.test(win.navigator.userAgent || '');
+      const isEdge = /^Edg/.test(win.navigator.userAgent || '');
 
       __browserNeedsRevealButton = !(isIE11() || isEdge);
     } else {
