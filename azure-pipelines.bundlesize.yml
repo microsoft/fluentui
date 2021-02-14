@@ -87,12 +87,12 @@ jobs:
           buildVersionToDownload: specific
           pipelineId: 186534
           artifactName: bundlesizes.json
-          targetPath: '$(Parameters.path)'
+          targetPath: 'apps/test-bundles/dist'
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact: bundlesizes.json'
         inputs:
-          PathtoPublish: '$(Pipeline.Workspace)'
+          PathtoPublish: 'apps/test-bundles/dist'
           ArtifactName: bundlesizes.json
 
   - job: lightrail
