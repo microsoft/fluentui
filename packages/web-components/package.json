@@ -2,7 +2,7 @@
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
   "sideEffects": false,
-  "version": "0.13.1",
+  "version": "0.14.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -92,7 +92,7 @@
     "ts-loader": "^7.0.2",
     "ts-node": "^8.0.0",
     "tsconfig-paths": "^3.9.0",
-    "typescript": "^3.9.0",
+    "typescript": "3.9.7",
     "webpack": "^4.43.0"
   },
   "dependencies": {

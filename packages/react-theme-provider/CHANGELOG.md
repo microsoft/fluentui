@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.23)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.22..@fluentui/react-theme-provider_v1.0.0-beta.23)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.1 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package. ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
 
 ## [1.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.22)
 

@@ -6,12 +6,12 @@
 
 ### Source code
 
-[ActivityIndicatorView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/ActivityIndicatorView.swift)
+[ActivityIndicatorView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/ActivityIndicatorView.swift)
 
-[HUD](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/HUD/HUD.swift)
+[HUD](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/HUD/HUD.swift)
 
 ### Sample code
 
-[ActivityIndicatorView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/ActivityIndicatorViewDemoController.swift)
+[ActivityIndicatorView demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/ActivityIndicatorViewDemoController.swift)
 
-[HUD demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/HUDDemoController.swift)
+[HUD demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/HUDDemoController.swift)

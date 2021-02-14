@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.1)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v1.1.2..@fluentui/react-examples_v8.0.0-beta.1)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v0.10.0 ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+- Bump @fluentui/react-flex to v0.2.4 ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+- Bump @fluentui/react-text to v0.1.6 ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+- Bump @fluentui/react-image to v0.6.22 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-make-styles to v0.2.5 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-provider to v0.1.4 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Updated typings ([PR #16902](https://github.com/microsoft/fluentui/pull/16902) by lingfan.gao@microsoft.com)
+- Changing version to pre-release. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
+- Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package. ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+- remove references to getEdgeChromiumNoHighContrastAdjustSelector ([PR #16957](https://github.com/microsoft/fluentui/pull/16957) by sareiff@microsoft.com)
 
 ## [1.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v1.1.2)
 

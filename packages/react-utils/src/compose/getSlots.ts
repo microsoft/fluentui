@@ -23,8 +23,9 @@ export const getSlots = (state: GenericDictionary, slotNames?: string[] | undefi
   const slots: GenericDictionary = {
     root: state.as || 'div',
   };
+
   const slotProps: GenericDictionary = {
-    root: typeof state.as === 'string' ? getNativeElementProps(state.as, state) : omit(state, ['as']),
+    root: typeof slots.root === 'string' ? getNativeElementProps(slots.root, state) : omit(state, ['as']),
   };
 
   if (slotNames) {

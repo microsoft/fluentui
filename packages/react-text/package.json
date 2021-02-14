@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Fluent UI React Text component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -44,10 +44,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-theme-provider": "^1.0.0-beta.22",
-    "@fluentui/react-utils": "^0.3.1-0",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.23",
+    "@fluentui/react-utils": "^0.3.1",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/theme": "^2.0.0-beta.14",
+    "@fluentui/theme": "^2.0.0-beta.15",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^1.10.0"
   },

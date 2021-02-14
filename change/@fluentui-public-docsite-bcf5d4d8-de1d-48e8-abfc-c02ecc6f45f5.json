@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update links to fluentui-apple repository",
+  "packageName": "@fluentui/public-docsite",
+  "email": "mavitale@microsoft.com",
+  "dependentChangeType": "patch"
+}

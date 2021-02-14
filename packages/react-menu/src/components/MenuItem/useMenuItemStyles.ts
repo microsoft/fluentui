@@ -19,10 +19,12 @@ export const useRootStyles = makeStyles<MenuItemState>([
 
       ':hover': {
         backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
+        color: theme.alias.color.neutral.neutralForeground2Hover,
       },
 
       ':focus': {
         backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
+        color: theme.alias.color.neutral.neutralForeground2Hover,
       },
     }),
   ],
