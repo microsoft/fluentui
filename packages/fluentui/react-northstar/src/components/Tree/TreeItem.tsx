@@ -145,6 +145,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     focusItemById,
     expandSiblings,
     toggleItemSelect,
+    setToFocusIDByFirstCharacter,
   } = React.useContext(TreeContext);
 
   const { selected, hasSubtree, childrenIds } = getItemById(id);
@@ -185,6 +186,14 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         e.stopPropagation();
 
         handleSiblingsExpand(e);
+      },
+      setFocusByFirstCharacter: e => {
+        e.preventDefault();
+        e.stopPropagation();
+        const toFocusID = setToFocusIDByFirstCharacter(e, props.id);
+        if (toFocusID !== props.id) {
+          focusItemById(toFocusID);
+        }
       },
       performSelection: e => {
         e.preventDefault();
