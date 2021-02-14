@@ -93,7 +93,7 @@ jobs:
       - script: 'chocolatey install jq'
         displayName: 'Install jq'
 
-      - script: jq -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
+      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
         displayName: 'Merge React and React-Northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
