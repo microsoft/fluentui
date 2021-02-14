@@ -79,33 +79,21 @@ jobs:
       - build_northstar
     steps:
       - task: DownloadPipelineArtifact@2
-        displayName: 'Download Pipeline Artifact React'
+        displayName: 'Download Pipeline Artifact'
         inputs:
-          artifactName: 'bundlesize-react'
-          targetPath: '$(Build.ArtifactStagingDirectory)/react'
-
-      - task: DownloadPipelineArtifact@2
-        displayName: 'Download Pipeline Artifact N*'
-        inputs:
-          artifactName: 'bundlesize-northstar'
-          targetPath: '$(Build.ArtifactStagingDirectory)/react-northstar'
-
-      - script: 'chocolatey install jq'
-        displayName: 'Install jq'
-
-      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
-        displayName: 'Merge React and React-Northstar to bundlesizes.json'
+          buildType: '$(Parameters.source)'
+          project: 'cd9e4e13-b8db-429a-9c21-499bf1c98639'
+          definition: 55
+          buildVersionToDownload: specific
+          pipelineId: 186534
+          artifactName: bundlesizes.json
+          targetPath: '$(Parameters.path)'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Merged Bundle Size information'
+        displayName: 'Publish Artifact: bundlesizes.json'
         inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesizes.json'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-          ArtifactName: distdrop
+          PathtoPublish: '$(Pipeline.Workspace)'
+          ArtifactName: bundlesizes.json
 
   - job: lightrail
     pool: server
