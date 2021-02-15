@@ -10,7 +10,7 @@ const path = require('path');
 
 const distRoot = path.resolve(__dirname, '../apps/test-bundles/dist');
 const sizes = {};
-const outputFilename = 'bundlesize.json';
+const outputFilename = 'bundlesizes.json';
 
 var items = fs.readdirSync(distRoot);
 items.forEach(item => {
