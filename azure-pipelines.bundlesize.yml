@@ -29,7 +29,7 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
+          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
           ArtifactName: bundlesize-react
 
       - task: PublishBuildArtifacts@1
@@ -62,7 +62,7 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
+          PathtoPublish: 'apps/test-bundles/dist/bundlesizes.json'
           ArtifactName: bundlesize-northstar
 
       - task: PublishBuildArtifacts@1
@@ -93,7 +93,7 @@ jobs:
       - script: 'chocolatey install jq'
         displayName: 'Install jq'
 
-      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
+      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesizes.json $(Build.ArtifactStagingDirectory)/react/bundlesizes.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
         displayName: 'Merge React and React-Northstar to bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
