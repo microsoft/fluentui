@@ -81,7 +81,7 @@ jobs:
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact'
         inputs:
-          buildType: '$(Parameters.source)'
+          buildType: specific
           project: 'cd9e4e13-b8db-429a-9c21-499bf1c98639'
           definition: 55
           buildVersionToDownload: specific
