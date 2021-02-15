@@ -85,7 +85,10 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     this._calloutId = getId('callout');
     this._tooltipId = getId('VCTooltipID_');
     this._refArray = [];
-    this._xAxisType = getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes;
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
   }
 
   public render(): JSX.Element {
