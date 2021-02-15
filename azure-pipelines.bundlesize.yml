@@ -86,6 +86,7 @@ jobs:
           definition: 55
           buildVersionToDownload: specific
           pipelineId: 186534
+          downloadType: single
           artifactName: bundlesizes.json
           targetPath: '$(Build.ArtifactStagingDirectory)'
 
