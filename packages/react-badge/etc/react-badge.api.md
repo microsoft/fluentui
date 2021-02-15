@@ -14,7 +14,7 @@ import { SizeValue } from '@fluentui/react-theme';
 export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'tint';
 
 // @public (undocumented)
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
