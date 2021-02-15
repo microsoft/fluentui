@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 
-export const buttonGroupBehavior: Accessibility<ButtonGroupBehaviorProps> = props => ({
+export const buttonGroupBehavior: Accessibility<ButtonGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'group',

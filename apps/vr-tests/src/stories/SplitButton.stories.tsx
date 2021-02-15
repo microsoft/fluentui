@@ -3,22 +3,18 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('SplitButton', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -27,6 +23,11 @@ storiesOf('SplitButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('.ms-SplitButton-button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-SplitButton-button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
@@ -77,7 +78,7 @@ storiesOf('SplitButton', module)
 
 storiesOf('SplitButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -90,11 +91,11 @@ storiesOf('SplitButton Next - Block', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
-        .hover('button')
+        .hover('.ms-SplitButton-button')
         .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
+        .mouseDown('.ms-SplitButton-button')
         .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}
@@ -143,15 +144,11 @@ storiesOf('SplitButton Next - Block', module)
 
 storiesOf('SplitButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -160,6 +157,11 @@ storiesOf('SplitButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('.ms-SplitButton-button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('.ms-SplitButton-button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
+        .mouseUp('.ms-SplitButton-button')
         .end()}
     >
       {story()}

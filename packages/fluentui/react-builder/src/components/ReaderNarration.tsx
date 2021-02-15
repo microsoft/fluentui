@@ -1,21 +1,24 @@
 import * as React from 'react';
 import { Alert, Ref, Dropdown, DropdownProps } from '@fluentui/react-northstar';
-import { NarrationComputer, IAriaElement } from './../narration/NarrationComputer';
+import { NarrationComputer, IAriaElement, SRNCPlatform } from './../narration/NarrationComputer';
 
-const computer = new NarrationComputer();
-let prevSelector = null;
-let focusableElements = {};
-let elementsPaths = [];
-let selectedElementPath = null;
-let prevNarrationElement = null;
-const aomMissing = !window.hasOwnProperty('getComputedAccessibleNode');
+const computer: NarrationComputer = new NarrationComputer();
+let prevSelector: string = null;
+let prevVcElement: HTMLElement = null;
+let allowVirtualCursor: boolean = true;
+let focusableElements: Record<string, IAriaElement> = {};
+let elementsPaths: string[] = [];
+let selectedElementPath: string = null;
+let prevNarrationElement: IAriaElement = null;
+const aomMissing: boolean = !window.hasOwnProperty('getComputedAccessibleNode');
 
 export type ReaderNarrationProps = {
+  vcElement: HTMLElement;
   selector: string;
   inUseMode: boolean;
 };
 
-export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ selector, inUseMode }) => {
+export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({ vcElement, selector, inUseMode }) => {
   const ref = React.useRef<HTMLElement>();
   const [narrationElement, setNarrationElement] = React.useState<IAriaElement>(null);
   const [narrationText, setNarrationText] = React.useState('');
@@ -35,6 +38,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   // Handles the "focusin" event by updating the current and previous narration elements.
   const handleFocusIn = React.useCallback(
     event => {
+      allowVirtualCursor = false;
       prevNarrationElement = narrationElement;
       setNarrationElement(event.target as IAriaElement);
     },
@@ -42,21 +46,23 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   ); // End handleFocusIn
 
   // Recomputes the narration text upon every render.
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   React.useEffect(() => {
     if (!ref.current || aomMissing) {
       return;
     }
 
     // Recompute and save the focusable elements and their paths for the tree rooted at the selector's element upon every selector change
-    if (prevSelector !== selector) {
+    if (selector !== prevSelector) {
       // Begin if 1
       const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
       computer.getFocusableElements(element).then(focusableElementsItems => {
         focusableElements = {};
         elementsPaths = [];
+        const pathSeparator = ' > ';
         focusableElementsItems.forEach(focusableElementItem => {
           // Begin forEach 1
-          const path = focusableElementItem.path.join(' > ');
+          const path = focusableElementItem.path.join(pathSeparator);
           focusableElements[path] = focusableElementItem.element;
           elementsPaths.push(path);
         }); // End forEach 1
@@ -66,7 +72,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           // Preselect the path and the narration element to the first focusable element with tabindex >= 0
           const preselectedElementItem =
             focusableElementsItems.find(item => item.element.tabIndex >= 0) || focusableElementsItems[0];
-          selectedElementPath = preselectedElementItem.path;
+          selectedElementPath = preselectedElementItem.path.join(pathSeparator);
           setNarrationElement(preselectedElementItem.element);
         } else {
           // Else if 2
@@ -76,6 +82,15 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       }); // End getFocusableElements
 
       prevSelector = selector;
+    } // End if 1
+
+    // Update the current and previous narration elements upon every virtual cursor element change
+    if (vcElement !== prevVcElement) {
+      allowVirtualCursor = true;
+      // Begin if 1
+      prevNarrationElement = narrationElement;
+      setNarrationElement(vcElement as IAriaElement);
+      prevVcElement = vcElement;
     } // End if 1
 
     // The null value of the narration element means no focusable element has been found
@@ -89,8 +104,15 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
       return;
     } // End if 1
 
-    // Compute and save the narration text for the current and previous elements
-    computer.getNarration(narrationElement, prevNarrationElement, 'Win/JAWS').then(text => {
+    // The following condition is a fix for the repeated narration
+    if (narrationElement === prevNarrationElement) {
+      // Begin if 1
+      return;
+    } // End if 1
+
+    // Compute and save the narration text for the current and previous elements and platform
+    const platform: SRNCPlatform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
+    computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
       setCompleteText(text);
     }); // En getNarration
   }); // End useEffect
@@ -121,7 +143,6 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           placeholder="Select the narration element"
         />
       )}
-
       <Ref innerRef={ref}>
         <Alert
           warning

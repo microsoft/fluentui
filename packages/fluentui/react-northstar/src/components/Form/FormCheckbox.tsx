@@ -3,7 +3,7 @@ import { commonPropTypes } from '../../utils';
 import { Checkbox, CheckboxProps } from '../Checkbox/Checkbox';
 import { _FormFieldBase, FormFieldBaseProps } from './utils/formFieldBase';
 
-interface FormCheckboxOwnProps extends CheckboxProps {}
+interface FormCheckboxOwnProps extends Omit<CheckboxProps, 'accessibility'> {}
 type SelectedFormFieldCustomProps = Omit<
   FormFieldBaseProps,
   'control' | 'styles' | 'accessibility' | 'design' | 'variables' | 'label'

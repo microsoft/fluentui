@@ -6,11 +6,11 @@ export interface CardVariables {
   backgroundColorFocus: string;
   backgroundColorHover: string;
   backgroundColorPressed: string;
-  quietBackgroundColor: string;
-  quietBackgroundColorDisabled: string;
-  quietBackgroundColorFocus: string;
-  quietBackgroundColorHover: string;
-  quietBackgroundColorPressed: string;
+  ghostBackgroundColor: string;
+  ghostBackgroundColorDisabled: string;
+  ghostBackgroundColorFocus: string;
+  ghostBackgroundColorHover: string;
+  ghostBackgroundColorPressed: string;
   invertedBackgroundColor: string;
   invertedBackgroundColorDisabled: string;
   invertedBackgroundColorFocus: string;
@@ -78,11 +78,11 @@ export const cardVariables = (siteVars): CardVariables => {
     backgroundColorFocus: siteVars.colorScheme.default.backgroundFocus1,
     backgroundColorHover: siteVars.colorScheme.default.backgroundHover1,
     backgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
-    quietBackgroundColor: 'none',
-    quietBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
-    quietBackgroundColorFocus: 'none',
-    quietBackgroundColorHover: siteVars.colorScheme.default.backgroundHover,
-    quietBackgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
+    ghostBackgroundColor: 'none',
+    ghostBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+    ghostBackgroundColorFocus: 'none',
+    ghostBackgroundColorHover: siteVars.colorScheme.default.backgroundHover,
+    ghostBackgroundColorPressed: siteVars.colorScheme.default.backgroundPressed,
     invertedBackgroundColor: siteVars.colorScheme.default.background2,
     invertedBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled2,
     invertedBackgroundColorFocus: siteVars.colorScheme.default.background2,

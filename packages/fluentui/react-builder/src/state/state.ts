@@ -24,6 +24,7 @@ export type DesignerState = {
   jsonTreeOrigin: JSONTreeOrigin;
   selectedComponentInfo: ComponentInfo; // FIXME: should be computed in render?
   selectedJSONTreeElementUuid: JSONTreeElement['uuid'];
+  enabledVirtualCursor: boolean;
   showCode: boolean;
   activeTab: string | null;
   code: string | null; // only valid if showCode is set to true
@@ -44,6 +45,7 @@ export type DesignerAction =
   | { type: 'DELETE_SELECTED_COMPONENT' }
   | { type: 'PROP_CHANGE'; component: JSONTreeElement; propName: string; propValue: any }
   | { type: 'PROP_DELETE'; component: JSONTreeElement; propName: string }
+  | { type: 'ENABLE_VIRTUAL_CURSOR'; enabledVirtualCursor: boolean }
   | { type: 'SWITCH_TO_STORE' }
   | { type: 'RESET_STORE' }
   | { type: 'SHOW_CODE'; show: boolean }
@@ -170,6 +172,10 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
       }
       break;
 
+    case 'ENABLE_VIRTUAL_CURSOR':
+      draftState.enabledVirtualCursor = action.enabledVirtualCursor;
+      break;
+
     case 'SWITCH_TO_STORE':
       draftState.jsonTree = readTreeFromStore() || getDefaultJSONTree();
       draftState.jsonTreeOrigin = 'store';
@@ -294,6 +300,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
       activeTab: 'add',
+      enabledVirtualCursor: false,
       showCode: false,
       code: null,
       codeError: null,

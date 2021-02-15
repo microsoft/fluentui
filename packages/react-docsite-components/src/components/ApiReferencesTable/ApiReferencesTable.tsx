@@ -13,7 +13,7 @@ import { Link } from '@fluentui/react/lib/Link';
 import { SelectionMode } from '@fluentui/react/lib/Selection';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Text, ITextStyles } from '@fluentui/react/lib/Text';
-import { ILinkToken } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ILinkToken } from '@fluentui/react/lib/common/DocPage.types';
 import { useConst } from '@fluentui/react-hooks';
 import {
   IApiInterfaceProperty,
@@ -352,7 +352,7 @@ function _renderLinkTokens(
 
       if (token.linkedPage && token.linkedPageGroup) {
         return (
-          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)}>
+          <Link key={key} {...tokenResolver(token as Required<ILinkToken>)} underline>
             <code>{token.text}</code>
           </Link>
         );

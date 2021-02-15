@@ -1,8 +1,129 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Tue, 08 Dec 2020 12:28:09 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.10.0)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.10.0..@fluentui/react-avatar_v0.10.0)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.24 ([PR #16963](https://github.com/microsoft/fluentui/pull/16963) by olfedias@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.14 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/react-utils to v0.3.2-0 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.10.0)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.9.1..@fluentui/react-avatar_v0.10.0)
+
+### Minor changes
+
+- Updated typings ([PR #16902](https://github.com/microsoft/fluentui/pull/16902) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.1 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.23 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.1)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.9.1..@fluentui/react-avatar_v0.9.1)
+
+### Changes
+
+- Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.13 ([PR #16519](https://github.com/microsoft/fluentui/pull/16519) by ololubek@microsoft.com)
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.22 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-utils to v0.3.1-0 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.1)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.9.0..@fluentui/react-avatar_v0.9.1)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.0 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.21 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.0)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.9.0..@fluentui/react-avatar_v0.9.0)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.20 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.9.0)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.3..@fluentui/react-avatar_v0.9.0)
+
+### Minor changes
+
+- Remove customSize and display props; change active prop to enum; clean up AvatarProps ([PR #16702](https://github.com/microsoft/fluentui/pull/16702) by behowell@microsoft.com)
+
+## [0.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.3)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2..@fluentui/react-avatar_v0.8.3)
+
+### Patches
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
+
+## [0.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-18..@fluentui/react-avatar_v0.8.2)
+
+### Patches
+
+- add prerelease in disallowed change type for version packages and fix current versioning. ([PR #16696](https://github.com/microsoft/fluentui/pull/16696) by xgao@microsoft.com)
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by lingfan.gao@microsoft.com)
+
+## [0.8.2-18](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-18)
+
+Fri, 29 Jan 2021 12:21:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-17..@fluentui/react-avatar_v0.8.2-18)
+
+### Changes
+
+- Avatar SPEC.md, and initial MIGRATION.md and README.md ([PR #16524](https://github.com/microsoft/fluentui/pull/16524) by behowell@microsoft.com)
+
+## [0.8.2-17](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-17)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-15..@fluentui/react-avatar_v0.8.2-17)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Fix some remaining references to @uifabric ([PR #16679](https://github.com/microsoft/fluentui/pull/16679) by elcraig@microsoft.com)
+
+## [0.8.2-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-15)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.8.2-12..@fluentui/react-avatar_v0.8.2-15)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [0.8.2-12](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.8.2-12)
 

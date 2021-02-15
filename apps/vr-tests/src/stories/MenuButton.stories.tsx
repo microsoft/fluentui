@@ -4,20 +4,16 @@ import { storiesOf } from '@storybook/react';
 import { MenuButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('MenuButton', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -26,6 +22,10 @@ storiesOf('MenuButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -40,11 +40,7 @@ storiesOf('MenuButton', module)
     </MenuButton>
   ))
   .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
-  .addStory('With icon after content', () => (
-    <MenuButton icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ))
+  .addStory('With icon after content', () => <MenuButton icon="X">Hello, world</MenuButton>)
   .addStory('Circular', () => (
     <MenuButton circular icon="X">
       Hello, world
@@ -71,7 +67,7 @@ storiesOf('MenuButton', module)
 
 storiesOf('MenuButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -137,15 +133,11 @@ storiesOf('MenuButton Next - Block', module)
 
 storiesOf('MenuButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -154,6 +146,10 @@ storiesOf('MenuButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .hover('button')
+        .snapshot('hover', { cropTo: '.testWrapper' })
+        .mouseDown('button')
+        .snapshot('pressed', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -168,11 +164,7 @@ storiesOf('MenuButton Next - Teams Theme', module)
     </MenuButton>
   ))
   .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
-  .addStory('With icon after content', () => (
-    <MenuButton icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ))
+  .addStory('With icon after content', () => <MenuButton icon="X">Hello, world</MenuButton>)
   .addStory('Circular', () => (
     <MenuButton circular icon="X">
       Hello, world

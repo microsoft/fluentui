@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "1.0.0",
-  "private": true,
+  "version": "8.0.0-beta.2",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
@@ -19,29 +18,20 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/fs-extra": "^8.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/node": "^10.3.2"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.0.0-beta.1",
-    "@fluentui/merge-styles": "^8.0.0-beta.3",
-    "@fluentui/react": "^8.0.0-beta.35",
-    "@fluentui/react-button": "^1.0.0-beta.18",
-    "@fluentui/react-cards": "^1.0.0-beta.34",
-    "@fluentui/react-checkbox": "^1.0.0-beta.29",
-    "@fluentui/react-date-time": "^8.0.0-beta.29",
-    "@fluentui/react-focus": "^8.0.0-beta.13",
-    "@fluentui/react-internal": "^8.0.0-beta.31",
-    "@fluentui/react-link": "^1.0.0-beta.29",
-    "@fluentui/react-slider": "^1.0.0-beta.29",
-    "@fluentui/react-tabs": "^1.0.0-beta.29",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.14",
-    "@fluentui/react-toggle": "^1.0.0-beta.29",
-    "@fluentui/style-utilities": "^8.0.0-beta.10",
-    "@fluentui/theme": "^2.0.0-beta.10",
-    "@fluentui/utilities": "^8.0.0-beta.8",
+    "@fluentui/date-time-utilities": "^8.0.0-beta.2",
+    "@fluentui/merge-styles": "^8.0.0-beta.4",
+    "@fluentui/react": "^8.0.0-beta.55",
+    "@fluentui/react-focus": "^8.0.0-beta.21",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.24",
+    "@fluentui/style-utilities": "^8.0.0-beta.16",
+    "@fluentui/theme": "^2.0.0-beta.16",
+    "@fluentui/utilities": "^8.0.0-beta.12",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0"

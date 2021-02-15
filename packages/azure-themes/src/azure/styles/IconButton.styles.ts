@@ -1,4 +1,4 @@
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
@@ -14,7 +14,7 @@ export const IconButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       selectors: {
         // standard button
         '&.is-expanded': {
-          backgroundColor: extendedSemanticColors.iconButtonBackground,
+          backgroundColor: extendedSemanticColors.buttonBackgroundHovered,
           color: extendedSemanticColors.iconButtonFillHovered,
         },
       },
@@ -24,19 +24,19 @@ export const IconButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextDisabled,
     },
     rootHovered: {
-      backgroundColor: extendedSemanticColors.iconButtonBackground,
+      backgroundColor: extendedSemanticColors.buttonBackgroundHovered,
       color: extendedSemanticColors.iconButtonFillHovered,
     },
     rootPressed: {
-      backgroundColor: extendedSemanticColors.iconButtonBackground,
+      backgroundColor: extendedSemanticColors.buttonBackgroundPressed,
       color: extendedSemanticColors.iconButtonFillHovered,
     },
     rootChecked: {
-      backgroundColor: extendedSemanticColors.iconButtonBackground,
+      backgroundColor: extendedSemanticColors.buttonBackgroundPressed,
       color: extendedSemanticColors.iconButtonFillHovered,
     },
     rootCheckedHovered: {
-      backgroundColor: extendedSemanticColors.iconButtonBackground,
+      backgroundColor: extendedSemanticColors.buttonBackgroundPressed,
       color: extendedSemanticColors.iconButtonFillHovered,
     },
   };

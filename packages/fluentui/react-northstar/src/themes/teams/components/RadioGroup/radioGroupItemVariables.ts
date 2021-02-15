@@ -16,6 +16,7 @@ export type RadioGroupItemVariables = {
   indicatorBackgroundColorChecked: string;
 
   padding: string;
+  margin: string;
 };
 
 export const radioGroupItemVariables = (siteVars: any): RadioGroupItemVariables => ({
@@ -33,5 +34,6 @@ export const radioGroupItemVariables = (siteVars: any): RadioGroupItemVariables 
 
   indicatorBackgroundColorChecked: siteVars.colors.brand[600],
 
-  padding: `0 ${pxToRem(4)}`,
+  padding: `0 ${pxToRem(2)}`,
+  margin: `${pxToRem(5)} ${pxToRem(8)} ${pxToRem(5)} ${pxToRem(2)}`,
 });

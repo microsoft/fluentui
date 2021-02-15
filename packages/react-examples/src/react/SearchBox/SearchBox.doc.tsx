@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { SearchBoxFullSizeExample } from './SearchBox.FullSize.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { SearchBoxUnderlinedExample } from './SearchBox.Underlined.Example';
 import { SearchBoxDisabledExample } from './SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './SearchBox.CustomIcon.Example';
 import { SearchBoxSmallExample } from './SearchBox.Small.Example';
 
-const SearchBoxFullSizeExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SearchBox/SearchBox.FullSize.Example.tsx') as string;
-const SearchBoxUnderlinedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SearchBox/SearchBox.Underlined.Example.tsx') as string;
-const SearchBoxDisabledExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SearchBox/SearchBox.Disabled.Example.tsx') as string;
-const SearchBoxCustomIconExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SearchBox/SearchBox.CustomIcon.Example.tsx') as string;
-const SearchBoxSmallExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/SearchBox/SearchBox.Small.Example.tsx') as string;
+const SearchBoxFullSizeExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.FullSize.Example.tsx') as string;
+const SearchBoxUnderlinedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Underlined.Example.tsx') as string;
+const SearchBoxDisabledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Disabled.Example.tsx') as string;
+const SearchBoxCustomIconExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.CustomIcon.Example.tsx') as string;
+const SearchBoxSmallExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/SearchBox.Small.Example.tsx') as string;
 
 export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
   componentName: 'SearchBox',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SearchBox',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SearchBox',
   examples: [
     {
       title: 'Default SearchBox',
@@ -44,10 +44,12 @@ export const SearchBoxPageProps: IDocPageProps = {
       view: <SearchBoxSmallExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SearchBox/docs/SearchBoxBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -35,7 +35,7 @@ export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteM
       <MessageBar onDismiss={this._onClose} isMultiline dismissButtonAriaLabel="Close" styles={styles} {...rest}>
         {text}{' '}
         {!!(linkUrl && linkText) && (
-          <Link href={linkUrl} target={linkUrl.indexOf('http') === 0 ? '_blank' : ''}>
+          <Link href={linkUrl} target={linkUrl.indexOf('http') === 0 ? '_blank' : ''} underline>
             {linkText}
           </Link>
         )}

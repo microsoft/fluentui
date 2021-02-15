@@ -68,6 +68,7 @@ export const Designer: React.FunctionComponent = () => {
     jsonTreeOrigin,
     /* selectedComponentInfo, */
     selectedJSONTreeElementUuid,
+    enabledVirtualCursor,
     showCode,
     code,
     activeTab,
@@ -98,6 +99,13 @@ export const Designer: React.FunctionComponent = () => {
   const selectActiveTab = React.useCallback(
     tab => {
       dispatch({ type: 'SWITCH_TAB', tab: tab });
+    },
+    [dispatch],
+  );
+
+  const handleEnableVirtualCursorChange = React.useCallback(
+    enabledVC => {
+      dispatch({ type: 'ENABLE_VIRTUAL_CURSOR', enabledVirtualCursor: enabledVC });
     },
     [dispatch],
   );
@@ -371,6 +379,8 @@ export const Designer: React.FunctionComponent = () => {
         onModeChange={setMode}
         showCode={showCode}
         showJSONTree={showJSONTree}
+        enabledVirtualCursor={enabledVirtualCursor}
+        onEnableVirtualCursor={handleEnableVirtualCursorChange}
         style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
       />
 
@@ -549,6 +559,7 @@ export const Designer: React.FunctionComponent = () => {
                   onMoveComponent={handleMoveComponent}
                   onDeleteSelectedComponent={handleDeleteSelectedComponent}
                   onGoToParentComponent={handleGoToParentComponent}
+                  enabledVirtualCursor={enabledVirtualCursor}
                   role="main"
                   inUseMode={mode === 'use'}
                   setHeaderMessage={setHeaderMessage}

@@ -4,20 +4,16 @@ import { storiesOf } from '@storybook/react';
 import { ToggleButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
-import { withThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('ToggleButton', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('button')
-        .snapshot('checked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -26,6 +22,14 @@ storiesOf('ToggleButton', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('checked hovered', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -71,7 +75,7 @@ storiesOf('ToggleButton', module)
 
 storiesOf('ToggleButton Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withThemeProvider)
+  .addDecorator(withCompatThemeProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -79,16 +83,19 @@ storiesOf('ToggleButton Next - Block', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
-        .executeScript("document.getElementsByClassName('ms-Button')[0].focus()")
+        .executeScript("document.getElementsByTagName('button')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
+        .click('button')
         .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .mouseDown('button')
-        .snapshot('pressed', { cropTo: '.testWrapper' })
-        .mouseUp('button')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('checked hovered', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}
@@ -137,15 +144,11 @@ storiesOf('ToggleButton Next - Block', module)
 
 storiesOf('ToggleButton Next - Teams Theme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withThemeProvider({ theme: TeamsTheme }))
+  .addDecorator(withCompatThemeProvider({ theme: TeamsTheme }))
   .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('button')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .click('button')
-        .snapshot('clicked', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
@@ -154,6 +157,14 @@ storiesOf('ToggleButton Next - Teams Theme', module)
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
+        .click('button')
+        .snapshot('checked', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('hovered', { cropTo: '.testWrapper' })
+        .click('button')
+        .hover('button')
+        .snapshot('checked hovered', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}

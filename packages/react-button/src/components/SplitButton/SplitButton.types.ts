@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { ShorthandProps } from '@fluentui/react-utils';
 import { ButtonProps, ButtonVariants } from '../Button/Button.types';
 import { MenuButtonProps, MenuButtonState, MenuButtonTokens } from '../MenuButton/MenuButton.types';
 
@@ -20,12 +20,12 @@ export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
   /**
    * Button that opens menu with secondary actions in SplitButton.
    */
-  menuButton?: ShorthandProps;
-}
+  menuButton?: ShorthandProps<MenuButtonProps>;
 
-export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {
   menuButtonRef?: React.RefObject<HTMLButtonElement>;
 }
+
+export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {}
 
 /**
  * {@docCategory Button}

@@ -1,5 +1,0 @@
-{
-  // react-internal has some overrides we need to mirror
-  "extends": ["../react-internal/.eslintrc"],
-  "root": true
-}

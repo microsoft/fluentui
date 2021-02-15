@@ -1,6 +1,6 @@
 A `Stack` is a container-type component that abstracts the implementation of a flexbox in order to define the layout of its children components.
 
-### Stack Properties
+### Stack properties
 
 Although the `Stack` component has a number of different properties, there are three in particular that define the overall layout that the component has:
 
@@ -16,10 +16,10 @@ A `Stack Item` abstracts those properties that are or can be specifically applie
 
 To use a `Stack Item` in an application, the `Stack` component should be imported and `Stack.Item` should be used inside of a `Stack`. This is done so that the existence of the `Stack Item` is inherently linked to the `Stack` component.
 
-### Stack Wrapping
+### Stack wrapping
 
 Aside from the previously mentioned properties, there is another property called `wrap` that determines if items overflow the `Stack` container or wrap around it. The wrap property only works in the direction of the `Stack`, which means that the children components can still overflow in the perpendicular direction (i.e. in a `Vertical Stack`, items might overflow horizontally and vice versa).
 
-### Stack Nesting
+### Stack nesting
 
 `Stacks` can be nested inside one another in order to be able to configure the layout of the application as desired.

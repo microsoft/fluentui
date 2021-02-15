@@ -1,8 +1,120 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 16 Dec 2020 12:27:05 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.59)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.58..@fluentui/react-experiments_v8.0.0-beta.59)
+
+### Changes
+
+- [BREAKING] Removing Button, MenuButton, SplitButton and Toggle components. Deprecating Slider component. Updating MicroFeedback component to use Button in @fluentui/react instead of the removed Button in @fluentui/react-experiments. ([PR #16961](https://github.com/microsoft/fluentui/pull/16961) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.58)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.57..@fluentui/react-experiments_v8.0.0-beta.58)
+
+### Changes
+
+- UnifiedPicker: Don't show picker after input is cleared ([PR #16937](https://github.com/microsoft/fluentui/pull/16937) by elvonspa@microsoft.com)
+- Use add and removeeventlistener for keydown in the UnifiedPicker ([PR #16954](https://github.com/microsoft/fluentui/pull/16954) by elvonspa@microsoft.com)
+- Fix bug where mouse selected suggestions did not work in the DefaultEditingItem ([PR #16929](https://github.com/microsoft/fluentui/pull/16929) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.57)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.56..@fluentui/react-experiments_v8.0.0-beta.57)
+
+### Changes
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.56)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.55..@fluentui/react-experiments_v8.0.0-beta.56)
+
+### Changes
+
+- Memoize callbacks to reduce UPP re-renders ([PR #16830](https://github.com/microsoft/fluentui/pull/16830) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.55)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.54..@fluentui/react-experiments_v8.0.0-beta.55)
+
+### Changes
+
+- Combine react-internal back into react, and update references ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
+
+## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.54)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.53..@fluentui/react-experiments_v8.0.0-beta.54)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.50 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+
+## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.53)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.51..@fluentui/react-experiments_v8.0.0-beta.53)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.51)
+
+Wed, 03 Feb 2021 22:54:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.50..@fluentui/react-experiments_v8.0.0-beta.51)
+
+### Changes
+
+- SelectedItemsList EditableItem should have first item selected in picker on show ([PR #16777](https://github.com/microsoft/fluentui/pull/16777) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.50)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.47..@fluentui/react-experiments_v8.0.0-beta.50)
+
+### Changes
+
+- UnifiedPicker typing should result in the first dropdown selection being selected ([PR #16733](https://github.com/microsoft/fluentui/pull/16733) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.47)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.42..@fluentui/react-experiments_v8.0.0-beta.47)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+
+## [8.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.42)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.41..@fluentui/react-experiments_v8.0.0-beta.42)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [8.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.41)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.37..@fluentui/react-experiments_v8.0.0-beta.41)
+
+### Changes
+
+- [UPP] Add controlled callbacks to EditableItem ([PR #16535](https://github.com/microsoft/fluentui/pull/16535) by chrp@microsoft.com)
 
 ## [8.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.31)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/monaco-editor
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.2)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/monaco-editor_v1.0.0-beta.1..@fluentui/monaco-editor_v1.0.0-beta.2)
+
+### Changes
+
+- Fix some remaining references to @uifabric ([PR #16679](https://github.com/microsoft/fluentui/pull/16679) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/monaco-editor_v1.0.0-beta.1)
 

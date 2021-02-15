@@ -20,7 +20,7 @@ import {
   warnMutuallyExclusive,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
-import { CommandButton } from '../../compat/Button';
+import { CommandButton } from '../../Button';
 import {
   DropdownMenuItemType,
   IDropdownOption,
@@ -36,10 +36,7 @@ import { Icon } from '../../Icon';
 import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
 import { IProcessedStyleSet } from '../../Styling';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
-import {
-  ResponsiveMode,
-  IWithResponsiveModeState,
-} from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import {
   SelectableOptionMenuItemType,
   getAllSelectedOptions,
@@ -48,7 +45,7 @@ import {
 // import and use V7 Checkbox to ensure no breaking changes.
 import { Checkbox, ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { getPropsWithDefaults } from '@fluentui/utilities';
-import { useResponsiveMode } from '@fluentui/react-internal/lib/utilities/hooks/useResponsiveMode';
+import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { useMergedRefs, usePrevious } from '@fluentui/react-hooks';
 
 const COMPONENT_NAME = 'Dropdown';
@@ -1002,6 +999,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
     const isOpen = this.state.isOpen;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.enter:
         this.setState({
@@ -1089,6 +1087,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         return;
       }
     }
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.space:
         this.setState({
@@ -1111,6 +1110,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * Returns true if the key for the event is alt (Mac option) or meta (Mac command).
    */
   private _isAltOrMeta(ev: React.KeyboardEvent<HTMLElement>): boolean {
+    // eslint-disable-next-line deprecation/deprecation
     return ev.which === KeyCodes.alt || ev.key === 'Meta';
   }
 
@@ -1138,6 +1138,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
     this._lastKeyDownWasAltOrMeta = this._isAltOrMeta(ev);
     const containsExpandCollapseModifier = ev.altKey || ev.metaKey;
 
+    // eslint-disable-next-line deprecation/deprecation
     switch (ev.which) {
       case KeyCodes.up:
         if (containsExpandCollapseModifier) {

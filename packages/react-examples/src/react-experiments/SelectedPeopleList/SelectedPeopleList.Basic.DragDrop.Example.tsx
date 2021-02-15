@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
 import { SelectedPeopleList } from '@fluentui/react-experiments/lib/SelectedItemsList';

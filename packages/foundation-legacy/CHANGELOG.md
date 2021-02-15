@@ -1,8 +1,44 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.16)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.0-beta.15..@fluentui/foundation-legacy_v8.0.0-beta.16)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.15)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.0-beta.14..@fluentui/foundation-legacy_v8.0.0-beta.15)
+
+### Changes
+
+- Bump @fluentui/style-utilities to v8.0.0-beta.15 ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+
+## [8.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.14)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.0-beta.13..@fluentui/foundation-legacy_v8.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.12)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.0-beta.4..@fluentui/foundation-legacy_v8.0.0-beta.12)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.4)
 

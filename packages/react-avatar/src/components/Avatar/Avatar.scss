@@ -266,8 +266,8 @@ $default-inactiveScale: 0.875;
 }
 
 // Activity modifiers
-._active,
-._inactive {
+._active_active,
+._active_inactive {
   transform: perspective(1px); // Work-around for text pixel snapping at the end of the animation
   transition: transform $anim-ultraSlow $anim-fastEase, opacity $anim-faster $anim-nullEasing;
 
@@ -288,7 +288,7 @@ $default-inactiveScale: 0.875;
   }
 }
 
-._inactive {
+._active_inactive {
   opacity: var(--avatar-inactiveOpacity, $default-inactiveOpacity);
   transform: scale(var(--avatar-inactiveScale, $default-inactiveScale));
   transition: transform $anim-ultraSlow $anim-fastOutSlowInMin, opacity $anim-faster $anim-nullEasing;
@@ -301,8 +301,13 @@ $default-inactiveScale: 0.875;
 }
 
 // Display modifiers
-._display_icon {
+._hasIcon {
   // When displaying as icon, the font size comes from the iconSize token instead of the fontSize token
   font-size: var(--avatar-iconSize, $default-iconSize);
   font-weight: initial;
+}
+
+._colorVariant_brand {
+  --avatar-color: #{$color-default-neutralForegroundInverted};
+  --avatar-background: #{$color-default-brand};
 }

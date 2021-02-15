@@ -4,9 +4,6 @@
     "composite": true,
     "outDir": "dist/dts"
   },
-  "paths": {
-    "@fluentui/keyboard-key": ["packages/keyboard-key/src/index"]
-  },
   "include": ["src"],
   "references": [
     {

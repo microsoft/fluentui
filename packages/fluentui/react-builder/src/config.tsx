@@ -17,7 +17,9 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Surfaces: ['Popup', 'Dialog'],
+  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Content: [
     'Text',
     'Image',
@@ -38,10 +40,8 @@ export const COMPONENT_GROUP = {
     'Video',
     'Skeleton',
   ],
-  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Surfaces: ['Popup', 'Dialog'],
 };
 
 export const DRAGGING_ELEMENTS = {

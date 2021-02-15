@@ -2,6 +2,152 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.40",
+      "version": "1.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove dependency on react-compose",
+            "author": "olfedias@microsoft.com",
+            "commit": "52f6bb844c5dece1af576da1a34f9230c50432d6",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.39",
+      "version": "1.0.0-beta.39",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.39",
+      "version": "1.0.0-beta.39",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Adding initial SPEC.md and MIGRATION.md and updating README.md.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "51da21921173b0f7c8c3c1ea3485d243cc312b40",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.38",
+      "version": "1.0.0-beta.38",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.38",
+      "version": "1.0.0-beta.38",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Adding underline prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "68e4055b14fad630bd2ba015103920b8dfbb649e",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Moving Link from react-link back to react-internal.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "76f6043e4123577e17fecf64f536841bf543d32b",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.36",
+      "version": "1.0.0-beta.36",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Update high contrast to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "f9189e435dc8e73337ff40c54ac6af47567d9639",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.33",
+      "version": "1.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jan 2021 12:30:40 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.30",
+      "version": "1.0.0-beta.30",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Improve handling of built-in Link props",
+            "author": "elcraig@microsoft.com",
+            "commit": "15d89b107a00796bcbfcbe27fb7a3d86d8aee309",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 23:25:40 GMT",
       "tag": "@fluentui/react-link_v1.0.0-beta.1",
       "version": "1.0.0-beta.1",

@@ -1,8 +1,102 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 03 Dec 2020 12:32:57 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.55)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.54..@fluentui/react-charting_v5.0.0-beta.55)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.55 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [5.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.54)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.53..@fluentui/react-charting_v5.0.0-beta.54)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.54 ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+
+## [5.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.53)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.52..@fluentui/react-charting_v5.0.0-beta.53)
+
+### Changes
+
+- custom test area(right side of the chart) for horizontal bar chart added. By this, we can customize the right side test values to the chart. all files snaps updated ([PR #16810](https://github.com/microsoft/fluentui/pull/16810) by v-jasha@microsoft.com)
+- Narrator issues fixed in bar charts ([PR #16914](https://github.com/microsoft/fluentui/pull/16914) by v-jasha@microsoft.com)
+
+## [5.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.52)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.51..@fluentui/react-charting_v5.0.0-beta.52)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+
+## [5.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.51)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.50..@fluentui/react-charting_v5.0.0-beta.51)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.51 ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by tristan.watanabe@gmail.com)
+
+## [5.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.50)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.49..@fluentui/react-charting_v5.0.0-beta.50)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.50 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+
+## [5.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.49)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.47..@fluentui/react-charting_v5.0.0-beta.49)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [5.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.44)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.43..@fluentui/react-charting_v5.0.0-beta.44)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Update high contrast to support forced colors ([PR #16595](https://github.com/microsoft/fluentui/pull/16595) by sareiff@microsoft.com)
+- adding lines in vertical stacked bar chart complex combo chart (#15551) ([PR #16639](https://github.com/microsoft/fluentui/pull/16639) by jakubkonka@microsoft.com)
+- Cherry-pick react-charting updates from v7 ([PR #16667](https://github.com/microsoft/fluentui/pull/16667) by jakubkonka@microsoft.com)
+
+## [5.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.43)
+
+Wed, 27 Jan 2021 12:30:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.39..@fluentui/react-charting_v5.0.0-beta.43)
+
+### Changes
+
+- LineChart fixes backported from v7 branch ([PR #16634](https://github.com/microsoft/fluentui/pull/16634) by jakubkonka@microsoft.com)
+
+## [5.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.39)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.25..@fluentui/react-charting_v5.0.0-beta.39)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [5.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.25)
 

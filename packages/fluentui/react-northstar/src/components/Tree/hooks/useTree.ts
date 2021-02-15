@@ -20,7 +20,7 @@ function useGetItemById(flatTree: FlatTree): GetItemById {
   // We are assigning a callback during render as it can be used during render and in event handlers. In dev mode we
   // are freezing objects to prevent their mutations
   callbackRef.current = itemId =>
-    process.env.NODE === 'production' ? flatTree[itemId] : Object.freeze(flatTree[itemId]);
+    process.env.NODE_ENV === 'production' ? flatTree[itemId] : Object.freeze(flatTree[itemId]);
 
   return React.useCallback<GetItemById>((...args) => {
     return callbackRef.current(...args);
@@ -84,6 +84,13 @@ export interface UseTreeResult {
 
   /** update the state of tree when a tree item is selected/unselected */
   toggleItemSelect: (e: React.SyntheticEvent, idToToggle: string) => void;
+
+  /**
+   * When a-z/A-Z key is pressed on a tree item, move focus to the next visible tree node with content that starts with the typed char.
+   * Search wraps to first matching node if a matching is not found among the nodes that follow the focused node.
+   * Focus stays when no matching is found among all visible nodes.
+   */
+  getToFocusIDByFirstCharacter: (e: React.KeyboardEvent, idToToggle: string) => string;
 }
 
 export function useTree(options: UseTreeOptions): UseTreeResult {
@@ -236,6 +243,43 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
     [getItemById, getItemRef],
   );
 
+  const searchByFirstChar = React.useCallback(
+    (startIndex: number, endIndex: number, char: string) => {
+      for (let i = startIndex; i < endIndex; ++i) {
+        // get first charater of tree node using the same way aria does (https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-2/js/treeitemLinks.js)
+        const itemFirstChar = getItemRef(visibleItemIds[i])
+          ?.textContent?.trim()
+          ?.charAt(0)
+          ?.toLowerCase();
+        if (itemFirstChar === char.toLowerCase()) {
+          return i;
+        }
+      }
+      return -1;
+    },
+    [getItemRef, visibleItemIds],
+  );
+
+  const getToFocusIDByFirstCharacter = React.useCallback(
+    (e: React.KeyboardEvent, idToStartSearch: string) => {
+      // Get start index for search
+      let starIndex = visibleItemIds.indexOf(idToStartSearch) + 1;
+      if (starIndex === visibleItemIds.length) {
+        starIndex = 0;
+      }
+
+      // Check following nodes in tree
+      let toFocusIndex = searchByFirstChar(starIndex, visibleItemIds.length, e.key);
+      // If not found in following nodes, check from beginning
+      if (toFocusIndex === -1) {
+        toFocusIndex = searchByFirstChar(0, starIndex - 1, e.key);
+      }
+
+      return visibleItemIds[toFocusIndex];
+    },
+    [searchByFirstChar, visibleItemIds],
+  );
+
   return {
     flatTree,
     getItemById,
@@ -247,6 +291,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
     focusItemById,
     expandSiblings,
     toggleItemSelect,
+    getToFocusIDByFirstCharacter,
   };
 }
 

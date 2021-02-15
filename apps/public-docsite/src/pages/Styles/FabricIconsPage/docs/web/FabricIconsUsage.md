@@ -1,6 +1,6 @@
 You can use Fluent UI's icons in a few ways, depending on if you're using Fluent UI React or Fabric Core.
 
-### Fluent UI React
+### Fluent UI React: Font-based icons
 
 If you're using Fluent UI React, note that icons are not included in your bundle by default. To make the icons available, you'll need to initialize them by calling `initializeIcons` from the `@fluentui/font-icons-mdl2` package. This is usually done at the root of your app:
 
@@ -41,6 +41,20 @@ const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Ad
 ReactDOM.render(<MyIconButton />, document.body.firstChild);
 ```
 
+#### Fluent UI React: SVG-based icons
+
+Fluent UI recently released an SVG-based icon set which allows you to import and bundle only the icons you need. This results in smaller bundle sizes compared to the font-based approach with `initializeIcons`, which downloads all icons by default.
+
+Each SVG icon is wrapped with a React element and can be imported and used as follows:
+
+```ts
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { ChevronIcon } from '@fluentui/react-icons-mdl2';
+
+ReactDOM.render(<ChevronIcon />, document.body.firstChild);
+```
+
 ### Fabric Core
 
 First, ensure that you've loaded the Fabric Core stylesheet following the [getting started instructions](#/get-started/web#fabric-core).
@@ -55,4 +69,4 @@ Note the `aria-hidden` attribute, which prevents screen readers from reading the
 
 ### Fluent UI Icons tool
 
-The [Fluent UI Icons tool](https://aka.ms/fluentui-icons) lets you search and browse all of Fluent UI's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons several times a month, whereas the default Fluent UI set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/fluentui-icons?help.
+The [Fluent UI Icons tool](https://aka.ms/fluentui-icons) lets you search and browse all of Fluent UI's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons several times a month, whereas the default Fluent UI set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/fluentui-icons?help. (Note: This tool is only for use with font-based icons currently.)

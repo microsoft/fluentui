@@ -125,15 +125,6 @@ task('build:docs:webpack', cb => {
   webpackPlugin(require('../../webpack/webpack.config').default, cb);
 });
 
-task(
-  'build:docs:assets',
-  parallel(
-    'build:docs:toc',
-    'build:docs:schema',
-    series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
-  ),
-);
-
 task('build:docs:assets:component:info', cb => {
   const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
   const lernaArgs = ['lerna', 'run', 'build:info'];
@@ -150,6 +141,16 @@ task('build:docs:assets:component:info', cb => {
 
   cb();
 });
+
+task(
+  'build:docs:assets',
+  parallel(
+    'build:docs:toc',
+    'build:docs:schema',
+    'build:docs:assets:component:info',
+    series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
+  ),
+);
 
 task('component-info:debug', done => {
   const componentInfo = getComponentInfo({
@@ -199,12 +200,7 @@ task('serve:docs:hot', async () => {
     app.use(
       WebpackDevMiddleware(compiler, {
         publicPath: webpackConfig.output.publicPath,
-        contentBase: paths.docsSrc(),
-        hot: process.env.NODE_ENV !== 'production',
-        quiet: false,
-        noInfo: true, // must be quite for hot middleware to show overlay
-        lazy: false,
-        stats: config.compiler_stats,
+        stats: 'errors-warnings',
       } as WebpackDevMiddleware.Options),
     );
 
@@ -294,4 +290,4 @@ task('watch:docs', series('watch:docs:component-menu-behaviors', 'watch:docs:oth
 // Default
 // ----------------------------------------
 
-task('docs', series('build:docs:assets', 'build:docs:assets:component:info', 'serve:docs:hot', 'watch:docs'));
+task('docs', series('build:docs:assets', 'serve:docs:hot', 'watch:docs'));

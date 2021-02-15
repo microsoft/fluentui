@@ -31,8 +31,15 @@ SRNC.landmarksAndGroups['Win/JAWS'] = {
   'role=grid': 'Grid',
   'role=listbox': 'List box',
   'role=menu': 'menu',
+  'role=menubar': 'menu',
   'role=radiogroup': 'group',
   'role=tablist': 'Tab',
   'role=toolbar': 'Tool bar',
   'role=tree': 'Tree view',
+  'role=treegrid': 'TreeGrid',
+
+  // Other elements and roles
+  dialog: 'dialog',
+  'role=dialog': 'dialog',
+  'role=alertdialog': 'dialog',
 };

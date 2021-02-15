@@ -94,6 +94,7 @@ export * from './components/Flex/FlexItem';
 export * from './components/Form/Form';
 export * from './components/Form/FormField';
 export * from './components/Form/FormInput';
+export * from './components/Form/FormTextArea';
 export * from './components/Form/FormInput';
 export * from './components/Form/FormLabel';
 export * from './components/Form/FormMessage';
@@ -197,6 +198,7 @@ export * from './components/Toolbar/ToolbarRadioGroup';
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
+export * from './components/Tree/context';
 export * from './components/Tree/hooks/useTree';
 export * from './components/Tree/hooks/useVirtualTree';
 
@@ -216,6 +218,7 @@ export * from './components/Carousel/CarouselItem';
 export * from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export * from './components/Carousel/CarouselPaddle';
+export * from './components/Carousel/CarouselPaddlesContainer';
 
 export * from './components/Table/Table';
 export * from './components/Table/TableRow';

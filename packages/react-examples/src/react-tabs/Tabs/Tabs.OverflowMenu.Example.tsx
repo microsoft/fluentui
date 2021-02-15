@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Fabric, Icon, Label, Toggle } from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
-import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs/lib/next';
+import { TabItemProps, Tabs, TabItem } from '@fluentui/react-tabs';
 
 export const TabsOverflowMenuExample: React.FunctionComponent = () => {
   const [overflow, { toggle: toggleOverflow }] = useBoolean(true);

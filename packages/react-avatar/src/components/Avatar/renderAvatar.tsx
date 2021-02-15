@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-compose/lib/next/index';
+import { getSlots } from '@fluentui/react-utils';
 import { AvatarState } from './Avatar.types';
 import { avatarShorthandProps } from './useAvatar';
 

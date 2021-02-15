@@ -15,8 +15,6 @@ import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
-import { DensityOffset } from '@microsoft/fast-components-styles-msft';
-import { DesignSystem } from '@microsoft/fast-components-styles-msft';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
 import { Direction } from '@microsoft/fast-web-utilities';
@@ -47,14 +45,42 @@ import { TreeView } from '@microsoft/fast-foundation';
 // @internal (undocumented)
 export const AccentButtonStyles: ElementStyles;
 
+// Warning: (ae-forgotten-export) The symbol "SwatchFamilyResolver" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "FillSwatchFamily" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "accentFill" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFill: SwatchFamilyResolver<FillSwatchFamily>;
+
+// Warning: (ae-forgotten-export) The symbol "SwatchRecipe" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "accentFillActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillActive: SwatchRecipe;
+
 // @public
 export const accentFillActiveBehavior: CSSCustomPropertyBehavior;
 
 // @public
 export const accentFillFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentFillHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillHover: SwatchRecipe;
+
 // @public
 export const accentFillHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "accentFillLarge" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillLarge: SwatchFamilyResolver<FillSwatchFamily>;
+
+// Warning: (ae-internal-missing-underscore) The name "accentFillLargeActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillLargeActive: SwatchRecipe;
 
 // @public
 export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior;
@@ -62,23 +88,68 @@ export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentFillLargeFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentFillLargeHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillLargeHover: SwatchRecipe;
+
 // @public
 export const accentFillLargeHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "accentFillLargeRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillLargeRest: SwatchRecipe;
 
 // @public
 export const accentFillLargeRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentFillLargeSelected" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillLargeSelected: SwatchRecipe;
+
 // @public
 export const accentFillLargeSelectedBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "accentFillRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillRest: SwatchRecipe;
 
 // @public
 export const accentFillRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentFillSelected" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentFillSelected: SwatchRecipe;
+
 // @public
 export const accentFillSelectedBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentForeground" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForeground: SwatchFamilyResolver;
+
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundActive: SwatchRecipe;
+
 // @public
 export const accentForegroundActiveBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundCut" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const accentForegroundCut: SwatchRecipe;
+
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundCutLarge" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const accentForegroundCutLarge: SwatchRecipe;
 
 // @public
 export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior;
@@ -86,8 +157,23 @@ export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentForegroundFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundHover: SwatchRecipe;
+
 // @public
 export const accentForegroundHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundLarge" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundLarge: SwatchFamilyResolver;
+
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundLargeActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundLargeActive: SwatchRecipe;
 
 // @public
 export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior;
@@ -95,11 +181,26 @@ export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const accentForegroundLargeFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundLargeHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundLargeHover: SwatchRecipe;
+
 // @public
 export const accentForegroundLargeHoverBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundLargeRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundLargeRest: SwatchRecipe;
+
 // @public
 export const accentForegroundLargeRestBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "accentForegroundRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const accentForegroundRest: SwatchRecipe;
 
 // @public
 export const accentForegroundRestBehavior: CSSCustomPropertyBehavior;
@@ -149,6 +250,138 @@ export const CardStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const CheckboxStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export function createColorPalette(baseColor: any): string[];
+
+// @public
+export interface DesignSystem {
+    accentBaseColor: string;
+    // (undocumented)
+    accentFillActiveDelta: number;
+    // (undocumented)
+    accentFillFocusDelta: number;
+    // (undocumented)
+    accentFillHoverDelta: number;
+    accentFillRestDelta: number;
+    // (undocumented)
+    accentFillSelectedDelta: number;
+    // (undocumented)
+    accentForegroundActiveDelta: number;
+    // (undocumented)
+    accentForegroundFocusDelta: number;
+    // (undocumented)
+    accentForegroundHoverDelta: number;
+    accentForegroundRestDelta: number;
+    accentPalette: string[];
+    backgroundColor: string;
+    baseHeightMultiplier: number;
+    baseHorizontalSpacingMultiplier: number;
+    baseLayerLuminance: number;
+    cornerRadius: number;
+    density: number;
+    designUnit: number;
+    direction: Direction;
+    disabledOpacity: number;
+    elevatedCornerRadius?: number;
+    focusOutlineWidth: number;
+    neutralBaseColor: string;
+    // (undocumented)
+    neutralContrastFillActiveDelta: number;
+    // (undocumented)
+    neutralContrastFillFocusDelta: number;
+    // (undocumented)
+    neutralContrastFillHoverDelta: number;
+    // (undocumented)
+    neutralContrastFillRestDelta: number;
+    neutralDividerRestDelta: number;
+    // (undocumented)
+    neutralFillActiveDelta: number;
+    neutralFillCardDelta: number;
+    // (undocumented)
+    neutralFillFocusDelta: number;
+    // (undocumented)
+    neutralFillHoverDelta: number;
+    // (undocumented)
+    neutralFillInputActiveDelta: number;
+    // (undocumented)
+    neutralFillInputFocusDelta: number;
+    // (undocumented)
+    neutralFillInputHoverDelta: number;
+    neutralFillInputRestDelta: number;
+    // (undocumented)
+    neutralFillInputSelectedDelta: number;
+    // (undocumented)
+    neutralFillRestDelta: number;
+    // (undocumented)
+    neutralFillSelectedDelta: number;
+    // (undocumented)
+    neutralFillStealthActiveDelta: number;
+    // (undocumented)
+    neutralFillStealthFocusDelta: number;
+    // (undocumented)
+    neutralFillStealthHoverDelta: number;
+    neutralFillStealthRestDelta: number;
+    // (undocumented)
+    neutralFillStealthSelectedDelta: number;
+    // (undocumented)
+    neutralFillToggleActiveDelta: number;
+    // (undocumented)
+    neutralFillToggleFocusDelta: number;
+    neutralFillToggleHoverDelta: number;
+    // (undocumented)
+    neutralForegroundActiveDelta: number;
+    // (undocumented)
+    neutralForegroundFocusDelta: number;
+    neutralForegroundHoverDelta: number;
+    // (undocumented)
+    neutralOutlineActiveDelta: number;
+    // (undocumented)
+    neutralOutlineFocusDelta: number;
+    // (undocumented)
+    neutralOutlineHoverDelta: number;
+    neutralOutlineRestDelta: number;
+    neutralPalette: string[];
+    outlineWidth: number;
+    // (undocumented)
+    typeRampBaseFontSize: string;
+    // (undocumented)
+    typeRampBaseLineHeight: string;
+    // (undocumented)
+    typeRampMinus1FontSize: string;
+    // (undocumented)
+    typeRampMinus1LineHeight: string;
+    typeRampMinus2FontSize: string;
+    // (undocumented)
+    typeRampMinus2LineHeight: string;
+    // (undocumented)
+    typeRampPlus1FontSize: string;
+    // (undocumented)
+    typeRampPlus1LineHeight: string;
+    // (undocumented)
+    typeRampPlus2FontSize: string;
+    // (undocumented)
+    typeRampPlus2LineHeight: string;
+    // (undocumented)
+    typeRampPlus3FontSize: string;
+    // (undocumented)
+    typeRampPlus3LineHeight: string;
+    // (undocumented)
+    typeRampPlus4FontSize: string;
+    // (undocumented)
+    typeRampPlus4LineHeight: string;
+    // (undocumented)
+    typeRampPlus5FontSize: string;
+    // (undocumented)
+    typeRampPlus5LineHeight: string;
+    // (undocumented)
+    typeRampPlus6FontSize: string;
+    // (undocumented)
+    typeRampPlus6LineHeight: string;
+}
+
+// @public
+export const DesignSystemDefaults: DesignSystem;
 
 // @public
 export const DialogStyles: import("@microsoft/fast-element").ElementStyles;
@@ -212,15 +445,12 @@ export class FluentButton extends Button {
 }
 
 // @public
-export class FluentCard extends DesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
-    backgroundColor: string;
+export class FluentCard extends FluentDesignSystemProvider {
     cardBackgroundColor: string;
     // (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     handleChange(source: DesignSystem, name: string): void;
-    // @internal
-    neutralPalette: string[];
 }
 
 // @public
@@ -234,6 +464,8 @@ export type FluentDesignSystem = Omit<DesignSystem, 'contrast' | 'fontWeight' | 
 export class FluentDesignSystemProvider extends DesignSystemProvider implements Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
     // (undocumented)
     accentBaseColor: string;
+    // (undocumented)
+    protected accentBaseColorChanged(oldValue: string, newValue: string): void;
     // (undocumented)
     accentFillActiveDelta: number;
     // (undocumented)
@@ -265,6 +497,8 @@ export class FluentDesignSystemProvider extends DesignSystemProvider implements 
     baseLayerLuminance: number;
     // (undocumented)
     cornerRadius: number;
+    // Warning: (ae-forgotten-export) The symbol "DensityOffset" needs to be exported by the entry point index.d.ts
+    //
     // (undocumented)
     density: DensityOffset;
     // (undocumented)
@@ -277,6 +511,14 @@ export class FluentDesignSystemProvider extends DesignSystemProvider implements 
     elevatedCornerRadius: number;
     // (undocumented)
     focusOutlineWidth: number;
+    // (undocumented)
+    neutralBaseColor: string;
+    // (undocumented)
+    protected neutralBaseColorChanged(oldValue: string, newValue: string): void;
+    neutralContrastFillActiveDelta: number;
+    neutralContrastFillFocusDelta: number;
+    neutralContrastFillHoverDelta: number;
+    neutralContrastFillRestDelta: number;
     // (undocumented)
     neutralDividerRestDelta: number;
     // (undocumented)
@@ -490,6 +732,9 @@ export const inlineEndBehavior: CSSCustomPropertyBehavior;
 // @public
 export const inlineStartBehavior: CSSCustomPropertyBehavior;
 
+// @public (undocumented)
+export function isDarkMode(designSystem: DesignSystem): boolean;
+
 // Warning: (ae-internal-missing-underscore) The name "LightweightButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //
 // @internal (undocumented)
@@ -504,11 +749,73 @@ export const MenuItemStyles: import("@microsoft/fast-element").ElementStyles;
 // @public
 export const MenuStyles: import("@microsoft/fast-element").ElementStyles;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFill" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFill: SwatchFamilyResolver;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFillActive: SwatchRecipe;
+
+// @public
+export const neutralContrastFillActiveBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralContrastFillFocusBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFillHover: SwatchRecipe;
+
+// @public
+export const neutralContrastFillHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFillRest: SwatchRecipe;
+
+// @public
+export const neutralContrastFillRestBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralContrastForegroundRestBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralDividerRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralDividerRest: SwatchRecipe;
+
 // @public
 export const neutralDividerRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-forgotten-export) The symbol "ColorRecipe" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "neutralFill" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFill: ColorRecipe<FillSwatchFamily>;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillActive: SwatchRecipe;
+
 // @public
 export const neutralFillActiveBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-forgotten-export) The symbol "Swatch" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "neutralFillCard" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function neutralFillCard(designSystem: DesignSystem): Swatch;
+
+// Warning: (ae-forgotten-export) The symbol "SwatchResolver" needs to be exported by the entry point index.d.ts
+//
+// @internal (undocumented)
+export function neutralFillCard(backgroundResolver: SwatchResolver): SwatchResolver;
 
 // @public
 export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior;
@@ -516,8 +823,23 @@ export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillHover: SwatchRecipe;
+
 // @public
 export const neutralFillHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillInput" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillInput: ColorRecipe<FillSwatchFamily>;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillInputActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillInputActive: SwatchRecipe;
 
 // @public
 export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior;
@@ -525,17 +847,52 @@ export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillInputFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillInputHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillInputHover: SwatchRecipe;
+
 // @public
 export const neutralFillInputHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillInputRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillInputRest: SwatchRecipe;
 
 // @public
 export const neutralFillInputRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillInputSelected" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillInputSelected: SwatchRecipe;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillRest: SwatchRecipe;
+
 // @public
 export const neutralFillRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillSelected" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillSelected: SwatchRecipe;
+
 // @public
 export const neutralFillSelectedBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillStealth" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillStealth: ColorRecipe<FillSwatchFamily>;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillStealthActive: ColorRecipe<Swatch>;
 
 // @public
 export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior;
@@ -543,14 +900,39 @@ export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillStealthFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillStealthHover: ColorRecipe<Swatch>;
+
 // @public
 export const neutralFillStealthHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillStealthRest: ColorRecipe<Swatch>;
 
 // @public
 export const neutralFillStealthRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillStealthSelected" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillStealthSelected: ColorRecipe<Swatch>;
+
 // @public
 export const neutralFillStealthSelectedBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillToggle" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillToggle: SwatchFamilyResolver;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillToggleActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillToggleActive: SwatchRecipe;
 
 // @public
 export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior;
@@ -558,17 +940,48 @@ export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralFillToggleFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFillToggleHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillToggleHover: SwatchRecipe;
+
 // @public
 export const neutralFillToggleHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralFillToggleRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFillToggleRest: SwatchRecipe;
 
 // @public
 export const neutralFillToggleRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralFocus" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralFocus: ColorRecipe<Swatch>;
+
 // @public
 export const neutralFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-forgotten-export) The symbol "DesignSystemResolver" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "neutralFocusInnerAccent" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function neutralFocusInnerAccent(accentFillColor: DesignSystemResolver<string>): DesignSystemResolver<string>;
+
 // @public
 export const neutralFocusInnerAccentBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralForeground" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralForeground: SwatchFamilyResolver;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralForegroundActive: SwatchRecipe;
 
 // @public
 export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior;
@@ -576,32 +989,87 @@ export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralForegroundFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundHint" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralForegroundHint: SwatchRecipe;
+
 // @public
 export const neutralForegroundHintBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundHintLarge" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralForegroundHintLarge: SwatchRecipe;
 
 // @public
 export const neutralForegroundHintLargeBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralForegroundHover: SwatchRecipe;
+
 // @public
 export const neutralForegroundHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralForegroundRest: SwatchRecipe;
 
 // @public
 export const neutralForegroundRestBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundToggle" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralForegroundToggle: SwatchRecipe;
+
 // @public
 export const neutralForegroundToggleBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralForegroundToggleLarge" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralForegroundToggleLarge: SwatchRecipe;
 
 // @public
 export const neutralForegroundToggleLargeBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerCard" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerCard: ColorRecipe<Swatch>;
+
 // @public
 export const neutralLayerCardBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerCardContainer" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerCardContainer: ColorRecipe<Swatch>;
 
 // @public
 export const neutralLayerCardContainerBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerFloating" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerFloating: ColorRecipe<Swatch>;
+
 // @public
 export const neutralLayerFloatingBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerL1" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerL1: ColorRecipe<Swatch>;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerL1Alt" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerL1Alt: ColorRecipe<Swatch>;
 
 // @public
 export const neutralLayerL1AltBehavior: CSSCustomPropertyBehavior;
@@ -609,23 +1077,79 @@ export const neutralLayerL1AltBehavior: CSSCustomPropertyBehavior;
 // @public
 export const neutralLayerL1Behavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerL2" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerL2: ColorRecipe<Swatch>;
+
 // @public
 export const neutralLayerL2Behavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerL3" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerL3: ColorRecipe<Swatch>;
 
 // @public
 export const neutralLayerL3Behavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralLayerL4" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal
+export const neutralLayerL4: ColorRecipe<Swatch>;
+
 // @public
 export const neutralLayerL4Behavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-forgotten-export) The symbol "SwatchFamily" needs to be exported by the entry point index.d.ts
+// Warning: (ae-internal-missing-underscore) The name "neutralOutline" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutline: ColorRecipe<SwatchFamily>;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineActive: SwatchRecipe;
 
 // @public
 export const neutralOutlineActiveBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrast" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineContrast: ColorRecipe<SwatchFamily>;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrastActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineContrastActive: SwatchRecipe;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrastHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineContrastHover: SwatchRecipe;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineContrastRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineContrastRest: SwatchRecipe;
+
 // @public
 export const neutralOutlineFocusBehavior: CSSCustomPropertyBehavior;
 
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineHover: SwatchRecipe;
+
 // @public
 export const neutralOutlineHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralOutlineRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralOutlineRest: SwatchRecipe;
 
 // @public
 export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior;
@@ -637,6 +1161,22 @@ export const OptionStyles: import("@microsoft/fast-element").ElementStyles;
 //
 // @internal (undocumented)
 export const OutlineButtonStyles: ElementStyles;
+
+// @public
+export type Palette = Swatch[];
+
+// Warning: (ae-internal-missing-underscore) The name "palette" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal @deprecated
+export function palette(paletteType: PaletteType): DesignSystemResolver<Palette>;
+
+// @public @deprecated
+export enum PaletteType {
+    // (undocumented)
+    accent = "accent",
+    // (undocumented)
+    neutral = "neutral"
+}
 
 // @public
 export function parseColorString(color: string): ColorRGBA64;
@@ -664,6 +1204,14 @@ export const SliderLabelStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const SliderStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export enum StandardLuminance {
+    // (undocumented)
+    DarkMode = 0.23,
+    // (undocumented)
+    LightMode = 1
+}
 
 // Warning: (ae-internal-missing-underscore) The name "StealthButtonStyles" should be prefixed with an underscore because the declaration is marked as @internal
 //

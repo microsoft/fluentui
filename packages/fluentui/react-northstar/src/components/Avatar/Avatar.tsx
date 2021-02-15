@@ -17,7 +17,6 @@ import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue, createShorthand } from '../../utils';
 import { AvatarStatusProps, AvatarStatus } from './AvatarStatus';
 import { AvatarImage, AvatarImageProps } from './AvatarImage';
-import { AvatarStatusIcon } from './AvatarStatusIcon';
 import { AvatarIcon, AvatarIconProps } from './AvatarIcon';
 import { AvatarLabel, AvatarLabelProps } from './AvatarLabel';
 
@@ -58,14 +57,7 @@ export const avatarClassName = 'ui-avatar';
 /**
  * An Avatar is a graphical representation of a user.
  */
-export const Avatar: ComponentWithAs<'div', AvatarProps> &
-  FluentComponentStaticProps<AvatarProps> & {
-    Status: typeof AvatarStatus;
-    StatusIcon: typeof AvatarStatusIcon;
-    Image: typeof AvatarImage;
-    Label: typeof AvatarLabel;
-    Icon: typeof AvatarIcon;
-  } = props => {
+export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -204,12 +196,6 @@ Avatar.propTypes = {
   status: customPropTypes.itemShorthand,
   getInitials: PropTypes.func,
 };
-
-Avatar.Status = AvatarStatus;
-Avatar.StatusIcon = AvatarStatusIcon;
-Avatar.Image = AvatarImage;
-Avatar.Label = AvatarLabel;
-Avatar.Icon = AvatarIcon;
 
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 

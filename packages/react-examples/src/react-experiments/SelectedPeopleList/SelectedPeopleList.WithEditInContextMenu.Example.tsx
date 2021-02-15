@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { IPersonaProps, IPersona } from '@fluentui/react/lib/Persona';
 import { people } from '@fluentui/example-data';
 import {
@@ -18,6 +18,7 @@ import {
 
 export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([people[40]]);
+  const [editingIndex, setEditingIndex] = React.useState(-1);
 
   const _startsWith = (text: string, filterText: string): boolean => {
     return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
@@ -67,6 +68,9 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
       ],
       itemComponent: TriggerOnContextMenu(SelectedPersona),
     }),
+    getIsEditing: (item, index) => index === editingIndex,
+    onEditingStarted: (item, index) => setEditingIndex(index),
+    onEditingCompleted: () => setEditingIndex(-1),
   });
 
   const _onAddItemButtonClicked = React.useCallback(() => {

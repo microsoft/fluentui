@@ -2,6 +2,177 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.54",
+      "version": "8.0.0-beta.54",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.55",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.53",
+      "version": "8.0.0-beta.53",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.54",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "bfc63e446500e60e38ac0ac0a023c7721152a832",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.52",
+      "version": "8.0.0-beta.52",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.52",
+      "version": "8.0.0-beta.52",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove compat Button imports",
+            "author": "elcraig@microsoft.com",
+            "commit": "70b63061357489ccc43878d0d0b054953690d5b2",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Feb 2021 12:20:53 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.51",
+      "version": "8.0.0-beta.51",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.52",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 12:24:19 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.50",
+      "version": "8.0.0-beta.50",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.51",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "47b42efbbe9e869864973f3b2cb717e6112b8106",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.49",
+      "version": "8.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.50",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.48",
+      "version": "8.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.49",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.46",
+      "version": "8.0.0-beta.46",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.43",
+      "version": "8.0.0-beta.43",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Icon button & disabled textbox style fix. Callout, messagebar and teachingbubble style updates. Azure theme fix: MessageBar, Callout and TeachingBubble (#16337). dark mode themes are now correctly set as inverted",
+            "author": "martinhochel@microsoft.com",
+            "commit": "6d8be1da4da333d1a2095f11dd5e61dba3bb6170",
+            "package": "@fluentui/azure-themes"
+          },
+          {
+            "comment": "Fix some remaining references to @uifabric",
+            "author": "elcraig@microsoft.com",
+            "commit": "8f6247d89836bc8577ff618a7593fc455b016e42",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Jan 2021 12:35:34 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.36",
+      "version": "8.0.0-beta.36",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "fix(azure-themes): dark mode themes are now correctly set as inverted",
+            "author": "daparks@microsoft.com",
+            "commit": "8eb172240dac1ba9e945815a4b6e94e26860b13f",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/azure-themes_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",

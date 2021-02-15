@@ -60,7 +60,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
               <>
                 <Markdown>
                   {
-                    require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsProducts.md') as string
+                    require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsProducts.md') as string
                   }
                 </Markdown>
                 <ColorPalette colors={AppColorSwatches} onColorSelected={this._changeApp} />

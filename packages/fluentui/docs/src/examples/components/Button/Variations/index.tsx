@@ -16,7 +16,7 @@ const Variations = () => (
     />
     <ComponentExample
       title="Size"
-      description="A button can have assorted sizes."
+      description="A button can have either be default size or small."
       examplePath="components/Button/Variations/ButtonExampleSize"
     />
   </ExampleSection>

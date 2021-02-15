@@ -1,8 +1,44 @@
 # Change Log - @fluentui/utilities
 
-This log was last generated on Wed, 11 Nov 2020 12:30:44 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.12)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.11..@fluentui/utilities_v8.0.0-beta.12)
+
+### Changes
+
+- Bump @fluentui/test-utilities to v8.0.0-beta.6 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.11)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.10..@fluentui/utilities_v8.0.0-beta.11)
+
+### Changes
+
+- fix merge to correctly handle array value. ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.10)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.9..@fluentui/utilities_v8.0.0-beta.10)
+
+### Changes
+
+- Remove sinon dependency and setRenderSpy utility ([PR #15249](https://github.com/microsoft/fluentui/pull/15249) by elcraig@microsoft.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.9)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/utilities_v8.0.0-beta.6..@fluentui/utilities_v8.0.0-beta.9)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/utilities_v8.0.0-beta.6)
 

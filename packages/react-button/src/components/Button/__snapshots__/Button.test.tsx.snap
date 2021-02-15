@@ -82,6 +82,7 @@ exports[`Button renders a default state 1`] = `
         max-width: var(--button-maxWidth);
         min-height: var(--button-minHeight);
         min-width: var(--button-minWidth);
+        opacity: var(--button-opacity);
         outline: none;
         padding-bottom: var(--button-paddingBottom);
         padding-left: var(--button-paddingLeft);
@@ -124,6 +125,7 @@ exports[`Button renders a default state 1`] = `
         border-color: var(--button-highContrast-borderColor);
         color: var(--button-highContrast-contentColor);
         forced-color-adjust: var(--button-forcedColorAdjust);
+        opacity: var(--button-highContrast-opacity);
       }
       @media screen and (forced-colors: active){& .ms-Button-icon {
         color: var(--button-highContrast-iconColor);
@@ -170,7 +172,6 @@ exports[`Button renders a default state 1`] = `
         box-shadow: var(--button-disabled-boxShadow);
         color: var(--button-disabled-contentColor);
         opacity: var(--button-disabled-opacity);
-        pointer-events: none;
       }
       &[aria-disabled=true] .ms-Button-icon {
         color: var(--button-disabled-iconColor);
@@ -179,6 +180,7 @@ exports[`Button renders a default state 1`] = `
         background: var(--button-highContrast-disabled-background, var(--button-highContrast-background));
         border-color: var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor));
         color: var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor));
+        opacity: var(--button-highContrast-disabled-opacity, var(--button-highContrast-opacity));
       }
       @media screen and (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
         color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
@@ -279,6 +281,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         max-width: var(--button-maxWidth);
         min-height: var(--button-minHeight);
         min-width: var(--button-minWidth);
+        opacity: var(--button-opacity);
         outline: none;
         padding-bottom: var(--button-paddingBottom);
         padding-left: var(--button-paddingLeft);
@@ -321,6 +324,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         border-color: var(--button-highContrast-borderColor);
         color: var(--button-highContrast-contentColor);
         forced-color-adjust: var(--button-forcedColorAdjust);
+        opacity: var(--button-highContrast-opacity);
       }
       @media screen and (forced-colors: active){& .ms-Button-icon {
         color: var(--button-highContrast-iconColor);
@@ -367,7 +371,6 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         box-shadow: var(--button-disabled-boxShadow);
         color: var(--button-disabled-contentColor);
         opacity: var(--button-disabled-opacity);
-        pointer-events: none;
       }
       &[aria-disabled=true] .ms-Button-icon {
         color: var(--button-disabled-iconColor);
@@ -376,6 +379,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         background: var(--button-highContrast-disabled-background, var(--button-highContrast-background));
         border-color: var(--button-highContrast-disabled-borderColor, var(--button-highContrast-borderColor));
         color: var(--button-highContrast-disabled-contentColor, var(--button-highContrast-contentColor));
+        opacity: var(--button-highContrast-disabled-opacity, var(--button-highContrast-opacity));
       }
       @media screen and (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
         color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);

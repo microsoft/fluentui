@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
-import { withKeytipLayer, withStrictMode, withThemeProvider } from '@fluentui/storybook';
+import { withKeytipLayer, withStrictMode, withCompatThemeProvider, withFluentProvider } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
@@ -26,7 +26,11 @@ if (
     'react-toggle',
   ].includes('PACKAGE_NAME')
 ) {
-  addDecorator(withThemeProvider);
+  addDecorator(withCompatThemeProvider);
+  addDecorator(withStrictMode);
+}
+if (['react-menu'].includes('PACKAGE_NAME')) {
+  addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }
 

@@ -57,7 +57,7 @@ const config = {
           '^(import|export) \\{ \\w+( as \\w+)? \\} from',
           '^import \\* as',
           '^\\s+(<path )?d=',
-          '!raw-loader!',
+          '!raw-loader',
           '\\bdata:image/',
         ],
         max: 120,
