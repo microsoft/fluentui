@@ -6,9 +6,9 @@ import { {{componentName}}Props, {{componentName}}State } from './{{componentNam
 /**
  * Consts listing which props are shorthand props.
  */
-export const {{componentName}}ShorthandProps = [];
+export const {{camelCase componentName}}ShorthandProps = [];
 
-const mergeProps = makeMergeProps<{{componentName}}State>({ deepMerge: {{componentName}}ShorthandProps });
+const mergeProps = makeMergeProps<{{componentName}}State>({ deepMerge: {{camelCase componentName}}ShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -23,7 +23,7 @@ export const use{{componentName}} = (
       ref: useMergedRefs(ref, React.useRef(null))
     },
     defaultProps,
-    resolveShorthandProps(props, {{componentName}}ShorthandProps),
+    resolveShorthandProps(props, {{camelCase componentName}}ShorthandProps),
   );
 
   return state;
