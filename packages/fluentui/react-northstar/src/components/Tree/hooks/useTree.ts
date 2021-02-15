@@ -251,7 +251,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
           ?.textContent?.trim()
           ?.charAt(0)
           ?.toLowerCase();
-        if (itemFirstChar === char) {
+        if (itemFirstChar === char.toLowerCase()) {
           return i;
         }
       }
