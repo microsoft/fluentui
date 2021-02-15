@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove unused temporary types",
-  "packageName": "@fluentui/react-button",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
