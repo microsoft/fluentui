@@ -9,6 +9,7 @@ export interface TreeRenderContextValue {
   focusItemById: (id: string) => void;
   expandSiblings: (e: React.SyntheticEvent, id: string) => void;
   toggleItemSelect: (e: React.SyntheticEvent, idToToggle: string) => void;
+  getToFocusIDByFirstCharacter: (e: React.KeyboardEvent, idToStartSearch: string) => string;
 }
 
 export const TreeContext = React.createContext<TreeRenderContextValue>({
@@ -18,4 +19,5 @@ export const TreeContext = React.createContext<TreeRenderContextValue>({
   focusItemById: _.noop,
   expandSiblings: _.noop,
   toggleItemSelect: _.noop,
+  getToFocusIDByFirstCharacter: (e, id) => id,
 });
