@@ -249,7 +249,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
         // get first charater of tree node using the same way aria does (https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-2/js/treeitemLinks.js)
         const itemFirstChar = getItemRef(visibleItemIds[i])
           ?.textContent?.trim()
-          ?.substring(0, 1)
+          ?.charAt(0)
           ?.toLowerCase();
         if (itemFirstChar === char) {
           return i;
