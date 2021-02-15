@@ -134,8 +134,8 @@ import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { SampleState } from './Sample.types';
 
 /**
-* Styles for the root slot
-*/
+ * Styles for the root slot
+ */
 export const useRootStyles = makeStyles<SampleState>([
   [
     null,
@@ -147,12 +147,12 @@ export const useRootStyles = makeStyles<SampleState>([
 ]);
 
 /**
-* Styles for the icon slot, uses state selectors from SampleState
-*/
+ * Styles for the icon slot, uses state selectors from SampleState
+ */
 export const useIconStyles = makeStyles<SampleState>([
   [
     // Conditionally apply styles
-    (someState) => someState == 1,
+    someState => someState == 1,
     () => ({
       width: '20px',
       height: '20px',
@@ -162,8 +162,8 @@ export const useIconStyles = makeStyles<SampleState>([
 ]);
 
 /**
-* Applies style classnames to slots
-*/
+ * Applies style classnames to slots
+ */
 export const useSampleStyles = (state: SampleState) => {
   const rootClassName = useRootStyles(state);
   const iconClassName = useIconStyles(state);
@@ -205,6 +205,7 @@ The `state` stores all information on the slots/tags/JSX that should be rendered
 See below for how `state` might contain useful props for rendering.
 
 #### Sample.types.ts
+
 The below will probably be present in every component, other utility types are fair game if they are necessary.
 
 ```typescript
@@ -226,9 +227,9 @@ export interface SampleState extends SampleProps {
   icon: ObjectShorthandProps;
 
   open: boolean;
-  
+
   otherState: object;
-  
+
   otherState: number;
 }
 ```
@@ -240,9 +241,9 @@ NOTE: Currently `ComponentProp` inherits from a `GenericDictionary` that is esse
 
 Of the above, we expect at least the following to be exported as the three pillars of a component:
 
-* `<Sample />` - component
-* `renderSample` - render function
-* `useSample` - component state hook
+- `<Sample />` - component
+- `renderSample` - render function
+- `useSample` - component state hook
 
 ### Pros and Cons
 

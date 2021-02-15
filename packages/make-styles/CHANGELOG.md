@@ -1,8 +1,21 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Wed, 03 Feb 2021 22:54:59 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v0.6.0)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v0.5.0..@fluentui/make-styles_v0.6.0)
+
+### Minor changes
+
+- Support registering static css ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/test-utilities to v8.0.0-beta.6 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v0.5.0)
 

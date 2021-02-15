@@ -4,13 +4,11 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
 import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ColorTokenSet } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ComponentProps } from '@fluentui/react-utils';
 import * as React from 'react';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
-import { SlotProps } from '@fluentui/react-compose';
 
 // @public
 export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
@@ -66,13 +64,6 @@ export type CardSectionProps = ComponentProps & React.HTMLAttributes<HTMLDivElem
 };
 
 // @public (undocumented)
-export type CardSectionSlotProps = SlotProps<CardSectionSlots, CardSectionProps, React.HTMLAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export interface CardSectionSlots extends BaseSlots {
-}
-
-// @public (undocumented)
 export interface CardSectionState extends CardSectionProps {
     // (undocumented)
     ref: React.RefObject<HTMLElement>;
@@ -126,13 +117,6 @@ export const CardSizeVariants: {
         width: string;
     };
 };
-
-// @public (undocumented)
-export type CardSlotProps = SlotProps<CardSlots, CardProps, React.HTMLAttributes<HTMLDivElement>>;
-
-// @public (undocumented)
-export interface CardSlots extends BaseSlots {
-}
 
 // @public (undocumented)
 export interface CardState extends CardProps {
