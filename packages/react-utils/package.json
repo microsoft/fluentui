@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utils",
-  "version": "0.3.1-0",
+  "version": "0.3.1",
   "description": "Fluent UI util package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

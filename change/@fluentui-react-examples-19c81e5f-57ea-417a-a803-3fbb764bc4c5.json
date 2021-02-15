@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Changing version to pre-release.",
-  "packageName": "@fluentui/react-examples",
-  "email": "dzearing@microsoft.com",
-  "dependentChangeType": "patch"
-}

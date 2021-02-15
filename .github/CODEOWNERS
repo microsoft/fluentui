@@ -82,6 +82,8 @@ packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
+packages/make-styles/ @layershifter
+packages/react-make-styles/ @layershifter
 
 ### Fabric
 # common/

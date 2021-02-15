@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updated typings",
-  "packageName": "@fluentui/react-avatar",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -21,13 +21,13 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.53",
+    "@fluentui/react": "^8.0.0-beta.54",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
-    "@fluentui/react-docsite-components": "^8.0.0-beta.53",
-    "@fluentui/foundation-legacy": "^8.0.0-beta.14",
-    "@fluentui/scheme-utilities": "^8.0.0-beta.14",
+    "@fluentui/react-docsite-components": "^8.0.0-beta.54",
+    "@fluentui/foundation-legacy": "^8.0.0-beta.15",
+    "@fluentui/scheme-utilities": "^8.0.0-beta.15",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/font-icons-mdl2": "^8.0.0-beta.14",
+    "@fluentui/font-icons-mdl2": "^8.0.0-beta.15",
     "@microsoft/load-themed-styles": "^1.10.26",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",

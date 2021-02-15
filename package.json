@@ -101,6 +101,8 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "eslint": "^7.1.0",
+    "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
+    "@testing-library/dom": "7.22.3",
     "copy-to-clipboard": "3.2.0"
   },
   "syncpack": {

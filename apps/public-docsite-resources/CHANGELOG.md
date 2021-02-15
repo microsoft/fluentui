@@ -1,8 +1,18 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.1)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v1.0.6..@fluentui/public-docsite-resources_v8.0.0-beta.1)
+
+### Changes
+
+- Website: Removing Card page from the website. ([PR #16953](https://github.com/microsoft/fluentui/pull/16953) by humbertomakotomorimoto@gmail.com)
+- Changing version to pre-release. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
 
 ## [1.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v1.0.6)
 
