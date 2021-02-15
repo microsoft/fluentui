@@ -1,143 +1,102 @@
 import * as React from 'react';
-import { IStackSlot, IStackTokens } from '@fluentui/react/lib/Stack';
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import { ComponentProps } from '@fluentui/react-utils';
+import { ColorTokens, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
  * {@docCategory Card}
  */
-export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
+export type CardProps = ComponentProps &
+  React.HTMLAttributes<HTMLDivElement> & {
+    /** A card can be compact, without any padding inside. */
+    compact?: boolean;
 
-// These types are redundant with ICardComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
-// For now, these helper types can be used to provide return type safety for tokens and styles functions.
+    /** A card will used horizontal layout. */
+    horizontal?: boolean;
+
+    /** Centers content in a card. */
+    centered?: boolean;
+
+    /** A card can be sized. */
+    size?: SizeValue;
+
+    /** A card can take up the width and height of its container. */
+    block?: boolean;
+
+    /** A card can show that it cannot be interacted with. */
+    disabled?: boolean;
+
+    /** A card can be hiding part of the content and expand on hover/focus. */
+    expandable?: boolean;
+
+    /** A card can have elevation styles. */
+    // TODO: Should we remove? It's not accounted for in design spec and a card is elevated by default.
+    // elevated?: boolean;
+
+    /** A card can have inverted background styles. */
+    inverted?: boolean;
+
+    /** A card can have ghost styles. */
+    ghost?: boolean;
+
+    /** A card can show that it is currently selected or not. */
+    // TODO: This should probably have a `defaultSelected` property at the same time.
+    selected?: boolean;
+  };
 
 /**
  * {@docCategory Card}
  */
-export type ICardTokenReturnType = ReturnType<Extract<ICardComponent['tokens'], Function>>;
-
-/**
- * {@docCategory Card}
- */
-export type ICardStylesReturnType = ReturnType<Extract<ICardComponent['styles'], Function>>;
-
-/**
- * {@docCategory Card}
- */
-export interface ICard {}
-
-/**
- * {@docCategory Card}
- */
-export interface ICardSlots {
-  /**
-   * Defines the root slot of the component for managing the layout of the Card.
-   */
-  root?: IStackSlot;
+export interface CardState extends CardProps {
+  ref: React.RefObject<HTMLDivElement>;
 }
 
-/**
- * {@docCategory Card}
- */
-export interface ICardProps
-  extends ICardSlots,
-    IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>,
-    IBaseProps<ICard>,
-    React.AllHTMLAttributes<HTMLElement> {
-  /**
-   * Defines whether to render a vertical or a horizontal Card.
-   * @defaultvalue false
-   */
-  horizontal?: boolean;
+type SizeRelatedTokens = {
+  borderRadius?: string;
+  height?: string;
+  margin?: string;
+  padding?: string;
+  width?: string;
+};
 
-  /**
-   * Defines a callback that is called when the Card is clicked.
-   */
-  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
-
-  /**
-   * Defines a callback that is called when the Card is a key is pressed down while focus is on the Card.
-   */
-  onKeyDown?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
-}
-
-/**
- * {@docCategory Card}
- */
-export interface ICardTokens extends IStackTokens {
-  /**
-   * Defines the border of the Card when it is in a focused state.
-   */
-  borderFocused?: string;
-
-  /**
-   * Defines the box shadow of the Card.
-   */
+type StateChangeRelatedTokens = {
+  borderWidth?: string;
   boxShadow?: string;
-
-  /**
-   * Defines the box shadow of the Card when it is in a focused state.
-   */
-  boxShadowFocused?: string;
-
-  /**
-   * Defines the box shadow of the Card when it is in a hovered state.
-   */
-  boxShadowHovered?: string;
-
-  /**
-   * Defines the margin that is applied to the Card's children.
-   */
-  childrenMargin?: number;
-
-  /**
-   * Defines the mouse cursor to be displayed when pointing over the Card.
-   */
   cursor?: string;
-
-  /**
-   * Defines a fixed height for the Card.
-   */
-  height?: number | string;
-
-  /**
-   * Defines the box shadow of the Card when in high contrast mode.
-   */
-  highContrastBoxShadow?: string;
-
-  /**
-   * Defines the box shadow of the Card when it is in a focused state and in high contrast mode.
-   */
-  highContrastBoxShadowFocused?: string;
-
-  /**
-   * Defines the box shadow of the Card when it is in a hovered state and in high contrast mode.
-   */
-  highContrastBoxShadowHovered?: string;
-
-  /**
-   * Defines a minimum height the Card has regardless of the contents within it.
-   */
-  minHeight?: number | string;
-
-  /**
-   * Defines the minimum width of the Card.
-   */
-  minWidth?: number | string;
-
-  /**
-   * Defines the maximum width of the Card.
-   */
-  maxWidth?: number | string;
-
-  /**
-   * Defines a fixed width for the Card.
-   */
-  width?: number | string;
-}
+};
 
 /**
  * {@docCategory Card}
  */
-export type ICardStyles = IComponentStyles<ICardSlots>;
+export type CardTokens = ColorTokens &
+  SizeRelatedTokens &
+  StateChangeRelatedTokens & {
+    borderStyle?: string;
+    minHeight?: string;
+    minWidth?: string;
+
+    /* sizing */
+    size?: {
+      smallest?: SizeRelatedTokens;
+      smaller?: SizeRelatedTokens;
+      small?: SizeRelatedTokens;
+      medium?: SizeRelatedTokens;
+      large?: SizeRelatedTokens;
+      larger?: SizeRelatedTokens;
+      largest?: SizeRelatedTokens;
+    };
+
+    disabled?: StateChangeRelatedTokens;
+    hovered?: StateChangeRelatedTokens;
+    pressed?: StateChangeRelatedTokens;
+    selected?: StateChangeRelatedTokens;
+  };
+
+/**
+ * {@docCategory Card}
+ */
+export type CardVariants<TTokens = CardTokens> = {
+  root?: TTokens;
+  onClick?: TTokens;
+  compact?: TTokens;
+  block?: TTokens;
+};

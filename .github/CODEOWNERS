@@ -78,7 +78,6 @@ packages/style-utilities/src/interfaces/ @phkuo @xugao
 packages/style-utilities/src/styles/ @phkuo @xugao
 packages/theme/ @dzearing @xugao
 packages/react-theme-provider/ @dzearing @xugao
-packages/react-stylesheets/ @dzearing @xugao
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
