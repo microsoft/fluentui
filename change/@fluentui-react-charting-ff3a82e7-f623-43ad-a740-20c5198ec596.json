@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix: VerticalBarChart: Cannot read property 'x' of undefined error if empty data provided",
+  "packageName": "@fluentui/react-charting",
+  "email": "feodor@appveyor.com",
+  "dependentChangeType": "patch"
+}
