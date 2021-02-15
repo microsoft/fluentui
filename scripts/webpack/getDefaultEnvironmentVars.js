@@ -40,6 +40,7 @@ module.exports = isProduction => ({
       DEPLOYBASEPATH: '',
       E2E_PORT: 8082,
       OFFICIALRELEASE: false,
+      NIGHTLYRELEASEDATE: '',
       PERF: false,
       PERF_PORT: 8081,
       PORT: 8080,

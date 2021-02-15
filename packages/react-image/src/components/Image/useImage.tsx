@@ -9,18 +9,16 @@ import { useMergedRefs } from '@fluentui/react-hooks';
  */
 export const iconShorthandProps = [];
 
-const mergeProps = makeMergeProps({ deepMerge: iconShorthandProps });
+const mergeProps = makeMergeProps<ImageState>({ deepMerge: iconShorthandProps });
 
 /**
  * Define the render function. Given the state of a button, renders it.
  */
 export const renderImage = (state: ImageState) => {
   const { slots, slotProps } = getSlots(state, iconShorthandProps);
-  const { imageRef } = state;
   const { ref, ...rest } = slotProps.root;
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return <slots.root ref={useMergedRefs(ref, ...(imageRef ? [imageRef] : []))} {...rest} />;
+  return <slots.root ref={ref} {...rest} />;
 };
 
 /**
@@ -29,8 +27,8 @@ export const renderImage = (state: ImageState) => {
 export const useImage = (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps) => {
   const state = mergeProps(
     {
-      ref,
       as: 'img',
+      ref: useMergedRefs(ref, React.useRef<HTMLImageElement>()),
     },
     defaultProps,
     resolveShorthandProps(props, iconShorthandProps),

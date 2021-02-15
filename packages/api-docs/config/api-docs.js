@@ -11,7 +11,6 @@ module.exports = {
     path.resolve(__dirname, '../../date-time-utilities/dist/date-time-utilities.api.json'),
     path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
     path.resolve(__dirname, '../../react/dist/react.api.json'),
-    path.resolve(__dirname, '../../react-cards/dist/react-cards.api.json'),
     path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
     path.resolve(__dirname, '../../react-theme-provider/dist/react-theme-provider.api.json'),
     path.resolve(__dirname, '../../style-utilities/dist/style-utilities.api.json'),
@@ -91,6 +90,5 @@ module.exports = {
       'Toggle',
       'Tooltip',
     ],
-    'react-cards': ['Card'],
   },
 };
