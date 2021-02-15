@@ -13,36 +13,35 @@ import { SizeValue } from '@fluentui/react-theme';
 // @public
 export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 
-// @public
+// @public (undocumented)
+export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+
+// @public (undocumented)
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    color?: string;
+    appearance?: BadgeAppearances;
     icon?: ShorthandProps<HTMLElement>;
     iconPosition?: 'before' | 'after';
     shape?: BadgeShape;
     size?: SizeValue;
     status?: BadgeStatus;
-    variant?: BadgeVariant;
 }
 
-// @public
+// @public (undocumented)
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
 // @public
-export const badgeShorthandProps: string[];
+export const badgeShorthandProps: (keyof BadgeProps)[];
 
-// @public
+// @public (undocumented)
 export interface BadgeState extends BadgeProps {
     icon?: ObjectShorthandProps<HTMLSpanElement>;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
-// @public
+// @public (undocumented)
 export type BadgeStatus = 'success' | 'warning' | 'severe' | 'accent' | 'danger' | 'important' | 'informative' | 'subtle';
 
-// @public
-export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
-
-// @public
+// @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
 
 // @public
