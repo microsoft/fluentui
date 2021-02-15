@@ -107,16 +107,16 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
         userSelect: 'none',
       }}
     >
-      {/* <Input
+      <Input
         fluid
         icon={<SearchIcon />}
         clearable
         placeholder="Search..."
         onChange={handleFilterChange}
         value={filter}
-      /> */}
+      />
       {filter ? <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} /> : <Tree items={treeItems} />}
-      {/* {unsupportedComponents
+      {unsupportedComponents
         .filter(info => info.displayName.match(filterRegexp))
         .map(info => (
           <Tooltip
@@ -137,7 +137,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
             }
             content={info.docblock.description + info.docblock.tags}
           />
-        ))} */}
+        ))}
     </div>
   );
 };

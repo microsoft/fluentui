@@ -282,6 +282,10 @@ export const Designer: React.FunctionComponent = () => {
     [hotkeys],
   );
 
+  // const handleOpenSearchBox = React.useCallback(() => {
+  //   dispatch({ type: 'OPEN_SEARCH_BOX' });
+  // }, [dispatch]);
+
   const handleOpenAddComponentDialog = React.useCallback(
     (uuid: string, where: string) => {
       dispatch({ type: 'OPEN_ADD_DIALOG', uuid, where });
@@ -390,7 +394,7 @@ export const Designer: React.FunctionComponent = () => {
             <Button
               iconOnly
               text
-              labelledBy="Add Components"
+              // labelledBy="Add Components"
               style={{ marginLeft: '6px' }}
               onClick={() => selectActiveTab('add')}
             >
@@ -401,7 +405,7 @@ export const Designer: React.FunctionComponent = () => {
             <Button
               iconOnly
               text
-              labelledBy="Navigator"
+              // labelledBy="Navigator"
               style={{ marginLeft: '6px' }}
               onClick={() => selectActiveTab('nav')}
             >
@@ -412,7 +416,7 @@ export const Designer: React.FunctionComponent = () => {
             <Button
               iconOnly
               text
-              labelledBy="Tokens"
+              // labelledBy="Tokens"
               style={{ marginLeft: '6px' }}
               onClick={() => selectActiveTab('tokens')}
             >
@@ -440,7 +444,7 @@ export const Designer: React.FunctionComponent = () => {
               borderBottom: '1px solid #E1DFDD',
             }}
           >
-            <Header as="h2" style={{ fontSize: '16px', fontWeight: '600' }}>
+            <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
               {activeTab == 'add' ? 'Add components' : activeTab == 'nav' ? 'Navigator' : 'Tokens'}
             </Header>
           </div>
