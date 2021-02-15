@@ -1,7 +1,7 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Text, Button, Header } from '@fluentui/react-northstar';
-import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon, OptionsIcon } from '@fluentui/react-icons-northstar';
+import { Text, Button, Header, Tooltip } from '@fluentui/react-northstar';
+import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
 import { componentInfoContext } from '../componentInfo/componentInfoContext';
@@ -391,26 +391,30 @@ export const Designer: React.FunctionComponent = () => {
           }}
         >
           <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center', background: '#F3F2F1' }}>
-            <Button
-              iconOnly
-              text
-              labelledBy="Add Components"
-              style={{ marginLeft: '6px' }}
-              onClick={() => selectActiveTab('add')}
-            >
-              <AddIcon size="large" outline />
-            </Button>
+            <Tooltip
+              pointing
+              position="after"
+              align="center"
+              trigger={
+                <Button iconOnly text style={{ marginLeft: '6px' }} onClick={() => selectActiveTab('add')}>
+                  <AddIcon size="large" outline />
+                </Button>
+              }
+              content="Add components"
+            />
           </div>
           <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center' }}>
-            <Button
-              iconOnly
-              text
-              labelledBy="Navigator"
-              style={{ marginLeft: '6px' }}
-              onClick={() => selectActiveTab('nav')}
-            >
-              <MenuIcon size="large" outline />
-            </Button>
+            <Tooltip
+              pointing
+              position="after"
+              align="center"
+              trigger={
+                <Button iconOnly text style={{ marginLeft: '6px' }} onClick={() => selectActiveTab('nav')}>
+                  <MenuIcon size="large" outline />
+                </Button>
+              }
+              content="Navigator"
+            />
           </div>
         </div>
         <div
