@@ -31,7 +31,7 @@ A badge is an additional visual descriptor for UI elements. It can be used to de
 
 ```typescript
 
-export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+export type BadgeVariant = 'filled' | 'outline' | 'ghost' | 'tint';
 
 export type BadgeShape = 'rounded' | 'square' | 'circular';
 
@@ -126,6 +126,7 @@ A Presence Badge represents someone's availbility or status
 | `size`        | `enum`    | `medium`      | The Badge size                                                                             |
 | `status`      | `enum`    | `available`   | The Badge status representation                                                            |
 | `inOffice`    | `boolean` | `true`        | The Badge can be represented in different ways depeding if user is in or out of the office |
+| `inverted`    | `boolean` | `false`       | The Badge can be inverted                                                                  |
 
 ### Counter Badge
 
