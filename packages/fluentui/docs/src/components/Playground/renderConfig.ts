@@ -30,7 +30,8 @@ type CodeSandboxImport = {
   required: boolean;
 };
 
-const newestNightlyReleaseUrlPrefix = `https://fluentsite.blob.core.windows.net/nightly-builds/newest`;
+const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
+const newestNightlyReleaseUrlPrefix = `https://fluentsite.blob.core.windows.net/nightly-builds/${TODAY}`;
 
 const getPackageVersion = (packageName: string, latestVersion: string) => {
   // CI build tarballs from `npm pack` and publish them nightly to blob storage for fluent ui packages
