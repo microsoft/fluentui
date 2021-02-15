@@ -8,6 +8,7 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
+  FocusAbilityHelpersProvider,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
@@ -34,20 +35,22 @@ const Container: React.FC = props => {
 
 export const MenuListExample = () => (
   <Container>
-    <MenuList>
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Item</MenuItem>
-      <MenuItem>Item</MenuItem>
-    </MenuList>
+    <FocusAbilityHelpersProvider>
+      <MenuList>
+        <MenuItem>Cut</MenuItem>
+        <MenuItem>Paste</MenuItem>
+        <MenuItem>Edit</MenuItem>
+      </MenuList>
+    </FocusAbilityHelpersProvider>
   </Container>
 );
 
 export const MenuListWithIconsExample = () => (
   <Container>
     <MenuList>
-      <MenuItem icon={<CutIcon />}>Item</MenuItem>
-      <MenuItem icon={<PasteIcon />}>Item</MenuItem>
-      <MenuItem icon={<EditIcon />}>Item</MenuItem>
+      <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+      <MenuItem icon={<EditIcon />}>Edit</MenuItem>
     </MenuList>
   </Container>
 );
@@ -57,16 +60,16 @@ export const MenuListWithGroups = () => (
     <MenuList>
       <MenuGroup>
         <MenuGroupHeader>Section header</MenuGroupHeader>
-        <MenuItem icon={<CutIcon />}>Item</MenuItem>
-        <MenuItem icon={<PasteIcon />}>Item</MenuItem>
-        <MenuItem icon={<EditIcon />}>Item</MenuItem>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
       </MenuGroup>
       <MenuDivider />
       <MenuGroup>
         <MenuGroupHeader>Section header</MenuGroupHeader>
-        <MenuItem icon={<CutIcon />}>Item</MenuItem>
-        <MenuItem icon={<PasteIcon />}>Item</MenuItem>
-        <MenuItem icon={<EditIcon />}>Item</MenuItem>
+        <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+        <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+        <MenuItem icon={<EditIcon />}>Edit</MenuItem>
       </MenuGroup>
     </MenuList>
   </Container>
@@ -75,13 +78,13 @@ export const MenuListWithGroups = () => (
 export const MenuListWithDivider = () => (
   <Container>
     <MenuList>
-      <MenuItem icon={<CutIcon />}>Item</MenuItem>
-      <MenuItem icon={<PasteIcon />}>Item</MenuItem>
-      <MenuItem icon={<EditIcon />}>Item</MenuItem>
+      <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+      <MenuItem icon={<EditIcon />}>Edit</MenuItem>
       <MenuDivider />
-      <MenuItem icon={<CutIcon />}>Item</MenuItem>
-      <MenuItem icon={<PasteIcon />}>Item</MenuItem>
-      <MenuItem icon={<EditIcon />}>Item</MenuItem>
+      <MenuItem icon={<CutIcon />}>Cut</MenuItem>
+      <MenuItem icon={<PasteIcon />}>Paste</MenuItem>
+      <MenuItem icon={<EditIcon />}>Edit</MenuItem>
     </MenuList>
   </Container>
 );
@@ -96,14 +99,14 @@ export const MenuListWithCheckboxes = () => {
   return (
     <Container>
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-        <MenuItemCheckbox icon={<CutIcon />} name="checkbox" value="1" checkmark={checkmark}>
-          Item
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+          Cut
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<PasteIcon />} name="checkbox" value="2" checkmark={checkmark}>
-          Item
+        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+          Paste
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<EditIcon />} name="checkbox" value="3" checkmark={checkmark}>
-          Item
+        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+          Edit
         </MenuItemCheckbox>
       </MenuList>
     </Container>
@@ -120,14 +123,14 @@ export const MenuListWithRadios = () => {
   return (
     <Container>
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-        <MenuItemRadio icon={<CutIcon />} name="radio" value="1" checkmark={checkmark}>
-          Item
+        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+          Segoe
         </MenuItemRadio>
-        <MenuItemRadio icon={<PasteIcon />} name="radio" value="2" checkmark={checkmark}>
-          Item
+        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+          Calibri
         </MenuItemRadio>
-        <MenuItemRadio icon={<EditIcon />} name="radio" value="3" checkmark={checkmark}>
-          Item
+        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+          Arial
         </MenuItemRadio>
       </MenuList>
     </Container>
@@ -146,27 +149,27 @@ export const MenuListWithSelectionGroups = () => {
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
         <MenuGroup>
           <MenuGroupHeader>Checkbox group</MenuGroupHeader>
-          <MenuItemCheckbox icon={<CutIcon />} name="checkbox" value="1" checkmark={checkmark}>
-            Item
+          <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+            Cut
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<PasteIcon />} name="checkbox" value="2" checkmark={checkmark}>
-            Item
+          <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+            Paste
           </MenuItemCheckbox>
-          <MenuItemCheckbox icon={<EditIcon />} name="checkbox" value="3" checkmark={checkmark}>
-            Item
+          <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+            Edit
           </MenuItemCheckbox>
         </MenuGroup>
         <MenuDivider />
         <MenuGroup>
           <MenuGroupHeader>Radio group</MenuGroupHeader>
-          <MenuItemRadio icon={<CutIcon />} name="radio" value="1" checkmark={checkmark}>
-            Item
+          <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+            Segoe
           </MenuItemRadio>
-          <MenuItemRadio icon={<PasteIcon />} name="radio" value="2" checkmark={checkmark}>
-            Item
+          <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+            Caliri
           </MenuItemRadio>
-          <MenuItemRadio icon={<EditIcon />} name="radio" value="3" checkmark={checkmark}>
-            Item
+          <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+            Arial
           </MenuItemRadio>
         </MenuGroup>
       </MenuList>
