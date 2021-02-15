@@ -86,7 +86,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
     expandSiblings,
     listRef,
     getItemRef,
-    setToFocusIDByFirstCharacter,
+    getToFocusIDByFirstCharacter,
   } = useVirtualTree({ ...props, defaultActiveItemIds: stickyItemIds });
 
   const getItemSize = React.useCallback(
@@ -171,9 +171,9 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       focusItemById,
       expandSiblings,
       toggleItemSelect: _.noop,
-      setToFocusIDByFirstCharacter,
+      getToFocusIDByFirstCharacter,
     }),
-    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, setToFocusIDByFirstCharacter],
+    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, getToFocusIDByFirstCharacter],
   );
 
   // When using keyboard, and navigate to non-sticky items, they could be hidden behind sticky headers.

@@ -90,7 +90,7 @@ export interface UseTreeResult {
    * Search wraps to first matching node if a matching is not found among the nodes that follow the focused node.
    * Focus stays when no matching is found among all visible nodes.
    */
-  setToFocusIDByFirstCharacter: (e: React.KeyboardEvent, idToToggle: string) => string;
+  getToFocusIDByFirstCharacter: (e: React.KeyboardEvent, idToToggle: string) => string;
 }
 
 export function useTree(options: UseTreeOptions): UseTreeResult {
@@ -260,7 +260,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
     [getItemRef, visibleItemIds],
   );
 
-  const setToFocusIDByFirstCharacter = React.useCallback(
+  const getToFocusIDByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent, idToStartSearch: string) => {
       // Get start index for search
       let starIndex = visibleItemIds.indexOf(idToStartSearch) + 1;
@@ -291,7 +291,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
     focusItemById,
     expandSiblings,
     toggleItemSelect,
-    setToFocusIDByFirstCharacter,
+    getToFocusIDByFirstCharacter,
   };
 }
 

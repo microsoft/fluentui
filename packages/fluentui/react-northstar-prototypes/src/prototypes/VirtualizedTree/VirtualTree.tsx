@@ -70,7 +70,7 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
     focusItemById,
     expandSiblings,
     listRef,
-    setToFocusIDByFirstCharacter,
+    getToFocusIDByFirstCharacter,
   } = useVirtualTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
@@ -81,9 +81,9 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
       focusItemById,
       expandSiblings,
       toggleItemSelect: _.noop,
-      setToFocusIDByFirstCharacter,
+      getToFocusIDByFirstCharacter,
     }),
-    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, setToFocusIDByFirstCharacter],
+    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, getToFocusIDByFirstCharacter],
   );
 
   // always use item id as key instead of index (react-window's default)
