@@ -6,6 +6,7 @@ import * as fs from 'fs-extra';
 import * as os from 'os';
 import { spawnSync } from 'child_process';
 import { findGitRoot, getAllPackageInfo } from '../monorepo/index';
+import stripIndent from 'strip-indent';
 
 //#endregion
 
@@ -55,9 +56,7 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'packageNpmName',
         message: 'Which package to create the new component in?',
         choices: () => {
-          return projectsWithStartCommand.map((e, i) => {
-            return e.title;
-          });
+          return projectsWithStartCommand.map(project => project.title);
         },
       },
 
@@ -98,9 +97,7 @@ module.exports = (plop: NodePlopAPI) => {
 
       const data = {
         ...answers,
-        ...{
-          packageName: answers.packageNpmName.replace('@fluentui/', ''),
-        },
+        packageName: answers.packageNpmName.replace('@fluentui/', ''),
       };
 
       const renderString = (text: string): string => {
@@ -108,9 +105,7 @@ module.exports = (plop: NodePlopAPI) => {
       };
 
       return [
-        () => {
-          return 'Running create-component actions';
-        },
+        () => 'Running create-component actions',
         {
           type: 'confirmPackageLocation',
           data,
@@ -141,15 +136,17 @@ module.exports = (plop: NodePlopAPI) => {
           data,
           skipIfExists: true,
           skip: () => {
-            if (!data.hasStorybook) {
-              return 'Skipping storybook scaffolding';
-            }
+            if (!data.hasStorybook) return 'Skipping storybook scaffolding';
           },
           base: 'plop-templates-storybook',
           templateFiles: [`${renderString(templatePaths.storybookComponent)}/**/*`],
         },
         () => {
-          console.log('\nPackage files created! Running yarn to link...\n');
+          console.log(
+            stripIndent(`
+              Package files created! Running yarn to link...
+            `),
+          );
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
             console.error('Something went wrong with running yarn. Please check previous logs for details');
@@ -158,9 +155,7 @@ module.exports = (plop: NodePlopAPI) => {
           return 'Packages linked!';
         },
         () => {
-          if (answers.doComponentTestBuild !== true) {
-            return 'Skipping component test compile.';
-          }
+          if (answers.doComponentTestBuild !== true) return 'Skipping component test compile.';
 
           console.log('Component files created! Running yarn build...\n');
           const yarnResult = spawnSync('yarn', [`buildto *${data.packageName}`], {
@@ -174,8 +169,10 @@ module.exports = (plop: NodePlopAPI) => {
           }
           return 'Component compiled!';
         },
-        '\nCreated new component! Please check over it and ensure wording and included files ' +
-          'make sense for your scenario.',
+        stripIndent(`
+          Created new component! Please check over it and ensure wording and included files
+          make sense for your scenario.
+        `),
       ];
     },
   });

@@ -68,6 +68,7 @@ module.exports = (plop: NodePlopAPI) => {
       },
     ],
     actions: (answers: Answers): Actions => {
+      if (answers.target === 'react') answers = { hasTests: true, ...answers };
       const { packageName, target, hasExamples, hasTests } = answers;
 
       const destination = `packages/${packageName}`;
@@ -232,12 +233,13 @@ function replaceVersionsFromReference(
 
 function updatePackageJson(packageJsonContents: string, answers: Answers) {
   const { target, hasTests, publish } = answers;
+  console.log(answers);
 
   // Copy dep versions in package.json from actual current version specs.
   // This is preferable over hardcoding dependency versions to keep things in sync.
   // The reference package(s) may need to be updated over time as dependency lists change.
   const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
-  const referencePackages = target === 'node' ? ['codemods'] : ['react-menu'];
+  const referencePackages = target === 'node' ? ['codemods'] : ['react-menu', 'react-cards'];
   const hasError = replaceVersionsFromReference(referencePackages, newPackageJson, answers);
 
   if (!hasTests) {
