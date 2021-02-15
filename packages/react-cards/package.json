@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "1.0.0-beta.53",
+  "version": "1.0.0-beta.54",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.0-beta.14",
+    "@fluentui/common-styles": "^1.0.0-beta.15",
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -46,13 +46,13 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.13",
-    "@fluentui/react": "^8.0.0-beta.53",
+    "@fluentui/react": "^8.0.0-beta.54",
     "@fluentui/react-compose": "^1.0.0-beta.12",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.22",
-    "@fluentui/theme": "^2.0.0-beta.14",
-    "@fluentui/react-utils": "^0.3.1-0",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.23",
+    "@fluentui/theme": "^2.0.0-beta.15",
+    "@fluentui/react-utils": "^0.3.1",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/foundation-legacy": "^8.0.0-beta.14",
+    "@fluentui/foundation-legacy": "^8.0.0-beta.15",
     "@fluentui/react-hooks": "^8.0.0-beta.11",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/utilities": "^8.0.0-beta.11",

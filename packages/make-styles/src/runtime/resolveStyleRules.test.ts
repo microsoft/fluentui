@@ -1,23 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore No typings :(
-import * as prettier from 'prettier';
-
 import { resolveStyleRules } from './resolveStyleRules';
 import { MakeStylesResolvedRule } from '../types';
-import { isObject } from './utils/isObject';
+import { makeStylesRulesSerializer } from '../utils/test/snapshotSerializer';
 
-expect.addSnapshotSerializer({
-  test(value) {
-    return isObject(value);
-  },
-  print(value: Record<string, MakeStylesResolvedRule>) {
-    return Object.keys(value).reduce((acc, property) => {
-      const rule: MakeStylesResolvedRule = value[property];
-
-      return prettier.format(acc + rule[1] + (rule[2] || ''), { parser: 'css' }).trim();
-    }, '');
-  },
-});
+expect.addSnapshotSerializer(makeStylesRulesSerializer);
 
 function getFirstClassName(resolvedStyles: Record<string, MakeStylesResolvedRule>): string {
   return resolvedStyles[Object.keys(resolvedStyles)[0]][0] as string;
@@ -161,6 +146,9 @@ describe('resolveStyleRules', () => {
     it('performs vendor prefixing', () => {
       expect(resolveStyleRules({ display: 'flex' })).toMatchInlineSnapshot(`
         .f22iagw0 {
+          display: -webkit-box;
+          display: -webkit-flex;
+          display: -ms-flexbox;
           display: flex;
         }
       `);
@@ -377,12 +365,15 @@ describe('resolveStyleRules', () => {
         }),
       ).toMatchInlineSnapshot(`
         .fc59ano0 {
+          -webkit-animation-name: fade-in slide-out;
           animation-name: fade-in slide-out;
         }
         .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
         }
         .f1t9cprh {
+          -webkit-animation-duration: 5s;
           animation-duration: 5s;
         }
       `);
@@ -403,75 +394,79 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-              @-webkit-keyframes f13owpa8 {
-                from {
-                  -webkit-transform: rotate(0deg);
-                  -moz-transform: rotate(0deg);
-                  -ms-transform: rotate(0deg);
-                  transform: rotate(0deg);
-                }
-                to {
-                  -webkit-transform: rotate(360deg);
-                  -moz-transform: rotate(360deg);
-                  -ms-transform: rotate(360deg);
-                  transform: rotate(360deg);
-                }
-              }
-              @keyframes f13owpa8 {
-                from {
-                  -webkit-transform: rotate(0deg);
-                  -moz-transform: rotate(0deg);
-                  -ms-transform: rotate(0deg);
-                  transform: rotate(0deg);
-                }
-                to {
-                  -webkit-transform: rotate(360deg);
-                  -moz-transform: rotate(360deg);
-                  -ms-transform: rotate(360deg);
-                  transform: rotate(360deg);
-                }
-              }
-              @-webkit-keyframes rf13owpa8 {
-                from {
-                  -webkit-transform: rotate(0deg);
-                  -moz-transform: rotate(0deg);
-                  -ms-transform: rotate(0deg);
-                  transform: rotate(0deg);
-                }
-                to {
-                  -webkit-transform: rotate(-360deg);
-                  -moz-transform: rotate(-360deg);
-                  -ms-transform: rotate(-360deg);
-                  transform: rotate(-360deg);
-                }
-              }
-              @keyframes rf13owpa8 {
-                from {
-                  -webkit-transform: rotate(0deg);
-                  -moz-transform: rotate(0deg);
-                  -ms-transform: rotate(0deg);
-                  transform: rotate(0deg);
-                }
-                to {
-                  -webkit-transform: rotate(-360deg);
-                  -moz-transform: rotate(-360deg);
-                  -ms-transform: rotate(-360deg);
-                  transform: rotate(-360deg);
-                }
-              }
-              .fkf6eed0 {
-                animation-name: f13owpa8;
-              }
-              .rfkf6eed0 {
-                animation-name: rf13owpa8;
-              }
-              .f1cpbl36 {
-                animation-iteration-count: infinite;
-              }
-              .f1t9cprh {
-                animation-duration: 5s;
-              }
-          `);
+        @-webkit-keyframes f13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes f13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-webkit-keyframes rf13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        @keyframes rf13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        .fkf6eed0 {
+          -webkit-animation-name: f13owpa8;
+          animation-name: f13owpa8;
+        }
+        .rfkf6eed0 {
+          -webkit-animation-name: rf13owpa8;
+          animation-name: rf13owpa8;
+        }
+        .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+        }
+        .f1t9cprh {
+          -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+        }
+      `);
     });
 
     it('allows to define array as animationName', () => {
@@ -499,91 +494,95 @@ describe('resolveStyleRules', () => {
           animationDuration: '5s',
         }),
       ).toMatchInlineSnapshot(`
-               @-webkit-keyframes f13owpa8 {
-                 from {
-                   -webkit-transform: rotate(0deg);
-                   -moz-transform: rotate(0deg);
-                   -ms-transform: rotate(0deg);
-                   transform: rotate(0deg);
-                 }
-                 to {
-                   -webkit-transform: rotate(360deg);
-                   -moz-transform: rotate(360deg);
-                   -ms-transform: rotate(360deg);
-                   transform: rotate(360deg);
-                 }
-               }
-               @keyframes f13owpa8 {
-                 from {
-                   -webkit-transform: rotate(0deg);
-                   -moz-transform: rotate(0deg);
-                   -ms-transform: rotate(0deg);
-                   transform: rotate(0deg);
-                 }
-                 to {
-                   -webkit-transform: rotate(360deg);
-                   -moz-transform: rotate(360deg);
-                   -ms-transform: rotate(360deg);
-                   transform: rotate(360deg);
-                 }
-               }
-               @-webkit-keyframes f1qa61cu {
-                 from {
-                   opacity: 0;
-                 }
-                 to {
-                   opacity: 1;
-                 }
-               }
-               @keyframes f1qa61cu {
-                 from {
-                   opacity: 0;
-                 }
-                 to {
-                   opacity: 1;
-                 }
-               }
-               @-webkit-keyframes rf13owpa8 {
-                 from {
-                   -webkit-transform: rotate(0deg);
-                   -moz-transform: rotate(0deg);
-                   -ms-transform: rotate(0deg);
-                   transform: rotate(0deg);
-                 }
-                 to {
-                   -webkit-transform: rotate(-360deg);
-                   -moz-transform: rotate(-360deg);
-                   -ms-transform: rotate(-360deg);
-                   transform: rotate(-360deg);
-                 }
-               }
-               @keyframes rf13owpa8 {
-                 from {
-                   -webkit-transform: rotate(0deg);
-                   -moz-transform: rotate(0deg);
-                   -ms-transform: rotate(0deg);
-                   transform: rotate(0deg);
-                 }
-                 to {
-                   -webkit-transform: rotate(-360deg);
-                   -moz-transform: rotate(-360deg);
-                   -ms-transform: rotate(-360deg);
-                   transform: rotate(-360deg);
-                 }
-               }
-               .f18gdskf {
-                 animation-name: f13owpa8 f1qa61cu;
-               }
-               .rf18gdskf {
-                 animation-name: rf13owpa8 f1qa61cu;
-               }
-               .f1cpbl36 {
-                 animation-iteration-count: infinite;
-               }
-               .f1t9cprh {
-                 animation-duration: 5s;
-               }
-          `);
+        @-webkit-keyframes f13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @keyframes f13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+          }
+        }
+        @-webkit-keyframes f1qa61cu {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes f1qa61cu {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @-webkit-keyframes rf13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        @keyframes rf13owpa8 {
+          from {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+          }
+          to {
+            -webkit-transform: rotate(-360deg);
+            -moz-transform: rotate(-360deg);
+            -ms-transform: rotate(-360deg);
+            transform: rotate(-360deg);
+          }
+        }
+        .f18gdskf {
+          -webkit-animation-name: f13owpa8 f1qa61cu;
+          animation-name: f13owpa8 f1qa61cu;
+        }
+        .rf18gdskf {
+          -webkit-animation-name: rf13owpa8 f1qa61cu;
+          animation-name: rf13owpa8 f1qa61cu;
+        }
+        .f1cpbl36 {
+          -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+        }
+        .f1t9cprh {
+          -webkit-animation-duration: 5s;
+          animation-duration: 5s;
+        }
+      `);
     });
   });
 
