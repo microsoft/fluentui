@@ -1,4 +1,5 @@
 {
   "devopsDropFolderName": "drop",
-  "devopsWebpackStatsArtifactName": "bundlesizes.json"
+  "devopsWebpackStatsArtifactName": "bundlesizes.json",
+  "devopsAssemblyArtifactName": "bundlesizes.json"
 }
