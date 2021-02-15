@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Mon, 15 Feb 2021 12:24:49 GMT",
+      "tag": "@uifabric/charting_v4.14.2",
+      "version": "4.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Narrator issues fixed in bar charts and updated test cases",
+            "author": "v-jasha@microsoft.com",
+            "commit": "974bfc7b812627716055cc056c64ea6fed9edd95",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:25:26 GMT",
       "tag": "@uifabric/charting_v4.14.0",
       "version": "4.14.0",
