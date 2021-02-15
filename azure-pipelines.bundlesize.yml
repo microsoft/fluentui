@@ -82,7 +82,7 @@ jobs:
         displayName: 'Download Pipeline Artifact'
         inputs:
           buildType: specific
-          project: 'cd9e4e13-b8db-429a-9c21-499bf1c98639'
+          project: 'fabricpublic'
           definition: 55
           buildVersionToDownload: specific
           pipelineId: 186534
