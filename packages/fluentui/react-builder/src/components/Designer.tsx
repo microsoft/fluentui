@@ -70,7 +70,7 @@ export const Designer: React.FunctionComponent = () => {
     selectedJSONTreeElementUuid,
     showCode,
     code,
-    activeTab = 'add',
+    activeTab,
     codeError,
     insertComponent,
   } = state;
@@ -394,7 +394,7 @@ export const Designer: React.FunctionComponent = () => {
             <Button
               iconOnly
               text
-              // labelledBy="Add Components"
+              labelledBy="Add Components"
               style={{ marginLeft: '6px' }}
               onClick={() => selectActiveTab('add')}
             >
@@ -405,22 +405,11 @@ export const Designer: React.FunctionComponent = () => {
             <Button
               iconOnly
               text
-              // labelledBy="Navigator"
+              labelledBy="Navigator"
               style={{ marginLeft: '6px' }}
               onClick={() => selectActiveTab('nav')}
             >
               <MenuIcon size="large" outline />
-            </Button>
-          </div>
-          <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center' }}>
-            <Button
-              iconOnly
-              text
-              // labelledBy="Tokens"
-              style={{ marginLeft: '6px' }}
-              onClick={() => selectActiveTab('tokens')}
-            >
-              <OptionsIcon size="large" outline />
             </Button>
           </div>
         </div>
@@ -445,7 +434,7 @@ export const Designer: React.FunctionComponent = () => {
             }}
           >
             <Header as="h2" style={{ fontSize: '16px', fontWeight: 'bold' }}>
-              {activeTab == 'add' ? 'Add components' : activeTab == 'nav' ? 'Navigator' : 'Tokens'}
+              {activeTab == 'add' ? 'Add components' : 'Navigator'}
             </Header>
           </div>
           {activeTab == 'add' && (

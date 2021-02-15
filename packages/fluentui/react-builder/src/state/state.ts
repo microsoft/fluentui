@@ -293,7 +293,7 @@ export function useDesignerState(): [DesignerState, React.Dispatch<DesignerActio
       jsonTreeOrigin,
       selectedComponentInfo: null,
       selectedJSONTreeElementUuid: null,
-      activeTab: null,
+      activeTab: 'add',
       showCode: false,
       code: null,
       codeError: null,
