@@ -1,4 +1,4 @@
-import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-compose';
+import { ComponentProps } from '@fluentui/react-utils';
 import * as React from 'react';
 
 export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {
@@ -25,9 +25,5 @@ export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTML
 }
 
 export interface ImageState extends ImageProps {
-  imageRef?: React.RefObject<HTMLElement>;
+  ref: React.RefObject<HTMLImageElement>;
 }
-
-export interface ImageSlots extends BaseSlots {}
-
-export type ImageSlotProps = SlotProps<ImageSlots, ImageProps, React.ImgHTMLAttributes<HTMLImageElement>>;
