@@ -6,7 +6,7 @@ import { renderBadge } from './renderBadge';
 
 /**
  * Define a styled Badge, using the `useBadge` hook.
- * {@docCategory Badge }
+ * {@docCategory Badge}
  */
 export const Badge = React.forwardRef<HTMLElement, BadgeProps>((props, ref) => {
   const state = useBadge(props, ref);
