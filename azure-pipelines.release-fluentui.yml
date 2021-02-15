@@ -28,8 +28,8 @@ variables:
     value: 0.0.0-nightly
   - name: officialRelease # used by docsite
     value: true
-  - name: nightlyRelease # used by nightly built docsite to setup codesandbox correctly
-    value: true
+  - name: nightlyReleaseDate # used by nightly built docsite to setup codesandbox correctly
+    value: empty
 
   # below are variables configurable at queue time, so they cannot appear in yml file
   # - name: publishDocsiteOnly # set it to true to only run Job_build_publish_doc
@@ -137,6 +137,15 @@ jobs:
           filePath: yarn-ci.sh
 
       - task: CmdLine@2
+        displayName: 'Set nightlyReleaseDate'
+        condition: and(succeeded(), eq(variables.publishOfficial, false))
+        inputs:
+          script: |
+            today=`date +%Y-%m-%d`
+            echo date today $today
+            echo "##vso[task.setvariable variable=nightlyReleaseDate]$today"
+
+      - task: CmdLine@2
         displayName: 'Set base path and version'
         condition: and(succeeded(), eq(variables.publishOfficial, true), ne(variables.version, 'canary'))
         inputs:
@@ -145,7 +154,7 @@ jobs:
             echo "Docsite base path published for version $ver"
             echo "##vso[task.setvariable variable=deployBasePath]$ver"
             echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-            echo "##vso[task.setvariable variable=nightlyRelease]"
+            echo "##vso[task.setvariable variable=nightlyReleaseDate]"
 
       - task: CmdLine@2
         displayName: 'Set base path and version for canary'
@@ -156,13 +165,13 @@ jobs:
             echo "Docsite base path published for version $ver"
             echo "##vso[task.setvariable variable=deployBasePath]$ver"
             echo "##vso[task.setvariable variable=docsiteVersion]$ver"
-            echo "##vso[task.setvariable variable=nightlyRelease]"
+            echo "##vso[task.setvariable variable=nightlyReleaseDate]"
 
       - task: CmdLine@2
         displayName: Build
         inputs:
           script: |
-            echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyRelease $(nightlyRelease)
+            echo deployBasePath $(deployBasePath) docsiteVersion $(docsiteVersion) nightlyReleaseDate $(nightlyReleaseDate)
             NODE_ENV=production yarn build:fluentui:docs
 
       - task: PublishPipelineArtifact@1
