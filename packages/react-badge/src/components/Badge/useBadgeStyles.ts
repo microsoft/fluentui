@@ -14,6 +14,9 @@ export const useRootStyles = makeStyles<BadgeState>([
       backgroundColor: theme.alias.color.brand.brandBackground,
       borderColor: theme.alias.color.brand.brandBackground,
       color: theme.global.color.white,
+      fontWeight: theme.global.type.fontWeights.semibold,
+      borderWidth: '1px',
+      borderStyle: 'solid',
     }),
   ],
   [
@@ -82,6 +85,30 @@ export const useRootStyles = makeStyles<BadgeState>([
   [
     s => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
     theme => ({ borderRadius: theme.global.borderRadius.small }),
+  ],
+  [
+    s => s.appearance === 'ghost',
+    theme => ({
+      background: 'transparent',
+      border: 'none',
+      color: theme.alias.color.brand.brandBackground,
+    }),
+  ],
+  [
+    s => s.appearance === 'outline',
+    theme => ({
+      background: 'transparent',
+      borderColor: theme.alias.color.brand.brandBackground,
+      color: theme.alias.color.brand.brandBackground,
+    }),
+  ],
+  [
+    s => s.appearance === 'tint',
+    theme => ({
+      background: theme.global.palette.brand.tint60,
+      color: theme.global.palette.brand.shade40,
+      border: 'none',
+    }),
   ],
 ]);
 

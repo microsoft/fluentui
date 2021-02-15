@@ -18,7 +18,7 @@ export type BadgeStatus =
 /**
  * {@docCategory Badge}
  */
-export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'inverted' | 'tint';
+export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'tint';
 
 /**
  * {@docCategory Badge}
