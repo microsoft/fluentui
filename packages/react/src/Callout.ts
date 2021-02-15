@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Callout';
+export * from './components/Callout/index';

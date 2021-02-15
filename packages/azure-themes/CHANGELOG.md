@@ -1,8 +1,53 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Fri, 05 Feb 2021 12:20:17 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.53)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.52..@fluentui/azure-themes_v8.0.0-beta.53)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.54 ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.52)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.51..@fluentui/azure-themes_v8.0.0-beta.52)
+
+### Changes
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.51)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.50..@fluentui/azure-themes_v8.0.0-beta.51)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.50)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.49..@fluentui/azure-themes_v8.0.0-beta.50)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.51 ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.49)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.48..@fluentui/azure-themes_v8.0.0-beta.49)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.50 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
 
 ## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.48)
 

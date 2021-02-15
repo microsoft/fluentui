@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/CommandBar';
+export * from './components/CommandBar/index';

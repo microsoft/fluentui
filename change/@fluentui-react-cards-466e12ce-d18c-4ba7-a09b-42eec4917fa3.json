@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove unused types & dependency on react-compose",
+  "packageName": "@fluentui/react-cards",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

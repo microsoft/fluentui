@@ -14,12 +14,11 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@fluentui/scripts": "^1.0.0",
-    "typescript": "3.7.2"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react": "^8.0.0-beta.49",
+    "@fluentui/react": "^8.0.0-beta.54",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"

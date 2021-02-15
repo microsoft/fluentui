@@ -198,6 +198,7 @@ export * from './components/Toolbar/ToolbarRadioGroup';
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
+export * from './components/Tree/context';
 export * from './components/Tree/hooks/useTree';
 export * from './components/Tree/hooks/useVirtualTree';
 

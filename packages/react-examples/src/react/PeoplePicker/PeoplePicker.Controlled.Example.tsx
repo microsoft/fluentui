@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 import { IPersonaProps, Persona } from '@fluentui/react/lib/Persona';
 import { IBasePickerSuggestionsProps, NormalPeoplePicker } from '@fluentui/react/lib/Pickers';

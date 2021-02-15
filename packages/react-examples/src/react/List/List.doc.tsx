@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ListBasicExample } from './List.Basic.Example';
 import { ListGridExample } from './List.Grid.Example';
 import { ListScrollingExample } from './List.Scrolling.Example';
@@ -13,7 +13,7 @@ const ListGhostingExampleCode = require('!raw-loader?esModule=false!@fluentui/re
 export const ListPageProps: IDocPageProps = {
   title: 'List',
   componentName: 'ListExample',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/List',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/List',
   examples: [
     {
       title: 'List of 5000 grid items',

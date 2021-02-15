@@ -3,7 +3,7 @@ import { TextRampExample } from './Text.Ramp.Example';
 import { TextWrapExample } from './Text.Wrap.Example';
 import { TextBlockExample } from './Text.Block.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const TextRampExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Text/Text.Ramp.Example.tsx') as string;
 
@@ -14,7 +14,7 @@ const TextBlockExampleCode = require('!raw-loader?esModule=false!@fluentui/react
 export const TextPageProps: IDocPageProps = {
   title: 'Text',
   componentName: 'Text',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Text',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Text',
   examples: [
     {
       title: 'Text Ramp Example',

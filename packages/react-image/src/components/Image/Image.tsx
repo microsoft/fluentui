@@ -8,7 +8,7 @@ import { useImage } from './useImage';
 // Create a hook to resolve classnames.
 export const useImageClasses = makeClasses(classes);
 
-export const Image = React.forwardRef<HTMLElement, ImageProps>((props, ref) => {
+export const Image = React.forwardRef<HTMLImageElement, ImageProps>((props, ref) => {
   const { render, state } = useImage(props, ref);
 
   // Apply styling.

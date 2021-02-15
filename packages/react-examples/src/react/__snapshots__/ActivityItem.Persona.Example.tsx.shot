@@ -175,7 +175,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -487,7 +486,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -566,7 +564,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -645,7 +642,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -1007,7 +1003,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -1086,7 +1081,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -1509,7 +1503,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;
@@ -1588,7 +1581,6 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 outline: 1px solid WindowText;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                -ms-high-contrast-adjust: none;
                 border-bottom: none;
                 color: LinkText;
                 forced-color-adjust: none;

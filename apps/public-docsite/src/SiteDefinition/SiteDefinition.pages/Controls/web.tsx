@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
-import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
@@ -124,9 +124,6 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     Text: {},
     ThemeProvider: {},
     Themes: {},
-  },
-  Experimental: {
-    Card: {},
   },
   References: {},
   // The "Other" category can be useful for local development, but it currently can also cause

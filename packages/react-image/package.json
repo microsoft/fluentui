@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "0.6.20",
+  "version": "0.6.22",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,10 +45,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.11",
-    "@fluentui/react-hooks": "^8.0.0-beta.10",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.20",
-    "@fluentui/react-utils": "^0.2.0",
+    "@fluentui/react-hooks": "^8.0.0-beta.11",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.23",
+    "@fluentui/react-utils": "^0.3.1",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "object-fit-images": "^3.2.4",

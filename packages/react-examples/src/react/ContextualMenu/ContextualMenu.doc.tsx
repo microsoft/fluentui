@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { ContextualMenuBasicExample } from './ContextualMenu.Basic.Example';
 import { ContextualMenuDefaultExample } from './ContextualMenu.Default.Example';
@@ -39,8 +39,7 @@ const ContextualMenuScreenReaderExampleCode = require('!raw-loader?esModule=fals
 export const ContextualMenuPageProps: IDocPageProps = {
   title: 'ContextualMenu',
   componentName: 'ContextualMenu',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ContextualMenu',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ContextualMenu',
   examples: [
     {
       title: 'Basic ContextualMenu',

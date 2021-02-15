@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { HoverCardBasicExample } from './HoverCard.Basic.Example';
 import { HoverCardPlainCardExample } from './HoverCard.PlainCard.Example';
 import { HoverCardTargetExample } from './HoverCard.Target.Example';
@@ -16,7 +16,7 @@ const HoverCardEventListenerTargetExampleCode = require('!raw-loader?esModule=fa
 export const HoverCardPageProps: IDocPageProps = {
   title: 'HoverCard',
   componentName: 'HoverCard',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/HoverCard',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/HoverCard',
   examples: [
     {
       title: 'Expanding HoverCard wrapping an element',
