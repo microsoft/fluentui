@@ -8,7 +8,6 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
-  FocusAbilityHelpersProvider,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
@@ -35,13 +34,11 @@ const Container: React.FC = props => {
 
 export const MenuListExample = () => (
   <Container>
-    <FocusAbilityHelpersProvider>
-      <MenuList>
-        <MenuItem>Cut</MenuItem>
-        <MenuItem>Paste</MenuItem>
-        <MenuItem>Edit</MenuItem>
-      </MenuList>
-    </FocusAbilityHelpersProvider>
+    <MenuList>
+      <MenuItem>Cut</MenuItem>
+      <MenuItem>Paste</MenuItem>
+      <MenuItem>Edit</MenuItem>
+    </MenuList>
   </Container>
 );
 
