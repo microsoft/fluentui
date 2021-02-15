@@ -25,6 +25,8 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
   const latestListener = React.useRef<EventHandler<T>>(listener);
   latestListener.current = listener;
 
+  const currentEvent = React.useRef<Event | undefined>(undefined);
+
   const eventHandler = React.useCallback((event: DocumentEventMap[T]) => {
     return latestListener.current(event);
   }, []);
@@ -50,12 +52,12 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
     // Store the current event to avoid triggering handlers immediately
     // Note this depends on a deprecated but extremely well supported quirk of the web platform
     // https://github.com/facebook/react/issues/20074
-    let currentEvent: Event | undefined = getWindowEvent(window);
+    currentEvent.current = getWindowEvent(window);
 
     const conditionalHandler = (event: DocumentEventMap[T]) => {
       // Skip if this event is the same as the one running when we added the handlers
-      if (event === currentEvent) {
-        currentEvent = undefined;
+      if (event === currentEvent.current) {
+        currentEvent.current = undefined;
         return;
       }
 
@@ -71,7 +73,7 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
     }
 
     return () => {
-      currentEvent = undefined;
+      currentEvent.current = undefined;
 
       if (isActionSupported(element, 'removeEventListener')) {
         element.removeEventListener(type, conditionalHandler, capture);
