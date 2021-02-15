@@ -7,6 +7,7 @@ import * as os from 'os';
 import { spawnSync } from 'child_process';
 import { findGitRoot, getAllPackageInfo } from '../monorepo/index';
 import stripIndent from 'strip-indent';
+import chalk from 'chalk';
 
 //#endregion
 
@@ -149,7 +150,9 @@ module.exports = (plop: NodePlopAPI) => {
           );
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
-            console.error('Something went wrong with running yarn. Please check previous logs for details');
+            console.error(
+              chalk.red.bold('Something went wrong with running yarn. Please check previous logs for details'),
+            );
             process.exit(1);
           }
           return 'Packages linked!';
@@ -164,7 +167,7 @@ module.exports = (plop: NodePlopAPI) => {
             shell: true,
           });
           if (yarnResult.status !== 0) {
-            console.error('Something went wrong with building. Please check previous logs for details');
+            console.error(chalk.red.bold('Something went wrong with building. Please check previous logs for details'));
             process.exit(1);
           }
           return 'Component compiled!';
@@ -237,7 +240,7 @@ const appendToPackageIndex = async (answers: object, config: object, plop: objec
 
 //#region Utilities
 const displayAndThrowError = (message: string) => {
-  console.log(message);
+  console.log(chalk.red.bold(message));
   throw message;
 };
 
@@ -261,7 +264,6 @@ const projectsWithStartCommand = Object.entries(allPackages)
     ([pkg, info]) =>
       !ignoreProjects.includes(pkg) &&
       info.packagePath.startsWith('packages') &&
-      info.packageJson.dependencies &&
-      info.packageJson.dependencies['@fluentui/react-compose'] !== undefined,
+      info.packageJson.dependencies?.['@fluentui/react-compose'] !== undefined,
   )
   .map(([pkg, info]) => ({ title: pkg, value: { pkg, command: 'start' } }));
