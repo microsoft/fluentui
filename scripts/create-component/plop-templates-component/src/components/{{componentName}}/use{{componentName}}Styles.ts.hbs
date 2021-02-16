@@ -11,4 +11,6 @@ export const use{{componentName}}Styles = (state: {{componentName}}State) => {
   const rootClassName = useRootStyles(state);
 
   state.className = ax(rootClassName, state.className);
+  
+  return state
 };
