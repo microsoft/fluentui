@@ -233,7 +233,6 @@ function replaceVersionsFromReference(
 
 function updatePackageJson(packageJsonContents: string, answers: Answers) {
   const { target, hasTests, publish } = answers;
-  console.log(answers);
 
   // Copy dep versions in package.json from actual current version specs.
   // This is preferable over hardcoding dependency versions to keep things in sync.
