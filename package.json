@@ -74,7 +74,6 @@
     "@types/jest-axe": "3.2.2",
     "@storybook/addon-a11y": "6.0.0-alpha.1",
     "@storybook/addons": "5.3.8",
-    "@storybook/addon-options": "5.3.8",
     "@storybook/addon-actions": "5.3.8",
     "@storybook/addon-info": "5.3.8",
     "@storybook/addon-knobs": "5.3.8",
@@ -107,7 +106,6 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
-      "packages/web-components/@storybook",
       "packages/web-components/@storybook/**",
       "packages/web-components/typescript",
       "packages/web-components/typescript/**",
