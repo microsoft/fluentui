@@ -25,11 +25,11 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
   const latestListener = React.useRef<EventHandler<T>>(listener);
   latestListener.current = listener;
 
-  const currentEvent = React.useRef<Event | undefined>(undefined);
-
   const eventHandler = React.useCallback((event: DocumentEventMap[T]) => {
     return latestListener.current(event);
   }, []);
+
+  const timeoutId = React.useRef<number | undefined>(undefined);
 
   if (process.env.NODE_ENV !== 'production') {
     // This is fine to violate there conditional rule as environment variables will never change during component
@@ -52,12 +52,12 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
     // Store the current event to avoid triggering handlers immediately
     // Note this depends on a deprecated but extremely well supported quirk of the web platform
     // https://github.com/facebook/react/issues/20074
-    currentEvent.current = getWindowEvent(window);
+    let currentEvent = getWindowEvent(window);
 
     const conditionalHandler = (event: DocumentEventMap[T]) => {
       // Skip if this event is the same as the one running when we added the handlers
-      if (event === currentEvent.current) {
-        currentEvent.current = undefined;
+      if (event === currentEvent) {
+        currentEvent = undefined;
         return;
       }
 
@@ -72,8 +72,14 @@ export const useEventListener = <T extends EventTypes>(options: EventListenerOpt
       );
     }
 
+    // @ts-ignore We have a collision between types from DOM and @types/node
+    timeoutId.current = setTimeout(() => {
+      currentEvent = undefined;
+    }, 1);
+
     return () => {
-      currentEvent.current = undefined;
+      clearTimeout(timeoutId.current);
+      currentEvent = undefined;
 
       if (isActionSupported(element, 'removeEventListener')) {
         element.removeEventListener(type, conditionalHandler, capture);
