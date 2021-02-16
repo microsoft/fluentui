@@ -2,6 +2,21 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add getCSSRules helper to retrieve css text from stylesheet.",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/test-utilities_v8.0.0-beta.5",
       "version": "8.0.0-beta.5",

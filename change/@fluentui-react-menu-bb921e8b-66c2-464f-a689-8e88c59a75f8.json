@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Add checkbox implementation for menu item",
+  "comment": "Add menu group, divider and section",
   "packageName": "@fluentui/react-menu",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"

@@ -145,6 +145,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
     focusItemById,
     expandSiblings,
     toggleItemSelect,
+    getToFocusIDByFirstCharacter,
   } = useTree(props);
 
   const contextValue: TreeRenderContextValue = React.useMemo(
@@ -155,8 +156,17 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
       expandSiblings,
       focusItemById,
       toggleItemSelect,
+      getToFocusIDByFirstCharacter,
     }),
-    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, toggleItemSelect],
+    [
+      getItemById,
+      registerItemRef,
+      toggleItemActive,
+      focusItemById,
+      expandSiblings,
+      toggleItemSelect,
+      getToFocusIDByFirstCharacter,
+    ],
   );
 
   const renderContent = (): React.ReactElement[] => {

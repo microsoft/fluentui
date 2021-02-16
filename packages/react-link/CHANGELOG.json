@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.40",
+      "version": "1.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove dependency on react-compose",
+            "author": "olfedias@microsoft.com",
+            "commit": "52f6bb844c5dece1af576da1a34f9230c50432d6",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react-link_v1.0.0-beta.39",
       "version": "1.0.0-beta.39",
