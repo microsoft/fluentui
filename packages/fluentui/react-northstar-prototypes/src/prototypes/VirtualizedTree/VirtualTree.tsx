@@ -19,6 +19,7 @@ import {
   TreeStylesProps,
   useVirtualTree,
   ObjectShorthandCollection,
+  ShorthandValue,
 } from '@fluentui/react-northstar';
 import { TreeContext, TreeRenderContextValue } from '@fluentui/react-northstar/src/components/Tree/context';
 import { VariableSizeList, VariableSizeListProps, ListChildComponentProps } from 'react-window';
@@ -31,6 +32,12 @@ export interface VirtualTreeProps
     Pick<VariableSizeListProps, 'estimatedItemSize' | 'height'> {
   // Where itemSize is in px
   items?: ObjectShorthandCollection<TreeItemProps & { itemSize: number }>;
+
+  /**
+   * A function that converts an item to string.
+   * Used for keyboard navigation based on the first letter of an item's text content
+   */
+  itemToString?: (item: ShorthandValue<TreeItemProps>) => string;
 }
 
 export interface VirtualItemData {
@@ -44,7 +51,10 @@ export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const { children, className, design, styles, variables, height, estimatedItemSize } = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps([...Tree.handledProps, 'estimatedItemSize', 'itemSize'], props);
+  const unhandledProps = useUnhandledProps(
+    [...Tree.handledProps, 'estimatedItemSize', 'itemSize', 'itemToString'],
+    props,
+  );
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: VirtualTree.displayName,
@@ -171,4 +181,5 @@ VirtualTree.displayName = 'VirtualTree';
 VirtualTree.defaultProps = {
   accessibility: treeBehavior,
   estimatedItemSize: 50,
+  itemToString: item => (item as any).content || '',
 };

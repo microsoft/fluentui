@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { useTree, UseTreeResult, UseTreeOptions } from './useTree';
+import { ShorthandValue } from '../../../types';
+import { TreeItemProps } from '../TreeItem';
 
-export interface UseVirtualTreeOptions extends Omit<UseTreeOptions, 'selectedItemIds' | 'defaultSelectedItemIds'> {}
+export interface UseVirtualTreeOptions extends Omit<UseTreeOptions, 'selectedItemIds' | 'defaultSelectedItemIds'> {
+  /**
+   * A function that converts an item to string. Used for keyboard navigation based on the first letter of an item's text content
+   */
+  itemToString?: (item: ShorthandValue<TreeItemProps>) => string;
+}
 
 export interface UseVirtualTreeResult extends UseTreeResult {
   /** ref to be assigned to react-window VariableSizeList/FixedSizeList component */
@@ -98,11 +105,50 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
     }
   }, [getItemRef, visibleItemIds]);
 
+  const searchByFirstChar = React.useCallback(
+    (startIndex: number, endIndex: number, char: string) => {
+      for (let i = startIndex; i < endIndex; ++i) {
+        // get first charater of tree node using the same way aria does (https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-2/js/treeitemLinks.js)
+        const itemFirstChar = props
+          .itemToString(getItemById(visibleItemIds[i]).item)
+          ?.trim()
+          ?.charAt(0)
+          ?.toLowerCase();
+        if (itemFirstChar === char.toLowerCase()) {
+          return i;
+        }
+      }
+      return -1;
+    },
+    [getItemById, props, visibleItemIds],
+  );
+
+  const getToFocusIDByFirstCharacter = React.useCallback(
+    (e: React.KeyboardEvent, idToStartSearch: string) => {
+      // Get start index for search
+      let starIndex = visibleItemIds.indexOf(idToStartSearch) + 1;
+      if (starIndex === visibleItemIds.length) {
+        starIndex = 0;
+      }
+
+      // Check following nodes in tree
+      let toFocusIndex = searchByFirstChar(starIndex, visibleItemIds.length, e.key);
+      // If not found in following nodes, check from beginning
+      if (toFocusIndex === -1) {
+        toFocusIndex = searchByFirstChar(0, starIndex - 1, e.key);
+      }
+
+      return visibleItemIds[toFocusIndex];
+    },
+    [searchByFirstChar, visibleItemIds],
+  );
+
   return {
     ...baseTree,
     registerItemRef,
     focusItemById,
     expandSiblings,
+    getToFocusIDByFirstCharacter,
     listRef,
   };
 }
