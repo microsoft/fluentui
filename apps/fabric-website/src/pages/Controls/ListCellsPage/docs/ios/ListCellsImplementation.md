@@ -14,22 +14,22 @@
 
 ### Source code
 
-[TableViewCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/TableViewCell.swift)
+[TableViewCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/TableViewCell.swift)
 
-[ActionsCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/ActionsCell.swift)
+[ActionsCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/ActionsCell.swift)
 
-[ActivityIndicatorCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/ActivityIndicatorCell.swift)
+[ActivityIndicatorCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/ActivityIndicatorCell.swift)
 
-[CenteredLabelCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/CenteredLabelCell.swift)
+[CenteredLabelCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/CenteredLabelCell.swift)
 
-[BooleanCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/BooleanCell.swift)
+[BooleanCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/BooleanCell.swift)
 
-[TableViewHeaderFooterView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/TableViewHeaderFooterView.swift)
+[TableViewHeaderFooterView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/TableViewHeaderFooterView.swift)
 
 ### Sample code
 
-[TableViewCell demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewCellDemoController.swift)
+[TableViewCell demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewCellDemoController.swift)
 
-[Other cells demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/OtherCellsDemoController.swift)
+[Other cells demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/OtherCellsDemoController.swift)
 
-[TableViewHeaderFooterView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewHeaderFooterViewDemoController.swift)
+[TableViewHeaderFooterView demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/TableViewHeaderFooterViewDemoController.swift)
