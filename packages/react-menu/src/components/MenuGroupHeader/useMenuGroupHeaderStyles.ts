@@ -18,6 +18,6 @@ const useHeaderStyles = makeStyles([
 
 export const useMenuGroupHeaderStyles = (state: MenuGroupHeaderState) => {
   state.className = ax(useHeaderStyles({}), state.className);
-  
-  return state
+
+  return state;
 };
