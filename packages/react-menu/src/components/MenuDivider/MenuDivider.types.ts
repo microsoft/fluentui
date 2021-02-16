@@ -4,7 +4,7 @@ import { ComponentProps } from '@fluentui/react-utils';
 /**
  * {@docCategory MenuDivider}
  */
-export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {};
+export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
 
 /**
  * {@docCategory MenuDivider}
