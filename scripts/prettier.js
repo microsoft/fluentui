@@ -29,9 +29,9 @@ async function main() {
   const queue = new PQueue({ concurrency: numberOfCpus });
 
   if (runOnAllFiles) {
-    runOnAll({ queue, paths });
+    await runOnAll({ queue, paths });
   } else {
-    runOnChanged({ queue, paths });
+    await runOnChanged({ queue, paths });
   }
 
   await queue.onEmpty().catch(error => {
@@ -84,7 +84,7 @@ async function runOnChanged(options) {
   await queue.addAll(
     fileGroups.map(group => () => {
       console.log(`Running for ${group.length} files!`);
-      runPrettier(group, { runAsync: true, check: parsedArgs.check });
+      return runPrettier(group, { runAsync: true, check: parsedArgs.check });
     }),
   );
 }
