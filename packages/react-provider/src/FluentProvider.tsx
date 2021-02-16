@@ -35,8 +35,8 @@ export function useFluentProviderState(draftState: ProviderState) {
   draftState.dir = draftState.dir || parentContext.dir;
 }
 
-// TODO: remove once globals are supported
 makeStaticStyles([
+  // TODO: this should be from a package or something
   `/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html{line-height:1.15;-webkit-text-size-adjust:100%}
 body{margin:0}
@@ -80,14 +80,17 @@ template{display:none}
       margin: 0,
       // TODO: ask design what are these global values supposed to be?
 
-      // TODO: solve => fontFamily: theme.global.type.fontFamilies.base,
-      fontFamily: '...',
-
-      // TODO: solve => fontSize: theme.global.type.fontSizes.base[400],
-      fontSize: '...',
-
-      // TODO: solve => lineHeight: theme.global.type.lineHeights.base[400],
-      lineHeight: '...',
+      // TODO: These come from:
+      //        - theme.global.type.fontFamilies.base but is hard-coded.
+      //        - theme.global.type.fontSizes.base[400]
+      //        - theme.global.type.lineHeights.base[400]
+      //       Will this work for all products? This is the Provider so we're
+      //         forcing these globals onto every app regardless of their current globals.
+      fontFamily:
+        // eslint-disable-next-line @fluentui/max-len
+        "'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif",
+      fontSize: '16px',
+      lineHeight: '22px',
     },
 
     '*': {
