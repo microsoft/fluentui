@@ -1,5 +1,5 @@
 import { ax, makeStyles } from '@fluentui/react-make-styles';
-import { AvatarState } from './Avatar.types';
+import { AvatarState, avatarSizeValues, defaultAvatarSize } from './Avatar.types';
 
 //
 // TODO: All animation constants should go to theme or globals?
@@ -49,6 +49,28 @@ const animations = {
   nullEasing: animationLines.linear,
 };
 
+const iconSize = {
+  small: '12px',
+  medium: '16px',
+  large: '24px',
+  larger: '40px',
+  largest: '48px',
+};
+
+const activeRing = (s: AvatarState) =>
+  (s.active === 'active' || s.active === 'inactive') &&
+  (!s.activeDisplay ||
+    s.activeDisplay === 'ring' ||
+    s.activeDisplay === 'ring-glow' ||
+    s.activeDisplay === 'ring-shadow');
+
+const activeShadow = (s: AvatarState) =>
+  (s.active === 'active' || s.active === 'inactive') &&
+  (s.activeDisplay === 'shadow' || s.activeDisplay === 'ring-shadow');
+
+const activeGlow = (s: AvatarState) =>
+  (s.active === 'active' || s.active === 'inactive') && (s.activeDisplay === 'glow' || s.activeDisplay === 'ring-glow');
+
 const useStyles = makeStyles<AvatarState>([
   [
     null,
@@ -60,8 +82,8 @@ const useStyles = makeStyles<AvatarState>([
 
       borderRadius: tokens.global.borderRadius.circular,
 
-      width: '32px',
-      height: '32px',
+      width: `${defaultAvatarSize}px`,
+      height: `${defaultAvatarSize}px`,
 
       fontFamily: tokens.global.type.fontFamilies.base,
       fontSize: tokens.global.type.fontSizes.base[300],
@@ -69,157 +91,36 @@ const useStyles = makeStyles<AvatarState>([
     }),
   ],
 
-  [
-    s => s.size === 20,
-    tokens => ({
-      width: '20px',
-      height: '20px',
+  // Add rules to set the width and height based on every possible size
+  ...avatarSizeValues.map(
+    val => [s => s.size === val, { width: `${val}px`, height: `${val}px` }] as [(s: AvatarState) => boolean, {}],
+  ),
 
-      fontSize: tokens.global.type.fontSizes.base[100],
-      fontWeight: tokens.global.type.fontWeights.regular,
-    }),
-  ],
-  [
-    s => s.size === 24,
-    tokens => ({
-      width: '24px',
-      height: '24px',
+  [s => s.size < 28, tokens => ({ fontSize: tokens.global.type.fontSizes.base[100] })],
+  [s => s.size >= 28, tokens => ({ fontSize: tokens.global.type.fontSizes.base[200] })],
+  [s => s.size >= 32, tokens => ({ fontSize: tokens.global.type.fontSizes.base[300] })],
+  [s => s.size >= 48, tokens => ({ fontSize: tokens.global.type.fontSizes.base[400] })],
+  [s => s.size >= 64, tokens => ({ fontSize: tokens.global.type.fontSizes.base[500] })],
+  [s => s.size >= 120, tokens => ({ fontSize: tokens.global.type.fontSizes.base[600] })],
 
-      fontSize: tokens.global.type.fontSizes.base[100],
-      fontWeight: tokens.global.type.fontWeights.regular,
-    }),
-  ],
-  [
-    s => s.size === 28,
-    tokens => ({
-      width: '28px',
-      height: '28px',
+  [s => s.size < 28, tokens => ({ fontWeight: tokens.global.type.fontWeights.regular })],
+  [s => s.size >= 28, tokens => ({ fontWeight: tokens.global.type.fontWeights.semibold })],
 
-      fontSize: tokens.global.type.fontSizes.base[200],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 32,
-    tokens => ({
-      width: '32px',
-      height: '32px',
-
-      fontSize: tokens.global.type.fontSizes.base[300],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 36,
-    tokens => ({
-      width: '36px',
-      height: '36px',
-
-      fontSize: tokens.global.type.fontSizes.base[300],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 40,
-    tokens => ({
-      width: '40px',
-      height: '40px',
-
-      fontSize: tokens.global.type.fontSizes.base[300],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 48,
-    tokens => ({
-      width: '48px',
-      height: '48px',
-
-      fontSize: tokens.global.type.fontSizes.base[400],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 56,
-    tokens => ({
-      width: '56px',
-      height: '56px',
-
-      fontSize: tokens.global.type.fontSizes.base[400],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 64,
-    tokens => ({
-      width: '64px',
-      height: '64px',
-
-      fontSize: tokens.global.type.fontSizes.base[500],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 72,
-    tokens => ({
-      width: '72px',
-      height: '72px',
-
-      fontSize: tokens.global.type.fontSizes.base[500],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 96,
-    tokens => ({
-      width: '96px',
-      height: '96px',
-
-      fontSize: tokens.global.type.fontSizes.base[500],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 120,
-    tokens => ({
-      width: '120px',
-      height: '120px',
-
-      fontSize: tokens.global.type.fontSizes.base[600],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-  [
-    s => s.size === 128,
-    tokens => ({
-      width: '128px',
-      height: '128px',
-
-      fontSize: tokens.global.type.fontSizes.base[600],
-      fontWeight: tokens.global.type.fontWeights.semibold,
-    }),
-  ],
-
-  [s => s.square, tokens => ({ borderRadius: tokens.global.borderRadius.medium })],
-  [s => s.square && (s.size === 20 || s.size === 24), tokens => ({ borderRadius: tokens.global.borderRadius.small })],
-  [
-    s => s.square && (s.size === 56 || s.size === 64 || s.size === 72),
-    tokens => ({ borderRadius: tokens.global.borderRadius.large }),
-  ],
-  [
-    s => s.square && (s.size === 96 || s.size === 120 || s.size === 128),
-    tokens => ({ borderRadius: tokens.global.borderRadius.xLarge }),
-  ],
+  [s => s.square && s.size < 28, tokens => ({ borderRadius: tokens.global.borderRadius.small })],
+  [s => s.square && s.size >= 28, tokens => ({ borderRadius: tokens.global.borderRadius.medium })],
+  [s => s.square && s.size >= 56, tokens => ({ borderRadius: tokens.global.borderRadius.large })],
+  [s => s.square && s.size >= 96, tokens => ({ borderRadius: tokens.global.borderRadius.xLarge })],
 
   [
     s => s.active === 'active' || s.active === 'inactive',
     {
       transform: 'perspective(1px)', // Work-around for text pixel snapping at the end of the animation
-      // eslint-disable-next-line @fluentui/max-len
-      transition: `transform ${animationTiming.ultraSlow} ${animations.fastEase}, opacity ${animationTiming.faster} ${animations.nullEasing}`,
+      transition:
+        `transform ${animationTiming.ultraSlow} ${animations.fastEase}, ` +
+        `opacity ${animationTiming.faster} ${animations.nullEasing}`,
 
       ':before': {
-        content: '" "',
+        content: '""',
         position: 'absolute',
         top: 0,
         left: 0,
@@ -227,42 +128,33 @@ const useStyles = makeStyles<AvatarState>([
         right: 0,
 
         borderRadius: 'inherit',
-        // eslint-disable-next-line @fluentui/max-len
-        transition: `margin ${animationTiming.ultraSlow} ${animations.fastEase}, opacity ${animationTiming.slower} ${animations.nullEasing}`,
-      },
-    },
-  ],
-  [
-    s => s.active === 'inactive',
-    {
-      opacity: '0.8',
-      transform: 'scale(0.875)',
-      // eslint-disable-next-line @fluentui/max-len
-      transition: `transform ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, opacity ${animationTiming.faster} ${animations.nullEasing}`,
-
-      ':before': {
-        margin: 0,
-        opacity: 0,
-        // eslint-disable-next-line @fluentui/max-len
-        transition: `margin ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, opacity ${animationTiming.slower} ${animations.nullEasing}`,
+        transition:
+          `margin ${animationTiming.ultraSlow} ${animations.fastEase}, ` +
+          `opacity ${animationTiming.slower} ${animations.nullEasing}`,
       },
     },
   ],
 
   [
-    s => s.activeRing,
+    activeRing,
     tokens => ({
       ':before': {
         borderColor: tokens.alias.color.neutral.brandForeground, // TODO: use valid token
         borderStyle: 'solid',
-        borderWidth: tokens.global.strokeWidth.thick,
-
-        margin: `calc(-2 * ${tokens.global.strokeWidth.thick})`,
       },
     }),
   ],
   [
-    s => s.activeRing && (s.size === 48 || s.size === 56 || s.size === 64),
+    s => activeRing(s) && s.size < 48,
+    tokens => ({
+      ':before': {
+        margin: `calc(-2 * ${tokens.global.strokeWidth.thick})`,
+        borderWidth: tokens.global.strokeWidth.thick,
+      },
+    }),
+  ],
+  [
+    s => activeRing(s) && s.size >= 48,
     tokens => ({
       ':before': {
         margin: `calc(-2 * ${tokens.global.strokeWidth.thicker})`,
@@ -271,7 +163,7 @@ const useStyles = makeStyles<AvatarState>([
     }),
   ],
   [
-    s => s.activeRing && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
+    s => activeRing(s) && s.size >= 72,
     tokens => ({
       ':before': {
         margin: `calc(-2 * ${tokens.global.strokeWidth.thickest})`,
@@ -280,103 +172,57 @@ const useStyles = makeStyles<AvatarState>([
     }),
   ],
 
-  [
-    s => s.activeShadow,
-    tokens => ({
-      ':before': { boxShadow: tokens.alias.shadow.shadow8 },
-    }),
-  ],
-  [
-    s => s.activeShadow && (s.size === 20 || s.size === 24 || s.size === 28),
-    tokens => ({
-      ':before': { boxShadow: tokens.alias.shadow.shadow4 },
-    }),
-  ],
-  [
-    s => s.activeShadow && (s.size === 48 || s.size === 56 || s.size === 64),
-    tokens => ({
-      ':before': { boxShadow: tokens.alias.shadow.shadow16 },
-    }),
-  ],
-  [
-    s => s.activeShadow && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
-    tokens => ({
-      ':before': { boxShadow: tokens.alias.shadow.shadow28 },
-    }),
-  ],
+  [s => activeShadow(s) && s.size < 32, tokens => ({ ':before': { boxShadow: tokens.alias.shadow.shadow4 } })],
+  [s => activeShadow(s) && s.size >= 32, tokens => ({ ':before': { boxShadow: tokens.alias.shadow.shadow8 } })],
+  [s => activeShadow(s) && s.size >= 48, tokens => ({ ':before': { boxShadow: tokens.alias.shadow.shadow16 } })],
+  [s => activeShadow(s) && s.size >= 72, tokens => ({ ':before': { boxShadow: tokens.alias.shadow.shadow28 } })],
 
   // TODO: use proper tokens instead of "rgba(0,120,212,0.3)"
   [
-    s => s.activeGlow,
-    tokens => ({
-      ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)`,
-      },
-    }),
+    s => activeGlow(s) && s.size < 32,
+    tokens => ({ ':before': { boxShadow: `${tokens.alias.shadow.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)` } }),
   ],
   [
-    s => s.activeGlow && (s.size === 20 || s.size === 24 || s.size === 28),
-    tokens => ({
-      ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow4}, 0 0 4px 2px rgba(0,120,212,0.3)`,
-      },
-    }),
+    s => activeGlow(s) && s.size >= 32,
+    tokens => ({ ':before': { boxShadow: `${tokens.alias.shadow.shadow8}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
   ],
   [
-    s => s.activeGlow && (s.size === 48 || s.size === 56 || s.size === 64),
-    tokens => ({
-      ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)`,
-      },
-    }),
+    s => activeGlow(s) && s.size >= 48,
+    tokens => ({ ':before': { boxShadow: `${tokens.alias.shadow.shadow16}, 0 0 8px 2px rgba(0,120,212,0.3)` } }),
   ],
   [
-    s => s.activeGlow && (s.size === 72 || s.size === 96 || s.size === 120 || s.size === 128),
-    tokens => ({
-      ':before': {
-        boxShadow: `${tokens.alias.shadow.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)`,
-      },
-    }),
+    s => activeGlow(s) && s.size >= 72,
+    tokens => ({ ':before': { boxShadow: `${tokens.alias.shadow.shadow28}, 0 0 28px 4px rgba(0,120,212,0.3)` } }),
   ],
 
+  // Note: The inactive styles must be after all of the active/activeRing/activeShadow/activeGlow styles,
+  // so they appropriately override the margin, etc.
   [
-    s => s.hasIcon,
+    s => s.active === 'inactive',
     {
-      fontSize: '16px',
-      fontWeight: 'initial',
-    },
-  ],
-  [
-    s => s.hasIcon && (s.size === 20 || s.size === 24),
-    {
-      fontSize: '12px',
+      opacity: '0.8',
+      transform: 'scale(0.875)',
+      transition:
+        `transform ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, ` +
+        `opacity ${animationTiming.faster} ${animations.nullEasing}`,
+
+      ':before': {
+        margin: 0,
+        opacity: 0,
+        transition:
+          `margin ${animationTiming.ultraSlow} ${animations.fastOutSlowInMin}, ` +
+          `opacity ${animationTiming.slower} ${animations.nullEasing}`,
+      },
     },
   ],
 
-  [
-    s => s.hasIcon && (s.size === 28 || s.size === 32 || s.size === 36 || s.size === 40),
-    {
-      fontSize: '16px',
-    },
-  ],
-  [
-    s => s.hasIcon && (s.size === 48 || s.size === 56 || s.size === 64 || s.size === 72),
-    {
-      fontSize: '24px',
-    },
-  ],
-  [
-    s => s.hasIcon && s.size === 96,
-    {
-      fontSize: '40px',
-    },
-  ],
-  [
-    s => s.hasIcon && (s.size === 120 || s.size === 128),
-    {
-      fontSize: '48px',
-    },
-  ],
+  [s => s.icon !== undefined, { fontWeight: 'initial' }],
+
+  [s => s.icon !== undefined && s.size < 28, { fontSize: iconSize.small }],
+  [s => s.icon !== undefined && s.size >= 28, { fontSize: iconSize.medium }],
+  [s => s.icon !== undefined && s.size >= 48, { fontSize: iconSize.large }],
+  [s => s.icon !== undefined && s.size >= 96, { fontSize: iconSize.larger }],
+  [s => s.icon !== undefined && s.size >= 120, { fontSize: iconSize.largest }],
 ]);
 
 const useBadgeStyles = makeStyles<AvatarState>([
@@ -389,19 +235,20 @@ const useBadgeStyles = makeStyles<AvatarState>([
     },
   ],
 
-  [s => s.size === 20, { '--badge-size': 'calc(20px / 4)' }],
-  [s => s.size === 24, { '--badge-size': 'calc(24px / 4)' }],
-  [s => s.size === 28, { '--badge-size': 'calc(28px / 4)' }],
-  [s => s.size === 32, { '--badge-size': 'calc(32px / 4)' }],
-  [s => s.size === 36, { '--badge-size': 'calc(36px / 4)' }],
-  [s => s.size === 40, { '--badge-size': 'calc(40px / 4)' }],
-  [s => s.size === 48, { '--badge-size': 'calc(48px / 4)' }],
-  [s => s.size === 56, { '--badge-size': 'calc(56px / 4)' }],
-  [s => s.size === 64, { '--badge-size': 'calc(64px / 4)' }],
-  [s => s.size === 72, { '--badge-size': 'calc(72px / 4)' }],
-  [s => s.size === 96, { '--badge-size': 'calc(96px / 4)' }],
-  [s => s.size === 120, { '--badge-size': 'calc(120px / 4)' }],
-  [s => s.size === 128, { '--badge-size': 'calc(128px / 4)' }],
+  // TODO apply the correct badge sizes once the new Badge component is available
+  [s => s.size < 24, { '--badge-size': '5px' }],
+  [s => s.size >= 24, { '--badge-size': '6px' }],
+  [s => s.size >= 28, { '--badge-size': '7px' }],
+  [s => s.size >= 32, { '--badge-size': '8px' }],
+  [s => s.size >= 36, { '--badge-size': '9px' }],
+  [s => s.size >= 40, { '--badge-size': '10px' }],
+  [s => s.size >= 48, { '--badge-size': '12px' }],
+  [s => s.size >= 56, { '--badge-size': '14px' }],
+  [s => s.size >= 64, { '--badge-size': '16px' }],
+  [s => s.size >= 72, { '--badge-size': '18px' }],
+  [s => s.size >= 96, { '--badge-size': '24px' }],
+  [s => s.size >= 120, { '--badge-size': '30px' }],
+  [s => s.size >= 128, { '--badge-size': '32px' }],
 ]);
 
 const useImageStyles = makeStyles<AvatarState>([
