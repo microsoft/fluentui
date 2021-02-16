@@ -10,6 +10,46 @@ import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utils';
 
 // @public
+export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+
+// @public (undocumented)
+export interface MenuDividerState extends MenuDividerProps {
+    // (undocumented)
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
+export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+// @public
+export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+
+// @public (undocumented)
+export interface MenuGroupHeaderState extends MenuGroupHeaderProps {
+    // (undocumented)
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public (undocumented)
+export type MenuGroupProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
+
+// @public
+export const menuGroupShorthandProps: string[];
+
+// @public (undocumented)
+export interface MenuGroupState extends MenuGroupProps {
+    headerId: string;
+    // (undocumented)
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
 export const MenuItem: React.ForwardRefExoticComponent<MenuItemProps & React.RefAttributes<HTMLElement>>;
 
 // @public
@@ -87,6 +127,15 @@ export interface MenuListState extends MenuListProps {
 }
 
 // @public
+export const renderMenuDivider: (state: MenuDividerState) => JSX.Element;
+
+// @public
+export const renderMenuGroup: (state: MenuGroupState) => JSX.Element;
+
+// @public
+export const renderMenuGroupHeader: (state: MenuGroupHeaderState) => JSX.Element;
+
+// @public
 export const renderMenuItem: (state: MenuItemState) => JSX.Element;
 
 // @public
@@ -100,6 +149,21 @@ export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
 export const useIconStyles: (selectors: MenuItemState) => string;
+
+// @public
+export const useMenuDivider: (props: MenuDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuDividerProps | undefined) => MenuDividerState;
+
+// @public (undocumented)
+export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
+
+// @public
+export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
+
+// @public
+export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps | undefined) => MenuGroupHeaderState;
+
+// @public (undocumented)
+export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
 
 // @public
 export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;

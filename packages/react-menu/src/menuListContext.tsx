@@ -6,6 +6,9 @@ const MenuListContext = React.createContext<MenuListContext>({
 });
 
 // TODO add context selector to reduce the number of rerenders
+/**
+ * Context shared between MenuList and its children components
+ */
 export interface MenuListContext {
   checkedValues?: Record<string, string[]>;
   onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, items: string[]) => void;
