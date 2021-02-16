@@ -7379,9 +7379,11 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
     className?: string;
     componentRef?: IRefObject<ISlider>;
+    defaultLowerValue?: number;
     defaultValue?: number;
     disabled?: boolean;
     label?: string;
+    lowerValue?: number;
     max?: number;
     min?: number;
     onChange?: (value: number) => void;
@@ -8621,9 +8623,6 @@ export const MAX_COLOR_VALUE = 100;
 // @public
 export const MAX_HEX_LENGTH = 6;
 
-// @public (undocumented)
-export const MAX_PREFIX = "max";
-
 // @public
 export const MAX_RGBA_LENGTH = 3;
 
@@ -8663,9 +8662,6 @@ export enum MessageBarType {
 
 // @public
 export const MIN_HEX_LENGTH = 3;
-
-// @public (undocumented)
-export const MIN_PREFIX = "min";
 
 // @public
 export const MIN_RGBA_LENGTH = 1;
@@ -9942,18 +9938,6 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         };
     };
     lowerValueThumb: {
-        ref: React.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | {
-        ref: React.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | {
         id: string;
         'aria-valuemin': number;
         'aria-valuemax': number;
@@ -9969,7 +9953,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         style: {
             [x: string]: string;
         };
-    };
+    } | undefined;
     zeroTick: false | {
         className: string;
         style: {
