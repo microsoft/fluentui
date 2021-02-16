@@ -18,7 +18,7 @@ export const useMenuGroup = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuGroupProps,
 ): MenuGroupState => {
-  const id = useId(`menu-group`);
+  const id = useId('menu-group');
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
