@@ -13,8 +13,8 @@ import {
 } from '@fluentui/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-export const MIN_PREFIX = 'min';
-export const MAX_PREFIX = 'max';
+const MIN_PREFIX = 'min';
+const MAX_PREFIX = 'max';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
@@ -430,22 +430,22 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     }),
   };
 
-  const lowerValueThumbProps = {
-    ref: lowerValueThumbRef,
-    className: classNames.thumb,
-    style: getPositionStyles(lowerValuePercent),
-    ...(ranged && {
-      ...sliderProps,
-      ...eventProps,
-      ...onFocusProp,
-      id: `${MIN_PREFIX}-${id}`,
-      'aria-valuemin': min,
-      'aria-valuemax': value,
-      'aria-valuenow': lowerValue,
-      'aria-valuetext': getAriaValueText(lowerValue),
-      'aria-label': `${MIN_PREFIX} ${ariaLabel || label}`,
-    }),
-  };
+  const lowerValueThumbProps = ranged
+    ? {
+        ref: lowerValueThumbRef,
+        className: classNames.thumb,
+        style: getPositionStyles(lowerValuePercent),
+        ...sliderProps,
+        ...eventProps,
+        ...onFocusProp,
+        id: `${MIN_PREFIX}-${id}`,
+        'aria-valuemin': min,
+        'aria-valuemax': value,
+        'aria-valuenow': lowerValue,
+        'aria-valuetext': getAriaValueText(lowerValue),
+        'aria-label': `${MIN_PREFIX} ${ariaLabel || label}`,
+      }
+    : undefined;
 
   const containerProps = {
     className: classNames.container,

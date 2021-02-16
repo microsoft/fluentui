@@ -6,8 +6,11 @@ import { resetIds, KeyCodes } from '@fluentui/utilities';
 import { create } from '@fluentui/utilities/lib/test';
 import { Slider } from './Slider';
 import { ISlider } from './Slider.types';
-import { ONKEYDOWN_TIMEOUT_DURATION, MIN_PREFIX, MAX_PREFIX } from './useSlider';
+import { ONKEYDOWN_TIMEOUT_DURATION } from './useSlider';
 import { isConformant } from '../../common/isConformant';
+
+const MIN_PREFIX = 'min';
+const MAX_PREFIX = 'max';
 
 describe('Slider', () => {
   let wrapper: ReactWrapper | undefined;
