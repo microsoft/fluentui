@@ -305,7 +305,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const onThumbFocus = (event: MouseEvent | TouchEvent): void => {
-    shouldChangeLowerValueRef.current = (event.target as HTMLSpanElement)?.id === lowerValueThumbRef.current?.id;
+    shouldChangeLowerValueRef.current = event.target === lowerValueThumbRef.current;
   };
 
   const disposeListeners = (): void => {
