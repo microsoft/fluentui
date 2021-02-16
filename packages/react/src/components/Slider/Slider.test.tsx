@@ -473,6 +473,23 @@ describe('Slider', () => {
     expect(onChange.mock.calls[0][0]).toEqual(2);
   });
 
+  it('calls onRangeChange with correct value when controlled', () => {
+    const slider = React.createRef<ISlider>();
+    const onRangeChange = jest.fn();
+
+    wrapper = mount(
+      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onRangeChange={onRangeChange} ranged />,
+    );
+    const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
+
+    sliderSlideBox.simulate('keydown', { which: KeyCodes.down });
+
+    expect(slider.current?.value).toEqual(3);
+
+    // Get the first argument passed into the call
+    expect(onRangeChange.mock.calls[0][0]).toEqual([0, 2]);
+  });
+
   it('calls onChange on multiple calls with correct value when controlled', () => {
     const slider = React.createRef<ISlider>();
     const onChange = jest.fn();
