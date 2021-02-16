@@ -440,7 +440,7 @@ exports[`Slider renders range slider correctly 1`] = `
           @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Slider-zeroTick {
             background-color: Highlight;
           }
-          @media screen and (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             forced-color-adjust: none;
           }
       id="Slider0"
@@ -460,7 +460,7 @@ exports[`Slider renders range slider correctly 1`] = `
         <span
           aria-disabled={false}
           aria-label="min I am a ranged slider"
-          aria-valuemax={0}
+          aria-valuemax={5}
           aria-valuemin={0}
           aria-valuenow={0}
           aria-valuetext="0"
@@ -515,8 +515,8 @@ exports[`Slider renders range slider correctly 1`] = `
           aria-label="max I am a ranged slider"
           aria-valuemax={10}
           aria-valuemin={0}
-          aria-valuenow={0}
-          aria-valuetext="0"
+          aria-valuenow={5}
+          aria-valuetext="5"
           className=
               ms-Slider-thumb
               {
@@ -558,7 +558,7 @@ exports[`Slider renders range slider correctly 1`] = `
           role="slider"
           style={
             Object {
-              "left": "0%",
+              "left": "50%",
             }
           }
           tabIndex={0}
@@ -603,7 +603,7 @@ exports[`Slider renders range slider correctly 1`] = `
               }
           style={
             Object {
-              "width": "0%",
+              "width": "50%",
             }
           }
         />
@@ -625,7 +625,7 @@ exports[`Slider renders range slider correctly 1`] = `
               }
           style={
             Object {
-              "width": "100%",
+              "width": "50%",
             }
           }
         />
@@ -661,7 +661,7 @@ exports[`Slider renders range slider correctly 1`] = `
             word-wrap: break-word;
           }
     >
-      0
+      5
     </label>
   </div>
 </div>
