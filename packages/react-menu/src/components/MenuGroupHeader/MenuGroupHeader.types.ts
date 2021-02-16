@@ -10,5 +10,5 @@ export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLEle
  * {@docCategory MenuGroupHeader}
  */
 export interface MenuGroupHeaderState extends MenuGroupHeaderProps {
-  ref?: React.MutableRefObject<HTMLElement>;
+  ref: React.MutableRefObject<HTMLElement>;
 }
