@@ -1,4 +1,9 @@
-type ScreenerRequestBody = {
+import { Request, Response } from 'express';
+import { GITHUB_APP_REPO, GITHUB_APP_REPO_OWNER, GITHUB_APP_ID, CHECK_NAME } from '../config';
+import { CheckRunsResponse } from '../types/github';
+import { setupGithubClient } from '../utils';
+
+interface ScreenerWebhook {
   id: string;
   project: string;
   environment: string;
@@ -8,39 +13,38 @@ type ScreenerRequestBody = {
   description: string;
   repo: string;
   commit: string;
-};
+}
 
-export const screener = async (req, res) => {
-  const body: ScreenerRequestBody = req.body;
+export const screener = async (req: Request, res: Response) => {
+  const githubClient = await setupGithubClient();
+  const body: ScreenerWebhook = req.body;
 
-  // pino.info({ body });
   console.log({ body });
 
-  const checksForCommit = await githubApp.octokit.request('GET /repos/:owner/:repo/commits/:ref/check-runs', {
-    owner: OWNER,
-    repo: REPO,
-    ref: body.commit,
-    mediaType: {
-      previews: ['antiope', 'machine-man'],
+  const checksForCommit: CheckRunsResponse = await githubClient.request(
+    'GET /repos/:owner/:repo/commits/:ref/check-runs',
+    {
+      repo: GITHUB_APP_REPO,
+      owner: GITHUB_APP_REPO_OWNER,
+      ref: body.commit,
     },
-  });
-  const screenerCheck = checksForCommit.data.check_runs.find(
-    (checkRun: { app: { id: number } }) => checkRun.app.id === APP_ID,
   );
+  const screenerCheck = checksForCommit.data.check_runs.find(checkRun => checkRun.app.id === GITHUB_APP_ID);
 
   if (screenerCheck) {
-    await githubApp.octokit.request('PATCH /repos/:owner/:repo/check-runs/:check_run_id', {
-      owner: OWNER,
-      repo: REPO,
+    const conclusion = body.status === 'success' ? 'success' : 'failure';
+
+    await githubClient.request('PATCH /repos/:owner/:repo/check-runs/:check_run_id', {
+      repo: GITHUB_APP_REPO,
+      owner: GITHUB_APP_REPO_OWNER,
       check_run_id: screenerCheck.id,
-      conclusion: body.status === 'success' ? 'success' : 'failure',
-      details_url: body.url,
+      conclusion,
       name: CHECK_NAME,
-      mediaType: {
-        previews: ['antiope', 'machine-man'],
-      },
     });
+
+    res.status(200).send(`Check ${screenerCheck.id} updated to status "completed" with a "${conclusion}" conclusion`);
+    return;
   }
 
-  res.end();
+  res.status(404).send(`Did not find any checks for app ID ${GITHUB_APP_ID}`);
 };

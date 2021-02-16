@@ -1,40 +1,19 @@
-import express from 'express';
-import { App } from '@octokit/app';
-import { GITHUB_APP_CLIENT_ID, GITHUB_APP_CLIENT_SECRET, GITHUB_APP_ID, GITHUB_APP_PRIVATE_KEY, PORT } from './config';
+import express, { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import { PORT } from './config';
 import { github } from './controllers/github';
-import { screener } from './controllers/screener';
 import { ci } from './controllers/ci';
+import { screener } from './controllers/screener';
+import { validateGithubWebhook } from './utils';
 
-const app = express();
-
-const githubApp = new App({
-  appId: GITHUB_APP_ID,
-  privateKey: GITHUB_APP_PRIVATE_KEY,
-  oauth: {
-    clientId: GITHUB_APP_CLIENT_ID,
-    clientSecret: GITHUB_APP_CLIENT_SECRET,
-  },
-});
-const setupGithubClient = async () => {
-  const response = await githubApp.octokit.request('GET /repos/:owner/:repo/installation', {
-    owner: 'andrefcdias',
-    repo: 'fluentui',
-  });
-  console.log('hey');
-
-  const installationOctokit = await githubApp.getInstallationOctokit(response.data.id);
-  console.log('teacher');
-
-  const test = await installationOctokit.request('GET /repose/:owner/:repo', {
-    owner: 'andrefcdias',
-    repo: 'fluentui',
-  });
-
-  console.log(test);
-};
-setupGithubClient();
-
-// app.get('/api/github', github);
-// app.get('/api/ci', ci);
-// app.get('/api/screener', screener);
-app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}`));
+express()
+  .use(bodyParser.json())
+  .get('/', (_, res) => res.sendStatus(200))
+  .post('/api/github', validateGithubWebhook, github)
+  .post('/api/ci', ci)
+  .post('/api/screener', screener)
+  .use((err: Error, _: Request, res: Response) => {
+    if (err) console.error(err);
+    res.sendStatus(400);
+  })
+  .listen(PORT, () => console.log(`Listening on port ${PORT}`));

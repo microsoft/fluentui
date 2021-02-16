@@ -1,44 +1,37 @@
-import { request } from '@octokit/request';
+import { Request, Response } from 'express';
+import { CHECK_NAME, GITHUB_APP_ID, GITHUB_APP_REPO, GITHUB_APP_REPO_OWNER } from '../config';
+import { CheckRunsResponse } from '../types/github';
+import { setupGithubClient } from '../utils';
 
-type CIRequestBody = {
+interface CIRequestBody {
   commit: string;
   url: string;
-};
+}
 
-export const ci = async (req, res) => {
+export const ci = async (req: Request, res: Response) => {
+  const githubClient = await setupGithubClient();
   const body: CIRequestBody = req.body;
 
-  pino.info({ body });
-
-  const checksForCommit = await request('GET /repos/:owner/:repo/commits/:ref/check-runs', {
-    owner: OWNER,
-    repo: REPO,
+  const response: CheckRunsResponse = await githubClient.request('GET /repos/:owner/:repo/commits/:ref/check-runs', {
+    repo: GITHUB_APP_REPO,
+    owner: GITHUB_APP_REPO_OWNER,
     ref: body.commit,
-    headers: {
-      authorization: `token ${accessToken}`,
-    },
-    mediaType: {
-      previews: ['antiope', 'machine-man'],
-    },
   });
-  const screenerCheck = checksForCommit.data.check_runs.find(checkRun => checkRun.app.id === APP_ID);
+  const screenerCheck = response.data.check_runs.find(checkRun => checkRun.app.id === GITHUB_APP_ID);
 
   if (screenerCheck) {
-    await request('PATCH /repos/:owner/:repo/check-runs/:check_run_id', {
-      owner: OWNER,
-      repo: REPO,
+    await githubClient.request('PATCH /repos/:owner/:repo/check-runs/:check_run_id', {
+      repo: GITHUB_APP_REPO,
+      owner: GITHUB_APP_REPO_OWNER,
       check_run_id: screenerCheck.id,
       status: 'in_progress',
       details_url: body.url,
       name: CHECK_NAME,
-      headers: {
-        authorization: `token ${accessToken}`,
-      },
-      mediaType: {
-        previews: ['antiope', 'machine-man'],
-      },
     });
+
+    res.status(200).send(`Check ${screenerCheck.id} updated to "In Progress"`);
+    return;
   }
 
-  res.end();
+  res.status(404).send(`Did not find any checks for app ID ${GITHUB_APP_ID}`);
 };

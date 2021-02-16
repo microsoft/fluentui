@@ -1,14 +1,11 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "es5",
     "module": "commonjs",
-    "outDir": "./build",
-    "moduleResolution": "node",
+    "outDir": "dist",
     "strict": true,
-    "strictFunctionTypes": false,
-    "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
