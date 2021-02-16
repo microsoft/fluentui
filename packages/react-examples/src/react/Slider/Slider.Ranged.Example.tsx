@@ -7,13 +7,34 @@ const sliderAriaValueText = (value: number) => `${value} percent`;
 const sliderValueFormat = (value: number) => `${value}%`;
 
 export const SliderRangedExample: React.FunctionComponent = () => {
+  const [sliderValue, setSliderValue] = React.useState(0);
+  const [sliderLowerValue, setSliderLowerValue] = React.useState(0);
   const onRangeChange = (range: [number, number]) => {
-    console.log(range);
+    setSliderLowerValue(range[0]);
+    setSliderValue(range[1]);
   };
   return (
     <Stack tokens={stackTokens} styles={stackStyles}>
-      <Slider ranged label="Range slider" min={0} max={100} defaultValue={10} onRangeChange={onRangeChange} />
+      <Slider
+        ranged
+        label="Range slider"
+        min={0}
+        max={100}
+        defaultValue={80}
+        defaultLowerValue={20}
+        onRangeChange={onRangeChange}
+      />
       <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue disabled ranged />
+      <Slider
+        label="Controlled example"
+        max={10}
+        ranged
+        value={sliderValue}
+        lowerValue={sliderLowerValue}
+        showValue
+        // eslint-disable-next-line react/jsx-no-bind
+        onRangeChange={onRangeChange}
+      />
       <Slider
         label="Example with formatted value"
         max={100}

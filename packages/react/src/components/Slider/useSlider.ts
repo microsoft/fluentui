@@ -98,8 +98,8 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
   );
   const [unclampedLowerValue, setLowerValue] = useControllableValue(
-    props.value,
-    props.min,
+    props.lowerValue,
+    props.defaultLowerValue,
     (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
   );
 
