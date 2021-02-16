@@ -3,42 +3,42 @@ import { Carousel, Image } from '@fluentui/react-northstar';
 
 const carouselItems = [
   {
-    key: 'ade',
+    key: 'allan',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/ade.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
         fluid
-        alt={'Portrait of Ade'}
+        alt={'Portrait of Allan'}
       />
     ),
   },
   {
-    key: 'elliot',
+    key: 'carole',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/elliot.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
         fluid
-        alt={'Portrait of Elliot'}
+        alt={'Portrait of Carole'}
       />
     ),
   },
   {
-    key: 'kristy',
+    key: 'elvia',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/kristy.png"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
         fluid
-        alt={'Portrait of Kristy'}
+        alt={'Portrait of Elvia'}
       />
     ),
   },
   {
-    key: 'nan',
+    key: 'kat',
     content: (
       <Image
-        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/large/nan.jpg"
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
         fluid
-        alt={'Portrait of Nan'}
+        alt={'Portrait of Kat'}
       />
     ),
   },
