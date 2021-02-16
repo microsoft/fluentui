@@ -4,7 +4,7 @@ import { ComponentProps } from '@fluentui/react-utils';
 /**
  * {@docCategory MenuGroupHeader}
  */
-export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {};
+export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
 
 /**
  * {@docCategory MenuGroupHeader}
