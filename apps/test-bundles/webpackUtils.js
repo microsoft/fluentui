@@ -5,6 +5,8 @@ const resources = require('@fluentui/scripts/webpack/webpack-resources');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const TerserPlugin = require('terser-webpack-plugin');
 
+const FIXTURE_PATH = 'temp/fixtures/';
+
 function createWebpackConfig(entries) {
   return Object.keys(entries).map(entryName => {
     let anaylizerPluginOptions = {
@@ -87,7 +89,7 @@ function createFluentNorthstarFixtures() {
       const importStatement = `import { ${itemName} } from '${packageName}'; console.log(${itemName})`;
       try {
         const folderName = getFolderName(packageName);
-        const entryPath = path.join('temp/fixtures/', folderName, `${itemName}.js`);
+        const entryPath = path.join(FIXTURE_PATH, folderName, `${itemName}.js`);
         fs.outputFileSync(entryPath, importStatement, 'utf-8');
       } catch (err) {
         console.log(err);
@@ -109,10 +111,11 @@ function createFluentReactFixtures() {
 
     if (isAllowedFile && !isFolder) {
       const item = isFolder ? itemName : itemName.replace(/.js$/, '');
+      // import everything from package/item path
       const importStatement = `import * as p from '${packageName}/lib/${item}'; console.log(p)`;
       try {
         const folderName = getFolderName(packageName);
-        const entryPath = path.join('temp/fixtures/', folderName, `${item}.js`);
+        const entryPath = path.join(FIXTURE_PATH, folderName, `${item}.js`);
         fs.outputFileSync(entryPath, importStatement, 'utf-8');
       } catch (err) {
         console.log(err);
@@ -126,7 +129,7 @@ function createEntry(packageName) {
     // import everything from a single package
     const importStatement = `import * as p from '${packageName}'; console.log(p)`;
     const folderName = getFolderName(packageName);
-    const entryPath = path.join('temp/fixtures/', folderName, 'index.js');
+    const entryPath = path.join(FIXTURE_PATH, folderName, 'index.js');
     fs.outputFileSync(entryPath, importStatement, 'utf-8');
   } catch (err) {
     console.log(err);
@@ -144,7 +147,7 @@ function createEntry(packageName) {
  */
 function buildEntries(packageName, entries = {}, includeStats = true) {
   const folderName = getFolderName(packageName);
-  const packagePath = path.join('temp/fixtures/', folderName);
+  const packagePath = path.join(FIXTURE_PATH, folderName);
 
   fs.readdirSync(packagePath).forEach(itemName => {
     const entryName = itemName.replace(/.js$/, '');
@@ -163,7 +166,7 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
  */
 function buildEntry(packageName, includeStats = true) {
   const folderName = getFolderName(packageName);
-  const entryPath = path.resolve(path.join('temp/fixtures/', folderName));
+  const entryPath = path.resolve(path.join(FIXTURE_PATH, folderName));
   return {
     entryPath: `${entryPath}/index.js`,
     includeStats,
