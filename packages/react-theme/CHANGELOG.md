@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v0.3.1)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v0.3.1..@fluentui/react-theme_v0.3.1)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v0.3.1)
 

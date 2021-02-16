@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "1.0.0-beta.23",
+  "version": "1.0.0-beta.24",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,8 +28,8 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/react-conformance": "^1.0.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.15",
-    "@fluentui/test-utilities": "^8.0.0-beta.5",
+    "@fluentui/style-utilities": "^8.0.0-beta.16",
+    "@fluentui/test-utilities": "^8.0.0-beta.6",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "3.10.3",
@@ -46,15 +46,14 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-stylesheets": "^1.0.0-beta.5",
-    "@fluentui/theme": "^2.0.0-beta.15",
-    "@fluentui/react-window-provider": "^2.0.0-beta.5",
-    "@fluentui/react-hooks": "^8.0.0-beta.11",
+    "@fluentui/theme": "^2.0.0-beta.16",
+    "@fluentui/react-window-provider": "^2.0.0-beta.6",
+    "@fluentui/react-hooks": "^8.0.0-beta.12",
     "@fluentui/react-theme": "^0.3.1",
-    "@fluentui/react-utils": "^0.3.1",
+    "@fluentui/react-utils": "^0.3.2-0",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
-    "@fluentui/utilities": "^8.0.0-beta.11",
+    "@fluentui/utilities": "^8.0.0-beta.12",
     "classnames": "^2.2.6",
     "tslib": "^1.10.0"
   },
