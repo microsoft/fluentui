@@ -17,7 +17,7 @@ The RFC process is intended to bring a few benefits:
   - Us to review recent decisions and build ontop of them
   - Others to join the project more easily
 
-The React RFC Process<sup id="a1">[1](#f1)</sup> sums it up nicely
+The React RFC Process<sup>[1](#f1)</sup> sums it up nicely
 
 > The RFC process is a great opportunity to get more eyeballs on your proposal before it becomes a part of a released version. Quite often, even proposals that seem "obvious" can be significantly improved once a wider group of interested people have a chance to weigh in.
 >
