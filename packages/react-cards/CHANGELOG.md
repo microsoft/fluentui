@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.55)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.54..@fluentui/react-cards_v1.0.0-beta.55)
+
+### Changes
+
+- [BREAKING] Removing previous experimental implementation of Card and moving the version in the next folder to be the default export. ([PR #16961](https://github.com/microsoft/fluentui/pull/16961) by humbertomakotomorimoto@gmail.com)
+- remove unused types & dependency on react-compose ([PR #16964](https://github.com/microsoft/fluentui/pull/16964) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.54)
 

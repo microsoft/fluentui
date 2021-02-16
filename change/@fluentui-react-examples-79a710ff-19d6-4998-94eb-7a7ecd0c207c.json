@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add Menu group, divider and section",
+  "packageName": "@fluentui/react-examples",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
