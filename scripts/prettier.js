@@ -73,7 +73,7 @@ async function runOnChanged(options) {
   const prettierExtRegex = new RegExp(`\\.(${prettierExtensions.join('|')})$`);
   const files = gitDiffOutput
     .toString('utf8')
-    .split(os.EOL)
+    .split('\n')
     .filter(fileName => prettierExtRegex.test(fileName));
 
   const fileGroups = [];
