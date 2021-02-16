@@ -42,8 +42,11 @@
     "postinstall": "node ./scripts/postinstall.js",
     "prettier": "node scripts/prettier.js",
     "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
-    "release:fluentui:minor": "yarn workspace @fluentui/scripts just fluentui:publish:minor",
-    "release:fluentui:patch": "yarn workspace @fluentui/scripts just fluentui:publish:patch",
+    "release:fluentui:minor": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-minor",
+    "release:fluentui:patch": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-patch",
+    "release:fluentui:canary": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-canary",
+    "release:fluentui:post-validation": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish post-publish",
+    "release:fluentui:pack-nightly": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish pack-nightly",
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
     "run:published": "node ./scripts/monorepo/runPublished.js",
@@ -101,6 +104,8 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "eslint": "^7.1.0",
+    "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
+    "@testing-library/dom": "7.22.3",
     "copy-to-clipboard": "3.2.0"
   },
   "syncpack": {

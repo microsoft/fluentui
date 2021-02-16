@@ -129,13 +129,6 @@ export interface Theme extends CompatTheme {
 
   /**
    * @internal
-   * CSS stylesheets to be registered.
-   * This is still in an experimental phase and is only applied by `ThemeProvider`.
-   */
-  stylesheets?: string[];
-
-  /**
-   * @internal
    * Global tokens. This is for internal use only and is not production-ready.
    * */
   tokens?: RecursivePartial<Tokens>;

@@ -1,8 +1,34 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.6)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.5..@fluentui/react-make-styles_v0.2.6)
+
+### Patches
+
+- Bump @fluentui/make-styles to v0.6.0 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.24 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.5)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.5-0..@fluentui/react-make-styles_v0.2.5)
+
+### Patches
+
+- Bump @fluentui/react-provider to v0.1.4 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.23 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
 
 ## [0.2.5-0](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.5-0)
 
