@@ -16,14 +16,18 @@ const isFitSupported = (function() {
  * The useImage hook processes the Image component props and returns state.
  */
 export const useImageState = (state: ImageState) => {
-  const imageRef = React.useRef<HTMLElement>(null);
+  const { ref } = state;
 
-  React.useEffect(() => {
-    if (!isFitSupported) {
-      objectFitImages(imageRef.current);
-    }
-  }, []);
+  React.useEffect(
+    () => {
+      if (!isFitSupported) {
+        objectFitImages(ref.current);
+      }
+    },
+    // objectFitImages() should be executed once per element
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [],
+  );
 
   state['aria-hidden'] = state.alt || state['aria-label'] ? undefined : 'true';
-  state.imageRef = imageRef;
 };

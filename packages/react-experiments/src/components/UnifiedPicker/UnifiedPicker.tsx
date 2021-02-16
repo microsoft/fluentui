@@ -411,6 +411,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     ],
   );
 
+  React.useEffect(() => {
+    const inputElement = input.current?.inputElement;
+    inputElement?.addEventListener('keydown', _onInputKeyDown as () => void);
+
+    return () => {
+      inputElement?.removeEventListener('keydown', _onInputKeyDown as () => void);
+    };
+  });
+
   const _onCopy = React.useCallback(
     (ev: React.ClipboardEvent<HTMLInputElement>) => {
       if (focusedItemIndices.length > 0 && selectedItemsListGetItemCopyText) {
@@ -453,7 +462,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         else if (focusItemIndex === -1 && headerItemIndex === -1 && footerItemIndex === -1) {
           setFocusItemIndex(0);
         }
-        !isSuggestionsShown ? showPicker(true) : null;
+        // if suggestions aren't showing and we haven't just cleared the input, show the picker
+        !isSuggestionsShown && value !== '' ? showPicker(true) : null;
         if (!resultItemsList) {
           resultItemsList = [];
         }
@@ -514,7 +524,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onFloatingSuggestionsDismiss = React.useCallback(
     (ev: React.MouseEvent): void => {
-      onFloatingSuggestionsDismiss?.();
+      onFloatingSuggestionsDismiss?.(ev);
       showPicker(false);
     },
     [onFloatingSuggestionsDismiss, showPicker],
@@ -610,7 +620,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                   }
                   disabled={false}
                   onPaste={_onPaste}
-                  onKeyDown={_onInputKeyDown}
                 />
               </div>
             )}

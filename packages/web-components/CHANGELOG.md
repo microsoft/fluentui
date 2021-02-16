@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 11 Feb 2021 02:38:00 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.0)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.13.1..@fluentui/web-components_v0.14.0)
+
+### Minor changes
+
+- Improved support for design system neutral color - Added a neutralBaseColor property in the design system - Update neutralPalette and accentPalette when respective baseColor changes - Updated Card to base background color on local neutralPalette - Updated Card stories to illustrate use cases ([PR #16899](https://github.com/microsoft/fluentui/pull/16899) by brheston@microsoft.com)
 
 ## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.1)
 

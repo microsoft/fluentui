@@ -29,7 +29,7 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-link'].includes('PACKAGE_NAME')) {
+if (['react-link', 'react-menu'].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }

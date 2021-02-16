@@ -1,12 +1,9 @@
 import { spawn, spawnSync } from 'child_process';
 import CDP from 'chrome-remote-interface';
-import electron from 'electron';
 import puppeteer from 'puppeteer';
 import * as net from 'net';
 
 import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
-
-const DEFAULT_ELECTRON_PATH = (electron as unknown) as string;
 
 export type Page = {
   executeJavaScript: <R>(code: string) => Promise<R>;
@@ -100,7 +97,7 @@ async function waitUntilDevtoolsAvailable(host = 'localhost', port = 9222, tries
   throw new Error('A browser process started, but Devtools are not available');
 }
 
-export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PATH): Promise<Browser> {
+export async function createElectron(electronPath: string): Promise<Browser> {
   const electronVersion = spawnSync(electronPath, ['-v'], {
     encoding: 'utf8',
   }).stdout.trim();

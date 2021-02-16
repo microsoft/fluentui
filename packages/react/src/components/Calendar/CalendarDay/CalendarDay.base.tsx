@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, classNamesFunction } from '@fluentui/utilities';
+import { KeyCodes, css, classNamesFunction, format } from '@fluentui/utilities';
 import { Icon } from '../../../Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from '@fluentui/date-time-utilities';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
@@ -53,6 +53,9 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
 
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);
   const HeaderButtonComponentType = onHeaderSelect ? 'button' : 'div';
+  const headerAriaLabel = strings.yearPickerHeaderAriaLabel
+    ? format(strings.yearPickerHeaderAriaLabel, monthAndYear)
+    : monthAndYear;
 
   return (
     <div className={classNames.root} id={dayPickerId} ref={forwardedRef}>
@@ -61,8 +64,8 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
           // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
           aria-live="polite"
           aria-atomic="true"
+          aria-label={onHeaderSelect ? headerAriaLabel : undefined}
           key={monthAndYear}
-          id={monthAndYearId}
           className={classNames.monthAndYear}
           onClick={onHeaderSelect}
           data-is-focusable={!!onHeaderSelect}
@@ -70,7 +73,7 @@ export const CalendarDayBase = React.forwardRef((props: ICalendarDayProps, forwa
           onKeyDown={onButtonKeyDown(onHeaderSelect)}
           type="button"
         >
-          {monthAndYear}
+          <span id={monthAndYearId}>{monthAndYear}</span>
         </HeaderButtonComponentType>
         <CalendarDayNavigationButtons {...props} classNames={classNames} dayPickerId={dayPickerId} />
       </div>

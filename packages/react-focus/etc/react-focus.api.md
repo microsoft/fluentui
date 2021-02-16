@@ -55,7 +55,7 @@ export interface IFocusZone {
 }
 
 // @public
-export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
+export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
@@ -85,7 +85,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
     // @deprecated
     onBeforeFocus?: (childElement?: HTMLElement) => boolean;
-    onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+    onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
     // @deprecated
     onFocusNotification?: () => void;
     pagingSupportDisabled?: boolean;

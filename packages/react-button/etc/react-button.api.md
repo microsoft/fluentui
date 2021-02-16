@@ -4,16 +4,16 @@
 
 ```ts
 
-import { ColorTokens } from '@fluentui/theme';
+import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ComponentProps } from '@fluentui/react-utils';
-import { FontTokens } from '@fluentui/theme';
+import { FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { MenuContext } from '@fluentui/react-shared-contexts';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ObjectShorthandProps } from '@fluentui/react-utils';
 import * as React from 'react';
-import { RecursivePartial } from '@fluentui/theme';
+import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ShorthandProps } from '@fluentui/react-utils';
-import { SizeValue } from '@fluentui/theme';
+import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useMenuContext } from '@fluentui/react-shared-contexts';
 
 // @public
@@ -37,7 +37,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     ghost?: boolean | undefined;
     transparent?: boolean | undefined;
     size?: "small" | "medium" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
-    tokens?: import("@fluentui/theme").RecursivePartial<import("./Button.types").ButtonTokens> | undefined;
+    tokens?: import("@fluentui/react-theme-provider/lib/compat").RecursivePartial<import("./Button.types").ButtonTokens> | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
