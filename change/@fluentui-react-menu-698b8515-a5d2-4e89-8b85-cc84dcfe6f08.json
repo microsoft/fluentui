@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Update dependencies",
+  "packageName": "@fluentui/react-menu",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
