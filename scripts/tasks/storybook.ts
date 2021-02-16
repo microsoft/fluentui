@@ -19,10 +19,11 @@ export function startStorybookTask(options?: { port?: number; quiet?: boolean; c
     ci = options.ci || ci;
 
     const localConfigDir = path.join(process.cwd(), '.storybook');
+    const localStaticDir = path.join(process.cwd(), 'static');
 
     await storybook({
       mode: 'dev',
-      staticDir: [path.join(process.cwd(), 'static')],
+      staticDir: fs.existsSync(localStaticDir) ? [localConfigDir] : [],
       configDir: fs.existsSync(localConfigDir)
         ? localConfigDir
         : path.join(findGitRoot(), 'packages/react-examples/.storybook'),

@@ -8,11 +8,8 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
 import { withKeytipLayer, withStrictMode, withCompatThemeProvider, withFluentProvider } from '@fluentui/storybook';
 
-addDecorator(withPerformance);
-addDecorator(withInfo());
-addDecorator(withA11y());
-addDecorator(withKnobs({ escapeHTML: false }));
-addDecorator(withKeytipLayer);
+export const decorators = [withPerformance, withInfo(), withA11y(), withKnobs({ escapeHTML: false }), withKeytipLayer];
+
 if (
   [
     'react-button',
@@ -26,19 +23,17 @@ if (
     'react-toggle',
   ].includes('PACKAGE_NAME')
 ) {
-  addDecorator(withCompatThemeProvider);
-  addDecorator(withStrictMode);
+  decorators.push(withCompatThemeProvider, withStrictMode);
 }
 if (['react-menu'].includes('PACKAGE_NAME')) {
-  addDecorator(withFluentProvider);
-  addDecorator(withStrictMode);
+  decorators.push(withFluentProvider, withStrictMode);
 }
 
-addParameters({
+export const parameters = {
   a11y: {
     manual: true,
   },
-});
+};
 
 initializeIcons();
 
