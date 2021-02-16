@@ -149,7 +149,7 @@ module.exports = {
     while (cwd !== root) {
       // .git is usually a folder, but it's a file in worktrees
       if (fs.existsSync(path.join(cwd, '.git'))) {
-        return cwd;
+        break;
       }
       cwd = path.dirname(cwd);
     }
