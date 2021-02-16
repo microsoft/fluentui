@@ -32,6 +32,51 @@ const CodeEditor = React.lazy(async () => {
   };
 });
 
+export type NavBarItemProps = {
+  title: string;
+  icon: any;
+  isSelected: boolean;
+  onClickHandler: () => void;
+};
+
+export const NavBarItem: React.FunctionComponent<NavBarItemProps> = ({ title, icon, isSelected, onClickHandler }) => {
+  return (
+    <Box
+      styles={({ theme }) => ({
+        height: '3.4rem',
+        display: 'flex',
+        alignItems: 'center',
+        background: isSelected ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
+        position: 'relative',
+      })}
+    >
+      {isSelected && (
+        <Box
+          styles={({ theme }) => ({
+            position: 'absolute',
+            width: '2px',
+            height: '32px',
+            background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
+            top: '8px',
+            left: '4px',
+          })}
+        ></Box>
+      )}
+      <Tooltip
+        pointing
+        position="after"
+        align="center"
+        trigger={
+          <Button iconOnly text style={{ marginLeft: '6px' }} onClick={onClickHandler}>
+            {icon}
+          </Button>
+        }
+        content={title}
+      />
+    </Box>
+  );
+};
+
 export const Designer: React.FunctionComponent = () => {
   debug('render');
 
@@ -400,72 +445,19 @@ export const Designer: React.FunctionComponent = () => {
             }),
           })}
         >
-          <Box
-            styles={({ theme }) => ({
-              height: '3.4rem',
-              display: 'flex',
-              alignItems: 'center',
-              background: activeTab == 'add' ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
-              position: 'relative',
-            })}
-          >
-            {activeTab == 'add' && (
-              <Box
-                styles={({ theme }) => ({
-                  position: 'absolute',
-                  width: '2px',
-                  height: '32px',
-                  background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
-                  top: '8px',
-                  left: '4px',
-                })}
-              ></Box>
-            )}
-            <Tooltip
-              pointing
-              position="after"
-              align="center"
-              trigger={
-                <Button iconOnly text style={{ marginLeft: '6px' }} onClick={() => selectActiveTab('add')}>
-                  <AddIcon size="large" outline />
-                </Button>
-              }
-              content="Add components"
-            />
-          </Box>
-          <Box
-            styles={({ theme }) => ({
-              height: '3.4rem',
-              display: 'flex',
-              alignItems: 'center',
-              background: activeTab == 'nav' ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
-              position: 'relative',
-            })}
-          >
-            {activeTab == 'nav' && (
-              <Box
-                styles={({ theme }) => ({
-                  position: 'absolute',
-                  width: '2px',
-                  height: '32px',
-                  background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
-                  top: '8px',
-                  left: '4px',
-                })}
-              ></Box>
-            )}
-            <Tooltip
-              pointing
-              position="after"
-              align="center"
-              trigger={
-                <Button iconOnly text style={{ marginLeft: '6px' }} onClick={() => selectActiveTab('nav')}>
-                  <MenuIcon size="large" outline />
-                </Button>
-              }
-              content="Navigator"
-            />
-          </Box>
+          <NavBarItem
+            title="Add components"
+            isSelected={activeTab === 'add'}
+            icon={<AddIcon size="large" outline />}
+            onClickHandler={() => selectActiveTab('add')}
+          />
+
+          <NavBarItem
+            title="Navigator"
+            isSelected={activeTab === 'nav'}
+            icon={<MenuIcon size="large" outline />}
+            onClickHandler={() => selectActiveTab('nav')}
+          />
         </Box>
         <div
           style={{
