@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { BaseSlots, SlotProps } from '@fluentui/react-compose';
 import { ComponentProps } from '@fluentui/react-utils';
 import { ColorTokens, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
@@ -50,16 +49,6 @@ export type CardProps = ComponentProps &
 export interface CardState extends CardProps {
   ref: React.RefObject<HTMLDivElement>;
 }
-
-/**
- * {@docCategory Card}
- */
-export interface CardSlots extends BaseSlots {}
-
-/**
- * {@docCategory Card}
- */
-export type CardSlotProps = SlotProps<CardSlots, CardProps, React.HTMLAttributes<HTMLDivElement>>;
 
 type SizeRelatedTokens = {
   borderRadius?: string;
