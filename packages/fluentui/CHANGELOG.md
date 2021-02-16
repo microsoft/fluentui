@@ -54,6 +54,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `FormTextArea` component @assuncaocharles ([#16660](https://github.com/microsoft/fluentui/pull/16660))
 - Added `checked="mixed"` support for `Checkbox` @assuncaocharles ([#16081](https://github.com/microsoft/fluentui/pull/16081))
 - Added `ImageAltTextIcon` @notandrew ([#16884](https://github.com/microsoft/fluentui/pull/16884))
+- For `Tree`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#16994](https://github.com/microsoft/fluentui/pull/16994))
 
 ## Performance
 

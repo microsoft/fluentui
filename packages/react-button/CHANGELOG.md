@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.32)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.31..@fluentui/react-button_v1.0.0-beta.32)
+
+### Changes
+
+- remove unused temporary types ([PR #16964](https://github.com/microsoft/fluentui/pull/16964) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.31)
 
