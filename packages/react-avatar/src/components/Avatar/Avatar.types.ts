@@ -5,13 +5,6 @@ import { BadgeProps } from '../Badge/index';
 import { ImageProps } from '../Image/index';
 
 export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  /**
-   * The root element type of the Avatar.
-   *
-   * @defaultvalue span
-   */
-  as?: React.ElementType;
-
   /** The Avatar's image. */
   image?: ShorthandProps<ImageProps>;
 
@@ -87,24 +80,24 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
  */
 export const avatarSizeValues = [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128] as const;
 export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 | ... | 128
-// !! Important: when adding new AvatarSizeValues, add corresponding "._size" classes in Avatar.scss
 
 /** Default Avatar size if not specified */
 export const defaultAvatarSize: AvatarSizeValue = 32;
 
-export type AvatarState = Omit<AvatarProps, 'label' | 'icon' | 'image' | 'badge' | 'getInitials'> & {
-  activeRing: boolean;
-  activeShadow: boolean;
-  activeGlow: boolean;
+/**
+ * Convert from a Props type to a State type.
+ * Replace all given shorthand props from ShorthandProps<P> to ObjectShorthandProps<P>
+ */
+type PropsToState<T, ShorthandPropNames extends keyof T> = Omit<T, ShorthandPropNames> &
+  {
+    [U in ShorthandPropNames]: T[U] extends ShorthandProps<infer P> ? ObjectShorthandProps<P> : T[U];
+  };
 
-  hasIcon: boolean;
+/**
+ * Avatar props that will never be undefined in AvatarState
+ */
+export type AvatarDefaults = { ref: React.RefObject<HTMLElement> } & Required<
+  Pick<AvatarProps, 'as' | 'size' | 'getInitials' | 'label' | 'image' | 'badge'>
+>;
 
-  label: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  icon: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
-  image: ObjectShorthandProps<React.HTMLAttributes<ImageProps>>;
-  badge: ObjectShorthandProps<React.HTMLAttributes<BadgeProps>>;
-
-  getInitials: NonNullable<AvatarProps['getInitials']>;
-
-  ref: React.MutableRefObject<HTMLElement>;
-};
+export type AvatarState = PropsToState<AvatarProps & AvatarDefaults, 'label' | 'image' | 'badge'>;
