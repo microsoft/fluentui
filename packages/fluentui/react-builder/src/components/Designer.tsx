@@ -1,6 +1,6 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Text, Button, Header, Tooltip } from '@fluentui/react-northstar';
+import { Box, Text, Button, Header, Tooltip } from '@fluentui/react-northstar';
 import { FilesCodeIcon, AcceptIcon, AddIcon, MenuIcon } from '@fluentui/react-icons-northstar';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { renderElementToJSX, CodeSandboxExporter, CodeSandboxState } from '@fluentui/docs-components';
@@ -385,10 +385,10 @@ export const Designer: React.FunctionComponent = () => {
       />
 
       <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
-        <div
-          style={{
+        <Box
+          styles={({ theme }) => ({
             background: '#FAF9F8',
-            borderRight: '1px solid #E1DFDD',
+            borderRight: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
             display: 'flex',
             flexDirection: 'column',
             width: '3.4rem',
@@ -398,9 +398,29 @@ export const Designer: React.FunctionComponent = () => {
               pointerEvents: 'none',
               opacity: 0,
             }),
-          }}
+          })}
         >
-          <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center', background: '#F3F2F1' }}>
+          <Box
+            styles={({ theme }) => ({
+              height: '3.4rem',
+              display: 'flex',
+              alignItems: 'center',
+              background: activeTab == 'add' ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
+              position: 'relative',
+            })}
+          >
+            {activeTab == 'add' && (
+              <Box
+                styles={({ theme }) => ({
+                  position: 'absolute',
+                  width: '2px',
+                  height: '32px',
+                  background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
+                  top: '8px',
+                  left: '4px',
+                })}
+              ></Box>
+            )}
             <Tooltip
               pointing
               position="after"
@@ -412,8 +432,28 @@ export const Designer: React.FunctionComponent = () => {
               }
               content="Add components"
             />
-          </div>
-          <div style={{ height: '3.4rem', display: 'flex', alignItems: 'center' }}>
+          </Box>
+          <Box
+            styles={({ theme }) => ({
+              height: '3.4rem',
+              display: 'flex',
+              alignItems: 'center',
+              background: activeTab == 'nav' ? `${theme.siteVariables.colorScheme.default.background2}` : 'inherit',
+              position: 'relative',
+            })}
+          >
+            {activeTab == 'nav' && (
+              <Box
+                styles={({ theme }) => ({
+                  position: 'absolute',
+                  width: '2px',
+                  height: '32px',
+                  background: `${theme.siteVariables.colorScheme.brand.foreground1}`,
+                  top: '8px',
+                  left: '4px',
+                })}
+              ></Box>
+            )}
             <Tooltip
               pointing
               position="after"
@@ -425,8 +465,8 @@ export const Designer: React.FunctionComponent = () => {
               }
               content="Navigator"
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
         <div
           style={{
             display: 'flex',
