@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Update Slider doc page",
+  "comment": "Add range support to Slider, to allow selecting a lower and upper bound of a range",
   "packageName": "@fluentui/react",
   "email": "shi.cheng@microsoft.com",
   "dependentChangeType": "patch",
