@@ -238,9 +238,9 @@ export const colorScheme: ColorSchemeMapping = {
     border: accessibleCyan,
   }),
   pink: createEmptyColorScheme({
-    foreground: colors.black,
+    foreground: colors.white,
     foreground1: colors.white,
-    background: colors.white,
+    background: colors.black,
     border: colors.white,
   }),
   red: createEmptyColorScheme({
