@@ -32,7 +32,13 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint
-          yarn prettier $(targetBranch) --check
+
+          if [ $BUILD_SOURCEBRANCH == "refs/heads/master" ]; then
+            yarn prettier --check
+          else
+            yarn prettier $(targetBranch) --check
+          fi
+
         displayName: do syncpack and lint-files checks
 
       ## Danger.js checks for Fluent UI N*
