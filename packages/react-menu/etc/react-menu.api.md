@@ -13,7 +13,7 @@ import { ShorthandProps } from '@fluentui/react-utils';
 export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {};
+export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
 
 // @public (undocumented)
 export interface MenuDividerState extends MenuDividerProps {
@@ -28,16 +28,16 @@ export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-
 export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {};
+export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
 
 // @public (undocumented)
 export interface MenuGroupHeaderState extends MenuGroupHeaderProps {
     // (undocumented)
-    ref?: React.MutableRefObject<HTMLElement>;
+    ref: React.MutableRefObject<HTMLElement>;
 }
 
 // @public (undocumented)
-export type MenuGroupProps = ComponentProps & React.HTMLAttributes<HTMLElement> & {};
+export type MenuGroupProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
 
 // @public
 export const menuGroupShorthandProps: string[];
@@ -46,7 +46,7 @@ export const menuGroupShorthandProps: string[];
 export interface MenuGroupState extends MenuGroupProps {
     headerId: string;
     // (undocumented)
-    ref?: React.MutableRefObject<HTMLElement>;
+    ref: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
@@ -154,7 +154,7 @@ export const useIconStyles: (selectors: MenuItemState) => string;
 export const useMenuDivider: (props: MenuDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuDividerProps | undefined) => MenuDividerState;
 
 // @public (undocumented)
-export const useMenuDividerStyles: (state: MenuDividerState) => void;
+export const useMenuDividerStyles: (state: MenuDividerState) => MenuDividerState;
 
 // @public
 export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupProps | undefined) => MenuGroupState;
@@ -163,7 +163,7 @@ export const useMenuGroup: (props: MenuGroupProps, ref: React.Ref<HTMLElement>, 
 export const useMenuGroupHeader: (props: MenuGroupHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuGroupHeaderProps | undefined) => MenuGroupHeaderState;
 
 // @public (undocumented)
-export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => void;
+export const useMenuGroupHeaderStyles: (state: MenuGroupHeaderState) => MenuGroupHeaderState;
 
 // @public
 export const useMenuItem: (props: MenuItemProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemProps | undefined) => MenuItemState;
