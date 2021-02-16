@@ -16,6 +16,6 @@ const useDividerStyles = makeStyles<MenuDividerState>([
 
 export const useMenuDividerStyles = (state: MenuDividerState) => {
   state.className = ax(useDividerStyles(state), state.className);
-  
-  return state
+
+  return state;
 };
