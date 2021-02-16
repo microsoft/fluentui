@@ -25,7 +25,7 @@ export const SliderPageProps: IDocPageProps = {
       view: <SliderVerticalExample />,
     },
     {
-      title: 'Vertical sliders',
+      title: 'Ranged sliders',
       code: SliderRangedExampleCode,
       view: <SliderRangedExample />,
     },
