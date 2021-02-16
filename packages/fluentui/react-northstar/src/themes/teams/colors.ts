@@ -471,7 +471,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground: colors.yellow[300],
     foreground1: colors.grey[800],
     foreground2: colors.white,
-    foreground3: colors.yellow[750],
+    foreground3: colors.grey[750],
     foreground4: colors.yellow[700],
     background: colors.yellow[600],
     background1: colors.yellow[100],
