@@ -194,6 +194,17 @@ export const ActiveAnimation = () => {
   );
 };
 
+export const CustomSizes = () => (
+  <StoryExample title="Custom size">
+    <Avatar name={examples.name[11]} badge="success" size={20} style={{ width: '13px', height: '13px' }} />
+    <Avatar image={examples.image[12]} badge="warning" size={20} style={{ width: '21px', height: '21px' }} />
+    <Avatar name={examples.name[13]} badge="error" size={32} style={{ width: '34px', height: '34px' }} />
+    <Avatar image={examples.image[14]} badge="info" size={48} style={{ width: '55px', height: '55px' }} />
+    <Avatar name={examples.name[15]} badge="warning" size={72} style={{ width: '89px', height: '89px' }} />
+    <Avatar image={examples.image[16]} badge="success" size={128} style={{ width: '144px', height: '144px' }} />
+  </StoryExample>
+);
+
 export const CustomShape = () => {
   const rootOverrides = useRootHexagonalOverrides({});
   const labelOverrides = useLabelHexagonalOverrides({});

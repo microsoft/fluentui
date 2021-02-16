@@ -1,9 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, AvatarSizeValue, avatarSizeValues } from '@fluentui/react-avatar';
+import { makeStyles } from '@fluentui/react-make-styles';
 import { Stack } from '@fluentui/react';
-import { GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
+import { ContactIcon, GroupIcon, TelemarketerIcon, ChatBotIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
 
 import { FluentProviderDecorator } from '../utilities/index';
@@ -28,6 +29,49 @@ const AvatarList: React.FC<AvatarProps & {
     </Stack>
   );
 };
+
+const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
+  { baseSize: 20, customSize: '13px' },
+  { baseSize: 20, customSize: '21px' },
+  { baseSize: 32, customSize: '34px' },
+  { baseSize: 48, customSize: '55px' },
+  { baseSize: 72, customSize: '89px' },
+  { baseSize: 128, customSize: '144px' },
+];
+
+/** Renders an Avatar at a few custom sizes */
+const AvatarCustomSizeList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+}> = props => {
+  const { names, images, ...restOfProps } = props;
+
+  return (
+    <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
+      {customSizes.map(({ baseSize, customSize }, i) => (
+        <Avatar
+          key={customSize}
+          size={baseSize}
+          style={{ width: `${customSize}px`, height: `${customSize}px` }}
+          name={names && names[names.length - (i % names.length) - 1]}
+          image={images && images[images.length - (i % images.length) - 1]}
+          {...restOfProps}
+        />
+      ))}
+    </Stack>
+  );
+};
+
+const useRootHexagonalOverrides = makeStyles([[null, { borderRadius: '0' }]]);
+const useLabelHexagonalOverrides = makeStyles([
+  [
+    null,
+    {
+      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+      borderRadius: '0',
+    },
+  ],
+]);
 
 storiesOf('Avatar', module)
   .addDecorator(story => (
@@ -82,4 +126,25 @@ storiesOf('Avatar', module)
   ))
   .addStory('size+active+ring-glow', () => (
     <AvatarList images={examples.image} active="active" activeDisplay="ring-glow" />
-  ));
+  ))
+  .addStory('customSize+image', () => <AvatarCustomSizeList images={examples.image} />)
+  .addStory('customSize+name+badge', () => (
+    <AvatarCustomSizeList names={examples.name} badge="success" />
+  ))
+  .addStory('customSize+icon+active', () => (
+    <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
+  ))
+  .addStory('tokens', () => {
+    const rootOverrides = useRootHexagonalOverrides({});
+    const labelOverrides = useLabelHexagonalOverrides({});
+    return (
+      <>
+        <Avatar
+          icon={<ChatBotIcon />}
+          size={32}
+          className={rootOverrides}
+          label={{ className: labelOverrides }}
+        />
+      </>
+    );
+  });
