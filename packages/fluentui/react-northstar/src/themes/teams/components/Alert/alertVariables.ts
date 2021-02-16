@@ -125,7 +125,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     oofBorderColor: siteVars.colorScheme.pink.border,
 
     successColor: siteVars.colorScheme.green.foreground,
-    successBackgroundColor: siteVars.colorScheme.green.background1,
+    successBackgroundColor: siteVars.colorScheme.green.background2,
     successBorderColor: siteVars.colorScheme.green.border,
 
     urgent: false,
@@ -133,7 +133,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
     urgentBackgroundColor: siteVars.colorScheme.red.background3,
     urgentBorderColor: siteVars.colorScheme.red.background3,
 
-    warningColor: siteVars.colorScheme.yellow.foreground3,
+    warningColor: siteVars.colorScheme.yellow.foreground4,
     warningBackgroundColor: siteVars.colorScheme.yellow.background3,
     warningBorderColor: siteVars.colorScheme.yellow.border3,
 
