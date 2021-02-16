@@ -17,7 +17,7 @@ The RFC process is intended to bring a few benefits:
   - Us to review recent decisions and build ontop of them
   - Others to join the project more easily
 
-The React RFC Process sums it up nicely[1]
+The React RFC Process<sup id="a1">[1](#f1)</sup> sums it up nicely
 
 > The RFC process is a great opportunity to get more eyeballs on your proposal before it becomes a part of a released version. Quite often, even proposals that seem "obvious" can be significantly improved once a wider group of interested people have a chance to weigh in.
 >
@@ -56,5 +56,5 @@ TBD: Should the RFC file be updated in some way when implementation starts? Shou
 
 ### References
 
-- [1] https://github.com/reactjs/rfcs/blob/master/README.md
-- https://philcalcado.com/2018/11/19/a_structured_rfc_process.html
+- <b id="f1">1</b> - https://github.com/reactjs/rfcs/blob/master/README.md
+- <b id="f2">2</b> - https://philcalcado.com/2018/11/19/a_structured_rfc_process.html
