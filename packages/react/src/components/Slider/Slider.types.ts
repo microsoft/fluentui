@@ -53,14 +53,14 @@ export interface ISliderProps
   value?: number;
 
   /**
-   * The initial lower value of the Slider is ranged is true. Use this if you intend for the Slider to be an uncontrolled component.
-   * This value is mutually exclusive to lowerValue. Use one or the other.
+   * The initial lower value of the Slider is ranged is true. Use this if you intend for the Slider to be an
+   * uncontrolled component. This value is mutually exclusive to lowerValue. Use one or the other.
    */
   defaultLowerValue?: number;
 
   /**
-   * The initial lower value of the Slider is ranged is true. Use this if you intend to pass in a new value as a result of onChange events.
-   * This value is mutually exclusive to defaultLowerValue. Use one or the other.
+   * The initial lower value of the Slider is ranged is true. Use this if you intend to pass in a new value as a
+   * result of onChange events. This value is mutually exclusive to defaultLowerValue. Use one or the other.
    */
   lowerValue?: number;
 
