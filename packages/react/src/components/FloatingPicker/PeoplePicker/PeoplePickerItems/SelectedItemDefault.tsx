@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
 import { IPeoplePickerItemProps } from '../../../../ExtendedPicker';
-import { IconButton } from '../../../../compat/Button';
+import { IconButton } from '../../../../Button';
 import * as stylesImport from './PickerItemsDefault.scss';
 
 const styles: any = stylesImport;

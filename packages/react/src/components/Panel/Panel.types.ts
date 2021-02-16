@@ -4,7 +4,7 @@ import { ILayerProps } from '../../Layer';
 import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IButtonStyles } from '../../compat/Button';
+import { IButtonStyles } from '../../Button';
 import { PanelBase } from './Panel.base';
 import { IPopupProps } from '../../Popup';
 

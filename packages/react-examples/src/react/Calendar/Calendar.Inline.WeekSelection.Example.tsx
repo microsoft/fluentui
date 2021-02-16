@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { addDays, getDateRangeArray } from '@fluentui/date-time-utilities';
 import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react';
 import { mergeStyleSets } from '@fluentui/style-utilities';

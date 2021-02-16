@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { FocusZone } from './FocusZone';
 import { IRefObject, Point } from '@fluentui/utilities';
 
 /**
@@ -43,7 +42,7 @@ export interface IFocusZone {
  * FocusZone component props.
  * {@docCategory FocusZone}
  */
-export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
+export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -243,7 +242,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback called when "focus" event triggered in FocusZone.
    * @param event - React's original FocusEvent.
    */
-  onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.

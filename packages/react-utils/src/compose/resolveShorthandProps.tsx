@@ -6,7 +6,7 @@ import * as React from 'react';
  * @param props - The incoming props
  * @param shorthandPropNames - An array of prop names to apply simplification to
  */
-export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: (keyof TProps)[]) => {
+export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: string[]) => {
   let newProps = props;
 
   if (shorthandPropNames && shorthandPropNames.length) {
@@ -14,6 +14,9 @@ export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames
       ...props,
     };
     for (const propName of shorthandPropNames) {
+      // TODO find clean way of guaranteeing only shorthand props are typechecked
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       const propValue = props[propName];
 
       if (propValue !== undefined && (typeof propValue !== 'object' || React.isValidElement(propValue))) {

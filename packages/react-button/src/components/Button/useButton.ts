@@ -8,12 +8,12 @@ import { useButtonState } from './useButtonState';
  */
 export const buttonShorthandProps = ['icon', 'loader', 'content'];
 
-const mergeProps = makeMergeProps({ deepMerge: buttonShorthandProps });
+const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandProps });
 
 /**
  * Given user props, returns state and render function for a Button.
  */
-export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps) => {
+export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps): ButtonState => {
   // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -32,5 +32,5 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
 
   useButtonState(state);
 
-  return state as ButtonState;
+  return state;
 };

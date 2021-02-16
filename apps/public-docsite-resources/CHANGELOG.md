@@ -1,8 +1,49 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Tue, 09 Feb 2021 12:24:19 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.1)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v1.0.6..@fluentui/public-docsite-resources_v8.0.0-beta.1)
+
+### Changes
+
+- Website: Removing Card page from the website. ([PR #16953](https://github.com/microsoft/fluentui/pull/16953) by humbertomakotomorimoto@gmail.com)
+- Changing version to pre-release. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
+
+## [1.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v1.0.6)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v1.0.5..@fluentui/public-docsite-resources_v1.0.6)
+
+### Patches
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/azure-themes to v8.0.0-beta.52 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.0.0-beta.53 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+- Bump @fluentui/react-monaco-editor to v1.0.0-beta.52 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+- Bump @fluentui/theme-samples to v8.0.0-beta.52 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+- Bump @fluentui/react-docsite-components to v8.0.0-beta.53 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+- Bump @fluentui/font-icons-mdl2 to v8.0.0-beta.14 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [1.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v1.0.5)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v1.0.5..@fluentui/public-docsite-resources_v1.0.5)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/azure-themes to v8.0.0-beta.51 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-docsite-components to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-monaco-editor to v1.0.0-beta.51 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+- Bump @fluentui/theme-samples to v8.0.0-beta.51 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
 
 ## [1.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v1.0.5)
 

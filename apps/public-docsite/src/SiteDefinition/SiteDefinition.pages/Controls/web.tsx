@@ -125,9 +125,6 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     ThemeProvider: {},
     Themes: {},
   },
-  Experimental: {
-    Card: {},
-  },
   References: {},
   // The "Other" category can be useful for local development, but it currently can also cause
   // non-web controls (such as Chip) to show up on the web controls page.

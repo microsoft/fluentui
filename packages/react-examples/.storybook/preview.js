@@ -29,8 +29,9 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-button'].includes('PACKAGE_NAME')) {
+if (['react-button', 'react-menu'].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
+  addDecorator(withStrictMode);
 }
 
 addParameters({

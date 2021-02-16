@@ -11,7 +11,7 @@ import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
 import { Persona, IPersonaStyles } from '../../Persona';
 import { PersonaCoin, PersonaSize, PersonaInitialsColor } from '../../PersonaCoin';
-import { IButtonProps } from '../../compat/Button';
+import { IButtonProps } from '../../Button';
 
 const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>();
 

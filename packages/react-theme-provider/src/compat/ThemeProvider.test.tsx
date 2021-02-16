@@ -4,8 +4,9 @@ import * as renderer from 'react-test-renderer';
 import { Theme, PartialTheme } from './types';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { createTheme } from '@fluentui/theme';
+import { FluentTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
+import { getTokens } from './getTokens';
 
 const lightTheme = {
   stylesheets: [],
@@ -117,7 +118,8 @@ describe('ThemeProvider', () => {
       </ThemeProvider>,
     );
 
-    const expectedTheme: Theme = createTheme(lightTheme);
+    const expectedTheme: Theme = { ...FluentTheme, ...lightTheme };
+    expectedTheme.tokens = getTokens(expectedTheme, lightTheme.tokens);
     expectedTheme.id = '0-1';
 
     expect(resolvedTheme).toEqual(expectedTheme);

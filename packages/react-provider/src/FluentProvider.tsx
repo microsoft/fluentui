@@ -1,4 +1,5 @@
 import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeStaticStyles } from '@fluentui/make-styles';
 import { PartialTheme, Theme } from '@fluentui/react-theme';
 import { internal__ThemeContext, ThemeProviderState, useThemeProviderState } from '@fluentui/react-theme-provider';
 import { getSlots, makeMergeProps } from '@fluentui/react-utils';
@@ -15,6 +16,7 @@ export interface ProviderProps {
 
   theme?: PartialTheme;
 }
+
 export interface ProviderState {
   dir: 'ltr' | 'rtl';
   document: Document | undefined;
@@ -34,38 +36,8 @@ export function useFluentProviderState(draftState: ProviderState) {
 }
 
 // TODO: remove once globals are supported
-const teamsGlobalStyles = (theme: Theme) => `
-  body {
-    padding: 0;
-    margin: 0;
-    /* TODO: ask design what are these global values supposed to be? */
-    font-family: ${theme.global.type.fontFamilies.base};
-    font-size: ${theme.global.type.fontSizes.base[400]};
-    line-height: ${theme.global.type.lineHeights.base[400]};
-  }
-
-  *: {
-    box-sizing: border-box;
-  }
-
-  *:before {
-    box-sizing: border-box;
-  }
-
-  *:after {
-    box-sizing: border-box;
-  }
-
-  /* Adding priority for HTML 'hidden' attribute to be applied correctly */
-  [hidden] {
-    display: none!important;
-  }
-`;
-
-// TODO: remove once globals are supported
-// eslint-disable-next-line @fluentui/max-len
-const normalizeCSS = `
-/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
+makeStaticStyles([
+  `/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 html{line-height:1.15;-webkit-text-size-adjust:100%}
 body{margin:0}
 main{display:block}
@@ -100,7 +72,42 @@ details{display:block}
 summary{display:list-item}
 template{display:none}
 [hidden]{display:none}
-`;
+`,
+  {
+    body: {
+      padding: 0,
+
+      margin: 0,
+      // TODO: ask design what are these global values supposed to be?
+
+      // TODO: solve => fontFamily: theme.global.type.fontFamilies.base,
+      fontFamily: '...',
+
+      // TODO: solve => fontSize: theme.global.type.fontSizes.base[400],
+      fontSize: '...',
+
+      // TODO: solve => lineHeight: theme.global.type.lineHeights.base[400],
+      lineHeight: '...',
+    },
+
+    '*': {
+      boxSizing: 'border-box',
+    },
+
+    '*:before': {
+      boxSizing: 'border-box',
+    },
+
+    '*:after': {
+      boxSizing: 'border-box',
+    },
+
+    // Adding priority for HTML 'hidden' attribute to be applied correctly
+    '[hidden]': {
+      display: 'none!important',
+    },
+  },
+]);
 
 export function renderFluentProvider(state: ProviderState) {
   const { slots, slotProps } = getSlots(state);
@@ -112,8 +119,6 @@ export function renderFluentProvider(state: ProviderState) {
   return (
     <internal__FluentProviderContext.Provider value={value}>
       <internal__ThemeContext.Provider value={theme}>
-        {/*  TODO: remove once global styles are supported. heads up! copied from v0 */}
-        <style>{`${normalizeCSS}${teamsGlobalStyles(theme)}`}</style>
         <slots.root {...slotProps.root} />
       </internal__ThemeContext.Provider>
     </internal__FluentProviderContext.Provider>

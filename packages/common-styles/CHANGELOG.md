@@ -1,8 +1,26 @@
 # Change Log - @fluentui/common-styles
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.0-beta.15)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.0-beta.14..@fluentui/common-styles_v1.0.0-beta.15)
+
+### Changes
+
+- Bump @fluentui/style-utilities to v8.0.0-beta.15 ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+
+## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.0-beta.14)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/common-styles_v1.0.0-beta.13..@fluentui/common-styles_v1.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/style-utilities to v8.0.0-beta.14 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/common-styles_v1.0.0-beta.0)
 

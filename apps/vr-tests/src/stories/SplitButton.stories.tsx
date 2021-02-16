@@ -3,7 +3,7 @@ import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { SplitButton } from '@fluentui/react-button';
 import { AddIcon } from '@fluentui/react-icons-mdl2';
-import { ThemeProvider } from '@fluentui/react';
+import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
 import { TeamsTheme } from '@fluentui/storybook/lib/themes/v8/index';
 import { withCompatThemeProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
