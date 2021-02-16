@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "ScrollablePane: removes aria-hidden attribute so S",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
