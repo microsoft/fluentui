@@ -16,6 +16,10 @@ export interface MakeStylesOptions<Tokens> {
   rtl?: boolean;
   renderer: MakeStylesRenderer;
   tokens: Tokens;
+  debug?: {
+    debugId?: string;
+    tokens?: Record<string, boolean>;
+  };
 }
 
 export type MakeStaticStyles =

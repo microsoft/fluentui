@@ -31,6 +31,8 @@
     "@fluentui/theme": "^2.0.0-beta.15",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
+    "@storybook/api": "^5.3.8",
+    "@storybook/core-events": "^5.3.8",
     "@fluentui/azure-themes": "^8.0.0-beta.53",
     "@fluentui/theme-samples": "^8.0.0-beta.53",
     "tslib": "^1.10.0"

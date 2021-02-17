@@ -15,6 +15,8 @@ export const FluentProvider: React.FunctionComponent<ProviderProps>;
 export interface FluentProviderContextValue {
     dir: 'ltr' | 'rtl';
     document: Document | undefined;
+    // (undocumented)
+    telemetry?: Telemetry;
 }
 
 // @public (undocumented)
@@ -29,6 +31,8 @@ export interface ProviderProps {
     dir?: 'ltr' | 'rtl';
     document?: Document | undefined;
     // (undocumented)
+    telemetry?: Telemetry;
+    // (undocumented)
     theme?: PartialTheme;
 }
 
@@ -39,11 +43,19 @@ export interface ProviderState {
     // (undocumented)
     document: Document | undefined;
     // (undocumented)
+    telemetry: Telemetry | undefined;
+    // (undocumented)
     theme: Theme;
 }
 
 // @public (undocumented)
 export function renderFluentProvider(state: ProviderState): JSX.Element;
+
+// @public (undocumented)
+export class Telemetry {
+    // (undocumented)
+    tokens: Record<string, boolean>;
+}
 
 // @public (undocumented)
 export function useFluent(): FluentProviderContextValue;

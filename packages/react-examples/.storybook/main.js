@@ -4,7 +4,7 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 
 export default {
-  addons: ['@storybook/addon-a11y/register', 'storybook-addon-performance/register', '@storybook/addon-knobs/register'],
+  addons: ['@storybook/addon-a11y/register', 'storybook-addon-performance/register', '@storybook/addon-knobs/register', '@fluentui/storybook/lib/addons/fluent-tokens/register'],
   webpackFinal: (/** @type {webpack.Configuration} */ config) => {
     config = custom(config);
 

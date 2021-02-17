@@ -55,9 +55,11 @@ export function resolveDefinitions<Selectors, Tokens>(
       // we can always use prebuilt styles in this case and static cache in runtime
 
       if (resolvedRule) {
+        // DEBUG // console.log(`resolveDefinitions[${i}] - already resolved`);
         return [matcher, undefined, resolvedRule];
       }
 
+      // DEBUG // console.log(`resolveDefinitions[${i}] - resolving`);
       // if static cache is not present, eval it and mutate original object
       const styles: MakeStyles =
         typeof styleRule === 'function' ? (styleRule as MakeStylesStyleFunctionRule<Tokens>)(tokens!!) : styleRule!!;
