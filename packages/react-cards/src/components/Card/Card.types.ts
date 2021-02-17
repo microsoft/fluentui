@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
 import { ColorTokens, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**

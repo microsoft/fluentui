@@ -37,7 +37,7 @@
     "@fluentui/react-hooks": "^8.0.0-beta.12",
     "@fluentui/react-theme": "^0.3.1",
     "@fluentui/react-theme-provider": "^1.0.0-beta.24",
-    "@fluentui/react-utils": "^0.3.2-0",
+    "@fluentui/react-utilities": "^0.2.4",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "tslib": "^1.10.0"
   },

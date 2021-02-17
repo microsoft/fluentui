@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utils';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 import { useMergedRefs } from '@fluentui/react-hooks';
 

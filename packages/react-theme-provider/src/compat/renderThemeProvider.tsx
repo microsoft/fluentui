@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ThemeProviderState } from './ThemeProvider.types';
-import { getSlots } from '@fluentui/react-utils';
+import { getSlots } from '@fluentui/react-utilities';
 import { CustomizerContext } from '@fluentui/utilities';
 import { ThemeContext } from './ThemeContext';
 import { StyleRendererContext } from './styleRenderers/useStyleRenderer';
