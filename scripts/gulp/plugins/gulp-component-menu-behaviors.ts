@@ -1,4 +1,3 @@
-import * as behaviorDefinitions from '@fluentui/a11y-testing';
 import gutil from 'gulp-util';
 import path from 'path';
 import through2 from 'through2';
@@ -64,7 +63,23 @@ export default () => {
       if (!variation.specification) {
         const variationName = variation.name.replace('.ts', '');
         const definitionName = `${variationName}Definition`;
-        const definition = behaviorDefinitions[definitionName];
+
+        const absPathToBehaviorDefinition = path.normalize(
+          path.join(
+            require.resolve(`@fluentui/a11y-testing`),
+            '../',
+            'definitions',
+            behaviorName,
+            `${definitionName}.ts`,
+          ),
+        );
+        // delete require cache only works for absolute file path
+        delete require.cache[absPathToBehaviorDefinition];
+        let definition;
+        try {
+          // behavior definition file may not exist for components that haven't migrate to using a11y-testing
+          definition = require(absPathToBehaviorDefinition)?.[definitionName];
+        } catch (e) {}
 
         // in some cases specification doesn't exists as well not definition for the behavior (alertBaseBehavior.ts)
         if (definition) {
@@ -76,6 +91,7 @@ export default () => {
 
           variation.specification = specificationFromDefinition.join('\r\n');
         }
+
         result.push({
           displayName: behaviorName,
           type: componentType,
