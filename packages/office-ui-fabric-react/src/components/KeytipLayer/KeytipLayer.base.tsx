@@ -513,7 +513,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    * Helper function to do checks related to persisted/overflow keytips
    * Done on keytip added and keytip updated
    *
-   * @param keytipProps
+   * @param keytipProps - Keytip props
    */
   private _persistedKeytipChecks = (keytipProps: IKeytipProps) => {
     if (this._newCurrentKeytipSequences && arraysEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
