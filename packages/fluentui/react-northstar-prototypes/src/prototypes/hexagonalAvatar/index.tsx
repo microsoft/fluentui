@@ -31,7 +31,7 @@ const HexagonalAvatarPrototype = () => {
           &emsp;
           <CustomAvatar
             hexagonal
-            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             status={statusProps}
           />
         </div>
@@ -39,7 +39,7 @@ const HexagonalAvatarPrototype = () => {
           <Text content="Regular Avatar" />
           &emsp;
           <CustomAvatar
-            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             status={statusProps}
           />
         </div>

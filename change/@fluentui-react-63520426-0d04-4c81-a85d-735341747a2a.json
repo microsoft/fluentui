@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "add labels to calendar tables, date header button, and tweak label wording for conciseness",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

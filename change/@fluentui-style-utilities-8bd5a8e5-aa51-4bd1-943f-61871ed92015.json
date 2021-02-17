@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: apply single version policy on jest",
+  "packageName": "@fluentui/style-utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

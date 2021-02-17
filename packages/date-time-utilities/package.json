@@ -24,7 +24,6 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
-    "@types/jest": "~24.9.0",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0"
   },

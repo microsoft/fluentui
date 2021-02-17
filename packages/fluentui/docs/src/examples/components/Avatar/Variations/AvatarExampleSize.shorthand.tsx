@@ -16,22 +16,22 @@ const AvatarExampleSizeShorthand = () => (
         <div>
           <Avatar
             size={size}
-            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             status={statusProps}
           />
           &emsp;
-          <Avatar size={size} name="John Doe" status={statusProps} />
+          <Avatar size={size} name="Cecil Folk" status={statusProps} />
           &emsp;
           <Avatar
             size={size}
-            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
           />
           &emsp;
           <Avatar size={size} icon={<UserFriendsIcon />} />
           &emsp;
           <Avatar
             size={size}
-            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             square
           />
         </div>
