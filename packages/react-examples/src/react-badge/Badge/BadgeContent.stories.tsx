@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Badge, BadgeProps } from '@fluentui/react-badge';
 
-const BadgeChildrenExamples = (props: BadgeProps) => (
+const BadgeContentExamples = (props: BadgeProps) => (
   <div
     style={{
       display: 'flex',
@@ -85,4 +85,4 @@ const BadgeChildrenExamples = (props: BadgeProps) => (
   </div>
 );
 
-export const BadgeChildrenExample = () => <BadgeChildrenExamples />;
+export const BadgeContentExample = () => <BadgeContentExamples />;
