@@ -337,6 +337,7 @@ describe('DatePicker', () => {
       formatMonthDayYear: () => 'm/d/y',
       formatMonthYear: () => 'm/y',
       formatDay: () => 'd',
+      formatMonth: () => 'm',
       formatYear: () => 'y',
     };
 
