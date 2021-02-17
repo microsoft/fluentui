@@ -48,7 +48,7 @@ export const useLink: (props: LinkProps, ref: React.Ref<HTMLElement>, defaultPro
 export const useLinkState: (state: LinkState) => void;
 
 // @public (undocumented)
-export const useLinkStyles: (state: LinkState) => void;
+export const useLinkStyles: (state: LinkState) => LinkState;
 
 
 // (No @packageDocumentation comment for this package)
