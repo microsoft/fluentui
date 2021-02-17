@@ -7,7 +7,6 @@ import _ from 'lodash';
 import chalk from 'chalk';
 import { spawnSync } from 'child_process';
 import { findGitRoot, PackageJson } from '../monorepo/index';
-import stripIndent from 'strip-indent';
 
 const root = findGitRoot();
 
@@ -148,20 +147,14 @@ module.exports = (plop: NodePlopAPI) => {
           if (hasError) {
             console.error(
               chalk.red.bold(
-                stripIndent(`
-                  There were one or more errors creating the package.
-                  Please look at the logs above, fix the issues, and then run 'yarn' to link.
-                `),
+                '\nThere were one or more errors creating the package.\n' +
+                  'Please look at the logs above, fix the issues, and then run `yarn` to link.',
               ),
             );
             return;
           }
 
-          console.log(
-            stripIndent(`
-              Package files created! Running yarn to link...
-            `),
-          );
+          console.log('\nPackage files created! Running yarn to link...\n');
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
             console.error(
@@ -171,10 +164,8 @@ module.exports = (plop: NodePlopAPI) => {
           }
           return 'Packages linked!';
         },
-        stripIndent(`
-          Created and linked new package! Please check over it and ensure wording, included files,
-          settings, and dependencies make sense for your scenario.
-        `),
+        '\nCreated and linked new package! Please check over it and ensure wording, included files, ' +
+          'settings, and dependencies make sense for your scenario.',
       ];
     },
   });

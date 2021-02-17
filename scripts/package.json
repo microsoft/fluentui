@@ -132,7 +132,6 @@
     "sass-loader": "^10.1.1",
     "semver": "^6.2.0",
     "source-map-loader": "^2.0.0",
-    "strip-indent": "^3.0.0",
     "style-loader": "^2.0.0",
     "through2": "^2.0.3",
     "ts-jest": "24.0.1",
