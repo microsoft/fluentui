@@ -92,7 +92,8 @@ const AccessibleTeams: React.FunctionComponent = () => {
       // If the NavBar items have been reset or the focus has moved from one NavBar items to another, narrate the usage hint
       if (!navBarItems || !Array.from(navBarItems).includes(event.target)) {
         // Begin if 1
-        narrate('To navigate use the arrow keys');
+        const instruction = event.currentTarget.getAttribute('data-instruction');
+        narrate(instruction);
       } // End if 1
       event.target.dontResetNavBarItems = true;
 
@@ -146,7 +147,13 @@ const AccessibleTeams: React.FunctionComponent = () => {
       </div>
 
       <h2>Navigation bar</h2>
-      <div role="group" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
+      <div
+        role="group"
+        aria-label="Navigation bar"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        data-instruction="To navigate use the arrow keys"
+      >
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
         </button>
@@ -205,7 +212,13 @@ const AccessibleTeams: React.FunctionComponent = () => {
       <button>Pop out chat</button>
 
       <h2>Conversations</h2>
-      <div role="region" aria-label="Chat content">
+      <div
+        role="region"
+        aria-label="Chat content"
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
+      >
         <h3>November 9, 2020</h3>
         {/* eslint-disable-next-line */}
         <img alt="Profile picture of Michael Night" />
@@ -213,7 +226,9 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <div>Michael Night</div>
         <div>Wednesday 12:47 PM</div>
         <button tabIndex={-1}>Toolbar with two buttons, press enter to enter toolbar</button>
-        <div tabIndex={0}>Hello there,this is just an exammple message.</div>
+        <div className="item" tabIndex={0}>
+          Hello there,this is just an exammple message.
+        </div>
       </div>
 
       <input type="text" aria-label="Type a new message" />
