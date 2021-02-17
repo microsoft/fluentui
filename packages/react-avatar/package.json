@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-avatar",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "React components for building Microsoft web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

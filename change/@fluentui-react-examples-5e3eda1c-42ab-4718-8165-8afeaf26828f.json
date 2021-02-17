@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-image): redo to match convergence rfc",
-  "packageName": "@fluentui/react-examples",
-  "email": "jakubkonka@microsoft.com",
-  "dependentChangeType": "patch"
-}
