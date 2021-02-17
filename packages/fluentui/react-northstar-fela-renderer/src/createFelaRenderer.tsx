@@ -55,6 +55,7 @@ const blacklistedClassNames = [
   'fal',
   'fab',
   // .cke is used by CKEditor
+  'ck',
   'cke',
 ];
 
