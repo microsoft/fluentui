@@ -46,9 +46,17 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   }
 }
 
-// Blacklist contains a list of classNames that are used by FontAwesome
-// https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
-const blacklistedClassNames = ['fa', 'fas', 'far', 'fal', 'fab'];
+const blacklistedClassNames = [
+  // Blacklist contains a list of classNames that are used by FontAwesome
+  // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
+  'fa',
+  'fas',
+  'far',
+  'fal',
+  'fab',
+  // .cke is used by CKEditor
+  'cke',
+];
 
 const filterClassName = (className: string): boolean =>
   className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1;
