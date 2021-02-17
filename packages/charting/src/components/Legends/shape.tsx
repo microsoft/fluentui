@@ -37,7 +37,7 @@ const pointPath: PointPathType = {
 
 export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, classNameForNonSvg }) => {
   if (Object.keys(Points).indexOf(shape) === -1) {
-    return <div className={classNameForNonSvg}></div>;
+    return <div className={classNameForNonSvg} />;
   }
   return (
     <svg
@@ -47,7 +47,7 @@ export const Shape: React.FC<IShapeProps> = ({ svgProps, pathProps, shape, class
       {...svgProps}
       transform={`rotate(${shape === Points[Points.diamond] ? 45 : shape === Points[Points.triangle] ? 180 : 0}, 0, 0)`}
     >
-      <path d={pointPath[shape]} {...pathProps}></path>
+      <path d={pointPath[shape]} {...pathProps} />
     </svg>
   );
 };

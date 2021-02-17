@@ -294,7 +294,7 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  * @param values
  */
 
-type dataPoint = {
+type DataPoint = {
   legend: string;
   y: number;
   x: number | Date | string;
@@ -320,12 +320,12 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   });
 
   const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach((e1: dataPoint, index: number) => {
+  combinedResult.forEach((e1: DataPoint, index: number) => {
     e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
     const filteredValues = [
       { legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData, index: e1.index },
     ];
-    combinedResult.slice(index + 1).forEach((e2: dataPoint) => {
+    combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
       e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
       if (e1.x === e2.x) {
         filteredValues.push({
