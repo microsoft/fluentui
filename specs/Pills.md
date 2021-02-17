@@ -172,7 +172,6 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 | --------- | -------- | ------------------------------ |
 | Esc       | OnFocus  | Dismis context menu            |
 | Shift+F10 | OnFocus  | Open context menu              |
-| up/down   | Expanded | Navigates context menu options |
 
 ### Pill with toggle
 
