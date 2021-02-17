@@ -16,7 +16,6 @@ export interface ICalloutBasicExampleState {
 
 // Themed styles for the example.
 const theme = getTheme();
-console.log(FontWeights);
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -33,7 +32,7 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
+    theme.fonts.large,
     {
       margin: 0,
       fontWeight: FontWeights.semibold,
@@ -50,7 +49,7 @@ const styles = mergeStyleSets({
     whiteSpace: 'nowrap',
   },
   subtext: [
-    theme.fonts.small,
+    theme.fonts.medium,
     {
       margin: '0px 0px 15px 0px',
       fontWeight: FontWeights.semilight,
