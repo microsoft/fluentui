@@ -17,13 +17,13 @@ describe('Avatar', () => {
 
   describe('generateInitials', () => {
     it('generateInitials should show just the initials of the first and last words in the name', () => {
-      expect(getInitials('John Middle Doe')).toEqual('JD');
+      expect(getInitials('Cecil MiddleName Folk')).toEqual('CF');
     });
 
     it('generateInitials removes the text inside brackets', () => {
-      expect(getInitials('John Doe (Working position)')).toEqual('JD');
-      expect(getInitials('John Doe {Working position}')).toEqual('JD');
-      expect(getInitials('John Doe [Working position]')).toEqual('JD');
+      expect(getInitials('Cecil Folk (Working position)')).toEqual('CF');
+      expect(getInitials('Cecil Folk {Working position}')).toEqual('CF');
+      expect(getInitials('Cecil Folk [Working position]')).toEqual('CF');
     });
 
     it('handles null inputs', () => {

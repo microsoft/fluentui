@@ -18,7 +18,6 @@ if (
     'react-button',
     'react-cards',
     'react-checkbox',
-    'react-image',
     'react-link',
     'react-slider',
     'react-tabs',
@@ -29,7 +28,7 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-avatar', 'react-menu'].includes('PACKAGE_NAME')) {
+if (['react-avatar', 'react-menu', 'react-image'].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }

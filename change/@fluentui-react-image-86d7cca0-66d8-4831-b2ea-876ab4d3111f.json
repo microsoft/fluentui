@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat(react-image): redo to match convergence rfc",
+  "packageName": "@fluentui/react-image",
+  "email": "jakubkonka@microsoft.com",
+  "dependentChangeType": "patch"
+}
