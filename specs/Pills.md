@@ -130,7 +130,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 
 - Each pill is of role="button"
 - Tab key to set focus on the Pill
-- Tab key moves focus to next item
+- Tab key moves focus to next `Pill`
 - Esc key remove focus
 
 #### Keyboard Navigation
