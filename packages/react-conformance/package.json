@@ -23,7 +23,6 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -32,7 +31,6 @@
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "jest": "~24.9.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6"

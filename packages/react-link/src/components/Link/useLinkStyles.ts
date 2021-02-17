@@ -70,6 +70,8 @@ const useStyles = makeStyles<LinkState>([
   ],
 ]);
 
-export const useLinkStyles = (state: LinkState) => {
+export const useLinkStyles = (state: LinkState): LinkState => {
   state.className = ax(useStyles(state), state.className);
+
+  return state;
 };
