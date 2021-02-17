@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { CardSectionProps, CardSectionState } from './CardSection.types';
 import { renderCardSection } from './renderCardSection';
 
