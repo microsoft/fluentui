@@ -146,7 +146,7 @@ module.exports = (plop: NodePlopAPI) => {
         },
         () => {
           if (hasError) {
-            console.log(
+            console.error(
               chalk.red.bold(
                 stripIndent(`
                   There were one or more errors creating the package.
