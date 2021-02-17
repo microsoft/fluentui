@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fix focus border for Dropdown multiselect items",
+  "packageName": "@fluentui/react",
+  "email": "evlevy@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-03T20:41:17.356Z"
+}
