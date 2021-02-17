@@ -47,6 +47,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         transition: `opacity ${animationDuration}`,
       },
       topOffsetFixed &&
+        typeof modalRectangleTop === 'number' &&
         hasBeenOpened && {
           alignItems: 'flex-start',
         },
@@ -75,6 +76,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         zIndex: isModeless ? ZIndexes.Layer : undefined,
       },
       topOffsetFixed &&
+        typeof modalRectangleTop === 'number' &&
         hasBeenOpened && {
           top: modalRectangleTop,
         },

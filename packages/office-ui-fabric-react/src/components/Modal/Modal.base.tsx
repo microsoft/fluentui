@@ -114,17 +114,6 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
           hasBeenOpened: true,
           isVisible: true,
         });
-
-        if (newProps.topOffsetFixed) {
-          const dialogMain = document.getElementsByClassName('ms-Dialog-main');
-          let modalRectangle;
-          if (dialogMain.length > 0) {
-            modalRectangle = dialogMain[0].getBoundingClientRect();
-            this.setState({
-              modalRectangleTop: modalRectangle.top,
-            });
-          }
-        }
       }
     }
 
@@ -142,7 +131,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     // isOpen as true. We need to add the keyUp handler in componentDidMount if we are in that case.
     if (this.state.isOpen && this.state.isVisible) {
       this._registerForKeyUp();
-      this._registerInitialModalPosition();
+      requestAnimationFrame(() => setTimeout(this._registerInitialModalPosition, 0));
     }
   }
 
@@ -313,13 +302,18 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
   }
 
   private _registerInitialModalPosition = (): void => {
-    if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
-      const dialogMain = document.querySelector(`[data-id=${this.state.id}]`);
-      if (dialogMain) {
-        const modalRectangle = dialogMain.getBoundingClientRect();
+    const dialogMain = document.querySelector(`[data-id=${this.state.id}]`);
+
+    if (dialogMain) {
+      const modalRectangle = dialogMain.getBoundingClientRect();
+      if (this.props.dragOptions?.keepInBounds && !this._minClampedPosition && !this._maxClampedPosition) {
         this._minClampedPosition = { x: -modalRectangle.x, y: -modalRectangle.y };
         this._maxClampedPosition = { x: modalRectangle.x, y: modalRectangle.y };
       }
+
+      this.setState({
+        modalRectangleTop: modalRectangle.top,
+      });
     }
   };
 
