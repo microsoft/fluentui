@@ -269,14 +269,12 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   public showKeytips(ids: string[]): void {
     // Update the visible prop in the manager
     for (const keytip of this._keytipManager.getKeytips()) {
-      const keytipId = sequencesToID(keytip.keySequences);
-      if (ids.indexOf(keytipId) >= 0) {
-        keytip.visible = true;
-      } else if (
-        keytip.overflowSetSequence &&
-        ids.indexOf(sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence))) >= 0
-      ) {
+      let keytipId = sequencesToID(keytip.keySequences);
+      if (keytip.overflowSetSequence) {
         // Check if the ID with the overflow is the keytip we're looking for
+        keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
+      }
+      if (ids.indexOf(keytipId) >= 0) {
         keytip.visible = true;
       } else {
         keytip.visible = false;
@@ -374,7 +372,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // Filter out non-visible keytips and duplicates
     const seenIds: { [childSequence: string]: number } = {};
     return keytips.filter(keytip => {
-      const keytipId = sequencesToID(keytip.keySequences);
+      let keytipId = sequencesToID(keytip.keySequences);
+      if (keytip.overflowSetSequence) {
+        // Account for overflow set sequences when checking for duplicates
+        keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
+      }
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       return keytip.visible && seenIds[keytipId] === 1;
     });
@@ -512,6 +514,18 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       // Ensure existing children are still shown.
       this._delayedKeytipQueue = this._delayedKeytipQueue.concat(this._keytipTree.currentKeytip?.children || []);
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+    }
+
+    if (this._newCurrentKeytipSequences && arraysEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
+      this._triggerKeytipImmediately(keytipProps);
+    }
+
+    if (this._isCurrentKeytipAnAlias(keytipProps)) {
+      let keytipSequence = keytipProps.keySequences;
+      if (keytipProps.overflowSetSequence) {
+        keytipSequence = mergeOverflows(keytipSequence, keytipProps.overflowSetSequence);
+      }
+      this._keytipTree.currentKeytip = this._keytipTree.getNode(sequencesToID(keytipSequence));
     }
   };
 
