@@ -13,10 +13,9 @@ PIlls should be used when representing an input, as a way to filter content, or 
 ## Sample Code
 
 ```jsx
-<Pills>
-  <Pill>Item 1</Pill>
-  <Pill>Item 2</Pill>
-</Pills>
+<Pill>Item 1</Pill>
+<Pill clickable>Item 2</Pill>
+<TogglePill>On</Pill>
 ```
 
 ## Variants
@@ -69,15 +68,20 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
   /** A Pill can be selected. */
   selected?: boolean;
 
-  /** A Pill can be draggable  */
-  draggable?: boolean;
+  /** A Pill can be clickable */
+  clickable?: boolean;
+
+  /** A callback to be called when Pill is clicked */
+  onClick?: function;
 
   /**
    * A button shorthand for the dismiss action slot. To use this slot the pill should be
    * dismissible.
    */
-  dismissAction?: ShorthandProps<HTMLElement>;
+  dismissIcon?: ShorthandProps<HTMLElement>;
 }
+
+export type TogglePillProps = Omit<PillProps, 'clickable'>;
 ```
 
 ## Structure
@@ -85,38 +89,34 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 - _**Public**_
 
 ```jsx
-<Pills>
-  <Pill />
-</Pills>
-```
+<Pill />
 
-- _**Internal**_
+<Pill clickable />
 
-```jsx
-<ElementType >
-  <li>
-    <span>
-      {children}
-    </span>
-  <li>
-</ElementType>
+<TogglePill />
 ```
 
 - _**DOM**_
 
 ```html
-<div role="listbox" aria-label>
-  <span role="button">
-    ...
-  </span>
-</div>
+<span>
+  ...
+</span>
+
+<span role="button">
+  ...
+</span>
+
+<span role="switch" aria-checked>
+  ...
+</span>
 ```
 
 ## Migration
 
 - _Migration from v8_
 
-...
+There's no components related to `Pill` in V8
 
 - _Migration from v0_
 
