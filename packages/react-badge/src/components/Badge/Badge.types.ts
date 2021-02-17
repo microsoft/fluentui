@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utils';
-import { SizeValue } from '@fluentui/react-theme';
+
+/**
+ * {@docCategory Badge}
+ */
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 /**
  * {@docCategory Badge}
