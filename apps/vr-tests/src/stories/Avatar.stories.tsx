@@ -134,7 +134,7 @@ storiesOf('Avatar', module)
   .addStory('customSize+icon+active', () => (
     <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
   ))
-  .addStory('tokens', () => {
+  .addStory('hexagonal form', () => {
     const rootOverrides = useRootHexagonalOverrides({});
     const labelOverrides = useLabelHexagonalOverrides({});
     return (
