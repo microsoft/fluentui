@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "include all utils from fluentui/react-utils",
+  "packageName": "@fluentui/react-utilities",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
