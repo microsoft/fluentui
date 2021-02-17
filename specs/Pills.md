@@ -111,7 +111,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
       ...
     </span>
   </li>
-</ul>
+</div>
 ```
 
 ## Migration
