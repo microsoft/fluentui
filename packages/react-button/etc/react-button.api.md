@@ -203,7 +203,7 @@ export type ExpandedState = {
     expanded?: boolean;
     defaultExpanded?: boolean;
     onClick?: (ev: React.MouseEvent) => void;
-    onMenuDismiss?: () => void;
+    onMenuDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent) => void;
     onKeyDown?: (ev: React.KeyboardEvent) => void;
     'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
     'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
@@ -217,7 +217,7 @@ export const MenuButton: React.ForwardRefExoticComponent<Pick<import("../Button"
     defaultExpanded?: boolean | undefined;
     expanded?: boolean | undefined;
     persistMenu?: boolean | undefined;
-    onMenuDismiss?: (() => void) | undefined;
+    onMenuDismiss?: ((ev?: Event | React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | undefined) => void) | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -227,7 +227,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
     defaultExpanded?: boolean;
     expanded?: boolean;
     persistMenu?: boolean;
-    onMenuDismiss?: () => void;
+    onMenuDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent) => void;
 };
 
 // @public (undocumented)

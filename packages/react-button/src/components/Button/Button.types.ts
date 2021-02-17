@@ -6,7 +6,7 @@ import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/
  * {@docCategory Button}
  */
 export type ButtonProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
+  React.ButtonHTMLAttributes<HTMLElement> & {
     /**
      * Shorthand icon. A shorthand prop can be a literal, object, or
      * JSX. The `children` prop of the object can be a render function,

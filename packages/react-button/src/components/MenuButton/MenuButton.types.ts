@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ShorthandProps, ObjectShorthandProps, ComponentProps } from '@fluentui/react-utils';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
@@ -42,7 +43,7 @@ export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
   /**
    * Defines a callback that runs after the MenuButton's contextual menu has been dismissed.
    */
-  onMenuDismiss?: () => void;
+  onMenuDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent) => void;
 };
 
 export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
