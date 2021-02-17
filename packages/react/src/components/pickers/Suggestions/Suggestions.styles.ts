@@ -65,12 +65,6 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
         borderColor: 'Highlight',
         color: 'HighlightText',
         ...getHighContrastNoAdjustStyle(),
-        selectors: {
-          ':hover': {
-            backgroundColor: 'Highlight',
-            color: 'WindowText',
-          },
-        },
       },
     },
   };
