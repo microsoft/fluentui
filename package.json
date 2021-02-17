@@ -50,7 +50,7 @@
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
     "run:published": "node ./scripts/monorepo/runPublished.js",
-    "satisfied": "satisfied --skip-invalid",
+    "satisfied": "satisfied --skip-invalid --ignore \"sass\"",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
     "start": "node scripts/start.js",
