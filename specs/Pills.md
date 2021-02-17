@@ -105,12 +105,10 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 - _**DOM**_
 
 ```html
-<div role="list" aria-label>
-  <li role="presentation">
-    <span role="button">
-      ...
-    </span>
-  </li>
+<div role="listbox" aria-label>
+  <span role="button">
+    ...
+  </span>
 </div>
 ```
 
@@ -128,7 +126,6 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 
 #### Accessibility
 
-- Each pill is of role="button"
 - Tab key to set focus on the Pill
 - Tab key moves focus to next `Pill`
 - Esc key dismiss the `Pill`
@@ -145,39 +142,36 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 
 #### Accessibility
 
-- Each pill is of role="button"
 - Popup opens after Xms of mouse hover state
 - Clicking in the Pill open popup and clicking outside should dimiss it
 
 #### Keyboard Navigation
 
-| key                | state    | title                                                              |
-| ------------------ | -------- | ------------------------------------------------------------------ |
-| Esc                | OnFocus  | Dismis popup                                                       |
-| Enter              | OnFocus  | Open Popup                                                         |
-| Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                 |
+| key                | state    | title                                                        |
+| ------------------ | -------- | ------------------------------------------------------------ |
+| Esc                | OnFocus  | Dismis popup                                                 |
+| Enter              | OnFocus  | Open Popup                                                   |
+| Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                           |
 | left/right         | OnFocus  | Role= “button”, aria-label=”Press enter or delete to remove” |
 
 ### Pill with right click (invoking context menu)
 
 #### Accessibility
 
-- Each pill is of role="button"
 - Right click anywhere on pill surface invokes content menu. Context menu appears close to cursor location on pill
 - Clicking or tapping anywhere outside of menu to dismiss
 
 #### Keyboard Navigation
 
-| key       | state    | title                          |
-| --------- | -------- | ------------------------------ |
-| Esc       | OnFocus  | Dismis context menu            |
-| Shift+F10 | OnFocus  | Open context menu              |
+| key       | state   | title               |
+| --------- | ------- | ------------------- |
+| Esc       | OnFocus | Dismis context menu |
+| Shift+F10 | OnFocus | Open context menu   |
 
 ### Pill with toggle
 
 #### Accessibility
 
-- Each pill is of role="button"
 - Click toggles Pill's selected state
 
 #### Keyboard Navigation
