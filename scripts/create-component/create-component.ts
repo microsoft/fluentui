@@ -264,6 +264,6 @@ const projectsWithStartCommand = Object.entries(allPackages)
     ([pkg, info]) =>
       !ignoreProjects.includes(pkg) &&
       info.packagePath.startsWith('packages') &&
-      info.packageJson.dependencies?.['@fluentui/react-utils'] !== undefined,
+      info.packageJson.dependencies?.['@fluentui/react-utilities'] !== undefined,
   )
   .map(([pkg, info]) => ({ title: pkg, value: { pkg, command: 'start' } }));

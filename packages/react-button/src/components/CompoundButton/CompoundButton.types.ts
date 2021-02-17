@@ -1,4 +1,4 @@
-import { ShorthandProps } from '@fluentui/react-utils';
+import { ShorthandProps } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
 /**

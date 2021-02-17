@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
