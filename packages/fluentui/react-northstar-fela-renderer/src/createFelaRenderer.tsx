@@ -55,7 +55,7 @@ const blacklistedClassNames = [
   'fal',
   'fab',
   // .cke is used by CKEditor
-  'cke',
+  'ck', 'cke',
 ];
 
 const filterClassName = (className: string): boolean =>
