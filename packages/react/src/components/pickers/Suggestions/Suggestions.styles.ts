@@ -1,4 +1,11 @@
-import { getGlobalClassNames, IStyle, hiddenContentStyle } from '../../../Styling';
+import { HighlightSpanKind } from 'typescript';
+import {
+  getGlobalClassNames,
+  getHighContrastNoAdjustStyle,
+  HighContrastSelector,
+  IStyle,
+  hiddenContentStyle,
+} from '../../../Styling';
 import { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const GlobalClassNames = {
@@ -52,6 +59,20 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
 
   const actionButtonSelectedStyles: IStyle = {
     backgroundColor: palette.themeLight,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight',
+        borderColor: 'Highlight',
+        color: 'HighlightText',
+        ...getHighContrastNoAdjustStyle(),
+        selectors: {
+          ':hover': {
+            backgroundColor: 'Highlight',
+            color: 'WindowText',
+          },
+        },
+      },
+    },
   };
 
   return {
