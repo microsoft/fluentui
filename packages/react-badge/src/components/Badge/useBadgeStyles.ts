@@ -17,6 +17,7 @@ export const useRootStyles = makeStyles<BadgeState>([
       fontWeight: theme.global.type.fontWeights.semibold,
       borderWidth: '1px',
       borderStyle: 'solid',
+      fontFamily: theme.global.type.fontFamilies.base,
     }),
   ],
   [
