@@ -76,7 +76,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    * A button shorthand for the dismiss action slot. To use this slot the pill should be
    * dismissible.
    */
-  dismissAction?: ShorthandValue<HTMLElement>;
+  dismissAction?: ShorthandObject;
 }
 ```
 
