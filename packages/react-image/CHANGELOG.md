@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.7.0)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.23..@fluentui/react-image_v0.7.0)
+
+### Minor changes
+
+- feat(react-image): redo to match convergence rfc ([PR #16894](https://github.com/microsoft/fluentui/pull/16894) by jakubkonka@microsoft.com)
 
 ## [0.6.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.23)
 

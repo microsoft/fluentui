@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: apply single version policy on jest",
-  "packageName": "@fluentui/react-charting",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

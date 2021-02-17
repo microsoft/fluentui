@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "8.0.0-beta.55",
+  "version": "8.0.0-beta.56",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -57,7 +57,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.0.0-beta.2",
+    "@fluentui/date-time-utilities": "^8.0.0-beta.3",
     "@fluentui/foundation-legacy": "^8.0.0-beta.16",
     "@fluentui/font-icons-mdl2": "^8.0.0-beta.16",
     "@fluentui/merge-styles": "^8.0.0-beta.4",

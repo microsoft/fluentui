@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: apply single version policy on jest",
-  "packageName": "@fluentui/merge-styles",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
