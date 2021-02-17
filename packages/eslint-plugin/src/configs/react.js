@@ -245,12 +245,7 @@ const config = {
 };
 
 /**
- * By default, any logic in this file will be run every time the plugin is loaded (even if this
- * config is not used) due to it being included by necessity in the package index file.
- * These overrides include some more complex logic which should only run when requested, since it's
- * more costly and can cause build errors if run in a package it wasn't designed for.
- * If ESLint supported exporting a function from a config file, that would be an easy solution.
- * Since that's not supported, we work around it by defining overrides as a property with getter.
+ * Override definitions for `config`. See explanation at bottom of file for why/how this function is used.
  * @returns {import("eslint").Linter.ConfigOverride[]}
  */
 const getOverrides = () => [
@@ -356,7 +351,15 @@ const getOverrides = () => [
   },
 ];
 
-// @ts-ignore
+// Why use `defineProperty` for `overrides`?
+//
+// By default, any logic in this file will be run every time the plugin is loaded (even if this
+// config is not used) due to it being included by necessity in the package index file.
+// These overrides include some more complex logic which should only run when requested, since it's
+// more costly and can cause build errors if run in a package it wasn't designed for.
+// If ESLint supported exporting a function from a config file, that would be an easy solution.
+// Since that's not supported, we work around it by defining overrides as a property with getter.
+// @ts-ignore -- `overrides?` is declared in `eslint.Linter.Config` but our `config` object doesn't define it until now
 Object.defineProperty(config, 'overrides', {
   enumerable: true,
   get: getOverrides,
