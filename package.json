@@ -99,7 +99,6 @@
     "css-loader": "5.0.1",
     "file-loader": "6.2.0",
     "raw-loader": "4.0.2",
-    "json-loader": "0.5.7",
     "style-loader": "2.0.0",
     "storybook-addon-performance": "0.14.0",
     "postcss": "8.2.4",
