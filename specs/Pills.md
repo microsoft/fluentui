@@ -146,7 +146,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 #### Accessibility
 
 - Each pill is of role="button"
-- Popup opens after 500ms of mouse hover state
+- Popup opens after Xms of mouse hover state
 - Clicking in the Pill open popup and clicking outside should dimiss it
 
 #### Keyboard Navigation
