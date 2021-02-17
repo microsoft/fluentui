@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.3)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.2..@fluentui/react-examples_v8.0.0-beta.3)
+
+### Changes
+
+- updating avatar test ([PR #16486](https://github.com/microsoft/fluentui/pull/16486) by andmarti@microsoft.com)
+- feat(react-image): redo to match convergence rfc ([PR #16894](https://github.com/microsoft/fluentui/pull/16894) by jakubkonka@microsoft.com)
+- Add Menu group, divider and section ([PR #16972](https://github.com/microsoft/fluentui/pull/16972) by lingfan.gao@microsoft.com)
 
 ## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.2)
 

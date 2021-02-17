@@ -2,6 +2,53 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-image_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(react-image): redo to match convergence rfc",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "f4c06e3c80ac9cd218137bae66ae7d1a8f4f28ab",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.6",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.2-0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Feb 2021 12:22:00 GMT",
       "tag": "@fluentui/react-image_v0.6.23",
       "version": "0.6.23",

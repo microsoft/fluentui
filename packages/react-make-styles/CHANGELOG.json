@@ -2,6 +2,21 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-make-styles_v0.2.6",
+      "version": "0.2.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-provider to v0.1.4",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Feb 2021 12:22:00 GMT",
       "tag": "@fluentui/react-make-styles_v0.2.6",
       "version": "0.2.6",

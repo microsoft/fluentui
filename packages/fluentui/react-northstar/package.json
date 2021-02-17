@@ -45,7 +45,6 @@
     "faker": "^4.1.0",
     "fela-tools": "^10.6.1",
     "gulp": "^4.0.2",
-    "jest-axe": "^3.2.0",
     "jest-react-fela": "^10.6.1",
     "lerna-alias": "^3.0.3-0",
     "qs": "^6.8.0",
