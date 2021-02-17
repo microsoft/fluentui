@@ -15,6 +15,7 @@ type PointPathType = {
 
 /* eslint-disable @fluentui/max-len */
 
+/* eslint-disable @fluentui/max-len */
 const pointPath: PointPathType = {
   [`${Points[Points.circle]}`]: 'M1 6 A5 5 0 1 0  12 6 M1 6 A5 5 0 0 1  12 6',
   [`${Points[Points.square]}`]: 'M1 1 L12 1 L12 12  L1 12 L1 1 Z',
