@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
