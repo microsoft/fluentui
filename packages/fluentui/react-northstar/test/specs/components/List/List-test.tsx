@@ -18,17 +18,17 @@ describe('List', () => {
   listImplementsCollectionShorthandProp('items', ListItem, { mapsValueToProp: 'content' });
 
   const getItems = (onClick?: Function): (ListItemProps & { key: string })[] => [
-    { key: 'irving', content: 'Irving', onClick } as any,
-    { key: 'skyler', content: 'Skyler' },
-    { key: 'dante', content: 'Dante' },
+    { key: 'robert', content: 'Robert', onClick } as any,
+    { key: 'celeste', content: 'Celeste' },
+    { key: 'cecil', content: 'Cecil' },
   ];
 
   describe('items', () => {
     it('renders children', () => {
       const listItems = mountWithProvider(<List items={getItems()} />).find('ListItem');
       expect(listItems.length).toBe(3);
-      expect(listItems.first().props().content).toBe('Irving');
-      expect(listItems.last().props().content).toBe('Dante');
+      expect(listItems.first().props().content).toBe('Robert');
+      expect(listItems.last().props().content).toBe('Cecil');
     });
 
     it('calls onClick handler for item', () => {
