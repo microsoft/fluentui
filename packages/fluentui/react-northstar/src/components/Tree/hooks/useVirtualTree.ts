@@ -107,9 +107,9 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
 
   const searchByFirstChar = React.useCallback(
     (startIndex: number, endIndex: number, char: string) => {
+      const itemToString = props.itemToString || (item => (item as any).content || '');
       for (let i = startIndex; i < endIndex; ++i) {
-        const itemFirstChar = props
-          .itemToString(getItemById(visibleItemIds[i]).item)
+        const itemFirstChar = itemToString(getItemById(visibleItemIds[i]).item)
           ?.trim()
           ?.charAt(0)
           ?.toLowerCase();
@@ -119,7 +119,7 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
       }
       return -1;
     },
-    [getItemById, props, visibleItemIds],
+    [getItemById, props.itemToString, visibleItemIds],
   );
 
   const getToFocusIDByFirstCharacter = React.useCallback(

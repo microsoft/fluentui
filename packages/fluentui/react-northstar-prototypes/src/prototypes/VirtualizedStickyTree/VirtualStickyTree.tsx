@@ -401,5 +401,4 @@ VirtualStickyTree.displayName = 'VirtualStickyTree';
 VirtualStickyTree.defaultProps = {
   accessibility: treeBehavior,
   itemSize: 50,
-  itemToString: item => (item as any).content || '',
 };

@@ -181,5 +181,4 @@ VirtualTree.displayName = 'VirtualTree';
 VirtualTree.defaultProps = {
   accessibility: treeBehavior,
   estimatedItemSize: 50,
-  itemToString: item => (item as any).content || '',
 };
