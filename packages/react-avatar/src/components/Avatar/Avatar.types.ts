@@ -1,4 +1,4 @@
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { BadgeProps } from '../Badge/index';
