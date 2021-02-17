@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMergedRefs } from '@fluentui/react-hooks';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { LinkProps, LinkState } from './Link.types';
 import { useLinkState } from './useLinkState';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utils';
+import { getSlots } from '@fluentui/react-utilities';
 import { LinkState } from './Link.types';
 import { linkShorthandProps } from './useLink';
 
