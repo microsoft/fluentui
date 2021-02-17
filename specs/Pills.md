@@ -156,7 +156,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 | Esc                | OnFocus  | Dismis popup                                                       |
 | Enter              | OnFocus  | Open Popup                                                         |
 | Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                 |
-| left/right         | OnFocus  | Role= “button”, aria-describedby=”Press enter or delete to remove” |
+| left/right         | OnFocus  | Role= “button”, aria-label=”Press enter or delete to remove” |
 
 ### Pill with right click (invoking context menu)
 
