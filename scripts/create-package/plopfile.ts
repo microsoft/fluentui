@@ -165,9 +165,7 @@ module.exports = (plop: NodePlopAPI) => {
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
             console.error(
-              chalk.red.bold(
-                stripIndent('Something went wrong with running yarn. Please check previous logs for details'),
-              ),
+              chalk.red.bold('Something went wrong with running yarn. Please check previous logs for details'),
             );
             process.exit(1);
           }
