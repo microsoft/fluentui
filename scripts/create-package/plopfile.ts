@@ -129,8 +129,7 @@ module.exports = (plop: NodePlopAPI) => {
             return newPackageJson;
           },
         },
-        // update example package.json
-        // update package.json
+        // update react-examples package.json
         {
           type: 'modify',
           path: `${exampleRoot}/package.json`,
