@@ -16,9 +16,9 @@ export const TextOnlyLong = () => <Button>Text truncates after it hits the max w
 
 export const IconWithText = () => (
   <>
-    <Button icon={<CalendarIcon />} />
+    <Button icon={<CalendarIcon />}>Text</Button>
     {/* TODO: what is the icon placement props API to put icon after text? */}
-    <Button icon={<CalendarIcon />} />
+    <Button icon={<CalendarIcon />}>Text</Button>
   </>
 );
 
