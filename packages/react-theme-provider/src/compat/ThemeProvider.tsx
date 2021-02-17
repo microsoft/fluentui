@@ -3,7 +3,6 @@ import { ThemeProviderProps } from './ThemeProvider.types';
 import { useThemeProviderClasses } from './useThemeProviderClasses';
 import { useThemeProvider } from './useThemeProvider';
 import { mergeStylesRenderer } from './styleRenderers/mergeStylesRenderer';
-import { useStylesheet } from '@fluentui/react-stylesheets';
 import { useFocusRects } from '@fluentui/utilities';
 
 /**
@@ -19,9 +18,6 @@ export const ThemeProvider: React.FunctionComponent<ThemeProviderProps> = React.
     renderer: mergeStylesRenderer,
     applyTo: 'element',
   });
-
-  // Register stylesheets as needed.
-  useStylesheet(state.theme.stylesheets);
 
   // Render styles.
   useThemeProviderClasses(state);

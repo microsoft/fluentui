@@ -494,30 +494,32 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
         <VersionDropdown width={props.width} />
-        <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
-          {(active, onClick) => (
-            <Box
-              as="code"
-              onClick={onClick}
-              styles={{
-                display: 'block',
-                fontWeight: 'normal',
-                fontSize: '12px',
-                opacity: active ? 1 : 0.6,
-                color: active ? 'rgb(138, 255, 124)' : 'inherit',
-                marginTop: '10px',
-                cursor: 'pointer',
-                ...(!active && {
-                  ':hover': {
-                    opacity: 0.75,
-                  },
-                }),
-              }}
-            >
-              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
-            </Box>
-          )}
-        </CopyToClipboard>
+        {process.env.NIGHTLYRELEASEDATE ? null : (
+          <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
+            {(active, onClick) => (
+              <Box
+                as="code"
+                onClick={onClick}
+                styles={{
+                  display: 'block',
+                  fontWeight: 'normal',
+                  fontSize: '12px',
+                  opacity: active ? 1 : 0.6,
+                  color: active ? 'rgb(138, 255, 124)' : 'inherit',
+                  marginTop: '10px',
+                  cursor: 'pointer',
+                  ...(!active && {
+                    ':hover': {
+                      opacity: 0.75,
+                    },
+                  }),
+                }}
+              >
+                {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
+              </Box>
+            )}
+          </CopyToClipboard>
+        )}
       </Flex>
       <Flex column>
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>

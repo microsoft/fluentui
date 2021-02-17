@@ -2,6 +2,21 @@
   "name": "test-bundles",
   "entries": [
     {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "test-bundles_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-button to v1.0.0-beta.32",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "test-bundles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "test-bundles_v1.0.0",
       "version": "1.0.0",

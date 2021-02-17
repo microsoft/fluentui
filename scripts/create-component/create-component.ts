@@ -6,6 +6,8 @@ import * as fs from 'fs-extra';
 import * as os from 'os';
 import { spawnSync } from 'child_process';
 import { findGitRoot, getAllPackageInfo } from '../monorepo/index';
+import stripIndent from 'strip-indent';
+import chalk from 'chalk';
 
 //#endregion
 
@@ -55,9 +57,7 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'packageNpmName',
         message: 'Which package to create the new component in?',
         choices: () => {
-          return projectsWithStartCommand.map((e, i) => {
-            return e.title;
-          });
+          return projectsWithStartCommand.map(project => project.title);
         },
       },
 
@@ -98,9 +98,7 @@ module.exports = (plop: NodePlopAPI) => {
 
       const data = {
         ...answers,
-        ...{
-          packageName: answers.packageNpmName.replace('@fluentui/', ''),
-        },
+        packageName: answers.packageNpmName.replace('@fluentui/', ''),
       };
 
       const renderString = (text: string): string => {
@@ -108,9 +106,7 @@ module.exports = (plop: NodePlopAPI) => {
       };
 
       return [
-        () => {
-          return 'Running create-component actions';
-        },
+        () => 'Running create-component actions',
         {
           type: 'confirmPackageLocation',
           data,
@@ -141,26 +137,28 @@ module.exports = (plop: NodePlopAPI) => {
           data,
           skipIfExists: true,
           skip: () => {
-            if (!data.hasStorybook) {
-              return 'Skipping storybook scaffolding';
-            }
+            if (!data.hasStorybook) return 'Skipping storybook scaffolding';
           },
           base: 'plop-templates-storybook',
           templateFiles: [`${renderString(templatePaths.storybookComponent)}/**/*`],
         },
         () => {
-          console.log('\nPackage files created! Running yarn to link...\n');
+          console.log(
+            stripIndent(`
+              Package files created! Running yarn to link...
+            `),
+          );
           const yarnResult = spawnSync('yarn', ['--ignore-scripts'], { cwd: root, stdio: 'inherit', shell: true });
           if (yarnResult.status !== 0) {
-            console.error('Something went wrong with running yarn. Please check previous logs for details');
+            console.error(
+              chalk.red.bold('Something went wrong with running yarn. Please check previous logs for details'),
+            );
             process.exit(1);
           }
           return 'Packages linked!';
         },
         () => {
-          if (answers.doComponentTestBuild !== true) {
-            return 'Skipping component test compile.';
-          }
+          if (answers.doComponentTestBuild !== true) return 'Skipping component test compile.';
 
           console.log('Component files created! Running yarn build...\n');
           const yarnResult = spawnSync('yarn', [`buildto *${data.packageName}`], {
@@ -169,13 +167,15 @@ module.exports = (plop: NodePlopAPI) => {
             shell: true,
           });
           if (yarnResult.status !== 0) {
-            console.error('Something went wrong with building. Please check previous logs for details');
+            console.error(chalk.red.bold('Something went wrong with building. Please check previous logs for details'));
             process.exit(1);
           }
           return 'Component compiled!';
         },
-        '\nCreated new component! Please check over it and ensure wording and included files ' +
-          'make sense for your scenario.',
+        stripIndent(`
+          Created new component! Please check over it and ensure wording and included files
+          make sense for your scenario.
+        `),
       ];
     },
   });
@@ -240,7 +240,7 @@ const appendToPackageIndex = async (answers: object, config: object, plop: objec
 
 //#region Utilities
 const displayAndThrowError = (message: string) => {
-  console.log(message);
+  console.log(chalk.red.bold(message));
   throw message;
 };
 
@@ -264,7 +264,6 @@ const projectsWithStartCommand = Object.entries(allPackages)
     ([pkg, info]) =>
       !ignoreProjects.includes(pkg) &&
       info.packagePath.startsWith('packages') &&
-      info.packageJson.dependencies &&
-      info.packageJson.dependencies['@fluentui/react-compose'] !== undefined,
+      info.packageJson.dependencies?.['@fluentui/react-utils'] !== undefined,
   )
   .map(([pkg, info]) => ({ title: pkg, value: { pkg, command: 'start' } }));

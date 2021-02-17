@@ -24,6 +24,13 @@ export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
     },
   };
 
+  if (process.env.NODE_ENV !== 'production') {
+    // Override the default trigger's accessibility schema class.
+    if (props.disabledFocusable) {
+      definition.attributes.root['data-aa-class'] = 'DisabledFocusableButton';
+    }
+  }
+
   return definition;
 };
 

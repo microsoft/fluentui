@@ -2,6 +2,50 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.55",
+      "version": "1.0.0-beta.55",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.55",
+      "version": "1.0.0-beta.55",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] Removing previous experimental implementation of Card and moving the version in the next folder to be the default export.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2720569cb85b0a729e64c450bb963f7eb6e468d5",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "remove unused types & dependency on react-compose",
+            "author": "olfedias@microsoft.com",
+            "commit": "52f6bb844c5dece1af576da1a34f9230c50432d6",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.54",
       "version": "1.0.0-beta.54",

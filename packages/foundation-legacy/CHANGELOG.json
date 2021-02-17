@@ -2,6 +2,36 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/foundation-legacy"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/foundation-legacy"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/foundation-legacy_v8.0.0-beta.15",
       "version": "8.0.0-beta.15",

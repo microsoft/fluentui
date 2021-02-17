@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.0.0-beta.6)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v2.0.0-beta.5..@fluentui/react-window-provider_v2.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/test-utilities to v8.0.0-beta.6 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [2.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v2.0.0-beta.5)
 

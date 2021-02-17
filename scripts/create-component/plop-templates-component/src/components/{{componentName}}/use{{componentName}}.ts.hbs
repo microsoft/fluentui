@@ -1,35 +1,33 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { useMergedRefs } from '@fluentui/react-hooks';
 import { {{componentName}}Props, {{componentName}}State } from './{{componentName}}.types';
-import { use{{componentName}}State } from './use{{componentName}}State';
-
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const {{camelCase componentName}}ShorthandProps = ['loader', 'content'];
+export const {{camelCase componentName}}ShorthandProps = [];
 
-const mergeProps = makeMergeProps({ deepMerge: {{camelCase componentName}}ShorthandProps });
+const mergeProps = makeMergeProps<{{componentName}}State>({ deepMerge: {{camelCase componentName}}ShorthandProps });
 
 /**
- * Given user props, returns state and render function for a {{componentName}}.
+ * Returns the props and state required to render the component
+ * @param props {{componentName}} properties
+ * @param ref reference to root HTMLElement of {{componentName}}
+ * @param defaultProps default values for the properties of {{componentName}}
  */
-export const use{{componentName}} = (props: {{componentName}}Props, ref: React.Ref<HTMLElement>, defaultProps?: {{componentName}}Props) => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  const defaultRef = React.useRef<HTMLElement>(null);
-  const resolvedRef = ref || defaultRef;
-
+export const use{{componentName}} = (
+  props: {{componentName}}Props,
+  ref: React.Ref<HTMLElement>,
+  defaultProps?: {{componentName}}Props,
+): {{componentName}}State => {
   const state = mergeProps(
     {
-      ref: resolvedRef,
-      as: 'div'
+      ref: useMergedRefs(ref, React.useRef(null))
     },
     defaultProps,
     resolveShorthandProps(props, {{camelCase componentName}}ShorthandProps),
   );
 
-  use{{componentName}}State(state);
-
-  return state as {{componentName}}State;
+  return state;
 };

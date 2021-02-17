@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from '@fluentui/react-bindings';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
 import { Accessibility } from '@fluentui/accessibility';

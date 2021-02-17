@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.47)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.46..@fluentui/react-tabs_v1.0.0-beta.47)
+
+### Changes
+
+- add labels to calendar tables, date header button, and tweak label wording for conciseness ([PR #16855](https://github.com/microsoft/fluentui/pull/16855) by sarah.higley@microsoft.com)
+
+## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.46)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.45..@fluentui/react-tabs_v1.0.0-beta.46)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.45)
 
