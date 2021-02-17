@@ -2,7 +2,7 @@ import { isConformant as baseIsConformant, IsConformantOptions } from '@fluentui
 
 export function isConformant(testInfo: Omit<IsConformantOptions, 'componentPath'>) {
   const defaultOptions = {
-    disabledTests: ['has-docblock'],
+    asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
   };
 

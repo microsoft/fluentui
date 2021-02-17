@@ -98,6 +98,7 @@ packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
 packages/react-checkbox/ @khmakoto @xugao
 packages/react-focus/src/components/FocusZone/ @khmakoto
+packages/react-image/ @kubkon @layershifter
 packages/react-link/ @khmakoto
 packages/react-slider/ @joschect
 packages/react-tabs/ @behowell

@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { Dropdown, Grid, Alignment, Position } from '@fluentui/react-northstar';
 import { useSelectKnob, useBooleanKnob } from '@fluentui/docs-components';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];
+const inputItems = ['Robert Tolbert', 'Wanda Howard', 'Tim Deboer'];
 
 const DropdownExamplePosition = () => {
   const [open] = useBooleanKnob({ name: 'open', initialValue: true });
