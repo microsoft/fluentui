@@ -1404,6 +1404,15 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
+"@fluentui/react-utils@^0.3.1-0":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-utils/-/react-utils-0.3.1.tgz#4adc066007671ab3f273fcd9db54f445f38d8e0d"
+  integrity sha512-eL363pgLgiurQpn2MPF2g8vU7E9Y7obK/hwbU8vD091QcSAyMWrvwof96fpJ3cQSRbqUJVr5VQgOK1P5ScDBOA==
+  dependencies:
+    "@fluentui/set-version" "^8.0.0-beta.1"
+    "@fluentui/utilities" "^8.0.0-beta.11"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

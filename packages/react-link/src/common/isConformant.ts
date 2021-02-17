@@ -4,7 +4,7 @@ export function isConformant(testInfo: Omit<IsConformantOptions, 'componentPath'
   const defaultOptions = {
     asPropHandlesRef: true,
     componentPath: module!.parent!.filename.replace('.test', ''),
-    disabledTests: [`has-docblock`, `kebab-aria-attributes`],
+    disabledTests: [`has-docblock`],
   };
 
   baseIsConformant(defaultOptions, testInfo);

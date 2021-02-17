@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utils';
-import { ColorTokens, ColorTokenSet, FontTokens, RecursivePartial } from '@fluentui/theme';
 
 /**
  * {@docCategory Link}
@@ -59,51 +58,49 @@ export type LinkProps = ComponentProps &
     inline?: boolean;
 
     /** Style tokens */
-    tokens?: RecursivePartial<LinkTokens>;
+    // tokens?: RecursivePartial<LinkTokens>;
   };
 
 /**
  * {@docCategory Link}
  */
-export interface LinkState extends LinkProps {
-  linkRef?: React.RefObject<HTMLElement>;
-}
+export interface LinkState extends LinkProps {}
 
-/**
- * {@docCategory Link}
- */
-export type LinkTokens = ColorTokens &
-  FontTokens & {
-    // The text decoration used for the link in its default state.
-    textDecoration?: string;
+// /**
+//  * {@docCategory Link}
+//  */
+// export type LinkTokens = ColorTokens &
+//   FontTokens & {
+//     // The text decoration used for the link in its default state.
+//     textDecoration?: string;
 
-    // The set of color tokens that are applied when the link has been visited.
-    visited?: ColorTokenSet;
+//     // The set of color tokens that are applied when the link has been visited.
+//     visited?: ColorTokenSet;
 
-    // The text decoration used for the link when it is being focused.
-    focused?: {
-      textDecoration: string;
-    };
+//     // The text decoration used for the link when it is being focused.
+//     focused?: {
+//       textDecoration: string;
+//     };
 
-    // The text decoration used for the link when it is being hovered.
-    hovered?: {
-      textDecoration: string;
-    };
+//     // The text decoration used for the link when it is being hovered.
+//     hovered?: {
+//       textDecoration: string;
+//     };
 
-    // The text decoration used for the link when it is being pressed.
-    pressed?: {
-      textDecoration: string;
-    };
+//     // The text decoration used for the link when it is being pressed.
+//     pressed?: {
+//       textDecoration: string;
+//     };
 
-    // The text decoration used for the link when it is in a disabled state.
-    disabled?: {
-      textDecoration: string;
-    };
-  };
+//     // The text decoration used for the link when it is in a disabled state.
+//     disabled?: {
+//       textDecoration: string;
+//     };
+//   };
 
-/**
- * {@docCategory Link}
- */
-export type LinkVariants<TTokens = LinkTokens> = {
-  root?: TTokens;
-};
+// /**
+//  * {@docCategory Link}
+//  */
+// export type LinkVariants<TTokens = LinkTokens> = {
+//   root?: TTokens;
+// };

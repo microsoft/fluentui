@@ -27,7 +27,7 @@ export const useLinkState = (state: LinkState) => {
       onKeyDownCallback?.(ev);
 
       if (onClick && isEnterOrSpaceKey) {
-        (ev.target as HTMLElement).click();
+        onClick((ev as unknown) as React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>);
       }
     }
   };
