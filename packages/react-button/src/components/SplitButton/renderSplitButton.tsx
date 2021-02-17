@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utils';
+import { getSlots } from '@fluentui/react-utilities';
 import { SplitButtonState } from './SplitButton.types';
 import { splitButtonShorthandProps } from './useSplitButton';
 

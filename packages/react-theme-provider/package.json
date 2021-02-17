@@ -49,7 +49,7 @@
     "@fluentui/react-window-provider": "^2.0.0-beta.6",
     "@fluentui/react-hooks": "^8.0.0-beta.12",
     "@fluentui/react-theme": "^0.3.1",
-    "@fluentui/react-utils": "^0.3.2-0",
+    "@fluentui/react-utilities": "^0.2.4",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "@fluentui/merge-styles": "^8.0.0-beta.4",
     "@fluentui/utilities": "^8.0.0-beta.12",

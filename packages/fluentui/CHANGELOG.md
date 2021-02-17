@@ -49,6 +49,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add missing prop type for `Dropdown` @pompomon ([#16920](https://github.com/microsoft/fluentui/pull/16920))
 - Change `TreeTitle`'s `selectionIndicator` from visibility:hidden to display:none @yuanboxue-amber ([#16922](https://github.com/microsoft/fluentui/pull/16922))
  - Exclude className for CKEditor to avoid collisions with Fela renderer @layershifter ([#17025](https://github.com/microsoft/fluentui/pull/17025))
+ - Fix a memory leak in `useEventListener` @layershifter @miroslavstastny ([#16991](https://github.com/microsoft/fluentui/pull/16991))
  - Remove `role='complementary'` from `popupBehavior` for inline popup @yuanboxue-amber ([#17032](https://github.com/microsoft/fluentui/pull/17032))
 
 ## Features

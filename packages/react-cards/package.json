@@ -49,7 +49,7 @@
     "@fluentui/react-compose": "^1.0.0-beta.13",
     "@fluentui/react-theme-provider": "^1.0.0-beta.24",
     "@fluentui/theme": "^2.0.0-beta.16",
-    "@fluentui/react-utils": "^0.3.2-0",
+    "@fluentui/react-utilities": "^0.2.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/foundation-legacy": "^8.0.0-beta.16",
     "@fluentui/react-hooks": "^8.0.0-beta.12",

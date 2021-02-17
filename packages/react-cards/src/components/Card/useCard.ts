@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { CardProps, CardState } from './Card.types';
 import { renderCard } from './renderCard';
