@@ -4,11 +4,11 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-utils';
-import { ComponentProps } from '@fluentui/react-utils';
+import { BaseSlots } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
-import { SlotProps } from '@fluentui/react-utils';
+import { SlotProps } from '@fluentui/react-utilities';
 
 // @public
 export const renderText: (state: TextProps) => JSX.Element;
