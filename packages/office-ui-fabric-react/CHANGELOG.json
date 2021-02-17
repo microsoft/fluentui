@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 16 Feb 2021 12:29:58 GMT",
+      "tag": "office-ui-fabric-react_v7.160.2",
+      "version": "7.160.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "154e7ce6b9b62a7b56f99359d7f125d39e010960",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:25:18 GMT",
       "tag": "office-ui-fabric-react_v7.160.1",
       "version": "7.160.1",
