@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Use add and remove eventlistener for keydown in the UnifiedPicker",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-11T22:08:54.226Z"
-}

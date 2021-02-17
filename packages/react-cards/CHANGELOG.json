@@ -2,6 +2,21 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/react-cards_v0.115.18",
+      "version": "0.115.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecating Card.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a2a15adcff93e22af40fcce297fa937cd5a4f06b",
+            "package": "@uifabric/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:25:26 GMT",
       "tag": "@uifabric/react-cards_v0.115.17",
       "version": "0.115.17",

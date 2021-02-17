@@ -98,7 +98,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
       />
       <g>
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="toolTipcallout0"
           className=
 
               {
@@ -116,7 +116,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           y={-24}
         />
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="toolTipcallout0"
           className=
 
               {
@@ -134,7 +134,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           y={20}
         />
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="toolTipcallout0"
           className=
 
               {
@@ -585,7 +585,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
       />
       <g>
         <rect
-          aria-labelledby="callout14"
+          aria-labelledby="toolTipcallout14"
           className=
 
               {
@@ -603,7 +603,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           y={-24}
         />
         <rect
-          aria-labelledby="callout14"
+          aria-labelledby="toolTipcallout14"
           className=
 
               {
@@ -621,7 +621,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           y={20}
         />
         <rect
-          aria-labelledby="callout14"
+          aria-labelledby="toolTipcallout14"
           className=
 
               {
@@ -1052,7 +1052,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
       />
       <g>
         <rect
-          aria-labelledby="callout5"
+          aria-labelledby="toolTipcallout5"
           className=
 
               {
@@ -1070,7 +1070,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           y={-24}
         />
         <rect
-          aria-labelledby="callout5"
+          aria-labelledby="toolTipcallout5"
           className=
 
               {
@@ -1088,7 +1088,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           y={20}
         />
         <rect
-          aria-labelledby="callout5"
+          aria-labelledby="toolTipcallout5"
           className=
 
               {
@@ -1209,13 +1209,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
       />
       <g>
         <rect
-          aria-labelledby="callout9"
+          aria-labelledby="toolTipcallout9"
           className=
 
               {
                 opacity: ;
               }
-          data-is-focusable={true}
+          data-is-focusable={false}
           fill="#0078d4"
           height={0}
           onBlur={[Function]}
@@ -1227,13 +1227,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           y={-24}
         />
         <rect
-          aria-labelledby="callout9"
+          aria-labelledby="toolTipcallout9"
           className=
 
               {
                 opacity: ;
               }
-          data-is-focusable={true}
+          data-is-focusable={false}
           fill="#002050"
           height={0}
           onBlur={[Function]}
@@ -1245,13 +1245,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           y={20}
         />
         <rect
-          aria-labelledby="callout9"
+          aria-labelledby="toolTipcallout9"
           className=
 
               {
                 opacity: ;
               }
-          data-is-focusable={true}
+          data-is-focusable={false}
           fill="#00188f"
           height={0}
           onBlur={[Function]}
@@ -1696,7 +1696,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
       />
       <g>
         <rect
-          aria-labelledby="callout19"
+          aria-labelledby="toolTipcallout19"
           className=
 
               {
@@ -1714,7 +1714,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           y={-24}
         />
         <rect
-          aria-labelledby="callout19"
+          aria-labelledby="toolTipcallout19"
           className=
 
               {
@@ -1732,7 +1732,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           y={20}
         />
         <rect
-          aria-labelledby="callout19"
+          aria-labelledby="toolTipcallout19"
           className=
 
               {
@@ -2183,7 +2183,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
       />
       <g>
         <rect
-          aria-labelledby="callout24"
+          aria-labelledby="toolTipcallout24"
           className=
 
               {
@@ -2201,7 +2201,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           y={-24}
         />
         <rect
-          aria-labelledby="callout24"
+          aria-labelledby="toolTipcallout24"
           className=
 
               {
@@ -2219,7 +2219,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           y={20}
         />
         <rect
-          aria-labelledby="callout24"
+          aria-labelledby="toolTipcallout24"
           className=
 
               {
@@ -2670,7 +2670,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
       />
       <g>
         <rect
-          aria-labelledby="callout29"
+          aria-labelledby="toolTipcallout29"
           className=
 
               {
@@ -2688,7 +2688,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           y={-24}
         />
         <rect
-          aria-labelledby="callout29"
+          aria-labelledby="toolTipcallout29"
           className=
 
               {
@@ -2706,7 +2706,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           y={20}
         />
         <rect
-          aria-labelledby="callout29"
+          aria-labelledby="toolTipcallout29"
           className=
 
               {

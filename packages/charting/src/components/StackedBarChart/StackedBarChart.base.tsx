@@ -245,7 +245,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           ref={(e: SVGGElement) => {
             this._refCallback(e, legend.title);
           }}
-          data-is-focusable={true}
+          data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}

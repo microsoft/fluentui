@@ -3,6 +3,7 @@ import {
   warnDeprecations,
   classNamesFunction,
   divProperties,
+  memoizeFunction,
   getInitials,
   getNativeProps,
   getRTL,
@@ -16,6 +17,7 @@ import {
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
   IPersonaPresenceProps,
+  PersonaInitialsColor,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
 } from '../Persona.types';
@@ -27,6 +29,24 @@ const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinSty
   // Therefore setting a larger cache size.
   cacheSize: 100,
 });
+
+const getInitialsStyles = memoizeFunction(
+  (
+    className: string,
+    initialsColor: PersonaInitialsColor | string | undefined,
+    initialsTextColor: string | undefined,
+    text: string | undefined,
+    primaryText: string | undefined,
+    showUnknownPersonaCoin: boolean | undefined,
+  ) =>
+    mergeStyles(
+      className,
+      !showUnknownPersonaCoin && {
+        backgroundColor: getPersonaInitialsColor({ text, initialsColor, primaryText }),
+        color: initialsTextColor,
+      },
+    ),
+);
 
 export interface IPersonaState {
   isImageLoaded?: boolean;
@@ -74,6 +94,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       coinSize,
       styles,
       imageUrl,
+      initialsColor,
       initialsTextColor,
       isOutOfOffice,
       /* eslint-disable deprecation/deprecation */
@@ -84,7 +105,10 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       presence,
       presenceTitle,
       presenceColors,
+      // eslint-disable-next-line deprecation/deprecation
+      primaryText,
       showInitialsUntilImageLoads,
+      text,
       theme,
     } = this.props;
 
@@ -126,12 +150,13 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
           <div role="presentation" {...divCoinProps} className={classNames.imageArea} style={coinSizeStyle}>
             {shouldRenderInitials && (
               <div
-                className={mergeStyles(
+                className={getInitialsStyles(
                   classNames.initials,
-                  !showUnknownPersonaCoin && {
-                    backgroundColor: getPersonaInitialsColor(this.props),
-                    color: initialsTextColor,
-                  },
+                  initialsColor,
+                  initialsTextColor,
+                  text,
+                  primaryText,
+                  showUnknownPersonaCoin,
                 )}
                 style={coinSizeStyle}
                 aria-hidden="true"

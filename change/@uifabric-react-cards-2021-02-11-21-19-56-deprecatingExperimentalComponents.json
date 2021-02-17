@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Deprecating Card.",
-  "packageName": "@uifabric/react-cards",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-12T05:19:56.800Z"
-}

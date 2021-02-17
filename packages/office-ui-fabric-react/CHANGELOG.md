@@ -1,8 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Feb 2021 12:29:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.160.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.2)
+
+Tue, 16 Feb 2021 12:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.1..office-ui-fabric-react_v7.160.2)
+
+### Patches
+
+- PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render ([PR #16979](https://github.com/microsoft/fluentui/pull/16979) by tristan.watanabe@gmail.com)
+
+## [7.160.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.1)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.0..office-ui-fabric-react_v7.160.1)
+
+### Patches
+
+- Remove use of getEdgeChromiumNoHighContrastAdjustSelector ([PR #16951](https://github.com/microsoft/fluentui/pull/16951) by sareiff@microsoft.com)
 
 ## [7.160.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.0)
 

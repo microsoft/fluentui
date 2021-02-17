@@ -2,6 +2,39 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/experiments_v7.38.14",
+      "version": "7.38.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where moue selected suggestions did not work in DefaultEditingItem",
+            "author": "elvonspa@microsoft.com",
+            "commit": "a2eb5067c179f45e6e445471b844f85bcd172ca1",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "UnifiedPicker: Don't show picker after input is cleared",
+            "author": "elvonspa@microsoft.com",
+            "commit": "2740dabc249945237f71863ebc13119542e8a6fc",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Use add and remove eventlistener for keydown in the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "11b9ea3e8a84a25fae009832c029eb398fb11b66",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Deprecating Button, MenuButton, SplitButton, Slider and Toggle.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a2a15adcff93e22af40fcce297fa937cd5a4f06b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:25:26 GMT",
       "tag": "@uifabric/experiments_v7.38.13",
       "version": "7.38.13",
