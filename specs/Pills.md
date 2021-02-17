@@ -8,6 +8,7 @@ PIlls should be used when representing an input, as a way to filter content, or 
 
 - [Evergreen](https://evergreen.segment.com/components/badge-and-pill/)
 - [Lightning](https://www.lightningdesignsystem.com/components/pills/)
+- [Material UI](https://material-ui.com/components/chips/#chip)
 - [OpenUI Research](https://github.com/WICG/open-ui/pull/259)
 
 ## Sample Code
