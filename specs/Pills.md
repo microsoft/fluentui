@@ -105,7 +105,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 - _**DOM**_
 
 ```html
-<ul aria-label>
+<div role="list" aria-label>
   <li role="presentation">
     <span role="button">
       ...
