@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix handling of topOffsetFixed for Modal",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-17T01:31:24.076Z"
+}
