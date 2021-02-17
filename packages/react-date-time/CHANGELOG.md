@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.46)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.0-beta.45..@fluentui/react-date-time_v8.0.0-beta.46)
+
+### Changes
+
+- add labels to calendar tables, date header button, and tweak label wording for conciseness ([PR #16855](https://github.com/microsoft/fluentui/pull/16855) by sarah.higley@microsoft.com)
 
 ## [8.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.45)
 

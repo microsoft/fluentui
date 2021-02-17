@@ -29,7 +29,6 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
@@ -43,6 +42,7 @@
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/utilities": "^8.0.0-beta.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

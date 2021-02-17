@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,6 @@
     "@testing-library/react-hooks": "^5.0.3",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
@@ -51,7 +50,7 @@
     "@fluentui/react-make-styles": "^0.2.6",
     "@fluentui/react-theme": "^0.3.1",
     "@fluentui/react-theme-provider": "^1.0.0-beta.24",
-    "@fluentui/react-utils": "^0.3.2-0",
+    "@fluentui/react-utilities": "^0.2.4",
     "@fluentui/set-version": "^8.0.0-beta.1",
     "tslib": "^1.10.0"
   },

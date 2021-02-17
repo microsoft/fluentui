@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ShorthandProps, ObjectShorthandProps, ComponentProps } from '@fluentui/react-utils';
 import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
+import { ShorthandProps, ObjectShorthandProps, ComponentProps } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
 /**

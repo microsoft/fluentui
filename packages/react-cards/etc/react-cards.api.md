@@ -6,12 +6,12 @@
 
 import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ColorTokenSet } from '@fluentui/react-theme-provider/lib/compat/index';
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 // @public
-export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     compact?: boolean | undefined;
     horizontal?: boolean | undefined;
     centered?: boolean | undefined;
@@ -25,22 +25,22 @@ export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utils
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
