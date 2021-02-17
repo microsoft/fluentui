@@ -1,4 +1,3 @@
-import { HighlightSpanKind } from 'typescript';
 import {
   getGlobalClassNames,
   getHighContrastNoAdjustStyle,
