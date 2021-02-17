@@ -1,16 +1,5 @@
-import * as storybook from '@storybook/react';
-import { setOptions } from '@storybook/addon-options';
+import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-
-setOptions({
-  name: 'Fabric',
-});
-
-const req = require.context('../src/stories', true, /\.stories\.tsx$/);
-
-function loadStories() {
-  req.keys().forEach(filename => req(filename));
-}
 
 const defaultConfig = {
   rtl: false,
@@ -29,7 +18,7 @@ const defaultConfig = {
  * In future, this can add a story with additional configurations
  *  such as theming.
  */
-storybook.setAddon({
+setAddon({
   addStory(storyName, storyFn, config = defaultConfig) {
     this.add(storyName, context => {
       setRTL(false);
@@ -46,5 +35,3 @@ storybook.setAddon({
     return this;
   },
 });
-
-storybook.configure(loadStories, module);
