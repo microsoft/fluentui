@@ -163,7 +163,7 @@ export interface PillProps extends ComponentProps, React.HTMLAttributes<HTMLElem
 #### Accessibility
 
 - Each pill is of role="button"
-- Right click anywhere on card surface invokes content menu. Context menu appears close to cursor location on card
+- Right click anywhere on pill surface invokes content menu. Context menu appears close to cursor location on pill
 - Clicking or tapping anywhere outside of menu to dismiss
 
 #### Keyboard Navigation
