@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Fix contrast of 'filter chevron' against background color",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-09T03:02:54.470Z"
+}
