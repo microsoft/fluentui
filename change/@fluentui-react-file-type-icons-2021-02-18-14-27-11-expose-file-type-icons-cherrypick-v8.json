@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "cherrypick filetypeicons as html string to master branch",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-18T22:27:11.587Z"
+}
