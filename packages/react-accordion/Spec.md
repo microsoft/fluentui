@@ -33,35 +33,45 @@ Sample usages will be given in the following section of this document [Sample co
 
 The root level component serves context and common API between all children.
 
-| Prop name          | Type                     | Default Value | Details                                          |
-| ------------------ | ------------------------ | ------------- | ------------------------------------------------ |
-| multiple           | boolean                  | false         | Allows multiple panels to be expanded            |
-| collapsible        | boolean                  | false         | Allows multiple panels to be collapsed           |
-| expandIconPosition | "start" or "end"         | "end"         | Position of the icon to indicate expansion       |
-| heading            | ElementType              | "h3"          | Heading element for the panel                    |
-| onPanelToggle      | PanelToggleEventListener |               | Equivalent to onToggle on AccordionPanel element |
+| Prop name          | Type                | Default Value | Details                                          |
+| ------------------ | ------------------- | ------------- | ------------------------------------------------ |
+| multiple           | boolean             | false         | Allows multiple panels to be expanded            |
+| collapsible        | boolean             | false         | Allows multiple panels to be collapsed           |
+| expandIconPosition | "start" or "end"    | "start"       | Position of the icon to indicate expansion       |
+| onToggle           | ToggleEventListener |               | Equivalent to onToggle on AccordionPanel element |
 
 By default, the Accordion is an Uncontrolled component. From the moment that one internal AccordionPanel has the property `open` declared, the Accordion becomes a Controlled component and to ensure behavior `onToggle` must be used.
 
 > Perhaps some error could be emitted in dev when multiple, collapsible and open are being used, like React does when you try to control an uncontrolled component.
 
 ```tsx
-interface PanelToggleEventListener {
+interface ToggleEventListener {
   (open: boolean, index: number): void;
 }
 ```
 
+### AccordionItem
+
+| Prop name   | Type      | Details                                                      |
+| ----------- | --------- | ------------------------------------------------------------ |
+| children    | ReactNode | AccordionHeader **and** an AccordionPanel should be provided |
+| open        | boolean   | Controls the state of the panel                              |
+| defaultOpen | boolean   | Default value for the state of the panel                     |
+| disabled    | boolean   | Disables opening/closing of panel                            |
+
+### AccordionHeader
+
+Label for or thumbnail representing a section of content that also serves as a control for showing, and in some implementations, hiding the section of content
+
+| Prop name  | Type                                         | Default Value | Details                            |
+| ---------- | -------------------------------------------- | ------------- | ---------------------------------- |
+| children   | ReactNode                                    |               | Content of the header              |
+| as         | keyof JSX.IntrinsicElements or ComponentType | "div"         | The component to be used as header |
+| expandIcon | ShorthandValue                               | ChevronIcon   | Icon to indicate expansion         |
+
 ### AccordionPanel
 
-| Prop name   | Type                    | Details                                                                                                    |
-| ----------- | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
-| title       | ShorthandValue          | Label for representing a section of content that also serves as control for showing and hiding the content |
-| children    | ShorthandValue          | The content with visibility controlled by the panel                                                        |
-| open        | boolean                 | Controls the state of the panel                                                                            |
-| defaultOpen | boolean                 | Default value for the state of the panel                                                                   |
-| expandIcon  | ShorthandValue          | Icon to indicate expansion                                                                                 |
-| disabled    | boolean                 | Disables opening/closing of panel                                                                          |
-| onToggle    | (open: boolean) => void | Dispatched when it's state changes between opened and closed                                               |
+Section of content associated with an accordion header.
 
 ## Sample code
 
@@ -72,12 +82,22 @@ The below samples do not represent the definitive props of the final implemented
 ```tsx
 const accordion = (
   <Accordion>
-    <AccordionPanel title="First Panel">
-      This is the content of the first Panel
-    </AccordionPanel>
-    <AccordionPanel title="Second Panel">
-      This is the content of the second Panel
-    </AccordionPanel>
+    <AccordionItem>
+      <AccordionHeader>
+        First Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the first Panel
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionHeader>
+        Second Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the second Panel
+      </AccordionPanel>
+    </AccordionItem>
   <Accordion>
 )
 ```
@@ -86,21 +106,21 @@ Expected DOM output
 
 ```html
 <div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect1" id="accordion1">
+      <svg>Chevron Icon</svg>
       First Panel
-      <svg>Arrow Icon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
+      <svg>Chevron Icon</svg>
       Second Panel
-      <svg>Arrow Icon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
   </div>
@@ -112,12 +132,22 @@ Expected DOM output
 ```tsx
 const accordion = (
   <Accordion>
-    <AccordionPanel open title="First Panel">
-      This is the content of the first Panel
-    </AccordionPanel>
-    <AccordionPanel title="Second Panel">
-      This is the content of the second Panel
-    </AccordionPanel>
+    <AccordionItem>
+      <AccordionHeader open>
+        First Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the first Panel
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionHeader>
+        Second Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the second Panel
+      </AccordionPanel>
+    </AccordionItem>
   <Accordion>
 )
 ```
@@ -126,21 +156,21 @@ Expected DOM output
 
 ```html
 <div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="true" aria-controls="sect1" id="accordion1">
+      <svg>Chevron Icon</svg>
       First Panel
-      <svg>Arrow Icon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
+      <svg>Chevron Icon</svg>
       Second Panel
-      <svg>Arrow Icon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
   </div>
@@ -149,17 +179,27 @@ Expected DOM output
 
 ### Opened Accordion
 
-To have multiple panels opened at the same time an Accordion must use the `expand` property.
+To have multiple panels opened at the same time an Accordion must use the `multiple` property.
 
 ```tsx
 const accordion = (
-  <Accordion expand>
-    <AccordionPanel open title="First Panel">
-      This is the content of the first Panel
-    </AccordionPanel>
-    <AccordionPanel open title="Second Panel">
-      This is the content of the second Panel
-    </AccordionPanel>
+  <Accordion multiple>
+    <AccordionItem open>
+      <AccordionHeader>
+        First Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the first Panel
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem open>
+      <AccordionHeader>
+        Second Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the second Panel
+      </AccordionPanel>
+    </AccordionItem>
   <Accordion>
 )
 ```
@@ -168,21 +208,21 @@ Expected DOM output
 
 ```html
 <div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="true" aria-controls="sect1" id="accordion1">
+      <svg>Chevron Icon</svg>
       First Panel
-      <svg>Arrow Icon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="true" aria-controls="sect2" id="accordion2">
+      <svg>Chevron Icon</svg>
       Second Panel
-      <svg>Arrow Icon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
   </div>
@@ -193,13 +233,23 @@ Expected DOM output
 
 ```tsx
 const accordion = (
-  <Accordion expandIconPositon="start">
-    <AccordionPanel expandIcon={<CustomIcon/>} title="First Panel">
-      This is the content of the first Panel
-    </AccordionPanel>
-    <AccordionPanel expandIcon={<AnotherCustomIcon/>} title="Second Panel">
-      This is the content of the second Panel
-    </AccordionPanel>
+  <Accordion expandIconPositon="end">
+    <AccordionItem>
+      <AccordionHeader expandIcon={<CustomIcon/>}>
+        First Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the first Panel
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionHeader expandIcon={<AnotherCustomIcon/>}>
+        Second Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the second Panel
+      </AccordionPanel>
+    </AccordionItem>
   <Accordion>
 )
 ```
@@ -208,21 +258,21 @@ Expected DOM output
 
 ```html
 <div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect1" id="accordion1">
-      <svg>CustomIcon</svg>
       First Panel
+      <svg>CustomIcon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
-  <h3>
+  <div role="heading">
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
-      <svg>AnotherCustomIcon</svg>
       Second Panel
+      <svg>AnotherCustomIcon</svg>
     </div>
-  </h3>
+  </div>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
   </div>
@@ -233,13 +283,23 @@ Expected DOM output
 
 ```tsx
 const accordion = (
-  <Accordion heading="h1">
-    <AccordionPanel title="First Panel">
-      This is the content of the first Panel
-    </AccordionPanel>
-    <AccordionPanel title="Second Panel">
-      This is the content of the second Panel
-    </AccordionPanel>
+  <Accordion>
+    <AccordionItem>
+      <AccordionHeader as="h1">
+        First Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the first Panel
+      </AccordionPanel>
+    </AccordionItem>
+    <AccordionItem>
+      <AccordionHeader as="h1">
+        Second Panel
+      </AccordionHeader>
+      <AccordionPanel>
+        This is the content of the second Panel
+      </AccordionPanel>
+    </AccordionItem>
   <Accordion>
 )
 ```
@@ -250,7 +310,7 @@ Expected DOM output
 <div>
   <h1>
     <div role="button" aria-expanded="false" aria-controls="sect1" id="accordion1">
-      <svg>CustomIcon</svg>
+      <svg>Chevron Icon</svg>
       First Panel
     </div>
   </h1>
@@ -259,7 +319,7 @@ Expected DOM output
   </div>
   <h1>
     <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
-      <svg>AnotherCustomIcon</svg>
+      <svg>Chevron Icon</svg>
       Second Panel
     </div>
   </h1>
