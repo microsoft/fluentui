@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-button';
 import { UploadIcon } from '@fluentui/react-icons-mdl2';
-import { ThemeProvider } from '@fluentui/react-theme-provider/lib/compat/index';
-import { PartialTheme } from '@fluentui/theme';
+import { ThemeProvider, PartialTheme } from '@fluentui/react-theme-provider/lib/compat/index';
 import { Stack, Text, ColorPicker, IColor } from '@fluentui/react';
 
 const getThemes = (brand: string) => {

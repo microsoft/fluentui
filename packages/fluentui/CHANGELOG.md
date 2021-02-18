@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Renamed `Card` property `quiet` to `ghost` as per design spec. @TanelVari ([#16585](https://github.com/microsoft/fluentui/pull/16585))
 - Added `CarouselPaddlesContainer` to allow verticaly centering Paddles @assuncaocharles ([#16477](https://github.com/microsoft/fluentui/pull/16477))
 - Removed `@fluentui/keyboard-key` dependency from all packages. @xugao ([#16700](https://github.com/microsoft/fluentui/pull/16700))
+- Updated `Datepicker` to allow the entire week selection and removed space between cells. @vejrj ([#16887](https://github.com/microsoft/fluentui/pull/16887))
 
 ## Fixes
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
@@ -36,6 +37,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `Accordion` title and content margins. @TanelVari ([#16533](https://github.com/microsoft/fluentui/pull/16533))
 - Fix `TextArea` disabled styles to match `Input` disabled styles @assuncaocharles ([#16661](https://github.com/microsoft/fluentui/pull/16661))
 - Remove unused `paddleNextSize` and `paddlePreviousSize` variables @assuncaocharles ([#16665](https://github.com/microsoft/fluentui/pull/16665))
+- Updating avatar images used in examples on the docsite @notandrew ([#16486](https://github.com/microsoft/fluentui/pull/16486))
 - Define value for `largest` font-size in `siteVariables` @assuncaocharles ([#16693](https://github.com/microsoft/fluentui/pull/16693))
 - Fix `Embed` playback control visuals. @TanelVari ([#16611](https://github.com/microsoft/fluentui/pull/16611))
 - Fixes for `Dropdown`. Fix clear indicator visual styles (focus border, using `CloseIcon`). Fix empty search result text style. Fix left/right padding for multiple selection labels. Using `ChevronDownIcon` for toggle indicator. @TanelVari ([#16522](https://github.com/microsoft/fluentui/pull/16522))
@@ -43,12 +45,22 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `dropdownSelectedItem` has tiny icon when the content is long @yuanboxue-amber ([#16795](https://github.com/microsoft/fluentui/pull/16795))
 - Refactor `react-context-selector` to avoid React warnings @assuncaocharles ([#16714](https://github.com/microsoft/fluentui/pull/16714))
 - Updating various icons, `ArrowSortIcon`, `BreakoutRoomIcon`, `CalendarAgendaIcon`, `CallControlCloseTrayIcon`, `PlayIcon`, `TenantPersonalIcon` @notandrew ([#16723](https://github.com/microsoft/fluentui/pull/16723))
+- Export treeContext from `Tree` @yuanboxue-amber ([#16891](https://github.com/microsoft/fluentui/pull/16891))
+- Add missing prop type for `Dropdown` @pompomon ([#16920](https://github.com/microsoft/fluentui/pull/16920))
+- Change `TreeTitle`'s `selectionIndicator` from visibility:hidden to display:none @yuanboxue-amber ([#16922](https://github.com/microsoft/fluentui/pull/16922))
+ - Exclude className for CKEditor to avoid collisions with Fela renderer @layershifter ([#17025](https://github.com/microsoft/fluentui/pull/17025))
+ - Fix a memory leak in `useEventListener` @layershifter @miroslavstastny ([#16991](https://github.com/microsoft/fluentui/pull/16991))
+ - Remove `role='complementary'` from `popupBehavior` for inline popup @yuanboxue-amber ([#17032](https://github.com/microsoft/fluentui/pull/17032))
 
 ## Features
 - Added `disabledFocusable` prop for `Button` component. @jurokapsiar ([#16419](https://github.com/microsoft/fluentui/pull/16419))
 - Added `ChannelShareIcon` @notandrew ([#16619](https://github.com/microsoft/fluentui/pull/16619))
 - Added `FormTextArea` component @assuncaocharles ([#16660](https://github.com/microsoft/fluentui/pull/16660))
 - Added `checked="mixed"` support for `Checkbox` @assuncaocharles ([#16081](https://github.com/microsoft/fluentui/pull/16081))
+- Added `ImageAltTextIcon` @notandrew ([#16884](https://github.com/microsoft/fluentui/pull/16884))
+- For `Tree`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#16994](https://github.com/microsoft/fluentui/pull/16994))
+- For `VirtualTreePrototype`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#17012](https://github.com/microsoft/fluentui/pull/17012))
+- Added `OneNoteMonoIcon`. Updated `VideoProhibitedIcon`. @TanelVari ([#17051](https://github.com/microsoft/fluentui/pull/17051))
 
 ## Performance
 

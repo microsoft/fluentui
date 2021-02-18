@@ -209,9 +209,8 @@ exports[`Component Examples renders PeoplePicker.Compact.Example.tsx correctly 1
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -252,9 +251,8 @@ exports[`Component Examples renders PeoplePicker.Compact.Example.tsx correctly 1
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -370,9 +368,8 @@ exports[`Component Examples renders PeoplePicker.Compact.Example.tsx correctly 1
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         data-ktp-target={true}
@@ -413,9 +410,8 @@ exports[`Component Examples renders PeoplePicker.Compact.Example.tsx correctly 1
               margin-left: 4px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >

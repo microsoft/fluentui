@@ -40,11 +40,7 @@ storiesOf('MenuButton', module)
     </MenuButton>
   ))
   .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
-  .addStory('With icon after content', () => (
-    <MenuButton icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ))
+  .addStory('With icon after content', () => <MenuButton icon="X">Hello, world</MenuButton>)
   .addStory('Circular', () => (
     <MenuButton circular icon="X">
       Hello, world
@@ -114,13 +110,13 @@ storiesOf('MenuButton Next - Block', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('Ghost', () => (
-    <MenuButton block ghost icon="X">
+  .addStory('Subtle', () => (
+    <MenuButton block subtle icon="X">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Ghost Disabled', () => (
-    <MenuButton block disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <MenuButton block disabled subtle icon="X">
       Hello, world
     </MenuButton>
   ))
@@ -168,11 +164,7 @@ storiesOf('MenuButton Next - Teams Theme', module)
     </MenuButton>
   ))
   .addStory('With icon before content', () => <MenuButton icon="X">Hello, world</MenuButton>)
-  .addStory('With icon after content', () => (
-    <MenuButton icon="X" iconPosition="after">
-      Hello, world
-    </MenuButton>
-  ))
+  .addStory('With icon after content', () => <MenuButton icon="X">Hello, world</MenuButton>)
   .addStory('Circular', () => (
     <MenuButton circular icon="X">
       Hello, world

@@ -5,7 +5,7 @@ import { IFocusZoneProps } from '../../FocusZone';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../DragDrop';
 import { ISelection, SelectionMode } from '../../Selection';
-import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IGroupHeaderProps } from './GroupHeader.types';

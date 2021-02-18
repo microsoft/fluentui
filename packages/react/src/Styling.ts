@@ -1,1 +1,2 @@
-export * from '@fluentui/react-internal/lib/Styling';
+import './version';
+export * from '@fluentui/style-utilities';

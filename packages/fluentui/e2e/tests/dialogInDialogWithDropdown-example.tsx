@@ -14,15 +14,15 @@ export const selectors = {
 };
 
 const inputItems = [
-  'Bruce Wayne',
-  'Natasha Romanoff',
-  'Steven Strange',
-  'Alfred Pennyworth',
-  `Scarlett O'Hara`,
-  'Imperator Furiosa',
-  'Bruce Banner',
-  'Peter Parker',
-  'Selina Kyle',
+  'Robert Tolbert',
+  'Wanda Howard',
+  'Tim Deboer',
+  'Amanda Brady',
+  'Ashley McCarthy',
+  'Cameron Evans',
+  'Carlos Slattery',
+  'Carole Poland',
+  'Robin Counts',
 ];
 
 const DropdownExampleSearch = () => (

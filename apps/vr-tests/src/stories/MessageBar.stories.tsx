@@ -3,7 +3,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/index';
 import { Link, MessageBar, MessageBarType } from '@fluentui/react';
-import { MessageBarButton } from '@fluentui/react/lib/compat/Button';
+import { MessageBarButton } from '@fluentui/react/lib/Button';
 
 const noop = (): void => undefined;
 const longText =

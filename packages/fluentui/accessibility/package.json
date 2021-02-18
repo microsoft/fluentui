@@ -14,8 +14,7 @@
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "gulp": "^4.0.2",
-    "lerna-alias": "^3.0.3-0",
-    "typescript": "3.7.2"
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"

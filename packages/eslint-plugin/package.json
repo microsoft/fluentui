@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
@@ -28,8 +28,7 @@
   },
   "devDependencies": {
     "@types/eslint": "^7.2.0",
-    "eslint": "^7.1.0",
-    "typescript": "3.7.2"
+    "eslint": "^7.1.0"
   },
   "peerDependencies": {
     "eslint": "^6.0.0 || ^7.0.0",

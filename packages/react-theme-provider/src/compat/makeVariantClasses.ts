@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { tokensToStyleObject } from './tokensToStyleObject';
-import { Variants, Theme } from '@fluentui/theme';
+import { Variants, Theme } from './types';
 import { IStyle } from '@fluentui/merge-styles';
 import { makeClasses } from './makeClasses';
 

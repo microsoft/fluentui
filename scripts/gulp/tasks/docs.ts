@@ -125,15 +125,6 @@ task('build:docs:webpack', cb => {
   webpackPlugin(require('../../webpack/webpack.config').default, cb);
 });
 
-task(
-  'build:docs:assets',
-  parallel(
-    'build:docs:toc',
-    'build:docs:schema',
-    series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
-  ),
-);
-
 task('build:docs:assets:component:info', cb => {
   const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
   const lernaArgs = ['lerna', 'run', 'build:info'];
@@ -150,6 +141,16 @@ task('build:docs:assets:component:info', cb => {
 
   cb();
 });
+
+task(
+  'build:docs:assets',
+  parallel(
+    'build:docs:toc',
+    'build:docs:schema',
+    'build:docs:assets:component:info',
+    series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
+  ),
+);
 
 task('component-info:debug', done => {
   const componentInfo = getComponentInfo({
@@ -242,8 +243,14 @@ task('watch:docs:component-info', () => {
   });
 });
 
+const allBehaviorSrc = [
+  // original behavior files in @fluentui/accessibility
+  ...behaviorSrc,
+  // new behavior files in @fluentui/a11y-testing. They are required dynamically by gulpComponentMenuBehaviors
+  `${paths.posix.allPackages('a11y-testing')}/src/definitions/*/[a-z]*Definition.ts`,
+];
 task('watch:docs:component-menu-behaviors', cb => {
-  watch(behaviorSrc, series('build:docs:component-menu-behaviors'))
+  watch(allBehaviorSrc, series('build:docs:component-menu-behaviors'))
     .on('add', logWatchAdd)
     .on('change', logWatchChange)
     .on('unlink', filePath => handleWatchUnlink('component-menu-behaviors', filePath));
@@ -289,4 +296,4 @@ task('watch:docs', series('watch:docs:component-menu-behaviors', 'watch:docs:oth
 // Default
 // ----------------------------------------
 
-task('docs', series('build:docs:assets', 'build:docs:assets:component:info', 'serve:docs:hot', 'watch:docs'));
+task('docs', series('build:docs:assets', 'serve:docs:hot', 'watch:docs'));

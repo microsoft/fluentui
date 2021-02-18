@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommandButton } from '@fluentui/react/lib/compat/Button';
+import { CommandButton } from '@fluentui/react/lib/Button';
 import { IStyleFunction, classNamesFunction, styled } from '@fluentui/react/lib/Utilities';
 import { ICodepenProps, ICodepenStyleProps, ICodepenStyles } from './CodepenComponent.types';
 

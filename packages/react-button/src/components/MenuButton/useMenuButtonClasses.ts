@@ -1,5 +1,4 @@
-import { makeVariantClasses } from '@fluentui/react-theme-provider/lib/compat/index';
-import { Theme } from '@fluentui/theme';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useButtonClasses } from '../Button/useButtonClasses';
 import { MenuButtonState, MenuButtonVariants } from './MenuButton.types';
 
@@ -8,7 +7,7 @@ const GlobalClassNames = {
   menuIcon: 'ms-Button-menuIcon',
   _disabled: 'ms-Button--disabled',
   _iconOnly: 'ms-Button--iconOnly',
-  _ghost: 'ms-Button--ghost',
+  _subtle: 'ms-Button--subtle',
   _expanded: 'ms-Button--expanded',
 };
 
@@ -74,7 +73,7 @@ const useMenuButtonBaseClasses = makeVariantClasses<MenuButtonState, MenuButtonV
         menuIconColor: body?.menuIconColor,
       },
 
-      ghost: {
+      subtle: {
         menuIconColor: palette?.neutralSecondary,
         hovered: {
           menuIconColor: palette?.themePrimary,

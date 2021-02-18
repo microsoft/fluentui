@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import { MentionIcon, RedbangIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const janeAvatar = {
-  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/ade.jpg',
+const robinAvatar = {
+  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 
@@ -12,7 +12,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         content="Hi, can we talk? It's important!"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
         badge={{
@@ -26,11 +26,11 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-1',
   },
   {
-    gutter: <Avatar {...janeAvatar} />,
+    gutter: <Avatar {...robinAvatar} />,
     message: (
       <Chat.Message
-        content="Sure @John. Let's schedule a meeting."
-        author="Jane Doe"
+        content="Sure @Cecil. Let's schedule a meeting."
+        author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         badge={{
           icon: <MentionIcon />,

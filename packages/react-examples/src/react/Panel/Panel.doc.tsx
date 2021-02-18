@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { PanelBasicExample } from './Panel.Basic.Example';
 import { PanelConfirmDismissExample } from './Panel.ConfirmDismiss.Example';
 import { PanelControlledExample } from './Panel.Controlled.Example';
@@ -27,7 +27,7 @@ const PanelHandleDismissTargetExampleCode = require('!raw-loader?esModule=false!
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
   componentName: 'Panel',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Panel',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Panel',
   examples: [
     {
       title: 'Basic',

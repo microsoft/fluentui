@@ -16,7 +16,7 @@ const oldToNewButton: CodeMod = {
   },
   version: '100000',
   name: 'oldToNewButton',
-  enabled: true,
+  enabled: false, // No longer needed; remains for demo purposes
 };
 
 export default oldToNewButton;

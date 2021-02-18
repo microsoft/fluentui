@@ -1,7 +1,7 @@
 import { MakeStylesRenderer } from '../types';
 import { RTL_PREFIX } from '../constants';
 
-interface MakeStylesDOMRenderer extends MakeStylesRenderer {
+export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
   index: number;
 
@@ -69,4 +69,8 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
   renderers.set(targetDocument, renderer);
 
   return renderer;
+}
+
+export function resetDOMRenderer(targetDocument: Document = document): void {
+  renderers.delete(targetDocument);
 }

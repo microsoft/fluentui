@@ -1,7 +1,7 @@
 import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 import * as React from 'react';
 import { renderThemeProvider as render } from './renderThemeProvider';
-import { makeMergeProps } from '@fluentui/react-utils';
+import { makeMergeProps } from '@fluentui/react-utilities';
 import { useThemeProviderState } from './useThemeProviderState';
 import { useMergedRefs } from '@fluentui/react-hooks';
 

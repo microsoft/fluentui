@@ -1,5 +1,5 @@
-import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-utils';
-import { RecursivePartial } from '@fluentui/theme';
+import { BaseSlots, ComponentProps, SlotProps } from '@fluentui/react-utilities';
+import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
 import * as React from 'react';
 
 export interface TextProps extends ComponentProps, React.HTMLAttributes<HTMLSpanElement> {

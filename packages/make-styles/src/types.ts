@@ -12,11 +12,34 @@ export type MakeStylesStyleFunctionRule<Tokens> = (tokens: Tokens) => MakeStyles
 export type MakeStylesStyleRule<Tokens> = MakeStyles | MakeStylesStyleFunctionRule<Tokens>;
 
 export type MakeStylesDefinition<Selectors, Tokens> = [MakeStylesMatcher<Selectors>, MakeStylesStyleRule<Tokens>];
-
 export interface MakeStylesOptions<Tokens> {
   rtl?: boolean;
   renderer: MakeStylesRenderer;
   tokens: Tokens;
+}
+
+export type MakeStaticStyles =
+  | ({
+      [key: string]: CSSProperties;
+    } & {
+      '@font-face'?: {
+        fontFamily: string;
+        src: string;
+
+        fontFeatureSettings?: string;
+        fontStretch?: string;
+        fontStyle?: string;
+        fontVariant?: string;
+        fontVariationSettings?: string;
+        fontWeight?: number | string;
+
+        unicodeRange?: string;
+      };
+    })
+  | string;
+
+export interface MakeStaticStylesOptions {
+  renderer: MakeStylesRenderer;
 }
 
 // Build time / runtime types

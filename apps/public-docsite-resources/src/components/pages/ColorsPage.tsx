@@ -15,7 +15,7 @@ import {
   IThemeRules,
 } from '@fluentui/react/lib/ThemeGenerator';
 
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { ColorPicker } from '@fluentui/react/lib/ColorPicker';
 

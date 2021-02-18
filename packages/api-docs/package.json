@@ -1,22 +1,12 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "1.0.1",
+  "version": "8.0.0-beta.4",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -28,29 +18,20 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/fs-extra": "^8.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/node": "^10.3.2"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.0.0-beta.2",
-    "@fluentui/merge-styles": "^8.0.0-beta.4",
-    "@fluentui/react": "^8.0.0-beta.49",
-    "@fluentui/react-button": "^1.0.0-beta.28",
-    "@fluentui/react-cards": "^1.0.0-beta.49",
-    "@fluentui/react-checkbox": "^1.0.0-beta.39",
-    "@fluentui/react-date-time": "^8.0.0-beta.39",
-    "@fluentui/react-focus": "^8.0.0-beta.18",
-    "@fluentui/react-internal": "^8.0.0-beta.43",
-    "@fluentui/react-link": "^1.0.0-beta.38",
-    "@fluentui/react-slider": "^1.0.0-beta.39",
-    "@fluentui/react-tabs": "^1.0.0-beta.40",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.20",
-    "@fluentui/react-toggle": "^1.0.0-beta.39",
-    "@fluentui/style-utilities": "^8.0.0-beta.13",
-    "@fluentui/theme": "^2.0.0-beta.13",
-    "@fluentui/utilities": "^8.0.0-beta.10",
+    "@fluentui/date-time-utilities": "^8.0.0-beta.4",
+    "@fluentui/merge-styles": "^8.0.0-beta.5",
+    "@fluentui/react": "^8.0.0-beta.58",
+    "@fluentui/react-focus": "^8.0.0-beta.23",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.26",
+    "@fluentui/style-utilities": "^8.0.0-beta.18",
+    "@fluentui/theme": "^2.0.0-beta.18",
+    "@fluentui/utilities": "^8.0.0-beta.14",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0"

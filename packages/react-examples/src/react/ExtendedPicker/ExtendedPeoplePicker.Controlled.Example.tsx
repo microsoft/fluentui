@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { ExtendedPeoplePicker } from '@fluentui/react/lib/ExtendedPicker';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import {
   SuggestionsStore,
   FloatingPeoplePicker,

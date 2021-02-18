@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Spinner, Toggle, Checkbox, ProgressIndicator, ChoiceGroup, PersonaCoin } from '@fluentui/react';
-import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
 const ToggleStrings = {
   onText: 'On',

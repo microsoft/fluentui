@@ -5,9 +5,10 @@ import { Image } from './Image';
 
 describe('Image', () => {
   isConformant({
+    asPropHandlesRef: true,
     componentPath: path.join(__dirname, 'Image.tsx'),
     Component: Image,
     displayName: 'Image',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
+    disabledTests: ['has-docblock'],
   });
 });

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
-import { ResponsiveMode } from '@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { RectangleEdge } from '../../Positioning';
 import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
 import { ILabelStyleProps, ILabelStyles } from '../../Label';
