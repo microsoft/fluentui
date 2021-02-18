@@ -6,7 +6,7 @@ const getInitials = name => name.split(' ').map(word => `${word[0]}.`);
 
 const AvatarExampleGetInitialsShorthand = () => (
   <Avatar
-    name="John Doe"
+    name="Cecil Folk"
     getInitials={getInitials}
     status={{ color: 'green', icon: <AcceptIcon />, title: 'Available' }}
   />

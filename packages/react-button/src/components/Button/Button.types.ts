@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
  * {@docCategory Button}
  */
 export type ButtonProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
+  React.ButtonHTMLAttributes<HTMLElement> & {
     /**
      * Shorthand icon. A shorthand prop can be a literal, object, or
      * JSX. The `children` prop of the object can be a render function,

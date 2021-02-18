@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "SplitButton: Adding the ability to open the menu while focusing on the primary action button by pressing Alt+Down.",
+  "packageName": "@fluentui/react-button",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}
