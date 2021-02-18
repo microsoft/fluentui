@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-context-selector",
   "version": "0.52.0",
-  "description": "React useContextSelector & useContextSelectors hooks in userland",
+  "description": "React useContextSelector hook in userland",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -34,7 +34,7 @@
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-is": "^17.0.1",
+    "react-is": "^16.6.3",
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
