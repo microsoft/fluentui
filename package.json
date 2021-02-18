@@ -73,6 +73,7 @@
     "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
     "@types/prettier": "^1.0.0",
+    "@types/webpack-dev-middleware": "4.1.0",
     "@storybook/addon-a11y": "6.0.28",
     "@storybook/addons": "6.0.28",
     "@storybook/addon-actions": "6.0.28",
@@ -100,13 +101,17 @@
     "file-loader": "6.2.0",
     "raw-loader": "4.0.2",
     "style-loader": "2.0.0",
+    "imports-loader": "1.2.0",
     "storybook-addon-performance": "0.14.0",
     "postcss": "8.2.4",
     "postcss-loader": "4.1.0",
     "postcss-modules": "2.0.0",
     "ts-loader": "8.0.14",
     "ts-jest": "24.0.1",
-    "typescript": "3.7.2"
+    "typescript": "3.7.2",
+    "webpack-dev-server": "4.0.0-beta.0",
+    "webpack-cli": "4.3.1",
+    "webpack": "5.21.2"
   },
   "license": "MIT",
   "workspaces": {
@@ -117,6 +122,7 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
+      "packages/web-components/webpack",
       "packages/web-components/@storybook/**",
       "packages/web-components/typescript",
       "packages/web-components/typescript/**",
