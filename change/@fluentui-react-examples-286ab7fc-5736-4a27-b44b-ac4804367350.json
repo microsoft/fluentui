@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Doing some minor changes to remove warnings from use of deprecated property gap of the Stack component in Button examples.",
-  "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch"
-}

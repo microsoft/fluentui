@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Cleaning up state function.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch"
-}

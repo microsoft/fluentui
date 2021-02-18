@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.57)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.56..@fluentui/react_v8.0.0-beta.57)
+
+### Changes
+
+- Fix focus border for Dropdown multiselect items ([PR #16802](https://github.com/microsoft/fluentui/pull/16802) by evlevy@microsoft.com)
+- Fix contrast of 'filter chevron' against background color ([PR #16939](https://github.com/microsoft/fluentui/pull/16939) by tmichon@microsoft.com)
+- Utilize useLayoutEffect for keytips to mimic previous didUpdate/didMount behavior - Fixes for persisted menu overflow keytips ([PR #17042](https://github.com/microsoft/fluentui/pull/17042) by keyou@microsoft.com)
+- ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers ([PR #17014](https://github.com/microsoft/fluentui/pull/17014) by tristan.watanabe@gmail.com)
 
 ## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.56)
 
