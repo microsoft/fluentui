@@ -58,8 +58,16 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
 
         renderer.insertionCache[cacheKey] = true;
 
-        (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
-        renderer.index++;
+        // The browser will fail to insert rule syntax it doesn't understand, such as :-moz-focusring selectors
+        // We want to log the error but continue with other rules instead of aborting
+        // See also: https://github.com/vercel/styled-jsx/issues/295
+        try {
+          (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
+          renderer.index++;
+        } catch (err) {
+          // eslint-disable-next-line no-console
+          console.error(err);
+        }
       }
 
       return classes.slice(0, -1);
