@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.33)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.32..@fluentui/react-button_v1.0.0-beta.33)
+
+### Changes
+
+- use @fluentui/react-utilities instead of @fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+- Cleaning up state function. ([PR #16943](https://github.com/microsoft/fluentui/pull/16943) by humbertomakotomorimoto@gmail.com)
+- SplitButton: Adding the ability to open the menu while focusing on the primary action button by pressing Alt+Down. ([PR #17021](https://github.com/microsoft/fluentui/pull/17021) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.32)
 

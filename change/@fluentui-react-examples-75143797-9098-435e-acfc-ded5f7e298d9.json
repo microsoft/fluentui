@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding @fluentui/react-link examples.",
-  "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch"
-}

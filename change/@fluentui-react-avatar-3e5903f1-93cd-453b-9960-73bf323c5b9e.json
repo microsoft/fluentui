@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "[BREAKING] use makeStyles() for styling and props interface updates.",
-  "packageName": "@fluentui/react-avatar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

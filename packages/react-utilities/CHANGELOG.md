@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v0.3.0)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v0.2.4..@fluentui/react-utilities_v0.3.0)
+
+### Minor changes
+
+- include all utils from fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.6 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v0.2.4)
 

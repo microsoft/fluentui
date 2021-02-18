@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.25)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.24..@fluentui/react-theme-provider_v1.0.0-beta.25)
+
+### Changes
+
+- use @fluentui/react-utilities instead of @fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.24)
 
