@@ -4,10 +4,10 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utils';
-import { ObjectShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-utils';
+import { ShorthandProps } from '@fluentui/react-utilities';
 import { SizeValue } from '@fluentui/react-theme';
 
 // @public
