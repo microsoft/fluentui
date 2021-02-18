@@ -137,7 +137,7 @@ const useToggleButtonBaseClasses = makeVariantClasses<ToggleButtonState, ToggleB
         },
       },
 
-      ghost: {
+      subtle: {
         checked: {
           background: palette?.neutralLight,
           contentColor: palette?.neutralDark,

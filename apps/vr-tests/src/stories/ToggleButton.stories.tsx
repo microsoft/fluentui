@@ -121,13 +121,13 @@ storiesOf('ToggleButton Next - Block', module)
       Hello, world
     </ToggleButton>
   ))
-  .addStory('Ghost', () => (
-    <ToggleButton block ghost icon="X">
+  .addStory('Subtle', () => (
+    <ToggleButton block subtle icon="X">
       Hello, world
     </ToggleButton>
   ))
-  .addStory('Ghost Disabled', () => (
-    <ToggleButton block disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <ToggleButton block disabled subtle icon="X">
       Hello, world
     </ToggleButton>
   ))
