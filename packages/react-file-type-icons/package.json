@@ -26,7 +26,6 @@
     "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/react": "16.9.42",
     "@types/webpack-env": "1.16.0",
-    "@types/jest": "~24.9.0",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1"
