@@ -1,7 +1,12 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { TooltipPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Tooltip/Tooltip.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TooltipPage/docs/TooltipRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web Tooltip', url: '#/controls/web/tooltip' },
+  { text: 'Android Tooltip', url: '#/controls/android/tooltip' },
+  { text: 'iOS Tooltip', url: '#/controls/iOS/tooltip' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/TooltipPage';
 

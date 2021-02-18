@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { CommandBarPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/CommandBar/CommandBar.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/CommandBarPage/docs/CommandBarRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const CommandBarPageProps: TFabricPlatformPageProps = {
   web: {

@@ -15,7 +15,7 @@ import { ThemeSlotsPageProps } from './ThemeSlotsPage.doc';
 
 const getClassNames = classNamesFunction<IThemeSlotsPageStyleProps, IThemeSlotsPageStyles>();
 const baseUrl =
-  'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website?path=/apps/fabric-website/src/pages/Styles/';
+  'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Styles/ThemeSlotsPage/docs';
 
 // Color palettes
 /* eslint-disable import/no-extraneous-dependencies */
@@ -68,7 +68,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
         },
         {
           sectionName: 'Implementation',
-          editUrl: baseUrl + 'docs/web/ThemeSlotsImplementation.md',
+          editUrl: baseUrl + 'web/ThemeSlotsImplementation.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
         },
       ];

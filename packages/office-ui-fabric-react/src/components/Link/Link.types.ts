@@ -79,6 +79,12 @@ export interface ILinkProps
    * Optional keytip for this Link
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Whether the link is styled with an underline or not.
+   * Should be used when the link is placed alongside other text content.
+   */
+  underline?: boolean;
 }
 
 /**
@@ -88,6 +94,7 @@ export interface ILinkStyleProps {
   className?: string;
   isButton?: boolean;
   isDisabled?: boolean;
+  isUnderlined?: boolean;
   theme: ITheme;
 }
 

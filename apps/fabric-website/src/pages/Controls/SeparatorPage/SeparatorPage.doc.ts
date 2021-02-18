@@ -1,7 +1,15 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { SeparatorPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Separator/Separator.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/SeparatorRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web Separator', url: '#/controls/web/separator' },
+  { text: 'iOS Separator', url: '#/controls/ios/separator' },
+  { text: 'Android Separator', url: '#/controls/android/separator' },
+  { text: 'Android ListItemDivider', url: '#/controls/android/listcells' },
+  { text: 'macOS Separator', url: '#/controls/mac/separator' },
+  { text: 'Cross-platform Separator', url: '#/controls/crossplatform/separator' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/SeparatorPage';
 

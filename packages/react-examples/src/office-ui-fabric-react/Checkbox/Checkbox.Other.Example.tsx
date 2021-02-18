@@ -34,9 +34,9 @@ export const CheckboxOtherExample: React.FunctionComponent = () => {
 function _renderLabelWithLink() {
   return (
     <span>
-      Custom-rendered label with a link{' '}
-      <Link href="https://www.microsoft.com" target="_blank">
-        go to Microsoft home page
+      Custom-rendered label with a link to{' '}
+      <Link href="https://www.microsoft.com" target="_blank" underline>
+        Microsoft home page
       </Link>
     </span>
   );

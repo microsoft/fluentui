@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { PickersPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Pickers/Pickers.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PickersPage/docs/PickersRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const PickersPageProps: TFabricPlatformPageProps = {
   web: {
