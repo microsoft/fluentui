@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.41)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.40..@fluentui/react-link_v1.0.0-beta.41)
+
+### Changes
+
+- Link: Initial implementation based on SPEC.md ([PR #16943](https://github.com/microsoft/fluentui/pull/16943) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.40)
 

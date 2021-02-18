@@ -121,13 +121,13 @@ storiesOf('SplitButton Next - Block', module)
       Hello, world
     </SplitButton>
   ))
-  .addStory('Ghost', () => (
-    <SplitButton block ghost icon="X">
+  .addStory('Subtle', () => (
+    <SplitButton block subtle icon="X">
       Hello, world
     </SplitButton>
   ))
-  .addStory('Ghost Disabled', () => (
-    <SplitButton block disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <SplitButton block disabled subtle icon="X">
       Hello, world
     </SplitButton>
   ))

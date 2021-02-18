@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Allow references to devDependencies defined in root package.json",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -28,7 +28,7 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-badge', 'react-link', 'react-image', 'react-menu'].includes('PACKAGE_NAME')) {
+if (['react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu'].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }

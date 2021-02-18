@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-date-time
 
-This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.47)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-date-time_v8.0.0-beta.46..@fluentui/react-date-time_v8.0.0-beta.47)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-date-time_v8.0.0-beta.46)
 
