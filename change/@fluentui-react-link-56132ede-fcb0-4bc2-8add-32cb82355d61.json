@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Link: Initial implementation based on SPEC.md",
-  "packageName": "@fluentui/react-link",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch"
-}
