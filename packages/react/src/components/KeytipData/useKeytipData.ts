@@ -23,8 +23,20 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
     : undefined;
 
   const keytipManager = useConst<KeytipManager>(KeytipManager.getInstance());
+  const prevOptions = usePrevious(options);
 
-  React.useEffect(() => {
+  // useLayoutEffect used to strictly emulate didUpdate/didMount behavior
+  React.useLayoutEffect(() => {
+    if (
+      uniqueId.current &&
+      keytipProps &&
+      (prevOptions?.keytipProps !== options.keytipProps || prevOptions?.disabled !== options.disabled)
+    ) {
+      keytipManager.update(keytipProps, uniqueId.current);
+    }
+  });
+
+  React.useLayoutEffect(() => {
     // Register Keytip in KeytipManager
     if (keytipProps) {
       uniqueId.current = keytipManager.register(keytipProps);
@@ -37,16 +49,6 @@ export function useKeytipData(options: KeytipDataOptions): IKeytipData {
     // this is meant to run only at mount, and updates are handled separately
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const prevOptions = usePrevious(options);
-
-  if (
-    uniqueId.current &&
-    keytipProps &&
-    (prevOptions?.keytipProps !== options.keytipProps || prevOptions?.disabled !== options.disabled)
-  ) {
-    keytipManager.update(keytipProps, uniqueId.current);
-  }
 
   let nativeKeytipProps: IKeytipData = {
     ariaDescribedBy: undefined,
