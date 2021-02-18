@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.42)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.41..@fluentui/react-link_v1.0.0-beta.42)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v0.3.1 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.41)
 

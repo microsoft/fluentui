@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Allow React 17 in peerDependencies",
-  "packageName": "@fluentui/react-text",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

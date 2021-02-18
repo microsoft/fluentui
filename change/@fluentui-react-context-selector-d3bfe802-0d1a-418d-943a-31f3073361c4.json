@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: fix version mismatch",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.18)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.17..@fluentui/scheme-utilities_v8.0.0-beta.18)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.18 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.17)
 
