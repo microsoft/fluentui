@@ -6,6 +6,12 @@
 
 This spec defines the default function of an `Accordion` as a vertically stacked set of interactive panels that each contain a title and content snippet.
 
+An accordion is a vertically stacked group of collapsible sections. An accordion is composed of grouped buttons and panels. When a user selects an accordion button, its corresponding panel should switch between 'open' and 'collapsed' states.
+
+Accordions follow many consistent patterns but do allow for some variability in behavior. For example, some accordions only allow one panel to be open at a time, where others may allow multiple or all panels to be open simultaneously. Similarly, many accordions will allow all panels to be simultaneously collapsed, while others may require one panel to be open at all times.
+
+If you are familiar with the disclosure pattern, an accordion will feel very similar. The key distinction is that a disclosure is a standalone component that consists of a single button-panel-group. Because of this, you cannot navigate between different disclosures with a keyboard the same way you can with an accordion.
+
 ## Prior art
 
 As a part of the spec definitions in Fluent UI, a research effort has been made through [Open UI](https://open-ui.org/). The current research proposal is available as an open source contribution undergoing review ([research proposal](https://github.com/WICG/open-ui/pull/263))
@@ -27,28 +33,35 @@ Sample usages will be given in the following section of this document [Sample co
 
 The root level component serves context and common API between all children.
 
-| Prop name          | Type        | Default Value | Details                                    |
-| ------------------ | ----------- | ------------- | ------------------------------------------ |
-| expand (?)         | boolean     | false         | Allows multiple panels to be expanded      |
-| collapse (?)       | boolean     | false         | Allows multiple panels to be collapsed     |
-| expandIconPosition | Enum        | "end"         | Position of the icon to indicate expansion |
-| heading            | ElementType | "h3"          | Heading element for the panel              |
+| Prop name          | Type                     | Default Value | Details                                          |
+| ------------------ | ------------------------ | ------------- | ------------------------------------------------ |
+| multiple           | boolean                  | false         | Allows multiple panels to be expanded            |
+| collapsible        | boolean                  | false         | Allows multiple panels to be collapsed           |
+| expandIconPosition | "start" or "end"         | "end"         | Position of the icon to indicate expansion       |
+| heading            | ElementType              | "h3"          | Heading element for the panel                    |
+| onPanelToggle      | PanelToggleEventListener |               | Equivalent to onToggle on AccordionPanel element |
 
-By default, the Accordion must have one, and **ONLY** one (1..1), opened panel all the time.
-If `collapse` is used, then the Accordion can have one or zero (0..1) panels opened.
-If `expand` is used, then the Accordion can have one or more (1..n) panels opened.
-If both `expand` and `collapse` are used, then the Accordion doesn't have restrictions (0..n).
+By default, the Accordion is an Uncontrolled component. From the moment that one internal AccordionPanel has the property `open` declared, the Accordion becomes a Controlled component and to ensure behavior `onToggle` must be used.
+
+> Perhaps some error could be emitted in dev when multiple, collapsible and open are being used, like React does when you try to control an uncontrolled component.
+
+```tsx
+interface PanelToggleEventListener {
+  (open: boolean, index: number): void;
+}
+```
 
 ### AccordionPanel
 
-| Prop name   | Type           | Details                                                                                                    |
-| ----------- | -------------- | ---------------------------------------------------------------------------------------------------------- |
-| title       | ShorthandValue | Label for representing a section of content that also serves as control for showing and hiding the content |
-| children    | ShorthandValue | The content with visibility controlled by the panel                                                        |
-| open        | boolean        | Controls the state of the panel                                                                            |
-| defaultOpen | boolean        | Default value for the state of the panel                                                                   |
-| expandIcon  | ShorthandValue | Icon to indicate expansion                                                                                 |
-| disabled    | boolean        | Disables opening/closing of panel                                                                          |
+| Prop name   | Type                    | Details                                                                                                    |
+| ----------- | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
+| title       | ShorthandValue          | Label for representing a section of content that also serves as control for showing and hiding the content |
+| children    | ShorthandValue          | The content with visibility controlled by the panel                                                        |
+| open        | boolean                 | Controls the state of the panel                                                                            |
+| defaultOpen | boolean                 | Default value for the state of the panel                                                                   |
+| expandIcon  | ShorthandValue          | Icon to indicate expansion                                                                                 |
+| disabled    | boolean                 | Disables opening/closing of panel                                                                          |
+| onToggle    | (open: boolean) => void | Dispatched when it's state changes between opened and closed                                               |
 
 ## Sample code
 
@@ -74,19 +87,19 @@ Expected DOM output
 ```html
 <div>
   <h3>
-    <button aria-expanded="false" aria-controls="sect1" id="accordion1">
+    <div role="button" aria-expanded="false" aria-controls="sect1" id="accordion1">
       First Panel
       <svg>Arrow Icon</svg>
-    </button>
+    </div>
   </h3>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
   <h3>
-    <button aria-expanded="false" aria-controls="sect2" id="accordion2">
+    <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       Second Panel
       <svg>Arrow Icon</svg>
-    </button>
+    </div>
   </h3>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
@@ -114,19 +127,19 @@ Expected DOM output
 ```html
 <div>
   <h3>
-    <button aria-expanded="true" aria-controls="sect1" id="accordion1">
+    <div role="button" aria-expanded="true" aria-controls="sect1" id="accordion1">
       First Panel
       <svg>Arrow Icon</svg>
-    </button>
+    </div>
   </h3>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
   <h3>
-    <button aria-expanded="false" aria-controls="sect2" id="accordion2">
+    <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       Second Panel
       <svg>Arrow Icon</svg>
-    </button>
+    </div>
   </h3>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
@@ -156,19 +169,19 @@ Expected DOM output
 ```html
 <div>
   <h3>
-    <button aria-expanded="true" aria-controls="sect1" id="accordion1">
+    <div role="button" aria-expanded="true" aria-controls="sect1" id="accordion1">
       First Panel
       <svg>Arrow Icon</svg>
-    </button>
+    </div>
   </h3>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
   <h3>
-    <button aria-expanded="true" aria-controls="sect2" id="accordion2">
+    <div role="button" aria-expanded="true" aria-controls="sect2" id="accordion2">
       Second Panel
       <svg>Arrow Icon</svg>
-    </button>
+    </div>
   </h3>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
@@ -196,19 +209,19 @@ Expected DOM output
 ```html
 <div>
   <h3>
-    <button aria-expanded="false" aria-controls="sect1" id="accordion1">
+    <div role="button" aria-expanded="false" aria-controls="sect1" id="accordion1">
       <svg>CustomIcon</svg>
       First Panel
-    </button>
+    </div>
   </h3>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
   <h3>
-    <button aria-expanded="false" aria-controls="sect2" id="accordion2">
+    <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       <svg>AnotherCustomIcon</svg>
       Second Panel
-    </button>
+    </div>
   </h3>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel
@@ -236,19 +249,19 @@ Expected DOM output
 ```html
 <div>
   <h1>
-    <button aria-expanded="false" aria-controls="sect1" id="accordion1">
+    <div role="button" aria-expanded="false" aria-controls="sect1" id="accordion1">
       <svg>CustomIcon</svg>
       First Panel
-    </button>
+    </div>
   </h1>
   <div id="sect1" role="region" aria-labelledby="accordion1">
     This is the content of the first Panel
   </div>
   <h1>
-    <button aria-expanded="false" aria-controls="sect2" id="accordion2">
+    <div role="button" aria-expanded="false" aria-controls="sect2" id="accordion2">
       <svg>AnotherCustomIcon</svg>
       Second Panel
-    </button>
+    </div>
   </h1>
   <div id="sect2" role="region" aria-labelledby="accordion2">
     This is the content of the second Panel

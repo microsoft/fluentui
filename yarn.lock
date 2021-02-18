@@ -1564,6 +1564,15 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
+"@fluentui/react-utils@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-utils/-/react-utils-0.3.1.tgz#4adc066007671ab3f273fcd9db54f445f38d8e0d"
+  integrity sha512-eL363pgLgiurQpn2MPF2g8vU7E9Y7obK/hwbU8vD091QcSAyMWrvwof96fpJ3cQSRbqUJVr5VQgOK1P5ScDBOA==
+  dependencies:
+    "@fluentui/set-version" "^8.0.0-beta.1"
+    "@fluentui/utilities" "^8.0.0-beta.11"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -4922,7 +4931,7 @@
     "@types/jest" "*"
     axe-core "^3.0.3"
 
-"@types/jest@*", "@types/jest@24.9.1":
+"@types/jest@*", "@types/jest@24.9.1", "@types/jest@~24.9.0":
   version "24.9.1"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.9.1.tgz#02baf9573c78f1b9974a5f36778b366aa77bd534"
   integrity sha512-Fb38HkXSVA4L8fGKEZ6le5bB8r6MRWlOCZbVuWZcmOMSCd2wCYOwN1ibj8daIoV9naq7aaOZjrLCoCMptKU/4Q==
