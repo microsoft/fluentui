@@ -32,10 +32,10 @@ const ButtonExamples = (props: ButtonProps) => (
     <Button {...props} primary disabled icon="X">
       Hello, world
     </Button>
-    <Button {...props} ghost icon="X">
+    <Button {...props} subtle icon="X">
       Hello, world
     </Button>
-    <Button {...props} ghost disabled icon="X">
+    <Button {...props} subtle disabled icon="X">
       Hello, world
     </Button>
     <Button {...props} transparent icon="X">
@@ -49,7 +49,7 @@ const ButtonExamples = (props: ButtonProps) => (
 
 export const Buttons = () => (
   <Stack>
-    <Text>A button comes in default, `primary`, `ghost` and `transparent` flavors.</Text>
+    <Text>A button comes in default, `primary`, `subtle` and `transparent` flavors.</Text>
     <ButtonExamples />
 
     <Text>A button can be focusable when disabled</Text>

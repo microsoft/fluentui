@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
-  "packageName": "@fluentui/react-menu",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

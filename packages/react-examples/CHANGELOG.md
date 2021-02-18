@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.4)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.3..@fluentui/react-examples_v8.0.0-beta.4)
+
+### Changes
+
+- update a decorator for react-avatar ([PR #16793](https://github.com/microsoft/fluentui/pull/16793) by olfedias@microsoft.com)
+- Utilize useLayoutEffect for keytips to mimic previous didUpdate/didMount behavior - Fixes for persisted menu overflow keytips ([PR #17042](https://github.com/microsoft/fluentui/pull/17042) by keyou@microsoft.com)
+- Doing some minor changes to remove warnings from use of deprecated property gap of the Stack component in Button examples. ([PR #17021](https://github.com/microsoft/fluentui/pull/17021) by humbertomakotomorimoto@gmail.com)
+- Adding @fluentui/react-link examples. ([PR #16943](https://github.com/microsoft/fluentui/pull/16943) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.3)
 

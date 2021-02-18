@@ -207,6 +207,7 @@ export const Popup: React.FC<PopupProps> &
       trapFocus,
       tabbableTrigger,
       trigger: trigger as any,
+      inline,
     }),
     rtl: context.rtl,
   });

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/test-utilities",
-  "version": "8.0.0-beta.6",
+  "version": "8.0.0-beta.7",
   "description": "Utilities used when testing components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,13 +25,13 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.5",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.6",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -40,7 +40,7 @@
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta.1"
+    "@fluentui/set-version": "^8.0.0-beta.2"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.0-beta.7)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.0.0-beta.6..@fluentui/test-utilities_v8.0.0-beta.7)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.6 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.0-beta.6)
 

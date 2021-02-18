@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Remove useContextSelectors to align with proposed React implementation",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
