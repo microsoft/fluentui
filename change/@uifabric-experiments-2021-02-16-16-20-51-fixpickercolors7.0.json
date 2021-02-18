@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Update colors for the FloatingSuggestionsComposite items",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-17T00:20:51.203Z"
+}
