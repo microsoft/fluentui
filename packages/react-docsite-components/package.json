@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-docsite-components",
-  "version": "8.0.0-beta.54",
+  "version": "8.0.0-beta.55",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,7 +23,6 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@types/color-check": "0.0.0",
-    "@types/jest": "~24.9.0",
     "@types/markdown-to-jsx": "6.11.0",
     "@types/react": "16.9.42",
     "@types/react-custom-scrollbars": "^4.0.5",
@@ -41,13 +40,13 @@
     "react-dom": ">=16.8.0 <17.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.54",
-    "@fluentui/theme": "^2.0.0-beta.15",
+    "@fluentui/react": "^8.0.0-beta.56",
+    "@fluentui/theme": "^2.0.0-beta.16",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.0.0-beta.3",
-    "@fluentui/react-hooks": "^8.0.0-beta.11",
+    "@fluentui/react-hooks": "^8.0.0-beta.12",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/react-monaco-editor": "^1.0.1-0",
+    "@fluentui/react-monaco-editor": "^1.0.1-1",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",

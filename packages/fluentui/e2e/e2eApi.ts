@@ -29,7 +29,9 @@ type E2EKeys =
   | 'Tab'
   | 'F'
   | 'O'
-  | '*';
+  | '*'
+  | 'T'
+  | 'H';
 
 const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
 

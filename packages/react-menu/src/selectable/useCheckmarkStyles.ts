@@ -1,5 +1,5 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
-import { ObjectShorthandProps } from '@fluentui/react-utils';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemSelectableState } from './types';
 
 /**

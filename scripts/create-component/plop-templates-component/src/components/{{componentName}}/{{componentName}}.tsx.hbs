@@ -1,20 +1,17 @@
 import * as React from 'react';
 import { use{{componentName}} } from './use{{componentName}}';
 import { {{componentName}}Props } from './{{componentName}}.types';
-import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
-import { use{{componentName}}Classes } from './use{{componentName}}Classes';
 import { render{{componentName}} } from './render{{componentName}}';
+import { use{{componentName}}Styles } from './use{{componentName}}Styles';
 
 /**
- * Define a styled {{componentName}}, using the `use{{componentName}}` hook.
- * {@docCategory {{componentName}} }
+ * Define a styled {{componentName}}, using the `use{{componentName}}` and `use{{componentName}}Styles` hooks.
+ * {@docCategory {{componentName}}\}
  */
 export const {{componentName}} = React.forwardRef<HTMLElement, {{componentName}}Props>((props, ref) => {
   const state = use{{componentName}}(props, ref);
 
-  use{{componentName}}Classes(state);
-  useInlineTokens(state, '--{{lowerCase componentName}}');
-
+  use{{componentName}}Styles(state);
   return render{{componentName}}(state);
 });
 

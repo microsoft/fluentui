@@ -10,7 +10,7 @@ This RFC covers a proposal for a process to track and bring clarity to the engin
 
 ## Background
 
-We have been working for a bit on convergence and leaning the towers between libraries formerly known as Stardust and Fabric. We've made good progress on defining the [component model](https://github.com/microsoft/fluentui/blob/master/packages/react-utils) to use, and are now making progress on styling and theming components built upon it.
+We have been working for a bit on convergence and leaning the towers between libraries formerly known as Stardust and Fabric. We've made good progress on defining the [component model](https://github.com/microsoft/fluentui/blob/master/packages/react-utilities) to use, and are now making progress on styling and theming components built upon it.
 
 ## Problem statement
 

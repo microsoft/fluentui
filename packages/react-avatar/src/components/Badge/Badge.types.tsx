@@ -1,4 +1,4 @@
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { SizeValue } from '../utils/commonTypes';

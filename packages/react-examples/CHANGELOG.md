@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Feb 2021 12:21:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.3)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.2..@fluentui/react-examples_v8.0.0-beta.3)
+
+### Changes
+
+- updating avatar test ([PR #16486](https://github.com/microsoft/fluentui/pull/16486) by andmarti@microsoft.com)
+- feat(react-image): redo to match convergence rfc ([PR #16894](https://github.com/microsoft/fluentui/pull/16894) by jakubkonka@microsoft.com)
+- Add Menu group, divider and section ([PR #16972](https://github.com/microsoft/fluentui/pull/16972) by lingfan.gao@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.2)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.1..@fluentui/react-examples_v8.0.0-beta.2)
+
+### Patches
+
+- Bump @fluentui/react-make-styles to v0.2.6 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/react-menu to v0.3.0 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/react-image to v0.6.23 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+### Changes
+
+- Add checkbox story for Menu ([PR #16888](https://github.com/microsoft/fluentui/pull/16888) by lingfan.gao@microsoft.com)
+- Removing examples of removed components. ([PR #16961](https://github.com/microsoft/fluentui/pull/16961) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.1)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-slider",
-  "version": "1.0.0-beta.44",
+  "version": "1.0.0-beta.45",
   "description": "Fluent UI React Slider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,6 @@
     "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/webpack-env": "1.16.0",
@@ -43,11 +42,11 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.54",
-    "@fluentui/react-hooks": "^8.0.0-beta.11",
+    "@fluentui/react": "^8.0.0-beta.56",
+    "@fluentui/react-hooks": "^8.0.0-beta.12",
     "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/style-utilities": "^8.0.0-beta.15",
-    "@fluentui/utilities": "^8.0.0-beta.11",
+    "@fluentui/style-utilities": "^8.0.0-beta.16",
+    "@fluentui/utilities": "^8.0.0-beta.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
