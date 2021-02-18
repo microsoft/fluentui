@@ -81,7 +81,6 @@
     "gulp-remember": "^1.0.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-util": "^3.0.8",
-    "html-webpack-plugin": "^4.5.1",
     "ignore-not-found-export-webpack-plugin": "^1.0.1",
     "inquirer": "^7.3.3",
     "jju": "^1.4.0",

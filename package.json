@@ -96,6 +96,7 @@
     "lint-staged": "^10.2.9",
     "satisfied": "^1.1.1",
     "syncpack": "^5.6.10",
+    "html-webpack-plugin": "5.1.0",
     "sass-loader": "10.1.1",
     "css-loader": "5.0.1",
     "file-loader": "6.2.0",
