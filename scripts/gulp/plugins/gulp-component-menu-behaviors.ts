@@ -73,7 +73,7 @@ export default () => {
             `${definitionName}.ts`,
           ),
         );
-        // delete require cache only works for absolute file path
+        // delete require cache only works for absolute file path, is required to get latest changes in behaviors for watch process
         delete require.cache[absPathToBehaviorDefinition];
         let definition;
         try {
