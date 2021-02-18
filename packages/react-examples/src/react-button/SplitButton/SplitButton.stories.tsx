@@ -31,10 +31,10 @@ const SplitButtonExamples = (props: SplitButtonProps) => (
     <SplitButton {...props} primary disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost menu={<ContextualMenu {...menuProps} />}>
+    <SplitButton {...props} subtle menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost disabled menu={<ContextualMenu {...menuProps} />}>
+    <SplitButton {...props} subtle disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
     <SplitButton {...props} transparent menu={<ContextualMenu {...menuProps} />}>
