@@ -197,7 +197,6 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
     return (
       <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
         <div
-          aria-hidden="true"
           ref={this._stickyAboveRef}
           className={classNames.stickyAbove}
           style={this._getStickyContainerStyle(stickyTopHeight, true)}
@@ -207,11 +206,7 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
             {this.props.children}
           </ScrollablePaneContext.Provider>
         </div>
-        <div
-          aria-hidden="true"
-          className={classNames.stickyBelow}
-          style={this._getStickyContainerStyle(stickyBottomHeight, false)}
-        >
+        <div className={classNames.stickyBelow} style={this._getStickyContainerStyle(stickyBottomHeight, false)}>
           <div ref={this._stickyBelowRef} className={classNames.stickyBelowItems} />
         </div>
       </div>
