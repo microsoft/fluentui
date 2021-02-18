@@ -24,7 +24,6 @@ import {
   SkypeClockIcon,
   SkypeMinusIcon,
   TelemarketerIcon,
-  RobotIcon,
 } from '@fluentui/react-icons-mdl2';
 import { ax, makeStyles } from '@fluentui/react-make-styles';
 
