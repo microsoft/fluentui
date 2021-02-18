@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.8)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.1.7..@fluentui/react-text_v0.1.8)
+
+### Patches
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.26 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/theme to v2.0.0-beta.18 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
 
 ## [0.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.1.7)
 

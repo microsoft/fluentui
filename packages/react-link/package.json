@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-link",
-  "version": "1.0.0-beta.41",
+  "version": "1.0.0-beta.42",
   "description": "Fluent UI React Link component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -45,19 +45,19 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.13",
-    "@fluentui/react-compose": "^1.0.0-beta.14",
-    "@fluentui/react-hooks": "^8.0.0-beta.13",
-    "@fluentui/react-make-styles": "^0.2.7-0",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.25",
-    "@fluentui/react-utilities": "^0.3.0",
+    "@fluentui/react-compose": "^1.0.0-beta.15",
+    "@fluentui/react-hooks": "^8.0.0-beta.14",
+    "@fluentui/react-make-styles": "^0.2.7",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.26",
+    "@fluentui/react-utilities": "^0.3.1",
     "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/utilities": "^8.0.0-beta.13",
+    "@fluentui/utilities": "^8.0.0-beta.14",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   }
 }

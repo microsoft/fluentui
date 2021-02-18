@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.11.1)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v0.11.0..@fluentui/react-avatar_v0.11.1)
+
+### Patches
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.14 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-make-styles to v0.2.7 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.16 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.26 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.0-beta.14 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
 
 ## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v0.11.0)
 

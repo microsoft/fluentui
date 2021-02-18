@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.4.2)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.4.1..@fluentui/react-menu_v0.4.2)
+
+### Patches
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.14 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-make-styles to v0.2.7 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.26 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
 
 ## [0.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.4.1)
 
