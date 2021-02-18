@@ -198,6 +198,21 @@ export const usageOverrideTokens = () => (
   </FluentProvider>
 );
 
+// Temporary for FUI Addon debugging
+export const Debug = () => {
+  const [primary, togglePrimary] = React.useState(false);
+  return (
+    <Button
+      primary={primary}
+      onClick={() => {
+        togglePrimary(!primary);
+      }}
+    >
+      Text
+    </Button>
+  );
+};
+
 //
 // TODO: Interactions
 //
