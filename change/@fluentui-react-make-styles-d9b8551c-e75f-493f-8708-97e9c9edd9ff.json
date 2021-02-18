@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add makeOverrides()",
+  "packageName": "@fluentui/react-make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

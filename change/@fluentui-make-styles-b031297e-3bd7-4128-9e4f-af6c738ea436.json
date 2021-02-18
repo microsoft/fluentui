@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "add makeOverrides()",
+  "packageName": "@fluentui/make-styles",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "use makeOverrides()",
+  "packageName": "@fluentui/react-avatar",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
