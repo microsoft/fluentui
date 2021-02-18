@@ -19,7 +19,6 @@ export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, default
       ref: useMergedRefs(ref, React.useRef(null)),
       shape: 'circular',
       size: 'medium',
-      icon: { size: props.size },
       iconPosition: 'before',
     },
     defaultProps,
