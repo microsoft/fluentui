@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Utilize useLayoutEffect for keytips to mimic previous didUpdate/didMount behavior - Fixes for persisted menu overflow keytips",
+  "packageName": "@fluentui/react",
+  "email": "keyou@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-17T22:09:45.238Z"
+}

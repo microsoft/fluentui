@@ -2,7 +2,7 @@ import * as React from 'react';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore Typings require esModuleInterop
 import { objectFitImages } from 'object-fit-images';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { ImageProps, ImageState } from './Image.types';
 
