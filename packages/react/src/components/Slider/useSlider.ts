@@ -353,7 +353,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     disabled,
   };
 
-  const lowerValueLabelProps = showValue && {
+  const lowerValueLabelProps = ranged && showValue && {
     className: classNames.valueLabel,
     children: valueFormat ? valueFormat(lowerValue!) : lowerValue,
     disabled,
