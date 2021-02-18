@@ -1,5 +1,5 @@
 import { ax, makeStyles } from '@fluentui/react-make-styles';
-import { AvatarState, avatarSizeValues, defaultAvatarSize } from './Avatar.types';
+import { AvatarState, defaultAvatarSize } from './Avatar.types';
 
 //
 // TODO: All animation constants should go to theme or globals?
@@ -91,10 +91,19 @@ const useStyles = makeStyles<AvatarState>([
     }),
   ],
 
-  // Add rules to set the width and height based on every possible size
-  ...avatarSizeValues.map(
-    val => [s => s.size === val, { width: `${val}px`, height: `${val}px` }] as [(s: AvatarState) => boolean, {}],
-  ),
+  [s => s.size === 20, { width: '20px', height: '20px' }],
+  [s => s.size === 24, { width: '24px', height: '24px' }],
+  [s => s.size === 28, { width: '28px', height: '28px' }],
+  [s => s.size === 32, { width: '32px', height: '32px' }],
+  [s => s.size === 36, { width: '36px', height: '36px' }],
+  [s => s.size === 40, { width: '40px', height: '40px' }],
+  [s => s.size === 48, { width: '48px', height: '48px' }],
+  [s => s.size === 56, { width: '56px', height: '56px' }],
+  [s => s.size === 64, { width: '64px', height: '64px' }],
+  [s => s.size === 72, { width: '72px', height: '72px' }],
+  [s => s.size === 96, { width: '96px', height: '96px' }],
+  [s => s.size === 120, { width: '120px', height: '120px' }],
+  [s => s.size === 128, { width: '128px', height: '128px' }],
 
   [s => s.size < 28, tokens => ({ fontSize: tokens.global.type.fontSizes.base[100] })],
   [s => s.size >= 28, tokens => ({ fontSize: tokens.global.type.fontSizes.base[200] })],
@@ -110,6 +119,13 @@ const useStyles = makeStyles<AvatarState>([
   [s => s.square && s.size >= 28, tokens => ({ borderRadius: tokens.global.borderRadius.medium })],
   [s => s.square && s.size >= 56, tokens => ({ borderRadius: tokens.global.borderRadius.large })],
   [s => s.square && s.size >= 96, tokens => ({ borderRadius: tokens.global.borderRadius.xLarge })],
+
+  [s => s.icon !== undefined, { fontWeight: 'initial' }],
+  [s => s.icon !== undefined && s.size < 28, { fontSize: iconSize.small }],
+  [s => s.icon !== undefined && s.size >= 28, { fontSize: iconSize.medium }],
+  [s => s.icon !== undefined && s.size >= 48, { fontSize: iconSize.large }],
+  [s => s.icon !== undefined && s.size >= 96, { fontSize: iconSize.larger }],
+  [s => s.icon !== undefined && s.size >= 120, { fontSize: iconSize.largest }],
 
   [
     s => s.active === 'active' || s.active === 'inactive',
@@ -215,14 +231,6 @@ const useStyles = makeStyles<AvatarState>([
       },
     },
   ],
-
-  [s => s.icon !== undefined, { fontWeight: 'initial' }],
-
-  [s => s.icon !== undefined && s.size < 28, { fontSize: iconSize.small }],
-  [s => s.icon !== undefined && s.size >= 28, { fontSize: iconSize.medium }],
-  [s => s.icon !== undefined && s.size >= 48, { fontSize: iconSize.large }],
-  [s => s.icon !== undefined && s.size >= 96, { fontSize: iconSize.larger }],
-  [s => s.icon !== undefined && s.size >= 120, { fontSize: iconSize.largest }],
 ]);
 
 const useBadgeStyles = makeStyles<AvatarState>([
@@ -300,20 +308,9 @@ const useLabelStyles = makeStyles<AvatarState>([
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
   state.className = ax(useStyles(state), state.className);
-
-  const badgeClassName = useBadgeStyles(state);
-  const imageClassName = useImageStyles(state);
-  const labelClassName = useLabelStyles(state);
-
-  if (state.badge) {
-    state.badge.className = ax(badgeClassName, state.badge.className);
-  }
-  if (state.image) {
-    state.image.className = ax(imageClassName, state.image.className);
-  }
-  if (state.label) {
-    state.label.className = ax(labelClassName, state.label.className);
-  }
+  state.badge.className = ax(useBadgeStyles(state), state.badge.className);
+  state.image.className = ax(useImageStyles(state), state.image.className);
+  state.label.className = ax(useLabelStyles(state), state.label.className);
 
   return state;
 };
