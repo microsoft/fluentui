@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix contrast of 'filter chevron' against background color",
-  "packageName": "office-ui-fabric-react",
-  "email": "tmichon@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-09T00:07:16.239Z"
-}

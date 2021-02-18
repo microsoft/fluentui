@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "BasePicker: combobox role and id are removed when itemLimit is reached",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-11T22:44:36.869Z"
-}

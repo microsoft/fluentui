@@ -2,6 +2,39 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "office-ui-fabric-react_v7.160.3",
+      "version": "7.160.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix contrast of 'filter chevron' against background color",
+            "author": "tmichon@microsoft.com",
+            "commit": "5403232626ccc3bcbe4c95f0b18a938646aa3308",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "BasePicker: combobox role and id are removed when itemLimit is reached",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cdb0c4bced4e6868a7e8ae7d12f0819a153ba61e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix handling of topOffsetFixed for Modal",
+            "author": "tmichon@microsoft.com",
+            "commit": "7feedc8eb8e15c36447ae0748de65979c158ef0d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "4dd3e254b61bf33eca3051799d558c067de7313e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 16 Feb 2021 12:29:58 GMT",
       "tag": "office-ui-fabric-react_v7.160.2",
       "version": "7.160.2",
