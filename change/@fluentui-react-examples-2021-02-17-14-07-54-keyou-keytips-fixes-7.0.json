@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips",
+  "packageName": "@fluentui/react-examples",
+  "email": "keyou@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-17T22:07:54.803Z"
+}
