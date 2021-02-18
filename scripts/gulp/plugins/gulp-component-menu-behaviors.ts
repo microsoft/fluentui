@@ -65,9 +65,9 @@ export default () => {
         const definitionName = `${variationName}Definition`;
 
         const absPathToBehaviorDefinition = path.normalize(
-          path.join(
-            require.resolve(`@fluentui/a11y-testing`),
-            '../',
+          paths.allPackages(
+            'a11y-testing',
+            'src',
             'definitions',
             behaviorName,
             `${definitionName}.ts`,
