@@ -1,4 +1,5 @@
-import { createContext, useContextSelector } from '@fluentui/react-context-selector';
+import { createContext } from './createContext';
+import { useContextSelector } from './useContextSelector';
 import * as ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
 import * as React from 'react';
