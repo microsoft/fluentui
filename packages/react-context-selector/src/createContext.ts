@@ -40,7 +40,7 @@ const createProvider = <Value>(Original: React.Provider<ContextValue<Value>>) =>
     Provider.displayName = 'ContextSelector.Provider';
   }
 
-  return Provider;
+  return (Provider as unknown) as React.Provider<ContextValue<Value>>;
 };
 
 export const createContext = <Value>(defaultValue: Value): Context<Value> => {
@@ -50,7 +50,7 @@ export const createContext = <Value>(defaultValue: Value): Context<Value> => {
     listeners: [],
   });
 
-  context.Provider = createProvider<Value>(context.Provider) as any;
+  context.Provider = createProvider<Value>(context.Provider);
 
   // We don't support Consumer API
   delete ((context as unknown) as Context<Value>).Consumer;

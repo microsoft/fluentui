@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from './createContext';
 import * as ReactIs from 'react-is';
 
 describe('createContext', () => {
