@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "cherrypick filetypeicons as html string to master branch",
+  "comment": "Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments.",
   "packageName": "@fluentui/react-file-type-icons",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch",
