@@ -3,6 +3,9 @@ import { useControlledState } from '../../../Foundation';
 import { KeyCodes } from '../../../Utilities';
 import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
   const menuButtonRef = React.useRef<HTMLButtonElement | null>(null);
   const [expanded, setExpanded] = useControlledState(props, 'expanded', {

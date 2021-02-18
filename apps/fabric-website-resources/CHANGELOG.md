@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 28 Sep 2020 12:28:49 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.9.25](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.9.25)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website-resources_v7.8.19..@uifabric/fabric-website-resources_v7.9.25)
+
+### Patches
+
+- Website: Removing Card page from the website. ([PR #16956](https://github.com/microsoft/fluentui/pull/16956) by humbertomakotomorimoto@gmail.com)
 
 ## [7.8.19](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website-resources_v7.8.19)
 

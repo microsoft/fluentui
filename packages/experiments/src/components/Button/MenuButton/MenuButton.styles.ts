@@ -1,6 +1,8 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IMenuButtonComponent, IMenuButtonStylesReturnType, IMenuButtonTokenReturnType } from './MenuButton.types';
 
+/* eslint-disable deprecation/deprecation */
+
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
     menuIconSize: 12,
@@ -54,6 +56,7 @@ const primaryExpandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IM
   };
 };
 
+/** @deprecated */
 export const MenuButtonTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => [
   baseTokens,
   props.expanded && expandedTokens,
@@ -64,6 +67,7 @@ const GlobalClassNames = {
   msMenuButton: 'ms-MenuButton',
 };
 
+/** @deprecated */
 export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, tokens): IMenuButtonStylesReturnType => {
   const { className } = props;
 

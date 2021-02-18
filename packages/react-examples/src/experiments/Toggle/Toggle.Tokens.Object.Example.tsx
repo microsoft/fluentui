@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { IToggleTokens, Toggle } from '@uifabric/experiments';
 
+/* eslint-disable deprecation/deprecation */
+
 const tokens1: IToggleTokens = {
   pillHoveredBackground: 'black',
   textColor: 'red',

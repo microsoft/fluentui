@@ -63,6 +63,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      initialsTextColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
       // eslint-disable-next-line deprecation/deprecation
@@ -86,6 +87,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       imageShouldStartVisible,
       imageUrl,
       initialsColor,
+      initialsTextColor,
       onPhotoLoadingStateChange,
       onRenderCoin,
       onRenderInitials,

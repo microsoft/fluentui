@@ -2,6 +2,36 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:26:55 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.3",
+      "version": "7.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox, toggle, MessageBar dimensions and removing italic placeholder text",
+            "author": "jagaheri@microsoft.com",
+            "commit": "374b0f945a190f56b67529fd48a8d556f4c8cb15",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jan 2021 12:27:21 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.0",
+      "version": "7.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated primary button styles to match fluentui",
+            "author": "gtcarroll96@gmail.com",
+            "commit": "3bcf0549c05cf87571e0cd846df8602491db99a4",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 15 Jan 2021 12:25:31 GMT",
       "tag": "@uifabric/azure-themes_v7.6.5",
       "version": "7.6.5",

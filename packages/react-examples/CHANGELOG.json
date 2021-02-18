@@ -2,6 +2,182 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-examples_v0.11.28",
+      "version": "0.11.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "4dd3e254b61bf33eca3051799d558c067de7313e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@fluentui/react-examples_v0.11.25",
+      "version": "0.11.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove use of getEdgeChromiumNoHighContrastAdjustSelector",
+            "author": "sareiff@microsoft.com",
+            "commit": "e49b873eb8467a43bf53067d01151d6fb9e37356",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Disabling deprecation lint rule in examples using deprecated components.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a2a15adcff93e22af40fcce297fa937cd5a4f06b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@fluentui/react-examples_v0.11.24",
+      "version": "0.11.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "37f1996872b4d7b9a94fe45dc0d52e5f2be77c94",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 12:26:30 GMT",
+      "tag": "@fluentui/react-examples_v0.11.22",
+      "version": "0.11.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify Persona example and tests to cover the new initials behavior",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9c1e2c6da5ba65ced00465a991c89ac2373871e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:26:55 GMT",
+      "tag": "@fluentui/react-examples_v0.11.21",
+      "version": "0.11.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding controls to story",
+            "author": "jagaheri@microsoft.com",
+            "commit": "374b0f945a190f56b67529fd48a8d556f4c8cb15",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:26:03 GMT",
+      "tag": "@fluentui/react-examples_v0.11.20",
+      "version": "0.11.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers",
+            "author": "mibes@microsoft.com",
+            "commit": "eee1754f0d92ee3c5fa8d68e9dfdcb03445b7df7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 12:24:38 GMT",
+      "tag": "@fluentui/react-examples_v0.11.18",
+      "version": "0.11.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cherry-pick of PRs #16497, #16496, #16494, #16479, #16430, #16475, #16463, #16495 and #16481",
+            "author": "andredias@microsoft.com",
+            "commit": "e404ed795ad649bef57cf46c1d01f238cb827c5e",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "[v7.0]Checkbox: border is now visible when element is in focus in High Contrast White Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "be39749927e16ddf5120483c10f02b517244bb91",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:23:57 GMT",
+      "tag": "@fluentui/react-examples_v0.11.15",
+      "version": "0.11.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix chevron colour in high contrast for the Command Bar Split Disabled example",
+            "author": "andredias@microsoft.com",
+            "commit": "a59bbd3ecd4e0fa3a44bf350d6a5894b77f2d184",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jan 2021 12:24:03 GMT",
+      "tag": "@fluentui/react-examples_v0.11.14",
+      "version": "0.11.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix(react v7): Add missing styles for disabled buttons",
+            "author": "andredias@microsoft.com",
+            "commit": "e79e6796a549b035dac99a6c29526f9da58b351d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@fluentui/react-examples_v0.11.13",
+      "version": "0.11.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "docs(react-examples): explicitly add behavior to Link rendered as button",
+            "author": "martinhochel@microsoft.com",
+            "commit": "96d91cd4618fedce150c21580804c9e60b83052a",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Add high contrast overrides for Separator",
+            "author": "andredias@microsoft.com",
+            "commit": "ee7e8ae5574b8367f83024e5dc32aca23d2fd31b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Jan 2021 12:31:09 GMT",
       "tag": "@fluentui/react-examples_v0.11.10",
       "version": "0.11.10",

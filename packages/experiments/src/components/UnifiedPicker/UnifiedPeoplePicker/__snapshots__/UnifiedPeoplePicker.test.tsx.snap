@@ -207,24 +207,24 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                 &:hover {
                   background: #deecf9;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   background: Highlight;
                   border: 1px solid ButtonText;
                   color: HighlightText;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
                   color: HighlightText;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
                   color: HighlightText;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background: ButtonFace;
                   border: 1px solid ButtonText;
                   color: ButtonText;
                 }
-                @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
                   color: ButtonText;
                 }
             data-is-draggable={true}
@@ -283,7 +283,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -295,7 +295,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: inherit;
                       color: inherit;
                     }
@@ -303,7 +303,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #c7e0f4;
                       color: #005a9e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       background: inherit;
                       border-color: Highlight;
                       color: inherit;
@@ -312,7 +312,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #106ebe;
                       color: #ffffff;
                     }
-                    @media screen and (-ms-high-contrast: active){&:active {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                       background: inherit;
                       color: inherit;
                     }
@@ -516,6 +516,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                               border: 2px solid #ffffff;
                               bottom: -2px;
                               box-sizing: content-box;
+                              forced-color-adjust: none;
                               height: 8px;
                               position: absolute;
                               right: -2px;
@@ -523,7 +524,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                               top: auto;
                               width: 8px;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               background-color: Highlight;
                               border-color: Window;
                             }
@@ -561,10 +562,10 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           &:hover {
                             color: #005a9e;
                           }
-                          @media screen and (-ms-high-contrast: active){&:hover {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                             color: inherit;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             color: inherit;
                           }
                       dir="auto"
@@ -720,7 +721,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -732,7 +733,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       position: relative;
                       top: 0px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       background-color: inherit;
                       color: inherit;
                     }
@@ -740,7 +741,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #c7e0f4;
                       color: #005a9e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       background: inherit;
                       border-color: Highlight;
                       color: inherit;
@@ -749,7 +750,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                       background-color: #106ebe;
                       color: #ffffff;
                     }
-                    @media screen and (-ms-high-contrast: active){&:active {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                       background: inherit;
                       color: inherit;
                     }

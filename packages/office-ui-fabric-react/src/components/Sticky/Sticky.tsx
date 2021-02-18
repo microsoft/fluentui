@@ -160,27 +160,18 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
     return (
       <div ref={this._root}>
         {this.canStickyTop && (
-          <div
-            ref={this._stickyContentTop}
-            aria-hidden={!isStickyTop}
-            style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}
-          >
+          <div ref={this._stickyContentTop} style={{ pointerEvents: isStickyTop ? 'auto' : 'none' }}>
             <div style={this._getStickyPlaceholderHeight(isStickyTop)} />
           </div>
         )}
         {this.canStickyBottom && (
-          <div
-            ref={this._stickyContentBottom}
-            aria-hidden={!isStickyBottom}
-            style={{ pointerEvents: isStickyBottom ? 'auto' : 'none' }}
-          >
+          <div ref={this._stickyContentBottom} style={{ pointerEvents: isStickyBottom ? 'auto' : 'none' }}>
             <div style={this._getStickyPlaceholderHeight(isStickyBottom)} />
           </div>
         )}
         <div style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
           {(isStickyTop || isStickyBottom) && <span style={hiddenContentStyle as any}>{children}</span>}
           <div
-            aria-hidden={isStickyTop || isStickyBottom}
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
             style={this._getContentStyles(isStickyTop || isStickyBottom)}

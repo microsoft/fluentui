@@ -90,10 +90,9 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                 &:hover {
                   border-color: #323130;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  -ms-high-contrast-adjust: none;
                   border-color: Highlight;
-                }
-                @media screen and (forced-colors: active){&:hover {
                   forced-color-adjust: none;
                 }
           >
@@ -141,7 +140,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                   &::-ms-clear {
                     display: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background: Window;
                     color: WindowText;
                   }
@@ -154,7 +153,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                     color: GrayText;
                   }
                   &:-ms-input-placeholder {
@@ -166,7 +165,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                     color: GrayText;
                   }
                   &::-ms-input-placeholder {
@@ -178,7 +177,7 @@ Fri, 06 Jan 2017 04:41:20 GMT-Fri, 06 Jan 2017 04:41:20 GMT
                     font-weight: 400;
                     opacity: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                     color: GrayText;
                   }
               id="DatePicker0-label"

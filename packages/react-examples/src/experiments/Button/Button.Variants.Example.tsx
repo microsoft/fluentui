@@ -14,6 +14,8 @@ import {
   ISplitButtonProps,
 } from '@uifabric/experiments';
 
+/* eslint-disable deprecation/deprecation */
+
 const tokens = {
   sectionStack: {
     childrenGap: 32,

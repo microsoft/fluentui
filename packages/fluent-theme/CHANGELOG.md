@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Sun, 27 Sep 2020 04:20:52 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.4.14](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.4.14)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fluent-theme_v7.3.17..@uifabric/fluent-theme_v7.4.14)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
 
 ## [7.3.17](https://github.com/microsoft/fluentui/tree/@uifabric/fluent-theme_v7.3.17)
 

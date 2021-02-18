@@ -2,6 +2,81 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 17 Feb 2021 12:23:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.28",
+      "version": "7.16.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update links to fluentui-apple",
+            "author": "mavitale@microsoft.com",
+            "commit": "fb40578607eb5b79d0d176cfa6caaa86eebcae09",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.25",
+      "version": "7.16.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Website: Removing Card page from the website.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8856b30a6bce054e0c0f20c2c1be91a59ba38c08",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.23",
+      "version": "7.16.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating icon documentation page with info about open source package",
+            "author": "ololubek@microsoft.com",
+            "commit": "cd81a07c4219a169f6c7c760ca940eb33b948e48",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jan 2021 12:27:21 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.16",
+      "version": "7.16.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update public docsite icon documentation",
+            "author": "ololubek@microsoft.com",
+            "commit": "0045651bc0a4b6fc67f0bd090559b0df0928e74c",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.13",
+      "version": "7.16.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update GetStartedDevelopSimple.md",
+            "author": "replituser@example.com",
+            "commit": "1689249239985c7e47369524f7d674c31fba40ef",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Nov 2020 12:27:20 GMT",
       "tag": "@uifabric/fabric-website_v7.15.51",
       "version": "7.15.51",

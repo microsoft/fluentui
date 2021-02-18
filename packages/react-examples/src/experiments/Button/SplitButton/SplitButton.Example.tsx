@@ -2,6 +2,8 @@ import * as React from 'react';
 import { SplitButton, ISplitButtonProps } from '@uifabric/experiments';
 import { Stack } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 const menuProps: ISplitButtonProps['menu'] = {
   items: [
     {

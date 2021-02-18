@@ -92,7 +92,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -105,14 +105,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -269,7 +269,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -282,14 +282,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -446,7 +446,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -459,14 +459,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -623,7 +623,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -636,14 +636,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -800,7 +800,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -813,14 +813,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -977,7 +977,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -990,14 +990,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -1154,7 +1154,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -1167,14 +1167,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -1331,7 +1331,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -1344,14 +1344,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -1508,7 +1508,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -1521,14 +1521,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -1685,7 +1685,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -1698,14 +1698,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -1862,7 +1862,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -1875,14 +1875,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -2039,7 +2039,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -2052,14 +2052,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -2216,7 +2216,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -2229,14 +2229,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -2393,7 +2393,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -2406,14 +2406,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -2570,7 +2570,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -2583,14 +2583,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -2747,7 +2747,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -2760,14 +2760,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -2924,7 +2924,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -2937,14 +2937,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -3101,7 +3101,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -3114,14 +3114,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -3278,7 +3278,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -3291,14 +3291,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -3455,7 +3455,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     top: 3px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: 4px;
                     left: 4px;
@@ -3468,14 +3468,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: none;
                   }
                   &:hover {
                     background-color: #f3f2f1;
                     color: #201f1e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
                   &:hover .ms-Button-icon {
@@ -3689,10 +3689,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}
@@ -3817,10 +3817,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}
@@ -3945,10 +3945,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}
@@ -4048,13 +4048,13 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 border-color: #323130;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-title {
                 color: Highlight;
               }
               &:focus:after {
@@ -4069,14 +4069,14 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 top: 0px;
                 width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){&:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
                 color: Highlight;
               }
               &:active .ms-Dropdown-title {
                 border-color: #0078d4;
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
@@ -4085,7 +4085,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               &:focus .ms-Dropdown-caretDown {
                 color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Dropdown-caretDown {
                 color: Highlight;
               }
               &:active .ms-Dropdown-caretDown {

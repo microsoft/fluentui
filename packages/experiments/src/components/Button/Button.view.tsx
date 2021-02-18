@@ -7,12 +7,16 @@ import { FontIcon } from '../../utilities/factoryComponents';
 
 import { IButtonComponent, IButtonViewProps } from './Button.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const ButtonSlots: IButtonComponent['slots'] = props => ({
   root: props.href ? 'a' : 'button',
   icon: FontIcon,
   content: Text,
 });
 
+/** @deprecated */
 export const ButtonView: IButtonComponent['view'] = (props, slots) => {
   const {
     icon,

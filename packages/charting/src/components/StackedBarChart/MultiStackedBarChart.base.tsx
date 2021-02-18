@@ -159,7 +159,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           ref={(e: SVGGElement) => {
             this._refCallback(e, point.legend!);
           }}
-          data-is-focusable={true}
+          data-is-focusable={!this.props.hideTooltip}
           onFocus={this._onBarFocus.bind(this, pointData, color, point)}
           onBlur={this._onBarLeave}
           aria-labelledby={this._calloutId}

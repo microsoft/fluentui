@@ -7,7 +7,7 @@ import {
   getScreenSelector,
   ScreenWidthMaxMedium,
   IconFontSizes,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IMenuItemStyles } from './ContextualMenu.types';
 import { memoizeFunction } from '../../Utilities';
@@ -24,7 +24,7 @@ const getItemHighContrastStyles = memoizeFunction(
           backgroundColor: 'Highlight',
           borderColor: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     };
@@ -78,8 +78,8 @@ export const getMenuItemStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'GrayText',
             opacity: 1,
+            ...getHighContrastNoAdjustStyle(),
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       rootHovered: {

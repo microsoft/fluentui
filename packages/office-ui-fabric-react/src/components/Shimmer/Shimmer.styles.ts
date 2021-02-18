@@ -4,7 +4,7 @@ import {
   getGlobalClassNames,
   hiddenContentStyle,
   HighContrastSelector,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL, memoizeFunction } from '../../Utilities';
 
@@ -78,8 +78,8 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
                           transparent 100%)
                         0 0 / 90% 100%
                         no-repeat`,
+            ...getHighContrastNoAdjustStyle(),
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       isDataLoaded && {

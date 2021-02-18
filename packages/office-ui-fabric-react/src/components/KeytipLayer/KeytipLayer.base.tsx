@@ -269,14 +269,12 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   public showKeytips(ids: string[]): void {
     // Update the visible prop in the manager
     for (const keytip of this._keytipManager.getKeytips()) {
-      const keytipId = sequencesToID(keytip.keySequences);
-      if (ids.indexOf(keytipId) >= 0) {
-        keytip.visible = true;
-      } else if (
-        keytip.overflowSetSequence &&
-        ids.indexOf(sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence))) >= 0
-      ) {
+      let keytipId = sequencesToID(keytip.keySequences);
+      if (keytip.overflowSetSequence) {
         // Check if the ID with the overflow is the keytip we're looking for
+        keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
+      }
+      if (ids.indexOf(keytipId) >= 0) {
         keytip.visible = true;
       } else {
         keytip.visible = false;
@@ -374,7 +372,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // Filter out non-visible keytips and duplicates
     const seenIds: { [childSequence: string]: number } = {};
     return keytips.filter(keytip => {
-      const keytipId = sequencesToID(keytip.keySequences);
+      let keytipId = sequencesToID(keytip.keySequences);
+      if (keytip.overflowSetSequence) {
+        // Account for overflow set sequences when checking for duplicates
+        keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
+      }
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       return keytip.visible && seenIds[keytipId] === 1;
     });
@@ -490,6 +492,30 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       }
     }
 
+    this._persistedKeytipChecks(keytipProps);
+  };
+
+  private _onKeytipUpdated = (eventArgs: any) => {
+    const keytipProps = eventArgs.keytip;
+    const uniqueID = eventArgs.uniqueID;
+    this._keytipTree.updateNode(keytipProps, uniqueID);
+    this._setKeytips();
+    if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
+      // Ensure existing children are still shown.
+      this._delayedKeytipQueue = this._delayedKeytipQueue.concat(this._keytipTree.currentKeytip?.children || []);
+      this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+    }
+
+    this._persistedKeytipChecks(keytipProps);
+  };
+
+  /**
+   * Helper function to do checks related to persisted/overflow keytips
+   * Done on keytip added and keytip updated
+   *
+   * @param keytipProps - Keytip props
+   */
+  private _persistedKeytipChecks = (keytipProps: IKeytipProps) => {
     if (this._newCurrentKeytipSequences && arraysEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {
       this._triggerKeytipImmediately(keytipProps);
     }
@@ -500,16 +526,6 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
         keytipSequence = mergeOverflows(keytipSequence, keytipProps.overflowSetSequence);
       }
       this._keytipTree.currentKeytip = this._keytipTree.getNode(sequencesToID(keytipSequence));
-    }
-  };
-
-  private _onKeytipUpdated = (eventArgs: any) => {
-    const keytipProps = eventArgs.keytip;
-    const uniqueID = eventArgs.uniqueID;
-    this._keytipTree.updateNode(keytipProps, uniqueID);
-    this._setKeytips();
-    if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
-      this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
     }
   };
 

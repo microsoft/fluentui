@@ -48,7 +48,7 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
             position: absolute;
             width: 100%;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             border-bottom: 1px solid WindowText;
           }
     />
@@ -65,11 +65,10 @@ exports[`Component Examples renders ProgressIndicator.Indeterminate.Example.tsx 
             transition: width .3s ease;
             width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            -ms-high-contrast-adjust: none;
             background-color: highlight;
             background: highlight;
-          }
-          @media screen and (forced-colors: active){& {
             forced-color-adjust: none;
           }
       role="progressbar"

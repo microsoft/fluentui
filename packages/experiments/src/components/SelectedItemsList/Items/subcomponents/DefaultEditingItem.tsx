@@ -102,6 +102,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const {
     focusItemIndex,
+    setFocusItemIndex,
     suggestionItems,
     footerItemIndex,
     footerItems,
@@ -123,6 +124,7 @@ export const DefaultEditingItemInner = <TItem extends any>(
       setInputValue(itemText);
       editingInput.current.focus();
     }
+    setFocusItemIndex(0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // We only want to run this once
 
@@ -149,15 +151,21 @@ export const DefaultEditingItemInner = <TItem extends any>(
 
   const _onInputBlur = React.useCallback(
     (ev: React.FocusEvent<HTMLElement>): void => {
-      if (focusItemIndex >= 0) {
-        _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
-      } else if (createGenericItem) {
-        onEditingComplete(item, createGenericItem(inputValue));
+      if (editingFloatingPicker.current) {
+        const target = ev.relatedTarget as HTMLElement;
+        // We don't want to exit out if the user has clicked on a dropdown suggestion
+        if (target === null || target.className.indexOf('ms-FloatingSuggestionsItem-itemButton') === -1) {
+          if (focusItemIndex >= 0) {
+            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+          } else if (createGenericItem) {
+            onEditingComplete(item, createGenericItem(inputValue));
+          }
+          // else, we come out of editing mode
+        }
       }
-      // else, we come out of editing mode
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps -- these are the only dependencies which matter
-    [suggestionItems, focusItemIndex, item, createGenericItem, inputValue, onEditingComplete],
+    [suggestionItems, focusItemIndex, item, createGenericItem, inputValue, onEditingComplete, editingFloatingPicker],
   );
 
   const _onInputChange = React.useCallback(

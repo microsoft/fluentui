@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Button, MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 const testTheme = createTheme({
   semanticColors: {
     buttonText: '#E20000',

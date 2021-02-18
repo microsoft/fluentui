@@ -86,7 +86,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             right: 0;
             top: 50%;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: WindowText;
           }
     >
@@ -174,7 +174,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             right: 0;
             top: 50%;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: WindowText;
           }
     >
@@ -262,7 +262,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             right: 0;
             top: 50%;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: WindowText;
           }
     >
@@ -350,7 +350,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
             right: 0;
             top: 50%;
           }
-          @media screen and (-ms-high-contrast: active){&:before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
             background-color: WindowText;
           }
     >
@@ -477,7 +477,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
                 width: 1px;
                 z-index: -1;
               }
-              @media screen and (-ms-high-contrast: active){&:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                 background-color: WindowText;
               }
         >
@@ -585,7 +585,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
                 width: 1px;
                 z-index: -1;
               }
-              @media screen and (-ms-high-contrast: active){&:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                 background-color: WindowText;
               }
         >
@@ -693,7 +693,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
                 width: 1px;
                 z-index: -1;
               }
-              @media screen and (-ms-high-contrast: active){&:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                 background-color: WindowText;
               }
         >
@@ -801,7 +801,7 @@ exports[`Component Examples renders Separator.Basic.Example.tsx correctly 1`] = 
                 width: 1px;
                 z-index: -1;
               }
-              @media screen and (-ms-high-contrast: active){&:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                 background-color: WindowText;
               }
         >

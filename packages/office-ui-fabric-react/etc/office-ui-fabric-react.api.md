@@ -1868,7 +1868,7 @@ export interface IBreadcrumbData {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     href?: string;
     isCurrentItem?: boolean;
@@ -6333,7 +6333,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onLightDismissClick?: () => void;
     onOpen?: () => void;
     onOpened?: () => void;
-    onOuterClick?: () => void;
+    onOuterClick?: (ev?: React.MouseEvent<HTMLDivElement>) => void;
     onRenderBody?: IRenderFunction<IPanelProps>;
     onRenderFooter?: IRenderFunction<IPanelProps>;
     onRenderFooterContent?: IRenderFunction<IPanelProps>;
@@ -6535,6 +6535,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    initialsTextColor?: string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     // @deprecated
@@ -7709,7 +7710,7 @@ export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 // @public (undocumented)
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     className?: string;
     disableShrink?: boolean;

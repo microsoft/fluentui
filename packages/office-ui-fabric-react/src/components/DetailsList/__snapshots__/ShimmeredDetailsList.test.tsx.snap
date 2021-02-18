@@ -265,7 +265,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -309,8 +309,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
@@ -420,7 +421,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -429,8 +431,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -509,7 +509,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -559,7 +559,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -607,7 +607,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -616,8 +617,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -696,7 +695,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -746,7 +745,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -794,7 +793,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -803,8 +803,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -883,7 +881,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -933,7 +931,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -981,7 +979,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -990,8 +989,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1070,7 +1067,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1120,7 +1117,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1168,7 +1165,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1177,8 +1175,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1257,7 +1253,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1307,7 +1303,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1355,7 +1351,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1364,8 +1361,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1444,7 +1439,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1494,7 +1489,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1542,7 +1537,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1551,8 +1547,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1631,7 +1625,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1681,7 +1675,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1729,7 +1723,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1738,8 +1733,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -1818,7 +1811,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1868,7 +1861,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -1916,7 +1909,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -1925,8 +1919,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -2005,7 +1997,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -2055,7 +2047,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -2103,7 +2095,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                             & > * {
                               transform: translateZ(0);
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                              -ms-high-contrast-adjust: none;
                               background: WindowText
                                                     linear-gradient(
                                                       to right,
@@ -2112,8 +2105,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                                       transparent 100%)
                                                     0 0 / 90% 100%
                                                     no-repeat;
-                            }
-                            @media screen and (forced-colors: active){& {
                               forced-color-adjust: none;
                             }
                         style={
@@ -2192,7 +2183,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }
@@ -2242,7 +2233,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                                     font-weight: 400;
                                     height: 43px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     background-color: Window;
                                     border-color: Window;
                                   }

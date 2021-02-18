@@ -1,4 +1,4 @@
-import { getEdgeChromiumNoHighContrastAdjustSelector, getGlobalClassNames, HighContrastSelector } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../Styling';
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
@@ -64,8 +64,8 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'LinkText',
+            forcedColorAdjust: 'none',
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       !isButton && {
@@ -73,6 +73,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           [HighContrastSelector]: {
             // This is mainly for MessageBar, which sets MsHighContrastAdjust: none by default
             MsHighContrastAdjust: 'auto',
+            forcedColorAdjust: 'auto',
           },
         },
       },

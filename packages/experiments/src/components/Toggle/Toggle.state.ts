@@ -2,6 +2,9 @@ import * as React from 'react';
 import { getControlledDerivedProps, useControlledState } from '../../Foundation';
 import { IToggleComponent, IToggleViewProps } from './Toggle.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const useToggleState: IToggleComponent['state'] = props => {
   const toggleButtonRef = React.useRef<HTMLButtonElement | null>(null);
 

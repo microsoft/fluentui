@@ -1,6 +1,8 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
+/* eslint-disable deprecation/deprecation */
+
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
   const { effects, semanticColors } = theme;
   return {
@@ -59,6 +61,7 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   };
 };
 
+/** @deprecated */
 export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
@@ -69,6 +72,7 @@ const GlobalClassNames = {
   msSplitButton: 'ms-SplitButton',
 };
 
+/** @deprecated */
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (
   props,
   theme,

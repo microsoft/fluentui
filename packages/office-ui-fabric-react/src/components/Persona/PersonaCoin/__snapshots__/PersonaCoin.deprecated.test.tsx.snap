@@ -39,12 +39,13 @@ exports[`PersonaCoin renders correctly 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+            forced-color-adjust: none;
           }
           & i {
             font-weight: 600;
@@ -193,12 +194,13 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+            forced-color-adjust: none;
           }
           & i {
             font-weight: 600;
@@ -251,12 +253,13 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             height: 48px;
             line-height: 46px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window !important;
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+            forced-color-adjust: none;
           }
           & i {
             font-weight: 600;

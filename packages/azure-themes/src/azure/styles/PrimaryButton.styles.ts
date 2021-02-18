@@ -14,6 +14,12 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       padding: '0px 16px',
       color: semanticColors.primaryButtonText,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
+
+      selectors: {
+        '::after': {
+          outlineColor: 'white !important',
+        },
+      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
@@ -21,6 +27,11 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
+      selectors: {
+        '::after': {
+          outlineColor: `${semanticColors.primaryButtonText} !important`,
+        },
+      },
       backgroundColor: semanticColors.primaryButtonBackground,
       color: semanticColors.primaryButtonText,
       borderColor: extendedSemanticColors.primaryCompoundButtonBorder,

@@ -1,4 +1,10 @@
-import { getGlobalClassNames, getFocusStyle, HighContrastSelector, IStyle } from '../../../../Styling';
+import {
+  getGlobalClassNames,
+  getFocusStyle,
+  HighContrastSelector,
+  IStyle,
+  getHighContrastNoAdjustStyle,
+} from '../../../../Styling';
 import { ButtonGlobalClassNames } from '../../../Button/BaseButton.classNames';
 import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from './PeoplePickerItem.types';
 
@@ -95,7 +101,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
               [HighContrastSelector]: {
                 borderColor: 'HighLight',
                 background: 'Highlight',
-                MsHighContrastAdjust: 'none',
+                ...getHighContrastNoAdjustStyle(),
               },
             },
           },
