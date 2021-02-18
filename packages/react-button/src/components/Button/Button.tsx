@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
-// import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
-// import { useButtonClasses } from './useButtonClasses';
 import { renderButton } from './renderButton';
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { Theme } from '@fluentui/react-theme';
-import { useTheme } from '@fluentui/react-theme-provider';
 
 /**
  * Note, this file is written as a monolith for now to ease development.
@@ -20,12 +17,14 @@ import { useTheme } from '@fluentui/react-theme-provider';
 type ButtonSelectors = {
   iconOnly?: boolean;
   primary?: boolean;
+  size?: string;
   textOnly?: boolean;
   textWithIcon?: boolean;
 };
 
 type Slot = {
   className?: string;
+  children?: React.ReactChildren | Array<React.ReactChildren>;
 };
 
 type ButtonState = {
@@ -65,17 +64,7 @@ type ButtonTokens = {
   shadowPressed: string;
 };
 
-type ButtonVariants =
-  | 'base'
-  | 'compound'
-  | 'textOnly'
-  | 'iconOnly'
-  | 'primary'
-  | 'small'
-  | 'large'
-  | 'outline'
-  | 'subtle'
-  | 'transparent';
+type ButtonVariants = 'base' | 'textOnly' | 'iconOnly' | 'primary' | 'small' | 'large';
 
 type ButtonVariantTokens = {
   [variant in ButtonVariants]: Partial<ButtonTokens>;
@@ -96,10 +85,6 @@ const buttonSpacing = {
 // =================================================
 // Theme Values
 // =================================================
-
-// isLiteralValue()
-// isGlobalValue()
-// isAliasValue()
 
 // We do not want a combinatorial explosion of component variables for variants (bg, bgPrimary, etc)
 // We want a fixed interface of variables for a given component and to alter those between variants
@@ -132,12 +117,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     iconWidth: '20px',
     iconHeight: '20px',
   },
-  compound: {
-    paddingY: buttonSpacing.large,
-  },
-  textOnly: {
-    // paddingX: buttonSpacing.large,
-  },
+  textOnly: {},
   // TODO: Would be ideal to automate a check to ensure when a variant is accessed, all the tokens are accessed as well.
   //       If not, it means there is cruft in the variant tokens definition.
   //       All tokens in a variant should be mapped to some style property.
@@ -160,14 +140,10 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
     shadow: theme.alias.shadow.shadow4,
     shadowPressed: theme.alias.shadow.shadow2,
-
-    // TODO: focus
   },
+  // TODO: fix size before prerelease
   small: {},
   large: {},
-  outline: {},
-  subtle: {},
-  transparent: {},
 });
 
 // =================================================
@@ -303,6 +279,7 @@ const useRootClasses = makeStyles<ButtonSelectors>([
       };
     },
   ],
+  // TODO: add disabled before ship prerelease
 ]);
 
 const useContentClasses = makeStyles<ButtonSelectors>([
@@ -339,26 +316,14 @@ const useIconClasses = makeStyles<ButtonSelectors>([
 ]);
 
 const useButtonClasses = (state: ButtonState, selectors: ButtonSelectors) => {
-  // TODO: don't require "selectors"
-  // TODO: rename "selectors" to "matchers", its CSS in JS and not CSS
   state.className = ax(state.className, useRootClasses(selectors));
+
+  state.content = state.content || { className: '' };
+  state.icon = state.icon || { className: '' };
+
   state.content.className = ax(state.content.className, useContentClasses(selectors));
   state.icon.className = ax(state.icon.className, useIconClasses(selectors));
 };
-
-// export const renderButton = (state: ButtonState) => {
-//   // const { slots, slotProps } = getSlots(state, buttonShorthandProps);
-//   const { loading, iconPosition, iconOnly } = state;
-//
-//   return (
-//     <slots.root {...slotProps.root}>
-//       {loading && <slots.loader {...slotProps.loader} />}
-//       {iconPosition !== 'after' && <slots.icon {...slotProps.icon} />}
-//       {!iconOnly && <slots.content {...slotProps.content} />}
-//       {iconPosition === 'after' && <slots.icon {...slotProps.icon} />}
-//     </slots.root>
-//   );
-// };
 
 // =================================================
 // Component
@@ -372,31 +337,19 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   const state = useButton(props, ref);
 
   // TODO: fix children check for "empty" slots once useButton() updated
-  const hasContent = !!state?.content?.children;
-  const hasIcon = !!state?.icon?.children;
+  const hasContent = !!state.content.children;
+  const hasIcon = !!state.icon.children;
 
-  const iconOnly = hasIcon && !hasContent
+  const iconOnly = hasIcon && !hasContent;
   const styleSelectors = {
     primary: props.primary,
     iconOnly: iconOnly,
     textOnly: hasContent && !hasIcon,
     textWithIcon: hasIcon && hasContent,
+    size: props.size,
   };
 
-  // TODO: consider that we can actually apply tokens without needing to go through style matchers somehow
-  //       just needs to still allow user to override and win
-  // const buttonTokens = makeButtonTokens(useTheme());
-  // const tokens = {}
-  // if (iconOnly) {
-  //   Object.assign(tokens, buttonTokens.iconOnly)
-  // }
-  //
-  // state.style = tokens
-  // console.log(tokens)
-
   useButtonClasses(state, styleSelectors);
-  // useButtonClasses(state);
-  // useInlineTokens(state, '--button');
 
   return renderButton(state);
 });
