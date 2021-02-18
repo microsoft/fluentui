@@ -8,7 +8,6 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
-import { SizeValue } from '@fluentui/react-theme';
 
 // @public
 export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
@@ -43,6 +42,9 @@ export type BadgeStatus = 'success' | 'warning' | 'severe' | 'accent' | 'danger'
 
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
+
+// @public (undocumented)
+export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;
