@@ -1,26 +1,24 @@
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
+
 import { BadgeProps } from '../Badge/index';
-import { ShorthandValue } from '../utils/commonTypes';
+import { ImageProps } from '../Image/index';
 
-export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
-  /**
-   * The root element type of the Avatar.
-   *
-   * @defaultvalue span
-   */
-  as?: React.ElementType;
-
+export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /** The Avatar's image. */
-  image?: ShorthandValue<{}>;
+  image?: ShorthandProps<ImageProps>;
 
-  /** The label shown when there's no image or icon. Defaults to the initials derived from `name` using `getInitials` */
-  label?: ShorthandValue<{}>;
+  /**
+   * The label shown when there's no image or icon. Defaults to the initials derived from `name` using
+   * `getInitials`.
+   */
+  label?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** Icon displayed when there's no image. */
-  icon?: ShorthandValue<{}>;
+  icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /** Badge to show the avatar's status. */
-  badge?: ShorthandValue<BadgeProps>;
+  badge?: ShorthandProps<BadgeProps>;
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;
@@ -71,9 +69,6 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
    * @defaultvalue neutral
    */
   colorVariant?: 'neutral' | 'brand';
-
-  /** Style tokens */
-  tokens?: AvatarTokenSet;
 }
 
 /**
@@ -85,53 +80,24 @@ export interface AvatarProps extends React.HTMLAttributes<HTMLElement> {
  */
 export const avatarSizeValues = [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128] as const;
 export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 | ... | 128
-// !! Important: when adding new AvatarSizeValues, add corresponding "._size" classes in Avatar.scss
 
 /** Default Avatar size if not specified */
 export const defaultAvatarSize: AvatarSizeValue = 32;
 
 /**
- * Style tokens for the Avatar
+ * Convert from a Props type to a State type.
+ * Replace all given shorthand props from ShorthandProps<P> to ObjectShorthandProps<P>
  */
-export type AvatarTokenSet = {
-  /** Width of the avatar */
-  width?: string;
+type PropsToState<T, ShorthandPropNames extends keyof T> = Omit<T, ShorthandPropNames> &
+  {
+    [U in ShorthandPropNames]: T[U] extends ShorthandProps<infer P> ? ObjectShorthandProps<P> : T[U];
+  };
 
-  /** Height of the avatar */
-  height?: string;
+/**
+ * Avatar props that will never be undefined in AvatarState
+ */
+export type AvatarDefaults = { ref: React.RefObject<HTMLElement> } & Required<
+  Pick<AvatarProps, 'as' | 'size' | 'getInitials' | 'label' | 'image' | 'badge'>
+>;
 
-  /** Background shown behind the initials or icon */
-  background?: string;
-
-  /** Color of the initials or icon */
-  color?: string;
-
-  /** Border radius */
-  borderRadius?: string;
-
-  /** Font used by the initials */
-  fontFamily?: string;
-
-  /** Font size used by the initials */
-  fontSize?: string;
-
-  /** Font weight used by the initials */
-  fontWeight?: string;
-
-  /** Font size used by the icon */
-  iconSize?: string;
-
-  /** Color of the ring when active="active" and activeDisplay includes 'ring' */
-  activeRingColor?: string;
-
-  /** Color of the glow when active="active" and activeDisplay includes 'glow' */
-  activeGlowColor?: string;
-
-  /** Opacity of the avatar when active="inactive" */
-  inactiveOpacity?: string;
-
-  /** Scale transform applied to the avatar when active="inactive" */
-  inactiveScale?: string;
-};
-
-export type AvatarState = AvatarProps;
+export type AvatarState = PropsToState<AvatarProps & AvatarDefaults, 'label' | 'image' | 'badge'>;

@@ -1,24 +1,19 @@
-import * as React from 'react';
-import { useAvatar } from './useAvatar';
-import { AvatarProps } from './Avatar.types';
-import { makeClasses } from '@fluentui/react-utilities';
-import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useFocusRects, nullRender } from '@fluentui/utilities';
-import * as classes from './Avatar.scss';
-import { Badge } from '../Badge/Badge';
-import { renderAvatar } from './renderAvatar';
+import * as React from 'react';
 
-const useAvatarClasses = makeClasses(classes);
+import { Badge } from '../Badge/Badge';
+import { AvatarProps } from './Avatar.types';
+import { renderAvatar } from './renderAvatar';
+import { useAvatar } from './useAvatar';
+import { useAvatarStyles } from './useAvatarStyles';
 
 export const Avatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
   const state = useAvatar(props, ref, {
     badge: { as: props.badge ? Badge : nullRender },
   });
 
-  // Apply styling.
-  useAvatarClasses(state);
+  useAvatarStyles(state);
   useFocusRects(state.ref);
-  useInlineTokens(state, '--avatar');
 
   return renderAvatar(state);
 });

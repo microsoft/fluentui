@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "update a decorator for react-avatar",
+  "packageName": "@fluentui/react-examples",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
