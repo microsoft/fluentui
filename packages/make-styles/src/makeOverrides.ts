@@ -8,13 +8,14 @@ export function makeOverrides<Slots extends string, Tokens>(
   unstable_cssPriority: number = 0,
 ) {
   let resolvedClasses: Record<Slots, string> | null = null;
-  let insertionCache: Record<string, boolean> = {};
+  const insertionCache: Record<string, boolean> = {};
 
   function computeClasses(options: MakeStylesOptions<Tokens>): Record<Slots, string> {
     if (resolvedClasses === null || insertionCache[options.renderer.id] === undefined) {
       const tokens = createCSSVariablesProxy(options.tokens);
       resolvedClasses = {} as Record<Slots, string>;
 
+      // eslint-disable-next-line guard-for-in
       for (const slotName in stylesBySlots) {
         // TODO: Miro says that it should be done once as there is no sense to resolve the same styles
         const slotStyles = stylesBySlots[slotName];
