@@ -31,10 +31,10 @@ const MenuButtonExamples = (props: MenuButtonProps) => (
     <MenuButton icon="O" primary disabled {...props}>
       Hello, world
     </MenuButton>
-    <MenuButton icon="O" ghost {...props}>
+    <MenuButton icon="O" subtle {...props}>
       Hello, world
     </MenuButton>
-    <MenuButton icon="O" ghost disabled {...props}>
+    <MenuButton icon="O" subtle disabled {...props}>
       Hello, world
     </MenuButton>
     <MenuButton icon="O" transparent {...props}>
