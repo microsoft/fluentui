@@ -192,7 +192,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
         </div>
       </div>
 
-      <div tabIndex={0}>Michael Night</div>
+      <button aria-haspopup="menu">Michael Night</button>
 
       <div role="tablist">
         <div role="tab" tabIndex={0} aria-selected="true">
@@ -220,9 +220,11 @@ const AccessibleTeams: React.FunctionComponent = () => {
         data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
       >
         <h3>November 9, 2020</h3>
+
+        {/* Currently, the profile picture and status are not hidden for screen raeders , but they will be hidden in future versions of Teams, so here we hide it as well */}
         {/* eslint-disable-next-line */}
-        <img alt="Profile picture of Michael Night" />
-        <div>Available</div>
+        <img alt="Profile picture of Michael Night" aria-hidden="true" />
+        <div aria-hidden="true">Available</div>
         <div>Michael Night</div>
         <div>Wednesday 12:47 PM</div>
         <button tabIndex={-1}>Toolbar with two buttons, press enter to enter toolbar</button>
