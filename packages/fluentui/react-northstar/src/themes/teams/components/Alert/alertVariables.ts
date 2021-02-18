@@ -135,7 +135,7 @@ export const alertVariables = (siteVars: SiteVariablesPrepared): AlertVariables 
 
     warningColor: siteVars.colorScheme.yellow.foreground4,
     warningBackgroundColor: siteVars.colorScheme.yellow.background3,
-    warningBorderColor: siteVars.colorScheme.yellow.border3,
+    warningBorderColor: siteVars.colorScheme.yellow.border,
 
     headerFontWeight: siteVars.fontWeightSemibold,
     headerMargin: `0 ${pxToRem(10)} 0 0`,
