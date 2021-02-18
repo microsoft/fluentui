@@ -251,7 +251,7 @@ export const RobotExample = () => {
         <RobotAvatar size={32} />
         <RobotAvatar size={48} />
         <RobotAvatar size={64} />
-        <RobotAvatar size={96} icon={<RobotIcon />} />
+        <RobotAvatar size={96} />
         <RobotAvatar size={128} />
       </Stack>
     </StoryExample>
