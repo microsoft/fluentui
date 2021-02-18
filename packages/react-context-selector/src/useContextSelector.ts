@@ -90,17 +90,19 @@ export const useContextSelector = <Value, SelectedValue>(
   return state[1] as SelectedValue;
 };
 
-// Object.is polyfill: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#polyfill
+/**
+ * inlined Object.is polyfill to avoid requiring consumers ship their own
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is
+ */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const objectIs = (x: any, y: any) => {
-  // SameValue algorithm
-  if (x === y) {
-    // Steps 1-5, 7-10
-    // Steps 6.b-6.e: +0 != -0
-    return x !== 0 || 1 / x === 1 / y;
-  } else {
-    // Step 6.a: NaN == NaN
-    // eslint-disable-next-line no-self-compare
-    return x !== x && y !== y;
-  }
-};
+function is(x: any, y: any) {
+  return (
+    (x === y && (x !== 0 || 1 / x === 1 / y)) || (x !== x && y !== y) // eslint-disable-line no-self-compare
+  );
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const objectIs: (x: any, y: any) => boolean =
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore fallback to native if it exists (not in IE11)
+  typeof Object.is === 'function' ? Object.is : is;
