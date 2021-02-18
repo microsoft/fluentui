@@ -1,6 +1,7 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SnackbarPage/docs/SnackbarRelated.md') as string;
+const related: ISideRailLink[] = [];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/SnackbarPage';
 

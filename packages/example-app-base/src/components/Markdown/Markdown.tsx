@@ -79,7 +79,7 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles, props
         },
         a: {
           component: MarkdownLink,
-          props: { className: 'ms-mdLink', styles: subComponentStyles.link, underline: false },
+          props: { className: 'ms-mdLink', styles: subComponentStyles.link },
         },
         img: {
           component: Image,

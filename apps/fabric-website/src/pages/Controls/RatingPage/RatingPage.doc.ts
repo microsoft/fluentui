@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { RatingPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Rating/Rating.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/RatingPage/docs/RatingRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const RatingPageProps: TFabricPlatformPageProps = {
   web: {

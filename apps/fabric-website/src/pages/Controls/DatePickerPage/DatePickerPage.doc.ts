@@ -1,7 +1,14 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { DatePickerPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/DatePicker/DatePicker.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/DatePickerRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Web DatePicker', url: '#/controls/web/datepicker' },
+  { text: 'iOS Date & Time Picker', url: '#/controls/ios/date-time-picker' },
+  { text: 'Android Date & Time Picker', url: '#/controls/android/date-time-picker' },
+  { text: 'Android Calendar', url: '#/controls/android/calendar' },
+  { text: 'macOS DatePicker', url: '#/controls/mac/date-picker' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/DatePickerPage';
 
