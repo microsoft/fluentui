@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/api-docs",
-  "version": "8.0.0-beta.2",
+  "version": "8.0.0-beta.4",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
@@ -18,20 +18,20 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/fs-extra": "^8.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/node": "^10.3.2"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^8.0.0-beta.2",
-    "@fluentui/merge-styles": "^8.0.0-beta.4",
-    "@fluentui/react": "^8.0.0-beta.55",
-    "@fluentui/react-focus": "^8.0.0-beta.21",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.24",
-    "@fluentui/style-utilities": "^8.0.0-beta.16",
-    "@fluentui/theme": "^2.0.0-beta.16",
-    "@fluentui/utilities": "^8.0.0-beta.12",
+    "@fluentui/date-time-utilities": "^8.0.0-beta.4",
+    "@fluentui/merge-styles": "^8.0.0-beta.5",
+    "@fluentui/react": "^8.0.0-beta.58",
+    "@fluentui/react-focus": "^8.0.0-beta.23",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.26",
+    "@fluentui/style-utilities": "^8.0.0-beta.18",
+    "@fluentui/theme": "^2.0.0-beta.18",
+    "@fluentui/utilities": "^8.0.0-beta.14",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0"

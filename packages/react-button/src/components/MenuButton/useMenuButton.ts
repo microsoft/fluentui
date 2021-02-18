@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utils';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
 import { MenuButtonProps, MenuButtonState } from './MenuButton.types';
 import { useMenuButtonState } from './useMenuButtonState';
 

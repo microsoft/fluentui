@@ -5,8 +5,8 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 const defaultAvatar = (
   <Avatar
     image={{
-      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-      alt: 'Profile picture of Matt',
+      src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+      alt: 'Profile picture of Robert',
     }}
     status={{
       color: 'green',
@@ -25,8 +25,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       status={{
         color: 'green',
@@ -39,8 +39,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       size="larger"
       status={{
@@ -53,8 +53,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       status={{
         color: 'green',
@@ -67,8 +67,8 @@ const AvatarExampleStatusCustomizationShorthand = () => (
     {defaultAvatar}
     <Avatar
       image={{
-        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/small/matt.jpg',
-        alt: 'Profile picture of Matt',
+        src: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+        alt: 'Profile picture of Robert',
       }}
       size="larger"
       status={{

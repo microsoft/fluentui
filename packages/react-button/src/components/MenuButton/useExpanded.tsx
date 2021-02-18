@@ -8,7 +8,7 @@ export type ExpandedState = {
   expanded?: boolean;
   defaultExpanded?: boolean;
   onClick?: (ev: React.MouseEvent) => void;
-  onMenuDismiss?: () => void;
+  onMenuDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent) => void;
   onKeyDown?: (ev: React.KeyboardEvent) => void;
   'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
   'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
@@ -22,7 +22,7 @@ export type ExpandedState = {
 export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraftState) => {
   const { expanded, defaultExpanded, onClick, onMenuDismiss, onKeyDown } = draftState;
   const [expandedValue, setExpandedValue] = useControllableValue(expanded, defaultExpanded);
-  const rootRef = React.useRef<HTMLElement | undefined>();
+  const rootRef = React.useRef<HTMLElement | undefined>(null);
 
   // Set up a ref to be used for the menu target.
   draftState.ref = useMergedRefs(draftState.ref, rootRef);
@@ -66,18 +66,30 @@ export const useExpanded = <TDraftState extends ExpandedState>(draftState: TDraf
     [onKeyDown, setExpandedValue],
   );
 
-  const onDismiss = React.useCallback(() => {
-    onMenuDismiss?.();
+  const onDismiss = React.useCallback(
+    async (ev?: Event | React.MouseEvent | React.KeyboardEvent) => {
+      setExpandedValue(false);
+      await rootRef.current?.focus();
+      onMenuDismiss?.(ev);
+    },
+    [onMenuDismiss, setExpandedValue],
+  );
 
-    setExpandedValue(false);
-
-    // TODO: should we re-focus the root?
-  }, [onMenuDismiss, setExpandedValue]);
+  const menuProps = {
+    hidden: !expandedValue,
+    onDismiss: onDismiss,
+    target: rootRef,
+  };
 
   if (draftState.menu) {
-    draftState.menu.hidden = !expandedValue;
-    draftState.menu.onDismiss = onDismiss;
-    draftState.menu.target = rootRef;
+    if (React.isValidElement(draftState.menu.children)) {
+      draftState.menu.children = React.cloneElement(draftState.menu.children, {
+        ...menuProps,
+      });
+    }
+    draftState.menu.hidden = menuProps.hidden;
+    draftState.menu.onDismiss = menuProps.onDismiss;
+    draftState.menu.target = menuProps.target;
   }
 
   draftState['aria-expanded'] = expandedValue;

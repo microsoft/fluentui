@@ -15,8 +15,18 @@ const CustomTreeTitle = (
   </Component>
 );
 
+const itemToString = item => item.title;
+
 const VirtualizedTreePrototype = () => {
-  return <VirtualTree items={items} renderItemTitle={CustomTreeTitle} estimatedItemSize={20} height={500} />;
+  return (
+    <VirtualTree
+      items={items}
+      renderItemTitle={CustomTreeTitle}
+      estimatedItemSize={20}
+      height={500}
+      itemToString={itemToString}
+    />
+  );
 };
 
 export default VirtualizedTreePrototype;

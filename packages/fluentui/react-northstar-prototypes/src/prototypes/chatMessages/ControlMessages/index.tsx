@@ -5,8 +5,8 @@ import ControlMessage from './ControlMessage';
 import { groupControlMessageItems, mainControlMessage } from './mockData';
 import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const janeAvatar = {
-  image: 'public/images/avatar/small/ade.jpg',
+const robinAvatar = {
+  image: 'public/images/avatar/RobinCounts.jpg',
   status: {
     color: 'green',
     icon: <AcceptIcon />,
@@ -23,7 +23,7 @@ const ChatExampleWithControlMessages = () => {
           message={{
             content: (
               <div>
-                <a href="/">John Doe</a> joined the team
+                <a href="/">Cecil Folk</a> joined the team
               </div>
             ),
           }}
@@ -39,8 +39,8 @@ const ChatExampleWithControlMessages = () => {
       key: 'message-id-7',
     },
     {
-      gutter: <Avatar {...janeAvatar} />,
-      message: <Chat.Message content="Sure! Let's try it." author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+      gutter: <Avatar {...robinAvatar} />,
+      message: <Chat.Message content="Sure! Let's try it." author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
       key: 'message-id-8',
     },
     {
@@ -48,7 +48,7 @@ const ChatExampleWithControlMessages = () => {
       key: 'message-id-9',
     },
     {
-      message: <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />,
+      message: <Chat.Message content="Ok, let's go." author="Cecil Folk" timestamp="Today, 11:15 PM" mine />,
       contentPosition: 'end',
       key: 'message-id-10',
     },

@@ -35,7 +35,7 @@ completed as part of converging a component. More info can be found here: https:
   - [ ] Conformance tests
   - [ ] Unit tests
   - [ ] VR tests
-  - [ ] Accessibility behavior tests 
+  - [ ] Accessibility behavior tests
 - [ ] Write README.md covering basic usage
 - [ ] Write initial MIGRATION.md guide (include v8 and v0)
 - [ ] **Deliverable:** Experimental component ready for partner use

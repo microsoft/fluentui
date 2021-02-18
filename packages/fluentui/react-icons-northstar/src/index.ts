@@ -162,6 +162,7 @@ export { OcrOffIcon } from './components/OcrOffIcon';
 export { OcrOnIcon } from './components/OcrOnIcon';
 export { OneNoteColorIcon } from './components/OneNoteColorIcon';
 export { OneNoteIcon } from './components/OneNoteIcon';
+export { OneNoteMonoIcon } from './components/OneNoteMonoIcon';
 export { OneDriveIcon } from './components/OneDriveIcon';
 export { OptionsIcon } from './components/OptionsIcon';
 export { OutdentIcon } from './components/OutdentIcon';

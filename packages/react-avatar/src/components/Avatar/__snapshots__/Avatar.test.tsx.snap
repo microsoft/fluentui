@@ -5,7 +5,9 @@ exports[`Avatar displays a badge 1`] = `
   className=""
   name="First Last"
 >
-  <span>
+  <span
+    className=""
+  >
     FL
   </span>
   <span
@@ -19,7 +21,9 @@ exports[`Avatar displays custom initials via getInitials 1`] = `
   className=""
   name="First Last"
 >
-  <span>
+  <span
+    className=""
+  >
     IA
   </span>
 </span>
@@ -31,12 +35,14 @@ exports[`Avatar handles customSize 1`] = `
   name="First Last"
   style={
     Object {
-      "--avatar-height": "33px",
-      "--avatar-width": "33px",
+      "height": "33px",
+      "width": "33px",
     }
   }
 >
-  <span>
+  <span
+    className=""
+  >
     FL
   </span>
 </span>
@@ -47,7 +53,9 @@ exports[`Avatar prioritizes icon over initials 1`] = `
   className=""
   name="First Last"
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
@@ -71,7 +79,9 @@ exports[`Avatar prioritizes image over icon 1`] = `
 <span
   className=""
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
@@ -99,7 +109,9 @@ exports[`Avatar prioritizes image over initials 1`] = `
   className=""
   name="First Last"
 >
-  <span>
+  <span
+    className=""
+  >
     FL
   </span>
   <img
@@ -113,7 +125,9 @@ exports[`Avatar prioritizes image over initials and icon 1`] = `
   className=""
   name="First Last"
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
@@ -141,7 +155,9 @@ exports[`Avatar renders 1 initial with a 1-word name 1`] = `
   className=""
   name="First"
 >
-  <span>
+  <span
+    className=""
+  >
     F
   </span>
 </span>
@@ -152,7 +168,9 @@ exports[`Avatar renders 2 initials with a 2-word name 1`] = `
   className=""
   name="First Last"
 >
-  <span>
+  <span
+    className=""
+  >
     FL
   </span>
 </span>
@@ -163,7 +181,9 @@ exports[`Avatar renders 2 initials with a 3-word name 1`] = `
   className=""
   name="First M. Last"
 >
-  <span>
+  <span
+    className=""
+  >
     FL
   </span>
 </span>
@@ -173,7 +193,9 @@ exports[`Avatar renders a default state 1`] = `
 <span
   className=""
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
@@ -197,7 +219,9 @@ exports[`Avatar renders an icon 1`] = `
 <span
   className=""
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
@@ -222,7 +246,9 @@ exports[`Avatar renders an icon if the name is not alphabetic 1`] = `
   className=""
   name="(111)-555-1234"
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
@@ -246,7 +272,9 @@ exports[`Avatar renders an image 1`] = `
 <span
   className=""
 >
-  <span>
+  <span
+    className=""
+  >
     <span
       aria-hidden={true}
       className=""
