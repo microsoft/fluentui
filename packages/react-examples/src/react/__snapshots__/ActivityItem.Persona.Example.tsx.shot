@@ -106,12 +106,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     {
                       display: block;
                       height: 100%;
-                      left: 50% /* @noflip */;
                       object-fit: cover;
                       opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
                       width: 100%;
                     }
                 onError={[Function]}
@@ -175,41 +171,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -336,12 +330,13 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     height: 16px;
                     line-height: 16px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background-color: Window !important;
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                    forced-color-adjust: none;
                   }
                   & i {
                     font-weight: 600;
@@ -422,12 +417,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     {
                       display: block;
                       height: 100%;
-                      left: 50% /* @noflip */;
                       object-fit: cover;
                       opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
                       width: 100%;
                     }
                 onError={[Function]}
@@ -491,41 +482,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -571,41 +560,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -651,41 +638,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -788,12 +773,13 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     height: 16px;
                     line-height: 16px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background-color: Window !important;
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                    forced-color-adjust: none;
                   }
                   & i {
                     font-weight: 600;
@@ -871,12 +857,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     {
                       display: block;
                       height: 100%;
-                      left: 50% /* @noflip */;
                       object-fit: cover;
                       opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
                       width: 100%;
                     }
                 onError={[Function]}
@@ -952,12 +934,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     {
                       display: block;
                       height: 100%;
-                      left: 50% /* @noflip */;
                       object-fit: cover;
                       opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
                       width: 100%;
                     }
                 onError={[Function]}
@@ -1021,41 +999,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -1101,41 +1077,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -1241,12 +1215,13 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     height: 16px;
                     line-height: 16px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background-color: Window !important;
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                    forced-color-adjust: none;
                   }
                   & i {
                     font-weight: 600;
@@ -1324,12 +1299,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     {
                       display: block;
                       height: 100%;
-                      left: 50% /* @noflip */;
                       object-fit: cover;
                       opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
                       width: 100%;
                     }
                 onError={[Function]}
@@ -1379,12 +1350,13 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     height: 16px;
                     line-height: 16px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background-color: Window !important;
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                    forced-color-adjust: none;
                   }
                   & i {
                     font-weight: 600;
@@ -1462,12 +1434,8 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                     {
                       display: block;
                       height: 100%;
-                      left: 50% /* @noflip */;
                       object-fit: cover;
                       opacity: 0;
-                      position: absolute;
-                      top: 50%;
-                      transform: translate(-50%,-50%);
                       width: 100%;
                     }
                 onError={[Function]}
@@ -1531,41 +1499,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}
@@ -1611,41 +1577,39 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
                 box-shadow: 0 0 0 1px #605e5c inset;
                 outline: 1px auto #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid WindowText;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-bottom: none;
                 color: LinkText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
               &:active {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                 color: LinkText;
               }
               &:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: LinkText;
               }
               &:active:hover {
                 color: #004578;
                 text-decoration: underline;
               }
-              @media screen and (-ms-high-contrast: active){&:active:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                 color: LinkText;
               }
               &:focus {
                 color: #0078d4;
               }
-              @media screen and (-ms-high-contrast: active){&:focus {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                 color: LinkText;
               }
           onClick={[Function]}

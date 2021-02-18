@@ -1,8 +1,148 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 23 Oct 2020 23:25:40 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.7.2)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.7.1..@fluentui/react-image_v0.7.2)
+
+### Patches
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.14 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-make-styles to v0.2.7 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [0.7.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.7.1)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.7.0..@fluentui/react-image_v0.7.1)
+
+### Patches
+
+- use @fluentui/react-utilities instead of @fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/react-make-styles to v0.2.7-0 ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+- Bump @fluentui/react-conformance to v1.0.0 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.7.0)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.23..@fluentui/react-image_v0.7.0)
+
+### Minor changes
+
+- feat(react-image): redo to match convergence rfc ([PR #16894](https://github.com/microsoft/fluentui/pull/16894) by jakubkonka@microsoft.com)
+
+## [0.6.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.23)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.22..@fluentui/react-image_v0.6.23)
+
+### Patches
+
+- cleanup ref usages, remove unused types ([PR #16964](https://github.com/microsoft/fluentui/pull/16964) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.24 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+- Bump @fluentui/react-utils to v0.3.2-0 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [0.6.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.22)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.21..@fluentui/react-image_v0.6.22)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.1 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.23 ([PR #16945](https://github.com/microsoft/fluentui/pull/16945) by lingfan.gao@microsoft.com)
+
+## [0.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.21)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.21..@fluentui/react-image_v0.6.21)
+
+### Changes
+
+- Bump @fluentui/react-compose to v1.0.0-beta.12 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.22 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-utils to v0.3.1-0 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [0.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.21)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.20..@fluentui/react-image_v0.6.21)
+
+### Patches
+
+- Bump @fluentui/react-utils to v0.3.0 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.21 ([PR #16865](https://github.com/microsoft/fluentui/pull/16865) by lingfan.gao@microsoft.com)
+
+## [0.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.20)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.20..@fluentui/react-image_v0.6.20)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.20 ([PR #16844](https://github.com/microsoft/fluentui/pull/16844) by miroslav.stastny@microsoft.com)
+
+## [0.6.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.20)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.19..@fluentui/react-image_v0.6.20)
+
+### Patches
+
+- use a compat version of ThemeProvider ([PR #16729](https://github.com/microsoft/fluentui/pull/16729) by olfedias@microsoft.com)
+
+## [0.6.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.19)
+
+Mon, 01 Feb 2021 12:23:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.19-15..@fluentui/react-image_v0.6.19)
+
+### Patches
+
+- add prerelease in disallowed change type for version packages and fix current versioning. ([PR #16696](https://github.com/microsoft/fluentui/pull/16696) by xgao@microsoft.com)
+- Extract compose/next to react-utils ([PR #16690](https://github.com/microsoft/fluentui/pull/16690) by lingfan.gao@microsoft.com)
+
+## [0.6.19-15](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.19-15)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.19-14..@fluentui/react-image_v0.6.19-15)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [0.6.19-14](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.19-14)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v0.6.18..@fluentui/react-image_v0.6.19-14)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
 
 ## [0.6.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v0.6.18)
 

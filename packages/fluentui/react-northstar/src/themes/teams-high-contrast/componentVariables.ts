@@ -1,10 +1,12 @@
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
+export { avatarVariables as AvatarImage } from './components/Avatar/avatarVariables';
 export { buttonVariables as Button } from './components/Button/buttonVariables';
 export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatMessageVariables as ChatMessage } from './components/Chat/chatMessageVariables';
 export { checkboxVariables as Checkbox } from './components/Checkbox/checkboxVariables';
 export { dialogVariables as Dialog } from './components/Dialog/dialogVariables';
 export { dividerVariables as Divider } from './components/Divider/dividerVariables';
+export { embedVariables as Embed } from './components/Embed/embedVariables';
 export { headerVariables as Header } from './components/Header/headerVariables';
 export { inputVariables as Input } from './components/Input/inputVariables';
 export { menuVariables as Menu } from './components/Menu/menuVariables';

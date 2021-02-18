@@ -1,11 +1,10 @@
 import { pxToRem } from '../../../../utils';
-import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
+import { DAYS_IN_WEEK } from '../../../../utils/date-time-utilities';
 
 export interface DatepickerVariables {
   calendarCellBorder: string;
   calendarCellHeight: string;
   calendarCellWidth: string;
-  calendarCellBorderRadius: string;
   calendarCellPadding: string;
   calendarCellMargin: string;
   calendarCellBackgroundColor: string;
@@ -36,9 +35,8 @@ export interface DatepickerVariables {
 
 export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellBorder: 'none',
-  calendarCellHeight: pxToRem(32),
-  calendarCellWidth: pxToRem(32),
-  calendarCellBorderRadius: pxToRem(2),
+  calendarCellHeight: pxToRem(34),
+  calendarCellWidth: pxToRem(34),
   calendarCellPadding: pxToRem(0),
   calendarCellMargin: pxToRem(0),
   calendarCellBackgroundColor: siteVars.colorScheme.default.background,

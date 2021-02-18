@@ -126,6 +126,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     popperRef,
     positionFixed,
     offset,
+    unstable_disableTether,
     unstable_pinned,
     className,
     design,
@@ -227,6 +228,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
                 popperRef,
                 positionFixed,
                 offset,
+                unstable_disableTether,
                 unstable_pinned,
               }),
             overrideProps: handleMenuButtonOverrides,
@@ -301,6 +303,7 @@ SplitButton.propTypes = {
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
   ]),
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
 };
 

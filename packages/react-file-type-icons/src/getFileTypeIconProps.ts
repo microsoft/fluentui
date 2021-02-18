@@ -7,7 +7,8 @@ const GENERIC_FILE = 'genericfile';
 const FOLDER = 'folder';
 const SHARED_FOLDER = 'sharedfolder';
 const DOCSET_FOLDER = 'docset';
-const LIST_ITEM = 'splist';
+const LIST_ITEM = 'listitem';
+const LIST = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
 const STREAM = 'stream';
@@ -15,8 +16,8 @@ const DESKTOP_FOLDER = 'desktopfolder';
 const DOCUMENTS_FOLDER = 'documentfolder';
 const PICTURES_FOLDER = 'picturesfolder';
 const LINKED_FOLDER = 'linkedfolder';
-const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 
+export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
 export type ImageFileType = 'svg' | 'png';
 
@@ -34,12 +35,13 @@ export interface IFileTypeIconOptions {
    */
   type?: FileIconTypeInput;
   /**
-   * The size of the icon in pixels. Defaults to 16.
+   * The size of the icon in pixels.
+   * @default 16
    */
   size?: FileTypeIconSize;
   /**
    * The type of image file to use. Can be svg or png.
-   * Defaults to svg.
+   * @default 'svg'
    */
   imageFileType?: ImageFileType;
 }
@@ -47,10 +49,8 @@ export interface IFileTypeIconOptions {
 /**
  * This function returns properties for a file type icon given the IFileTypeIconOptions.
  * It accounts for different device pixel ratios. For example,
- * getFileTypeIconName({extension: 'doc', size: 16, imageFileType: 'png'})
- * will return { iconName: 'docx16_2x_png' } if the devicePixelRatio is 2.
- *
- * @param options
+ * `getFileTypeIconName({ extension: 'doc', size: 16, imageFileType: 'png' })`
+ * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
  */
 export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string } {
   // First, obtain the base name of the icon using the extension or type.
@@ -92,6 +92,9 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
       case FileIconType.linkedFolder:
         iconBaseName = LINKED_FOLDER;
+        break;
+      case FileIconType.list:
+        iconBaseName = LIST;
         break;
     }
   }

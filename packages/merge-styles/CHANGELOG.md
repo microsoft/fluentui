@@ -1,8 +1,35 @@
 # Change Log - @fluentui/merge-styles
 
-This log was last generated on Mon, 02 Nov 2020 12:32:47 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.5)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.0.0-beta.4..@fluentui/merge-styles_v8.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.3)
+
+Thu, 03 Dec 2020 12:32:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.0.0-beta.2..@fluentui/merge-styles_v8.0.0-beta.3)
+
+### Changes
+
+- Fix mergeStyles handling of !important for margin and padding ([PR #16111](https://github.com/microsoft/fluentui/pull/16111) by behowell@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.2)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/merge-styles_v8.0.0-beta.1..@fluentui/merge-styles_v8.0.0-beta.2)
+
+### Changes
+
+- Fix mergeStyles handling of calc() in margin and padding properties ([PR #16074](https://github.com/microsoft/fluentui/pull/16074) by behowell@microsoft.com)
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/merge-styles_v8.0.0-beta.1)
 

@@ -1,5 +1,5 @@
-import { navigateToNewDate } from 'src/components/Datepicker/navigateToNewDate';
-import { compareDatePart } from '@fluentui/date-time-utilities';
+import { compareDatePart } from '../../../../src/utils/date-time-utilities';
+import { navigateToNewDate } from '../../../../src/components/Datepicker/navigateToNewDate';
 
 describe('navigateToNewDate', () => {
   const referenceDate = new Date(2020, 0, 10);

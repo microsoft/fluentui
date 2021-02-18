@@ -34,6 +34,7 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
     height: '100%',
     width: pxToRem(16),
     msGridColumn: '1',
+    marginRight: `${pxToRem(4)}`,
   }),
   content: () => ({
     alignItems: 'center',

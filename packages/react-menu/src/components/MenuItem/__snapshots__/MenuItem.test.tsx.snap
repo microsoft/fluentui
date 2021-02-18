@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItem renders a default state 1`] = `
+<div
+  className=""
+  role="menuitem"
+  tabIndex={0}
+>
+  Default MenuItem
+</div>
+`;

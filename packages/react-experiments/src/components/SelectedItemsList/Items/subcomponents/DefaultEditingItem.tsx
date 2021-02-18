@@ -1,8 +1,12 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from '@fluentui/react/lib/Utilities';
-import { FloatingSuggestions } from '../../../FloatingSuggestions/FloatingSuggestions';
-import { IFloatingSuggestionsProps } from '../../../FloatingSuggestions/FloatingSuggestions.types';
+import {
+  IBaseFloatingSuggestionsProps,
+  IBaseFloatingPickerHeaderFooterProps,
+} from '../../../FloatingSuggestionsComposite/FloatingSuggestions.types';
+import { IFloatingSuggestionItemProps } from '../../../FloatingSuggestionsComposite/FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { EditingItemComponentProps } from '../EditableItem';
+import { useFloatingSuggestionItems } from '../../../UnifiedPicker/hooks/useFloatingSuggestionItems';
 
 import * as styles from './DefaultEditingItem.scss';
 
@@ -41,118 +45,224 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
    * Callback used by the EditingItem to populate the initial value of the editing item
    */
   getEditingItemText: (item: TItem) => string;
+
+  /**
+   * Callback used to retrieve the suggestions to show in the floating suggestions
+   */
+  getSuggestions: (value: string) => IFloatingSuggestionItemProps<TItem>[];
+
+  /**
+   * The header and footer props for the floating picker
+   * This should be set here instead of in onRenderFloatingPicker if you want them to be keyboard selectable
+   */
+  pickerSuggestionsProps?: IBaseFloatingPickerHeaderFooterProps;
+
+  /**
+   * Function that specifies how arbitrary text entered into the edit input is handled.
+   */
+  createGenericItem?: (input: string) => TItem;
 }
 
 export type EditingItemInnerFloatingPickerProps<T> = Pick<
-  IFloatingSuggestionsProps<T>,
-  'componentRef' | 'onSuggestionSelected' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
+  IBaseFloatingSuggestionsProps<T>,
+  | 'componentRef'
+  | 'suggestions'
+  | 'onSuggestionSelected'
+  | 'targetElement'
+  | 'onRemoveSuggestion'
+  | 'onFloatingSuggestionsDismiss'
+  | 'onKeyDown'
+  | 'selectedSuggestionIndex'
+  | 'selectedHeaderIndex'
+  | 'selectedFooterIndex'
+  | 'pickerSuggestionsProps'
 >;
 
 /**
  * Wrapper around an item in a selection well that renders an item with a context menu for
  * replacing that item with another item.
  */
-export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefaultEditingItemInnerProps<TItem>> {
-  private _editingInput: HTMLInputElement;
-  private _editingFloatingPicker = React.createRef<FloatingSuggestions<TItem>>();
+export const DefaultEditingItemInner = <TItem extends any>(
+  props: IDefaultEditingItemInnerProps<TItem>,
+): JSX.Element => {
+  const editingInput = React.useRef<any>();
+  const editingFloatingPicker = React.createRef<any>();
+  const [editingSuggestions, setEditingSuggestions] = React.useState<IFloatingSuggestionItemProps<TItem>[]>([]);
+  const [inputValue, setInputValue] = React.useState<string>('');
 
-  constructor(props: IDefaultEditingItemInnerProps<TItem>) {
-    super(props);
-  }
+  const {
+    item,
+    onEditingComplete,
+    getSuggestions,
+    onRemoveItem,
+    createGenericItem,
+    getEditingItemText,
+    pickerSuggestionsProps,
+  } = props;
 
-  public componentDidMount(): void {
-    const itemText: string = this.props.getEditingItemText(this.props.item);
+  const {
+    focusItemIndex,
+    setFocusItemIndex,
+    suggestionItems,
+    footerItemIndex,
+    footerItems,
+    headerItemIndex,
+    headerItems,
+    selectPreviousSuggestion,
+    selectNextSuggestion,
+  } = useFloatingSuggestionItems(
+    editingSuggestions,
+    pickerSuggestionsProps?.footerItemsProps,
+    pickerSuggestionsProps?.headerItemsProps,
+  );
 
-    this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
-    this._editingInput.value = itemText;
-    this._editingInput.focus();
-  }
+  React.useEffect(() => {
+    const itemText: string = getEditingItemText(props.item);
 
-  public render(): JSX.Element {
-    const itemId = getId();
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
-    return (
-      <span aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
-        <input
-          {...nativeProps}
-          ref={this._resolveInputRef}
-          autoCapitalize={'off'}
-          autoComplete={'off'}
-          onChange={this._onInputChange}
-          onKeyDown={this._onInputKeyDown}
-          onBlur={this._onInputBlur}
-          onClick={this._onInputClick}
-          data-lpignore={true}
-          className={styles.editingInput}
-          id={itemId}
-        />
-        {this._renderEditingSuggestions()}
-      </span>
-    );
-  }
+    setEditingSuggestions(getSuggestions(itemText));
+    if (editingInput.current) {
+      editingInput.current.value = itemText;
+      setInputValue(itemText);
+      editingInput.current.focus();
+    }
+    setFocusItemIndex(0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // We only want to run this once
 
-  private _renderEditingSuggestions = (): JSX.Element => {
-    const FloatingPicker = this.props.onRenderFloatingPicker;
+  const _renderEditingSuggestions = (): JSX.Element => {
+    const FloatingPicker = props.onRenderFloatingPicker;
     if (!FloatingPicker) {
       return <></>;
     }
     return (
       <FloatingPicker
-        componentRef={this._editingFloatingPicker}
-        onSuggestionSelected={this._onSuggestionSelected}
-        inputElement={this._editingInput}
-        onRemoveSuggestion={this.props.onRemoveItem}
-        onSuggestionsHidden={this.props.onDismiss}
+        componentRef={editingFloatingPicker}
+        onSuggestionSelected={_onSuggestionSelected}
+        targetElement={editingInput.current}
+        onRemoveSuggestion={_onRemoveItem}
+        onFloatingSuggestionsDismiss={props.onDismiss}
+        suggestions={suggestionItems}
+        selectedSuggestionIndex={focusItemIndex}
+        selectedHeaderIndex={headerItemIndex}
+        selectedFooterIndex={footerItemIndex}
+        pickerSuggestionsProps={pickerSuggestionsProps}
       />
     );
   };
 
-  private _resolveInputRef = (ref: HTMLInputElement): void => {
-    this._editingInput = ref;
-
-    this.forceUpdate(() => {
-      this._editingInput.focus();
-    });
-  };
-
-  private _onInputClick = (): void => {
-    this._editingFloatingPicker.current && this._editingFloatingPicker.current.showPicker(true /*updatevalue*/);
-  };
-
-  private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this._editingFloatingPicker.current && ev.relatedTarget !== null) {
-      const target = ev.relatedTarget as HTMLElement;
-      if (
-        target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
-        target.className.indexOf('ms-Suggestions-sectionButton') === -1
-      ) {
-        this._editingFloatingPicker.current.forceResolveSuggestion();
+  const _onInputBlur = React.useCallback(
+    (ev: React.FocusEvent<HTMLElement>): void => {
+      if (editingFloatingPicker.current) {
+        const target = ev.relatedTarget as HTMLElement;
+        // We don't want to exit out if the user has clicked on a dropdown suggestion
+        if (target === null || target.className.indexOf('ms-FloatingSuggestionsItem-itemButton') === -1) {
+          if (focusItemIndex >= 0) {
+            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+          } else if (createGenericItem) {
+            onEditingComplete(item, createGenericItem(inputValue));
+          }
+          // else, we come out of editing mode
+        }
       }
-    }
-  };
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- these are the only dependencies which matter
+    [suggestionItems, focusItemIndex, item, createGenericItem, inputValue, onEditingComplete, editingFloatingPicker],
+  );
 
-  private _onInputChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const value: string = (ev.target as HTMLInputElement).value;
+  const _onInputChange = React.useCallback(
+    (ev: React.FormEvent<HTMLElement>): void => {
+      const value: string = (ev.target as HTMLInputElement).value;
+      setInputValue(value);
 
-    if (value === '') {
-      if (this.props.onRemoveItem) {
-        this.props.onRemoveItem(this.props.item);
+      if (value === '') {
+        if (onRemoveItem) {
+          onRemoveItem(item);
+        }
+      } else {
+        setEditingSuggestions(getSuggestions(value));
       }
-    } else {
-      this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(value);
-    }
-  };
+    },
+    [onRemoveItem, getSuggestions, item],
+  );
 
-  private _onInputKeyDown(ev: React.KeyboardEvent<HTMLInputElement>): void {
-    if (ev.which === KeyCodes.backspace || ev.which === KeyCodes.del) {
-      ev.stopPropagation();
-    }
-  }
+  const _onInputKeyDown = React.useCallback(
+    (ev: React.KeyboardEvent<HTMLInputElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
+      const keyCode = ev.which;
+      switch (keyCode) {
+        case KeyCodes.backspace:
+        case KeyCodes.del:
+          ev.stopPropagation();
+          break;
+        case KeyCodes.enter:
+        case KeyCodes.tab:
+          if (!ev.shiftKey && !ev.ctrlKey && (focusItemIndex >= 0 || footerItemIndex >= 0 || headerItemIndex >= 0)) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            if (focusItemIndex >= 0) {
+              // Get the focused element and add it to selectedItemsList
+              _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
+            } else if (footerItemIndex >= 0) {
+              // execute the footer action
+              footerItems![footerItemIndex].onExecute!();
+            } else if (headerItemIndex >= 0) {
+              // execute the header action
+              headerItems![headerItemIndex].onExecute!();
+            }
+          }
+          break;
+        case KeyCodes.up:
+          ev.preventDefault();
+          ev.stopPropagation();
+          selectPreviousSuggestion();
+          break;
+        case KeyCodes.down:
+          ev.preventDefault();
+          ev.stopPropagation();
+          selectNextSuggestion();
+          break;
+      }
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- these are the only dependencies which matter
+    [suggestionItems, focusItemIndex, footerItems, footerItemIndex, headerItems, headerItemIndex],
+  );
 
-  private _onSuggestionSelected = (item: TItem): void => {
-    this.props.onEditingComplete(this.props.item, item);
-  };
-}
+  const _onSuggestionSelected = React.useCallback(
+    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+      onEditingComplete(item, itemProps.item);
+    },
+    [onEditingComplete, item],
+  );
+
+  const _onRemoveItem = React.useCallback(
+    (ev: any, itemProps: IFloatingSuggestionItemProps<TItem>) => {
+      if (onRemoveItem) {
+        onRemoveItem(itemProps.item);
+      }
+    },
+    [onRemoveItem],
+  );
+
+  const itemId = getId();
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(props, inputProperties);
+  return (
+    <span aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
+      <input
+        {...nativeProps}
+        ref={editingInput}
+        autoCapitalize={'off'}
+        autoComplete={'off'}
+        onChange={_onInputChange}
+        onKeyDown={_onInputKeyDown}
+        onBlur={_onInputBlur}
+        data-lpignore={true}
+        className={styles.editingInput}
+        id={itemId}
+      />
+      {_renderEditingSuggestions()}
+    </span>
+  );
+};
 
 type EditingItemProps<T> = Pick<
   IDefaultEditingItemInnerProps<T>,

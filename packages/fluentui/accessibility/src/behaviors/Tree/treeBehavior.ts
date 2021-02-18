@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 
 import { Accessibility, AccessibilityAttributes } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
@@ -35,6 +35,7 @@ export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
     focusZone: {
       props: {
         direction: FocusZoneDirection.vertical,
+        shouldFocusInnerElementWhenReceivedFocus: true,
       },
     },
     childBehaviors: {

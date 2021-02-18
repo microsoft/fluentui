@@ -1,4 +1,11 @@
-import { Accessibility, popupBehavior, PopupBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  popupBehavior,
+  PopupBehaviorProps,
+  getCode,
+  keyboardKey,
+  SpacebarKey,
+} from '@fluentui/accessibility';
 import {
   AutoFocusZoneProps,
   FocusTrapZoneProps,
@@ -13,7 +20,6 @@ import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
-import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -147,6 +153,7 @@ export const Popup: React.FC<PopupProps> &
     target,
     trapFocus,
     trigger,
+    unstable_disableTether,
     unstable_pinned,
   } = props;
 
@@ -200,6 +207,7 @@ export const Popup: React.FC<PopupProps> &
       trapFocus,
       tabbableTrigger,
       trigger: trigger as any,
+      inline,
     }),
     rtl: context.rtl,
   });
@@ -317,10 +325,12 @@ export const Popup: React.FC<PopupProps> &
         setPopupOpen(false, e);
         _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
       };
-      triggerProps.onClick = (e, ...args) => {
-        setPopupOpen(true, e);
-        _.invoke(triggerElement, 'props.onClick', e, ...args);
-      };
+      if (!_.includes(normalizedOn, 'context')) {
+        triggerProps.onClick = (e, ...args) => {
+          setPopupOpen(true, e);
+          _.invoke(triggerElement, 'props.onClick', e, ...args);
+        };
+      }
       triggerProps.onBlur = (e, ...args) => {
         if (shouldBlurClose(e)) {
           trySetOpen(false, e);
@@ -550,6 +560,7 @@ export const Popup: React.FC<PopupProps> &
           offset={offset}
           overflowBoundary={overflowBoundary}
           rtl={context.rtl}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
         >
@@ -616,6 +627,7 @@ Popup.propTypes = {
   target: PropTypes.any,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
   tabbableTrigger: PropTypes.bool,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,

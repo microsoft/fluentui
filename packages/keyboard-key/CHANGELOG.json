@@ -2,6 +2,102 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.13",
+      "version": "0.2.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/keyboard-key"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.13",
+      "version": "0.2.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.13",
+      "version": "0.2.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.13",
+      "version": "0.2.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.13",
+      "version": "0.2.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add prerelease in disallowed change type for version packages and fix current versioning.",
+            "author": "xgao@microsoft.com",
+            "commit": "9ec4369a9e7850d7ab37803f931d1a0cf30743a9",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/keyboard-key_v0.2.13-0",
+      "version": "0.2.13-0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/keyboard-key"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/keyboard-key_v0.2.12",
       "version": "0.2.12",

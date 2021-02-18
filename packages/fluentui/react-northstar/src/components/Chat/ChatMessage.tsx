@@ -13,8 +13,8 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  useContextSelector,
 } from '@fluentui/react-bindings';
-import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';
@@ -342,7 +342,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
 
-  const headerElement = createShorthand(ChatMessageHeader, header, {
+  const headerElement = createShorthand(ChatMessageHeader, header || {}, {
     overrideProps: () => ({
       content: (
         <>
@@ -395,7 +395,6 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
-  header: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };

@@ -1,3 +1,5 @@
+import { Type } from 'doctrine';
+
 // Temporary copy from packages/fluentui/docs/src/types.ts
 // TODO: move types to shared location
 
@@ -49,11 +51,12 @@ export type ComponentProp = {
   tags: {
     title: string;
     description: string;
-    type: null;
-    name: string;
+    type?: Type | null;
+    name?: string;
   }[];
   types: ComponentPropType[];
   required: boolean;
+  resolvedType?: any;
 };
 
 export type ComponentPropType = {

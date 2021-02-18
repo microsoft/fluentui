@@ -1,4 +1,4 @@
-import { useInlineTokens } from '@fluentui/react-theme-provider';
+import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import * as React from 'react';
 
 import { TextProps } from './Text.types';

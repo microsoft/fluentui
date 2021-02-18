@@ -100,7 +100,9 @@ export const resolveStyles = (
     const styles = allDisplayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
 
     if (styles.length > 0) {
-      mergedStyles = mergeComponentStyles(...styles);
+      mergedStyles = styles.reduce<ComponentSlotStylesPrepared>((acc, styles) => {
+        return mergeComponentStyles(acc, styles);
+      }, {});
     } else {
       mergedStyles = { root: () => ({}) };
     }
@@ -109,8 +111,10 @@ export const resolveStyles = (
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
-      design && withDebugId({ root: design }, 'props.design'),
-      styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
+      mergeComponentStyles(
+        design && withDebugId({ root: design }, 'props.design'),
+        styles && withDebugId({ root: styles } as ComponentSlotStylesInput, 'props.styles'),
+      ),
     );
   }
 

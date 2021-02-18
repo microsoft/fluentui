@@ -53,6 +53,9 @@ const menuButtonBehaviorDefinitionTriggerSlot: Rule[] = [
   BehaviorRule.slot('trigger')
     .hasAttribute('id', 'triggerElementID', true)
     .description(`if 'ID' is defined for the 'trigger' slot.`),
+  BehaviorRule.slot('trigger')
+    .forProps({ contextMenu: true, open: true })
+    .doesNotHaveAttribute('aria-expanded'),
 ];
 
 export const menuButtonBehaviorDefinitionTriggerSlotTabbable = menuButtonBehaviorDefinitionTriggerSlot.concat(

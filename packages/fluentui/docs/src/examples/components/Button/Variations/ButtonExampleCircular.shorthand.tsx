@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { Button, Flex } from '@fluentui/react-northstar';
-import { EmojiIcon, BroadcastIcon } from '@fluentui/react-icons-northstar';
+import { MicIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleCircular = () => (
   <Flex gap="gap.smaller">
     <Button circular content="C" />
-    <Button circular icon={<EmojiIcon />} title="Emoji" />
-    <Button circular icon={<BroadcastIcon />} primary title="Broadcast" />
+    <Button circular icon={<MicIcon />} title="Microphone" />
+    <Button circular icon={<CallVideoIcon />} primary title="Call Video" />
   </Flex>
 );
 export default ButtonExampleCircular;

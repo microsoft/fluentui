@@ -16,9 +16,6 @@ describe('MenuItem', () => {
   isConformant(MenuItem, {
     testPath: __filename,
     constructorName: 'MenuItem',
-    eventTargets: {
-      onClick: `.${menuItemWrapperClassName}`,
-    },
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });

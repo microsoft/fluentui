@@ -40,7 +40,7 @@ import { IObjectWithKey, ISelection, Selection, SelectionMode, SelectionZone } f
 import { DragDropHelper } from '../../DragDrop';
 import { IGroupedList, GroupedList, IGroupDividerProps, IGroupRenderProps } from '../../GroupedList';
 import { List, IListProps, ScrollToMode } from '../../List';
-import { withViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
@@ -502,6 +502,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const isRightArrow = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
+      // eslint-disable-next-line deprecation/deprecation
       return event.which === getRTLSafeKeyCode(KeyCodes.right, theme);
     },
     [theme],
@@ -554,6 +555,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const onHeaderKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.down) {
         if (focusZoneRef.current && focusZoneRef.current.focus()) {
           // select the first item in list after down arrow key event
@@ -572,6 +574,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
 
   const onContentKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<HTMLElement>): void => {
+      // eslint-disable-next-line deprecation/deprecation
       if (ev.which === KeyCodes.up && !ev.altKey) {
         if (headerRef.current && headerRef.current.focus()) {
           ev.preventDefault();

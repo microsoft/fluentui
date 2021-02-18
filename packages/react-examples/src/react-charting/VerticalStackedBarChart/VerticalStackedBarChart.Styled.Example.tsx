@@ -19,6 +19,7 @@ interface IVerticalStackedBarState {
   height: number;
   barGapMax: number;
   barCornerRadius: number;
+  barMinimumHeight: number;
   selectedCallout: string;
 }
 
@@ -30,6 +31,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       height: 350,
       barGapMax: 2,
       barCornerRadius: 2,
+      barMinimumHeight: 1,
       selectedCallout: 'MultiCallout',
     };
   }
@@ -40,7 +42,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 2, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 1, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
     ];
 
@@ -133,6 +135,14 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             max={10}
             onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
+          <label>BarMinimumHeight:</label>
+          <input
+            type="range"
+            value={this.state.barMinimumHeight}
+            min={0}
+            max={10}
+            onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
+          />
           <ChoiceGroup
             options={options}
             defaultSelectedKey="MultiCallout"
@@ -146,12 +156,11 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             data={data}
             {...this.state}
             yAxisTickCount={10}
-            // Just test link
-            href={'www.google.com'}
+            // eslint-disable-next-line react/jsx-no-bind
+            onBarClick={(event, clickData) => console.log('clicked', event, clickData)}
             // eslint-disable-next-line react/jsx-no-bind
             styles={customStyles}
             yMaxValue={120}
-            yMinValue={10}
             isCalloutForStack={this.state.selectedCallout === 'MultiCallout'}
             calloutProps={{
               directionalHint: DirectionalHint.topCenter,

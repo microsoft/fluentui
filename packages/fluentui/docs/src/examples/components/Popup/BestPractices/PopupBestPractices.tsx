@@ -16,6 +16,7 @@ const doList = [
     To set aria-label, aria-labelledby and aria-describedby attributes on the popup slot you need to set it inside of
     the content prop shorthand. See {link('close button example', '#usage-close-button')} for details.
   </Text>,
+  <Text>When setting `trapFocus` in the `Popup` pass `ariaLabelledBy` to content rather than `"aria-labelledby"`</Text>,
   "If Popup's content is lazy loaded and focus needs to be trapped inside - make sure to use state change to trigger `componentDidUpdate`, so the focus can be set correctly to the first tabbable element inside Popup or manually set focus to the element inside once content is loaded.",
 ];
 

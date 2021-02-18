@@ -83,19 +83,19 @@ export const TabStyles = css`
                 forced-color-adjust: none;
                 border-color: transparent;
                 color: ${SystemColors.ButtonText};
-                fill: ${SystemColors.ButtonText};
+                fill: currentcolor;
             }
             :host(:hover),
             :host(.vertical:hover),
             :host([aria-selected="true"]:hover) {
                 background: ${SystemColors.Highlight};
                 color: ${SystemColors.HighlightText};
-                fill: ${SystemColors.HighlightText};
+                fill: currentcolor;
             }
             :host([aria-selected="true"]) {
                 background: ${SystemColors.HighlightText};
                 color: ${SystemColors.Highlight};
-                fill: ${SystemColors.Highlight};
+                fill: currentcolor;
             }
             :host(:${focusVisible}) {
                 border-color: ${SystemColors.ButtonText};

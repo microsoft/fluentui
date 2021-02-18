@@ -7,6 +7,7 @@ import { prefixRules } from './transforms/prefixRules';
 import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { IStyleOptions } from './IStyleOptions';
+import { tokenizeWithParentheses } from './tokenizeWithParentheses';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -158,7 +159,16 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
 }
 
 function expandQuads(currentRules: IDictionary, name: string, value: string): void {
-  const parts = typeof value === 'string' ? value.split(' ') : [value];
+  let parts = typeof value === 'string' ? tokenizeWithParentheses(value) : [value];
+
+  if (parts.length === 0) {
+    parts.push(value);
+  }
+
+  if (parts[parts.length - 1] === '!important') {
+    // Remove !important from parts, and append it to each part individually
+    parts = parts.slice(0, -1).map(p => p + ' !important');
+  }
 
   currentRules[name + 'Top'] = parts[0];
   currentRules[name + 'Right'] = parts[1] || parts[0];

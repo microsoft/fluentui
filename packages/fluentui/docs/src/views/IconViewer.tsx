@@ -18,6 +18,7 @@ import * as exports from '@fluentui/react-icons-northstar';
 import { CodeSnippet, CopyToClipboard } from '@fluentui/docs-components';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import ComponentPlaygroundSnippet from '../../src/components/ComponentPlayground/ComponentPlaygroundSnippet';
+import DocPage from '../components/DocPage';
 
 const iconFlexStyles = {
   '> *:nth-child(5n)': {
@@ -223,77 +224,76 @@ const IconViewer = () => {
   const filteredIcons = icons.filter(IconComponent => regexQuery.test(IconComponent.displayName));
 
   return (
-    <Flex column gap="gap.medium">
-      <Flex padding="padding.medium" gap="gap.medium">
-        <Flex.Item grow>
-          <IntroCard />
-        </Flex.Item>
-        <Flex.Item grow>
-          <PlaygroundCard />
-        </Flex.Item>
-      </Flex>
-      <Flex column gap="gap.medium" padding="padding.medium">
-        <Header content="Looking for particular icon?" style={{ textAlign: 'center' }} />
-        <Input
-          inverted
-          fluid
-          clearable
-          icon={<SearchIcon />}
-          placeholder={`Search across ${icons.length} icons`}
-          iconPosition="end"
-          role="search"
-          onChange={handleQueryChange}
-          value={query}
-        />
-        <Flex wrap gap="gap.medium" styles={iconFlexStyles}>
-          {filteredIcons.map(Icon => (
-            <Flex.Item align="center" key={Icon.displayName}>
-              <Card
-                centered
-                variables={{ borderColor: '#f2f2f2', width: 'calc(20% - 12px)' }}
-                styles={{ marginTop: '10px', background: 'white' }}
-                aria-roledescription="Icon card"
-              >
-                <Card.Header>
-                  <Flex gap="gap.small" column hAlign="center">
-                    <Icon size="largest" />
-                    <br />
-                    <CopyToClipboard value={`<${Icon.displayName} />`} timeout={3000}>
-                      {(active, onClick) => (
-                        <Box
-                          as="code"
-                          onClick={onClick}
-                          title="Click to copy JSX to your clipboard"
-                          styles={{
-                            fontSize: '10px !improtant',
-                            opacity: active ? 1 : 0.6,
-                            color: active ? 'green' : 'inherit',
-                            cursor: 'pointer',
-                            ...(!active && {
-                              ':hover': {
-                                opacity: 0.75,
-                              },
-                            }),
-                          }}
-                        >
-                          {active ? 'Copied! Happy coding :)' : `<${Icon.displayName} />`}
-                        </Box>
-                      )}
-                    </CopyToClipboard>
-                  </Flex>
-                </Card.Header>
-              </Card>
-            </Flex.Item>
-          ))}
+    <DocPage title="Icons" fluid>
+      <Flex column gap="gap.medium">
+        <Flex gap="gap.medium">
+          <Flex.Item grow>
+            <IntroCard />
+          </Flex.Item>
+          <Flex.Item grow>
+            <PlaygroundCard />
+          </Flex.Item>
+        </Flex>
+        <Flex column gap="gap.medium" padding="padding.medium">
+          <Header content="Looking for particular icon?" style={{ textAlign: 'center' }} />
+          <Input
+            inverted
+            fluid
+            clearable
+            icon={<SearchIcon />}
+            placeholder={`Search across ${icons.length} icons`}
+            iconPosition="end"
+            role="search"
+            onChange={handleQueryChange}
+            value={query}
+          />
+          <Flex wrap gap="gap.medium" styles={iconFlexStyles}>
+            {filteredIcons.map(Icon => (
+              <Flex.Item align="center" key={Icon.displayName}>
+                <Card
+                  centered
+                  variables={{ borderColor: '#f2f2f2', width: 'calc(20% - 12px)' }}
+                  styles={{ marginTop: '10px', background: 'white' }}
+                  aria-roledescription="Icon card"
+                >
+                  <Card.Header>
+                    <Flex gap="gap.small" column hAlign="center">
+                      <Icon outline size="largest" />
+                      <br />
+                      <CopyToClipboard value={`<${Icon.displayName} />`} timeout={3000}>
+                        {(active, onClick) => (
+                          <Box
+                            as="code"
+                            onClick={onClick}
+                            title="Click to copy JSX to your clipboard"
+                            styles={{
+                              fontSize: '10px !improtant',
+                              opacity: active ? 1 : 0.6,
+                              color: active ? 'green' : 'inherit',
+                              cursor: 'pointer',
+                              ...(!active && {
+                                ':hover': {
+                                  opacity: 0.75,
+                                },
+                              }),
+                            }}
+                          >
+                            {active ? 'Copied! Happy coding :)' : `<${Icon.displayName} />`}
+                          </Box>
+                        )}
+                      </CopyToClipboard>
+                    </Flex>
+                  </Card.Header>
+                </Card>
+              </Flex.Item>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex padding="padding.medium">
+          <GuidesNavigationFooter previous={{ name: 'Composition', url: 'composition' }} />
         </Flex>
       </Flex>
-      <Flex padding="padding.medium">
-        <GuidesNavigationFooter
-          previous={{ name: 'Composition', url: 'composition' }}
-          next={{ name: 'Component Architecture', url: 'component-architecture' }}
-        />
-      </Flex>
-    </Flex>
+    </DocPage>
   );
 };
 

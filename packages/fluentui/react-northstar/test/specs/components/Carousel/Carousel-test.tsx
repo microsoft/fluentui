@@ -79,6 +79,19 @@ describe('Carousel', () => {
       expect(pagination.getDOMNode().textContent).toBe(`2 of ${items.length}`);
     });
 
+    it('should pass activeIndex onActiveIndexChange', () => {
+      const onActiveIndexChange = jest.fn();
+      const wrapper = renderCarousel({ onActiveIndexChange });
+      const paddleNext = getPaddleNextWrapper(wrapper);
+
+      paddleNext.simulate('click');
+
+      expect(onActiveIndexChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' }),
+        expect.objectContaining({ activeIndex: 1 }),
+      );
+    });
+
     it('should decrese at paddle previous press', () => {
       const wrapper = renderCarousel({ defaultActiveIndex: 3 });
       const paddlePrevious = getPaddlePreviousWrapper(wrapper);

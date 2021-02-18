@@ -111,6 +111,12 @@ export interface PositioningProps {
   offset?: Offset;
 
   /**
+   * When the reference element or the viewport is outside viewport allows a popper element to be fully in viewport.
+   * "all" enables this behavior for all axis.
+   */
+  unstable_disableTether?: boolean | 'all';
+
+  /**
    * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */

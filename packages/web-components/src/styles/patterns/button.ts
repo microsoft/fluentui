@@ -38,7 +38,7 @@ export const BaseButtonStyles: ElementStyles = css`
         background-color: ${neutralFillRestBehavior.var};
         color: ${neutralForegroundRestBehavior.var};
         border-radius: calc(var(--corner-radius) * 1px);
-        fill: currentColor;
+        fill: currentcolor;
         cursor: pointer;
     }
 
@@ -66,6 +66,11 @@ export const BaseButtonStyles: ElementStyles = css`
         font: inherit;
     }
 
+    .control.icon-only {
+        padding: 0;
+        line-height: 0;
+    }
+
     :host(:hover) {
         background-color: ${neutralFillHoverBehavior.var};
     }
@@ -90,7 +95,10 @@ export const BaseButtonStyles: ElementStyles = css`
     }
 
     .start,
-    .end,
+    .end {
+        display: flex;
+    }
+
     ::slotted(svg) {
         ${
           /* Glyph size and margin-left is temporary -
@@ -117,7 +125,7 @@ export const BaseButtonStyles: ElementStyles = css`
           background-color: ${SystemColors.ButtonFace};
           border-color: ${SystemColors.ButtonText};
           color: ${SystemColors.ButtonText};
-          fill: currentColor;
+          fill: currentcolor;
         }
 
         :host(:hover) {
@@ -163,7 +171,7 @@ export const BaseButtonStyles: ElementStyles = css`
           border-color: ${SystemColors.LinkText};
           box-shadow: 0 0 0 1px ${SystemColors.LinkText} inset;
           color: ${SystemColors.LinkText};
-          fill: currentColor;
+          fill: currentcolor;
         }
     `,
   ),
@@ -187,7 +195,7 @@ export const AccentButtonStyles = css`
     }
 
     :host(.accent) .control:${focusVisible} {
-        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var};
+        box-shadow: 0 0 0 calc(var(--focus-outline-width) * 1px) inset ${neutralFocusInnerAccentBehavior.var}, 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var}
     }
 
     :host(.accent.disabled) {
@@ -235,7 +243,7 @@ export const AccentButtonStyles = css`
             border-color: ${SystemColors.LinkText};
             box-shadow: none;
             color: ${SystemColors.LinkText};
-            fill: currentColor;
+            fill: currentcolor;
         }
 
         :host(.accent[href]) .control:${focusVisible} {
@@ -255,6 +263,7 @@ export const HypertextStyles = css`
         font-size: inherit;
         line-height: inherit;
         background: transparent;
+        min-width: 0;
     }
 
     :host(.hypertext) .control {
@@ -283,6 +292,7 @@ export const HypertextStyles = css`
     }
     :host(.hypertext) .control:${focusVisible} {
         border-bottom: calc(var(--focus-outline-width) * 1px) solid ${neutralFocusBehavior.var};
+        margin-bottom: calc(calc(var(--outline-width) - var(--focus-outline-width)) * 1px);
     }
 `.withBehaviors(
   accentForegroundRestBehavior,
@@ -418,8 +428,8 @@ export const OutlineButtonStyles = css`
     }
 
     :host(.outline) .control:${focusVisible} {
-        border: calc(var(--outline-width) * 1px) solid ${neutralFocusBehavior.var});
         box-shadow: 0 0 0 calc((var(--focus-outline-width) - var(--outline-width)) * 1px) ${neutralFocusBehavior.var};
+        border-color: ${neutralFocusBehavior.var};
     }
 
     :host(.outline.disabled) {
@@ -469,20 +479,20 @@ export const StealthButtonStyles = css`
             background-color: none;
             border-color: transparent;
             color: ${SystemColors.ButtonText};
-            fill: currentColor;
+            fill: currentcolor;
         }
 
         :host(.stealth:hover) .control {
             background-color: ${SystemColors.Highlight};
             border-color: ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
-            fill: currentColor;
+            fill: currentcolor;
         }
 
         :host(.stealth:${focusVisible}) .control {
             box-shadow: 0 0 0 1px ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
-            fill: currentColor;
+            fill: currentcolor;
         }
 
         :host(.stealth.disabled) {
@@ -503,13 +513,13 @@ export const StealthButtonStyles = css`
             background-color: ${SystemColors.LinkText};
             border-color: ${SystemColors.LinkText};
             color: ${SystemColors.HighlightText};
-            fill: currentColor;
+            fill: currentcolor;
         }
 
       :host(.stealth:${focusVisible}[href]) .control {
           box-shadow: 0 0 0 1px ${SystemColors.LinkText};
           color: ${SystemColors.LinkText};
-          fill: currentColor;
+          fill: currentcolor;
       }
     `,
   ),

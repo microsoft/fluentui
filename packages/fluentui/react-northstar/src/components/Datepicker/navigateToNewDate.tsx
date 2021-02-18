@@ -7,7 +7,7 @@ import {
   addWeeks,
   isAfterMaxDate,
   isBeforeMinDate,
-} from '@fluentui/date-time-utilities';
+} from '../../utils/date-time-utilities';
 
 export type NavigationKind = 'Month' | 'Week' | 'Day';
 

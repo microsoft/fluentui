@@ -2,6 +2,7 @@
 const scenarioIterations = {
   DocumentCardTitle: 1000,
   CommandBar: 1000,
+  MakeStyles: 50000,
   Nav: 1000,
   Pivot: 1000,
   Tabs: 1000,

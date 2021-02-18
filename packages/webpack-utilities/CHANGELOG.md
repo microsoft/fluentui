@@ -1,8 +1,44 @@
 # Change Log - @fluentui/webpack-utilities
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.4)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.3..@fluentui/webpack-utilities_v8.0.0-beta.4)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.3)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.2..@fluentui/webpack-utilities_v8.0.0-beta.3)
+
+### Changes
+
+- Webpack dependency updated. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.2)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.1..@fluentui/webpack-utilities_v8.0.0-beta.2)
+
+### Changes
+
+- Combine react-internal back into react, and update references ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.1)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.0..@fluentui/webpack-utilities_v8.0.0-beta.1)
+
+### Changes
+
+- [BREAKING] Delete ManifestServicePlugin (file an issue if you were using it). Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
 
 ## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.0)
 

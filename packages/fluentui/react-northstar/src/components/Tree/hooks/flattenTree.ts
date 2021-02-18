@@ -98,7 +98,8 @@ function flattenSubTree(
   let selectableNum = 0;
 
   items.forEach((item, indexAmongSiblings) => {
-    const { id, selectable, items: childrenItems } = item;
+    const { id, items: childrenItems } = item;
+    const selectable = item.selectable !== false; // by default item is selectable, unless selectable=false specified
     const hasSubtree = childrenItems ? !!childrenItems.length : false;
     const expanded = hasSubtree && activeItemIds.indexOf(id) !== -1;
 
@@ -117,33 +118,29 @@ function flattenSubTree(
       visibleItemIds.push(id);
     }
 
-    if (hasSubtree) {
-      const { selectedChildrenNum, selectableChildrenNum } = flattenSubTree(
-        childrenItems as ObjectShorthandValue<TreeItemProps>[],
-        level + 1,
-        id,
-        flatTree,
-        isParentVisible && expanded, // parent being visible and expanded means subtree is visible
-        activeItemIds,
-        visibleItemIds,
-        selectedItemIds,
-      );
+    const { selectedChildrenNum, selectableChildrenNum } = flattenSubTree(
+      childrenItems as ObjectShorthandValue<TreeItemProps>[],
+      level + 1,
+      id,
+      flatTree,
+      isParentVisible && expanded, // parent being visible and expanded means subtree is visible
+      activeItemIds,
+      visibleItemIds,
+      selectedItemIds,
+    );
 
-      if (selectedChildrenNum === selectableChildrenNum) {
+    if (selectable) {
+      selectableNum++;
+      if (
+        (hasSubtree && selectedChildrenNum === selectableChildrenNum) ||
+        (!hasSubtree && selectedItemIds.indexOf(id) >= 0) // selectedItemIds only make sense for leaf nodes
+      ) {
         flatTree[id].selected = true;
         selectedNum++;
       } else if (selectedChildrenNum > 0) {
         flatTree[id].selected = 'indeterminate';
         selectedNum += 0.5; // trick to propagate indeterminate state to ancestors
       }
-    } else if (selectedItemIds.indexOf(id) >= 0) {
-      flatTree[id].selected = true;
-      selectedNum++;
-    }
-
-    if (selectable !== false) {
-      // by default item is selectable, unless selectable=false specified
-      selectableNum++;
     }
 
     if (flatTree[parent].childrenIds) {

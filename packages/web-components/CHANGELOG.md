@@ -1,8 +1,171 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Sat, 21 Nov 2020 02:00:44 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.0)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.13.1..@fluentui/web-components_v0.14.0)
+
+### Minor changes
+
+- Improved support for design system neutral color - Added a neutralBaseColor property in the design system - Update neutralPalette and accentPalette when respective baseColor changes - Updated Card to base background color on local neutralPalette - Updated Card stories to illustrate use cases ([PR #16899](https://github.com/microsoft/fluentui/pull/16899) by brheston@microsoft.com)
+
+## [0.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.1)
+
+Thu, 11 Feb 2021 02:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.13.0..@fluentui/web-components_v0.13.1)
+
+### Patches
+
+- remove duplicate color export from web components package ([PR #16941](https://github.com/microsoft/fluentui/pull/16941) by chhol@microsoft.com)
+
+## [0.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.13.0)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.12.1..@fluentui/web-components_v0.13.0)
+
+### Minor changes
+
+- add neutral-contrast-fill recipe ([PR #16824](https://github.com/microsoft/fluentui/pull/16824) by khamu@microsoft.com)
+
+### Patches
+
+- fix: export missing parseColorString util ([PR #16876](https://github.com/microsoft/fluentui/pull/16876) by chhol@microsoft.com)
+
+## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.1)
+
+Mon, 08 Feb 2021 12:23:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.12.0..@fluentui/web-components_v0.12.1)
+
+### Patches
+
+- correct focus visible outline on accent button and anchor styles ([PR #16833](https://github.com/microsoft/fluentui/pull/16833) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.12.0)
+
+Wed, 03 Feb 2021 05:51:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.11.0..@fluentui/web-components_v0.12.0)
+
+### Minor changes
+
+- feat: move color recipes into fluent web component package ([PR #16755](https://github.com/microsoft/fluentui/pull/16755) by chhol@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.11.0)
+
+Tue, 26 Jan 2021 12:33:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.6..@fluentui/web-components_v0.11.0)
+
+### Minor changes
+
+- fix: change accordion item region to display block ([PR #16571](https://github.com/microsoft/fluentui/pull/16571) by jes@microsoft.com)
+
+### Patches
+
+- set margin on separator slot ([PR #16575](https://github.com/microsoft/fluentui/pull/16575) by khamu@microsoft.com)
+
+## [0.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.6)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.5..@fluentui/web-components_v0.10.6)
+
+### Patches
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [0.10.5](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.5)
+
+Wed, 20 Jan 2021 12:22:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.4..@fluentui/web-components_v0.10.5)
+
+### Patches
+
+- Fixes content shifting when anchor has focus due to 2px bottom border ([PR #16538](https://github.com/microsoft/fluentui/pull/16538) by robarb@microsoft.com)
+
+## [0.10.4](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.4)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.3..@fluentui/web-components_v0.10.4)
+
+### Patches
+
+- fix: add hover state for expand collapse button in tree-item ([PR #16375](https://github.com/microsoft/fluentui/pull/16375) by jes@microsoft.com)
+- fix slider disabled and readonly cursor ([PR #16374](https://github.com/microsoft/fluentui/pull/16374) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.10.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.3)
+
+Tue, 12 Jan 2021 12:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.2..@fluentui/web-components_v0.10.3)
+
+### Patches
+
+- update svg fill to use currentcolor so svg defaults to text color, change some currentColor to currentcolor ([PR #16379](https://github.com/microsoft/fluentui/pull/16379) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.2)
+
+Tue, 05 Jan 2021 12:29:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.1..@fluentui/web-components_v0.10.2)
+
+### Patches
+
+- add height clamp and box sizing for select ([PR #16347](https://github.com/microsoft/fluentui/pull/16347) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add select indicator css selector to fix indicator sizing ([PR #16349](https://github.com/microsoft/fluentui/pull/16349) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add padding for focus overlap of state in accordion item ([PR #16350](https://github.com/microsoft/fluentui/pull/16350) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add switch label margin and cursor pointer ([PR #16351](https://github.com/microsoft/fluentui/pull/16351) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- move text-field label__hidden styles below main label styles for proper order ([PR #16355](https://github.com/microsoft/fluentui/pull/16355) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- add inline start margin for rtl to slider ([PR #16356](https://github.com/microsoft/fluentui/pull/16356) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+- update start and end to remove fixed width and height ([PR #16359](https://github.com/microsoft/fluentui/pull/16359) by sethdonohue@Admins-MBP.guest.corp.microsoft.com)
+
+## [0.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.1)
+
+Fri, 18 Dec 2020 12:27:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.10.0..@fluentui/web-components_v0.10.1)
+
+### Patches
+
+- fix: focus styling inconsistencies ([PR #16265](https://github.com/microsoft/fluentui/pull/16265) by jes@microsoft.com)
+
+## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.10.0)
+
+Thu, 17 Dec 2020 12:30:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.2..@fluentui/web-components_v0.10.0)
+
+### Minor changes
+
+- add icon only anchor support, update fast packages ([PR #16248](https://github.com/microsoft/fluentui/pull/16248) by chhol@microsoft.com)
+
+### Patches
+
+- fix: broken rtl scenerios ([PR #16247](https://github.com/microsoft/fluentui/pull/16247) by jes@microsoft.com)
+
+## [0.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.2)
+
+Wed, 16 Dec 2020 12:27:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.1..@fluentui/web-components_v0.9.2)
+
+### Patches
+
+- update style on aria-current item and adjust margin on last item ([PR #16238](https://github.com/microsoft/fluentui/pull/16238) by khamu@microsoft.com)
+
+## [0.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.1)
+
+Wed, 09 Dec 2020 12:27:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.9.0..@fluentui/web-components_v0.9.1)
+
+### Patches
+
+- set FieldText color on label and status-message ([PR #16106](https://github.com/microsoft/fluentui/pull/16106) by khamu@microsoft.com)
+
+## [0.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.9.0)
+
+Wed, 02 Dec 2020 12:37:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.8.1..@fluentui/web-components_v0.9.0)
+
+### Minor changes
+
+- add a class to button in shadow DOM when default slotted content is only an svg icon ([PR #16112](https://github.com/microsoft/fluentui/pull/16112) by chhol@microsoft.com)
 
 ## [0.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.8.1)
 

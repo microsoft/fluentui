@@ -65,9 +65,6 @@ export const DEFAULT_DATE_FORMATTING: IDateFormatting;
 export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings;
 
 // @public
-export const DEFAULT_DATEPICKER_STRINGS: IDatepickerStrings;
-
-// @public
 export const findAvailableDate: (options: IAvailableDateOptions) => Date | undefined;
 
 // @public
@@ -82,6 +79,9 @@ export enum FirstWeekOfYear {
 
 // @public
 export const formatDay: (date: Date) => string;
+
+// @public
+export const formatMonth: (date: Date, strings: IDateGridStrings) => string;
 
 // @public
 export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
@@ -159,6 +159,7 @@ export interface ICalendarStrings extends IDateGridStrings {
 // @public (undocumented)
 export interface IDateFormatting {
     formatDay: (date: Date) => string;
+    formatMonth: (date: Date, strings: IDateGridStrings) => string;
     formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
     formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
     formatYear: (date: Date) => string;
@@ -170,35 +171,6 @@ export interface IDateGridStrings {
     months: string[];
     shortDays: string[];
     shortMonths: string[];
-}
-
-// @public (undocumented)
-export interface IDatePickerOptions extends IRestrictedDatesOptions {
-    dateRangeType: DateRangeType;
-    daysToSelectInDayView?: number;
-    firstDayOfWeek: DayOfWeek;
-    firstWeekOfYear: FirstWeekOfYear;
-    markedDays?: Date[];
-    showWeekNumbers?: boolean;
-    today?: Date;
-    workWeekDays?: DayOfWeek[];
-}
-
-// @public (undocumented)
-export type IDatepickerOptions = IDatePickerOptions;
-
-// @public
-export interface IDatepickerStrings extends ICalendarStrings, IDateFormatting {
-    inputAriaLabel?: string;
-    inputBoundedFormatString?: string;
-    inputMaxBoundedFormatString?: string;
-    inputMinBoundedFormatString?: string;
-    inputPlaceholder: string;
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
-    openCalendarTitle: string;
-    parseDate: (date: string) => Date | null;
 }
 
 // @public (undocumented)
@@ -214,10 +186,18 @@ export interface IDay {
 }
 
 // @public (undocumented)
-export interface IDayGridOptions extends IDatePickerOptions {
+export interface IDayGridOptions extends IRestrictedDatesOptions {
+    dateRangeType: DateRangeType;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    markedDays?: Date[];
     navigatedDate: Date;
     selectedDate: Date;
+    showWeekNumbers?: boolean;
+    today?: Date;
     weeksToShow?: number;
+    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)

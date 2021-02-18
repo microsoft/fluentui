@@ -2,6 +2,97 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/example-data_v8.0.0-beta.4",
+      "version": "8.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/example-data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/example-data_v8.0.0-beta.3",
+      "version": "8.0.0-beta.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/example-data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/example-data_v8.0.0-beta.3",
+      "version": "8.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update Avatar example data",
+            "author": "behowell@microsoft.com",
+            "commit": "9a6af0cc68eb641eea5b9f1dde2c0d1eb92a37c3",
+            "package": "@fluentui/example-data"
+          }
+        ],
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/example-data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/example-data_v8.0.0-beta.2",
+      "version": "8.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update snapshots",
+            "author": "sareiff@microsoft.com",
+            "commit": "f9189e435dc8e73337ff40c54ac6af47567d9639",
+            "package": "@fluentui/example-data"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/example-data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jan 2021 12:30:41 GMT",
+      "tag": "@fluentui/example-data_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add AvatarExamples to example-data package",
+            "author": "behowell@microsoft.com",
+            "commit": "7f659ff8d22cb6f0f352e7eefa04fda7b4fbd5b3",
+            "package": "@fluentui/example-data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/example-data_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",

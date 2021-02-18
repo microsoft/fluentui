@@ -37,6 +37,11 @@ export interface IDateFormatting {
   formatDay: (date: Date) => string;
 
   /**
+   * Get a localized string for a month.
+   */
+  formatMonth: (date: Date, strings: IDateGridStrings) => string;
+
+  /**
    * Get a localized string for a year.
    */
   formatYear: (date: Date) => string;
@@ -128,59 +133,4 @@ export interface ICalendarStrings extends IDateGridStrings {
    * Aria-label for when a date is marked
    */
   dayMarkedAriaLabel?: string;
-}
-
-/**
- * Strings for the `@fluentui/react-northstar` Datepicker component.
- */
-export interface IDatepickerStrings extends ICalendarStrings, IDateFormatting {
-  /**
-   * Parse date from string representation into Date type.
-   */
-  parseDate: (date: string) => Date | null;
-
-  /**
-   * Error message to render for TextField if isRequired validation fails.
-   */
-  isRequiredErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if input date string parsing fails.
-   */
-  invalidInputErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
-   */
-  isOutOfBoundsErrorMessage?: string;
-
-  /**
-   * Title for button to open the calendar.
-   */
-  openCalendarTitle: string;
-
-  /**
-   * Placeholder string for an unfilled input.
-   */
-  inputPlaceholder: string;
-
-  /**
-   * Aria-label for input."
-   */
-  inputAriaLabel?: string;
-
-  /**
-   * Aria-label format string for restricted input. Should have 2 string params, 0 is minDate and 1 is maxDate"
-   */
-  inputBoundedFormatString?: string;
-
-  /**
-   * Aria-label format string for restricted input only with minDate. Should have 1 string param, 0 is minDate"
-   */
-  inputMinBoundedFormatString?: string;
-
-  /**
-   * Aria-label format string for restricted input only with maxDate. Should have 1 string param, 0 is maxDate"
-   */
-  inputMaxBoundedFormatString?: string;
 }

@@ -76,8 +76,6 @@ These guides will walk your through various activities for contributing:
 
 Behaviors apply properties, focus handling and keyboard handlers to the component slots. When developing a component, the properties and keyboard handlers need to be spread to the corresponding slots.
 
-For complete accessibility contributing guide, requirements and testing, see [Accessibility][2]
-
 - [Role and aria props](#role-and-aria-props)
 - [Focus](#focus)
 - [Keyboard handling](#keyboard-handling)
@@ -152,7 +150,6 @@ I (@rymeskar) have been part of the FluentUI framework team for the past two mon
 - Changelog has a special format.
 - Always try to find the most relevant and similar component to get inspired by.
 - Try to extract [pure functions](https://en.wikipedia.org/wiki/Pure_function) outside of component's body; possibly into special files.
-- When developing date-time-utilities, one must run `yarn change` in the root and then `yarn update-api` in the date-time-utilities folder.
 - Don't name boolean flags with 'is' prefix.
 - `Yarn build` is not necessary when working with FluentUI. You should just call `yarn` (resolve packages) and then `yarn start` (start application).
 - For benchmarking JavaScript, one can use the https://jsperf.com .
@@ -181,7 +178,6 @@ I (@rymeskar) have been part of the FluentUI framework team for the past two mon
   - For sustainable keyboard keys handling, one needs to map actions to [key presses](https://github.com/microsoft/fluentui/blob/5f9a800af3b0c94fa12d68f40d5d6a83a76e68c8/packages/fluentui/accessibility/src/behaviors/Accordion/accordionBehavior.ts#L18). Then within component code, one needs to [define handling](https://github.com/microsoft/fluentui/blob/5f9a800af3b0c94fa12d68f40d5d6a83a76e68c8/packages/fluentui/react-northstar/src/components/Accordion/Accordion.tsx#L140) of these actions.
 
 [1]: https://nodejs.org/
-[2]: https://github.com/stardust-ui/accessibility/blob/master/CONTRIBUTING.md
 [3]: https://www.w3.org/TR/wai-aria-1.1/#usage_intro
 [4]: https://www.w3.org/TR/wai-aria-1.1/#introstates
 [5]: https://www.w3.org/TR/wai-aria-1.1/#landmark_roles

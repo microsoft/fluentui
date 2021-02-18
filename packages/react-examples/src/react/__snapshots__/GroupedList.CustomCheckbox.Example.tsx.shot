@@ -213,7 +213,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               className=
                                   ms-Toggle-innerContainer
                                   {
-                                    display: inline-flex;
+                                    display: flex;
                                     position: relative;
                                   }
                             >
@@ -261,10 +261,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     &:hover .ms-Toggle-thumb {
                                       background-color: #201f1e;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                                       border-color: Highlight;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
@@ -712,7 +712,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -756,8 +756,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -1241,7 +1242,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -1285,8 +1286,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -1770,7 +1772,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -1814,8 +1816,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -2199,7 +2202,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               className=
                                   ms-Toggle-innerContainer
                                   {
-                                    display: inline-flex;
+                                    display: flex;
                                     position: relative;
                                   }
                             >
@@ -2247,10 +2250,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     &:hover .ms-Toggle-thumb {
                                       background-color: #201f1e;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                                       border-color: Highlight;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
@@ -2698,7 +2701,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -2742,8 +2745,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -3227,7 +3231,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -3271,8 +3275,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -3756,7 +3761,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -3800,8 +3805,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -4185,7 +4191,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               className=
                                   ms-Toggle-innerContainer
                                   {
-                                    display: inline-flex;
+                                    display: flex;
                                     position: relative;
                                   }
                             >
@@ -4233,10 +4239,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     &:hover .ms-Toggle-thumb {
                                       background-color: #201f1e;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                                       border-color: Highlight;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
@@ -4684,7 +4690,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -4728,8 +4734,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -5213,7 +5220,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -5257,8 +5264,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"
@@ -5742,7 +5750,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
@@ -5786,8 +5794,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
                                     role="presentation"

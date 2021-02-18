@@ -14,12 +14,16 @@ const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'ht
 /**
  * Run prettier for a given set of files.
  *
- * @param {string[]} files List of files for which to run prettier
- * @param {boolean} [runAsync] Whether to run the command synchronously or asynchronously
- * @param {boolean} [logErrorsOnly] If true, log errors/warnings only. Otherwise log all output.
+ * @param {string[]} files - List of files for which to run prettier
+ * @param {Object} config
+ * @param {boolean=} config.runAsync - Whether to run the command synchronously or asynchronously
+ * @param {boolean=} config.logErrorsOnly - If true, log errors/warnings only. Otherwise log all output.
+ * @param {boolean=} config.check - run prettier in check mode
  * @returns A promise if run asynchronously, or nothing if run synchronously
  */
-function runPrettier(files, runAsync, logErrorsOnly) {
+function runPrettier(files, config = {}) {
+  const { check, logErrorsOnly, runAsync } = config;
+
   const cmd = [
     'node',
     prettierBin,
@@ -28,7 +32,7 @@ function runPrettier(files, runAsync, logErrorsOnly) {
     '--ignore-path',
     `"${prettierIgnorePath}"`,
     ...(logErrorsOnly ? ['--loglevel', 'warn'] : []),
-    '--write',
+    check ? '--check' : '--write',
     ...files,
   ].join(' ');
 
@@ -43,11 +47,14 @@ function runPrettier(files, runAsync, logErrorsOnly) {
  * Runs prettier on all relevant files in a folder.
  *
  * @param {string} folderPath Path to the folder for which to run prettier
- * @param {boolean} [runAsync] Whether to run the command synchronously or asynchronously
- * @param {boolean} [nonRecursive] If true, don't add a multi-folder glob to the path
+ * @param {Object} config
+ * @param {boolean=} config.runAsync - Whether to run the command synchronously or asynchronously
+ * @param {boolean=} config.nonRecursive - If true, don't add a multi-folder glob to the path.
+ * @param {boolean=} config.check - run prettier in check mode
  * @returns A promise if run asynchronously, or nothing if run synchronously
  */
-function runPrettierForFolder(folderPath, runAsync, nonRecursive) {
+function runPrettierForFolder(folderPath, config = {}) {
+  const { check, nonRecursive, runAsync } = config;
   if (!path.isAbsolute(folderPath)) {
     folderPath = path.join(repoRoot, folderPath);
   }
@@ -56,7 +63,7 @@ function runPrettierForFolder(folderPath, runAsync, nonRecursive) {
 
   console.log(`Running prettier for ${sourcePath}`);
 
-  return runPrettier([sourcePath], runAsync, true);
+  return runPrettier([sourcePath], { runAsync, logErrorsOnly: true, check });
 }
 
 module.exports = { runPrettierForFolder, runPrettier, prettierExtensions };

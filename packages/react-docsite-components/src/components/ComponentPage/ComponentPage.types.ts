@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
-import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export interface IComponentPageSection {
   title: string;

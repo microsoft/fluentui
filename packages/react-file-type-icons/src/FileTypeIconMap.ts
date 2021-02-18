@@ -311,6 +311,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'layer',
       'layout',
       'max',
+      'mcworld',
       'mtl',
       'obj',
       'off',
@@ -528,6 +529,9 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   vstx: {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
+  },
+  whiteboard: {
+    extensions: ['whiteboard'],
   },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],

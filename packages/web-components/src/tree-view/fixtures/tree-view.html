@@ -1,4 +1,32 @@
 <fluent-design-system-provider use-defaults>
+  <div
+    style="
+          direction: ltr;
+          display: grid;
+          grid-auto-flow: column;
+          grid-template-columns: min-content;
+          grid-gap: 12px;
+      "
+  >
+    <script>
+      let darkTheme = false;
+    </script>
+    <fluent-switch
+      onclick="document.dir = document.dir === 'rtl' ? 'ltr' : 'rtl'; document.getElementsByTagName('fluent-design-system-provider')[0].setAttribute('direction', document.dir);"
+    >
+      <span style="padding-inline-end: 8px;">Direction</span>
+      <span slot="unchecked-message">ltr</span>
+      <span slot="checked-message">rtl</span>
+    </fluent-switch>
+
+    <fluent-switch
+      onclick="document.darkTheme = !document.darkTheme; document.getElementsByTagName('fluent-design-system-provider')[0].setAttribute('background-color', darkTheme ? '#333333' : '#F7F7F7');"
+    >
+      <span style="padding-inline-end: 8px;"> Theme</span>
+      <span slot="checked-message">Dark</span>
+      <span slot="unchecked-message">Light</span>
+    </fluent-switch>
+  </div>
   <h4>With items (don't render collapsed nodes)</h4>
   <fluent-tree-view render-collapsed-nodes="false">
     <fluent-tree-item>

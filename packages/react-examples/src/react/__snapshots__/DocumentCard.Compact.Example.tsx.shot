@@ -57,7 +57,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -314,12 +314,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         height: 32px;
                         line-height: 32px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         background-color: Window !important;
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       & i {
                         font-weight: 600;
@@ -415,7 +416,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -560,38 +561,39 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     box-shadow: 0 0 0 1px #605e5c inset;
                     outline: 1px auto #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: auto;
                     border-bottom: none;
+                    forced-color-adjust: auto;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                     color: LinkText;
                   }
                   &:hover {
                     color: #0078d4;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                     color: LinkText;
                   }
                   &:focus {
                     color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                     color: LinkText;
                   }
                   &::-moz-focus-inner {
@@ -608,7 +610,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid WindowText;
                     outline: none;
                   }
@@ -682,38 +684,39 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     box-shadow: 0 0 0 1px #605e5c inset;
                     outline: 1px auto #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: auto;
                     border-bottom: none;
+                    forced-color-adjust: auto;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                     color: LinkText;
                   }
                   &:hover {
                     color: #0078d4;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                     color: LinkText;
                   }
                   &:focus {
                     color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                     color: LinkText;
                   }
                   &::-moz-focus-inner {
@@ -730,7 +733,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid WindowText;
                     outline: none;
                   }
@@ -804,38 +807,39 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     box-shadow: 0 0 0 1px #605e5c inset;
                     outline: 1px auto #605e5c;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: auto;
                     border-bottom: none;
+                    forced-color-adjust: auto;
                   }
                   &:active {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
                     color: LinkText;
                   }
                   &:hover {
                     color: #0078d4;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: LinkText;
                   }
                   &:active:hover {
                     color: #004578;
                     text-decoration: underline;
                   }
-                  @media screen and (-ms-high-contrast: active){&:active:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:hover {
                     color: LinkText;
                   }
                   &:focus {
                     color: #0078d4;
                   }
-                  @media screen and (-ms-high-contrast: active){&:focus {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
                     color: LinkText;
                   }
                   &::-moz-focus-inner {
@@ -852,7 +856,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     top: 1px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: 1px solid WindowText;
                     outline: none;
                   }
@@ -1023,12 +1027,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}
@@ -1122,7 +1122,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -1364,12 +1364,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         {
                           display: block;
                           height: 100%;
-                          left: 50% /* @noflip */;
                           object-fit: cover;
                           opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
                           width: 100%;
                         }
                     onError={[Function]}
@@ -1463,7 +1459,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -1680,12 +1676,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         height: 32px;
                         line-height: 32px;
                       }
-                      @media screen and (-ms-high-contrast: active){& {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                         -ms-high-contrast-adjust: none;
                         background-color: Window !important;
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                        forced-color-adjust: none;
                       }
                       & i {
                         font-weight: 600;

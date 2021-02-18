@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '../../keyboard-key';
 import { FocusZoneDirection } from '../../focusZone/types';
 import { gridRowBehavior } from './gridRowBehavior';
 
@@ -12,7 +12,7 @@ import { gridRowBehavior } from './gridRowBehavior';
  * Triggers 'focus' action with 'Escape' on 'root'.
  * Applies 'gridRowBehavior' for 'row' child component.
  */
-export const gridNestedBehavior: Accessibility = props => ({
+export const gridNestedBehavior: Accessibility<GridNestedBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'grid',
@@ -36,3 +36,5 @@ export const gridNestedBehavior: Accessibility = props => ({
     row: gridRowBehavior,
   },
 });
+
+type GridNestedBehaviorProps = never;

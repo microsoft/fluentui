@@ -5,7 +5,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role 'row' to 'root' slot.
  */
-export const datepickerCalendarGridRowBehavior: Accessibility<DatepickerCalendarGridRowBehaviorProps> = props => ({
+export const datepickerCalendarGridRowBehavior: Accessibility<DatepickerCalendarGridRowBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'row',

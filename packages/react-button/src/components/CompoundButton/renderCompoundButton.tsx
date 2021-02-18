@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-compose/lib/next/index';
+import { getSlots } from '@fluentui/react-utilities';
 import { CompoundButtonState } from './CompoundButton.types';
 import { compoundButtonShorthandProps } from './useCompoundButton';
 

@@ -4,7 +4,9 @@
 
 Fluent UI web represents a collection of utilities, React components, and web components for building web applications.
 
-The Fluent UI web repository is home to 3 main projects today, the following table will help navigate them and understand their differences.
+This repo is home to 3 separate projects today. Mixing components between projects is not currently supported. The goal of these projects is to dedupe functionality and enable interoperability over time. For now, choose the project that best suits your needs.
+
+The following table will help you navigate the 3 projects and understand their differences.
 
 <!-- prettier-ignore-start -->
 |   | React | React Northstar | Web Components |
@@ -12,7 +14,7 @@ The Fluent UI web repository is home to 3 main projects today, the following tab
 | **Overview**    | Mature, refreshing with new concepts from react-northstar. | Newer, has concepts we're iterating on. | Web Component implementation of Fluent UI. |
 | **Used By**     | Office| Teams | Edge |
 | **Read Me**     | [README.md](/packages/react/README.md) | [README.md](/packages/fluentui/README.md) | [README.md](/packages/web-components/README.md) |
-| **Repo**        | [./packages/react](/packages/react) [./packages/react](/packages/react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
+| **Repo**        | [./packages/react](/packages/react) | [./packages/fluentui/react-northstar](/packages/fluentui/react-northstar) | [./packages/web-components](/packages/web-components) |
 | **Quick Start** | [Quick Start](https://developer.microsoft.com/en-us/fluentui#/get-started/web) | [Quick Start](https://fluentsite.z22.web.core.windows.net/quick-start) | [See README.md](https://github.com/microsoft/fluentui/tree/master/packages/web-components/README.md) |
 | **Docs**        | [aka.ms/fluentui-react](https://aka.ms/fluentui-react) | [aka.ms/fluentui-react-northstar](https://aka.ms/fluentui-react-northstar) | [aka.ms/fluentui-web-components](https://aka.ms/fluentui-web-components) |
 | **NPM**         | `@fluentui/react` | `@fluentui/react-northstar` | `@fluentui/web-components` |
@@ -20,7 +22,7 @@ The Fluent UI web repository is home to 3 main projects today, the following tab
 | **Issues**      | [![Fluent UI React GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/Fluent%20UI%20react?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react%22) | [![Fluent UI React Northstar GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/Fluent%20UI%20react-northstar?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react-northstar%22) | [![Fluent UI Web Components GitHub Issues](https://img.shields.io/github/issues/microsoft/fluentui/web-components?label=issues&style=flat-square)](https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22web-components%22) |
 <!-- prettier-ignore-end -->
 
-> The goal of these projects is to dedupe functionality and increase interoperability over time. Why are there two React versions? See the [FAQ on Fabric and Stardust](https://github.com/microsoft/fluentui/wiki/FAQ---Fabric-and-Stardust-to-Fluent-UI)
+> Why are there two React versions? See the [FAQ on Fabric and Stardust](https://github.com/microsoft/fluentui/wiki/FAQ---Fabric-and-Stardust-to-Fluent-UI).
 
 ## Licenses
 

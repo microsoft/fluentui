@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from '@fluentui/react-bindings';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
 import { Accessibility } from '@fluentui/accessibility';
@@ -37,25 +37,22 @@ export type MenuDividerSubscribedValue = Pick<MenuContextValue, 'variables'> & {
   accessibility: MenuContextValue['behaviors']['divider'];
 };
 
-export const MenuContext = createContext<MenuContextValue>(
-  {
-    activeIndex: -1,
-    variables: {},
-    onItemClick: null,
-    onItemSelect: null,
-    slotProps: {
-      item: {},
-      divider: {},
-    },
-    behaviors: {
-      item: undefined,
-      divider: undefined,
-    },
-    slots: {
-      menu: null,
-    },
+export const MenuContext = createContext<MenuContextValue>({
+  activeIndex: -1,
+  variables: {},
+  onItemClick: null,
+  onItemSelect: null,
+  slotProps: {
+    item: {},
+    divider: {},
   },
-  { strict: false },
-);
+  behaviors: {
+    item: undefined,
+    divider: undefined,
+  },
+  slots: {
+    menu: null,
+  },
+});
 
 export const MenuContextProvider = MenuContext.Provider;

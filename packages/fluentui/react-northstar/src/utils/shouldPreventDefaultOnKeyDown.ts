@@ -1,4 +1,4 @@
-import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
+import { getCode, SpacebarKey, EnterKey } from '@fluentui/accessibility';
 import * as React from 'react';
 
 /**

@@ -73,7 +73,10 @@ export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponent
         cellRef.current.focus();
       },
       performClick: e => {
-        handleClick(e);
+        if (e.currentTarget === e.target) {
+          _.invoke(props, 'onClick', e, props);
+          e.preventDefault();
+        }
       },
     },
     rtl: context.rtl,
@@ -93,20 +96,12 @@ export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponent
     rtl: context.rtl,
   });
 
-  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    if (e.currentTarget === e.target) {
-      _.invoke(props, 'onClick', e, props);
-      e.preventDefault();
-    }
-  };
-
   const element = (
     <Ref innerRef={cellRef}>
       {getA11yProps.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
-            onClick: handleClick,
             ...unhandledProps,
           })}
         >

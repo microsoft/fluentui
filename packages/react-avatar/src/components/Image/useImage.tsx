@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ImageProps, ImageState } from './Image.types';
-import { makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps } from '@fluentui/react-utilities';
 import { renderImage } from './renderImage';
 
 const mergeProps = makeMergeProps<ImageState>();

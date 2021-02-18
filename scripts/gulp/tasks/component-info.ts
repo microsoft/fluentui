@@ -54,7 +54,7 @@ gulp.task('build:component-info', async () => {
             ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
             tsconfigPath,
           }),
-          { name: 'componentInfo-3' },
+          { name: 'componentInfo-4' },
         ),
       )
       .pipe(gulp.dest(outputPath))

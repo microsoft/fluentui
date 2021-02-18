@@ -77,6 +77,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
                 onItemChange={_replaceItem}
                 dragDropEvents={dragDropEvents}
                 dragDropHelper={dragDropHelper}
+                createGenericItem={props.createGenericItem}
               />
             ))}
         </div>

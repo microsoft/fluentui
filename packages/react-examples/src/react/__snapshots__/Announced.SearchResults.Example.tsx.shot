@@ -52,6 +52,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
             outline: none;
           }
       data-focuszone-id="FocusZone1"
+      id="combobox-id__0"
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/PositioningContainer';
+export * from './components/Coachmark/PositioningContainer/index';

@@ -4,6 +4,8 @@
 
 ```ts
 
+import { ComponentWithAs } from '@fluentui/react-compose';
+import { ComposePreparedOptions } from '@fluentui/react-compose';
 import { IComponentAs } from '@fluentui/utilities';
 import { IRefObject } from '@fluentui/utilities';
 import { IStyle } from '@fluentui/style-utilities';
@@ -17,10 +19,14 @@ export interface IToggle {
     focus: () => void;
 }
 
+// @public (undocumented)
+export interface IToggleOptions {
+}
+
 // @public
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
     ariaLabel?: string;
-    as?: IComponentAs<React.HTMLAttributes<HTMLElement>>;
+    as?: IComponentAs<React.HTMLAttributes<HTMLElement>> | React.ElementType;
     checked?: boolean;
     componentRef?: IRefObject<IToggle>;
     defaultChecked?: boolean;
@@ -39,6 +45,15 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.R
     role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
+}
+
+// @public (undocumented)
+export type IToggleSlotProps = {
+    [key in keyof IToggleSlots]: IToggleProps[key];
+};
+
+// @public (undocumented)
+export interface IToggleSlots {
 }
 
 // @public
@@ -65,7 +80,10 @@ export interface IToggleStyles {
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export const ToggleBase: React.FunctionComponent<IToggleProps>;
+export const ToggleBase: ComponentWithAs<'div', IToggleProps>;
+
+// @public (undocumented)
+export const useToggle: (props: IToggleProps, ref: React.Ref<HTMLElement>, options: ComposePreparedOptions<{}, any, {}>) => any;
 
 
 // (No @packageDocumentation comment for this package)

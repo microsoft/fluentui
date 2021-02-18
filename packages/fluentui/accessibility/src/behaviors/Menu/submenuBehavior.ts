@@ -12,7 +12,7 @@ import { menuItemBehavior } from './menuItemBehavior';
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-export const submenuBehavior: Accessibility = () => ({
+export const submenuBehavior: Accessibility<SubmenuBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'menu',
@@ -27,3 +27,5 @@ export const submenuBehavior: Accessibility = () => ({
   },
   childBehaviors: { item: menuItemBehavior },
 });
+
+export type SubmenuBehaviorProps = never;

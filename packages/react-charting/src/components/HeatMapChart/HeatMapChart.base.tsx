@@ -109,8 +109,9 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _yAxisType: YAxisType;
   public constructor(props: IHeatMapChartProps) {
     super(props);
-    this._xAxisType = getTypeOfAxis(props.data[0].data[0].x, true) as XAxisTypes;
-    this._yAxisType = getTypeOfAxis(props.data[0].data[0].y, false) as YAxisType;
+    const { x, y } = this._getXandY();
+    this._xAxisType = getTypeOfAxis(x, true) as XAxisTypes;
+    this._yAxisType = getTypeOfAxis(y, false) as YAxisType;
     /**
      * below funciton creates a new data set from the prop
      * @data and also finds all the unique x-axis datapoints
@@ -210,6 +211,19 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       />
     );
   }
+
+  private _getXandY = (): { x: string | Date | number; y: string | Date | number } => {
+    let x: string | Date | number = '';
+    let y: string | Date | number = '';
+    this.props.data.forEach((item: IHeatMapChartData) => {
+      if (item.data && item.data.length > 0) {
+        x = item.data[0].x;
+        y = item.data[0].y;
+        return { x, y };
+      }
+    });
+    return { x, y };
+  };
 
   private _getOpacity = (legendTitle: string): string => {
     let shouldHighlight = true;

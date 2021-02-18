@@ -1,8 +1,39 @@
-import { IDateGridStrings, IDateFormatting, IDatepickerStrings, ICalendarStrings } from './dateFormatting.types';
-import { formatDay } from './formatDay';
-import { formatYear } from './formatYear';
-import { formatMonthDayYear } from './formatMonthDayYear';
-import { formatMonthYear } from './formatMonthYear';
+import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
+
+/**
+ * Format date to a day string representation
+ * @param date - input date to format
+ */
+export const formatDay = (date: Date) => date.getDate().toString();
+
+/**
+ * Format date to a month-day-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthDayYear = (date: Date, strings: IDateGridStrings) =>
+  strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+
+/**
+ * Format date to a month-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
+  strings.months[date.getMonth()] + ' ' + date.getFullYear();
+
+/**
+ * Format date to a month string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonth = (date: Date, strings: IDateGridStrings) => strings.months[date.getMonth()];
+
+/**
+ * Format date to a year string representation
+ * @param date - input date to format
+ */
+export const formatYear = (date: Date) => date.getFullYear().toString();
 
 export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings = {
   months: [
@@ -25,10 +56,11 @@ export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings = {
 };
 
 export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
-  formatDay: formatDay,
-  formatYear: formatYear,
-  formatMonthDayYear: formatMonthDayYear,
-  formatMonthYear: formatMonthYear,
+  formatDay,
+  formatMonth,
+  formatYear,
+  formatMonthDayYear,
+  formatMonthYear,
 };
 
 export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
@@ -45,34 +77,7 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   closeButtonAriaLabel: 'Close',
   selectedDateFormatString: 'Selected date {0}',
   todayDateFormatString: "Today's date {0}",
-  monthPickerHeaderAriaLabel: '{0}, select to change the year',
-  yearPickerHeaderAriaLabel: '{0}, select to change the month',
+  monthPickerHeaderAriaLabel: '{0}, change year',
+  yearPickerHeaderAriaLabel: '{0}, change month',
   dayMarkedAriaLabel: 'marked',
-};
-
-/**
- * Default strings for the `@fluentui/react-northstar` Datepicker.
- */
-export const DEFAULT_DATEPICKER_STRINGS: IDatepickerStrings = {
-  ...DEFAULT_CALENDAR_STRINGS,
-  ...DEFAULT_DATE_FORMATTING,
-
-  parseDate: (dateStr: string) => {
-    const date = Date.parse(dateStr);
-    if (date) {
-      return new Date(date);
-    }
-
-    return null;
-  },
-
-  openCalendarTitle: 'Open calendar',
-  inputPlaceholder: 'Select a date...',
-  isRequiredErrorMessage: 'A date selection is required',
-  invalidInputErrorMessage: 'Manually entered date is not in correct format.',
-  isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',
-  inputAriaLabel: 'Select a date.',
-  inputBoundedFormatString: 'Input a date between {0} and {1}.',
-  inputMinBoundedFormatString: 'Input a date starting from {0}.',
-  inputMaxBoundedFormatString: 'Input a date ending at {0}.',
 };

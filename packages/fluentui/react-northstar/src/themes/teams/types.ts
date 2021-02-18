@@ -102,6 +102,8 @@ import { SkeletonShapeStylesProps } from '../../components/Skeleton/SkeletonShap
 import { SkeletonLineStylesProps } from '../../components/Skeleton/SkeletonLine';
 import { SkeletonAvatarStylesProps } from '../../components/Skeleton/SkeletonAvatar';
 import { SkeletonInputStylesProps } from '../../components/Skeleton/SkeletonInput';
+import { SplitButtonToggleStylesProps } from '../../components/SplitButton/SplitButtonToggle';
+import { AttachmentBodyStylesProps } from '../../components/Attachment/AttachmentBody';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionStylesProps;
@@ -111,6 +113,7 @@ export type TeamsThemeStylesProps = {
   Animation: AnimationProps;
   Attachment: AttachmentProps;
   AttachmentAction: AttachmentActionStylesProps;
+  AttachmentBody: AttachmentBodyStylesProps;
   AttachmentDescription: AttachmentDescriptionStylesProps;
   AttachmentHeader: AttachmentHeaderStylesProps;
   AttachmentIcon: AttachmentIconStylesProps;
@@ -173,6 +176,7 @@ export type TeamsThemeStylesProps = {
   SkeletonInput: SkeletonInputStylesProps;
   SkeletonText: SkeletonTextStylesProps;
   SplitButton: SplitButtonStylesProps;
+  SplitButtonToggle: SplitButtonToggleStylesProps;
   Status: StatusStylesProps;
   Toolbar: ToolbarStylesProps;
   ToolbarCustomItem: ToolbarCustomItemStylesProps;

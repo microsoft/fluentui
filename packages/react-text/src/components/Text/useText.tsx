@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 
 import { renderText } from './renderText';
 import { TextProps } from './Text.types';

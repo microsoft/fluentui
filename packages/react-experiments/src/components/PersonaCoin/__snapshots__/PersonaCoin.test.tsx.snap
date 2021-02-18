@@ -224,6 +224,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           border: 2px solid #ffffff;
           bottom: -2px;
           box-sizing: content-box;
+          forced-color-adjust: none;
           height: 12px;
           position: absolute;
           right: -2px;
@@ -231,7 +232,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           top: auto;
           width: 12px;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           background-color: WindowText;
           border-color: Window;
         }
@@ -260,7 +261,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
             speak: none;
             vertical-align: top;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             color: Window;
           }
       data-icon-name="SkypeMinus"
@@ -322,6 +323,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           border: 2px solid #ffffff;
           bottom: -2px;
           box-sizing: content-box;
+          forced-color-adjust: none;
           height: 12px;
           position: absolute;
           right: -2px;
@@ -329,7 +331,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           top: auto;
           width: 12px;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           background-color: WindowText;
           border-color: Window;
         }
@@ -358,7 +360,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
             speak: none;
             vertical-align: top;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             color: Window;
           }
       data-icon-name="SkypeMinus"
@@ -443,12 +445,8 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
           {
             display: block;
             height: 100%;
-            left: 50% /* @noflip */;
             object-fit: cover;
             opacity: 0;
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%,-50%);
             width: 100%;
           }
       onError={[Function]}

@@ -33,6 +33,7 @@ export const fontSizes = {
   medium: pxToRem(14),
   large: pxToRem(18),
   larger: pxToRem(24),
+  largest: pxToRem(28),
 };
 
 //
@@ -53,6 +54,7 @@ export const lineHeightSmall = 1.3333;
 export const lineHeightMedium = 1.4286;
 export const lineHeightLarge = 1.3333;
 export const lineHeightLarger = 1.3333;
+export const lineHeightLargest = 1.3333;
 
 //
 // Z-INDEX

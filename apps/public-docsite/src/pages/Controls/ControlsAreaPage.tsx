@@ -3,7 +3,7 @@ import { Page, IPageProps, PlatformContext } from '@fluentui/react-docsite-compo
 import { getSubTitle } from '../../utilities/index';
 import { Platforms } from '../../interfaces/Platforms';
 import { SiteDefinition } from '../../SiteDefinition/SiteDefinition';
-import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 

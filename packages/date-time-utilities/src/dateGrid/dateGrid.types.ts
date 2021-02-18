@@ -51,7 +51,7 @@ export interface IRestrictedDatesOptions {
 /**
  * {@docCategory DateTimeUtilities}
  */
-export interface IDatePickerOptions extends IRestrictedDatesOptions {
+export interface IDayGridOptions extends IRestrictedDatesOptions {
   /**
    * The first day of the week for your locale.
    */
@@ -95,14 +95,7 @@ export interface IDatePickerOptions extends IRestrictedDatesOptions {
    * Which days in the generated grid should be marked.
    */
   markedDays?: Date[];
-}
 
-export type IDatepickerOptions = IDatePickerOptions;
-
-/**
- * {@docCategory DateTimeUtilities}
- */
-export interface IDayGridOptions extends IDatePickerOptions {
   /**
    * The currently selected date
    */

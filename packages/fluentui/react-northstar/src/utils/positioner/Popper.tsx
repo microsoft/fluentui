@@ -4,36 +4,26 @@ import * as PopperJs from '@popperjs/core';
 import * as _ from 'lodash';
 import * as React from 'react';
 
+import { getReactFiberFromNode } from '../getReactFiberFromNode';
 import { isBrowser } from '../isBrowser';
 import { getBoundary } from './getBoundary';
 import { getScrollParent } from './getScrollParent';
 import { getPlacement, applyRtlToOffset } from './positioningHelper';
 import { PopperModifiers, PopperProps, PopperPositionFix, PopperJsInstance } from './types';
 
-let reactInstanceKey: string;
-
-const getReactInstanceKey = (elm: Node): string => {
-  if (!reactInstanceKey) {
-    for (const k in elm) {
-      if (k.indexOf('__reactInternalInstance$') === 0) {
-        reactInstanceKey = k;
-        break;
-      }
-    }
-  }
-
-  return reactInstanceKey;
-};
-
 const hasAutofocusProp = (node: Node): boolean | undefined => {
   // https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
-  return (
-    (node.nodeName === 'BUTTON' ||
-      node.nodeName === 'INPUT' ||
-      node.nodeName === 'SELECT' ||
-      node.nodeName === 'TEXTAREA') &&
-    node[getReactInstanceKey(node)].pendingProps.autoFocus
-  );
+  const isAutoFocusableElement =
+    node.nodeName === 'BUTTON' ||
+    node.nodeName === 'INPUT' ||
+    node.nodeName === 'SELECT' ||
+    node.nodeName === 'TEXTAREA';
+
+  if (isAutoFocusableElement) {
+    return getReactFiberFromNode(node).pendingProps.autoFocus;
+  }
+
+  return false;
 };
 
 function hasAutofocusFilter(node: Node) {
@@ -178,6 +168,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     positioningDependencies = [],
     rtl,
     targetRef,
+    unstable_disableTether,
     unstable_pinned,
   } = props;
 
@@ -269,6 +260,16 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           },
         },
 
+        /**
+         * This modifier is necessary to retain behaviour from popper v1 where untethered poppers are allowed by
+         * default. i.e. popper is still rendered fully in the viewport even if anchor element is no longer in the
+         * viewport.
+         */
+        unstable_disableTether && {
+          name: 'preventOverflow',
+          options: { altAxis: unstable_disableTether === 'all', tether: false },
+        },
+
         flipBoundary && {
           name: 'flip',
           options: {
@@ -307,6 +308,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     positionFixed,
     proposedPlacement,
     targetRef,
+    unstable_disableTether,
     unstable_pinned,
     popperInitialPositionFix,
   ]);

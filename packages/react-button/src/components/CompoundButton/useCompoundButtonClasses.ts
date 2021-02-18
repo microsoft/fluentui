@@ -1,4 +1,4 @@
-import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider';
+import { makeVariantClasses, Theme } from '@fluentui/react-theme-provider/lib/compat/index';
 import { CompoundButtonState, CompoundButtonVariants } from './CompoundButton.types';
 import { useButtonClasses } from '../Button/useButtonClasses';
 
@@ -167,7 +167,7 @@ const useCompoundButtonBaseClasses = makeVariantClasses<CompoundButtonState, Com
         },
       },
 
-      ghost: {
+      subtle: {
         secondaryContentColor: palette.neutralSecondary,
         disabled: {
           secondaryContentColor: palette.neutralTertiary,

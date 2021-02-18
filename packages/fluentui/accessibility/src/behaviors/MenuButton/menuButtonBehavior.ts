@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
@@ -9,13 +9,13 @@ import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
  * Implements ARIA [MenuButton](https://www.w3.org/TR/wai-aria-practices/#menubutton) design pattern.
  */
 export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
-  const behavior = popupBehavior(props);
+  const behavior = popupBehavior({ ...props, inline: !props.contextMenu });
 
   return _.merge(behavior, {
     attributes: {
       trigger: {
         'aria-controls': props.open ? props.menuId : undefined,
-        'aria-expanded': props.open || undefined,
+        'aria-expanded': (props.open && !props.contextMenu) || undefined,
         'aria-haspopup': props.contextMenu ? undefined : 'true',
         id: props.triggerId,
         ...(!props.contextMenu && props.open && { tabIndex: -1 }),

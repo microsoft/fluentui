@@ -1,6 +1,8 @@
 export * from './accordion/';
 export * from './anchor/';
 export * from './badge/';
+export * from './breadcrumb';
+export * from './breadcrumb-item';
 export * from './button/';
 export * from './card/';
 export * from './checkbox/';
@@ -28,4 +30,5 @@ export * from './tree-view/';
 
 // export styles and utils
 export * from './styles';
-export { parseColorString } from './color';
+export * from './color';
+export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';

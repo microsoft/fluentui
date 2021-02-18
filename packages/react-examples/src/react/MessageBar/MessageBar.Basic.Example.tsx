@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Stack, StackItem, MessageBar, MessageBarType, ChoiceGroup, IStackProps } from '@fluentui/react';
-import { MessageBarButton } from '@fluentui/react/lib/compat/Button';
+import { MessageBarButton } from '@fluentui/react/lib/Button';
 
 interface IExampleProps {
   resetChoice?: () => void;
@@ -24,7 +24,7 @@ const choiceGroupStyles = {
 const DefaultExample = () => (
   <MessageBar>
     Info/Default MessageBar.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -38,7 +38,7 @@ const ErrorExample = (p: IExampleProps) => (
     dismissButtonAriaLabel="Close"
   >
     Error MessageBar with single line, with dismiss button.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -75,7 +75,7 @@ const SevereExample = (p: IExampleProps) => (
     }
   >
     SevereWarning MessageBar with action buttons which defaults to multiline.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -93,7 +93,7 @@ const SuccessExample = () => (
     isMultiline={false}
   >
     Success MessageBar with single line and action buttons.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -112,7 +112,7 @@ const WarningExample = (p: IExampleProps) => (
     }
   >
     Warning MessageBar content.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>
@@ -136,7 +136,7 @@ const WarningExample2 = (p: IExampleProps) => (
     faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo odio sit amet faucibus. In hac habitasse
     platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce massa lorem, ultrices eu
     mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
-    <Link href="www.bing.com" target="_blank">
+    <Link href="www.bing.com" target="_blank" underline>
       Visit our website.
     </Link>
   </MessageBar>

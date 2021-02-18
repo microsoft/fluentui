@@ -12,14 +12,15 @@ import { makeSemanticColors } from './utilities/makeSemanticColors';
  * @param depComments - Whether to include deprecated tags as comments for deprecated slots.
  */
 export function createTheme(theme: PartialTheme = {}, depComments: boolean = false): Theme {
+  const isInverted = !!theme.isInverted;
   const baseTheme: Theme = {
     palette: DefaultPalette,
     effects: DefaultEffects,
     fonts: DefaultFontStyles,
     spacing: DefaultSpacing,
-    isInverted: false,
+    isInverted,
     disableGlobalClassNames: false,
-    semanticColors: makeSemanticColors(DefaultPalette, DefaultEffects, undefined, false, depComments),
+    semanticColors: makeSemanticColors(DefaultPalette, DefaultEffects, undefined, isInverted, depComments),
     rtl: undefined,
   };
 

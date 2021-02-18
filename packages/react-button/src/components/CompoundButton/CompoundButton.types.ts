@@ -1,5 +1,5 @@
-import { ShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { ButtonProps, ButtonTokens, ButtonVariants } from '../Button/Button.types';
+import { ShorthandProps } from '@fluentui/react-utilities';
+import { ButtonProps, ButtonState, ButtonTokens, ButtonVariants } from '../Button/Button.types';
 
 /**
  * {@docCategory Button}
@@ -19,7 +19,7 @@ export interface CompoundButtonProps extends ButtonProps {
 /**
  * {@docCategory Button}
  */
-export interface CompoundButtonState extends CompoundButtonProps {}
+export interface CompoundButtonState extends CompoundButtonProps, ButtonState {}
 
 /**
  * {@docCategory Button}

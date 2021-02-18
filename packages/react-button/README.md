@@ -2,7 +2,7 @@
 
 **Button components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-**WARNING!** These components are still in active development, and the APIs may change before final release. The package will be released with a stable API as part of [Fluent UI React version 8](https://github.com/microsoft/fluentui/issues/12770) in late 2020.
+**WARNING!** These components are still in active development, and the APIs may change before final release.
 
 To use the Button components:
 
@@ -22,11 +22,11 @@ The Button has been completely rewritten to be faster, smaller, and easier to cu
 
 Common buttons now all map to `Button`:
 
-| Old                                              | New                                                          |
-| ------------------------------------------------ | ------------------------------------------------------------ |
-| `<DefaultButton text="Hello, world" />`          | `<Button>Hello, world</Button>`                              |
-| `<PrimaryButton text="Hello, world" />`          | `<Button primary>Hello, world</Button>`                      |
-| `<IconButton iconProps={{ iconName: 'Add' }} />` | `<Button iconOnly ghost icon={ <Icon iconName="Add" /> } />` |
+| Old                                              | New                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------- |
+| `<DefaultButton text="Hello, world" />`          | `<Button>Hello, world</Button>`                               |
+| `<PrimaryButton text="Hello, world" />`          | `<Button primary>Hello, world</Button>`                       |
+| `<IconButton iconProps={{ iconName: 'Add' }} />` | `<Button iconOnly subtle icon={ <Icon iconName="Add" /> } />` |
 
 ### Toggle buttons
 
@@ -56,7 +56,7 @@ const App = () => {
     <MenuButton
       iconOnly
       circular
-      ghost
+      subtle
       icon={ <EllipsisIcon /> }
       menu={
         items: [
@@ -114,7 +114,7 @@ These all apply to `Button`, `ToggleButton`, `MenuButton`, and `SplitButton`:
 | `block` | Stretches the button to the container width. |
 | `circular` | Make the button rounded on the edges (pill button.) |
 | `iconOnly` | Makes the width match the height. Can be combined with circular to make circle buttons. |
-| `ghost` | Makes the button inherit the background color. |
+| `subtle` | Makes the button inherit the background color. |
 | `primary` | Uses the brand color to indicate the button is a primary action. |
 | `size` | Controls the size of the button, based on an enum value: `smallest`, `smaller`, `small`, `regular`, `large`, `larger`, `largest`. Defaults to `regular`. |
 

@@ -1,14 +1,19 @@
 import * as React from 'react';
-import { styled } from '@fluentui/utilities';
-import { LinkBase } from './Link.base';
-import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
-import { getStyles } from './Link.styles';
+import { useLink } from './useLink';
+import { LinkProps } from './Link.types';
+import { useLinkStyles } from './useLinkStyles';
+import { renderLink } from './renderLink';
 
-export const Link: React.FunctionComponent<ILinkProps> = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
-  LinkBase,
-  getStyles,
-  undefined,
-  {
-    scope: 'Link',
-  },
-);
+/**
+ * Defines a styled Link, using the `useLink` hook.
+ * {@docCategory Link }
+ */
+export const Link = React.forwardRef<HTMLElement, LinkProps>((props, ref) => {
+  const state = useLink(props, ref);
+
+  useLinkStyles(state);
+
+  return renderLink(state);
+});
+
+Link.displayName = 'Link';

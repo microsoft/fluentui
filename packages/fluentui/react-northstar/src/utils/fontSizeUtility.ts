@@ -4,11 +4,17 @@ const DEFAULT_REM_SIZE_IN_PX = 16;
 
 let _documentRemSize: number | null = null;
 
-const getDocumentRemSize = (): number => {
-  return isBrowser()
-    ? // eslint-disable-next-line no-undef
-      getFontSizeValue(getComputedStyle(document.documentElement).fontSize) || DEFAULT_REM_SIZE_IN_PX
-    : DEFAULT_REM_SIZE_IN_PX;
+export const getDocumentRemSize = (): number => {
+  if (isBrowser()) {
+    try {
+      // eslint-disable-next-line no-undef
+      return getFontSizeValue(getComputedStyle(document.documentElement).fontSize) || DEFAULT_REM_SIZE_IN_PX;
+    } catch (e) {
+      return DEFAULT_REM_SIZE_IN_PX;
+    }
+  }
+
+  return DEFAULT_REM_SIZE_IN_PX;
 };
 
 const getFontSizeValue = (size?: string | null): number | null => {

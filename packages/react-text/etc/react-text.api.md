@@ -4,11 +4,11 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ComponentProps } from '@fluentui/react-compose';
+import { BaseSlots } from '@fluentui/react-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { RecursivePartial } from '@fluentui/theme';
-import { SlotProps } from '@fluentui/react-compose';
+import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
+import { SlotProps } from '@fluentui/react-utilities';
 
 // @public
 export const renderText: (state: TextProps) => JSX.Element;
@@ -40,7 +40,7 @@ export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultPro
 };
 
 // @public (undocumented)
-export const useTextClasses: (state: {}, options?: import("@fluentui/react-theme-provider").UseStylesOptions | undefined) => void;
+export const useTextClasses: (state: {}, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 
 // (No @packageDocumentation comment for this package)

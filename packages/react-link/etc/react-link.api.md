@@ -4,89 +4,51 @@
 
 ```ts
 
-import { IRefObject } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ITheme } from '@fluentui/style-utilities';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-// @public (undocumented)
-export interface ILink {
-    focus(): void;
-}
+// @public
+export const Link: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.AnchorHTMLAttributes<HTMLElement | HTMLAnchorElement | HTMLButtonElement> & Pick<React.ButtonHTMLAttributes<HTMLElement | HTMLAnchorElement | HTMLButtonElement>, "disabled" | "hidden" | "dir" | "form" | "slot" | "style" | "title" | "color" | "children" | "className" | "id" | "lang" | "name" | "role" | "tabIndex" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "draggable" | "placeholder" | "spellCheck" | "translate" | "radioGroup" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "value" | "autoFocus" | "formAction" | "formEncType" | "formMethod" | "formNoValidate" | "formTarget"> & {
+    href?: string | undefined;
+    target?: string | undefined;
+    rel?: string | undefined;
+    onClick?: ((event: React.MouseEvent<HTMLElement | HTMLAnchorElement | HTMLButtonElement, MouseEvent>) => void) | undefined;
+    disabled?: boolean | undefined;
+    disabledFocusable?: boolean | undefined;
+    type?: string | undefined;
+    inline?: boolean | undefined;
+} & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
-    // (undocumented)
-    [index: string]: any;
-    // (undocumented)
-    autoFocus?: boolean;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    download?: any;
-    // (undocumented)
-    form?: string;
-    // (undocumented)
-    formAction?: string;
-    // (undocumented)
-    formEncType?: string;
-    // (undocumented)
-    formMethod?: string;
-    // (undocumented)
-    formNoValidate?: boolean;
-    // (undocumented)
-    formTarget?: string;
-    // (undocumented)
+export type LinkProps = ComponentProps & React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> & Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
     href?: string;
-    // (undocumented)
-    hrefLang?: string;
-    // (undocumented)
-    media?: string;
-    // (undocumented)
-    name?: string;
-    // (undocumented)
-    rel?: string;
-    // (undocumented)
     target?: string;
-    // (undocumented)
-    type?: string;
-    // (undocumented)
-    value?: string | string[] | number;
-}
-
-// @public (undocumented)
-export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, React.RefAttributes<HTMLElement> {
-    as?: React.ElementType;
-    componentRef?: IRefObject<ILink>;
+    rel?: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
     disabled?: boolean;
-    styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
-    theme?: ITheme;
+    disabledFocusable?: boolean;
+    type?: string;
+    inline?: boolean;
+};
+
+// @public
+export const linkShorthandProps: never[];
+
+// @public (undocumented)
+export interface LinkState extends LinkProps {
 }
 
-// @public (undocumented)
-export interface ILinkStyleProps {
-    // (undocumented)
-    className?: string;
-    // (undocumented)
-    isButton?: boolean;
-    // (undocumented)
-    isDisabled?: boolean;
-    // (undocumented)
-    theme: ITheme;
-}
+// @public
+export const renderLink: (state: LinkState) => JSX.Element;
+
+// @public
+export const useLink: (props: LinkProps, ref: React.Ref<HTMLElement>, defaultProps?: LinkProps | undefined) => LinkState;
+
+// @public
+export const useLinkState: (state: LinkState) => void;
 
 // @public (undocumented)
-export interface ILinkStyles {
-    // (undocumented)
-    root: IStyle;
-}
-
-// @public (undocumented)
-export const Link: React.FunctionComponent<ILinkProps>;
-
-// @public (undocumented)
-export const LinkBase: React.FunctionComponent<ILinkProps>;
+export const useLinkStyles: (state: LinkState) => LinkState;
 
 
 // (No @packageDocumentation comment for this package)

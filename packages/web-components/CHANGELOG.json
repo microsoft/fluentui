@@ -2,6 +2,372 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/web-components_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improved support for design system neutral color - Added a neutralBaseColor property in the design system - Update neutralPalette and accentPalette when respective baseColor changes - Updated Card to base background color on local neutralPalette - Updated Card stories to illustrate use cases",
+            "author": "brheston@microsoft.com",
+            "commit": "c71f383781bb3b10dbce840d64881a94004fac95",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/web-components_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: use exact version for typescript devDep",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 02:38:00 GMT",
+      "tag": "@fluentui/web-components_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove duplicate color export from web components package",
+            "author": "chhol@microsoft.com",
+            "commit": "abe60136582d21dafec4f192b41be8bbe940487f",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/web-components_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add neutral-contrast-fill recipe",
+            "author": "khamu@microsoft.com",
+            "commit": "9a4c92e59563c268c3905152e6641e78c1ac2616",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix: export missing parseColorString util",
+            "author": "chhol@microsoft.com",
+            "commit": "c4508a1520f5d87c120f481db32f58911a04e9ba",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/web-components_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "correct focus visible outline on accent button and anchor styles",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "7e1723e57c7956e09c206327e2b79114a18a4492",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/web-components_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat: move color recipes into fluent web component package",
+            "author": "chhol@microsoft.com",
+            "commit": "e4079adb2ab4fb09f58c71192665ff0b81e5f5ec",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/web-components_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jan 2021 12:33:19 GMT",
+      "tag": "@fluentui/web-components_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "fix: change accordion item region to display block",
+            "author": "jes@microsoft.com",
+            "commit": "8abb40a4be05e733274a3917b4ae8ad61f90123d",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "set margin on separator slot",
+            "author": "khamu@microsoft.com",
+            "commit": "493869ffb80d5686c3971f092723912f72295ee6",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/web-components_v0.10.6",
+      "version": "0.10.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jan 2021 12:22:46 GMT",
+      "tag": "@fluentui/web-components_v0.10.5",
+      "version": "0.10.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes content shifting when anchor has focus due to 2px bottom border",
+            "author": "robarb@microsoft.com",
+            "commit": "809c403aded0b6fd5cd895dd519cf69120964e47",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jan 2021 12:30:40 GMT",
+      "tag": "@fluentui/web-components_v0.10.4",
+      "version": "0.10.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "add storybook manager for theme",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "7f97bbcf2e7650b8a92ecf386ef15421b3270536",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix: add hover state for expand collapse button in tree-item",
+            "author": "jes@microsoft.com",
+            "commit": "c641f0323e0171c1156d115ec5ad87cfd46b6d17",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "fix slider disabled and readonly cursor",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "8883c0cbefd3e9ccd236f025fcb228b1fe0f16ac",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jan 2021 12:36:40 GMT",
+      "tag": "@fluentui/web-components_v0.10.3",
+      "version": "0.10.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update svg fill to use currentcolor so svg defaults to text color, change some currentColor to currentcolor",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "4e7e48536556661783dcb0f42314eb8734a8f836",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Jan 2021 12:29:33 GMT",
+      "tag": "@fluentui/web-components_v0.10.2",
+      "version": "0.10.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add height clamp and box sizing for select",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "981bbd219d6c6e26a5c13b971bb39ae593843064",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add select indicator css selector to fix indicator sizing",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "57787b1888216856fc7b5a479ccb380012b1bfb8",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add padding for focus overlap of state in accordion item",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "6b777ecca00a9087d93843aa6ecd91682e0365cc",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add switch label margin and cursor pointer",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "16797f484b2af348f136ba306e1f392721c45e1c",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "move text-field label__hidden styles below main label styles for proper order",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "887a5e93a677527091c83ff62ac20ac335fa9f2f",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add inline start margin for rtl to slider",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "46055c7b84750bda3d609ab8bf58bb53e4e952cd",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "update start and end to remove fixed width and height",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "da37d8ef759dd81c8e83d3c7ba589ccadadd479a",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "none": [
+          {
+            "comment": "add menu disabled example",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "cb6aeecba5503afa7b196f20c50f2bb3e213b357",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Dec 2020 12:27:55 GMT",
+      "tag": "@fluentui/web-components_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: focus styling inconsistencies",
+            "author": "jes@microsoft.com",
+            "commit": "ac24a6a79a7f09559bb35ffbc5b28f53ecd9e95f",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Dec 2020 12:30:15 GMT",
+      "tag": "@fluentui/web-components_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: broken rtl scenerios",
+            "author": "jes@microsoft.com",
+            "commit": "81651e8f3c1ea57df77214a50eb47fe5a816a236",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add icon only anchor support, update fast packages",
+            "author": "chhol@microsoft.com",
+            "commit": "cb8c48d775b497c7383d73d78617910bb2d5212c",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Dec 2020 12:27:05 GMT",
+      "tag": "@fluentui/web-components_v0.9.2",
+      "version": "0.9.2",
+      "comments": {
+        "none": [
+          {
+            "author": "khamu@microsoft.com",
+            "commit": "1ea9d474cf3b39f546f7ea3996edf29e4a862b9a",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "update style on aria-current item and adjust margin on last item",
+            "author": "khamu@microsoft.com",
+            "commit": "de2be83fbac3276be793cf311eaabfb337cc0c47",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Dec 2020 12:27:00 GMT",
+      "tag": "@fluentui/web-components_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set FieldText color on label and status-message",
+            "author": "khamu@microsoft.com",
+            "commit": "2bba2c2d957c8df676d9d34bf1b0f3ccbdcd28d1",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 02 Dec 2020 12:37:40 GMT",
+      "tag": "@fluentui/web-components_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add a class to button in shadow DOM when default slotted content is only an svg icon",
+            "author": "chhol@microsoft.com",
+            "commit": "158a6480c3dcf802a5fb4dbf045f0bf18ab20b3c",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 21 Nov 2020 02:00:44 GMT",
       "tag": "@fluentui/web-components_v0.8.1",
       "version": "0.8.1",

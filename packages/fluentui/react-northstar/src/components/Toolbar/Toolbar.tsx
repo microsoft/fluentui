@@ -499,7 +499,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
 
       return () => {
         if (animationFrameId.current !== undefined) {
-          context.target.defaultView.cancelAnimationFrame(animationFrameId.current);
+          context.target.defaultView?.cancelAnimationFrame(animationFrameId.current);
           animationFrameId.current = undefined;
         }
       };

@@ -1,5 +1,6 @@
-import { PartialTheme } from '@fluentui/theme';
+import { PartialTheme } from '@fluentui/react-theme-provider/lib/compat/index';
 
+// TODO: remove and update tests to use converged theme.
 export const TeamsTheme: PartialTheme = {
   tokens: {
     color: {

@@ -190,6 +190,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       });
     } else {
       this.setState({
+        hoverState: true,
         selectedState: true,
         selectedLegend: legend.title,
         selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
@@ -198,13 +199,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   };
 
   private _onClick = (legend: ILegend): void => {
-    const { canSelectMultipleLegends = false } = this.props;
-    if (canSelectMultipleLegends) {
-      this._canSelectMultipleLegends(legend);
-    } else {
-      this._canSelectOnlySingleLegend(legend);
-    }
     if (legend.action) {
+      const { canSelectMultipleLegends = false } = this.props;
+      if (canSelectMultipleLegends) {
+        this._canSelectMultipleLegends(legend);
+      } else {
+        this._canSelectOnlySingleLegend(legend);
+      }
       legend.action();
     }
   };
@@ -319,8 +320,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   private _onHoverOverLegend = (legend: ILegend) => {
     if (!this.state.selectedState) {
-      this.setState({ hoverState: true, selectedLegend: legend.title });
       if (legend.hoverAction) {
+        this.setState({ hoverState: true, selectedLegend: legend.title });
         legend.hoverAction();
       }
     }
@@ -328,8 +329,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   private _onLeave = (legend: ILegend) => {
     if (!this.state.selectedState) {
-      this.setState({ hoverState: false, selectedLegend: 'none' });
       if (legend.onMouseOutAction) {
+        this.setState({ hoverState: false, selectedLegend: 'none' });
         legend.onMouseOutAction();
       }
     }

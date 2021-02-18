@@ -1,8 +1,89 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Fri, 23 Oct 2020 03:26:15 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.16)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.15..@fluentui/react-icons-mdl2_v1.0.0-beta.16)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v0.1.2 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.15)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.14..@fluentui/react-icons-mdl2_v1.0.0-beta.15)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.14)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.13..@fluentui/react-icons-mdl2_v1.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [1.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.13)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.12..@fluentui/react-icons-mdl2_v1.0.0-beta.13)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v0.1.1 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+### Changes
+
+- Add ability to override icons using @fluentui/react-icon-provider ([PR #16519](https://github.com/microsoft/fluentui/pull/16519) by ololubek@microsoft.com)
+- Adding svg icon to be consumed by OWA ([PR #16879](https://github.com/microsoft/fluentui/pull/16879) by ololubek@microsoft.com)
+
+## [1.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.12)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.11..@fluentui/react-icons-mdl2_v1.0.0-beta.12)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [1.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.11)
+
+Sat, 23 Jan 2021 05:20:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.10..@fluentui/react-icons-mdl2_v1.0.0-beta.11)
+
+### Changes
+
+- remove branded icons from react-icons-mdl2 ([PR #15691](https://github.com/microsoft/fluentui/pull/15691) by ololubek@microsoft.com)
+
+## [1.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.10)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.9..@fluentui/react-icons-mdl2_v1.0.0-beta.10)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [1.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.9)
+
+Tue, 12 Jan 2021 12:36:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.0..@fluentui/react-icons-mdl2_v1.0.0-beta.9)
+
+### Changes
+
+- add webpack bundles to react-icons-mdl2 and react-theme-provider ([PR #16429](https://github.com/microsoft/fluentui/pull/16429) by ololubek@microsoft.com)
 
 ## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.0)
 

@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { BadgeProps } from './Badge.types';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-compose/lib/next/index';
+import { BadgeProps, BadgeState } from './Badge.types';
+import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
 import { useMergedRefs } from '@fluentui/react-hooks';
 
 export const badgeShorthandProps: (keyof BadgeProps)[] = ['icon'];
 
-const mergeProps = makeMergeProps({ deepMerge: badgeShorthandProps });
+const mergeProps = makeMergeProps<BadgeState>({ deepMerge: badgeShorthandProps });
 
-export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps) => {
+export const useBadge = (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps): BadgeState => {
   const state = mergeProps(
     {
       as: 'span',

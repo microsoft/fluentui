@@ -1,8 +1,89 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Mon, 23 Nov 2020 12:31:40 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.18)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.17..@fluentui/theme_v2.0.0-beta.18)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [2.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.17)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.16..@fluentui/theme_v2.0.0-beta.17)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [2.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.16)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.15..@fluentui/theme_v2.0.0-beta.16)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [2.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.15)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.14..@fluentui/theme_v2.0.0-beta.15)
+
+### Changes
+
+- [BREAKING] Remove theming logic/interface which are unrelated to v8 release. ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+
+## [2.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.14)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.13..@fluentui/theme_v2.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [2.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.13)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.12..@fluentui/theme_v2.0.0-beta.13)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [2.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.12)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.11..@fluentui/theme_v2.0.0-beta.12)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [2.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.11)
+
+Fri, 15 Jan 2021 12:30:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.8..@fluentui/theme_v2.0.0-beta.11)
+
+### Changes
+
+- createTheme: fix bug when theme is inverted. ([PR #16484](https://github.com/microsoft/fluentui/pull/16484) by xgao@microsoft.com)
+
+## [2.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.8)
+
+Tue, 01 Dec 2020 12:38:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.7..@fluentui/theme_v2.0.0-beta.8)
+
+### Changes
+
+- Added selected as a possible key in ColorTokens. ([PR #16035](https://github.com/microsoft/fluentui/pull/16035) by humbertomakotomorimoto@gmail.com)
 
 ## [2.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.7)
 
