@@ -1,7 +1,15 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
+import {
+  Avatar,
+  AvatarProps,
+  avatarSizeValues,
+  AvatarState,
+  renderAvatar,
+  useAvatar,
+  useAvatarStyles,
+} from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
   CalendarIcon,
@@ -16,8 +24,9 @@ import {
   SkypeClockIcon,
   SkypeMinusIcon,
   TelemarketerIcon,
+  RobotIcon,
 } from '@fluentui/react-icons-mdl2';
-import { makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 
 import { StoryExample } from '../utils/StoryExample';
 
@@ -45,17 +54,6 @@ const examples = {
     { state: 'info', icon: { as: SkypeArrowIcon } },
   ],
 } as const;
-
-const useRootHexagonalOverrides = makeStyles([[null, { borderRadius: '0' }]]);
-const useLabelHexagonalOverrides = makeStyles([
-  [
-    null,
-    {
-      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-      borderRadius: '0',
-    },
-  ],
-]);
 
 export const Basic = () => (
   <>
@@ -205,13 +203,57 @@ export const CustomSizes = () => (
   </StoryExample>
 );
 
-export const CustomShape = () => {
-  const rootOverrides = useRootHexagonalOverrides({});
-  const labelOverrides = useLabelHexagonalOverrides({});
+const useRobotAvatarRootStyles = makeStyles<AvatarState>([
+  [null, { borderRadius: '0' }],
+  [s => s.size === 20, { width: '24px' }],
+  [s => s.size === 24, { width: '28px' }],
+  [s => s.size === 28, { width: '32px' }],
+  [s => s.size === 32, { width: '36px' }],
+  [s => s.size === 36, { width: '40px' }],
+  [s => s.size === 40, { width: '44px' }],
+  [s => s.size === 48, { width: '56px' }],
+  [s => s.size === 56, { width: '64px' }],
+  [s => s.size === 64, { width: '72px' }],
+  [s => s.size === 72, { width: '80px' }],
+  [s => s.size === 96, { width: '108px' }],
+  [s => s.size === 120, { width: '128px' }],
+  [s => s.size === 128, { width: '136px' }],
+]);
 
+const useRobotAvatarLabelStyles = makeStyles<AvatarState>([
+  [
+    null,
+    {
+      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+      borderRadius: '0',
+    },
+  ],
+]);
+
+const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
+  const state = useAvatar(props, ref, {
+    icon: <ChatBotIcon />,
+  });
+
+  state.className = ax(useRobotAvatarRootStyles(state), state.className);
+  state.label.className = ax(useRobotAvatarLabelStyles(state), state.label.className);
+
+  useAvatarStyles(state);
+
+  return renderAvatar(state);
+});
+
+export const RobotExample = () => {
   return (
-    <StoryExample title="Custom shape">
-      <AvatarExampleList className={rootOverrides} icon={<ChatBotIcon />} label={{ className: labelOverrides }} />
+    <StoryExample title="Robot Example">
+      <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
+        <RobotAvatar size={20} />
+        <RobotAvatar size={32} />
+        <RobotAvatar size={48} />
+        <RobotAvatar size={64} />
+        <RobotAvatar size={96} icon={<RobotIcon />} />
+        <RobotAvatar size={128} />
+      </Stack>
     </StoryExample>
   );
 };

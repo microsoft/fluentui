@@ -2,9 +2,8 @@ import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { Avatar, AvatarProps, AvatarSizeValue, avatarSizeValues } from '@fluentui/react-avatar';
-import { makeStyles } from '@fluentui/react-make-styles';
 import { Stack } from '@fluentui/react';
-import { ContactIcon, GroupIcon, TelemarketerIcon, ChatBotIcon } from '@fluentui/react-icons-mdl2';
+import { ContactIcon, GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
 
 import { FluentProviderDecorator } from '../utilities/index';
@@ -52,7 +51,7 @@ const AvatarCustomSizeList: React.FC<AvatarProps & {
         <Avatar
           key={customSize}
           size={baseSize}
-          style={{ width: `${customSize}px`, height: `${customSize}px` }}
+          style={{ width: customSize, height: customSize }}
           name={names && names[names.length - (i % names.length) - 1]}
           image={images && images[images.length - (i % images.length) - 1]}
           {...restOfProps}
@@ -61,17 +60,6 @@ const AvatarCustomSizeList: React.FC<AvatarProps & {
     </Stack>
   );
 };
-
-const useRootHexagonalOverrides = makeStyles([[null, { borderRadius: '0' }]]);
-const useLabelHexagonalOverrides = makeStyles([
-  [
-    null,
-    {
-      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-      borderRadius: '0',
-    },
-  ],
-]);
 
 storiesOf('Avatar', module)
   .addDecorator(story => (
@@ -133,18 +121,4 @@ storiesOf('Avatar', module)
   ))
   .addStory('customSize+icon+active', () => (
     <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
-  ))
-  .addStory('tokens', () => {
-    const rootOverrides = useRootHexagonalOverrides({});
-    const labelOverrides = useLabelHexagonalOverrides({});
-    return (
-      <>
-        <Avatar
-          icon={<ChatBotIcon />}
-          size={32}
-          className={rootOverrides}
-          label={{ className: labelOverrides }}
-        />
-      </>
-    );
-  });
+  ));
