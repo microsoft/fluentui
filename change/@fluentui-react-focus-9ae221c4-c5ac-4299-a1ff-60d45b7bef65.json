@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+  "packageName": "@fluentui/react-focus",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
