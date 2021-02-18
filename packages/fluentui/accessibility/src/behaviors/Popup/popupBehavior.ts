@@ -24,7 +24,7 @@ export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
         ...tabbableTriggerProps,
       },
       popup: {
-        role: props.trapFocus ? 'dialog' : 'complementary',
+        role: props.trapFocus ? 'dialog' : props.inline ? undefined : 'complementary',
         'aria-modal': props.trapFocus ? true : undefined,
       },
     },
@@ -112,4 +112,6 @@ export type PopupBehaviorProps = {
   tabbableTrigger?: boolean;
   /** Whether the popup was opened by right click */
   isOpenedByRightClick?: boolean;
+  /** Whether the Popup should be rendered inline with the trigger or in the body. */
+  inline?: boolean;
 };
