@@ -6,6 +6,11 @@ const defaultConfig = {
 };
 
 /**
+ *
+ * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
+ *
+ * TODO: rework this to be conformant with Component Story Format
+ *
  * Via this addon, we INVENT a new API that automatically adds several
  * stories for you when you call addStory() that adds variants (like RTL)
  *
