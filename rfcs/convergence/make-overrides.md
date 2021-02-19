@@ -158,7 +158,7 @@ In [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923) 
 
 ```tsx
 const useStyles = makeOverrides({
-  /* ... many definitions ... */
+  /* ... Complex apps/components can contain many definitions ... */
 
   rootShape20: { width: '20px', height: '20px' },
   rootShape24: { width: '24px', height: '24px' },
