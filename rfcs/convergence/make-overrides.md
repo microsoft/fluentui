@@ -50,7 +50,7 @@ function Component() {
   const rootClasses = useRootStyles();
 
   // React hooks cannot be called conditionally, https://reactjs.org/docs/hooks-rules.html#only-call-hooks-at-the-top-level
-  // so we *have to* render styles even if they are not used in markup
+  // styles *must* be rendered even if they are not used in markup
   const iconClasses = useIconStyles();
 
   return (
