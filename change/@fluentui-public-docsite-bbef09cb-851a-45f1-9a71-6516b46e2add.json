@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add version switcher to website",
+  "packageName": "@fluentui/public-docsite",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
