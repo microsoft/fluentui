@@ -15,7 +15,7 @@ import * as React from 'react';
  */
 export const useEventCallback = <Args extends unknown[], Return>(
   fn: (...args: Args) => Return,
-  dependencies: React.DependencyList = [],
+  dependencies: React.DependencyList,
 ) => {
   const callbackRef = React.useRef<typeof fn>(() => {
     throw new Error('Cannot call an event handler while rendering');
