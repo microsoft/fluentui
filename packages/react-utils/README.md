@@ -51,7 +51,7 @@ const Button = React.forwardRef((props, ref) => {
   const state = useButton(props, ref);
 
   // Inject classNames as needed.
-  useButtonClasses(state);
+  useButtonClasses(state, {});
 
   // Return the rendered result.
   return renderButton(state);

@@ -34,9 +34,10 @@ export type ShorthandProps<TProps extends ComponentProps = {}> =
         children?: TProps['children'] | ShorthandRenderFunction<TProps>;
       });
 
-export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
-  children?: TProps['children'] | ShorthandRenderFunction<TProps>;
-};
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps &
+  ComponentProps & {
+    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+  };
 
 export interface BaseSlots {
   root: React.ElementType;

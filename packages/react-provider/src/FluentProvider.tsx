@@ -33,7 +33,6 @@ export function useFluentProviderState(draftState: ProviderState & { style?: Rea
   // TODO: add merge functions
   draftState.document = draftState.document || parentContext.document;
   draftState.dir = draftState.dir || parentContext.dir;
-  draftState.telemetry = draftState.telemetry || parentContext.telemetry;
 
   // TODO: we should have a formal ProviderRoot or other component which:
   //        - can call makeStyles
