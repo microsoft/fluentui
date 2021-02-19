@@ -5,7 +5,7 @@ import { internal__ThemeContext, ThemeProviderState, useThemeProviderState } fro
 import { getSlots, makeMergeProps } from '@fluentui/react-utils';
 import * as React from 'react';
 
-import { internal__FluentProviderContext, Telemetry, useFluent } from './context';
+import { internal__FluentProviderContext, useFluent } from './context';
 
 export interface ProviderProps {
   /** Sets the direction of text & generated styles. */
@@ -15,15 +15,12 @@ export interface ProviderProps {
   document?: Document | undefined;
 
   theme?: PartialTheme;
-
-  telemetry?: Telemetry;
 }
 
 export interface ProviderState {
   dir: 'ltr' | 'rtl';
   document: Document | undefined;
   theme: Theme;
-  telemetry: Telemetry | undefined;
 }
 
 const mergeProps = makeMergeProps<ProviderState>();
@@ -120,11 +117,11 @@ const useStaticStyles = makeStaticStyles([
 
 export function renderFluentProvider(state: ProviderState) {
   const { slots, slotProps } = getSlots(state);
-  const { dir, document, telemetry, theme } = state;
+  const { dir, document, theme } = state;
 
   // TODO: why are we disabling rules-of-hooks?
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const value = React.useMemo(() => ({ dir, document, telemetry }), [dir, document, telemetry]);
+  const value = React.useMemo(() => ({ dir, document }), [dir, document]);
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const renderer = React.useMemo(() => createDOMRenderer(document), [document]);
   // eslint-disable-next-line react-hooks/rules-of-hooks

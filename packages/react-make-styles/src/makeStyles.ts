@@ -16,8 +16,7 @@ function useRenderer(document: Document | undefined): MakeStylesRenderer {
   }, [document]);
 }
 
-export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selectors, Theme>[], debugId?: string) {
-  // DEBUG // console.log('react:makeStyles', debugId ?? 'unknown');
+export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selectors, Theme>[]) {
   const getStyles = vanillaMakeStyles(definitions);
 
   if (process.env.NODE_ENV === 'test') {
@@ -25,34 +24,16 @@ export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selector
   }
 
   return function useClasses(selectors: Selectors) {
-    const { dir, document, telemetry } = useFluent();
+    const { dir, document } = useFluent();
     const theme = useTheme();
-
-    // DEBUG // console.log(`react:useStyles[${debugId ?? 'unknown'}]`, telemetry ?? 'no telemetry');
-
-    const debug: MakeStylesOptions<Theme>['debug'] = {
-      debugId: debugId ?? 'unknown',
-      tokens: {},
-    };
 
     const renderer = useRenderer(document);
     const options: MakeStylesOptions<Theme> = {
       tokens: theme as Theme,
       renderer,
       rtl: dir === 'rtl',
-      ...(telemetry && {
-        debug,
-      }),
     };
 
-    const ret = getStyles(selectors, options);
-
-    if (telemetry?.tokens && debug?.tokens) {
-      Object.keys(debug.tokens).forEach(token => {
-        telemetry.tokens[token] = (telemetry.tokens[token] ?? false) || debug.tokens![token];
-      });
-    }
-
-    return ret;
+    return getStyles(selectors, options);
   };
 }

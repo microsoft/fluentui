@@ -1,23 +1,13 @@
-import { makeDecorator, addons } from '@storybook/addons';
-import { FluentProvider, Telemetry } from '@fluentui/react-provider';
+import { makeDecorator } from '@storybook/addons';
+import { FluentProvider } from '@fluentui/react-provider';
 import * as React from 'react';
 
 import { useFluentTheme } from '../knobs/useFluentTheme';
 
-const ProviderWrapper: React.FunctionComponent<{ name: string }> = props => {
+const ProviderWrapper: React.FunctionComponent = props => {
   const { theme } = useFluentTheme();
-  const telemetryRef = React.useRef(new Telemetry());
-  const channel = addons.getChannel();
 
-  React.useEffect(() => {
-    channel.emit('fui', telemetryRef.current);
-  });
-
-  return (
-    <FluentProvider telemetry={telemetryRef.current} theme={theme}>
-      {props.children}
-    </FluentProvider>
-  );
+  return <FluentProvider theme={theme}>{props.children}</FluentProvider>;
 };
 
 export const withFluentProvider = makeDecorator({
@@ -25,6 +15,6 @@ export const withFluentProvider = makeDecorator({
   parameterName: 'theme',
   skipIfNoParametersOrOptions: false,
   wrapper: (storyFn, context) => {
-    return <ProviderWrapper name={context.name}>{storyFn(context)}</ProviderWrapper>;
+    return <ProviderWrapper>{storyFn(context)}</ProviderWrapper>;
   },
 });
