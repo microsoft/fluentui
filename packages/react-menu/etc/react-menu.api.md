@@ -4,13 +4,13 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utils';
-import { ObjectShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ShorthandProps } from '@fluentui/react-utils';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
-export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type MenuDividerProps = ComponentProps & React.HTMLAttributes<HTMLElement>;
@@ -22,10 +22,10 @@ export interface MenuDividerState extends MenuDividerProps {
 }
 
 // @public
-export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuGroup: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
 // @public
-export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+export const MenuGroupHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type MenuGroupHeaderProps = ComponentProps & React.HTMLAttributes<HTMLElement>;

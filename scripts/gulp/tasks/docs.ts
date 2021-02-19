@@ -243,8 +243,14 @@ task('watch:docs:component-info', () => {
   });
 });
 
+const allBehaviorSrc = [
+  // original behavior files in @fluentui/accessibility
+  ...behaviorSrc,
+  // new behavior files in @fluentui/a11y-testing. They are required dynamically by gulpComponentMenuBehaviors
+  `${paths.posix.allPackages('a11y-testing')}/src/definitions/*/[a-z]*Definition.ts`,
+];
 task('watch:docs:component-menu-behaviors', cb => {
-  watch(behaviorSrc, series('build:docs:component-menu-behaviors'))
+  watch(allBehaviorSrc, series('build:docs:component-menu-behaviors'))
     .on('add', logWatchAdd)
     .on('change', logWatchChange)
     .on('unlink', filePath => handleWatchUnlink('component-menu-behaviors', filePath));

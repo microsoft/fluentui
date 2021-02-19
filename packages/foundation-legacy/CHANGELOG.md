@@ -1,8 +1,26 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.18)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.0-beta.17..@fluentui/foundation-legacy_v8.0.0-beta.18)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.17)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.0-beta.16..@fluentui/foundation-legacy_v8.0.0-beta.17)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.0-beta.16)
 

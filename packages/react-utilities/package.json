@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "0.2.4",
+  "version": "0.3.1",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,14 +26,14 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/react": "16.9.42",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.5",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.6",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -41,12 +41,13 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/utilities": "^8.0.0-beta.14",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
   },
   "beachball": {
     "tag": "latest",

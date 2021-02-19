@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ToggleButton, ToggleButtonProps } from '@fluentui/react-button';
-import { Stack, Text } from '@fluentui/react';
+import { Stack, IStackTokens, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
 const ToggleButtonExamples = (props: ToggleButtonProps) => (
@@ -17,10 +17,10 @@ const ToggleButtonExamples = (props: ToggleButtonProps) => (
     <ToggleButton {...props} primary disabled icon="X">
       Hello, world
     </ToggleButton>
-    <ToggleButton {...props} ghost icon="X">
+    <ToggleButton {...props} subtle icon="X">
       Hello, world
     </ToggleButton>
-    <ToggleButton {...props} ghost disabled icon="X">
+    <ToggleButton {...props} subtle disabled icon="X">
       Hello, world
     </ToggleButton>
     <ToggleButton {...props} transparent icon="X">
@@ -32,8 +32,10 @@ const ToggleButtonExamples = (props: ToggleButtonProps) => (
   </div>
 );
 
+const stackTokens: IStackTokens = { childrenGap: 20 };
+
 export const ToggleButtons = () => (
-  <Stack gap={20}>
+  <Stack tokens={stackTokens}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
     <ToggleButtonExamples />
 

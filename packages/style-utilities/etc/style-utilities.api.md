@@ -131,7 +131,7 @@ export const getInputFocusStyle: (borderColor: string, borderRadius: string | nu
 export function getPlaceholderStyles(styles: IStyle): IStyle;
 
 // @public (undocumented)
-export function getScreenSelector(min: number, max: number): string;
+export function getScreenSelector(min: number | undefined, max: number | undefined): string;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;

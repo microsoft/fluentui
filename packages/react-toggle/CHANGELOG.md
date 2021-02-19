@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-toggle
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.47)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.46..@fluentui/react-toggle_v1.0.0-beta.47)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.46)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toggle_v1.0.0-beta.45..@fluentui/react-toggle_v1.0.0-beta.46)
+
+### Changes
+
+- Bump @fluentui/react-compose to v1.0.0-beta.14 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-toggle_v1.0.0-beta.45)
 

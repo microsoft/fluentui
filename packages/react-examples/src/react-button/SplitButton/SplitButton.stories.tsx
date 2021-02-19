@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SplitButton, SplitButtonProps } from '@fluentui/react-button';
-import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, Text } from '@fluentui/react';
+import { ContextualMenu, DirectionalHint, IContextualMenuProps, Stack, IStackTokens, Text } from '@fluentui/react';
 import * as classes from '../Button.stories.scss';
 
 const menuProps: IContextualMenuProps = {
@@ -31,10 +31,10 @@ const SplitButtonExamples = (props: SplitButtonProps) => (
     <SplitButton {...props} primary disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost menu={<ContextualMenu {...menuProps} />}>
+    <SplitButton {...props} subtle menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
-    <SplitButton {...props} ghost disabled menu={<ContextualMenu {...menuProps} />}>
+    <SplitButton {...props} subtle disabled menu={<ContextualMenu {...menuProps} />}>
       Hello, world
     </SplitButton>
     <SplitButton {...props} transparent menu={<ContextualMenu {...menuProps} />}>
@@ -46,8 +46,10 @@ const SplitButtonExamples = (props: SplitButtonProps) => (
   </div>
 );
 
+const stackTokens: IStackTokens = { childrenGap: 20 };
+
 export const SplitButtons = () => (
-  <Stack gap={20}>
+  <Stack tokens={stackTokens}>
     <Text variant="xLarge">A split button comes in default and `primary` variant.</Text>
     <SplitButtonExamples />
 

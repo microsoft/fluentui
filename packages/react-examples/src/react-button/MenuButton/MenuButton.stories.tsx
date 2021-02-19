@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MenuButton, MenuButtonProps } from '@fluentui/react-button';
-import { Callout, ContextualMenu, IContextualMenuProps, Stack, Text } from '@fluentui/react';
+import { Callout, ContextualMenu, IContextualMenuProps, Stack, IStackTokens, Text } from '@fluentui/react';
 import { useMenuContext, MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import * as classes from '../Button.stories.scss';
 
@@ -31,10 +31,10 @@ const MenuButtonExamples = (props: MenuButtonProps) => (
     <MenuButton icon="O" primary disabled {...props}>
       Hello, world
     </MenuButton>
-    <MenuButton icon="O" ghost {...props}>
+    <MenuButton icon="O" subtle {...props}>
       Hello, world
     </MenuButton>
-    <MenuButton icon="O" ghost disabled {...props}>
+    <MenuButton icon="O" subtle disabled {...props}>
       Hello, world
     </MenuButton>
     <MenuButton icon="O" transparent {...props}>
@@ -46,9 +46,11 @@ const MenuButtonExamples = (props: MenuButtonProps) => (
   </div>
 );
 
+const stackTokens: IStackTokens = { childrenGap: 20 };
+
 export const DefaultMenuButtons = () => {
   return (
-    <Stack gap={20}>
+    <Stack tokens={stackTokens}>
       <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
       <MenuButtonExamples menu={<ContextualMenu {...menuProps} />} />
 
@@ -96,7 +98,7 @@ const JSXMenu = () => <ContextualMenu {...(useMenuContext() as IContextualMenuPr
 
 export const MenuButtonsWithMenuAsJsx = () => {
   return (
-    <Stack gap={20}>
+    <Stack tokens={stackTokens}>
       <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
       <MenuButtonExamples menu={<JSXMenu />} />
 
@@ -138,7 +140,7 @@ const FunctionMenu = (props: MinimalMenuProps) => {
 const shorthandChildrenRender = { children: (Component: any, props: MinimalMenuProps) => <FunctionMenu {...props} /> };
 
 export const MenuButtonsWithMenuAsFunction = () => (
-  <Stack gap={20}>
+  <Stack tokens={stackTokens}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
     <MenuButtonExamples menu={shorthandChildrenRender} />
 
@@ -179,7 +181,7 @@ const CustomMenu = (props: MinimalMenuProps) => {
 const customMenuChildrenRender = { children: (Component: any, props: MinimalMenuProps) => <CustomMenu {...props} /> };
 
 export const MenuButtonsWithcustomMenuChildrenRenders = () => (
-  <Stack gap={20}>
+  <Stack tokens={stackTokens}>
     <Text variant="xLarge">A button comes in default and `primary` flavors.</Text>
     <MenuButtonExamples menu={customMenuChildrenRender} />
 

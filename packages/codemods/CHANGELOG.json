@@ -2,6 +2,21 @@
   "name": "@fluentui/codemods",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/codemods_v1.0.0-beta.5",
+      "version": "1.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/codemods"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Feb 2021 12:21:39 GMT",
       "tag": "@fluentui/codemods_v1.0.0-beta.4",
       "version": "1.0.0-beta.4",
