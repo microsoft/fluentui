@@ -25,7 +25,6 @@ module.exports = {
       'lib-commonjs/**/*',
       'lib-amd/**/*',
       'esm/**/*',
-      'temp/*.api.md',
       '**/*.source.json',
       '**/*.info.json',
       '**/dist.stats.json',
