@@ -125,7 +125,9 @@ export const useIconStyles = makeStyles<BadgeState>([
   ],
 ]);
 
-/** Applies style classnames to slots */
+/**
+ * Applies style classnames to slots
+ */
 export const useBadgeStyles = (state: BadgeState) => {
   state.className = ax(useRootStyles(state), state.className);
   const iconClassName = useIconStyles(state);
