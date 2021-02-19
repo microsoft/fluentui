@@ -157,23 +157,33 @@ function Component() {
 In [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923)  `Avatar`, from `@fluentui/react-avatar` (check `packages/react-avatar/src/components/Avatar/useAvatarStyles.ts`), was used to validate performance improvements and explore potential issues. It is uncertain if/how these issues are critical, but there are two things that should be mentioned:
 
 ```tsx
+const useStyles = makeOverrides({
+  /* ... many definitions ... */
+
+  rootShape20: { width: '20px', height: '20px' },
+  rootShape24: { width: '24px', height: '24px' },
+  rootShape28: { width: '28px', height: '28px' },
+})
+
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
   const classes = useStyles();
 
   state.className = ax(
     classes.root,
 
-    //
+    // 👎 Matchers have been moved to ax() calls, it looks a bit verbose
+    //    (in previous implementation matchers have been close to styles)
+    // 👎 It might be tricky find proper names to express definition names
+    //    (we can end with "rootPrimaryCirclularGhostEtc.")
 
     state.size === 20 && classes.rootShape20,
     state.size === 24 && classes.rootShape24,
-    /* ...many selectors... */
+    /* ... many selectors ... */
     state.size === 128 && classes.rootShape128
   );
 
   return state;
 };
-```
 
 ## Discarded Solutions
 
