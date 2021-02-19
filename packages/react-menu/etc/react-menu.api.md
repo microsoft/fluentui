@@ -124,6 +124,9 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
 // @public (undocumented)
 export interface MenuListState extends MenuListProps {
     ref: React.MutableRefObject<HTMLElement>;
+    selectRadio: SelectableHandler;
+    // Warning: (ae-forgotten-export) The symbol "SelectableHandler" needs to be exported by the entry point index.d.ts
+    toggleCheckbox: SelectableHandler;
 }
 
 // @public

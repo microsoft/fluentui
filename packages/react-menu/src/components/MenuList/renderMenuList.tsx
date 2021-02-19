@@ -8,10 +8,10 @@ import { MenuListProvider } from '../../menuListContext';
  */
 export const renderMenuList = (state: MenuListState) => {
   const { slots, slotProps } = getSlots(state);
-  const { onCheckedValueChange, checkedValues } = state;
+  const { onCheckedValueChange, checkedValues, toggleCheckbox, selectRadio } = state;
 
   return (
-    <MenuListProvider value={{ onCheckedValueChange, checkedValues }}>
+    <MenuListProvider value={{ onCheckedValueChange, checkedValues, toggleCheckbox, selectRadio }}>
       <slots.root {...slotProps.root}>{state.children}</slots.root>
     </MenuListProvider>
   );

@@ -22,5 +22,29 @@ export const useMenuList = (
     resolveShorthandProps(props, []),
   );
 
+  const { checkedValues, onCheckedValueChange } = state;
+  state.toggleCheckbox = React.useCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
+      const checkedItems = checkedValues?.[name] || [];
+
+      if (checked) {
+        const newCheckedItems = [...checkedItems];
+        newCheckedItems.splice(newCheckedItems.indexOf(value), 1);
+        onCheckedValueChange?.(e, name, newCheckedItems);
+      } else {
+        onCheckedValueChange?.(e, name, [...checkedItems, value]);
+      }
+    },
+    [onCheckedValueChange, checkedValues],
+  );
+
+  state.selectRadio = React.useCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
+      const newCheckedItems = [value];
+      onCheckedValueChange?.(e, name, newCheckedItems);
+    },
+    [onCheckedValueChange],
+  );
+
   return state;
 };
