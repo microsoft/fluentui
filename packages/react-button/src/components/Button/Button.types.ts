@@ -24,6 +24,7 @@ export type ButtonProps = ComponentProps &
      */
     disabledFocusable?: boolean;
 
+    // TODO: remove unsupported props, all of them
     /** A button can fill the width of its container. */
     block?: boolean;
 
