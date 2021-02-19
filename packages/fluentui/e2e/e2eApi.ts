@@ -31,7 +31,10 @@ type E2EKeys =
   | 'O'
   | '*'
   | 'T'
-  | 'H';
+  | 'H'
+  | CyrillicLetters;
+
+type CyrillicLetters = 'т';
 
 const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
 
