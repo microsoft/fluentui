@@ -318,7 +318,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const lowerValueThumbRef = React.useRef<HTMLSpanElement>(null);
   const thumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, (ranged && !vertical) ? lowerValueThumbRef : thumbRef, value, [lowerValue, value]);
+  useComponentRef(props, ranged && !vertical ? lowerValueThumbRef : thumbRef, value, [lowerValue, value]);
   const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
   const getTrackStyles = getLineSectionStylesFn(vertical);
   const originValue = originFromZero ? 0 : min;
@@ -351,11 +351,12 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     disabled,
   };
 
-  const lowerValueLabelProps = ranged && showValue && {
-    className: classNames.valueLabel,
-    children: valueFormat ? valueFormat(lowerValue!) : lowerValue,
-    disabled,
-  };
+  const lowerValueLabelProps = ranged &&
+    showValue && {
+      className: classNames.valueLabel,
+      children: valueFormat ? valueFormat(lowerValue!) : lowerValue,
+      disabled,
+    };
 
   const zeroTickProps = originFromZero && {
     className: classNames.zeroTick,

@@ -162,8 +162,8 @@ describe('Slider', () => {
 
   it('updates the upper value thumb when click to the right side of it', () => {
     let range;
-    const onChange = (val: number, range: [number, number]) => {
-      range = range;
+    const onChange = (val: number, sliderRange: [number, number]) => {
+      range = sliderRange;
     };
 
     wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
@@ -191,8 +191,8 @@ describe('Slider', () => {
 
   it('updates the upper value thumb when click close to it', () => {
     let range;
-    const onChange = (val: number, range: [number, number]) => {
-      range = range;
+    const onChange = (val: number, sliderRange: [number, number]) => {
+      range = sliderRange;
     };
 
     wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
@@ -220,8 +220,8 @@ describe('Slider', () => {
 
   it('updates the lower value thumb when click close to it', () => {
     let range;
-    const onChange = (val: number, range: [number, number]) => {
-      range = range;
+    const onChange = (val: number, sliderRange: [number, number]) => {
+      range = sliderRange;
     };
 
     wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
@@ -249,8 +249,8 @@ describe('Slider', () => {
 
   it('updates the lower value thumb when click to the left of it', () => {
     let range;
-    const onChange = (val: number, range: [number, number]) => {
-      range = range;
+    const onChange = (val: number, sliderRange: [number, number]) => {
+      range = sliderRange;
     };
 
     wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
