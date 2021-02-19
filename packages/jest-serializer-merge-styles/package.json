@@ -1,12 +1,8 @@
 {
   "name": "@fluentui/jest-serializer-merge-styles",
-  "version": "8.0.0-beta.5",
+  "version": "8.0.0-beta.6",
   "description": "Jest serializer for merge-styles.",
-  "main": "lib-commonjs/index.js",
-  "module": "lib/index.js",
-  "sideEffects": [
-    "lib/version.js"
-  ],
+  "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
@@ -15,7 +11,6 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
     "test": "just-scripts test",
     "just": "just-scripts",
@@ -24,18 +19,16 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@fluentui/scripts": "^1.0.0"
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/merge-styles": "^8.0.0-beta.4"
+    "@fluentui/merge-styles": "^8.0.0-beta.5"
   }
 }

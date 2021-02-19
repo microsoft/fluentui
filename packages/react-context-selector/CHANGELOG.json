@@ -1,0 +1,28 @@
+{
+  "name": "@fluentui/react-context-selector",
+  "entries": [
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.0",
+      "version": "0.53.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove useContextSelectors to align with proposed React implementation",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "03a42717191ed6a5f39947a35e5d1f91c73427d0",
+            "package": "@fluentui/react-context-selector"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "chore: fix version mismatch",
+            "author": "olfedias@microsoft.com",
+            "commit": "e56955f96568dab25ee7789a8fd736175f6da45a",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    }
+  ]
+}

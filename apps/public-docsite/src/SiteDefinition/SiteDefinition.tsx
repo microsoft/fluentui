@@ -1,8 +1,25 @@
 import * as React from 'react';
+import { IContextualMenuItem } from '@fluentui/react';
 import { ISiteDefinition, LoadingComponent } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
+
+const currentVersionData = require<any>('@fluentui/react/package.json');
+
+const currentVersion = 'Fluent UI React 8';
+const versions = ['Fluent UI React 8', 'Fluent UI React 7', 'Fabric React 6', 'Fabric React 5'];
+
+const onVersionMenuClick = (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem): void => {
+  const restOfPathIndex = location.href.indexOf('#');
+  const restOfPath = restOfPathIndex !== -1 ? location.href.substr(restOfPathIndex) : '';
+  if (item.key !== currentVersion) {
+    // Reload the page to switch versions
+    location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=${
+      item.key[item.key.length - 1]
+    }${restOfPath}`;
+  }
+};
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Fluent UI',
@@ -69,4 +86,10 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       sessionStoragePrefix: 'FluentUI',
     },
   ],
+  versionSwitcherDefinition: {
+    currentVersion,
+    currentVersionNumber: currentVersionData.version,
+    onVersionMenuClick,
+    versions,
+  },
 };

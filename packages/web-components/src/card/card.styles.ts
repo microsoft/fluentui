@@ -11,7 +11,6 @@ export const CardStyles = css`
     height: var(--card-height, 100%);
     width: var(--card-width, 100%);
     box-sizing: border-box;
-    background: var(--background-color);
     border-radius: calc(var(--elevated-corner-radius) * 1px);
     ${elevation}
   }

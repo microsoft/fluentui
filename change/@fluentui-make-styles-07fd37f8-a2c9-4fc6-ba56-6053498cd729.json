@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add typings for prettier",
+  "packageName": "@fluentui/make-styles",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

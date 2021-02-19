@@ -1,7 +1,6 @@
 import { createEmotionRenderer } from '@fluentui/react-northstar-emotion-renderer';
 import { RendererParam } from '@fluentui/react-northstar-styles-renderer';
 import { ICSSInJSStyle } from '@fluentui/styles';
-// @ts-ignore No typings :(
 import * as prettier from 'prettier';
 
 expect.addSnapshotSerializer({

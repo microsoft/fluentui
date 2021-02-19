@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/doctrine": "0.0.3",
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/node": "^10.3.2",
@@ -44,13 +44,13 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "jest": "^24.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0",
     "typescript": "^3.5.0"
   }
 }

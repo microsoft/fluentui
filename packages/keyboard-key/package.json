@@ -20,7 +20,7 @@
     "test": "just-scripts test"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
