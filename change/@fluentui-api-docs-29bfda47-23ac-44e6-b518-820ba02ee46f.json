@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove react-theme-provider from api-docs",
+  "packageName": "@fluentui/api-docs",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
