@@ -184,7 +184,6 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
 
   return state;
 };
-
 ## Discarded Solutions
 
 NA
