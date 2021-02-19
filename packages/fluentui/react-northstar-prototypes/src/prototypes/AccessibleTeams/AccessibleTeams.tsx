@@ -126,122 +126,249 @@ const AccessibleTeams: React.FunctionComponent = () => {
 
   return (
     <>
-      <h1>Accessible Teams prototype</h1>
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
 
-      <button>Back</button>
+      <div>
+        <h1>Prototype #1 - Regions reduction and headings introduction (recommended variant)</h1>
 
-      <input
-        type="text"
-        role="combobox"
-        aria-controls=""
-        aria-expanded="false"
-        aria-label="Look for messages, files, and more. Or type / for a list of commands."
-      />
+        <button>Back</button>
 
-      <button aria-haspopup="true" aria-describedby="profile-desc">
-        Profile, app settings, and more.
-      </button>
-      <div id="profile-desc" aria-hidden="true">
-        Your profile picture with status displayed as Available.
-      </div>
+        <input
+          type="text"
+          role="combobox"
+          aria-controls=""
+          aria-expanded="false"
+          aria-label="Look for messages, files, and more. Or type / for a list of commands."
+        />
 
-      <h2>Navigation bar</h2>
-      <div
-        role="group"
-        aria-label="Navigation bar"
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        data-instruction="To navigate use the arrow keys"
-      >
-        <button className="item" tabIndex={0} aria-pressed="false">
-          Activities
+        <button aria-haspopup="true" aria-describedby="profile-desc">
+          Profile, app settings, and more.
         </button>
-        <div>
-          <button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
+        <div id="profile-desc" aria-hidden="true">
+          Your profile picture with status displayed as Available.
+        </div>
+
+        <h2>Navigation bar</h2>
+        <div
+          role="group"
+          aria-label="Navigation bar"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          data-instruction="To navigate use the arrow keys"
+        >
+          <button className="item" tabIndex={0} aria-pressed="false">
+            Activities
+          </button>
+          <div>
+            <button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
+              Chats
+            </button>
+            <div id="chats-desc" style={srOnlyCss}>
+              7 conversations with new messages
+            </div>
+          </div>
+          <div>
+            <button className="item" tabIndex={-1} aria-pressed="false" aria-describedby="teams-desc">
+              Teams
+            </button>
+            <div id="teams-desc" style={srOnlyCss}>
+              4 teams with new messages
+            </div>
+          </div>
+          <button className="item" tabIndex={-1} aria-pressed="false">
+            Calendar
+          </button>
+        </div>
+
+        <button aria-haspopup="menu">Chat</button>
+
+        <button>Filter</button>
+
+        <button>New chat</button>
+
+        <h2>Chats</h2>
+        <div role="tree" aria-label="Chat list">
+          <div role="treeitem">Tyler Skywalker</div>
+          <div role="treeitem" tabIndex={0}>
+            Michael Night
+          </div>
+        </div>
+
+        <button aria-haspopup="menu">Michael Night</button>
+
+        <div role="tablist">
+          <div role="tab" tabIndex={0} aria-selected="true">
             Chats
+          </div>
+          <div role="tab">Files</div>
+        </div>
+
+        <button>Add a tab</button>
+
+        <button>Video call</button>
+        <button>Audio call</button>
+        <button>Screen sharing</button>
+
+        <button>Add people</button>
+
+        <button>Pop out chat</button>
+
+        <div
+          role="region"
+          aria-label="Chat content"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
+        >
+          <h2>Conversation</h2>
+          <h3>November 9, 2020</h3>
+
+          {/* Currently, the profile picture and status are not hidden for screen raeders , but they will be hidden in future versions of Teams, so here we hide it as well */}
+          {/* eslint-disable-next-line */}
+          <img alt="Profile picture of Michael Night" aria-hidden="true" />
+          <div aria-hidden="true">Available</div>
+          <div>Michael Night</div>
+          <div>Wednesday 12:47 PM</div>
+          <button tabIndex={-1} aria-expanded="false">
+            Toolbar with two buttons, press enter to enter toolbar
           </button>
-          <div id="chats-desc" style={srOnlyCss}>
-            7 conversations with new messages
+          <div className="item" tabIndex={0}>
+            Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
+            and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
+            changes related to regions, chat list itself and headings.
           </div>
         </div>
-        <div>
-          <button className="item" tabIndex={-1} aria-pressed="false" aria-describedby="teams-desc">
-            Teams
+
+        <input type="text" aria-label="Type a new message" />
+
+        <div role="menu">
+          <button aria-label="Format. Press enter to expand compose box and format your message. Press right arrow for more options.">
+            Format
           </button>
-          <div id="teams-desc" style={srOnlyCss}>
-            4 teams with new messages
+        </div>
+
+        <button>Send</button>
+      </div>
+
+      <div>
+        <h1>Prototype #2 - Regions modification and headings introduction</h1>
+
+        <button>Back</button>
+
+        <input
+          type="text"
+          role="combobox"
+          aria-controls=""
+          aria-expanded="false"
+          aria-label="Look for messages, files, and more. Or type / for a list of commands."
+        />
+
+        <button aria-haspopup="true" aria-describedby="profile-desc">
+          Profile, app settings, and more.
+        </button>
+        <div id="profile-desc" aria-hidden="true">
+          Your profile picture with status displayed as Available.
+        </div>
+
+        <nav role="navigation">
+          <h2>Navigation bar</h2>
+          <div onFocus={handleFocus} onBlur={handleBlur} data-instruction="To navigate use the arrow keys">
+            <button className="item" tabIndex={0} aria-pressed="false">
+              Activities
+            </button>
+            <div>
+              <button className="item" tabIndex={-1} aria-pressed="true" aria-describedby="chats-desc">
+                Chats
+              </button>
+              <div id="chats-desc" style={srOnlyCss}>
+                7 conversations with new messages
+              </div>
+            </div>
+            <div>
+              <button className="item" tabIndex={-1} aria-pressed="false" aria-describedby="teams-desc">
+                Teams
+              </button>
+              <div id="teams-desc" style={srOnlyCss}>
+                4 teams with new messages
+              </div>
+            </div>
+            <button className="item" tabIndex={-1} aria-pressed="false">
+              Calendar
+            </button>
+          </div>
+        </nav>
+
+        <div role="region" aria-label="Chats">
+          <button aria-haspopup="menu">Chat</button>
+
+          <button>Filter</button>
+
+          <button>New chat</button>
+
+          <h2>Chats</h2>
+          <div role="tree" aria-label="Chat list">
+            <div role="treeitem">Tyler Skywalker</div>
+            <div role="treeitem" tabIndex={0}>
+              Michael Night
+            </div>
           </div>
         </div>
-        <button className="item" tabIndex={-1} aria-pressed="false">
-          Calendar
-        </button>
-      </div>
 
-      <button aria-haspopup="menu">Chat</button>
+        <button aria-haspopup="menu">Michael Night</button>
 
-      <button>Filter</button>
-
-      <button>New chat</button>
-
-      <h2>Chats</h2>
-      <div role="tree" aria-label="Chat list">
-        <div role="treeitem">Tyler Skywalker</div>
-        <div role="treeitem" tabIndex={0}>
-          Michael Night
+        <div role="tablist">
+          <div role="tab" tabIndex={0} aria-selected="true">
+            Chats
+          </div>
+          <div role="tab">Files</div>
         </div>
-      </div>
 
-      <button aria-haspopup="menu">Michael Night</button>
+        <button>Add a tab</button>
 
-      <div role="tablist">
-        <div role="tab" tabIndex={0} aria-selected="true">
-          Chats
+        <button>Video call</button>
+        <button>Audio call</button>
+        <button>Screen sharing</button>
+
+        <button>Add people</button>
+
+        <button>Pop out chat</button>
+
+        <div
+          role="region"
+          aria-label="Chat content"
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
+        >
+          <h2>Conversation</h2>
+          <h3>November 9, 2020</h3>
+
+          {/* Currently, the profile picture and status are not hidden for screen raeders , but they will be hidden in future versions of Teams, so here we hide it as well */}
+          {/* eslint-disable-next-line */}
+          <img alt="Profile picture of Michael Night" aria-hidden="true" />
+          <div aria-hidden="true">Available</div>
+          <div>Michael Night</div>
+          <div>Wednesday 12:47 PM</div>
+          <button tabIndex={-1} aria-expanded="false">
+            Toolbar with two buttons, press enter to enter toolbar
+          </button>
+          <div className="item" tabIndex={0}>
+            Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
+            and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
+            changes related to regions, chat list itself and headings.
+          </div>
         </div>
-        <div role="tab">Files</div>
-      </div>
 
-      <button>Add a tab</button>
+        <input type="text" aria-label="Type a new message" />
 
-      <button>Video call</button>
-      <button>Audio call</button>
-      <button>Screen sharing</button>
-
-      <button>Add people</button>
-
-      <button>Pop out chat</button>
-
-      <h2>Conversations</h2>
-      <div
-        role="region"
-        aria-label="Chat content"
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        data-instruction="Press Enter to explore message content, then use Escape to shift focus back to the message"
-      >
-        <h3>November 9, 2020</h3>
-
-        {/* Currently, the profile picture and status are not hidden for screen raeders , but they will be hidden in future versions of Teams, so here we hide it as well */}
-        {/* eslint-disable-next-line */}
-        <img alt="Profile picture of Michael Night" aria-hidden="true" />
-        <div aria-hidden="true">Available</div>
-        <div>Michael Night</div>
-        <div>Wednesday 12:47 PM</div>
-        <button tabIndex={-1}>Toolbar with two buttons, press enter to enter toolbar</button>
-        <div className="item" tabIndex={0}>
-          Hello there,this is just an exammple message.
+        <div role="menu">
+          <button aria-label="Format. Press enter to expand compose box and format your message. Press right arrow for more options.">
+            Format
+          </button>
         </div>
+
+        <button>Send</button>
       </div>
-
-      <input type="text" aria-label="Type a new message" />
-
-      <div role="menu">
-        <button aria-label="Format. Press enter to expand compose box and format your message. Press right arrow for more options.">
-          Format
-        </button>
-      </div>
-
-      <button>Send</button>
     </>
   );
 }; // End AccessibleNavBar
