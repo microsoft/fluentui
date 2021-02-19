@@ -19,7 +19,7 @@ export interface IVersionSwitcherDefinition {
   onVersionMenuClick?: (event: React.MouseEvent<HTMLElement, MouseEvent>, item: IContextualMenuItem) => void;
 
   /**
-   * The current version of the library.
+   * The current version of the library including the name, such as "Fluent UI React 8"
    */
   currentVersion?: string;
 
