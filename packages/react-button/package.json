@@ -27,7 +27,6 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.0-beta.15",
     "@fluentui/eslint-plugin": "^1.0.0-beta.1",
     "@fluentui/react-conformance": "^1.0.0",
     "@fluentui/scripts": "^1.0.0",
@@ -48,18 +47,11 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.13",
-    "@fluentui/react-hooks": "^8.0.0-beta.11",
-    "@fluentui/react-icons-mdl2": "^1.0.0-beta.13",
     "@fluentui/react-make-styles": "^0.2.7",
-    "@fluentui/react-shared-contexts": "^1.0.0-beta.5",
     "@fluentui/react-theme": "^0.3.2",
     "@fluentui/react-theme-provider": "^1.0.0-beta.23",
     "@fluentui/react-utils": "^0.3.1",
-    "@fluentui/theme": "^2.0.0-beta.15",
-    "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/style-utilities": "^8.0.0-beta.15",
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "tslib": "^1.10.0"
+    "@fluentui/set-version": "^8.0.0-beta.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

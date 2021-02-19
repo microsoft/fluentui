@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps } from './Button.types';
 import { renderButton } from './renderButton';
-import { useButtonClasses } from './useButtonClasses'
+import { useButtonClasses } from './useButtonClasses';
 
 /**
  * Define a styled Button, using the `useButton` hook.
@@ -11,17 +11,16 @@ import { useButtonClasses } from './useButtonClasses'
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const state = useButton(props, ref);
 
-  // TODO: fix children check for "empty" slots once useButton() updated
-  const hasContent = !!state.content.children;
-  const hasIcon = !!state.icon.children;
+  const receivedChildren = !!state.children?.children;
+  const receivedIcon = !!state.icon?.children;
 
-  const iconOnly = hasIcon && !hasContent;
+  const iconOnly = receivedIcon && !receivedChildren;
   const styleSelectors = {
-    primary: props.primary,
+    primary: state.primary,
     iconOnly: iconOnly,
-    textOnly: hasContent && !hasIcon,
-    textWithIcon: hasIcon && hasContent,
-    size: props.size,
+    textOnly: receivedChildren && !receivedIcon,
+    textWithIcon: receivedIcon && receivedChildren,
+    size: state.size,
   };
 
   useButtonClasses(state, styleSelectors);

@@ -203,7 +203,7 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
   // TODO: add disabled before ship prerelease
 ]);
 
-const useContentClasses = makeStyles<ButtonStyleSelectors>([
+const useChildrenClasses = makeStyles<ButtonStyleSelectors>([
   [
     null,
     theme => ({
@@ -239,9 +239,9 @@ const useIconClasses = makeStyles<ButtonStyleSelectors>([
 export const useButtonClasses = (state: ButtonState, selectors: ButtonStyleSelectors) => {
   state.className = ax(state.className, useRootClasses(selectors));
 
-  state.content = state.content || { className: '' };
+  state.children = state.children || { className: '' };
   state.icon = state.icon || { className: '' };
 
-  state.content.className = ax(state.content.className, useContentClasses(selectors));
+  state.children.className = ax(state.children.className, useChildrenClasses(selectors));
   state.icon.className = ax(state.icon.className, useIconClasses(selectors));
 };
