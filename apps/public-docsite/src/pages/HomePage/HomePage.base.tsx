@@ -169,17 +169,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true,
     });
 
-    const {
-      currentVersion,
-      currentVersionNumber,
-      versions,
-      onVersionMenuClick,
-    } = SiteDefinition.versionSwitcherDefinition;
+    const { currentVersionNumber, versions, onVersionMenuClick } = SiteDefinition.versionSwitcherDefinition;
 
     const versionOptions: IContextualMenuItem[] = versions.map(version => ({
       key: version,
       text: version,
-      checked: version === currentVersion,
     }));
 
     const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
