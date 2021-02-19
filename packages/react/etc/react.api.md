@@ -7386,9 +7386,8 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
     lowerValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number) => void;
+    onChange?: (value: number, range?: [number, number]) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-    onRangeChange?: (range: [number, number]) => void;
     originFromZero?: boolean;
     ranged?: boolean;
     showValue?: boolean;
@@ -9907,7 +9906,7 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         className: string;
         children: string | number;
         disabled: boolean;
-    };
+    } | undefined;
     thumb: {
         ref: React.RefObject<HTMLSpanElement>;
         className: string;
