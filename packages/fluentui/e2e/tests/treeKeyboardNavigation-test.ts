@@ -62,5 +62,8 @@ describe('Tree keyboard navigation', () => {
 
     await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'H'); // expect focus to be on 'House Lannister'
     await e2e.isFocused(selectors.treeItemAt(1));
+
+    await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'Tab'); // expect Tab key to still function as default
+    await e2e.isFocused('body');
   });
 });
