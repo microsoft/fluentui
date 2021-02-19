@@ -28,7 +28,7 @@ describe('useEventCallback', () => {
     let unstableCallback = () => prop.reduce((acc, item) => acc + item, 0);
 
     // Act
-    const { result, rerender } = renderHook(() => useEventCallback(unstableCallback));
+    const { result, rerender } = renderHook(() => useEventCallback(unstableCallback, [prop]));
     const firstRender = result.current;
     const firstRenderResult = firstRender();
     unstableCallback = () => prop.reduce((acc, item) => (acc + item) * 0, 0);
