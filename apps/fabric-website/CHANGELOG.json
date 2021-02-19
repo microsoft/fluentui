@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 19 Feb 2021 12:25:47 GMT",
+      "tag": "@uifabric/fabric-website_v7.16.30",
+      "version": "7.16.30",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Styling fixes related to Link's new underline prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "49d501efbed974a77c4bec5ffa171ebba0d3fc19",
+            "package": "@uifabric/fabric-website"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Feb 2021 12:23:39 GMT",
       "tag": "@uifabric/fabric-website_v7.16.28",
       "version": "7.16.28",

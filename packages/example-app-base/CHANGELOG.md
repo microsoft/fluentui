@@ -1,8 +1,17 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 02 Oct 2020 12:28:46 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Feb 2021 12:25:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.17.0)
+
+Fri, 19 Feb 2021 12:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/example-app-base_v7.15.23..@uifabric/example-app-base_v7.17.0)
+
+### Minor changes
+
+- MarkdownLink: Adding underline prop and setting it to true by default. ([PR #16624](https://github.com/microsoft/fluentui/pull/16624) by humbertomakotomorimoto@gmail.com)
 
 ## [7.15.23](https://github.com/microsoft/fluentui/tree/@uifabric/example-app-base_v7.15.23)
 

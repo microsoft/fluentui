@@ -2,6 +2,21 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 19 Feb 2021 12:25:47 GMT",
+      "tag": "@uifabric/example-app-base_v7.17.0",
+      "version": "7.17.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "MarkdownLink: Adding underline prop and setting it to true by default.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "49d501efbed974a77c4bec5ffa171ebba0d3fc19",
+            "package": "@uifabric/example-app-base"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 02 Oct 2020 12:28:46 GMT",
       "tag": "@uifabric/example-app-base_v7.15.23",
       "version": "7.15.23",

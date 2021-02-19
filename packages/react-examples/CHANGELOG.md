@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 18 Feb 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Feb 2021 12:25:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.11.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.29)
+
+Fri, 19 Feb 2021 12:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.28..@fluentui/react-examples_v0.11.29)
+
+### Patches
+
+- Updating Link examples so they are underlined since the Link component is alongside other text. ([PR #16624](https://github.com/microsoft/fluentui/pull/16624) by humbertomakotomorimoto@gmail.com)
 
 ## [0.11.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.28)
 

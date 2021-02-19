@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 17 Feb 2021 12:23:39 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Feb 2021 12:25:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.30](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.30)
+
+Fri, 19 Feb 2021 12:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.28..@uifabric/fabric-website_v7.16.30)
+
+### Patches
+
+- Styling fixes related to Link's new underline prop. ([PR #16624](https://github.com/microsoft/fluentui/pull/16624) by humbertomakotomorimoto@gmail.com)
 
 ## [7.16.28](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.28)
 

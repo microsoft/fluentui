@@ -2,6 +2,29 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 19 Feb 2021 12:25:47 GMT",
+      "tag": "office-ui-fabric-react_v7.161.0",
+      "version": "7.161.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Link: Adding underline prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "49d501efbed974a77c4bec5ffa171ebba0d3fc19",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "04e14bd18f4ba6f8daac631217643362c9dedd44",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 12:25:56 GMT",
       "tag": "office-ui-fabric-react_v7.160.3",
       "version": "7.160.3",

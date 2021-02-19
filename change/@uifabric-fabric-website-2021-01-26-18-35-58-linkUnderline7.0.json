@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Styling fixes related to Link's new underline prop.",
-  "packageName": "@uifabric/fabric-website",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-27T02:35:58.277Z"
-}

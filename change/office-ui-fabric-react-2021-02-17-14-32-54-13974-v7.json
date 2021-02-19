@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers",
-  "packageName": "office-ui-fabric-react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-17T22:32:54.413Z"
-}
