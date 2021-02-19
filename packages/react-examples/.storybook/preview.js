@@ -30,6 +30,10 @@ if (
     'react-components',
   ].includes('PACKAGE_NAME')
 ) {
+  addDecorator(withCompatThemeProvider);
+  addDecorator(withStrictMode);
+}
+if (['react-avatar', 'react-link', 'react-image', 'react-menu', 'react-accordion'].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }

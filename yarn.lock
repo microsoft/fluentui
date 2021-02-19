@@ -1564,13 +1564,16 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
-"@fluentui/react-utils@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-utils/-/react-utils-0.3.1.tgz#4adc066007671ab3f273fcd9db54f445f38d8e0d"
-  integrity sha512-eL363pgLgiurQpn2MPF2g8vU7E9Y7obK/hwbU8vD091QcSAyMWrvwof96fpJ3cQSRbqUJVr5VQgOK1P5ScDBOA==
+"@fluentui/react-make-styles@^0.2.6":
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-0.2.6.tgz#0a30f0c6178aa7dfe6bf553d6e523a9effc7138f"
+  integrity sha512-4yqULrJpAkdSrfHrSBMtKIPMWu9jd79wreZ2KIc3+YWzAIsIk+55DTwuvR2KRbY3VZ+qVIxYNU1kV3uMuUzhtw==
   dependencies:
+    "@fluentui/make-styles" "^0.6.0"
+    "@fluentui/react-provider" "^0.1.4"
+    "@fluentui/react-theme" "^0.3.1"
+    "@fluentui/react-theme-provider" "^1.0.0-beta.24"
     "@fluentui/set-version" "^8.0.0-beta.1"
-    "@fluentui/utilities" "^8.0.0-beta.11"
     tslib "^1.10.0"
 
 "@gulp-sourcemaps/identity-map@1.X":
@@ -4931,7 +4934,7 @@
     "@types/jest" "*"
     axe-core "^3.0.3"
 
-"@types/jest@*", "@types/jest@24.9.1", "@types/jest@~24.9.0":
+"@types/jest@*", "@types/jest@24.9.1":
   version "24.9.1"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.9.1.tgz#02baf9573c78f1b9974a5f36778b366aa77bd534"
   integrity sha512-Fb38HkXSVA4L8fGKEZ6le5bB8r6MRWlOCZbVuWZcmOMSCd2wCYOwN1ibj8daIoV9naq7aaOZjrLCoCMptKU/4Q==
