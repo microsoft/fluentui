@@ -8,8 +8,7 @@ The RFC process is intended to bring a few benefits:
 
 - More efficent and durable decision making
   - **Efficent** as we can all engage and review on our own time, rather than locking X engineers in a room for hours
-  - **Durable** as we give more time for decisions to be reviewed, commented, and considered. Rather than making a decision
-    after being locked in a room for an hour with X other engineers.
+  - **Durable** as we give more time for decisions to be reviewed, commented, and considered. Rather than making a decision after being locked in a room for an hour with X other engineers.
 - A more inclusive review proces
   - Supporting both quick and deep thinkers
   - Allowing proposals and comments from contributors
