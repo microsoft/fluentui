@@ -154,7 +154,7 @@ function Component() {
 }
 ```
 
-In [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923) I used `Avatar` component from `@fluentui/react-avatar` (check `packages/react-avatar/src/components/Avatar/useAvatarStyles.ts`) to prove performance improvements and find out potential issues. I don't know how these issues are critical, but there are two things that should be mentioned:
+In [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923)  `Avatar`, from `@fluentui/react-avatar` (check `packages/react-avatar/src/components/Avatar/useAvatarStyles.ts`), was used to validate performance improvements and explore potential issues. It is uncertain if/how these issues are critical, but there are two things that should be mentioned:
 
 ```tsx
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
