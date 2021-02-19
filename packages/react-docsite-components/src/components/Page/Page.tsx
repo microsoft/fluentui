@@ -262,15 +262,15 @@ export class Page extends React.Component<IPageProps, IPageState> {
         pageTitle={title}
         pageSubTitle={subTitle}
         versionSwitcherDefinition={versionSwitcherDefinition}
-        className={
+        className={mergeStyles(
           showSideRail
-            ? mergeStyles({
+            ? {
                 '@media only screen and (min-width: 1360px)': {
                   width: `calc(100% - ${sideRailWidth}px)`,
                 },
-              })
-            : mergeStyles({ width: '100%' })
-        }
+              }
+            : { width: '100%' },
+        )}
       />
     ) : null;
   };

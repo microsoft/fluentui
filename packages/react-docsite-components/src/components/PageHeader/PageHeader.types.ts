@@ -23,10 +23,11 @@ export interface IPageHeaderProps {
   versionSwitcherDefinition?: IVersionSwitcherDefinition;
 }
 
-export type IPageHeaderStyleProps = Pick<IPageHeaderProps, 'className' | 'theme'>;
+export type IPageHeaderStyleProps = Pick<IPageHeaderProps, 'className' | 'pageTitle' | 'theme'>;
 
 export interface IPageHeaderStyles {
   root: IStyle;
   title: IStyle;
   subTitle: IStyle;
+  versionSelector: IStyle;
 }

@@ -8,34 +8,37 @@ import {
   IStyleFunction,
   ScreenWidthMinUhfMobile,
   IContextualMenuItem,
+  ActionButton,
+  getScreenSelector,
+  ScreenWidthMaxMedium,
+  ScreenWidthMaxLarge,
+  FontSizes,
 } from '@fluentui/react';
-import { ActionButton } from '@fluentui/react/lib/compat/Button';
-import { FontSizes } from '@fluentui/theme';
 import { appPaddingSm, appPaddingLg, contentWidth, pageHeaderFullHeight } from '../../styles/constants';
 
 const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = props => {
-  const palette = props.theme!.palette;
+  const { className, pageTitle, theme } = props;
+  const palette = theme!.palette;
+  const isLongTitle = pageTitle.length > 20;
   return {
     root: [
       {
-        alignItems: 'flex-end',
+        alignItems: 'baseline',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: appPaddingSm,
         position: 'relative',
-        selectors: {
-          [`@media screen and (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
-            marginBottom: 0,
-            padding: `${appPaddingLg}px 0`,
-            minHeight: pageHeaderFullHeight,
-          },
-          '@media only screen and (min-width: 1360px)': {
-            maxWidth: contentWidth + appPaddingSm * 2,
-          },
+        [getScreenSelector(ScreenWidthMinUhfMobile, undefined)]: {
+          marginBottom: 0,
+          padding: `${appPaddingLg}px 0`,
+          minHeight: pageHeaderFullHeight,
+        },
+        [getScreenSelector(1360, undefined)]: {
+          maxWidth: contentWidth + appPaddingSm * 2,
         },
       },
-      props.className,
+      className,
     ],
     title: {
       alignItems: 'baseline',
@@ -52,6 +55,20 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
       fontWeight: FontWeights.regular,
       color: palette.neutralSecondary,
     },
+    versionSelector: {
+      color: palette.neutralSecondary,
+      height: '1em',
+      marginBottom: -4,
+      padding: '12px 0',
+      // Hide the version selector at certain widths where it's likely to not work well
+      // (these are rough estimates based on the length of the title)
+      [getScreenSelector(undefined, isLongTitle ? ScreenWidthMaxLarge : ScreenWidthMaxMedium)]: {
+        display: 'none',
+      },
+      [getScreenSelector(ScreenWidthMinUhfMobile, isLongTitle ? ScreenWidthMaxLarge : 850)]: {
+        display: 'none',
+      },
+    },
   };
 };
 
@@ -59,16 +76,12 @@ const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyle
 
 const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
   const { className, pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
-  const styles = getClassNames(getStyles, { className, theme });
+  const styles = getClassNames(getStyles, { className, pageTitle, theme });
 
-  const versionOptions: IContextualMenuItem[] | undefined =
-    versionSwitcherDefinition && versionSwitcherDefinition.versions
-      ? versionSwitcherDefinition.versions.map(version => ({
-          key: version,
-          text: version,
-          checked: version === versionSwitcherDefinition.currentVersion,
-        }))
-      : undefined;
+  const versionOptions: IContextualMenuItem[] | undefined = versionSwitcherDefinition?.versions?.map(version => ({
+    key: version,
+    text: version,
+  }));
 
   return (
     <header className={styles.root}>
@@ -78,11 +91,7 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
       </h1>
       {versionSwitcherDefinition && versionOptions && (
         <ActionButton
-          allowDisabledFocus={true}
-          styles={{
-            root: { color: theme?.palette.neutralSecondary, height: '1em', marginBottom: -4, padding: '12px 0' },
-            rootHovered: { borderBottom: '1px solid black' },
-          }}
+          className={styles.versionSelector}
           menuProps={{
             gapSpace: 3,
             beakWidth: 8,
