@@ -78,7 +78,7 @@
     "@storybook/channels": "5.3.8",
     "@storybook/core": "5.3.8",
     "@storybook/react": "5.3.8",
-    "@types/jest": "~24.9.1",
+    "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
     "beachball": "^1.50.1",
     "cross-env": "^5.1.4",
