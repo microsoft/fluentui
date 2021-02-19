@@ -98,9 +98,8 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
               width: 12px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-top-color: Highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       />
@@ -182,9 +181,8 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
               width: 16px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-top-color: Highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       />
@@ -266,9 +264,8 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
               width: 20px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-top-color: Highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       />
@@ -350,9 +347,8 @@ exports[`Component Examples renders Spinner.Basic.Example.tsx correctly 1`] = `
               width: 28px;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-top-color: Highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       />

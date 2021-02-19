@@ -1,8 +1,6 @@
 /** @jsx withSlots */
 import { Callout, FocusZone, FocusZoneDirection, List, Stack, Text } from '@fluentui/react';
-import { IconButton } from '@fluentui/react/lib/Button';
-import { Button } from '../Button/Button';
-import { IButtonTokens } from '../Button/Button.types';
+import { DefaultButton, IconButton, IButtonStyles } from '@fluentui/react/lib/Button';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 
 import {
@@ -47,12 +45,16 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     followUpContainer: inline ? Stack : Callout,
     followUpQuestion: Text,
     followUpOptionList: List,
-    followUpOption: Button,
+    followUpOption: DefaultButton,
     followUpOptionText: Text,
     thanksContainer: Callout,
   });
 
-  const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
+  const followUpOptionStyles: IButtonStyles = {
+    textContainer: {
+      padding: '6px 0px',
+    },
+  };
 
   const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
     const onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
@@ -69,7 +71,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
           data-is-focusable={true}
           // eslint-disable-next-line react/jsx-no-bind
           onClick={listOption}
-          tokens={followUpOptionTokens}
+          styles={followUpOptionStyles}
         >
           <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
         </Slots.followUpOption>

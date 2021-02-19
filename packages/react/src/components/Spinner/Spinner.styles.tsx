@@ -4,7 +4,7 @@ import {
   keyframes,
   HighContrastSelector,
   getGlobalClassNames,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 
@@ -66,9 +66,8 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
         selectors: {
           [HighContrastSelector]: {
             borderTopColor: 'Highlight',
+            ...getHighContrastNoAdjustStyle(),
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       size === SpinnerSize.xSmall && [

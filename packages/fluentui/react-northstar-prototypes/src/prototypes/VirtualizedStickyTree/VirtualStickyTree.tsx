@@ -20,6 +20,7 @@ import {
   treeClassName,
   useVirtualTree,
   GetItemById,
+  ShorthandValue,
 } from '@fluentui/react-northstar';
 import { TreeContext, TreeRenderContextValue } from '@fluentui/react-northstar/src/components/Tree/context';
 import { VariableSizeList, VariableSizeListProps, ListChildComponentProps } from 'react-window';
@@ -31,6 +32,12 @@ export interface VirtualStickyTreeProps
   itemSize: number;
   /** height of 1st level sticky tree item */
   stickyItemSize: number;
+
+  /**
+   * A function that converts an item to string.
+   * Used for keyboard navigation based on the first letter of an item's text content
+   */
+  itemToString?: (item: ShorthandValue<TreeItemProps>) => string;
 }
 
 export interface InnerElementContextType {
@@ -56,7 +63,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   const { children, className, design, styles, variables, items, height, itemSize, stickyItemSize } = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = useUnhandledProps([...Tree.handledProps, 'stickyItemSize', 'itemSize'], props);
+  const unhandledProps = useUnhandledProps([...Tree.handledProps, 'stickyItemSize', 'itemSize', 'itemToString'], props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: VirtualStickyTree.displayName,
@@ -86,6 +93,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
     expandSiblings,
     listRef,
     getItemRef,
+    getToFocusIDByFirstCharacter,
   } = useVirtualTree({ ...props, defaultActiveItemIds: stickyItemIds });
 
   const getItemSize = React.useCallback(
@@ -170,8 +178,9 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
       focusItemById,
       expandSiblings,
       toggleItemSelect: _.noop,
+      getToFocusIDByFirstCharacter,
     }),
-    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings],
+    [getItemById, registerItemRef, toggleItemActive, focusItemById, expandSiblings, getToFocusIDByFirstCharacter],
   );
 
   // When using keyboard, and navigate to non-sticky items, they could be hidden behind sticky headers.

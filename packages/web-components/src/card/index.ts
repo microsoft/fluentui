@@ -1,13 +1,9 @@
 import { attr, Notifier, Observable } from '@microsoft/fast-element';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
-import {
-  designSystemProperty,
-  DesignSystemProvider,
-  designSystemProvider,
-  CardTemplate as template,
-} from '@microsoft/fast-foundation';
-import { createColorPalette, neutralFillCard } from '../color';
+import { designSystemProvider, CardTemplate as template } from '@microsoft/fast-foundation';
+import { neutralFillCard } from '../color';
 import { DesignSystem } from '../fluent-design-system';
+import { FluentDesignSystemProvider } from '../design-system-provider';
 import { CardStyles as styles } from './card.styles';
 
 /**
@@ -27,25 +23,12 @@ import { CardStyles as styles } from './card.styles';
     mode: 'closed',
   },
 })
-export class FluentCard extends DesignSystemProvider
-  implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
+export class FluentCard extends FluentDesignSystemProvider {
   /**
-   * Background color for the banner component. Sets context for the design system.
+   * Background color for the card component. Sets context for the design system.
    * @public
    * @remarks
-   * HTML Attribute: background-color
-   */
-  @designSystemProperty({
-    attribute: 'background-color',
-    default: '#FFFFFF',
-  })
-  public backgroundColor: string;
-
-  /**
-   * Background color for the banner component. Sets context for the design system.
-   * @public
-   * @remarks
-   * HTML Attribute: background-color
+   * HTML Attribute: card-background-color
    */
   @attr({
     attribute: 'card-background-color',
@@ -56,7 +39,7 @@ export class FluentCard extends DesignSystemProvider
       const parsedColor = parseColorHexRGB(this.cardBackgroundColor);
 
       if (parsedColor !== null) {
-        this.neutralPalette = createColorPalette(parsedColor);
+        this.neutralBaseColor = this.cardBackgroundColor;
         this.backgroundColor = this.cardBackgroundColor;
       }
     } else if (this.provider && this.provider.designSystem) {
@@ -65,22 +48,15 @@ export class FluentCard extends DesignSystemProvider
   }
 
   /**
-   * Neutral pallette for the the design system provider.
-   * @internal
-   */
-  @designSystemProperty({
-    attribute: false,
-    default: createColorPalette(parseColorHexRGB('#FFFFFF')!),
-    cssCustomProperty: false,
-  })
-  public neutralPalette: string[];
-
-  /**
    * @internal
    */
   public handleChange(source: DesignSystem, name: string): void {
     if (!this.cardBackgroundColor) {
-      this.backgroundColor = neutralFillCard(source);
+      if (this.neutralBaseColor) {
+        this.backgroundColor = neutralFillCard(this.designSystem as DesignSystem);
+      } else {
+        this.backgroundColor = neutralFillCard(source);
+      }
     }
   }
 

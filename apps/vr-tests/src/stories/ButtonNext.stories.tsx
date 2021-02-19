@@ -9,6 +9,7 @@ import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 storiesOf('Button Next', module)
   .addDecorator(FabricDecorator)
+  .addDecorator(withCompatThemeProvider())
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -39,9 +40,9 @@ storiesOf('Button Next', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => <Button ghost>Hello, world</Button>)
-  .addStory('Ghost Disabled', () => (
-    <Button disabled ghost>
+  .addStory('Subtle', () => <Button subtle>Hello, world</Button>)
+  .addStory('Subtle Disabled', () => (
+    <Button disabled subtle>
       Hello, world
     </Button>
   ))
@@ -130,13 +131,13 @@ storiesOf('Button Next - With icon before content', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button ghost icon="X">
+  .addStory('Subtle', () => (
+    <Button subtle icon="X">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <Button disabled subtle icon="X">
       Hello, world
     </Button>
   ))
@@ -196,13 +197,13 @@ storiesOf('Button Next - With icon after content', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button ghost icon="X" iconPosition="after">
+  .addStory('Subtle', () => (
+    <Button subtle icon="X" iconPosition="after">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button disabled ghost icon="X" iconPosition="after">
+  .addStory('Subtle Disabled', () => (
+    <Button disabled subtle icon="X" iconPosition="after">
       Hello, world
     </Button>
   ))
@@ -262,13 +263,13 @@ storiesOf('Button Next - Circular', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button circular ghost icon="X">
+  .addStory('Subtle', () => (
+    <Button circular subtle icon="X">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button circular disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <Button circular disabled subtle icon="X">
       Hello, world
     </Button>
   ))
@@ -328,13 +329,13 @@ storiesOf('Button Next - Icon only', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button iconOnly ghost icon="X">
+  .addStory('Subtle', () => (
+    <Button iconOnly subtle icon="X">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button iconOnly disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <Button iconOnly disabled subtle icon="X">
       Hello, world
     </Button>
   ))
@@ -394,13 +395,13 @@ storiesOf('Button Next - Block', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button block ghost icon="X">
+  .addStory('Subtle', () => (
+    <Button block subtle icon="X">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button block disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <Button block disabled subtle icon="X">
       Hello, world
     </Button>
   ))
@@ -460,13 +461,13 @@ storiesOf('Button Next - Inverted', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button inverted ghost icon="X">
+  .addStory('Subtle', () => (
+    <Button inverted subtle icon="X">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button inverted disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <Button inverted disabled subtle icon="X">
       Hello, world
     </Button>
   ))
@@ -526,13 +527,13 @@ storiesOf('Button Next - Loading', module)
       Hello, world
     </Button>
   ))
-  .addStory('Ghost', () => (
-    <Button loading ghost icon="X">
+  .addStory('Subtle', () => (
+    <Button loading subtle icon="X">
       Hello, world
     </Button>
   ))
-  .addStory('Ghost Disabled', () => (
-    <Button loading disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <Button loading disabled subtle icon="X">
       Hello, world
     </Button>
   ))
@@ -634,9 +635,9 @@ storiesOf('Button Next - With styled icon from react-icons via tokens', module)
   .addStory('Primary Disabled', () => (
     <Button primary disabled icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ))
-  .addStory('Ghost', () => <Button ghost icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
-  .addStory('Ghost Disabled', () => (
-    <Button disabled ghost icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
+  .addStory('Subtle', () => <Button subtle icon={<AddIcon />} tokens={{ iconSize: '30px' }} />)
+  .addStory('Subtle Disabled', () => (
+    <Button disabled subtle icon={<AddIcon />} tokens={{ iconSize: '30px' }} />
   ))
   .addStory('Transparent', () => (
     <Button transparent icon={<AddIcon />} tokens={{ iconSize: '30px' }} />

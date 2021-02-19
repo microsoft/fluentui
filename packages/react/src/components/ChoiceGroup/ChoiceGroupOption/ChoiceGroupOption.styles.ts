@@ -1,9 +1,4 @@
-import {
-  HighContrastSelector,
-  IStyle,
-  getGlobalClassNames,
-  getEdgeChromiumNoHighContrastAdjustSelector,
-} from '../../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
@@ -185,9 +180,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         [HighContrastSelector]: {
           borderColor: 'GrayText',
           background: 'Window',
+          ...getHighContrastNoAdjustStyle(),
         },
-        // eslint-disable-next-line deprecation/deprecation
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     checked && {
@@ -196,9 +190,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         [HighContrastSelector]: {
           borderColor: 'Highlight',
           background: 'Window',
+          forcedColorAdjust: 'none',
         },
-        // eslint-disable-next-line deprecation/deprecation
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     (hasIcon || hasImage) && {
@@ -234,9 +227,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight',
+          forcedColorAdjust: 'none',
         },
-        // eslint-disable-next-line deprecation/deprecation
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     checked &&
@@ -360,9 +352,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
             selectors: {
               [HighContrastSelector]: {
                 color: 'GrayText',
+                ...getHighContrastNoAdjustStyle(),
               },
-              // eslint-disable-next-line deprecation/deprecation
-              ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },
         },

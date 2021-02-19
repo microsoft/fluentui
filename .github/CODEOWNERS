@@ -27,13 +27,20 @@ yarn.lock @ecraig12345 @dzearing @xugao
 *.yml @ecraig12345
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
-LICENSE @ecraig12345
-.git* @ecraig12345
 .codesandbox @ecraig12345
+.devops @ecraig12345
 .eslintrc.* @ecraig12345
+.gitattributes @ecraig12345
+.githooks @ecraig12345
+.gitignore @ecraig12345
 .npmrc @ecraig12345
 .npmignore @ecraig12345
+.vscode @ecraig12345
 sizeauditor.json @aftab-hassan @ecraig12345
+
+#### Repo stuff
+LICENSE @justSlone
+.github @justSlone
 
 #### Fluent UI N*
 packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
@@ -46,7 +53,7 @@ packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
 #### Apps
 # component-demo/
 public-docsite/ @ecraig12345
-public-docsite-resources/ @ecraig12345
+public-docsite-resources/ @ecraig12345 @justSlone
 perf-test/ @JasonGore @xugao
 # ssr-tests/
 # test-bundle-button/ @dzearing
@@ -71,11 +78,12 @@ packages/style-utilities/src/interfaces/ @phkuo @xugao
 packages/style-utilities/src/styles/ @phkuo @xugao
 packages/theme/ @dzearing @xugao
 packages/react-theme-provider/ @dzearing @xugao
-packages/react-stylesheets/ @dzearing @xugao
 packages/react-monaco-editor/ @ecraig12345
 # packages/utilities/
 packages/utilities/positioning/ @joschect
 packages/azure-themes/ @hyoshis @Jacqueline-ms @wsmd
+packages/make-styles/ @layershifter
+packages/react-make-styles/ @layershifter
 
 ### Fabric
 # common/
@@ -90,6 +98,7 @@ packages/react-button/ @dzearing @khmakoto
 packages/react-cards/ @khmakoto
 packages/react-checkbox/ @khmakoto @xugao
 packages/react-focus/src/components/FocusZone/ @khmakoto
+packages/react-image/ @kubkon @layershifter
 packages/react-link/ @khmakoto
 packages/react-slider/ @joschect
 packages/react-tabs/ @behowell

@@ -81,6 +81,9 @@ export enum FirstWeekOfYear {
 export const formatDay: (date: Date) => string;
 
 // @public
+export const formatMonth: (date: Date, strings: IDateGridStrings) => string;
+
+// @public
 export const formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
 
 // @public
@@ -156,6 +159,7 @@ export interface ICalendarStrings extends IDateGridStrings {
 // @public (undocumented)
 export interface IDateFormatting {
     formatDay: (date: Date) => string;
+    formatMonth: (date: Date, strings: IDateGridStrings) => string;
     formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
     formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
     formatYear: (date: Date) => string;

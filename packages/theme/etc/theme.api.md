@@ -14,35 +14,6 @@ export const AnimationStyles: IAnimationStyles;
 // @public
 export const AnimationVariables: IAnimationVariables;
 
-// @public
-export type ColorTokens = ColorTokenSet & {
-    checked?: ColorTokenSet;
-    checkedHovered?: ColorTokenSet;
-    checkedPressed?: ColorTokenSet;
-    disabled?: ColorTokenSet;
-    expanded?: ColorTokenSet;
-    focused?: ColorTokenSet;
-    hovered?: ColorTokenSet;
-    pressed?: ColorTokenSet;
-    selected?: ColorTokenSet;
-};
-
-// @public
-export type ColorTokenSet = {
-    background?: string;
-    contentColor?: string;
-    secondaryContentColor?: string;
-    linkColor?: string;
-    iconColor?: string;
-    menuIconColor?: string;
-    borderColor?: string;
-    dividerColor?: string;
-    focusColor?: string;
-    focusInnerColor?: string;
-    opacity?: string;
-    highContrast?: ColorTokens;
-};
-
 // @public (undocumented)
 export namespace CommunicationColors {
     const // (undocumented)
@@ -71,7 +42,6 @@ export type ComponentsStyles = {
 // @public
 export interface ComponentStyles {
     styles?: IStyleFunctionOrObject<any, any>;
-    variants?: Variants;
 }
 
 // @public (undocumented)
@@ -166,13 +136,6 @@ export namespace FontSizes {
 }
 
 // @public (undocumented)
-export type FontTokens = Partial<{
-    fontFamily: string;
-    fontSize: string;
-    fontWeight: string;
-}>;
-
-// @public (undocumented)
 export namespace FontWeights {
     const // (undocumented)
     light: IFontWeight;
@@ -185,9 +148,6 @@ export namespace FontWeights {
     const // (undocumented)
     bold: IFontWeight;
 }
-
-// @public
-export function getTokens(theme: Theme, userTokens?: RecursivePartial<Tokens>): RecursivePartial<Tokens>;
 
 // @public
 export interface IAnimationStyles {
@@ -753,16 +713,7 @@ export interface PartialTheme {
     //
     // (undocumented)
     spacing?: Partial<ISpacing>;
-    // @internal
-    stylesheets?: string[];
-    // @internal
-    tokens?: RecursivePartial<Tokens>;
 }
-
-// @public
-export type RecursivePartial<T> = {
-    [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
-};
 
 // @public (undocumented)
 export function registerDefaultFontFaces(baseUrl: string): void;
@@ -840,9 +791,6 @@ export namespace SharedColors {
 }
 
 // @public
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
-
-// @public
 export interface Theme extends IScheme {
     components?: ComponentsStyles;
     // @internal
@@ -851,31 +799,7 @@ export interface Theme extends IScheme {
     schemes?: {
         [P in ISchemeNames]?: IScheme;
     };
-    // @internal
-    stylesheets?: string[];
-    // @internal
-    tokens?: RecursivePartial<Tokens>;
 }
-
-// @public (undocumented)
-export interface Tokens {
-    // (undocumented)
-    [key: string]: TokenSetType;
-    // (undocumented)
-    color: {
-        body: ColorTokens & TokenSetType;
-        brand: ColorTokens & TokenSetType;
-        [key: string]: TokenSetType;
-    };
-}
-
-// @public
-export type TokenSetType = {
-    [key: string]: TokenSetType | string | number | undefined;
-};
-
-// @public
-export type Variants = Record<string, any>;
 
 
 // (No @packageDocumentation comment for this package)

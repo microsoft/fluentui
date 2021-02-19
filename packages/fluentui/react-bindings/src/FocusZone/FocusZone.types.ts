@@ -1,8 +1,6 @@
 import { FocusZoneDirection, FocusZoneProperties, FocusZoneTabbableElements } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import { FocusZone } from './FocusZone';
-
 /**
  * FocusZone component class interface.
  */
@@ -166,7 +164,7 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    * Callback called when "focus" event triggered in FocusZone.
    * @param event - React's original FocusEvent.
    */
-  onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.
