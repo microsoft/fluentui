@@ -54,7 +54,7 @@ describe('Tree keyboard navigation', () => {
     await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(1), 'T'); // expect focus to be on 'Tywin'
     await e2e.isFocused(selectors.treeItemAt(2));
 
-    await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'т'); // expect focus to be on 'тирион'
+    await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), '-'); // expect focus to be on '-tyrion'
     await e2e.isFocused(selectors.treeTitleAt(5));
 
     await e2e.waitForSelectorAndPressKey(selectors.treeItemAt(2), 'F'); // expect focus to stay because no node is start with 'F'

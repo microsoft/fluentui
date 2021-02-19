@@ -20,7 +20,7 @@ const items = [
           },
           {
             id: 'tyrion',
-            title: 'тирион',
+            title: '-tyrion',
           },
         ],
       },
