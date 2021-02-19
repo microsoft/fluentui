@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
+import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -136,8 +136,11 @@ storiesOf('DocumentCard', module)
   ));
 
 storiesOf('DocumentCard', module)
-  // FIXME: Decorator duplication problem
-  .addDecorator(FabricDecoratorFullWidth)
+  // FIXME: SB6 duplicates same story ID decorators
+  // This is a temporary fix until we migrate to CSF format duplication problem
+  // - previously this used FabricDecoratorFullWidth
+  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'full' }))
+
   .addDecorator(story =>
     // prettier-ignore
     <Screener
