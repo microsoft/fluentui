@@ -122,7 +122,7 @@ function Component() {
 These changes result in performance improvements in `makeOveriddes`:
 
 - matcher functions are no longer executed on each render in styling functions
-- we are not executing or merging styles until slots are present
+- styles are executed and merged only when slots are present
 - less React hooks to call for slots
 
 Surprisingly, this also moves us closer to [CSS Modules](https://github.com/css-modules/css-modules). The same snippet with CSS Modules, for example:
