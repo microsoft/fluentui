@@ -98,7 +98,7 @@ function Component() {
   return (
     <div
       className={ax(
-        classes.root /* the matchers idea is still there */,
+        classes.root /* The concept of matching is replaced with selective classname concat */,
         props.primary && classes.rootPrimary,
         props.className
       )}
