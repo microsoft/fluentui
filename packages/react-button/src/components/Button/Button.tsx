@@ -5,31 +5,6 @@ import { renderButton } from './renderButton';
 import { useButtonClasses } from './useButtonClasses'
 
 /**
- * Note, this file is written as a monolith for now to ease development.
- * It will be split to separate files later.
- */
-
-// =================================================
-// Types
-// =================================================
-
-
-// type Slot = {
-//   className?: string;
-//   children?: React.ReactChildren | Array<React.ReactChildren>;
-// };
-//
-// type ButtonState = {
-//   icon?: Slot;
-//   content?: Slot;
-//   className?: string;
-// };
-
-// =================================================
-// Theme Values
-// =================================================
-
-/**
  * Define a styled Button, using the `useButton` hook.
  * {@docCategory Button}
  */
