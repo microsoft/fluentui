@@ -27,7 +27,7 @@ I will use `makeOverrides()` and `makeStyles()` for naming in this RFC to avoid 
 
 ## Problem statement
 
-`makeStyles()` implementation has two problems that will cause issues at scale: matchers and missing slots. A snippet below will be used to highlight issues:
+`makeStyles()` implementation has two problems that will cause issues at scale: matchers and missing slots. The snippet below highlights these issues:
 
 ```tsx
 import { ax, makeStyles } from "@fluentui/react-make-styles";
