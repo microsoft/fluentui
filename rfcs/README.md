@@ -46,7 +46,7 @@ Once the RFC has been open for **at least 2 days**, and recieved sufficent comme
 
 We're still working through details for approval, below are the current guidelines.
 
-Following the theme of author accountability, in general it's up to the author to decide when they feel they have recieved enough feedback, and enough approvals to proceed.
+Following the theme of author accountability, in general it's up to the author to decide when they feel they have received enough feedback, and enough approvals to proceed.
 
 - When in doubt, seek **at least 2 approvals** before merging the RFC.
 
