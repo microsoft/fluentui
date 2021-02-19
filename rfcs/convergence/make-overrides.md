@@ -65,10 +65,12 @@ To compute classnames we need to understand what styles should be applied and th
 
 This moves us to a next issue: there is no way to define styles for multiple slots/components with a single call of the `makeStyles()`. Each slot will require a separate call of `makeStyles()`. Since these calls are represented by React hooks we can't bail out even if these slots  are not rendered.
 
-_Side note:_ Initially we have been focused on implementation of atomic CSS and merging style definitions. As a source for inspirations we have used [Facebook stylex talk](https://www.youtube.com/watch?v=9JZHodNR184):
+_Side note:_
 
-- there was nothing like [`ax()`](https://github.com/microsoft/fluentui/pull/16411) function to merge atomic classes.
-- there was no contextual RTL support (parts of app can be rendered with different text directions)
+> Initially we have been focused on implementation of atomic CSS and merging style definitions. As a source for inspirations we have used [Facebook stylex talk](https://www.youtube.com/watch?v=9JZHodNR184):
+>
+> - there was nothing like [`ax()`](https://github.com/microsoft/fluentui/pull/16411) function to merge atomic classes
+> - there was no contextual RTL support (parts of app can be rendered with different text directions)
 
 ## Detailed Design or Proposal
 
