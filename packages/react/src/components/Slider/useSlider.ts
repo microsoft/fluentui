@@ -107,7 +107,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   // Ensure that value is always a number and is clamped by min/max.
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
-  const lowerValue = Math.max(min, Math.min(max, unclampedLowerValue || 0));
+  const lowerValue = Math.max(min, Math.min(value, unclampedLowerValue || 0));
 
   const id = useId('Slider');
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
@@ -318,7 +318,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
   const lowerValueThumbRef = React.useRef<HTMLSpanElement>(null);
   const thumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, ranged ? lowerValueThumbRef : thumbRef, value, [lowerValue, value]);
+  useComponentRef(props, (ranged && !vertical) ? lowerValueThumbRef : thumbRef, value, [lowerValue, value]);
   const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
   const getTrackStyles = getLineSectionStylesFn(vertical);
   const originValue = originFromZero ? 0 : min;
@@ -351,7 +351,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     disabled,
   };
 
-  const lowerValueLabelProps = showValue && {
+  const lowerValueLabelProps = ranged && showValue && {
     className: classNames.valueLabel,
     children: valueFormat ? valueFormat(lowerValue!) : lowerValue,
     disabled,

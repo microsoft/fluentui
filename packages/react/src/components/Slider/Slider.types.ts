@@ -104,7 +104,8 @@ export interface ISliderProps
   ariaLabel?: string;
 
   /**
-   * Whether the slider is a range Slider
+   * If `ranged` is true, display two thumbs that allow the lower and upper bounds of a range to be selected.
+   * The lower bound is defined by `lowerValue`, and the upper bound is defined by `value`.
    */
   ranged?: boolean;
 
