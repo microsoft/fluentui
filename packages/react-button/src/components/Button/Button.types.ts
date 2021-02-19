@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
-import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
+import { RecursivePartial, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
-/**
- * {@docCategory Button}
- */
 export type ButtonProps = ComponentProps &
   React.HTMLAttributes<HTMLElement> & {
     /**
@@ -13,30 +10,6 @@ export type ButtonProps = ComponentProps &
      * taking in the original slot component and props.
      */
     icon?: ShorthandProps;
-
-    /**
-     * Shorthand loader content within the button.
-     */
-    loader?: ShorthandProps;
-
-    /**
-     * Shorthand children content within the button.
-     */
-    content?: ShorthandProps;
-
-    /**
-     * Defines the href to navigate to. If applied, will render the button as an anchor
-     * element by default, unless `as` specifies otherwise. Note that specifying an href
-     * and a non-anchor as the render type will prevent the Button from behaving like a
-     * hyperlink and opening the href on click.
-     */
-    href?: string;
-
-    /**
-     * Defines the target window to open the href in. Only is applied if the button renders
-     * as an anchor tag, which is the default behavior if href is provided.
-     */
-    target?: string;
 
     /** A button can appear circular. */
     circular?: boolean;
@@ -69,20 +42,6 @@ export type ButtonProps = ComponentProps &
     /** A button can show a loading indicator. */
     loading?: boolean;
 
-    /**
-     * Called after a user clicks the button.
-     * @param event - React's original SyntheticEvent.
-     * @param data - All props.
-     */
-    // onClick?: ComponentEventHandler<ButtonProps>;
-
-    /**
-     * Called after a user focuses the button.
-     * @param event - React's original SyntheticEvent.
-     * @param data - All props.
-     */
-    // onFocus?: ComponentEventHandler<ButtonProps>;
-
     /** A button can emphasize that it represents the primary action. */
     primary?: boolean;
 
@@ -109,67 +68,50 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
-  'data-is-focusable': boolean;
   ref: React.RefObject<HTMLButtonElement>;
 }
 
-/**
- * {@docCategory Button}
- */
-export type ButtonTokens = ColorTokens &
-  FontTokens & {
-    padding?: string;
-    paddingLeft?: string;
-    paddingRight?: string;
-    paddingTop?: string;
-    paddingBottom?: string;
-    margin?: string;
-    height?: string;
-    minWidth?: string;
-    maxWidth?: string;
-    minHeight?: string;
-    contentGap?: string;
-    iconSize?: string;
-    borderRadius?: string;
-    borderTopLeftRadius?: string;
-    borderTopRightRadius?: string;
-    borderBottomLeftRadius?: string;
-    borderBottomRightRadius?: string;
-    borderWidth?: string;
-    boxShadow?: string;
-    width?: string;
+export type ButtonStyleSelectors = {
+  iconOnly?: boolean;
+  primary?: boolean;
+  size?: string;
+  textOnly?: boolean;
+  textWithIcon?: boolean;
+};
 
-    forcedColorAdjust?: string;
+export type ButtonVariants = 'base' | 'textOnly' | 'iconOnly' | 'primary' | 'small' | 'large';
 
-    transform?: string;
-    transition?: string;
+export type ButtonTokens = {
+  // TODO: these are not in the global/alias theme currently
+  height: string;
+  paddingX: string;
+  paddingY: string;
+  minWidth: string;
+  maxWidth: string;
 
-    /* sizing */
-    size?: {
-      smallest?: string;
-      smaller?: string;
-      small?: string;
-      regular?: string;
-      large?: string;
-      larger?: string;
-      largest?: string;
-    };
+  // TODO: what do we want to do with tokens for slots, just prefix them with slot name?
+  iconWidth: string;
+  iconHeight: string;
+  iconSpacing: string;
 
-    pressed?: {
-      transform?: string;
-      transition?: string;
-    };
-  };
+  color: string;
+  content2Color: string;
 
-/**
- * {@docCategory Button}
- */
-export type ButtonVariants<TTokens = ButtonTokens> = {
-  root?: TTokens;
-  block?: TTokens;
-  circular?: TTokens;
-  iconOnly?: TTokens;
-  ghost?: TTokens;
-  primary?: TTokens;
-  transparent?: TTokens;
+  background: string;
+  backgroundHover: string;
+  backgroundPressed: string;
+  backgroundActive: string;
+
+  borderColor: string;
+  borderColorHover: string;
+  borderColorActive: string;
+  borderWidth: string;
+  borderRadius: string;
+
+  shadow: string;
+  shadowPressed: string;
+};
+
+export type ButtonVariantTokens = {
+  [variant in ButtonVariants]: Partial<ButtonTokens>;
 };

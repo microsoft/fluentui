@@ -24,6 +24,8 @@ const SVGIcon = () => (
   </span>
 );
 
+export const Default = () => <AppearanceExample />;
+
 //
 // Anatomy & Layout
 //
@@ -85,7 +87,6 @@ const AppearanceExample = (props: ButtonProps) => (
 );
 
 export const Primary = () => <AppearanceExample primary />;
-export const Default = () => <AppearanceExample />;
 
 //
 // States

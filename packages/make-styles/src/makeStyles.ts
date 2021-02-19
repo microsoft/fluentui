@@ -8,20 +8,6 @@ import {
   MakeStylesResolvedDefinition,
 } from './types';
 
-class UsedVariables {
-  public tokens: Record<string, boolean> = {};
-  public addUsed(vars: string[]) {
-    vars.forEach(v => {
-      this.tokens[v] = true;
-    });
-  }
-  public addOther(vars: string[]) {
-    vars.forEach(v => {
-      this.tokens[v] = this.tokens[v] ?? false;
-    });
-  }
-}
-
 export function makeStyles<Selectors, Tokens>(
   definitions: MakeStylesDefinition<Selectors, Tokens>[],
   unstable_cssPriority: number = 0,
@@ -43,9 +29,6 @@ export function makeStyles<Selectors, Tokens>(
     //         unstable_cssPriority,
     //       );
     // } else {
-    const { debug } = options;
-    // DEBUG // console.groupCollapsed(`computeClasses[${debug?.debugId}]`);
-
     const tokens = CAN_USE_CSS_VARIABLES ? createCSSVariablesProxy(options.tokens) : options.tokens;
     const resolvedDefinitions = resolveDefinitions(
       (definitions as unknown) as MakeStylesResolvedDefinition<Selectors, Tokens>[],
@@ -57,46 +40,14 @@ export function makeStyles<Selectors, Tokens>(
     let matchedIndexes = '';
     const matchedDefinitions: MakeStylesMatchedDefinitions[] = [];
 
-    const usedVariables = new UsedVariables();
-
     for (let i = 0, l = resolvedDefinitions.length; i < l; i++) {
       const matcherFn = resolvedDefinitions[i][0];
 
-      const referencedVars: string[] = [];
-      Object.keys(resolvedDefinitions[i][2])
-        .map(key => resolvedDefinitions[i][2][key][1])
-        .reduce((sum, style) => {
-          const regexp = RegExp('\\Wvar\\s*\\(\\s*(--[\\w-]+)', 'g');
-          let match;
-          while ((match = regexp.exec(style)) !== null) {
-            sum.add(match[1]);
-          }
-          return sum;
-        }, new Set())
-        .forEach(cssVar => referencedVars.push(cssVar));
-
       if (matcherFn === null || matcherFn(selectors)) {
-        // DEBUG // console.group(`%c HIT - ${debug?.debugId} matcher:`, 'color: green', matcherFn, {
-        // DEBUG //   definition: resolvedDefinitions[i][2],
-        // DEBUG // });
-        usedVariables.addUsed(referencedVars);
-
         matchedDefinitions.push(resolvedDefinitions[i][2]);
         matchedIndexes += i;
-      } else {
-        // DEBUG // console.group(`%c MISS ${debug?.debugId} matcher:`, 'color: red', matcherFn, {
-        // DEBUG //   definition: resolvedDefinitions[i][2],
-        // DEBUG // });
-        usedVariables.addOther(referencedVars);
       }
-      // DEBUG // console.log(referencedVars);
-      // DEBUG // console.groupEnd();
     }
-
-    if (debug?.tokens) {
-      debug.tokens = usedVariables.tokens;
-    }
-    // DEBUG // console.groupEnd();
 
     const cxCacheKey = options.renderer.id + matchedIndexes;
     const cxCacheElement = cxCache[cxCacheKey];
