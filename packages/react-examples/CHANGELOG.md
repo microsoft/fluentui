@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.5)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.4..@fluentui/react-examples_v8.0.0-beta.5)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v0.11.1 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-text to v0.1.8 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-theme to v0.3.2 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Button: Renaming ghost prop to subtle. ([PR #17058](https://github.com/microsoft/fluentui/pull/17058) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.4)
 

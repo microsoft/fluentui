@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.34)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.33..@fluentui/react-button_v1.0.0-beta.34)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v0.3.1 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Button: Renaming ghost prop to subtle. ([PR #17058](https://github.com/microsoft/fluentui/pull/17058) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.33)
 

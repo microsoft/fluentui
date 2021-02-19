@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Renaming ghost prop to subtle.",
-  "packageName": "@fluentui/react-button",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch"
-}

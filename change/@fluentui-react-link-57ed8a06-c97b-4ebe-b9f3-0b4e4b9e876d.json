@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Allow React 17 in peerDependencies",
-  "packageName": "@fluentui/react-link",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

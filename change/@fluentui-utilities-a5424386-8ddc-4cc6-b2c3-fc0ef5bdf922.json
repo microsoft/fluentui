@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Allow React 17 in peerDependencies",
-  "packageName": "@fluentui/react-tabs",
+  "comment": "Remove unused prop-types dependencies",
+  "packageName": "@fluentui/utilities",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "Allow React 17 in peerDependencies",
-  "packageName": "@fluentui/react-button",
+  "comment": "Built files use commonjs only.",
+  "packageName": "@fluentui/test-utilities",
   "email": "elcraig@microsoft.com",
   "dependentChangeType": "patch"
 }

@@ -34,7 +34,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/test-utilities": "^8.0.0-beta.7",
+    "@fluentui/test-utilities": "^8.0.0-beta.8",
     "@types/stylis": "^4.0.0",
     "prettier": "~1.19.1"
   },
