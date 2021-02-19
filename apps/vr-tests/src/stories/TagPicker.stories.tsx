@@ -33,7 +33,6 @@ storiesOf('TagPicker', module)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -83,6 +82,7 @@ storiesOf('TagPicker', module)
   );
 
 storiesOf('TagPicker', module)
+  // FIXME: Decorator duplication problem
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>

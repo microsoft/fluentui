@@ -136,6 +136,7 @@ storiesOf('DocumentCard', module)
   ));
 
 storiesOf('DocumentCard', module)
+  // FIXME: Decorator duplication problem
   .addDecorator(FabricDecoratorFullWidth)
   .addDecorator(story =>
     // prettier-ignore

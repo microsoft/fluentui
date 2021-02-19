@@ -67,6 +67,7 @@ storiesOf('SpinButton', module)
 
 // The stories for label placement are separate since they don't need to include hover/click states
 storiesOf('SpinButton', module)
+  // FIXME: Decorator duplication problem
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
