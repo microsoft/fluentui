@@ -69,9 +69,9 @@ describe('Slider', () => {
     expect(onChange.mock.calls.length).toEqual(1);
   });
 
-  it('calls onRangeChange when range slider range changes', () => {
-    const onRangeChange = jest.fn();
-    wrapper = mount(<Slider onRangeChange={onRangeChange} defaultValue={5} ranged />);
+  it('calls onChange when range slider range changes', () => {
+    const onChange = jest.fn();
+    wrapper = mount(<Slider onChange={onChange} defaultValue={5} ranged />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -92,12 +92,12 @@ describe('Slider', () => {
       clientY: 0,
     });
     // Default min is 0.
-    expect(onRangeChange.mock.calls.length).toEqual(1);
+    expect(onChange.mock.calls.length).toEqual(1);
   });
 
-  it('does not call onRangeChange when ranged is false', () => {
-    const onRangeChange = jest.fn();
-    wrapper = mount(<Slider onRangeChange={onRangeChange} defaultValue={5} />);
+  it('does not call onChange with range when ranged is false', () => {
+    const onChange = jest.fn();
+    wrapper = mount(<Slider onChange={onChange} defaultValue={5} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -117,8 +117,8 @@ describe('Slider', () => {
       clientX: 0,
       clientY: 0,
     });
-    // Default min is 0.
-    expect(onRangeChange.mock.calls.length).toEqual(0);
+
+    expect(onChange.mock.calls[0][1]).toBeUndefined();
   });
 
   it('can slide to default min/max and execute onChange', () => {
@@ -162,11 +162,11 @@ describe('Slider', () => {
 
   it('updates the upper value thumb when click to the right side of it', () => {
     let range;
-    const onRangeChange = (val: [number, number]) => {
-      range = val;
+    const onChange = (val: number, range: [number, number]) => {
+      range = range;
     };
 
-    wrapper = mount(<Slider onRangeChange={onRangeChange} ranged defaultValue={5} />);
+    wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -191,11 +191,11 @@ describe('Slider', () => {
 
   it('updates the upper value thumb when click close to it', () => {
     let range;
-    const onRangeChange = (val: [number, number]) => {
-      range = val;
+    const onChange = (val: number, range: [number, number]) => {
+      range = range;
     };
 
-    wrapper = mount(<Slider onRangeChange={onRangeChange} ranged defaultValue={5} />);
+    wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -220,11 +220,11 @@ describe('Slider', () => {
 
   it('updates the lower value thumb when click close to it', () => {
     let range;
-    const onRangeChange = (val: [number, number]) => {
-      range = val;
+    const onChange = (val: number, range: [number, number]) => {
+      range = range;
     };
 
-    wrapper = mount(<Slider onRangeChange={onRangeChange} ranged defaultValue={5} />);
+    wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -249,11 +249,11 @@ describe('Slider', () => {
 
   it('updates the lower value thumb when click to the left of it', () => {
     let range;
-    const onRangeChange = (val: [number, number]) => {
-      range = val;
+    const onChange = (val: number, range: [number, number]) => {
+      range = range;
     };
 
-    wrapper = mount(<Slider onRangeChange={onRangeChange} ranged defaultValue={5} />);
+    wrapper = mount(<Slider onChange={onChange} ranged defaultValue={5} />);
 
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
@@ -473,12 +473,12 @@ describe('Slider', () => {
     expect(onChange.mock.calls[0][0]).toEqual(2);
   });
 
-  it('calls onRangeChange with correct value when controlled', () => {
+  it('calls onChange with correct range when controlled', () => {
     const slider = React.createRef<ISlider>();
-    const onRangeChange = jest.fn();
+    const onChange = jest.fn();
 
     wrapper = mount(
-      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onRangeChange={onRangeChange} ranged />,
+      <Slider label="slider" componentRef={slider} value={3} min={0} max={100} onChange={onChange} ranged />,
     );
     const sliderSlideBox = wrapper.find('.ms-Slider-slideBox');
 
@@ -486,8 +486,8 @@ describe('Slider', () => {
 
     expect(slider.current?.value).toEqual(3);
 
-    // Get the first argument passed into the call
-    expect(onRangeChange.mock.calls[0][0]).toEqual([0, 2]);
+    // Get the second argument passed into the call
+    expect(onChange.mock.calls[0][1]).toEqual([0, 2]);
   });
 
   it('calls onChange on multiple calls with correct value when controlled', () => {

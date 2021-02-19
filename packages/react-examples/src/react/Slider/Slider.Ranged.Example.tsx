@@ -9,7 +9,7 @@ const sliderValueFormat = (value: number) => `${value}%`;
 export const SliderRangedExample: React.FunctionComponent = () => {
   const [sliderValue, setSliderValue] = React.useState(0);
   const [sliderLowerValue, setSliderLowerValue] = React.useState(0);
-  const onRangeChange = (range: [number, number]) => {
+  const onChange = (_: any, range: [number, number]) => {
     setSliderLowerValue(range[0]);
     setSliderValue(range[1]);
   };
@@ -26,7 +26,7 @@ export const SliderRangedExample: React.FunctionComponent = () => {
           lowerValue={sliderLowerValue}
           showValue
           // eslint-disable-next-line react/jsx-no-bind
-          onRangeChange={onRangeChange}
+          onChange={onChange}
         />
         <Slider
           label="Example with formatted value"

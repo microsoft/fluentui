@@ -13,8 +13,6 @@ import {
 } from '@fluentui/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-const MIN_PREFIX = 'min';
-const MAX_PREFIX = 'max';
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
@@ -95,15 +93,17 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const [unclampedValue, setValue] = useControllableValue(
     props.value,
     props.defaultValue,
-    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
+    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) =>
+      props.onChange?.(v!, ranged ? [lowerValue, v!] : undefined),
   );
   const [unclampedLowerValue, setLowerValue] = useControllableValue(
     props.lowerValue,
     props.defaultLowerValue,
-    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
+    (ev: React.FormEvent<HTMLElement> | undefined, lv: ISliderProps['lowerValue']) =>
+      props.onChange?.(value, [lv!, value]),
   );
 
-  const shouldChangeLowerValueRef = React.useRef<boolean>(false);
+  const isAdjustingLowerValueRef = React.useRef<boolean>(false);
 
   // Ensure that value is always a number and is clamped by min/max.
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
@@ -164,15 +164,13 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
 
     if (ranged) {
       // decided which thumb value to change
-      if (shouldChangeLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
+      if (isAdjustingLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
         setLowerValue(roundedValue);
-        props.onRangeChange?.([roundedValue, value]);
       } else if (
-        !shouldChangeLowerValueRef.current &&
+        !isAdjustingLowerValueRef.current &&
         (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
       ) {
         setValue(roundedValue);
-        props.onRangeChange?.([lowerValue, roundedValue]);
       }
     } else {
       setValue(roundedValue);
@@ -180,7 +178,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const onKeyDown = (event: KeyboardEvent): void => {
-    let newCurrentValue: number | undefined = shouldChangeLowerValueRef.current ? lowerValue : value;
+    let newCurrentValue: number | undefined = isAdjustingLowerValueRef.current ? lowerValue : value;
     let diff: number | undefined = 0;
     // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
@@ -275,9 +273,9 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       const newRenderedValue = min! + step! * currentSteps!;
 
       if (newRenderedValue <= lowerValue || newRenderedValue - lowerValue <= value - newRenderedValue) {
-        shouldChangeLowerValueRef.current = true;
+        isAdjustingLowerValueRef.current = true;
       } else {
-        shouldChangeLowerValueRef.current = false;
+        isAdjustingLowerValueRef.current = false;
       }
     }
 
@@ -305,7 +303,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const onThumbFocus = (event: MouseEvent | TouchEvent): void => {
-    shouldChangeLowerValueRef.current = event.target === lowerValueThumbRef.current;
+    isAdjustingLowerValueRef.current = event.target === lowerValueThumbRef.current;
   };
 
   const disposeListeners = (): void => {
@@ -415,12 +413,12 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       ...sliderProps,
       ...eventProps,
       ...onFocusProp,
-      id: `${MAX_PREFIX}-${id}`,
+      id: `max-${id}`,
       'aria-valuemin': lowerValue,
       'aria-valuemax': max,
       'aria-valuenow': value,
       'aria-valuetext': getAriaValueText(value),
-      'aria-label': `${MAX_PREFIX} ${ariaLabel || label}`,
+      'aria-label': `max ${ariaLabel || label}`,
     }),
   };
 
@@ -432,12 +430,12 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         ...sliderProps,
         ...eventProps,
         ...onFocusProp,
-        id: `${MIN_PREFIX}-${id}`,
+        id: `min-${id}`,
         'aria-valuemin': min,
         'aria-valuemax': value,
         'aria-valuenow': lowerValue,
         'aria-valuetext': getAriaValueText(lowerValue),
-        'aria-label': `${MIN_PREFIX} ${ariaLabel || label}`,
+        'aria-label': `min ${ariaLabel || label}`,
       }
     : undefined;
 

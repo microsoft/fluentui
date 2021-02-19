@@ -91,17 +91,12 @@ export interface ISliderProps
   /**
    * Callback when the value has been changed
    */
-  onChange?: (value: number) => void;
+  onChange?: (value: number, range?: [number, number]) => void;
 
   /**
    * Callback on mouse up or touch end
    */
   onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
-
-  /**
-   * Callback on range change. Only effective when ranged is set to true
-   */
-  onRangeChange?: (range: [number, number]) => void;
 
   /**
    * A description of the Slider for the benefit of screen readers.
@@ -118,6 +113,7 @@ export interface ISliderProps
    * This should be used when the Slider number value is not accurately represented by a number.
    */
   ariaValueText?: (value: number) => string;
+
   /**
    * Whether to render the slider vertically.
    * @default `false` (render horizontally)
