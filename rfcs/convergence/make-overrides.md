@@ -23,7 +23,7 @@ This RFC proposes to replace existing `makeStyles()` implementation with a new o
 
 In [microsoft/fluentui#16082](https://github.com/microsoft/fluentui/pull/16082) we have implemented a version of `makeStyles()` that uses atomic classes. Recent work on `makeOverrides()` shows significant performance improvements [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923) (around 15%) by changes in the implementation design.
 
-I will use `makeOverrides()` and `makeStyles()` for naming in this RFC to avoid confusion, but a proposal is to replace the current `makeStyles()` implementation with `makeOverrides()`.
+To avoid confusion, the names `makeOverrides()` and `makeStyles` are both used in this RFC. This RFC also proposes the replacement of `makeStyles` with the `makeOverrides` implementation.
 
 ## Problem statement
 
