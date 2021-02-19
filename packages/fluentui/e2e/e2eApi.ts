@@ -173,4 +173,6 @@ export class E2EApi {
   };
 
   public wait = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+  public evaluate = async (fn): Promise<void> => await this.page.evaluate(fn);
 }
