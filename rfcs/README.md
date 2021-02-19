@@ -37,7 +37,7 @@ A key purpose of the review phase is to seek feedback to help improve your idea.
 
 - Seek support and integrate feedback
   - It is the responsibility of the author(s) to read, consider, and respond to all feedback in a timely manner. This does not mean all feedback must be integrated into the proposal, but it must be considered.
-  - If you want to good engagement on your RFC, reserve time to respond to comments quickly.
+  - If you want to have good engagement on your RFC, reserve time to respond to comments quickly.
   - A DRAFT PR can be used to gather early feedback and support from specific reviewers
 
 Once the RFC has been open for **at least 2 days**, and received sufficient comments, the author can begin seeking approval.
