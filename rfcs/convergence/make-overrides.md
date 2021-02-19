@@ -63,7 +63,7 @@ function Component() {
 
 To compute classnames we need to understand what styles should be applied and thus execute matchers on each render as memoization of user's input is more expensive.
 
-This moves us to a next issue: there is no way to define styles for multiple slots/components at the same time in API. In this case, we will need to have a separate call of `makeStyles()` for each slot and because these calls are represented by React hooks we can't bailout even if these slots will not be rendered.
+This moves us to a next issue: there is no way to define styles for multiple slots/components with a single call of the `makeStyles()`. Each slot will require a separate call of `makeStyles()`. Since these calls are represented by React hooks we can't bail out even if these slots  are not rendered.
 
 _Side note:_ Initially we have been focused on implementation of atomic CSS and merging style definitions. As a source for inspirations we have used [Facebook stylex talk](https://www.youtube.com/watch?v=9JZHodNR184):
 
