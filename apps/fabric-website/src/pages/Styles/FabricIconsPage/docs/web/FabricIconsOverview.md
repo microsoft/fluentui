@@ -4,4 +4,4 @@ Fluent UI uses a custom font for its iconography. This font contains glyphs that
 
 ### When should I use Fluent UI icons?
 
-It is recommended to use Fluent UI icons for command bars, navigation or status indicators. If you need icons to represent Office apps, see the [Office brand icons page](#/styles/web/office-brand-icons) . If you are representing files or digital content, see the [file type icons page](#/styles/web/file-type-icons).
+It is recommended to use Fluent UI icons for command bars, navigation or status indicators. If you need icons to represent Office apps, see the [Office brand icons page](#/styles/web/office-brand-icons). If you are representing files or digital content, see the [file type icons page](#/styles/web/file-type-icons).

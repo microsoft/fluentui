@@ -1,8 +1,97 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 24 Nov 2020 12:26:56 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.16](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.16)
+
+Thu, 18 Feb 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.14..@uifabric/experiments_v7.38.16)
+
+### Patches
+
+- Update colors for the FloatingSuggestionsComposite items ([PR #17016](https://github.com/microsoft/fluentui/pull/17016) by elvonspa@microsoft.com)
+
+## [7.38.14](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.14)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.13..@uifabric/experiments_v7.38.14)
+
+### Patches
+
+- Fix bug where moue selected suggestions did not work in DefaultEditingItem ([PR #16930](https://github.com/microsoft/fluentui/pull/16930) by elvonspa@microsoft.com)
+- UnifiedPicker: Don't show picker after input is cleared ([PR #16936](https://github.com/microsoft/fluentui/pull/16936) by elvonspa@microsoft.com)
+- Use add and remove eventlistener for keydown in the UnifiedPicker ([PR #16955](https://github.com/microsoft/fluentui/pull/16955) by elvonspa@microsoft.com)
+- Deprecating Button, MenuButton, SplitButton, Slider and Toggle. ([PR #16962](https://github.com/microsoft/fluentui/pull/16962) by humbertomakotomorimoto@gmail.com)
+
+## [7.38.13](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.13)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.12..@uifabric/experiments_v7.38.13)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
+
+## [7.38.12](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.12)
+
+Wed, 10 Feb 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.9..@uifabric/experiments_v7.38.12)
+
+### Patches
+
+- Memoize callbacks to reduce UPP re-renders ([PR #16906](https://github.com/microsoft/fluentui/pull/16906) by elvonspa@microsoft.com)
+
+## [7.38.9](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.9)
+
+Thu, 04 Feb 2021 12:22:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.8..@uifabric/experiments_v7.38.9)
+
+### Patches
+
+- SelectedItemsList EditableItem should have first item selected in picker on show ([PR #16778](https://github.com/microsoft/fluentui/pull/16778) by elvonspa@microsoft.com)
+
+## [7.38.8](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.8)
+
+Wed, 03 Feb 2021 12:24:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.3..@uifabric/experiments_v7.38.8)
+
+### Patches
+
+- UnifiedPicker should select first suggestion when user begins typing ([PR #16744](https://github.com/microsoft/fluentui/pull/16744) by elvonspa@microsoft.com)
+
+## [7.38.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.3)
+
+Tue, 26 Jan 2021 12:25:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.2..@uifabric/experiments_v7.38.3)
+
+### Patches
+
+- Use role="presentation" for all <div> elements in TilesList ([PR #15965](https://github.com/microsoft/fluentui/pull/15965) by tmichon@microsoft.com)
+
+## [7.38.2](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.2)
+
+Wed, 20 Jan 2021 12:31:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.0..@uifabric/experiments_v7.38.2)
+
+### Patches
+
+- [UPP] Add controlled callbacks to EditableItem (#16535) ([PR #16540](https://github.com/microsoft/fluentui/pull/16540) by chrp@microsoft.com)
+
+## [7.38.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.0)
+
+Tue, 12 Jan 2021 12:24:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.36.16..@uifabric/experiments_v7.38.0)
+
+### Minor changes
+
+- Add a force resolve function to the UnifiedPicker ([PR #16414](https://github.com/microsoft/fluentui/pull/16414) by elvonspa@microsoft.com)
+- Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite ([PR #16436](https://github.com/microsoft/fluentui/pull/16436) by elvonspa@microsoft.com)
+
+### Patches
+
+- UnifiedPicker drop to each side of item ([PR #16413](https://github.com/microsoft/fluentui/pull/16413) by elvonspa@microsoft.com)
 
 ## [7.36.16](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.36.16)
 

@@ -1,8 +1,26 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 25 Sep 2020 12:25:17 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Feb 2021 12:25:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.18.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.18.0)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.17.0..@uifabric/styling_v7.18.0)
+
+### Minor changes
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
+
+## [7.17.0](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.17.0)
+
+Mon, 08 Feb 2021 12:26:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/styling_v7.16.8..@uifabric/styling_v7.17.0)
+
+### Minor changes
+
+- Port forced colors method to V7 ([PR #16848](https://github.com/microsoft/fluentui/pull/16848) by sareiff@microsoft.com)
 
 ## [7.16.8](https://github.com/microsoft/fluentui/tree/@uifabric/styling_v7.16.8)
 

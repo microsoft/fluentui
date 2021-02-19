@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IPickerItemProps, ISuggestionModel, ValidationState } from 'office-ui-fabric-react/lib/Pickers';
+import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IDragDropEvents, IDragDropHelper } from 'office-ui-fabric-react/lib/utilities/dragdrop/index';
 export interface ISelectedItemsList<T> {
@@ -50,6 +50,11 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
    * A list of events to register
    */
   eventsToRegister?: { eventName: string; callback: (item?: any, index?: number, event?: any) => void }[];
+
+  /**
+   * Function that specifies how arbitrary text entered into the edit input is handled.
+   */
+  createGenericItem?: (input: string) => T;
 }
 
 export type BaseSelectedItem = {
@@ -84,7 +89,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
+  createGenericItem?: (input: string) => T;
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will
    * act as a controlled component.

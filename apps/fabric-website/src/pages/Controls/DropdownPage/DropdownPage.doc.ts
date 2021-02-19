@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { DropdownPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Dropdown/Dropdown.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DropdownPage/docs/DropdownRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const DropdownPageProps: TFabricPlatformPageProps = {
   web: {

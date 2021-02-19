@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Toggle, IToggle } from '@uifabric/experiments';
 import { DefaultButton, Label, Spinner } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 export interface IToggleExampleState {
   checked: boolean;
 }

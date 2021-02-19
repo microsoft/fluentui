@@ -135,7 +135,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
   if (xAxisElement) {
     d3Select(xAxisElement)
       .call(xAxis)
-      .selectAll('text');
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -160,7 +161,8 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   if (xAxisElement) {
     d3Select(xAxisElement)
       .call(xAxis)
-      .selectAll('text');
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -189,7 +191,8 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement)
       .call(xAxis)
-      .selectAll('text');
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -252,6 +255,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     ? d3Select(yAxisElement)
         .call(yAxis)
         .selectAll('text')
+        .attr('aria-hidden', 'true')
     : '';
   return yAxisScale;
 }
@@ -371,7 +375,7 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
 }
 
 /**
- * This method used for wrapping of x axis lables (tick values).
+ * This method used for wrapping of x axis labels (tick values).
  * It breaks down given text value by space separated and calculates the total height needed to display all the words.
  * That value = removal value. This value needs to be remove from total svg height, svg will shrink and
  * total text will be displayed.

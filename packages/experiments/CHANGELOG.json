@@ -2,6 +2,173 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "@uifabric/experiments_v7.38.16",
+      "version": "7.38.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update colors for the FloatingSuggestionsComposite items",
+            "author": "elvonspa@microsoft.com",
+            "commit": "4b52a71a8e95a3cf8fcca5ac0ce2ebd52bc2f2f0",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/experiments_v7.38.14",
+      "version": "7.38.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where moue selected suggestions did not work in DefaultEditingItem",
+            "author": "elvonspa@microsoft.com",
+            "commit": "a2eb5067c179f45e6e445471b844f85bcd172ca1",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "UnifiedPicker: Don't show picker after input is cleared",
+            "author": "elvonspa@microsoft.com",
+            "commit": "2740dabc249945237f71863ebc13119542e8a6fc",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Use add and remove eventlistener for keydown in the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "11b9ea3e8a84a25fae009832c029eb398fb11b66",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Deprecating Button, MenuButton, SplitButton, Slider and Toggle.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a2a15adcff93e22af40fcce297fa937cd5a4f06b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@uifabric/experiments_v7.38.13",
+      "version": "7.38.13",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "@uifabric/experiments_v7.38.12",
+      "version": "7.38.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Memoize callbacks to reduce UPP re-renders",
+            "author": "elvonspa@microsoft.com",
+            "commit": "15dfd17559f39669f95062b2a5ee2e0d69c2f13d",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Feb 2021 12:22:41 GMT",
+      "tag": "@uifabric/experiments_v7.38.9",
+      "version": "7.38.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SelectedItemsList EditableItem should have first item selected in picker on show",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d8d96bc7f23924fe453429a502001511301da65f",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 12:24:38 GMT",
+      "tag": "@uifabric/experiments_v7.38.8",
+      "version": "7.38.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker should select first suggestion when user begins typing",
+            "author": "elvonspa@microsoft.com",
+            "commit": "898686fc85044e089c9a7a9bc95614ac03903a82",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jan 2021 12:25:15 GMT",
+      "tag": "@uifabric/experiments_v7.38.3",
+      "version": "7.38.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use role=\"presentation\" for all <div> elements in TilesList",
+            "author": "tmichon@microsoft.com",
+            "commit": "864226ae4099374d4ea82244597e67136af9aa91",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jan 2021 12:31:09 GMT",
+      "tag": "@uifabric/experiments_v7.38.2",
+      "version": "7.38.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[UPP] Add controlled callbacks to EditableItem (#16535)",
+            "author": "chrp@microsoft.com",
+            "commit": "8b706813fe018da6110f4c4929372df0f8a2034b",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jan 2021 12:24:00 GMT",
+      "tag": "@uifabric/experiments_v7.38.0",
+      "version": "7.38.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker drop to each side of item",
+            "author": "elvonspa@microsoft.com",
+            "commit": "1b94a3e4bb32c029429eb087d341e3ed33494405",
+            "package": "@uifabric/experiments"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add a force resolve function to the UnifiedPicker",
+            "author": "elvonspa@microsoft.com",
+            "commit": "94effb912cf2217790dc84a0217fc7596aea11c7",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Update the DefaultEditingItem in the SelectedItemsList to use FloatingSuggestionsComposite",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c097452a72f35cba2ba2678d8463dc5cbf661f79",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Nov 2020 12:26:56 GMT",
       "tag": "@uifabric/experiments_v7.36.16",
       "version": "7.36.16",

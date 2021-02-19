@@ -20,6 +20,8 @@ import {
   ITextStyles,
 } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 export type FilledSectionKey = '0' | '1' | '2' | '3';
 
 export interface IExampleState {

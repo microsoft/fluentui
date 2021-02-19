@@ -53,8 +53,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               outline: none;
               position: relative;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
+              forced-color-adjust: none;
             }
             .ms-Fabric--isFocusVisible &:focus {
               outline: 1px solid #605e5c;
@@ -434,10 +435,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         &:hover {
                           border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active){&:hover {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -485,7 +485,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             background: Window;
                             color: WindowText;
                           }
@@ -498,7 +498,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                             color: GrayText;
                           }
                           &:-ms-input-placeholder {
@@ -510,7 +510,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                             color: GrayText;
                           }
                           &::-ms-input-placeholder {
@@ -522,7 +522,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
                       id="TextField1"
@@ -606,10 +606,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         &:hover {
                           border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active){&:hover {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -658,7 +657,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             background: Window;
                             color: WindowText;
                           }
@@ -671,7 +670,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                             color: GrayText;
                           }
                           &:-ms-input-placeholder {
@@ -683,7 +682,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                             color: GrayText;
                           }
                           &::-ms-input-placeholder {
@@ -695,7 +694,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
                       id="TextField4"
@@ -779,10 +778,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         &:hover {
                           border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active){&:hover {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -831,7 +829,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             background: Window;
                             color: WindowText;
                           }
@@ -844,7 +842,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                             color: GrayText;
                           }
                           &:-ms-input-placeholder {
@@ -856,7 +854,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                             color: GrayText;
                           }
                           &::-ms-input-placeholder {
@@ -868,7 +866,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
                       id="TextField7"
@@ -952,10 +950,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         &:hover {
                           border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active){&:hover {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -1004,7 +1001,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             background: Window;
                             color: WindowText;
                           }
@@ -1017,7 +1014,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                             color: GrayText;
                           }
                           &:-ms-input-placeholder {
@@ -1029,7 +1026,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                             color: GrayText;
                           }
                           &::-ms-input-placeholder {
@@ -1041,7 +1038,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
                       id="TextField10"
@@ -1125,10 +1122,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                         &:hover {
                           border-color: #323130;
                         }
-                        @media screen and (-ms-high-contrast: active){&:hover {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -1177,7 +1173,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           &::-ms-clear {
                             display: none;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             background: Window;
                             color: WindowText;
                           }
@@ -1190,7 +1186,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                             color: GrayText;
                           }
                           &:-ms-input-placeholder {
@@ -1202,7 +1198,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                             color: GrayText;
                           }
                           &::-ms-input-placeholder {
@@ -1214,7 +1210,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             font-weight: 400;
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                             color: GrayText;
                           }
                       id="TextField13"
@@ -1266,7 +1262,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               box-shadow: none;
               box-sizing: border-box;
               color: #323130;
-              display: block;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 600;
@@ -1290,7 +1286,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
         className=
             ms-Toggle-innerContainer
             {
-              display: inline-flex;
+              display: flex;
               position: relative;
             }
       >
@@ -1339,14 +1335,13 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 background-color: #005a9e;
                 border-color: transparent;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 background-color: Highlight;
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 background-color: Highlight;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-is-focusable={true}
@@ -1371,7 +1366,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                   transition: all 0.1s ease;
                   width: 12px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -1527,11 +1522,9 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 20px;
                     }
-                    @media screen and (-ms-high-contrast: active){&:before {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       background: Window;
                       border-color: Highlight;
-                    }
-                    @media screen and (forced-colors: active){&:before {
                       forced-color-adjust: none;
                     }
                     &:after {
@@ -1551,10 +1544,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                       transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                       width: 10px;
                     }
-                    @media screen and (-ms-high-contrast: active){&:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                       border-color: Highlight;
-                    }
-                    @media screen and (forced-colors: active){&:after {
                       forced-color-adjust: none;
                     }
                 htmlFor="ChoiceGroup17-alpha"

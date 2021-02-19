@@ -2,6 +2,9 @@ import * as React from 'react';
 import { ISplitButtonComponent, ISplitButtonViewProps } from './SplitButton.types';
 import { KeyCodes } from '../../../Utilities';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
   const [expanded, setExpanded] = React.useState<boolean>(false);
 

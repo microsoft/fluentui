@@ -1,10 +1,5 @@
 import { ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
-import {
-  HighContrastSelector,
-  getGlobalClassNames,
-  getEdgeChromiumNoHighContrastAdjustSelector,
-  IStyle,
-} from '../../Styling';
+import { HighContrastSelector, getGlobalClassNames, IStyle, getHighContrastNoAdjustStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -158,7 +153,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         outline: '1px solid ' + theme.palette.neutralSecondary,
         outlineOffset: '2px',
         [HighContrastSelector]: {
-          outline: '1px solid ActiveBorder',
+          outline: '1px solid WindowText',
         },
       },
     },
@@ -210,8 +205,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         ':after': indeterminate ? indeterminateDotStyles : null,
         [HighContrastSelector]: {
           borderColor: 'WindowText',
+          ...getHighContrastNoAdjustStyle(),
         },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       indeterminate && {
         borderColor: checkboxBorderIndeterminateColor,
@@ -259,7 +254,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         color: checkmarkFontColor,
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'Window',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     ],
@@ -271,8 +266,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         lineHeight: '20px',
         [HighContrastSelector]: {
           color: disabled ? 'GrayText' : 'WindowText',
+          ...getHighContrastNoAdjustStyle(),
         },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
       !reversed
         ? {

@@ -61,7 +61,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -71,19 +71,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
@@ -102,8 +102,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         id="checkbox-0"
         onBlur={[Function]}
@@ -157,10 +157,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -179,9 +178,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -198,10 +198,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 line-height: 20px;
                 margin-left: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -242,7 +241,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             &:hover .ms-Checkbox-checkbox {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
               border-color: Highlight;
             }
             &:focus .ms-Checkbox-checkbox {
@@ -252,19 +251,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               color: #605e5c;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
               color: Highlight;
             }
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
               color: WindowText;
             }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
               color: WindowText;
             }
       >
@@ -283,8 +282,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 outline-offset: 2px;
                 outline: 1px solid #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                outline: 1px solid WindowText;
               }
           id="checkbox-1"
           onBlur={[Function]}
@@ -338,10 +337,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -360,9 +358,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     opacity: 0;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: Window;
+                    forced-color-adjust: none;
                   }
               data-icon-name="CheckMark"
             >
@@ -379,10 +378,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   line-height: 20px;
                   margin-right: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -423,7 +421,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               &:hover .ms-Checkbox-checkbox {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                 border-color: Highlight;
               }
               &:focus .ms-Checkbox-checkbox {
@@ -433,19 +431,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
                 color: WindowText;
               }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                 color: WindowText;
               }
         >
@@ -464,8 +462,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   outline-offset: 2px;
                   outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  outline: 1px solid WindowText;
                 }
             id="checkbox-2"
             onBlur={[Function]}
@@ -519,10 +517,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -541,9 +538,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                       opacity: 0;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: Window;
+                      forced-color-adjust: none;
                     }
                 data-icon-name="CheckMark"
               >
@@ -560,10 +558,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     line-height: 20px;
                     margin-left: 4px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -607,7 +604,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -617,19 +614,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
@@ -648,8 +645,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         id="checkbox-3"
         onBlur={[Function]}
@@ -703,10 +700,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -725,9 +721,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -744,10 +741,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 line-height: 20px;
                 margin-right: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -788,7 +784,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
             &:hover .ms-Checkbox-checkbox {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
               border-color: Highlight;
             }
             &:focus .ms-Checkbox-checkbox {
@@ -798,19 +794,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               color: #605e5c;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
               color: Highlight;
             }
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
               color: WindowText;
             }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
               color: WindowText;
             }
       >
@@ -829,8 +825,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 outline-offset: 2px;
                 outline: 1px solid #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                outline: 1px solid WindowText;
               }
           id="checkbox-4"
           onBlur={[Function]}
@@ -884,10 +880,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -906,9 +901,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     opacity: 0;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: Window;
+                    forced-color-adjust: none;
                   }
               data-icon-name="CheckMark"
             >
@@ -925,10 +921,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   line-height: 20px;
                   margin-left: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -969,7 +964,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
               &:hover .ms-Checkbox-checkbox {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                 border-color: Highlight;
               }
               &:focus .ms-Checkbox-checkbox {
@@ -979,19 +974,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
                 color: WindowText;
               }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                 color: WindowText;
               }
         >
@@ -1010,8 +1005,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                   outline-offset: 2px;
                   outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  outline: 1px solid WindowText;
                 }
             id="checkbox-5"
             onBlur={[Function]}
@@ -1065,10 +1060,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1087,9 +1081,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                       opacity: 0;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: Window;
+                      forced-color-adjust: none;
                     }
                 data-icon-name="CheckMark"
               >
@@ -1106,10 +1101,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 1`] = `
                     line-height: 20px;
                     margin-right: 4px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1158,7 +1152,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -1168,19 +1162,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
@@ -1199,8 +1193,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         id="checkbox-6"
         onBlur={[Function]}
@@ -1254,10 +1248,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1276,9 +1269,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -1295,10 +1289,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 line-height: 20px;
                 margin-left: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1339,7 +1332,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             &:hover .ms-Checkbox-checkbox {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
               border-color: Highlight;
             }
             &:focus .ms-Checkbox-checkbox {
@@ -1349,19 +1342,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               color: #605e5c;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
               color: Highlight;
             }
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
               color: WindowText;
             }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
               color: WindowText;
             }
       >
@@ -1380,8 +1373,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 outline-offset: 2px;
                 outline: 1px solid #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                outline: 1px solid WindowText;
               }
           id="checkbox-7"
           onBlur={[Function]}
@@ -1435,10 +1428,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -1457,9 +1449,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     opacity: 0;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: Window;
+                    forced-color-adjust: none;
                   }
               data-icon-name="CheckMark"
             >
@@ -1476,10 +1469,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   line-height: 20px;
                   margin-right: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -1520,7 +1512,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               &:hover .ms-Checkbox-checkbox {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                 border-color: Highlight;
               }
               &:focus .ms-Checkbox-checkbox {
@@ -1530,19 +1522,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
                 color: WindowText;
               }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                 color: WindowText;
               }
         >
@@ -1561,8 +1553,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   outline-offset: 2px;
                   outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  outline: 1px solid WindowText;
                 }
             id="checkbox-8"
             onBlur={[Function]}
@@ -1616,10 +1608,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1638,9 +1629,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                       opacity: 0;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: Window;
+                      forced-color-adjust: none;
                     }
                 data-icon-name="CheckMark"
               >
@@ -1657,10 +1649,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     line-height: 20px;
                     margin-left: 4px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -1704,7 +1695,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -1714,19 +1705,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
@@ -1745,8 +1736,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         id="checkbox-9"
         onBlur={[Function]}
@@ -1800,10 +1791,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1822,9 +1812,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -1841,10 +1832,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 line-height: 20px;
                 margin-right: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -1885,7 +1875,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
             &:hover .ms-Checkbox-checkbox {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
               border-color: Highlight;
             }
             &:focus .ms-Checkbox-checkbox {
@@ -1895,19 +1885,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               color: #605e5c;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
               color: Highlight;
             }
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
               color: WindowText;
             }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
               color: WindowText;
             }
       >
@@ -1926,8 +1916,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 outline-offset: 2px;
                 outline: 1px solid #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                outline: 1px solid WindowText;
               }
           id="checkbox-10"
           onBlur={[Function]}
@@ -1981,10 +1971,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2003,9 +1992,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     opacity: 0;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: Window;
+                    forced-color-adjust: none;
                   }
               data-icon-name="CheckMark"
             >
@@ -2022,10 +2012,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   line-height: 20px;
                   margin-left: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2066,7 +2055,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
               &:hover .ms-Checkbox-checkbox {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                 border-color: Highlight;
               }
               &:focus .ms-Checkbox-checkbox {
@@ -2076,19 +2065,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
                 color: WindowText;
               }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                 color: WindowText;
               }
         >
@@ -2107,8 +2096,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                   outline-offset: 2px;
                   outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  outline: 1px solid WindowText;
                 }
             id="checkbox-11"
             onBlur={[Function]}
@@ -2162,10 +2151,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2184,9 +2172,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                       opacity: 0;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: Window;
+                      forced-color-adjust: none;
                     }
                 data-icon-name="CheckMark"
               >
@@ -2203,10 +2192,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 2`] = `
                     line-height: 20px;
                     margin-right: 4px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2255,7 +2243,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -2265,19 +2253,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
@@ -2296,8 +2284,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         id="checkbox-12"
         onBlur={[Function]}
@@ -2351,10 +2339,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2373,9 +2360,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -2392,10 +2380,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 line-height: 20px;
                 margin-left: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2436,7 +2423,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             &:hover .ms-Checkbox-checkbox {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
               border-color: Highlight;
             }
             &:focus .ms-Checkbox-checkbox {
@@ -2446,19 +2433,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               color: #605e5c;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
               color: Highlight;
             }
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
               color: WindowText;
             }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
               color: WindowText;
             }
       >
@@ -2477,8 +2464,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 outline-offset: 2px;
                 outline: 1px solid #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                outline: 1px solid WindowText;
               }
           id="checkbox-13"
           onBlur={[Function]}
@@ -2532,10 +2519,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2554,9 +2540,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     opacity: 0;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: Window;
+                    forced-color-adjust: none;
                   }
               data-icon-name="CheckMark"
             >
@@ -2573,10 +2560,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   line-height: 20px;
                   margin-right: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -2617,7 +2603,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               &:hover .ms-Checkbox-checkbox {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                 border-color: Highlight;
               }
               &:focus .ms-Checkbox-checkbox {
@@ -2627,19 +2613,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
                 color: WindowText;
               }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                 color: WindowText;
               }
         >
@@ -2658,8 +2644,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   outline-offset: 2px;
                   outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  outline: 1px solid WindowText;
                 }
             id="checkbox-14"
             onBlur={[Function]}
@@ -2713,10 +2699,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2735,9 +2720,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                       opacity: 0;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: Window;
+                      forced-color-adjust: none;
                     }
                 data-icon-name="CheckMark"
               >
@@ -2754,10 +2740,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     line-height: 20px;
                     margin-left: 4px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -2801,7 +2786,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
           &:hover .ms-Checkbox-checkbox {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
@@ -2811,19 +2796,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             color: #605e5c;
             opacity: 1;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
             color: WindowText;
           }
           &:focus .ms-Checkbox-text {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
             color: WindowText;
           }
     >
@@ -2842,8 +2827,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               outline-offset: 2px;
               outline: 1px solid #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-              outline: 1px solid ActiveBorder;
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid WindowText;
             }
         id="checkbox-15"
         onBlur={[Function]}
@@ -2897,10 +2882,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 border-color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2919,9 +2903,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   opacity: 0;
                   speak: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   color: Window;
+                  forced-color-adjust: none;
                 }
             data-icon-name="CheckMark"
           >
@@ -2938,10 +2923,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 line-height: 20px;
                 margin-right: 4px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 color: WindowText;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
         >
@@ -2982,7 +2966,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
             &:hover .ms-Checkbox-checkbox {
               border-color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
               border-color: Highlight;
             }
             &:focus .ms-Checkbox-checkbox {
@@ -2992,19 +2976,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               color: #605e5c;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
               color: Highlight;
             }
             &:hover .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
               color: WindowText;
             }
             &:focus .ms-Checkbox-text {
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
               color: WindowText;
             }
       >
@@ -3023,8 +3007,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 outline-offset: 2px;
                 outline: 1px solid #605e5c;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                outline: 1px solid ActiveBorder;
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                outline: 1px solid WindowText;
               }
           id="checkbox-16"
           onBlur={[Function]}
@@ -3078,10 +3062,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   border-color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -3100,9 +3083,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     opacity: 0;
                     speak: none;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     color: Window;
+                    forced-color-adjust: none;
                   }
               data-icon-name="CheckMark"
             >
@@ -3119,10 +3103,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   line-height: 20px;
                   margin-left: 4px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  -ms-high-contrast-adjust: none;
                   color: WindowText;
-                }
-                @media screen and (forced-colors: active){& {
                   forced-color-adjust: none;
                 }
           >
@@ -3163,7 +3146,7 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
               &:hover .ms-Checkbox-checkbox {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
                 border-color: Highlight;
               }
               &:focus .ms-Checkbox-checkbox {
@@ -3173,19 +3156,19 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                 color: #605e5c;
                 opacity: 1;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
                 color: Highlight;
               }
               &:hover .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
                 color: WindowText;
               }
               &:focus .ms-Checkbox-text {
                 color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
                 color: WindowText;
               }
         >
@@ -3204,8 +3187,8 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                   outline-offset: 2px;
                   outline: 1px solid #605e5c;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
-                  outline: 1px solid ActiveBorder;
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  outline: 1px solid WindowText;
                 }
             id="checkbox-17"
             onBlur={[Function]}
@@ -3259,10 +3242,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     border-color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >
@@ -3281,9 +3263,10 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                       opacity: 0;
                       speak: none;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       color: Window;
+                      forced-color-adjust: none;
                     }
                 data-icon-name="CheckMark"
               >
@@ -3300,10 +3283,9 @@ exports[`Fabric renders a Fabric component in RTL and LTR theme 3`] = `
                     line-height: 20px;
                     margin-right: 4px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    -ms-high-contrast-adjust: none;
                     color: WindowText;
-                  }
-                  @media screen and (forced-colors: active){& {
                     forced-color-adjust: none;
                   }
             >

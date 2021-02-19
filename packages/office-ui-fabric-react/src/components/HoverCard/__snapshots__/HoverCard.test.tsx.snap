@@ -79,7 +79,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               outline: transparent;
               position: absolute;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -91,6 +91,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           Object {
             "filter": "opacity(0)",
             "opacity": 0,
+            "pointerEvents": "none",
           }
         }
         tabIndex={-1}
@@ -248,7 +249,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               outline: transparent;
               position: absolute;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -260,6 +261,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           Object {
             "filter": "opacity(0)",
             "opacity": 0,
+            "pointerEvents": "none",
           }
         }
         tabIndex={-1}

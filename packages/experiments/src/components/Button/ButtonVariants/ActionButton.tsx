@@ -16,6 +16,8 @@ import {
 } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
+/* eslint-disable deprecation/deprecation */
+
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { effects, palette, semanticColors } = theme;
 
@@ -96,6 +98,10 @@ const ActionButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): I
   };
 };
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const ActionButton: React.FunctionComponent<IButtonProps> = composed({
   displayName: 'ActionButton',
   slots,

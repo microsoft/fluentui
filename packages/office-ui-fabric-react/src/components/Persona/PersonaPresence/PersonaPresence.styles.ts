@@ -1,5 +1,5 @@
 import { IPersonaPresenceStyleProps, IPersonaPresenceStyles, PersonaPresence, PersonaSize } from '../Persona.types';
-import { HighContrastSelector, getGlobalClassNames, IRawStyle } from '../../../Styling';
+import { HighContrastSelector, getGlobalClassNames, IRawStyle, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { personaPresenceSize, presenceBoolean, sizeBoolean } from '../PersonaConsts';
 
 const GlobalClassNames = {
@@ -49,8 +49,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         textAlign: 'center',
         boxSizing: 'content-box',
         backgroundClip: 'content-box',
-        MsHighContrastAdjust: 'none',
-
+        ...getHighContrastNoAdjustStyle(),
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Window',

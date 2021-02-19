@@ -6,12 +6,15 @@ export const LinkBasicExample: React.FunctionComponent = () => {
     <div>
       <Text>
         When a link has an href,{' '}
-        <Link href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link">
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link" underline>
           it renders as an anchor tag.
         </Link>{' '}
-        Without an href, <Link>the link is rendered as a button</Link>. You can also use the disabled attribute to
-        create a{' '}
-        <Link disabled={true} href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link">
+        Without an href,{' '}
+        <Link onClick={handleClickOnLink} underline>
+          the link is rendered as a button
+        </Link>
+        . You can also use the disabled attribute to create a{' '}
+        <Link disabled={true} href="https://developer.microsoft.com/en-us/fluentui#/controls/web/link" underline>
           disabled link.
         </Link>
       </Text>
@@ -23,3 +26,7 @@ export const LinkBasicExample: React.FunctionComponent = () => {
     </div>
   );
 };
+
+function handleClickOnLink(ev: React.MouseEvent<unknown>) {
+  window.alert('clicked on Link component which is rendered as html button');
+}

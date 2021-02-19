@@ -292,7 +292,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             width={widthOfBar}
             x={xScale1(datasetKey)!}
             y={Math.max(containerHeight! - this.margins.bottom! - yBarScale(pointData.data), 0)}
-            data-is-focusable={true}
+            data-is-focusable={!this.props.hideTooltip}
             opacity={this._getOpacity(pointData.legend)}
             ref={(e: SVGRectElement | null) => {
               this._refCallback(e!, pointData.legend, refIndexNumber);
@@ -304,6 +304,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             onFocus={this._onBarFocus.bind(this, pointData, refIndexNumber)}
             onBlur={this._onBarLeave}
             onClick={this._redirectToUrl.bind(this, this.props.href!)}
+            aria-labelledby={`toolTip${this._calloutId}`}
           />,
         );
     });

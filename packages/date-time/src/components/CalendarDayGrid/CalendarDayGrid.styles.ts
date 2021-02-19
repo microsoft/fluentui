@@ -8,6 +8,7 @@ import {
   IRawStyle,
   keyframes,
   HighContrastSelector,
+  getHighContrastNoAdjustStyle,
 } from '@uifabric/styling';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { AnimationDirection } from '../Calendar/Calendar.types';
@@ -113,7 +114,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
           color: 'WindowText',
           backgroundColor: 'Window',
           zIndex: 0,
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLighter,
@@ -151,18 +152,16 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'HighlightText!important',
-                background: 'Highlight!important',
-              },
+            [HighContrastSelector]: {
+              color: 'HighlightText!important',
+              background: 'Highlight!important',
             },
           },
           [HighContrastSelector]: {
             background: 'Highlight!important',
             color: 'HighlightText!important',
             borderColor: 'Highlight!important',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },
@@ -220,7 +219,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
           background: 'WindowText!important',
           color: 'Window!important',
           borderColor: 'WindowText!important',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },
@@ -271,7 +270,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         },
         [HighContrastSelector]: {
           backgroundColor: 'WindowText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },

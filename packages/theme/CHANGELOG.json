@@ -2,6 +2,21 @@
   "name": "@fluentui/theme",
   "entries": [
     {
+      "date": "Fri, 15 Jan 2021 12:25:31 GMT",
+      "tag": "@fluentui/theme_v1.7.1",
+      "version": "1.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "createTheme: fix bug when theme is inverted.",
+            "author": "xgao@microsoft.com",
+            "commit": "3056c9c5b120155898ae9f721ea388dae582dd2d",
+            "package": "@fluentui/theme"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Nov 2020 12:27:56 GMT",
       "tag": "@fluentui/theme_v1.7.0",
       "version": "1.7.0",

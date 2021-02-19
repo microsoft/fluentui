@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { PanelPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Panel/Panel.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PanelPage/docs/PanelRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const PanelPageProps: TFabricPlatformPageProps = {
   web: {

@@ -1,9 +1,4 @@
-import {
-  HighContrastSelector,
-  getFocusStyle,
-  FontWeights,
-  getEdgeChromiumNoHighContrastAdjustSelector,
-} from '../../Styling';
+import { HighContrastSelector, getFocusStyle, FontWeights, getHighContrastNoAdjustStyle } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;
@@ -48,6 +43,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
 
     label: [
       'ms-Toggle-label',
+      { display: 'inline-block' },
       disabled && {
         color: textDisabledColor,
         selectors: {
@@ -71,7 +67,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
     container: [
       'ms-Toggle-innerContainer',
       {
-        display: 'inline-flex',
+        display: 'flex',
         position: 'relative',
       },
     ],
@@ -134,8 +130,8 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
               ],
               [HighContrastSelector]: {
                 backgroundColor: 'Highlight',
+                ...getHighContrastNoAdjustStyle(),
               },
-              ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },
         ],

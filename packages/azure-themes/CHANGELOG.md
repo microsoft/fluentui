@@ -1,8 +1,44 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 06 Nov 2020 12:22:44 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:26:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.3)
+
+Mon, 08 Feb 2021 12:26:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.0..@uifabric/azure-themes_v7.7.3)
+
+### Patches
+
+- Checkbox, toggle, MessageBar dimensions and removing italic placeholder text ([PR #16684](https://github.com/microsoft/fluentui/pull/16684) by jagaheri@microsoft.com)
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.0)
+
+Fri, 29 Jan 2021 12:27:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.6.5..@uifabric/azure-themes_v7.7.0)
+
+### Minor changes
+
+- Updated primary button styles to match fluentui ([PR #16697](https://github.com/microsoft/fluentui/pull/16697) by gtcarroll96@gmail.com)
+
+## [7.6.5](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.6.5)
+
+Fri, 15 Jan 2021 12:25:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.6.4..@uifabric/azure-themes_v7.6.5)
+
+### Patches
+
+- fix(azure-themes): dark mode themes are now correctly set as inverted ([PR #16378](https://github.com/microsoft/fluentui/pull/16378) by daparks@microsoft.com)
+
+## [7.6.4](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.6.4)
+
+Tue, 05 Jan 2021 12:25:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.40..@uifabric/azure-themes_v7.6.4)
+
+### Patches
+
+- callout, messagebar and teachingbubble style updates  ([PR #16337](https://github.com/microsoft/fluentui/pull/16337) by jagaheri@microsoft.com)
 
 ## [7.5.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.40)
 

@@ -31,8 +31,9 @@ steps:
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
-  - script: |
-      npx midgard-yarn install
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
 
   - script: |
@@ -90,7 +91,7 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      npm run publish:beachball -- -b origin/7.0 -n $(npmToken) --access public -y
+      npm run publish:beachball -- -b origin/7.0 -n $(npmToken) --access public -y &&
       git reset --hard origin/7.0
     env:
       GITHUB_PAT: $(githubPAT)

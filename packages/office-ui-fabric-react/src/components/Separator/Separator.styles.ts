@@ -1,4 +1,5 @@
 import { ISeparatorStyleProps, ISeparatorStyles } from './Separator.types';
+import { HighContrastSelector } from '@uifabric/styling';
 
 export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
   const { theme, alignContent, vertical, className } = props;
@@ -47,6 +48,10 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
             left: '50%',
             right: '0',
             zIndex: -1,
+
+            [HighContrastSelector]: {
+              backgroundColor: 'WindowText',
+            },
           },
         },
       },
@@ -63,6 +68,10 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
             bottom: '0',
             left: '0',
             right: '0',
+
+            [HighContrastSelector]: {
+              backgroundColor: 'WindowText',
+            },
           },
         },
       },

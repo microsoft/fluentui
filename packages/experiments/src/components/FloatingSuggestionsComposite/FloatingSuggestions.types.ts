@@ -145,6 +145,16 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Should be used with the footerItemProps on the pickerSuggestionProps
    */
   selectedFooterIndex?: number;
+
+  /**
+   * A callback for when the floating suggestions are shown
+   */
+  onSuggestionsShown?: () => void;
+
+  /**
+   * A callback for when the floating suggestions are hidden (on dismiss or selection)
+   */
+  onSuggestionsHidden?: () => void;
 }
 
 export interface IBaseFloatingPickerHeaderFooterProps {

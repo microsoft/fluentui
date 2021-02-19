@@ -36,7 +36,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -283,12 +283,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;
@@ -488,7 +489,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -830,12 +831,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;
@@ -930,7 +932,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           right: -1px;
           top: -1px;
         }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
           border-color: Highlight;
         }
         & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
@@ -1241,12 +1243,13 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;

@@ -19,7 +19,7 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
     className=
         ms-Toggle-innerContainer
         {
-          display: inline-flex;
+          display: flex;
           position: relative;
         }
   >
@@ -66,10 +66,10 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -125,7 +125,7 @@ exports[`Toggle renders toggle correctly 1`] = `
           box-shadow: none;
           box-sizing: border-box;
           color: #323130;
-          display: block;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -149,7 +149,7 @@ exports[`Toggle renders toggle correctly 1`] = `
     className=
         ms-Toggle-innerContainer
         {
-          display: inline-flex;
+          display: flex;
           position: relative;
         }
   >
@@ -197,10 +197,10 @@ exports[`Toggle renders toggle correctly 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -257,7 +257,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           box-shadow: none;
           box-sizing: border-box;
           color: #323130;
-          display: block;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -285,7 +285,7 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
     className=
         ms-Toggle-innerContainer
         {
-          display: inline-flex;
+          display: flex;
           position: relative;
         }
   >
@@ -333,10 +333,10 @@ exports[`Toggle renders toggle correctly with inline label (JSX Element) 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -393,7 +393,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           box-shadow: none;
           box-sizing: border-box;
           color: #323130;
-          display: block;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -419,7 +419,7 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
     className=
         ms-Toggle-innerContainer
         {
-          display: inline-flex;
+          display: flex;
           position: relative;
         }
   >
@@ -467,10 +467,10 @@ exports[`Toggle renders toggle correctly with inline label (string) 1`] = `
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -527,7 +527,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           box-shadow: none;
           box-sizing: border-box;
           color: #323130;
-          display: block;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -552,7 +552,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
     className=
         ms-Toggle-innerContainer
         {
-          display: inline-flex;
+          display: flex;
           position: relative;
         }
   >
@@ -600,10 +600,10 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           &:hover .ms-Toggle-thumb {
             background-color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             border-color: Highlight;
           }
       data-is-focusable={true}

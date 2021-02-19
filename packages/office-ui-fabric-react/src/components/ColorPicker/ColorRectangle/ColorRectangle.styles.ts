@@ -1,5 +1,5 @@
 import { IColorRectangleStyleProps, IColorRectangleStyles } from './ColorRectangle.types';
-import { HighContrastSelector } from '../../../Styling';
+import { HighContrastSelector, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { hiddenContentStyle } from '@uifabric/styling';
 
@@ -21,7 +21,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
 
         selectors: {
           [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
 
           [`.${IsFocusVisibleClassName} &:focus`]: {

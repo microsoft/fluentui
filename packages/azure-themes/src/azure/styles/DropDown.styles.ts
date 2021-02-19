@@ -15,7 +15,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     root: {
       selectors: {
         '.ms-Dropdown': {
-          height: StyleConstants.inputControlHeight,
+          minHeight: StyleConstants.dropDownRootHeight,
+          height: StyleConstants.dropDownRootHeight,
         },
       },
     },
@@ -23,6 +24,10 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       border: 'none',
       boxShadow: Depths.depth8,
       selectors: {
+        '.ms-Dropdown-item': {
+          minHeight: StyleConstants.dropDownItemHeight,
+          height: StyleConstants.dropDownItemHeight,
+        },
         ['.ms-Callout-main']: {
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
@@ -47,9 +52,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdown: [
       {
         fontSize: theme.fonts.medium.fontSize,
-        height: StyleConstants.dropDownItemHeight,
         color: semanticColors.inputText,
-        border: 0,
         selectors: {
           ':focus::after, :focus': {
             borderColor: extendedSemanticColors.controlAccent,

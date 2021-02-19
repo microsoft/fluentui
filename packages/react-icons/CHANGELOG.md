@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons
 
-This log was last generated on Fri, 12 Jun 2020 18:29:07 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.0)
+
+Wed, 10 Feb 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.3.5..@fluentui/react-icons_v0.4.0)
+
+### Minor changes
+
+- Adding five svg icons for OWA ([PR #16877](https://github.com/microsoft/fluentui/pull/16877) by ololubek@microsoft.com)
 
 ## [0.1.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.1.27)
 

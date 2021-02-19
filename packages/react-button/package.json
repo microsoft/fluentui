@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-button",
-  "version": "0.19.0",
+  "version": "0.19.5",
   "description": "Fluent UI React Button component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,16 +47,16 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^0.19.12",
+    "@fluentui/react-compose": "^0.19.14",
     "@fluentui/keyboard-key": "^0.2.12",
-    "@fluentui/react-icons": "^0.3.9",
+    "@fluentui/react-icons": "^0.4.1",
     "@fluentui/react-shared-contexts": "^0.1.1",
-    "@fluentui/react-theme-provider": "^0.18.0",
-    "@fluentui/theme": "^1.7.0",
-    "@uifabric/react-hooks": "^7.13.9",
+    "@fluentui/react-theme-provider": "^0.18.4",
+    "@fluentui/theme": "^1.7.3",
+    "@uifabric/react-hooks": "^7.13.11",
     "@uifabric/set-version": "^7.0.23",
-    "@uifabric/styling": "^7.16.18",
-    "@uifabric/utilities": "^7.33.2",
+    "@uifabric/styling": "^7.18.0",
+    "@uifabric/utilities": "^7.33.4",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^1.10.0"
   },

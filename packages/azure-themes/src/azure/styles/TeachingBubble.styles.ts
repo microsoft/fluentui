@@ -1,7 +1,6 @@
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { Depths } from '../AzureDepths';
 import { FontSizes } from '../AzureType';
-import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
@@ -12,7 +11,6 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     bodyContent: {
       color: extendedSemanticColors.teachingBubbleText,
-      border: `1px solid ${extendedSemanticColors.teachingBubbleBackground}`,
       selectors: {
         '.ms-TeachingBubble-subText': {
           fontSize: FontSizes.size14,
@@ -51,13 +49,14 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
     subComponentStyles: {
       callout: {
         root: {
-          borderColor: semanticColors.inputBorder,
-          borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
           boxShadow: Depths.depth8,
           selectors: {
+            '.ms-Callout-main': {
+              border: 0,
+            },
             '.ms-Callout-beak': {
               backgroundColor: extendedSemanticColors.teachingBubbleBackground,
+              border: 0,
             },
           },
         },
@@ -76,7 +75,9 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       },
     },
     primaryButton: {
-      backgroundColor: extendedSemanticColors.teachingBubbleSecondaryBackground,
+      // backgroundColor and border color requires !important to override primary btn color
+      backgroundColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
+      borderColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
       selectors: {
         '&:focus': {
           backgroundColor: extendedSemanticColors.teachingBubblePrimaryButtonHover,
@@ -101,10 +102,10 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
           fontSize: theme.fonts.medium.fontSize,
         },
         '&:hover': {
-          backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+          backgroundColor: extendedSemanticColors.primaryButtonBackgroundHovered,
         },
         '&:focus': {
-          backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+          backgroundColor: extendedSemanticColors.teachingBubbleBackground,
         },
       },
     },

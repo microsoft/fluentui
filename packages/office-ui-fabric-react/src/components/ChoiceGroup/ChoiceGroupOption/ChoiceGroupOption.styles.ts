@@ -1,9 +1,4 @@
-import {
-  HighContrastSelector,
-  IStyle,
-  getGlobalClassNames,
-  getEdgeChromiumNoHighContrastAdjustSelector,
-} from '../../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
 import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
 
@@ -185,8 +180,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         [HighContrastSelector]: {
           borderColor: 'GrayText',
           background: 'Window',
+          ...getHighContrastNoAdjustStyle(),
         },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     checked && {
@@ -195,8 +190,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         [HighContrastSelector]: {
           borderColor: 'Highlight',
           background: 'Window',
+          forcedColorAdjust: 'none',
         },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     (hasIcon || hasImage) && {
@@ -232,8 +227,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight',
+          forcedColorAdjust: 'none',
         },
-        ...getEdgeChromiumNoHighContrastAdjustSelector(),
       },
     },
     checked &&
@@ -357,8 +352,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
             selectors: {
               [HighContrastSelector]: {
                 color: 'GrayText',
+                ...getHighContrastNoAdjustStyle(),
               },
-              ...getEdgeChromiumNoHighContrastAdjustSelector(),
             },
           },
         },

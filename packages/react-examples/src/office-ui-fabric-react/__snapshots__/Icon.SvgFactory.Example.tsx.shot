@@ -17,7 +17,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             border-radius: 2px;
             border: 1px solid #0078d4;
             box-sizing: border-box;
-            color: #a19f9d;
+            color: #d2d0ce;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -51,7 +51,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -63,11 +63,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: GrayText;
             color: GrayText;
+            forced-color-adjust: none;
           }
           &:hover {
             outline: 0px;
@@ -184,7 +185,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -196,18 +197,19 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             border-color: WindowText;
             color: Window;
+            forced-color-adjust: none;
           }
           &:hover {
             background-color: #106ebe;
             border: 1px solid #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             background-color: Highlight;
             border-color: Highlight;
             color: Window;
@@ -217,11 +219,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             border: 1px solid #005a9e;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             border-color: WindowText;
             color: Window;
+            forced-color-adjust: none;
           }
       data-is-focusable={true}
       onClick={[Function]}

@@ -39,7 +39,7 @@ const IconButtonStyles = (props: IMessageBarStyleProps): IStyle => {
     (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) &&
       generateBaseStyle(semanticColors.statusWarningBackground, semanticColors.statusWarningText),
 
-    !messageBarType && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText),
+    typeof messageBarType !== 'number' && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText),
   ];
 };
 
@@ -113,6 +113,7 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
     ],
     root: [
       {
+        padding: '8px 0px',
         color: semanticColors.bodyText,
         width: 'calc(100% - 2px)', // needed for border-right to be visible
         selectors: {

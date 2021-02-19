@@ -46,11 +46,13 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     followUpContainer: inline ? Stack : Callout,
     followUpQuestion: Text,
     followUpOptionList: List,
+    // eslint-disable-next-line deprecation/deprecation
     followUpOption: Button,
     followUpOptionText: Text,
     thanksContainer: Callout,
   });
 
+  // eslint-disable-next-line deprecation/deprecation
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
 
   const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {

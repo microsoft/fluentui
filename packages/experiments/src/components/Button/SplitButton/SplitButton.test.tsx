@@ -5,6 +5,8 @@ import { mount } from 'enzyme';
 import { SplitButton } from './SplitButton';
 import { ISplitButton, ISplitButtonProps } from './SplitButton.types';
 
+/* eslint-disable deprecation/deprecation */
+
 const menuProps: ISplitButtonProps['menu'] = {
   items: [
     {

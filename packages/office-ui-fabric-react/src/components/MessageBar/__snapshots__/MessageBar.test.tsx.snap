@@ -25,11 +25,12 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
       & .ms-Link:hover {
         color: #004578;
       }
-      @media screen and (-ms-high-contrast: active){& {
+      @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
         -ms-high-contrast-adjust: none;
         background: Window;
         border: 1px solid WindowText;
         color: WindowText;
+        forced-color-adjust: none;
       }
 >
   <div
@@ -71,9 +72,10 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
               font-weight: normal;
               speak: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-icon-name="Info"
       >
@@ -98,8 +100,9 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             margin-top: 8px;
             min-width: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
+            forced-color-adjust: none;
           }
       id="MessageBar0"
       role="status"

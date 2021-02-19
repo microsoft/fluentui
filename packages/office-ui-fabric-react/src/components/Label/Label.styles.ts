@@ -1,4 +1,4 @@
-import { HighContrastSelector, FontWeights, getEdgeChromiumNoHighContrastAdjustSelector } from '../../Styling';
+import { HighContrastSelector, FontWeights, getHighContrastNoAdjustStyle } from '../../Styling';
 import { ILabelStyleProps, ILabelStyles } from './Label.types';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
@@ -31,8 +31,8 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',
+            ...getHighContrastNoAdjustStyle(),
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
       required && {

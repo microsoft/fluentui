@@ -6,6 +6,9 @@ import { FontIcon } from '../../../utilities/factoryComponents';
 import { Button } from '../Button';
 import { IMenuButtonComponent } from './MenuButton.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
   root: 'div',
   button: Button,
@@ -16,6 +19,7 @@ export const MenuButtonSlots: IMenuButtonComponent['slots'] = props => ({
   menuIcon: FontIcon,
 });
 
+/** @deprecated */
 export const MenuButtonView: IMenuButtonComponent['view'] = (props, slots) => {
   const {
     children,

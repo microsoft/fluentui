@@ -7,6 +7,10 @@ describe('createTheme', () => {
     expect(createTheme()).toMatchSnapshot();
   });
 
+  it('inverted theme', () => {
+    expect(createTheme({ isInverted: true })).toMatchSnapshot();
+  });
+
   it('maps semantic colors', () => {
     expect(createTheme({ palette: { themePrimary: 'red' } })).toMatchSnapshot();
   });

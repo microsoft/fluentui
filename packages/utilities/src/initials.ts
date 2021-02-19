@@ -1,9 +1,17 @@
 /**
  * Regular expression matching characters to ignore when calculating the initials.
- * The first part matches characters within parenthesis, including the parenthesis.
- * The second part matches special ASCII characters except space, plus some unicode special characters.
  */
-const UNWANTED_CHARS_REGEX: RegExp = /\([^)]*\)|[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
+/**
+ * Regular expression matching characters within various types of enclosures, including the enclosures themselves
+ *  so for example, (xyz) [xyz] {xyz} all would be ignored
+ */
+const UNWANTED_ENCLOSURES_REGEX: RegExp = /[\(\[\{][^\)\]\}]*[\)\]\}]/g;
+
+/**
+ * Regular expression matching special ASCII characters except space, plus some unicode special characters.
+ * Applies after unwanted enclosures have been removed
+ */
+const UNWANTED_CHARS_REGEX: RegExp = /[\0-\u001F\!-/:-@\[-`\{-\u00BF\u0250-\u036F\uD800-\uFFFF]/g;
 
 /**
  * Regular expression matching phone numbers. Applied after chars matching UNWANTED_CHARS_REGEX have been removed
@@ -48,6 +56,7 @@ function getInitialsLatin(displayName: string, isRtl: boolean): string {
 }
 
 function cleanupDisplayName(displayName: string): string {
+  displayName = displayName.replace(UNWANTED_ENCLOSURES_REGEX, '');
   displayName = displayName.replace(UNWANTED_CHARS_REGEX, '');
   displayName = displayName.replace(MULTIPLE_WHITESPACES_REGEX, ' ');
   displayName = displayName.trim();

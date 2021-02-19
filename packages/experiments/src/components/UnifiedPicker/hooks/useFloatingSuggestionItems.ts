@@ -21,15 +21,16 @@ export interface IUseFloatingSuggestionItems<T> {
   getFocusedSuggestion: () => T;
   hasSuggestionSelected: () => void;
   removeSuggestion: (index: number) => void;
+  clearPickerSelectedIndex: () => void;
 }
 
 export const useFloatingSuggestionItems = <T extends {}>(
   floatingSuggestionItems: T[],
+  footerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
+  headerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   focusSuggestionIndex?: number,
   focusFooterIndex?: number,
-  footerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   focusHeaderIndex?: number,
-  headerSuggestionItems?: IFloatingSuggestionsHeaderFooterProps[],
   isSuggestionsVisible?: boolean,
 ) => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);
@@ -94,9 +95,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
   };
 
   const showPicker = (show: boolean) => {
-    setFocusItemIndex(-1);
-    setFooterItemIndex(-1);
-    setHeaderItemIndex(-1);
+    clearPickerSelectedIndex();
     setIsSuggestionsShown(show);
   };
 
@@ -243,6 +242,12 @@ export const useFloatingSuggestionItems = <T extends {}>(
     setSuggestionItems(updatedSuggestions);
   };
 
+  const clearPickerSelectedIndex = (): void => {
+    setFocusItemIndex(-1);
+    setFooterItemIndex(-1);
+    setHeaderItemIndex(-1);
+  };
+
   return {
     focusItemIndex: focusItemIndex,
     setFocusItemIndex: setFocusItemIndex,
@@ -263,5 +268,6 @@ export const useFloatingSuggestionItems = <T extends {}>(
     getFocusedSuggestion: getFocusedSuggestion,
     hasSuggestionSelected: hasSuggestionSelected,
     removeSuggestion: removeSuggestion,
+    clearPickerSelectedIndex: clearPickerSelectedIndex,
   };
 };

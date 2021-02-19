@@ -1868,7 +1868,7 @@ export interface IBreadcrumbData {
 }
 
 // @public (undocumented)
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
     as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'a';
     href?: string;
     isCurrentItem?: boolean;
@@ -5708,6 +5708,7 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
+    underline?: boolean;
 }
 
 // @public (undocumented)
@@ -5718,6 +5719,8 @@ export interface ILinkStyleProps {
     isButton?: boolean;
     // (undocumented)
     isDisabled?: boolean;
+    // (undocumented)
+    isUnderlined?: boolean;
     // (undocumented)
     theme: ITheme;
 }
@@ -6330,7 +6333,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onLightDismissClick?: () => void;
     onOpen?: () => void;
     onOpened?: () => void;
-    onOuterClick?: () => void;
+    onOuterClick?: (ev?: React.MouseEvent<HTMLDivElement>) => void;
     onRenderBody?: IRenderFunction<IPanelProps>;
     onRenderFooter?: IRenderFunction<IPanelProps>;
     onRenderFooterContent?: IRenderFunction<IPanelProps>;
@@ -6532,6 +6535,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    initialsTextColor?: string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     // @deprecated
@@ -6899,12 +6903,29 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
     onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (rating: number) => void;
+    onRenderStar?: IRenderFunction<IRatingStarProps>;
     rating?: number;
     readOnly?: boolean;
     size?: RatingSize;
     styles?: IStyleFunctionOrObject<IRatingStyleProps, IRatingStyles>;
     theme?: ITheme;
     unselectedIcon?: string;
+}
+
+// @public (undocumented)
+export interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
+    // (undocumented)
+    classNames: IProcessedStyleSet<IRatingStyles>;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    fillPercentage: number;
+    // (undocumented)
+    icon?: string;
+    // (undocumented)
+    readOnly?: boolean;
+    // (undocumented)
+    starNum?: number;
 }
 
 // @public (undocumented)
@@ -7689,7 +7710,7 @@ export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
 
 // @public (undocumented)
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>, React.HTMLAttributes<HTMLElement> {
     align?: 'auto' | 'stretch' | 'baseline' | 'start' | 'center' | 'end';
     className?: string;
     disableShrink?: boolean;

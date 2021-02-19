@@ -88,6 +88,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
   controlAccent: LightSemanticColors.controlOutlines.accent,
+  controlBackground: LightSemanticColors.controlOutlines.background,
   controlOutline: LightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: LightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: LightSemanticColors.controlOutlines.hover,
@@ -113,6 +114,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusWarningText: LightSemanticColors.text.body,
   statusWarningIcon: LightSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: LightSemanticColors.teachingBubble.rest.background,
+  teachingBubbleBorder: LightSemanticColors.teachingBubble.rest.border,
   teachingBubblePrimaryButtonHover: LightSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: LightSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: LightSemanticColors.teachingBubble.rest.text,
@@ -120,6 +122,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '0px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'solid',
   listUnderline: 'none',
   linkBorderStyle: 'dashed',

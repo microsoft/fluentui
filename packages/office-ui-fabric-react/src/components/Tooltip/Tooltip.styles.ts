@@ -6,7 +6,9 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   const { semanticColors, fonts, effects } = theme;
 
   // The math here is done to account for the 45 degree rotation of the beak
-  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace);
+  // and sub-pixel rounding that differs across browsers, which is more noticeable when
+  // the device pixel ratio is larger
+  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace) + 1 / window.devicePixelRatio;
 
   return {
     root: [
