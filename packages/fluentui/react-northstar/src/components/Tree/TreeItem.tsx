@@ -269,7 +269,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   const handleKeyDown = (e: React.KeyboardEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (e.key.match(/\S/) && e.key !== '*') {
+    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*') {
       const toFocusID = getToFocusIDByFirstCharacter(e, props.id);
       if (toFocusID !== props.id) {
         focusItemById(toFocusID);
