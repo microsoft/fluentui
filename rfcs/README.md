@@ -40,7 +40,7 @@ A key purpose of the review phase is to seek feedback to help improve your idea.
   - If you want to good engagement on your RFC, reserve time to respond to comments quickly.
   - A DRAFT PR can be used to gather early feedback and support from specific reviewers
 
-Once the RFC has been open for **at least 2 days**, and recieved sufficent comments, the author can begin seeking approval.
+Once the RFC has been open for **at least 2 days**, and received sufficient comments, the author can begin seeking approval.
 
 ### 3. Approval
 
