@@ -11,7 +11,7 @@ import * as React from 'react';
  * will not be invalidated between rerenders
  *
  * @param fn The callback function that will be used
- * @param dependencies Exists only for completeness, can be used if there are dependencies not used by the callback
+ * @param dependencies Shouldn't be needed, can be used if it's necessary to update the ref
  */
 export const useEventCallback = <Args extends unknown[], Return>(
   fn: (...args: Args) => Return,
