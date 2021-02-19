@@ -121,7 +121,7 @@ function Component() {
 
 These changes result in performance improvements in `makeOveriddes`:
 
-- we are not executing matchers on each render inside styling functions
+- matcher functions are no longer executed on each render in styling functions
 - we are not executing or merging styles until slots are present
 - less React hooks to call for slots
 
