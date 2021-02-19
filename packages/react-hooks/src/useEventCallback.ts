@@ -25,7 +25,6 @@ export const useEventCallback = <Args extends unknown[], Return>(
     () => {
       callbackRef.current = fn;
     },
-    // no exhaustive deps is the main goal of this hook :)
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [fn, ...dependencies],
   );
