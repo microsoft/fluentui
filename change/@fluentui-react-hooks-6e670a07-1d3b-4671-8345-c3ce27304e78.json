@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add useEventCallback hook",
+  "packageName": "@fluentui/react-hooks",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
