@@ -23,52 +23,52 @@ export const useRootStyles = makeStyles<BadgeState>([
   ],
   [
     s => s.size === 'smallest',
-    theme => ({
+    {
       width: '6px',
       height: '6px',
       fontSize: '4px',
-    }),
+    },
   ],
   [
     s => s.size === 'smaller',
-    theme => ({
+    {
       width: '10px',
       height: '10px',
       fontSize: '6px',
-    }),
+    },
   ],
   [
     s => s.size === 'small',
-    theme => ({
+    {
       minWidth: '16px',
       height: '16px',
       paddingRight: '6px',
       paddingLeft: '6px',
       gap: '4px',
       fontSize: '8px',
-    }),
+    },
   ],
   [
     s => s.size === 'medium',
-    theme => ({
+    {
       height: '20px',
       minWidth: '20px',
       gap: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
       fontSize: '12px',
-    }),
+    },
   ],
   [
     s => s.size === 'large',
-    theme => ({
+    {
       minWidth: '24px',
       height: '24px',
       paddingRight: '8px',
       paddingLeft: '8px',
       fontSize: '12px',
       gap: '6px',
-    }),
+    },
   ],
   [
     s => s.size === 'larger' || s.size === 'largest',
