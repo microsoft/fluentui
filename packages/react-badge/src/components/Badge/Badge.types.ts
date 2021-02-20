@@ -9,19 +9,6 @@ export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 
 /**
  * {@docCategory Badge}
  */
-export type BadgeStatus =
-  | 'success'
-  | 'warning'
-  | 'severe'
-  | 'accent'
-  | 'danger'
-  | 'important'
-  | 'informative'
-  | 'subtle';
-
-/**
- * {@docCategory Badge}
- */
 export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'tint';
 
 /**
@@ -37,11 +24,6 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
    * A Badge can be sized.
    */
   size?: SizeValue;
-
-  /**
-   * A Badge can have status styles variants
-   */
-  status?: BadgeStatus;
 
   /**
    * A Badge can be square, circular or rounded
