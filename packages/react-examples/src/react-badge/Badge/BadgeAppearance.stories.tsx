@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { Badge, BadgeProps } from '@fluentui/react-badge';
+import { Badge } from '@fluentui/react-badge';
 
-const BadgeAppearanceExamples = (props: BadgeProps) => (
+const BadgeAppearanceExamples = () => (
   <div
     style={{
       display: 'flex',
