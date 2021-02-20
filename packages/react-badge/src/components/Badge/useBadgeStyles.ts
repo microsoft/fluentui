@@ -9,6 +9,7 @@ export const useRootStyles = makeStyles<BadgeState>([
     null,
     theme => ({
       display: 'inline-flex',
+      boxSizing: 'border-box',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: theme.alias.color.brand.brandBackground,
@@ -39,7 +40,7 @@ export const useRootStyles = makeStyles<BadgeState>([
   [
     s => s.size === 'small',
     theme => ({
-      minWidth: '4px',
+      minWidth: '16px',
       height: '16px',
       paddingRight: '6px',
       paddingLeft: '6px',
@@ -51,7 +52,7 @@ export const useRootStyles = makeStyles<BadgeState>([
     s => s.size === 'medium',
     theme => ({
       height: '20px',
-      minWidth: '4px',
+      minWidth: '20px',
       gap: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
@@ -61,7 +62,7 @@ export const useRootStyles = makeStyles<BadgeState>([
   [
     s => s.size === 'large',
     theme => ({
-      minWidth: '8px',
+      minWidth: '24px',
       height: '24px',
       paddingRight: '8px',
       paddingLeft: '8px',
@@ -72,7 +73,7 @@ export const useRootStyles = makeStyles<BadgeState>([
   [
     s => s.size === 'larger' || s.size === 'largest',
     theme => ({
-      minWidth: '8px',
+      minWidth: '32px',
       height: '32px',
       paddingRight: '12px',
       paddingLeft: '12px',
