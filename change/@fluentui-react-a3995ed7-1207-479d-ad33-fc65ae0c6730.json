@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Export ResponsiveMode utilities",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

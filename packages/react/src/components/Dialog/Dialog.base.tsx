@@ -4,7 +4,7 @@ import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps, IDragOptions } from '../../Modal';
 import { ILayerProps } from '../../Layer';
-import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { withResponsiveMode } from '../../ResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 
@@ -24,6 +24,7 @@ const DefaultDialogContentProps: IDialogContentProps = {
   topButtonsProps: [],
 };
 
+// eslint-disable-next-line deprecation/deprecation
 @withResponsiveMode
 export class DialogBase extends React.Component<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
