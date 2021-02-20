@@ -14,7 +14,7 @@ export const useRootStyles = makeStyles<BadgeState>([
       justifyContent: 'center',
       backgroundColor: theme.alias.color.brand.brandBackground,
       borderColor: theme.alias.color.brand.brandBackground,
-      color: theme.global.color.white,
+      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
       fontWeight: theme.global.type.fontWeights.semibold,
       borderWidth: theme.global.strokeWidth.thin,
       borderStyle: 'solid',
