@@ -54,8 +54,18 @@ const examples = {
   ],
 } as const;
 
+const useThemeColors = makeStyles([
+  [
+    null,
+    theme => ({
+      color: theme.alias.color.neutral.neutralForeground1,
+      background: theme.alias.color.neutral.neutralBackground1,
+    }),
+  ],
+]);
+
 export const Basic = () => (
-  <>
+  <div className={useThemeColors({})}>
     <StoryExample title="Simple examples">
       <Avatar />
       <Avatar name={examples.name[0]} />
@@ -94,11 +104,11 @@ export const Basic = () => (
         <Avatar image={examples.image[12]} active="inactive" />
       </Stack>
     </StoryExample>
-  </>
+  </div>
 );
 
 export const AllSizes = () => (
-  <>
+  <div className={useThemeColors({})}>
     <StoryExample title="Image">
       <AvatarExampleList images={examples.image} />
     </StoryExample>
@@ -123,11 +133,65 @@ export const AllSizes = () => (
     <StoryExample title="Icon, brand color">
       <AvatarExampleList icons={examples.icon} colorVariant="brand" exampleIndex={1} />
     </StoryExample>
-  </>
+  </div>
+);
+
+export const AllColors = () => (
+  <div className={useThemeColors({})}>
+    <StoryExample title="Neutral">
+      <Avatar colorVariant="neutral" size={40} />
+      <Avatar colorVariant="neutral" size={40} name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Brand">
+      <Avatar colorVariant="brand" size={40} />
+      <Avatar colorVariant="brand" size={40} name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Colorful, hash of name">
+      <Stack horizontal wrap tokens={{ childrenGap: 8 }}>
+        {examples.name.map(name => (
+          <Avatar colorVariant="colorful" size={40} key={name} name={name} />
+        ))}
+      </Stack>
+    </StoryExample>
+    <StoryExample title="Colorful, index">
+      <Stack horizontal wrap tokens={{ childrenGap: 8 }}>
+        <Avatar colorVariant="colorful" size={40} colorIndex={0} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={1} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={2} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={3} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={4} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={5} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={6} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={7} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={8} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={9} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={10} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={11} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={12} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={13} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={14} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={15} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={16} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={17} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={18} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={19} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={20} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={21} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={22} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={23} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={24} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={25} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={26} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={27} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={28} />
+        <Avatar colorVariant="colorful" size={40} colorIndex={29} />
+      </Stack>
+    </StoryExample>
+  </div>
 );
 
 export const Active = () => (
-  <>
+  <div className={useThemeColors({})}>
     <StoryExample title="ring">
       <AvatarExampleList images={examples.image} active="active" activeDisplay="ring" exampleIndex={2} />
     </StoryExample>
@@ -146,7 +210,7 @@ export const Active = () => (
     <StoryExample title="inactive">
       <AvatarExampleList images={examples.image} active="inactive" exampleIndex={7} />
     </StoryExample>
-  </>
+  </div>
 );
 
 export const ActiveAnimation = () => {
@@ -319,6 +383,7 @@ const AvatarExampleList: React.FC<AvatarProps & {
           image={images && images[(i + offset) % images.length]}
           icon={icons && icons[(i + offset) % icons.length]}
           badge={examples.badge[(i + offset) % examples.badge.length]}
+          colorVariant="colorful"
           {...restOfProps}
         />
       ))}

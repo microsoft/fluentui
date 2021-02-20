@@ -41,5 +41,24 @@ export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defau
     }
   }
 
+  if (state.colorVariant === 'colorful' && state.colorIndex === undefined) {
+    state.colorIndex = getHashCode(state.name);
+  }
+
   return state;
+};
+
+export const getHashCode = (name: string | undefined): number => {
+  if (!name) {
+    return 0;
+  }
+
+  let hashCode = 0;
+  for (let len: number = name.length - 1; len >= 0; len--) {
+    const ch = name.charCodeAt(len);
+    const shift = len % 8;
+    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+  }
+
+  return hashCode;
 };

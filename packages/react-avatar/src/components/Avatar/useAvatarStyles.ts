@@ -1,4 +1,5 @@
 import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { GlobalSharedColors, Theme } from '@fluentui/react-theme';
 import { AvatarState, defaultAvatarSize } from './Avatar.types';
 
 //
@@ -70,6 +71,11 @@ const activeShadow = (s: AvatarState) =>
 
 const activeGlow = (s: AvatarState) =>
   (s.active === 'active' || s.active === 'inactive') && (s.activeDisplay === 'glow' || s.activeDisplay === 'ring-glow');
+
+const avatarColor = (theme: Theme, name: keyof GlobalSharedColors) => ({
+  color: theme.alias.color[name].foreground2,
+  background: theme.alias.color[name].background2,
+});
 
 const useStyles = makeStyles<AvatarState>([
   [
@@ -292,6 +298,7 @@ const useLabelStyles = makeStyles<AvatarState>([
       verticalAlign: 'top',
       textAlign: 'center',
       borderRadius: 'inherit',
+      boxShadow: `0 0 0 ${theme.global.strokeWidth.thin} ${theme.alias.color.neutral.strokeAccessible} inset`,
 
       color: theme.alias.color.neutral.neutralForeground3,
       background: theme.alias.color.neutral.neutralBackground6,
@@ -301,9 +308,39 @@ const useLabelStyles = makeStyles<AvatarState>([
     s => s.colorVariant === 'brand',
     theme => ({
       color: theme.alias.color.neutral.neutralForegroundInverted,
-      background: theme.alias.color.brand.brandBackground,
+      background: theme.alias.color.brand.brandBackgroundStatic,
     }),
   ],
+  [s => s.colorVariant === 'colorful', theme => avatarColor(theme, 'darkRed')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 1, theme => avatarColor(theme, 'cranberry')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 2, theme => avatarColor(theme, 'red')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 3, theme => avatarColor(theme, 'pumpkin')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 4, theme => avatarColor(theme, 'peach')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 5, theme => avatarColor(theme, 'marigold')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 6, theme => avatarColor(theme, 'gold')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 7, theme => avatarColor(theme, 'brass')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 8, theme => avatarColor(theme, 'brown')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 9, theme => avatarColor(theme, 'forest')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 10, theme => avatarColor(theme, 'seafoam')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 11, theme => avatarColor(theme, 'darkGreen')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 12, theme => avatarColor(theme, 'lightTeal')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 13, theme => avatarColor(theme, 'teal')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 14, theme => avatarColor(theme, 'steel')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 15, theme => avatarColor(theme, 'blue')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 16, theme => avatarColor(theme, 'royalBlue')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 17, theme => avatarColor(theme, 'cornflower')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 18, theme => avatarColor(theme, 'navy')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 19, theme => avatarColor(theme, 'lavender')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 20, theme => avatarColor(theme, 'purple')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 21, theme => avatarColor(theme, 'grape')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 22, theme => avatarColor(theme, 'lilac')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 23, theme => avatarColor(theme, 'pink')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 24, theme => avatarColor(theme, 'magenta')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 25, theme => avatarColor(theme, 'plum')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 26, theme => avatarColor(theme, 'beige')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 27, theme => avatarColor(theme, 'mink')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 28, theme => avatarColor(theme, 'platinum')],
+  [s => s.colorVariant === 'colorful' && s.colorIndex! % 30 === 29, theme => avatarColor(theme, 'anchor')],
 ]);
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
