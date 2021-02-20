@@ -259,7 +259,7 @@ export const CalendarMonthBase = React.forwardRef(
           </div>
         </div>
         <FocusZone>
-          <div className={classNames.gridContainer} role="grid">
+          <div className={classNames.gridContainer} role="grid" aria-label={yearString}>
             {rowIndexes.map((rowNum: number) => {
               const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (
@@ -292,7 +292,7 @@ export const CalendarMonthBase = React.forwardRef(
                         key={monthIndex}
                         onClick={isInBounds ? selectMonthCallback(monthIndex) : undefined}
                         onKeyDown={isInBounds ? onButtonKeyDown(selectMonthCallback(monthIndex)) : undefined}
-                        aria-label={dateFormatter.formatMonthYear(indexedMonth, strings)}
+                        aria-label={dateFormatter.formatMonth(indexedMonth, strings)}
                         aria-selected={isNavigatedMonth}
                         data-is-focusable={isInBounds ? true : undefined}
                         type="button"

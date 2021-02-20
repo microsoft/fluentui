@@ -23,10 +23,10 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 import {
   createShorthand,

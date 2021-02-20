@@ -7,7 +7,7 @@ const GlobalClassNames = {
   menuIcon: 'ms-Button-menuIcon',
   _disabled: 'ms-Button--disabled',
   _iconOnly: 'ms-Button--iconOnly',
-  _ghost: 'ms-Button--ghost',
+  _subtle: 'ms-Button--subtle',
   _expanded: 'ms-Button--expanded',
 };
 
@@ -73,7 +73,7 @@ const useMenuButtonBaseClasses = makeVariantClasses<MenuButtonState, MenuButtonV
         menuIconColor: body?.menuIconColor,
       },
 
-      ghost: {
+      subtle: {
         menuIconColor: palette?.neutralSecondary,
         hovered: {
           menuIconColor: palette?.themePrimary,

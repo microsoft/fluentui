@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "1.0.0-beta.54",
+  "version": "1.0.0-beta.57",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,17 +26,16 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.0-beta.15",
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/common-styles": "^1.0.0-beta.18",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.5",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.6",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -46,22 +45,22 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.13",
-    "@fluentui/react": "^8.0.0-beta.54",
-    "@fluentui/react-compose": "^1.0.0-beta.12",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.23",
-    "@fluentui/theme": "^2.0.0-beta.15",
-    "@fluentui/react-utils": "^0.3.1",
+    "@fluentui/react": "^8.0.0-beta.58",
+    "@fluentui/react-compose": "^1.0.0-beta.15",
+    "@fluentui/react-theme-provider": "^1.0.0-beta.26",
+    "@fluentui/theme": "^2.0.0-beta.18",
+    "@fluentui/react-utilities": "^0.3.1",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/foundation-legacy": "^8.0.0-beta.15",
-    "@fluentui/react-hooks": "^8.0.0-beta.11",
-    "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/utilities": "^8.0.0-beta.11",
+    "@fluentui/foundation-legacy": "^8.0.0-beta.18",
+    "@fluentui/react-hooks": "^8.0.0-beta.14",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/utilities": "^8.0.0-beta.14",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   }
 }

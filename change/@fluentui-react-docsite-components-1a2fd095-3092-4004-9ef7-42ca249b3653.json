@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use proper ResponsiveMode imports",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,8 +1,39 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.4)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.3..@fluentui/public-docsite-resources_v8.0.0-beta.4)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.0.1-3 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.58 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.3)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.2..@fluentui/public-docsite-resources_v8.0.0-beta.3)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.2)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.1..@fluentui/public-docsite-resources_v8.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/react-examples to v8.0.0-beta.2 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.1)
 

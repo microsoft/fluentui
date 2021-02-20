@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.57)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.56..@fluentui/react-cards_v1.0.0-beta.57)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v0.3.1 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.56)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.55..@fluentui/react-cards_v1.0.0-beta.56)
+
+### Changes
+
+- use @fluentui/react-utilities instead of @fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+
+## [1.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.55)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.54..@fluentui/react-cards_v1.0.0-beta.55)
+
+### Changes
+
+- [BREAKING] Removing previous experimental implementation of Card and moving the version in the next folder to be the default export. ([PR #16961](https://github.com/microsoft/fluentui/pull/16961) by humbertomakotomorimoto@gmail.com)
+- remove unused types & dependency on react-compose ([PR #16964](https://github.com/microsoft/fluentui/pull/16964) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.54)
 

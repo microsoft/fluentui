@@ -23,6 +23,13 @@ export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
   strings.months[date.getMonth()] + ' ' + date.getFullYear();
 
 /**
+ * Format date to a month string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonth = (date: Date, strings: IDateGridStrings) => strings.months[date.getMonth()];
+
+/**
  * Format date to a year string representation
  * @param date - input date to format
  */
@@ -50,6 +57,7 @@ export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings = {
 
 export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
   formatDay,
+  formatMonth,
   formatYear,
   formatMonthDayYear,
   formatMonthYear,
@@ -69,7 +77,7 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   closeButtonAriaLabel: 'Close',
   selectedDateFormatString: 'Selected date {0}',
   todayDateFormatString: "Today's date {0}",
-  monthPickerHeaderAriaLabel: '{0}, select to change the year',
-  yearPickerHeaderAriaLabel: '{0}, select to change the month',
+  monthPickerHeaderAriaLabel: '{0}, change year',
+  yearPickerHeaderAriaLabel: '{0}, change month',
   dayMarkedAriaLabel: 'marked',
 };

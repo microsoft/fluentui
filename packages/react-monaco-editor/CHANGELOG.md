@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.1-3](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.1-3)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.1-2..@fluentui/react-monaco-editor_v1.0.1-3)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.1-2](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.1-2)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.1-1..@fluentui/react-monaco-editor_v1.0.1-2)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [1.0.1-1](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.1-1)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.0.1-0..@fluentui/react-monaco-editor_v1.0.1-1)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [1.0.1-0](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.0.1-0)
 

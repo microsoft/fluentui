@@ -7,8 +7,8 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';

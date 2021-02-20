@@ -22,7 +22,6 @@ interface Answers {
 module.exports = (plop: NodePlopAPI) => {
   plop.setGenerator('package', {
     description: 'New package',
-
     prompts: [
       {
         type: 'input',
@@ -67,15 +66,9 @@ module.exports = (plop: NodePlopAPI) => {
         default: false,
       },
     ],
-
     actions: (answers: Answers): Actions => {
-      // hasTests should default to true / however under
-      // react package it get's set to undefined.
-      // we default hasTests to true in that scenario
-      const { hasTests = true } = answers;
-      answers = { ...answers, hasTests };
-
-      const { packageName, target, hasExamples } = answers;
+      if (answers.target === 'react') answers = { hasTests: true, ...answers };
+      const { packageName, target, hasExamples, hasTests } = answers;
 
       const destination = `packages/${packageName}`;
       const exampleRoot = `packages/react-examples`;
@@ -94,16 +87,16 @@ module.exports = (plop: NodePlopAPI) => {
       let hasError = false;
 
       return [
+        // Universal files
         {
-          // Universal files
           type: 'addMany',
           destination,
           globOptions,
           data,
           templateFiles: ['plop-templates/**/*'],
         },
+        // node- or react-specific files
         {
-          // node- or react-specific files
           type: 'addMany',
           destination,
           globOptions,
@@ -112,23 +105,21 @@ module.exports = (plop: NodePlopAPI) => {
             ? [`plop-templates-${target}/**/*`]
             : [`plop-templates-${target}/**/*`, `!(plop-templates-${target}/jest.config.js)`],
         },
+        // Example files
         {
-          // Example files
           type: 'addMany',
           destination: exampleDestination,
           globOptions,
           data,
           skip: () => {
-            if (!hasExamples) {
-              return 'Skipping example scaffolding';
-            }
+            if (!hasExamples) return 'Skipping example scaffolding';
           },
           skipIfExists: true,
           base: `plop-templates-storybook`,
           templateFiles: [`plop-templates-storybook/**/*`],
         },
+        // update package.json
         {
-          // update package.json
           type: 'modify',
           path: `${destination}/package.json`,
           transform: packageJsonContents => {
@@ -137,20 +128,17 @@ module.exports = (plop: NodePlopAPI) => {
             return newPackageJson;
           },
         },
+        // update react-examples package.json
         {
-          // update example package.json
-          // update package.json
           type: 'modify',
           path: `${exampleRoot}/package.json`,
           skip: () => {
-            if (!hasExamples) {
-              return 'Skipping react-examples package.json update';
-            }
+            if (!hasExamples) return 'Skipping react-examples package.json update';
           },
           transform: packageJsonContents => updateExamplePackageJson(packageJsonContents, data.packageNpmName),
         },
+        // update tsconfig.json
         {
-          // update tsconfig.json
           type: 'modify',
           path: `${destination}/tsconfig.json`,
           transform: tsconfigContents => updateTsconfig(tsconfigContents, hasTests),
@@ -238,7 +226,7 @@ function updatePackageJson(packageJsonContents: string, answers: Answers) {
   // This is preferable over hardcoding dependency versions to keep things in sync.
   // The reference package(s) may need to be updated over time as dependency lists change.
   const newPackageJson: PackageJson = JSON.parse(packageJsonContents);
-  const referencePackages = target === 'node' ? ['codemods'] : ['react-button', 'react-image'];
+  const referencePackages = target === 'node' ? ['codemods'] : ['react-menu'];
   const hasError = replaceVersionsFromReference(referencePackages, newPackageJson, answers);
 
   if (!hasTests) {
@@ -266,9 +254,7 @@ function updateExamplePackageJson(packageJsonContents: string, packageNpmName: s
 }
 
 function updateTsconfig(tsconfigContents: string, hasTests: boolean | undefined): string {
-  if (hasTests) {
-    return tsconfigContents;
-  }
+  if (hasTests) return tsconfigContents;
   // Remove jest types if there aren't tests (use jju since tsconfig might have comments)
   const tsconfig = jju.parse(tsconfigContents);
   const types: string[] = tsconfig.compilerOptions.types;

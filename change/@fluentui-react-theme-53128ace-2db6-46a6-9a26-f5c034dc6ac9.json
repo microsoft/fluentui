@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add SizeValues type",
+  "packageName": "@fluentui/react-theme",
+  "email": "junioassuncaocharles@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -2,6 +2,258 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-avatar_v0.11.1",
+      "version": "0.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow React 17 in peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.14",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.16",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.14",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-avatar_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "[BREAKING] use makeStyles() for styling and props interface updates.",
+            "author": "olfedias@microsoft.com",
+            "commit": "b649627f8186f26c7043b7c00a32613d4c8aaafe",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.7-0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.15",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-avatar_v0.10.1",
+      "version": "0.10.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add labels to calendar tables, date header button, and tweak label wording for conciseness",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b6432f371a9ed22b31657dbe9b57699bbff439ba",
+            "package": "@fluentui/react-avatar"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.14",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.2-0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-avatar_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
+            "author": "olfedias@microsoft.com",
+            "commit": "c5110956b421df4bc7542ca117935ae4c7919864",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.14",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.2-0",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/react-avatar_v0.10.0",
       "version": "0.10.0",

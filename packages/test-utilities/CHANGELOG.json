@@ -2,6 +2,66 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.8",
+      "version": "8.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/test-utilities_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add getCSSRules helper to retrieve css text from stylesheet.",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/test-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/test-utilities_v8.0.0-beta.5",
       "version": "8.0.0-beta.5",

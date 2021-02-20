@@ -1,8 +1,42 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.34)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.33..@fluentui/react-button_v1.0.0-beta.34)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v0.3.1 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Button: Renaming ghost prop to subtle. ([PR #17058](https://github.com/microsoft/fluentui/pull/17058) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.33)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.32..@fluentui/react-button_v1.0.0-beta.33)
+
+### Changes
+
+- use @fluentui/react-utilities instead of @fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+- Cleaning up state function. ([PR #16943](https://github.com/microsoft/fluentui/pull/16943) by humbertomakotomorimoto@gmail.com)
+- SplitButton: Adding the ability to open the menu while focusing on the primary action button by pressing Alt+Down. ([PR #17021](https://github.com/microsoft/fluentui/pull/17021) by humbertomakotomorimoto@gmail.com)
+
+## [1.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.32)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v1.0.0-beta.31..@fluentui/react-button_v1.0.0-beta.32)
+
+### Changes
+
+- remove unused temporary types ([PR #16964](https://github.com/microsoft/fluentui/pull/16964) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v1.0.0-beta.31)
 

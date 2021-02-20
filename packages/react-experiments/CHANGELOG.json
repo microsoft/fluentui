@@ -2,6 +2,74 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.61",
+      "version": "8.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.60",
+      "version": "8.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.0.0-beta.17",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.57",
+            "author": "evlevy@microsoft.com",
+            "commit": "98d7d6b2ebcd4b2fa79c80b08e5719d5f0fdfa7f",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.59",
+      "version": "8.0.0-beta.59",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.59",
+      "version": "8.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] Removing Button, MenuButton, SplitButton and Toggle components. Deprecating Slider component. Updating MicroFeedback component to use Button in @fluentui/react instead of the removed Button in @fluentui/react-experiments.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2720569cb85b0a729e64c450bb963f7eb6e468d5",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.58",
       "version": "8.0.0-beta.58",

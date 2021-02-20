@@ -2,6 +2,114 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.42",
+      "version": "1.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.41",
+      "version": "1.0.0-beta.41",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Link: Initial implementation based on SPEC.md",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "28cd71a2a8ce9cf2398b45335a49621507b8c55d",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.7-0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.40",
+      "version": "1.0.0-beta.40",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-link_v1.0.0-beta.40",
+      "version": "1.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove dependency on react-compose",
+            "author": "olfedias@microsoft.com",
+            "commit": "52f6bb844c5dece1af576da1a34f9230c50432d6",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 11 Feb 2021 12:18:41 GMT",
       "tag": "@fluentui/react-link_v1.0.0-beta.39",
       "version": "1.0.0-beta.39",

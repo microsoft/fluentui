@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Support registering static css",
-  "packageName": "@fluentui/make-styles",
-  "email": "xgao@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-09T00:55:28.251Z"
-}

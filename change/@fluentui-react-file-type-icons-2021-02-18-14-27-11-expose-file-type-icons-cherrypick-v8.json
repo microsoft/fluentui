@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-18T22:27:11.587Z"
+}

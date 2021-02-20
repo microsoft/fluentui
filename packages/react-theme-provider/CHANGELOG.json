@@ -2,6 +2,102 @@
   "name": "@fluentui/react-theme-provider",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.26",
+      "version": "1.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.25",
+      "version": "1.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.24",
+      "version": "1.0.0-beta.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.24",
+      "version": "1.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove dependency on @fluentui/react-stylesheets",
+            "author": "olfedias@microsoft.com",
+            "commit": "c5110956b421df4bc7542ca117935ae4c7919864",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/react-theme-provider_v1.0.0-beta.23",
       "version": "1.0.0-beta.23",
