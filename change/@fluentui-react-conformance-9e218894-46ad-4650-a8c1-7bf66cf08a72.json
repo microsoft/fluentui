@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "Make @fluentui/react-conformance public",
   "packageName": "@fluentui/react-conformance",
   "email": "altinokd@microsoft.com",
