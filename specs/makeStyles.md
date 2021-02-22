@@ -32,16 +32,16 @@ As a consequence, there is a couple of restrictions:
 - Shorthand css properties (`margin`) must be expanded before merging (to `margin-top`, `margin-right`, `margin-bottom`, `margin-left`).
 - To apply any overrides, it is not possible to just concatenate classes. Style object are deeply nested as they can contain styles for pseudo elements (`::before`), pseudo classes (`:hover`) or nested elements (`& .indicator`). Therefore style objects must be always deep merged and then the classes can be computed.
 - Due to the previous point, when parent component is passing style overrides to a child component it needs to know what kind of component the child is.
-  If that is a non-FUI component, parent must pass the overrides as a list of classnames. If the child is a FUI component, the overrides must me passes as `styles` object so that the child can merge the styles correctly.
-  This can be complicated as there are scenarios where the parent does not know what child is will render (especially when the styles are not applied by the direct child but somewhere else down the tree).
-- When overrides are passed from parent to child, the whole styles must be re-evaluated in runtime every time. Child can cache evaluated styles and classnames based on (limited) set of input props and state. And FUI components do that. But once style overrides are passed to the componentm the overrides (`styles` or `variables`) and component styles object must be deep merged.
+  If that is a non-FUI component, parent must pass the overrides as a list of classnames. If the child is a FUI component, the overrides must be passed as `styles` object so that the child can merge the styles correctly.
+  This can be complicated as there are scenarios where the parent does not know what child it will render (especially when the styles are not applied by the direct child but somewhere else down the tree).
+- When overrides are passed from parent to child, the whole styles must be re-evaluated in runtime every time. Child can cache evaluated styles and classnames based on (limited) set of input props and state. And FUI components do that. But once style overrides are passed to the component, the overrides (`styles` or `variables`) and component styles object must be deep merged.
 
 #### Application overrides are part of the theme object
 
 All application-owned style overrides are part of the Theme object. Most of those are just one-off overrides.
 This results in a huge object (several files and thousands of lines per component) which is not tree-shakeable.
 There is also unnecessary and confusing indirection when defining overrides and no support for dead code elimination.
-Overrides are defined far away from their usage, see the example bellow.
+Overrides are defined far away from their usage, see the example below.
 
 ```jsx
 // App
@@ -121,8 +121,8 @@ To style the component, combined classes are used in CSS as well:
 }
 ```
 
-This is causing problems with overrides - assuming it is guaranteed that override classes are written bellow the component styles in the DOM, for most cases in this example, it is enough to have 1 class specificity for overrides to work correctly. The only case where the 1 class override does not work is for CSS properties in `.disabled.button`.
-Consumer does not know what specificity must be used for the overrides, this can also change between library versions. Also different engineers can beak each other's styling.
+This is causing problems with overrides - assuming it is guaranteed that override classes are written below the component styles in the DOM, for most cases in this example, it is enough to have 1 class specificity for overrides to work correctly. The only case where the 1 class override does not work is for CSS properties in `.disabled.button`.
+Consumer does not know what specificity must be used for the overrides, this can also change between library versions. Also different engineers can break each other's styling.
 
 #### Stylesheet is generated build time
 
@@ -131,7 +131,7 @@ In runtime only the classes are applied based on props and state.
 
 #### Styles precedence is set by module evaluation order
 
-The order of `makeStyles` calls defines the DOM insertion order. When `makeStyles` is called, it does NOT insert the CSS to DOM, but assigns a counter-based id to the associated styles. When `useStyles` returned by the `makeStyles` is called for the first time, it inserts the CSS to DOM in the order defined by the `makeStyles` call.
+The order of `makeStyles` calls defines the DOM insertion order. When `makeStyles` is called, it does **not** insert the CSS to DOM, but assigns a counter-based id to the associated styles. When `useStyles` returned by the `makeStyles` is called for the first time, it inserts the CSS to DOM in the order defined by the `makeStyles` call.
 
 For that to work as expected, you cannot export `makeStyles` to share styles in multiple different modules - that would lead to non-deterministic insertion order. The only way to share styles is to export the style object and have a dedicated `makeStyles` calls in all the modules which reuse the style object.
 
@@ -146,7 +146,7 @@ There is a build step which generates a stylesheet for every `makeStyles` call.
 
 Can we use v8 `makeStyles` (build time style evaluation) but let JS handle the "specificity"?
 
-The expensive part in v0 styling approach is the style evaluation - processing styles, expanding CSS shorthands, vendor prefixing, RTL, generating classnames. But we can do most of this build time.
+The expensive part in v0 styling approach is the style evaluation - processing styles, expanding CSS shorthands, vendor prefixing, RTL, generating classnames. But we can do most of this in build time.
 
 ### Basic algorithm
 
@@ -214,7 +214,7 @@ Those tokens are resolved to CSS variable usages in build time. `ThemeProvider` 
 
 #### IE11 compatibility
 
-IE11 does not support CSS variables. If we decide to support IE11, we will split the styles to the items which use tokens and those which do not. The ones which do not use tokens will be processed build time, for the ones with tokens, we will fall back to runtime evaluation.
+IE11 does not support CSS variables. If we decide to support IE11, we will split the styles to the items which use tokens and those which do not. The ones which do not use tokens will be processed in build time, for the ones with tokens, we will fall back to runtime evaluation.
 
 ### Hash-based classnames
 
@@ -231,7 +231,7 @@ Instead of using the global dictionary side effect, we can use part of the hash 
 ![Classname composed of property hash and CSS value hash](makeStyles-classname.png)
 
 Then when merging in a child, we can merge the classes by replacing previous classnames with the same CSS property hash.
-This approach makes the classnames longer and according to the test does not make the merging any faster.
+This approach makes the classnames longer and according to the test does not make the merging any faster. See results in [PR 16411](https://github.com/microsoft/fluentui/pull/16411).
 
 #### Alternative 2: use special `styles` prop for overrides
 
@@ -246,11 +246,15 @@ Similar approach is also used in Attlasian [compiled v5](https://github.com/atla
 
 ```jsx
 // Button.tsx
-const useButtonStyles = makeStyles([
-  [null, { cursor: 'pointer' }], // always applied
-  [props => props.primary, tokens => ({ backgroundColor: tokens.colors.primary.background })],
-  [props => pros.disabled, { backgroundColor: 'gray' }],
-]);
+const useButtonStyles =
+  makeStyles <
+  ButtonProps >
+  [
+    // either use ComponentProps type or create your derived one
+    [null, { cursor: 'pointer' }], // always applied
+    [props => props.primary, tokens => ({ backgroundColor: tokens.colors.primary.background })],
+    [props => pros.disabled, { backgroundColor: 'gray' }],
+  ];
 
 const Button = ({ className, ...props }) => {
   const buttonClasses = useButtonStyles(props); // button styles
@@ -268,12 +272,24 @@ const ButtonUsage = () => {
 };
 ```
 
+### Theme specific overrides
+
+```jsx
+const useStyles = makeStyles([
+  [null, { color: 'black', borderWidth: '2px' }],
+  [{ isDarkTheme: true }, { color: 'white', borderWidth: '0' }], // should be always dark and have no border
+]);
+//
+useStyles({ isDarkTheme: false /* some condition based on React Context */ });
+```
+
 ## Issues, open questions
 
 ### Theme-level style overrides
 
 As described in _Applying theme to styles_, a theme can only define tokens but can never change styles. There is a concern that this is not flexible enough and there might be a valid scenario where theme-specific style overrides will be required.
-How would that be implemented.
+
+How would that be implemented?
 Example API:
 
 ```js
