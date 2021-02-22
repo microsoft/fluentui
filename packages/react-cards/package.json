@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-cards",
-  "version": "1.0.0-beta.57",
+  "version": "9.0.0-alpha.0",
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,9 +47,9 @@
     "@fluentui/keyboard-key": "^0.2.13",
     "@fluentui/react": "^8.0.0-beta.58",
     "@fluentui/react-compose": "^1.0.0-beta.15",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.26",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.0",
     "@fluentui/theme": "^2.0.0-beta.18",
-    "@fluentui/react-utilities": "^0.3.1",
+    "@fluentui/react-utilities": "^9.0.0-alpha.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/foundation-legacy": "^8.0.0-beta.18",
     "@fluentui/react-hooks": "^8.0.0-beta.14",
@@ -62,5 +62,13 @@
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }

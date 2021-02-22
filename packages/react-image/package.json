@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "0.7.2",
+  "version": "9.0.0-alpha.0",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -44,8 +44,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^0.2.7",
-    "@fluentui/react-utilities": "^0.3.1",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.0",
+    "@fluentui/react-utilities": "^9.0.0-alpha.0",
     "@fluentui/set-version": "^8.0.0-beta.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "object-fit-images": "^3.2.4",
@@ -61,7 +61,8 @@
     "tag": "latest",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }
