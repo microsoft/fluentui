@@ -89,7 +89,12 @@ export const Primary = () => <AppearanceExample primary />;
 // States
 //
 export const Disabled = () => (
-  <Button disabled icon={<SVGIcon />}>
-    Text
-  </Button>
+  <>
+    <Button disabled icon={<SVGIcon />}>
+      Default disabled
+    </Button>
+    <Button primary disabled icon={<SVGIcon />}>
+      Primary disabled
+    </Button>
+  </>
 );

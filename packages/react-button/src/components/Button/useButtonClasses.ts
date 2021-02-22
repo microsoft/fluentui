@@ -48,7 +48,12 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     iconWidth: '20px',
     iconHeight: '20px',
   },
-  disabled: {},
+  disabled: {
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    content2Color: theme.alias.color.neutral.neutralForegroundDisabled,
+  },
   small: {
     paddingX: buttonSpacing.medium,
     borderRadius: theme.global.borderRadius.small,
@@ -105,6 +110,8 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     background: theme.alias.color.brand.brandBackground,
     borderColor: 'transparent',
     borderColorHover: 'transparent',
+    borderColorActive: 'transparent',
+
     backgroundHover: theme.alias.color.brand.brandBackgroundHover,
     backgroundPressed: theme.alias.color.brand.brandBackgroundPressed,
 
@@ -112,7 +119,14 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     shadow: theme.alias.shadow.shadow4,
     shadowPressed: theme.alias.shadow.shadow2,
   },
-  primaryDisabled: {}
+  primaryDisabled: {
+    background: theme.alias.color.neutral.neutralBackgroundDisabled,
+    // borderColor: theme.alias.color.neutral.neutralStrokeDisabled,
+    color: theme.alias.color.neutral.neutralForegroundDisabled,
+    content2Color: theme.alias.color.neutral.neutralForegroundDisabled,
+    shadow: 'none',
+    shadowPressed: 'none',
+  },
 });
 
 const useRootClasses = makeStyles<ButtonStyleSelectors>([
@@ -198,6 +212,27 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
     },
   ],
   [
+    ({ disabled }) => disabled,
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        background: buttonTokens.disabled.background,
+        borderColor: buttonTokens.disabled.borderColor,
+        color: buttonTokens.disabled.color,
+        ':hover': {
+          background: buttonTokens.disabled.background,
+          borderColor: buttonTokens.disabled.borderColor,
+          cursor: 'default',
+        },
+        ':active': {
+          background: buttonTokens.disabled.background,
+          borderColor: buttonTokens.disabled.borderColor,
+        },
+      };
+    },
+  ],
+  [
     ({ primary }) => primary,
     theme => {
       const buttonTokens = makeButtonTokens(theme);
@@ -218,6 +253,7 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
           background: buttonTokens.primary.backgroundPressed,
           // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
           boxShadow: buttonTokens.primary.shadow,
+          borderColor: buttonTokens.primary.borderColorActive,
         },
 
         // TODO: focus
@@ -225,13 +261,21 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
     },
   ],
   [
-    ({ textOnly }) => textOnly,
+    ({ primary, disabled }) => primary && disabled,
     theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
-        minWidth: buttonTokens.textOnly.minWidth,
-        maxWidth: buttonTokens.textOnly.maxWidth,
+        background: buttonTokens.primaryDisabled.background,
+        color: buttonTokens.primaryDisabled.color,
+        boxShadow: buttonTokens.primaryDisabled.shadow,
+        ':hover': {
+          background: buttonTokens.primaryDisabled.background,
+          cursor: 'default',
+        },
+        ':active': {
+          boxShadow: buttonTokens.primaryDisabled.shadowPressed,
+        },
       };
     },
   ],

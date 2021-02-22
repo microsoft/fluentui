@@ -69,6 +69,7 @@ export interface ButtonState extends ButtonProps {
 }
 
 export type ButtonStyleSelectors = {
+  disabled?: boolean;
   iconOnly?: boolean;
   primary?: boolean;
   size?: string;

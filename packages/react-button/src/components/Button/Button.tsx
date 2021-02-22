@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useButton } from './useButton';
-import { ButtonProps } from './Button.types';
+import { ButtonProps, ButtonStyleSelectors } from './Button.types';
 import { renderButton } from './renderButton';
 import { useButtonClasses } from './useButtonClasses';
 
@@ -15,7 +15,8 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   const receivedIcon = !!state.icon?.children;
 
   const iconOnly = receivedIcon && !receivedChildren;
-  const styleSelectors = {
+  const styleSelectors: ButtonStyleSelectors = {
+    disabled: state.disabled,
     primary: state.primary,
     iconOnly: iconOnly,
     textOnly: receivedChildren && !receivedIcon,
