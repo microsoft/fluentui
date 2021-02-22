@@ -4,7 +4,6 @@ const readFileSync = require('fs').readFileSync;
 const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
 const path = require('path');
-const argv = require('yargs').argv;
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
 const ignoreDevDependencies = [
@@ -23,7 +22,7 @@ const ignoreDevDependencies = [
  * For this utility to work you will actually need to install graphviz on your machine
  * http://www.graphviz.org
  */
-function main() {
+function main(argv) {
   if (!argv.root) {
     throw new Error('A root package name should be provided');
   }
@@ -149,4 +148,29 @@ function _getEdgesAndChildren(graph, node) {
   return { edges, children };
 }
 
-main();
+require('yargs')
+  .scriptName('dependency-graph-generator')
+  .usage('$0 [args]')
+  .command(
+    '$0',
+    'Generates dependency graphs for packages in the repo',
+    yargs => {
+      yargs
+        .positional('root', {
+          type: 'string',
+          describe: 'The name of the root package in the dependency tree',
+          demandOption: true,
+        })
+        .positional('include-dev', {
+          type: 'boolean',
+          description: 'Adds ignored dev dependencies to the tree',
+        })
+        .positional('graphviz-path', {
+          type: 'string',
+          description: 'The path to graphviz which needs to be installed on the machine',
+        });
+    },
+    argv => main(argv),
+  )
+  .demand('root')
+  .help().argv;
