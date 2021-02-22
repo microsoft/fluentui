@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update colors for the FloatingSuggestionsComposite items",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

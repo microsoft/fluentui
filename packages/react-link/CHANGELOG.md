@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.43)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v1.0.0-beta.42..@fluentui/react-link_v1.0.0-beta.43)
+
+### Patches
+
+- Bump @fluentui/react-make-styles to v0.2.8 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+### Changes
+
+- Breaks dependency on react-hooks for convergence ([PR #17091](https://github.com/microsoft/fluentui/pull/17091) by lingfan.gao@microsoft.com)
 
 ## [1.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v1.0.0-beta.42)
 

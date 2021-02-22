@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Built files use commonjs only.",
-  "packageName": "@fluentui/test-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
