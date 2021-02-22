@@ -9,7 +9,7 @@ import {
   MenuDivider,
   MenuGroupHeader,
 } from '@fluentui/react-menu';
-import { CutIcon as Cut, PasteIcon as Paste, EditIcon as Edit, AcceptIcon as Accept } from '@fluentui/react-icons-mdl2';
+import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
 const useContainerStyles = makeStyles([
@@ -18,10 +18,9 @@ const useContainerStyles = makeStyles([
     null,
     theme => ({
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      width: 'fit-content',
       minWidth: '128px',
       minHeight: '48px',
-      maxWidth: '300px',
+      maxWidth: '128px',
       boxShadow: `${theme.alias.shadow.shadow16}`,
       paddingTop: '4px',
       paddingBottom: '4px',
@@ -32,11 +31,6 @@ const Container: React.FC = props => {
   const classNames = useContainerStyles({});
   return <div className={classNames}>{props.children}</div>;
 };
-
-const AcceptIcon = React.memo(() => <Accept />);
-const CutIcon = React.memo(() => <Cut />);
-const PasteIcon = React.memo(() => <Paste />);
-const EditIcon = React.memo(() => <Edit />);
 
 export const MenuListExample = () => (
   <Container>
@@ -93,32 +87,22 @@ export const MenuListWithDivider = () => (
 );
 
 export const MenuListWithCheckboxes = () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const [state, dispatch] = React.useReducer((prevState, payload) => {
-    return {
-      ...prevState,
-      [payload.name]: payload.items,
-    };
-  }, {});
-
-  const onChange = React.useCallback(
-    (e: React.SyntheticEvent, name: string, items: string[]) => {
-      dispatch({ name, items });
-    },
-    [dispatch],
-  );
+  const checkmark = <AcceptIcon />;
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
+    setCheckedValues(s => ({ ...s, [name]: items }));
+  };
 
   return (
     <Container>
-      <MenuList checkedValues={state} onCheckedValueChange={onChange}>
-        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={<AcceptIcon />}>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
           Cut
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={<AcceptIcon />}>
+        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
           Paste
         </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={<AcceptIcon />}>
+        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
           Edit
         </MenuItemCheckbox>
       </MenuList>
@@ -126,41 +110,25 @@ export const MenuListWithCheckboxes = () => {
   );
 };
 
-const MemoRadio = React.memo(
-  (props: any) => {
-    return (
-      <MenuItemRadio icon={props.icon} name={props.name} value={props.value} checkmark={props.checkmark}>
-        {props.children}
-      </MenuItemRadio>
-    );
-  },
-  (prev, next) => {
-    console.log(prev.icon === next.icon);
-    return true;
-  },
-);
-
 export const MenuListWithRadios = () => {
+  const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
-  const onChange = React.useCallback(
-    (e: React.SyntheticEvent, name: string, items: string[]) => {
-      setCheckedValues(s => ({ ...s, [name]: items }));
-    },
-    [setCheckedValues],
-  );
+  const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
+    setCheckedValues(s => ({ ...s, [name]: items }));
+  };
 
   return (
     <Container>
       <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
-        <MemoRadio icon={<CutIcon />} name="font" value="segoe" checkmark={<AcceptIcon />}>
+        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
           Segoe
-        </MemoRadio>
-        <MemoRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={<AcceptIcon />}>
+        </MenuItemRadio>
+        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
           Calibri
-        </MemoRadio>
-        <MemoRadio icon={<EditIcon />} name="font" value="arial" checkmark={<AcceptIcon />}>
+        </MenuItemRadio>
+        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
           Arial
-        </MemoRadio>
+        </MenuItemRadio>
       </MenuList>
     </Container>
   );
@@ -206,14 +174,74 @@ export const MenuListWithSelectionGroups = () => {
   );
 };
 
-export const MemoExample = () => {
-  const [count, setCount] = React.useState(0);
-  const TestComponent = React.memo((props: { value: string }) => <span>{props.value}</span>);
-  const Button = () => <button onClick={() => setCount(c => c + 1)}>Counter: {count}</button>;
+const MemoRadio = React.memo((props: any) => {
+  // use icons in the memo because JSX will always create a new object
+  // possible to memoize icons but it can be overkill
   return (
-    <div>
-      <TestComponent value="test" />
-      <Button />
-    </div>
+    <MenuItemRadio icon={<EditIcon />} name={props.name} value={props.value} checkmark={<AcceptIcon />}>
+      {props.children}
+    </MenuItemRadio>
+  );
+});
+
+export const MemoRadioItems = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const onChange = React.useCallback(
+    (e: React.SyntheticEvent, name: string, items: string[]) => {
+      setCheckedValues(s => ({ ...s, [name]: items }));
+    },
+    [setCheckedValues],
+  );
+
+  return (
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MemoRadio name="font" value="segoe">
+          Segoe
+        </MemoRadio>
+        <MemoRadio name="font" value="calibri">
+          Calibri
+        </MemoRadio>
+        <MemoRadio name="font" value="arial">
+          Arial
+        </MemoRadio>
+      </MenuList>
+    </Container>
+  );
+};
+
+const MemoCheckbox = React.memo((props: any) => {
+  // use icons in the memo because JSX will always create a new object
+  // possible to memoize icons but it can be overkill
+  return (
+    <MenuItemCheckbox icon={<EditIcon />} name={props.name} value={props.value} checkmark={<AcceptIcon />}>
+      {props.children}
+    </MenuItemCheckbox>
+  );
+});
+
+export const MemoCheckboxItems = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const onChange = React.useCallback(
+    (e: React.SyntheticEvent, name: string, items: string[]) => {
+      setCheckedValues(s => ({ ...s, [name]: items }));
+    },
+    [setCheckedValues],
+  );
+
+  return (
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MemoCheckbox name="font" value="segoe">
+          Segoe
+        </MemoCheckbox>
+        <MemoCheckbox name="font" value="calibri">
+          Calibri
+        </MemoCheckbox>
+        <MemoCheckbox name="font" value="arial">
+          Arial
+        </MemoCheckbox>
+      </MenuList>
+    </Container>
   );
 };

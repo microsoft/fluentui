@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuListProps, MenuListState } from './MenuList.types';
 
 const mergeProps = makeMergeProps<MenuListState>();
@@ -22,7 +22,7 @@ export const useMenuList = (
   );
 
   const { checkedValues, onCheckedValueChange } = state;
-  state.toggleCheckbox = React.useCallback(
+  state.toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
 
