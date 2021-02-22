@@ -1,7 +1,6 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Bump @fluentui/react-conformance",
   "packageName": "@fluentui/react-image",
-  "email": "altinokd@microsoft.com",
-  "dependentChangeType": "patch"
+  "email": "altinokd@microsoft.com"
 }

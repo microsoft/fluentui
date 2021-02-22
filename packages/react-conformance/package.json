@@ -51,5 +51,12 @@
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0",
     "typescript": "^3.5.0"
+  },
+  "beachball": {
+    "tag": "latest",
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
   }
 }
