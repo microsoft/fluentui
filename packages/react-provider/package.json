@@ -34,7 +34,6 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^0.6.0",
     "@fluentui/react-theme": "^0.3.3",
     "@fluentui/react-theme-provider": "^1.0.0-beta.27",
     "@fluentui/react-utilities": "^0.4.0",

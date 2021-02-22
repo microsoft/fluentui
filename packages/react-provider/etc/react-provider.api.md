@@ -55,9 +55,7 @@ export function useFluentProvider(props: ProviderProps, ref: React.Ref<HTMLEleme
 };
 
 // @public (undocumented)
-export function useFluentProviderState(draftState: ProviderState & {
-    style?: React.CSSProperties;
-}): void;
+export function useFluentProviderState(draftState: ProviderState): void;
 
 
 // (No @packageDocumentation comment for this package)
