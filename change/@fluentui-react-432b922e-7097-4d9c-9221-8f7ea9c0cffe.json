@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "DatePicker: when initially focused, DatePicker now maintains its focus border after Calendar is closed via keyboard commands",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
