@@ -11,22 +11,22 @@ export type ButtonProps = ComponentProps &
      */
     icon?: ObjectShorthandProps;
 
-    /** A button can appear circular. */
-    circular?: boolean;
+    // /** A button can appear circular. */
+    // circular?: boolean;
 
     /** A button can show that it cannot be interacted with. */
     disabled?: boolean;
 
-    /**
-     * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
-     * important to keep a consistent tab order for screen reader and keyboard users.
-     * @defaultvalue false
-     */
-    disabledFocusable?: boolean;
+    // /**
+    // eslint-disable-next-line @fluentui/max-len
+    //  * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
+    //  * important to keep a consistent tab order for screen reader and keyboard users.
+    //  * @defaultvalue false
+    //  */
+    // disabledFocusable?: boolean;
 
-    // TODO: remove unsupported props, all of them
-    /** A button can fill the width of its container. */
-    block?: boolean;
+    // /** A button can fill the width of its container. */
+    // block?: boolean;
 
     /** A button can contain only an icon. */
     iconOnly?: boolean;
@@ -34,26 +34,17 @@ export type ButtonProps = ComponentProps &
     /** An icon button can format its icon to appear before or after its content. */
     iconPosition?: 'before' | 'after';
 
-    /** A button that inherits its background and has a subtle appearance. */
-    inverted?: boolean;
-
-    /** Opt in to a named variant which can be supplied by a theme. */
-    variant?: string;
-
-    /** A button can show a loading indicator. */
-    loading?: boolean;
+    // /** A button can show a loading indicator. */
+    // loading?: boolean;
 
     /** A button can emphasize that it represents the primary action. */
     primary?: boolean;
 
-    /** A button can emphasize that it represents an alternative action. */
-    secondary?: boolean;
+    // /** A button can blend into its background to become less emphasized. */
+    // subtle?: boolean;
 
-    /** A button can blend into its background to become less emphasized. */
-    subtle?: boolean;
-
-    /** A button can have no background styling and just be emphasized through its content styling. */
-    transparent?: boolean;
+    // /** A button can have no background styling and just be emphasized through its content styling. */
+    // transparent?: boolean;
 
     /** A button can be sized. */
     size?: SizeValue;
