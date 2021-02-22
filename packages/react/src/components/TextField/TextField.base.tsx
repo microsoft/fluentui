@@ -213,11 +213,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
 
+    const hasFocus = this._textElement.current === document.activeElement ? true : isFocused;
+
     const classNames = (this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       disabled,
-      focused: isFocused,
+      focused: hasFocus,
       required,
       multiline,
       hasLabel: !!label,

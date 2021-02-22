@@ -377,6 +377,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
           setSelectedDate(newlySelectedDate);
         }
       }
+      textFieldRef.current?.focus?.();
     };
 
     /**
