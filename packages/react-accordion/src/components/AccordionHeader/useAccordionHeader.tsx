@@ -6,7 +6,7 @@ import { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.ty
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps = ['expandIcon', 'buttonSlot'];
+export const accordionHeaderShorthandProps = ['expandIcon', 'button'];
 
 const mergeProps = makeMergeProps<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
 
@@ -25,7 +25,7 @@ export const useAccordionHeader = (
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       expandIcon: defaultExpandIcon,
-      buttonSlot: { as: 'div', role: 'button' },
+      button: { as: 'div', role: 'button', children: React.Fragment },
       as: 'div',
       role: 'heading',
       expandIconPosition: 'start',

@@ -5,7 +5,9 @@
 ```ts
 
 import { ComponentProps } from '@fluentui/react-utilities';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
 export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
@@ -13,15 +15,23 @@ export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.R
 // @public
 export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderProps & React.RefAttributes<HTMLElement>>;
 
+// @public (undocumented)
+export type AccordionHeaderExpandIconPosition = 'start' | 'end';
+
 // @public
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    expandIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    expandIconPosition?: AccordionHeaderExpandIconPosition;
 }
 
 // @public
-export const accordionHeaderShorthandProps: never[];
+export const accordionHeaderShorthandProps: string[];
 
 // @public
 export interface AccordionHeaderState extends AccordionHeaderProps {
+    button?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    expandIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
