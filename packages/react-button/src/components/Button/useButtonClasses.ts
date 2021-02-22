@@ -332,7 +332,7 @@ const useChildrenClasses = makeStyles<ButtonStyleSelectors>([
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         // TODO: This is "Body, Strong (?)" token in the design spec (14px size, 20px line, semibold weight)
-        //       There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
+        //      There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
         fontWeight: buttonTokens.base.fontWeight,
         fontSize: buttonTokens.base.fontSize,
         lineHeight: buttonTokens.base.lineHeight,

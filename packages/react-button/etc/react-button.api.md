@@ -4,360 +4,99 @@
 
 ```ts
 
-import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
-import { MenuContext } from '@fluentui/react-shared-contexts';
-import { MinimalMenuProps } from '@fluentui/react-shared-contexts';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
-import { ShorthandProps } from '@fluentui/react-utilities';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
-import { useMenuContext } from '@fluentui/react-shared-contexts';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: import("@fluentui/react-utilities").ShorthandProps<{}>;
-    loader?: import("@fluentui/react-utilities").ShorthandProps<{}>;
-    content?: import("@fluentui/react-utilities").ShorthandProps<{}>;
-    href?: string | undefined;
-    target?: string | undefined;
-    circular?: boolean | undefined;
+    icon?: import("@fluentui/react-utilities").ObjectShorthandProps<import("@fluentui/react-utilities").ComponentProps> | undefined;
     disabled?: boolean | undefined;
-    disabledFocusable?: boolean | undefined;
-    block?: boolean | undefined;
     iconOnly?: boolean | undefined;
     iconPosition?: "after" | "before" | undefined;
-    inverted?: boolean | undefined;
-    variant?: string | undefined;
-    loading?: boolean | undefined;
     primary?: boolean | undefined;
-    secondary?: boolean | undefined;
-    subtle?: boolean | undefined;
-    transparent?: boolean | undefined;
     size?: "small" | "medium" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
-    tokens?: import("@fluentui/react-theme-provider/lib/compat").RecursivePartial<import("./Button.types").ButtonTokens> | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: ShorthandProps;
-    loader?: ShorthandProps;
-    content?: ShorthandProps;
-    href?: string;
-    target?: string;
-    circular?: boolean;
+    icon?: ObjectShorthandProps;
     disabled?: boolean;
-    disabledFocusable?: boolean;
-    block?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
-    inverted?: boolean;
-    variant?: string;
-    loading?: boolean;
     primary?: boolean;
-    secondary?: boolean;
-    subtle?: boolean;
-    transparent?: boolean;
     size?: SizeValue;
-    tokens?: RecursivePartial<ButtonTokens>;
 };
 
 // @public
 export const buttonShorthandProps: string[];
 
 // @public (undocumented)
-export const ButtonSizeVariants: {
-    size_smallest: {
-        height: string;
-        minHeight: string;
-    };
-    size_smaller: {
-        height: string;
-        minHeight: string;
-    };
-    size_small: {
-        height: string;
-        minHeight: string;
-    };
-    size_large: {
-        height: string;
-        minHeight: string;
-    };
-    size_larger: {
-        height: string;
-        minHeight: string;
-    };
-    size_largest: {
-        height: string;
-        minHeight: string;
-    };
-};
-
-// @public (undocumented)
 export interface ButtonState extends ButtonProps {
     // (undocumented)
-    'data-is-focusable': boolean;
+    children?: ObjectShorthandProps;
     // (undocumented)
     ref: React.RefObject<HTMLButtonElement>;
 }
 
 // @public (undocumented)
-export type ButtonTokens = ColorTokens & FontTokens & {
-    padding?: string;
-    paddingLeft?: string;
-    paddingRight?: string;
-    paddingTop?: string;
-    paddingBottom?: string;
-    margin?: string;
-    height?: string;
-    minWidth?: string;
-    maxWidth?: string;
-    minHeight?: string;
-    contentGap?: string;
-    iconSize?: string;
-    borderRadius?: string;
-    borderTopLeftRadius?: string;
-    borderTopRightRadius?: string;
-    borderBottomLeftRadius?: string;
-    borderBottomRightRadius?: string;
-    borderWidth?: string;
-    boxShadow?: string;
-    width?: string;
-    forcedColorAdjust?: string;
-    transform?: string;
-    transition?: string;
-    size?: {
-        smallest?: string;
-        smaller?: string;
-        small?: string;
-        regular?: string;
-        large?: string;
-        larger?: string;
-        largest?: string;
-    };
-    pressed?: {
-        transform?: string;
-        transition?: string;
-    };
+export type ButtonStyleSelectors = {
+    disabled?: boolean;
+    iconOnly?: boolean;
+    primary?: boolean;
+    size?: string;
+    textOnly?: boolean;
+    textWithIcon?: boolean;
 };
 
 // @public (undocumented)
-export type ButtonVariants<TTokens = ButtonTokens> = {
-    root?: TTokens;
-    block?: TTokens;
-    circular?: TTokens;
-    iconOnly?: TTokens;
-    subtle?: TTokens;
-    primary?: TTokens;
-    transparent?: TTokens;
+export type ButtonTokens = {
+    height: string;
+    paddingX: string;
+    paddingY: string;
+    minWidth: string;
+    maxWidth: string;
+    fontSize: string;
+    fontWeight: number;
+    lineHeight: string;
+    iconWidth: string;
+    iconHeight: string;
+    iconSpacing: string;
+    color: string;
+    content2Color: string;
+    background: string;
+    backgroundHover: string;
+    backgroundPressed: string;
+    backgroundActive: string;
+    borderColor: string;
+    borderColorHover: string;
+    borderColorActive: string;
+    borderWidth: string;
+    borderRadius: string;
+    shadow: string;
+    shadowPressed: string;
 };
 
 // @public (undocumented)
-export interface CheckedState {
-    // (undocumented)
-    'aria-checked'?: React.AriaAttributes['aria-pressed'];
-    // (undocumented)
-    'aria-pressed'?: React.AriaAttributes['aria-pressed'];
-    // (undocumented)
-    checked?: boolean;
-    // (undocumented)
-    defaultChecked?: boolean;
-    // (undocumented)
-    onClick?: React.DOMAttributes<HTMLElement>['onClick'];
-    // (undocumented)
-    role?: string;
-}
-
-// @public
-export const CompoundButton: React.ForwardRefExoticComponent<CompoundButtonProps & React.RefAttributes<HTMLElement>>;
+export type ButtonVariants = 'base' | 'disabled' | 'iconOnly' | 'primary' | 'small' | 'large' | 'primaryDisabled' | 'iconOnlySmall' | 'iconOnlyLarge';
 
 // @public (undocumented)
-export interface CompoundButtonProps extends ButtonProps {
-    contentContainer?: ShorthandProps;
-    secondaryContent?: ShorthandProps;
-}
-
-// @public
-export const compoundButtonShorthandProps: string[];
-
-// @public (undocumented)
-export interface CompoundButtonState extends CompoundButtonProps, ButtonState {
-}
-
-// @public (undocumented)
-export type CompoundButtonTokens = ButtonTokens & {
-    secondaryContentColor?: string;
-    secondaryContentFontSize?: string;
-    secondaryContentFontWeight?: string;
-    secondaryContentGap?: string;
-};
-
-// @public (undocumented)
-export type CompoundButtonVariants = ButtonVariants<CompoundButtonTokens>;
-
-// @public (undocumented)
-export type ExpandedState = {
-    ref?: React.Ref<unknown>;
-    expanded?: boolean;
-    defaultExpanded?: boolean;
-    onClick?: (ev: React.MouseEvent) => void;
-    onMenuDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent) => void;
-    onKeyDown?: (ev: React.KeyboardEvent) => void;
-    'aria-expanded'?: React.HTMLAttributes<HTMLElement>['aria-expanded'];
-    'aria-haspopup'?: React.HTMLAttributes<HTMLElement>['aria-haspopup'];
-    menu?: MenuButtonState['menu'];
+export type ButtonVariantTokens = {
+    [variant in ButtonVariants]: Partial<ButtonTokens>;
 };
 
 // @public
-export const MenuButton: React.ForwardRefExoticComponent<Pick<import("../Button").ButtonProps, "transparent" | "disabled" | "loading" | "hidden" | "dir" | "form" | "slot" | "style" | "title" | "color" | "content" | "size" | "block" | "icon" | "children" | "className" | "id" | "lang" | "name" | "target" | "type" | "role" | "tabIndex" | "href" | "aria-activedescendant" | "aria-atomic" | "aria-autocomplete" | "aria-busy" | "aria-checked" | "aria-colcount" | "aria-colindex" | "aria-colspan" | "aria-controls" | "aria-current" | "aria-describedby" | "aria-details" | "aria-disabled" | "aria-dropeffect" | "aria-errormessage" | "aria-expanded" | "aria-flowto" | "aria-grabbed" | "aria-haspopup" | "aria-hidden" | "aria-invalid" | "aria-keyshortcuts" | "aria-label" | "aria-labelledby" | "aria-level" | "aria-live" | "aria-modal" | "aria-multiline" | "aria-multiselectable" | "aria-orientation" | "aria-owns" | "aria-placeholder" | "aria-posinset" | "aria-pressed" | "aria-readonly" | "aria-relevant" | "aria-required" | "aria-roledescription" | "aria-rowcount" | "aria-rowindex" | "aria-rowspan" | "aria-selected" | "aria-setsize" | "aria-sort" | "aria-valuemax" | "aria-valuemin" | "aria-valuenow" | "aria-valuetext" | "dangerouslySetInnerHTML" | "onCopy" | "onCopyCapture" | "onCut" | "onCutCapture" | "onPaste" | "onPasteCapture" | "onCompositionEnd" | "onCompositionEndCapture" | "onCompositionStart" | "onCompositionStartCapture" | "onCompositionUpdate" | "onCompositionUpdateCapture" | "onFocus" | "onFocusCapture" | "onBlur" | "onBlurCapture" | "onChange" | "onChangeCapture" | "onBeforeInput" | "onBeforeInputCapture" | "onInput" | "onInputCapture" | "onReset" | "onResetCapture" | "onSubmit" | "onSubmitCapture" | "onInvalid" | "onInvalidCapture" | "onLoad" | "onLoadCapture" | "onError" | "onErrorCapture" | "onKeyDown" | "onKeyDownCapture" | "onKeyPress" | "onKeyPressCapture" | "onKeyUp" | "onKeyUpCapture" | "onAbort" | "onAbortCapture" | "onCanPlay" | "onCanPlayCapture" | "onCanPlayThrough" | "onCanPlayThroughCapture" | "onDurationChange" | "onDurationChangeCapture" | "onEmptied" | "onEmptiedCapture" | "onEncrypted" | "onEncryptedCapture" | "onEnded" | "onEndedCapture" | "onLoadedData" | "onLoadedDataCapture" | "onLoadedMetadata" | "onLoadedMetadataCapture" | "onLoadStart" | "onLoadStartCapture" | "onPause" | "onPauseCapture" | "onPlay" | "onPlayCapture" | "onPlaying" | "onPlayingCapture" | "onProgress" | "onProgressCapture" | "onRateChange" | "onRateChangeCapture" | "onSeeked" | "onSeekedCapture" | "onSeeking" | "onSeekingCapture" | "onStalled" | "onStalledCapture" | "onSuspend" | "onSuspendCapture" | "onTimeUpdate" | "onTimeUpdateCapture" | "onVolumeChange" | "onVolumeChangeCapture" | "onWaiting" | "onWaitingCapture" | "onAuxClick" | "onAuxClickCapture" | "onClick" | "onClickCapture" | "onContextMenu" | "onContextMenuCapture" | "onDoubleClick" | "onDoubleClickCapture" | "onDrag" | "onDragCapture" | "onDragEnd" | "onDragEndCapture" | "onDragEnter" | "onDragEnterCapture" | "onDragExit" | "onDragExitCapture" | "onDragLeave" | "onDragLeaveCapture" | "onDragOver" | "onDragOverCapture" | "onDragStart" | "onDragStartCapture" | "onDrop" | "onDropCapture" | "onMouseDown" | "onMouseDownCapture" | "onMouseEnter" | "onMouseLeave" | "onMouseMove" | "onMouseMoveCapture" | "onMouseOut" | "onMouseOutCapture" | "onMouseOver" | "onMouseOverCapture" | "onMouseUp" | "onMouseUpCapture" | "onSelect" | "onSelectCapture" | "onTouchCancel" | "onTouchCancelCapture" | "onTouchEnd" | "onTouchEndCapture" | "onTouchMove" | "onTouchMoveCapture" | "onTouchStart" | "onTouchStartCapture" | "onPointerDown" | "onPointerDownCapture" | "onPointerMove" | "onPointerMoveCapture" | "onPointerUp" | "onPointerUpCapture" | "onPointerCancel" | "onPointerCancelCapture" | "onPointerEnter" | "onPointerEnterCapture" | "onPointerLeave" | "onPointerLeaveCapture" | "onPointerOver" | "onPointerOverCapture" | "onPointerOut" | "onPointerOutCapture" | "onGotPointerCapture" | "onGotPointerCaptureCapture" | "onLostPointerCapture" | "onLostPointerCaptureCapture" | "onScroll" | "onScrollCapture" | "onWheel" | "onWheelCapture" | "onAnimationStart" | "onAnimationStartCapture" | "onAnimationEnd" | "onAnimationEndCapture" | "onAnimationIteration" | "onAnimationIterationCapture" | "onTransitionEnd" | "onTransitionEndCapture" | "defaultChecked" | "defaultValue" | "suppressContentEditableWarning" | "suppressHydrationWarning" | "accessKey" | "contentEditable" | "contextMenu" | "draggable" | "placeholder" | "spellCheck" | "translate" | "radioGroup" | "about" | "datatype" | "inlist" | "prefix" | "property" | "resource" | "typeof" | "vocab" | "autoCapitalize" | "autoCorrect" | "autoSave" | "itemProp" | "itemScope" | "itemType" | "itemID" | "itemRef" | "results" | "security" | "unselectable" | "inputMode" | "is" | "as" | "value" | "autoFocus" | "formAction" | "formEncType" | "formMethod" | "formNoValidate" | "formTarget" | "disabledFocusable" | "tokens" | "iconOnly" | "circular" | "inverted" | "variant" | "primary" | "secondary" | "subtle"> & {
-    menu?: import("@fluentui/react-utilities").ShorthandProps<import("@fluentui/react-shared-contexts").MinimalMenuProps & import("@fluentui/react-utilities").ComponentProps>;
-    menuIcon?: import("@fluentui/react-utilities").ShorthandProps<{}>;
-    defaultExpanded?: boolean | undefined;
-    expanded?: boolean | undefined;
-    persistMenu?: boolean | undefined;
-    onMenuDismiss?: ((ev?: Event | React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element> | undefined) => void) | undefined;
-} & React.RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export type MenuButtonProps = Omit<ButtonProps, 'iconPosition' | 'loader'> & {
-    menu?: ShorthandProps<MinimalMenuProps & ComponentProps>;
-    menuIcon?: ShorthandProps;
-    defaultExpanded?: boolean;
-    expanded?: boolean;
-    persistMenu?: boolean;
-    onMenuDismiss?: (ev?: Event | React.MouseEvent | React.KeyboardEvent) => void;
-};
-
-// @public (undocumented)
-export const menuButtonShorthandProps: string[];
-
-// @public (undocumented)
-export interface MenuButtonState extends Omit<MenuButtonProps, 'menu'>, Omit<ButtonState, 'iconPosition' | 'loader'> {
-    // (undocumented)
-    menu?: ObjectShorthandProps<MinimalMenuProps & ComponentProps>;
-}
-
-// @public (undocumented)
-export type MenuButtonTokens = ButtonTokens & {
-    menuIconColor?: string;
-    menuIconSize?: string;
-};
-
-// @public (undocumented)
-export type MenuButtonVariants = ButtonVariants<MenuButtonTokens>;
-
-export { MenuContext }
-
-export { MinimalMenuProps }
-
-// @public
-const renderButton: (state: ButtonState) => JSX.Element;
-
-export { renderButton }
-
-export { renderButton as renderToggleButton }
-
-// @public
-export const renderCompoundButton: (state: CompoundButtonState) => JSX.Element;
-
-// @public
-export const renderMenuButton: (state: MenuButtonState) => JSX.Element;
-
-// @public
-export const renderSplitButton: (state: SplitButtonState) => JSX.Element;
-
-// @public
-export const SplitButton: React.ForwardRefExoticComponent<SplitButtonProps & React.RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export interface SplitButtonProps extends ButtonProps, MenuButtonProps {
-    button?: ShorthandProps;
-    divider?: ShorthandProps;
-    menuButton?: ShorthandProps<MenuButtonProps>;
-    // (undocumented)
-    menuButtonRef?: React.RefObject<HTMLButtonElement>;
-}
-
-// @public (undocumented)
-export const splitButtonShorthandProps: string[];
-
-// @public (undocumented)
-export interface SplitButtonState extends Omit<SplitButtonProps, 'menu'>, MenuButtonState {
-}
-
-// @public (undocumented)
-export type SplitButtonTokens = MenuButtonTokens & {
-    dividerColor?: string;
-    dividerThickness?: string;
-};
-
-// @public (undocumented)
-export type SplitButtonVariants = ButtonVariants<SplitButtonTokens>;
-
-// @public
-export const ToggleButton: React.ForwardRefExoticComponent<ToggleButtonProps & React.RefAttributes<HTMLElement>>;
-
-// @public (undocumented)
-export interface ToggleButtonProps extends ButtonProps {
-    checked?: boolean;
-    defaultChecked?: boolean;
-}
-
-// @public (undocumented)
-export interface ToggleButtonState extends ToggleButtonProps, ButtonState {
-}
-
-// @public (undocumented)
-export type ToggleButtonTokens = ButtonTokens;
-
-// @public (undocumented)
-export type ToggleButtonVariants = ButtonVariants<ToggleButtonTokens>;
+export const renderButton: (state: ButtonState) => JSX.Element;
 
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
 // @public (undocumented)
-export const useButtonClasses: (state: ButtonState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+export const useButtonClasses: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
 
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
-
-// @public
-export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;
-
-// @public
-export const useCompoundButton: (props: CompoundButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: CompoundButtonProps | undefined) => CompoundButtonState;
-
-// @public (undocumented)
-export const useCompoundButtonClasses: (state: CompoundButtonState) => void;
-
-// @public (undocumented)
-export const useExpanded: <TDraftState extends ExpandedState>(draftState: TDraftState) => void;
-
-// @public
-export const useMenuButton: (props: MenuButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuButtonProps | undefined) => MenuButtonState;
-
-// @public (undocumented)
-export const useMenuButtonClasses: (state: MenuButtonState) => void;
-
-// @public (undocumented)
-export const useMenuButtonState: (state: MenuButtonState) => void;
-
-export { useMenuContext }
-
-// @public
-export const useSplitButton: (props: SplitButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: SplitButtonProps | undefined) => SplitButtonState;
-
-// @public (undocumented)
-export const useSplitButtonClasses: (state: SplitButtonState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
-
-// @public (undocumented)
-export const useToggleButton: (props: ToggleButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ToggleButtonProps | undefined) => ToggleButtonState;
-
-// @public (undocumented)
-export const useToggleButtonClasses: (state: ToggleButtonState) => void;
 
 
 // (No @packageDocumentation comment for this package)

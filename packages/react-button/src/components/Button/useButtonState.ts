@@ -33,7 +33,7 @@ export const useButtonState = (draftState: ButtonState) => {
   }
 
   // Disallow click and keyboard events when component is disabled and eat events when disabledFocusable is set to true.
-  const { disabled, disabledFocusable, onKeyDown } = draftState;
+  const { disabled, /* disabledFocusable, */ onKeyDown } = draftState;
   if (disabled) {
     draftState.onClick = undefined;
   }
@@ -47,6 +47,6 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   };
 
-  draftState['aria-disabled'] = disabled || disabledFocusable;
-  draftState.disabled = draftState.as === 'button' ? disabled && !disabledFocusable : undefined;
+  draftState['aria-disabled'] = disabled /* || disabledFocusable*/;
+  draftState.disabled = draftState.as === 'button' ? disabled /* && !disabledFocusable */ : undefined;
 };
