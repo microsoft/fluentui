@@ -4,16 +4,43 @@ const readFileSync = require('fs').readFileSync;
 const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
 const path = require('path');
+const argv = require('yargs').argv;
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
+const ignoreDevDependencies = [
+  '@fluentui/set-version',
+  '@fluentui/conformance',
+  '@fluentui/test-utilities',
+  '@fluentui/eslint-plugin',
+  '@fluentui/a11y-testing',
+];
 
+/**
+ * Pick a package in the repository and generate its dependency graph
+ *
+ * For this utility to work you will actually need to install graphviz on your machine
+ * http://www.graphviz.org
+ */
 function main() {
+  if (!argv.root) {
+    throw new Error('A root package name should be provided');
+  }
+
+  const rootPackage = `@fluentui/${argv.root}`;
+
+  // if dev dependencies should be added
+  const includeDevDependencies = argv['include-dev'];
+  if (includeDevDependencies) {
+    ignoreDevDependencies.splice(0, ignoreDevDependencies.length);
+  }
+
   _generateGraphforRepo(dotFilePath);
   const graph = _parseDotFile(dotFilePath);
-  const subTree = _getSubTree(graph, '@fluentui/react-button');
+  const subTree = _getSubTree(graph, rootPackage);
 
   subTree.setGraphVizPath('/usr/bin');
-  const pngOuputFile = path.resolve(__dirname, 'react-button.png');
+  const pngOuputFile = path.resolve(__dirname, `${argv.root}.png`);
+
   subTree.output('png', pngOuputFile);
 }
 
@@ -107,6 +134,10 @@ function _getEdgesAndChildren(graph, node) {
   const edges = [];
   const children = [];
   graph.edges.forEach(edge => {
+    if (ignoreDevDependencies.includes(edge.nodeOne.id) || ignoreDevDependencies.includes(edge.nodeTwo.id)) {
+      return;
+    }
+
     if (edge.nodeOne.id === node) {
       edges.push(edge);
       children.push(edge.nodeTwo.id);
