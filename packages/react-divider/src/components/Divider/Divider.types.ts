@@ -20,9 +20,6 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   /* A divider can have a overriding color */
   color?: string;
 
-  /* A divider can remove any extra margins before or after the element */
-  fitted?: boolean;
-
   /* important will emphasis the content */
   important?: boolean;
 
@@ -35,6 +32,14 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   vertical?: boolean;
 
   height?: string;
+
+  width?: string;
+
+  fontSize?: string;
+  fontWeight?: string;
+  fontColor?: string;
+
+  margin?: string;
 }
 
 /**

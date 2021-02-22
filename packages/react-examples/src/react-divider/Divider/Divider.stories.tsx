@@ -4,15 +4,14 @@ import * as classes from '../react-divider.stories.scss';
 import { DividerStory } from './DividerStory';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 
+const cssClasses: any = classes;
+
 const DividerExamples = (props: DividerProps) => (
-  <div className={classes.story}>
-    <h2>Horizontal</h2>
+  <div className={cssClasses.story}>
+    <h2>Horizontal Divider</h2>
     <DividerStory label="Default">
       <Divider {...props} />
-    </DividerStory>
-
-    <DividerStory label="With content">
-      <Divider {...props}>Hello World!</Divider>
+      <Divider {...props}>With content</Divider>
     </DividerStory>
 
     <DividerStory label="With Icon">
@@ -22,14 +21,15 @@ const DividerExamples = (props: DividerProps) => (
     </DividerStory>
 
     <DividerStory label="Inset">
+      <Divider {...props} inset />
       <Divider {...props} inset>
-        Hello World!
+        Inset with content
       </Divider>
     </DividerStory>
 
     <DividerStory label="Important">
       <Divider {...props} important={true}>
-        Hello World!
+        This is important!
       </Divider>
     </DividerStory>
 
@@ -79,24 +79,38 @@ const DividerExamples = (props: DividerProps) => (
     </DividerStory>
 
     <h2>Vertical</h2>
-    <DividerStory label="Default" className={classes.vertical}>
+    <DividerStory label="Default without container height and content" className={cssClasses.vertical}>
       <Divider {...props} vertical />
     </DividerStory>
 
-    <DividerStory label="With content" className={classes.vertical}>
-      <Divider {...props} vertical>
-        Hello World!
-      </Divider>
+    <DividerStory label="With and without content" className={cssClasses.vertical}>
+      <div className={cssClasses.verticalContent}>
+        <Divider {...props} vertical>
+          With Content
+        </Divider>
+        <Divider {...props} vertical />
+      </div>
     </DividerStory>
 
     <DividerStory label="With Icon">
-      <Divider {...props} vertical>
-        <ClockIcon />
-      </Divider>
+      <div className={cssClasses.verticalContent}>
+        <Divider {...props} vertical>
+          <ClockIcon />
+        </Divider>
+      </div>
     </DividerStory>
 
-    <DividerStory label="Alignments" className={classes.vertical}>
-      <div className={classes.verticalContent}>
+    <DividerStory label="Inset">
+      <div className={cssClasses.verticalContent}>
+        <Divider {...props} inset vertical />
+        <Divider {...props} inset vertical>
+          Inset with content
+        </Divider>
+      </div>
+    </DividerStory>
+
+    <DividerStory label="Alignments" className={cssClasses.vertical}>
+      <div className={cssClasses.verticalContent}>
         <Divider {...props} alignContent="start" vertical>
           start
         </Divider>
@@ -109,8 +123,8 @@ const DividerExamples = (props: DividerProps) => (
       </div>
     </DividerStory>
 
-    <DividerStory label="Appearance" className={classes.vertical}>
-      <div className={classes.verticalContent}>
+    <DividerStory label="Appearance" className={cssClasses.vertical}>
+      <div className={cssClasses.verticalContent}>
         <Divider {...props} appearance="default" vertical>
           default
         </Divider>
@@ -126,8 +140,8 @@ const DividerExamples = (props: DividerProps) => (
       </div>
     </DividerStory>
 
-    <DividerStory label="Colors" className={classes.vertical}>
-      <div className={classes.verticalContent}>
+    <DividerStory label="Colors" className={cssClasses.vertical}>
+      <div className={cssClasses.verticalContent}>
         <Divider {...props} color="red" vertical>
           Red
         </Divider>
@@ -146,8 +160,8 @@ const DividerExamples = (props: DividerProps) => (
       </div>
     </DividerStory>
 
-    <DividerStory label="Specified Height" className={classes.vertical}>
-      <div className={classes.verticalContent} style={{ height: '200px' }}>
+    <DividerStory label="Specified Height" className={cssClasses.vertical}>
+      <div className={cssClasses.verticalContent} style={{ height: '200px' }}>
         <Divider {...props} vertical height="50px">
           50px
         </Divider>
@@ -162,6 +176,19 @@ const DividerExamples = (props: DividerProps) => (
         </Divider>
       </div>
       <span>*100% requires parent container to have a set height</span>
+    </DividerStory>
+
+    <h2>Other Customizations</h2>
+    <DividerStory label="Custom">
+      <Divider {...props} margin="30px" width="800px">
+        30px margin, 800px width
+      </Divider>
+      <Divider {...props} fontWeight="800">
+        800 font weight
+      </Divider>
+      <Divider {...props} fontColor="green" fontSize="16px">
+        Green font color @ 16px font size
+      </Divider>
     </DividerStory>
   </div>
 );

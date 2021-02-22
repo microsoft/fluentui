@@ -105,55 +105,45 @@ From [Divider.types.tsx](http://about:blank)
 ### Props
 
 ```ts
-export type DividerProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
-    /**
-     * A divider can justify the content. Center is default.
-     */
-    alignContent?: 'start' | 'end' | 'center';
+export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  tokens?: RecursivePartial<DividerTokens>;
 
-    children?: any;
+  /**
+   * A divider can justify the content. Center is default.
+   */
+  alignContent?: 'start' | 'end' | 'center';
 
-    /* A divider can have a overriding color */
-    color?: string;
+  appearance?: 'default' | 'subtle' | 'brand' | 'strong';
 
-    /*
-      Notes: To be discussed, this may not be needed. If it is, should there be an
-      explicit support for Icon?
-    */
-    /**
-     * Shorthand children content within the button.
-     */
-    content?: ShorthandProps;
+  children?: any;
 
-    /* A divider can remove any extra margins before or after the element */
-    fitted?: boolean;
+  /* A divider can have a overriding color */
+  color?: string;
 
-    /*
-      Notes: Aside from important from the design review there is also expected appearance semantics for the following: Default / Subtle / Strong / Brand
-      Should these be tokens or engineer implementation ?
-    */
-    /* important will emphasis the content */
-    important?: boolean;
+  /* important will emphasis the content */
+  important?: boolean;
 
-    /* The size is a multiplier value for the size */
-    size?: SizeValue;
+  inset?: boolean;
 
-    tokens?: RecursivePartial<DividerTokens>;
+  /* The size is a multiplier value for the size */
+  size?: SizeValue;
 
-    /* A divider can be horizontal (default) or verticle*/
-    vertical?: boolean;
+  /* A divider can be horizontal (default) or verticle*/
+  vertical?: boolean;
 
-    /*
-      This is for allowing
-      stretched (Default)
-      inset (With margins)
-      of fixed (static length/height based on size)
-      Could this be implementation decided by adjusting
-      max-width/max-height and/or margins ?
-    */
-    layout?: 'default' | 'inset' | 'fixed';
-  };
+  /* Overrides for custom appearances */
+  height?: string;
+
+  width?: string;
+
+  fontSize?: string;
+
+  fontWeight?: string;
+
+  fontColor?: string;
+
+  margin?: string;
+}
 ```
 
 ## Styling Tokens

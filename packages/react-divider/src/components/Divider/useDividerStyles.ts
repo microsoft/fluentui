@@ -18,7 +18,7 @@ export const useRootStyles = (state: DividerState): string => {
         '--divider-contentColor': 'black',
         '--divider-flexDirection': 'row',
         '--divider-fontFamily': 'Segoe UI',
-        '--divider-fontWeight': 'initial',
+        '--divider-fontWeight': '400',
         '--divider-fontColor': tokens.global.palette.grey[26],
         '--divider-fontSize': '12px',
         '--divider-lineHeight': '17px',
@@ -49,6 +49,14 @@ export const useRootStyles = (state: DividerState): string => {
           '--divider-color': tokens.global.palette.grey[88],
         },
       }),
+    ],
+    [
+      s => {
+        return !s.children;
+      },
+      {
+        '--divider-borderMargin': 0,
+      },
     ],
     /* Border color override */
     [
@@ -273,16 +281,7 @@ export const useRootStyles = (state: DividerState): string => {
         return s.important;
       },
       {
-        '--divider-fontWeight': `600`,
-      },
-    ],
-    /* Fitted */
-    [
-      s => {
-        return s.important;
-      },
-      {
-        margin: 0,
+        '--divider-fontWeight': `700`,
       },
     ],
     /* Border Color Vertical */
@@ -313,7 +312,6 @@ export const useRootStyles = (state: DividerState): string => {
         },
       },
     ],
-
     [
       s => {
         return !s.children && s.vertical;
@@ -324,13 +322,21 @@ export const useRootStyles = (state: DividerState): string => {
         },
       },
     ],
+    /* height override */
     [
       s => s.height !== undefined,
       {
         height: state.height,
       },
     ],
-
+    /* width override */
+    [
+      s => s.width !== undefined,
+      {
+        width: state.width,
+      },
+    ],
+    /* Inset */
     [
       s => s.inset && !s.vertical,
       {
@@ -343,6 +349,34 @@ export const useRootStyles = (state: DividerState): string => {
       {
         marginTop: '12px',
         marginBottom: '12px',
+      },
+    ],
+    /* Margin Override */
+    [
+      s => s.margin !== undefined,
+      {
+        margin: state.margin,
+      },
+    ],
+    /* Font Color Override */
+    [
+      s => s.fontColor !== undefined,
+      {
+        color: state.fontColor,
+      },
+    ],
+    /* Font size Override */
+    [
+      s => s.fontSize !== undefined,
+      {
+        fontSize: state.fontSize,
+      },
+    ],
+    /* FontWeight Override */
+    [
+      s => s.fontWeight !== undefined,
+      {
+        '--divider-fontWeight': state.fontWeight,
       },
     ],
   ]);
