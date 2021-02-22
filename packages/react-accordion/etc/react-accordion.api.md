@@ -4,20 +4,65 @@
 
 ```ts
 
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 // @public
 export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
 
-// @public (undocumented)
+// @public
+export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderProps & React.RefAttributes<HTMLElement>>;
+
+// @public
+export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export const accordionHeaderShorthandProps: never[];
+
+// @public
+export interface AccordionHeaderState extends AccordionHeaderProps {
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
+export const AccordionItem: React.ForwardRefExoticComponent<AccordionItemProps & React.RefAttributes<HTMLElement>>;
+
+// @public
+export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export const accordionItemShorthandProps: never[];
+
+// @public
+export interface AccordionItemState extends AccordionItemProps {
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
+export const AccordionPanel: React.ForwardRefExoticComponent<AccordionPanelProps & React.RefAttributes<HTMLElement>>;
+
+// @public
+export interface AccordionPanelProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+}
+
+// @public
+export const accordionPanelShorthandProps: never[];
+
+// @public
+export interface AccordionPanelState extends AccordionPanelProps {
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
+// @public
 export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 }
 
-// @public (undocumented)
-export const accordionShorthandProps: string[];
+// @public
+export const accordionShorthandProps: never[];
 
-// @public (undocumented)
+// @public
 export interface AccordionState extends AccordionProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
@@ -26,7 +71,37 @@ export interface AccordionState extends AccordionProps {
 export const renderAccordion: (state: AccordionState) => JSX.Element;
 
 // @public
+export const renderAccordionHeader: (state: AccordionHeaderState) => JSX.Element;
+
+// @public
+export const renderAccordionItem: (state: AccordionItemState) => JSX.Element;
+
+// @public
+export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element;
+
+// @public
 export const useAccordion: (props: AccordionProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionProps | undefined) => AccordionState;
+
+// @public
+export const useAccordionHeader: (props: AccordionHeaderProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionHeaderProps | undefined) => AccordionHeaderState;
+
+// @public
+export const useAccordionHeaderStyles: (state: AccordionHeaderState) => AccordionHeaderState;
+
+// @public
+export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionItemProps | undefined) => AccordionItemState;
+
+// @public
+export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
+
+// @public
+export const useAccordionPanel: (props: AccordionPanelProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionPanelProps | undefined) => AccordionPanelState;
+
+// @public
+export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionPanelState;
+
+// @public
+export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
 
 // (No @packageDocumentation comment for this package)

@@ -1564,18 +1564,6 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
-"@fluentui/react-make-styles@^0.2.6":
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-0.2.6.tgz#0a30f0c6178aa7dfe6bf553d6e523a9effc7138f"
-  integrity sha512-4yqULrJpAkdSrfHrSBMtKIPMWu9jd79wreZ2KIc3+YWzAIsIk+55DTwuvR2KRbY3VZ+qVIxYNU1kV3uMuUzhtw==
-  dependencies:
-    "@fluentui/make-styles" "^0.6.0"
-    "@fluentui/react-provider" "^0.1.4"
-    "@fluentui/react-theme" "^0.3.1"
-    "@fluentui/react-theme-provider" "^1.0.0-beta.24"
-    "@fluentui/set-version" "^8.0.0-beta.1"
-    tslib "^1.10.0"
-
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"

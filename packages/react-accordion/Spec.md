@@ -63,11 +63,12 @@ interface ToggleEventListener {
 
 Label for or thumbnail representing a section of content that also serves as a control for showing, and in some implementations, hiding the section of content
 
-| Prop name  | Type                                         | Default Value | Details                            |
-| ---------- | -------------------------------------------- | ------------- | ---------------------------------- |
-| children   | ReactNode                                    |               | Content of the header              |
-| as         | keyof JSX.IntrinsicElements or ComponentType | "div"         | The component to be used as header |
-| expandIcon | ShorthandValue                               | ChevronIcon   | Icon to indicate expansion         |
+| Prop name          | Type                                         | Default Value | Details                            |
+| ------------------ | -------------------------------------------- | ------------- | ---------------------------------- |
+| children           | ReactNode                                    |               | Content of the header              |
+| as                 | keyof JSX.IntrinsicElements or ComponentType | "div"         | The component to be used as header |
+| expandIcon         | ShorthandValue                               | ChevronIcon   | Icon to indicate expansion         |
+| expandIconPosition | "start" or "end"                             | "start"       | Position of the expand icon        |
 
 ### AccordionPanel
 
