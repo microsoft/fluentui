@@ -6,6 +6,7 @@ import {
   Async,
   classNamesFunction,
   DelayedRender,
+  getDocument,
   getId,
   getNativeProps,
   getWindow,
@@ -213,8 +214,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     const hasRevealButton = !!canRevealPassword && type === 'password' && _browserNeedsRevealButton();
 
-    const hasFocus =
-      document && this._textElement.current === (document.activeElement as HTMLElement) ? true : isFocused;
+    const hasFocus = this._textElement.current === getDocument()?.activeElement ? true : isFocused;
 
     const classNames = (this._classNames = getClassNames(styles!, {
       theme: theme!,
