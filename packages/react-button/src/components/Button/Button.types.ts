@@ -78,12 +78,13 @@ export type ButtonStyleSelectors = {
 
 export type ButtonVariants =
   | 'base'
-  | 'textOnly'
+  | 'disabled'
   | 'iconOnly'
   | 'primary'
   | 'small'
   | 'large'
   // TODO: get rid of these combinations, use individual variants in matchers
+  | 'primaryDisabled'
   | 'iconOnlySmall'
   | 'iconOnlyLarge';
 

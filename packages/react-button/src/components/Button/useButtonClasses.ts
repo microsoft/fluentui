@@ -48,6 +48,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     iconWidth: '20px',
     iconHeight: '20px',
   },
+  disabled: {},
   small: {
     paddingX: buttonSpacing.medium,
     borderRadius: theme.global.borderRadius.small,
@@ -71,7 +72,6 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     iconHeight: '24px',
     iconSpacing: buttonSpacing.small,
   },
-  textOnly: {},
   // TODO: Would be ideal to automate a check to ensure when a variant is accessed, all the tokens are accessed as well.
   //       If not, it means there is cruft in the variant tokens definition.
   //       All tokens in a variant should be mapped to some style property.
@@ -112,6 +112,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     shadow: theme.alias.shadow.shadow4,
     shadowPressed: theme.alias.shadow.shadow2,
   },
+  primaryDisabled: {}
 });
 
 const useRootClasses = makeStyles<ButtonStyleSelectors>([
