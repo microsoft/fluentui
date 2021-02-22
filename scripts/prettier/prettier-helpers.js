@@ -7,7 +7,6 @@ const findGitRoot = require('../monorepo/findGitRoot');
 const repoRoot = findGitRoot();
 const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
-const prettierBin = require.resolve('prettier/bin-prettier.js');
 
 const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'htm', 'md', 'yml'];
 
@@ -26,7 +25,7 @@ function runPrettier(files, config = {}) {
 
   const cmd = [
     'node',
-    prettierBin,
+    require.resolve('prettier'),
     '--config',
     prettierRulesConfig,
     '--ignore-path',
