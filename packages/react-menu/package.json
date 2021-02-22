@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "9.0.0-alpha.0",
+  "version": "0.5.0",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -61,8 +61,7 @@
     "tag": "latest",
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   }
 }

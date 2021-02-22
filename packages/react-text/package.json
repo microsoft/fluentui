@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "9.0.0-alpha.0",
+  "version": "0.1.8",
   "description": "Fluent UI React Text component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -60,8 +60,7 @@
     "tag": "latest",
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   }
 }
