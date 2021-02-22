@@ -301,10 +301,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       /* eslint-disable deprecation/deprecation */
       const isDel = ev.which === KeyCodes.del;
       const isCut = (ev.shiftKey && isDel) || (ev.ctrlKey && ev.which === KeyCodes.x);
-      const isBackspace = !isDel && ev.which === KeyCodes.backspace && selectedItems.length > 0;
-      const needToCopy = isCut || (ev.ctrlKey && ev.which === KeyCodes.c);
+      const isBackspace = ev.which === KeyCodes.backspace;
+      const isCopy = ev.ctrlKey && ev.which === KeyCodes.c;
       /* eslint-enable deprecation/deprecation */
-      const needToDelete = isBackspace || ((isCut || isDel) && focusedItemIndices.length > 0);
+      const needToCopy = isCut || isCopy;
+      const needToDelete =
+        (isBackspace && selectedItems.length > 0) || ((isCut || isDel) && focusedItemIndices.length > 0);
 
       // Handle copy (or cut) if focus is in the selected items list
       if (needToCopy) {
