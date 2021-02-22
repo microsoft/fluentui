@@ -31,15 +31,22 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   /* A divider can be horizontal (default) or verticle*/
   vertical?: boolean;
 
+  /* Overrides for custom appearances */
   height?: string;
 
   width?: string;
 
   fontSize?: string;
+
   fontWeight?: string;
+
   fontColor?: string;
 
   margin?: string;
+
+  borderStyle?: string;
+
+  borderSize?: string | number;
 }
 
 /**

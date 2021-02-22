@@ -15,14 +15,16 @@ export const useRootStyles = (state: DividerState): string => {
       null,
       tokens => ({
         /* CSS Vars */
+        '--divider-borderMargin': '12px',
         '--divider-contentColor': 'black',
         '--divider-flexDirection': 'row',
-        '--divider-fontFamily': 'Segoe UI',
-        '--divider-fontWeight': '400',
         '--divider-fontColor': tokens.global.palette.grey[26],
+        '--divider-fontFamily': 'Segoe UI',
         '--divider-fontSize': '12px',
+        '--divider-fontWeight': '400',
         '--divider-lineHeight': '17px',
-        '--divider-borderMargin': '12px',
+        '--divider-borderSize': '1px',
+        '--divider-borderStyle': 'solid',
 
         alignItems: 'center',
         color: 'var(--divider-fontColor)',
@@ -93,13 +95,13 @@ export const useRootStyles = (state: DividerState): string => {
         width: '100%',
         ':before': {
           borderTopColor: 'var(--divider-color)',
-          borderTopWidth: '1px',
-          borderTopStyle: 'solid',
+          borderTopWidth: 'var(--divider-borderSize)',
+          borderTopStyle: 'var(--divider-borderStyle)',
         },
         ':after': {
           borderTopColor: 'var(--divider-color)',
-          borderTopWidth: '1px',
-          borderTopStyle: 'solid',
+          borderTopWidth: 'var(--divider-borderSize)',
+          borderTopStyle: 'var(--divider-borderStyle)',
         },
         '&>:only-child': {
           display: 'flex',
@@ -116,13 +118,13 @@ export const useRootStyles = (state: DividerState): string => {
         flexDirection: 'column',
         ':before': {
           borderRightColor: 'var(--divider-color)',
-          borderRightWidth: '1px',
-          borderRightStyle: 'solid',
+          borderRightWidth: 'var(--divider-borderSize)',
+          borderRightStyle: 'var(--divider-borderStyle)',
         },
         ':after': {
           borderRightColor: 'var(--divider-color)',
-          borderRightWidth: '1px',
-          borderRightStyle: 'solid',
+          borderRightWidth: 'var(--divider-borderSize)',
+          borderRightStyle: 'var(--divider-borderStyle)',
         },
         '&>:only-child': {
           display: 'flex',
@@ -377,6 +379,20 @@ export const useRootStyles = (state: DividerState): string => {
       s => s.fontWeight !== undefined,
       {
         '--divider-fontWeight': state.fontWeight,
+      },
+    ],
+    /* Border Overrides */
+
+    [
+      s => s.borderSize !== undefined,
+      {
+        '--divider-borderSize': state.borderSize,
+      },
+    ],
+    [
+      s => s.borderStyle !== undefined,
+      {
+        '--divider-borderStyle': state.borderStyle,
       },
     ],
   ]);

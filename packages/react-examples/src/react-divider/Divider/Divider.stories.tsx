@@ -186,16 +186,19 @@ const DividerExamples = (props: DividerProps) => (
       <span>*100% requires parent container to have a set height</span>
     </DividerStory>
 
-    <h2>Other Customizations</h2>
-    <DividerStory label="Custom">
+    <h2>Other Appearance Modifications</h2>
+    <DividerStory>
       <Divider {...props} margin="30px" width="800px">
         30px margin, 800px width
       </Divider>
-      <Divider {...props} fontWeight="800">
+      <Divider {...props} fontWeight="800" margin="10px 0">
         800 font weight
       </Divider>
-      <Divider {...props} fontColor="green" fontSize="16px">
+      <Divider {...props} fontColor="green" fontSize="16px" margin="10px 0">
         Green font color @ 16px font size
+      </Divider>
+      <Divider {...props} borderStyle="dashed" borderSize={2} margin="10px 0">
+        Dashed border with a size of 2
       </Divider>
     </DividerStory>
   </div>
