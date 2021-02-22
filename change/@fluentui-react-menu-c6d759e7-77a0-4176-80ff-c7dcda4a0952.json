@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Breaks dependency on react-hooks for convergence",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
