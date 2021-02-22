@@ -28,7 +28,11 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu'].includes('PACKAGE_NAME')) {
+if (
+  ['react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu', 'react-components'].includes(
+    'PACKAGE_NAME',
+  )
+) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }
@@ -61,7 +65,7 @@ function loadStories() {
   ];
 
   // @ts-ignore
-  if ('PACKAGE_NAME' === 'react') {
+  if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
     // For the @fluentui/react storybook, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
     // Note that the regex intentionally goes only one directory below the package name
