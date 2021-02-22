@@ -40,7 +40,7 @@ function main() {
   const graph = _parseDotFile(dotFilePath);
   const subTree = _getSubTree(graph, rootPackage);
 
-  subTree.setGraphVizPath('/usr/bin');
+  subTree.setGraphVizPath(argv.graphVisPath || '/usr/bin');
   const pngOuputFile = path.resolve(__dirname, `${argv.root}.png`);
 
   subTree.output('png', pngOuputFile);
