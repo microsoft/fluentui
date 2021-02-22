@@ -14,28 +14,28 @@ addDecorator(withA11y());
 addDecorator(withKnobs({ escapeHTML: false }));
 addDecorator(withKeytipLayer);
 if (
-  [
-    'react-cards',
-    'react-checkbox',
-    'react-link',
-    'react-slider',
-    'react-tabs',
-    'react-text',
-    'react-toggle',
-  ].includes('PACKAGE_NAME')
+  ['react-cards', 'react-checkbox', 'react-link', 'react-slider', 'react-tabs', 'react-text', 'react-toggle'].includes(
+    'PACKAGE_NAME',
+  )
 ) {
   initializeIcons();
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if ([
-  'react-avatar',
-  'react-badge',
-  'react-button',
-  'react-link',
-  'react-image',
-  'react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu'
-].includes('PACKAGE_NAME')) {
+if (
+  [
+    'react-avatar',
+    'react-badge',
+    'react-button',
+    'react-link',
+    'react-image',
+    'react-avatar',
+    'react-badge',
+    'react-link',
+    'react-image',
+    'react-menu',
+  ].includes('PACKAGE_NAME')
+) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }
