@@ -5,6 +5,7 @@ const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
 const getDevDependencies = require('./getDevDependencies');
 const path = require('path');
+const os = require('os');
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
 let ignoreDevDependencies = [];
@@ -32,7 +33,11 @@ async function main(argv) {
   const graph = _parseDotFile(dotFilePath);
   const subTree = _getSubTree(graph, rootPackage);
 
-  subTree.setGraphVizPath(argv.graphVisPath || '/usr/bin');
+  if (process.platform === 'win32') {
+    throw new Error('--graphvis-path argument is required for windows users');
+  }
+
+  subTree.setGraphVizPath(argv['graphviz-path'] || '/usr/bin');
   const pngOuputFile = path.resolve(__dirname, `${argv.root}.png`);
 
   subTree.output('png', pngOuputFile);
@@ -160,7 +165,7 @@ require('yargs')
         })
         .positional('graphviz-path', {
           type: 'string',
-          description: 'The path to graphviz which needs to be installed on the machine',
+          description: 'The path to graphviz which needs to be installed, required for windows users',
         });
     },
     async argv => await main(argv),
