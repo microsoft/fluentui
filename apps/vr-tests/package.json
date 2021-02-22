@@ -40,7 +40,7 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/date-time": "^7.19.20",
+    "@uifabric/date-time": "^7.19.21",
     "awesome-typescript-loader": "^3.2.3",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.5.3",

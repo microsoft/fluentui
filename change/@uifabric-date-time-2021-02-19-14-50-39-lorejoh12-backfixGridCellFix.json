@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "backfix gridcell role=presentation fix to 7.0",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-19T22:50:39.166Z"
-}

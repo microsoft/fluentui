@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "cherry picking and merging 6537ee66190784eb1a04bd765546efff09d451a1 from master",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-12-30T23:48:21.758Z"
-}
