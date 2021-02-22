@@ -6,6 +6,10 @@ import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/
  */
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
+   * The component to be used as button
+   */
+  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  /**
    * Expand icon slot rendered before children content
    */
   expandIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
@@ -29,4 +33,8 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
    * Expand icon slot when processed by internal state
    */
   expandIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  /**
+   * The component to be used as button
+   */
+  button?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }

@@ -3,7 +3,7 @@ import { AccordionItem, AccordionHeader, AccordionPanel } from '@fluentui/react-
 
 export const AccordionItemExample = () => (
   <AccordionItem>
-    <AccordionHeader as="h1">Accordion Header</AccordionHeader>
+    <AccordionHeader>Accordion Header</AccordionHeader>
     <AccordionPanel>Accordion Panel</AccordionPanel>
   </AccordionItem>
 );
