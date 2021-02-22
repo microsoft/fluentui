@@ -3,11 +3,18 @@ import { MenuList } from './MenuList';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { MenuListProvider } from '../../menuListContext';
 
 describe('MenuList', () => {
   isConformant({
+    asPropHandlesRef: true,
     Component: MenuList,
     displayName: 'MenuList',
+    helperComponents: [MenuListProvider],
+    requiredProps: {
+      onCheckedValueChange: jest.fn(),
+      checkedValues: {},
+    },
   });
 
   let wrapper: ReactWrapper | undefined;

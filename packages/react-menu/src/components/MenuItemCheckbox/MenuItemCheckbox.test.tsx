@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 import { MenuItemCheckbox } from './MenuItemCheckbox';
-import { MenuListContext, MenuListProvider } from '../../menuListContext';
+import { MenuListContextValue, MenuListProvider } from '../../menuListContext';
 
 describe('MenuItemCheckbox conformance', () => {
   isConformant({
@@ -44,10 +44,10 @@ describe('MenuItemCheckbox conformance', () => {
 });
 
 describe('MenuItemCheckbox', () => {
-  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContext> }) => {
-    const contextValue: MenuListContext = {
+  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContextValue> }) => {
+    const contextValue: MenuListContextValue = {
       checkedValues: {},
-      onCheckedValueChange: jest.fn(),
+      toggleCheckbox: jest.fn(),
       ...(props.context && props.context),
     };
 
@@ -102,15 +102,15 @@ describe('MenuItemCheckbox', () => {
   });
 
   it.each([
-    ['uncheck', ['1'], []],
-    ['check', [], ['1']],
-  ])('should %s checkbox on click', (_, checkedItems, expectedResult) => {
+    ['unchecked', ['1'], true],
+    ['checked', [], false],
+  ])('should call toggleCheckbox handler on click with %s state', (_, checkedItems, expectedCheckedState) => {
     // Arrange
     const checkboxName = 'name';
     const checkedValues = { [checkboxName]: checkedItems };
     const spy = jest.fn();
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues, onCheckedValueChange: spy }}>
+      <TestMenuListContext context={{ checkedValues, toggleCheckbox: spy }}>
         <MenuItemCheckbox name={checkboxName} value={'1'}>
           Checkbox
         </MenuItemCheckbox>
@@ -123,6 +123,6 @@ describe('MenuItemCheckbox', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(expect.anything(), checkboxName, [...expectedResult]);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), checkboxName, '1', expectedCheckedState);
   });
 });
