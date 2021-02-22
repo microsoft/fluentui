@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore No typings :(
 import * as prettier from 'prettier';
 import { MakeStylesResolvedRule } from '../../types';
 import { isObject } from '../../runtime/utils/isObject';

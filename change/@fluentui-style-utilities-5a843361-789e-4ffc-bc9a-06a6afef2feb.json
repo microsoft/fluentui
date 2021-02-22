@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "getScreenSelector: allow specifying only one of min or max",
+  "packageName": "@fluentui/style-utilities",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

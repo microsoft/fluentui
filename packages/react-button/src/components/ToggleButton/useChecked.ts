@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useControllableValue } from '@fluentui/react-hooks';
+import { useControllableValue } from '@fluentui/react-utilities';
 
 export interface CheckedState {
   checked?: boolean;

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix: Date Picker - selected date got reset after clicking outside of calendar",
+  "packageName": "@fluentui/react",
+  "email": "feodor@appveyor.com",
+  "dependentChangeType": "patch"
+}

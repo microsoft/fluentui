@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Breaks dependency on react-hooks for convergence",
+  "packageName": "@fluentui/react-link",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

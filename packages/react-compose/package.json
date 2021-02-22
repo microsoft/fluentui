@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compose",
-  "version": "1.0.0-beta.14",
+  "version": "1.0.0-beta.15",
   "description": "Fluent UI React component composition.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,12 +36,12 @@
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/utilities": "^8.0.0-beta.13",
+    "@fluentui/utilities": "^8.0.0-beta.14",
     "tslib": "^1.10.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
   }
 }

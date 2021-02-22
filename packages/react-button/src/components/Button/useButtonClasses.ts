@@ -391,7 +391,7 @@ export const useButtonClasses = makeVariantClasses<ButtonState, ButtonVariants>(
       },
 
       // TODO: no references to palette.
-      ghost: {
+      subtle: {
         background: 'transparent',
         borderColor: 'transparent',
         contentColor: palette?.neutralPrimary,

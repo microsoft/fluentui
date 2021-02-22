@@ -167,7 +167,7 @@ const useCompoundButtonBaseClasses = makeVariantClasses<CompoundButtonState, Com
         },
       },
 
-      ghost: {
+      subtle: {
         secondaryContentColor: palette.neutralSecondary,
         disabled: {
           secondaryContentColor: palette.neutralTertiary,
