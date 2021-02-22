@@ -257,6 +257,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
+    // Because these calls are async, it's possible for us to get the drag end call while
+    // we're in the middle of a drop action, so don't run the delete code if that's the case
     if (event && !isInDropAction) {
       // If we have a move event, and we still have selected items (indicating that we
       // haven't already moved items within the well) we should remove the item(s)
