@@ -9,7 +9,7 @@ const argv = require('yargs').argv;
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
 const ignoreDevDependencies = [
   '@fluentui/set-version',
-  '@fluentui/conformance',
+  '@fluentui/react-conformance',
   '@fluentui/test-utilities',
   '@fluentui/eslint-plugin',
   '@fluentui/a11y-testing',
