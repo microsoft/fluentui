@@ -81,7 +81,6 @@ export type ButtonVariants =
   | 'iconOnlyLarge';
 
 export type ButtonTokens = {
-  // TODO: these are not in the global/alias theme currently
   height: string;
   paddingX: string;
   paddingY: string;
@@ -92,7 +91,6 @@ export type ButtonTokens = {
   fontWeight: number;
   lineHeight: string;
 
-  // TODO: what do we want to do with tokens for slots, just prefix them with slot name?
   iconWidth: string;
   iconHeight: string;
   iconSpacing: string;
