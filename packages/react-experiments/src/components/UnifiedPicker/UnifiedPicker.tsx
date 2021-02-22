@@ -296,19 +296,17 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       // Allow the caller to handle the key down
       onKeyDown?.(ev);
 
-      // (I'm attempting to send a draft PR to see what it looks like if we violate lint,
-      // and get feedback on my first checkin).
-      // The explicit keycodes is probably the localization issue mentioned below
+      // This is a temporary work around, it has localization issues
+      // we plan on rewriting how this works in the future
+      /* eslint-disable deprecation/deprecation */
       const isDel = ev.which === KeyCodes.del;
       const isCut = (ev.shiftKey && isDel) || (ev.ctrlKey && ev.which === KeyCodes.x);
-      const isBackspace = !isDel && ev.which === KeyCodes.backspace && selectedItems.length > 0;
+      const isBackspace = ev.which === KeyCodes.backspace && selectedItems.length > 0;
       const needToCopy = isCut || (ev.ctrlKey && ev.which === KeyCodes.c);
+      /* eslint-enable deprecation/deprecation */
       const needToDelete = isBackspace || ((isCut || isDel) && focusedItemIndices.length > 0);
 
       // Handle copy (or cut) if focus is in the selected items list
-      // This is a temporary work around, it has localization issues
-      // we plan on rewriting how this works in the future
-      // eslint-disable-next-line deprecation/deprecation
       if (needToCopy) {
         if (focusedItemIndices.length > 0 && selectedItemsListGetItemCopyText) {
           ev.preventDefault();
@@ -326,7 +324,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         }
       }
       // Handle delete of items via Backspace/Del/Ctrl+X
-      // eslint-disable-next-line deprecation/deprecation
       if (needToDelete) {
         if (
           focusedItemIndices.length === 0 &&
