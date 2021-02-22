@@ -301,7 +301,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       /* eslint-disable deprecation/deprecation */
       const isDel = ev.which === KeyCodes.del;
       const isCut = (ev.shiftKey && isDel) || (ev.ctrlKey && ev.which === KeyCodes.x);
-      const isBackspace = ev.which === KeyCodes.backspace && selectedItems.length > 0;
+      const isBackspace = !isDel && ev.which === KeyCodes.backspace && selectedItems.length > 0;
       const needToCopy = isCut || (ev.ctrlKey && ev.which === KeyCodes.c);
       /* eslint-enable deprecation/deprecation */
       const needToDelete = isBackspace || ((isCut || isDel) && focusedItemIndices.length > 0);
