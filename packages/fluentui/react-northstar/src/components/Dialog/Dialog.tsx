@@ -18,7 +18,6 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-// import { lockBodyScroll, unlockBodyScroll } from './utils';
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 import {
