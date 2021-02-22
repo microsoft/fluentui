@@ -23,6 +23,76 @@ npm install --save @fluentui/react-context-selector
 yarn add @fluentui/react-context-selector
 ```
 
+## Usage
+
+```typescript
+import * as React from "react";
+import {
+  createContext,
+  useContextSelector,
+  ContextSelector,
+} from "@fluentui/react-context-selector";
+
+interface CounterContextValue = {
+  count1: number;
+  count2: number;
+  incrementCount1: () => void;
+  incrementCount2: () => void;
+}
+
+const CounterContext = createContext<CounterContextValue>({});
+
+const CounterProvider = CounterContext.Provider;
+
+// not necessary but can be a good layer to mock for unit testing
+const useCounterContext = <T, >(selector: ContextSelector<CounterCountext, T>) =>
+  useContextSelector(CounterContext, selector);
+
+const Counter1 = () => {
+  const count1 = useCounterContext((context) => context.count1);
+  const increment = useCounterContext((context) => context.incrementCount1);
+
+  return <button onClick={increment}>Counter 1: {count1}</button>;
+};
+
+const Counter2 = () => {
+  const count1 = useCounterContext((context) => context.count2);
+  const increment = useCounterContext((context) => context.incrementCount2);
+
+  return <button onClick={increment}>Counter 1: {count1}</button>;
+};
+
+export default function App() {
+  const [state, setState] = React.useState({ count1: 0, count2: 0 });
+
+  const incrementCount1 = React.useCallback(
+    () => setState((s) => ({ ...s, count1: s.count1 + 1 })),
+    [setState]
+  );
+  const incrementCount2 = React.useCallback(
+    () => setState((s) => ({ ...s, count2: s.count2 + 1 })),
+    [setState]
+  );
+
+  return (
+    <div className="App">
+      <CounterProvider
+        value={{
+          count1: state.count1,
+          count2: state.count2,
+          incrementCount1,
+          incrementCount2
+        }}
+      >
+        <Counter1 />
+        <Counter2 />
+      </CounterProvider>
+    </div>
+  );
+}
+
+```
+
 ## Technical memo
 
 React context by nature triggers propagation of component re-rendering if a value is changed. To avoid this, this library uses undocumented feature of `calculateChangedBits`. It then uses a subscription model to force update when a component needs to re-render.
