@@ -152,3 +152,6 @@ rush.json
 
 # tsdoc
 tsdoc-metadata.json
+
+#vscode workspace
+*.code-workspace
