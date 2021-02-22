@@ -227,7 +227,7 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
     }
     return () => {
       if (open) {
-        clearAllBodyScrollLocks(target);
+        enableBodyScroll(target);
       }
     };
   }, [open]);
