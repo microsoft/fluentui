@@ -16,7 +16,7 @@ PIlls should be used when representing an input, as a way to filter content, or 
 ```jsx
 <Pill>Item 1</Pill>
 <Pill clickable>Item 2</Pill>
-<TogglePill>On</Pill>
+<TogglePill>On</TogglePill>
 ```
 
 ## Variants
