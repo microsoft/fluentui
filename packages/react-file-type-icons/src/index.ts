@@ -4,4 +4,6 @@ export { FileTypeIconSize, IFileTypeIconOptions, ImageFileType, getFileTypeIconP
 
 export { FileIconType } from './FileIconType';
 
+export { getFileTypeIconAsHTMLString } from './getFileTypeIconAsHTMLString';
+
 import './version';

@@ -2,6 +2,41 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/public-docsite_v8.0.0-beta.5",
+      "version": "8.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add version switcher to website",
+            "author": "elcraig@microsoft.com",
+            "commit": "6fb020ab622a0fd18c47173d1a38eb046c7ebeaa",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-examples to v8.0.0-beta.6",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.0.0-beta.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/api-docs to v8.0.0-beta.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 19:38:50 GMT",
       "tag": "@fluentui/public-docsite_v8.0.0-beta.4",
       "version": "8.0.0-beta.4",

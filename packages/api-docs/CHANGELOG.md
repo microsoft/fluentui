@@ -1,8 +1,17 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.5)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.4..@fluentui/api-docs_v8.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/react-focus to v8.0.0-beta.24 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.4)
 
