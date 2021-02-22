@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Bump @fluentui/react-conformance",
+  "packageName": "@fluentui/react-avatar",
+  "email": "altinokd@microsoft.com",
+  "dependentChangeType": "patch"
+}
