@@ -13,6 +13,8 @@ const ignoreDevDependencies = [
   '@fluentui/test-utilities',
   '@fluentui/eslint-plugin',
   '@fluentui/a11y-testing',
+  '@fluentui/jest-serializer-merge-styles',
+  '@fluentui/scripts',
 ];
 
 /**
