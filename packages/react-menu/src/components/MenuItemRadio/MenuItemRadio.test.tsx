@@ -44,7 +44,7 @@ describe('MenuItemRadio', () => {
 });
 
 describe('MenuItemRadio', () => {
-  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContext> }) => {
+  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContextValue> }) => {
     const contextValue: MenuListContextValue = {
       checkedValues: {},
       selectRadio: jest.fn(),
