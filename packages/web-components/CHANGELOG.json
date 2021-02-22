@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/web-components_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove hard coded background color in favor of default design system behavior",
+            "author": "chhol@microsoft.com",
+            "commit": "0f7fa189c9b96cf65609c54781f958d0679e4678",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/web-components_v0.14.0",
       "version": "0.14.0",

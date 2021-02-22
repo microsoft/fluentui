@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-file-type-icons
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.0.0-beta.21)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-file-type-icons_v8.0.0-beta.20..@fluentui/react-file-type-icons_v8.0.0-beta.21)
+
+### Changes
+
+- Updating Fabric CDN url version to fetch latest filetype icons ([PR #16539](https://github.com/microsoft/fluentui/pull/16539) by caperez@microsoft.com)
+- Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments. ([PR #17067](https://github.com/microsoft/fluentui/pull/17067) by ololubek@microsoft.com)
 
 ## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-file-type-icons_v8.0.0-beta.20)
 
