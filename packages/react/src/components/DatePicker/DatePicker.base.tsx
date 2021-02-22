@@ -373,7 +373,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
         setIsCalendarShown(false);
 
         validateTextInput(newlySelectedDate);
-        if (!allowTextInput) {
+        if (!allowTextInput && newlySelectedDate) {
           setSelectedDate(newlySelectedDate);
         }
       }

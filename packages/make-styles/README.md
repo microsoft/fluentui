@@ -76,6 +76,65 @@ const masks = {
 
 It also made code complicated for understanding and debugging.
 
+### How about static styles?
+
+There is a separate API `makeStaticStyles` for this case.
+
+It can be used to register styles object:
+
+```ts
+makeStaticStyles({
+  '@font-face': {
+    fontFamily: 'Open Sans',
+    src: `url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+         url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+  },
+  body: {
+    background: 'red',
+  },
+
+  /**
+   * ⚠️ nested and pseudo selectors are not supported for this scenario via nesting
+   *
+   * Not supported:
+   * .some {
+   *   .class { ... },
+   *   ':hover': { ... }
+   * }
+   *
+   * Supported:
+   * '.some.class': { ... }
+   * '.some.class:hover': { ... }
+   */
+});
+```
+
+Or string:
+
+```ts
+makeStaticStyles('body { background: red; } .foo { color: green; }');
+```
+
+Or array of styles object/string:
+
+```ts
+makeStaticStyles([
+  {
+    '@font-face': {
+      fontFamily: 'Open Sans',
+      src: `url("/fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+          url("/fonts/OpenSans-Regular-webfont.woff") format("woff")`,
+    },
+  },
+  {
+    '@font-face': {
+      fontFamily: 'My Font',
+      src: `url(my_font.woff)`,
+    },
+  },
+});
+```
+
 # Proposed build structure
 
 ```

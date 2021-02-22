@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export interface MenuItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Icon slot rendered before children content
    */
-  icon?: ShorthandProps;
+  icon?: ShorthandProps<HTMLElement>;
 }
 
 export interface MenuItemState extends MenuItemProps {

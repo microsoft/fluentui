@@ -1,8 +1,78 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 10 Feb 2021 12:20:53 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.59)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.58..@fluentui/react_v8.0.0-beta.59)
+
+### Changes
+
+- Export ResponsiveMode utilities ([PR #17066](https://github.com/microsoft/fluentui/pull/17066) by elcraig@microsoft.com)
+- Fix: Date Picker - selected date got reset after clicking outside of calendar ([PR #17059](https://github.com/microsoft/fluentui/pull/17059) by feodor@appveyor.com)
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.58)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.57..@fluentui/react_v8.0.0-beta.58)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.57)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.56..@fluentui/react_v8.0.0-beta.57)
+
+### Changes
+
+- Fix focus border for Dropdown multiselect items ([PR #16802](https://github.com/microsoft/fluentui/pull/16802) by evlevy@microsoft.com)
+- Fix contrast of 'filter chevron' against background color ([PR #16939](https://github.com/microsoft/fluentui/pull/16939) by tmichon@microsoft.com)
+- Utilize useLayoutEffect for keytips to mimic previous didUpdate/didMount behavior - Fixes for persisted menu overflow keytips ([PR #17042](https://github.com/microsoft/fluentui/pull/17042) by keyou@microsoft.com)
+- ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers ([PR #17014](https://github.com/microsoft/fluentui/pull/17014) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.56)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.55..@fluentui/react_v8.0.0-beta.56)
+
+### Changes
+
+- add labels to calendar tables, date header button, and tweak label wording for conciseness ([PR #16855](https://github.com/microsoft/fluentui/pull/16855) by sarah.higley@microsoft.com)
+
+## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.55)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.54..@fluentui/react_v8.0.0-beta.55)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.54)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.53..@fluentui/react_v8.0.0-beta.54)
+
+### Changes
+
+- "BasePicker: combobox role and id are removed when itemLimit is reached" ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+- Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package. ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+- remove references to getEdgeChromiumNoHighContrastAdjustSelector ([PR #16957](https://github.com/microsoft/fluentui/pull/16957) by sareiff@microsoft.com)
+- PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render ([PR #16931](https://github.com/microsoft/fluentui/pull/16931) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.53)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.52..@fluentui/react_v8.0.0-beta.53)
+
+### Changes
+
+- [BREAKING] Remove compat exports; move Button back to old location ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.52)
 

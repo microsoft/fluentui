@@ -1178,6 +1178,9 @@ export function getFullColorString(color: IColor): string;
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
+// @public (undocumented)
+export function getInitialResponsiveMode(): ResponsiveMode;
+
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
@@ -1205,6 +1208,9 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -3330,8 +3336,6 @@ export interface IContextualMenuListProps {
     totalItemCount: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React.RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -6096,6 +6100,9 @@ export interface INavStyles {
     root: IStyle;
 }
 
+// @public
+export function initializeResponsiveMode(element?: HTMLElement): void;
+
 export { IObjectWithKey }
 
 // @public (undocumented)
@@ -8387,8 +8394,15 @@ export interface IWindowWithSegments extends Window {
     getWindowSegments?: () => DOMRect[];
 }
 
+// @public @deprecated (undocumented)
+export interface IWithResponsiveModeState {
+    // (undocumented)
+    responsiveMode?: ResponsiveMode;
+}
+
 // @public
 export interface IWithViewportProps {
+    disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
 }
 
@@ -9090,19 +9104,13 @@ export enum ResizeGroupDirection {
 
 // @public (undocumented)
 export enum ResponsiveMode {
-    // (undocumented)
     large = 2,
-    // (undocumented)
     medium = 1,
-    // (undocumented)
     small = 0,
     // (undocumented)
     unknown = 999,
-    // (undocumented)
     xLarge = 3,
-    // (undocumented)
     xxLarge = 4,
-    // (undocumented)
     xxxLarge = 5
 }
 
@@ -9273,6 +9281,9 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
 
 // @public
 export function sequencesToID(keySequences: string[]): string;
+
+// @public
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
 
 // @public
 export enum Shade {
@@ -9861,6 +9872,9 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
+// @public
+export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
+
 // @public (undocumented)
 export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
     root: {
@@ -10225,6 +10239,11 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 
 // @public (undocumented)
 export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
+
+// @public @deprecated (undocumented)
+export function withResponsiveMode<TProps extends {
+    responsiveMode?: ResponsiveMode;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>): any;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";

@@ -562,9 +562,8 @@ exports[`Component Examples renders SpinButton.Icon.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: GrayText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="input8"

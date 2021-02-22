@@ -1,6 +1,6 @@
 // TODO: Move IStyle into a separate typing library
 import { IStyle } from '@fluentui/merge-styles';
-import { Theme } from '@fluentui/theme';
+import { Theme } from './types';
 import { useTheme } from './useTheme';
 import { useWindow } from '@fluentui/react-window-provider';
 import { useStyleRenderer } from './styleRenderers/useStyleRenderer';

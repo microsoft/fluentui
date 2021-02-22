@@ -1,8 +1,64 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 10 Feb 2021 12:20:53 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.62)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.61..@fluentui/react-experiments_v8.0.0-beta.62)
+
+### Changes
+
+- Update colors for the FloatingSuggestionsComposite items ([PR #17069](https://github.com/microsoft/fluentui/pull/17069) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.61)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.60..@fluentui/react-experiments_v8.0.0-beta.61)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.60)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.59..@fluentui/react-experiments_v8.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/foundation-legacy to v8.0.0-beta.17 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.59)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.58..@fluentui/react-experiments_v8.0.0-beta.59)
+
+### Changes
+
+- [BREAKING] Removing Button, MenuButton, SplitButton and Toggle components. Deprecating Slider component. Updating MicroFeedback component to use Button in @fluentui/react instead of the removed Button in @fluentui/react-experiments. ([PR #16961](https://github.com/microsoft/fluentui/pull/16961) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.58)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.57..@fluentui/react-experiments_v8.0.0-beta.58)
+
+### Changes
+
+- UnifiedPicker: Don't show picker after input is cleared ([PR #16937](https://github.com/microsoft/fluentui/pull/16937) by elvonspa@microsoft.com)
+- Use add and removeeventlistener for keydown in the UnifiedPicker ([PR #16954](https://github.com/microsoft/fluentui/pull/16954) by elvonspa@microsoft.com)
+- Fix bug where mouse selected suggestions did not work in the DefaultEditingItem ([PR #16929](https://github.com/microsoft/fluentui/pull/16929) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.57)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.56..@fluentui/react-experiments_v8.0.0-beta.57)
+
+### Changes
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.56)
 

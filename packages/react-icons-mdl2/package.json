@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-mdl2",
-  "version": "1.0.0-beta.12",
+  "version": "1.0.0-beta.17",
   "description": "React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,10 +26,9 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-is": "^16.7.1",
     "@types/react-test-renderer": "^16.0.0",
@@ -44,12 +43,12 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/react-icon-provider": "^0.1.0",
-    "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/utilities": "^8.0.0-beta.10",
+    "@fluentui/react-icon-provider": "^0.1.2",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "react": ">=16.8.0 <17.0.0"
+    "react": ">=16.8.0 <18.0.0"
   }
 }

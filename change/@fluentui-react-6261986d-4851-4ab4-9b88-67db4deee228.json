@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fully disable viewport measurement with 'skipViewportMeasures'",
+  "packageName": "@fluentui/react",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}

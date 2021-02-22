@@ -2,6 +2,126 @@
   "name": "@fluentui/style-utilities",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.19",
+      "version": "8.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "getScreenSelector: allow specifying only one of min or max",
+            "author": "elcraig@microsoft.com",
+            "commit": "6fb020ab622a0fd18c47173d1a38eb046c7ebeaa",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/theme to v2.0.0-beta.18",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.17",
+      "version": "8.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.15",
+      "version": "8.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/theme to v2.0.0-beta.15",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.14",
+      "version": "8.0.0-beta.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/style-utilities_v8.0.0-beta.14",
+      "version": "8.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/style-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 05:51:40 GMT",
       "tag": "@fluentui/style-utilities_v8.0.0-beta.13",
       "version": "8.0.0-beta.13",

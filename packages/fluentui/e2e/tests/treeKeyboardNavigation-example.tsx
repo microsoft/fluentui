@@ -14,6 +14,14 @@ const items = [
             id: 'jaime',
             title: 'Jaime',
           },
+          {
+            id: 'cersei',
+            title: 'cersei',
+          },
+          {
+            id: 'tyrion',
+            title: 'тирион',
+          },
         ],
       },
       {

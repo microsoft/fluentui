@@ -1,8 +1,73 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Wed, 10 Feb 2021 12:20:53 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.5)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.4..@fluentui/api-docs_v8.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/react-focus to v8.0.0-beta.24 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.4)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.3..@fluentui/api-docs_v8.0.0-beta.4)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.58 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.3)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.2..@fluentui/api-docs_v8.0.0-beta.3)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.2)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.1..@fluentui/api-docs_v8.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.24 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.1)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v1.0.3..@fluentui/api-docs_v8.0.0-beta.1)
+
+### Changes
+
+- Removing react-cards from api-docs generation. ([PR #16953](https://github.com/microsoft/fluentui/pull/16953) by humbertomakotomorimoto@gmail.com)
+- Changing version to pre-release. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
+
+## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v1.0.3)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v1.0.2..@fluentui/api-docs_v1.0.3)
+
+### Patches
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.53 ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+- Bump @fluentui/react-cards to v1.0.0-beta.53 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-focus to v8.0.0-beta.19 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.22 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.0-beta.14 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+- Bump @fluentui/theme to v2.0.0-beta.14 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v1.0.2)
 

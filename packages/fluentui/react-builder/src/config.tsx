@@ -140,16 +140,16 @@ export const DRAGGING_ELEMENTS = {
         {
           gutter: (
             <FUI.Avatar
-              image="public/images/avatar/small/ade.jpg"
+              image="public/images/avatar/RobinCounts.jpg"
               status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
             />
           ),
-          message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+          message: <FUI.Chat.Message content="Hi!" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
           attached: 'top',
           key: 'message-id-4',
         },
         {
-          message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+          message: <FUI.Chat.Message content="Hello!" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
           contentPosition: 'end',
           attached: true,
           key: 'message-id-2',
@@ -265,23 +265,23 @@ export const DRAGGING_ELEMENTS = {
     props: {
       items: [
         {
-          key: 'irving',
-          media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
-          header: 'Irving Kuhic',
+          key: 'robert',
+          media: <FUI.Image src="public/images/avatar/RobertTolbert.jpg" avatar />,
+          header: 'Robert Tolbert',
           headerMedia: '7:26:56 AM',
           content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
         },
         {
-          key: 'skyler',
-          media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
-          header: 'Skyler Parks',
+          key: 'celeste',
+          media: <FUI.Image src="public/images/avatar/CelesteBurton.jpg" avatar />,
+          header: 'Celeste Burton',
           headerMedia: '11:30:17 PM',
           content: 'Use the online FTP application to input the multi-byte application!',
         },
         {
-          key: 'dante',
-          media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
-          header: 'Dante Schneider',
+          key: 'cecil',
+          media: <FUI.Image src="public/images/avatar/CecilFolk.jpg" avatar />,
+          header: 'Cecil Folk',
           headerMedia: '5:22:40 PM',
           content: 'The GB pixel is down, navigate the virtual interface!',
         },

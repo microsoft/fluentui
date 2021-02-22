@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
-import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/theme';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
  * {@docCategory Button}
  */
 export type ButtonProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
+  React.ButtonHTMLAttributes<HTMLElement> & {
     /**
      * Shorthand icon. A shorthand prop can be a literal, object, or
      * JSX. The `children` prop of the object can be a render function,
@@ -90,7 +90,7 @@ export type ButtonProps = ComponentProps &
     secondary?: boolean;
 
     /** A button can blend into its background to become less emphasized. */
-    ghost?: boolean;
+    subtle?: boolean;
 
     /** A button can have no background styling and just be emphasized through its content styling. */
     transparent?: boolean;
@@ -109,7 +109,8 @@ export type ButtonProps = ComponentProps &
  * {@docCategory Button}
  */
 export interface ButtonState extends ButtonProps {
-  buttonRef?: React.RefObject<HTMLButtonElement>;
+  'data-is-focusable': boolean;
+  ref: React.RefObject<HTMLButtonElement>;
 }
 
 /**
@@ -117,6 +118,7 @@ export interface ButtonState extends ButtonProps {
  */
 export type ButtonTokens = ColorTokens &
   FontTokens & {
+    padding?: string;
     paddingLeft?: string;
     paddingRight?: string;
     paddingTop?: string;
@@ -167,7 +169,7 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
   block?: TTokens;
   circular?: TTokens;
   iconOnly?: TTokens;
-  ghost?: TTokens;
+  subtle?: TTokens;
   primary?: TTokens;
   transparent?: TTokens;
 };

@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Wed, 10 Feb 2021 12:20:53 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.58)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.57..@fluentui/react-docsite-components_v8.0.0-beta.58)
+
+### Changes
+
+- Use proper ResponsiveMode imports ([PR #17066](https://github.com/microsoft/fluentui/pull/17066) by elcraig@microsoft.com)
+- Website: Adding version switcher across the website. ([PR #15917](https://github.com/microsoft/fluentui/pull/15917) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.57)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.56..@fluentui/react-docsite-components_v8.0.0-beta.57)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.0.1-3 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.56)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.55..@fluentui/react-docsite-components_v8.0.0-beta.56)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.55)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.54..@fluentui/react-docsite-components_v8.0.0-beta.55)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.54)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.53..@fluentui/react-docsite-components_v8.0.0-beta.54)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.54 ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.53)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.52..@fluentui/react-docsite-components_v8.0.0-beta.53)
+
+### Changes
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.52)
 

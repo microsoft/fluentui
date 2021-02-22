@@ -322,6 +322,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
     return (
       <div
         ref={forwardedRef}
+        role="group"
         aria-label={selectionAndTodayString}
         className={css(rootClass, classes.root, className, 'ms-slideDownIn10')}
         onKeyDown={onDatePickerPopupKeyDown}
