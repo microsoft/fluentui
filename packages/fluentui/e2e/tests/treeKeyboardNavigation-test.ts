@@ -55,6 +55,8 @@ describe('Tree keyboard navigation', () => {
     await e2e.isFocused(selectors.treeItemAt(2));
 
     await e2e.evaluate(() => {
+      // puppeteer keyboard api supports only USKeyboardLayout https://github.com/puppeteer/puppeteer/blob/00d966a572713745e4de85b0d914f8753d3298ce/src/common/Input.ts#L64
+      // consider switch to CDP page._client when supporting IME input
       document.activeElement.dispatchEvent(new KeyboardEvent('keydown', { key: 'т', bubbles: true }));
     });
     await e2e.isFocused(selectors.treeTitleAt(5)); // expect focus to be on 'тирион'
