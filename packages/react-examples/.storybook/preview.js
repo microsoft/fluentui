@@ -34,7 +34,7 @@ if ([
   'react-button',
   'react-link',
   'react-image',
-  'react-menu'
+  'react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu'
 ].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
