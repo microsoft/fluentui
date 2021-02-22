@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.0.0-beta.54",
+  "version": "5.0.0-beta.58",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -27,18 +27,17 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
-    "@fluentui/react": "^8.0.0-beta.54",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/react": "^8.0.0-beta.59",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/react": "16.9.42",
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.5",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.7",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -47,7 +46,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-focus": "^8.0.0-beta.20",
+    "@fluentui/react-focus": "^8.0.0-beta.24",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
@@ -56,7 +55,7 @@
     "@types/d3-selection": "1.4.1",
     "@types/d3-shape": "^1.2.3",
     "@types/d3-time-format": "^2.1.0",
-    "@fluentui/set-version": "^8.0.0-beta.1",
+    "@fluentui/set-version": "^8.0.0-beta.2",
     "d3-array": "1.2.1",
     "d3-axis": "1.0.8",
     "d3-format": "^1.4.4",
@@ -67,10 +66,10 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.0.0-beta.54",
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@fluentui/react": "^8.0.0-beta.59",
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   }
 }

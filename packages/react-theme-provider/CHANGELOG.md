@@ -1,8 +1,53 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.27)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.26..@fluentui/react-theme-provider_v1.0.0-beta.27)
+
+### Patches
+
+- Bump @fluentui/react-theme to v0.3.3 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+### Changes
+
+- Breaks dependency on react-hooks for convergence ([PR #17091](https://github.com/microsoft/fluentui/pull/17091) by lingfan.gao@microsoft.com)
+
+## [1.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.26)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.25..@fluentui/react-theme-provider_v1.0.0-beta.26)
+
+### Patches
+
+- Bump @fluentui/react-theme to v0.3.2 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-utilities to v0.3.1 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.25)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.24..@fluentui/react-theme-provider_v1.0.0-beta.25)
+
+### Changes
+
+- use @fluentui/react-utilities instead of @fluentui/react-utils ([PR #16970](https://github.com/microsoft/fluentui/pull/16970) by olfedias@microsoft.com)
+
+## [1.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.24)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.23..@fluentui/react-theme-provider_v1.0.0-beta.24)
+
+### Changes
+
+- Remove dependency on @fluentui/react-stylesheets ([PR #16963](https://github.com/microsoft/fluentui/pull/16963) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.23)
 

@@ -4,8 +4,8 @@
 
 ### Source code
 
-[Separator](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/Separator.swift)
+[Separator](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/Separator.swift)
 
 ### Sample code
 
-[Used in TableViewCell](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Table%20View/TableViewCell.swift)
+[Used in TableViewCell](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Table%20View/TableViewCell.swift)

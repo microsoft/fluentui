@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonState } from './Button.types';
 import { useButtonState } from './useButtonState';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandProps = ['icon'];
+export const buttonShorthandProps = ['icon', 'children'];
 
 const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandProps });
 

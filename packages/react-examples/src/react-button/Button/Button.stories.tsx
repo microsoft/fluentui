@@ -55,9 +55,6 @@ const SizeExample = ({ size }: { size?: string }) => (
       Text
     </Button>
     <Button size={size} icon={<SVGIcon />} />
-    <br />
-    <Button size={size} compound content="Primary string" secondaryText="Secondary string" />
-    <Button size={size} compound content="Primary string" secondaryText="Secondary string" illustration={<SVGIcon />} />
   </>
 );
 

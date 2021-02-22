@@ -29,7 +29,12 @@ type E2EKeys =
   | 'Tab'
   | 'F'
   | 'O'
-  | '*';
+  | '*'
+  | 'T'
+  | 'H'
+  | CyrillicLetters;
+
+type CyrillicLetters = 'т';
 
 const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
 
@@ -168,4 +173,6 @@ export class E2EApi {
   };
 
   public wait = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+  public evaluate = async (fn): Promise<void> => await this.page.evaluate(fn);
 }

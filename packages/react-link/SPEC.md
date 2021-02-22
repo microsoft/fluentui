@@ -106,7 +106,7 @@ export type LinkProps = ComponentProps &
     /**
      * If true, changes styling when the link is being used alongside other text content.
      */
-    inline?: string;
+    inline?: boolean;
 
     /** Style tokens */
     tokens?: RecursivePartial<LinkTokens>;

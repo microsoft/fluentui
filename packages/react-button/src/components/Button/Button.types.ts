@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 export type ButtonProps = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
+  React.ButtonHTMLAttributes<HTMLElement> & {
     /**
      * Shorthand icon. A shorthand prop can be a literal, object, or
      * JSX. The `children` prop of the object can be a render function,
@@ -50,7 +50,7 @@ export type ButtonProps = ComponentProps &
     secondary?: boolean;
 
     /** A button can blend into its background to become less emphasized. */
-    ghost?: boolean;
+    subtle?: boolean;
 
     /** A button can have no background styling and just be emphasized through its content styling. */
     transparent?: boolean;
@@ -76,7 +76,16 @@ export type ButtonStyleSelectors = {
   textWithIcon?: boolean;
 };
 
-export type ButtonVariants = 'base' | 'textOnly' | 'iconOnly' | 'primary' | 'small' | 'large';
+export type ButtonVariants =
+  | 'base'
+  | 'textOnly'
+  | 'iconOnly'
+  | 'primary'
+  | 'small'
+  | 'large'
+  // TODO: get rid of these combinations, use individual variants in matchers
+  | 'iconOnlySmall'
+  | 'iconOnlyLarge';
 
 export type ButtonTokens = {
   // TODO: these are not in the global/alias theme currently
@@ -85,6 +94,10 @@ export type ButtonTokens = {
   paddingY: string;
   minWidth: string;
   maxWidth: string;
+
+  fontSize: string;
+  fontWeight: number;
+  lineHeight: string;
 
   // TODO: what do we want to do with tokens for slots, just prefix them with slot name?
   iconWidth: string;

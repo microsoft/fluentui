@@ -6,7 +6,7 @@ import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
-import { withKeytipLayer, withFluentProvider, withStrictMode, withCompatThemeProvider } from '@fluentui/storybook';
+import { withCompatThemeProvider, withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
@@ -17,7 +17,6 @@ if (
   [
     'react-cards',
     'react-checkbox',
-    'react-image',
     'react-link',
     'react-slider',
     'react-tabs',
@@ -29,7 +28,14 @@ if (
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-button', 'react-menu'].includes('PACKAGE_NAME')) {
+if ([
+  'react-avatar',
+  'react-badge',
+  'react-button',
+  'react-link',
+  'react-image',
+  'react-menu'
+].includes('PACKAGE_NAME')) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }

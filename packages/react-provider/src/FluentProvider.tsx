@@ -1,8 +1,7 @@
-import { useMergedRefs } from '@fluentui/react-hooks';
 import { makeStaticStyles, createDOMRenderer } from '@fluentui/make-styles';
 import { PartialTheme, Theme } from '@fluentui/react-theme';
 import { internal__ThemeContext, ThemeProviderState, useThemeProviderState } from '@fluentui/react-theme-provider';
-import { getSlots, makeMergeProps } from '@fluentui/react-utils';
+import { getSlots, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { internal__FluentProviderContext, useFluent } from './context';

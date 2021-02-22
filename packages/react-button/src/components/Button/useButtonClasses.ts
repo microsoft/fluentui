@@ -1,13 +1,16 @@
-import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types'
+import { ButtonState, ButtonStyleSelectors, ButtonVariantTokens } from './Button.types';
 import { ax, makeStyles } from '@fluentui/react-make-styles';
-import { Theme } from '@fluentui/react-theme'
+import { Theme } from '@fluentui/react-theme';
 
 // TODO: These are named in design specs but not hoisted to global/alias yet.
 //       We're tracking these here to determine how we can hoist them.
 const buttonSpacing = {
+  smallest: '2px',
   smaller: '4px',
   small: '6px',
+  medium: '8px',
   large: '12px',
+  larger: '16px',
 };
 
 // We do not want a combinatorial explosion of component variables for variants (bg, bgPrimary, etc)
@@ -37,9 +40,36 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     backgroundActive: theme.alias.color.neutral.neutralBackground1Pressed,
     borderColorActive: theme.alias.color.neutral.neutralStroke1Pressed,
 
+    fontWeight: theme.global.type.fontWeights.semibold,
+    fontSize: theme.global.type.fontSizes.base[300],
+    lineHeight: theme.global.type.lineHeights.base[300],
+
     iconSpacing: buttonSpacing.small,
     iconWidth: '20px',
     iconHeight: '20px',
+  },
+  small: {
+    paddingX: buttonSpacing.medium,
+    borderRadius: theme.global.borderRadius.small,
+    // TODO: design spec says minWidth "can be toggled off", consider prop like compact?
+    minWidth: '64px',
+    height: '24px',
+    fontSize: theme.global.type.fontSizes.base[200],
+    lineHeight: theme.global.type.fontSizes.base[200],
+    fontWeight: theme.global.type.fontWeights.regular,
+  },
+  large: {
+    paddingX: buttonSpacing.larger,
+    height: '40px',
+    borderRadius: theme.global.borderRadius.medium,
+    fontSize: theme.global.type.fontSizes.base[400],
+    // TODO: 24px is not on the global ramp of line heights
+    //       22px = theme.global.type.lineHeights.base[400]
+    //       28px = theme.global.type.lineHeights.base[500]
+    lineHeight: '24px',
+    iconWidth: '24px',
+    iconHeight: '24px',
+    iconSpacing: buttonSpacing.small,
   },
   textOnly: {},
   // TODO: Would be ideal to automate a check to ensure when a variant is accessed, all the tokens are accessed as well.
@@ -48,9 +78,25 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   iconOnly: {
     paddingX: buttonSpacing.small,
     paddingY: buttonSpacing.small,
-    // TODO: we already have min/max width, should we really introduce a "width" as well?
     minWidth: '32px',
     maxWidth: '32px',
+  },
+  // TODO: combinatorial "variants" is wrong, we already have iconOnly and small.
+  //       we essentially need to update component token mappings based on variant matchers.
+  //       fow the sake of progress for now, we're extending variants to have combinations.
+  iconOnlySmall: {
+    paddingX: buttonSpacing.smallest,
+    paddingY: buttonSpacing.smallest,
+    borderRadius: theme.global.borderRadius.small,
+    minWidth: '24px',
+    maxWidth: '24px',
+  },
+  iconOnlyLarge: {
+    paddingX: buttonSpacing.small,
+    paddingY: buttonSpacing.small,
+    borderRadius: theme.global.borderRadius.medium,
+    minWidth: '40px',
+    maxWidth: '40px',
   },
   primary: {
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
@@ -58,6 +104,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
 
     background: theme.alias.color.brand.brandBackground,
     borderColor: 'transparent',
+    borderColorHover: 'transparent',
     backgroundHover: theme.alias.color.brand.brandBackgroundHover,
     backgroundPressed: theme.alias.color.brand.brandBackgroundPressed,
 
@@ -65,11 +112,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     shadow: theme.alias.shadow.shadow4,
     shadowPressed: theme.alias.shadow.shadow2,
   },
-  // TODO: fix size before prerelease
-  small: {},
-  large: {},
 });
-
 
 const useRootClasses = makeStyles<ButtonStyleSelectors>([
   [
@@ -128,6 +171,32 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
     },
   ],
   [
+    ({ size }) => size === 'small',
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        padding: `${buttonTokens.small.paddingX} ${buttonTokens.small.paddingY}`,
+        minWidth: buttonTokens.small.minWidth,
+        height: buttonTokens.small.height,
+        borderRadius: buttonTokens.small.borderRadius,
+      };
+    },
+  ],
+  [
+    ({ size }) => size === 'large',
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        gap: buttonTokens.large.iconSpacing,
+        padding: `${buttonTokens.large.paddingX} ${buttonTokens.large.paddingY}`,
+        height: buttonTokens.large.height,
+        borderRadius: buttonTokens.large.borderRadius,
+      };
+    },
+  ],
+  [
     ({ primary }) => primary,
     theme => {
       const buttonTokens = makeButtonTokens(theme);
@@ -135,12 +204,13 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
       return {
         background: buttonTokens.primary.background,
         color: buttonTokens.primary.color,
-        border: buttonTokens.primary.borderColor,
+        borderColor: buttonTokens.primary.borderColor,
         // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
         boxShadow: buttonTokens.primary.shadow,
 
         ':hover': {
           background: buttonTokens.primary.backgroundHover,
+          borderColor: buttonTokens.primary.borderColorHover,
         },
 
         ':active': {
@@ -177,26 +247,28 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
     },
   ],
   [
-    ({ size }) => size === 'small',
+    ({ iconOnly, size }) => iconOnly && size === 'small',
     theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
-        padding: `${buttonTokens.small.paddingX} ${buttonTokens.small.paddingY}`,
-        minWidth: buttonTokens.small.minWidth,
-        maxWidth: buttonTokens.small.maxWidth,
+        padding: `${buttonTokens.iconOnlySmall.paddingX} ${buttonTokens.iconOnlySmall.paddingY}`,
+        minWidth: buttonTokens.iconOnlySmall.minWidth,
+        maxWidth: buttonTokens.iconOnlySmall.maxWidth,
+        borderRadius: buttonTokens.iconOnlySmall.borderRadius,
       };
     },
   ],
   [
-    ({ size }) => size === 'large',
+    ({ iconOnly, size }) => iconOnly && size === 'large',
     theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
-        padding: `${buttonTokens.small.paddingX} ${buttonTokens.small.paddingY}`,
-        minWidth: buttonTokens.small.minWidth,
-        maxWidth: buttonTokens.small.maxWidth,
+        padding: `${buttonTokens.iconOnlyLarge.paddingX} ${buttonTokens.iconOnlyLarge.paddingY}`,
+        minWidth: buttonTokens.iconOnlyLarge.minWidth,
+        maxWidth: buttonTokens.iconOnlyLarge.maxWidth,
+        borderRadius: buttonTokens.iconOnlyLarge.borderRadius,
       };
     },
   ],
@@ -206,16 +278,43 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
 const useChildrenClasses = makeStyles<ButtonStyleSelectors>([
   [
     null,
-    theme => ({
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      whiteSpace: 'nowrap',
-      // TODO: This is "Body, Strong (?)" token in the design spec (14px size, 20px line, semibold weight)
-      //       There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
-      fontWeight: theme.global.type.fontWeights.semibold,
-      fontSize: theme.global.type.fontSizes.base[300],
-      lineHeight: theme.global.type.lineHeights.base[300],
-    }),
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        // TODO: This is "Body, Strong (?)" token in the design spec (14px size, 20px line, semibold weight)
+        //       There are some type aliases in the figma not in our theme as well, not sure if this maps to alias or not
+        fontWeight: buttonTokens.base.fontWeight,
+        fontSize: buttonTokens.base.fontSize,
+        lineHeight: buttonTokens.base.lineHeight,
+      };
+    },
+  ],
+  [
+    ({ size }) => size === 'small',
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        fontSize: buttonTokens.small.fontSize,
+        fontWeight: buttonTokens.small.fontWeight,
+        lineHeight: buttonTokens.small.lineHeight,
+      };
+    },
+  ],
+  [
+    ({ size }) => size === 'large',
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        fontSize: buttonTokens.large.fontSize,
+        lineHeight: buttonTokens.large.lineHeight,
+      };
+    },
   ],
 ]);
 
@@ -231,6 +330,17 @@ const useIconClasses = makeStyles<ButtonStyleSelectors>([
         justifyContent: 'center',
         height: buttonTokens.base.iconHeight,
         width: buttonTokens.base.iconWidth,
+      };
+    },
+  ],
+  [
+    ({ size }) => size === 'large',
+    theme => {
+      const buttonTokens = makeButtonTokens(theme);
+
+      return {
+        width: buttonTokens.large.iconWidth,
+        height: buttonTokens.large.iconHeight,
       };
     },
   ],

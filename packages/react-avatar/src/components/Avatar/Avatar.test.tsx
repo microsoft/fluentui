@@ -108,9 +108,7 @@ describe('Avatar', () => {
   });
 
   it('handles customSize', () => {
-    const component = renderer.create(
-      <Avatar name="First Last" size={32} tokens={{ width: '33px', height: '33px' }} />,
-    );
+    const component = renderer.create(<Avatar name="First Last" size={32} style={{ width: '33px', height: '33px' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

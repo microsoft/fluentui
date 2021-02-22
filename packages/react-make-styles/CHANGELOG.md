@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.8)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.7..@fluentui/react-make-styles_v0.2.8)
+
+### Patches
+
+- Bump @fluentui/react-theme to v0.3.3 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.27 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.7)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.7-0..@fluentui/react-make-styles_v0.2.7)
+
+### Patches
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.26 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [0.2.7-0](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.7-0)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.6..@fluentui/react-make-styles_v0.2.7-0)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.6)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.5..@fluentui/react-make-styles_v0.2.6)
+
+### Patches
+
+- Bump @fluentui/make-styles to v0.6.0 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.24 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.5)
 

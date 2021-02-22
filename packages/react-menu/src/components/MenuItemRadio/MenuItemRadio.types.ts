@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { MenuItemSelectableProps, MenuItemSelectableState } from '../../selectable/index';
 
 /**

@@ -4,8 +4,8 @@
 
 ### Source code
 
-[Button](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Controls/Button.swift)
+[Button](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/Button.swift)
 
 ### Sample code
 
-[Button demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/ButtonDemoController.swift)
+[Button demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/ButtonDemoController.swift)

@@ -4,13 +4,8 @@
 
 ```ts
 
-import { BaseSlots } from '@fluentui/react-compose';
-import { ComponentProps } from '@fluentui/react-compose';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { SlotProps } from '@fluentui/react-compose';
-
-// @public
-export const iconShorthandProps: never[];
 
 // @public (undocumented)
 export const Image: React.ForwardRefExoticComponent<ImageProps & React.RefAttributes<HTMLElement>>;
@@ -27,29 +22,22 @@ export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTML
 }
 
 // @public (undocumented)
-export type ImageSlotProps = SlotProps<ImageSlots, ImageProps, React.ImgHTMLAttributes<HTMLImageElement>>;
-
-// @public (undocumented)
-export interface ImageSlots extends BaseSlots {
-}
-
-// @public (undocumented)
 export interface ImageState extends ImageProps {
     // (undocumented)
-    imageRef?: React.RefObject<HTMLElement>;
+    ref: React.RefObject<HTMLImageElement>;
 }
 
 // @public
 export const renderImage: (state: ImageState) => JSX.Element;
 
 // @public
-export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => {
-    state: Record<string, any>;
-    render: (state: ImageState) => JSX.Element;
-};
+export const useImage: (props: ImageProps, ref: React.Ref<HTMLElement>, defaultProps?: ImageProps | undefined) => ImageState;
 
 // @public (undocumented)
-export const useImageClasses: (state: Record<string, any>) => void;
+export const useImageStyles: (state: ImageState) => void;
+
+// @public (undocumented)
+export const useRootStyles: (selectors: ImageState) => string;
 
 
 // (No @packageDocumentation comment for this package)
