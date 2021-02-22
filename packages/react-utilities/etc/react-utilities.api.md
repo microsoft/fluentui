@@ -94,6 +94,9 @@ export function useControllableValue<TValue, TElement extends HTMLElement>(contr
 export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
 
 // @public
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return, dependencies: React.DependencyList) => (...args: Args) => Return;
+
+// @public
 export function useId(prefix?: string, providedId?: string): string;
 
 // @public
