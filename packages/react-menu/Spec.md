@@ -990,7 +990,7 @@ Below lists the interactactions for the primary content part of the split button
 | Mouse    | Click      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
 | Keyboard | Enter      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
 | Keyboard | Space      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
-| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item that contained submenu             |
+| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item contained in that submenu             |
 | Keyboard | ArrowDown  | Move    | Focuses on the secondary part of the splitbutton | Secondary part of the splitbutton                  |
 | Keyboard | Tab        | Dismiss | Closes the menu and all submenus                 | Next tabbable element after root menu trigger      |
 | Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                 | Previous tabbable element before root menu trigger |
