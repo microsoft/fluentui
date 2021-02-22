@@ -80,6 +80,7 @@ drop/
 .vs/
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
 .idea
 /.settings/
 
@@ -152,6 +153,3 @@ rush.json
 
 # tsdoc
 tsdoc-metadata.json
-
-#vscode workspace
-*.code-workspace
