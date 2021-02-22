@@ -105,7 +105,6 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   },
   primary: {
     color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
-    // TODO: spec calls out "shadow 4 __darker__", are we missing tokens?
 
     background: theme.alias.color.brand.brandBackground,
     borderColor: 'transparent',
@@ -115,8 +114,10 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
     backgroundHover: theme.alias.color.brand.brandBackgroundHover,
     backgroundPressed: theme.alias.color.brand.brandBackgroundPressed,
 
-    // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
+    // TODO: spec calls out "shadow 4 __brand__", are we missing tokens?
     shadow: theme.alias.shadow.shadow4,
+
+    // TODO: spec calls out "shadow 2 __darker__", are we missing tokens?
     shadowPressed: theme.alias.shadow.shadow2,
   },
   primaryDisabled: {
