@@ -7,14 +7,12 @@ import { ButtonState } from './Button.types';
  * @param draftState - Button draft state to mutate.
  */
 export const useButtonState = (draftState: ButtonState) => {
-  // Update the button's tab-index, keyboard handling, and aria attributes.
   if (draftState.as !== 'button') {
     draftState.role = 'button';
 
     if (draftState.as !== 'a') {
       const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = draftState;
 
-      draftState['data-is-focusable'] = true;
       draftState.tabIndex = 0;
 
       draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
