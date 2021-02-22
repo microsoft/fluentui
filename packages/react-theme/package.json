@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/utilities": "^8.0.0-beta.14",
+    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

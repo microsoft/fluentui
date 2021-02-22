@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.5)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.4..@fluentui/public-docsite_v8.0.0-beta.5)
+
+### Changes
+
+- Add version switcher to website ([PR #15917](https://github.com/microsoft/fluentui/pull/15917) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.4)
 

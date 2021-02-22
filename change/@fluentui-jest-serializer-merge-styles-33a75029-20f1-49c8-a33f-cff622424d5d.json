@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Built files use commonjs only.",
-  "packageName": "@fluentui/jest-serializer-merge-styles",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

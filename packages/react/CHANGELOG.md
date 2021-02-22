@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.59)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.58..@fluentui/react_v8.0.0-beta.59)
+
+### Changes
+
+- Export ResponsiveMode utilities ([PR #17066](https://github.com/microsoft/fluentui/pull/17066) by elcraig@microsoft.com)
+- Fix: Date Picker - selected date got reset after clicking outside of calendar ([PR #17059](https://github.com/microsoft/fluentui/pull/17059) by feodor@appveyor.com)
 
 ## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.58)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Breaks dependency on react-hooks for convergence",
-  "packageName": "@fluentui/react-button",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
