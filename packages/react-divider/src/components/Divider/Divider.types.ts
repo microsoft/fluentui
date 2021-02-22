@@ -17,7 +17,7 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
 
   children?: any;
 
-  /* A divider can have a overriding color */
+  /* A divider can have a overriding border color */
   color?: string;
 
   /* important will emphasis the content */
@@ -25,27 +25,24 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
 
   inset?: boolean;
 
-  /* The size is a multiplier value for the size */
-  size?: SizeValue;
-
   /* A divider can be horizontal (default) or verticle*/
   vertical?: boolean;
 
   /* Overrides for custom appearances */
   height?: string;
-
   width?: string;
 
   fontSize?: string;
-
   fontWeight?: string;
-
   fontColor?: string;
 
   margin?: string;
+  marginTop?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  marginRight?: string;
 
   borderStyle?: string;
-
   borderSize?: string | number;
 }
 

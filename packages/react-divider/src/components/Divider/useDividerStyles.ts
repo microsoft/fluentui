@@ -1,4 +1,5 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { tokenToString } from 'typescript';
 import { DividerState, DividerTokens } from './Divider.types';
 
 //#region Helper objects and functions
@@ -16,9 +17,8 @@ export const useRootStyles = (state: DividerState): string => {
       tokens => ({
         /* CSS Vars */
         '--divider-borderMargin': '12px',
-        '--divider-contentColor': 'black',
         '--divider-flexDirection': 'row',
-        '--divider-fontColor': tokens.global.palette.grey[26],
+        '--divider-fontColor': tokens.alias.color.neutral.neutralForeground2,
         '--divider-fontFamily': 'Segoe UI',
         '--divider-fontSize': '12px',
         '--divider-fontWeight': '400',
@@ -41,14 +41,14 @@ export const useRootStyles = (state: DividerState): string => {
           display: 'flex',
           flexGrow: 1,
           boxSizing: 'border-box',
-          '--divider-color': tokens.global.palette.grey[88],
+          '--divider-color': tokens.alias.color.neutral.neutralStroke2,
         },
 
         ':after': {
           display: 'flex',
           flexGrow: 1,
           boxSizing: 'border-box',
-          '--divider-color': tokens.global.palette.grey[88],
+          '--divider-color': tokens.alias.color.neutral.neutralStroke2,
         },
       }),
     ],
@@ -69,23 +69,23 @@ export const useRootStyles = (state: DividerState): string => {
     [
       s => s.appearance === 'subtle',
       tokens => ({
-        ':before': { '--divider-color': tokens.global.palette.grey[94] },
-        ':after': { '--divider-color': tokens.global.palette.grey[94] },
+        ':before': { '--divider-color': tokens.alias.color.neutral.neutralStroke3 },
+        ':after': { '--divider-color': tokens.alias.color.neutral.neutralStroke3 },
       }),
     ],
     [
       s => s.appearance === 'brand',
       tokens => ({
-        '--divider-fontColor': tokens.global.palette.brand.primary,
-        ':before': { '--divider-color': tokens.global.palette.brand.primary },
-        ':after': { '--divider-color': tokens.global.palette.brand.primary },
+        '--divider-fontColor': tokens.alias.color.brand.brandBackgroundStatic,
+        ':before': { '--divider-color': tokens.alias.color.brand.brandBackgroundStatic },
+        ':after': { '--divider-color': tokens.alias.color.brand.brandBackgroundStatic },
       }),
     ],
     [
       s => s.appearance === 'strong',
       tokens => ({
-        ':before': { '--divider-color': tokens.global.palette.grey[82] },
-        ':after': { '--divider-color': tokens.global.palette.grey[82] },
+        ':before': { '--divider-color': tokens.alias.color.neutral.neutralStroke1 },
+        ':after': { '--divider-color': tokens.alias.color.neutral.neutralStroke1 },
       }),
     ],
     /* Horizontal Divider overrides */
@@ -358,6 +358,30 @@ export const useRootStyles = (state: DividerState): string => {
       s => s.margin !== undefined,
       {
         margin: state.margin,
+      },
+    ],
+    [
+      s => s.marginTop !== undefined,
+      {
+        marginTop: state.marginTop,
+      },
+    ],
+    [
+      s => s.marginBottom !== undefined,
+      {
+        marginBottom: state.marginBottom,
+      },
+    ],
+    [
+      s => s.marginLeft !== undefined,
+      {
+        marginLeft: state.marginTop,
+      },
+    ],
+    [
+      s => s.marginRight !== undefined,
+      {
+        marginRight: state.marginRight,
       },
     ],
     /* Font Color Override */
