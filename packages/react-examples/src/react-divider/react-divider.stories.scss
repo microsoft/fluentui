@@ -1,0 +1,43 @@
+/* Storybook SCSS file for package: react-divider */
+
+html,
+body {
+  margin: 5px;
+  padding: 0;
+}
+.story {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  label {
+    font-weight: 600;
+    line-height: 28px;
+    margin: 10px 0;
+  }
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.vertical {
+  & > label {
+    flex-shrink: 1;
+    flex-grow: 0;
+    flex-basis: 100%;
+  }
+}
+
+.verticalContent {
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+}
