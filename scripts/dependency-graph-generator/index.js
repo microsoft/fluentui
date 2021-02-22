@@ -3,18 +3,11 @@ const parser = require('dotparser');
 const readFileSync = require('fs').readFileSync;
 const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
+const getDevDependencies = require('./getDevDependencies');
 const path = require('path');
 
 const dotFilePath = path.resolve(__dirname, 'repo-graph.dot');
-const ignoreDevDependencies = [
-  '@fluentui/set-version',
-  '@fluentui/react-conformance',
-  '@fluentui/test-utilities',
-  '@fluentui/eslint-plugin',
-  '@fluentui/a11y-testing',
-  '@fluentui/jest-serializer-merge-styles',
-  '@fluentui/scripts',
-];
+let ignoreDevDependencies = [];
 
 /**
  * Pick a package in the repository and generate its dependency graph
@@ -22,7 +15,7 @@ const ignoreDevDependencies = [
  * For this utility to work you will actually need to install graphviz on your machine
  * http://www.graphviz.org
  */
-function main(argv) {
+async function main(argv) {
   if (!argv.root) {
     throw new Error('A root package name should be provided');
   }
@@ -31,8 +24,8 @@ function main(argv) {
 
   // if dev dependencies should be added
   const includeDevDependencies = argv['include-dev'];
-  if (includeDevDependencies) {
-    ignoreDevDependencies.splice(0, ignoreDevDependencies.length);
+  if (!includeDevDependencies) {
+    ignoreDevDependencies = await getDevDependencies(rootPackage);
   }
 
   _generateGraphforRepo(dotFilePath);
@@ -55,7 +48,7 @@ function main(argv) {
 function _generateGraphforRepo(outputPath) {
   const lernaDependencyGraphArgs = [`--outputPath ${outputPath}`];
   // The package uses a shebang with windows line endings, call node on the entrypoint directly to avoid issues
-  const lernaDependencyGraphEntry = path.resolve(findGitRoot(), 'node_modules/lerna-dependency-graph/lib/index.js');
+  const lernaDependencyGraphEntry = path.resolve(findGitRoot(), require.resolve('lerna-dependency-graph/lib/index.js'));
 
   const result = spawnSync(`node ${lernaDependencyGraphEntry}`, lernaDependencyGraphArgs, {
     cwd: findGitRoot(),
@@ -158,7 +151,7 @@ require('yargs')
       yargs
         .positional('root', {
           type: 'string',
-          describe: 'The name of the root package in the dependency tree',
+          describe: 'The name of the root package in the dependency tree, without the `@fluentui/` prefix',
           demandOption: true,
         })
         .positional('include-dev', {
@@ -170,7 +163,7 @@ require('yargs')
           description: 'The path to graphviz which needs to be installed on the machine',
         });
     },
-    argv => main(argv),
+    async argv => await main(argv),
   )
   .demand('root')
   .help().argv;
