@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 12 Feb 2021 12:26:20 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.1)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.0..@fluentui/web-components_v0.14.1)
+
+### Patches
+
+- remove hard coded background color in favor of default design system behavior ([PR #17070](https://github.com/microsoft/fluentui/pull/17070) by chhol@microsoft.com)
 
 ## [0.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.0)
 

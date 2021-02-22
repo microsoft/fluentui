@@ -62,6 +62,7 @@ export * from './PositioningContainer';
 export * from './ProgressIndicator';
 export * from './Rating';
 export * from './ResizeGroup';
+export * from './ResponsiveMode';
 export * from './ScrollablePane';
 export * from './SearchBox';
 export * from './SelectableOption';

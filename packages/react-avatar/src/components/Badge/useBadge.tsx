@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { BadgeProps, BadgeState } from './Badge.types';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { resolveShorthandProps, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 
 export const badgeShorthandProps: (keyof BadgeProps)[] = ['icon'];
 

@@ -23,6 +23,7 @@ const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props =
       subTitle={getSubTitle(platform)}
       otherSections={_otherSections(platform) as IPageSectionProps[]}
       showSideRail={false}
+      versionSwitcherDefinition={platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined}
       {...ControlsPageProps[platform]}
     />
   );
