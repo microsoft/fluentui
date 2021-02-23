@@ -8058,6 +8058,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     prefix?: string;
     readOnly?: boolean;
     resizable?: boolean;
+    scrollableContainerRef?: React.RefObject<HTMLDivElement>;
     styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
     suffix?: string;
     theme?: ITheme;
