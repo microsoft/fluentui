@@ -100,7 +100,7 @@ const [attributes] = useKeyboardNavigationGroup();
 ```
 
 ```typescript
-const ref = React.useReact<HTMLElement>();
+const ref = React.useRef<HTMLElement>();
 const {
   findFirst,
   findLast,
