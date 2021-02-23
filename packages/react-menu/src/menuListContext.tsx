@@ -3,6 +3,7 @@ import * as React from 'react';
 const MenuListContext = React.createContext<MenuListContext>({
   checkedValues: {},
   onCheckedValueChange: () => null,
+  setFocusByFirstCharacter: () => null,
 });
 
 // TODO add context selector to reduce the number of rerenders
