@@ -6,7 +6,7 @@ import { useFocusManagementContext } from '../focusManagementContext';
 export const useFocusFinders = () => {
   const { ahInstance } = useFocusManagementContext();
 
-  // Narrow props for now until there is a need for modalizer/groupper
+  // Narrow props for now and let need dictate additional props in the future
   const findAll = (root: HTMLElement, matcher: (el: HTMLElement) => boolean) =>
     ahInstance.focusable.findAll(root, matcher);
   const findFirst = (root: HTMLElement) => ahInstance.focusable.findFirst(root);
