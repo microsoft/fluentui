@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.16)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v1.0.0-beta.15..@fluentui/react-compose_v1.0.0-beta.16)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.15 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v1.0.0-beta.15)
 

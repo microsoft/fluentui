@@ -3,16 +3,26 @@ import { BaseDecorator } from './BaseDecorator';
 import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
 import { WindowContext } from '../../WindowProvider';
 
+/**
+ * @deprecated Decorator usage is deprecated. Either call `getResponsiveMode` manually, or
+ * use the `useResponsiveMode` hook within a function component.
+ */
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
 }
 
 export enum ResponsiveMode {
+  /** Width \<= 479px */
   small = 0,
+  /** Width \> 479px and \<= 639px */
   medium = 1,
+  /** Width \> 639px and \<= 1023px */
   large = 2,
+  /** Width \> 1023px and \<= 1365px */
   xLarge = 3,
+  /** Width \> 1365px and \<= 1919px */
   xxLarge = 4,
+  /** Width \> 1919px */
   xxxLarge = 5,
   unknown = 999,
 }
@@ -31,7 +41,8 @@ let _defaultMode: ResponsiveMode | undefined;
 let _lastMode: ResponsiveMode | undefined;
 
 /**
- * Allows a server rendered scenario to provide a default responsive mode.
+ * Allows a server rendered scenario to provide a **default** responsive mode.
+ * This WILL NOT trigger any updates to components that have already consumed the responsive mode!
  */
 export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void {
   _defaultMode = responsiveMode;
@@ -41,11 +52,13 @@ export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): v
  * Initializes the responsive mode to the current window size. This can be used to avoid
  * a re-render during first component mount since the window would otherwise not be measured
  * until after mounting.
+ *
+ * This WILL NOT trigger any updates to components that have already consumed the responsive mode!
  */
 export function initializeResponsiveMode(element?: HTMLElement): void {
-  if (typeof window !== 'undefined') {
-    const currentWindow = (element && getWindow(element)) || window;
+  const currentWindow = getWindow(element);
 
+  if (currentWindow) {
     getResponsiveMode(currentWindow);
   }
 }
@@ -54,9 +67,14 @@ export function getInitialResponsiveMode() {
   return _defaultMode || _lastMode || ResponsiveMode.large;
 }
 
+/**
+ * @deprecated Decorator usage is deprecated. Either call `getResponsiveMode` manually, or
+ * use the `useResponsiveMode` hook within a function component.
+ */
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
+  // eslint-disable-next-line deprecation/deprecation
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
     public static contextType = WindowContext;
     public context: React.ContextType<typeof WindowContext>;
@@ -107,6 +125,10 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   return hoistStatics(ComposedComponent, resultClass);
 }
 
+/**
+ * Hook to get the current responsive mode (window size category).
+ * @param currentWindow - Use this window when determining the responsive mode.
+ */
 export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode {
   let responsiveMode = ResponsiveMode.small;
 

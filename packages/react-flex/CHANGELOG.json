@@ -2,6 +2,33 @@
   "name": "@fluentui/react-flex",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-flex_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.27",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "68bc4c7d68b5c01022658fcc485342670d56df39",
+            "package": "@fluentui/react-flex"
+          },
+          {
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.16",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-flex"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.0.0-beta.19",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 19:38:50 GMT",
       "tag": "@fluentui/react-flex_v0.2.5",
       "version": "0.2.5",

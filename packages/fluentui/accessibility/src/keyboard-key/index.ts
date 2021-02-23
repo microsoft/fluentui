@@ -291,32 +291,3 @@ export const HomeKey = keyboardKey.Home;
 export const PageDownKey = keyboardKey.PageDown;
 export const PageUpKey = keyboardKey.PageUp;
 export const TabKey = keyboardKey.Tab;
-
-export const LetterKeys = [
-  keyboardKey.a,
-  keyboardKey.b,
-  keyboardKey.c,
-  keyboardKey.d,
-  keyboardKey.e,
-  keyboardKey.f,
-  keyboardKey.g,
-  keyboardKey.h,
-  keyboardKey.i,
-  keyboardKey.j,
-  keyboardKey.k,
-  keyboardKey.l,
-  keyboardKey.m,
-  keyboardKey.n,
-  keyboardKey.o,
-  keyboardKey.p,
-  keyboardKey.q,
-  keyboardKey.r,
-  keyboardKey.s,
-  keyboardKey.t,
-  keyboardKey.u,
-  keyboardKey.v,
-  keyboardKey.w,
-  keyboardKey.x,
-  keyboardKey.y,
-  keyboardKey.z,
-];

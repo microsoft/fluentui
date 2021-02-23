@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.5)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.5..@fluentui/react-flex_v0.2.5)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.27 ([PR #17091](https://github.com/microsoft/fluentui/pull/17091) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-compose to v1.0.0-beta.16 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/theme to v2.0.0-beta.19 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.5)
 

@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v0.3.3)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v0.3.2..@fluentui/react-theme_v0.3.3)
+
+### Patches
+
+- Add SizeValues type ([PR #16868](https://github.com/microsoft/fluentui/pull/16868) by junioassuncaocharles@gmail.com)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.15 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v0.3.2)
 
