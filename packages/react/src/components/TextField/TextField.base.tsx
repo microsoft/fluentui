@@ -614,9 +614,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _adjustInputHeight(): void {
     if (this._textElement.current && this.props.autoAdjustHeight && this.props.multiline) {
+      const containerScrollTop = this.props.scrollableContainerRef?.current?.scrollTop ?? 0;
       const textField = this._textElement.current;
       textField.style.height = '';
       textField.style.height = textField.scrollHeight + 'px';
+      if (this.props.scrollableContainerRef?.current) {
+        this.props.scrollableContainerRef.current.scrollTop = containerScrollTop;
+      }
     }
   }
 }

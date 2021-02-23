@@ -116,6 +116,12 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   prefix?: string;
 
   /**
+   * Ref to the nearest scrollable ancestor of this text field. If autoAdjustHeight is enabled, passing in a
+   * ref will prevent scroll bar jumping on the container when the height of the field changes
+   */
+  scrollableContainerRef?: React.RefObject<HTMLDivElement>;
+
+  /**
    * Suffix displayed after the text field contents. This is not included in the value.
    * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
    */

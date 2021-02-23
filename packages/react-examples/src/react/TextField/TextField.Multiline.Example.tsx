@@ -11,6 +11,7 @@ const columnProps: Partial<IStackProps> = {
   tokens: { childrenGap: 15 },
   styles: { root: { width: 300 } },
 };
+const scrollableRef = React.createRef<HTMLDivElement>();
 
 export const TextFieldMultilineExample: React.FunctionComponent = () => {
   const [multiline, { toggle: toggleMultiline }] = useBoolean(false);
@@ -29,7 +30,20 @@ export const TextFieldMultilineExample: React.FunctionComponent = () => {
       </Stack>
 
       <Stack {...columnProps}>
-        <TextField label="With auto adjusting height" multiline autoAdjustHeight />
+        <div
+          ref={scrollableRef}
+          style={{
+            overflowY: 'auto',
+            maxHeight: '350px',
+          }}
+        >
+          <TextField
+            label="With auto adjusting height"
+            multiline
+            autoAdjustHeight
+            scrollableContainerRef={scrollableRef}
+          />
+        </div>
         <TextField
           label="Switches from single to multiline if more than 50 characters are entered"
           multiline={multiline}
