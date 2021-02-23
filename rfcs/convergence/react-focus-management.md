@@ -138,7 +138,7 @@ The below table lists the configuration options that the hook should support:
 | ------------- | ---------------------- | --------------------------------------------------------------------------------------------------------- |
 | axis          | vertical \| horizontal | Indicates which direction keyboard navigation should use                                                  |
 | enableHomeEnd | boolean                | Enables the use of `Home` and `End` keys to navigate to first and last elements of the group respectively |
-| cyclic        | boolean                | Indicates that navigation should not stop at first and last elements respectively                         |
+| circular      | boolean                | Indicates that navigation should not stop at first and last elements respectively                         |
 
 ### Pros and Cons
 
