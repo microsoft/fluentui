@@ -128,7 +128,7 @@ The below table lists the helper functions to support:
 | findLast  | HTMLElement   |                          | Finds the last focusable element                    |
 | findAll   | HTMLElement[] | boolean matcher function | Finds all focusable elements that match a condition |
 
-#### useKeyboardNagiationGroup
+#### useKeyboardNavigationGroup
 
 A hook that returns a `ref` to be assigned to the container of a group of focusable elements that should support keyboard navigation
 
