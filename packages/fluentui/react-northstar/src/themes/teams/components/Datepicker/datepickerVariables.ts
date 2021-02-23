@@ -41,7 +41,7 @@ export const datepickerVariables = (siteVars): DatepickerVariables => ({
   calendarCellMargin: pxToRem(0),
   calendarCellBackgroundColor: siteVars.colorScheme.default.background,
   calendarCellColor: 'inherit',
-  calendarCellQuietColor: siteVars.colorScheme.brand.foregroundDisabled,
+  calendarCellQuietColor: siteVars.colorScheme.default.foreground2,
   calendarCellSelectedColor: siteVars.colorScheme.brand.background4,
   calendarCellSelectedBackgroundColor: siteVars.colorScheme.brand.borderActive1,
   calendarCellTodayBackgroundColor: siteVars.colorScheme.brand.backgroundFocus,
