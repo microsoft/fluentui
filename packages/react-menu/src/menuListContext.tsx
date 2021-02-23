@@ -12,6 +12,7 @@ const MenuListContext = React.createContext<MenuListContext>({
 export interface MenuListContext {
   checkedValues?: Record<string, string[]>;
   onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, items: string[]) => void;
+  setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
 }
 
 export const MenuListProvider = MenuListContext.Provider;

@@ -26,26 +26,45 @@ export const useMenuList = (
     resolveShorthandProps(props, []),
   );
 
-  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    const { onKeyDown: onKeyDownBase } = state;
+  state.setFocusByFirstCharacter = React.useCallback(
+    (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
+      const menuItems = findAll(
+        state.ref.current,
+        (el: HTMLElement) => el.hasAttribute('role') && el.getAttribute('role') === 'menuitem',
+      );
 
-    if (onKeyDownBase) {
-      onKeyDownBase(e);
-    }
+      let startIndex = menuItems.indexOf(itemEl) + 1;
+      if (startIndex === menuItems.length) {
+        startIndex = 0;
+      }
 
-    if (e.key.length > 1) {
-      return;
-    }
+      const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
+      const char = e.key.toLowerCase();
 
-    const elements = findAll(state.ref.current, (el: HTMLElement) => {
-      const isMenuItem = el.hasAttribute('role') && el.getAttribute('role') === 'menuitem';
-      const startsWith = e.key && e.key.length === 1 && e.key.match(/\S/);
+      const getIndexFirstChars = (start: number, firstChar: string) => {
+        for (let i = start; i < firstChars.length; i++) {
+          if (char === firstChars[i]) {
+            return i;
+          }
+        }
+        return -1;
+      };
 
-      return isMenuItem && !!startsWith;
-    });
+      // Check remaining slots in the menu
+      let index = getIndexFirstChars(startIndex, char);
 
-    elements[0].focus();
-  };
+      // If not found in remaining slots, check from beginning
+      if (index === -1) {
+        index = getIndexFirstChars(0, char);
+      }
+
+      // If match was found...
+      if (index > -1) {
+        menuItems[index].focus();
+      }
+    },
+    [findAll, state.ref],
+  );
 
   return state;
 };

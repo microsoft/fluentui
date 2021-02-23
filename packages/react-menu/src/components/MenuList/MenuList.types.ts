@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
+import { MenuListContext } from '../../menuListContext';
 
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -21,4 +22,9 @@ export interface MenuListState extends MenuListProps {
    * Ref to the root slot
    */
   ref: React.MutableRefObject<HTMLElement>;
+
+  /**
+   * Callback to set focus on the next menu item by first character
+   */
+  setFocusByFirstCharacter: MenuListContext['setFocusByFirstCharacter'];
 }
