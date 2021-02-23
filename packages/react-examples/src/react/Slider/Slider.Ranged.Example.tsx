@@ -9,7 +9,7 @@ const sliderValueFormat = (value: number) => `${value}%`;
 export const SliderRangedExample: React.FunctionComponent = () => {
   const [sliderValue, setSliderValue] = React.useState(0);
   const [sliderLowerValue, setSliderLowerValue] = React.useState(0);
-  const onChange = (_: any, range: [number, number]) => {
+  const onChange = (_: unknown, range: [number, number]) => {
     setSliderLowerValue(range[0]);
     setSliderValue(range[1]);
   };
