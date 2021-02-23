@@ -983,14 +983,14 @@ As a general rule, once a submenu is dismissed without dismissing the menu, the 
 
 All of the above Mouse events in the [previous section](#submenu-trigger/navigation) should apply to the part of the split button that is intended to open a submenu.
 
-Below lists the interactactions for the primary content part of the split button
+Below lists the interactions for the primary content part of the split button
 
 | Type     | Action     | Result  | Details                                          | Focus after                                        |
 | -------- | ---------- | ------- | ------------------------------------------------ | -------------------------------------------------- |
 | Mouse    | Click      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
 | Keyboard | Enter      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
 | Keyboard | Space      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
-| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item that contained submenu             |
+| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item contained in that submenu             |
 | Keyboard | ArrowDown  | Move    | Focuses on the secondary part of the splitbutton | Secondary part of the splitbutton                  |
 | Keyboard | Tab        | Dismiss | Closes the menu and all submenus                 | Next tabbable element after root menu trigger      |
 | Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                 | Previous tabbable element before root menu trigger |
@@ -1007,9 +1007,8 @@ Below lists the interactions for the secondary content part of the split button
 | Keyboard | Tab        | Dismiss | Closes the menu and all submenus | Next tabbable element after root menu trigger      |
 | Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus | Previous tabbable element before root menu trigger |
 
-Once the the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) apply with the exception of returning focus to the splitbutton which is shown in the images below.
+Once the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) applies with the exception of returning focus to the splitbutton, which is shown in the images below.
 
-The below image illustrates the behaviour for the splitbutton
 
 ![Using up/down arrow key](./etc/images/splitbutton-up-down.jpg)
 
