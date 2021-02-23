@@ -3,7 +3,7 @@ const parser = require('dotparser');
 const readFileSync = require('fs').readFileSync;
 const spawnSync = require('child_process').spawnSync;
 const findGitRoot = require('../monorepo/index').findGitRoot;
-const getDevDependencies = require('./getDevDependencies');
+const getDevDependencies = require('../monorepo/index').getDevDependencies;
 const path = require('path');
 const os = require('os');
 

@@ -1,7 +1,7 @@
 const Project = require('@lerna/project');
 const PackageGraph = require('@lerna/package-graph');
 const path = require('path');
-const findGitRoot = require('../monorepo/index').findGitRoot;
+const findGitRoot = require('./findGitRoot');
 
 function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
   rootPackages.forEach(packageName => {
