@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
+import { useAccordionItemContext } from '../AccordionItem';
 
 /**
  * Consts listing which props are shorthand props.
@@ -21,9 +21,14 @@ export const useAccordionPanel = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionPanelProps,
 ): AccordionPanelState => {
+  const { panelId, headingId, open } = useAccordionItemContext();
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
+      id: props.id ?? panelId,
+      open,
+      role: 'region',
+      'aria-labelledby': headingId,
     },
     defaultProps,
     resolveShorthandProps(props, accordionPanelShorthandProps),

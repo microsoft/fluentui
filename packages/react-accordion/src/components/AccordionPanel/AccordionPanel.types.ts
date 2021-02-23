@@ -14,4 +14,5 @@ export interface AccordionPanelState extends AccordionPanelProps {
    * Ref to the root slot
    */
   ref: React.MutableRefObject<HTMLElement>;
+  open: boolean;
 }

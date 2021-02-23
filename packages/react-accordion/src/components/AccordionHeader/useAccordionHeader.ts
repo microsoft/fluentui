@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
+import { useAccordionItemContext } from '../AccordionItem';
 
 /**
  * Consts listing which props are shorthand props.
@@ -21,11 +21,21 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
+  const { headingId, panelId, onAccordionHeaderClick } = useAccordionItemContext();
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      expandIcon: defaultExpandIcon,
-      button: { as: 'div', role: 'button', children: React.Fragment },
+      expandIcon: {
+        as: 'div',
+      },
+      button: {
+        as: 'div',
+        role: 'button',
+        children: React.Fragment,
+        'aria-controls': panelId,
+        id: props.id ?? headingId,
+        onClick: onAccordionHeaderClick,
+      },
       as: 'div',
       role: 'heading',
       expandIconPosition: 'start',
@@ -36,7 +46,3 @@ export const useAccordionHeader = (
 
   return state;
 };
-
-const ChevronIcon = (props: React.HTMLAttributes<HTMLElement>) => <div {...props}>{'>'}</div>;
-
-const defaultExpandIcon: ShorthandProps<React.HTMLAttributes<HTMLElement>> = { as: ChevronIcon };
