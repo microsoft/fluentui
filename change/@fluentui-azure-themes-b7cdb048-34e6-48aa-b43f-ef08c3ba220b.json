@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updated primary button styles to match fluentui",
+  "packageName": "@fluentui/azure-themes",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}
