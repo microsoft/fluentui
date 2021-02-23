@@ -189,7 +189,6 @@
           "@fluentui/react-component-event-listener",
           "@fluentui/react-component-nesting-registry",
           "@fluentui/react-component-ref",
-          "@fluentui/react-context-selector",
           "@fluentui/react-icons-northstar",
           "@fluentui/react-northstar-emotion-renderer",
           "@fluentui/react-northstar-fela-renderer",
