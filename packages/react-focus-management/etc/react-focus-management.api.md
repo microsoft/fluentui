@@ -20,10 +20,12 @@ export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLEl
 // @public
 export const FocusManagementProvider: React.FunctionComponent<FocusManagementProvideProps>;
 
-// Warning: (ae-forgotten-export) The symbol "FocusManagementContextValue" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
-export interface FocusManagementProviderState extends FocusManagementProvideProps, FocusManagementContextValue {
+export interface FocusManagementProviderState extends FocusManagementProvideProps {
+    // Warning: (ae-forgotten-export) The symbol "FocusManagementContextValue" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    contextValue: FocusManagementContextValue;
     // (undocumented)
     dir: FocusManagementProvideProps['dir'];
 }
@@ -43,9 +45,9 @@ export interface UseArrowNavigationGroupOptions {
 
 // @public
 export const useFocusFinders: () => {
-    findAll: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
-    findFirst: (root: HTMLElement) => HTMLElement | null;
-    findLast: (root: HTMLElement) => HTMLElement | null;
+    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirstFocusable: (root: HTMLElement) => HTMLElement | null;
+    findLastFocusable: (root: HTMLElement) => HTMLElement | null;
 };
 
 // @public (undocumented)

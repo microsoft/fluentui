@@ -7,13 +7,14 @@ export const useFocusFinders = () => {
   const { focusable } = useFocusManagementContext();
 
   // Narrow props for now and let need dictate additional props in the future
-  const findAll = (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => focusable.findAll(root, matcher);
-  const findFirst = (root: HTMLElement) => focusable.findFirst(root);
-  const findLast = (root: HTMLElement) => focusable.findLast(root);
+  const findAllFocusable = (root: HTMLElement, matcher: (el: HTMLElement) => boolean) =>
+    focusable.findAll(root, matcher);
+  const findFirstFocusable = (root: HTMLElement) => focusable.findFirst(root);
+  const findLastFocusable = (root: HTMLElement) => focusable.findLast(root);
 
   return {
-    findAll,
-    findFirst,
-    findLast,
+    findAllFocusable,
+    findFirstFocusable,
+    findLastFocusable,
   };
 };
