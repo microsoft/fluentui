@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tooltip",
-  "version": "0.1.0",
+  "version": "9.0.0-alpha.0",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -57,10 +57,11 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "latest",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }
