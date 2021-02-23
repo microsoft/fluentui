@@ -22,8 +22,7 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
   }
 
   const { isSelected } = props;
-  const { palette, semanticColors, fonts } = theme;
-  const { neutralDark, neutralLight, neutralSecondary } = palette;
+  const { palette, fonts } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -38,10 +37,13 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         overflow: 'hidden',
         selectors: {
           '&:hover': {
-            background: semanticColors.menuItemBackgroundHovered,
+            background: palette.neutralLighter,
           },
           '&:hover .ms-FloatingSuggestionsItem-closeButton': {
             display: 'block',
+          },
+          '&:active, &:focus': {
+            background: palette.themeLight,
           },
         },
       },
@@ -57,18 +59,20 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
           [HighContrastSelector]: {
             color: 'WindowText',
           },
-          '&:hover': {
-            color: semanticColors.menuItemTextHovered,
-          },
         },
       },
       isSelected && [
         classNames.isSelected,
         {
-          background: semanticColors.menuItemBackgroundPressed,
+          background: palette.themeLighter,
           selectors: {
             ':hover': {
-              background: semanticColors.menuDivider,
+              background: palette.themeLight,
+              [HighContrastSelector]: {
+                background: 'Highlight',
+                color: 'HighlightText',
+                ...getHighContrastNoAdjustStyle(),
+              },
             },
             [HighContrastSelector]: {
               background: 'Highlight',
@@ -83,25 +87,35 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
       classNames.closeButton,
       {
         display: 'none',
-        color: neutralSecondary,
         padding: '0 4px',
         height: 'auto',
         width: 32,
         selectors: {
-          ':hover, :active': {
-            background: neutralLight,
-            color: neutralDark,
+          ':hover': {
+            [HighContrastSelector]: {
+              background: 'Window',
+              color: 'WindowText',
+              ...getHighContrastNoAdjustStyle(),
+            },
+          },
+        },
+      },
+      isSelected && [
+        classNames.isSelected,
+        {
+          background: palette.themeLighter,
+          selectors: {
+            ':hover': {
+              background: palette.themeLight,
+            },
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
               ...getHighContrastNoAdjustStyle(),
             },
           },
-          [HighContrastSelector]: {
-            color: 'WindowText',
-          },
         },
-      },
+      ],
     ],
     displayText: [
       classNames.displayText,

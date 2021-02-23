@@ -25,11 +25,11 @@ export default function loader(source) {
 
   source = source.replace(/PACKAGE_NAME/g, packageName);
 
-  if (packageName === 'react') {
+  if (packageName === 'react' || packageName === 'react-components') {
     // Compare the list of direct deps of @fluentui/react with the list of packages with examples
     // to see which extra packages' examples should be used  (note: all names here are unscoped).
     const packagesWithExamples = fs.readdirSync(path.resolve(__dirname, '../src')).filter(p => !/\.tsx?$/.test(p));
-    const reactPackageJson = fs.readJSONSync(path.resolve(__dirname, '../../react/package.json'));
+    const reactPackageJson = fs.readJSONSync(path.resolve(__dirname, `../../${packageName}/package.json`));
     // get unscoped dep names
     const reactDeps = Object.keys(reactPackageJson.dependencies).map(d => d.split('/')[1] || d);
     const reactDepsWithExamples = packagesWithExamples.filter(p => reactDeps.includes(p));
