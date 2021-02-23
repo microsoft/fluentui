@@ -123,7 +123,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     // We're currently selected on a selected item
     else if (focusItemIndex > -1) {
       // If we're at the end of the list
-      if (focusItemIndex === suggestionItems.length - 1) {
+      if (focusItemIndex >= suggestionItems.length - 1) {
         if (hasSelectableFooters) {
           setFooterItemIndex(getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex));
           setFocusItemIndex(-1);
