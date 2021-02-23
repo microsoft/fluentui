@@ -612,56 +612,49 @@ describe('OverflowSet', () => {
       });
 
       describe('with non-standard children keytips', () => {
-        it('should respect itemSubMenuProvider when setting overflowSetSequence', () => {
-          jest.useFakeTimers();
-
-          const overflowItemsWithSubMenuAndKeytips = [
-            item3,
-            {
-              key: 'item4',
-              name: 'Item 4',
-              keytipProps: {
-                ...overflowKeytips.overflowItemKeytip4,
-                onExecute: (el: HTMLElement) => {
-                  el.click();
-                },
-              },
-              customSubMenu: {
-                items: [
-                  {
-                    key: 'item5',
-                    name: 'Item 5',
-                    keytipProps: overflowKeytips.overflowItemKeytip5,
-                  },
-                  {
-                    key: 'item6',
-                    name: 'Item 6',
-                    keytipProps: overflowKeytips.overflowItemKeytip6,
-                    customSubMenu: {
-                      items: [
-                        {
-                          key: 'item7',
-                          name: 'Item 7',
-                          keytipProps: {
-                            content: 'X',
-                            keySequences: ['d', 'f', 'x'],
-                          },
-                        },
-                      ],
-                    },
-                  },
-                ],
+        const overflowItemsWithSubMenuAndKeytips = [
+          item3,
+          {
+            key: 'item4',
+            name: 'Item 4',
+            keytipProps: {
+              ...overflowKeytips.overflowItemKeytip4,
+              onExecute: (el: HTMLElement) => {
+                el.click();
               },
             },
-          ];
+            customSubMenu: {
+              items: [
+                {
+                  key: 'item5',
+                  name: 'Item 5',
+                  keytipProps: overflowKeytips.overflowItemKeytip5,
+                },
+                {
+                  key: 'item6',
+                  name: 'Item 6',
+                  keytipProps: overflowKeytips.overflowItemKeytip6,
+                  customSubMenu: {
+                    items: [
+                      {
+                        key: 'item7',
+                        name: 'Item 7',
+                        keytipProps: {
+                          content: 'X',
+                          keySequences: ['d', 'f', 'x'],
+                        },
+                      },
+                    ],
+                  },
+                },
+              ],
+            },
+          },
+        ];
 
-          const itemSubMenuProvider = (item: IOverflowSetItemProps) => {
-            if (item.customSubMenu) {
-              return item.customSubMenu.items;
-            }
-            return undefined;
-          };
-
+        const mountOverflowSet = (
+          itemSubMenuProvider: (item: IOverflowSetItemProps) => boolean | any[] | undefined,
+        ) => {
           overflowSet = mount(
             <div>
               <OverflowSet
@@ -675,7 +668,9 @@ describe('OverflowSet', () => {
               <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
             </div>,
           );
+        };
 
+        const validateItemSubMenuProvider = () => {
           // Set current keytip at root, like we've entered keytip mode
           const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
@@ -691,6 +686,34 @@ describe('OverflowSet', () => {
               arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences),
             ).toEqual(true);
           });
+        };
+
+        it('should respect itemSubMenuProvider when setting overflowSetSequence', () => {
+          jest.useFakeTimers();
+
+          const itemSubMenuProvider = (item: IOverflowSetItemProps) => {
+            if (item.customSubMenu) {
+              return item.customSubMenu.items;
+            }
+            return undefined;
+          };
+
+          mountOverflowSet(itemSubMenuProvider);
+          validateItemSubMenuProvider();
+        });
+
+        it('should respect itemSubMenuProvider that returns a boolean when setting overflowSetSequence', () => {
+          jest.useFakeTimers();
+
+          const itemSubMenuProvider = (item: IOverflowSetItemProps) => {
+            if (item.customSubMenu) {
+              return true;
+            }
+            return false;
+          };
+
+          mountOverflowSet(itemSubMenuProvider);
+          validateItemSubMenuProvider();
         });
       });
     });
