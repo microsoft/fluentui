@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "@uifabric/experiments_v7.38.16",
+      "version": "7.38.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update colors for the FloatingSuggestionsComposite items",
+            "author": "elvonspa@microsoft.com",
+            "commit": "4b52a71a8e95a3cf8fcca5ac0ce2ebd52bc2f2f0",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:25:18 GMT",
       "tag": "@uifabric/experiments_v7.38.14",
       "version": "7.38.14",

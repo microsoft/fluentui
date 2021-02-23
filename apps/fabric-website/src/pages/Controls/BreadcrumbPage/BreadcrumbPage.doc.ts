@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { BreadcrumbPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/Breadcrumb/Breadcrumb.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BreadcrumbPage/docs/BreadcrumbRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const BreadcrumbPageProps: TFabricPlatformPageProps = {
   web: {

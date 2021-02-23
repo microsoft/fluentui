@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Add a check for if we are in a drop action to the UnifiedPicker drag end",
+  "packageName": "@uifabric/experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-22T23:52:15.918Z"
+}

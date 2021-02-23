@@ -1,8 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 16 Feb 2021 12:29:58 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Feb 2021 12:25:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.161.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.161.0)
+
+Fri, 19 Feb 2021 12:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.3..office-ui-fabric-react_v7.161.0)
+
+### Minor changes
+
+- Link: Adding underline prop. ([PR #16624](https://github.com/microsoft/fluentui/pull/16624) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers ([PR #17044](https://github.com/microsoft/fluentui/pull/17044) by tristan.watanabe@gmail.com)
+
+## [7.160.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.3)
+
+Thu, 18 Feb 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.2..office-ui-fabric-react_v7.160.3)
+
+### Patches
+
+- Fix contrast of 'filter chevron' against background color ([PR #16881](https://github.com/microsoft/fluentui/pull/16881) by tmichon@microsoft.com)
+- BasePicker: combobox role and id are removed when itemLimit is reached ([PR #16958](https://github.com/microsoft/fluentui/pull/16958) by tristan.watanabe@gmail.com)
+- Fix handling of topOffsetFixed for Modal ([PR #17018](https://github.com/microsoft/fluentui/pull/17018) by tmichon@microsoft.com)
+- Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips ([PR #17043](https://github.com/microsoft/fluentui/pull/17043) by keyou@microsoft.com)
 
 ## [7.160.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.2)
 

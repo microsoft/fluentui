@@ -226,6 +226,7 @@ export const CalendarGridDayCell: React.FunctionComponent<ICalendarGridDayCellPr
       onMouseDown={!ariaHidden ? onMouseDownDay : undefined}
       onMouseUp={!ariaHidden ? onMouseUpDay : undefined}
       onMouseOut={!ariaHidden ? onMouseOutDay : undefined}
+      role="presentation" // the child <button> is the gridcell that our parent <tr> contains, so tell ARIA we are not
     >
       <button
         key={day.key + 'button'}

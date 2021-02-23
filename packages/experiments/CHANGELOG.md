@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:25:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.38.16](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.16)
+
+Thu, 18 Feb 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.14..@uifabric/experiments_v7.38.16)
+
+### Patches
+
+- Update colors for the FloatingSuggestionsComposite items ([PR #17016](https://github.com/microsoft/fluentui/pull/17016) by elvonspa@microsoft.com)
 
 ## [7.38.14](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.14)
 

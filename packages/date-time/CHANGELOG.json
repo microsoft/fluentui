@@ -2,6 +2,27 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:23:39 GMT",
+      "tag": "@uifabric/date-time_v7.19.21",
+      "version": "7.19.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cherry picking and merging 6537ee66190784eb1a04bd765546efff09d451a1 from master",
+            "author": "lorejoh12@gmail.com",
+            "commit": "c42dbb95aaf469e1d065a5d455bc0abdcae032d3",
+            "package": "@uifabric/date-time"
+          },
+          {
+            "comment": "backfix gridcell role=presentation fix to 7.0",
+            "author": "lorejoh12@gmail.com",
+            "commit": "5e535846ee5bb11e14a38c25aafacd562fd2449a",
+            "package": "@uifabric/date-time"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:25:18 GMT",
       "tag": "@uifabric/date-time_v7.19.17",
       "version": "7.19.17",

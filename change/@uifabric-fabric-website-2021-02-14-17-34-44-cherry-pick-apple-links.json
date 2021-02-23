@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update links to fluentui-apple",
-  "packageName": "@uifabric/fabric-website",
-  "email": "mavitale@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-15T01:34:44.800Z"
-}

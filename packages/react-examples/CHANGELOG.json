@@ -2,6 +2,36 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 19 Feb 2021 12:25:47 GMT",
+      "tag": "@fluentui/react-examples_v0.11.29",
+      "version": "0.11.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Link examples so they are underlined since the Link component is alongside other text.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "49d501efbed974a77c4bec5ffa171ebba0d3fc19",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-examples_v0.11.28",
+      "version": "0.11.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "4dd3e254b61bf33eca3051799d558c067de7313e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:25:18 GMT",
       "tag": "@fluentui/react-examples_v0.11.25",
       "version": "0.11.25",
