@@ -148,11 +148,31 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
 
 ## Styling Tokens
 
-TBD
+The current exposed tokens and default values are listed below:
 
-```ts
-export type DividerTokens = ColorTokens & FontTokens & {};
-```
+**Default**
+
+Font Color : tokens.alias.color.neutral.neutralForeground2
+
+Border Color: tokens.alias.color.neutral.neutralStroke2
+
+**Subtle**
+
+Font Color : tokens.alias.color.neutral.neutralForeground2
+
+Border Color: tokens.alias.color.neutral.neutralStroke3
+
+**Brand**
+
+Font Color : tokens.alias.color.brand.brandBackgroundStatic
+
+Border Color: tokens.alias.color.brand.brandBackgroundStatic
+
+**Brand**
+
+Font Color : tokens.alias.color.neutral.neutralForeground2
+
+Border Color: tokens.alias.color.neutral.neutralStroke1
 
 ## Structure
 
@@ -164,7 +184,7 @@ export type DividerTokens = ColorTokens & FontTokens & {};
 
 ## Migration
 
-The divider control is a direct replacement of the current Separator control, all current properties will remain intact, however the tag name will need to be updated from `<Separator/>` to `<Divider/>`
+The divider control is a direct of the current Separator control. Notable changes are listed below:
 
 Migration from V0 will require removing the content property and nesting that content as a child of the node ex.
 
@@ -173,6 +193,21 @@ Migration from V0 will require removing the content property and nesting that co
 <Divider>My Content</Divider>
 
 ```
+
+_Note:_ The property theme from the separator control has been removed
+
+```
+<Separator theme={myTheme}>
+<Divider /> /* Handled by the theme provider */
+
+```
+
+_Note:_ The property styles from the separator control has been removed and now uses the inherent react style mechanics
+
+```
+<Separator styles={myStyles}>
+<Divider style={{ direction:ltr }}/> /* Handled by the theme provider */
+
 
 ## Behaviors
 
@@ -185,3 +220,4 @@ Content if provided, will self determine it's behaviors.
 ## Accessibility
 
 Since the divider is not a focusable element itself, there doesn't need to have an accessilibity role for this control. The descendant content when wrapped from the divider must handle any accessibility information itself when appropriate.
+```
