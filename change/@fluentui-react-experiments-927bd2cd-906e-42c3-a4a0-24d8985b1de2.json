@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "UnifiedPicker: fix suggestions keyboard issue, add generic item functionality",
+  "packageName": "@fluentui/react-experiments",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch"
+}

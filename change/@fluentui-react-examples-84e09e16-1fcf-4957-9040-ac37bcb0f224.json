@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update UnifiedPicker example with generic item code",
+  "packageName": "@fluentui/react-examples",
+  "email": "elvonspa@microsoft.com",
+  "dependentChangeType": "patch"
+}
