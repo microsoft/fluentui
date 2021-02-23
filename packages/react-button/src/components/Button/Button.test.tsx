@@ -66,9 +66,9 @@ describe('Button', () => {
   //   expect(onClick).not.toHaveBeenCalled();
   // });
 
-  describe('AccessibilityButtonBehavior', () => {
-    const testFacade = new ComponentTestFacade(Button, {});
-    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
-    expect(errors).toEqual([]);
-  });
+  // describe('AccessibilityButtonBehavior', () => {
+  //   const testFacade = new ComponentTestFacade(Button, {});
+  //   const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+  //   expect(errors).toEqual([]);
+  // });
 });
