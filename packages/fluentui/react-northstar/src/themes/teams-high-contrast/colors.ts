@@ -205,7 +205,8 @@ export const colorScheme: ColorSchemeMapping = {
     foreground3: colors.black,
     background: colors.white,
     background1: colors.white,
-    border: undefined,
+    background2: colors.black,
+    border: colors.white,
     shadow: undefined,
     foregroundHover: undefined,
     backgroundHover: undefined,
@@ -237,9 +238,9 @@ export const colorScheme: ColorSchemeMapping = {
     border: accessibleCyan,
   }),
   pink: createEmptyColorScheme({
-    foreground: colors.black,
+    foreground: colors.white,
     foreground1: colors.white,
-    background: colors.white,
+    background: colors.black,
     border: colors.white,
   }),
   red: createEmptyColorScheme({
@@ -266,8 +267,11 @@ export const colorScheme: ColorSchemeMapping = {
     foreground1: colors.black,
     foreground2: colors.black,
     foreground3: colors.black,
+    foreground4: colors.white,
     background: colors.white,
     background2: colors.white,
+    background3: colors.black,
+    border: colors.white,
   }),
   silver: createEmptyColorScheme({
     foreground: colors.white,

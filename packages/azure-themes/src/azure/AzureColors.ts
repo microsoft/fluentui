@@ -188,17 +188,17 @@ export const DarkSemanticColors: IAzureSemanticColors = {
   },
   primaryButton: {
     rest: {
-      background: BaseColors.BLUE_2899F5,
-      text: BaseColors.GRAY_1B1A19,
-      border: BaseColors.BLUE_2899F5,
+      background: BaseColors.BLUE_0078D4,
+      text: BaseColors.WHITE,
+      border: BaseColors.BLUE_0078D4,
     },
     hover: {
-      background: BaseColors.BLUE_3AA0F3,
-      text: BaseColors.GRAY_1B1A19,
+      background: BaseColors.BLUE_106EBE,
+      text: BaseColors.WHITE,
     },
     pressed: {
-      background: BaseColors.BLUE_6CB8F6,
-      text: BaseColors.GRAY_1B1A19,
+      background: BaseColors.BLUE_005A9E,
+      text: BaseColors.WHITE,
     },
     disabled: {
       background: BaseColors.GRAY_F3F2F1,

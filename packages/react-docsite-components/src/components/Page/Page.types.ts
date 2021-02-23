@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { IComponentAs } from '@fluentui/react';
+import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
-import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
+import { IVersionSwitcherDefinition } from '../../utilities/SiteDefinition.types';
 
 /**
  * Props for the page.
@@ -112,6 +113,11 @@ export interface IPageProps<TPlatforms extends string = string> {
 
   /** Currently selected platform. */
   platform?: TPlatforms;
+
+  /**
+   * Defines the necessary information to populate the version switcher.
+   */
+  versionSwitcherDefinition?: IVersionSwitcherDefinition;
 }
 
 export interface IExample extends IExampleCardProps {

@@ -1,0 +1,8 @@
+{
+  "type": "prerelease",
+  "comment": "Destructure snapToStep correctly for useSlider",
+  "packageName": "@fluentui/react-slider",
+  "email": "chengshi1219@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-01-25T14:51:47.198Z"
+}

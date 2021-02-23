@@ -171,30 +171,27 @@ storiesOf('PeoplePicker', module)
     </Fabric>
   ));
 
-storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
-  .addStory('Normal with text', () => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestion: "a"')
-        .end()}
-    >
-      <Fabric>
-        <NormalPeoplePicker
-          onResolveSuggestions={getPeople}
-          onEmptyInputFocus={getPeople}
-          getTextFromItem={getTextFromItem}
-          className={'ms-PeoplePicker'}
-          pickerSuggestionsProps={suggestionProps}
-        />
-      </Fabric>
-    </Screener>
-  ));
+storiesOf('PeoplePicker', module).addStory('Normal with text', () => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .setValue('.ms-BasePicker-input', 'a')
+      .snapshot('suggestion: "a"')
+      .end()}
+  >
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+      />
+    </Fabric>
+  </Screener>
+));
 
 storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
