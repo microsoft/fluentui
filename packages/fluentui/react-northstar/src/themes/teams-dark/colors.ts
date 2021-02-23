@@ -229,6 +229,8 @@ export const colorScheme: ColorSchemeMapping = {
     foreground3: colors.green[750],
     background: colors.green[200],
     background1: colors.green[200],
+    background2: colors.green[800],
+    border: colors.green[900],
   }),
   orange: createColorScheme({
     foreground: colors.orange[300],
@@ -268,9 +270,12 @@ export const colorScheme: ColorSchemeMapping = {
     foreground1: colors.grey[800],
     foreground2: colors.grey[800],
     foreground3: colors.grey[750],
+    foreground4: colors.yellow[200],
     background: colors.yellow[400],
     background1: colors.grey[450],
     background2: colors.yellow[500],
+    background3: colors.yellow[800],
+    border: colors.yellow[900],
   }),
   silver: createColorScheme({
     foreground: colors.white,

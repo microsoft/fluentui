@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "introducing the prop allowMultipleShapesFor, when set to true allows shape the data point",
+  "packageName": "@fluentui/react-charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}

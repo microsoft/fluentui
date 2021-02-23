@@ -3,15 +3,11 @@ import * as React from 'react';
 import { initializeIcons } from '@fluentui/react-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { withA11y } from '@storybook/addon-a11y';
-import { withKnobs } from '@storybook/addon-knobs';
 import { withPerformance } from 'storybook-addon-performance';
 import { withCompatThemeProvider, withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
-addDecorator(withA11y());
-addDecorator(withKnobs({ escapeHTML: false }));
 addDecorator(withKeytipLayer);
 if (
   ['react-cards', 'react-checkbox', 'react-link', 'react-slider', 'react-tabs', 'react-text', 'react-toggle'].includes(
@@ -26,6 +22,7 @@ if (
   [
     'react-avatar',
     'react-badge',
+    'react-components',
     'react-button',
     'react-link',
     'react-image',
@@ -66,7 +63,7 @@ function loadStories() {
   ];
 
   // @ts-ignore
-  if ('PACKAGE_NAME' === 'react') {
+  if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
     // For the @fluentui/react storybook, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
     // Note that the regex intentionally goes only one directory below the package name
