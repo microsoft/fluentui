@@ -31,7 +31,7 @@ jobs:
       - script: |
           yarn prelint
           yarn prettier $(targetBranch) --check
-        displayName: do syncpack and lint-files checks
+        displayName: do syncpack, lint-files, and prettier checks
 
       ## Danger.js checks for Fluent UI N*
       - script: |
