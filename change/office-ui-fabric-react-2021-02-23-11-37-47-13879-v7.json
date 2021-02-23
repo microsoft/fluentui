@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Picker Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode",
+  "packageName": "office-ui-fabric-react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-23T19:37:47.728Z"
+}
