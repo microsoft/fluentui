@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "...",
+  "packageName": "@fluentui/react-theme",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
