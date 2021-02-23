@@ -983,7 +983,7 @@ As a general rule, once a submenu is dismissed without dismissing the menu, the 
 
 All of the above Mouse events in the [previous section](#submenu-trigger/navigation) should apply to the part of the split button that is intended to open a submenu.
 
-Below lists the interactactions for the primary content part of the split button
+Below lists the interactions for the primary content part of the split button
 
 | Type     | Action     | Result  | Details                                          | Focus after                                        |
 | -------- | ---------- | ------- | ------------------------------------------------ | -------------------------------------------------- |
