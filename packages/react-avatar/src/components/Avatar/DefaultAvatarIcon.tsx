@@ -56,4 +56,4 @@ export const DefaultAvatarIcon: React.FC<React.HTMLAttributes<HTMLSpanElement>> 
   );
 };
 
-DefaultAvatarIcon.displayName = 'ContactIcon';
+DefaultAvatarIcon.displayName = 'DefaultAvatarIcon';
