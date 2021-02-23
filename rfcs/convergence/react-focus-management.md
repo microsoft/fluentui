@@ -45,10 +45,10 @@ The current `FocusZone` components apply focus behaviours on **rendered DOM** as
 
 Nested focusables are a source of issues on the current `FocusZone` component, where nested focusables behave inconsistently or incorrectly. Here are some recent issues related to this
 
-- [#8551](https://github.com/microsoft/fluentui/issues/8551)
-- [#12177](https://github.com/microsoft/fluentui/issues/12177)
-- [#16037](https://github.com/microsoft/fluentui/issues/16037)
-- [#13210](https://github.com/microsoft/fluentui/issues/13210)
+- [microsoft/fluentui#8551](https://github.com/microsoft/fluentui/issues/8551)
+- [microsoft/fluentui#12177](https://github.com/microsoft/fluentui/issues/12177)
+- [microsoft/fluentui#16037](https://github.com/microsoft/fluentui/issues/16037)
+- [microsoft/fluentui#13210](https://github.com/microsoft/fluentui/issues/13210)
 
 ## Detailed Design or Proposal
 
