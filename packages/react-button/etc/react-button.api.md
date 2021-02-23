@@ -7,11 +7,12 @@
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { ShorthandProps } from '@fluentui/react-utilities';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: import("@fluentui/react-utilities").ObjectShorthandProps<import("@fluentui/react-utilities").ComponentProps> | undefined;
+    icon?: import("@fluentui/react-utilities").ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     disabled?: boolean | undefined;
     iconOnly?: boolean | undefined;
     iconPosition?: "after" | "before" | undefined;
@@ -21,7 +22,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
 
 // @public (undocumented)
 export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
-    icon?: ObjectShorthandProps;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     disabled?: boolean;
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
@@ -35,7 +36,9 @@ export const buttonShorthandProps: string[];
 // @public (undocumented)
 export interface ButtonState extends ButtonProps {
     // (undocumented)
-    children?: ObjectShorthandProps;
+    children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+    // (undocumented)
+    icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
     // (undocumented)
     ref: React.RefObject<HTMLButtonElement>;
 }
