@@ -59,6 +59,7 @@
     "@fluentui/react-file-type-icons": "^8.0.0-beta.21",
     "@fluentui/react-flex": "^0.2.5",
     "@fluentui/react-focus": "^8.0.0-beta.24",
+    "@fluentui/react-focus-management": "^0.1.0",
     "@fluentui/react-hooks": "^8.0.0-beta.15",
     "@fluentui/react-icons-mdl2": "^1.0.0-beta.17",
     "@fluentui/react-image": "^9.0.0-alpha.0",

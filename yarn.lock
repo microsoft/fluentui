@@ -1417,6 +1417,15 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
+"@fluentui/react-utils@^0.3.2-0":
+  version "0.3.2-0"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-utils/-/react-utils-0.3.2-0.tgz#cfcdc9186e1111a1ec2dbbb975724282146cd818"
+  integrity sha512-mNmfMk5UZ2e6F1qOMVw5VxYcSIwujGkCM1KF7YrJCeAOS3XtGVIO0QoVfYRHi6+BNqGsgDoHPBxDHouPIVPSXQ==
+  dependencies:
+    "@fluentui/set-version" "^8.0.0-beta.1"
+    "@fluentui/utilities" "^8.0.0-beta.12"
+    tslib "^1.10.0"
+
 "@gulp-sourcemaps/identity-map@1.X":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@gulp-sourcemaps/identity-map/-/identity-map-1.0.2.tgz#1e6fe5d8027b1f285dc0d31762f566bccd73d5a9"
@@ -5597,6 +5606,11 @@ ability-attributes@^0.0.8:
   integrity sha512-GU2Gd1nAUzvTEu4+615DKCf7OkWf+rL5kLmsi3Fg+nY7fhjrMT1ZwsU8MJ8hqilipspq1Q2yIuUYj4q8l2W8nQ==
   dependencies:
     ability-attributes-js-constraints "^0.0.8"
+
+ability-helpers@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/ability-helpers/-/ability-helpers-0.4.3.tgz#3b8df86d819303910dcdd0cd841123aa070fab9d"
+  integrity sha512-9D3ky8YclOD6g4T8cmsZpu3NrR+BfrJH6OKFYbM96a2NEBfHpRbNZ7aciLuBnLtHVkkFj9Jj2Yaa97pzBk0OVw==
 
 abort-controller@^3.0.0:
   version "3.0.0"
