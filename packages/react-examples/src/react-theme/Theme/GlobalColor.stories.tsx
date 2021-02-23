@@ -12,7 +12,7 @@ const theme = {
   highContrast: teamsHighContrastTheme,
 };
 
-export const Colors = () => {
+export const GlobalColors = () => {
   return (
     <div style={{ display: 'flex' }}>
       <div>
@@ -48,5 +48,3 @@ export const Colors = () => {
     </div>
   );
 };
-
-Colors.args = {};

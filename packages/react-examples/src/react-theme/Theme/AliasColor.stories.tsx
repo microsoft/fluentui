@@ -23,7 +23,7 @@ export default {
   title: 'Fluent UI Theme/Alias/Colors',
 };
 
-type AliasColors = keyof Theme['alias']['color'];
+type ThemeAliasColors = keyof Theme['alias']['color'];
 
 const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
   position: 'relative',
@@ -40,10 +40,10 @@ const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
 });
 
 const ColorButton: React.FunctionComponent<{
-  color: AliasColors;
+  color: ThemeAliasColors;
   active: boolean;
-  setPreviewColor: (color: AliasColors | null) => void;
-  setColor: (color: AliasColors) => void;
+  setPreviewColor: (color: ThemeAliasColors | null) => void;
+  setColor: (color: ThemeAliasColors) => void;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
   style = {},
   color,
@@ -67,9 +67,9 @@ const ColorButton: React.FunctionComponent<{
   />
 );
 
-export const Colors = () => {
-  const [color, setColor] = React.useState<AliasColors>('neutral');
-  const [previewColor, setPreviewColor] = React.useState<AliasColors | null>(null);
+export const AliasColors = () => {
+  const [color, setColor] = React.useState<ThemeAliasColors>('neutral');
+  const [previewColor, setPreviewColor] = React.useState<ThemeAliasColors | null>(null);
 
   const COLUMN_WIDTH = 250;
   const activeColor = previewColor || color;
@@ -160,4 +160,4 @@ export const Colors = () => {
   );
 };
 
-Colors.args = {};
+AliasColors.args = {};
