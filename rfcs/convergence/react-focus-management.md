@@ -70,7 +70,7 @@ Nesting focusables is a problem that ability-helpers explicitly tries to solve, 
 
 Context provider that hosts the [ability-helpers](https://github.com/microsoft/ability-helpers) instance and its API objects.
 
-The below table defines what is included in the context value
+The below table defines what is included in the context value.
 
 > Note that this table will increase as more ability-helpers features are included in Fluent
 
