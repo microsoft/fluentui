@@ -14,7 +14,7 @@ export const useMenuList = (
   defaultProps?: MenuListProps,
 ): MenuListState => {
   const focusAttributes = useArrowNavigationGroup({ circular: true });
-  const { findAll } = useFocusFinders();
+  const { findAllFocusable } = useFocusFinders();
 
   const state = mergeProps(
     {
@@ -28,7 +28,7 @@ export const useMenuList = (
 
   state.setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
-      const menuItems = findAll(
+      const menuItems = findAllFocusable(
         state.ref.current,
         (el: HTMLElement) => el.hasAttribute('role') && el.getAttribute('role') === 'menuitem',
       );
@@ -63,7 +63,7 @@ export const useMenuList = (
         menuItems[index].focus();
       }
     },
-    [findAll, state.ref],
+    [findAllFocusable, state.ref],
   );
 
   return state;
