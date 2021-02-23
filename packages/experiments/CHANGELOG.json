@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 23 Feb 2021 12:23:02 GMT",
+      "tag": "@uifabric/experiments_v7.38.18",
+      "version": "7.38.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Implement keyboard shortcut for Cut and Delete in recipient well",
+            "author": "jaredi@microsoft.com",
+            "commit": "45dfa2a9535c19bcde92d1d61784abd179d3eef2",
+            "package": "@uifabric/experiments"
+          },
+          {
+            "comment": "Add a check for if we are in a drop action to the UnifiedPicker drag end",
+            "author": "elvonspa@microsoft.com",
+            "commit": "10860ab143a7a69c3b41384348b652880072dc86",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 12:25:56 GMT",
       "tag": "@uifabric/experiments_v7.38.16",
       "version": "7.38.16",
