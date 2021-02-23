@@ -408,9 +408,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
               } else if (headerItemIndex >= 0) {
                 // execute the header action
                 headerItems![headerItemIndex].onExecute!();
-              } else {
-                _onValidateInput();
               }
+            } else {
+              _onValidateInput();
             }
             break;
           case KeyCodes.up:
