@@ -15,8 +15,10 @@ export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLEl
   customRoot?: boolean;
 }
 
-export interface FocusManagementProviderState extends FocusManagementProvideProps, FocusManagementContextValue {
+export interface FocusManagementProviderState extends FocusManagementProvideProps {
   dir: FocusManagementProvideProps['dir'];
+
+  contextValue: FocusManagementContextValue;
 }
 
 const mergeProps = makeMergeProps<FocusManagementProviderState>();
@@ -44,14 +46,16 @@ export const useFocusManagementProvider = (
   }
 
   // only one instance per window of ability helpers should exist
-  state.ahInstance = getCurrentAbilityHelpers(state.window) || createAbilityHelpers(state.window, ahOptions);
+  const ahInstance = getCurrentAbilityHelpers(state.window) || createAbilityHelpers(state.window, ahOptions);
+  // memoize context value so that it's stable
+  state.contextValue = React.useMemo(() => ({ focusable: ahInstance.focusable, ahInstance }), [ahInstance]);
 
   return state;
 };
 
 export const renderFocusManagementProvider = (state: FocusManagementProviderState) => {
   return (
-    <internal__FocusManagementContext.Provider value={{ focusable: state.focusable, ahInstance: state.ahInstance }}>
+    <internal__FocusManagementContext.Provider value={state.contextValue}>
       {state.children}
     </internal__FocusManagementContext.Provider>
   );
