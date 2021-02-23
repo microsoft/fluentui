@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "remove dependency on react-hooks",
-  "packageName": "@fluentui/react-badge",
+  "comment": "bump version to v9 for converged packages",
+  "packageName": "@fluentui/api-docs",
   "email": "olfedias@microsoft.com",
   "dependentChangeType": "patch"
 }
