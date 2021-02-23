@@ -49,6 +49,8 @@ const useCounterContext = <T, >(selector: ContextSelector<CounterCountext, T>) =
   useContextSelector(CounterContext, selector);
 
 const Counter1 = () => {
+  // 💡 Context updates will be propagated only when result of a selector function will change
+  //    "Object.is()" is used for internal comparisons
   const count1 = useCounterContext((context) => context.count1);
   const increment = useCounterContext((context) => context.incrementCount1);
 
