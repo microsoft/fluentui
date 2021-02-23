@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Add support for colorful avatars",
+  "packageName": "@fluentui/react-avatar",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
