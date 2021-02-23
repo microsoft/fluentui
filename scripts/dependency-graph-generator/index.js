@@ -93,8 +93,8 @@ function _parseDotFile(pathToDotFile) {
 
 /**
  *
- * @param {graphviz graph} graph The original graph
- * @param {*} rootPackage The id of the root package/node in the original graph
+ * @param {import("graphviz").Graph} graph The original graph
+ * @param {string} rootPackage The id of the root package/node in the original graph
  */
 function _getSubTree(graph, rootPackage) {
   const nodesToProcess = [rootPackage];
@@ -126,7 +126,7 @@ function _getSubTree(graph, rootPackage) {
 
 /**
  * Function that returns all edges and children for a node
- * @param {graphviz graph} graph
+ * @param {import("graphviz").Graph} graph
  * @param {string} node id of the node
  */
 function _getEdgesAndChildren(graph, node) {
