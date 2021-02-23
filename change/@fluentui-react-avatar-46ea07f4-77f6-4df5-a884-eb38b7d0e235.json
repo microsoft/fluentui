@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "rework styles to makeStyles() for Badge in react-avatar",
+  "packageName": "@fluentui/react-avatar",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
