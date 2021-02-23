@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Use role=\"presentation\" for all <div> elements in TilesList",
+  "packageName": "@fluentui/react-experiments",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "patch"
+}
