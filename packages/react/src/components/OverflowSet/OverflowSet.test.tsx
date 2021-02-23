@@ -607,47 +607,50 @@ describe('OverflowSet', () => {
       });
 
       describe('with non-standard children keytips', () => {
-        const overflowItemsWithSubMenuAndKeytips = [
-          item3,
-          {
-            key: 'item4',
-            name: 'Item 4',
-            keytipProps: {
-              ...overflowKeytips.overflowItemKeytip4,
-              onExecute: (el: HTMLElement) => {
-                el.click();
+        const getOverflowItemsWithSubMenuAndKeytips = () => {
+          return [
+            item3,
+            {
+              key: 'item4',
+              name: 'Item 4',
+              keytipProps: {
+                ...overflowKeytips.overflowItemKeytip4,
+                onExecute: (el: HTMLElement) => {
+                  el.click();
+                },
+              },
+              customSubMenu: {
+                items: [
+                  {
+                    key: 'item5',
+                    name: 'Item 5',
+                    keytipProps: overflowKeytips.overflowItemKeytip5,
+                  },
+                  {
+                    key: 'item6',
+                    name: 'Item 6',
+                    keytipProps: overflowKeytips.overflowItemKeytip6,
+                    customSubMenu: {
+                      items: [
+                        {
+                          key: 'item7',
+                          name: 'Item 7',
+                          keytipProps: {
+                            content: 'X',
+                            keySequences: ['d', 'f', 'x'],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                ],
               },
             },
-            customSubMenu: {
-              items: [
-                {
-                  key: 'item5',
-                  name: 'Item 5',
-                  keytipProps: overflowKeytips.overflowItemKeytip5,
-                },
-                {
-                  key: 'item6',
-                  name: 'Item 6',
-                  keytipProps: overflowKeytips.overflowItemKeytip6,
-                  customSubMenu: {
-                    items: [
-                      {
-                        key: 'item7',
-                        name: 'Item 7',
-                        keytipProps: {
-                          content: 'X',
-                          keySequences: ['d', 'f', 'x'],
-                        },
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
-          },
-        ];
+          ];
+        };
 
         const mountOverflowSet = (
+          overflowItemsWithSubMenuAndKeytips: IOverflowSetItemProps[],
           itemSubMenuProvider: (item: IOverflowSetItemProps) => boolean | any[] | undefined,
         ) => {
           overflowSet = mount(
@@ -692,7 +695,7 @@ describe('OverflowSet', () => {
             return undefined;
           };
 
-          mountOverflowSet(itemSubMenuProvider);
+          mountOverflowSet(getOverflowItemsWithSubMenuAndKeytips(), itemSubMenuProvider);
           validateItemSubMenuProvider();
         });
 
@@ -706,7 +709,7 @@ describe('OverflowSet', () => {
             return false;
           };
 
-          mountOverflowSet(itemSubMenuProvider);
+          mountOverflowSet(getOverflowItemsWithSubMenuAndKeytips(), itemSubMenuProvider);
           validateItemSubMenuProvider();
         });
       });
