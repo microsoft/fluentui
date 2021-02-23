@@ -1,8 +1,17 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.19)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.0.0-beta.18..@fluentui/theme_v2.0.0-beta.19)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.15 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [2.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.0.0-beta.18)
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bump versions for converged components to v9",
+  "packageName": "@fluentui/react-flex",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

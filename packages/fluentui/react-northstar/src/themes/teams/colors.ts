@@ -87,28 +87,28 @@ export const naturalColors: TeamsNaturalColors = {
     900: '#1E040A', // app red08 dark
   },
   green: {
-    50: undefined,
-    100: undefined,
+    50: '#E7F2DA',
+    100: '#BDDA9B',
     200: '#92C353', // lightGreen[900] old $app-green, available presence dark theme, siteVars.green
     300: '#6BB700', // new Available presence
     400: '#13A40E', // dual presence Available
     500: undefined,
     600: '#237B4B', // old $app-green-04, siteVariables.green04, green[900]
     700: undefined,
-    800: undefined,
-    900: undefined,
+    800: '#0D2E0D',
+    900: '#032003',
   },
   yellow: {
     50: undefined,
     100: '#FBF6D9', // old message highlight color
-    200: undefined,
+    200: '#F2E384',
     300: '#F9EC02', // old acc critical ufd icon color
     400: '#F8D22A', // old siteVariables.yellow, $app-yellow, yellow[900]
     500: '#FFB900', // old $bcast pre live color
     600: '#FFAA44', // new away presence
-    700: undefined,
-    800: undefined,
-    900: undefined,
+    700: '#835C00',
+    800: '#463100',
+    900: '#261A00',
   },
 };
 
@@ -433,6 +433,8 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground3: colors.white,
     background: colors.green[300],
     background1: colors.green[600],
+    background2: colors.green[50],
+    border: colors.green[100],
   }),
   orange: createColorScheme({
     foreground: colors.orange[400],
@@ -470,9 +472,12 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground1: colors.grey[800],
     foreground2: colors.white,
     foreground3: colors.grey[750],
+    foreground4: colors.yellow[700],
     background: colors.yellow[600],
     background1: colors.yellow[100],
     background2: colors.yellow[500],
+    background3: colors.yellow[100],
+    border: colors.yellow[200],
   }),
   silver: createColorScheme({
     foreground: colors.white,

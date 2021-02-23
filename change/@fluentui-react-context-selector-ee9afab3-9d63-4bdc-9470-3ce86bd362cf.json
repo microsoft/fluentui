@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Manually bump react-context-selector",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
