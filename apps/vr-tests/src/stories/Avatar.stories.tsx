@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Avatar, AvatarProps, AvatarSizeValue, avatarSizeValues } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, AvatarSizeValue } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
 import { ContactIcon, GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
@@ -16,7 +16,7 @@ const AvatarList: React.FC<AvatarProps & {
   const { names, images, ...restOfProps } = props;
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
-      {avatarSizeValues.map((size, i) => (
+      {examples.size.map((size, i) => (
         <Avatar
           key={size}
           size={size}
@@ -121,4 +121,22 @@ storiesOf('Avatar', module)
   ))
   .addStory('customSize+icon+active', () => (
     <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
+  ))
+  .addStory('color', () => (
+    <Stack tokens={{ childrenGap: 24 }}>
+      <Stack wrap horizontal tokens={{ childrenGap: 6 }}>
+        <Avatar color="neutral" size={40} />
+        <Avatar color="brand" size={40} />
+      </Stack>
+      <Stack wrap horizontal tokens={{ childrenGap: 6 }}>
+        {examples.namedColors.map(color => (
+          <Avatar key={color} color={color} size={40} />
+        ))}
+      </Stack>
+      <Stack wrap horizontal tokens={{ childrenGap: 6 }}>
+        {examples.name.map(name => (
+          <Avatar key={name} name={name} color="colorful" size={40} />
+        ))}
+      </Stack>
+    </Stack>
   ));
