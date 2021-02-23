@@ -123,7 +123,7 @@ export const AllSizes = () => (
   </>
 );
 
-export const AllColors = () => (
+export const Colors = () => (
   <>
     <StoryExample title="Neutral">
       <Avatar size={40} color="neutral" />
