@@ -22,6 +22,8 @@ export interface IUseFloatingSuggestionItems<T> {
   hasSuggestionSelected: () => void;
   removeSuggestion: (index: number) => void;
   clearPickerSelectedIndex: () => void;
+  queryString: string;
+  setQueryString: (queryString: string) => void;
 }
 
 export const useFloatingSuggestionItems = <T extends {}>(
@@ -32,6 +34,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
   focusFooterIndex?: number,
   focusHeaderIndex?: number,
   isSuggestionsVisible?: boolean,
+  initialQueryString?: string,
 ) => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);
   const [suggestionItems, setSuggestionItems] = React.useState(floatingSuggestionItems);
@@ -44,9 +47,21 @@ export const useFloatingSuggestionItems = <T extends {}>(
 
   const [isSuggestionsShown, setIsSuggestionsShown] = React.useState(isSuggestionsVisible || false);
 
+  const [queryString, setQueryString] = React.useState(initialQueryString || '');
+
   React.useEffect(() => {
     setSuggestionItems(floatingSuggestionItems);
-  }, [floatingSuggestionItems]);
+    // If we have a query string and suggestions, set the first one as selected
+    if (queryString !== '' && floatingSuggestionItems.length > 0) {
+      setFocusItemIndex(0);
+      setHeaderItemIndex(-1);
+      setFooterItemIndex(-1);
+    }
+    // Otherwise clear the selection
+    else {
+      clearPickerSelectedIndex();
+    }
+  }, [floatingSuggestionItems, queryString]);
 
   const headerFooterItemsHaveExecute = (items: IFloatingSuggestionsHeaderFooterProps[]): boolean => {
     let haveExecute = false;
@@ -123,7 +138,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     // We're currently selected on a selected item
     else if (focusItemIndex > -1) {
       // If we're at the end of the list
-      if (focusItemIndex >= suggestionItems.length - 1) {
+      if (focusItemIndex === suggestionItems.length - 1) {
         if (hasSelectableFooters) {
           setFooterItemIndex(getNextSelectableHeaderOrFooter(footerItems!, footerItemIndex));
           setFocusItemIndex(-1);
@@ -272,5 +287,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
     hasSuggestionSelected: hasSuggestionSelected,
     removeSuggestion: removeSuggestion,
     clearPickerSelectedIndex: clearPickerSelectedIndex,
+    queryString: queryString,
+    setQueryString: setQueryString,
   };
 };

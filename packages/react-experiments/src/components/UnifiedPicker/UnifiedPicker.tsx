@@ -5,7 +5,6 @@ import { DragDropHelper, IDragDropContext } from '@fluentui/react/lib/DragDrop';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps, IDragDropEvents } from '@fluentui/react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
-import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
@@ -63,7 +62,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const rootRef = React.createRef<HTMLDivElement>();
   const input = React.useRef<Autofill>(null);
-  const { queryString, setQueryString, clearQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
 
@@ -74,7 +72,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const {
     focusItemIndex,
-    setFocusItemIndex,
     suggestionItems,
     footerItemIndex,
     footerItems,
@@ -84,7 +81,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     showPicker,
     selectPreviousSuggestion,
     selectNextSuggestion,
-    clearPickerSelectedIndex,
+    queryString,
+    setQueryString,
   } = useFloatingSuggestionItems(
     suggestions,
     pickerSuggestionsProps?.footerItemsProps,
@@ -474,14 +472,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       if (!composing) {
         // update query string
         setQueryString(value);
-        // If we now have no query string, we want to deselect any selected item in the picker
-        if (value === '') {
-          clearPickerSelectedIndex();
-        }
-        // if nothing is selcted and the user has typed, selected the first picker item
-        else if (focusItemIndex === -1 && headerItemIndex === -1 && footerItemIndex === -1) {
-          setFocusItemIndex(0);
-        }
         // if suggestions aren't showing and we haven't just cleared the input, show the picker
         !isSuggestionsShown && value !== '' ? showPicker(true) : null;
         if (!resultItemsList) {
@@ -500,18 +490,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         }
       }
     },
-    [
-      addItems,
-      isSuggestionsShown,
-      onInputChange,
-      setQueryString,
-      showPicker,
-      clearPickerSelectedIndex,
-      setFocusItemIndex,
-      focusItemIndex,
-      footerItemIndex,
-      headerItemIndex,
-    ],
+    [addItems, isSuggestionsShown, onInputChange, setQueryString, showPicker],
   );
 
   const _onPaste = React.useCallback(
