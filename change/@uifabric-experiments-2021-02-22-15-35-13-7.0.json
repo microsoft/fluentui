@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Implement keyboard shortcut for Cut and Delete in recipient well",
-  "packageName": "@uifabric/experiments",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-22T23:35:13.281Z"
-}
