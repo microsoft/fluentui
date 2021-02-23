@@ -32,6 +32,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     headerComponent,
     onInputChange,
     customClipboardType,
+    onValidateInput,
   } = props;
 
   const {
@@ -55,13 +56,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     itemsAreEqual,
     deserializeItemsFromDrop,
     serializeItemsForDrag,
+    createGenericItem,
   } = props.selectedItemsListProps;
 
   const { onClick: inputPropsOnClick, onFocus: inputPropsOnFocus } = props.inputProps || {};
 
   const rootRef = React.createRef<HTMLDivElement>();
   const input = React.useRef<Autofill>(null);
-  const { setQueryString, clearQueryString } = useQueryString('');
+  const { queryString, setQueryString, clearQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
 
@@ -362,6 +364,13 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     ],
   );
 
+  const _onValidateInput = React.useCallback(() => {
+    if (onValidateInput && createGenericItem) {
+      const itemToConvert = createGenericItem(queryString, onValidateInput(queryString));
+      _onSuggestionSelected(undefined, { item: itemToConvert, isSelected: false });
+    }
+  }, [onValidateInput, createGenericItem, queryString, _onSuggestionSelected]);
+
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
       if (isSuggestionsShown) {
@@ -389,6 +398,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                 // execute the header action
                 headerItems![headerItemIndex].onExecute!();
               }
+            } else {
+              _onValidateInput();
             }
             break;
           case KeyCodes.up:
@@ -416,6 +427,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectPreviousSuggestion,
       showPicker,
       suggestionItems,
+      _onValidateInput,
     ],
   );
 
