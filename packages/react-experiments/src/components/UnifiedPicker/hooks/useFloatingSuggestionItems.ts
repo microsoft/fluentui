@@ -52,7 +52,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
   React.useEffect(() => {
     setSuggestionItems(floatingSuggestionItems);
     // If we have a query string and suggestions, set the first one as selected
-    if (queryString !== '' && floatingSuggestionItems.length > 0) {
+    if (queryString !== '' && floatingSuggestionItems && floatingSuggestionItems.length > 0) {
       setFocusItemIndex(0);
       setHeaderItemIndex(-1);
       setFooterItemIndex(-1);
