@@ -25,7 +25,7 @@ yarn add @fluentui/react-context-selector
 
 ## Usage
 
-```typescript
+```tsx
 import * as React from "react";
 import {
   createContext,
