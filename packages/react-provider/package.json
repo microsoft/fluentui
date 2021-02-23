@@ -34,7 +34,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-focus-management": "^0.1.0",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.0",
     "@fluentui/react-theme": "^9.0.0-alpha.0",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.0",
     "@fluentui/react-utilities": "^9.0.0-alpha.0",
