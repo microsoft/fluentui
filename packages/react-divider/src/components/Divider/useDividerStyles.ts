@@ -1,6 +1,5 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
-import { tokenToString } from 'typescript';
-import { DividerState, DividerTokens } from './Divider.types';
+import { DividerState } from './Divider.types';
 
 //#region Helper objects and functions
 

@@ -2,14 +2,14 @@
 
 ## Background
 
-The divider control is to replace the Separator control currently in use. Its purpose is to visual separate content.
-Adding minor structural updates and new engineering practices and update the naming conventions to match naming conventions to OpenUI.
+The divider control is intended to replace the Separator control currently exported. Its purpose is to visually separate content.
+The purpose of redoing the component is to add minor structural updates and new engineering practices and update the naming conventions in the API to match naming conventions indicated by OpenUI research.
 
 ## Prior Art
 
-[Github Epic Convergance Issue #16254](https://github.com/microsoft/fluentui/issues/16254)
+[Github Epic Convergence Issue #16254](https://github.com/microsoft/fluentui/issues/16254)
 
-[Github Convergance Issue #15759](https://github.com/microsoft/fluentui/issues/15759)
+[Github Convergence Issue #15759](https://github.com/microsoft/fluentui/issues/15759)
 
 [Fluent UI Separator](https://developer.microsoft.com/en-us/fluentui#/controls/web/separator)
 
@@ -32,13 +32,13 @@ Basic Examples:
 
 ```html
 <Divider />
-<Divider vertical="true" />
+<Divider vertical />
 <Divider>This is a divider with content</Divider>
 ```
 
 ## Variants
 
-The divider will have two main variants, a horzontal and vertical render. The control is the same with the optional property `vertical="true"` defining the rendering type. As per current definition, content can only be added if the divider is horizontal (TBD).
+The divider will have two main variants, rendering horizontally or vertically. The control is the same with the optional property `vertical` defining how it renders.
 
 Standard default horizontal
 
@@ -49,7 +49,7 @@ Standard default horizontal
 Vertical
 
 ```html
-<Divider vertical="true" />
+<Divider vertical />
 ```
 
 Color
@@ -76,22 +76,18 @@ Important
 <Divider important>This is important!</Divider>
 ```
 
-Fitted
+Inset
 
 ```html
-<Divider fitted />
+<Divider inset />
 ```
 
-Size
+Appearance
 
 ```html
-<Divider size="3" />
-```
-
-Layout
-
-```html
-<Divider layout="inset" />
+<Divider apperance="subtle" />
+<Divider apperance="brand" />
+<Divider apperance="strong" />
 ```
 
 ## API
@@ -109,7 +105,8 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   tokens?: RecursivePartial<DividerTokens>;
 
   /**
-   * A divider can justify the content. Center is default.
+   * Determines the alignment of the content within the divider.
+   * @defaultvalue 'center'
    */
   alignContent?: 'start' | 'end' | 'center';
 
@@ -117,32 +114,33 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
 
   children?: any;
 
-  /* A divider can have a overriding color */
+  /* A divider can have a overriding border color */
   color?: string;
 
-  /* important will emphasis the content */
+  /* A divider can be classified as important to emphasize its content */
   important?: boolean;
 
   inset?: boolean;
 
-  /* The size is a multiplier value for the size */
-  size?: SizeValue;
-
-  /* A divider can be horizontal (default) or verticle*/
+  /* A divider can be horizontal (default) or vertical*/
   vertical?: boolean;
 
   /* Overrides for custom appearances */
   height?: string;
-
   width?: string;
 
   fontSize?: string;
-
   fontWeight?: string;
-
   fontColor?: string;
 
   margin?: string;
+  marginTop?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  marginRight?: string;
+
+  borderStyle?: string;
+  borderSize?: string | number;
 }
 ```
 
@@ -176,15 +174,17 @@ Border Color: tokens.alias.color.neutral.neutralStroke1
 
 ## Structure
 
-<div class="root">
-  <!-- ::before to handle the divider line for with or without content -->
+```
+<div>
+  <!-- ::before to handle the divider line independent of the divider having content or not -->
   <div>Content</div>
-  <!-- ::after to handle the post divider line if content exists -->
+  <!-- ::after to handle the divider line that goes after the content if it has been provided. -->
 </div>
+```
 
 ## Migration
 
-The divider control is a direct of the current Separator control. Notable changes are listed below:
+The divider control is a direct replacement of the current Separator control. Notable changes are listed below:
 
 Migration from V0 will require removing the content property and nesting that content as a child of the node ex.
 
@@ -207,17 +207,16 @@ _Note:_ The property styles from the separator control has been removed and now 
 ```
 <Separator styles={myStyles}>
 <Divider style={{ direction:ltr }}/> /* Handled by the theme provider */
-
+```
 
 ## Behaviors
 
 This component has no state.
 This control will have no interactions.
-This control will have no affect on screen readers.
+This control will have no effect on screen readers.
 
-Content if provided, will self determine it's behaviors.
+Content, if provided, will self determine it's behaviors.
 
 ## Accessibility
 
-Since the divider is not a focusable element itself, there doesn't need to have an accessilibity role for this control. The descendant content when wrapped from the divider must handle any accessibility information itself when appropriate.
-```
+Since the divider is not a focusable element itself, this control doesn't require any accessibility roles or special behavior applied to it. The descendant content when wrapped from the divider must handle any required accessibility behaviors itself when appropriate.

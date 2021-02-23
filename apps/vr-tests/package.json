@@ -22,6 +22,7 @@
     "@fluentui/react-avatar": "^0.11.1",
     "@fluentui/react-button": "^1.0.0-beta.34",
     "@fluentui/react-cards": "^1.0.0-beta.57",
+    "@fluentui/react-divider": "^0.1.0",
     "@fluentui/react-experiments": "^8.0.0-beta.61",
     "@fluentui/react-hooks": "^8.0.0-beta.14",
     "@fluentui/react-icons-mdl2": "^1.0.0-beta.16",

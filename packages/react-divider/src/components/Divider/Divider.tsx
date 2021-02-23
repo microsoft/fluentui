@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { useDivider } from './useDivider';
 import { DividerProps } from './Divider.types';
 import { renderDivider } from './renderDivider';
+import { useDivider } from './useDivider';
 import { useDividerStyles } from './useDividerStyles';
 
 /**

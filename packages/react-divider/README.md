@@ -7,5 +7,5 @@ These are not production-ready components and **should never be used in product*
 To import React Divider components:
 
 ```js
-import { ComponentName } from '@fluentui/react-divider';
+import { Divider } from '@fluentui/react-divider';
 ```

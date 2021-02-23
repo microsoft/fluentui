@@ -54,7 +54,7 @@
     "@fluentui/react-cards": "^1.0.0-beta.57",
     "@fluentui/react-charting": "^5.0.0-beta.57",
     "@fluentui/react-checkbox": "^1.0.0-beta.44",
-    "@fluentui/react-divider": "*",
+    "@fluentui/react-divider": "^0.1.0",
     "@fluentui/react-docsite-components": "^8.0.0-beta.57",
     "@fluentui/react-experiments": "^8.0.0-beta.61",
     "@fluentui/react-file-type-icons": "^8.0.0-beta.20",

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { ColorTokens, RecursivePartial, SizeValue, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
+import { ColorTokens, RecursivePartial, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
  * {@docCategory Divider}
@@ -9,7 +9,8 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   tokens?: RecursivePartial<DividerTokens>;
 
   /**
-   * A divider can justify the content. Center is default.
+   * Determines the alignment of the content within the divider.
+   * @defaultvalue 'center'
    */
   alignContent?: 'start' | 'end' | 'center';
 
@@ -20,28 +21,15 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   /* A divider can have a overriding border color */
   color?: string;
 
-  /* important will emphasis the content */
+  /* A divider can be classified as important to emphasize its content */
   important?: boolean;
 
   inset?: boolean;
 
-  /* A divider can be horizontal (default) or verticle*/
+  /* A divider can be horizontal (default) or vertical*/
   vertical?: boolean;
 
-  /* Overrides for custom appearances */
-  height?: string;
-  width?: string;
-
-  fontSize?: string;
-  fontWeight?: string;
-  fontColor?: string;
-
-  margin?: string;
-  marginTop?: string;
-  marginBottom?: string;
-  marginLeft?: string;
-  marginRight?: string;
-
+  /* Overrides for border visuals */
   borderStyle?: string;
   borderSize?: string | number;
 }
