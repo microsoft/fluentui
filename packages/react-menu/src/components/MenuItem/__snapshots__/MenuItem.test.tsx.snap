@@ -3,6 +3,7 @@
 exports[`MenuItem renders a default state 1`] = `
 <div
   className=""
+  onKeyDown={[Function]}
   role="menuitem"
   tabIndex={0}
 >
