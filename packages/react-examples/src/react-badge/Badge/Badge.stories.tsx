@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Badge } from '@fluentui/react-badge';
 
-const BadgeAppearanceExamples = () => (
+export const BadgeAppearanceExample = () => (
   <>
     <h2>Circular (default)</h2>
     <div
@@ -53,5 +53,3 @@ const BadgeAppearanceExamples = () => (
     </div>
   </>
 );
-
-export const BadgeAppearanceExample = () => <BadgeAppearanceExamples />;

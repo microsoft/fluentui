@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Badge } from '@fluentui/react-badge';
 import { AcceptIcon } from '@fluentui/react-icons-mdl2';
 
-const BadgeIconExamples = () => (
+export const BadgeIconExample = () => (
   <div
     style={{
       display: 'flex',
@@ -19,5 +19,3 @@ const BadgeIconExamples = () => (
     <Badge size="largest" icon={<AcceptIcon />} />
   </div>
 );
-
-export const BadgeIconExample = () => <BadgeIconExamples />;
