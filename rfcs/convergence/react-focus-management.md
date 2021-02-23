@@ -148,6 +148,8 @@ The below table lists the configuration options that the hook should support:
 
 The current development pace of converged components means we will be able iterate quickly on this API since components under development such as `Menu`, `Accordion` and `Tooltip` will require these behaviours in the coming project cycles
 
+A hook based API, regardless of ability-helpers, will make it easier to separate concerns than the current `FocusZone` that aims to be a 'one in all' solution.
+
 Internally ability-helpers leverages the [TreeWalker](https://developer.mozilla.org/en-US/docs/Web/API/TreeWalker), which is the recommended the DOM tree traversal method [according to the w3c](https://www.w3.org/TR/DOM-Level-2-Traversal-Range/traversal.html). This API is dynamic and operations are designed represent underlying changes to the DOM which is a big plus for handling dynamic or lazy loaded content through a rendering framework.
 
 A hook based implementation will be a lot easier to maintain for end users, since function calls can be added/removed/mocked easily which leads to easier adaptation in large codebases where extensive unit or snapshot testing is involved.
