@@ -161,7 +161,7 @@ const useStyles = makeStyles<AvatarState>([
     activeRing,
     theme => ({
       ':before': {
-        borderColor: theme.alias.color.neutral.brandForeground, // TODO: use valid token
+        borderColor: theme.alias.color.brand.brandBackgroundStatic,
         borderStyle: 'solid',
       },
     }),
