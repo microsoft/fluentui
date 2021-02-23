@@ -1,12 +1,13 @@
 # Slots API specification
 
-Fluent UI components almost always contain sub parts and these pre-defined layouts can be configured via Slots API. Slots are named areas in a component that can receive props and provide styling and layout for them.
-
 ## Slots definition
+
+Fluent UI components almost always contain sub parts and these pre-defined layouts can be configured via Slots API. Slots are named areas in a component that can receive props and provide styling and layout for them.
 
 For example, `Button` component contains `content`, `loader` and `icon` slots in its layout:
 
 ```jsx
+// ⚠️ not a real JSX/DOM markup
 <root>
   <loader />
   <content />
@@ -14,16 +15,27 @@ For example, `Button` component contains `content`, `loader` and `icon` slots in
 </root>
 ```
 
+Slots let define the complex layouts required by many components according to accessibility and design requirements automatically. Slots can be configured through props, which lets the caller pass in a variety of inputs for a given slot.
+
 ## Slots usage
 
-Slots can be configured through props, which lets the caller pass in a variety of inputs for a given slot. There are several forms of values that can be provided, but all of them share one common thing - they will produce a proper JSX layout inside a component.
+There are several forms of values that can be provided, but all of them share one common thing - they will produce a proper layout inside a component.
 
 ### An object as a value
 
-If you will pass an object to component props we will handle it as props for a slot. In an example below, props will be passed to an `icon` slot:
+If you will pass an object to component props we will handle it as props for a slot, can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
 
 ```jsx
 <Button icon={{ children: <FooIcon />, id: '#button-icon' }} />
+```
+
+```html
+<!-- ⚠ Simplified DOM output -->
+<button class="ms-Button">
+  <span class="ms-Button-icon" id="#button-icon">
+    <span class="ms-Icon"><svg /></span>
+  </span>
+</button>
 ```
 
 ### Primitives as a value
@@ -38,11 +50,14 @@ We consider JSX elements, strings and numbers as primitive values that will be p
 </>
 ```
 
-To disable slot rendering you can use falsy values:
+To disable slot rendering you can use falsy (`null`, `false`) values:
 
 ```jsx
 // 💡 A loader slot will be hidden
-<Button loading loader={null} />
+<>
+  <Button loading loader={null} />
+  <Button loading loader={false} />
+</>
 ```
 
 ### Children function
