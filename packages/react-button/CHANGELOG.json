@@ -2,6 +2,137 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.35",
+      "version": "1.0.0-beta.35",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Breaks dependency on react-hooks for convergence",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "68bc4c7d68b5c01022658fcc485342670d56df39",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.27",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.17",
+            "author": "elcraig@microsoft.com",
+            "commit": "6fb020ab622a0fd18c47173d1a38eb046c7ebeaa",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.34",
+      "version": "1.0.0-beta.34",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Button: Renaming ghost prop to subtle.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5c0512ff8e6c7721df14ef19cc312eb8cec8c4c5",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.16",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-button_v1.0.0-beta.33",
+      "version": "1.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Cleaning up state function.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "28cd71a2a8ce9cf2398b45335a49621507b8c55d",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "SplitButton: Adding the ability to open the menu while focusing on the primary action button by pressing Alt+Down.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "028440c2b7b472cd336d26301e30ecd8f99f7adc",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.15",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-button"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 17 Feb 2021 12:21:39 GMT",
       "tag": "@fluentui/react-button_v1.0.0-beta.32",
       "version": "1.0.0-beta.32",

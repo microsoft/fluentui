@@ -1,8 +1,35 @@
 # Change Log - @fluentui/style-utilities
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.0.0-beta.19)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.0.0-beta.18..@fluentui/style-utilities_v8.0.0-beta.19)
+
+### Changes
+
+- getScreenSelector: allow specifying only one of min or max ([PR #15917](https://github.com/microsoft/fluentui/pull/15917) by elcraig@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.0.0-beta.18)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.0.0-beta.17..@fluentui/style-utilities_v8.0.0-beta.18)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.18 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.0.0-beta.17)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/style-utilities_v8.0.0-beta.16..@fluentui/style-utilities_v8.0.0-beta.17)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/style-utilities_v8.0.0-beta.16)
 

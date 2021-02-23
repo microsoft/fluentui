@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.17)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.16..@fluentui/react-icons-mdl2_v1.0.0-beta.17)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.15 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [1.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.16)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.15..@fluentui/react-icons-mdl2_v1.0.0-beta.16)
+
+### Patches
+
+- Bump @fluentui/react-icon-provider to v0.1.2 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.15)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.14..@fluentui/react-icons-mdl2_v1.0.0-beta.15)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.14)
 

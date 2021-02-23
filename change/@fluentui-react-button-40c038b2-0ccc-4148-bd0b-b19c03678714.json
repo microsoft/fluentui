@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
-  "packageName": "@fluentui/react-button",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

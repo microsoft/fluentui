@@ -6,7 +6,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 import { IContextualMenuProps } from '../../ContextualMenu';
 import { IOverlayProps } from '../../Overlay';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { ResponsiveMode } from '../../ResponsiveMode';
 
 export interface IDragOptions {
   /**

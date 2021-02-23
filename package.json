@@ -80,6 +80,7 @@
     "@storybook/react": "5.3.8",
     "@types/jest": "24.9.1",
     "@types/jest-axe": "3.2.2",
+    "@types/prettier": "^1.0.0",
     "beachball": "^1.50.1",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",

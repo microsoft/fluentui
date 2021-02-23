@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.48)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.47..@fluentui/react-slider_v1.0.0-beta.48)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [1.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.47)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.46..@fluentui/react-slider_v1.0.0-beta.47)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.46)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.45..@fluentui/react-slider_v1.0.0-beta.46)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.45)
 

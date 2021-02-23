@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toggle",
-  "version": "1.0.0-beta.45",
+  "version": "1.0.0-beta.48",
   "description": "Fluent UI React Toggle component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -40,18 +40,18 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-compose": "^1.0.0-beta.13",
-    "@fluentui/react": "^8.0.0-beta.56",
-    "@fluentui/react-hooks": "^8.0.0-beta.12",
-    "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/style-utilities": "^8.0.0-beta.16",
-    "@fluentui/utilities": "^8.0.0-beta.12",
+    "@fluentui/react-compose": "^1.0.0-beta.16",
+    "@fluentui/react": "^8.0.0-beta.59",
+    "@fluentui/react-hooks": "^8.0.0-beta.15",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/style-utilities": "^8.0.0-beta.19",
+    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   }
 }
