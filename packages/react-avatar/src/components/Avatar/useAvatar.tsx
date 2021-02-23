@@ -3,7 +3,7 @@ import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/
 import { AvatarDefaults, AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
 import { getInitials as defaultGetInitials, nullRender } from '@fluentui/utilities';
 import { Image } from '../Image/index';
-import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
+import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
 export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
