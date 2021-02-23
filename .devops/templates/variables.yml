@@ -1,5 +1,5 @@
 variables:
-  deployBasePath: "pr-deploy-site/$(variables['Build.SourceVersion'])"
+  deployBasePath: "pr-deploy-site/${{ variables['Build.SourceBranch'] }}"
 
   deployHost: 'fabricweb.z5.web.core.windows.net'
 

@@ -29,7 +29,7 @@ jobs:
 
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
-          yarn prelint
+          yarn prelint &&
           yarn prettier $(targetBranch) --check
         displayName: do syncpack, lint-files, and prettier checks
 
