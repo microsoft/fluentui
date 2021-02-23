@@ -33,7 +33,7 @@ import {
   ContextSelector,
 } from "@fluentui/react-context-selector";
 
-interface CounterContextValue = {
+interface CounterContextValue {
   count1: number;
   count2: number;
   incrementCount1: () => void;
