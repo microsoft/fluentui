@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
-import { ObjectShorthandProps } from '../../../../react-utilities/src';
+import { ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type ButtonProps = ComponentProps &
   React.ButtonHTMLAttributes<HTMLElement> & {
