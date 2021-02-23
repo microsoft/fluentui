@@ -90,15 +90,13 @@ The below table defines the props used by the provider component. All context va
 
 This spec proposes an API based on React hooks pattern. [ability-helpers](https://github.com/microsoft/ability-helpers) works mainly on adding `data-*` attributes to DOM elements to apply configurable behaviours to the 'groups' of focusables.
 
-However some internal behaviours such as `modalizer` or `deloser` require DOM elements during the configuration phase, which will be most easily configured in React using `refs`.
-
-Therefore it must be noted that **although some hooks might not require ref interaction and can simply return attributes to be spread, in an effort to maintain consistency refs are used, which fits the Fluent component design pattern which enforces ref forwarding**
+However some internal behaviours such as `modalizer` or `deloser` require DOM elements during the configuration phase, which will be most easily configured in React using `refs`. However the initial implementation will be based on simple spreading of data attributes.
 
 ```typescript
 // Basic up/down keyboard navigation
-const ref = useKeyboardNavigationGroup();
+const [attributes] = useKeyboardNavigationGroup();
 
-<div ref={ref}>{props.children}</div>;
+<div {...attributes}}>{props.children}</div>;
 ```
 
 ```typescript
@@ -107,11 +105,11 @@ const {
   findFirst,
   findLast,
   findAll,
-} = useFocusable(ref.current); // All operations are with respect to the given DOM container
+} = useFocusable();
 
-findFirst() // first focusable
-findLast() // first last focusable
-findAll(condition: () => true) // first all focusables with condition
+findFirst(ref.current) // first focusable within a root
+findLast(ref.current) // first last focusable within a root
+findAll(ref.current, condition: () => true) // first all focusables with condition in a root
 
 <div ref={ref}>{props.children}</div>
 ```
@@ -130,7 +128,7 @@ The below table lists the helper functions to support:
 
 #### useKeyboardNavigationGroup
 
-A hook that returns a `ref` to be assigned to the container of a group of focusable elements that should support keyboard navigation
+A hook that returns a set of data-* attributes to be spread to the container of a group of focusable elements that should support keyboard navigation
 
 The below table lists the configuration options that the hook should support:
 
