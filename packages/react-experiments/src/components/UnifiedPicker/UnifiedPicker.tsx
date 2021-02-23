@@ -489,7 +489,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         }
         if (onInputChange) {
           onInputChange(value, composing, resultItemsList);
-          clearQueryString();
           if (resultItemsList && resultItemsList.length > 0) {
             addItems(resultItemsList);
             showPicker(false);
@@ -503,7 +502,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     },
     [
       addItems,
-      clearQueryString,
       isSuggestionsShown,
       onInputChange,
       setQueryString,
