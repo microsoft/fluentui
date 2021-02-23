@@ -14,7 +14,7 @@ export default {
 
 const global = teamsLightTheme.global;
 
-export const FontFamily = () => (
+export const GlobalFontFamily = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
     {Object.keys(global.type.fontFamilies).map((fontFamily: keyof FontFamilies) => [
       <div key={fontFamily}>{fontFamily}</div>,
@@ -25,7 +25,7 @@ export const FontFamily = () => (
   </div>
 );
 
-export const FontSize = () => (
+export const GlobalFontSize = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
     {Object.keys(global.type.fontSizes).map((fontSizeGroup: keyof FontSizes) => [
       <h3 key={fontSizeGroup}>{fontSizeGroup}</h3>,
@@ -44,7 +44,7 @@ export const FontSize = () => (
   </div>
 );
 
-export const LineHeight = () => (
+export const GlobalLineHeight = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
     {Object.keys(global.type.lineHeights).map((lineHeightGroup: keyof LineHeights) => [
       <h3 key={lineHeightGroup}>{lineHeightGroup}</h3>,
@@ -68,7 +68,7 @@ export const LineHeight = () => (
   </div>
 );
 
-export const FontWeight = () => (
+export const GlobalFontWeight = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
     <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
       {Object.keys(global.type.fontWeights).map((fontWeight: keyof FontWeights) => [
@@ -81,7 +81,7 @@ export const FontWeight = () => (
   </div>
 );
 
-export const TextAlignment = () => (
+export const GlobalTextAlignment = () => (
   <div style={{ fontFamily: global.type.fontFamilies.base }}>
     <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
       {Object.keys(global.type.alignment).map((alignment: keyof TextAlignments) => [

@@ -35,7 +35,7 @@ const ShadowBox: React.FunctionComponent<React.HTMLAttributes<HTMLDivElement> & 
   </div>
 );
 
-export const Shadows = () => {
+export const AliasShadows = () => {
   return (
     <div
       style={{

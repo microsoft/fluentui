@@ -8,7 +8,7 @@ export default {
 const global = teamsLightTheme.global;
 
 // FIXME: border radius -> string
-export const BorderRadius = () => (
+export const GlobalBorderRadius = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto auto 1fr ', gap: '10px', alignItems: 'center' }}>
     {Object.keys(global.borderRadius).map((radius: keyof BorderRadiusType) => [
       <div key={radius}>{radius}</div>,
