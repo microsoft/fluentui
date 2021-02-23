@@ -7,8 +7,6 @@ trigger:
 variables:
   - group: fabric-variables
   - template: .devops/templates/variables.yml
-    parameters:
-      pathPrefix: SourceVersion
 
 pool: 'Self Host Ubuntu'
 
