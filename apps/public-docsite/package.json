@@ -51,7 +51,6 @@
     "@fluentui/utilities": "^8.0.0-beta.15",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "json-loader": "^0.5.7",
     "office-ui-fabric-core": "^11.0.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",

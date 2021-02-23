@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "0.6.0",
+  "version": "9.0.0-alpha.0",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -24,13 +24,6 @@
     "test": "just-scripts test",
     "test:watch": "just-scripts jest-watch"
   },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0",
@@ -46,5 +39,13 @@
     "rtl-css-js": "^1.14.0",
     "stylis": "^4.0.6",
     "tslib": "^1.10.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }
