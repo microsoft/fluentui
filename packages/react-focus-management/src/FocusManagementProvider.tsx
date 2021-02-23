@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useMergedRefs } from '@fluentui/react-hooks';
-import { makeMergeProps } from '@fluentui/react-utils';
+import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import { getCurrentAbilityHelpers, createAbilityHelpers } from 'ability-helpers';
 import { internal__FocusManagementContext, FocusManagementContextValue } from './focusManagementContext';
 
