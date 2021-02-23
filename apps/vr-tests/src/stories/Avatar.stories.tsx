@@ -124,18 +124,18 @@ storiesOf('Avatar', module)
   ))
   .addStory('color', () => (
     <Stack tokens={{ childrenGap: 24 }}>
-      <Stack wrap horizontal tokens={{ childrenGap: 6 }}>
-        <Avatar color="neutral" size={40} />
-        <Avatar color="brand" size={40} />
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        <Avatar color="neutral" />
+        <Avatar color="brand" />
       </Stack>
-      <Stack wrap horizontal tokens={{ childrenGap: 6 }}>
-        {examples.namedColors.map(color => (
-          <Avatar key={color} color={color} size={40} />
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        {examples.name.map(name => (
+          <Avatar color="colorful" name={name} key={name} />
         ))}
       </Stack>
-      <Stack wrap horizontal tokens={{ childrenGap: 6 }}>
-        {examples.name.map(name => (
-          <Avatar key={name} name={name} color="colorful" size={40} />
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        {examples.namedColors.map(color => (
+          <Avatar color={color} key={color} />
         ))}
       </Stack>
     </Stack>
