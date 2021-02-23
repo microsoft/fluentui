@@ -1,3 +1,3 @@
 import './version';
 
-export * from './components/Button';
+export * from './components/Button/index';
