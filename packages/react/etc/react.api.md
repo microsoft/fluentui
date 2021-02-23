@@ -6129,7 +6129,7 @@ export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IOverflowSet>;
     items?: IOverflowSetItemProps[];
-    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | boolean | undefined;
     keytipSequences?: string[];
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;
