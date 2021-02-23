@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat(Badge): move spec",
+  "packageName": "@fluentui/react-badge",
+  "email": "junioassuncaocharles@gmail.com",
+  "dependentChangeType": "patch"
+}
