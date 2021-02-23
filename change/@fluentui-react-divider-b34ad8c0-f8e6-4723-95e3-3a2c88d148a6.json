@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Convergence Divider component integration",
+  "packageName": "@fluentui/react-divider",
+  "email": "joschemd@microsoft.com",
+  "dependentChangeType": "patch"
+}
