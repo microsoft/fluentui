@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Add react-tooltip package",
+  "packageName": "@fluentui/react-examples",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
