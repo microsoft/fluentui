@@ -13,7 +13,7 @@ Tips for writing a successful RFC:
 
 ---
 
-_List contributors to the proposal here_
+@ling1726
 
 ## Summary
 
