@@ -89,7 +89,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * Function that specifies how arbitrary text entered into the well is handled.
    */
-  createGenericItem?: (input: string) => T;
+  createGenericItem?: (input: string, isValid?: boolean) => T;
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will
    * act as a controlled component.
