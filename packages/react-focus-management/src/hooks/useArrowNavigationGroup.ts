@@ -9,7 +9,7 @@ export interface UseArrowNavigationGroupOptions {
 
 /**
  * A hook that returns the necessary ability-helpers attributes to support arrow key navigation
- * @param options Options to configure keyboard navigation
+ * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}) => {
   const ahOptions = {
