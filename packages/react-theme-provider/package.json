@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-provider",
-  "version": "1.0.0-beta.27",
+  "version": "9.0.0-alpha.0",
   "description": "Fluent UI React theme provider component, hook, and theme related utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,8 +47,8 @@
   "dependencies": {
     "@fluentui/theme": "^2.0.0-beta.19",
     "@fluentui/react-window-provider": "^2.0.0-beta.9",
-    "@fluentui/react-theme": "^0.3.3",
-    "@fluentui/react-utilities": "^0.4.0",
+    "@fluentui/react-theme": "^9.0.0-alpha.0",
+    "@fluentui/react-utilities": "^9.0.0-alpha.0",
     "@fluentui/set-version": "^8.0.0-beta.2",
     "@fluentui/merge-styles": "^8.0.0-beta.5",
     "@fluentui/utilities": "^8.0.0-beta.15",
@@ -58,5 +58,13 @@
   "peerDependencies": {
     "@types/react": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }
