@@ -32,6 +32,18 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   /* Overrides for border visuals */
   borderStyle?: string;
   borderSize?: string | number;
+
+  /* Exposed used properties */
+  fontColor?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  height?: string;
+  margin?: string;
+  marginBottom?: string;
+  marginLeft?: string;
+  marginRight?: string;
+  marginTop?: string;
+  width?: string;
 }
 
 /**

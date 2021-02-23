@@ -4,23 +4,73 @@
 
 ```ts
 
+import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ComponentProps } from '@fluentui/react-utilities';
+import { FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import * as React from 'react';
+import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
 
 // @public
 export const Divider: React.ForwardRefExoticComponent<DividerProps & React.RefAttributes<HTMLElement>>;
 
-// @public
+// @public (undocumented)
 export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    alignContent?: 'start' | 'end' | 'center';
+    // (undocumented)
+    appearance?: 'default' | 'subtle' | 'brand' | 'strong';
+    // (undocumented)
+    borderSize?: string | number;
+    // (undocumented)
+    borderStyle?: string;
+    // (undocumented)
+    children?: any;
+    // (undocumented)
+    color?: string;
+    // (undocumented)
+    fontColor?: string;
+    // (undocumented)
+    fontSize?: string;
+    // (undocumented)
+    fontWeight?: string;
+    // (undocumented)
+    height?: string;
+    // (undocumented)
+    important?: boolean;
+    // (undocumented)
+    inset?: boolean;
+    // (undocumented)
+    margin?: string;
+    // (undocumented)
+    marginBottom?: string;
+    // (undocumented)
+    marginLeft?: string;
+    // (undocumented)
+    marginRight?: string;
+    // (undocumented)
+    marginTop?: string;
+    // (undocumented)
+    tokens?: RecursivePartial<DividerTokens>;
+    // (undocumented)
+    vertical?: boolean;
+    // (undocumented)
+    width?: string;
 }
 
 // @public
 export const dividerShorthandProps: never[];
 
-// @public
+// @public (undocumented)
 export interface DividerState extends DividerProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
+
+// @public (undocumented)
+export type DividerTokens = ColorTokens & FontTokens & DividerProps & {};
+
+// @public (undocumented)
+export type DividerVariants<TTokens = DividerTokens> = {
+    root?: TTokens;
+};
 
 // @public
 export const renderDivider: (state: DividerState) => JSX.Element;
@@ -32,7 +82,7 @@ export const useDivider: (props: DividerProps, ref: React.Ref<HTMLElement>, defa
 export const useDividerStyles: (state: DividerState) => DividerState;
 
 // @public
-export const useRootStyles: (selectors: DividerState) => string;
+export const useRootStyles: (state: DividerState) => string;
 
 
 // (No @packageDocumentation comment for this package)
