@@ -1,21 +1,23 @@
 import * as React from 'react';
 import { useMergedRefs } from '@fluentui/react-hooks';
 import { makeMergeProps } from '@fluentui/react-utils';
-import { getCurrentAbilityHelpers, createAbilityHelpers, Types as AHTypes } from 'ability-helpers';
+import { getCurrentAbilityHelpers, createAbilityHelpers } from 'ability-helpers';
 import { internal__FocusManagementContext, FocusManagementContextValue } from './focusManagementContext';
 
-type Dir = 'ltr' | 'rtl';
-
 export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLElement> {
-  dir?: Dir;
+  dir?: 'ltr' | 'rtl';
 
   window?: Window;
 
-  ahProps?: AHTypes.AbilityHelpersCoreProps;
+  /**
+   * The root is automatically set as the `body` element of the ownerDocument.
+   * This prop needs to be set if a custom root is used
+   */
+  customRoot?: boolean;
 }
 
 export interface FocusManagementProviderState extends FocusManagementProvideProps, FocusManagementContextValue {
-  dir: Dir;
+  dir: FocusManagementProvideProps['dir'];
 }
 
 const mergeProps = makeMergeProps<FocusManagementProviderState>();
@@ -37,8 +39,13 @@ export const useFocusManagementProvider = (
   state.dir = state.dir || 'ltr';
   state.window = state.window || window;
 
+  const ahOptions = { autoRoot: {} };
+  if (state.customRoot) {
+    delete ahOptions.autoRoot;
+  }
+
   // only one instance per window of ability helpers should exist
-  state.ahInstance = getCurrentAbilityHelpers(state.window) || createAbilityHelpers(state.window, state.ahProps);
+  state.ahInstance = getCurrentAbilityHelpers(state.window) || createAbilityHelpers(state.window, ahOptions);
 
   return state;
 };

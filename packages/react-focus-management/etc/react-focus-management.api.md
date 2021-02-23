@@ -10,12 +10,9 @@ import { Types } from 'ability-helpers';
 
 // @public (undocumented)
 export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLElement> {
+    customRoot?: boolean;
     // (undocumented)
-    ahProps?: Types.AbilityHelpersCoreProps;
-    // Warning: (ae-forgotten-export) The symbol "Dir" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    dir?: Dir;
+    dir?: 'ltr' | 'rtl';
     // (undocumented)
     window?: Window;
 }
@@ -28,7 +25,7 @@ export const FocusManagementProvider: React.FunctionComponent<FocusManagementPro
 // @public (undocumented)
 export interface FocusManagementProviderState extends FocusManagementProvideProps, FocusManagementContextValue {
     // (undocumented)
-    dir: Dir;
+    dir: FocusManagementProvideProps['dir'];
 }
 
 export { getAbilityHelpersAttribute }
@@ -37,18 +34,18 @@ export { getAbilityHelpersAttribute }
 export const renderFocusManagementProvider: (state: FocusManagementProviderState) => JSX.Element;
 
 // @public
-export const useArrowNavigationGroup: (options: UseArrowNavigationGroupOptions) => Types.AbilityHelpersDOMAttribute;
+export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.AbilityHelpersDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
     circular?: boolean;
 }
 
-// @public (undocumented)
+// @public
 export const useFocusFinders: () => {
-    findAll: (context: HTMLElement, customFilter: (el: HTMLElement) => boolean, includeProgrammaticallyFocusable?: boolean | undefined, ignoreModalizer?: boolean | undefined, ignoreGroupper?: boolean | undefined, skipDefaultCondition?: boolean | undefined) => HTMLElement[];
-    findFirst: (context?: HTMLElement | undefined, includeProgrammaticallyFocusable?: boolean | undefined, ignoreModalizer?: boolean | undefined, ignoreGroupper?: boolean | undefined) => HTMLElement | null;
-    findLast: (context?: HTMLElement | undefined, includeProgrammaticallyFocusable?: boolean | undefined, ignoreModalizer?: boolean | undefined, ignoreGroupper?: boolean | undefined) => HTMLElement | null;
+    findAll: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
+    findFirst: (root: HTMLElement) => HTMLElement | null;
+    findLast: (root: HTMLElement) => HTMLElement | null;
 };
 
 // @public (undocumented)

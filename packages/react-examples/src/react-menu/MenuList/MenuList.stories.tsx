@@ -9,7 +9,6 @@ import {
   MenuDivider,
   MenuGroupHeader,
 } from '@fluentui/react-menu';
-import { FocusManagementProvider } from '@fluentui/react-focus-management';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
 
@@ -30,11 +29,7 @@ const useContainerStyles = makeStyles([
 ]);
 const Container: React.FC = props => {
   const classNames = useContainerStyles({});
-  return (
-    <FocusManagementProvider ahProps={{ autoRoot: true }}>
-      <div className={classNames}>{props.children}</div>
-    </FocusManagementProvider>
-  );
+  return <div className={classNames}>{props.children}</div>;
 };
 
 export const MenuListExample = () => (
