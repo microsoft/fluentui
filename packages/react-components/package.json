@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-link",
+  "name": "@fluentui/react-components",
   "version": "9.0.0-alpha.0",
-  "description": "Fluent UI React Link component",
+  "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -20,36 +20,26 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook",
-    "update-snapshots": "just-scripts jest -u",
-    "test": "just-scripts test",
-    "start-test": "just-scripts jest-watch"
+    "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.0-beta.2",
-    "@fluentui/react-conformance": "^1.0.0",
-    "@types/enzyme": "3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.16.0",
-    "@fluentui/scripts": "^1.0.0",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.7",
-    "enzyme": "~3.10.0",
-    "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
-    "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.13",
+    "@fluentui/react-avatar": "^9.0.0-alpha.0",
+    "@fluentui/react-button": "^9.0.0-alpha.0",
+    "@fluentui/react-image": "^9.0.0-alpha.0",
+    "@fluentui/react-link": "^9.0.0-alpha.0",
     "@fluentui/react-make-styles": "^9.0.0-alpha.0",
+    "@fluentui/react-provider": "^9.0.0-alpha.0",
+    "@fluentui/react-theme": "^9.0.0-alpha.0",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.0",
-    "@fluentui/react-utilities": "^9.0.0-alpha.0",
     "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

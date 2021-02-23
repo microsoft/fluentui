@@ -9,76 +9,77 @@ export const useRootStyles = makeStyles<BadgeState>([
     null,
     theme => ({
       display: 'inline-flex',
+      boxSizing: 'border-box',
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: theme.alias.color.brand.brandBackground,
       borderColor: theme.alias.color.brand.brandBackground,
-      color: theme.global.color.white,
+      color: theme.alias.color.neutral.neutralForegroundInvertedAccessible,
       fontWeight: theme.global.type.fontWeights.semibold,
-      borderWidth: '1px',
+      borderWidth: theme.global.strokeWidth.thin,
       borderStyle: 'solid',
       fontFamily: theme.global.type.fontFamilies.base,
     }),
   ],
   [
     s => s.size === 'smallest',
-    theme => ({
+    {
       width: '6px',
       height: '6px',
       fontSize: '4px',
-    }),
+    },
   ],
   [
     s => s.size === 'smaller',
-    theme => ({
+    {
       width: '10px',
       height: '10px',
       fontSize: '6px',
-    }),
+    },
   ],
   [
     s => s.size === 'small',
-    theme => ({
-      minWidth: '4px',
+    {
+      minWidth: '16px',
       height: '16px',
       paddingRight: '6px',
       paddingLeft: '6px',
       gap: '4px',
       fontSize: '8px',
-    }),
+    },
   ],
   [
     s => s.size === 'medium',
-    theme => ({
+    {
       height: '20px',
-      minWidth: '4px',
+      minWidth: '20px',
       gap: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
       fontSize: '12px',
-    }),
+    },
   ],
   [
     s => s.size === 'large',
-    theme => ({
-      minWidth: '8px',
+    {
+      minWidth: '24px',
       height: '24px',
       paddingRight: '8px',
       paddingLeft: '8px',
       fontSize: '12px',
       gap: '6px',
-    }),
+    },
   ],
   [
     s => s.size === 'larger' || s.size === 'largest',
     theme => ({
-      minWidth: '8px',
+      minWidth: '32px',
       height: '32px',
       paddingRight: '12px',
       paddingLeft: '12px',
       gap: '6px',
       fontSize: '12px',
-      border: '2px',
+      borderWidth: theme.global.strokeWidth.thick,
     }),
   ],
   [s => s.shape === 'circular', theme => ({ borderRadius: theme.global.borderRadius.circular })],
