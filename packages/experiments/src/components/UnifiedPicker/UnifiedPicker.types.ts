@@ -119,4 +119,9 @@ export interface IUnifiedPickerProps<T> {
    * in drop behavior will be used.
    */
   onDropAutoFill?: (event?: React.DragEvent<HTMLDivElement>) => void;
+
+  /**
+   * A function used to validate if raw text entered into the well can be added
+   */
+  onValidateInput?: (input: string) => boolean;
 }
