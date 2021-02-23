@@ -124,6 +124,8 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
 // @public (undocumented)
 export interface MenuListState extends MenuListProps {
     ref: React.MutableRefObject<HTMLElement>;
+    // Warning: (ae-forgotten-export) The symbol "MenuListContext" needs to be exported by the entry point index.d.ts
+    setFocusByFirstCharacter: MenuListContext['setFocusByFirstCharacter'];
 }
 
 // @public
