@@ -79,7 +79,6 @@ export const useRootStyles = makeStyles<BadgeState>([
       paddingLeft: '12px',
       gap: '6px',
       fontSize: '12px',
-      border: '2px',
       borderWidth: theme.global.strokeWidth.thick,
     }),
   ],
