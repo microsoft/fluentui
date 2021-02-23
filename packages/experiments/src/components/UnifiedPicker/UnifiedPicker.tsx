@@ -160,6 +160,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   let insertIndex = -1;
+  let isInDropAction = false;
   const _dropItemsAt = (newItems: T[]): void => {
     let indicesToRemove: number[] = [];
     // If we are moving items within the same picker, remove them from their old places as well
@@ -170,6 +171,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     dropItemsAt(insertIndex, newItems, indicesToRemove);
     unselectAll();
     insertIndex = -1;
+    isInDropAction = false;
   };
 
   const _onDragOverAutofill = (event?: React.DragEvent<HTMLDivElement>) => {
@@ -179,6 +181,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDropAutoFill = (event?: React.DragEvent<HTMLDivElement>) => {
+    isInDropAction = true;
     event?.preventDefault();
     if (onDropAutoFill) {
       onDropAutoFill(event);
@@ -193,6 +196,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDropList = (item?: any, event?: DragEvent): void => {
+    isInDropAction = true;
     /* indexOf compares using strict equality
        if the item is something where properties can change frequently, then the
        itemsAreEqual prop should be overloaded
@@ -261,7 +265,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onDragEnd = (item?: any, event?: DragEvent): void => {
-    if (event) {
+    // Because these calls are async, it's possible for us to get the drag end call while
+    // we're in the middle of a drop action, so don't run the delete code if that's the case
+    if (event && !isInDropAction) {
       // If we have a move event, and we still have selected items (indicating that we
       // haven't already moved items within the well) we should remove the item(s)
       if (event.dataTransfer?.dropEffect === 'move' && focusedItemIndices.length > 0) {
@@ -275,6 +281,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       dataList?.clear();
     }
     setDraggedIndex(-1);
+    isInDropAction = false;
   };
 
   const defaultDragDropEvents: IDragDropEvents = {
