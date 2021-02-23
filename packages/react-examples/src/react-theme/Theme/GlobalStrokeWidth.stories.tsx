@@ -7,7 +7,7 @@ export default {
 
 const global = teamsLightTheme.global;
 
-export const StrokeWidth = () => (
+export const GlobalStrokeWidth = () => (
   <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: '10px', alignItems: 'center' }}>
     {Object.keys(global.strokeWidth).map((strokeWidth: keyof StrokeWidths) => [
       <div key={strokeWidth}>{strokeWidth}</div>,
