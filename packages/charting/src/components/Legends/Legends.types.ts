@@ -4,6 +4,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IHoverCardStyleProps, IHoverCardStyles } from 'office-ui-fabric-react/lib/HoverCard';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
+import { Points } from '../../utilities/utilities';
 
 export interface ILegendOverflowData {
   primary: ILegend[];
@@ -30,6 +31,11 @@ export interface ILegendsStyles {
    * Style set for the rectangle that represents a legend
    */
   rect: IStyle;
+
+  /**
+   * styles set for the shape that represents a legend
+   */
+  shape: IStyle;
 
   /**
    * Style set for the triangle that represents a legend
@@ -200,4 +206,4 @@ export interface ILegendsProps {
  * default: show the rect legend
  * triangle: show the triangle legend
  */
-export type LegendShape = 'default' | 'triangle';
+export type LegendShape = 'default' | 'triangle' | keyof typeof Points;

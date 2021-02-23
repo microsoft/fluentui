@@ -123,9 +123,12 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle001"
@@ -136,13 +139,15 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle0011L"
@@ -153,9 +158,8 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -439,9 +443,12 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle2301"
@@ -452,13 +459,15 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle23011L"
@@ -469,9 +478,8 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -735,9 +743,12 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle801"
@@ -748,13 +759,15 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle8011L"
@@ -765,9 +778,8 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -899,9 +911,12 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle1501"
@@ -912,13 +927,15 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle15011L"
@@ -929,9 +946,8 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -1215,9 +1231,12 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle3101"
@@ -1228,13 +1247,15 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle31011L"
@@ -1245,9 +1266,8 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -1531,9 +1551,12 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle3901"
@@ -1544,13 +1567,15 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle39011L"
@@ -1561,9 +1586,8 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -1847,9 +1871,12 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle4701"
@@ -1860,13 +1887,15 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle47011L"
@@ -1877,9 +1906,8 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>

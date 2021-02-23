@@ -58,6 +58,11 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
           `repeating-linear-gradient(135deg, transparent, transparent 3px, ${props.colorOnSelectedState} 1px, ${props.colorOnSelectedState} 4px)`
         : '',
     },
+    shape: [
+      {
+        marginRight: '8px',
+      },
+    ],
     triangle: {
       width: '0',
       height: '0',

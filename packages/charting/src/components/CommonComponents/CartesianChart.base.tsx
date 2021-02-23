@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
@@ -22,7 +22,10 @@ import {
   XAxisTypes,
   YAxisType,
   createWrapOfXLabels,
+  Points,
+  pointTypes,
 } from '../../utilities/index';
+import { LegendShape, Shape } from '../Legends/index';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 
@@ -344,18 +347,22 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   private _getCalloutContent(
-    xValue: {
-      legend?: string;
-      y?: number;
-      color?: string;
-      yAxisCalloutData?: string | { [id: string]: number };
-      data?: string | number;
-    },
+    xValue: IYValueHover,
     index: number,
     yValueHoverSubCountsExists: boolean,
     isLast: boolean,
   ): React.ReactNode {
     const marginStyle: React.CSSProperties = isLast ? {} : { marginRight: '16px' };
+    const toDrawShape = xValue.index !== undefined && xValue.index !== -1;
+    const _classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      width: this.state._width,
+      height: this.state._height,
+      className: this.props.className,
+      isRtl: this._isRtl,
+      lineColor: xValue.color,
+      toDrawShape,
+    });
 
     if (!xValue.yAxisCalloutData || typeof xValue.yAxisCalloutData === 'string') {
       return (
@@ -365,15 +372,21 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               {xValue.legend!} ({xValue.y})
             </div>
           )}
-          <div
-            id={`${index}_${xValue.y}`}
-            className={mergeStyles(this._classNames.calloutBlockContainer, {
-              borderLeft: `4px solid ${xValue.color}`,
-            })}
-          >
-            <div className={this._classNames.calloutlegendText}> {xValue.legend}</div>
-            <div className={this._classNames.calloutContentY}>
-              {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
+          <div id={`${index}_${xValue.y}`} className={_classNames.calloutBlockContainer}>
+            {toDrawShape && (
+              <Shape
+                svgProps={{
+                  className: _classNames.shapeStyles,
+                }}
+                pathProps={{ fill: xValue.color }}
+                shape={Points[xValue.index! % Object.keys(pointTypes).length] as LegendShape}
+              />
+            )}
+            <div>
+              <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
+              <div className={_classNames.calloutContentY}>
+                {xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data}
+              </div>
             </div>
           </div>
         </div>
@@ -387,14 +400,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           </div>
           {Object.keys(subcounts).map((subcountName: string) => {
             return (
-              <div
-                key={subcountName}
-                className={mergeStyles(this._classNames.calloutBlockContainer, {
-                  borderLeft: `4px solid ${xValue.color}`,
-                })}
-              >
-                <div className={this._classNames.calloutlegendText}> {subcountName}</div>
-                <div className={this._classNames.calloutContentY}>{subcounts[subcountName]}</div>
+              <div key={subcountName} className={_classNames.calloutBlockContainer}>
+                <div className={_classNames.calloutlegendText}> {subcountName}</div>
+                <div className={_classNames.calloutContentY}>{subcounts[subcountName]}</div>
               </div>
             );
           })}
