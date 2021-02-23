@@ -1,7 +1,7 @@
 {
-  "type": "none",
+  "type": "patch",
   "comment": "make @fluentui/react-conformance public",
   "packageName": "@fluentui/react-conformance",
   "email": "altinokd@microsoft.com",
-  "dependentChangeType": "none"
+  "dependentChangeType": "patch"
 }
