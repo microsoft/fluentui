@@ -89,7 +89,8 @@ export interface ISliderProps
   showValue?: boolean;
 
   /**
-   * Callback when the value has been changed
+   * Callback when the value has been changed.
+   * If `ranged` is true, `value` is the upper value, and `range` contains the lower and upper bounds of the range.
    */
   onChange?: (value: number, range?: [number, number]) => void;
 
