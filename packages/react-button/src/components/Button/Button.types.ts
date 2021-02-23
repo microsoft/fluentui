@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps } from '@fluentui/react-utilities';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
+import { ObjectShorthandProps } from '../../../../react-utilities/src';
 
 export type ButtonProps = ComponentProps &
   React.ButtonHTMLAttributes<HTMLElement> & {
@@ -9,7 +10,10 @@ export type ButtonProps = ComponentProps &
      * JSX. The `children` prop of the object can be a render function,
      * taking in the original slot component and props.
      */
-    icon?: ObjectShorthandProps;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+
+    // TODO: children needs a new typing to handle render functions along with hook updates for children functionality
+    // children?: ???;
 
     // /** A button can appear circular. */
     // circular?: boolean;
@@ -56,7 +60,8 @@ export type ButtonProps = ComponentProps &
 export interface ButtonState extends ButtonProps {
   ref: React.RefObject<HTMLButtonElement>;
 
-  children?: ObjectShorthandProps;
+  icon?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 }
 
 export type ButtonStyleSelectors = {

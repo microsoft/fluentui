@@ -3,7 +3,7 @@ import { mount, shallow, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../common/isConformant';
 import { Button } from './Button';
-import { validateBehavior, ComponentTestFacade, buttonBehaviorDefinition } from '@fluentui/a11y-testing';
+// import { validateBehavior, ComponentTestFacade, buttonBehaviorDefinition } from '@fluentui/a11y-testing';
 
 describe('Button (isConformant)', () =>
   isConformant({
