@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix scroll jump when line added or deleted",
+  "packageName": "@fluentui/react-examples",
+  "email": "amyglave@microsoft.com",
+  "dependentChangeType": "patch"
+}
