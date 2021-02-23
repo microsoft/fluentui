@@ -20,23 +20,20 @@
   },
   "devDependencies": {
     "@types/doctrine": "0.0.3",
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-is": "^16.7.1",
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
-    "jest": "~24.9.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
-    "react-dom": "16.8.6",
-    "typescript": "3.7.2"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
     "doctrine": "^3.0.0",
@@ -47,13 +44,13 @@
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
     "enzyme": "^3.0.0",
     "enzyme-adapter-react-16": "^1.0.0",
     "jest": "^24.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0",
     "typescript": "^3.5.0"
   }
 }

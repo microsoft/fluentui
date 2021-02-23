@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compose",
-  "version": "1.0.0-beta.9",
+  "version": "1.0.0-beta.16",
   "description": "Fluent UI React component composition.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,15 +21,13 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api",
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
-    "@types/jest": "~24.9.0",
-    "@types/react": "16.8.25",
-    "@types/webpack-env": "1.15.1",
+    "@types/react": "16.9.42",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
@@ -37,13 +35,13 @@
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/utilities": "^8.0.0-beta.8",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0",
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
   }
 }

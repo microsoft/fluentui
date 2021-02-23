@@ -95,7 +95,7 @@ export { FontSizes }
 
 export { FontWeights }
 
-// @public
+// @public @deprecated
 export function getEdgeChromiumNoHighContrastAdjustSelector(): {
     [EdgeChromiumHighContrastSelector]: IRawStyle;
 };
@@ -116,6 +116,9 @@ export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relativ
 export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): GlobalClassNames<T>;
 
 // @public
+export function getHighContrastNoAdjustStyle(): IRawStyle;
+
+// @public
 export function getIcon(name?: string): IIconRecord | undefined;
 
 // @public
@@ -128,7 +131,7 @@ export const getInputFocusStyle: (borderColor: string, borderRadius: string | nu
 export function getPlaceholderStyles(styles: IStyle): IStyle;
 
 // @public (undocumented)
-export function getScreenSelector(min: number, max: number): string;
+export function getScreenSelector(min: number | undefined, max: number | undefined): string;
 
 // @public
 export function getTheme(depComments?: boolean): ITheme;
@@ -145,13 +148,13 @@ export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
 export const hiddenContentStyle: IRawStyle;
 
 // @public (undocumented)
-export const HighContrastSelector = "@media screen and (-ms-high-contrast: active)";
+export const HighContrastSelector = "@media screen and (-ms-high-contrast: active), (forced-colors: active)";
 
 // @public (undocumented)
-export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black)";
+export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black)";
 
 // @public (undocumented)
-export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white)";
+export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white), (forced-colors: black-on-white)";
 
 export { IAnimationStyles }
 

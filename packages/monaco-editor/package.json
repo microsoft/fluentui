@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/monaco-editor",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.3",
   "description": "Version of monaco-editor with configuration helpers and transformed CSS files",
   "module": "./lib/monacoBundle.js",
   "typings": "./esm/vs/editor/editor.api.d.ts",
@@ -16,7 +16,7 @@
     "just": "just-scripts"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/scripts": "^1.0.0",
     "monaco-editor": "0.19.0",
     "monaco-typescript": "3.6.1"

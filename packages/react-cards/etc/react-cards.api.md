@@ -4,150 +4,189 @@
 
 ```ts
 
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
-import { IComponent } from '@fluentui/foundation-legacy';
-import { IComponentStyles } from '@fluentui/foundation-legacy';
-import { ISlotProp } from '@fluentui/foundation-legacy';
-import { IStackItemProps } from '@fluentui/react/lib/Stack';
-import { IStackItemSlots } from '@fluentui/react/lib/Stack';
-import { IStackItemTokens } from '@fluentui/react/lib/Stack';
-import { IStackProps } from '@fluentui/react/lib/Stack';
-import { IStackSlot } from '@fluentui/react/lib/Stack';
-import { IStackSlots } from '@fluentui/react/lib/Stack';
-import { IStackTokens } from '@fluentui/react/lib/Stack';
-import { IStyleableComponentProps } from '@fluentui/foundation-legacy';
+import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
+import { ColorTokenSet } from '@fluentui/react-theme-provider/lib/compat/index';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
+
+// @public
+export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    compact?: boolean | undefined;
+    horizontal?: boolean | undefined;
+    centered?: boolean | undefined;
+    size?: "medium" | "small" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
+    block?: boolean | undefined;
+    disabled?: boolean | undefined;
+    expandable?: boolean | undefined;
+    inverted?: boolean | undefined;
+    ghost?: boolean | undefined;
+    selected?: boolean | undefined;
+} & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const Card: React.FunctionComponent<ICardProps> & {
-    Item: React.FunctionComponent<ICardItemProps>;
-    Section: React.FunctionComponent<ICardSectionProps>;
+export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    fitted?: boolean | undefined;
+} & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    fitted?: boolean | undefined;
+} & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    fitted?: boolean | undefined;
+} & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    fitted?: boolean | undefined;
+} & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type CardProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    compact?: boolean;
+    horizontal?: boolean;
+    centered?: boolean;
+    size?: SizeValue;
+    block?: boolean;
+    disabled?: boolean;
+    expandable?: boolean;
+    inverted?: boolean;
+    ghost?: boolean;
+    selected?: boolean;
 };
 
 // @public (undocumented)
-export const CardItem: React.FunctionComponent<ICardItemProps>;
+export type CardSectionProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+    fitted?: boolean;
+};
 
 // @public (undocumented)
-export const CardSection: React.FunctionComponent<ICardSectionProps>;
-
-// @public (undocumented)
-export interface ICard {
+export interface CardSectionState extends CardSectionProps {
+    // (undocumented)
+    ref: React.RefObject<HTMLElement>;
 }
 
 // @public (undocumented)
-export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
+export type CardSectionTokens = ColorTokenSet & {};
 
 // @public (undocumented)
-export interface ICardItem {
+export const CardSizeVariants: {
+    size_smallest: {
+        borderRadius: string;
+        height: string;
+        margin: string;
+        padding: string;
+        width: string;
+    };
+    size_smaller: {
+        borderRadius: string;
+        height: string;
+        margin: string;
+        padding: string;
+        width: string;
+    };
+    size_small: {
+        borderRadius: string;
+        height: string;
+        margin: string;
+        padding: string;
+        width: string;
+    };
+    size_large: {
+        borderRadius: string;
+        height: string;
+        margin: string;
+        padding: string;
+        width: string;
+    };
+    size_larger: {
+        borderRadius: string;
+        height: string;
+        margin: string;
+        padding: string;
+        width: string;
+    };
+    size_largest: {
+        borderRadius: string;
+        height: string;
+        margin: string;
+        padding: string;
+        width: string;
+    };
+};
+
+// @public (undocumented)
+export interface CardState extends CardProps {
+    // (undocumented)
+    ref: React.RefObject<HTMLDivElement>;
 }
 
+// Warning: (ae-forgotten-export) The symbol "SizeRelatedTokens" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "StateChangeRelatedTokens" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICardItemStyles, ICardItemViewProps>;
+export type CardTokens = ColorTokens & SizeRelatedTokens & StateChangeRelatedTokens & {
+    borderStyle?: string;
+    minHeight?: string;
+    minWidth?: string;
+    size?: {
+        smallest?: SizeRelatedTokens;
+        smaller?: SizeRelatedTokens;
+        small?: SizeRelatedTokens;
+        medium?: SizeRelatedTokens;
+        large?: SizeRelatedTokens;
+        larger?: SizeRelatedTokens;
+        largest?: SizeRelatedTokens;
+    };
+    disabled?: StateChangeRelatedTokens;
+    hovered?: StateChangeRelatedTokens;
+    pressed?: StateChangeRelatedTokens;
+    selected?: StateChangeRelatedTokens;
+};
 
 // @public (undocumented)
-export interface ICardItemProps extends ICardItemSlots, Pick<IStackItemProps, 'grow' | 'shrink' | 'disableShrink' | 'align' | 'verticalFill' | 'order'>, IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles>, IBaseProps<ICardItem> {
-    fill?: boolean;
-}
+export type CardVariants<TTokens = CardTokens> = {
+    root?: TTokens;
+    onClick?: TTokens;
+    compact?: TTokens;
+    block?: TTokens;
+};
 
 // @public (undocumented)
-export type ICardItemSlot = ISlotProp<ICardItemProps>;
+export const renderCardSection: (state: CardSectionState) => JSX.Element;
+
+// @public
+export const useCard: (props: CardProps, ref: React.Ref<HTMLElement>, defaultProps?: CardProps | undefined) => {
+    state: CardState;
+    render: (state: CardState) => JSX.Element;
+};
 
 // @public (undocumented)
-export interface ICardItemSlots extends IStackItemSlots {
-}
+export const useCardBodyClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
-export type ICardItemStyles = IComponentStyles<ICardItemSlots>;
+export const useCardClasses: (state: CardState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
-export type ICardItemStylesReturnType = ReturnType<Extract<ICardItemComponent['styles'], Function>>;
+export const useCardFooterClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
-export type ICardItemTokenReturnType = ReturnType<Extract<ICardItemComponent['tokens'], Function>>;
+export const useCardHeaderClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public (undocumented)
-export interface ICardItemTokens extends IStackItemTokens {
-}
+export const useCardPreviewClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
-// @public (undocumented)
-export interface ICardItemViewProps extends ICardItemProps {
-}
+// @public
+export const useCardSection: (props: CardSectionProps, ref: React.Ref<HTMLElement>, defaultProps?: CardSectionProps | undefined) => {
+    state: CardSectionState;
+    render: (state: CardSectionState) => JSX.Element;
+};
 
-// @public (undocumented)
-export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard>, React.AllHTMLAttributes<HTMLElement> {
-    horizontal?: boolean;
-    onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
-    onKeyDown?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
-}
-
-// @public (undocumented)
-export interface ICardSection {
-}
-
-// @public (undocumented)
-export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTokens, ICardSectionStyles, ICardSectionViewProps>;
-
-// @public (undocumented)
-export interface ICardSectionProps extends ICardSectionSlots, Pick<IStackProps, 'as' | 'horizontal' | 'reversed' | 'horizontalAlign' | 'verticalAlign' | 'verticalFill' | 'disableShrink' | 'grow' | 'wrap'>, IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>, IBaseProps<ICardSection> {
-    fill?: boolean;
-}
-
-// @public (undocumented)
-export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
-
-// @public (undocumented)
-export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {
-}
-
-// @public (undocumented)
-export type ICardSectionStyles = IComponentStyles<ICardSectionSlots>;
-
-// @public (undocumented)
-export type ICardSectionStylesReturnType = ReturnType<Extract<ICardSectionComponent['styles'], Function>>;
-
-// @public (undocumented)
-export type ICardSectionTokenReturnType = ReturnType<Extract<ICardSectionComponent['tokens'], Function>>;
-
-// @public (undocumented)
-export interface ICardSectionTokens extends IStackTokens {
-    margin?: number | string;
-}
-
-// @public (undocumented)
-export interface ICardSectionViewProps extends ICardSectionProps {
-}
-
-// @public (undocumented)
-export interface ICardSlots {
-    root?: IStackSlot;
-}
-
-// @public (undocumented)
-export type ICardStyles = IComponentStyles<ICardSlots>;
-
-// @public (undocumented)
-export type ICardStylesReturnType = ReturnType<Extract<ICardComponent['styles'], Function>>;
-
-// @public (undocumented)
-export type ICardTokenReturnType = ReturnType<Extract<ICardComponent['tokens'], Function>>;
-
-// @public (undocumented)
-export interface ICardTokens extends IStackTokens {
-    borderFocused?: string;
-    boxShadow?: string;
-    boxShadowFocused?: string;
-    boxShadowHovered?: string;
-    childrenMargin?: number;
-    cursor?: string;
-    height?: number | string;
-    highContrastBoxShadow?: string;
-    highContrastBoxShadowFocused?: string;
-    highContrastBoxShadowHovered?: string;
-    maxWidth?: number | string;
-    minHeight?: number | string;
-    minWidth?: number | string;
-    width?: number | string;
-}
+// @public
+export const useCardState: (draftState: CardState) => void;
 
 
 // (No @packageDocumentation comment for this package)

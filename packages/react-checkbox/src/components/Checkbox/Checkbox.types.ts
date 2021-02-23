@@ -1,9 +1,10 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import * as React from 'react';
+import { BaseSlots, SlotProp, SlotProps } from '@fluentui/react-compose';
+import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
 import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { IIconProps } from '@fluentui/react-internal/lib/Icon';
+
+/* eslint-disable @typescript-eslint/naming-convention */
 
 /**
  * Checkbox class interface.
@@ -26,12 +27,27 @@ export interface ICheckbox {
  */
 export interface ICheckboxProps
   extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
-    React.RefAttributes<HTMLDivElement> {
+    React.RefAttributes<HTMLElement> {
+  /**
+   * Render the root element as another type.
+   */
+  as?: React.ElementType;
+
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ICheckbox>;
+
+  /**
+   * Label to display next to the checkbox.
+   */
+  label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
+
+  /**
+   * Checkmark Icon to display when checkbox is checked.
+   */
+  checkmark?: SlotProp<ISvgIconProps>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-Checkbox class.
@@ -49,11 +65,6 @@ export interface ICheckboxProps
    * want the Checkbox instance to maintain its own state.
    */
   defaultChecked?: boolean;
-
-  /**
-   * Label to display next to the checkbox.
-   */
-  label?: string;
 
   /**
    * Disabled state of the checkbox.
@@ -111,18 +122,17 @@ export interface ICheckboxProps
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
+   *
+   * @deprecated This no longer works. TODO: fix use cases with tokens prop.
    */
   styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
 
   /**
    * Custom render function for the label.
+   *
+   * @deprecated Use label prop instead.
    */
   onRenderLabel?: IRenderFunction<ICheckboxProps>;
-
-  /**
-   * Custom icon props for the check mark rendered by the checkbox
-   */
-  checkmarkIconProps?: IIconProps;
 
   /**
    * Optional controlled indeterminate visual state for checkbox. Setting indeterminate state takes visual precedence
@@ -189,4 +199,29 @@ export interface ICheckboxStyles {
    * Style for text appearing with the checkbox in its default enabled state.
    */
   text?: IStyle;
+}
+
+/**
+ * {@docCategory Checkbox}
+ */
+export interface ICheckboxSlots extends BaseSlots {
+  input: React.ElementType;
+  container: React.ElementType;
+  checkbox: React.ElementType;
+  checkmark: React.ElementType;
+  label: React.ElementType;
+}
+
+/**
+ * {@docCategory Checkbox}
+ */
+export type ICheckboxClasses = { [key in keyof ICheckboxSlots]: string };
+
+/**
+ * {@docCategory Checkbox}
+ */
+export type ICheckboxSlotProps = SlotProps<ICheckboxSlots, ICheckboxProps, React.HTMLAttributes<HTMLDivElement>>;
+
+export interface ICheckboxState extends Omit<ICheckboxProps, keyof ICheckboxSlotProps>, Partial<ICheckboxSlotProps> {
+  ref: React.Ref<HTMLElement>;
 }

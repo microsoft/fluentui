@@ -281,6 +281,21 @@ export interface IVerticalStackedChartProps {
    * This is an optional prop, If haven't given, legend will take
    */
   xAxisCalloutData?: string;
+  /**
+   * line data to render lines on stacked bar chart
+   */
+  lineData?: ILineDataInVerticalStackedBarChart[];
+}
+
+export interface ILineDataInVerticalStackedBarChart {
+  y: number;
+  color: string;
+  legend: string;
+  /**
+   * Data to show in callout
+   */
+  data?: number;
+  yAxisCalloutData?: string;
 }
 
 export interface IGVBarChartSeriesPoint {

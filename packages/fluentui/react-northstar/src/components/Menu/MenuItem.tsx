@@ -13,6 +13,7 @@ import {
   useStyles,
   ComponentWithAs,
   ShorthandConfig,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -40,7 +41,6 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../.
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -453,6 +453,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             disabled,
             onBlur: handleBlur,
             onFocus: handleFocus,
+            onClick: handleClick,
             ...unhandledProps,
           })}
           {...rootHandlers}
@@ -482,10 +483,6 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         handleWrapperBlur(e);
         _.invoke(predefinedProps, 'onBlur', e, props);
       },
-      onClick: (e: React.MouseEvent) => {
-        handleClick(e);
-        _.invoke(predefinedProps, 'onClick', e, props);
-      },
       ...(on === 'hover' && {
         onMouseEnter: e => {
           setWhatInputSource(context.target, 'mouse');
@@ -514,6 +511,12 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
                 defaultProps: () => ({
                   ...slotProps.menu,
                   styles: resolvedStyles.menu,
+                }),
+                overrideProps: (predefinedProps: MenuProps) => ({
+                  onClick: e => {
+                    handleClick(e);
+                    _.invoke(predefinedProps, 'onClick', e, props);
+                  },
                 }),
               })}
             </Popper>
@@ -587,6 +590,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         vertical: props.vertical,
         primary: props.primary,
         on: props.on,
+        variables: props.variables,
       },
       menu: {
         accessibility: submenuBehavior,

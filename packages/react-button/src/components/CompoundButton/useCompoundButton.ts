@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 import { useButtonState } from '../Button/useButtonState';
 
@@ -8,7 +8,7 @@ import { useButtonState } from '../Button/useButtonState';
  */
 export const compoundButtonShorthandProps = ['icon', 'loader', 'content', 'contentContainer', 'secondaryContent'];
 
-const mergeProps = makeMergeProps({
+const mergeProps = makeMergeProps<CompoundButtonState>({
   deepMerge: compoundButtonShorthandProps,
 });
 
@@ -19,7 +19,7 @@ export const useCompoundButton = (
   props: CompoundButtonProps,
   ref: React.Ref<HTMLElement>,
   defaultProps?: CompoundButtonProps,
-) => {
+): CompoundButtonState => {
   // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -40,5 +40,5 @@ export const useCompoundButton = (
 
   useButtonState(state);
 
-  return state as CompoundButtonState;
+  return state;
 };

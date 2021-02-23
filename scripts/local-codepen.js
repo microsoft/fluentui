@@ -28,15 +28,11 @@ if (fs.existsSync(configPath)) {
   }
   const webpackConfig = require(configPath);
   const compiler = webpack(webpackConfig);
-  const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-    stats: {
-      colors: true,
-    },
-  });
-  const server = new WebpackDevServer(compiler, devServerOptions);
+  const server = new WebpackDevServer(compiler, webpackConfig.devServer);
+  const port = webpackConfig.devServer.port || 8080;
 
-  server.listen(8080, '127.0.0.1', async () => {
-    const url = await ngrok.connect({ port: 8080, host_header: 'localhost:8080' });
+  server.listen(port, '127.0.0.1', async () => {
+    const url = await ngrok.connect({ port, host_header: 'localhost:' + port });
     console.log(`Starting server on http://${url}`);
     console.log(
       `Add this to CodePen:

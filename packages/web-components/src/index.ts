@@ -30,4 +30,5 @@ export * from './tree-view/';
 
 // export styles and utils
 export * from './styles';
-export { parseColorString } from './color';
+export * from './color';
+export { DesignSystem, DesignSystemDefaults } from './fluent-design-system';

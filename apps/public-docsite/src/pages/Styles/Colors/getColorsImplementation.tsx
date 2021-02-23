@@ -18,7 +18,7 @@ export function getColorsImplementation(
 ): IPageSectionProps<Platforms> {
   const colorsMarkdown = require<
     string
-  >('!raw-loader!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsImplementation.md')
+  >('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/Colors/docs/web/ColorsImplementation.md')
     .replace(/CommunicationColors\.primary/g, `${jsColorGroup}.${jsColorName}`)
     .replace(/CommunicationColors/g, jsColorGroup)
     .replace(/communicationPrimary/g, scssColorName);

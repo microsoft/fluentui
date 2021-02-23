@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { MessageBarPageProps as ExternalProps } from '@fluentui/react-examples/lib/react/MessageBar/MessageBar.doc';
+import { ISideRailLink } from '@fluentui/react-docsite-components/lib/index2';
 
-const related = require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/MessageBarRelated.md') as string;
+const related: ISideRailLink[] = [];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/MessageBarPage';
 
@@ -11,7 +12,7 @@ export const MessageBarPageProps: TFabricPlatformPageProps = {
     related,
   },
   ios: {
-    overview: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarOverview.md') as string,
+    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/MessageBarPage/docs/ios/MessageBarOverview.md') as string,
     related,
     componentUrl,
   },

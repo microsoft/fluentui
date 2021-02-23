@@ -3,7 +3,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { TextPageProps } from './TextPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps, ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
-import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/TextImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
         },
       ];
 
@@ -37,7 +37,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/TextImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
         },
       ];
     case 'cross':

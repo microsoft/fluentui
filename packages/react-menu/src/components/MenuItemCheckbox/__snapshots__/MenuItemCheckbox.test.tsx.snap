@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItemCheckbox conformance renders a default state 1`] = `
+<div
+  aria-checked={false}
+  className=""
+  name="checkbox"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="menuitemcheckbox"
+  tabIndex={0}
+>
+  Default MenuItemCheckbox
+</div>
+`;

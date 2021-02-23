@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form } from '@fluentui/react-northstar';
+import { Form, FormInput, FormCheckbox, FormButton } from '@fluentui/react-northstar';
 
 const FormExampleCheckbox = () => (
   <Form
@@ -7,7 +7,7 @@ const FormExampleCheckbox = () => (
       alert('Form submitted');
     }}
   >
-    <Form.Input
+    <FormInput
       label="Email"
       name="email"
       id="email-inline-shorthand"
@@ -16,8 +16,8 @@ const FormExampleCheckbox = () => (
       inline
       showSuccessIndicator={false}
     />
-    <Form.Checkbox label="Subscribe to newsletter" key="newsletter" id="newsletter-inline-shorthand" />
-    <Form.Button content="Submit" key="submit" />
+    <FormCheckbox label="Subscribe to newsletter" key="newsletter" id="newsletter-inline-shorthand" />
+    <FormButton content="Submit" key="submit" />
   </Form>
 );
 

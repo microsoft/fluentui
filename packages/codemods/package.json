@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/codemods",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.5",
   "description": "Tool enabling easy upgrades to new Fluent UI versions",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -23,11 +23,10 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
-    "@types/jest": "~24.9.0",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/node": "^10.3.2",
     "@fluentui/scripts": "^1.0.0",
-    "@types/react": "16.8.25",
+    "@types/react": "16.9.42",
     "@types/semver": "^5.5.0",
     "fs-extra": "^8.1.0",
     "@types/fs-extra": "^8.0.1"

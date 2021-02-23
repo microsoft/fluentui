@@ -16,7 +16,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_1"
+  id="chart_2"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone2"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -50,7 +50,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -58,14 +58,14 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_1"
+        id="xAxisGElementchart_2"
         transform="translate(0, -35)"
       />
       <g
@@ -79,26 +79,26 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_1"
+        id="yAxisGElementchart_2"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="toolTipcallout0"
           className=
 
               {
@@ -116,7 +116,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           y={-24}
         />
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="toolTipcallout0"
           className=
 
               {
@@ -134,7 +134,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
           y={20}
         />
         <rect
-          aria-labelledby="callout0"
+          aria-labelledby="toolTipcallout0"
           className=
 
               {
@@ -245,7 +245,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -261,16 +261,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -334,7 +334,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -350,16 +350,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 
                         {
                           background-color: #002050;
-                          background-image: ;
                           border-color: #002050;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #002050, #002050);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
                   />
@@ -423,7 +423,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -439,16 +439,16 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -495,7 +495,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         overflow: hidden;
         width: 100%;
       }
-  id="chart_10"
+  id="chart_14"
   role="presentation"
 >
   <div
@@ -504,7 +504,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone15"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -529,7 +529,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -537,14 +537,14 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_10"
+        id="xAxisGElementchart_14"
         transform="translate(0, -35)"
       />
       <g
@@ -558,26 +558,26 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_10"
+        id="yAxisGElementchart_14"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout9"
+          aria-labelledby="toolTipcallout12"
           className=
 
               {
@@ -595,7 +595,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           y={-24}
         />
         <rect
-          aria-labelledby="callout9"
+          aria-labelledby="toolTipcallout12"
           className=
 
               {
@@ -613,7 +613,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
           y={20}
         />
         <rect
-          aria-labelledby="callout9"
+          aria-labelledby="toolTipcallout12"
           className=
 
               {
@@ -707,7 +707,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -723,16 +723,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 
                   {
                     background-color: #0078d4;
-                    background-image: ;
                     border-color: #0078d4;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #0078d4, #0078d4);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, #0078d4, #0078d4);
                     opacity: ;
                   }
             />
@@ -796,7 +796,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -812,16 +812,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 
                   {
                     background-color: #002050;
-                    background-image: ;
                     border-color: #002050;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #002050, #002050);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, #002050, #002050);
                     opacity: ;
                   }
             />
@@ -885,7 +885,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -901,16 +901,16 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
 
                   {
                     background-color: #00188f;
-                    background-image: ;
                     border-color: #00188f;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, #00188f, #00188f);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, #00188f, #00188f);
                     opacity: ;
                   }
             />
@@ -954,7 +954,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_4"
+  id="chart_6"
   role="presentation"
 >
   <div
@@ -963,7 +963,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone7"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -988,7 +988,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -996,14 +996,14 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_4"
+        id="xAxisGElementchart_6"
         transform="translate(0, -35)"
       />
       <g
@@ -1017,26 +1017,26 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_4"
+        id="yAxisGElementchart_6"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout3"
+          aria-labelledby="toolTipcallout4"
           className=
 
               {
@@ -1054,7 +1054,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           y={-24}
         />
         <rect
-          aria-labelledby="callout3"
+          aria-labelledby="toolTipcallout4"
           className=
 
               {
@@ -1072,7 +1072,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
           y={20}
         />
         <rect
-          aria-labelledby="callout3"
+          aria-labelledby="toolTipcallout4"
           className=
 
               {
@@ -1111,7 +1111,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_7"
+  id="chart_10"
   role="presentation"
 >
   <div
@@ -1120,7 +1120,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1145,7 +1145,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1153,14 +1153,14 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_7"
+        id="xAxisGElementchart_10"
         transform="translate(0, -35)"
       />
       <g
@@ -1174,32 +1174,32 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_7"
+        id="yAxisGElementchart_10"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout6"
+          aria-labelledby="toolTipcallout8"
           className=
 
               {
                 opacity: ;
               }
-          data-is-focusable={true}
+          data-is-focusable={false}
           fill="#0078d4"
           height={0}
           onBlur={[Function]}
@@ -1211,13 +1211,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           y={-24}
         />
         <rect
-          aria-labelledby="callout6"
+          aria-labelledby="toolTipcallout8"
           className=
 
               {
                 opacity: ;
               }
-          data-is-focusable={true}
+          data-is-focusable={false}
           fill="#002050"
           height={0}
           onBlur={[Function]}
@@ -1229,13 +1229,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
           y={20}
         />
         <rect
-          aria-labelledby="callout6"
+          aria-labelledby="toolTipcallout8"
           className=
 
               {
                 opacity: ;
               }
-          data-is-focusable={true}
+          data-is-focusable={false}
           fill="#00188f"
           height={0}
           onBlur={[Function]}
@@ -1340,7 +1340,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1356,16 +1356,16 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -1429,7 +1429,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1445,16 +1445,16 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 
                         {
                           background-color: #002050;
-                          background-image: ;
                           border-color: #002050;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #002050, #002050);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
                   />
@@ -1518,7 +1518,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1534,16 +1534,16 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -1590,7 +1590,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_13"
+  id="chart_18"
   role="presentation"
 >
   <div
@@ -1599,7 +1599,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone14"
+    data-focuszone-id="FocusZone19"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1624,7 +1624,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1632,14 +1632,14 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_13"
+        id="xAxisGElementchart_18"
         transform="translate(0, -35)"
       />
       <g
@@ -1653,26 +1653,26 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_13"
+        id="yAxisGElementchart_18"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout12"
+          aria-labelledby="toolTipcallout16"
           className=
 
               {
@@ -1690,7 +1690,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           y={-24}
         />
         <rect
-          aria-labelledby="callout12"
+          aria-labelledby="toolTipcallout16"
           className=
 
               {
@@ -1708,7 +1708,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
           y={20}
         />
         <rect
-          aria-labelledby="callout12"
+          aria-labelledby="toolTipcallout16"
           className=
 
               {
@@ -1819,7 +1819,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1835,16 +1835,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -1908,7 +1908,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1924,16 +1924,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 
                         {
                           background-color: #002050;
-                          background-image: ;
                           border-color: #002050;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #002050, #002050);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
                   />
@@ -1997,7 +1997,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2013,16 +2013,16 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -2069,7 +2069,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_22"
   role="presentation"
 >
   <div
@@ -2078,7 +2078,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone23"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2103,7 +2103,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2111,14 +2111,14 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_22"
         transform="translate(0, -35)"
       />
       <g
@@ -2132,26 +2132,26 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_22"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout15"
+          aria-labelledby="toolTipcallout20"
           className=
 
               {
@@ -2169,7 +2169,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           y={-24}
         />
         <rect
-          aria-labelledby="callout15"
+          aria-labelledby="toolTipcallout20"
           className=
 
               {
@@ -2187,7 +2187,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
           y={20}
         />
         <rect
-          aria-labelledby="callout15"
+          aria-labelledby="toolTipcallout20"
           className=
 
               {
@@ -2298,7 +2298,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2314,16 +2314,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -2387,7 +2387,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2403,16 +2403,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 
                         {
                           background-color: #002050;
-                          background-image: ;
                           border-color: #002050;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #002050, #002050);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
                   />
@@ -2476,7 +2476,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2492,16 +2492,16 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />
@@ -2548,7 +2548,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_19"
+  id="chart_26"
   role="presentation"
 >
   <div
@@ -2557,7 +2557,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone20"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2582,7 +2582,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2590,14 +2590,14 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_19"
+        id="xAxisGElementchart_26"
         transform="translate(0, -35)"
       />
       <g
@@ -2611,26 +2611,26 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_19"
+        id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
       <g>
         <rect
-          aria-labelledby="callout18"
+          aria-labelledby="toolTipcallout24"
           className=
 
               {
@@ -2648,7 +2648,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           y={-24}
         />
         <rect
-          aria-labelledby="callout18"
+          aria-labelledby="toolTipcallout24"
           className=
 
               {
@@ -2666,7 +2666,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
           y={20}
         />
         <rect
-          aria-labelledby="callout18"
+          aria-labelledby="toolTipcallout24"
           className=
 
               {
@@ -2777,7 +2777,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2793,16 +2793,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
 
                         {
                           background-color: #0078d4;
-                          background-image: ;
                           border-color: #0078d4;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #0078d4, #0078d4);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
                   />
@@ -2866,7 +2866,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2882,16 +2882,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
 
                         {
                           background-color: #002050;
-                          background-image: ;
                           border-color: #002050;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #002050, #002050);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #002050, #002050);
                           opacity: ;
                         }
                   />
@@ -2955,7 +2955,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2971,16 +2971,16 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
 
                         {
                           background-color: #00188f;
-                          background-image: ;
                           border-color: #00188f;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, #00188f, #00188f);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
                   />

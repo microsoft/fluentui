@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/style-utilities",
-  "version": "8.0.0-beta.11",
+  "version": "8.0.0-beta.19",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -23,21 +23,19 @@
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
-    "@types/jest": "~24.9.0",
-    "@types/webpack-env": "1.15.1",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/theme": "^2.0.0-beta.11",
-    "@fluentui/merge-styles": "^8.0.0-beta.3",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/utilities": "^8.0.0-beta.8",
+    "@fluentui/theme": "^2.0.0-beta.19",
+    "@fluentui/merge-styles": "^8.0.0-beta.5",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0"
   }
 }

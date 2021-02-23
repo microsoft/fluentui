@@ -26,8 +26,8 @@ export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariab
       borderColor: v.borderColor,
       borderRadius: v.borderRadius,
       backgroundColor: v.backgroundColor,
-      ...(p.quiet && {
-        backgroundColor: v.quietBackgroundColor,
+      ...(p.ghost && {
+        backgroundColor: v.ghostBackgroundColor,
       }),
 
       ...(p.inverted && {
@@ -46,8 +46,8 @@ export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariab
 
       ':hover': {
         backgroundColor: v.backgroundColorHover,
-        ...(p.quiet && {
-          backgroundColor: v.quietBackgroundColorHover,
+        ...(p.ghost && {
+          backgroundColor: v.ghostBackgroundColorHover,
         }),
         ...(p.inverted && {
           backgroundColor: v.invertedBackgroundColorHover,
@@ -68,8 +68,8 @@ export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariab
         cursor: 'pointer',
         ':focus-visible': {
           backgroundColor: v.backgroundColorFocus,
-          ...(p.quiet && {
-            backgroundColor: v.quietBackgroundColorFocus,
+          ...(p.ghost && {
+            backgroundColor: v.ghostBackgroundColorFocus,
           }),
           ...(p.inverted && {
             backgroundColor: v.invertedBackgroundColorFocus,
@@ -87,8 +87,8 @@ export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariab
         },
         ':active': {
           backgroundColor: v.backgroundColorPressed,
-          ...(p.quiet && {
-            backgroundColor: v.quietBackgroundColorPressed,
+          ...(p.ghost && {
+            backgroundColor: v.ghostBackgroundColorPressed,
           }),
           ...(p.inverted && {
             backgroundColor: v.invertedBackgroundColorPressed,
@@ -121,8 +121,8 @@ export const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariab
         ...(p.inverted && {
           backgroundColor: v.invertedBackgroundColorDisabled,
         }),
-        ...(p.quiet && {
-          backgroundColor: v.quietBackgroundColorDisabled,
+        ...(p.ghost && {
+          backgroundColor: v.ghostBackgroundColorDisabled,
         }),
         ...(p.selected && {
           backgroundColor: v.selectedBackgroundColorDisabled,

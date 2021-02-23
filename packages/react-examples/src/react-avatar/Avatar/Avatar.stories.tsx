@@ -1,10 +1,58 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, avatarSizeValues } from '@fluentui/react-avatar';
-import { GroupIcon, IDBadgeIcon, ChatBotIcon, SkypeCheckIcon } from '@fluentui/react-icons-mdl2';
-import { StoryExample } from '../utils/StoryExample';
+import { AvatarExamples } from '@fluentui/example-data';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import { AvatarExamples as examples } from './AvatarExamples';
+import {
+  Avatar,
+  AvatarProps,
+  avatarSizeValues,
+  AvatarState,
+  renderAvatar,
+  useAvatar,
+  useAvatarStyles,
+} from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
+import {
+  CalendarIcon,
+  CatIcon,
+  ChatBotIcon,
+  ContactIcon,
+  GroupIcon,
+  IDBadgeIcon,
+  RoomIcon,
+  SkypeArrowIcon,
+  SkypeCheckIcon,
+  SkypeClockIcon,
+  SkypeMinusIcon,
+  TelemarketerIcon,
+} from '@fluentui/react-icons-mdl2';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
+
+import { StoryExample } from '../utils/StoryExample';
+
+const examples = {
+  ...AvatarExamples,
+  size: avatarSizeValues,
+  icon: [
+    /* eslint-disable react/jsx-key */
+    <GroupIcon />,
+    <CatIcon />,
+    <CalendarIcon />,
+    <RoomIcon />,
+    <IDBadgeIcon />,
+    <TelemarketerIcon />,
+    /* eslint-enable react/jsx-key */
+  ],
+  badge: [
+    'success',
+    'warning',
+    'error',
+    'info',
+    { state: 'success', icon: { as: SkypeCheckIcon } },
+    { state: 'warning', icon: { as: SkypeClockIcon } },
+    { state: 'error', icon: { as: SkypeMinusIcon } },
+    { state: 'info', icon: { as: SkypeArrowIcon } },
+  ],
+} as const;
 
 export const Basic = () => (
   <>
@@ -32,14 +80,18 @@ export const Basic = () => (
       <Avatar size={48} name={examples.name[5]} image={examples.image[5]} badge="success" />
       <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
+    <StoryExample title="Brand color">
+      <Avatar colorVariant="brand" name={examples.name[4]} badge="info" />
+      <Avatar colorVariant="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+    </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
-        <Avatar name={examples.name[7]} active={true} />
-        <Avatar image={examples.image[8]} active={true} activeDisplay="shadow" />
-        <Avatar image={examples.image[9]} active={true} activeDisplay="glow" />
-        <Avatar image={examples.image[10]} active={true} activeDisplay="ring-shadow" />
-        <Avatar image={examples.image[11]} active={true} activeDisplay="ring-glow" />
-        <Avatar image={examples.image[12]} active={false} />
+        <Avatar name={examples.name[7]} active="active" />
+        <Avatar image={examples.image[8]} active="active" activeDisplay="shadow" />
+        <Avatar image={examples.image[9]} active="active" activeDisplay="glow" />
+        <Avatar image={examples.image[10]} active="active" activeDisplay="ring-shadow" />
+        <Avatar image={examples.image[11]} active="active" activeDisplay="ring-glow" />
+        <Avatar image={examples.image[12]} active="inactive" />
       </Stack>
     </StoryExample>
   </>
@@ -48,22 +100,28 @@ export const Basic = () => (
 export const AllSizes = () => (
   <>
     <StoryExample title="Image">
-      <AvatarExampleList display="image" />
+      <AvatarExampleList images={examples.image} />
     </StoryExample>
     <StoryExample title="Image, square">
-      <AvatarExampleList display="image" square exampleIndex={1} />
+      <AvatarExampleList images={examples.image} square exampleIndex={1} />
     </StoryExample>
     <StoryExample title="Initials">
-      <AvatarExampleList display="label" />
+      <AvatarExampleList names={examples.name} />
+    </StoryExample>
+    <StoryExample title="Initials, brand color">
+      <AvatarExampleList names={examples.name} colorVariant="brand" />
     </StoryExample>
     <StoryExample title="Initials, square">
-      <AvatarExampleList display="label" square exampleIndex={1} />
+      <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
     <StoryExample title="Icon">
-      <AvatarExampleList display="icon" />
+      <AvatarExampleList icons={examples.icon} />
     </StoryExample>
     <StoryExample title="Icon, square">
-      <AvatarExampleList display="icon" square exampleIndex={1} />
+      <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
+    </StoryExample>
+    <StoryExample title="Icon, brand color">
+      <AvatarExampleList icons={examples.icon} colorVariant="brand" exampleIndex={1} />
     </StoryExample>
   </>
 );
@@ -71,31 +129,31 @@ export const AllSizes = () => (
 export const Active = () => (
   <>
     <StoryExample title="ring">
-      <AvatarExampleList display="image" active={true} activeDisplay="ring" exampleIndex={2} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring" exampleIndex={2} />
     </StoryExample>
     <StoryExample title="ring-shadow">
-      <AvatarExampleList display="image" active={true} activeDisplay="ring-shadow" exampleIndex={3} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring-shadow" exampleIndex={3} />
     </StoryExample>
     <StoryExample title="ring-glow">
-      <AvatarExampleList display="image" active={true} activeDisplay="ring-glow" exampleIndex={4} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="ring-glow" exampleIndex={4} />
     </StoryExample>
     <StoryExample title="shadow">
-      <AvatarExampleList display="image" active={true} activeDisplay="shadow" exampleIndex={5} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="shadow" exampleIndex={5} />
     </StoryExample>
     <StoryExample title="glow">
-      <AvatarExampleList display="image" active={true} activeDisplay="glow" exampleIndex={6} />
+      <AvatarExampleList images={examples.image} active="active" activeDisplay="glow" exampleIndex={6} />
     </StoryExample>
     <StoryExample title="inactive">
-      <AvatarExampleList display="image" active={false} exampleIndex={7} />
+      <AvatarExampleList images={examples.image} active="inactive" exampleIndex={7} />
     </StoryExample>
   </>
 );
 
 export const ActiveAnimation = () => {
   const [active, setActive] = React.useState(false);
-  const [size, nextSize, prevSize] = useValueSelectorState(avatarSizeValues, 96);
+  const [size, nextSize, prevSize] = useValueSelectorState(examples.size, 96);
   const [activeDisplay, nextActiveDisplay, prevActiveDisplay] = useValueSelectorState(examples.activeDisplay, 'ring');
-  const [display, nextDisplay, prevDisplay] = useValueSelectorState(examples.display, 'image');
+  const [display, nextDisplay, prevDisplay] = useValueSelectorState(['image', 'icon', 'label'], 'image');
 
   React.useEffect(() => {
     const id = setTimeout(() => setActive(true), 500);
@@ -108,11 +166,11 @@ export const ActiveAnimation = () => {
         <div style={{ width: 200, height: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <Avatar
             size={size}
-            display={display}
-            active={active}
+            active={active ? 'active' : 'inactive'}
             activeDisplay={activeDisplay}
             name={examples.name[10]}
-            image={examples.image[10]}
+            image={display === 'image' && examples.image[10]}
+            icon={display === 'icon' && <ContactIcon />}
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
@@ -135,30 +193,67 @@ export const ActiveAnimation = () => {
 
 export const CustomSizes = () => (
   <StoryExample title="Custom size">
-    <Avatar name={examples.name[11]} badge="success" customSize={13} />
-    <Avatar image={examples.image[12]} badge="warning" customSize={21} />
-    <Avatar name={examples.name[13]} badge="error" customSize={34} />
-    <Avatar image={examples.image[14]} badge="info" customSize={55} />
-    <Avatar name={examples.name[15]} badge="warning" customSize={89} />
-    <Avatar image={examples.image[16]} badge="success" customSize={144} />
+    <Avatar name={examples.name[11]} badge="success" size={20} style={{ width: '13px', height: '13px' }} />
+    <Avatar image={examples.image[12]} badge="warning" size={20} style={{ width: '21px', height: '21px' }} />
+    <Avatar name={examples.name[13]} badge="error" size={32} style={{ width: '34px', height: '34px' }} />
+    <Avatar image={examples.image[14]} badge="info" size={48} style={{ width: '55px', height: '55px' }} />
+    <Avatar name={examples.name[15]} badge="warning" size={72} style={{ width: '89px', height: '89px' }} />
+    <Avatar image={examples.image[16]} badge="success" size={128} style={{ width: '144px', height: '144px' }} />
   </StoryExample>
 );
 
-export const CustomShape = () => {
+const useRobotAvatarRootStyles = makeStyles<AvatarState>([
+  [null, { borderRadius: '0' }],
+  [s => s.size === 20, { width: '24px' }],
+  [s => s.size === 24, { width: '28px' }],
+  [s => s.size === 28, { width: '32px' }],
+  [s => s.size === 32, { width: '36px' }],
+  [s => s.size === 36, { width: '40px' }],
+  [s => s.size === 40, { width: '44px' }],
+  [s => s.size === 48, { width: '56px' }],
+  [s => s.size === 56, { width: '64px' }],
+  [s => s.size === 64, { width: '72px' }],
+  [s => s.size === 72, { width: '80px' }],
+  [s => s.size === 96, { width: '108px' }],
+  [s => s.size === 120, { width: '128px' }],
+  [s => s.size === 128, { width: '136px' }],
+]);
+
+const useRobotAvatarLabelStyles = makeStyles<AvatarState>([
+  [
+    null,
+    {
+      background: `url('${examples.hexagon}') 0px/contain no-repeat`,
+      borderRadius: '0',
+    },
+  ],
+]);
+
+const RobotAvatar = React.forwardRef((props: AvatarProps, ref: React.Ref<HTMLElement>) => {
+  const state = useAvatar(props, ref, {
+    icon: <ChatBotIcon />,
+  });
+
+  state.className = ax(useRobotAvatarRootStyles(state), state.className);
+  state.label.className = ax(useRobotAvatarLabelStyles(state), state.label.className);
+
+  useAvatarStyles(state);
+
+  return renderAvatar(state);
+});
+
+export const RobotExample = () => {
   return (
-    <>
-      <StoryExample title="Custom shape">
-        <AvatarExampleList
-          icon={<ChatBotIcon />}
-          display="icon"
-          tokens={{
-            width: 'calc(var(--avatar-height) * 1.125)',
-            background: `url('${examples.hexagon}') 0px/contain no-repeat`,
-            borderRadius: '0',
-          }}
-        />
-      </StoryExample>
-    </>
+    <StoryExample title="Robot Example">
+      <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
+        <RobotAvatar size={20} />
+        <RobotAvatar size={32} />
+        <RobotAvatar size={48} />
+        <RobotAvatar size={64} />
+        <RobotAvatar size={96} />
+        <RobotAvatar size={128} />
+      </Stack>
+    </StoryExample>
   );
 };
 
@@ -166,15 +261,14 @@ export const AvatarPlayground = () => {
   const [nameAndImage, nextNameAndImage, prevNameAndImage] = useValueSelectorState(examples.nameAndImage);
 
   const propSelectors = [
-    useValueSelector('size', useValueSelectorState(avatarSizeValues, 96), true),
-    useValueSelector('customSize', useValueSelectorState(examples.customSize)),
+    useValueSelector('size', useValueSelectorState(examples.size, 96), true),
     useValueSelector('square', useValueSelectorState([true, false])),
     useValueSelector('badge', useValueSelectorState(examples.badge), false, badgeToString),
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
-    useValueSelector('display', useValueSelectorState(examples.display)),
-    useValueSelector('active', useValueSelectorState([true, false])),
+    useValueSelector('colorVariant', useValueSelectorState(examples.colorVariant)),
+    useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];
 
@@ -206,21 +300,26 @@ export const AvatarPlayground = () => {
 /**
  * Generate a list of Avatars with sample properties
  */
-const AvatarExampleList: React.FC<AvatarProps & { exampleIndex?: number }> = props => {
-  const { exampleIndex = 0 } = props;
-  const offset = exampleIndex * avatarSizeValues.length;
+const AvatarExampleList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+  icons?: readonly JSX.Element[];
+  exampleIndex?: number;
+}> = props => {
+  const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
+  const offset = exampleIndex * examples.size.length;
 
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 24 }}>
-      {avatarSizeValues.map((size, i) => (
+      {examples.size.map((size, i) => (
         <Avatar
           key={size}
           size={size}
-          name={examples.name[(i + offset) % examples.name.length]}
-          image={examples.image[(i + offset) % examples.image.length]}
+          name={names && names[(i + offset) % names.length]}
+          image={images && images[(i + offset) % images.length]}
+          icon={icons && icons[(i + offset) % icons.length]}
           badge={examples.badge[(i + offset) % examples.badge.length]}
-          icon={examples.icon[(i + offset) % examples.icon.length]}
-          {...props}
+          {...restOfProps}
         />
       ))}
     </Stack>

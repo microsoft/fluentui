@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IIconProps, IContextualMenuProps, Stack, Link } from '@fluentui/react';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -44,7 +44,10 @@ export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = p
       </Stack>
       <p>
         For a list of Icons, visit our{' '}
-        <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/icons">Icon documentation</Link>.
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/styles/icons" underline>
+          Icon documentation
+        </Link>
+        .
       </p>
     </div>
   );

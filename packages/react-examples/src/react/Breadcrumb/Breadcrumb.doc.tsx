@@ -3,11 +3,11 @@ import * as React from 'react';
 import { BreadcrumbBasicExample } from './Breadcrumb.Basic.Example';
 import { BreadcrumbCollapsingExample } from './Breadcrumb.Collapsing.Example';
 import { BreadcrumbStaticExample } from './Breadcrumb.Static.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const BreadcrumbBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Basic.Example.tsx') as string;
-const BreadcrumbCollapsingExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Collapsing.Example.tsx') as string;
-const BreadcrumbStaticExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Static.Example.tsx') as string;
+const BreadcrumbBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Basic.Example.tsx') as string;
+const BreadcrumbCollapsingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Collapsing.Example.tsx') as string;
+const BreadcrumbStaticExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/Breadcrumb.Static.Example.tsx') as string;
 
 export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',
@@ -30,12 +30,18 @@ export const BreadcrumbPageProps: IDocPageProps = {
       view: <BreadcrumbStaticExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbBestPractices.md'),
-  dos: require<string>('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDos.md'),
-  donts: require<string>('!raw-loader!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDonts.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbBestPractices.md'),
+  dos: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDos.md'),
+  donts: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Breadcrumb/docs/BreadcrumbDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

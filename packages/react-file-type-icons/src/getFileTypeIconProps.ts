@@ -35,12 +35,13 @@ export interface IFileTypeIconOptions {
    */
   type?: FileIconTypeInput;
   /**
-   * The size of the icon in pixels. Defaults to 16.
+   * The size of the icon in pixels.
+   * @default 16
    */
   size?: FileTypeIconSize;
   /**
    * The type of image file to use. Can be svg or png.
-   * Defaults to svg.
+   * @default 'svg'
    */
   imageFileType?: ImageFileType;
 }
@@ -48,19 +49,51 @@ export interface IFileTypeIconOptions {
 /**
  * This function returns properties for a file type icon given the IFileTypeIconOptions.
  * It accounts for different device pixel ratios. For example,
- * getFileTypeIconName({extension: 'doc', size: 16, imageFileType: 'png'})
- * will return { iconName: 'docx16_2x_png' } if the devicePixelRatio is 2.
- *
+ * `getFileTypeIconProps({ extension: 'doc', size: 16, imageFileType: 'png' })`
+ * will return `{ iconName: 'docx16_2x_png' }` if the `devicePixelRatio` is 2.
  * @param options
  */
 export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName: string } {
   // First, obtain the base name of the icon using the extension or type.
-  let iconBaseName: string = GENERIC_FILE;
+  let iconBaseName: string;
+  const { extension, type, size, imageFileType } = options;
 
-  if (options.extension) {
-    iconBaseName = _getFileTypeIconNameFromExtension(options.extension);
-  } else if (options.type) {
-    switch (options.type) {
+  iconBaseName = getFileTypeIconNameFromExtensionOrType(extension, type);
+  // Next, obtain the suffix using the icon size, user's device pixel ration, and
+  // preference for svg or png
+  let _size: FileTypeIconSize = size || DEFAULT_ICON_SIZE;
+  let suffix: string = getFileTypeIconSuffix(_size, imageFileType);
+
+  return { iconName: iconBaseName + suffix };
+}
+
+export function getFileTypeIconNameFromExtensionOrType(
+  extension: string | undefined,
+  type: FileIconType | undefined,
+): string {
+  let iconBaseName: string | undefined;
+  if (extension) {
+    if (!_extensionToIconName) {
+      _extensionToIconName = {};
+
+      for (const iconName in FileTypeIconMap) {
+        if (FileTypeIconMap.hasOwnProperty(iconName)) {
+          const extensions = FileTypeIconMap[iconName].extensions;
+
+          if (extensions) {
+            for (let i = 0; i < extensions.length; i++) {
+              _extensionToIconName[extensions[i]] = iconName;
+            }
+          }
+        }
+      }
+    }
+
+    // Strip periods, force lowercase.
+    extension = extension.replace('.', '').toLowerCase();
+    return _extensionToIconName[extension] || GENERIC_FILE;
+  } else if (type) {
+    switch (type) {
       case FileIconType.docset:
         iconBaseName = DOCSET_FOLDER;
         break;
@@ -99,39 +132,10 @@ export function getFileTypeIconProps(options: IFileTypeIconOptions): { iconName:
         break;
     }
   }
-
-  // Next, obtain the suffix using the icon size, user's device pixel ratio, and
-  // preference for svg or png
-  let size: FileTypeIconSize = options.size || DEFAULT_ICON_SIZE;
-  let suffix: string = _getFileTypeIconSuffix(size, options.imageFileType);
-
-  return { iconName: iconBaseName + suffix };
+  return iconBaseName || GENERIC_FILE;
 }
 
-function _getFileTypeIconNameFromExtension(extension: string): string {
-  if (!_extensionToIconName) {
-    _extensionToIconName = {};
-
-    for (const iconName in FileTypeIconMap) {
-      if (FileTypeIconMap.hasOwnProperty(iconName)) {
-        const extensions = FileTypeIconMap[iconName].extensions;
-
-        if (extensions) {
-          for (let i = 0; i < extensions.length; i++) {
-            _extensionToIconName[extensions[i]] = iconName;
-          }
-        }
-      }
-    }
-  }
-
-  // Strip periods, force lowercase.
-  extension = extension.replace('.', '').toLowerCase();
-
-  return _extensionToIconName[extension] || GENERIC_FILE;
-}
-
-function _getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
+export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
   let devicePixelRatio: number = window.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 

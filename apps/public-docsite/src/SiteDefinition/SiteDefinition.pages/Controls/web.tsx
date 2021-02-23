@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent } from '@fluentui/react-docsite-components/lib/index2';
 import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
-import { IPageJson } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
@@ -125,9 +125,6 @@ export const categories: { Other?: ICategory; [name: string]: ICategory } = {
     ThemeProvider: {},
     Themes: {},
   },
-  Experimental: {
-    Card: {},
-  },
   References: {},
   // The "Other" category can be useful for local development, but it currently can also cause
   // non-web controls (such as Chip) to show up on the web controls page.
@@ -231,7 +228,7 @@ function generateCategories() {
   }
 
   // Add reference pages
-  pagesByCategory.References = _loadReferences();
+  pagesByCategory.References = { ...pagesByCategory.References, ..._loadReferences() };
 
   // Convert the categories to an array (filter out empty categories)
   return categoryNames

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
 import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { Link } from '@fluentui/react/lib/Link';
@@ -58,7 +58,7 @@ export const PanelSizesExample: React.FunctionComponent = () => {
     <div>
       <p style={firstPStyle}>
         See the{' '}
-        <Link href="https://developer.microsoft.com/en-us/fluentui#/controls/web/panel#PanelType">
+        <Link href="https://developer.microsoft.com/en-us/fluentui#/controls/web/panel#PanelType" underline>
           PanelType documentation
         </Link>{' '}
         for details on how each option affects panel sizing at different screen widths.

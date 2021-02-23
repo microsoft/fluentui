@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tabs",
-  "version": "1.0.0-beta.31",
+  "version": "1.0.0-beta.50",
   "description": "Fluent UI React Tabs component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,20 +23,18 @@
     "start": "just-scripts dev:storybook",
     "start-test": "just-scripts jest-watch",
     "test": "just-scripts test",
-    "update-api": "just-scripts update-api",
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.0-beta.11",
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/common-styles": "^1.0.0-beta.19",
+    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/react-conformance": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
-    "@types/jest": "~24.9.0",
-    "@types/react": "16.8.25",
-    "@types/react-dom": "16.8.4",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.15.1",
+    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "react": "16.8.6",
@@ -44,18 +42,17 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-internal": "^8.0.0-beta.33",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.15",
-    "@fluentui/react-hooks": "^8.0.0-beta.8",
-    "@fluentui/set-version": "^8.0.0-beta.0",
-    "@fluentui/style-utilities": "^8.0.0-beta.11",
-    "@fluentui/utilities": "^8.0.0-beta.8",
+    "@fluentui/react": "^8.0.0-beta.59",
+    "@fluentui/react-hooks": "^8.0.0-beta.15",
+    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/style-utilities": "^8.0.0-beta.19",
+    "@fluentui/utilities": "^8.0.0-beta.15",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   }
 }

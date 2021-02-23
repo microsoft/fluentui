@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
@@ -36,6 +37,14 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   barCornerRadius?: number;
 
   /**
+   * The minimum height of a bar; bars below this height will be displayed at
+   * this height. Note that this setting will result in the height of these data
+   * points not being to scale.
+   * @default 0
+   */
+  barMinimumHeight?: number;
+
+  /**
    * Colors from which to select the color of each bar.
    * @deprecated Not using this prop. DIrectly taking color from given data.
    */
@@ -66,6 +75,22 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * yMinValue is not supported for bar charts, so only allow "undefined"
+   */
+  yMinValue?: undefined;
+
+  /**
+   * Allow hover actions on the legend
+   * @default true
+   */
+  allowHoverOnLegend?: boolean;
+
+  /**
+   * Click handler for bars; type of data is dependant on isCalloutForStack
+   */
+  onBarClick?: (event: React.MouseEvent<SVGElement>, data: IVerticalStackedChartProps | IVSChartDataPoint) => void;
 }
 
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}

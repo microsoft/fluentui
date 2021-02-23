@@ -1,6 +1,7 @@
 import { TextAreaVariables } from './textAreaVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { TextAreaStylesProps } from '../../../../components/TextArea/TextArea';
+import { pxToRem } from '../../../../utils';
 
 export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, TextAreaVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -30,13 +31,18 @@ export const textAreaStyles: ComponentSlotStylesPrepared<TextAreaStylesProps, Te
 
     ...(p.disabled && {
       pointerEvents: 'none',
-      backgroundColor: v.disabledBackgroundColor,
       color: v.disabledColor,
+      boxShadow: 'none',
     }),
+
+    ...(p.error && { border: `${pxToRem(1)} solid ${v.borderColorError}` }),
 
     '::placeholder': {
       color: v.placeholderColor,
       opacity: 1, // undo Firefox default opacity
+      ...(p.disabled && {
+        color: v.disabledColor,
+      }),
     },
 
     ':focus': {

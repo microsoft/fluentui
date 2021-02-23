@@ -51,6 +51,10 @@ export const popupBehaviorDefinitionPopupSlot: Rule[] = [
     .forProps({ trapFocus: false })
     .doesNotHaveAttribute('aria-modal')
     .description(`if 'trapFocus' is 'false'.`),
+  BehaviorRule.slot('popup')
+    .forProps({ inline: true })
+    .doesNotHaveAttribute('role')
+    .description(`if 'inline' is 'true'.`),
 ];
 
 export const popupBehaviorDefinition = popupBehaviorDefinitionTriggerSlotNotTabbable

@@ -4,7 +4,7 @@ import { SeparatorPageProps } from './SeparatorPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 import { ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
-import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 
@@ -30,7 +30,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/SeparatorImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/ios/SeparatorImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/ios/SeparatorImplementation.md') as string,
         },
       ];
 
@@ -39,7 +39,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/SeparatorImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
         },
       ];
 
@@ -48,7 +48,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/mac/SeparatorImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SeparatorPage/docs/mac/SeparatorImplementation.md') as string,
         },
       ];
 

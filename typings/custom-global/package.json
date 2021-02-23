@@ -6,6 +6,6 @@
   "main": "",
   "types": "index.d.ts",
   "dependencies": {
-    "@types/webpack-env": "1.15.1"
+    "@types/webpack-env": "1.16.0"
   }
 }
