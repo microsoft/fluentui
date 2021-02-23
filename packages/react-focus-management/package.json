@@ -51,10 +51,11 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "latest",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }
