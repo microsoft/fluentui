@@ -107,7 +107,7 @@ const {
   findFirst,
   findLast,
   findAll,
-} = useFocusable(ref); // All operations are with respect to the given DOM container
+} = useFocusable(ref.current); // All operations are with respect to the given DOM container
 
 findFirst() // first focusable
 findLast() // first last focusable
