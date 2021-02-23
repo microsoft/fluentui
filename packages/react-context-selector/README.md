@@ -40,6 +40,8 @@ interface CounterContextValue = {
   incrementCount2: () => void;
 }
 
+// 💡 The same syntax as native React context API
+//    https://reactjs.org/docs/context.html#reactcreatecontext
 const CounterContext = createContext<CounterContextValue>({});
 
 const CounterProvider = CounterContext.Provider;
