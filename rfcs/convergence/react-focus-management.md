@@ -17,7 +17,7 @@ Tips for writing a successful RFC:
 
 ## Summary
 
-This RFC proposes the introduction of the [ability-helpers](https://github.com/microsoft/ability-helpers) library in Fluent as a focus management tool. The library will be wrapped in Fluent by a new package `@fluentui/react-focus-managent` which will expose a Context and hooks based API.
+This RFC proposes the introduction of the [ability-helpers](https://github.com/microsoft/ability-helpers) library in Fluent as a focus management tool. The library will be wrapped in Fluent by a new package `@fluentui/react-focus-managent` which will expose a React Context and hooks based API.
 
 This initial RFC proposes a simple initial API for keyboard arrow navigation and focus traversing utilities. These APIs already have a testing ground in the `Menu` and `Accordion` components that are under development that rely on specific keyboard focus behaviours.
 
