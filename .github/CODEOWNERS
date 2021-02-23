@@ -22,10 +22,11 @@ scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/ @layershifter @miroslavstastny
 scripts/webpack/ @layershifter @miroslavstastny
 package.json @ecraig12345 @dzearing @xugao
-prettier.config.js @ecraig12345
-webpack.config.js @ecraig12345
-webpack.serve.config.js @ecraig12345
-jest.config.js @ecraig12345
+yarn.lock @ecraig12345 @dzearing @xugao
+*.config.js @ecraig12345
+*.sh @ecraig12345
+*.yml @ecraig12345
+azure-pipelines.release-fluentui.yml @layershifter @ling1726
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 LICENSE @ecraig12345
