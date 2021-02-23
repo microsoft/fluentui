@@ -1009,7 +1009,6 @@ Below lists the interactions for the secondary content part of the split button
 
 Once the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) applies with the exception of returning focus to the splitbutton, which is shown in the images below.
 
-The below image illustrates the behaviour for the splitbutton
 
 ![Using up/down arrow key](./etc/images/splitbutton-up-down.jpg)
 
