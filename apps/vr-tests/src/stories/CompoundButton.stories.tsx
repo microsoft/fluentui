@@ -132,13 +132,13 @@ storiesOf('CompoundButton Next - Block', module)
       Hello, world
     </CompoundButton>
   ))
-  .addStory('Ghost', () => (
-    <CompoundButton block ghost icon="X" secondaryContent="This is some secondary text">
+  .addStory('Subtle', () => (
+    <CompoundButton block subtle icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))
-  .addStory('Ghost Disabled', () => (
-    <CompoundButton block disabled ghost icon="X" secondaryContent="This is some secondary text">
+  .addStory('Subtle Disabled', () => (
+    <CompoundButton block disabled subtle icon="X" secondaryContent="This is some secondary text">
       Hello, world
     </CompoundButton>
   ))

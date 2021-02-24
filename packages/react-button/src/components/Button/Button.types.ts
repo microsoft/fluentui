@@ -90,7 +90,7 @@ export type ButtonProps = ComponentProps &
     secondary?: boolean;
 
     /** A button can blend into its background to become less emphasized. */
-    ghost?: boolean;
+    subtle?: boolean;
 
     /** A button can have no background styling and just be emphasized through its content styling. */
     transparent?: boolean;
@@ -169,7 +169,7 @@ export type ButtonVariants<TTokens = ButtonTokens> = {
   block?: TTokens;
   circular?: TTokens;
   iconOnly?: TTokens;
-  ghost?: TTokens;
+  subtle?: TTokens;
   primary?: TTokens;
   transparent?: TTokens;
 };

@@ -1,5 +1,5 @@
-import { preset, task, series } from '@fluentui/scripts';
+import { preset, task } from '@fluentui/scripts';
 
 preset();
 
-task('build', series('clean', 'ts')).cached();
+task('build', 'build:node-lib').cached();

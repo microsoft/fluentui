@@ -2,6 +2,92 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 07:19:56 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.61",
+      "version": "8.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add range support to Slider, to allow selecting a lower and upper bound of a range",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "c17273e7dcdb5da25451da134b0c8259dbf72ca3",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.60",
+      "version": "8.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Pickers Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "4b552307678332cf9d7ed3cfb4f82cf402f89515",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fully disable viewport measurement with 'skipViewportMeasures'",
+            "author": "andredias@microsoft.com",
+            "commit": "8a0938f42c3d4d990edc8cfb39456d28f28bb232",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Prevent '.ms-Icon' style overrides from conflicting with the \"Move column\" target (#16014)",
+            "author": "jdh@microsoft.com",
+            "commit": "552aee3fb54503dec221bea6fba52cfcec30ff19",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/webpack-utilities to v8.0.0-beta.4",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.59",
+      "version": "8.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Export ResponsiveMode utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "d6fc0dc21b4eca678267c2beb17bdafe80f8890a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fix: Date Picker - selected date got reset after clicking outside of calendar",
+            "author": "feodor@appveyor.com",
+            "commit": "04618d68fd142289ee50b793a26256defb8afb89",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.58",
+      "version": "8.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 12:27:34 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.57",
       "version": "8.0.0-beta.57",

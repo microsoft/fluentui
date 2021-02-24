@@ -2,6 +2,42 @@
   "name": "@fluentui/react-file-type-icons",
   "entries": [
     {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.0.0-beta.21",
+      "version": "8.0.0-beta.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating Fabric CDN url version to fetch latest filetype icons",
+            "author": "caperez@microsoft.com",
+            "commit": "4011be1f093c7263b7d451bf4b4881e0cc926c85",
+            "package": "@fluentui/react-file-type-icons"
+          },
+          {
+            "comment": "Icons can now be requested using the getFileTypeIconAsHTMLString API, for compatibility with non-React environments.",
+            "author": "ololubek@microsoft.com",
+            "commit": "4f05f33bc9dbad486874dc960a44696160280994",
+            "package": "@fluentui/react-file-type-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-file-type-icons_v8.0.0-beta.20",
+      "version": "8.0.0-beta.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-file-type-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 12:27:34 GMT",
       "tag": "@fluentui/react-file-type-icons_v8.0.0-beta.19",
       "version": "8.0.0-beta.19",

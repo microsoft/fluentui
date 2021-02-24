@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-text",
-  "version": "0.1.7",
+  "version": "0.1.9",
   "description": "Fluent UI React Text component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -43,18 +43,18 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-theme-provider": "^1.0.0-beta.25",
-    "@fluentui/react-utilities": "^0.3.0",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.1",
+    "@fluentui/react-utilities": "^9.0.0-alpha.1",
     "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/theme": "^2.0.0-beta.17",
+    "@fluentui/theme": "^2.0.0-beta.19",
     "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
     "tag": "latest",

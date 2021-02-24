@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { getCode, ArrowDownKey } from '@fluentui/keyboard-key';
-import { useBoolean, useMergedRefs } from '@fluentui/react-hooks';
-import { resolveShorthandProps, makeMergeProps } from '@fluentui/react-utilities';
+import { resolveShorthandProps, makeMergeProps, useBoolean, useMergedRefs } from '@fluentui/react-utilities';
 import { SplitButtonProps, SplitButtonState } from './SplitButton.types';
 
 export const splitButtonShorthandProps = ['icon', 'button', 'divider', 'menuButton'];
@@ -25,7 +24,7 @@ export const useSplitButton = (
     disabled,
     disabledFocusable,
     expanded,
-    ghost,
+    subtle,
     loading,
     menu,
     menuButtonRef,
@@ -75,7 +74,7 @@ export const useSplitButton = (
         circular,
         disabled,
         disabledFocusable,
-        ghost,
+        subtle,
         loading,
         primary,
         size,
@@ -94,7 +93,7 @@ export const useSplitButton = (
         disabled,
         disabledFocusable,
         expanded,
-        ghost,
+        subtle,
         loading,
         menu,
         onMenuDismiss: onDismiss,

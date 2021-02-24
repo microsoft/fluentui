@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "align typings for shorthands",
-  "packageName": "@fluentui/react-utils",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

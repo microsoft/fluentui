@@ -1,6 +1,5 @@
 import { useCSS, UseCSSStyleInput, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import { mount } from 'enzyme';
-// @ts-ignore No typings :(
 import * as prettier from 'prettier';
 import * as React from 'react';
 import { RendererRenderGlobal } from '@fluentui/react-northstar-styles-renderer';

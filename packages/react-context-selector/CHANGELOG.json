@@ -1,0 +1,58 @@
+{
+  "name": "@fluentui/react-context-selector",
+  "entries": [
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.2",
+      "version": "0.53.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix react-context-selector eslint-plugin version",
+            "author": "elcraig@microsoft.com",
+            "commit": "bcdd26f36386f379aff6a896f2b2bb7178fadf35",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.2",
+      "version": "0.53.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Manually bump react-context-selector",
+            "author": "elcraig@microsoft.com",
+            "commit": "8c0901ff66e745dc2869299c6622314029c73129",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.0",
+      "version": "0.53.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Remove useContextSelectors to align with proposed React implementation",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "03a42717191ed6a5f39947a35e5d1f91c73427d0",
+            "package": "@fluentui/react-context-selector"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "chore: fix version mismatch",
+            "author": "olfedias@microsoft.com",
+            "commit": "e56955f96568dab25ee7789a8fd736175f6da45a",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    }
+  ]
+}

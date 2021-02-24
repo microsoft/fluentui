@@ -6,6 +6,7 @@ import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
+import * as path from 'path';
 import * as React from 'react';
 import { ComponentType, ReactWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
@@ -59,7 +60,7 @@ export function isConformant(
     forwardsRefTo,
   } = options;
 
-  const defaultConfig: Partial<IsConformantOptions> = {
+  const defaultConfig: IsConformantOptions = {
     customMount: mountWithProvider,
     componentPath: testPath
       .replace(/test[/\\]specs/, 'src')
@@ -106,33 +107,6 @@ export function isConformant(
     // thus, we should continue search
     return wrapperComponent ? toNextNonTrivialChild(componentElement) : componentElement;
   };
-
-  // ----------------------------------------
-  // Component info
-  // ----------------------------------------
-  // This is pretty ugly because:
-  // - jest doesn't support custom error messages
-  // - jest will run all test
-  const infoJSONPath = `@fluentui/react-northstar/componentInfo/${constructorName}.info.json`;
-
-  let info;
-
-  try {
-    info = require(infoJSONPath);
-  } catch (err) {
-    // handled in the test() below
-    test('component info file exists', () => {
-      throw new Error(
-        [
-          '!! ==========================================================',
-          `!! Missing ${infoJSONPath}.`,
-          '!! Run `yarn test` or `yarn test:watch` again to generate one.',
-          '!! ==========================================================',
-        ].join('\n'),
-      );
-    });
-    return null;
-  }
 
   // ----------------------------------------
   // Props
@@ -322,7 +296,7 @@ export function isConformant(
 
         // <Dropdown onBlur={handleBlur} />
         //                   ^ was not called once on "blur"
-        const leftPad = ' '.repeat(info.displayName.length + listenerName.length + 3);
+        const leftPad = ' '.repeat(constructorName.length + listenerName.length + 3);
 
         // onKeyDown => handleKeyDown
         const handlerName = _.camelCase(listenerName.replace('on', 'handle'));
@@ -332,7 +306,7 @@ export function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ was not called once on "${eventName}".`,
               'You may need to hoist your event handlers up to the root element.\n',
             ].join(''),
@@ -364,7 +338,7 @@ export function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ ${errorMessage}`,
               'It was called with args:',
               JSON.stringify(handlerSpy.mock.calls[0], null, 2),
@@ -379,7 +353,24 @@ export function isConformant(
   // Handles className
   // ----------------------------------------
   describe('className const (common)', () => {
-    const componentClassName = info.componentClassName || `ui-${Component.displayName}`.toLowerCase();
+    // This className calculation is duplicated from scripts/gulp/plugins/util/getComponentInfo.ts.
+    // The duplication isn't ideal, but the speed benefit from removing the requirement to build
+    // component info before running tests is worth it.
+    const { componentPath } = defaultConfig;
+    const dirname = path.basename(path.dirname(componentPath));
+    const filenameWithoutExt = path.basename(componentPath, path.extname(componentPath));
+    const isParent = filenameWithoutExt === dirname;
+    const parentDisplayName = isParent ? null : dirname;
+    // for example, "Menu" for "ToolbarMenu" since it is accessed as "Toolbar.Menu" in the API
+    const subcomponentName = isParent ? null : constructorName.replace(parentDisplayName!, '');
+
+    const componentClassName = (!isParent
+      ? _.includes(subcomponentName, 'Group')
+        ? `ui-${parentDisplayName}s`
+        : `ui-${parentDisplayName}__${subcomponentName}`
+      : `ui-${constructorName.toLowerCase()}`
+    ).toLowerCase();
+
     const constClassName = _.camelCase(`${Component.displayName}ClassName`);
 
     test(`exports a const equal to "${componentClassName}"`, () => {

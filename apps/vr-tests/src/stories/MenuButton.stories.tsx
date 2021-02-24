@@ -110,13 +110,13 @@ storiesOf('MenuButton Next - Block', module)
       Hello, world
     </MenuButton>
   ))
-  .addStory('Ghost', () => (
-    <MenuButton block ghost icon="X">
+  .addStory('Subtle', () => (
+    <MenuButton block subtle icon="X">
       Hello, world
     </MenuButton>
   ))
-  .addStory('Ghost Disabled', () => (
-    <MenuButton block disabled ghost icon="X">
+  .addStory('Subtle Disabled', () => (
+    <MenuButton block disabled subtle icon="X">
       Hello, world
     </MenuButton>
   ))
