@@ -8,6 +8,8 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
+  MenuItemCheckboxProps,
+  MenuItemRadioProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
@@ -174,7 +176,7 @@ export const MenuListWithSelectionGroups = () => {
   );
 };
 
-const MemoRadio = React.memo((props: any) => {
+const MemoRadio = React.memo((props: MenuItemRadioProps) => {
   // use icons in the memo because JSX will always create a new object
   // possible to memoize icons but it can be overkill
   return (
@@ -210,7 +212,7 @@ export const MemoRadioItems = () => {
   );
 };
 
-const MemoCheckbox = React.memo((props: any) => {
+const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
   // use icons in the memo because JSX will always create a new object
   // possible to memoize icons but it can be overkill
   return (
