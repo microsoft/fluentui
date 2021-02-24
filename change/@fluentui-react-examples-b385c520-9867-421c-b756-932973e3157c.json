@@ -2,6 +2,6 @@
   "type": "prerelease",
   "comment": "Minor fixes in Link examples.",
   "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
+  "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
 }
