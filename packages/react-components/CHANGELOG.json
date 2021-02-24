@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-components",
+  "entries": [
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-components_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(react-components): add suite package",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "28ea99e1eb1758775c3e1d3b45af41703d0746ae",
+            "package": "@fluentui/react-components"
+          }
+        ]
+      }
+    }
+  ]
+}
