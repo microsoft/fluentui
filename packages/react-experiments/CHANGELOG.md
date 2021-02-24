@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 24 Feb 2021 00:05:29 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 07:19:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.64)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.63..@fluentui/react-experiments_v8.0.0-beta.64)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
 
 ## [8.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.63)
 
