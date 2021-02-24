@@ -8,8 +8,6 @@ export const getIntentColorsFromProps = (
   v: AlertVariables,
   siteVars: SiteVariablesPrepared,
 ): ICSSInJSStyle => {
-  const { colors } = siteVars;
-
   if (p.danger) {
     return {
       color: v.dangerColor,
@@ -20,9 +18,9 @@ export const getIntentColorsFromProps = (
 
   if (p.info) {
     return {
-      color: v.infoColor,
-      backgroundColor: v.infoBackgroundColor,
-      borderColor: v.infoBorderColor,
+      color: v.color,
+      backgroundColor: v.backgroundColor,
+      borderColor: v.borderColor,
     };
   }
 
@@ -44,17 +42,17 @@ export const getIntentColorsFromProps = (
 
   if (p.success) {
     return {
-      color: colors.green[600], // $app-green-04
-      backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.green[200], // $app-green
+      color: v.successColor,
+      backgroundColor: v.successBackgroundColor,
+      borderColor: v.successBorderColor,
     };
   }
 
   if (p.warning) {
     return {
-      color: siteVars.colors.grey[450],
-      backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.yellow[400], // $app-yellow
+      color: v.warningColor,
+      backgroundColor: v.warningBackgroundColor,
+      borderColor: v.warningBorderColor,
     };
   }
 
@@ -77,6 +75,7 @@ export const alertStyles: ComponentSlotStylesPrepared<AlertStylesProps, AlertVar
     padding: v.padding,
     fontWeight: v.fontWeight,
     visibility: 'visible',
+    boxSizing: 'border-box',
 
     ...getIntentColorsFromProps(p, v, siteVariables),
 

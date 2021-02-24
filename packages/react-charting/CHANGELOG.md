@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 07:19:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.60)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.59..@fluentui/react-charting_v5.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [5.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.59)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.58..@fluentui/react-charting_v5.0.0-beta.59)
+
+### Changes
+
+- introducing the prop allowMultipleShapesFor, when set to true allows shape the data point ([PR #17127](https://github.com/microsoft/fluentui/pull/17127) by email not defined)
+
+## [5.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.58)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.57..@fluentui/react-charting_v5.0.0-beta.58)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [5.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.57)
 
