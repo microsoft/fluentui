@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Refactor selection logic with context selector",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -3,6 +3,7 @@ import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuItemSelectable } from '../../selectable/index';
 import { useCharacterSearch } from '../../utils/useCharacterSearch';
+import { useMenuListContext } from '../../menuListContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -30,17 +31,9 @@ export const useMenuItemCheckbox = (
   );
 
   useCharacterSearch(state);
-  useMenuItemSelectable(state, () => {
-    const newCheckedItems = [...state.checkedItems];
-    const index = state.checkedItems.indexOf(state.value);
-    if (index !== -1) {
-      newCheckedItems.splice(index, 1);
-    } else {
-      newCheckedItems.push(state.value);
-    }
 
-    return newCheckedItems;
-  });
+  const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
+  useMenuItemSelectable(state, toggleCheckbox);
 
   return state;
 };

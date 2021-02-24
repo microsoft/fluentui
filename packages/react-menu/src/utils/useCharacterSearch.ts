@@ -3,7 +3,7 @@ import { MenuItemState } from '../components/index';
 import { useMenuListContext } from '../menuListContext';
 
 export const useCharacterSearch = (state: MenuItemState) => {
-  const { setFocusByFirstCharacter } = useMenuListContext();
+  const setFocusByFirstCharacter = useMenuListContext(context => context.setFocusByFirstCharacter);
 
   const { onKeyDown: onKeyDownBase } = state;
   state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {

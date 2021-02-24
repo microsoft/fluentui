@@ -16,6 +16,7 @@ export const useRootStyles = makeStyles<MenuItemState>([
       display: 'flex',
       alignItems: 'center',
       fontSize: theme.global.type.fontSizes.base[300],
+      cursor: 'pointer',
 
       ':hover': {
         backgroundColor: theme.alias.color.neutral.neutralBackground1Hover,
