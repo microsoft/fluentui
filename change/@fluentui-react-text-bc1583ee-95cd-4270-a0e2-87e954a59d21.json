@@ -1,0 +1,6 @@
+{
+  "type": "patch",
+  "packageName": "@fluentui/react-text",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
