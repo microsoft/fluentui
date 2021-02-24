@@ -2,6 +2,6 @@
   "type": "prerelease",
   "comment": "Button: Beefing up accessibility tests and cleaning up state management.",
   "packageName": "@fluentui/react-button",
-  "email": "humberto_makoto@hotmail.com",
+  "email": "Humberto.Morimoto@microsoft.com",
   "dependentChangeType": "patch"
 }
