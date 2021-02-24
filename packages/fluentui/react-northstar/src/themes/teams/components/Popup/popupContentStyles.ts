@@ -6,7 +6,7 @@ import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
 
 export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'block',
+    display: 'flex',
     zIndex: v.zIndex,
 
     ...(p.pointing && {
@@ -44,7 +44,6 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
     padding: v.padding,
     transform: 'rotate(360deg)',
 
-    maxHeight: '100%',
     overflowY: 'auto',
 
     ...(p.pointing && {

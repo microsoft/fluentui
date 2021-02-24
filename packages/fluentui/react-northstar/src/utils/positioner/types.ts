@@ -121,6 +121,11 @@ export interface PositioningProps {
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
   unstable_pinned?: boolean;
+
+  /**
+   * Change the height of the popper to fit it within the available space in viewport.
+   */
+  autoHeight?: boolean;
 }
 
 export interface PopperProps extends PositioningProps {

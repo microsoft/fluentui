@@ -171,6 +171,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     targetRef,
     unstable_disableTether,
     unstable_pinned,
+    autoHeight,
   } = props;
 
   const proposedPlacement = getPlacement({ align, position, rtl });
@@ -293,17 +294,16 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           fn: handleUpdate,
         },
         popperInitialPositionFix.modifier,
-        maxSize,
-        {
+
+        autoHeight && maxSize,
+        autoHeight && {
           name: 'applyMaxSize',
           enabled: true,
           phase: 'beforeWrite' as PopperJs.ModifierPhases,
           requires: ['maxSize'],
           fn({ state }) {
             const maxHeight = state.modifiersData.maxSize.height;
-            if (state.rects.popper.height > maxHeight) {
-              state.styles.popper.height = `${maxHeight}px`;
-            }
+            state.styles.popper.maxHeight = `${maxHeight}px`;
           },
         },
       ].filter(Boolean),
@@ -325,6 +325,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     unstable_disableTether,
     unstable_pinned,
     popperInitialPositionFix,
+    autoHeight,
   ]);
 
   const destroyInstance = React.useCallback(() => {
@@ -368,4 +369,5 @@ Popper.defaultProps = {
   modifiers: [],
   positionFixed: false,
   positioningDependencies: [],
+  autoHeight: true,
 };
