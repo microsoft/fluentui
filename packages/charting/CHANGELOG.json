@@ -2,6 +2,21 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 12:25:59 GMT",
+      "tag": "@uifabric/charting_v4.15.0",
+      "version": "4.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "introducing the prop allowMultipleShapesFor, when set to true allows shape the data point",
+            "author": "email not defined",
+            "commit": "f4d4223122469a5b3eeaaa1fb8fa5a8a311738a9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 15 Feb 2021 12:24:49 GMT",
       "tag": "@uifabric/charting_v4.14.2",
       "version": "4.14.2",

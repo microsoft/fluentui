@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 12:25:59 GMT",
+      "tag": "@fluentui/react-examples_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making changes to support the new feature",
+            "author": "email not defined",
+            "commit": "f4d4223122469a5b3eeaaa1fb8fa5a8a311738a9",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update UnifiedPicker example with generic item code",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c130f545693b65361aef76d2652574582a7f44b7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Feb 2021 12:25:47 GMT",
       "tag": "@fluentui/react-examples_v0.11.29",
       "version": "0.11.29",

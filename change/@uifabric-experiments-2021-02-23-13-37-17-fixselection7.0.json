@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "UnifiedPicker: fix suggestions keyboard issue, add generic item functionality",
-  "packageName": "@uifabric/experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-23T21:37:01.222Z"
-}

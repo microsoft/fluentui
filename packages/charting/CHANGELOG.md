@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 15 Feb 2021 12:24:49 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 12:25:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.0](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.0)
+
+Wed, 24 Feb 2021 12:25:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.14.2..@uifabric/charting_v4.15.0)
+
+### Minor changes
+
+- introducing the prop allowMultipleShapesFor, when set to true allows shape the data point ([PR #16967](https://github.com/microsoft/fluentui/pull/16967) by email not defined)
 
 ## [4.14.2](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.14.2)
 

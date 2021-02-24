@@ -2,6 +2,21 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 12:25:59 GMT",
+      "tag": "@uifabric/experiments_v7.39.0",
+      "version": "7.39.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "UnifiedPicker: fix suggestions keyboard issue, add generic item functionality",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c130f545693b65361aef76d2652574582a7f44b7",
+            "package": "@uifabric/experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 23 Feb 2021 12:23:02 GMT",
       "tag": "@uifabric/experiments_v7.38.18",
       "version": "7.38.18",

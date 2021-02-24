@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 23 Feb 2021 12:23:02 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 12:25:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.0)
+
+Wed, 24 Feb 2021 12:25:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.38.18..@uifabric/experiments_v7.39.0)
+
+### Minor changes
+
+- UnifiedPicker: fix suggestions keyboard issue, add generic item functionality ([PR #17148](https://github.com/microsoft/fluentui/pull/17148) by elvonspa@microsoft.com)
 
 ## [7.38.18](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.38.18)
 
