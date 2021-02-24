@@ -1,13 +1,9 @@
-import { makeClasses } from '@fluentui/react-theme-provider/lib/compat/index';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { CardSectionState } from '../CardSection/CardSection.types';
 
-const GlobalClassNames = {
-  root: 'ms-CardFooter',
-};
-
-export const useCardFooterClasses = makeClasses<CardSectionState>({
-  root: [
-    GlobalClassNames.root,
+const useRootStyles = makeStyles<CardSectionState>([
+  [
+    null,
     {
       display: 'flex',
       flexDirection: 'column',
@@ -16,9 +12,17 @@ export const useCardFooterClasses = makeClasses<CardSectionState>({
       '--card-footer-margin': 'var(--card-section-margin)',
     },
   ],
+  [
+    s => s.fitted,
+    {
+      '--card-footer-margin': 'var(--card-footer-fitted-margin)',
+      '--card-footer-fitted-margin': 'var(--card-section-fitted-margin)',
+    },
+  ],
+]);
 
-  _fitted: {
-    '--card-footer-margin': 'var(--card-footer-fitted-margin)',
-    '--card-footer-fitted-margin': 'var(--card-section-fitted-margin)',
-  },
-});
+export function useCardFooterClasses(state: CardSectionState): CardSectionState {
+  state.className = ax('ms-CardFooter', useRootStyles(state), state.className);
+
+  return state;
+}
