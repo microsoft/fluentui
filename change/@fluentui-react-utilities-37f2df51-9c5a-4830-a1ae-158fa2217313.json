@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove dep array from useEventCallback",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
