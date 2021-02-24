@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
 import { MenuListProps, MenuListState } from './MenuList.types';
 
 const mergeProps = makeMergeProps<MenuListState>();
@@ -20,6 +20,25 @@ export const useMenuList = (
     defaultProps,
     resolveShorthandProps(props, []),
   );
+
+  const { checkedValues, onCheckedValueChange } = state;
+  state.toggleCheckbox = useEventCallback(
+    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
+      const checkedItems = checkedValues?.[name] || [];
+      if (checked) {
+        const newCheckedItems = [...checkedItems];
+        newCheckedItems.splice(newCheckedItems.indexOf(value), 1);
+        onCheckedValueChange?.(e, name, newCheckedItems);
+      } else {
+        onCheckedValueChange?.(e, name, [...checkedItems, value]);
+      }
+    },
+  );
+
+  state.selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
+    const newCheckedItems = [value];
+    onCheckedValueChange?.(e, name, newCheckedItems);
+  });
 
   return state;
 };
