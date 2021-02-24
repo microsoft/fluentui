@@ -4,7 +4,7 @@ import {
   ISliderStyleProps,
   ISliderStyles,
   IRefWithClassNameProps,
-  ILabelProps,
+  ILabelSliderProps,
   IValueProps,
   IStyleWithClassNameProps,
   IClassNameProp,
@@ -352,7 +352,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
 
-  const labelProps: ILabelProps = {
+  const labelProps: ILabelSliderProps = {
     className: classNames.titleLabel,
     children: label,
     disabled,

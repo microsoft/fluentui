@@ -234,7 +234,7 @@ export interface IRefWithClassNameProps extends IClassNameProp {
   ref: React.Ref<HTMLDivElement>;
 }
 
-export interface ILabelProps extends IClassNameProp {
+export interface ILabelSliderProps extends IClassNameProp {
   children: string | undefined;
   disabled: boolean;
   htmlFor: string | undefined;
@@ -257,13 +257,13 @@ export interface ISliderBaseProps {
 }
 
 export interface IEventProps {
-  onMouseDown?: (event: MouseEvent | TouchEvent) => void | {};
-  onTouchStart?: (event: MouseEvent | TouchEvent) => void | {};
-  onKeyDown?: (event: KeyboardEvent) => void | {};
+  onMouseDown?: ((event: React.MouseEvent) => void) | undefined;
+  onTouchStart?: ((event: React.TouchEvent) => void) | undefined;
+  onKeyDown?: ((event: React.KeyboardEvent) => void) | undefined;
 }
 
 interface IOnFocusProp {
-  onFocus?: (event: MouseEvent | TouchEvent) => void | {};
+  onFocus?: ((event: React.FocusEvent) => void) | undefined;
 }
 
 interface IAriaProps {
