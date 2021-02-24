@@ -84,6 +84,7 @@ export default [
   '@popperjs/core@2.1.1',
   '@popperjs/core@2.4.0',
   '@popperjs/core@2.4.2',
+  'popper-max-size-modifier@0.2.0',
   'prop-types@15.6.2',
   'prop-types@15.7.2',
   'raf-schd@4.0.2',
