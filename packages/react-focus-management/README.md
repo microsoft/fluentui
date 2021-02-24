@@ -1,6 +1,6 @@
 # @fluentui/react-focus-management
 
-**React FocusManagement components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+**Focus management components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
 Experimental library for focus management that leverages [ability-helpers](https://github.com/microsoft/ability-helpers).
 
