@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Bootstrap react-focus-management",
+  "packageName": "@fluentui/react-focus-management",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
