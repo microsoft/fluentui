@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useFocusRects } from '@fluentui/utilities';
 import { CardProps } from './Card.types';
 import { useCard } from './useCard';
-import { useCardClasses } from './useCardClasses';
+import { useCardStyles } from './useCardStyles';
 
 /**
  * Define a styled Card, using the `useCard` hook.
@@ -11,9 +10,8 @@ import { useCardClasses } from './useCardClasses';
 export const Card = React.forwardRef<HTMLElement, CardProps>((props, ref) => {
   const { render, state } = useCard(props, ref);
 
-  useCardClasses(state);
+  useCardStyles(state);
   useFocusRects(state.ref);
-  useInlineTokens(state, '--card');
 
   return render(state);
 });

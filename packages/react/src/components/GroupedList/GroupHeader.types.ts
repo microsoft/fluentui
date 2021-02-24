@@ -22,12 +22,6 @@ export interface IGroupHeaderProps extends IGroupDividerProps {
   /** Native props for the GroupHeader select all button */
   selectAllButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
-  /** Defines the number of items in the current set of listitems or treeitems */
-  ariaSetSize?: number;
-
-  /** Defines an element's number or position in the current set of listitems or treeitems */
-  ariaPosInSet?: number;
-
   /**
    * If provided, can be used to render a custom checkbox
    */
