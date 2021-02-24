@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IProcessedStyleSet, ITheme } from '../../Styling';
-import { composeRenderFunction, classNamesFunction, getRTL, getRTLSafeKeyCode, KeyCodes } from '../../Utilities';
-import { SelectionMode } from '../../utilities/selection/index';
+import { composeRenderFunction, classNamesFunction, getId, getRTL, getRTLSafeKeyCode, KeyCodes } from '../../Utilities';
+import { SelectionMode } from '../../Selection';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
@@ -26,6 +26,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
   };
 
   private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
+  private _id: string;
 
   public static getDerivedStateFromProps(
     nextProps: IGroupHeaderProps,
@@ -48,6 +49,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
   constructor(props: IGroupHeaderProps) {
     super(props);
+
+    this._id = getId('GroupHeader');
 
     this.state = {
       isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
@@ -78,6 +81,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       compact,
       ariaPosInSet,
       ariaSetSize,
+      ariaRowCount,
+      ariaRowIndex,
       useFastIcons,
     } = this.props;
 
@@ -106,6 +111,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     if (!group) {
       return null;
     }
+
     return (
       <div
         className={this._classNames.root}
@@ -114,10 +120,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         role="row"
         aria-setsize={ariaSetSize}
         aria-posinset={ariaPosInSet}
+        aria-rowcount={ariaRowCount}
+        aria-rowindex={ariaRowIndex}
         data-is-focusable={true}
         onKeyUp={this._onKeyUp}
-        aria-label={group.ariaLabel || group.name}
+        aria-label={group.ariaLabel}
+        aria-labelledby={group.ariaLabel ? undefined : this._id}
         aria-expanded={!this.state.isCollapsed}
+        aria-selected={canSelectGroup ? currentlySelected : undefined}
         aria-level={groupLevel + 1}
       >
         <div className={this._classNames.groupHeaderContainer} role="presentation">
@@ -245,7 +255,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     }
 
     return (
-      <div className={this._classNames.title} role="gridcell" aria-colspan={ariaColSpan}>
+      <div className={this._classNames.title} id={this._id} role="gridcell" aria-colspan={ariaColSpan}>
         <span>{group.name}</span>
         {
           // hasMoreData flag is set when grouping is throttled by SPO server which in turn resorts to regular

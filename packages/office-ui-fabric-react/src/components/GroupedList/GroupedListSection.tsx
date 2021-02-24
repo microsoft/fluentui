@@ -252,7 +252,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
         {onRenderGroupHeader(groupHeaderProps, this._onRenderGroupHeader)}
         {group && group.isCollapsed ? null : hasNestedGroups ? (
           <List
-            role="presentation"
+            role="group"
             ref={this._list}
             items={group ? group.children : []}
             onRenderCell={this._renderSubGroup}
@@ -342,7 +342,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     return (
       <List
-        role={groupProps && groupProps.role ? groupProps.role : 'presentation'}
+        role={groupProps && groupProps.role ? groupProps.role : 'group'}
+        aria-label={group?.name}
         items={items}
         onRenderCell={this._onRenderGroupCell(onRenderCell, groupNestingDepth)}
         ref={this._list}

@@ -1241,10 +1241,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
-                          aria-label="Color: \\"red\\""
+                          aria-labelledby="GroupHeader9"
                           aria-level={1}
-                          aria-posinset={1}
-                          aria-setsize={3}
+                          aria-rowcount={4}
+                          aria-rowindex={2}
+                          aria-selected={false}
                           className=
                               ms-GroupHeader
                               {
@@ -1607,6 +1608,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     text-overflow: ellipsis;
                                     white-space: nowrap;
                                   }
+                              id="GroupHeader9"
                               role="gridcell"
                             >
                               <span>
@@ -1630,9 +1632,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           </div>
                         </div>
                         <div
+                          aria-label="Color: \\"red\\""
                           className="ms-List"
                           id="GroupedListSection8"
-                          role="presentation"
+                          role="rowgroup"
                         >
                           <div
                             className="ms-List-surface"
@@ -1720,7 +1723,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone11"
+                                  data-focuszone-id="FocusZone14"
                                   data-is-focusable={true}
                                   data-item-index={0}
                                   data-selection-index={0}
@@ -2202,7 +2205,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone12"
+                                  data-focuszone-id="FocusZone15"
                                   data-is-focusable={true}
                                   data-item-index={1}
                                   data-selection-index={1}
@@ -2634,10 +2637,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
-                          aria-label="Color: \\"green\\""
+                          aria-labelledby="GroupHeader11"
                           aria-level={1}
-                          aria-posinset={2}
-                          aria-setsize={3}
+                          aria-rowcount={4}
+                          aria-rowindex={3}
+                          aria-selected={false}
                           className=
                               ms-GroupHeader
                               {
@@ -3000,6 +3004,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     text-overflow: ellipsis;
                                     white-space: nowrap;
                                   }
+                              id="GroupHeader11"
                               role="gridcell"
                             >
                               <span>
@@ -3023,8 +3028,9 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           </div>
                         </div>
                         <div
+                          aria-label="Color: \\"green\\""
                           className="ms-List"
-                          id="GroupedListSection9"
+                          id="GroupedListSection10"
                         >
                           <div
                             className="ms-List-surface"
@@ -3055,10 +3061,11 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                       >
                         <div
                           aria-expanded={true}
-                          aria-label="Color: \\"blue\\""
+                          aria-labelledby="GroupHeader13"
                           aria-level={1}
-                          aria-posinset={3}
-                          aria-setsize={3}
+                          aria-rowcount={4}
+                          aria-rowindex={4}
+                          aria-selected={false}
                           className=
                               ms-GroupHeader
                               {
@@ -3421,6 +3428,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                     text-overflow: ellipsis;
                                     white-space: nowrap;
                                   }
+                              id="GroupHeader13"
                               role="gridcell"
                             >
                               <span>
@@ -3444,9 +3452,10 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                           </div>
                         </div>
                         <div
+                          aria-label="Color: \\"blue\\""
                           className="ms-List"
-                          id="GroupedListSection10"
-                          role="presentation"
+                          id="GroupedListSection12"
+                          role="rowgroup"
                         >
                           <div
                             className="ms-List-surface"
@@ -3534,7 +3543,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone13"
+                                  data-focuszone-id="FocusZone16"
                                   data-is-focusable={true}
                                   data-item-index={2}
                                   data-selection-index={2}
@@ -4016,7 +4025,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone14"
+                                  data-focuszone-id="FocusZone17"
                                   data-is-focusable={true}
                                   data-item-index={3}
                                   data-selection-index={3}
@@ -4498,7 +4507,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                         opacity: 1;
                                       }
                                   data-automationid="DetailsRow"
-                                  data-focuszone-id="FocusZone15"
+                                  data-focuszone-id="FocusZone18"
                                   data-is-focusable={true}
                                   data-item-index={4}
                                   data-selection-index={4}
