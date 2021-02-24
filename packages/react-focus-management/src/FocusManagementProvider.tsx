@@ -41,7 +41,6 @@ export const useFocusManagementProvider = (
   );
 
   state.dir = state.dir || 'ltr';
-  state.document = state.document || document;
 
   const ahOptions = { autoRoot: {} };
   if (state.customRoot) {
