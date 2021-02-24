@@ -1,12 +1,15 @@
 import * as React from 'react';
 import { makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
-import { getCurrentAbilityHelpers, createAbilityHelpers } from 'ability-helpers';
+import { getCurrentAbilityHelpers, createAbilityHelpers, Types as AHTypes } from 'ability-helpers';
 import { internal__FocusManagementContext, FocusManagementContextValue } from './focusManagementContext';
 
 export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLElement> {
   dir?: 'ltr' | 'rtl';
 
-  window?: Window;
+  /**
+   * The document, which can be null during server render in SSR
+   */
+  document?: Document;
 
   /**
    * The root is automatically set as the `body` element of the ownerDocument.
@@ -38,7 +41,7 @@ export const useFocusManagementProvider = (
   );
 
   state.dir = state.dir || 'ltr';
-  state.window = state.window || window;
+  state.document = state.document || document;
 
   const ahOptions = { autoRoot: {} };
   if (state.customRoot) {
@@ -46,9 +49,14 @@ export const useFocusManagementProvider = (
   }
 
   // only one instance per window of ability helpers should exist
-  const ahInstance = getCurrentAbilityHelpers(state.window) || createAbilityHelpers(state.window, ahOptions);
+  let ahInstance: AHTypes.AbilityHelpersCore | undefined = undefined;
+  if (state.document?.defaultView) {
+    ahInstance =
+      getCurrentAbilityHelpers(state.document.defaultView) ||
+      createAbilityHelpers(state.document.defaultView, ahOptions);
+  }
   // memoize context value so that it's stable
-  state.contextValue = React.useMemo(() => ({ focusable: ahInstance.focusable, ahInstance }), [ahInstance]);
+  state.contextValue = React.useMemo(() => ({ focusable: ahInstance?.focusable, ahInstance }), [ahInstance]);
 
   return state;
 };

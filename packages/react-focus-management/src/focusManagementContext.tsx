@@ -4,16 +4,20 @@ import { Types as AHTypes } from 'ability-helpers';
 // NOTE: very likely contents will change as usage is specced out properly
 // creating for now to unblock initial experimentation and usage
 
+/**
+ * Context value, all members here can be undefined since the API relies heavily on window/document which are not
+ * present during server render in SSR
+ */
 export interface FocusManagementContextValue {
   /**
    * Ability helpers focusable API
    */
-  focusable: AHTypes.FocusableAPI;
+  focusable?: AHTypes.FocusableAPI;
 
   /**
    * Raw Ability helpers instance
    */
-  ahInstance: AHTypes.AbilityHelpersCore;
+  ahInstance?: AHTypes.AbilityHelpersCore;
 }
 
 // eslint-disable-next-line @typescript-eslint/naming-convention

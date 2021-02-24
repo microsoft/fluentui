@@ -13,8 +13,7 @@ export interface FocusManagementProvideProps extends React.HTMLAttributes<HTMLEl
     customRoot?: boolean;
     // (undocumented)
     dir?: 'ltr' | 'rtl';
-    // (undocumented)
-    window?: Window;
+    document?: Document;
 }
 
 // @public
@@ -45,9 +44,9 @@ export interface UseArrowNavigationGroupOptions {
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
-    findFirstFocusable: (root: HTMLElement) => HTMLElement | null;
-    findLastFocusable: (root: HTMLElement) => HTMLElement | null;
+    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => (() => null) | HTMLElement[];
+    findFirstFocusable: (root: HTMLElement) => HTMLElement | (() => null);
+    findLastFocusable: (root: HTMLElement) => HTMLElement | (() => null);
 };
 
 // @public (undocumented)

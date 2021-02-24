@@ -28,9 +28,11 @@ export const useMenuList = (
 
   state.setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
+      // TODO use some kind of children registration to reduce dependency on DOM roles
+      const acceptedRoles = ['menuitem', 'menuitemcheckbox', 'menuitemradio'];
       const menuItems = findAllFocusable(
         state.ref.current,
-        (el: HTMLElement) => el.hasAttribute('role') && el.getAttribute('role') === 'menuitem',
+        (el: HTMLElement) => el.hasAttribute('role') && acceptedRoles.indexOf(el.getAttribute('role')!) !== -1,
       );
 
       let startIndex = menuItems.indexOf(itemEl) + 1;

@@ -43,7 +43,7 @@ export function renderFluentProvider(state: ProviderState) {
   return (
     <internal__FluentProviderContext.Provider value={value}>
       <internal__ThemeContext.Provider value={theme}>
-        <FocusManagementProvider>
+        <FocusManagementProvider document={document} dir={dir}>
           <slots.root {...slotProps.root} />
         </FocusManagementProvider>
       </internal__ThemeContext.Provider>
