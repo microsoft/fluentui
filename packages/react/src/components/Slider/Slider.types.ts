@@ -225,3 +225,63 @@ export interface ISliderStyles {
    */
   zeroTick: IStyle;
 }
+
+export interface IClassNameProp {
+  className: string;
+}
+
+export interface IRefWithClassNameProps extends IClassNameProp {
+  ref: React.Ref<HTMLDivElement>;
+}
+
+export interface ILabelProps extends IClassNameProp {
+  children: string | undefined;
+  disabled: boolean;
+  htmlFor: string | undefined;
+}
+
+export interface IValueProps extends IClassNameProp {
+  children: number | string;
+  disabled: boolean;
+}
+
+export interface IStyleWithClassNameProps extends IClassNameProp {
+  style: { [x: string]: string };
+}
+
+export interface ISliderBaseProps {
+  'aria-disabled': boolean;
+  role: 'slider';
+  tabIndex: undefined | 0;
+  'data-is-focusable': boolean;
+}
+
+export interface IEventProps {
+  onMouseDown: (event: MouseEvent | TouchEvent) => void;
+  onTouchStart: (event: MouseEvent | TouchEvent) => void;
+  onKeyDown: (event: KeyboardEvent) => void;
+  onFocus: (event: MouseEvent | TouchEvent) => void;
+}
+
+interface IAriaProps {
+  'aria-valuemin': number;
+  'aria-valuemax': number;
+  'aria-valuenow': number;
+  'aria-valuetext': string | undefined;
+  'aria-label': string;
+}
+
+type IIdProp = {
+  id: string;
+};
+
+type ISliderBoxBaseProps = IIdProp & IClassNameProp;
+
+export type ISliderBoxProps = ISliderBoxBaseProps | (ISliderBoxBaseProps & IEventProps & IAriaProps);
+
+type IThumbBaseProps = {
+  ref: React.RefObject<HTMLSpanElement>;
+} & IStyleWithClassNameProps;
+
+export type IThumbProps = IThumbBaseProps | (IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps);
+export type ILowerThumbProps = undefined | (IIdProp & IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps);
