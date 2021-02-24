@@ -2,6 +2,47 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.0-beta.63",
+      "version": "8.0.0-beta.63",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Implement keyboard shortcut for Cut and Delete",
+            "author": "jaredi@microsoft.com",
+            "commit": "887f4ada3e8738722292d97023f3ddb518818851",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Use role=\"presentation\" for all <div> elements in TilesList",
+            "author": "andredias@microsoft.com",
+            "commit": "1e8257fe63e9d4bb458d3e8e849aae2b0dfb2123",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "UnifiedPicker: fix suggestions keyboard issue, add generic item functionality",
+            "author": "elvonspa@microsoft.com",
+            "commit": "84097a34db5547661853bd7876438420fb0fdf70",
+            "package": "@fluentui/react-experiments"
+          },
+          {
+            "comment": "Add a check for if we are in a drop action to the UnifiedPicker drag end",
+            "author": "elvonspa@microsoft.com",
+            "commit": "799ac0245848e1e8f5c075ce4d7e9db82e988075",
+            "package": "@fluentui/react-experiments"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/react-experiments_v8.0.0-beta.62",
       "version": "8.0.0-beta.62",

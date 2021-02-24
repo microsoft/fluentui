@@ -2,6 +2,33 @@
   "name": "@fluentui/react-avatar",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-avatar_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "rework styles to makeStyles() for Badge in react-avatar",
+            "author": "olfedias@microsoft.com",
+            "commit": "2a79f10a628f9e0af32fbf4314bee9032eceac88",
+            "package": "@fluentui/react-avatar"
+          },
+          {
+            "comment": "remove dependency on @fluentui/react-icons-mdl2",
+            "author": "olfedias@microsoft.com",
+            "commit": "6ec9331749097485be83661bcaf5ee423b1bc405",
+            "package": "@fluentui/react-avatar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/react-avatar_v0.12.0",
       "version": "0.12.0",

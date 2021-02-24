@@ -2,6 +2,41 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.60",
+      "version": "8.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Pickers Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "4b552307678332cf9d7ed3cfb4f82cf402f89515",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Fully disable viewport measurement with 'skipViewportMeasures'",
+            "author": "andredias@microsoft.com",
+            "commit": "8a0938f42c3d4d990edc8cfb39456d28f28bb232",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Prevent '.ms-Icon' style overrides from conflicting with the \"Move column\" target (#16014)",
+            "author": "jdh@microsoft.com",
+            "commit": "552aee3fb54503dec221bea6fba52cfcec30ff19",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/webpack-utilities to v8.0.0-beta.4",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.59",
       "version": "8.0.0-beta.59",

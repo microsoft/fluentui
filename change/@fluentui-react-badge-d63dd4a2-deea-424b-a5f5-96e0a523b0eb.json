@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove dependency on react-hooks",
-  "packageName": "@fluentui/react-badge",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
