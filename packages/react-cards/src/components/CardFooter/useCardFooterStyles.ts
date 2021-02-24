@@ -21,7 +21,7 @@ const useRootStyles = makeStyles<CardSectionState>([
   ],
 ]);
 
-export function useCardFooterClasses(state: CardSectionState): CardSectionState {
+export function useCardFooterStyles(state: CardSectionState): CardSectionState {
   state.className = ax('ms-CardFooter', useRootStyles(state), state.className);
 
   return state;

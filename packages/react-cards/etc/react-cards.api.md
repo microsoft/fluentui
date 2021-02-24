@@ -85,7 +85,7 @@ export const useCard: (props: CardProps, ref: React.Ref<HTMLElement>, defaultPro
 export function useCardBodyStyles(state: CardSectionState): CardSectionState;
 
 // @public (undocumented)
-export function useCardFooterClasses(state: CardSectionState): CardSectionState;
+export function useCardFooterStyles(state: CardSectionState): CardSectionState;
 
 // @public (undocumented)
 export function useCardHeaderStyles(state: CardSectionState): CardSectionState;
