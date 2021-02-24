@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Remove unused prop-types dependencies",
-  "packageName": "@fluentui/utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

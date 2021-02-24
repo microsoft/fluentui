@@ -31,6 +31,25 @@ export const linkBehaviorDefinition: Rule[] = [
     .doesNotHaveAttribute('disabled')
     .description(`if element type is other than the defaults 'anchor' and 'button' and is disabled.`),
   BehaviorRule.root()
+    .forProps({ disabledFocusable: true, href: '#' })
+    .doesNotHaveAttribute('disabled')
+    .doesNotHaveAttribute('href')
+    .hasAttribute('aria-disabled', 'true')
+    .hasAttribute('tabindex', '0')
+    .description(`if element has href and is rendered as an 'anchor' and is disabled but focusable.`),
+  BehaviorRule.root()
+    .forProps({ disabledFocusable: true })
+    .doesNotHaveAttribute('disabled')
+    .doesNotHaveAttribute('tabindex')
+    .hasAttribute('aria-disabled', 'true')
+    .description(`if element does not have href and is rendered as a 'button' and is disabled but focusable.`),
+  BehaviorRule.root()
+    .forProps({ as: 'div', disabledFocusable: true })
+    .doesNotHaveAttribute('disabled')
+    .hasAttribute('aria-disabled', 'true')
+    .hasAttribute('tabindex', '0')
+    .description(`if element type is other than the defaults 'anchor' and 'button' and is disabled but focusable.`),
+  BehaviorRule.root()
     .forProps({ disabled: true, disabledFocusable: true, href: '#' })
     .doesNotHaveAttribute('disabled')
     .doesNotHaveAttribute('href')

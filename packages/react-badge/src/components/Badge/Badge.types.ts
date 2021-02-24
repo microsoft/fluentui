@@ -4,25 +4,12 @@ import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/
 /**
  * {@docCategory Badge}
  */
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 /**
  * {@docCategory Badge}
  */
-export type BadgeStatus =
-  | 'success'
-  | 'warning'
-  | 'severe'
-  | 'accent'
-  | 'danger'
-  | 'important'
-  | 'informative'
-  | 'subtle';
-
-/**
- * {@docCategory Badge}
- */
-export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'tint';
+export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
 /**
  * {@docCategory Badge}
@@ -35,23 +22,21 @@ export type BadgeShape = 'rounded' | 'square' | 'circular';
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * A Badge can be sized.
+   * @defaultvalue medium
    */
-  size?: SizeValue;
-
-  /**
-   * A Badge can have status styles variants
-   */
-  status?: BadgeStatus;
+  size?: BadgeSize;
 
   /**
    * A Badge can be square, circular or rounded
+   * @defaultvalue circular
    */
   shape?: BadgeShape;
 
   /**
    * A Badge can be filled, outline, ghost, inverted
+   * @defaultvalue filled
    */
-  appearance?: BadgeAppearances;
+  appearance?: BadgeAppearance;
 
   /**
    * Icon slot
@@ -60,6 +45,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
 
   /**
    * Position for Icon to be rendered
+   * @defaultvalue before
    */
   iconPosition?: 'before' | 'after';
 }
