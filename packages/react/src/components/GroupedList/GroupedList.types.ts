@@ -283,6 +283,18 @@ export interface IGroupDividerProps {
   /** Defines the number of columns a group header needs to span in the case of a grid or treegrid */
   ariaColSpan?: number;
 
+  /** Defines the number of items in the current set of listitems or treeitems */
+  ariaSetSize?: number;
+
+  /** Defines an element's number or position in the current set of listitems or treeitems */
+  ariaPosInSet?: number;
+
+  /** Defines the number of items in the current set of grid items */
+  ariaRowCount?: number;
+
+  /** Defines an element's number or position in the current set of grid items */
+  ariaRowIndex?: number;
+
   /**
    * Width corresponding to a single level.
    * This is multiplied by the groupLevel to get the full spacer width for the group.
