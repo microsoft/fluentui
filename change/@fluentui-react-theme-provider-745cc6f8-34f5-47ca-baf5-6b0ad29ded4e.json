@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bump version to v9",
-  "packageName": "@fluentui/react-theme-provider",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

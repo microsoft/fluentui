@@ -21,8 +21,8 @@ scripts/babel/ @layershifter @miroslavstastny
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/webpack.config.* @layershifter @miroslavstastny
 scripts/fluentui-publish/ @layershifter @ling1726
-package.json @ecraig12345 @dzearing @xugao
-yarn.lock @ecraig12345 @dzearing @xugao
+package.json @ecraig12345 @xugao
+yarn.lock @ecraig12345 @xugao
 *.config.js @ecraig12345
 *.sh @ecraig12345
 *.yml @ecraig12345
@@ -45,9 +45,9 @@ LICENSE @justSlone
 .github @justSlone
 
 #### Fluent UI N*
-packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
-packages/a11y-testing/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
-packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @dzearing @pompomon @jurokapsiar @ling1726
+packages/a11y-rules/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
+packages/a11y-testing/ @kolaps33 @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
+packages/fluentui/ @assuncaocharles @layershifter @miroslavstastny @pompomon @jurokapsiar @ling1726
 
 #### Web Components
 packages/web-components @chrisdholt @EisenbergEffect @nicholasrice
@@ -58,7 +58,6 @@ public-docsite/ @ecraig12345
 public-docsite-resources/ @ecraig12345 @justSlone
 perf-test/ @JasonGore @xugao
 # ssr-tests/
-# test-bundle-button/ @dzearing
 # todo-app/
 Controls/web.tsx @Vitalius1 @natalieethell
 
@@ -69,7 +68,7 @@ packages/date-time-utilities @lorejoh12 @evlevy
 packages/eslint-plugin/ @ecraig12345
 packages/react-docsite-components/ @ecraig12345
 packages/react-file-type-icons/ @KatherineThayerMicrosoft @jahnp @bigbadcapers
-packages/foundation-legacy/ @dzearing @khmakoto
+packages/foundation-legacy/ @khmakoto
 # packages/font-icons-mdl2/
 # packages/jest-serializer-merge-styles/
 packages/merge-styles/ @dzearing
@@ -115,7 +114,7 @@ packages/react/src/components/Button/ @khmakoto
 packages/react/src/components/Calendar/ @lorejoh12 @pompomon
 packages/react/src/components/CalendarDayGrid/ @lorejoh12
 packages/react/src/components/Callout/ @joschect
-packages/react/src/components/Check/ @dzearing @xugao
+packages/react/src/components/Check/ @ThomasMichon @xugao
 packages/react/src/components/Checkbox/ @khmakoto @xugao
 packages/react/src/components/ChoiceGroup/ @ecraig12345
 packages/react/src/components/Coachmark/ @leddie24
@@ -124,7 +123,7 @@ packages/react/src/components/ComboBox/ @joschect
 packages/react/src/components/CommandBar/ @micahgodbolt @joschect
 packages/react/src/components/ContextualMenu/ @joschect
 packages/react/src/components/DatePicker/ @lorejoh12 @pompomon
-packages/react/src/components/DetailsList/ @dzearing
+packages/react/src/components/DetailsList/ @@ThomasMichon
 packages/react/src/components/Dialog/ @joschect
 packages/react/src/components/DocumentCard/ @yiminwu
 packages/react/src/components/Dropdown/ @joschect
@@ -132,15 +131,15 @@ packages/react/src/components/Fabric/ @dzearing
 packages/react/src/components/Facepile/ @markionium @mtennoe
 packages/react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
 packages/react/src/components/FocusTrapZone/ @khmakoto
-packages/react/src/components/GroupedList/  @aditima @dzearing
+packages/react/src/components/GroupedList/  @ThomasMichon
 packages/react/src/components/HoverCard/  @Jahnp @Vitalius1
 packages/react/src/components/Icon/ @dzearing @ecraig12345
 packages/react/src/components/Image/ @dzearing
 packages/react/src/components/Label/ @khmakoto
 packages/react/src/components/Layer/  @ThomasMichon
 packages/react/src/components/Link/ @khmakoto
-packages/react/src/components/List/ @dzearing
-packages/react/src/components/MarqueeSelection/ @dzearing
+packages/react/src/components/List/ @@ThomasMichon
+packages/react/src/components/MarqueeSelection/ @ThomasMichon
 packages/react/src/components/MessageBar/ @ecraig12345
 packages/react/src/components/Modal/ @joschect
 packages/react/src/components/Nav/ @ecraig12345

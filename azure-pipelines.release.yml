@@ -11,10 +11,11 @@ variables:
 pool: 'Self Host Ubuntu'
 
 schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+  - cron: '0 7 * * 1-5'
+    # will be 12am during daylight savings time unless trigger is updated
+    displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
     branches:
       include:
         - master

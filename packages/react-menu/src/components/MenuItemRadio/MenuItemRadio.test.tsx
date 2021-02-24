@@ -4,7 +4,7 @@ import { render, fireEvent } from '@testing-library/react';
 import { MenuItemRadio } from './MenuItemRadio';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
-import { MenuListContext, MenuListProvider } from '../../menuListContext';
+import { MenuListProvider, MenuListContextValue } from '../../menuListContext';
 
 describe('MenuItemRadio', () => {
   isConformant({
@@ -44,10 +44,13 @@ describe('MenuItemRadio', () => {
 });
 
 describe('MenuItemRadio', () => {
-  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContext> }) => {
-    const contextValue: MenuListContext = {
+  const TestMenuListContextProvider = (props: {
+    children: React.ReactNode;
+    context?: Partial<MenuListContextValue>;
+  }) => {
+    const contextValue: MenuListContextValue = {
       checkedValues: {},
-      onCheckedValueChange: jest.fn(),
+      selectRadio: jest.fn(),
       ...(props.context && props.context),
     };
 
@@ -59,11 +62,11 @@ describe('MenuItemRadio', () => {
     const checkedValues = { test: ['1'] };
     const checkmark = 'xxx';
     const { getByText } = render(
-      <TestMenuListContext context={{ checkedValues }}>
+      <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemRadio name="test" value="1" checkmark={checkmark}>
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -74,11 +77,11 @@ describe('MenuItemRadio', () => {
     // Arrange
     const icon = 'xxx';
     const { getByText } = render(
-      <TestMenuListContext>
+      <TestMenuListContextProvider>
         <MenuItemRadio name="test" value="1" icon={icon}>
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -89,29 +92,29 @@ describe('MenuItemRadio', () => {
     // Arrange
     const checkedValues = { test: ['1'] };
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues }}>
+      <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemRadio name="test" value="1">
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
     expect(container.querySelector('[role="menuitemradio"]')?.getAttribute('aria-checked')).toEqual('true');
   });
 
-  it('should check radio on click', () => {
+  it('should selectRadio handler on click', () => {
     // Arrange
     const radioName = 'name';
     const radioValue = '1';
     const checkedValues = { [radioName]: [] };
     const spy = jest.fn();
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues, onCheckedValueChange: spy }}>
+      <TestMenuListContextProvider context={{ checkedValues, selectRadio: spy }}>
         <MenuItemRadio name={radioName} value={radioValue}>
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Act
@@ -120,29 +123,6 @@ describe('MenuItemRadio', () => {
 
     // Assert
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, [radioValue]);
-  });
-
-  it('should uncheck other radio on click', () => {
-    // Arrange
-    const radioName = 'name';
-    const radioValue = '1';
-    const checkedValues = { [radioName]: ['2'] };
-    const spy = jest.fn();
-    const { container } = render(
-      <TestMenuListContext context={{ checkedValues, onCheckedValueChange: spy }}>
-        <MenuItemRadio name={radioName} value={radioValue}>
-          Radio
-        </MenuItemRadio>
-      </TestMenuListContext>,
-    );
-
-    // Act
-    const menuitem = container.querySelector('[role="menuitemradio"]');
-    menuitem && fireEvent.click(menuitem);
-
-    // Assert
-    expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, [radioValue]);
+    expect(spy).toHaveBeenCalledWith(expect.anything(), radioName, radioValue, false);
   });
 });

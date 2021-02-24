@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Badge): update Badge API",
-  "packageName": "@fluentui/react-badge",
-  "email": "junioassuncaocharles@gmail.com",
-  "dependentChangeType": "patch"
-}
