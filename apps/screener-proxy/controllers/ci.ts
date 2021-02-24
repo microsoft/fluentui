@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
+import { Endpoints } from '@octokit/types';
 import { CHECK_NAME, GITHUB_APP_ID, GITHUB_APP_REPO, GITHUB_APP_REPO_OWNER } from '../config';
-import { CheckRunsResponse } from '../types/github';
 import { setupGithubClient } from '../utils';
 
 interface CIRequestBody {
@@ -8,15 +8,17 @@ interface CIRequestBody {
   url: string;
 }
 
+type CheckRunsResponse = Endpoints['GET /repos/{owner}/{repo}/commits/{ref}/check-runs']['response'];
+
 export const ci = async (req: Request, res: Response) => {
   const githubClient = await setupGithubClient();
   const body: CIRequestBody = req.body;
 
-  const response: CheckRunsResponse = await githubClient.request('GET /repos/:owner/:repo/commits/:ref/check-runs', {
+  const response = (await githubClient.request('GET /repos/:owner/:repo/commits/:ref/check-runs', {
     repo: GITHUB_APP_REPO,
     owner: GITHUB_APP_REPO_OWNER,
     ref: body.commit,
-  });
+  })) as CheckRunsResponse;
   const screenerCheck = response.data.check_runs.find(checkRun => checkRun.app.id === GITHUB_APP_ID);
 
   if (screenerCheck) {

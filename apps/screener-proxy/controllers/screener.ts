@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
+import { Endpoints } from '@octokit/types';
 import { GITHUB_APP_REPO, GITHUB_APP_REPO_OWNER, GITHUB_APP_ID, CHECK_NAME } from '../config';
-import { CheckRunsResponse } from '../types/github';
 import { setupGithubClient } from '../utils';
 
 interface ScreenerWebhook {
@@ -15,20 +15,19 @@ interface ScreenerWebhook {
   commit: string;
 }
 
+type CheckRunsResponse = Endpoints['GET /repos/{owner}/{repo}/commits/{ref}/check-runs']['response'];
+
 export const screener = async (req: Request, res: Response) => {
   const githubClient = await setupGithubClient();
   const body: ScreenerWebhook = req.body;
 
   console.log({ body });
 
-  const checksForCommit: CheckRunsResponse = await githubClient.request(
-    'GET /repos/:owner/:repo/commits/:ref/check-runs',
-    {
-      repo: GITHUB_APP_REPO,
-      owner: GITHUB_APP_REPO_OWNER,
-      ref: body.commit,
-    },
-  );
+  const checksForCommit = (await githubClient.request('GET /repos/:owner/:repo/commits/:ref/check-runs', {
+    repo: GITHUB_APP_REPO,
+    owner: GITHUB_APP_REPO_OWNER,
+    ref: body.commit,
+  })) as CheckRunsResponse;
   const screenerCheck = checksForCommit.data.check_runs.find(checkRun => checkRun.app.id === GITHUB_APP_ID);
 
   if (screenerCheck) {

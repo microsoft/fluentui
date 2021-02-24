@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
+import { PullRequestEvent } from '@octokit/webhooks-definitions/schema';
 import { CHECK_NAME, GITHUB_APP_REPO, GITHUB_APP_REPO_OWNER } from '../config';
 import { setupGithubClient } from '../utils';
-import { GithubWebhook } from '../types/github';
 
 const ALLOWED_BASES: string[] = ['master'];
 
 export const github = async (req: Request, res: Response) => {
   const githubClient = await setupGithubClient();
-  const body: GithubWebhook = req.body;
+  const body: PullRequestEvent = req.body;
 
   const commitSHA = body.pull_request?.head.sha;
   const targetBranch = body.pull_request?.base.ref;
@@ -21,7 +21,7 @@ export const github = async (req: Request, res: Response) => {
       repo: GITHUB_APP_REPO,
       owner: GITHUB_APP_REPO_OWNER,
       name: CHECK_NAME,
-      head_sha: commitSHA as string,
+      head_sha: commitSHA,
     });
 
     res.status(200).send(`Created ${CHECK_NAME} for PR ${body.pull_request?.title}`);

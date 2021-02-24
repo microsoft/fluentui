@@ -16,6 +16,8 @@
   "devDependencies": {
     "@types/express": "^4.16.1",
     "@types/node": "^10.3.2",
+    "@octokit/types": "^6.10.0",
+    "@octokit/webhooks-definitions": "^3.61.1",
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.7",
     "prettier": "~1.19.1"

@@ -1,6 +1,7 @@
-import { App } from '@octokit/app';
 import { NextFunction, Request, Response } from 'express';
 import crypto from 'crypto';
+import { App } from '@octokit/app';
+import { Endpoints } from '@octokit/types';
 import {
   GITHUB_APP_CLIENT_ID,
   GITHUB_APP_CLIENT_SECRET,
@@ -11,11 +12,7 @@ import {
   GITHUB_APP_WEBHOOK_SECRET,
 } from './config';
 
-interface InstallationResponse {
-  data: {
-    id: number;
-  };
-}
+type InstallationResponse = Endpoints['GET /repos/{owner}/{repo}/installation']['response'];
 
 export const validateGithubWebhook = (req: Request, _: Response, next: NextFunction) => {
   const headerName = 'X-Hub-Signature-256';
@@ -47,10 +44,10 @@ export const setupGithubClient = async () => {
     },
   });
 
-  const response: InstallationResponse = await githubApp.octokit.request('GET /repos/:owner/:repo/installation', {
+  const response = (await githubApp.octokit.request('GET /repos/:owner/:repo/installation', {
     repo: GITHUB_APP_REPO,
     owner: GITHUB_APP_REPO_OWNER,
-  });
+  })) as InstallationResponse;
 
   return await githubApp.getInstallationOctokit(response.data.id);
 };
