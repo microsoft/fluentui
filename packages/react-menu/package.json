@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-menu",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Fluent UI menu component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -46,8 +46,8 @@
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.13",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.0",
-    "@fluentui/react-utilities": "^9.0.0-alpha.0",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.1",
+    "@fluentui/react-utilities": "^9.0.0-alpha.1",
     "@fluentui/set-version": "^8.0.0-beta.2",
     "tslib": "^1.10.0"
   },

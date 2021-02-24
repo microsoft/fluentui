@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Pickers Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode",
-  "packageName": "@fluentui/react",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

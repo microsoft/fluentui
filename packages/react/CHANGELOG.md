@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 00:05:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.60)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.59..@fluentui/react_v8.0.0-beta.60)
+
+### Changes
+
+- Pickers Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode ([PR #17020](https://github.com/microsoft/fluentui/pull/17020) by tristan.watanabe@gmail.com)
+- Fully disable viewport measurement with 'skipViewportMeasures' ([PR #17107](https://github.com/microsoft/fluentui/pull/17107) by andredias@microsoft.com)
+- Prevent '.ms-Icon' style overrides from conflicting with the "Move column" target (#16014) ([PR #17124](https://github.com/microsoft/fluentui/pull/17124) by jdh@microsoft.com)
 
 ## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.59)
 

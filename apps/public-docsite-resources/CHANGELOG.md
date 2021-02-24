@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 00:05:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.6)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.5..@fluentui/public-docsite-resources_v8.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/api-docs to v8.0.0-beta.6 ([PR #17033](https://github.com/microsoft/fluentui/pull/17033) by martinhochel@microsoft.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.5)
 

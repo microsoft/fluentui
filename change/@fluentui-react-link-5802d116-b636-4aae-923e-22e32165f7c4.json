@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove dependency on @fluentui/react-compose",
-  "packageName": "@fluentui/react-link",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

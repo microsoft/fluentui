@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bump versions for converged components to v9",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

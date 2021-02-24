@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate fluentui/storybook to SB v6 because off syncpack policy",
-  "packageName": "@fluentui/public-docsite",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

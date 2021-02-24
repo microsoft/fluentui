@@ -2,6 +2,77 @@
   "name": "@fluentui/public-docsite",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/public-docsite_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update GetStartedDevelopSimple.md (#16366)",
+            "author": "jdh@microsoft.com",
+            "commit": "3e52d27faa15bbcb94128ad4759331a24c8d50cd",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "chore: migrate fluentui/storybook to SB v6 because off syncpack policy",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/api-docs to v8.0.0-beta.6",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/react-examples to v8.0.0-beta.7",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/react-docsite-components to v8.0.0-beta.59",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/react-experiments to v8.0.0-beta.63",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/react-monaco-editor to v1.0.1-5",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          },
+          {
+            "comment": "Bump @fluentui/theme-samples to v8.0.0-beta.58",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/public-docsite-resources to v8.0.0-beta.6",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/public-docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/public-docsite_v8.0.0-beta.5",
       "version": "8.0.0-beta.5",

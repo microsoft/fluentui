@@ -2,6 +2,29 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/azure-themes_v8.0.0-beta.58",
+      "version": "8.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updated primary button styles to match fluentui",
+            "author": "andredias@microsoft.com",
+            "commit": "3b616b57439329fcc71b2902eb851c547847a77b",
+            "package": "@fluentui/azure-themes"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/azure-themes_v8.0.0-beta.57",
       "version": "8.0.0-beta.57",

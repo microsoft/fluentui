@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "fix react-context-selector eslint-plugin version",
-  "packageName": "@fluentui/react-context-selector",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
