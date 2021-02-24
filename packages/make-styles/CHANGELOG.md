@@ -1,8 +1,26 @@
 # Change Log - @fluentui/make-styles
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 00:05:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v9.0.0-alpha.1)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v0.6.0..@fluentui/make-styles_v9.0.0-alpha.1)
+
+### Changes
+
+- bump version to v9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+
+## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v0.6.0)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/make-styles_v0.6.0..@fluentui/make-styles_v0.6.0)
+
+### Changes
+
+- Bump @fluentui/test-utilities to v8.0.0-beta.9 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [0.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/make-styles_v0.6.0)
 

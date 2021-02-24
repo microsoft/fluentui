@@ -1,8 +1,35 @@
 # Change Log - @fluentui/public-docsite-resources
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Feb 2021 07:19:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.7)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.6..@fluentui/public-docsite-resources_v8.0.0-beta.7)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.6)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.5..@fluentui/public-docsite-resources_v8.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/api-docs to v8.0.0-beta.6 ([PR #17033](https://github.com/microsoft/fluentui/pull/17033) by martinhochel@microsoft.com)
+
+## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.5)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite-resources_v8.0.0-beta.4..@fluentui/public-docsite-resources_v8.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/api-docs to v8.0.0-beta.5 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite-resources_v8.0.0-beta.4)
 

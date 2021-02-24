@@ -8,7 +8,7 @@ import { Header } from '../Header/Header';
 import { INavLink, Nav } from '@fluentui/react/lib/Nav';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { Panel, PanelType } from '@fluentui/react/lib/Panel';
-import { ResponsiveMode, withResponsiveMode } from '@fluentui/react/lib/utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, withResponsiveMode } from '@fluentui/react/lib/ResponsiveMode';
 import { showOnlyExamples } from '../../utilities/showOnlyExamples';
 import { getQueryParam } from '../../utilities/index2';
 

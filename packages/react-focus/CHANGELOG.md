@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.24)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.23..@fluentui/react-focus_v8.0.0-beta.24)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.23)
 

@@ -20,11 +20,13 @@ scripts/ @dzearing @ecraig12345 @xugao
 scripts/babel/ @layershifter @miroslavstastny
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/webpack.config.* @layershifter @miroslavstastny
+scripts/fluentui-publish/ @layershifter @ling1726
 package.json @ecraig12345 @dzearing @xugao
 yarn.lock @ecraig12345 @dzearing @xugao
 *.config.js @ecraig12345
 *.sh @ecraig12345
 *.yml @ecraig12345
+azure-pipelines.release-fluentui.yml @layershifter @ling1726
 tsconfig.json @ecraig12345
 lerna.json @ecraig12345
 .codesandbox @ecraig12345
