@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix syncpack issues in react-icons-mdl2",
-  "packageName": "@fluentui/react-icons-mdl2-branded",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

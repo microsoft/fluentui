@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(Badge): remove unnused props from badge stories",
-  "packageName": "@fluentui/react-examples",
-  "email": "junioassuncaocharles@gmail.com",
-  "dependentChangeType": "patch"
-}
