@@ -990,7 +990,7 @@ Below lists the interactions for the primary content part of the split button
 | Mouse    | Click      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
 | Keyboard | Enter      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
 | Keyboard | Space      | Dismiss | Invoke the menu item                             | User defined - default menu trigger                |
-| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item contained in that submenu             |
+| Keyboard | ArrowRight | Open    | Opens the submenu                                | First menu item contained in that submenu          |
 | Keyboard | ArrowDown  | Move    | Focuses on the secondary part of the splitbutton | Secondary part of the splitbutton                  |
 | Keyboard | Tab        | Dismiss | Closes the menu and all submenus                 | Next tabbable element after root menu trigger      |
 | Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus                 | Previous tabbable element before root menu trigger |
@@ -1008,7 +1008,6 @@ Below lists the interactions for the secondary content part of the split button
 | Keyboard | Shift+Tab  | Dismiss | Closes the menu and all submenus | Previous tabbable element before root menu trigger |
 
 Once the submenu is open, the same behavior as in the [previous section](#submenu-trigger/navigation) applies with the exception of returning focus to the splitbutton, which is shown in the images below.
-
 
 ![Using up/down arrow key](./etc/images/splitbutton-up-down.jpg)
 
