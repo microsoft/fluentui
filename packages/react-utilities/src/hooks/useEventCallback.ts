@@ -13,21 +13,14 @@ import * as React from 'react';
  * @param fn The callback function that will be used
  * @param dependencies Shouldn't be needed since the callback is ref based, but good to behave like native
  */
-export const useEventCallback = <Args extends unknown[], Return>(
-  fn: (...args: Args) => Return,
-  dependencies: React.DependencyList,
-) => {
+export const useEventCallback = <Args extends unknown[], Return>(fn: (...args: Args) => Return) => {
   const callbackRef = React.useRef<typeof fn>(() => {
     throw new Error('Cannot call an event handler while rendering');
   });
 
-  React.useEffect(
-    () => {
-      callbackRef.current = fn;
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [fn, ...dependencies],
-  );
+  React.useEffect(() => {
+    callbackRef.current = fn;
+  }, [fn]);
 
   return React.useCallback(
     (...args: Args) => {
