@@ -362,6 +362,15 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     ],
   );
 
+  React.useEffect(() => {
+    const rootElement = rootRef.current;
+    rootElement?.addEventListener('keydown', _onKeyDown as () => void);
+
+    return () => {
+      rootElement?.removeEventListener('keydown', _onKeyDown as () => void);
+    };
+  });
+
   const _onInputKeyDown = React.useCallback(
     (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
       if (isSuggestionsShown) {
@@ -587,7 +596,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     <div
       ref={rootRef}
       className={css('ms-BasePicker ms-BaseExtendedPicker', className ? className : '')}
-      onKeyDown={_onKeyDown}
       onCopy={_onCopy}
     >
       <FocusZone
