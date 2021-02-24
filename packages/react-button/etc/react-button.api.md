@@ -322,7 +322,7 @@ export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaul
 export const useButtonClasses: (state: ButtonState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
 
 // @public
-export const useButtonState: (draftState: ButtonState) => void;
+export const useButtonState: (state: ButtonState) => ButtonState;
 
 // @public
 export const useChecked: <TDraftState extends CheckedState>(draftState: TDraftState) => void;

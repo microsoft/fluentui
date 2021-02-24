@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders a default state 1`] = `
+exports[`Button renders a default button 1`] = `
 <button
   className=
       ms-Button
@@ -185,6 +185,7 @@ exports[`Button renders a default state 1`] = `
       @media screen and (forced-colors: active){&[aria-disabled=true] .ms-Button-icon {
         color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
       }
+  onClick={[Function]}
   onKeyDown={[Function]}
 >
   <span
@@ -194,12 +195,12 @@ exports[`Button renders a default state 1`] = `
           line-height: 1;
         }
   >
-    Default button
+    This is a button
   </span>
 </button>
 `;
 
-exports[`Button renders anchor when href prop is provided 1`] = `
+exports[`Button renders as an anchor when href is provided 1`] = `
 <a
   className=
       ms-Button
@@ -385,8 +386,10 @@ exports[`Button renders anchor when href prop is provided 1`] = `
         color: var(--button-highContrast-disabled-iconColor, --button-highContrast-iconColor);
       }
   href="https://www.bing.com"
+  onClick={[Function]}
   onKeyDown={[Function]}
   role="button"
+  tabIndex={0}
 >
   <span
     className=
@@ -395,7 +398,7 @@ exports[`Button renders anchor when href prop is provided 1`] = `
           line-height: 1;
         }
   >
-    Default button
+    This is a button
   </span>
 </a>
 `;

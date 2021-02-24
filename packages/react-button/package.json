@@ -27,6 +27,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
+    "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/common-styles": "^1.0.0-beta.19",
     "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@fluentui/react-conformance": "^1.0.0",
@@ -42,8 +43,7 @@
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "react-test-renderer": "^16.3.0",
-    "@fluentui/a11y-testing": "^0.1.0"
+    "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.2.13",
