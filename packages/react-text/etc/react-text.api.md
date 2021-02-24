@@ -28,10 +28,7 @@ export interface TextState extends TextProps {
 export const useStyles: (selectors: TextState) => string;
 
 // @public
-export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => {
-    state: TextState;
-    render: (state: TextProps) => JSX.Element;
-};
+export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
 // @public (undocumented)
 export function useTextStyles(state: TextState): TextState;
