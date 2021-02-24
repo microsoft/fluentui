@@ -214,7 +214,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <button>Pop out chat</button>
 
         <div
-          role="region"
+          role="group"
           aria-label="Chat content"
           onFocus={handleFocus}
           onBlur={handleBlur}
