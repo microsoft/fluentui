@@ -6,7 +6,7 @@ import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
 
 export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    display: 'flex',
+    display: 'block',
     zIndex: v.zIndex,
 
     ...(p.pointing && {
@@ -15,6 +15,12 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
         placement: p.basePlacement,
         padding: v.pointerMargin,
       }),
+    }),
+
+    ...(p.autoSize && {
+      // when autoSize is true, root will have inline style maxWidth and maxHeight set by popper
+      display: 'flex',
+      overflow: 'hidden',
     }),
   }),
 
@@ -44,10 +50,12 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
     padding: v.padding,
     transform: 'rotate(360deg)',
 
-    overflow: 'auto',
-
     ...(p.pointing && {
       pointerEvents: 'all',
+    }),
+
+    ...(p.autoSize && {
+      overflow: 'auto',
     }),
   }),
 };

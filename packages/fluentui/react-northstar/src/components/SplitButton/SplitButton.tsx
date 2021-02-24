@@ -315,7 +315,6 @@ SplitButton.defaultProps = {
   toggleButton: {},
   position: 'below',
   align: 'start',
-  autoSize: true,
 };
 
 SplitButton.handledProps = Object.keys(SplitButton.propTypes) as any;

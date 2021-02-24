@@ -400,6 +400,7 @@ export const Popup: React.FC<PopupProps> &
           pointerRef: pointerTargetRef,
           trapFocus,
           autoFocus,
+          autoSize,
           className: classes,
         }),
       overrideProps: getContentProps,
@@ -644,7 +645,6 @@ Popup.defaultProps = {
   on: 'click',
   mouseLeaveDelay: 500,
   tabbableTrigger: true,
-  autoSize: true,
 };
 Popup.handledProps = Object.keys(Popup.propTypes) as any;
 

@@ -370,5 +370,4 @@ Popper.defaultProps = {
   modifiers: [],
   positionFixed: false,
   positioningDependencies: [],
-  autoSize: true,
 };

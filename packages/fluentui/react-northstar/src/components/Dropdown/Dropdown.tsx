@@ -1724,7 +1724,6 @@ Dropdown.defaultProps = {
   position: 'below',
   toggleIndicator: <ChevronDownIcon outline />,
   triggerButton: {},
-  autoSize: true,
 };
 
 Dropdown.Item = DropdownItem;
