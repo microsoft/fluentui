@@ -14,13 +14,10 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
   const receivedChildren = !!state.children?.children;
   const receivedIcon = !!state.icon?.children;
 
-  const iconOnly = receivedIcon && !receivedChildren;
   const styleSelectors: ButtonStyleSelectors = {
     disabled: state.disabled,
     primary: state.primary,
-    iconOnly: iconOnly,
-    textOnly: receivedChildren && !receivedIcon,
-    textWithIcon: receivedIcon && receivedChildren,
+    iconOnly: receivedIcon && !receivedChildren,
     size: state.size,
   };
 

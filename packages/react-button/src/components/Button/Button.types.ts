@@ -69,8 +69,6 @@ export type ButtonStyleSelectors = {
   iconOnly?: boolean;
   primary?: boolean;
   size?: string;
-  textOnly?: boolean;
-  textWithIcon?: boolean;
 };
 
 export type ButtonVariants =
