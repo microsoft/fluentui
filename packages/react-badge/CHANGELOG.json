@@ -2,6 +2,39 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "feat(Badge): update Badge API",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "df7def5198509979cbc82922f07ec7e623cd1e1d",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "feat(Badge): move spec",
+            "author": "junioassuncaocharles@gmail.com",
+            "commit": "6941c07f70fb984dd3c6bbf04fe05198c2979a52",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "remove dependency on react-hooks",
+            "author": "olfedias@microsoft.com",
+            "commit": "4c3186d117f7bc98a41aff879938711ec636bc34",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/react-badge_v0.2.0",
       "version": "0.2.0",

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Implement keyboard shortcut for Cut and Delete",
-  "packageName": "@fluentui/react-experiments",
-  "email": "jaredi@microsoft.com",
-  "dependentChangeType": "patch"
-}
