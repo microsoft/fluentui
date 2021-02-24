@@ -22,14 +22,10 @@ if (
   [
     'react-avatar',
     'react-badge',
-    'react-components',
     'react-button',
-    'react-link',
+    'react-components',
     'react-image',
-    'react-avatar',
-    'react-badge',
     'react-link',
-    'react-image',
     'react-menu',
   ].includes('PACKAGE_NAME')
 ) {
