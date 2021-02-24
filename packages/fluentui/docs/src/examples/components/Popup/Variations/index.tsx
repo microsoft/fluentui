@@ -15,6 +15,11 @@ const Variations = () => (
       description="Popup position could be further customized by providing offset value. Note that percentage values of both trigger and popup elements' lengths are supported."
       examplePath="components/Popup/Variations/PopupExampleOffset"
     />
+    <ComponentExample
+      title="AutoSize"
+      description="Popup could be responsive to fit in limited space"
+      examplePath="components/Popup/Variations/PopupExampleAutoSize"
+    />
   </ExampleSection>
 );
 
