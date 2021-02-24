@@ -16,7 +16,7 @@ export const positioningProps: Required<PositioningProps> = {
   position: 'above',
   positionFixed: true,
   unstable_disableTether: 'all',
-  autoHeight: true,
+  autoSize: true,
   unstable_pinned: true,
 };
 

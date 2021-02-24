@@ -115,7 +115,7 @@ export const Tooltip: React.FC<TooltipProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
-    autoHeight,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -246,7 +246,7 @@ export const Tooltip: React.FC<TooltipProps> &
           targetRef={target || triggerRef}
           children={renderPopperChildren}
           unstable_disableTether={unstable_disableTether}
-          autoHeight={autoHeight}
+          autoSize={autoSize}
           unstable_pinned={unstable_pinned}
         />
       </PortalInner>
@@ -265,7 +265,7 @@ Tooltip.defaultProps = {
   mouseLeaveDelay: 10,
   pointing: true,
   accessibility: tooltipAsLabelBehavior,
-  autoHeight: true,
+  autoSize: true,
 };
 Tooltip.propTypes = {
   ...commonPropTypes.createCommon({
@@ -291,7 +291,7 @@ Tooltip.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoHeight: PropTypes.bool,
+  autoSize: PropTypes.bool,
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([
     PropTypes.object as PropTypes.Requireable<HTMLElement>,

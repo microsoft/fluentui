@@ -125,7 +125,7 @@ export interface PositioningProps {
   /**
    * Change the height of the popper to fit it within the available space in viewport.
    */
-  autoHeight?: boolean;
+  autoSize?: boolean;
 }
 
 export interface PopperProps extends PositioningProps {
