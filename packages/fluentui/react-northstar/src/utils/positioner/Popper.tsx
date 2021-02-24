@@ -302,8 +302,9 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           phase: 'beforeWrite' as PopperJs.ModifierPhases,
           requires: ['maxSize'],
           fn({ state }) {
-            const maxHeight = state.modifiersData.maxSize.height;
-            state.styles.popper.maxHeight = `${maxHeight}px`;
+            const { height, width } = state.modifiersData.maxSize;
+            state.styles.popper.maxHeight = `${height}px`;
+            state.styles.popper.maxWidth = `${width}px`;
           },
         },
       ].filter(Boolean),
