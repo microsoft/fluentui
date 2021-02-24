@@ -26,12 +26,8 @@ yarn add @fluentui/react-context-selector
 ## Usage
 
 ```tsx
-import * as React from "react";
-import {
-  createContext,
-  useContextSelector,
-  ContextSelector,
-} from "@fluentui/react-context-selector";
+import * as React from 'react';
+import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
 
 interface CounterContextValue {
   count1: number;
@@ -47,21 +43,21 @@ const CounterContext = createContext<CounterContextValue>({});
 const CounterProvider = CounterContext.Provider;
 
 // not necessary but can be a good layer to mock for unit testing
-const useCounterContext = <T, >(selector: ContextSelector<CounterCountext, T>) =>
+const useCounterContext = <T>(selector: ContextSelector<CounterCountext, T>) =>
   useContextSelector(CounterContext, selector);
 
 const Counter1 = () => {
   // 💡 Context updates will be propagated only when result of a selector function will change
   //    "Object.is()" is used for internal comparisons
-  const count1 = useCounterContext((context) => context.count1);
-  const increment = useCounterContext((context) => context.incrementCount1);
+  const count1 = useCounterContext(context => context.count1);
+  const increment = useCounterContext(context => context.incrementCount1);
 
   return <button onClick={increment}>Counter 1: {count1}</button>;
 };
 
 const Counter2 = () => {
-  const count1 = useCounterContext((context) => context.count2);
-  const increment = useCounterContext((context) => context.incrementCount2);
+  const count1 = useCounterContext(context => context.count2);
+  const increment = useCounterContext(context => context.incrementCount2);
 
   return <button onClick={increment}>Counter 1: {count1}</button>;
 };
@@ -69,14 +65,8 @@ const Counter2 = () => {
 export default function App() {
   const [state, setState] = React.useState({ count1: 0, count2: 0 });
 
-  const incrementCount1 = React.useCallback(
-    () => setState((s) => ({ ...s, count1: s.count1 + 1 })),
-    [setState]
-  );
-  const incrementCount2 = React.useCallback(
-    () => setState((s) => ({ ...s, count2: s.count2 + 1 })),
-    [setState]
-  );
+  const incrementCount1 = React.useCallback(() => setState(s => ({ ...s, count1: s.count1 + 1 })), [setState]);
+  const incrementCount2 = React.useCallback(() => setState(s => ({ ...s, count2: s.count2 + 1 })), [setState]);
 
   return (
     <div className="App">
@@ -85,7 +75,7 @@ export default function App() {
           count1: state.count1,
           count2: state.count2,
           incrementCount1,
-          incrementCount2
+          incrementCount2,
         }}
       >
         <Counter1 />
@@ -94,7 +84,6 @@ export default function App() {
     </div>
   );
 }
-
 ```
 
 ## Technical memo
