@@ -355,7 +355,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
           <div className="item" tabIndex={0}>
             Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
             and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
-            changes related to regions, chat list itself and headings.
+            the changes related to regions, chat list itself and headings.
           </div>
         </div>
 
