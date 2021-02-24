@@ -18,8 +18,8 @@
 #### Build stuff
 scripts/ @dzearing @ecraig12345 @xugao
 scripts/babel/ @layershifter @miroslavstastny
-scripts/create-package/ @dzearing @ecraig12345 @joschemd @behowell
-scripts/create-component/ @joschemd @behowell
+scripts/create-package/ @dzearing @ecraig12345 @joschemd @behowell @layershifter @ling1726
+scripts/create-component/ @joschemd @behowell @layershifter @ling1726
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/webpack.config.* @layershifter @miroslavstastny
 scripts/fluentui-publish/ @layershifter @ling1726
