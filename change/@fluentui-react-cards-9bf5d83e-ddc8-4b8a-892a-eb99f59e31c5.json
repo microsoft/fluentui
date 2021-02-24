@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "[BREAKING] rework styles with makeStyles()",
+  "packageName": "@fluentui/react-cards",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
