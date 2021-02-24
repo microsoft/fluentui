@@ -1,6 +1,7 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
 import { Ref, isRefObject } from '@fluentui/react-component-ref';
 import * as PopperJs from '@popperjs/core';
+import maxSize from 'popper-max-size-modifier';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -292,6 +293,19 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           fn: handleUpdate,
         },
         popperInitialPositionFix.modifier,
+        maxSize,
+        {
+          name: 'applyMaxSize',
+          enabled: true,
+          phase: 'beforeWrite' as PopperJs.ModifierPhases,
+          requires: ['maxSize'],
+          fn({ state }) {
+            const maxHeight = state.modifiersData.maxSize.height;
+            if (state.rects.popper.height > maxHeight) {
+              state.styles.popper.height = `${maxHeight}px`;
+            }
+          },
+        },
       ].filter(Boolean),
       onFirstUpdate: state => handleUpdate({ state }),
     };

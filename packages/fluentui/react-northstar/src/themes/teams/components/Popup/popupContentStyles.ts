@@ -44,6 +44,9 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
     padding: v.padding,
     transform: 'rotate(360deg)',
 
+    maxHeight: '100%',
+    overflowY: 'auto',
+
     ...(p.pointing && {
       pointerEvents: 'all',
     }),
