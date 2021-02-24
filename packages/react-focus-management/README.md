@@ -18,10 +18,10 @@ The API currently only supports declarative data-\* attributes that are returned
 const Item: React.FC = ({ children }) => <div tabIndex={0}>Item</div>;
 
 const ArrowNavigationExample: React.FC = ({ children }) => {
-  const attr = useArrowNavigationGroup({ circular: true });
+  const attrs = useArrowNavigationGroup({ circular: true });
 
   return (
-    <div {...attr}>
+    <div {...attrs}>
       <Item />
       <Item />
       <Item />
