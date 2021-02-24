@@ -44,7 +44,7 @@ export interface UseArrowNavigationGroupOptions {
 
 // @public
 export const useFocusFinders: () => {
-    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[] | undefined;
+    findAllFocusable: (root: HTMLElement, matcher: (el: HTMLElement) => boolean) => HTMLElement[];
     findFirstFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
     findLastFocusable: (root: HTMLElement) => HTMLElement | null | undefined;
 };
