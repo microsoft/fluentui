@@ -24,9 +24,6 @@ export interface TextState extends TextProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
 
-// @public (undocumented)
-export const useStyles: (selectors: TextState) => string;
-
 // @public
 export const useText: (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps | undefined) => TextState;
 
