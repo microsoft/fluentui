@@ -369,15 +369,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     ],
   );
 
-  React.useEffect(() => {
-    const rootElement = rootRef.current;
-    rootElement?.addEventListener('keydown', _onKeyDown as () => void);
-
-    return () => {
-      rootElement?.removeEventListener('keydown', _onKeyDown as () => void);
-    };
-  });
-
   const _onValidateInput = React.useCallback(() => {
     if (onValidateInput && createGenericItem) {
       const itemToConvert = createGenericItem(queryString, onValidateInput(queryString));
@@ -449,8 +440,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     const inputElement = input.current?.inputElement;
     inputElement?.addEventListener('keydown', _onInputKeyDown as () => void);
 
+    const rootElement = rootRef.current;
+    rootElement?.addEventListener('keydown', _onKeyDown as () => void);
+
     return () => {
       inputElement?.removeEventListener('keydown', _onInputKeyDown as () => void);
+      rootElement?.removeEventListener('keydown', _onKeyDown as () => void);
     };
   });
 
