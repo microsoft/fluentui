@@ -284,4 +284,5 @@ type IThumbBaseProps = {
 } & IStyleWithClassNameProps;
 
 export type IThumbProps = IThumbBaseProps | (IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps);
+
 export type ILowerThumbProps = undefined | (IIdProp & IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps);
