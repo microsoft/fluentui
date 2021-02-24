@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 
 import { renderText } from './renderText';
-import { TextProps } from './Text.types';
+import { TextProps, TextState } from './Text.types';
 
-const mergeProps = makeMergeProps();
+const mergeProps = makeMergeProps<TextState>();
 
 /**
  * Given user props, returns state and render function for a Text.
@@ -12,7 +12,7 @@ const mergeProps = makeMergeProps();
 export const useText = (props: TextProps, ref: React.Ref<HTMLElement>, defaultProps?: TextProps) => {
   const state = mergeProps(
     {
-      ref,
+      ref: useMergedRefs(ref, React.useRef()),
       as: 'span',
     },
     defaultProps,
