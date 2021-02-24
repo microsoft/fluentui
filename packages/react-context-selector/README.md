@@ -25,7 +25,7 @@ yarn add @fluentui/react-context-selector
 
 ## Usage
 
-```typescript
+```tsx
 import * as React from "react";
 import {
   createContext,
@@ -33,13 +33,15 @@ import {
   ContextSelector,
 } from "@fluentui/react-context-selector";
 
-interface CounterContextValue = {
+interface CounterContextValue {
   count1: number;
   count2: number;
   incrementCount1: () => void;
   incrementCount2: () => void;
 }
 
+// 💡 The same syntax as native React context API
+//    https://reactjs.org/docs/context.html#reactcreatecontext
 const CounterContext = createContext<CounterContextValue>({});
 
 const CounterProvider = CounterContext.Provider;
@@ -49,6 +51,8 @@ const useCounterContext = <T, >(selector: ContextSelector<CounterCountext, T>) =
   useContextSelector(CounterContext, selector);
 
 const Counter1 = () => {
+  // 💡 Context updates will be propagated only when result of a selector function will change
+  //    "Object.is()" is used for internal comparisons
   const count1 = useCounterContext((context) => context.count1);
   const increment = useCounterContext((context) => context.incrementCount1);
 
