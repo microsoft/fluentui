@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add usage documentation to react-context-selector",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "none"
+}
