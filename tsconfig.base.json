@@ -16,9 +16,18 @@
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-utilities": ["packages/react-utilities/src/index.ts"],
       "@fluentui/react-make-styles": ["packages/react-make-styles/src/index.ts"],
+      "@fluentui/make-styles": ["packages/make-styles/src/index.ts"],
+      "@fluentui/react-provider": ["packages/react-provider/src/index.ts"],
+      "@fluentui/react-theme": ["packages/react-theme/src/index.ts"],
+      "@fluentui/react-theme-provider": ["packages/react-theme-provider/src/index.ts"],
       "@fluentui/keyboard-key": ["packages/keyboard-key/src/index.ts"],
-      "@fluentui/react-menu": ["packages/react-menu/src/index.ts"],
-      "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"]
+      "@fluentui/utilities": ["packages/utilities/src/index.ts"],
+      "@fluentui/merge-styles": ["packages/merge-styles/src/index.ts"],
+      "@fluentui/dom-utilities": ["packages/dom-utilities/src/index.ts"],
+      "@fluentui/theme": ["packages/theme/src/index.ts"],
+      "@fluentui/react-window-provider": ["packages/react-window-provider/src/index.ts"],
+      "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
+      "@fluentui/react-menu": ["packages/react-menu/src/index.ts"]
     }
   },
   "exclude": ["node_modules"]
