@@ -10,8 +10,8 @@ import * as React from 'react';
  * This should not be used often, but can be a useful re-render optimization since the callback is a ref and
  * will not be invalidated between rerenders
  *
- * @param fn The callback function that will be used
- * @param dependencies Shouldn't be needed since the callback is ref based, but good to behave like native
+ * @param fn - The callback function that will be used
+ * @param dependencies - Shouldn't be needed since the callback is ref based, but good to behave like native
  */
 export const useEventCallback = <Args extends unknown[], Return>(fn: (...args: Args) => Return) => {
   const callbackRef = React.useRef<typeof fn>(() => {
