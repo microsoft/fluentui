@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemSelectable } from '../../selectable/index';
-import { useMenuListContext } from '../../menuListContext';
+import { useCharacterSearch } from '../../utils/useCharacterSearch';
 
 /**
  * Consts listing which props are shorthand props.
@@ -19,7 +19,6 @@ export const useMenuItemRadio = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuItemRadioProps,
 ): MenuItemRadioState => {
-  const { setFocusByFirstCharacter } = useMenuListContext();
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef<HTMLElement>(null)),
@@ -32,20 +31,7 @@ export const useMenuItemRadio = (
     resolveShorthandProps(props, menuItemRadioShorthandProps),
   );
 
-  // TODO render MenuItem as a slot to reduce duplication
-  const { onKeyDown: onKeyDownBase } = state;
-  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (onKeyDownBase) {
-      onKeyDownBase(e);
-    }
-
-    if (e.key?.length > 1) {
-      return;
-    }
-
-    setFocusByFirstCharacter?.(e, state.ref.current);
-  };
-
+  useCharacterSearch(state);
   useMenuItemSelectable(state, () => [state.value]);
   return state;
 };

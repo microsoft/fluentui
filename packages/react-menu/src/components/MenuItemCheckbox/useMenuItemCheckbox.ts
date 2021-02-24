@@ -2,7 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuItemSelectable } from '../../selectable/index';
-import { useMenuListContext } from '../../menuListContext';
+import { useCharacterSearch } from '../../utils/useCharacterSearch';
 
 /**
  * Consts listing which props are shorthand props.
@@ -17,7 +17,6 @@ export const useMenuItemCheckbox = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: MenuItemCheckboxProps,
 ): MenuItemCheckboxState => {
-  const { setFocusByFirstCharacter } = useMenuListContext();
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -30,20 +29,7 @@ export const useMenuItemCheckbox = (
     resolveShorthandProps(props, menuItemCheckboxShorthandProps),
   );
 
-  // TODO render MenuItem as a slot to reduce duplication
-  const { onKeyDown: onKeyDownBase } = state;
-  state.onKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (onKeyDownBase) {
-      onKeyDownBase(e);
-    }
-
-    if (e.key?.length > 1) {
-      return;
-    }
-
-    setFocusByFirstCharacter?.(e, state.ref.current);
-  };
-
+  useCharacterSearch(state);
   useMenuItemSelectable(state, () => {
     const newCheckedItems = [...state.checkedItems];
     const index = state.checkedItems.indexOf(state.value);
