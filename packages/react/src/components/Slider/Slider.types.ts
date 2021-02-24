@@ -257,10 +257,13 @@ export interface ISliderBaseProps {
 }
 
 export interface IEventProps {
-  onMouseDown: (event: MouseEvent | TouchEvent) => void;
-  onTouchStart: (event: MouseEvent | TouchEvent) => void;
-  onKeyDown: (event: KeyboardEvent) => void;
-  onFocus: (event: MouseEvent | TouchEvent) => void;
+  onMouseDown?: (event: MouseEvent | TouchEvent) => void | {};
+  onTouchStart?: (event: MouseEvent | TouchEvent) => void | {};
+  onKeyDown?: (event: KeyboardEvent) => void | {};
+}
+
+interface IOnFocusProp {
+  onFocus?: (event: MouseEvent | TouchEvent) => void | {};
 }
 
 interface IAriaProps {
@@ -283,6 +286,8 @@ type IThumbBaseProps = {
   ref: React.RefObject<HTMLSpanElement>;
 } & IStyleWithClassNameProps;
 
-export type IThumbProps = IThumbBaseProps | (IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps);
+type IRangeSliderThumbProps = IIdProp & IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps & IOnFocusProp;
 
-export type ILowerThumbProps = undefined | (IIdProp & IThumbBaseProps & IEventProps & ISliderBaseProps & IAriaProps);
+export type IThumbProps = IThumbBaseProps | IRangeSliderThumbProps;
+
+export type ILowerThumbProps = undefined | IRangeSliderThumbProps;
