@@ -129,7 +129,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
 
       <div>
-        <h1>Prototype #1 - Regions reduction and headings introduction (recommended variant)</h1>
+        <h1>Prototype #1 - Landmarks removal and headings changes (recommended variant)</h1>
 
         <button>Back</button>
 
@@ -235,7 +235,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
           <div className="item" tabIndex={0}>
             Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
             and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
-            changes related to regions, chat list itself and headings.
+            the changes related to landmarks, chat list itself and headings.
           </div>
         </div>
 
@@ -251,7 +251,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
       </div>
 
       <div>
-        <h1>Prototype #2 - Regions modification and headings introduction</h1>
+        <h1>Prototype #2 - Landmarks changes and headings changes</h1>
 
         <button>Back</button>
 
@@ -355,7 +355,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
           <div className="item" tabIndex={0}>
             Hello, THIS IS JUST AND EXAMPLE message, Note that the implementation of THIS MESSAGE alone is simplified
             and is not part of the proposal. Therefore, please ignore how this message is implemented and focus only on
-            the changes related to regions, chat list itself and headings.
+            the changes related to landmarks, chat list itself and headings.
           </div>
         </div>
 
