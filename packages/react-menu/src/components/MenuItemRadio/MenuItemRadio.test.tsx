@@ -44,7 +44,10 @@ describe('MenuItemRadio', () => {
 });
 
 describe('MenuItemRadio', () => {
-  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContextValue> }) => {
+  const TestMenuListContextProvider = (props: {
+    children: React.ReactNode;
+    context?: Partial<MenuListContextValue>;
+  }) => {
     const contextValue: MenuListContextValue = {
       checkedValues: {},
       selectRadio: jest.fn(),
@@ -59,11 +62,11 @@ describe('MenuItemRadio', () => {
     const checkedValues = { test: ['1'] };
     const checkmark = 'xxx';
     const { getByText } = render(
-      <TestMenuListContext context={{ checkedValues }}>
+      <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemRadio name="test" value="1" checkmark={checkmark}>
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -74,11 +77,11 @@ describe('MenuItemRadio', () => {
     // Arrange
     const icon = 'xxx';
     const { getByText } = render(
-      <TestMenuListContext>
+      <TestMenuListContextProvider>
         <MenuItemRadio name="test" value="1" icon={icon}>
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -89,11 +92,11 @@ describe('MenuItemRadio', () => {
     // Arrange
     const checkedValues = { test: ['1'] };
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues }}>
+      <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemRadio name="test" value="1">
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -107,11 +110,11 @@ describe('MenuItemRadio', () => {
     const checkedValues = { [radioName]: [] };
     const spy = jest.fn();
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues, selectRadio: spy }}>
+      <TestMenuListContextProvider context={{ checkedValues, selectRadio: spy }}>
         <MenuItemRadio name={radioName} value={radioValue}>
           Radio
         </MenuItemRadio>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Act

@@ -44,7 +44,10 @@ describe('MenuItemCheckbox conformance', () => {
 });
 
 describe('MenuItemCheckbox', () => {
-  const TestMenuListContext = (props: { children: React.ReactNode; context?: Partial<MenuListContextValue> }) => {
+  const TestMenuListContextProvider = (props: {
+    children: React.ReactNode;
+    context?: Partial<MenuListContextValue>;
+  }) => {
     const contextValue: MenuListContextValue = {
       checkedValues: {},
       toggleCheckbox: jest.fn(),
@@ -59,11 +62,11 @@ describe('MenuItemCheckbox', () => {
     const checkedValues = { test: ['1'] };
     const checkmark = 'xxx';
     const { getByText } = render(
-      <TestMenuListContext context={{ checkedValues }}>
+      <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemCheckbox name="test" value="1" checkmark={checkmark}>
           Checkbox
         </MenuItemCheckbox>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -74,11 +77,11 @@ describe('MenuItemCheckbox', () => {
     // Arrange
     const icon = 'xxx';
     const { getByText } = render(
-      <TestMenuListContext>
+      <TestMenuListContextProvider>
         <MenuItemCheckbox name="test" value="1" icon={icon}>
           Checkbox
         </MenuItemCheckbox>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -90,11 +93,11 @@ describe('MenuItemCheckbox', () => {
     const checkedValues = { test: ['1'] };
     const checkmark = 'xxx';
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues }}>
+      <TestMenuListContextProvider context={{ checkedValues }}>
         <MenuItemCheckbox name="test" value="1" checkmark={checkmark}>
           Checkbox
         </MenuItemCheckbox>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Assert
@@ -110,11 +113,11 @@ describe('MenuItemCheckbox', () => {
     const checkedValues = { [checkboxName]: checkedItems };
     const spy = jest.fn();
     const { container } = render(
-      <TestMenuListContext context={{ checkedValues, toggleCheckbox: spy }}>
+      <TestMenuListContextProvider context={{ checkedValues, toggleCheckbox: spy }}>
         <MenuItemCheckbox name={checkboxName} value={'1'}>
           Checkbox
         </MenuItemCheckbox>
-      </TestMenuListContext>,
+      </TestMenuListContextProvider>,
     );
 
     // Act

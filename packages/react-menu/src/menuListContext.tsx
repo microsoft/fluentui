@@ -2,9 +2,13 @@ import * as React from 'react';
 import { createContext, useContextSelector, ContextSelector } from '@fluentui/react-context-selector';
 import { SelectableHandler } from './selectable/index';
 
-const MenuListContext = createContext<MenuListContextValue>({});
+const MenuListContext = createContext<MenuListContextValue>({
+  checkedValues: {},
+  onCheckedValueChange: () => null,
+  toggleCheckbox: () => null,
+  selectRadio: () => null,
+});
 
-// TODO add context selector to reduce the number of rerenders
 /**
  * Context shared between MenuList and its children components
  */

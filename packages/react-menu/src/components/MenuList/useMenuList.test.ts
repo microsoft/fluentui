@@ -12,6 +12,7 @@ describe('useMenuList', () => {
       // Arrange
       const name = 'test';
       const value = '1';
+
       // Act
       const { result } = renderHook(() =>
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),

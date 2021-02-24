@@ -3,10 +3,10 @@ import { useMenuListContext } from '../menuListContext';
 import { MenuItemSelectableState, SelectableHandler } from './types';
 
 /**
- * Hook used to mutate state to handle selection logic for selectable menu items
+ * Hook used to perform the shared operations that any selectable menu item will need
  *
  * @param state Selectable menu item state
- * @param getNewCheckedItems Callback that returns the new checked values for given menu item
+ * @param handleSelection Each kind of selecatable will have its own way of handling selection
  */
 export const useMenuItemSelectable = (
   state: MenuItemSelectableState,

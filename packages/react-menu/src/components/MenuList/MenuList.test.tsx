@@ -11,10 +11,6 @@ describe('MenuList', () => {
     Component: MenuList,
     displayName: 'MenuList',
     helperComponents: [MenuListProvider],
-    requiredProps: {
-      onCheckedValueChange: jest.fn(),
-      checkedValues: {},
-    },
   });
 
   let wrapper: ReactWrapper | undefined;

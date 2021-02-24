@@ -25,7 +25,6 @@ export const useMenuList = (
   state.toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
-
       if (checked) {
         const newCheckedItems = [...checkedItems];
         newCheckedItems.splice(newCheckedItems.indexOf(value), 1);
@@ -34,16 +33,12 @@ export const useMenuList = (
         onCheckedValueChange?.(e, name, [...checkedItems, value]);
       }
     },
-    [onCheckedValueChange, checkedValues],
   );
 
-  state.selectRadio = React.useCallback(
-    (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
-      const newCheckedItems = [value];
-      onCheckedValueChange?.(e, name, newCheckedItems);
-    },
-    [onCheckedValueChange],
-  );
+  state.selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
+    const newCheckedItems = [value];
+    onCheckedValueChange?.(e, name, newCheckedItems);
+  });
 
   return state;
 };
