@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Minor fixes in Link examples.",
+  "packageName": "@fluentui/react-examples",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch"
+}

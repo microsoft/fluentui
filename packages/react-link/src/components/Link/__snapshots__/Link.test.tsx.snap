@@ -1,11 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Link renders a default state 1`] = `
+exports[`Link renders as a button if no href is provided 1`] = `
 <button
   className=""
   onClick={[Function]}
+  onKeyDown={[Function]}
+  role="link"
   type="button"
 >
-  Default Link
+  This is a link
 </button>
+`;
+
+exports[`Link renders as an anchor when href is provided 1`] = `
+<a
+  className=""
+  href="https://www.bing.com"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  tabIndex={0}
+>
+  This is a link
+</a>
 `;

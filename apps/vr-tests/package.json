@@ -25,6 +25,7 @@
     "@fluentui/react-experiments": "^8.0.0-beta.61",
     "@fluentui/react-hooks": "^8.0.0-beta.14",
     "@fluentui/react-icons-mdl2": "^1.0.0-beta.16",
+    "@fluentui/react-link": "^1.0.0-beta.42",
     "@fluentui/react-make-styles": "^0.2.7",
     "@fluentui/react-provider": "^0.1.6",
     "@fluentui/react-theme": "^0.3.2",
