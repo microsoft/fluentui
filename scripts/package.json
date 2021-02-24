@@ -70,6 +70,8 @@
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "eslint": "^7.1.0",
+    "esbuild": "^0.8.51",
+    "esbuild-loader": "^2.9.2",
     "express": "^4.15.4",
     "extract-comments": "^1.0.0",
     "find-free-port": "~2.0.0",

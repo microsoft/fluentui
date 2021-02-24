@@ -7,7 +7,8 @@
  * @typedef {import("webpack").ModuleOptions} WebpackModule
  * @typedef {import("webpack").Configuration['output']} WebpackOutput
  */
-/** */
+
+const { ESBuildPlugin } = require('esbuild-loader');
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
@@ -268,13 +269,15 @@ module.exports = {
             cssRule,
             {
               test: [/\.tsx?$/],
-              use: {
-                loader: 'ts-loader',
-                options: {
-                  experimentalWatchApi: true,
-                  transpileOnly: true,
+              use: [
+                {
+                  loader: 'esbuild-loader',
+                  options: {
+                    loader: 'tsx', // Or 'ts' if you don't need tsx
+                    target: 'es2015',
+                  },
                 },
-              },
+              ],
               exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
             },
             {
@@ -310,6 +313,7 @@ module.exports = {
         },
 
         plugins: [
+          new ESBuildPlugin(),
           ...(process.env.TF_BUILD || process.env.SKIP_TYPECHECK ? [] : [new ForkTsCheckerWebpackPlugin()]),
           ...(process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME ? [] : [new webpack.ProgressPlugin({})]),
         ],
