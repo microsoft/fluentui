@@ -174,7 +174,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     // 👎 Matchers have been moved to ax() calls, it looks a bit verbose
     //    (in previous implementation matchers have been close to styles)
     // 👎 It might be tricky find proper names to express definition names
-    //    (we can end with "rootPrimaryCirclularGhostEtc.")
+    //    (we can end with "rootPrimaryCircularGhostEtc.")
 
     state.size === 20 && classes.rootShape20,
     state.size === 24 && classes.rootShape24,
