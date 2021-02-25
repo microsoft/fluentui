@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "Enable office-ui-fabric-react to fluentui repath",
   "packageName": "@fluentui/codemods",
   "email": "joschect@microsoft.com",
