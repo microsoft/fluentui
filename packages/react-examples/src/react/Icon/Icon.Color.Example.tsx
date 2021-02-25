@@ -17,13 +17,13 @@ const classNames = mergeStyleSets({
 export const IconColorExample: React.FunctionComponent = () => {
   // FontIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here.
-  // Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by text
+  // Provide an `aria-label` for screen reader users if the icon is not accompanied by text
   // that conveys the same meaning.
   return (
     <div>
-      <FontIcon aria-label="Compass icon" role="img" iconName="CompassNW" className={classNames.deepSkyBlue} />
-      <FontIcon aria-label="Dictionary icon" role="img" iconName="Dictionary" className={classNames.greenYellow} />
-      <FontIcon aria-label="Train icon" role="img" iconName="TrainSolid" className={classNames.salmon} />
+      <FontIcon aria-label="Compass" iconName="CompassNW" className={classNames.deepSkyBlue} />
+      <FontIcon aria-label="Dictionary" iconName="Dictionary" className={classNames.greenYellow} />
+      <FontIcon aria-label="Train" iconName="TrainSolid" className={classNames.salmon} />
     </div>
   );
 };

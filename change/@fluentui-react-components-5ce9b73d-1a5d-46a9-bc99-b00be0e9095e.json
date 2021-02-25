@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-components): add suite package",
-  "packageName": "@fluentui/react-components",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

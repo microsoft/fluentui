@@ -11,12 +11,15 @@ const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<
     const icons = useIconSubset(); // TODO: handle fontFace and styles
 
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
-    const containerProps = props['aria-label']
-      ? {}
-      : {
-          role: 'presentation',
-          ['aria-hidden']: true,
-        };
+    const containerProps =
+      props['aria-label'] || props['aria-labelledby'] || props.title
+        ? {
+            role: 'img',
+          }
+        : {
+            ['aria-hidden']: true,
+          };
+
     return React.createElement(
       'span',
       {

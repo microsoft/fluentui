@@ -8,6 +8,8 @@ import {
   MenuGroup,
   MenuDivider,
   MenuGroupHeader,
+  MenuItemCheckboxProps,
+  MenuItemRadioProps,
 } from '@fluentui/react-menu';
 import { CutIcon, PasteIcon, EditIcon, AcceptIcon } from '@fluentui/react-icons-mdl2';
 import { makeStyles } from '@fluentui/react-make-styles';
@@ -169,6 +171,78 @@ export const MenuListWithSelectionGroups = () => {
             Arial
           </MenuItemRadio>
         </MenuGroup>
+      </MenuList>
+    </Container>
+  );
+};
+
+const MemoRadio = React.memo((props: MenuItemRadioProps) => {
+  // use icons in the memo because JSX will always create a new object
+  // possible to memoize icons but it can be overkill
+  return (
+    <MenuItemRadio icon={<EditIcon />} name={props.name} value={props.value} checkmark={<AcceptIcon />}>
+      {props.children}
+    </MenuItemRadio>
+  );
+});
+
+export const MemoRadioItems = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const onChange = React.useCallback(
+    (e: React.SyntheticEvent, name: string, items: string[]) => {
+      setCheckedValues(s => ({ ...s, [name]: items }));
+    },
+    [setCheckedValues],
+  );
+
+  return (
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MemoRadio name="font" value="segoe">
+          Segoe
+        </MemoRadio>
+        <MemoRadio name="font" value="calibri">
+          Calibri
+        </MemoRadio>
+        <MemoRadio name="font" value="arial">
+          Arial
+        </MemoRadio>
+      </MenuList>
+    </Container>
+  );
+};
+
+const MemoCheckbox = React.memo((props: MenuItemCheckboxProps) => {
+  // use icons in the memo because JSX will always create a new object
+  // possible to memoize icons but it can be overkill
+  return (
+    <MenuItemCheckbox icon={<EditIcon />} name={props.name} value={props.value} checkmark={<AcceptIcon />}>
+      {props.children}
+    </MenuItemCheckbox>
+  );
+});
+
+export const MemoCheckboxItems = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const onChange = React.useCallback(
+    (e: React.SyntheticEvent, name: string, items: string[]) => {
+      setCheckedValues(s => ({ ...s, [name]: items }));
+    },
+    [setCheckedValues],
+  );
+
+  return (
+    <Container>
+      <MenuList checkedValues={checkedValues} onCheckedValueChange={onChange}>
+        <MemoCheckbox name="font" value="segoe">
+          Segoe
+        </MemoCheckbox>
+        <MemoCheckbox name="font" value="calibri">
+          Calibri
+        </MemoCheckbox>
+        <MemoCheckbox name="font" value="arial">
+          Arial
+        </MemoCheckbox>
       </MenuList>
     </Container>
   );

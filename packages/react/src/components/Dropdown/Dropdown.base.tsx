@@ -814,8 +814,6 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       <Checkbox
         id={this._listId + item.index}
         key={item.key}
-        data-index={item.index}
-        data-is-focusable={!item.disabled}
         disabled={item.disabled}
         onChange={this._onItemClick(item)}
         inputProps={{
@@ -824,6 +822,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
           onMouseLeave: this._onMouseItemLeave.bind(this, item),
           onMouseMove: this._onItemMouseMove.bind(this, item),
           role: 'option',
+          ...({
+            'data-index': item.index,
+            'data-is-focusable': !item.disabled,
+          } as any),
         }}
         label={item.text}
         title={title}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove /compat",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -201,7 +201,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -381,7 +380,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -562,7 +560,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                           text-align: center;
                         }
                     data-icon-name="Share"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1117,7 +1114,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                       text-align: center;
                                                     }
                                                 data-icon-name="Cancel"
-                                                role="presentation"
                                                 style={
                                                   Object {
                                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1308,7 +1304,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         text-align: center;
                       }
                   data-icon-name="Download"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
