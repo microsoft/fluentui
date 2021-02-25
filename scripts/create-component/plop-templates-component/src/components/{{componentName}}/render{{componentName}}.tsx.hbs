@@ -12,6 +12,7 @@ export const render{{componentName}} = (state: {{componentName}}State) => {
 
   return (
     <slots.root {...slotProps.root}>
+      {/* TODO Add additional slots in the appropritate place */}
       {state.children}
     </slots.root>
   );

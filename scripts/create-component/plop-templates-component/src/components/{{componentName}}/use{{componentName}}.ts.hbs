@@ -7,7 +7,7 @@ export const {{camelCase componentName}}ShorthandProps: (keyof {{componentName}}
 const mergeProps = makeMergeProps<{{componentName}}State>({ deepMerge: {{camelCase componentName}}ShorthandProps });
 
 /**
- * Create the state required to render a {{componentName}}.
+ * Create the state required to render {{componentName}}.
  *
  * The returned state can be modified with hooks such as use{{componentName}}Styles,
  * before being passed to render{{componentName}}.
@@ -25,7 +25,7 @@ export const use{{componentName}} = (
 ): {{componentName}}State => {
   const state = mergeProps(
     {
-      ref: useMergedRefs(ref, React.useRef(null))
+      ref: useMergedRefs(ref, React.useRef(null)),
     },
     defaultProps,
     resolveShorthandProps(props, {{camelCase componentName}}ShorthandProps),
