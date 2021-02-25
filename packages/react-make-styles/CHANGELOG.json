@@ -2,6 +2,36 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.2",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "40e4e2ed855e0b2a4ac67a462f2b79919aef868b",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add makeStaticStyles()",
+            "author": "olfedias@microsoft.com",
+            "commit": "1d7e4a8bb6f772aee299c37aadc289d83035955c",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Feb 2021 00:05:29 GMT",
       "tag": "@fluentui/react-make-styles_v9.0.0-alpha.1",
       "version": "9.0.0-alpha.1",

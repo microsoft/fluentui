@@ -11,6 +11,7 @@ import {
   getNativeProps,
   divProperties,
 } from '@fluentui/utilities';
+import { ILabelProps } from '../Label/index';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -43,12 +44,20 @@ const getLineSectionStylesFn = (vertical: boolean = false) => {
   return getSlotStyleFn(lengthString);
 };
 
-const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanElement>, value: number | undefined) => {
+const useComponentRef = (
+  props: ISliderProps,
+  thumb: React.RefObject<HTMLSpanElement>,
+  value: number | undefined,
+  range?: [number, number],
+) => {
   React.useImperativeHandle(
     props.componentRef,
     () => ({
       get value() {
         return value;
+      },
+      get range() {
+        return props.ranged ? range : undefined;
       },
       focus() {
         if (thumb.current) {
@@ -56,7 +65,7 @@ const useComponentRef = (props: ISliderProps, thumb: React.RefObject<HTMLSpanEle
         }
       },
     }),
-    [thumb, value],
+    [thumb, value, props.ranged, range],
   );
 };
 
@@ -76,6 +85,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     theme,
     originFromZero,
     'aria-label': ariaLabel,
+    ranged,
   } = props;
 
   const disposables = React.useRef<(() => void)[]>([]);
@@ -84,11 +94,22 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const [unclampedValue, setValue] = useControllableValue(
     props.value,
     props.defaultValue,
-    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) => props.onChange && props.onChange(v!),
+    (ev: React.FormEvent<HTMLElement> | undefined, v: ISliderProps['value']) =>
+      props.onChange?.(v!, ranged ? [lowerValue, v!] : undefined),
   );
+  const [unclampedLowerValue, setLowerValue] = useControllableValue(
+    props.lowerValue,
+    props.defaultLowerValue,
+    (ev: React.FormEvent<HTMLElement> | undefined, lv: ISliderProps['lowerValue']) =>
+      props.onChange?.(value, [lv!, value]),
+  );
+
+  const isAdjustingLowerValueRef = React.useRef<boolean>(false);
 
   // Ensure that value is always a number and is clamped by min/max.
   const value = Math.max(min, Math.min(max, unclampedValue || 0));
+  const lowerValue = Math.max(min, Math.min(value, unclampedLowerValue || 0));
+
   const id = useId('Slider');
   const [useShowTransitions, { toggle: toggleUseShowTransitions }] = useBoolean(true);
   const classNames = getClassNames(styles, {
@@ -97,10 +118,12 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     vertical,
     showTransitions: useShowTransitions,
     showValue,
+    ranged,
     theme: theme!,
   });
 
   const [timerId, setTimerId] = React.useState(0);
+  const steps: number = (max! - min!) / step!;
 
   const clearOnKeyDownTimer = (): void => {
     clearTimeout(timerId);
@@ -126,7 +149,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const updateValue = (valueProp: number, renderedValueProp: number): void => {
-    const snapToStep = props;
+    const { snapToStep } = props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -139,11 +162,24 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     if (snapToStep) {
       renderedValueProp = roundedValue;
     }
-    setValue(roundedValue);
+
+    if (ranged) {
+      // decided which thumb value to change
+      if (isAdjustingLowerValueRef.current && (originFromZero ? roundedValue <= 0 : roundedValue <= value)) {
+        setLowerValue(roundedValue);
+      } else if (
+        !isAdjustingLowerValueRef.current &&
+        (originFromZero ? roundedValue >= 0 : roundedValue >= lowerValue)
+      ) {
+        setValue(roundedValue);
+      }
+    } else {
+      setValue(roundedValue);
+    }
   };
 
   const onKeyDown = (event: KeyboardEvent): void => {
-    let newCurrentValue: number | undefined = value;
+    let newCurrentValue: number | undefined = isAdjustingLowerValueRef.current ? lowerValue : value;
     let diff: number | undefined = 0;
     // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
@@ -191,11 +227,10 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     return currentPosition;
   };
 
-  const onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
+  const calculateCurrentSteps = (event: MouseEvent | TouchEvent) => {
     if (!sliderLine.current) {
       return;
     }
-    const steps: number = (max! - min!) / step!;
     const sliderPositionRect: ClientRect = sliderLine.current.getBoundingClientRect();
     const sliderLength: number = !props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
@@ -210,6 +245,11 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       distance = sliderPositionRect.bottom - bottom!;
       currentSteps = distance / stepLength;
     }
+    return currentSteps;
+  };
+
+  const onMouseMoveOrTouchMove = (event: MouseEvent | TouchEvent, suppressEventCancelation?: boolean): void => {
+    const currentSteps = calculateCurrentSteps(event);
     let newCurrentValue: number | undefined;
     let newRenderedValue: number | undefined;
     // The value shouldn't be bigger than max or be smaller than min.
@@ -229,6 +269,17 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
+    if (ranged) {
+      const currentSteps = calculateCurrentSteps(event);
+      const newRenderedValue = min! + step! * currentSteps!;
+
+      if (newRenderedValue <= lowerValue || newRenderedValue - lowerValue <= value - newRenderedValue) {
+        isAdjustingLowerValueRef.current = true;
+      } else {
+        isAdjustingLowerValueRef.current = false;
+      }
+    }
+
     if (event.type === 'mousedown') {
       disposables.current.push(
         on(window, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
@@ -252,6 +303,10 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     disposeListeners();
   };
 
+  const onThumbFocus = (event: MouseEvent | TouchEvent): void => {
+    isAdjustingLowerValueRef.current = event.target === lowerValueThumbRef.current;
+  };
+
   const disposeListeners = (): void => {
     disposables.current.forEach(dispose => dispose());
     disposables.current = [];
@@ -260,19 +315,22 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const onMouseDownProp: {} = disabled ? {} : { onMouseDown: onMouseDownOrTouchStart };
   const onTouchStartProp: {} = disabled ? {} : { onTouchStart: onMouseDownOrTouchStart };
   const onKeyDownProp: {} = disabled ? {} : { onKeyDown: onKeyDown };
+  const onFocusProp: {} = disabled ? {} : { onFocus: onThumbFocus };
 
+  const lowerValueThumbRef = React.useRef<HTMLSpanElement>(null);
   const thumbRef = React.useRef<HTMLSpanElement>(null);
-  useComponentRef(props, thumbRef, value);
+  useComponentRef(props, ranged && !vertical ? lowerValueThumbRef : thumbRef, value, [lowerValue, value]);
   const getPositionStyles = getPositionStyleFn(vertical, getRTL(props.theme));
   const getTrackStyles = getLineSectionStylesFn(vertical);
   const originValue = originFromZero ? 0 : min;
   const valuePercent = getPercent(value, min, max);
+  const lowerValuePercent = getPercent(lowerValue, min, max);
   const originPercentOfLine = getPercent(originValue, min, max);
-  const activeSectionWidth = Math.abs(originPercentOfLine - valuePercent);
+  const activeSectionWidth = ranged ? valuePercent - lowerValuePercent : Math.abs(originPercentOfLine - valuePercent);
   const topSectionWidth = Math.min(100 - valuePercent, 100 - originPercentOfLine);
-  const bottomSectionWidth = Math.min(valuePercent, originPercentOfLine);
+  const bottomSectionWidth = ranged ? lowerValuePercent : Math.min(valuePercent, originPercentOfLine);
 
-  const rootProps = {
+  const rootProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: classNames.root,
     ref: ref,
   };
@@ -281,67 +339,121 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
 
-  const labelProps = {
+  const labelProps: ILabelProps = {
     className: classNames.titleLabel,
     children: label,
     disabled,
     htmlFor: ariaLabel ? undefined : id,
   };
 
-  const valueLabelProps = showValue && {
-    className: classNames.valueLabel,
-    children: valueFormat ? valueFormat(value!) : value,
-    disabled,
-  };
+  const valueLabelProps: ILabelProps | undefined = showValue
+    ? {
+        className: classNames.valueLabel,
+        children: valueFormat ? valueFormat(value!) : value,
+        disabled,
+      }
+    : undefined;
 
-  const thumbProps = {
-    ref: thumbRef,
-    className: classNames.thumb,
-    style: getPositionStyles(valuePercent),
-  };
+  const lowerValueLabelProps: ILabelProps | undefined =
+    ranged && showValue
+      ? {
+          className: classNames.valueLabel,
+          children: valueFormat ? valueFormat(lowerValue!) : lowerValue,
+          disabled,
+        }
+      : undefined;
 
-  const zeroTickProps = originFromZero && {
-    className: classNames.zeroTick,
-    style: getPositionStyles(originPercentOfLine),
-  };
+  const zeroTickProps: React.HTMLAttributes<HTMLElement> | undefined = originFromZero
+    ? {
+        className: classNames.zeroTick,
+        style: getPositionStyles(originPercentOfLine),
+      }
+    : undefined;
 
-  const trackActiveProps = {
+  const trackActiveProps: React.HTMLAttributes<HTMLElement> = {
     className: css(classNames.lineContainer, classNames.activeSection),
     style: getTrackStyles(activeSectionWidth),
   };
 
-  const trackTopInactiveProps = {
+  const trackTopInactiveProps: React.HTMLAttributes<HTMLElement> = {
     className: css(classNames.lineContainer, classNames.inactiveSection),
     style: getTrackStyles(topSectionWidth),
   };
 
-  const trackBottomInactiveProps = {
+  const trackBottomInactiveProps: React.HTMLAttributes<HTMLElement> = {
     className: css(classNames.lineContainer, classNames.inactiveSection),
     style: getTrackStyles(bottomSectionWidth),
   };
 
-  const sliderBoxProps = {
-    id,
-    'aria-valuenow': value,
-    'aria-valuemin': min,
-    'aria-valuemax': max,
-    'aria-valuetext': getAriaValueText(value),
-    'aria-label': ariaLabel || label,
-    'aria-disabled': disabled,
+  const eventProps = {
     ...onMouseDownProp,
     ...onTouchStartProp,
     ...onKeyDownProp,
     ...divButtonProps,
-    className: css(classNames.slideBox, buttonProps!.className),
-    role: 'slider',
-    tabIndex: disabled ? undefined : 0,
-    'data-is-focusable': !disabled,
   };
 
-  const containerProps = {
+  const sliderProps: React.HTMLAttributes<HTMLElement> = {
+    'aria-disabled': disabled,
+    role: 'slider',
+    tabIndex: disabled ? undefined : 0,
+    ...({ 'data-is-focusable': !disabled } as any),
+  };
+
+  const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
+    id,
+    className: css(classNames.slideBox, buttonProps!.className),
+    ...eventProps,
+    ...(!ranged && {
+      ...sliderProps,
+      'aria-valuemin': min,
+      'aria-valuemax': max,
+      'aria-valuenow': value,
+      'aria-valuetext': getAriaValueText(value),
+      'aria-label': ariaLabel || label,
+    }),
+  };
+
+  const thumbProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement> = {
+    ref: thumbRef,
+    className: classNames.thumb,
+    style: getPositionStyles(valuePercent),
+    ...(ranged && {
+      ...sliderProps,
+      ...eventProps,
+      ...onFocusProp,
+      id: `max-${id}`,
+      'aria-valuemin': lowerValue,
+      'aria-valuemax': max,
+      'aria-valuenow': value,
+      'aria-valuetext': getAriaValueText(value),
+      'aria-label': `max ${ariaLabel || label}`,
+    }),
+  };
+
+  const lowerValueThumbProps:
+    | (React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>)
+    | undefined = ranged
+    ? {
+        ref: lowerValueThumbRef,
+        className: classNames.thumb,
+        style: getPositionStyles(lowerValuePercent),
+        ...sliderProps,
+        ...eventProps,
+        ...onFocusProp,
+        id: `min-${id}`,
+        'aria-valuemin': min,
+        'aria-valuemax': value,
+        'aria-valuenow': lowerValue,
+        'aria-valuetext': getAriaValueText(lowerValue),
+        'aria-label': `min ${ariaLabel || label}`,
+      }
+    : undefined;
+
+  const containerProps: React.HTMLAttributes<HTMLElement> = {
     className: classNames.container,
   };
-  const sliderLineProps = {
+
+  const sliderLineProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     ref: sliderLine,
     className: classNames.line,
   };
@@ -352,7 +464,9 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     sliderBox: sliderBoxProps,
     container: containerProps,
     valueLabel: valueLabelProps,
+    lowerValueLabel: lowerValueLabelProps,
     thumb: thumbProps,
+    lowerValueThumb: lowerValueThumbProps,
     zeroTick: zeroTickProps,
     activeTrack: trackActiveProps,
     topInactiveTrack: trackTopInactiveProps,
