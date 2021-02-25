@@ -2,6 +2,21 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-provider_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Use react-focus-management",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "eac75641c15f760208c0b01b379ac22a6ef4df2a",
+            "package": "@fluentui/react-provider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Feb 2021 00:05:29 GMT",
       "tag": "@fluentui/react-provider_v9.0.0-alpha.1",
       "version": "9.0.0-alpha.1",

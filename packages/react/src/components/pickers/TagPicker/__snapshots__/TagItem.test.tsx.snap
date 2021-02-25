@@ -288,7 +288,6 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
             speak: none;
           }
       data-icon-name="SquareShapeSolid"
-      role="presentation"
       style={
         Object {
           "color": "red",

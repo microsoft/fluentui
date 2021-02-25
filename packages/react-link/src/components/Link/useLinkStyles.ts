@@ -11,7 +11,7 @@ const useStyles = makeStyles<LinkState>([
       borderBottom: 'solid transparent',
       borderBottomWidth: tokens.global.strokeWidth.thin,
       boxSizing: 'border-box',
-      color: tokens.global.palette.brand.primary,
+      color: tokens.alias.color.neutral.brandForeground,
       cursor: 'pointer',
       display: 'inline',
       fontFamily: tokens.global.type.fontFamilies.base,
@@ -26,11 +26,13 @@ const useStyles = makeStyles<LinkState>([
       userSelect: 'text',
 
       ':hover': {
-        borderBottomColor: tokens.global.palette.brand.primary,
+        borderBottomColor: tokens.alias.color.neutral.brandForegroundHover,
+        color: tokens.alias.color.neutral.brandForegroundHover,
       },
 
       ':active': {
-        borderBottomColor: tokens.global.palette.brand.primary,
+        borderBottomColor: tokens.alias.color.neutral.brandForegroundPressed,
+        color: tokens.alias.color.neutral.brandForegroundPressed,
       },
     }),
   ],
@@ -43,11 +45,37 @@ const useStyles = makeStyles<LinkState>([
     },
   ],
 
+  // Overrides when the Link is emphasized to represent a secondary action.
+  [
+    s => s.secondary,
+    tokens => ({
+      color: tokens.alias.color.neutral.neutralForeground2,
+
+      ':hover': {
+        borderBottomColor: tokens.alias.color.neutral.neutralForeground2Hover,
+        color: tokens.alias.color.neutral.neutralForeground2Hover,
+      },
+
+      ':active': {
+        borderBottomColor: tokens.alias.color.neutral.neutralForeground2Pressed,
+        color: tokens.alias.color.neutral.neutralForeground2Pressed,
+      },
+    }),
+  ],
+
   // Overrides when the Link is rendered inline within text.
   [
     s => s.inline,
     tokens => ({
-      borderBottomColor: tokens.global.palette.brand.primary,
+      borderBottomColor: tokens.alias.color.neutral.brandForeground,
+    }),
+  ],
+
+  // Overrides when the Link is rendered inline within text and is emphasized to represent a secondary action.
+  [
+    s => s.inline && s.secondary,
+    tokens => ({
+      borderBottomColor: tokens.alias.color.neutral.neutralForeground2,
     }),
   ],
 
@@ -56,15 +84,17 @@ const useStyles = makeStyles<LinkState>([
     s => s['aria-disabled'] as boolean | undefined,
     tokens => ({
       borderBottomColor: 'transparent',
-      color: tokens.global.palette.grey[74],
+      color: tokens.alias.color.neutral.neutralForegroundDisabled,
       cursor: 'not-allowed',
 
       ':hover': {
         borderBottomColor: 'transparent',
+        color: tokens.alias.color.neutral.neutralForegroundDisabled,
       },
 
       ':active': {
         borderBottomColor: 'transparent',
+        color: tokens.alias.color.neutral.neutralForegroundDisabled,
       },
     }),
   ],

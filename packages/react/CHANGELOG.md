@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 24 Feb 2021 07:19:56 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.62)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.0.0-beta.61..@fluentui/react_v8.0.0-beta.62)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.1 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+### Changes
+
+- update detailslist to use grid aria props for group rows ([PR #15809](https://github.com/microsoft/fluentui/pull/15809) by sarah.higley@microsoft.com)
 
 ## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.0.0-beta.61)
 

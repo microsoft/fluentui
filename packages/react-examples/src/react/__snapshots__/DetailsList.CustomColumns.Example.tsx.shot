@@ -270,7 +270,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -315,7 +314,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -823,7 +821,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -868,7 +865,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1266,7 +1262,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1311,7 +1306,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1709,7 +1703,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1754,7 +1747,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2152,7 +2144,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2197,7 +2188,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2595,7 +2585,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2640,7 +2629,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3038,7 +3026,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3083,7 +3070,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3481,7 +3467,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3526,7 +3511,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3924,7 +3908,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3969,7 +3952,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4367,7 +4349,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4412,7 +4393,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4810,7 +4790,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4855,7 +4834,6 @@ exports[`Component Examples renders DetailsList.CustomColumns.Example.tsx correc
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",

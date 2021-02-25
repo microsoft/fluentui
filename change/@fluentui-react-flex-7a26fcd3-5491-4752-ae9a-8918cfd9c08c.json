@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove dependency on react-theme-provider/compat",
+  "packageName": "@fluentui/react-flex",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

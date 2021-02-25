@@ -1417,6 +1417,7 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
     componentRef?: IRefObject<IAutofill>;
     defaultVisibleValue?: string;
     enableAutofillOnKeyPress?: KeyCodes[];
+    // @deprecated
     onInputChange?: (value: string, composing: boolean) => string | void;
     onInputValueChange?: (newValue?: string, composing?: boolean) => void;
     preventValueSelection?: boolean;
@@ -2974,7 +2975,7 @@ export interface IColumnResizeDetails {
 // @public (undocumented)
 export interface IComboBox {
     dismissMenu: () => void;
-    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void;
     readonly selectedOptions: IComboBoxOption[];
 }
 
