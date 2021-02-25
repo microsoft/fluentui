@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "Fix styling for `topOffsetFixed` prop for Modal",
   "packageName": "@fluentui/react",
   "email": "tmichon@microsoft.com",
