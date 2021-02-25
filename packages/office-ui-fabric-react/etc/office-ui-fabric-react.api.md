@@ -6198,7 +6198,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     // @deprecated
     focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
-    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | boolean | undefined;
     keytipSequences?: string[];
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;

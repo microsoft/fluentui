@@ -244,7 +244,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
    * Gets the subMenu for an overflow item
    * Checks if itemSubMenuProvider has been defined, if not defaults to subMenuProps
    */
-  private _getSubMenuForItem(item: any): any[] | undefined {
+  private _getSubMenuForItem(item: any): any[] | boolean | undefined {
     if (this.props.itemSubMenuProvider) {
       return this.props.itemSubMenuProvider(item);
     }
