@@ -47,7 +47,7 @@ export const IconOnly = () => <Button icon={<SVGIcon />} />;
 //
 // Size
 //
-const SizeExample = ({ size }: { size?: string }) => (
+const SizeExample = ({ size }: { size?: ButtonProps['size'] }) => (
   <>
     <h4>{size || '(default)'}</h4>
     <Button size={size}>Text</Button>
