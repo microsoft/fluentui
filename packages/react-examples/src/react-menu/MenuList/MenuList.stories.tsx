@@ -90,7 +90,7 @@ export const MenuListWithDivider = () => (
 
 export const MenuListWithCheckboxes = () => {
   const checkmark = <AcceptIcon />;
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]> | undefined>(undefined);
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
     setCheckedValues(s => {
       return s ? { ...s, [name]: items } : { [name]: items };
@@ -107,9 +107,6 @@ export const MenuListWithCheckboxes = () => {
           Paste
         </MenuItemCheckbox>
         <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
-          Edit
-        </MenuItemCheckbox>
-        <MenuItemCheckbox icon={<EditIcon />} name="forbidden" value="edit" checkmark={checkmark}>
           Edit
         </MenuItemCheckbox>
       </MenuList>
@@ -268,6 +265,26 @@ export const MenuListWithCheckboxesUncontrolled = () => {
         <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
           Edit
         </MenuItemCheckbox>
+      </MenuList>
+    </Container>
+  );
+};
+
+export const MenuListWithRadiosUncontrolled = () => {
+  const checkmark = <AcceptIcon />;
+
+  return (
+    <Container>
+      <MenuList>
+        <MenuItemRadio icon={<CutIcon />} name="font" value="segoe" checkmark={checkmark}>
+          Segoe
+        </MenuItemRadio>
+        <MenuItemRadio icon={<PasteIcon />} name="font" value="calibri" checkmark={checkmark}>
+          Calibri
+        </MenuItemRadio>
+        <MenuItemRadio icon={<EditIcon />} name="font" value="arial" checkmark={checkmark}>
+          Arial
+        </MenuItemRadio>
       </MenuList>
     </Container>
   );
