@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Expose useEventCallback hook",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
