@@ -13,16 +13,15 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 export const Badge: React.ForwardRefExoticComponent<BadgeProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type BadgeAppearances = 'filled' | 'outline' | 'ghost' | 'tint';
+export type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
 
 // @public (undocumented)
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-    appearance?: BadgeAppearances;
+    appearance?: BadgeAppearance;
     icon?: ShorthandProps<HTMLElement>;
     iconPosition?: 'before' | 'after';
     shape?: BadgeShape;
-    size?: SizeValue;
-    status?: BadgeStatus;
+    size?: BadgeSize;
 }
 
 // @public (undocumented)
@@ -32,19 +31,16 @@ export type BadgeShape = 'rounded' | 'square' | 'circular';
 export const badgeShorthandProps: (keyof BadgeProps)[];
 
 // @public (undocumented)
+export type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+// @public (undocumented)
 export interface BadgeState extends BadgeProps {
     icon?: ObjectShorthandProps<HTMLSpanElement>;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
 // @public (undocumented)
-export type BadgeStatus = 'success' | 'warning' | 'severe' | 'accent' | 'danger' | 'important' | 'informative' | 'subtle';
-
-// @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
-
-// @public (undocumented)
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;

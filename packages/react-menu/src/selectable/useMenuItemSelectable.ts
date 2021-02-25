@@ -1,42 +1,33 @@
-import * as React from 'react';
 import { EnterKey, getCode, SpacebarKey } from '@fluentui/keyboard-key';
 import { useMenuListContext } from '../menuListContext';
-import { MenuItemSelectableState } from './types';
+import { MenuItemSelectableState, SelectableHandler } from './types';
 
 /**
- * Hook used to mutate state to handle selection logic for selectable menu items
+ * Hook used to perform the shared operations that any selectable menu item will need
  *
- * @param state Selectable menu item state
- * @param getNewCheckedItems Callback that returns the new checked values for given menu item
+ * @param state - Selectable menu item state
+ * @param handleSelection - Each kind of selecatable will have its own way of handling selection
  */
-export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewCheckedItems: () => string[]) => {
+export const useMenuItemSelectable = (
+  state: MenuItemSelectableState,
+  handleSelection: SelectableHandler = () => null,
+) => {
   const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = state;
-  const { checkedValues: { [state.name]: checkedItems = [] } = {}, onCheckedValueChange } = useMenuListContext();
 
-  state.checkedItems = checkedItems;
-  state.onCheckedValueChange = onCheckedValueChange || (() => null);
-  state.checked = checkedItems.indexOf(state.value) !== -1;
+  const checked = useMenuListContext(context => {
+    const checkedItems = context.checkedValues?.[state.name] || [];
+    return checkedItems.indexOf(state.value) !== -1;
+  });
+
+  state.checked = checked;
   state['aria-checked'] = state.checked;
-
-  const onSelectionChange = (e: React.MouseEvent | React.KeyboardEvent) => {
-    const newCheckedItems = getNewCheckedItems();
-
-    if (
-      newCheckedItems.length === state.checkedItems.length &&
-      state.checkedItems.every((el, i) => el === newCheckedItems[i])
-    ) {
-      return;
-    }
-
-    state.onCheckedValueChange(e, state.name, newCheckedItems);
-  };
 
   state.onClick = e => {
     if (onClickCallback) {
       onClickCallback(e);
     }
 
-    onSelectionChange(e);
+    handleSelection(e, state.name, state.value, state.checked);
   };
 
   state.onKeyDown = e => {
@@ -46,7 +37,7 @@ export const useMenuItemSelectable = (state: MenuItemSelectableState, getNewChec
 
     const keyCode = getCode(e);
     if (!e.defaultPrevented && (keyCode === EnterKey || keyCode === SpacebarKey)) {
-      onSelectionChange(e);
+      handleSelection(e, state.name, state.value, state.checked);
     }
   };
 };

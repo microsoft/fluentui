@@ -666,14 +666,16 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const IconComponent = this.props.useFastIcons ? FontIcon : Icon;
     return (
       <div key={'dropHintKey'} className={classNames.dropHintStyle} id={`columnDropHint_${dropHintIndex}`}>
-        <IconComponent
+        <div
+          role="presentation"
           key={`dropHintCircleKey`}
-          aria-hidden={true}
+          className={classNames.dropHintCaretStyle}
           data-is-focusable={false}
           data-sizer-index={dropHintIndex}
-          className={classNames.dropHintCaretStyle}
-          iconName={'CircleShapeSolid'}
-        />
+          aria-hidden={true}
+        >
+          <IconComponent iconName={'CircleShapeSolid'} />
+        </div>
         <div
           key={`dropHintLineKey`}
           aria-hidden={true}

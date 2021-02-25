@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove dep array from useEventCallback",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f8aad9bd5f65b102478944d69e841b37a19d0599",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/react-utilities_v0.4.0",
       "version": "0.4.0",

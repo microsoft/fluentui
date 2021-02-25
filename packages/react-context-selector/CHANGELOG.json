@@ -2,6 +2,36 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.2",
+      "version": "0.53.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add usage documentation to react-context-selector",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "c971bff0edf1b5c6b2f7fe5ed13bd5b5a50751c4",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.2",
+      "version": "0.53.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "fix react-context-selector eslint-plugin version",
+            "author": "elcraig@microsoft.com",
+            "commit": "bcdd26f36386f379aff6a896f2b2bb7178fadf35",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/react-context-selector_v0.53.2",
       "version": "0.53.2",

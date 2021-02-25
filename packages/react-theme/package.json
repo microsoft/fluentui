@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "0.3.3",
+  "version": "9.0.0-alpha.1",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,10 +48,11 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "latest",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }
