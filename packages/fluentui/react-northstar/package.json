@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@fluentui/a11y-testing": "^0.1.0",
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@fluentui/react-conformance": "^0.2.1",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/jest-dom": "^5.1.1",

@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "minor",
   "comment": "Allow itemSubMenuProvider to return a boolean",
   "packageName": "@fluentui/react",
   "email": "keyou@microsoft.com",

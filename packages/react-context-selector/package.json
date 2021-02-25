@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
@@ -38,7 +38,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/set-version": "^8.0.0",
     "@types/scheduler": "^0.16.1",
     "scheduler": "^0.20.1",
     "tslib": "^1.10.0"
@@ -48,12 +48,5 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
   }
 }

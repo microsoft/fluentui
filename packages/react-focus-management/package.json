@@ -26,7 +26,7 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@fluentui/scripts": "^1.0.0",
     "@testing-library/react": "^10.4.9",
     "@testing-library/react-hooks": "^5.0.3",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@fluentui/react-utilities": "^9.0.0-alpha.2",
-    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/set-version": "^8.0.0",
     "ability-helpers": "^0.4.3",
     "tslib": "^1.10.0"
   },
