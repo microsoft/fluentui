@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, Popup, Button, Flex, Text } from '@fluentui/react-northstar';
+import { Tree, Popup, Button, Flex, Text, treeAsListboxBehavior } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -145,10 +145,11 @@ const TreeTitleWithPopupButton = () => {
   );
 };
 
-const TreeActionsUsingPopup = () => {
+const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
   return (
     <Tree
       aria-expanded="true"
+      accessibility={useMacAccessabilityBehavior ? treeAsListboxBehavior : undefined}
       tabIndex={0}
       aria-setsize={4}
       aria-posinset={1}
