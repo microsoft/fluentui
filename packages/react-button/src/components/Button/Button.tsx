@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useButton } from './useButton';
 import { ButtonProps, ButtonStyleSelectors } from './Button.types';
 import { renderButton } from './renderButton';
-import { useButtonClasses } from './useButtonClasses';
+import { useButtonStyles } from './useButtonStyles';
 
 /**
  * Define a styled Button, using the `useButton` hook.
@@ -21,7 +21,7 @@ export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) =>
     size: state.size,
   };
 
-  useButtonClasses(state, styleSelectors);
+  useButtonStyles(state, styleSelectors);
 
   return renderButton(state);
 });

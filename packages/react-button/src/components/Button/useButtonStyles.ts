@@ -392,7 +392,7 @@ const useIconClasses = makeStyles<ButtonStyleSelectors>([
   ],
 ]);
 
-export const useButtonClasses = (state: ButtonState, selectors: ButtonStyleSelectors) => {
+export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelectors) => {
   state.className = ax(state.className, useRootClasses(selectors));
 
   state.children = state.children || { className: '' };
