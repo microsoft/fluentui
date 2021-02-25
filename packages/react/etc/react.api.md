@@ -1178,6 +1178,9 @@ export function getFullColorString(color: IColor): string;
 // @public (undocumented)
 export const getIconContent: (iconName?: string | undefined) => IIconContent | null;
 
+// @public (undocumented)
+export function getInitialResponsiveMode(): ResponsiveMode;
+
 // @public
 export function getMaxHeight(target: Element | MouseEvent | Point, targetEdge: DirectionalHint, gapSpace?: number, bounds?: IRectangle, coverTarget?: boolean): number;
 
@@ -1205,6 +1208,9 @@ export function getOppositeEdge(edge: RectangleEdge): RectangleEdge;
 
 // @public
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public
+export function getResponsiveMode(currentWindow: Window | undefined): ResponsiveMode;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -3330,8 +3336,6 @@ export interface IContextualMenuListProps {
     totalItemCount: number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React.RefAttributes<HTMLDivElement>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -4975,6 +4979,10 @@ export interface IGroup {
 // @public (undocumented)
 export interface IGroupDividerProps {
     ariaColSpan?: number;
+    ariaPosInSet?: number;
+    ariaRowCount?: number;
+    ariaRowIndex?: number;
+    ariaSetSize?: number;
     className?: string;
     compact?: boolean;
     // (undocumented)
@@ -5139,8 +5147,6 @@ export interface IGroupHeaderCheckboxProps {
 
 // @public (undocumented)
 export interface IGroupHeaderProps extends IGroupDividerProps {
-    ariaPosInSet?: number;
-    ariaSetSize?: number;
     expandButtonIcon?: string;
     expandButtonProps?: React.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
@@ -6095,6 +6101,9 @@ export interface INavStyles {
     navItems: IStyle;
     root: IStyle;
 }
+
+// @public
+export function initializeResponsiveMode(element?: HTMLElement): void;
 
 export { IObjectWithKey }
 
@@ -7367,6 +7376,8 @@ export interface ISlider {
     // (undocumented)
     focus: () => void;
     // (undocumented)
+    range?: [number, number];
+    // (undocumented)
     value: number | undefined;
 }
 
@@ -7377,14 +7388,17 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
     buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
     className?: string;
     componentRef?: IRefObject<ISlider>;
+    defaultLowerValue?: number;
     defaultValue?: number;
     disabled?: boolean;
     label?: string;
+    lowerValue?: number;
     max?: number;
     min?: number;
-    onChange?: (value: number) => void;
+    onChange?: (value: number, range?: [number, number]) => void;
     onChanged?: (event: MouseEvent | TouchEvent | KeyboardEvent, value: number) => void;
     originFromZero?: boolean;
+    ranged?: boolean;
     showValue?: boolean;
     snapToStep?: boolean;
     step?: number;
@@ -7396,7 +7410,7 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
 }
 
 // @public (undocumented)
-export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISliderProps, 'className' | 'disabled' | 'vertical' | 'ranged'> & {
     showTransitions?: boolean;
     showValue?: boolean;
     titleLabelClassName?: string;
@@ -8387,8 +8401,15 @@ export interface IWindowWithSegments extends Window {
     getWindowSegments?: () => DOMRect[];
 }
 
+// @public @deprecated (undocumented)
+export interface IWithResponsiveModeState {
+    // (undocumented)
+    responsiveMode?: ResponsiveMode;
+}
+
 // @public
 export interface IWithViewportProps {
+    disableResizeObserver?: boolean;
     skipViewportMeasures?: boolean;
 }
 
@@ -9090,19 +9111,13 @@ export enum ResizeGroupDirection {
 
 // @public (undocumented)
 export enum ResponsiveMode {
-    // (undocumented)
     large = 2,
-    // (undocumented)
     medium = 1,
-    // (undocumented)
     small = 0,
     // (undocumented)
     unknown = 999,
-    // (undocumented)
     xLarge = 3,
-    // (undocumented)
     xxLarge = 4,
-    // (undocumented)
     xxxLarge = 5
 }
 
@@ -9273,6 +9288,9 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps>;
 
 // @public
 export function sequencesToID(keySequences: string[]): string;
+
+// @public
+export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): void;
 
 // @public
 export enum Shade {
@@ -9861,6 +9879,9 @@ export function useHeightOffset({ finalHeight }: IPositioningContainerProps, con
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React.Ref<TElement>;
 
+// @public
+export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
+
 // @public (undocumented)
 export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
     root: {
@@ -9874,275 +9895,20 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         htmlFor: string | undefined;
     };
     sliderBox: {
-        className: string;
-        role: string;
-        tabIndex: number | undefined;
-        'data-is-focusable': boolean;
         id: string;
-        'aria-valuenow': number;
+        className: string;
+    } | {
         'aria-valuemin': number;
         'aria-valuemax': number;
+        'aria-valuenow': number;
         'aria-valuetext': string | undefined;
         'aria-label': string | undefined;
         'aria-disabled': boolean;
-    } | {
-        className: string;
         role: string;
         tabIndex: number | undefined;
         'data-is-focusable': boolean;
-        defaultChecked?: boolean | undefined;
-        defaultValue?: string | number | readonly string[] | undefined;
-        suppressContentEditableWarning?: boolean | undefined;
-        suppressHydrationWarning?: boolean | undefined;
-        accessKey?: string | undefined;
-        contentEditable?: boolean | "inherit" | "true" | "false" | undefined;
-        contextMenu?: string | undefined;
-        dir?: string | undefined;
-        draggable?: boolean | "true" | "false" | undefined;
-        hidden?: boolean | undefined;
         id: string;
-        lang?: string | undefined;
-        placeholder?: string | undefined;
-        slot?: string | undefined;
-        spellCheck?: boolean | "true" | "false" | undefined;
-        style?: React.CSSProperties | undefined;
-        title?: string | undefined;
-        translate?: "yes" | "no" | undefined;
-        radioGroup?: string | undefined;
-        about?: string | undefined;
-        datatype?: string | undefined;
-        inlist?: any;
-        prefix?: string | undefined;
-        property?: string | undefined;
-        resource?: string | undefined;
-        typeof?: string | undefined;
-        vocab?: string | undefined;
-        autoCapitalize?: string | undefined;
-        autoCorrect?: string | undefined;
-        autoSave?: string | undefined;
-        color?: string | undefined;
-        itemProp?: string | undefined;
-        itemScope?: boolean | undefined;
-        itemType?: string | undefined;
-        itemID?: string | undefined;
-        itemRef?: string | undefined;
-        results?: number | undefined;
-        security?: string | undefined;
-        unselectable?: "on" | "off" | undefined;
-        inputMode?: "none" | "text" | "tel" | "url" | "email" | "numeric" | "decimal" | "search" | undefined;
-        is?: string | undefined;
-        'aria-activedescendant'?: string | undefined;
-        'aria-atomic'?: boolean | "true" | "false" | undefined;
-        'aria-autocomplete'?: "none" | "inline" | "list" | "both" | undefined;
-        'aria-busy'?: boolean | "true" | "false" | undefined;
-        'aria-checked'?: boolean | "true" | "false" | "mixed" | undefined;
-        'aria-colcount'?: number | undefined;
-        'aria-colindex'?: number | undefined;
-        'aria-colspan'?: number | undefined;
-        'aria-controls'?: string | undefined;
-        'aria-current'?: boolean | "true" | "false" | "page" | "step" | "location" | "date" | "time" | undefined;
-        'aria-describedby'?: string | undefined;
-        'aria-details'?: string | undefined;
-        'aria-disabled': boolean | "true" | "false";
-        'aria-dropeffect'?: "none" | "copy" | "execute" | "link" | "move" | "popup" | undefined;
-        'aria-errormessage'?: string | undefined;
-        'aria-expanded'?: boolean | "true" | "false" | undefined;
-        'aria-flowto'?: string | undefined;
-        'aria-grabbed'?: boolean | "true" | "false" | undefined;
-        'aria-haspopup'?: boolean | "true" | "false" | "menu" | "listbox" | "tree" | "grid" | "dialog" | undefined;
-        'aria-hidden'?: boolean | "true" | "false" | undefined;
-        'aria-invalid'?: boolean | "true" | "false" | "grammar" | "spelling" | undefined;
-        'aria-keyshortcuts'?: string | undefined;
-        'aria-label': string | undefined;
-        'aria-labelledby'?: string | undefined;
-        'aria-level'?: number | undefined;
-        'aria-live'?: "off" | "assertive" | "polite" | undefined;
-        'aria-modal'?: boolean | "true" | "false" | undefined;
-        'aria-multiline'?: boolean | "true" | "false" | undefined;
-        'aria-multiselectable'?: boolean | "true" | "false" | undefined;
-        'aria-orientation'?: "horizontal" | "vertical" | undefined;
-        'aria-owns'?: string | undefined;
-        'aria-placeholder'?: string | undefined;
-        'aria-posinset'?: number | undefined;
-        'aria-pressed'?: boolean | "true" | "false" | "mixed" | undefined;
-        'aria-readonly'?: boolean | "true" | "false" | undefined;
-        'aria-relevant'?: "text" | "additions" | "additions text" | "all" | "removals" | undefined;
-        'aria-required'?: boolean | "true" | "false" | undefined;
-        'aria-roledescription'?: string | undefined;
-        'aria-rowcount'?: number | undefined;
-        'aria-rowindex'?: number | undefined;
-        'aria-rowspan'?: number | undefined;
-        'aria-selected'?: boolean | "true" | "false" | undefined;
-        'aria-setsize'?: number | undefined;
-        'aria-sort'?: "none" | "ascending" | "descending" | "other" | undefined;
-        'aria-valuemax': number;
-        'aria-valuemin': number;
-        'aria-valuenow': number;
-        'aria-valuetext': string | undefined;
-        children?: React.ReactNode;
-        dangerouslySetInnerHTML?: {
-            __html: string;
-        } | undefined;
-        onCopy?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCopyCapture?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCut?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCutCapture?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onPaste?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onPasteCapture?: ((event: React.ClipboardEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionEnd?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionEndCapture?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionStart?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionStartCapture?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionUpdate?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onCompositionUpdateCapture?: ((event: React.CompositionEvent<HTMLDivElement>) => void) | undefined;
-        onFocus?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onFocusCapture?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onBlur?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onBlurCapture?: ((event: React.FocusEvent<HTMLDivElement>) => void) | undefined;
-        onChange?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onChangeCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onBeforeInput?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onBeforeInputCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInput?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInputCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onReset?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onResetCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onSubmit?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onSubmitCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInvalid?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onInvalidCapture?: ((event: React.FormEvent<HTMLDivElement>) => void) | undefined;
-        onLoad?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onError?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onErrorCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onKeyDown?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyDownCapture?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyPress?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyPressCapture?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyUp?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onKeyUpCapture?: ((event: React.KeyboardEvent<HTMLDivElement>) => void) | undefined;
-        onAbort?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onAbortCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlay?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlayCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlayThrough?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onCanPlayThroughCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onDurationChange?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onDurationChangeCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEmptied?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEmptiedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEncrypted?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEncryptedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEnded?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onEndedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedData?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedDataCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedMetadata?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadedMetadataCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadStart?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onLoadStartCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPause?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPauseCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlay?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlayCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlaying?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onPlayingCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onProgress?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onProgressCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onRateChange?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onRateChangeCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeeked?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeekedCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeeking?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSeekingCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onStalled?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onStalledCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSuspend?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSuspendCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onTimeUpdate?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onTimeUpdateCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onVolumeChange?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onVolumeChangeCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onWaiting?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onWaitingCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onAuxClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onAuxClickCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onClickCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onContextMenu?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onContextMenuCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onDoubleClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onDoubleClickCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onDrag?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEnd?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEndCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEnter?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragEnterCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragExit?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragExitCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragLeave?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragLeaveCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragOver?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragOverCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragStart?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDragStartCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDrop?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onDropCapture?: ((event: React.DragEvent<HTMLDivElement>) => void) | undefined;
-        onMouseDown?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseDownCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseEnter?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseLeave?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseMove?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseMoveCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOut?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOutCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOver?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseOverCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseUp?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onMouseUpCapture?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
-        onSelect?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onSelectCapture?: ((event: React.SyntheticEvent<HTMLDivElement, Event>) => void) | undefined;
-        onTouchCancel?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchCancelCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchEnd?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchEndCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchMove?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchMoveCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchStart?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onTouchStartCapture?: ((event: React.TouchEvent<HTMLDivElement>) => void) | undefined;
-        onPointerDown?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerDownCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerMove?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerMoveCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerUp?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerUpCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerCancel?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerCancelCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerEnter?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerEnterCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerLeave?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerLeaveCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOver?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOverCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOut?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onPointerOutCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onGotPointerCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onGotPointerCaptureCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onLostPointerCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onLostPointerCaptureCapture?: ((event: React.PointerEvent<HTMLDivElement>) => void) | undefined;
-        onScroll?: ((event: React.UIEvent<HTMLDivElement, UIEvent>) => void) | undefined;
-        onScrollCapture?: ((event: React.UIEvent<HTMLDivElement, UIEvent>) => void) | undefined;
-        onWheel?: ((event: React.WheelEvent<HTMLDivElement>) => void) | undefined;
-        onWheelCapture?: ((event: React.WheelEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationStart?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationStartCapture?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationEnd?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationEndCapture?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationIteration?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onAnimationIterationCapture?: ((event: React.AnimationEvent<HTMLDivElement>) => void) | undefined;
-        onTransitionEnd?: ((event: React.TransitionEvent<HTMLDivElement>) => void) | undefined;
-        onTransitionEndCapture?: ((event: React.TransitionEvent<HTMLDivElement>) => void) | undefined;
+        className: string;
     };
     container: {
         className: string;
@@ -10152,13 +9918,57 @@ export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =>
         children: string | number;
         disabled: boolean;
     };
+    lowerValueLabel: false | {
+        className: string;
+        children: string | number;
+        disabled: boolean;
+    } | undefined;
     thumb: {
         ref: React.RefObject<HTMLSpanElement>;
         className: string;
         style: {
             [x: string]: string;
         };
+    } | {
+        ref: React.RefObject<HTMLSpanElement>;
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    } | {
+        id: string;
+        'aria-valuemin': number;
+        'aria-valuemax': number;
+        'aria-valuenow': number;
+        'aria-valuetext': string | undefined;
+        'aria-label': string;
+        'aria-disabled': boolean;
+        role: string;
+        tabIndex: number | undefined;
+        'data-is-focusable': boolean;
+        ref: React.RefObject<HTMLSpanElement>;
+        className: string;
+        style: {
+            [x: string]: string;
+        };
     };
+    lowerValueThumb: {
+        id: string;
+        'aria-valuemin': number;
+        'aria-valuemax': number;
+        'aria-valuenow': number;
+        'aria-valuetext': string | undefined;
+        'aria-label': string;
+        'aria-disabled': boolean;
+        role: string;
+        tabIndex: number | undefined;
+        'data-is-focusable': boolean;
+        ref: React.RefObject<HTMLSpanElement>;
+        className: string;
+        style: {
+            [x: string]: string;
+        };
+    } | undefined;
     zeroTick: false | {
         className: string;
         style: {
@@ -10225,6 +10035,11 @@ export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> imp
 
 // @public (undocumented)
 export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
+
+// @public @deprecated (undocumented)
+export function withResponsiveMode<TProps extends {
+    responsiveMode?: ResponsiveMode;
+}, TState>(ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>): any;
 
 
 export * from "@fluentui/date-time-utilities/lib/dateMath/dateMath";

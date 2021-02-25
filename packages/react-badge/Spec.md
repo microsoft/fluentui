@@ -1,63 +1,146 @@
-# @fluentui/react-badge Spec
+# [Badge](https://github.com/microsoft/fluentui/issues/16925)
 
 ## Background
 
-_Description and use cases of this component_
+A badge is an additional visual descriptor for UI elements. It can be used to denote numerical value, status or general information.
 
 ## Prior Art
 
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+- [OpenUI Research](https://open-ui.org/components/badge.research)
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```jsx
+  <Badge>
+    My Custom Badge
+  </Badge>
+  <Badge
+    style={{ position: 'absolute', top: -4, right: -4 }}
+  />
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+`Badge` can have several variations.
 
-## API
+- Appearance: `default`, `rounded` and `circular`
+- Size: `smallest`, `smaller`, `small`, `medium`, `large`, `larger`.
+- Styles: `filled`, `outline`, `ghost`, `tint`, `inverted filled`
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+## PROPS
+
+```typescript
+type BadgeAppearance = 'filled' | 'outline' | 'ghost' | 'tint';
+
+type BadgeShape = 'rounded' | 'square' | 'circular';
+
+type BadgeSize = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+
+interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * A Badge can be sized.
+   */
+  size?: BadgeSize;
+
+  /**
+   * A Badge can be square, circular or rounded
+   */
+  shape?: BadgeShape;
+
+  /**
+   * A Badge can be filled, outline, ghost, inverted
+   */
+  appearance?: BadgeAppearance;
+
+  /**
+   * Icon slot
+   */
+  icon?: ShorthandProps<HTMLElement>;
+
+  /**
+   * Position for Icon to be rendered
+   */
+  iconPosition?: 'before' | 'after';
+}
+```
 
 ## Structure
 
 - _**Public**_
+
+```jsx
+<Badge />
+```
+
 - _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+
+```jsx
+<ElementType>{children}</ElementType>
+```
+
+- _**DOM**_
+
+```html
+<span class="ui-badge">
+  ...
+</span>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
 - _Migration from v8_
+
+`Badge` can be passed to `Avatar`'s `badge` slot. The `PresenceBadge` will be the best replacement for `Persona` presence mapping status, icon and colors.
+
 - _Migration from v0_
+
+`Badge` can be passed to `Avatar`'s `badge` slot.
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+- Badges don't receive focus
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+  - Badge information would be surfaced as part of the control that it is associated with, badges themselves do not receive focus meaning they are not directly accessible by screenreaders.
+    If the combination of icon and badge communicates some meaningful information, that information should be surfaced in another way through screenreader or tooltip on the component the badge is associated with.
 
-## Accessibility
+- Screen Readers
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+  - Badges should be given a meaningful description. This description will be applied, via “aria-describedby” to the element decorated by the Badge. For example, "Chat, 6 unread" or similar.
+    General guidance is that the badge icon is marked as “aria-hidden” by default.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- Badge shouldn't rely only on color information
+
+  - Include meaningful descriptions when using color to represent meaning in a badge. If relying on color only [unread dot] ensure that non-visual information is included using aria-describedby
+
+## Variants
+
+`Badge` is base component that can be used to create custom `Badge` such as `PresenceBadge` or `CounterBadge` with specific behaviors.
+
+### Presence Badge
+
+A Presence Badge represents someone's availbility or status
+
+#### API
+
+| Property Name | Type      | Default Value | Description                                                                                |
+| ------------- | --------- | ------------- | ------------------------------------------------------------------------------------------ |
+| `size`        | `enum`    | `medium`      | The Badge size                                                                             |
+| `status`      | `enum`    | `available`   | The Badge status representation                                                            |
+| `inOffice`    | `boolean` | `true`        | The Badge can be represented in different ways depeding if user is in or out of the office |
+| `inverted`    | `boolean` | `false`       | The Badge can be inverted                                                                  |
+
+### Counter Badge
+
+A Counter Badge is a visual indicator for numeric values such as tallies and scores.
+
+#### API
+
+| Property Name   | Type      | Default Value | Description                                                    |
+| --------------- | --------- | ------------- | -------------------------------------------------------------- |
+| `size`          | `enum`    | `medium`      | The Badge size                                                 |
+| `shape`         | `enum`    | `circular`    | The Badge can have different shapes                            |
+| `variation`     | `enum`    | `filled`      | The Badge different style variants                             |
+| `color`         | `enum`    | `accent`      | The Badge has a pre defined set of colors                      |
+| `overflowCount` | `number`  | `99`          | `+` is displayed when count is larger than the specifed count. |
+| `showZero`      | `boolean` | `true`        | If badge should display number if count is 0                   |
+| `count`         | `number`  | `0`           | value to be displayed                                          |

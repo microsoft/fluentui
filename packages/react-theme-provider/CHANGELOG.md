@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-theme-provider
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.2)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v9.0.0-alpha.1..@fluentui/react-theme-provider_v9.0.0-alpha.2)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.1 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v9.0.0-alpha.1)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.27..@fluentui/react-theme-provider_v9.0.0-alpha.1)
+
+### Changes
+
+- bump version to v9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+
+## [1.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.27)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-provider_v1.0.0-beta.26..@fluentui/react-theme-provider_v1.0.0-beta.27)
+
+### Patches
+
+- Bump @fluentui/react-theme to v0.3.3 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+### Changes
+
+- Breaks dependency on react-hooks for convergence ([PR #17091](https://github.com/microsoft/fluentui/pull/17091) by lingfan.gao@microsoft.com)
 
 ## [1.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-provider_v1.0.0-beta.26)
 

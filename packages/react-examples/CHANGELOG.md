@@ -1,8 +1,70 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.9)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.8..@fluentui/react-examples_v8.0.0-beta.9)
+
+### Patches
+
+- Bump @fluentui/react-menu to v0.6.0 ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-text to v0.2.0 ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- update decorators usage for react-text ([PR #17160](https://github.com/microsoft/fluentui/pull/17160) by olfedias@microsoft.com)
+- Add memoization examples for Menu ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.8)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.7..@fluentui/react-examples_v8.0.0-beta.8)
+
+### Changes
+
+- Add range support to Slider, to allow selecting a lower and upper bound of a range ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.7)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.6..@fluentui/react-examples_v8.0.0-beta.7)
+
+### Patches
+
+- Bump @fluentui/react-flex to v0.2.6 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+- Bump @fluentui/react-text to v0.1.9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+
+### Changes
+
+- making changes to support the new feature ([PR #17127](https://github.com/microsoft/fluentui/pull/17127) by email not defined)
+- Prevent '.ms-Icon' style overrides from conflicting with the "Move column" target (#16014) ([PR #17124](https://github.com/microsoft/fluentui/pull/17124) by jdh@microsoft.com)
+- bump versions for converged components to v9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+- Update UnifiedPicker example with generic item code ([PR #17143](https://github.com/microsoft/fluentui/pull/17143) by elvonspa@microsoft.com)
+- feat(react-components): add suite package ([PR #17100](https://github.com/microsoft/fluentui/pull/17100) by miroslav.stastny@microsoft.com)
+- feat(Badge): remove unnused props from badge stories ([PR #17087](https://github.com/microsoft/fluentui/pull/17087) by junioassuncaocharles@gmail.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.6)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.5..@fluentui/react-examples_v8.0.0-beta.6)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v0.12.0 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/react-badge to v0.2.0 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/react-image to v0.8.0 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/react-menu to v0.5.0 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/react-provider to v0.2.0 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/react-make-styles to v0.2.8 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/react-theme to v0.3.3 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+### Changes
+
+- Add badge examples ([PR #16868](https://github.com/microsoft/fluentui/pull/16868) by junioassuncaocharles@gmail.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.5)
 

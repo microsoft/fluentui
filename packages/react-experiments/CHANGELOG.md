@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.65)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.64..@fluentui/react-experiments_v8.0.0-beta.65)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.62 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.64)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.63..@fluentui/react-experiments_v8.0.0-beta.64)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.63)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.62..@fluentui/react-experiments_v8.0.0-beta.63)
+
+### Changes
+
+- Implement keyboard shortcut for Cut and Delete ([PR #17114](https://github.com/microsoft/fluentui/pull/17114) by jaredi@microsoft.com)
+- Use role="presentation" for all <div> elements in TilesList ([PR #17138](https://github.com/microsoft/fluentui/pull/17138) by andredias@microsoft.com)
+- UnifiedPicker: fix suggestions keyboard issue, add generic item functionality ([PR #17143](https://github.com/microsoft/fluentui/pull/17143) by elvonspa@microsoft.com)
+- Add a check for if we are in a drop action to the UnifiedPicker drag end ([PR #17121](https://github.com/microsoft/fluentui/pull/17121) by elvonspa@microsoft.com)
+
+## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.62)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.61..@fluentui/react-experiments_v8.0.0-beta.62)
+
+### Changes
+
+- Update colors for the FloatingSuggestionsComposite items ([PR #17069](https://github.com/microsoft/fluentui/pull/17069) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.61)
 

@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.61)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.60..@fluentui/react-cards_v1.0.0-beta.61)
+
+### Changes
+
+- [BREAKING] rework styles with makeStyles() ([PR #17163](https://github.com/microsoft/fluentui/pull/17163) by olfedias@microsoft.com)
+
+## [1.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.60)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.59..@fluentui/react-cards_v1.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [1.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.59)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.58..@fluentui/react-cards_v1.0.0-beta.59)
+
+### Changes
+
+- bump dependencies to v9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+
+## [1.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.58)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.57..@fluentui/react-cards_v1.0.0-beta.58)
+
+### Changes
+
+- Bump @fluentui/foundation-legacy to v8.0.0-beta.19 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.57)
 

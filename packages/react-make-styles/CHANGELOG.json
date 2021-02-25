@@ -2,6 +2,73 @@
   "name": "@fluentui/react-make-styles",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add makeStaticStyles()",
+            "author": "olfedias@microsoft.com",
+            "commit": "1d7e4a8bb6f772aee299c37aadc289d83035955c",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-make-styles_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-make-styles_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-provider to v0.2.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-make-styles"
+          },
+          {
+            "comment": "Bump @fluentui/make-styles to v0.6.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.27",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-make-styles"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 19:38:50 GMT",
       "tag": "@fluentui/react-make-styles_v0.2.7",
       "version": "0.2.7",

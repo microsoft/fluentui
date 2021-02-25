@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs, useId } from '@fluentui/react-utilities';
 import { MenuGroupProps, MenuGroupState } from './MenuGroup.types';
-import { useMergedRefs, useId } from '@fluentui/react-hooks';
 
 /**
  * Consts listing which props are shorthand props.

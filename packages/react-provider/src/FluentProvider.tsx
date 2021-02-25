@@ -1,7 +1,7 @@
-import { useMergedRefs } from '@fluentui/react-hooks';
 import { PartialTheme, Theme } from '@fluentui/react-theme';
 import { internal__ThemeContext, ThemeProviderState, useThemeProviderState } from '@fluentui/react-theme-provider';
-import { getSlots, makeMergeProps } from '@fluentui/react-utilities';
+import { FocusManagementProvider } from '@fluentui/react-focus-management';
+import { getSlots, makeMergeProps, useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
 
 import { internal__FluentProviderContext, useFluent } from './context';
@@ -43,7 +43,9 @@ export function renderFluentProvider(state: ProviderState) {
   return (
     <internal__FluentProviderContext.Provider value={value}>
       <internal__ThemeContext.Provider value={theme}>
-        <slots.root {...slotProps.root} />
+        <FocusManagementProvider document={document} dir={dir}>
+          <slots.root {...slotProps.root} />
+        </FocusManagementProvider>
       </internal__ThemeContext.Provider>
     </internal__FluentProviderContext.Provider>
   );

@@ -1,0 +1,26 @@
+{
+  "name": "@fluentui/react-icons-mdl2-branded",
+  "entries": [
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "create package for branded icons from react-icons-mdl2 package",
+            "author": "ololubek@microsoft.com",
+            "commit": "eefc5128d958e74262de72965b60608953945515",
+            "package": "@fluentui/react-icons-mdl2-branded"
+          },
+          {
+            "comment": "Fix syncpack issues in react-icons-mdl2",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "9db41641782d45d5c2499c92359cfe9acccd37d4",
+            "package": "@fluentui/react-icons-mdl2-branded"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { {{componentName}}Props, {{componentName}}State } from './{{componentName}}.types';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const {{camelCase componentName}}ShorthandProps = [];
+export const {{camelCase componentName}}ShorthandProps: (keyof {{componentName}}Props)[] = [];
 
 const mergeProps = makeMergeProps<{{componentName}}State>({ deepMerge: {{camelCase componentName}}ShorthandProps });
 

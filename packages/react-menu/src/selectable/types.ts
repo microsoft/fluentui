@@ -1,5 +1,12 @@
 import * as React from 'react';
 
+export type SelectableHandler = (
+  e: React.MouseEvent | React.KeyboardEvent,
+  name: string,
+  value: string,
+  checked: boolean,
+) => void;
+
 /**
  * Props for selecatble menu items
  */

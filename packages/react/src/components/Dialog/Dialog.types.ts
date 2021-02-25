@@ -3,7 +3,7 @@ import { IModalProps } from '../../Modal';
 import { DialogBase } from './Dialog.base';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { IButtonProps } from '../../Button';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../ResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
@@ -19,6 +19,7 @@ export interface IDialog {}
  */
 export interface IDialogProps
   extends React.ClassAttributes<DialogBase>,
+    // eslint-disable-next-line deprecation/deprecation
     IWithResponsiveModeState,
     IAccessiblePopupProps {
   /**
