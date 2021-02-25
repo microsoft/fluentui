@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "remove old demo app",
+  "packageName": "@fluentui/react-button",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "none"
+}
