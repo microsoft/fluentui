@@ -157,6 +157,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       }
     }
 
+    if (prevProps.value !== props.value) {
+      // Only if the value in props changed, reset the record of the last value seen by a
+      // change/input event (don't do this if the value in state changed, since at least in tests
+      // the state update may happen before the second event in a series)
+      this._lastChangeValue = undefined;
+    }
+
     const prevValue = _getValue(prevProps, prevState);
     const value = this.value;
     if (prevValue !== value) {
@@ -171,9 +178,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
       // Adjust height if needed based on new value
       this._adjustInputHeight();
-
-      // Reset the record of the last value seen by a change/input event
-      this._lastChangeValue = undefined;
 
       // TODO: #5875 added logic to trigger validation in componentWillReceiveProps and other places.
       // This seems a bit odd and hard to integrate with the new approach.
@@ -543,38 +547,23 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     const element = event.target as HTMLInputElement;
     const value = element.value;
-    // Ignore this event if the value is undefined (in case one of the IE bugs comes back)
-    if (value === undefined || value === this._lastChangeValue) {
+    // Ignore this event if any of the following are true:
+    // - the value is undefined (in case one of the IE bugs comes back)
+    // - it's a duplicate event (important since onInputChange is called twice per actual user event)
+    // - it's the same as the previous value
+    if (value === undefined || value === this._lastChangeValue || value === _getValue(this.props, this.state) || '') {
+      this._lastChangeValue = undefined;
       return;
     }
     this._lastChangeValue = value;
 
-    // This is so developers can access the event properties in asynchronous callbacks
-    // https://reactjs.org/docs/events.html#event-pooling
-    event.persist();
+    this.props.onChange?.(event, value);
 
-    let isSameValue: boolean;
-    this.setState(
-      (prevState: ITextFieldState, props: ITextFieldProps) => {
-        const prevValue = _getValue(props, prevState) || '';
-        isSameValue = value === prevValue;
-        // Avoid doing unnecessary work when the value has not changed.
-        if (isSameValue) {
-          return null;
-        }
-
-        // ONLY if this is an uncontrolled component, update the displayed value.
-        // (Controlled components must update the `value` prop from `onChange`.)
-        return this._isControlled ? null : { uncontrolledValue: value };
-      },
-      () => {
-        // If the value actually changed, call onChange (for either controlled or uncontrolled)
-        const { onChange } = this.props;
-        if (!isSameValue && onChange) {
-          onChange(event, value);
-        }
-      },
-    );
+    if (!this._isControlled) {
+      // ONLY if this is an uncontrolled component, update the displayed value.
+      // (Controlled components must update the `value` prop from `onChange`.)
+      this.setState({ uncontrolledValue: value });
+    }
   };
 
   private _validate(value: string | undefined): void {
