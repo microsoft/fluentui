@@ -27,7 +27,7 @@ const SVGIcon = () => (
     </svg>
   </span>
 );
-const SizeExample = ({ size }: { size?: string }) => (
+const SizeExample = ({ size }: ButtonProps) => (
   <>
     <h4>{size || '(default)'}</h4>
     <Button size={size}>Text</Button>
