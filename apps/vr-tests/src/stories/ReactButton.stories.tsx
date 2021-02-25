@@ -1,5 +1,9 @@
+import { storiesOf } from '@storybook/react';
 import * as React from 'react';
+import Screener from 'screener-storybook/src/screener';
 import { Button, ButtonProps } from '@fluentui/react-button';
+
+import { FluentProviderDecorator, FabricDecorator } from '../utilities/index';
 
 // TODO: this is here while waiting for react-icons to merge
 const SVGIcon = () => (
@@ -23,31 +27,7 @@ const SVGIcon = () => (
     </svg>
   </span>
 );
-
-export const Default = () => <AppearanceExample />;
-
-//
-// Anatomy & Layout
-//
-
-export const TextOnly = () => <Button>Text</Button>;
-export const TextOnlyLong = () => <Button>Text truncates after it hits the max width token value</Button>;
-
-export const IconWithText = () => (
-  <>
-    <Button icon={<SVGIcon />}>Text</Button>
-    <Button icon={<SVGIcon />} iconPosition="after">
-      Text
-    </Button>
-  </>
-);
-
-export const IconOnly = () => <Button icon={<SVGIcon />} />;
-
-//
-// Size
-//
-const SizeExample = ({ size }: { size?: ButtonProps['size'] }) => (
+const SizeExample = ({ size }: ButtonProps) => (
   <>
     <h4>{size || '(default)'}</h4>
     <Button size={size}>Text</Button>
@@ -57,18 +37,6 @@ const SizeExample = ({ size }: { size?: ButtonProps['size'] }) => (
     <Button size={size} icon={<SVGIcon />} />
   </>
 );
-
-export const Size = () => (
-  <>
-    <SizeExample size="small" />
-    <SizeExample />
-    <SizeExample size="large" />
-  </>
-);
-
-//
-// Appearance
-//
 const AppearanceExample = (props: ButtonProps) => (
   <>
     <Button {...props} icon={<SVGIcon />} />
@@ -83,18 +51,45 @@ const AppearanceExample = (props: ButtonProps) => (
   </>
 );
 
-export const Primary = () => <AppearanceExample primary />;
+storiesOf('React Button', module)
+  .addDecorator(FabricDecorator)
+  .addDecorator(FluentProviderDecorator)
+  .addDecorator(story => (
+    <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+      {story()}
+    </Screener>
+  ))
+  .addStory('Default', () => <AppearanceExample />)
+  .addStory('Text only', () => <Button>Text</Button>)
+  .addStory('Text only long', () => (
+    <Button>Text truncates after it hits the max width token value</Button>
+  ))
+  .addStory('Icon with text', () => (
+    <>
+      <Button icon={<SVGIcon />}>Text</Button>
+      <Button icon={<SVGIcon />} iconPosition="after">
+        Text
+      </Button>
+    </>
+  ))
 
-//
-// States
-//
-export const Disabled = () => (
-  <>
-    <Button disabled icon={<SVGIcon />}>
-      Default disabled
-    </Button>
-    <Button primary disabled icon={<SVGIcon />}>
-      Primary disabled
-    </Button>
-  </>
-);
+  .addStory('Icon only', () => <Button icon={<SVGIcon />} />)
+  .addStory('Size', () => (
+    <>
+      <SizeExample size="small" />
+      <SizeExample />
+      <SizeExample size="large" />
+    </>
+  ))
+
+  .addStory('Primary', () => <AppearanceExample primary />)
+  .addStory('Disabled', () => (
+    <>
+      <Button disabled icon={<SVGIcon />}>
+        Default disabled
+      </Button>
+      <Button primary disabled icon={<SVGIcon />}>
+        Primary disabled
+      </Button>
+    </>
+  ));
