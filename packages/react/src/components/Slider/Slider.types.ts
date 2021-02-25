@@ -225,5 +225,3 @@ export interface ISliderStyles {
    */
   zeroTick: IStyle;
 }
-
-export type IFocusableElement = { 'data-is-focusable': boolean } & React.HTMLAttributes<HTMLElement>;

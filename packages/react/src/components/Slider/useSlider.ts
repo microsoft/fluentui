@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IFocusableElement, ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
+import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { useId, useBoolean, useControllableValue } from '@fluentui/react-hooks';
 import {
   KeyCodes,
@@ -392,11 +392,11 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ...divButtonProps,
   };
 
-  const sliderProps: IFocusableElement = {
+  const sliderProps: React.HTMLAttributes<HTMLElement> = {
     'aria-disabled': disabled,
     role: 'slider',
     tabIndex: disabled ? undefined : 0,
-    'data-is-focusable': !disabled,
+    ...({ 'data-is-focusable': !disabled } as any),
   };
 
   const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
@@ -413,7 +413,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     }),
   };
 
-  const thumbProps: React.HTMLAttributes<HTMLElement> = {
+  const thumbProps: React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement> = {
     ref: thumbRef,
     className: classNames.thumb,
     style: getPositionStyles(valuePercent),
@@ -430,7 +430,9 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     }),
   };
 
-  const lowerValueThumbProps: React.HTMLAttributes<HTMLElement> = ranged
+  const lowerValueThumbProps:
+    | (React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>)
+    | undefined = ranged
     ? {
         ref: lowerValueThumbRef,
         className: classNames.thumb,
