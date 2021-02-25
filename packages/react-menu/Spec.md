@@ -1036,6 +1036,12 @@ In the event that the selection method is a radio, the previous selected item mu
 | Keyboard | Enter  | Toggle | Toggle the selection status of the menu item |
 | Mouse    | Click  | Toggle | Toggle the selection status of the menu item |
 
+#### Linking keyboard navigation and mouse hover
+
+When a user sets focus on menuitems using keyboard navigation, and then switches to mouse hover there should be one unique 'active' state for menuitems. There should not be two different indicators at this point for hover and focus. Below is a GIF of the `ContextualMenu` in v7 that also supports this behaviour.
+
+![Linked keyboard and mouse navigation](./etc/images/linked-keyboard-mouse-navigation.gif)
+
 ### Positioning
 
 ### Placement + alignment
