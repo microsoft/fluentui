@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: remove deep imports",
-  "packageName": "@fluentui/react-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
