@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { mount, shallow, ReactWrapper } from 'enzyme';
-import * as renderer from 'react-test-renderer';
+import { mount, ReactWrapper } from 'enzyme';
 import {
   buttonAccessibilityBehaviorDefinition,
   // buttonBehaviorDefinition,
