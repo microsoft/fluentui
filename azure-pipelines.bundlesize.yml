@@ -78,6 +78,8 @@ jobs:
       - build_react
       - build_northstar
     steps:
+      - checkout: none
+
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact React'
         inputs:
