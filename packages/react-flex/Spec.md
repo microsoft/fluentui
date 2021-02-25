@@ -53,6 +53,7 @@ Below is a table of prop comparison:
 | Additional CSS class name(s) to apply                                                    | `className`            | `className`                  | matching         |
 | Additional CSS styles to apply to the component instance                                 | extends `HTMLElement`  | `styles`                     | matching         |
 | Override for theme site variables to allow modifications of component styling via themes | through `IStackTokens` | `variables`                  | different naming |
+| Defines a custom order for the item                                                      | `order`                | -                            | Flex missing     |
 | Defines whether the item should be prevented from shrinking                              | `disableShrink`        | -                            | Flex missing     |
 | Defines whether the item should take up 100% of the height of its parent                 | `verticalFill`         | -                            | Flex missing     |
 | Push item towards opposite side in the container's direction                             | -                      | `push`                       | Stack missing    |
@@ -100,6 +101,7 @@ Below is a table of prop comparison:
 | `shrink` | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack |
 | `push`   | boolean                                                                                         | `false`       | Defines an auto margin depending on the flex direction. Kept for retro-compatibility but perhaps can be removed                                         |
 | `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`                                                                                               |
+| `order`  | number                                                                                          | `0`           | Abstraction of `order`                                                                                                                                  |
 
 #### _Deprecating_
 
@@ -109,15 +111,138 @@ Below is a table of prop comparison:
 | StackItem          | `verticallFill` | Redundant. Same as a style override of `height: 100%` |
 | FlexItem           | `size`          | Renamed to `basis`                                    |
 
----
-
----
-
----
-
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+### Basic
+
+```HTML
+<Flex>
+ <span>1</span>
+ <span>2</span>
+</Flex>
+```
+
+### Direction
+
+```HTML
+<Flex direction="column-reverse">
+  <span>bottom</span>
+  <span>top</span>
+</Flex>
+```
+
+### Alignment
+
+```HTML
+<Flex verticalAlign="center">
+  <span>vertically centered</span>
+  <span>vertically centered</span>
+</Flex>
+```
+
+```HTML
+<Flex horizontalAlign="center">
+  <span>horizontally centered</span>
+  <span>horizontally centered</span>
+</Flex>
+```
+
+### Spacing
+
+```HTML
+<Flex gap="5rem">
+  <span>5rem around me</span>
+  <span>5rem around me</span>
+</Flex>
+```
+
+### Wrapping
+
+```HTML
+<Flex wrap>
+  <span>1</span>
+  <span>2</span>
+</Flex>
+```
+
+### Order
+
+```HTML
+<Flex>
+  <span>2</span>
+  <span order={1}>1</span>
+</Flex>
+```
+
+### Growing
+
+#### Globally
+
+```HTML
+<Flex grow>
+  <span>wide</span>
+  <span>wide</span>
+</Flex>
+```
+
+#### Individually
+
+```HTML
+<Flex>
+  <span>thin</span>
+  <span grow>wide</span>
+</Flex>
+```
+
+### Shrinking
+
+#### Globally
+
+```HTML
+<Flex shrink={false}>
+  <span>wide</span>
+  <span>wide</span>
+</Flex>
+```
+
+#### Individually
+
+```HTML
+<Flex>
+  <span>thin</span>
+  <span shrink={false}>wide</span>
+</Flex>
+```
+
+### Complex example
+
+```HTML
+<Flex
+  as="section"
+  direction="row-reversed"
+  horizontalAlign="space-between"
+  verticalAlign="center"
+  gap="5rem"
+  wrap grow inline>
+  <span order={3}>3</span>
+  <span shrink={false}>1</span>
+  <span basis="25%">2</span>
+</Flex>
+```
+
+---
+
+---
+
+---
+
+WIP
+
+---
+
+---
+
+---
 
 ## Structure
 
