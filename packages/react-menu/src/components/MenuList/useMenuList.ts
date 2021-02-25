@@ -32,9 +32,6 @@ export const useMenuList = (
     resolveShorthandProps(props, []),
   );
 
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, {});
-  state.checkedValues = checkedValues;
-  const { onCheckedValueChange } = state;
   state.setFocusByFirstCharacter = React.useCallback(
     (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => {
       // TODO use some kind of children registration to reduce dependency on DOM roles
@@ -77,6 +74,9 @@ export const useMenuList = (
     [findAllFocusable, state.ref],
   );
 
+  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, {});
+  state.checkedValues = checkedValues;
+  const { onCheckedValueChange } = state;
   state.toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
@@ -94,6 +94,7 @@ export const useMenuList = (
 
   state.selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
+    setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     onCheckedValueChange?.(e, name, newCheckedItems);
   });
 
