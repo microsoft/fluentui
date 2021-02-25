@@ -92,11 +92,11 @@ export const renderButton: (state: ButtonState) => JSX.Element;
 // @public
 export const useButton: (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps | undefined) => ButtonState;
 
-// @public (undocumented)
-export const useButtonClasses: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
-
 // @public
 export const useButtonState: (draftState: ButtonState) => void;
+
+// @public (undocumented)
+export const useButtonStyles: (state: ButtonState, selectors: ButtonStyleSelectors) => void;
 
 
 // (No @packageDocumentation comment for this package)
