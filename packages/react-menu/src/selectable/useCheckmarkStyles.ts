@@ -26,7 +26,7 @@ const useStyles = makeStyles<MenuItemSelectableState>([
 /**
  * Applies styles to a checkmark slot for selectable menu items
  *
- * @param state should contain a `checkmark` slot
+ * @param state - should contain a `checkmark` slot
  */
 export const useCheckmarkStyles = (
   state: MenuItemSelectableState & { checkmark: ObjectShorthandProps<HTMLElement> },
