@@ -43,8 +43,7 @@ describe('Button', () => {
     expect(button.length).toBe(1);
     expect(anchor.length).toBe(0);
 
-    const component = renderer.create(<Button>This is a button</Button>);
-    const tree = component.toJSON();
+    const tree = button.debug();
     expect(tree).toMatchSnapshot();
   });
 
@@ -55,8 +54,7 @@ describe('Button', () => {
   //   expect(button.length).toBe(0);
   //   expect(anchor.length).toBe(1);
 
-  //   const component = renderer.create(<Button href="https://www.bing.com">This is a button</Button>);
-  //   const tree = component.toJSON();
+  //   const tree = anchor.debug();
   //   expect(tree).toMatchSnapshot();
   // });
 
