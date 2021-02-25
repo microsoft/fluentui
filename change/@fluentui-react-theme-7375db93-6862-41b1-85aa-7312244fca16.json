@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "prerelease",
   "comment": "Changing incorrect value for brandForegroundPressed token from brand.shade30 to brand.shade40.",
   "packageName": "@fluentui/react-theme",
   "email": "humbertomakotomorimoto@gmail.com",
