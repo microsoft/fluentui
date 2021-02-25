@@ -2,6 +2,37 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.62",
+      "version": "8.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update detailslist to use grid aria props for group rows",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "99a951fc9337d55001fdc9e6d280d9f7cbe825ca",
+            "package": "@fluentui/react"
+          }
+        ],
+        "none": [
+          {
+            "comment": "make @fluentui/react-conformance public",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.1",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Feb 2021 07:19:56 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.61",
       "version": "8.0.0-beta.61",

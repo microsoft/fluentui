@@ -287,7 +287,6 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronUpSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -427,7 +426,6 @@ exports[`SpinButton snapshots renders correctly 1`] = `
                   text-align: center;
                 }
             data-icon-name="ChevronDownSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-3\\"",
@@ -732,7 +730,6 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                   text-align: center;
                 }
             data-icon-name="ChevronUpSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -872,7 +869,6 @@ exports[`SpinButton snapshots renders correctly with user-provided values 1`] = 
                   text-align: center;
                 }
             data-icon-name="ChevronDownSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-3\\"",

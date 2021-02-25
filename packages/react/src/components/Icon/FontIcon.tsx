@@ -43,12 +43,14 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
   const { iconClassName, children, fontFamily } = iconContent;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLElement>>(props, htmlElementProperties);
-  const containerProps = props['aria-label']
-    ? {}
-    : {
-        role: 'presentation',
-        'aria-hidden': true,
-      };
+  const containerProps =
+    props['aria-label'] || props['aria-labelledby'] || props.title
+      ? {
+          role: 'img',
+        }
+      : {
+          'aria-hidden': true,
+        };
 
   return (
     <i

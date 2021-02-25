@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-focus-management",
+  "entries": [
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-focus-management_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bootstrap react-focus-management",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "eac75641c15f760208c0b01b379ac22a6ef4df2a",
+            "package": "@fluentui/react-focus-management"
+          }
+        ]
+      }
+    }
+  ]
+}

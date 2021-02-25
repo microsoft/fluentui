@@ -1632,7 +1632,6 @@ Array [
                     text-align: center;
                   }
               data-icon-name="More"
-              role="presentation"
               style={
                 Object {
                   "color": "inherit",

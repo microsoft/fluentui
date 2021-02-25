@@ -1,8 +1,18 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.2)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v0.14.1..@fluentui/web-components_v0.14.2)
+
+### Patches
+
+- update card background color attribute to reflect from view ([PR #17162](https://github.com/microsoft/fluentui/pull/17162) by chhol@microsoft.com)
+- undefined ([PR #17162](https://github.com/microsoft/fluentui/pull/17162) by chhol@microsoft.com)
 
 ## [0.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v0.14.1)
 

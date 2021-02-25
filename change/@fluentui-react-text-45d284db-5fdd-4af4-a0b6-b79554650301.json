@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "rework to use makeStyles()",
-  "packageName": "@fluentui/react-text",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
