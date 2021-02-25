@@ -680,7 +680,6 @@ exports[`ComboBox Renders correctly when open 1`] = `
                 text-align: center;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style="font-family: \\"FabricMDL2Icons\\";"
         >
           
@@ -1450,7 +1449,6 @@ exports[`ComboBox Renders correctly when opened in multi-select mode 1`] = `
                 text-align: center;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style="font-family: \\"FabricMDL2Icons\\";"
         >
           
