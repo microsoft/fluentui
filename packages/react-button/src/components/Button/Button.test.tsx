@@ -27,8 +27,8 @@ describe('Button', () => {
   describe('meets accessibility requirements', () => {
     const testFacade = new ComponentTestFacade(Button, {});
 
-    let errors;
-    errors = validateBehavior(buttonAccessibilityBehaviorDefinition, testFacade);
+    // let errors;
+    const errors = validateBehavior(buttonAccessibilityBehaviorDefinition, testFacade);
     expect(errors).toEqual([]);
 
     // errors = validateBehavior(buttonBehaviorDefinition, testFacade);
