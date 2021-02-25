@@ -2,6 +2,29 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-button_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "remove old demo app",
+            "author": "olfedias@microsoft.com",
+            "commit": "9f99ccbf4bbfea823581b0f74a0b5f3f0640176c",
+            "package": "@fluentui/react-button"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Trim react-button down to converged styles and api",
+            "author": "me@levithomason.com",
+            "commit": "81b5766184a14b880727da7ae6ff2aea92b0ff83",
+            "package": "@fluentui/react-button"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react-button_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

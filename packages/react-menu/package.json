@@ -48,7 +48,7 @@
     "@fluentui/keyboard-key": "^0.2.13",
     "@fluentui/react-focus-management": "^9.0.0-alpha.1",
     "@fluentui/react-context-selector": "^0.53.1",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.2",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.3",
     "@fluentui/react-utilities": "^9.0.0-alpha.2",
     "@fluentui/set-version": "^8.0.0-beta.2",
     "tslib": "^1.10.0"

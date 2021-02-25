@@ -2,6 +2,21 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-checkbox_v1.0.0-beta.47",
+      "version": "1.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.0-beta.18",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "23722afddd66499a1c29c511a01fe5f5ca191c76",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react-checkbox_v1.0.0-beta.46",
       "version": "1.0.0-beta.46",

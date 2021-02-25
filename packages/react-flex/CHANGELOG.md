@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.7)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.6..@fluentui/react-flex_v0.2.7)
+
+### Patches
+
+- remove dependency on react-theme-provider/compat ([PR #17175](https://github.com/microsoft/fluentui/pull/17175) by olfedias@microsoft.com)
 
 ## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.6)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-charting_v5.0.0-beta.62",
+      "version": "5.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers",
+            "author": "mibes@microsoft.com",
+            "commit": "c602472dff8710058784d8659e345c6c894cf6ac",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react-charting_v5.0.0-beta.61",
       "version": "5.0.0-beta.61",

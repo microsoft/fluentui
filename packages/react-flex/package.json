@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-flex",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Flexbox abstraction that provides a component to align and distribute its children.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
