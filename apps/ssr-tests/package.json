@@ -13,18 +13,16 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@fluentui/react": "^8.0.0-beta.58",
+    "@fluentui/react": "^8.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/mocha": "^7.0.2",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/public-docsite-resources": "^8.0.0-beta.4",
+    "@fluentui/public-docsite-resources": "^8.0.0",
     "just-scripts-utils": "^1.1.1",
     "mocha": "^3.3.0",
-    "raw-loader": "^4.0.2",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "webpack": "^5.21.2"
+    "react-dom": "16.8.6"
   },
   "dependencies": {
     "tslib": "^1.10.0"

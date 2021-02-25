@@ -2,6 +2,44 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.18",
+      "version": "1.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update createSvgIcon to add role=\"img\" on named icons",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "23722afddd66499a1c29c511a01fe5f5ca191c76",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.17",
+      "version": "1.0.0-beta.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-icon-provider to v0.1.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "6fb020ab622a0fd18c47173d1a38eb046c7ebeaa",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.15",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 19:38:50 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.16",
       "version": "1.0.0-beta.16",

@@ -1,9 +1,15 @@
 import * as React from 'react';
-import { ComboBox, IComboBox, IComboBoxOption } from '@fluentui/react/lib/ComboBox';
-import { SelectableOptionMenuItemType } from '@fluentui/react/lib/SelectableOption';
-import { PrimaryButton } from '@fluentui/react/lib/Button';
+import {
+  ComboBox,
+  IComboBox,
+  IComboBoxOption,
+  IComboBoxStyles,
+  SelectableOptionMenuItemType,
+  PrimaryButton,
+  IButtonStyles,
+} from '@fluentui/react';
 
-const comboBoxBasicOptions: IComboBoxOption[] = [
+const options: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
@@ -18,10 +24,11 @@ const comboBoxBasicOptions: IComboBoxOption[] = [
   { key: 'I', text: 'Option I' },
   { key: 'J', text: 'Option J' },
 ];
+// Optional styling to make the example look nicer
+const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
+const buttonStyles: Partial<IButtonStyles> = { root: { display: 'block', margin: '10px 0 20px' } };
 
-const comboBoxMultiStyle = { maxWidth: 300, display: 'block', marginTop: '10px' };
-
-export const ComboBoxBasicExample: React.FC = () => {
+export const ComboBoxBasicExample: React.FunctionComponent = () => {
   const comboBoxRef = React.useRef<IComboBox>(null);
   const onOpenClick = React.useCallback(() => comboBoxRef.current?.focus(true), []);
 
@@ -30,12 +37,19 @@ export const ComboBoxBasicExample: React.FC = () => {
       <ComboBox
         componentRef={comboBoxRef}
         defaultSelectedKey="C"
-        label="Basic ComboBox"
-        allowFreeform
-        autoComplete="on"
-        options={comboBoxBasicOptions}
+        label="Basic single-select ComboBox"
+        options={options}
+        styles={comboBoxStyles}
       />
-      <PrimaryButton text="Open ComboBox" style={comboBoxMultiStyle} onClick={onOpenClick} />
+      <PrimaryButton text="Open first ComboBox" onClick={onOpenClick} styles={buttonStyles} />
+
+      <ComboBox
+        defaultSelectedKey="C"
+        label="Basic multi-select ComboBox"
+        multiSelect
+        options={options}
+        styles={comboBoxStyles}
+      />
     </div>
   );
 };

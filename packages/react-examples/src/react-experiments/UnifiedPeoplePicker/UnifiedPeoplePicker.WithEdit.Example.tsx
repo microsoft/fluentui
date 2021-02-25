@@ -331,6 +331,10 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
     [inputText, ref],
   );
 
+  const _onValidateInput = React.useCallback((input: string) => {
+    return true;
+  }, []);
+
   const floatingPeoplePickerProps = {
     suggestions: [...peopleSuggestions],
     isSuggestionsVisible: false,
@@ -371,6 +375,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         onPaste={_onPaste}
         defaultDragDropEnabled={false}
         onKeyDown={_onKeyDown}
+        onValidateInput={_onValidateInput}
       />
     </>
   );
