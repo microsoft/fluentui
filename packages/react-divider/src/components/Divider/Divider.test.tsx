@@ -1,22 +1,12 @@
 import * as React from 'react';
 import { Divider } from './Divider';
 import * as renderer from 'react-test-renderer';
-import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 
 describe('Divider', () => {
   isConformant({
     Component: Divider,
     displayName: 'Divider',
-  });
-
-  let wrapper: ReactWrapper | undefined;
-
-  afterEach(() => {
-    if (wrapper) {
-      wrapper.unmount();
-      wrapper = undefined;
-    }
   });
 
   /**

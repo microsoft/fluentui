@@ -1,13 +1,10 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { ColorTokens, RecursivePartial, FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 
 /**
  * {@docCategory Divider}
  */
 export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  tokens?: RecursivePartial<DividerTokens>;
-
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
@@ -55,15 +52,3 @@ export interface DividerState extends DividerProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
 }
-
-/**
- * {@docCategory Divider}
- */
-export type DividerTokens = ColorTokens & FontTokens & DividerProps & {};
-
-/**
- * {@docCategory Divider}
- */
-export type DividerVariants<TTokens = DividerTokens> = {
-  root?: TTokens;
-};

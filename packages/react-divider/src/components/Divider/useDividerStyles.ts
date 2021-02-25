@@ -1,10 +1,6 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { DividerState } from './Divider.types';
 
-//#region Helper objects and functions
-
-//#endregion
-
 /**
  * Styles for the root slot
  */

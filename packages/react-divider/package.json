@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-divider",
-  "version": "0.1.0",
-  "description": "React components for building web experiences",
+  "version": "9.0.0-alpha.2",
+  "description": "Fluent UI component to visually separate content.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -44,10 +44,9 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-hooks": "^8.0.0-beta.14",
-    "@fluentui/react-make-styles": "^0.2.7",
-    "@fluentui/react-theme-provider": "^1.0.0-beta.26",
-    "@fluentui/react-utilities": "^0.3.1",
+    "@fluentui/react-hooks": "^8.0.0-beta.15",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.2",
+    "@fluentui/react-utilities": "^9.0.0-alpha.2",
     "@fluentui/set-version": "^8.0.0-beta.2",
     "tslib": "^1.10.0"
   },
@@ -58,10 +57,11 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "latest",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }

@@ -4,11 +4,8 @@
 
 ```ts
 
-import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { FontTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import * as React from 'react';
-import { RecursivePartial } from '@fluentui/react-theme-provider/lib/compat/index';
 
 // @public
 export const Divider: React.ForwardRefExoticComponent<DividerProps & React.RefAttributes<HTMLElement>>;
@@ -49,8 +46,6 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
     // (undocumented)
     marginTop?: string;
     // (undocumented)
-    tokens?: RecursivePartial<DividerTokens>;
-    // (undocumented)
     vertical?: boolean;
     // (undocumented)
     width?: string;
@@ -63,14 +58,6 @@ export const dividerShorthandProps: never[];
 export interface DividerState extends DividerProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
-
-// @public (undocumented)
-export type DividerTokens = ColorTokens & FontTokens & DividerProps & {};
-
-// @public (undocumented)
-export type DividerVariants<TTokens = DividerTokens> = {
-    root?: TTokens;
-};
 
 // @public
 export const renderDivider: (state: DividerState) => JSX.Element;
