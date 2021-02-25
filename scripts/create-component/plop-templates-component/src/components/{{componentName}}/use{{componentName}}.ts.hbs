@@ -2,18 +2,21 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { {{componentName}}Props, {{componentName}}State } from './{{componentName}}.types';
 
-/**
- * Consts listing which props are shorthand props.
- */
 export const {{camelCase componentName}}ShorthandProps: (keyof {{componentName}}Props)[] = [];
 
 const mergeProps = makeMergeProps<{{componentName}}State>({ deepMerge: {{camelCase componentName}}ShorthandProps });
 
 /**
- * Returns the props and state required to render the component
- * @param props {{componentName}} properties
- * @param ref reference to root HTMLElement of {{componentName}}
- * @param defaultProps default values for the properties of {{componentName}}
+ * Create the state required to render a {{componentName}}.
+ *
+ * The returned state can be modified with hooks such as use{{componentName}}Styles,
+ * before being passed to render{{componentName}}.
+ *
+ * @param props - props from this instance of {{componentName}}
+ * @param ref - reference to root HTMLElement of {{componentName}}
+ * @param defaultProps - (optional) default prop values provided by the implementing type
+ *
+ * {@docCategory {{componentName}} }
  */
 export const use{{componentName}} = (
   props: {{componentName}}Props,
