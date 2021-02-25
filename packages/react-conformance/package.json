@@ -18,8 +18,9 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.0",
+    "@fluentui/scripts": "^1.0.0",
     "@types/doctrine": "0.0.3",
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/node": "^10.3.2",
@@ -27,7 +28,6 @@
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
     "@types/react-is": "^16.7.1",
-    "@fluentui/scripts": "^1.0.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -51,12 +51,5 @@
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0",
     "typescript": "^3.5.0"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
   }
 }

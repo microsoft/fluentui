@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "patch",
   "comment": "Add props typing for useSlider",
   "packageName": "@fluentui/react",
   "email": "elcraig@microsoft.com",
