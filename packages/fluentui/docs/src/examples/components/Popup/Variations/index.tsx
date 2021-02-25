@@ -17,7 +17,7 @@ const Variations = () => (
     />
     <ComponentExample
       title="AutoSize"
-      description="Popup could be responsive to fit in limited space"
+      description="Popup could be responsive to fit in limited space."
       examplePath="components/Popup/Variations/PopupExampleAutoSize"
     />
   </ExampleSection>
