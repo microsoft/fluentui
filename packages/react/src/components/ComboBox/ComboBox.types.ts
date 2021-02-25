@@ -25,9 +25,8 @@ export interface IComboBox {
    * Sets focus to the input in the ComboBox.
    * @param shouldOpenOnFocus - Whether to open the menu when the input gets focus
    * @param useFocusAsync - Whether to focus the input asynchronously
-   * @returns True if focus could be set, false if no operation was taken.
    */
-  focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+  focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): void;
 }
 
 /**

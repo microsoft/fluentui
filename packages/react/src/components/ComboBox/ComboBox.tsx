@@ -24,7 +24,13 @@ import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { getCaretDownButtonStyles, getOptionStyles, getStyles } from './ComboBox.styles';
 import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from './ComboBox.classNames';
-import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps, IOnRenderComboBoxLabelProps } from './ComboBox.types';
+import {
+  IComboBoxOption,
+  IComboBoxOptionStyles,
+  IComboBoxProps,
+  IOnRenderComboBoxLabelProps,
+  IComboBox,
+} from './ComboBox.types';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../SelectableOption';
 import { BaseButton, Button, CommandButton, IButtonStyles, IconButton } from '../../Button';
@@ -199,7 +205,7 @@ interface IComboBoxInternalProps extends Omit<IComboBoxProps, 'ref'> {
 }
 
 @customizable('ComboBox', ['theme', 'styles'], true)
-class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> {
+class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
 
@@ -1433,7 +1439,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           onMouseMove={this._onOptionMouseMove.bind(this, item.index)}
           onMouseLeave={this._onOptionMouseLeave}
           role="option"
-          aria-selected={isSelected ? 'true' : 'false'}
+          // aria-selected should only be applied to checked items, not hovered items
+          aria-selected={isChecked ? 'true' : 'false'}
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
           title={title}
@@ -1449,20 +1456,23 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           id={id + '-list' + item.index}
           ariaLabel={this._getPreviewText(item)}
           key={item.key}
-          data-index={item.index}
           styles={optionStyles}
           className={'ms-ComboBox-option'}
-          data-is-focusable={true}
           onChange={this._onItemClick(item)}
           label={item.text}
-          role="option"
           checked={isChecked}
           title={title}
           disabled={item.disabled}
           // eslint-disable-next-line react/jsx-no-bind
           onRenderLabel={onRenderCheckboxLabel}
           inputProps={{
-            'aria-selected': isSelected ? 'true' : 'false',
+            // aria-selected should only be applied to checked items, not hovered items
+            'aria-selected': isChecked ? 'true' : 'false',
+            role: 'option',
+            ...({
+              'data-index': item.index,
+              'data-is-focusable': true,
+            } as any),
           }}
         />
       );
