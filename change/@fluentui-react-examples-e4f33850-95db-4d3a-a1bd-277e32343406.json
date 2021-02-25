@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: migrate vr-tests and react-examples to SB v6",
-  "packageName": "@fluentui/react-examples",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

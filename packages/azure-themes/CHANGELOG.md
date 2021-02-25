@@ -1,8 +1,35 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.60)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.59..@fluentui/azure-themes_v8.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.62 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.59)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.58..@fluentui/azure-themes_v8.0.0-beta.59)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.58)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.57..@fluentui/azure-themes_v8.0.0-beta.58)
+
+### Changes
+
+- Updated primary button styles to match fluentui ([PR #17136](https://github.com/microsoft/fluentui/pull/17136) by andredias@microsoft.com)
 
 ## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.57)
 

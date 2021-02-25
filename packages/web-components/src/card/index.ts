@@ -32,6 +32,7 @@ export class FluentCard extends FluentDesignSystemProvider {
    */
   @attr({
     attribute: 'card-background-color',
+    mode: 'fromView',
   })
   public cardBackgroundColor: string;
   private cardBackgroundColorChanged(prev: string | void, next: string | void): void {

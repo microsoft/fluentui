@@ -10,24 +10,25 @@ addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withKeytipLayer);
 if (
-  [
-    'react-button',
-    'react-cards',
-    'react-checkbox',
-    'react-link',
-    'react-slider',
-    'react-tabs',
-    'react-text',
-    'react-toggle',
-  ].includes('PACKAGE_NAME')
+  ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
+    'PACKAGE_NAME',
+  )
 ) {
+  initializeIcons();
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
 if (
-  ['react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu', 'react-components'].includes(
-    'PACKAGE_NAME',
-  )
+  [
+    'react-avatar',
+    'react-badge',
+    'react-button',
+    'react-image',
+    'react-link',
+    'react-menu',
+    'react-text',
+    'react-components',
+  ].includes('PACKAGE_NAME')
 ) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
@@ -38,8 +39,6 @@ addParameters({
     manual: true,
   },
 });
-
-initializeIcons();
 
 configure(loadStories, module);
 
