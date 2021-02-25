@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Clean up ComboBox examples",
-  "packageName": "@fluentui/react-examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

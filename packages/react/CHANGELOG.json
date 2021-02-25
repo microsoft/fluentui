@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react_v8.0.0-beta.63",
+      "version": "8.0.0-beta.63",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "update Icon, FontIcon, ImageIcon, and createSvgIcon to add the img role, and update examples",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "23722afddd66499a1c29c511a01fe5f5ca191c76",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "ComboBox: fix multi-select checkbox role; improve docs and examples",
+            "author": "elcraig@microsoft.com",
+            "commit": "0ecf05881398b6b72c20a20e1cd905a17f057fba",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react_v8.0.0-beta.62",
       "version": "8.0.0-beta.62",

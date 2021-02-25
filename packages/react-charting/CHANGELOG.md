@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.62)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.61..@fluentui/react-charting_v5.0.0-beta.62)
+
+### Changes
+
+- CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers ([PR #17170](https://github.com/microsoft/fluentui/pull/17170) by mibes@microsoft.com)
 
 ## [5.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.61)
 

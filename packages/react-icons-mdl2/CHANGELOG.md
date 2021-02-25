@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.18)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.0.0-beta.17..@fluentui/react-icons-mdl2_v1.0.0-beta.18)
+
+### Changes
+
+- update createSvgIcon to add role="img" on named icons ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
 
 ## [1.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.0.0-beta.17)
 

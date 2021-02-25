@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding examples for Links with the secondary prop.",
-  "packageName": "@fluentui/react-examples",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "dependentChangeType": "patch"
-}
