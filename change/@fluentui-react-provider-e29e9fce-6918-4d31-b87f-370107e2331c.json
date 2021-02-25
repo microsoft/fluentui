@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Use react-focus-management",
-  "packageName": "@fluentui/react-provider",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
