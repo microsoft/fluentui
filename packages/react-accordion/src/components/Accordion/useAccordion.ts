@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionProps, AccordionState } from './Accordion.types';
+import { useCreateAccordionContext } from './useAccordionContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -21,8 +21,12 @@ export const useAccordion = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionProps,
 ): AccordionState => {
+  const [context, descendants, setDescendants] = useCreateAccordionContext();
   const state = mergeProps(
     {
+      context,
+      descendants,
+      setDescendants,
       ref: useMergedRefs(ref, React.useRef(null)),
     },
     defaultProps,

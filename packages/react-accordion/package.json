@@ -50,6 +50,7 @@
     "@fluentui/react-theme-provider": "^1.0.0-beta.24",
     "@fluentui/react-utilities": "^0.4.0",
     "@fluentui/set-version": "^8.0.0-beta.1",
+    "@reach/descendants": "0.13.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

@@ -1,12 +1,7 @@
 import * as React from 'react';
-import {
-  makeMergeProps,
-  resolveShorthandProps,
-  useControllableValue,
-  useId,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
-import { AccordionItemContext, AccordionItemProps, AccordionItemState } from './AccordionItem.types';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
+import { useCreateAccordionItemContext } from './useAccordionItemContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -33,26 +28,6 @@ export const useAccordionItem = (
     defaultProps,
     resolveShorthandProps(props, accordionItemShorthandProps),
   );
-  state.context = useStateToContext(state);
+  state.context = useCreateAccordionItemContext(state);
   return state;
 };
-
-function useStateToContext({ defaultOpen = false, open, onToggle }: AccordionItemProps) {
-  const headingId = useId('accordion-item-heading-');
-  const panelId = useId('accordion-item-panel-');
-  const [internalOpen, setInternalOpen] = useControllableValue(open, defaultOpen, onToggle);
-  const onAccordionHeaderClick = React.useCallback(
-    (ev: React.MouseEvent<HTMLElement>) => setInternalOpen(curr => !curr, ev),
-    [setInternalOpen],
-  );
-  const context = React.useMemo<AccordionItemContext>(
-    () => ({
-      headingId,
-      panelId,
-      open: internalOpen ?? false,
-      onAccordionHeaderClick,
-    }),
-    [headingId, panelId, internalOpen, onAccordionHeaderClick],
-  );
-  return context;
-}
