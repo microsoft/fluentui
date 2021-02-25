@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Update references to major-bumped packages",
+  "packageName": "@fluentui/react-image",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

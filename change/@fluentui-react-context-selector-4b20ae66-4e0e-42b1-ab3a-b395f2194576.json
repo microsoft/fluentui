@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update references to major-bumped packages",
+  "packageName": "@fluentui/react-context-selector",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -26,8 +26,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/common-styles": "^1.0.0-beta.19",
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/common-styles": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@fluentui/react-conformance": "^0.2.1",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -42,11 +42,11 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.63",
-    "@fluentui/react-hooks": "^8.0.0-beta.15",
-    "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/style-utilities": "^8.0.0-beta.19",
-    "@fluentui/utilities": "^8.0.0-beta.15",
+    "@fluentui/react": "^8.0.0",
+    "@fluentui/react-hooks": "^8.0.0",
+    "@fluentui/set-version": "^8.0.0",
+    "@fluentui/style-utilities": "^8.0.0",
+    "@fluentui/utilities": "^8.0.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
@@ -54,5 +54,13 @@
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "beta",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }
