@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
-import * as renderer from 'react-test-renderer';
 import { linkBehaviorDefinition, validateBehavior, ComponentTestFacade } from '@fluentui/a11y-testing';
 import { isConformant } from '../../common/isConformant';
 import { Link } from './Link';
@@ -33,8 +32,7 @@ describe('Link', () => {
     expect(button.length).toBe(1);
     expect(anchor.length).toBe(0);
 
-    const component = renderer.create(<Link>This is a link</Link>);
-    const tree = component.toJSON();
+    const tree = button.debug();
     expect(tree).toMatchSnapshot();
   });
 
@@ -45,8 +43,7 @@ describe('Link', () => {
     expect(button.length).toBe(0);
     expect(anchor.length).toBe(1);
 
-    const component = renderer.create(<Link href="https://www.bing.com">This is a link</Link>);
-    const tree = component.toJSON();
+    const tree = anchor.debug();
     expect(tree).toMatchSnapshot();
   });
 
