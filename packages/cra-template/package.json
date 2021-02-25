@@ -14,12 +14,5 @@
   "files": [
     "template",
     "template.json"
-  ],
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
-  }
+  ]
 }

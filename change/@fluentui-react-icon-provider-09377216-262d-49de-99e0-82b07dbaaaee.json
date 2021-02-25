@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Release major version",
+  "packageName": "@fluentui/react-icon-provider",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

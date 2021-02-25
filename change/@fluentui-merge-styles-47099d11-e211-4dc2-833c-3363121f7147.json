@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Release version 8",
+  "packageName": "@fluentui/merge-styles",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

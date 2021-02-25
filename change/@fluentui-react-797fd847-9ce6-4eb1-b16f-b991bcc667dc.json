@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Checkbox: remove native props extension to reflect actual behavior",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
