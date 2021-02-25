@@ -7,6 +7,10 @@ name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      azureSubscription: 'UI Fabric (private)'
+      skipComponentGovernanceDetection: false
 
 pool: 'Self Host Ubuntu'
 
@@ -31,6 +35,17 @@ steps:
       git config user.email "fluentui-internal@service.microsoft.com"
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
+
+  # This step has no dependencies, so do it early in the build in case other steps fail
+  - task: AzureUpload@2
+    displayName: Upload demo images
+    inputs:
+      azureSubscription: $(azureSubscription)
+      BlobPrefix: 'assets'
+      CacheControl: 'public, max-age=600000'
+      ContainerName: 'fabric-website' # this container has a CDN
+      SourcePath: 'packages/fluentui/docs/src/public'
+      storage: fabricweb
 
   - task: Bash@3
     inputs:
@@ -143,11 +158,21 @@ steps:
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest'
-      azureSubscription: 'UI Fabric (private)'
+      azureSubscription: $(azureSubscription)
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest'
       Gzip: false
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
 
   - template: .devops/templates/cleanup.yml
     parameters:

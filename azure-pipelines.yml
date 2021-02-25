@@ -1,11 +1,17 @@
 pr:
   - master
 
-trigger:
-  - master
+# There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
+# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
+trigger: none
 
 variables:
+  - ${{ if ne(variables['Build.SourceBranch'], 'refs/heads/master') }}:
+      - name: sinceArg
+        value: --since $(targetBranch)
+
   - group: fabric-variables
+
   - template: .devops/templates/variables.yml
 
 pool: 'Self Host Ubuntu'
@@ -37,35 +43,21 @@ jobs:
       - script: |
           yarn danger ci
         displayName: danger
-        condition: eq(variables['isPR'], true)
+        condition: variables.isPR
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
-      ## only do scoped builds with PRs
       - script: |
-          yarn buildci --no-cache --since $(targetBranch)
-        displayName: build, test, lint (pr, scoped)
-        condition: eq(variables['isPR'], true)
-        env:
-          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
-          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
-
-      ## duplicated build step, but without --since flag for master CI builds
-      - script: |
-          yarn buildci --no-cache
-        displayName: build, test, lint (master)
-        condition: eq(variables['isPR'], false)
-        env:
-          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
-          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
+          yarn buildci --no-cache $(sinceArg)
+        displayName: build, test, lint
 
       - template: .devops/templates/cleanup.yml
+        parameters:
+          checkForChangedFiles: false
 
   - job: Deploy
     workspace:
       clean: all
-    variables:
-      - template: .devops/templates/variables.yml
     steps:
       - template: .devops/templates/tools.yml
 
@@ -74,23 +66,9 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
-      ## only do scoped bundle with PRs
       - script: |
-          yarn bundle --no-cache --since $(targetBranch)
-        displayName: bundle (pr, scoped)
-        condition: eq(variables['isPR'], true)
-        env:
-          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
-          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
-
-      ## duplicated for master CI builds
-      - script: |
-          yarn bundle --no-cache
-        displayName: bundle (master)
-        condition: eq(variables['isPR'], false)
-        env:
-          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
-          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
+          yarn bundle --no-cache $(sinceArg)
+        displayName: bundle
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
@@ -118,20 +96,9 @@ jobs:
           githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
           githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
-      - task: AzureUpload@2
-        displayName: Upload demo images (master)
-        condition: eq(variables['isPR'], false)
-        inputs:
-          azureSubscription: $(azureSubscription)
-          BlobPrefix: 'assets'
-          CacheControl: 'public, max-age=600000'
-          ContainerName: 'fabric-website' # this container has a CDN
-          SourcePath: 'packages/fluentui/docs/src/public'
-          storage: fabricweb
-
       - template: .devops/templates/cleanup.yml
 
-  - job: ScreenerFluent
+  - job: ScreenerNorthstar
     workspace:
       clean: all
     steps:
@@ -178,7 +145,5 @@ jobs:
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
-          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
 
       - template: .devops/templates/cleanup.yml
