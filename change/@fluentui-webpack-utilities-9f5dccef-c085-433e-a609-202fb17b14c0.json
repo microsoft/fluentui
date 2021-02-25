@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: move webpack to single version policy",
-  "packageName": "@fluentui/webpack-utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

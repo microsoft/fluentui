@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-make-styles
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.2)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v9.0.0-alpha.1..@fluentui/react-make-styles_v9.0.0-alpha.2)
+
+### Changes
+
+- add makeStaticStyles() ([PR #17157](https://github.com/microsoft/fluentui/pull/17157) by olfedias@microsoft.com)
+
+## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v9.0.0-alpha.1)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-make-styles_v0.2.8..@fluentui/react-make-styles_v9.0.0-alpha.1)
+
+### Changes
+
+- bump version to v9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
 
 ## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-make-styles_v0.2.8)
 

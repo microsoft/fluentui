@@ -62,7 +62,7 @@ export function createNeutralColorTokens(
 
     brandForeground: brand.shade10,
     brandForegroundHover: brand.shade20,
-    brandForegroundPressed: brand.shade30,
+    brandForegroundPressed: brand.shade40,
     brandForegroundSelected: brand.shade10,
 
     neutralForegroundInverted: white,

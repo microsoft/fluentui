@@ -317,7 +317,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -728,7 +727,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",

@@ -828,7 +828,6 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   text-align: center;
                 }
             data-icon-name="Share"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -976,7 +975,6 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   text-align: center;
                 }
             data-icon-name="Pin"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-0\\"",
@@ -1124,7 +1122,6 @@ Created by Annie Lindqvist in February 23, 2016. 432 views."
                   text-align: center;
                 }
             data-icon-name="Ringer"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-4\\"",
