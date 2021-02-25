@@ -1,19 +1,5 @@
 import * as React from 'react';
-import {
-  ISliderProps,
-  ISliderStyleProps,
-  ISliderStyles,
-  IRefWithClassNameProps,
-  ILabelSliderProps,
-  IValueProps,
-  IStyleWithClassNameProps,
-  IClassNameProp,
-  IEventProps,
-  ISliderBaseProps,
-  ISliderBoxProps,
-  IThumbProps,
-  ILowerThumbProps,
-} from './Slider.types';
+import { IFocusableElement, ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { useId, useBoolean, useControllableValue } from '@fluentui/react-hooks';
 import {
   KeyCodes,
@@ -343,7 +329,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   const topSectionWidth = Math.min(100 - valuePercent, 100 - originPercentOfLine);
   const bottomSectionWidth = ranged ? lowerValuePercent : Math.min(valuePercent, originPercentOfLine);
 
-  const rootProps: IRefWithClassNameProps = {
+  const rootProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     className: classNames.root,
     ref: ref,
   };
@@ -352,14 +338,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
 
-  const labelProps: ILabelSliderProps = {
+  const labelProps: React.AllHTMLAttributes<HTMLElement> = {
     className: classNames.titleLabel,
     children: label,
     disabled,
     htmlFor: ariaLabel ? undefined : id,
   };
 
-  const valueLabelProps: IValueProps | undefined = showValue
+  const valueLabelProps: React.AllHTMLAttributes<HTMLElement> | undefined = showValue
     ? {
         className: classNames.valueLabel,
         children: valueFormat ? valueFormat(value!) : value,
@@ -367,7 +353,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       }
     : undefined;
 
-  const lowerValueLabelProps: IValueProps | undefined =
+  const lowerValueLabelProps: React.AllHTMLAttributes<HTMLElement> | undefined =
     ranged && showValue
       ? {
           className: classNames.valueLabel,
@@ -376,43 +362,43 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
         }
       : undefined;
 
-  const zeroTickProps: IStyleWithClassNameProps | undefined = originFromZero
+  const zeroTickProps: React.HTMLAttributes<HTMLElement> | undefined = originFromZero
     ? {
         className: classNames.zeroTick,
         style: getPositionStyles(originPercentOfLine),
       }
     : undefined;
 
-  const trackActiveProps: IStyleWithClassNameProps = {
+  const trackActiveProps: React.HTMLAttributes<HTMLElement> = {
     className: css(classNames.lineContainer, classNames.activeSection),
     style: getTrackStyles(activeSectionWidth),
   };
 
-  const trackTopInactiveProps: IStyleWithClassNameProps = {
+  const trackTopInactiveProps: React.HTMLAttributes<HTMLElement> = {
     className: css(classNames.lineContainer, classNames.inactiveSection),
     style: getTrackStyles(topSectionWidth),
   };
 
-  const trackBottomInactiveProps: IStyleWithClassNameProps = {
+  const trackBottomInactiveProps: React.HTMLAttributes<HTMLElement> = {
     className: css(classNames.lineContainer, classNames.inactiveSection),
     style: getTrackStyles(bottomSectionWidth),
   };
 
-  const eventProps: IEventProps = {
+  const eventProps = {
     ...onMouseDownProp,
     ...onTouchStartProp,
     ...onKeyDownProp,
     ...divButtonProps,
   };
 
-  const sliderProps: ISliderBaseProps = {
+  const sliderProps: IFocusableElement = {
     'aria-disabled': disabled,
     role: 'slider',
     tabIndex: disabled ? undefined : 0,
     'data-is-focusable': !disabled,
   };
 
-  const sliderBoxProps: ISliderBoxProps = {
+  const sliderBoxProps: React.HTMLAttributes<HTMLElement> = {
     id,
     className: css(classNames.slideBox, buttonProps!.className),
     ...eventProps,
@@ -426,7 +412,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     }),
   };
 
-  const thumbProps: IThumbProps = {
+  const thumbProps: React.HTMLAttributes<HTMLElement> = {
     ref: thumbRef,
     className: classNames.thumb,
     style: getPositionStyles(valuePercent),
@@ -443,7 +429,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     }),
   };
 
-  const lowerValueThumbProps: ILowerThumbProps = ranged
+  const lowerValueThumbProps: React.HTMLAttributes<HTMLElement> = ranged
     ? {
         ref: lowerValueThumbRef,
         className: classNames.thumb,
@@ -460,11 +446,11 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       }
     : undefined;
 
-  const containerProps: IClassNameProp = {
+  const containerProps: React.HTMLAttributes<HTMLElement> = {
     className: classNames.container,
   };
 
-  const sliderLineProps: IRefWithClassNameProps = {
+  const sliderLineProps: React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement> = {
     ref: sliderLine,
     className: classNames.line,
   };
