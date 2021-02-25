@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FlexItemState, FlexItemProps, FlexItemTokens } from './FlexItem.types';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { getStyleFromPropsAndOptions } from '@fluentui/react-theme-provider/lib/compat/index';
+import { getStyleFromPropsAndOptions } from '../../tmp/getStyleFromPropsAndOptions';
 import { FlexContext } from '../Flex/FlexContext';
 import { FlexProps } from '../Flex/Flex.types';
 

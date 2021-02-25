@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Support keyboard navigation",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

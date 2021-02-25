@@ -105,7 +105,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   }
 
   public render(): JSX.Element {
-    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps } = this.props;
+    const { calloutProps, points, chartType, chartHoverProps, svgFocusZoneProps, svgProps } = this.props;
     if (this.props.parentRef) {
       this._fitParentContainer();
     }
@@ -231,7 +231,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
       >
         <FocusZone direction={focusDirection} {...svgFocusZoneProps}>
-          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }}>
+          <svg width={svgDimensions.width} height={svgDimensions.height} style={{ display: 'block' }} {...svgProps}>
             <g
               ref={(e: SVGElement | null) => {
                 this.xAxisElement = e;

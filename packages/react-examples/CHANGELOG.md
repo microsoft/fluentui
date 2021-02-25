@@ -1,8 +1,41 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 24 Feb 2021 07:19:56 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.10)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.9..@fluentui/react-examples_v8.0.0-beta.10)
+
+### Patches
+
+- Bump @fluentui/react-flex to v0.2.7 ([PR #17175](https://github.com/microsoft/fluentui/pull/17175) by olfedias@microsoft.com)
+
+### Changes
+
+- Clean up ComboBox examples ([PR #16331](https://github.com/microsoft/fluentui/pull/16331) by elcraig@microsoft.com)
+- remove stories for unconverged Provider ([PR #17175](https://github.com/microsoft/fluentui/pull/17175) by olfedias@microsoft.com)
+- Remove explicit role="icon" from icon examples, role is now added automatically ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
+- CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers ([PR #17170](https://github.com/microsoft/fluentui/pull/17170) by mibes@microsoft.com)
+- Add/update react-button converged examples ([PR #17060](https://github.com/microsoft/fluentui/pull/17060) by me@levithomason.com)
+- Adding examples for Links with the secondary prop. ([PR #17085](https://github.com/microsoft/fluentui/pull/17085) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.9)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.0-beta.8..@fluentui/react-examples_v8.0.0-beta.9)
+
+### Patches
+
+- Bump @fluentui/react-menu to v0.6.0 ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-text to v0.2.0 ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- update decorators usage for react-text ([PR #17160](https://github.com/microsoft/fluentui/pull/17160) by olfedias@microsoft.com)
+- Add memoization examples for Menu ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.0-beta.8)
 
