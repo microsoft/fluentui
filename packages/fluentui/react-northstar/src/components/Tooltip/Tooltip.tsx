@@ -265,7 +265,6 @@ Tooltip.defaultProps = {
   mouseLeaveDelay: 10,
   pointing: true,
   accessibility: tooltipAsLabelBehavior,
-  autoSize: true,
 };
 Tooltip.propTypes = {
   ...commonPropTypes.createCommon({

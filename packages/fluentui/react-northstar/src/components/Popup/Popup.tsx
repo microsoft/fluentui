@@ -645,7 +645,6 @@ Popup.defaultProps = {
   on: 'click',
   mouseLeaveDelay: 500,
   tabbableTrigger: true,
-  autoSize: true,
 };
 Popup.handledProps = Object.keys(Popup.propTypes) as any;
 
