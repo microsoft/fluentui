@@ -98,14 +98,15 @@ export interface IAutofillProps extends React.InputHTMLAttributes<HTMLInputEleme
   shouldSelectFullInputValueInComponentDidUpdate?: () => boolean;
 
   /**
-   * A callback used to modify the input string.
-   * Do not use this to return a string anymore. Instead pass in
-   * value like you would any other controlled component.
+   * A callback used to modify the input string. Will entirely override the default behavior if provided.
+   * If you just want to be notified of changes, use `onInputValueChange` instead.
    * Called before the state has been updated.
    *
    * @param composing - true if the change event was triggered while the
    * inner input was in the middle of a multi-character composition.
    * (for example, jp-hiragana IME input)
+   * @deprecated To control the value, pass in `value` like in any other controlled component.
+   * To be notified of changes, use `onInputValueChange`.
    */
   onInputChange?: (value: string, composing: boolean) => string | void;
 
