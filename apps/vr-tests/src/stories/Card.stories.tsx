@@ -2,7 +2,7 @@ import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { Card } from '@fluentui/react-cards';
-import { withCompatThemeProvider } from '@fluentui/storybook';
+import { withFluentProvider } from '@fluentui/storybook';
 import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities/index';
 
 function onClick() {
@@ -11,7 +11,7 @@ function onClick() {
 
 storiesOf('Card Next', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(withCompatThemeProvider)
+  .addDecorator(withFluentProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
@@ -64,7 +64,7 @@ storiesOf('Card Next', module)
 
 storiesOf('Card Next - Block', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(withCompatThemeProvider)
+  .addDecorator(withFluentProvider)
   .addDecorator(story => (
     <Screener
       steps={new Steps()
