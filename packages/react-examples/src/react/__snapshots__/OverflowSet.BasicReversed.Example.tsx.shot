@@ -145,7 +145,6 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
                 text-align: center;
               }
           data-icon-name="More"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",

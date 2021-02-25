@@ -1,11 +1,4 @@
 import * as React from 'react';
-import { Theme as CompatTheme, PartialTheme as CompatPartialTheme } from '@fluentui/theme';
-import { IStyleFunctionOrObject } from '@fluentui/utilities';
-
-/**
- * A ramp of size values.
- */
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 /**
  * A baseline set of color plates.
@@ -69,13 +62,6 @@ export type FontTokens = Partial<{
  */
 export type TokenSetType = { [key: string]: TokenSetType | string | number | undefined };
 
-/**
- * Recursive partial type.
- */
-export type RecursivePartial<T> = {
-  [P in keyof T]?: T[P] extends Array<infer I> ? Array<RecursivePartial<I>> : RecursivePartial<T[P]>;
-};
-
 export interface Tokens {
   color: {
     body: ColorTokens & TokenSetType;
@@ -103,50 +89,4 @@ export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
 
 export interface StyleOptions<TProps> {
   slotProps: ((props: TProps) => Record<string, object>)[];
-}
-
-/**
- * {@docCategory Theme}
- * Component-level styles and token set.
- */
-export type ComponentsStyles = {
-  [componentName: string]: {
-    /**
-     * styles prop for a component.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    styles?: IStyleFunctionOrObject<any, any>;
-
-    /**
-     * The variants property is still in an experimental phase. This is only applied by `ThemeProvider`.
-     */
-    variants?: Variants;
-  };
-};
-
-export interface Theme extends CompatTheme {
-  components?: ComponentsStyles;
-
-  /**
-   * @internal
-   * Global tokens. This is for internal use only and is not production-ready.
-   * */
-  tokens?: RecursivePartial<Tokens>;
-}
-
-export interface PartialTheme extends CompatPartialTheme {
-  components?: ComponentsStyles;
-
-  /**
-   * @internal
-   * CSS stylesheets to be registered.
-   * This is still in an experimental phase and is only applied by `ThemeProvider`.
-   */
-  stylesheets?: string[];
-
-  /**
-   * @internal
-   * Global tokens. This is for internal use only and is not production-ready.
-   * */
-  tokens?: RecursivePartial<Tokens>;
 }

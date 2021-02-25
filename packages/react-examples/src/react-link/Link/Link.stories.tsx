@@ -12,6 +12,11 @@ const LinkExamples = (props: LinkProps) => (
       <Link {...props}>Stand-alone link</Link>
     </div>
     <div>
+      <Link {...props} secondary>
+        Standalone secondary link
+      </Link>
+    </div>
+    <div>
       <Link {...props} disabled>
         Stand-alone disabled link
       </Link>
@@ -25,6 +30,13 @@ const LinkExamples = (props: LinkProps) => (
       This is{' '}
       <Link {...props} inline>
         a link
+      </Link>{' '}
+      used alongside other text content.
+    </div>
+    <div>
+      This is{' '}
+      <Link {...props} inline secondary>
+        a secondary link
       </Link>{' '}
       used alongside other text content.
     </div>

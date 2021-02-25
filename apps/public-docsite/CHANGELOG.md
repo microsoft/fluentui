@@ -1,8 +1,17 @@
 # Change Log - @fluentui/public-docsite
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.9)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/public-docsite_v8.0.0-beta.8..@fluentui/public-docsite_v8.0.0-beta.9)
+
+### Changes
+
+- Bump @fluentui/public-docsite-resources to v8.0.0-beta.9 ([PR #17085](https://github.com/microsoft/fluentui/pull/17085) by humbertomakotomorimoto@gmail.com)
 
 ## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/public-docsite_v8.0.0-beta.8)
 
