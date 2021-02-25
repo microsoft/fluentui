@@ -289,7 +289,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   text-align: center;
                 }
             data-icon-name="ChevronUpSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -430,7 +429,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   text-align: center;
                 }
             data-icon-name="ChevronDownSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-3\\"",

@@ -400,7 +400,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
                 text-align: center;
               }
           data-icon-name="More"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
