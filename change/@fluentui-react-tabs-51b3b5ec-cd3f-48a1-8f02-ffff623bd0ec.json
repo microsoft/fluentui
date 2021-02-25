@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "make @fluentui/react-conformance public",
+  "packageName": "@fluentui/react-tabs",
+  "email": "altinokd@microsoft.com",
+  "dependentChangeType": "none"
+}
