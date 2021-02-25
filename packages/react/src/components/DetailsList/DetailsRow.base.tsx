@@ -256,7 +256,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
-        rowHeaderId={`${this._rowHeaderId}-rowheader`}
+        rowHeaderId={`${this._rowHeaderId}`}
         cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
@@ -299,11 +299,11 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
-              id: `${this._checkboxId}-checkbox`,
+              id: `${this._checkboxId}`,
               selected: isSelected,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': `${this._checkboxId}-checkbox ${this._rowHeaderId}-rowheader`,
+              'aria-labelledby': `${this._checkboxId} ${this._rowHeaderId}`,
               canSelect,
               compact,
               className: this._classNames.check,
@@ -330,7 +330,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           >
             <RowFields
               rowClassNames={this._rowClassNames}
-              rowHeaderId={`${this._rowHeaderId}-rowheader`}
+              rowHeaderId={`${this._rowHeaderId}`}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}
