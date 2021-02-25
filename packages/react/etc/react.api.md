@@ -2399,7 +2399,7 @@ export interface ICheckbox {
 }
 
 // @public
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLDivElement> {
+export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -2413,13 +2413,16 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     defaultChecked?: boolean;
     defaultIndeterminate?: boolean;
     disabled?: boolean;
+    id?: string;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
     label?: string;
+    name?: string;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     onRenderLabel?: IRenderFunction<ICheckboxProps>;
     styles?: IStyleFunctionOrObject<ICheckboxStyleProps, ICheckboxStyles>;
     theme?: ITheme;
+    title?: string;
 }
 
 // @public (undocumented)

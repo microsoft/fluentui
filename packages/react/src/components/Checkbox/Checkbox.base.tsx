@@ -83,47 +83,30 @@ export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = React.forwa
       ? 'true'
       : 'false';
 
-    const slotProps = {
-      root: {
-        className: classNames.root,
-        title,
-        ref: mergedRootRefs,
-      },
-      input: {
-        className: classNames.input,
-        type: 'checkbox' as React.InputHTMLAttributes<HTMLInputElement>['type'],
-        ...inputProps,
-        ref: inputRef,
-        checked: !!isChecked,
-        disabled,
-        name,
-        id,
-        title,
-        onChange,
-        'data-ktp-execute-target': true,
-        'aria-disabled': disabled,
-        'aria-label': ariaLabel || label,
-        'aria-labelledby': ariaLabelledBy,
-        'aria-describedby': ariaDescribedBy,
-        'aria-posinset': ariaPositionInSet,
-        'aria-setsize': ariaSetSize,
-        'aria-checked': ariaChecked,
-      },
-      checkbox: {
-        className: classNames.checkbox,
-        'data-ktp-target': true,
-      },
-      container: {
-        className: classNames.label,
-        htmlFor: id,
-      },
+    const mergedInputProps: React.InputHTMLAttributes<HTMLInputElement> = {
+      className: classNames.input,
+      type: 'checkbox' as React.InputHTMLAttributes<HTMLInputElement>['type'],
+      ...inputProps,
+      checked: !!isChecked,
+      disabled,
+      name,
+      id,
+      title,
+      onChange,
+      'aria-disabled': disabled,
+      'aria-label': ariaLabel || label,
+      'aria-labelledby': ariaLabelledBy,
+      'aria-describedby': ariaDescribedBy,
+      'aria-posinset': ariaPositionInSet,
+      'aria-setsize': ariaSetSize,
+      'aria-checked': ariaChecked,
     };
 
     return (
-      <div {...slotProps.root}>
-        <input {...slotProps.input} />
-        <label {...slotProps.container}>
-          <div {...slotProps.checkbox}>
+      <div className={classNames.root} title={title} ref={mergedRootRefs}>
+        <input {...mergedInputProps} ref={inputRef} data-ktp-execute-target={true} />
+        <label className={classNames.label} htmlFor={id}>
+          <div className={classNames.checkbox} data-ktp-target={true}>
             <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />
           </div>
           {onRenderLabel(props, defaultLabelRenderer)}
