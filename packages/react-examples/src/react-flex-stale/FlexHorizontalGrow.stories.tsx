@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultPalette } from '@fluentui/react';
-import { Flex, FlexItem, FlexTokens } from '@fluentui/react-flex';
+import { Flex, FlexItem, FlexTokens } from '@fluentui/react-flex-stale';
 
 // Styles definition
 const flexStyles = {
