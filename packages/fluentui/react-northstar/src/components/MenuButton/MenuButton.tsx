@@ -346,6 +346,7 @@ MenuButton.defaultProps = {
   accessibility: menuButtonBehavior,
   align: 'start',
   position: 'below',
+  autoSize: true,
 };
 
 MenuButton.handledProps = Object.keys(MenuButton.propTypes) as any;
