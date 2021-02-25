@@ -55,12 +55,20 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 
     // eslint-disable-next-line deprecation/deprecation
     const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
-    const containerProps = ariaLabel
+    const accessibleName = imageProps.alt || ariaLabel;
+    const hasName = !!(
+      accessibleName ||
+      this.props['aria-labelledby'] ||
+      imageProps['aria-label'] ||
+      imageProps['aria-labelledby']
+    );
+    const containerProps = hasName
       ? {
-          'aria-label': ariaLabel,
+          role: isImage ? undefined : 'img',
+          'aria-label': isImage ? undefined : accessibleName,
         }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true,
+          'aria-hidden': true,
         };
 
     return (

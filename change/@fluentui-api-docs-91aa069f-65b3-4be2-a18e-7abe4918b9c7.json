@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bump version to v9 for converged packages",
-  "packageName": "@fluentui/api-docs",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

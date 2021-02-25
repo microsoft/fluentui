@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove dependency on @fluentui/react-icons-mdl2",
-  "packageName": "@fluentui/react-avatar",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

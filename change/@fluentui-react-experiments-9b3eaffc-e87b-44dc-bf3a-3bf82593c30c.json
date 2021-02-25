@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add a check for if we are in a drop action to the UnifiedPicker drag end",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

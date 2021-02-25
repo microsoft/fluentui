@@ -7,9 +7,9 @@ import { ButtonState } from './Button.types';
  * @param state - Button draft state to mutate.
  */
 export const useButtonState = (state: ButtonState): ButtonState => {
-  const { as, disabled, disabledFocusable, onClick, onKeyDown: onKeyDownCallback } = state;
+  const { as, disabled, /*disabledFocusable,*/ onClick, onKeyDown: onKeyDownCallback } = state;
 
-  const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => {
+  const onNonAnchorOrButtonKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
     onKeyDownCallback?.(ev);
 
     const keyCode = getCode(ev);
@@ -27,21 +27,19 @@ export const useButtonState = (state: ButtonState): ButtonState => {
     // Add 'role=button' and 'tabIndex=0' for all non-button elements.
     if (as !== 'button') {
       state.role = 'button';
-      state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
+      state.tabIndex = disabled /*&& !disabledFocusable*/ ? undefined : 0;
 
-      // Add 'data-is-focusable=true' and keydown event handler for all other non-anchor elements.
+      // Add keydown event handler for all other non-anchor elements.
       if (as !== 'a') {
-        state['data-is-focusable'] = true;
         state.onKeyDown = onNonAnchorOrButtonKeyDown;
       }
     }
   }
-  // Add 'data-is-focusable=true', keydown event handler, 'role=button' and 'tabIndex=0' for all other elements.
+  // Add keydown event handler, 'role=button' and 'tabIndex=0' for all other elements.
   else {
-    state['data-is-focusable'] = true;
     state.onKeyDown = onNonAnchorOrButtonKeyDown;
     state.role = 'button';
-    state.tabIndex = disabled && !disabledFocusable ? undefined : 0;
+    state.tabIndex = disabled /*&& !disabledFocusable*/ ? undefined : 0;
   }
 
   // Disallow click event when component is disabled and eat events when disabledFocusable is set to true.
@@ -66,8 +64,8 @@ export const useButtonState = (state: ButtonState): ButtonState => {
   };
 
   // Set the aria-disabled and disabled props correctly.
-  state['aria-disabled'] = disabled || disabledFocusable;
-  state.disabled = as === 'button' ? disabled && !disabledFocusable : undefined;
+  state['aria-disabled'] = disabled /*|| disabledFocusable*/;
+  state.disabled = as === 'button' ? disabled /* && !disabledFocusable*/ : undefined;
 
   return state;
 };

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "making changes to support the new feature",
-  "packageName": "@fluentui/react-examples",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,26 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/web-components_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update card background color attribute to reflect from view",
+            "author": "chhol@microsoft.com",
+            "commit": "d91f1404203ae715d9c9f9edf98f38ebef9eb634",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "commit": "d91f1404203ae715d9c9f9edf98f38ebef9eb634",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 22 Feb 2021 12:26:22 GMT",
       "tag": "@fluentui/web-components_v0.14.1",
       "version": "0.14.1",

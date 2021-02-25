@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Prevent '.ms-Icon' style overrides from conflicting with the \"Move column\" target (#16014)",
-  "packageName": "@fluentui/react-examples",
-  "email": "jdh@microsoft.com",
-  "dependentChangeType": "patch"
-}

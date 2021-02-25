@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-make-styles",
-  "version": "9.0.0-alpha.0",
+  "version": "9.0.0-alpha.2",
   "description": "React bindings for @fluentui/make-styles",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,11 +34,11 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/make-styles": "^9.0.0-alpha.0",
+    "@fluentui/make-styles": "^9.0.0-alpha.1",
     "@fluentui/set-version": "^8.0.0-beta.2",
-    "@fluentui/react-provider": "^9.0.0-alpha.0",
-    "@fluentui/react-theme": "^9.0.0-alpha.0",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.0",
+    "@fluentui/react-provider": "^9.0.0-alpha.2",
+    "@fluentui/react-theme": "^9.0.0-alpha.1",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

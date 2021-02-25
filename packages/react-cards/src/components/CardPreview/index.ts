@@ -1,2 +1,2 @@
 export * from './CardPreview';
-export * from './useCardPreviewClasses';
+export * from './useCardPreviewStyles';
