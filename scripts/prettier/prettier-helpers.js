@@ -1,14 +1,28 @@
 // @ts-check
 const path = require('path');
+const fs = require('fs');
 const execSync = require('../exec-sync');
 const exec = require('../exec');
 const findGitRoot = require('../monorepo/findGitRoot');
 
 const repoRoot = findGitRoot();
+const prettierBin = getPrettierBinary();
 const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
 
 const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'htm', 'md', 'yml'];
+
+/**
+ * NOTE:
+ * we should use public prettier node API. This is a temporary workaround
+ * https://prettier.io/docs/en/api.html
+ */
+function getPrettierBinary() {
+  const prettierPath = path.dirname(require.resolve('prettier'));
+  const pkg = JSON.parse(fs.readFileSync(path.join(prettierPath, 'package.json'), 'utf-8'));
+
+  return path.join(prettierPath, pkg.bin);
+}
 
 /**
  * Run prettier for a given set of files.
@@ -25,7 +39,7 @@ function runPrettier(files, config = {}) {
 
   const cmd = [
     'node',
-    require.resolve('prettier'),
+    prettierBin,
     '--config',
     prettierRulesConfig,
     '--ignore-path',
