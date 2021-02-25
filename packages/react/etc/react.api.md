@@ -8715,9 +8715,6 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
 }
 
 // @public (undocumented)
-export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
-
-// @public (undocumented)
 export enum OpenCardMode {
     hotKey = 1,
     hover = 0
@@ -9881,123 +9878,6 @@ export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options
 
 // @public
 export const useResponsiveMode: (elementRef: React.RefObject<HTMLElement | null>) => ResponsiveMode;
-
-// @public (undocumented)
-export const useSlider: (props: ISliderProps, ref: React.Ref<HTMLDivElement>) => {
-    root: {
-        className: string;
-        ref: React.Ref<HTMLDivElement>;
-    };
-    label: {
-        className: string;
-        children: string | undefined;
-        disabled: boolean;
-        htmlFor: string | undefined;
-    };
-    sliderBox: {
-        id: string;
-        className: string;
-    } | {
-        'aria-valuemin': number;
-        'aria-valuemax': number;
-        'aria-valuenow': number;
-        'aria-valuetext': string | undefined;
-        'aria-label': string | undefined;
-        'aria-disabled': boolean;
-        role: string;
-        tabIndex: number | undefined;
-        'data-is-focusable': boolean;
-        id: string;
-        className: string;
-    };
-    container: {
-        className: string;
-    };
-    valueLabel: false | {
-        className: string;
-        children: string | number;
-        disabled: boolean;
-    };
-    lowerValueLabel: false | {
-        className: string;
-        children: string | number;
-        disabled: boolean;
-    } | undefined;
-    thumb: {
-        ref: React.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | {
-        ref: React.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | {
-        id: string;
-        'aria-valuemin': number;
-        'aria-valuemax': number;
-        'aria-valuenow': number;
-        'aria-valuetext': string | undefined;
-        'aria-label': string;
-        'aria-disabled': boolean;
-        role: string;
-        tabIndex: number | undefined;
-        'data-is-focusable': boolean;
-        ref: React.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    lowerValueThumb: {
-        id: string;
-        'aria-valuemin': number;
-        'aria-valuemax': number;
-        'aria-valuenow': number;
-        'aria-valuetext': string | undefined;
-        'aria-label': string;
-        'aria-disabled': boolean;
-        role: string;
-        tabIndex: number | undefined;
-        'data-is-focusable': boolean;
-        ref: React.RefObject<HTMLSpanElement>;
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | undefined;
-    zeroTick: false | {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    } | undefined;
-    activeTrack: {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    topInactiveTrack: {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    bottomInactiveTrack: {
-        className: string;
-        style: {
-            [x: string]: string;
-        };
-    };
-    sliderLine: {
-        ref: React.RefObject<HTMLDivElement>;
-        className: string;
-    };
-};
 
 // @public
 export type UseStylesOptions = {
