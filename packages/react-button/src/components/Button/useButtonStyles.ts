@@ -130,7 +130,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
   },
 });
 
-const useRootClasses = makeStyles<ButtonStyleSelectors>([
+const useRootStyles = makeStyles<ButtonStyleSelectors>([
   [
     null,
     theme => {
@@ -140,6 +140,7 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
+        // TODO: remove unsafe property: https://caniuse.com/?search=gap
         gap: buttonTokens.base.iconSpacing,
         // // TODO: 1) ask designers what our vertical align strategy is
         // //       2) enforce with conformance for inline elements
@@ -310,7 +311,7 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
   // TODO: add disabled before ship prerelease
 ]);
 
-const useChildrenClasses = makeStyles<ButtonStyleSelectors>([
+const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
   [
     null,
     theme => {
@@ -353,7 +354,7 @@ const useChildrenClasses = makeStyles<ButtonStyleSelectors>([
   ],
 ]);
 
-const useIconClasses = makeStyles<ButtonStyleSelectors>([
+const useIconStyles = makeStyles<ButtonStyleSelectors>([
   [
     null,
     theme => {
@@ -382,11 +383,11 @@ const useIconClasses = makeStyles<ButtonStyleSelectors>([
 ]);
 
 export const useButtonStyles = (state: ButtonState, selectors: ButtonStyleSelectors) => {
-  state.className = ax(state.className, useRootClasses(selectors));
+  state.className = ax(state.className, useRootStyles(selectors));
 
   state.children = state.children || { className: '' };
   state.icon = state.icon || { className: '' };
 
-  state.children.className = ax(state.children.className, useChildrenClasses(selectors));
-  state.icon.className = ax(state.icon.className, useIconClasses(selectors));
+  state.children.className = ax(state.children.className, useChildrenStyles(selectors));
+  state.icon.className = ax(state.icon.className, useIconStyles(selectors));
 };
