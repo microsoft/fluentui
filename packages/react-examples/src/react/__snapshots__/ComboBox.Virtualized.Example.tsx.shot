@@ -403,7 +403,6 @@ exports[`Component Examples renders ComboBox.Virtualized.Example.tsx correctly 1
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
