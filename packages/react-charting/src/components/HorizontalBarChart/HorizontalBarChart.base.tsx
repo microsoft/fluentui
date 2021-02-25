@@ -178,7 +178,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     });
   };
 
-  private _getChartDataText(data: IChartProps): JSX.Element {
+  private _getChartDataText = (data: IChartProps) => {
+    return this.props.barChartCustomData ? this.props.barChartCustomData(data) : this._getDefaultTextData(data);
+  };
+
+  private _getDefaultTextData(data: IChartProps): JSX.Element {
     const chartDataMode = this.props.chartDataMode || 'default';
     const x = data!.chartData![0].horizontalBarChartdata!.x;
     const y = data!.chartData![0].horizontalBarChartdata!.y;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { OverflowSetCustomExample } from './OverflowSet.Custom.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { OverflowSetBasicExample } from './OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './OverflowSet.Vertical.Example';
 import { OverflowSetBasicReversedExample } from './OverflowSet.BasicReversed.Example';
@@ -14,7 +14,7 @@ const OverflowSetBasicReversedExampleCode = require('!raw-loader?esModule=false!
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',
   componentName: 'OverflowSet',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/OverflowSet',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/OverflowSet',
   examples: [
     {
       title: 'OverflowSet Basic Example',

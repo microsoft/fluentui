@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Update devDependencies",
+  "packageName": "@fluentui/react-conformance",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}

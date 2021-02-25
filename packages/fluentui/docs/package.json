@@ -43,14 +43,14 @@
     "react-markdown": "^4.0.8",
     "react-router-dom": "^5.2.0",
     "react-source-render": "4.0.0-1",
-    "react-textarea-autosize": "7.0.0",
+    "react-textarea-autosize": "7.0.4",
     "react-virtualized": "^9.21.1",
     "react-vis": "^1.11.6",
     "react-window": "^1.8.6",
     "semver": "^6.2.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/color": "^3.0.0",
@@ -64,8 +64,7 @@
     "@types/react-virtualized": "^9.21.8",
     "@types/react-window": "^1.8.2",
     "@types/webpack-env": "1.16.0",
-    "gulp": "^4.0.2",
-    "typescript": "3.7.2"
+    "gulp": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"

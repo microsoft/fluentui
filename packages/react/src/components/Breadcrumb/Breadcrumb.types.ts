@@ -4,7 +4,7 @@ import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } fro
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
 import { ITooltipHostProps } from '../../Tooltip';
-import { IButtonProps } from '../../compat/Button';
+import { IButtonProps } from '../../Button';
 
 /**
  * {@docCategory Breadcrumb}
@@ -114,7 +114,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 /**
  * {@docCategory Breadcrumb}
  */
-export interface IBreadcrumbItem {
+export interface IBreadcrumbItem extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Text to display in the breadcrumb item.
    */

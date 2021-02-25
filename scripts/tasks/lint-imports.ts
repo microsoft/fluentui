@@ -34,8 +34,6 @@ export function lintImports() {
   const allowedDeepImports = [
     // This is a temporary measure until we figure out what root file these should be exported from.
     // TODO: Ideally these would eventually be removed.
-    '@fluentui/react/lib/compat/Button',
-    '@fluentui/react-internal/lib/compat/Button',
     '@fluentui/react-examples/lib/react-experiments/TilesList/ExampleHelpers',
     '@fluentui/react-examples/lib/react-experiments/CollapsibleSection/CollapsibleSection.Recursive.Example',
     '@fluentui/react-examples/lib/react/Keytip/KeytipSetup',

@@ -12,7 +12,6 @@ import {
 const GlobalClassNames = {
   actionButton: 'ms-FloatingSuggestionsHeaderFooterItem-actionButton',
   buttonSelected: 'ms-FloatingSuggestionsHeaderFooterItem-buttonSelected',
-  suggestionsTitle: 'ms-FloatingSuggestionsHeaderFooterItem-suggestionsTitle',
 };
 
 export const getStyles = (
@@ -24,7 +23,7 @@ export const getStyles = (
     throw new Error('theme is undefined or null in FloatingSuggestionsItem getStyles function.');
   }
 
-  const { semanticColors } = theme;
+  const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -38,9 +37,10 @@ export const getStyles = (
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
+            ...getHighContrastNoAdjustStyle(),
           },
           '&:hover': {
-            color: semanticColors.menuItemTextHovered,
+            background: palette.neutralLighter,
           },
         },
       },
@@ -48,10 +48,15 @@ export const getStyles = (
     buttonSelected: [
       classNames.buttonSelected,
       {
-        background: semanticColors.menuItemBackgroundPressed,
+        background: palette.themeLighter,
         selectors: {
-          ':hover': {
-            background: semanticColors.menuDivider,
+          '&:hover': {
+            background: palette.themeLight,
+            [HighContrastSelector]: {
+              background: 'Highlight',
+              color: 'HighlightText',
+              ...getHighContrastNoAdjustStyle(),
+            },
           },
           [HighContrastSelector]: {
             background: 'Highlight',

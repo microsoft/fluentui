@@ -11,7 +11,6 @@ import {
   HighContrastSelectorWhite,
   getScreenSelector,
   ScreenWidthMinMedium,
-  getEdgeChromiumNoHighContrastAdjustSelector,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
 
@@ -318,9 +317,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
             border: '1px solid GrayText',
             color: 'GrayText',
             backgroundColor: 'Window',
+            ...getHighContrastNoAdjustStyle(),
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
     ],
@@ -343,9 +341,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       disabled && {
         color: semanticColors.disabledText,
         selectors: {
-          [HighContrastSelector]: { color: 'GrayText' },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
+          [HighContrastSelector]: { color: 'GrayText', ...getHighContrastNoAdjustStyle() },
         },
       },
     ],
@@ -400,9 +396,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',
+            ...getHighContrastNoAdjustStyle(),
           },
-          // eslint-disable-next-line deprecation/deprecation
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
       },
     ],
@@ -416,6 +411,13 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           alignSelf: 'stretch',
           padding: '0 8px',
           width: '100%',
+        },
+        input: {
+          selectors: {
+            [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+              outlineOffset: '0px',
+            },
+          },
         },
       },
       panel: {

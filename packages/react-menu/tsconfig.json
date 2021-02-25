@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["ES5", "dom"],
+    "outDir": "dist",
+    "jsx": "react",
+    "declaration": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "types": ["jest", "custom-global"]
+  },
+  "include": ["src"]
+}

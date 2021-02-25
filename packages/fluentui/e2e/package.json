@@ -22,10 +22,9 @@
   },
   "devDependencies": {
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
-    "@fluentui/react": "^8.0.0-beta",
-    "gulp": "^4.0.2",
-    "typescript": "3.7.2"
+    "@fluentui/eslint-plugin": "^1.0.0",
+    "@fluentui/react": "^8.0.0",
+    "gulp": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"

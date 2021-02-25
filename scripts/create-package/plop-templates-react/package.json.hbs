@@ -1,12 +1,13 @@
 {
   "name": "{{{packageNpmName}}}",
-  "version": "0.1.0",
+  "version": "9.0.0-alpha.0",
   "description": "{{{description}}}",
-  "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
-  "sideEffects": ["lib/version.js"],
+  "sideEffects": [
+    "lib/version.js"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -26,14 +27,15 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "",
+    "@fluentui/react-conformance": "",
+    "@fluentui/scripts": "",
+    "@testing-library/react": "",
+    "@testing-library/react-hooks": "",
     "@types/enzyme": "",
     "@types/enzyme-adapter-react-16": "",
-    "@types/jest": "",
     "@types/react": "",
     "@types/react-dom": "",
     "@types/react-test-renderer": "",
-    "@types/webpack-env": "",
-    "@fluentui/scripts": "",
     "enzyme": "",
     "enzyme-adapter-react-16": "",
     "react": "",
@@ -42,9 +44,9 @@
     "react-test-renderer": ""
   },
   "dependencies": {
-    "@fluentui/theme": "",
-    "@fluentui/react-compose": "",
+    "@fluentui/react-make-styles": "",
     "@fluentui/react-theme-provider": "",
+    "@fluentui/react-utilities": "",
     "@fluentui/set-version": "",
     "tslib": ""
   },
@@ -53,5 +55,13 @@
     "@types/react-dom": "",
     "react": "",
     "react-dom": ""
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }

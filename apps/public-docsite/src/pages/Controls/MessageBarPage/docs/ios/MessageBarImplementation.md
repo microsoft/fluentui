@@ -4,8 +4,8 @@
 
 ### Source code
 
-[NotificationView](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Notification/NotificationView.swift)
+[NotificationView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Notification/NotificationView.swift)
 
 ### Sample code
 
-[NotificationView demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/NotificationViewDemoController.swift)
+[NotificationView demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/NotificationViewDemoController.swift)

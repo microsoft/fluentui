@@ -86,7 +86,7 @@ export function ax(): string {
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   // eslint-disable-next-line prefer-spread
-  const resultDefinitions: MakeStylesMatchedDefinitions = Object.assign.apply(
+  const resultDefinitions: MakeStylesMatchedDefinitions = Object.assign.apply<MakeStylesMatchedDefinitions[]>(
     Object,
     // .assign() mutates the first object, we can't mutate mappings as it will produce invalid results later
     [{}].concat(sequenceMappings),

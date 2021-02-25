@@ -1,7 +1,7 @@
 import { MakeStylesRenderer } from '../types';
 import { RTL_PREFIX } from '../constants';
 
-interface MakeStylesDOMRenderer extends MakeStylesRenderer {
+export interface MakeStylesDOMRenderer extends MakeStylesRenderer {
   insertionCache: Record<string, true>;
   index: number;
 
@@ -41,19 +41,22 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
         const className = definition[0];
         const rtlCSS = definition[2];
 
-        const ruleClassName = rtl ? (rtlCSS ? RTL_PREFIX + className : className) : className;
+        const ruleClassName = className && (rtl && rtlCSS ? RTL_PREFIX + className : className);
 
-        // Should be done always to return classes
-        classes += ruleClassName + ' ';
+        if (ruleClassName) {
+          // Should be done always to return classes even if they have been already inserted to DOM
+          classes += ruleClassName + ' ';
+        }
 
-        if (renderer.insertionCache[ruleClassName]) {
+        const cacheKey = ruleClassName || propName;
+        if (renderer.insertionCache[cacheKey]) {
           continue;
         }
 
         const css = definition[1];
         const ruleCSS = rtl ? rtlCSS || css : css;
 
-        renderer.insertionCache[ruleClassName] = true;
+        renderer.insertionCache[cacheKey] = true;
 
         (renderer.styleElement.sheet as CSSStyleSheet).insertRule(ruleCSS, renderer.index);
         renderer.index++;
@@ -66,4 +69,8 @@ export function createDOMRenderer(targetDocument: Document = document): MakeStyl
   renderers.set(targetDocument, renderer);
 
   return renderer;
+}
+
+export function resetDOMRenderer(targetDocument: Document = document): void {
+  renderers.delete(targetDocument);
 }

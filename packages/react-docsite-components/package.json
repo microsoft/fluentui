@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-docsite-components",
-  "version": "8.0.0-beta.47",
+  "version": "8.0.0",
   "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,9 +21,8 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@types/color-check": "0.0.0",
-    "@types/jest": "~24.9.0",
     "@types/markdown-to-jsx": "6.11.0",
     "@types/react": "16.9.42",
     "@types/react-custom-scrollbars": "^4.0.5",
@@ -35,20 +34,19 @@
     "react-dom": "16.8.6"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.48",
-    "@fluentui/react-internal": "^8.0.0-beta.42",
-    "@fluentui/theme": "^2.0.0-beta.13",
+    "@fluentui/react": "^8.0.0",
+    "@fluentui/theme": "^2.0.0",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.0.0-beta.3",
-    "@fluentui/react-hooks": "^8.0.0-beta.10",
-    "@fluentui/set-version": "^8.0.0-beta.1",
-    "@fluentui/react-monaco-editor": "^1.0.0-beta.46",
+    "@fluentui/example-data": "^8.0.0",
+    "@fluentui/react-hooks": "^8.0.0",
+    "@fluentui/set-version": "^8.0.0",
+    "@fluentui/react-monaco-editor": "^1.0.0",
     "color-check": "0.0.2",
     "markdown-to-jsx": "6.11.4",
     "office-ui-fabric-core": "^11.0.0",

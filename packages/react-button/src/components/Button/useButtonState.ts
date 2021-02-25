@@ -7,14 +7,12 @@ import { ButtonState } from './Button.types';
  * @param draftState - Button draft state to mutate.
  */
 export const useButtonState = (draftState: ButtonState) => {
-  // Update the button's tab-index, keyboard handling, and aria attributes.
   if (draftState.as !== 'button') {
     draftState.role = 'button';
 
     if (draftState.as !== 'a') {
       const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = draftState;
 
-      draftState['data-is-focusable'] = true;
       draftState.tabIndex = 0;
 
       draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
@@ -35,7 +33,7 @@ export const useButtonState = (draftState: ButtonState) => {
   }
 
   // Disallow click and keyboard events when component is disabled and eat events when disabledFocusable is set to true.
-  const { disabled, onKeyDown } = draftState;
+  const { disabled, /* disabledFocusable, */ onKeyDown } = draftState;
   if (disabled) {
     draftState.onClick = undefined;
   }
@@ -49,7 +47,6 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   };
 
-  draftState['aria-disabled'] = draftState.disabled || draftState.disabledFocusable;
-  draftState.disabled =
-    draftState.as === 'button' ? draftState['aria-disabled'] && !draftState.disabledFocusable : undefined;
+  draftState['aria-disabled'] = disabled /* || disabledFocusable*/;
+  draftState.disabled = draftState.as === 'button' ? disabled /* && !disabledFocusable */ : undefined;
 };

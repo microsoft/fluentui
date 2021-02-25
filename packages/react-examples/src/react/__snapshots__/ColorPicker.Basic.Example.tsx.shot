@@ -436,9 +436,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -608,9 +607,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -781,9 +779,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -954,9 +951,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -1127,9 +1123,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                           border-color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                          -ms-high-contrast-adjust: none;
                           border-color: Highlight;
-                        }
-                        @media screen and (forced-colors: active){&:hover {
                           forced-color-adjust: none;
                         }
                   >
@@ -1345,9 +1340,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 border-color: Highlight;
               }
               @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 background-color: Highlight;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-is-focusable={true}
@@ -1531,8 +1525,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                       background: Window;
                       border-color: Highlight;
-                    }
-                    @media screen and (forced-colors: active){&:before {
                       forced-color-adjust: none;
                     }
                     &:after {
@@ -1554,8 +1546,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     }
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                       border-color: Highlight;
-                    }
-                    @media screen and (forced-colors: active){&:after {
                       forced-color-adjust: none;
                     }
                 htmlFor="ChoiceGroup17-alpha"

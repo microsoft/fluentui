@@ -59,7 +59,7 @@ export const TemplatePageProps: TFabricPlatformPageProps = {
 
     // Raw import of a types definition file to render the Implementation Section. (Array)
     propertiesTablesSources: [
-      require('!raw-loader?esModule=false!@fluentui/react-internal/src/components/TeachingBubble/TeachingBubble.types.ts') as string,
+      require('!raw-loader?esModule=false!@fluentui/react/src/components/TeachingBubble/TeachingBubble.types.ts') as string,
     ],
   },
 

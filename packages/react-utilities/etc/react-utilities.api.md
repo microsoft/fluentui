@@ -6,8 +6,101 @@
 
 import * as React from 'react';
 
+// @public (undocumented)
+export interface BaseSlots {
+    // (undocumented)
+    root: React.ElementType;
+}
+
+// @public (undocumented)
+export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
+
 // @public
-export const childrenExist: (children: React.ReactNode) => boolean;
+export type ClassDictionary = Record<string, string>;
+
+// @public (undocumented)
+export interface ComponentProps {
+    // (undocumented)
+    as?: React.ElementType;
+    // (undocumented)
+    children?: React.ReactNode;
+    // (undocumented)
+    className?: string;
+}
+
+// @public
+export type GenericDictionary = Record<string, any>;
+
+// @public
+export const getSlots: (state: Record<string, any>, slotNames?: string[] | undefined) => {
+    slots: Record<string, any>;
+    slotProps: Record<string, any>;
+};
+
+// @public (undocumented)
+export const makeClasses: (classes: Record<string, string>) => (state: Record<string, any>) => void;
+
+// @public
+export const makeMergeProps: <TState = Record<string, any>>(options?: MergePropsOptions) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
+
+// @public (undocumented)
+export type MergePropsOptions = {
+    deepMerge?: string[];
+};
+
+// @public (undocumented)
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
+    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+};
+
+// @public
+export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+
+// @public
+export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: string[]) => TProps;
+
+// @public (undocumented)
+export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | (TProps & ComponentProps & {
+    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+});
+
+// @public (undocumented)
+export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+// @public (undocumented)
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+    [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+    root: TRootProps;
+};
+
+// @public
+export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
+
+// @public
+export interface UseBooleanCallbacks {
+    setFalse: () => void;
+    setTrue: () => void;
+    toggle: () => void;
+}
+
+// @public
+export function useConst<T>(initialValue: T | (() => T)): T;
+
+// @public
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+
+// @public (undocumented)
+export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
+
+// @public
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+
+// @public
+export function useId(prefix?: string, providedId?: string): string;
+
+// @public
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
 
 // (No @packageDocumentation comment for this package)

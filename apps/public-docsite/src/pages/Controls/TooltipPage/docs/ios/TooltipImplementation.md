@@ -4,8 +4,8 @@
 
 ### Source code
 
-[Tooltip](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Tooltip/Tooltip.swift)
+[Tooltip](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Tooltip/Tooltip.swift)
 
 ### Sample code
 
-[Tooltip demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/TooltipDemoController.swift)
+[Tooltip demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/TooltipDemoController.swift)

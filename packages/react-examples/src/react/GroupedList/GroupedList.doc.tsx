@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { GroupedListBasicExample } from './GroupedList.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { GroupedListCustomExample } from './GroupedList.Custom.Example';
 import { GroupedListCustomCheckboxExample } from './GroupedList.CustomCheckbox.Example';
 
