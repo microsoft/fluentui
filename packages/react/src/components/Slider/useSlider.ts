@@ -11,6 +11,7 @@ import {
   getNativeProps,
   divProperties,
 } from '@fluentui/utilities';
+import { ILabelProps } from '../Label/index';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
@@ -338,14 +339,14 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
     ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
     : undefined;
 
-  const labelProps: React.AllHTMLAttributes<HTMLElement> = {
+  const labelProps: ILabelProps = {
     className: classNames.titleLabel,
     children: label,
     disabled,
     htmlFor: ariaLabel ? undefined : id,
   };
 
-  const valueLabelProps: React.AllHTMLAttributes<HTMLElement> | undefined = showValue
+  const valueLabelProps: ILabelProps | undefined = showValue
     ? {
         className: classNames.valueLabel,
         children: valueFormat ? valueFormat(value!) : value,
@@ -353,7 +354,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
       }
     : undefined;
 
-  const lowerValueLabelProps: React.AllHTMLAttributes<HTMLElement> | undefined =
+  const lowerValueLabelProps: ILabelProps | undefined =
     ranged && showValue
       ? {
           className: classNames.valueLabel,
