@@ -177,6 +177,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'tree-additional-actions',
+    title: { content: 'Tree additional actions', as: NavLink, to: '/prototype-tree-additional-actions' },
+    public: true,
+  },
+  {
     id: 'menulist',
     title: {
       content: 'Menu List',

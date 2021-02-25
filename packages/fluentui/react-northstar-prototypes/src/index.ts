@@ -13,6 +13,9 @@ export const AsyncShorthandPrototype = React.lazy(() =>
 export const EmployeeCardPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/employeeCard'),
 );
+export const TreeAdditionalActionsPrototype = React.lazy(() =>
+  import(/* webpackChunkName: "prototypes" */ './prototypes/TreeAdditionalActionsPrototype'),
+);
 export const MeetingOptionsPrototype = React.lazy(() =>
   import(/* webpackChunkName: "prototypes" */ './prototypes/meetingOptions'),
 );
