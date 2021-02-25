@@ -10,7 +10,7 @@ addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withKeytipLayer);
 if (
-  ['react-cards', 'react-checkbox', 'react-link', 'react-slider', 'react-tabs', 'react-text', 'react-toggle'].includes(
+  ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
     'PACKAGE_NAME',
   )
 ) {
@@ -23,10 +23,11 @@ if (
     'react-avatar',
     'react-badge',
     'react-button',
-    'react-components',
     'react-image',
     'react-link',
     'react-menu',
+    'react-text',
+    'react-components',
   ].includes('PACKAGE_NAME')
 ) {
   addDecorator(withFluentProvider);
