@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
-import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 
 export type ButtonProps = ComponentProps &
@@ -51,7 +50,7 @@ export type ButtonProps = ComponentProps &
     // transparent?: boolean;
 
     /** A button can be sized. */
-    size?: SizeValue;
+    size?: 'small' | 'large';
   };
 
 /**

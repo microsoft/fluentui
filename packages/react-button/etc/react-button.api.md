@@ -8,7 +8,6 @@ import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
-import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 // @public
 export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.ButtonHTMLAttributes<HTMLElement> & {
@@ -17,7 +16,7 @@ export const Button: React.ForwardRefExoticComponent<import("@fluentui/react-uti
     iconOnly?: boolean | undefined;
     iconPosition?: "after" | "before" | undefined;
     primary?: boolean | undefined;
-    size?: "small" | "medium" | "large" | "larger" | "smaller" | "smallest" | "largest" | undefined;
+    size?: "small" | "large" | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -27,7 +26,7 @@ export type ButtonProps = ComponentProps & React.ButtonHTMLAttributes<HTMLElemen
     iconOnly?: boolean;
     iconPosition?: 'before' | 'after';
     primary?: boolean;
-    size?: SizeValue;
+    size?: 'small' | 'large';
 };
 
 // @public
@@ -49,8 +48,6 @@ export type ButtonStyleSelectors = {
     iconOnly?: boolean;
     primary?: boolean;
     size?: string;
-    textOnly?: boolean;
-    textWithIcon?: boolean;
 };
 
 // @public (undocumented)
