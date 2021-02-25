@@ -138,7 +138,7 @@ packages/react/src/components/Image/ @dzearing
 packages/react/src/components/Label/ @khmakoto
 packages/react/src/components/Layer/  @ThomasMichon
 packages/react/src/components/Link/ @khmakoto
-packages/react/src/components/List/ @@ThomasMichon
+packages/react/src/components/List/ @ThomasMichon
 packages/react/src/components/MarqueeSelection/ @ThomasMichon
 packages/react/src/components/MessageBar/ @ecraig12345
 packages/react/src/components/Modal/ @joschect
