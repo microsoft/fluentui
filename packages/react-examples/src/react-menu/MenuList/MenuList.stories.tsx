@@ -90,9 +90,15 @@ export const MenuListWithDivider = () => (
 
 export const MenuListWithCheckboxes = () => {
   const checkmark = <AcceptIcon />;
-  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]> | undefined>(undefined);
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues(s => ({ ...s, [name]: items }));
+    setCheckedValues(s => {
+      if (name === 'forbidden') {
+        return { ...s, edit: ['cut'], forbidden: ['edit'] };
+      }
+
+      return s ? { ...s, [name]: items } : { [name]: items };
+    });
   };
 
   return (
@@ -105,6 +111,9 @@ export const MenuListWithCheckboxes = () => {
           Paste
         </MenuItemCheckbox>
         <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+          Edit
+        </MenuItemCheckbox>
+        <MenuItemCheckbox icon={<EditIcon />} name="forbidden" value="edit" checkmark={checkmark}>
           Edit
         </MenuItemCheckbox>
       </MenuList>
@@ -243,6 +252,26 @@ export const MemoCheckboxItems = () => {
         <MemoCheckbox name="font" value="arial">
           Arial
         </MemoCheckbox>
+      </MenuList>
+    </Container>
+  );
+};
+
+export const MenuListWithCheckboxesUncontrolled = () => {
+  const checkmark = <AcceptIcon />;
+
+  return (
+    <Container>
+      <MenuList>
+        <MenuItemCheckbox icon={<CutIcon />} name="edit" value="cut" checkmark={checkmark}>
+          Cut
+        </MenuItemCheckbox>
+        <MenuItemCheckbox icon={<PasteIcon />} name="edit" value="paste" checkmark={checkmark}>
+          Paste
+        </MenuItemCheckbox>
+        <MenuItemCheckbox icon={<EditIcon />} name="edit" value="edit" checkmark={checkmark}>
+          Edit
+        </MenuItemCheckbox>
       </MenuList>
     </Container>
   );
