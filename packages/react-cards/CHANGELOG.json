@@ -2,6 +2,21 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.61",
+      "version": "1.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] rework styles with makeStyles()",
+            "author": "olfedias@microsoft.com",
+            "commit": "d0b838b386608228d67fff571daa9ba10e828e0b",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Feb 2021 07:19:56 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.60",
       "version": "1.0.0-beta.60",

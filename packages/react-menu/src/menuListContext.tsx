@@ -5,6 +5,7 @@ import { SelectableHandler } from './selectable/index';
 const MenuListContext = createContext<MenuListContextValue>({
   checkedValues: {},
   onCheckedValueChange: () => null,
+  setFocusByFirstCharacter: () => null,
   toggleCheckbox: () => null,
   selectRadio: () => null,
 });
@@ -15,6 +16,7 @@ const MenuListContext = createContext<MenuListContextValue>({
 export interface MenuListContextValue {
   checkedValues?: Record<string, string[]>;
   onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, items: string[]) => void;
+  setFocusByFirstCharacter?: (e: React.KeyboardEvent<HTMLElement>, itemEl: HTMLElement) => void;
   toggleCheckbox?: SelectableHandler;
   selectRadio?: SelectableHandler;
 }

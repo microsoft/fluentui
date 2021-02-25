@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemSelectable } from '../../selectable/index';
+import { useCharacterSearch } from '../../utils/useCharacterSearch';
 import { useMenuListContext } from '../../menuListContext';
 
 /**
@@ -31,8 +32,9 @@ export const useMenuItemRadio = (
     resolveShorthandProps(props, menuItemRadioShorthandProps),
   );
 
-  const selectRadio = useMenuListContext(context => context.selectRadio);
+  useCharacterSearch(state);
 
+  const selectRadio = useMenuListContext(context => context.selectRadio);
   useMenuItemSelectable(state, selectRadio);
   return state;
 };

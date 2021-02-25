@@ -270,7 +270,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -315,7 +314,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -428,7 +426,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                     transition: transform .1s linear;
                   }
               data-icon-name="ChevronRightMed"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-3\\"",
@@ -898,10 +895,11 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="0"
+                        aria-labelledby="GroupHeader4"
                         aria-level={1}
-                        aria-posinset={1}
-                        aria-setsize={10}
+                        aria-rowcount={11}
+                        aria-rowindex={2}
+                        aria-selected={false}
                         className=
                             ms-GroupHeader
                             {
@@ -1085,7 +1083,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                         color: WindowText;
                                       }
                                   data-icon-name="CircleRing"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1130,7 +1127,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                         forced-color-adjust: none;
                                       }
                                   data-icon-name="StatusCircleCheckmark"
-                                  role="presentation"
                                   style={
                                     Object {
                                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1264,6 +1260,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            id="GroupHeader4"
                             role="gridcell"
                           >
                             <span>
@@ -1287,9 +1284,10 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                         </div>
                       </div>
                       <div
+                        aria-label="0"
                         className="ms-List"
                         id="GroupedListSection3"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1377,7 +1375,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone4"
+                                data-focuszone-id="FocusZone5"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -1565,7 +1563,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1610,7 +1607,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1851,7 +1847,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone5"
+                                data-focuszone-id="FocusZone6"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -2039,7 +2035,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2084,7 +2079,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2325,7 +2319,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone6"
+                                data-focuszone-id="FocusZone7"
                                 data-is-focusable={true}
                                 data-item-index={2}
                                 data-selection-index={2}
@@ -2513,7 +2507,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2558,7 +2551,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2799,7 +2791,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone7"
+                                data-focuszone-id="FocusZone8"
                                 data-is-focusable={true}
                                 data-item-index={3}
                                 data-selection-index={3}
@@ -2987,7 +2979,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3032,7 +3023,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3273,7 +3263,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone8"
+                                data-focuszone-id="FocusZone9"
                                 data-is-focusable={true}
                                 data-item-index={4}
                                 data-selection-index={4}
@@ -3461,7 +3451,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3506,7 +3495,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3747,7 +3735,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone9"
+                                data-focuszone-id="FocusZone10"
                                 data-is-focusable={true}
                                 data-item-index={5}
                                 data-selection-index={5}
@@ -3935,7 +3923,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3980,7 +3967,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4221,7 +4207,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone10"
+                                data-focuszone-id="FocusZone11"
                                 data-is-focusable={true}
                                 data-item-index={6}
                                 data-selection-index={6}
@@ -4409,7 +4395,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4454,7 +4439,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4695,7 +4679,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone11"
+                                data-focuszone-id="FocusZone12"
                                 data-is-focusable={true}
                                 data-item-index={7}
                                 data-selection-index={7}
@@ -4883,7 +4867,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4928,7 +4911,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5169,7 +5151,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone12"
+                                data-focuszone-id="FocusZone13"
                                 data-is-focusable={true}
                                 data-item-index={8}
                                 data-selection-index={8}
@@ -5357,7 +5339,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5402,7 +5383,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5643,7 +5623,7 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone13"
+                                data-focuszone-id="FocusZone14"
                                 data-is-focusable={true}
                                 data-item-index={9}
                                 data-selection-index={9}
@@ -5831,7 +5811,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5876,7 +5855,6 @@ exports[`Component Examples renders DetailsList.Grouped.Large.Example.tsx correc
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuItemCheckboxProps, MenuItemCheckboxState } from './MenuItemCheckbox.types';
 import { useMenuItemSelectable } from '../../selectable/index';
+import { useCharacterSearch } from '../../utils/useCharacterSearch';
 import { useMenuListContext } from '../../menuListContext';
 
 /**
@@ -28,6 +29,8 @@ export const useMenuItemCheckbox = (
     defaultProps,
     resolveShorthandProps(props, menuItemCheckboxShorthandProps),
   );
+
+  useCharacterSearch(state);
 
   const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
   useMenuItemSelectable(state, toggleCheckbox);

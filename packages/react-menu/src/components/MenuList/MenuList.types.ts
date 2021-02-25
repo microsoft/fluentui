@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
+import { MenuListContextValue } from '../../menuListContext';
 import { SelectableHandler } from '../../selectable/index';
 
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -24,6 +25,11 @@ export interface MenuListState extends MenuListProps {
   ref: React.MutableRefObject<HTMLElement>;
 
   /**
+   * Callback to set focus on the next menu item by first character
+   */
+  setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
+
+  /*
    * Toggles the state of a checkbox item
    */
   toggleCheckbox: SelectableHandler;

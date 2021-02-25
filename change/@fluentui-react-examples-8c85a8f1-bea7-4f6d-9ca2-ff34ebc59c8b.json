@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Add memoization examples for Menu",
-  "packageName": "@fluentui/react-examples",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}
