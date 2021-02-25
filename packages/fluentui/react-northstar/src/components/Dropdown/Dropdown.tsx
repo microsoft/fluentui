@@ -1693,7 +1693,7 @@ Dropdown.propTypes = {
   triggerButton: customPropTypes.itemShorthand,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,

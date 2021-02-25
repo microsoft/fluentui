@@ -123,9 +123,11 @@ export interface PositioningProps {
   unstable_pinned?: boolean;
 
   /**
-   * Change the height of the popper to fit it within the available space in viewport.
+   * Change the size of the popper to fit it within the available space in viewport.
+   * true enables this for both width and height.
+   * 'height' enables this only for height and 'width' enables this only for width
    */
-  autoSize?: boolean;
+  autoSize?: 'height' | 'width' | boolean;
 }
 
 export interface PopperProps extends PositioningProps {

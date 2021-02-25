@@ -303,8 +303,12 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           requires: ['maxSize'],
           fn({ state }) {
             const { height, width } = state.modifiersData.maxSize;
-            state.styles.popper.maxHeight = `${height}px`;
-            state.styles.popper.maxWidth = `${width}px`;
+            if (autoSize === true || autoSize === 'height') {
+              state.styles.popper.maxHeight = `${height}px`;
+            }
+            if (autoSize === true || autoSize === 'width') {
+              state.styles.popper.maxWidth = `${width}px`;
+            }
           },
         },
       ].filter(Boolean),

@@ -68,13 +68,17 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
   /** Controls whether or not auto focus should be applied, using boolean or AutoFocusZoneProps type value. */
   autoFocus?: boolean | AutoFocusZoneProps;
 
-  /** Change the height of the popper to fit it within the available space in viewport. */
-  autoSize?: boolean;
+  /**
+   * Change the size of the popper to fit it within the available space in viewport.
+   * true enables this for both width and height.
+   * 'height' enables this only for height and 'width' enables this only for width
+   */
+  autoSize?: 'height' | 'width' | boolean;
 }
 
 export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
   basePlacement: PopperJs.BasePlacement;
-  autoSize: boolean;
+  autoSize?: 'height' | 'width' | boolean;
 };
 
 export const popupContentClassName = 'ui-popup__content';
@@ -201,7 +205,7 @@ PopupContent.propTypes = {
   pointerRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  autoSize: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
 };
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 

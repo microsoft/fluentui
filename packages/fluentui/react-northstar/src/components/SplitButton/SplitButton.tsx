@@ -307,7 +307,7 @@ SplitButton.propTypes = {
   ]),
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
-  autoSize: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
 };
 
 SplitButton.defaultProps = {
