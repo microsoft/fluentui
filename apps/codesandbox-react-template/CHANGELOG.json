@@ -2,6 +2,149 @@
   "name": "codesandbox-react-template",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.63",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "23722afddd66499a1c29c511a01fe5f5ca191c76",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.62",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 07:19:56 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.61",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "c17273e7dcdb5da25451da134b0c8259dbf72ca3",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.59",
+            "author": "elcraig@microsoft.com",
+            "commit": "d6fc0dc21b4eca678267c2beb17bdafe80f8890a",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.58",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "codesandbox-react-template"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.57",
+            "author": "evlevy@microsoft.com",
+            "commit": "98d7d6b2ebcd4b2fa79c80b08e5719d5f0fdfa7f",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.56",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b6432f371a9ed22b31657dbe9b57699bbff439ba",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "codesandbox-react-template_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.55",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "codesandbox-react-template_v1.0.0",
       "version": "1.0.0",

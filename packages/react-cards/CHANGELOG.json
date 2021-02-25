@@ -2,6 +2,219 @@
   "name": "@fluentui/react-cards",
   "entries": [
     {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.62",
+      "version": "1.0.0-beta.62",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.3",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "40e4e2ed855e0b2a4ac67a462f2b79919aef868b",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.61",
+      "version": "1.0.0-beta.61",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] rework styles with makeStyles()",
+            "author": "olfedias@microsoft.com",
+            "commit": "d0b838b386608228d67fff571daa9ba10e828e0b",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 07:19:56 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.60",
+      "version": "1.0.0-beta.60",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.61",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "c17273e7dcdb5da25451da134b0c8259dbf72ca3",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.59",
+      "version": "1.0.0-beta.59",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump dependencies to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.58",
+      "version": "1.0.0-beta.58",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/foundation-legacy to v8.0.0-beta.19",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.27",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.57",
+      "version": "1.0.0-beta.57",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.56",
+      "version": "1.0.0-beta.56",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/keyboard-key to v0.2.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.57",
+            "author": "evlevy@microsoft.com",
+            "commit": "98d7d6b2ebcd4b2fa79c80b08e5719d5f0fdfa7f",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.55",
+      "version": "1.0.0-beta.55",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-cards_v1.0.0-beta.55",
+      "version": "1.0.0-beta.55",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "[BREAKING] Removing previous experimental implementation of Card and moving the version in the next folder to be the default export.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "2720569cb85b0a729e64c450bb963f7eb6e468d5",
+            "package": "@fluentui/react-cards"
+          },
+          {
+            "comment": "remove unused types & dependency on react-compose",
+            "author": "olfedias@microsoft.com",
+            "commit": "52f6bb844c5dece1af576da1a34f9230c50432d6",
+            "package": "@fluentui/react-cards"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-cards"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/react-cards_v1.0.0-beta.54",
       "version": "1.0.0-beta.54",

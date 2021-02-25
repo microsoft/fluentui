@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { useInlineTokens } from '@fluentui/react-theme-provider/lib/compat/index';
 import { useFocusRects } from '@fluentui/utilities';
 import { useCardSection, CardSectionProps } from '../../CardSection';
-import { useCardBodyClasses } from './useCardBodyClasses';
+import { useCardBodyStyles } from './useCardBodyStyles';
 
 export const CardBody = React.forwardRef<HTMLElement, CardSectionProps>((props, ref) => {
   const { render, state } = useCardSection(props, ref);
 
-  useCardBodyClasses(state);
+  useCardBodyStyles(state);
   useFocusRects(state.ref);
-  useInlineTokens(state, '--cardBody');
 
   return render(state);
 });

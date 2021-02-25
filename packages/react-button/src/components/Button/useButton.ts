@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonState } from './Button.types';
 import { useButtonState } from './useButtonState';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandProps = ['icon', 'loader', 'content'];
+export const buttonShorthandProps = ['icon', 'children'];
 
 const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandProps });
 
@@ -21,7 +21,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       ref: resolvedRef,
-      as: props.href ? 'a' : 'button',
+      as: 'button',
       icon: { as: 'span' },
       content: { as: 'span', children: props.children },
       loader: { as: 'span' },
