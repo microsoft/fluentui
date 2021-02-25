@@ -19,46 +19,46 @@ Below is a table of prop comparison:
 
 ### Stack/Flex
 
-| Purpose                                                                                  | Stack                  | Flex        | Matching                                           |
-| ---------------------------------------------------------------------------------------- | ---------------------- | ----------- | -------------------------------------------------- |
-| Changing the direction                                                                   | `horizontal`           | `column`    | <span style="color:red">opposite</span>            |
-| Horizontal alignment                                                                     | `horizontalAlign`      | `hAlign`    | <span style="color:yellow">different naming</span> |
-| Vertical alignment                                                                       | `verticalAlign`        | `vAlign`    | <span style="color:yellow">different naming</span> |
-| Grow the items to fill to the parent's size                                              | `verticalFill`         | `fill`      | <span style="color:yellow">different naming</span> |
-| Defines the spacing between children                                                     | `childrenGap`          | `gap`       | <span style="color:yellow">different naming</span> |
-| Wrapping of the items                                                                    | `wrap`                 | `wrap`      | <span style="color:green">matching</span>          |
-| Padding of the container                                                                 | `padding`              | `padding`   | <span style="color:green">matching</span>          |
-| Override of the component to render                                                      | `as`                   | `as`        | <span style="color:green">matching</span>          |
-| Show gray backgrounds to debug positioning                                               | -                      | `debug`     | <span style="color:red">Stack missing</span>       |
-| Reverse the direction                                                                    | `reversed`             | -           | <span style="color:red">Flex missing</span>        |
-| Defines the spacing between children                                                     | `gap` [DEPRECATED]     | -           | _See `childrenGap`/`gap`_                          |
-| Defines strategy for distributing remaining space between items                          | -                      | `space`     | <span style="color:red">Stack missing</span>       |
-| Defines how much to grow the container in proportion to its siblings                     | `grow`                 | -           | <span style="color:red">Flex missing</span>        |
-| Prevents children from shrinking to fit the available space                              | `disableShrink`        | -           | <span style="color:red">Flex missing</span>        |
-| Defines the maximum height that the container can take                                   | `maxHeight`            | -           | <span style="color:red">Flex missing</span>        |
-| Defines the maximum width that the container can take                                    | `maxWidth`             | -           | <span style="color:red">Flex missing</span>        |
-| Defines if container should be inline element                                            | -                      | `inline`    | <span style="color:red">Stack missing</span>       |
-| Additional CSS class name(s) to apply                                                    | extends `HTMLElement`  | `className` | <span style="color:green">matching</span>          |
-| Additional CSS styles to apply to the component instance                                 | extends `HTMLElement`  | `styles`    | <span style="color:green">matching</span>          |
-| Override for theme site variables to allow modifications of component styling via themes | through `IStackTokens` | `variables` | <span style="color:yellow">different naming</span> |
-| -                                                                                        | -                      | `design`    | -                                                  |
+| Purpose                                                                                  | Stack                  | Flex        | Matching                  |
+| ---------------------------------------------------------------------------------------- | ---------------------- | ----------- | ------------------------- |
+| Wrapping of the items                                                                    | `wrap`                 | `wrap`      | matching                  |
+| Padding of the container                                                                 | `padding`              | `padding`   | matching                  |
+| Override of the component to render                                                      | `as`                   | `as`        | matching                  |
+| Additional CSS class name(s) to apply                                                    | extends `HTMLElement`  | `className` | matching                  |
+| Additional CSS styles to apply to the component instance                                 | extends `HTMLElement`  | `styles`    | matching                  |
+| Horizontal alignment                                                                     | `horizontalAlign`      | `hAlign`    | different naming          |
+| Vertical alignment                                                                       | `verticalAlign`        | `vAlign`    | different naming          |
+| Grow the items to fill to the parent's size                                              | `verticalFill`         | `fill`      | different naming          |
+| Defines the spacing between children                                                     | `childrenGap`          | `gap`       | different naming          |
+| Defines the spacing between children                                                     | `gap` [DEPRECATED]     | -           | _See `childrenGap`/`gap`_ |
+| Override for theme site variables to allow modifications of component styling via themes | through `IStackTokens` | `variables` | different naming          |
+| Reverse the direction                                                                    | `reversed`             | -           | Flex missing              |
+| Defines how much to grow the container in proportion to its siblings                     | `grow`                 | -           | Flex missing              |
+| Prevents children from shrinking to fit the available space                              | `disableShrink`        | -           | Flex missing              |
+| Defines the maximum height that the container can take                                   | `maxHeight`            | -           | Flex missing              |
+| Defines the maximum width that the container can take                                    | `maxWidth`             | -           | Flex missing              |
+| Show gray backgrounds to debug positioning                                               | -                      | `debug`     | Stack missing             |
+| Defines strategy for distributing remaining space between items                          | -                      | `space`     | Stack missing             |
+| Defines if container should be inline element                                            | -                      | `inline`    | Stack missing             |
+| Changing the direction                                                                   | `horizontal`           | `column`    | opposite                  |
+| -                                                                                        | -                      | `design`    | -                         |
 
 ### StackItem/FlexItem
 
-| Description                                                                              | Stack                  | Flex                         | Matching                                           |
-| ---------------------------------------------------------------------------------------- | ---------------------- | ---------------------------- | -------------------------------------------------- |
-| Controls item's alignment                                                                | `align`                | `align`                      | <span style="color:green">matching</span>          |
-| Defines how much to grow the item in proportion to its siblings                          | `grow`                 | `grow`                       | <span style="color:green">matching</span>          |
-| Defines at what ratio should the item shrink to fit the available space                  | `shrink`               | `shrink`                     | <span style="color:green">matching</span>          |
-| Defines whether the item should be prevented from shrinking                              | `disableShrink`        | -                            | <span style="color:red">Flex missing</span>        |
-| Defines whether the item should take up 100% of the height of its parent                 | `verticalFill`         | -                            | <span style="color:red">Flex missing</span>        |
-| Push item towards opposite side in the container's direction                             | -                      | `push`                       | <span style="color:red">Stack missing</span>       |
-| Defines the flex-basis for the item                                                      | -                      | `size`                       | <span style="color:red">Stack missing</span>       |
-| Additional CSS class name(s) to apply                                                    | `className`            | `className`                  | <span style="color:green">matching</span>          |
-| Additional CSS styles to apply to the component instance                                 | extends `HTMLElement`  | `styles`                     | <span style="color:green">matching</span>          |
-| Override for theme site variables to allow modifications of component styling via themes | through `IStackTokens` | `variables`                  | <span style="color:yellow">different naming</span> |
-| -                                                                                        | -                      | `flexDirection` [DEPRECATED] | -                                                  |
-| -                                                                                        | -                      | `design`                     | -                                                  |
+| Description                                                                              | Stack                  | Flex                         | Matching         |
+| ---------------------------------------------------------------------------------------- | ---------------------- | ---------------------------- | ---------------- |
+| Controls item's alignment                                                                | `align`                | `align`                      | matching         |
+| Defines how much to grow the item in proportion to its siblings                          | `grow`                 | `grow`                       | matching         |
+| Defines at what ratio should the item shrink to fit the available space                  | `shrink`               | `shrink`                     | matching         |
+| Additional CSS class name(s) to apply                                                    | `className`            | `className`                  | matching         |
+| Additional CSS styles to apply to the component instance                                 | extends `HTMLElement`  | `styles`                     | matching         |
+| Override for theme site variables to allow modifications of component styling via themes | through `IStackTokens` | `variables`                  | different naming |
+| Defines whether the item should be prevented from shrinking                              | `disableShrink`        | -                            | Flex missing     |
+| Defines whether the item should take up 100% of the height of its parent                 | `verticalFill`         | -                            | Flex missing     |
+| Push item towards opposite side in the container's direction                             | -                      | `push`                       | Stack missing    |
+| Defines the flex-basis for the item                                                      | -                      | `size`                       | Stack missing    |
+| -                                                                                        | -                      | `flexDirection` [DEPRECATED] | -                |
+| -                                                                                        | -                      | `design`                     | -                |
 
 ## API proposal
 
