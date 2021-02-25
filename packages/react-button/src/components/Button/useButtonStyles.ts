@@ -137,17 +137,6 @@ const useRootClasses = makeStyles<ButtonStyleSelectors>([
       const buttonTokens = makeButtonTokens(theme);
 
       return {
-        ':global(:root)': {
-          // TODO: how to define and access component variables that do not have globals/aliases?
-          //       consider IE11 friendly way
-          '--button-height': '32px',
-          '--button-paddingX': '12px',
-          '--button-minWidth': '96px',
-          '--button-maxWidth': '280px',
-
-          '--button-iconOnly-padding': '6px',
-        },
-
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
