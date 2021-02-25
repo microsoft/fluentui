@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "make @fluentui/react-conformance public",
-  "packageName": "@fluentui/react-toggle",
-  "email": "altinokd@microsoft.com",
-  "dependentChangeType": "none"
-}

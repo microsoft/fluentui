@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 24 Feb 2021 00:05:29 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.2)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.0.0-alpha.1..@fluentui/react-utilities_v9.0.0-alpha.2)
+
+### Changes
+
+- Remove dep array from useEventCallback ([PR #17113](https://github.com/microsoft/fluentui/pull/17113) by lingfan.gao@microsoft.com)
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.0.0-alpha.1)
 

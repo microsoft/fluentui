@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Wed, 24 Feb 2021 07:19:56 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.61)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.60..@fluentui/react-cards_v1.0.0-beta.61)
+
+### Changes
+
+- [BREAKING] rework styles with makeStyles() ([PR #17163](https://github.com/microsoft/fluentui/pull/17163) by olfedias@microsoft.com)
 
 ## [1.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.60)
 
