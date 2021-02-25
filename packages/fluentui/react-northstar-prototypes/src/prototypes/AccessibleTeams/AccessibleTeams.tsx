@@ -371,6 +371,6 @@ const AccessibleTeams: React.FunctionComponent = () => {
       </div>
     </>
   );
-}; // End AccessibleNavBar
+}; // End AccessibleTeams
 
 export default AccessibleTeams;
