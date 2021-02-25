@@ -33,16 +33,15 @@ export const useMenuList = (
   state.toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
+      const newCheckedItems = [...checkedItems];
       if (checked) {
-        const newCheckedItems = [...checkedItems];
         newCheckedItems.splice(newCheckedItems.indexOf(value), 1);
-        setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
-        onCheckedValueChange?.(e, name, newCheckedItems);
       } else {
-        const newCheckedItems = [...checkedItems, value];
-        onCheckedValueChange?.(e, name, newCheckedItems);
-        setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
+        newCheckedItems.push(value);
       }
+
+      onCheckedValueChange?.(e, name, newCheckedItems);
+      setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     },
   );
 

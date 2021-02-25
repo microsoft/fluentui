@@ -93,10 +93,6 @@ export const MenuListWithCheckboxes = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]> | undefined>(undefined);
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
     setCheckedValues(s => {
-      if (name === 'forbidden') {
-        return { ...s, edit: ['cut'], forbidden: ['edit'] };
-      }
-
       return s ? { ...s, [name]: items } : { [name]: items };
     });
   };
