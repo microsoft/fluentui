@@ -1,5 +1,7 @@
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ComponentProps, ShorthandValue, SizeValue } from '../utils/commonTypes';
+
+import { SizeValue } from '../utils/commonTypes';
 
 export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -12,7 +14,7 @@ export interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLEle
    * Shorthand icon. A shorthand prop can be a literal, object,
    * JSX, or function which takes render options.
    */
-  icon?: ShorthandValue<{}>;
+  icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
   /**
    * Size multiplier.
@@ -41,4 +43,6 @@ export type BadgeTokenSet = {
   iconColor?: string;
 };
 
-export type BadgeState = BadgeProps;
+export type BadgeState = BadgeProps & {
+  icon: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+};

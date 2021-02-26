@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { CardSectionProps, CardSectionState } from './CardSection.types';
 import { renderCardSection } from './renderCardSection';
 
@@ -13,13 +13,9 @@ export const useCardSection = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CardSectionProps,
 ) => {
-  // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
-  // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const resolvedRef = ref || React.useRef();
   const state = mergeProps(
     {
-      ref: resolvedRef,
+      ref: useMergedRefs(ref, React.useRef()),
       as: 'div',
     },
     defaultProps,

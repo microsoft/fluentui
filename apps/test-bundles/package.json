@@ -11,12 +11,9 @@
     "just": "just-scripts"
   },
   "dependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
-    "@fluentui/keyboard-key": "^0.2.13",
-    "@fluentui/react": "^8.0.0-beta.55",
-    "@fluentui/react-button": "^1.0.0-beta.32",
-    "@fluentui/react-compose": "^1.0.0-beta.13",
+    "@fluentui/eslint-plugin": "^1.0.0",
     "@fluentui/scripts": "^1.0.0",
+    "fs-extra": "^8.1.0",
     "parallel-webpack": "^2.6.0",
     "webpack-bundle-analyzer": "^4.4.0",
     "terser-webpack-plugin": "^5.1.1"

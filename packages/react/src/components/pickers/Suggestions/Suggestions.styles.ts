@@ -1,4 +1,10 @@
-import { getGlobalClassNames, IStyle, hiddenContentStyle } from '../../../Styling';
+import {
+  getGlobalClassNames,
+  getHighContrastNoAdjustStyle,
+  HighContrastSelector,
+  IStyle,
+  hiddenContentStyle,
+} from '../../../Styling';
 import { ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 
 const GlobalClassNames = {
@@ -52,6 +58,14 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
 
   const actionButtonSelectedStyles: IStyle = {
     backgroundColor: palette.themeLight,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight',
+        borderColor: 'Highlight',
+        color: 'HighlightText',
+        ...getHighContrastNoAdjustStyle(),
+      },
+    },
   };
 
   return {

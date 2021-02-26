@@ -37,3 +37,8 @@ export { getUnhandledProps } from './utils/getUnhandledProps';
 export { mergeVariablesOverrides } from './utils/mergeVariablesOverrides';
 
 export * from './context';
+
+export { createContext } from './context-selector/createContext';
+export { useContextSelector } from './context-selector/useContextSelector';
+export { useContextSelectors } from './context-selector/useContextSelectors';
+export * from './context-selector/types';

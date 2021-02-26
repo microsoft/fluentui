@@ -5,10 +5,10 @@ trigger: none
 name: 'fluentui_$(Date:yyyyMMdd)$(Rev:.r)'
 
 schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # minute 0, hour 4 in UTC (5am in UTC+1), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+  - cron: '0 4 * * 1-5'
+    displayName: 'Daily release (M-F at 5am)'
     branches:
       include:
         - master
@@ -130,6 +130,15 @@ jobs:
 
     steps:
       - template: .devops/templates/tools.yml
+
+      - task: CmdLine@2
+        displayName: Checkout branch for pull
+        condition: and(succeeded(), eq(variables.publishOfficial, true))
+        inputs:
+          script: |
+            BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
+            git checkout $BRANCH_NAME
+            git pull
 
       - task: Bash@3
         displayName: Yarn

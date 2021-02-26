@@ -4,14 +4,11 @@
 
 ```ts
 
-import { ColorTokens } from '@fluentui/react-theme-provider/lib/compat/index';
-import { ColorTokenSet } from '@fluentui/react-theme-provider/lib/compat/index';
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
 
 // @public
-export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     compact?: boolean | undefined;
     horizontal?: boolean | undefined;
     centered?: boolean | undefined;
@@ -25,22 +22,22 @@ export const Card: React.ForwardRefExoticComponent<import("@fluentui/react-utils
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardBody: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardFooter: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardHeader: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utils").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
+export const CardPreview: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLDivElement> & {
     fitted?: boolean | undefined;
 } & React.RefAttributes<HTMLElement>>;
 
@@ -49,7 +46,7 @@ export type CardProps = ComponentProps & React.HTMLAttributes<HTMLDivElement> & 
     compact?: boolean;
     horizontal?: boolean;
     centered?: boolean;
-    size?: SizeValue;
+    size?: 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
     block?: boolean;
     disabled?: boolean;
     expandable?: boolean;
@@ -70,90 +67,10 @@ export interface CardSectionState extends CardSectionProps {
 }
 
 // @public (undocumented)
-export type CardSectionTokens = ColorTokenSet & {};
-
-// @public (undocumented)
-export const CardSizeVariants: {
-    size_smallest: {
-        borderRadius: string;
-        height: string;
-        margin: string;
-        padding: string;
-        width: string;
-    };
-    size_smaller: {
-        borderRadius: string;
-        height: string;
-        margin: string;
-        padding: string;
-        width: string;
-    };
-    size_small: {
-        borderRadius: string;
-        height: string;
-        margin: string;
-        padding: string;
-        width: string;
-    };
-    size_large: {
-        borderRadius: string;
-        height: string;
-        margin: string;
-        padding: string;
-        width: string;
-    };
-    size_larger: {
-        borderRadius: string;
-        height: string;
-        margin: string;
-        padding: string;
-        width: string;
-    };
-    size_largest: {
-        borderRadius: string;
-        height: string;
-        margin: string;
-        padding: string;
-        width: string;
-    };
-};
-
-// @public (undocumented)
 export interface CardState extends CardProps {
     // (undocumented)
     ref: React.RefObject<HTMLDivElement>;
 }
-
-// Warning: (ae-forgotten-export) The symbol "SizeRelatedTokens" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "StateChangeRelatedTokens" needs to be exported by the entry point index.d.ts
-//
-// @public (undocumented)
-export type CardTokens = ColorTokens & SizeRelatedTokens & StateChangeRelatedTokens & {
-    borderStyle?: string;
-    minHeight?: string;
-    minWidth?: string;
-    size?: {
-        smallest?: SizeRelatedTokens;
-        smaller?: SizeRelatedTokens;
-        small?: SizeRelatedTokens;
-        medium?: SizeRelatedTokens;
-        large?: SizeRelatedTokens;
-        larger?: SizeRelatedTokens;
-        largest?: SizeRelatedTokens;
-    };
-    disabled?: StateChangeRelatedTokens;
-    hovered?: StateChangeRelatedTokens;
-    pressed?: StateChangeRelatedTokens;
-    selected?: StateChangeRelatedTokens;
-};
-
-// @public (undocumented)
-export type CardVariants<TTokens = CardTokens> = {
-    root?: TTokens;
-    onClick?: TTokens;
-    compact?: TTokens;
-    block?: TTokens;
-};
 
 // @public (undocumented)
 export const renderCardSection: (state: CardSectionState) => JSX.Element;
@@ -165,19 +82,16 @@ export const useCard: (props: CardProps, ref: React.Ref<HTMLElement>, defaultPro
 };
 
 // @public (undocumented)
-export const useCardBodyClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+export function useCardBodyStyles(state: CardSectionState): CardSectionState;
 
 // @public (undocumented)
-export const useCardClasses: (state: CardState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+export function useCardFooterStyles(state: CardSectionState): CardSectionState;
 
 // @public (undocumented)
-export const useCardFooterClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+export function useCardHeaderStyles(state: CardSectionState): CardSectionState;
 
 // @public (undocumented)
-export const useCardHeaderClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
-
-// @public (undocumented)
-export const useCardPreviewClasses: (state: CardSectionState, options?: import("@fluentui/react-theme-provider/lib/compat").UseStylesOptions | undefined) => void;
+export function useCardPreviewStyles(state: CardSectionState): CardSectionState;
 
 // @public
 export const useCardSection: (props: CardSectionProps, ref: React.Ref<HTMLElement>, defaultProps?: CardSectionProps | undefined) => {
@@ -187,6 +101,12 @@ export const useCardSection: (props: CardSectionProps, ref: React.Ref<HTMLElemen
 
 // @public
 export const useCardState: (draftState: CardState) => void;
+
+// @public (undocumented)
+export function useCardStyles(state: CardState): CardState;
+
+// @public (undocumented)
+export const useRootStyles: (selectors: CardSectionState) => string;
 
 
 // (No @packageDocumentation comment for this package)

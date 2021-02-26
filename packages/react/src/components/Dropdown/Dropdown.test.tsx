@@ -24,6 +24,13 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '6', text: '6' },
 ];
 
+const RENDER_OPTIONS: IDropdownOption[] = [
+  { key: 'Header1', text: 'Header 1', itemType: DropdownMenuItemType.Header },
+  { key: '1', text: '1', selected: true },
+  { key: 'Divider1', text: '-', itemType: DropdownMenuItemType.Divider },
+  { key: '2', text: '2', title: 'test' },
+];
+
 describe('Dropdown', () => {
   let component: ReactTestRenderer | undefined;
   let wrapper: ReactWrapper | undefined;
@@ -51,10 +58,20 @@ describe('Dropdown', () => {
   });
 
   describe('single-select', () => {
-    it('Renders single-select Dropdown correctly', () => {
+    it('Renders correctly', () => {
       component = create(<Dropdown options={DEFAULT_OPTIONS} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
+    });
+
+    it('Renders correctly when open', () => {
+      // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      const ref = React.createRef<IDropdown>();
+      wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} />);
+      ref.current!.focus(true);
+      wrapper.update();
+      expect(wrapper.getDOMNode()).toMatchSnapshot();
     });
 
     it('Renders groups based on header start and divider end', () => {
@@ -457,13 +474,23 @@ describe('Dropdown', () => {
   });
 
   describe('multi-select', () => {
-    it('Renders multiselect Dropdown correctly', () => {
+    it('Renders correctly', () => {
       component = create(<Dropdown options={DEFAULT_OPTIONS} multiSelect />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
-    it('Renders multiselect Dropdown correctly when options change', () => {
+    it('Renders correctly when open', () => {
+      // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
+      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      const ref = React.createRef<IDropdown>();
+      wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} />);
+      ref.current!.focus(true);
+      wrapper.update();
+      expect(wrapper.getDOMNode()).toMatchSnapshot();
+    });
+
+    it('Renders correctly when options change', () => {
       wrapper = mount(<Dropdown options={DEFAULT_OPTIONS} multiSelect defaultSelectedKeys={['1', '4']} />);
       const titleElement = wrapper.find('.ms-Dropdown-title');
 

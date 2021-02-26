@@ -1,8 +1,17 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Feb 2021 12:27:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.5)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.4..@fluentui/codemods_v1.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.4)
 

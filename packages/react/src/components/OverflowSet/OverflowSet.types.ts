@@ -88,9 +88,10 @@ export interface IOverflowSetProps extends React.RefAttributes<HTMLElement> {
   /**
    * Function that will take in an IOverflowSetItemProps and return the subMenu for that item.
    * If not provided, will use 'item.subMenuProps.items' by default.
+   * Alternatively accepts a boolean, return True if the item has a menu and False if not
    * This is only used if your overflow set has keytips.
    */
-  itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+  itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | boolean | undefined;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.

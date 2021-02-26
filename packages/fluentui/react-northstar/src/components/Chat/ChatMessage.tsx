@@ -13,8 +13,8 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  useContextSelector,
 } from '@fluentui/react-bindings';
-import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';

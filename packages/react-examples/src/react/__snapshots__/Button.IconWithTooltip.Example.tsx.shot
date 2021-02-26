@@ -132,7 +132,6 @@ exports[`Component Examples renders Button.IconWithTooltip.Example.tsx correctly
                 text-align: center;
               }
           data-icon-name="Emoji2"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-0\\"",

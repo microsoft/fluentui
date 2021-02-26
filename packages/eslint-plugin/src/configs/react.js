@@ -76,7 +76,7 @@ const config = {
     'dot-notation': 'error',
     eqeqeq: ['error', 'always'],
     'guard-for-in': 'error',
-    'import/no-extraneous-dependencies': ['error', { devDependencies: [...configHelpers.devDependenciesFiles] }],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: false }],
     'jsx-a11y/tabindex-no-positive': 'error',
     'no-alert': 'error',
     'no-bitwise': 'error',
@@ -245,12 +245,7 @@ const config = {
 };
 
 /**
- * By default, any logic in this file will be run every time the plugin is loaded (even if this
- * config is not used) due to it being included by necessity in the package index file.
- * These overrides include some more complex logic which should only run when requested, since it's
- * more costly and can cause build errors if run in a package it wasn't designed for.
- * If ESLint supported exporting a function from a config file, that would be an easy solution.
- * Since that's not supported, we work around it by defining overrides as a property with getter.
+ * Override definitions for `config`. See explanation at bottom of file for why/how this function is used.
  * @returns {import("eslint").Linter.ConfigOverride[]}
  */
 const getOverrides = () => [
@@ -343,8 +338,28 @@ const getOverrides = () => [
       'import/no-webpack-loader-syntax': 'off', // this is ok in docs
     },
   },
+  {
+    files: [...configHelpers.devDependenciesFiles],
+    rules: {
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          packageDir: [process.cwd(), configHelpers.findGitRoot()],
+        },
+      ],
+    },
+  },
 ];
 
+// Why use `defineProperty` for `overrides`?
+//
+// By default, any logic in this file will be run every time the plugin is loaded (even if this
+// config is not used) due to it being included by necessity in the package index file.
+// These overrides include some more complex logic which should only run when requested, since it's
+// more costly and can cause build errors if run in a package it wasn't designed for.
+// If ESLint supported exporting a function from a config file, that would be an easy solution.
+// Since that's not supported, we work around it by defining overrides as a property with getter.
+// @ts-ignore -- `overrides?` is declared in `eslint.Linter.Config` but our `config` object doesn't define it until now
 Object.defineProperty(config, 'overrides', {
   enumerable: true,
   get: getOverrides,
