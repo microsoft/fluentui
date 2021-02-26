@@ -1,5 +1,5 @@
 {
-  "type": "prerelease",
+  "type": "minor",
   "comment": "Add color name and size examples to AvatarExamples",
   "packageName": "@fluentui/example-data",
   "email": "behowell@microsoft.com",
