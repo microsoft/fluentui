@@ -2,6 +2,21 @@
   "name": "@fluentui/react-context-selector",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-context-selector_v0.53.3",
+      "version": "0.53.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-context-selector"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react-context-selector_v0.53.2",
       "version": "0.53.2",

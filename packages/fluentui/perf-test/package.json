@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@fluentui/digest": "^0.52.0",
-    "@fluentui/react": "^8.0.0-beta",
+    "@fluentui/react": "^8.0.0",
     "@fluentui/react-northstar": "^0.52.0",
     "@fluentui/react-northstar-prototypes": "^0.52.0",
     "@types/node": "^10.3.2",

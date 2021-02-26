@@ -204,7 +204,6 @@
         ],
         "dependencies": [
           "@fluentui/dom-utilities",
-          "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-compose",
           "stylis"
