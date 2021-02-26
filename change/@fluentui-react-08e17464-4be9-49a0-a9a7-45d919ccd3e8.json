@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Autofill: add string type check and throw development error",
+  "packageName": "@fluentui/react",
+  "email": "hantatsang@gmail.com",
+  "dependentChangeType": "patch"
+}
