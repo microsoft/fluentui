@@ -52,5 +52,8 @@
   },
   "publishConfig": {
     "access": "public"
+  },
+  "beachball": {
+    "tag": "lts-7"
   }
 }
