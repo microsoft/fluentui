@@ -268,6 +268,7 @@ The following is a set of keys that interact with the `Button` component:
 | Key                      | Description                            |
 | ------------------------ | -------------------------------------- |
 | `Enter`                  | Executes the `Button` action.          |
+| `Space`                  | Executes the `Button` action.          |
 | `Shift + F10` (Optional) | Opens a context menu for the `Button`. |
 
 #### Cursor interaction
