@@ -57,6 +57,12 @@ export type LinkProps = ComponentProps &
      * @defaultvalue false
      */
     inline?: boolean;
+
+    /**
+     * If true, changes the link styling to emphasize that it represents an alternative action.
+     * @defaultvalue false
+     */
+    secondary?: boolean;
   };
 
 /**
