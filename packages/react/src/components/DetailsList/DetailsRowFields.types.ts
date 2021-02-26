@@ -53,7 +53,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   };
 
   /**
-   * id for the rowHeader
+   * Id for the current row's row-header
    */
   rowHeaderId: string;
 
