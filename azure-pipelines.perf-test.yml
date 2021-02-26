@@ -20,7 +20,10 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
-  # Fabric: perf-test will build, bundle, and run-perftest
+  - script: |
+      yarn lage build --to perf-test --verbose --no-cache --grouped
+    displayName: build to perf-test
+
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
