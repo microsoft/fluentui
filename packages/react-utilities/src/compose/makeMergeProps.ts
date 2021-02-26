@@ -2,6 +2,10 @@ import * as React from 'react';
 
 import { GenericDictionary } from './types';
 
+// TODO
+// css() function is temporary there, ax() should be used instead, but it's not possible now due possible
+// circular dependencies
+
 /**
  * Dictionary of booleans.
  *
