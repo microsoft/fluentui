@@ -2,6 +2,21 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-focus_v7.17.5",
+      "version": "7.17.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-focus"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Dec 2020 21:12:59 GMT",
       "tag": "@fluentui/react-focus_v7.17.0",
       "version": "7.17.0",

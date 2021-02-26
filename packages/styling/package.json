@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.18.0",
+  "version": "7.18.1",
   "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
@@ -27,17 +27,17 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^0.54.2",
     "@types/jest": "~24.9.0",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/theme": "^1.7.3",
-    "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/set-version": "^7.0.23",
-    "@uifabric/utilities": "^7.33.4",
+    "@fluentui/theme": "^1.7.4",
+    "@uifabric/merge-styles": "^7.19.2",
+    "@uifabric/set-version": "^7.0.24",
+    "@uifabric/utilities": "^7.33.5",
     "tslib": "^1.10.0"
   }
 }

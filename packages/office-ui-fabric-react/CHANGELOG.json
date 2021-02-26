@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "office-ui-fabric-react_v7.162.0",
+      "version": "7.162.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow itemSubMenuProvider to return a boolean",
+            "author": "keyou@microsoft.com",
+            "commit": "2dbe3cc7b92d575a538886d52a9a57cc311ba097",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 19 Feb 2021 12:25:47 GMT",
       "tag": "office-ui-fabric-react_v7.161.0",
       "version": "7.161.0",

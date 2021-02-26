@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Allow itemSubMenuProvider to return a boolean",
-  "packageName": "office-ui-fabric-react",
-  "email": "keyou@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-02-23T22:56:02.219Z"
-}

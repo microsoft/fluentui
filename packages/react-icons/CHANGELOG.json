@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-icons_v0.4.2",
+      "version": "0.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Feb 2021 12:25:19 GMT",
       "tag": "@fluentui/react-icons_v0.4.0",
       "version": "0.4.0",

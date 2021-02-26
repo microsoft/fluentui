@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.19.6)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v0.19.0..@fluentui/react-button_v0.19.6)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [0.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v0.19.0)
 

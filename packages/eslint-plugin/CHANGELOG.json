@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.54.2",
+      "version": "0.54.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Sep 2020 12:27:22 GMT",
       "tag": "@fluentui/eslint-plugin_v0.54.1",
       "version": "0.54.1",

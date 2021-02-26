@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 19 Feb 2021 12:25:47 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.162.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.0)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.161.0..office-ui-fabric-react_v7.162.0)
+
+### Minor changes
+
+- Allow itemSubMenuProvider to return a boolean ([PR #17150](https://github.com/microsoft/fluentui/pull/17150) by keyou@microsoft.com)
 
 ## [7.161.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.161.0)
 

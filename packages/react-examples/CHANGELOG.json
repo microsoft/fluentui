@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-examples_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 24 Feb 2021 12:25:59 GMT",
       "tag": "@fluentui/react-examples_v0.12.0",
       "version": "0.12.0",

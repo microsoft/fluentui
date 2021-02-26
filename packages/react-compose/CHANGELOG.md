@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Wed, 18 Nov 2020 12:26:33 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.19.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.15)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-compose_v0.19.12..@fluentui/react-compose_v0.19.15)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [0.19.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-compose_v0.19.12)
 

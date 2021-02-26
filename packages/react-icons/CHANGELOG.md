@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons
 
-This log was last generated on Wed, 10 Feb 2021 12:25:19 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.2)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons_v0.4.0..@fluentui/react-icons_v0.4.2)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons_v0.4.0)
 

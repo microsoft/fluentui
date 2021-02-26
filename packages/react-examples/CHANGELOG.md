@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 24 Feb 2021 12:25:59 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.1)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.0..@fluentui/react-examples_v0.12.1)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.0)
 
