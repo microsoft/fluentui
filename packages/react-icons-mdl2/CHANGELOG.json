@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-icons-mdl2_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release major version",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 20:16:39 GMT",
       "tag": "@fluentui/react-icons-mdl2_v1.0.0-beta.18",
       "version": "1.0.0-beta.18",

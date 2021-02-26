@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Release version 8",
-  "packageName": "@fluentui/set-version",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

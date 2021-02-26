@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Release major version",
-  "packageName": "@fluentui/dom-utilities",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
