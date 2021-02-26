@@ -10,10 +10,7 @@ jobs:
     pool:
       vmImage: 'windows-2019'
     steps:
-      - task: NodeTool@0
-        inputs:
-          versionSpec: '12.x'
-        displayName: 'Install Node.js'
+      - template: .devops/templates/tools.yml
 
       - script: npx midgard-yarn install
         displayName: yarn
