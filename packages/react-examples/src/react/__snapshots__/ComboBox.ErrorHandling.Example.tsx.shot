@@ -1,7 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly 1`] = `
-<div>
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
   <div
     className="ms-ComboBox-container "
   >
@@ -50,6 +70,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             font-weight: 400;
             height: 32px;
             margin-left: 0;
+            max-width: 300px;
             outline: 0;
             padding-left: 9px;
             padding-right: 32px;
@@ -396,6 +417,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             font-weight: 400;
             height: 32px;
             margin-left: 0;
+            max-width: 300px;
             outline: 0;
             padding-left: 9px;
             padding-right: 32px;

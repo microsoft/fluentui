@@ -12,7 +12,6 @@ module.exports = {
     path.resolve(__dirname, '../../merge-styles/dist/merge-styles.api.json'),
     path.resolve(__dirname, '../../react/dist/react.api.json'),
     path.resolve(__dirname, '../../react-focus/dist/react-focus.api.json'),
-    path.resolve(__dirname, '../../react-theme-provider/dist/react-theme-provider.api.json'),
     path.resolve(__dirname, '../../style-utilities/dist/style-utilities.api.json'),
     path.resolve(__dirname, '../../theme/dist/theme.api.json'),
     path.resolve(__dirname, '../../utilities/dist/utilities.api.json'),

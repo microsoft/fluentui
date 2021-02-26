@@ -14232,11 +14232,6 @@ icss-utils@^5.0.0:
   resolved "https://registry.yarnpkg.com/icss-utils/-/icss-utils-5.1.0.tgz#c6be6858abd013d768e98366ae47e25d5887b1ae"
   integrity sha512-soFhflCVWLfRNOPU3iv5Z9VUdT44xFRbzjLsEzSr5AQmgqPMTHdU3PMT1Cf1ssx8fLNJDA1juftYl+PUcv3MqA==
 
-ie11-custom-properties@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/ie11-custom-properties/-/ie11-custom-properties-4.1.0.tgz#fec74a4d62f746e1aa2ae52b0c3136edca119596"
-  integrity sha512-ep6R2iQvgfDEjd97ifkGKv119/Q+4La1GzKyshMsq2kIUVDlQUt74uc7WtMT4oN2G4d+tcA3QA86aUl7ESjBYw==
-
 ieee754@^1.1.13, ieee754@^1.1.4, ieee754@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.2.1.tgz#8eb7a10a63fff25d15a57b001586d177d1b0d352"
