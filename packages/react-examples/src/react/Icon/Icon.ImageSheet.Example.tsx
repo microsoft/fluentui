@@ -41,34 +41,32 @@ const classNames = mergeStyleSets({
 export const IconImageSheetExample: React.FunctionComponent = () => {
   // ImageIcon is an optimized variant of standard Icon.
   // You could also use the standard Icon here (adding the prop `iconType={IconType.image}`).
-  // Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by text
-  // that conveys the same meaning.
+  // Provide an alt attribute using imageProps.alt for screen reader users if the icon is not
+  // accompanied by text that conveys the same meaning.
   return (
     <div>
       <ImageIcon
-        aria-label="OneNote file icon"
-        role="img"
         className={classNames.one}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'OneNote file',
           className: css(classNames.image, classNames.oneImage),
         }}
       />
       <ImageIcon
-        aria-label="Check icon"
-        role="img"
         className={classNames.check}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'Printer ready',
           className: css(classNames.image, classNames.checkImage),
         }}
       />
       <ImageIcon
-        aria-label="Lock icon"
-        role="img"
+        aria-label="Locked"
         className={classNames.lock}
         imageProps={{
           src: TestImages.iconOne,
+          alt: 'Locked',
           className: css(classNames.image, classNames.lockImage),
         }}
       />

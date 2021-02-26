@@ -1,2 +1,2 @@
 export * from './CardFooter';
-export * from './useCardFooterClasses';
+export * from './useCardFooterStyles';

@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from '@fluentui/react-bindings';
 import * as React from 'react';
 
 export type ToolbarMenuContextValue = {

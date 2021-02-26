@@ -1239,7 +1239,6 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                             text-align: center;
                           }
                       data-icon-name="More"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2092,7 +2091,6 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                             text-align: center;
                           }
                       data-icon-name="More"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",

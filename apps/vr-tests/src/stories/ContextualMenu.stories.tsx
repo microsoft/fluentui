@@ -306,7 +306,6 @@ storiesOf('ContextualMenu', module)
   ));
 
 storiesOf('ContextualMenu', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()

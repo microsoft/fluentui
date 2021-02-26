@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utils';
-import { ColorTokens, SizeValue } from '@fluentui/react-theme-provider/lib/compat/index';
+import { ComponentProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Card}
@@ -17,7 +16,7 @@ export type CardProps = ComponentProps &
     centered?: boolean;
 
     /** A card can be sized. */
-    size?: SizeValue;
+    size?: 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
     /** A card can take up the width and height of its container. */
     block?: boolean;
@@ -49,54 +48,3 @@ export type CardProps = ComponentProps &
 export interface CardState extends CardProps {
   ref: React.RefObject<HTMLDivElement>;
 }
-
-type SizeRelatedTokens = {
-  borderRadius?: string;
-  height?: string;
-  margin?: string;
-  padding?: string;
-  width?: string;
-};
-
-type StateChangeRelatedTokens = {
-  borderWidth?: string;
-  boxShadow?: string;
-  cursor?: string;
-};
-
-/**
- * {@docCategory Card}
- */
-export type CardTokens = ColorTokens &
-  SizeRelatedTokens &
-  StateChangeRelatedTokens & {
-    borderStyle?: string;
-    minHeight?: string;
-    minWidth?: string;
-
-    /* sizing */
-    size?: {
-      smallest?: SizeRelatedTokens;
-      smaller?: SizeRelatedTokens;
-      small?: SizeRelatedTokens;
-      medium?: SizeRelatedTokens;
-      large?: SizeRelatedTokens;
-      larger?: SizeRelatedTokens;
-      largest?: SizeRelatedTokens;
-    };
-
-    disabled?: StateChangeRelatedTokens;
-    hovered?: StateChangeRelatedTokens;
-    pressed?: StateChangeRelatedTokens;
-    selected?: StateChangeRelatedTokens;
-  };
-
-/**
- * {@docCategory Card}
- */
-export type CardVariants<TTokens = CardTokens> = {
-  root?: TTokens;
-  onClick?: TTokens;
-  compact?: TTokens;
-  block?: TTokens;
-};

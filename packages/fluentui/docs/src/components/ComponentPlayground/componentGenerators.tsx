@@ -56,7 +56,12 @@ export const Card: KnobComponentGenerators<CardProps> = {
         [
           <_CardHeader key="header">
             <_Flex gap="gap.small">
-              <_Avatar image="public/images/avatar/small/matt.jpg" label={jobTitle} name={name} status="unknown" />
+              <_Avatar
+                image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+                label={jobTitle}
+                name={name}
+                status="unknown"
+              />
               <_Flex column>
                 <_Text content={name} weight="bold" />
                 <_Text content={jobTitle} size="small" />

@@ -27,6 +27,8 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     }
   >
     <svg
+      aria-hidden="true"
+      focusable="false"
       viewBox="0,0,2048,2048"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -68,6 +70,8 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     }
   >
     <svg
+      aria-hidden="true"
+      focusable="false"
       viewBox="0,0,2048,2048"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -81,7 +85,6 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
-    aria-label="Map icon"
     className=
         ms-Icon
         {
@@ -106,7 +109,6 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
           fill: pink;
         }
     data-icon-name="borderblinds-svg"
-    role="img"
     style={
       Object {
         "fontFamily": undefined,
@@ -114,6 +116,9 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     }
   >
     <svg
+      aria-labelledby="map-title"
+      focusable="false"
+      role="img"
       style={
         Object {
           "marginLeft": "calc(50% - 0.5em)",
@@ -121,6 +126,11 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
       }
       viewBox="0 0 40 40"
     >
+      <title
+        id="map-title"
+      >
+        Map
+      </title>
       <g
         transform="scale(0.03125 0.03125)"
       >

@@ -275,6 +275,10 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
         toFocusIndex = searchByFirstChar(0, starIndex - 1, e.key);
       }
 
+      if (toFocusIndex === -1) {
+        return idToStartSearch;
+      }
+
       return visibleItemIds[toFocusIndex];
     },
     [searchByFirstChar, visibleItemIds],
