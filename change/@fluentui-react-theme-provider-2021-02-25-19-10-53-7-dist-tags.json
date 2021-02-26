@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+  "packageName": "@fluentui/react-theme-provider",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-02-26T03:10:53.826Z"
+}
