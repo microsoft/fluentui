@@ -1740,7 +1740,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         opacity: 1;
       }
   data-automationid="DetailsRow"
-  data-focuszone-id="FocusZone12"
+  data-focuszone-id="FocusZone14"
   data-is-focusable={true}
   data-item-index={0}
   data-selection-index={0}
@@ -1806,6 +1806,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   >
     <div
       aria-checked={false}
+      aria-labelledby="checkbox12 rowHeader13"
       className=
           ms-DetailsRow-check
           ms-Check-checkHost
@@ -1854,6 +1855,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
       data-automationid="DetailsRowCheck"
       data-selection-toggle={true}
+      id="checkbox12"
       role="checkbox"
     >
       <div
