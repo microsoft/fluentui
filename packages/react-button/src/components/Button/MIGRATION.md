@@ -6,6 +6,16 @@ This Migration guide is a work in progress and is not yet ready for use.
 
 ## Migration from v8
 
+### Component renames
+
+Common buttons now all map to `Button`:
+
+| v8 `Button`                                      | Converged `Button`                                   |
+| ------------------------------------------------ | ---------------------------------------------------- |
+| `<DefaultButton text="Hello, world" />`          | `<Button>Hello, world</Button>`                      |
+| `<PrimaryButton text="Hello, world" />`          | `<Button primary>Hello, world</Button>`              |
+| `<IconButton iconProps={{ iconName: 'Add' }} />` | `<Button subtle icon={ <Icon iconName="Add" /> } />` |
+
 ### Props that remain as is
 
 - `children`
@@ -178,3 +188,69 @@ This Migration guide is a work in progress and is not yet ready for use.
 | `toggle`                           |                     |                     |
 | `toggled`                          |                     |                     |
 | `uniqueId`                         |                     |                     |
+
+### Component renames
+
+Common buttons now all map to `Button`:
+
+| Old                                              | New                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------- |
+| `<DefaultButton text="Hello, world" />`          | `<Button>Hello, world</Button>`                               |
+| `<PrimaryButton text="Hello, world" />`          | `<Button primary>Hello, world</Button>`                       |
+| `<IconButton iconProps={{ iconName: 'Add' }} />` | `<Button iconOnly subtle icon={ <Icon iconName="Add" /> } />` |
+
+### Toggle buttons
+
+The `ToggleButton` component is an extension of the `Button` and has been separated out to reduce bundle size and performance overhead. The `ToggleButton` respects a `checked` or `defaultChecked` flag.
+
+```jsx
+const App = () => {
+  const [isChecked, setChecked] = React.useState(false);
+
+  return (
+    <ToggleButton checked={checked} onClick={() => setChecked(!isChecked)}>
+      {checked ? 'Pause' : 'Play'}
+    </ToggleButton>
+  );
+};
+```
+
+### Menu buttons
+
+The `MenuButton` component is an extension of the `Button` and has been separated out to reduce bundle size and performance overhead. The `MenuButton` takes in a `menu` prop to provide the menu:
+
+```jsx
+const App = () => {
+  const [ isChecked, setChecked ] = React.useState(false);
+
+  return (
+    <MenuButton
+      iconOnly
+      circular
+      subtle
+      icon={ <EllipsisIcon /> }
+      menu={
+        items: [
+          { key: 'a', ... }
+        ]
+      }
+   />
+  );
+}
+```
+
+### Split menu buttons
+
+The `SplitButton` is now its own component, instead of being baked into the `Button` component itself. This helps to overall reduce the default `Button` complexity, runtime overhead, and bundle size:
+
+Before:
+
+```jsx
+<PrimaryButton split onClick={ () => alert('action')} menuProps={{ items: [ ... ] }} text="Hello, world" />
+```
+
+After:
+
+```jsx
+<SplitButton primary onClick={ () => alert('action')} menu={{ items: [ ... ] }} />
+```
