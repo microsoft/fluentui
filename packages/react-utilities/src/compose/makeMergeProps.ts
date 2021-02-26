@@ -1,7 +1,60 @@
-import { ax } from '@fluentui/react-make-styles';
 import * as React from 'react';
 
 import { GenericDictionary } from './types';
+
+/**
+ * Dictionary of booleans.
+ *
+ * @internal
+ */
+interface IDictionary {
+  [className: string]: boolean;
+}
+
+/**
+ * Serializable object.
+ *
+ * @internal
+ */
+interface ISerializableObject {
+  toString?: () => string;
+}
+
+/**
+ * css input type.
+ *
+ * @internal
+ */
+type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
+
+/**
+ * Concatination helper, which can merge class names together. Skips over falsey values.
+ *
+ * @public
+ */
+function css(...args: ICssInput[]): string {
+  let classes = [];
+
+  for (let arg of args) {
+    if (arg) {
+      if (typeof arg === 'string') {
+        classes.push(arg);
+      } else if (arg.hasOwnProperty('toString') && typeof arg.toString === 'function') {
+        classes.push(arg.toString());
+      } else {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        for (let key in arg as any) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          if ((arg as any)[key]) {
+            classes.push(key);
+          }
+        }
+      }
+    }
+  }
+
+  return classes.join(' ');
+}
 
 export type MergePropsOptions = {
   /**
@@ -52,7 +105,7 @@ export const makeMergeProps = <TState = GenericDictionary>(options: MergePropsOp
             } else if (propName === 'className') {
               if (propValue) {
                 // for classnames, append
-                target[propName] = ax(target[propName], propValue);
+                target[propName] = css(target[propName], propValue);
               }
             } else {
               target[propName] = propValue;
