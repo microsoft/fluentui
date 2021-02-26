@@ -5,52 +5,91 @@ import { ObjectShorthandProps } from '@fluentui/react-utilities';
 export type ButtonProps = ComponentProps &
   React.ButtonHTMLAttributes<HTMLElement> & {
     /**
-     * Shorthand icon. A shorthand prop can be a literal, object, or
-     * JSX. The `children` prop of the object can be a render function,
-     * taking in the original slot component and props.
+     * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
+     * `iconPosition` prop.
      */
     icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
-    // TODO: children needs a new typing to handle render functions along with hook updates for children functionality
-    // children?: ???;
+    // /**
+    //  * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag
+    //  * is set to `true`.
+    //  */
+    // loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
-    // /** A button can appear circular. */
+    /**
+     * Click handler for the button.
+     */
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+
+    // /**
+    //  * A button can fill the width of its container.
+    //  * @defaultvalue false
+    //  */
+    // block?: boolean;
+
+    // /**
+    //  * A button can have completely rounded corners.
+    //  * @defaultvalue false
+    //  */
     // circular?: boolean;
 
-    /** A button can show that it cannot be interacted with. */
+    /**
+     * A button can show that it cannot be interacted with.
+     * @defaultvalue false
+     */
     disabled?: boolean;
 
     // /**
-    // eslint-disable-next-line @fluentui/max-len
-    //  * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
-    //  * important to keep a consistent tab order for screen reader and keyboard users.
+    //  * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it
+    //  * is important to keep a consistent tab order for screen reader and keyboard users.
     //  * @defaultvalue false
     //  */
     // disabledFocusable?: boolean;
 
-    // /** A button can fill the width of its container. */
-    // block?: boolean;
-
-    /** A button can contain only an icon. */
-    iconOnly?: boolean;
-
-    /** An icon button can format its icon to appear before or after its content. */
+    /**
+     * A button can format its icon to appear before or after its content.
+     * @defaultvalue 'before'
+     */
     iconPosition?: 'before' | 'after';
 
-    // /** A button can show a loading indicator. */
+    // /**
+    //  * A button can show a loading indicator if it is waiting for another action to happen before allowing itself to
+    //  * be interacted with.
+    //  * @defaultvalue false
+    //  */
     // loading?: boolean;
 
-    /** A button can emphasize that it represents the primary action. */
+    // /**
+    //  * A button can be styled such that it has no background styling and is just emphasized through the styling of
+    //  * its content and borders.
+    //  * @defaultvalue false
+    //  */
+    // outline?: boolean;
+
+    /**
+     * A button can be styled to emphasize that it represents the primary action.
+     * @defaultvalue false
+     */
     primary?: boolean;
 
-    // /** A button can blend into its background to become less emphasized. */
+    /**
+     * A button supports different sizes.
+     * @defaultvalue 'medium'
+     */
+    size?: 'small' | 'medium' | 'large';
+
+    // /**
+    //  * A button can be styled to blend into its background and become less emphasized.
+    //  * @defaultvalue false
+    //  */
     // subtle?: boolean;
 
-    // /** A button can have no background styling and just be emphasized through its content styling. */
+    // /**
+    //  * A button can be styled such that it has no background or border styling and is just emphasized through its
+    //  * content styling.
+    //  * @defaultvalue false
+    //  */
     // transparent?: boolean;
-
-    /** A button can be sized. */
-    size?: 'small' | 'large';
   };
 
 /**

@@ -36,15 +36,40 @@ Basic examples:
 
 ## Variants
 
-### Default vs inline
+### Visual appearance
 
-A `Button` has two decoration variants depending on where it's used.
+The `Button` component has five decoration variants depending on where it's being used:
 
-By `default`, the `Button` should be limited to homogeneous surface areas where everything is clickable in the space and should appear as lacking an underline.
+- `Default`: The `Button` is rendered with its default styling indicating a trigger for an action.
+- `Outline`: The `Button` is styled such that it has no background styling and is just emphasized through the styling of its content and borders.
+- `Primary`: The `Button` is styled to emphasize that it represents the primary action.
+- `Subtle`: The `Button` is styled to blend into its background to become less emphasized.
+- `Transparent`: The `Button` is styled such that it has no background or border styling and is just emphasized through its content styling.
 
-A second `inline` variant is provided for scenarios where body text is going to be used alongside a `Button`. This variant adds an underline to add a separate visual distinction in addition to color for contrast purposes.
+### Icon
 
-### Anchor vs button
+The `Button` component can include an `icon` that appears before or after its `children`. If an `icon` is provided without any `children`, then the `Button` becomes an icon-only `Button`.
+
+_Question #1: What do we think about the inclusion of two icons? It's included in the desing spec but we can push back as necessary._
+_Question #2: Should the `iconOnly` behavior be provided by default as specified above or should there be a separate `iconOnly` flag._
+
+### Circular
+
+The `Button` component can have completely rounded corners as opposed to the default slightly rounded ones.
+
+### Sizes
+
+The `Button` component supports different sizing with at least three different sizes: `small`, `medium` (default) and `large`.
+
+### Block
+
+The `Button` component can completely fill the width of its container.
+
+### Loading
+
+The `Button` component can be loading if it's waiting for another action to occur before allowing itself to be interacted with.
+
+### Button vs anchor
 
 A `Button` renders as different HTML tags depending on the whether a value has been passed for the `href` property or not. If a value has been passed to the `href` property, then the `Button` renders as an `<a>` HTML tag. Conversely, if the `href` property is left `undefined` the `Button` renders as a `<button>` HTML tag.
 
@@ -55,40 +80,45 @@ The `Button` can also be custom rendered as something entirely different by repl
 ### Slots
 
 - `root` - The outer container representing the `Button` itself that wraps everything passed via the `children` prop.
+- `icon` - If specified, renders an `icon` either before or after the `children` as specified by the `iconPosition` prop.
+- `loader` - If specified, renders a `loader` before the `icon` and `children` while the `loading` flag is set to `true`.
 
 ### Props
 
 ```ts
 export type ButtonProps = ComponentProps &
-  React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
-  Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
+  React.ButtonHTMLAttributes<HTMLElement> & {
     /**
-     * URL the button points to. If not provided, the button renders as a button (unless that behavior is
-     * overridden using `as`).
+     * Icon slot that, if specified, renders an icon either before or after the `children` as specified by the
+     * `iconPosition` prop.
      */
-    href?: string;
+    icon?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
     /**
-     * Where to open the buttoned URL. Common values are `_blank` (a new tab or window),
-     * `_self` (the current window/context), `_parent`, and `_top`.
-     * This prop is only applied if `href` is set.
+     * Loader slot that, if specified, renders a `loader` before the `icon` and `children` while the `loading` flag is
+     * set to `true`.
      */
-    target?: string;
-
-    /**
-     * Relationship to the buttoned URL (can be a space-separated list).
-     * Most common values are `noreferrer` and/or `noopener`.
-     * This prop is only applied if `href` is set.
-     */
-    rel?: string;
+    loader?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
 
     /**
      * Click handler for the button.
      */
-    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 
     /**
-     * Whether the button is disabled.
+     * A button can fill the width of its container.
+     * @defaultvalue false
+     */
+    block?: boolean;
+
+    /**
+     * A button can have completely rounded corners.
+     * @defaultvalue false
+     */
+    circular?: boolean;
+
+    /**
+     * A button can show that it cannot be interacted with.
      * @defaultvalue false
      */
     disabled?: boolean;
@@ -101,71 +131,98 @@ export type ButtonProps = ComponentProps &
     disabledFocusable?: boolean;
 
     /**
-     * Built-in HTML attribute with different behavior depending on how the button is rendered.
-     * If rendered as `<a>`, hints at the MIME type.
-     * If rendered as `<button>`, override the type of button (`button` is the default).
+     * A button can format its icon to appear before or after its content.
+     * @defaultvalue 'before'
      */
-    type?: string;
+    iconPosition?: 'before' | 'after';
 
     /**
-     * If true, changes styling when the button is being used alongside other text content.
+     * A button can show a loading indicator if it is waiting for another action to happen before allowing itself to be
+     * interacted with.
+     * @defaultvalue false
      */
-    inline?: boolean;
+    loading?: boolean;
 
-    /** Style tokens */
-    tokens?: RecursivePartial<ButtonTokens>;
+    /**
+     * A button can be styled such that it has no background styling and is just emphasized through the styling of its
+     * content and borders.
+     * @defaultvalue false
+     */
+    outline?: boolean;
+
+    /**
+     * A button can be styled to emphasize that it represents the primary action.
+     * @defaultvalue false
+     */
+    primary?: boolean;
+
+    /**
+     * A button supports different sizes.
+     * @defaultvalue 'medium'
+     */
+    size?: 'small' | 'medium' | 'large';
+
+    /**
+     * A button can be styled to blend into its background and become less emphasized.
+     * @defaultvalue false
+     */
+    subtle?: boolean;
+
+    /**
+     * A button can be styled such that it has no background or border styling and is just emphasized through its
+     * content styling.
+     * @defaultvalue false
+     */
+    transparent?: boolean;
   };
 ```
 
 ### Styling Tokens
 
-```tsx
-export type ButtonTokenSet = ColorTokens &
-  FontTokens & {
-    // The text decoration used for the button in its default state.
-    textDecoration?: string;
-
-    // The set of color tokens that are applied when the button has been visited.
-    visited?: ColorTokenSet;
-
-    // The text decoration used for the button when it is being focused.
-    focused?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the button when it is being hovered.
-    hovered?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the button when it is being pressed.
-    pressed?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the button when it is in a disabled state.
-    disabled?: {
-      textDecoration: string;
-    };
-  };
-```
+TBD once we decide on component tokens work.
 
 ## Structure
 
-For `Buttons` rendering as `<a>`:
+For `Buttons` rendering as `<button>`:
+
+_Icon before children:_
 
 ```tsx
-<a class="root" href={href}>
-  {children}
-</a>
-```
-
-For `Buttons` rendering as anything other than `<a>` (the example below uses `<button>`):
-
-```tsx
-<button class="root" role="button">
+<button class="root" href={href}>
+  <span class="loader" />
+  <span class="icon" />
   {children}
 </button>
+```
+
+_Icon after children:_
+
+```tsx
+<button class="root" href={href}>
+  <span class="loader" />
+  {children}
+  <span class="icon" />
+</button>
+```
+
+For `Buttons` rendering as anything other than `<button>` (the example below uses `<div>`):
+
+```tsx
+<div class="root" href={href}>
+  <span class="loader" />
+  <span class="icon" />
+  {children}
+</div>
+```
+
+_Icon after children:_
+
+```tsx
+<div class="root" href={href}>
+  <span class="loader" />
+  {children}
+  <span class="icon" />
+</div>
 ```
 
 ## Migration
@@ -180,11 +237,11 @@ The following section describes the different states in which a `Button` can be 
 
 #### Enabled state
 
-An enabled `Button` communicates interaction by having styling that invites the user to click/tap on it to navigate through content.
+An enabled `Button` communicates interaction by having styling that invites the user to click/tap on it to trigger an action.
 
 #### Disabled state
 
-A disabled `Button` is non-interactive, disallowing the user to click/tap on it to navigate through content.
+A disabled `Button` is non-interactive, disallowing the user to click/tap on it to trigger an action.
 
 #### Hovered state
 
@@ -198,9 +255,9 @@ A focused `Button` changes styling to communicate that the user has placed keybo
 
 A pressed `Button` changes styling to communicate that the user is currently pressing it.
 
-#### Visited state
+#### Loading state
 
-A visited `Button` changes styling to communicate that the user has already interacted with it so its referenced content has already been accessed in the past.
+A loading `Button` renders a `loader` before all the other content to indicate that it is waiting for another action before allowing itself to be interacted with.
 
 ### Interaction
 
@@ -208,10 +265,10 @@ A visited `Button` changes styling to communicate that the user has already inte
 
 The following is a set of keys that interact with the `Button` component:
 
-| Key                      | Description                                              |
-| ------------------------ | -------------------------------------------------------- |
-| `Enter`                  | Executes the `Button` and moves focus to the its target. |
-| `Shift + F10` (Optional) | Opens a context menu for the `Button`.                   |
+| Key                      | Description                            |
+| ------------------------ | -------------------------------------- |
+| `Enter`                  | Executes the `Button` action.          |
+| `Shift + F10` (Optional) | Opens a context menu for the `Button`. |
 
 #### Cursor interaction
 
@@ -234,6 +291,6 @@ The same behavior as above translated for touch events. This means that there is
 
 ### Expected behavior
 
-- Should default to render a native `a` element unless something else has been specified for the `root` slot, in which case `role="button"` should be added to it.
-- Should mix in the native props expected for the `a` native element.
+- Should default to render a native `button` element unless something else has been specified for the `root` slot, in which case `role="button"` should be added to it.
+- Should mix in the native props expected for the `button` native element.
 - Should be keyboard tabbable and focusable.

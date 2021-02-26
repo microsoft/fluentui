@@ -65,11 +65,9 @@ export type LinkProps = ComponentProps &
     href?: string;
 
     /**
-     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
-     * `_self` (the current window/context), `_parent`, and `_top`.
-     * This prop is only applied if `href` is set.
+     * Click handler for the link.
      */
-    target?: string;
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
 
     /**
      * Relationship to the linked URL (can be a space-separated list).
@@ -79,9 +77,18 @@ export type LinkProps = ComponentProps &
     rel?: string;
 
     /**
-     * Click handler for the link.
+     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
+     * `_self` (the current window/context), `_parent`, and `_top`.
+     * This prop is only applied if `href` is set.
      */
-    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+    target?: string;
+
+    /**
+     * Built-in HTML attribute with different behavior depending on how the link is rendered.
+     * If rendered as `<a>`, hints at the MIME type.
+     * If rendered as `<button>`, override the type of button (`button` is the default).
+     */
+    type?: string;
 
     /**
      * Whether the link is disabled.
@@ -97,54 +104,16 @@ export type LinkProps = ComponentProps &
     disabledFocusable?: boolean;
 
     /**
-     * Built-in HTML attribute with different behavior depending on how the link is rendered.
-     * If rendered as `<a>`, hints at the MIME type.
-     * If rendered as `<button>`, override the type of button (`button` is the default).
-     */
-    type?: string;
-
-    /**
      * If true, changes styling when the link is being used alongside other text content.
+     * @defaultvalue false
      */
     inline?: boolean;
-
-    /** Style tokens */
-    tokens?: RecursivePartial<LinkTokens>;
   };
 ```
 
 ### Styling Tokens
 
-```tsx
-export type LinkTokenSet = ColorTokens &
-  FontTokens & {
-    // The text decoration used for the link in its default state.
-    textDecoration?: string;
-
-    // The set of color tokens that are applied when the link has been visited.
-    visited?: ColorTokenSet;
-
-    // The text decoration used for the link when it is being focused.
-    focused?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the link when it is being hovered.
-    hovered?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the link when it is being pressed.
-    pressed?: {
-      textDecoration: string;
-    };
-
-    // The text decoration used for the link when it is in a disabled state.
-    disabled?: {
-      textDecoration: string;
-    };
-  };
-```
+TBD once we decide on component tokens work.
 
 ## Structure
 
@@ -204,10 +173,10 @@ A visited `Link` changes styling to communicate that the user has already intera
 
 The following is a set of keys that interact with the `Link` component:
 
-| Key                      | Description                                            |
-| ------------------------ | ------------------------------------------------------ |
-| `Enter`                  | Executes the `Link` and moves focus to the its target. |
-| `Shift + F10` (Optional) | Opens a context menu for the `Link`.                   |
+| Key                      | Description                                        |
+| ------------------------ | -------------------------------------------------- |
+| `Enter`                  | Executes the `Link` and moves focus to its target. |
+| `Shift + F10` (Optional) | Opens a context menu for the `Link`.               |
 
 #### Cursor interaction
 
