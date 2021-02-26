@@ -3948,6 +3948,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     rowClassNames: {
         [k in keyof Pick<IDetailsRowStyles, 'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'>]: string;
     };
+    rowHeaderId: string;
 }
 
 // @public (undocumented)
