@@ -79,7 +79,7 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      npm run publish:beachball -- -b origin/6.0 -t lts -n $(npmToken) --access public -y
+      npm run publish:beachball -- -b origin/6.0 -t lts-6 -n $(npmToken) --access public -y
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
