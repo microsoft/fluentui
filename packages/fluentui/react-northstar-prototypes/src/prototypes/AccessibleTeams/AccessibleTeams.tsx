@@ -129,17 +129,18 @@ const AccessibleTeams: React.FunctionComponent = () => {
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
 
       <div>
-        <h1>Prototype #1 - Landmarks removal and headings changes (recommended variant)</h1>
+        <h1>Prototype #1 - Landmarks reduction and headings changes (recommended variant)</h1>
 
         <button>Back</button>
 
-        <input
-          type="text"
+        <div
           role="combobox"
           aria-controls=""
           aria-expanded="false"
           aria-label="Look for messages, files, and more. Or type / for a list of commands."
-        />
+        >
+          <input type="text" />
+        </div>
 
         <button aria-haspopup="true" aria-describedby="profile-desc">
           Profile, app settings, and more.
@@ -214,7 +215,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <button>Pop out chat</button>
 
         <div
-          role="group"
+          role="main"
           aria-label="Chat content"
           onFocus={handleFocus}
           onBlur={handleBlur}
@@ -255,13 +256,14 @@ const AccessibleTeams: React.FunctionComponent = () => {
 
         <button>Back</button>
 
-        <input
-          type="text"
+        <div
           role="combobox"
           aria-controls=""
           aria-expanded="false"
           aria-label="Look for messages, files, and more. Or type / for a list of commands."
-        />
+        >
+          <input type="text" />
+        </div>
 
         <button aria-haspopup="true" aria-describedby="profile-desc">
           Profile, app settings, and more.
@@ -334,7 +336,7 @@ const AccessibleTeams: React.FunctionComponent = () => {
         <button>Pop out chat</button>
 
         <div
-          role="region"
+          role="main"
           aria-label="Chat content"
           onFocus={handleFocus}
           onBlur={handleBlur}

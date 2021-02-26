@@ -165,7 +165,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       </ul>
 
       <h2>role="tablist"</h2>
-      <div role="tablist" onFocus={handleFocus} onBlur={handleBlur}>
+      <div role="tablist" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button role="tab" className="item" tabIndex={0} aria-selected="false">
           Activities
         </button>
@@ -193,7 +193,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       </ul>
 
       <h2>role="menu"</h2>
-      <div role="menu" onFocus={handleFocus} onBlur={handleBlur}>
+      <div role="menu" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button role="menuitem" className="item" tabIndex={0}>
           Activities
         </button>
@@ -226,7 +226,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       </ul>
 
       <h2>&lt;li&gt; items</h2>
-      <ul onFocus={handleFocus} onBlur={handleBlur}>
+      <ul aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <li>
           <button className="item" tabIndex={0} aria-pressed="false">
             Activities
@@ -277,12 +277,13 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <ul>
         <li>
           When entering the navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation
-          landmark" after narrating the label but before narrating the focused navigation bar item. Since the label we
-          want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is rejected.
+          landmark" after narrating the aria-label but before narrating the focused navigation bar item. Since the
+          aria-label we want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is
+          rejected.
         </li>
         <li>
-          Narrator does not read this landmark in any way, it just reads its aria-label. So this is another reason to
-          reject this variant.
+          However, if the &lt;nav&gt; element is the only &lt;nav&gt; element in the app, and the aria-label is not
+          provided, this variant might also be a good solution and is therefore the secondary recommended variant.
         </li>
       </ul>
 
@@ -305,7 +306,8 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>
-          This variant behaves the same way as the &lt;nav&gt; element variant, so it is rejected for the same reasons.
+          This variant behaves the same way as the &lt;nav&gt; element variant above, so the conclusions are the same as
+          above.
         </li>
       </ul>
 
@@ -328,16 +330,17 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>
-          When entering the navigation bar content, both JAWS and NVDA announce "region after narrating the label but
-          before narrating the focused navigation bar item.
+          When entering the navigation bar content, both JAWS and NVDA announce "region after narrating the aria-label
+          but before narrating the focused navigation bar item.
         </li>
         <li>
-          JAWS in the virtual cursor mode behaves as if the "region" role was not present on the navigation bar
-          elemente, so this variant is rejected.
+          JAWS in the virtual cursor mode behaves as if the "region" role and aria-label were not present on the
+          navigation bar elemente, which is probably a bug, but it is enough for this variant to be rejected (at least
+          until the bug is resolved).
         </li>
       </ul>
 
-      <h2>aria-label only</h2>
+      <h2>No role</h2>
       <div aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -360,7 +363,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
       </ul>
 
-      <h2>role="group" and aria-label (accepted variant)</h2>
+      <h2>role="group" (accepted variant)</h2>
       <div role="group" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -410,11 +413,11 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <ul>
         <li>
           NVDA sometimes (could not reproduce when) does not narrate the aria-label when entering the navigation bar
-          content. However, it does narrate it when in the forms mode.
+          content. However, it does narrate it when in the forms mode. \y\y{' '}
         </li>
         <li>
           When entering the navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating
-          the label but before narrating the navigation bar item.
+          the aria-label but before narrating the navigation bar item.
         </li>
         <li>This variant is accepted as the best solution.</li>
       </ul>
