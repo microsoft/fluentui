@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/web-components_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update beachball config",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/web-components_v0.14.2",
       "version": "0.14.2",
