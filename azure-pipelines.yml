@@ -26,7 +26,7 @@ jobs:
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
-        displayName: yarn
+        displayName: yarn (install packages)
 
       - script: |
           yarn checkchange
