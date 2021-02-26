@@ -292,7 +292,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         >
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={classNames.text}>
+            <div className={classNames.text} role="presentation">
               {items.length > 0 && (
                 <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
                   {this.renderItems()}
