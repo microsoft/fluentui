@@ -107,71 +107,71 @@ export type ButtonProps = ComponentProps &
 
     /**
      * A button can fill the width of its container.
-     * @defaultvalue false
+     * @default false
      */
     block?: boolean;
 
     /**
      * A button can have completely rounded corners.
-     * @defaultvalue false
+     * @default false
      */
     circular?: boolean;
 
     /**
      * A button can show that it cannot be interacted with.
-     * @defaultvalue false
+     * @default false
      */
     disabled?: boolean;
 
     /**
      * When set, allows the button to be focusable even when it has been disabled. This is used in scenarios where it is
      * important to keep a consistent tab order for screen reader and keyboard users.
-     * @defaultvalue false
+     * @default false
      */
     disabledFocusable?: boolean;
 
     /**
      * A button can format its icon to appear before or after its content.
-     * @defaultvalue 'before'
+     * @default 'before'
      */
     iconPosition?: 'before' | 'after';
 
     /**
      * A button can show a loading indicator if it is waiting for another action to happen before allowing itself to be
      * interacted with.
-     * @defaultvalue false
+     * @default false
      */
     loading?: boolean;
 
     /**
      * A button can be styled such that it has no background styling and is just emphasized through the styling of its
      * content and borders.
-     * @defaultvalue false
+     * @default false
      */
     outline?: boolean;
 
     /**
      * A button can be styled to emphasize that it represents the primary action.
-     * @defaultvalue false
+     * @default false
      */
     primary?: boolean;
 
     /**
      * A button supports different sizes.
-     * @defaultvalue 'medium'
+     * @default 'medium'
      */
     size?: 'small' | 'medium' | 'large';
 
     /**
      * A button can be styled to blend into its background and become less emphasized.
-     * @defaultvalue false
+     * @default false
      */
     subtle?: boolean;
 
     /**
      * A button can be styled such that it has no background or border styling and is just emphasized through its
      * content styling.
-     * @defaultvalue false
+     * @default false
      */
     transparent?: boolean;
   };

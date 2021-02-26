@@ -92,26 +92,26 @@ export type LinkProps = ComponentProps &
 
     /**
      * Whether the link is disabled.
-     * @defaultvalue false
+     * @default false
      */
     disabled?: boolean;
 
     /**
      * When set, allows the link to be focusable even when it has been disabled. This is used in scenarios where it is
      * important to keep a consistent tab order for screen reader and keyboard users.
-     * @defaultvalue false
+     * @default false
      */
     disabledFocusable?: boolean;
 
     /**
      * If true, changes styling when the link is being used alongside other text content.
-     * @defaultvalue false
+     * @default false
      */
     inline?: boolean;
 
     /**
      * If true, changes the link styling to emphasize that it represents an alternative action.
-     * @defaultvalue false
+     * @default false
      */
     secondary?: boolean;
   };
