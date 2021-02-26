@@ -1,5 +1,7 @@
 import * as React from 'react';
-
+// TODO
+// getId() is a temporary approach, useId() should be reimplemented to properly support SSR & scenarios with
+// different globals (document, window)
 let id = 0;
 
 export function getId(prefix?: string): string {
