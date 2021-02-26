@@ -1,8 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(react-internal): Autofill add string type check and throw",
-  "packageName": "@fluentui/react-internal",
-  "email": "hantatsang@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2021-01-23T02:54:16.408Z"
-}
