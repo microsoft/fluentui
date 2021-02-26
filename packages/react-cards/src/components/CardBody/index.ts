@@ -1,2 +1,2 @@
 export * from './CardBody';
-export * from './useCardBodyClasses';
+export * from './useCardBodyStyles';

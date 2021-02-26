@@ -1,2 +1,2 @@
 export * from './CardHeader';
-export * from './useCardHeaderClasses';
+export * from './useCardHeaderStyles';

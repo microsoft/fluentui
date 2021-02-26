@@ -982,7 +982,6 @@ exports[`Dialog deprecated props renders Dialog with isBlocking set to true 1`] 
                               text-align: center;
                             }
                         data-icon-name="Cancel"
-                        role="presentation"
                         style={
                           Object {
                             "fontFamily": "\\"FabricMDL2Icons\\"",

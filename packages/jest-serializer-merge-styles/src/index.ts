@@ -1,5 +1,4 @@
 import { Stylesheet } from '@fluentui/merge-styles';
-import './version';
 
 /**
  * Jest serialize function which takes in a given (className) value, a serialize function, and

@@ -127,7 +127,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const updateValue = (valueProp: number, renderedValueProp: number): void => {
-    const snapToStep = props;
+    const { snapToStep } = props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {

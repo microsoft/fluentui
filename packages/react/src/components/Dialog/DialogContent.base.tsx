@@ -4,7 +4,7 @@ import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogConte
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
 import { IDialogFooterProps } from './DialogFooter.types';
-import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { withResponsiveMode } from '../../ResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogContentStyles>();
 
@@ -12,6 +12,7 @@ const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooter
 
 const COMPONENT_NAME = 'DialogContent';
 
+// eslint-disable-next-line deprecation/deprecation
 @withResponsiveMode
 export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {

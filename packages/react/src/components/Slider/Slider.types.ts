@@ -9,6 +9,8 @@ export interface ISlider {
   value: number | undefined;
 
   focus: () => void;
+
+  range?: [number, number];
 }
 
 /**
@@ -51,6 +53,18 @@ export interface ISliderProps
   value?: number;
 
   /**
+   * The initial lower value of the Slider is ranged is true. Use this if you intend for the Slider to be an
+   * uncontrolled component. This value is mutually exclusive to lowerValue. Use one or the other.
+   */
+  defaultLowerValue?: number;
+
+  /**
+   * The initial lower value of the Slider is ranged is true. Use this if you intend to pass in a new value as a
+   * result of onChange events. This value is mutually exclusive to defaultLowerValue. Use one or the other.
+   */
+  lowerValue?: number;
+
+  /**
    * The min value of the Slider
    * @defaultvalue 0
    */
@@ -75,9 +89,10 @@ export interface ISliderProps
   showValue?: boolean;
 
   /**
-   * Callback when the value has been changed
+   * Callback when the value has been changed.
+   * If `ranged` is true, `value` is the upper value, and `range` contains the lower and upper bounds of the range.
    */
-  onChange?: (value: number) => void;
+  onChange?: (value: number, range?: [number, number]) => void;
 
   /**
    * Callback on mouse up or touch end
@@ -90,10 +105,17 @@ export interface ISliderProps
   ariaLabel?: string;
 
   /**
+   * If `ranged` is true, display two thumbs that allow the lower and upper bounds of a range to be selected.
+   * The lower bound is defined by `lowerValue`, and the upper bound is defined by `value`.
+   */
+  ranged?: boolean;
+
+  /**
    * A text description of the Slider number value for the benefit of screen readers.
    * This should be used when the Slider number value is not accurately represented by a number.
    */
   ariaValueText?: (value: number) => string;
+
   /**
    * Whether to render the slider vertically.
    * @default `false` (render horizontally)
@@ -138,7 +160,7 @@ export interface ISliderProps
  * {@docCategory Slider}
  */
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
-  Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
+  Pick<ISliderProps, 'className' | 'disabled' | 'vertical' | 'ranged'> & {
     showTransitions?: boolean;
     showValue?: boolean;
     titleLabelClassName?: string;

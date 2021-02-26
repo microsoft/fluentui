@@ -1,8 +1,91 @@
 # Change Log - @fluentui/react-flex
 
-This log was last generated on Mon, 15 Feb 2021 12:22:00 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.8)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.7..@fluentui/react-flex_v0.2.8)
+
+### Patches
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-compose to v1.0.0-beta.17 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.7)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.6..@fluentui/react-flex_v0.2.7)
+
+### Patches
+
+- remove dependency on react-theme-provider/compat ([PR #17175](https://github.com/microsoft/fluentui/pull/17175) by olfedias@microsoft.com)
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.6)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.6..@fluentui/react-flex_v0.2.6)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.2 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.6)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.5..@fluentui/react-flex_v0.2.6)
+
+### Patches
+
+- bump versions for converged components to v9 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.1 ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.5)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.5..@fluentui/react-flex_v0.2.5)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.27 ([PR #17091](https://github.com/microsoft/fluentui/pull/17091) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-compose to v1.0.0-beta.16 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+- Bump @fluentui/theme to v2.0.0-beta.19 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.5)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.4..@fluentui/react-flex_v0.2.5)
+
+### Patches
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-compose to v1.0.0-beta.15 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/react-theme-provider to v1.0.0-beta.26 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+- Bump @fluentui/theme to v2.0.0-beta.18 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.4)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-flex_v0.2.4..@fluentui/react-flex_v0.2.4)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/react-compose to v1.0.0-beta.14 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/theme to v2.0.0-beta.17 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-flex_v0.2.4)
 
