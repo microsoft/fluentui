@@ -33,5 +33,8 @@
   "dependencies": {
     "@uifabric/set-version": "^7.0.23",
     "tslib": "^1.10.0"
+  },
+  "beachball": {
+    "tag": "lts-7"
   }
 }

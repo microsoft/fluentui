@@ -16,7 +16,6 @@ const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
-const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const { postprocessTask } = require('./tasks/postprocess');
@@ -79,7 +78,6 @@ module.exports = function preset() {
   task('api-extractor:update', updateApiExtractor());
   task('lint-imports', lintImports);
   task('prettier', prettier);
-  task('bundle-size-collect', bundleSizeCollect);
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('storybook:start', startStorybookTask());
