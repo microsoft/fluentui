@@ -1,4 +1,11 @@
-import { Accessibility, popupBehavior, PopupBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  popupBehavior,
+  PopupBehaviorProps,
+  getCode,
+  keyboardKey,
+  SpacebarKey,
+} from '@fluentui/accessibility';
 import {
   AutoFocusZoneProps,
   FocusTrapZoneProps,
@@ -13,7 +20,6 @@ import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
-import { getCode, keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -201,6 +207,7 @@ export const Popup: React.FC<PopupProps> &
       trapFocus,
       tabbableTrigger,
       trigger: trigger as any,
+      inline,
     }),
     rtl: context.rtl,
   });

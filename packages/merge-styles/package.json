@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/merge-styles",
-  "version": "8.0.0-beta.3",
+  "version": "8.0.1",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -21,16 +21,14 @@
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api"
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
-    "@types/jest": "~24.9.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0-beta.0",
+    "@fluentui/set-version": "^8.0.1",
     "tslib": "^1.10.0"
   }
 }

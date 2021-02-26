@@ -1,22 +1,22 @@
 import * as React from 'react';
 import { DialogBasicExample } from './Dialog.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { DialogLargeHeaderExample } from './Dialog.LargeHeader.Example';
 import { DialogBlockingExample } from './Dialog.Blocking.Example';
 import { DialogTopOffsetFixedExample } from './Dialog.TopOffsetFixed.Example';
 import { DialogModelessExample } from './Dialog.Modeless.Example';
 
-const DialogBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dialog/Dialog.Basic.Example.tsx') as string;
-const DialogLargeHeaderExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dialog/Dialog.LargeHeader.Example.tsx') as string;
-const DialogBlockingExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dialog/Dialog.Blocking.Example.tsx') as string;
-const DialogTopOffsetFixedExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dialog/Dialog.TopOffsetFixed.Example.tsx') as string;
-const DialogModelessExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/Dialog/Dialog.Modeless.Example.tsx') as string;
+const DialogBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/Dialog.Basic.Example.tsx') as string;
+const DialogLargeHeaderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/Dialog.LargeHeader.Example.tsx') as string;
+const DialogBlockingExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/Dialog.Blocking.Example.tsx') as string;
+const DialogTopOffsetFixedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/Dialog.TopOffsetFixed.Example.tsx') as string;
+const DialogModelessExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/Dialog.Modeless.Example.tsx') as string;
 
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
   componentName: 'Dialog',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Dialog',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Dialog',
   examples: [
     {
       title: 'Default Dialog',
@@ -69,8 +69,12 @@ export const DialogPageProps: IDocPageProps = {
       view: <DialogModelessExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/Dialog/docs/DialogOverview.md'),
-  bestPractices: require<string>('!raw-loader!@fluentui/react-examples/src/react/Dialog/docs/DialogBestPractices.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/docs/DialogOverview.md'),
+  bestPractices: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Dialog/docs/DialogBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

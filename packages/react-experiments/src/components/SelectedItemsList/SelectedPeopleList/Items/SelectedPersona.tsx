@@ -5,7 +5,7 @@ import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
 import { ITheme, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
-import { IconButton } from '@fluentui/react/lib/compat/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 import { IDragDropOptions } from '@fluentui/react/lib/DragDrop';
 import { useId } from '@fluentui/react-hooks';
 

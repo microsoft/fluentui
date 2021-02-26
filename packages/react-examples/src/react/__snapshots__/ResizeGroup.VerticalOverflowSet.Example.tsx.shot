@@ -89,7 +89,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -102,14 +102,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -179,7 +179,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -267,7 +266,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -280,14 +279,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -357,7 +356,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -445,7 +443,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -458,14 +456,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -535,7 +533,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Upload"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -623,7 +620,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -636,14 +633,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -713,7 +710,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -801,7 +797,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -814,14 +810,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -891,7 +887,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -979,7 +974,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -992,14 +987,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -1069,7 +1064,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Upload"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1157,7 +1151,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -1170,14 +1164,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -1247,7 +1241,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1335,7 +1328,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -1348,14 +1341,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -1425,7 +1418,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1513,7 +1505,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -1526,14 +1518,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -1603,7 +1595,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Upload"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1691,7 +1682,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -1704,14 +1695,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -1781,7 +1772,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1869,7 +1859,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -1882,14 +1872,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -1959,7 +1949,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2047,7 +2036,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -2060,14 +2049,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -2137,7 +2126,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Upload"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2225,7 +2213,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -2238,14 +2226,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -2315,7 +2303,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2403,7 +2390,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -2416,14 +2403,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -2493,7 +2480,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2581,7 +2567,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -2594,14 +2580,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -2671,7 +2657,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Upload"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2759,7 +2744,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -2772,14 +2757,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -2849,7 +2834,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2937,7 +2921,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -2950,14 +2934,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -3027,7 +3011,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3115,7 +3098,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -3128,14 +3111,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -3205,7 +3188,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Upload"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3293,7 +3275,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -3306,14 +3288,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -3383,7 +3365,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Add"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3471,7 +3452,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   top: 3px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   border: none;
                   bottom: 4px;
                   left: 4px;
@@ -3484,14 +3465,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   position: relative;
                   top: 0px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border: none;
                 }
                 &:hover {
                   background-color: #f3f2f1;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active){&:hover {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                   color: Highlight;
                 }
                 &:hover .ms-Button-icon {
@@ -3561,7 +3542,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       text-align: center;
                     }
                 data-icon-name="Share"
-                role="presentation"
                 style={
                   Object {
                     "fontFamily": "\\"FabricMDL2Icons\\"",

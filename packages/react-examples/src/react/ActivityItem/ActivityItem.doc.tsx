@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ActivityItemBasicExample } from './ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './ActivityItem.Compact.Example';
 
-const ActivityItemBasicExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Basic.Example.tsx') as string;
-const ActivityItemPersonaExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Persona.Example.tsx') as string;
-const ActivityItemCompactExampleCode = require('!raw-loader!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Compact.Example.tsx') as string;
+const ActivityItemBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Basic.Example.tsx') as string;
+const ActivityItemPersonaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Persona.Example.tsx') as string;
+const ActivityItemCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Compact.Example.tsx') as string;
 
 export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',
   componentName: 'ActivityItem',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/ActivityItem',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/ActivityItem',
   examples: [
     {
       title: 'Activity Items with Icons',
@@ -29,10 +29,12 @@ export const ActivityItemPageProps: IDocPageProps = {
       view: <ActivityItemCompactExample />,
     },
   ],
-  overview: require<string>('!raw-loader!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemOverview.md'),
   bestPractices: require<
     string
-  >('!raw-loader!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemBestPractices.md'),
+  >('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/docs/ActivityItemBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

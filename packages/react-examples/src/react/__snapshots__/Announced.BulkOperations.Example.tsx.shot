@@ -113,7 +113,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -125,18 +125,19 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             border-color: WindowText;
             color: Window;
+            forced-color-adjust: none;
           }
           &:hover {
             background-color: #106ebe;
             border: 1px solid #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             background-color: Highlight;
             border-color: Highlight;
             color: Window;
@@ -146,11 +147,12 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
             border: 1px solid #005a9e;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             border-color: WindowText;
             color: Window;
+            forced-color-adjust: none;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -467,11 +469,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                             vertical-align: middle;
                             width: 18px;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             color: WindowText;
                           }
                       data-icon-name="CircleRing"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -511,11 +512,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                           &:hover {
                             opacity: 1;
                           }
-                          @media screen and (-ms-high-contrast: active){& {
+                          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                             -ms-high-contrast-adjust: none;
+                            forced-color-adjust: none;
                           }
                       data-icon-name="StatusCircleCheckmark"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -993,11 +994,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1037,11 +1037,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1397,11 +1397,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1441,11 +1440,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1801,11 +1800,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1845,11 +1843,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2205,11 +2203,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2249,11 +2246,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2609,11 +2606,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2653,11 +2649,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3013,11 +3009,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3057,11 +3052,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3417,11 +3412,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3461,11 +3455,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3821,11 +3815,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3865,11 +3858,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4225,11 +4218,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4269,11 +4261,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4629,11 +4621,10 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       vertical-align: middle;
                                       width: 18px;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       color: WindowText;
                                     }
                                 data-icon-name="CircleRing"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4673,11 +4664,11 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                     &:hover {
                                       opacity: 1;
                                     }
-                                    @media screen and (-ms-high-contrast: active){& {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                       -ms-high-contrast-adjust: none;
+                                      forced-color-adjust: none;
                                     }
                                 data-icon-name="StatusCircleCheckmark"
-                                role="presentation"
                                 style={
                                   Object {
                                     "fontFamily": "\\"FabricMDL2Icons\\"",

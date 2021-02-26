@@ -15,6 +15,8 @@ const CustomTreeTitle = (
   </Component>
 );
 
+const itemToString = item => item.title;
+
 const VirtualStickyTreePrototype = () => {
   return (
     <div style={{ width: 400 }}>
@@ -24,6 +26,7 @@ const VirtualStickyTreePrototype = () => {
         itemSize={30}
         stickyItemSize={20}
         height={500}
+        itemToString={itemToString}
       />
     </div>
   );

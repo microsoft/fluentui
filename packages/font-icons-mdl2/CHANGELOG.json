@@ -2,6 +2,179 @@
   "name": "@fluentui/font-icons-mdl2",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release version 8",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.19",
+      "version": "8.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.19",
+            "author": "elcraig@microsoft.com",
+            "commit": "6fb020ab622a0fd18c47173d1a38eb046c7ebeaa",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.18",
+      "version": "8.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.18",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.17",
+      "version": "8.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.17",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.16",
+      "version": "8.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.16",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.15",
+      "version": "8.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.15",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.14",
+      "version": "8.0.0-beta.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.14",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.14",
+      "version": "8.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.14",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.13",
+      "version": "8.0.0-beta.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.13",
+      "version": "8.0.0-beta.13",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Clean up some prop comments and deprecated messages",
+            "author": "elcraig@microsoft.com",
+            "commit": "2e22b74a17aa6a8ce8d354730717b9517cdef7cd",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/font-icons-mdl2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 23 Oct 2020 03:26:15 GMT",
       "tag": "@fluentui/font-icons-mdl2_v8.0.0-beta.0",
       "version": "8.0.0-beta.0",

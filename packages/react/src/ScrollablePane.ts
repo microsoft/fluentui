@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/ScrollablePane';
+export * from './components/ScrollablePane/index';

@@ -26,7 +26,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/ListCellsImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/ios/ListCellsImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/ios/ListCellsImplementation.md') as string,
         },
       ];
     case 'android':
@@ -34,7 +34,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/ListCellsImplementation.md',
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/android/ListCellsImplementation.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ListCellsPage/docs/android/ListCellsImplementation.md') as string,
         },
       ];
   }

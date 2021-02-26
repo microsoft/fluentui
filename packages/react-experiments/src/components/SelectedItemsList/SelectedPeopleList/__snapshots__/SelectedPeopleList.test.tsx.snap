@@ -27,24 +27,24 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -100,7 +100,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -112,7 +112,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -120,7 +120,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -129,7 +129,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -182,7 +182,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -282,12 +281,13 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;
@@ -329,10 +329,10 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -442,7 +442,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -454,7 +454,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -462,7 +462,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -471,7 +471,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -524,7 +524,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -559,24 +558,24 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -632,7 +631,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -644,7 +643,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -652,7 +651,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -661,7 +660,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -714,7 +713,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -814,12 +812,13 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;
@@ -861,10 +860,10 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -974,7 +973,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -986,7 +985,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -994,7 +993,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1003,7 +1002,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1056,7 +1055,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1098,24 +1096,24 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -1171,7 +1169,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1183,7 +1181,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -1191,7 +1189,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1200,7 +1198,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1253,7 +1251,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1353,12 +1350,13 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;
@@ -1400,10 +1398,10 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -1513,7 +1511,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1525,7 +1523,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -1533,7 +1531,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1542,7 +1540,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1595,7 +1593,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1630,24 +1627,24 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active){& {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -1703,7 +1700,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -1715,7 +1712,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -1723,7 +1720,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1732,7 +1729,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1785,7 +1782,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1885,12 +1881,13 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                      forced-color-adjust: none;
                     }
                     & i {
                       font-weight: 600;
@@ -1932,10 +1929,10 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -2045,7 +2042,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -2057,7 +2054,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -2065,7 +2062,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -2074,7 +2071,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -2127,7 +2124,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",

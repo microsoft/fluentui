@@ -30,4 +30,4 @@ task('screener:runner', cb => {
 // Default
 // ----------------------------------------
 
-task('screener:build', series('build:docs:assets:component:info', 'build:docs'));
+task('screener:build', series('build:docs'));

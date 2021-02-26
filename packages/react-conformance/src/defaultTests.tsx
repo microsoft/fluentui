@@ -13,6 +13,9 @@ import consoleUtil from './utils/consoleUtil';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 
+const hasAs = (componentInfo: ComponentDoc) =>
+  !!componentInfo.props.as && componentInfo.props.as.parent?.fileName !== 'react/index.d.ts';
+
 export const defaultTests: TestObject = {
   /** Component has a docblock with 5 to 25 words */
   'has-docblock': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
@@ -146,6 +149,68 @@ export const defaultTests: TestObject = {
     });
   },
 
+  /** Component file handles classname prop */
+  'component-handles-classname': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
+    const { Component, wrapperComponent, helperComponents = [], requiredProps, customMount = mount } = testInfo;
+    const testClassName = 'testComponentClassName';
+    let handledClassName = false;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const mergedProps: any = {
+      ...requiredProps,
+      className: testClassName,
+    };
+    it(`handles className prop`, () => {
+      const el = customMount(<Component {...mergedProps} />);
+      const component = getComponent(el, helperComponents, wrapperComponent);
+      const domNode = component.getDOMNode();
+      const classNames = (domNode.getAttribute('class') || '').split(' ');
+
+      try {
+        expect(classNames).toContain(testClassName);
+        handledClassName = true;
+      } catch (e) {
+        defaultErrorMessages['component-handles-classname'](testInfo, e, testClassName, classNames, domNode.outerHTML);
+        throw new Error('component-handles-classname (handles className prop)');
+      }
+    });
+
+    it(`preserves component's default classNames`, () => {
+      if (!handledClassName) {
+        return; // don't run this test if the main className test failed
+      }
+      const defaultEl = customMount(<Component {...requiredProps} />);
+      const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
+      const defaultClassNames =
+        defaultComponent
+          .getDOMNode()
+          .getAttribute('class')
+          ?.split(' ') || [];
+
+      const el = customMount(<Component {...mergedProps} />);
+      const component = getComponent(el, helperComponents, wrapperComponent);
+      const classNames = (component.getDOMNode().getAttribute('class') || '').split(' ');
+
+      let defaultClassName: string = '';
+      try {
+        if (defaultClassNames.length && defaultClassNames[0]) {
+          for (defaultClassName of defaultClassNames) {
+            expect(classNames).toContain(defaultClassName);
+          }
+        }
+      } catch (e) {
+        defaultErrorMessages['component-preserves-default-classname'](
+          testInfo,
+          e,
+          testClassName,
+          defaultClassName,
+          classNames,
+        );
+        throw new Error('component-preserves-classname (preserves default classnames)');
+      }
+    });
+  },
+
   /** Constructor/component name matches filename */
   'name-matches-filename': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
     it(`Component/constructor name matches filename`, () => {
@@ -266,7 +331,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as functional component or passes as to the next component */
   'as-renders-fc': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    if (hasAs(componentInfo)) {
       it(`renders as a functional component or passes "as" to the next component`, () => {
         try {
           const {
@@ -303,7 +368,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders as ReactClass or passes as to the next component */
   'as-renders-react-class': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as && !testInfo.asPropHandlesRef) {
+    if (hasAs(componentInfo) && !testInfo.asPropHandlesRef) {
       it(`renders as a ReactClass or passes "as" to the next component`, () => {
         try {
           const { requiredProps, Component, customMount = mount, wrapperComponent, helperComponents = [] } = testInfo;
@@ -334,7 +399,8 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Passes extra props to the component it renders as */
   'as-passes-as-value': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    // 2nd check: React.AllHTMLAttributes can also include `as`
+    if (hasAs(componentInfo)) {
       it(`passes extra props to the component it is renders as`, () => {
         try {
           const { customMount = mount, Component, requiredProps, targetComponent, asPropHandlesRef } = testInfo;
@@ -361,7 +427,7 @@ export const defaultTests: TestObject = {
 
   /** If it has "as" prop: Renders component as HTML tags */
   'as-renders-html': (componentInfo: ComponentDoc, testInfo: IsConformantOptions) => {
-    if (componentInfo.props.as) {
+    if (hasAs(componentInfo)) {
       it(`renders component as HTML tags or passes "as" to the next component`, () => {
         try {
           // silence element nesting warnings

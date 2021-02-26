@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CollapsibleSection } from '@fluentui/react-experiments';
 import { css, FocusZone, Icon, IIconProps, ISearchBoxStyles, Link, SearchBox, getFocusStyle } from '@fluentui/react';
-import { IButtonStyles, IconButton } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles, IconButton } from '@fluentui/react/lib/Button';
 import {
   isPageActive,
   hasActiveChild,
@@ -12,6 +12,7 @@ import {
 import { theme } from '@fluentui/react-docsite-components/lib/styles/theme';
 import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Nav.module.scss';
+import { isLocal } from '../../utilities/index';
 
 export interface INavState {
   searchQuery: string;
@@ -152,7 +153,7 @@ export class Nav extends React.Component<INavProps, INavState> {
         )}
         key={linkIndex + page.url}
       >
-        {!(page.isUhfLink && location.hostname !== 'localhost') && searchRegEx.test(page.title) && (
+        {(!page.isUhfLink || isLocal) && searchRegEx.test(page.title) && (
           <Link
             href={page.url}
             onClick={this._onLinkClick}

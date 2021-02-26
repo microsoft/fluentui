@@ -1,7 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly 1`] = `
-<div>
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
   <div
     className="ms-ComboBox-container "
   >
@@ -50,6 +70,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             font-weight: 400;
             height: 32px;
             margin-left: 0;
+            max-width: 300px;
             outline: 0;
             padding-left: 9px;
             padding-right: 32px;
@@ -78,12 +99,13 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             display: inline-block;
             margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
             border-color: Highlight;
           }
           &:hover:hover:after {
@@ -131,28 +153,29 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             &::placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-clear {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-is-interactable={true}
         data-ktp-execute-target={true}
@@ -221,7 +244,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -233,32 +256,35 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
               border-color: ButtonText;
               color: ButtonText;
+              forced-color-adjust: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
+              forced-color-adjust: none;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
+              forced-color-adjust: none;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -312,7 +338,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -392,6 +417,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             font-weight: 400;
             height: 32px;
             margin-left: 0;
+            max-width: 300px;
             outline: 0;
             padding-left: 9px;
             padding-right: 32px;
@@ -404,12 +430,13 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             display: inline-block;
             margin-bottom: 8px;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&.is-open:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&.is-open:after {
             border-color: Highlight;
           }
           &:after {
@@ -434,43 +461,46 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
           &:hover .ms-ComboBox-Input::placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::placeholder {
             color: GrayText;
           }
           &:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input:-ms-input-placeholder {
             color: GrayText;
           }
           &:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input::-ms-input-placeholder {
             color: GrayText;
           }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-ComboBox-Input {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:hover:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
             border-color: Highlight;
           }
           &:active {
             position: relative;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:active:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active:after {
             border-color: Highlight;
           }
           &:focus {
@@ -479,17 +509,19 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
           &:focus .ms-ComboBox-Input {
             color: #201f1e;
           }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-ComboBox-Input {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-ComboBox-Input {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: WindowText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:focus {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             color: HighlightText;
+            forced-color-adjust: none;
           }
-          @media screen and (-ms-high-contrast: active){&:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:after {
             border-color: Highlight;
           }
           &:focus:after {
@@ -532,28 +564,29 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
             &::placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
               color: #605e5c;
             }
-            @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-clear {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: Window;
               color: WindowText;
+              forced-color-adjust: none;
             }
         data-is-interactable={true}
         data-ktp-execute-target={true}
@@ -622,7 +655,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -634,32 +667,35 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
               border-color: ButtonText;
               color: ButtonText;
+              forced-color-adjust: none;
             }
             &:hover {
               background-color: #f3f2f1;
               color: #201f1e;
               cursor: pointer;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
+              forced-color-adjust: none;
             }
             &:active {
               background-color: #edebe9;
               color: #201f1e;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               -ms-high-contrast-adjust: none;
               background-color: Highlight;
               border-color: Highlight;
               color: HighlightText;
+              forced-color-adjust: none;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -713,7 +749,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",

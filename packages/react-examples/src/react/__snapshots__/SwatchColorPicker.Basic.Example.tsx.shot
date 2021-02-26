@@ -102,7 +102,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -115,7 +115,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -127,7 +127,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -164,7 +164,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={0}
@@ -273,7 +273,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -286,7 +286,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -298,7 +298,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -335,7 +335,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={1}
@@ -444,7 +444,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -457,7 +457,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -469,7 +469,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -506,7 +506,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={2}
@@ -615,7 +615,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -628,7 +628,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -640,7 +640,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -677,7 +677,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={3}
@@ -786,7 +786,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -799,7 +799,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -811,7 +811,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -848,7 +848,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={4}
@@ -1004,7 +1004,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1017,7 +1017,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -1057,7 +1057,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={0}
@@ -1164,7 +1164,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1177,7 +1177,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -1217,7 +1217,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={1}
@@ -1324,7 +1324,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1337,7 +1337,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -1377,7 +1377,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={2}
@@ -1484,7 +1484,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1497,7 +1497,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -1537,7 +1537,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={3}
@@ -1644,7 +1644,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1657,7 +1657,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -1697,7 +1697,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={4}
@@ -1851,7 +1851,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -1864,7 +1864,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -1904,7 +1904,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={0}
@@ -2011,7 +2011,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -2024,7 +2024,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -2064,7 +2064,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={1}
@@ -2171,7 +2171,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -2184,7 +2184,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -2224,7 +2224,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={2}
@@ -2331,7 +2331,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -2344,7 +2344,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -2384,7 +2384,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={3}
@@ -2491,7 +2491,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -2504,7 +2504,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -2544,7 +2544,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={4}
@@ -2708,7 +2708,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -2721,7 +2721,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -2733,7 +2733,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -2770,7 +2770,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={0}
@@ -2879,7 +2879,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -2892,7 +2892,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -2904,7 +2904,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -2941,7 +2941,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={1}
@@ -3050,7 +3050,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -3063,7 +3063,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -3075,7 +3075,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -3112,7 +3112,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={2}
@@ -3221,7 +3221,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -3234,7 +3234,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -3246,7 +3246,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -3283,7 +3283,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={3}
@@ -3396,7 +3396,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -3409,7 +3409,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -3421,7 +3421,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -3458,7 +3458,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={4}
@@ -3567,7 +3567,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -3580,7 +3580,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -3592,7 +3592,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -3629,7 +3629,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={5}
@@ -3738,7 +3738,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -3751,7 +3751,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -3763,7 +3763,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -3800,7 +3800,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={6}
@@ -3909,7 +3909,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -3922,7 +3922,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -3934,7 +3934,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -3971,7 +3971,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={7}
@@ -4084,7 +4084,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -4097,7 +4097,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -4109,7 +4109,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -4146,7 +4146,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={8}
@@ -4255,7 +4255,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -4268,7 +4268,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -4280,7 +4280,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -4317,7 +4317,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={9}
@@ -4426,7 +4426,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -4439,7 +4439,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -4451,7 +4451,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -4488,7 +4488,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={10}
@@ -4597,7 +4597,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -4610,7 +4610,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
@@ -4622,7 +4622,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -3px;
                     top: -3px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -4659,7 +4659,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-right: 2px;
                     padding-top: 2px;
                   }
-                  @media screen and (-ms-high-contrast: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                     color: Highlight;
                   }
               data-index={11}
@@ -4821,7 +4821,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -4834,7 +4834,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                     color: GrayText;
                   }
@@ -4847,7 +4847,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -4997,7 +4997,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -5010,7 +5010,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                     color: GrayText;
                   }
@@ -5023,7 +5023,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -5173,7 +5173,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -5186,7 +5186,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                     color: GrayText;
                   }
@@ -5199,7 +5199,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -5349,7 +5349,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -5362,7 +5362,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                     color: GrayText;
                   }
@@ -5375,7 +5375,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {
@@ -5525,7 +5525,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 2px;
                     z-index: 1;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                     border: none;
                     bottom: -2px;
                     left: -2px;
@@ -5538,7 +5538,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     position: relative;
                     top: 0px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                     color: GrayText;
                   }
@@ -5551,7 +5551,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     right: -2px;
                     top: -2px;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                     outline: 1px solid ButtonText;
                   }
                   &:hover {

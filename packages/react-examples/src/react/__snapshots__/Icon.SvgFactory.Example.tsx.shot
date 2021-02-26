@@ -17,7 +17,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             border-radius: 2px;
             border: 1px solid #0078d4;
             box-sizing: border-box;
-            color: #a19f9d;
+            color: #d2d0ce;
             cursor: default;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -51,7 +51,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -63,11 +63,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: Window;
             border-color: GrayText;
             color: GrayText;
+            forced-color-adjust: none;
           }
           &:hover {
             outline: 0px;
@@ -184,7 +185,7 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             top: 2px;
             z-index: 1;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
             bottom: -2px;
             left: -2px;
             outline-color: ButtonText;
@@ -196,18 +197,19 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             position: relative;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active){& {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             border-color: WindowText;
             color: Window;
+            forced-color-adjust: none;
           }
           &:hover {
             background-color: #106ebe;
             border: 1px solid #106ebe;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&:hover {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
             background-color: Highlight;
             border-color: Highlight;
             color: Window;
@@ -217,11 +219,12 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
             border: 1px solid #005a9e;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&:active {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
             -ms-high-contrast-adjust: none;
             background-color: WindowText;
             border-color: WindowText;
             color: Window;
+            forced-color-adjust: none;
           }
       data-is-focusable={true}
       onClick={[Function]}
@@ -290,13 +293,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Accept"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -341,13 +344,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AcceptMedium"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -392,13 +395,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AccessibiltyChecker"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -443,13 +446,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AccessLogo"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -494,13 +497,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AccountActivity"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -545,13 +548,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AccountBrowser"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -596,13 +599,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AccountManagement"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -647,13 +650,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Accounts"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -698,13 +701,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ActionCenter"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -749,13 +752,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ActivateOrders"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -800,13 +803,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ActivityFeed"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -851,13 +854,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddBookmark"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -902,13 +905,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddEvent"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -953,13 +956,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddFavoriteFill"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1004,13 +1007,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddFavorite"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1055,13 +1058,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddFriend"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1106,13 +1109,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddGroup"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1157,13 +1160,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddHome"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1208,13 +1211,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Add"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1259,13 +1262,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddIn"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1310,13 +1313,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddLink"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1361,13 +1364,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddNotes"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1412,13 +1415,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddOnlineMeeting"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1463,13 +1466,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddPhone"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1514,13 +1517,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddReaction"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1565,13 +1568,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddSpaceAfter"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1616,13 +1619,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddSpaceBefore"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1667,13 +1670,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddTo"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1718,13 +1721,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddToShoppingList"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1769,13 +1772,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AddWork"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1820,13 +1823,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Airplane"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1871,13 +1874,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AirplaneSolid"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1922,13 +1925,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AirTickets"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -1973,13 +1976,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlarmClock"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2024,13 +2027,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Album"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2075,13 +2078,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlbumRemove"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2126,13 +2129,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlertSettings"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2177,13 +2180,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlertSolid"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2228,13 +2231,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignCenter"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2279,13 +2282,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignHorizontalCenter"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2330,13 +2333,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignHorizontalLeft"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2381,13 +2384,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignHorizontalRight"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2432,13 +2435,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignJustify"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2483,13 +2486,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignLeft"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2534,13 +2537,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignRight"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2585,13 +2588,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignVerticalBottom"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2636,13 +2639,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignVerticalCenter"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2687,13 +2690,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AlignVerticalTop"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2738,13 +2741,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AllApps"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2789,13 +2792,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AllAppsMirrored"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2840,13 +2843,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AllCurrency"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2891,13 +2894,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AltText"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2942,13 +2945,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AmazonWebServicesLogo"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -2993,13 +2996,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AnalyticsQuery"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3044,13 +3047,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AnalyticsReport"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3095,13 +3098,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AnalyticsView"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3146,13 +3149,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AnchorLock"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3197,13 +3200,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AndroidLogo"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3248,13 +3251,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Annotation"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3299,13 +3302,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ApacheIvyLogo32"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3350,13 +3353,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ApacheMavenLogo"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3401,13 +3404,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Archive"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3452,13 +3455,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArchiveUndo"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3503,13 +3506,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AreaChart"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3554,13 +3557,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrangeBringForward"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3605,13 +3608,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrangeBringToFront"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3656,13 +3659,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrangeByFrom"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3707,13 +3710,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrangeSendBackward"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3758,13 +3761,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrangeSendToBack"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3809,13 +3812,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Arrivals"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3860,13 +3863,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowDownRight8"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3911,13 +3914,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowDownRightMirrored8"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -3962,13 +3965,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowTallDownLeft"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4013,13 +4016,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowTallDownRight"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4064,13 +4067,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowTallUpLeft"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4115,13 +4118,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowTallUpRight"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4166,13 +4169,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowUpRight8"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4217,13 +4220,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowUpRight"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4268,13 +4271,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="ArrowUpRightMirrored8"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4319,13 +4322,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Articles"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4370,13 +4373,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Ascending"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4421,13 +4424,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AspectRatio"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4472,13 +4475,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AssessmentGroup"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4523,13 +4526,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AssessmentGroupTemplate"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4574,13 +4577,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AssetLibrary"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4625,13 +4628,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Assign"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4676,13 +4679,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AssignPolicy"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4727,13 +4730,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Asterisk"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4778,13 +4781,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AsteriskSolid"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4829,13 +4832,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="Attach"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4880,13 +4883,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AustralianRules"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4931,13 +4934,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoDeploySettings"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -4982,13 +4985,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoEnhanceOff"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5033,13 +5036,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoEnhanceOn"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5084,13 +5087,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoFillTemplate"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5135,13 +5138,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoFitContents"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5186,13 +5189,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoFitWindow"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5237,13 +5240,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoHeight"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5288,13 +5291,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutomateFlow"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg
@@ -5339,13 +5342,13 @@ exports[`Component Examples renders Icon.SvgFactory.Example.tsx correctly 1`] = 
           }
     >
       <span
-        aria-hidden={true}
+        aria-label="AutoRacing"
         className=
 
             {
               font-size: 50px;
             }
-        role="presentation"
+        role="img"
         style={Object {}}
       >
         <svg

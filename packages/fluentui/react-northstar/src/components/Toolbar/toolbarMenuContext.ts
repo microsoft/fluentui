@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from '@fluentui/react-bindings';
 import * as React from 'react';
 
 export type ToolbarMenuContextValue = {
@@ -11,13 +11,10 @@ export type ToolbarItemSubscribedValue = {
   menuSlot: ToolbarMenuContextValue['slots']['menu'];
 };
 
-export const ToolbarMenuContext = createContext<ToolbarMenuContextValue>(
-  {
-    slots: {
-      menu: null,
-    },
+export const ToolbarMenuContext = createContext<ToolbarMenuContextValue>({
+  slots: {
+    menu: null,
   },
-  { strict: false },
-);
+});
 
 export const ToolbarMenuContextProvider = ToolbarMenuContext.Provider;

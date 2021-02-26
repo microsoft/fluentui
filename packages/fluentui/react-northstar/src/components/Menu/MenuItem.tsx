@@ -13,6 +13,7 @@ import {
   useStyles,
   ComponentWithAs,
   ShorthandConfig,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -40,7 +41,6 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../.
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -590,6 +590,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         vertical: props.vertical,
         primary: props.primary,
         on: props.on,
+        variables: props.variables,
       },
       menu: {
         accessibility: submenuBehavior,

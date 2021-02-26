@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 import { Popup, Menu, Reaction, ReactionProps } from '@fluentui/react-northstar';
 
 const getAriaLabel = ({ content: numberOfPersons, icon: emojiType }: ReactionProps) => {
@@ -32,7 +32,7 @@ class ReactionPopup extends React.Component<ReactionProps, { open: boolean }> {
         content={{
           children: () => (
             <Menu
-              items={['Jane Doe', 'John Doe']}
+              items={['Robin Counts', 'Cecil Folk']}
               vertical
               variables={{ borderColor: 'transparent' }}
               onKeyDown={this.handleKeyDownOnMenu}

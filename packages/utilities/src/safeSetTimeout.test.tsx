@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { safeSetTimeout } from './safeSetTimeout';
 import { mount } from 'enzyme';
-import * as sinon from 'sinon';
 
 describe('safeSetTimeout', () => {
   let setTimeoutCalled = false;
-  let clock: sinon.SinonFakeTimers;
 
   class Foo extends React.Component {
     private _setTimeout = safeSetTimeout(this);
@@ -25,11 +23,11 @@ describe('safeSetTimeout', () => {
 
   beforeEach(() => {
     setTimeoutCalled = false;
-    clock = sinon.useFakeTimers();
+    jest.useFakeTimers();
   });
 
   afterEach(() => {
-    clock.restore();
+    jest.useRealTimers();
   });
 
   it('can request animation frame', () => {
@@ -37,7 +35,7 @@ describe('safeSetTimeout', () => {
 
     expect(setTimeoutCalled).toEqual(false);
 
-    clock.tick(100);
+    jest.runTimersToTime(100);
 
     expect(setTimeoutCalled).toEqual(true);
   });
@@ -49,7 +47,7 @@ describe('safeSetTimeout', () => {
 
     wrapper.unmount();
 
-    clock.tick(100);
+    jest.runTimersToTime(100);
 
     expect(setTimeoutCalled).toEqual(false);
   });

@@ -1,4 +1,4 @@
-import { compile, middleware, serialize, stringify } from 'stylis';
+import { compile, middleware, prefixer, rulesheet, serialize, stringify } from 'stylis';
 import { hyphenateProperty } from './utils/hyphenateProperty';
 
 interface CompileCSSOptions {
@@ -18,6 +18,29 @@ function repeatSelector(selector: string, times: number) {
   return new Array(times + 2).join(selector);
 }
 
+export function compileCSSRule(cssRule: string): string {
+  return serialize(compile(cssRule), middleware([prefixer, stringify]));
+}
+
+export function compileCSSRules(cssRules: string): string[] {
+  const rules: string[] = [];
+
+  serialize(
+    compile(cssRules),
+    middleware([
+      prefixer,
+      stringify,
+
+      // 💡 we are using `.insertRule()` API for DOM operations, which does not support
+      // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
+      // individual rules to be used with this API
+      rulesheet(rule => rules.push(rule)),
+    ]),
+  );
+
+  return rules;
+}
+
 export function compileCSS(options: CompileCSSOptions): string {
   const { className, media, pseudo, support, property, value, unstable_cssPriority } = options;
 
@@ -31,6 +54,8 @@ export function compileCSS(options: CompileCSSOptions): string {
     const globalSelector = /global\((.+)\)/.exec(pseudo)?.[1];
     const shouldIncludeClassName = pseudo.indexOf('&') === pseudo.length - 1;
 
+    // TODO: should we support case when className is not included
+    // given same functionality is supported by `makeStaticStyles`?
     const cssRule = shouldIncludeClassName
       ? `${globalSelector} { .${className} ${cssDeclaration} }`
       : `${globalSelector} ${cssDeclaration}`;
@@ -48,6 +73,6 @@ export function compileCSS(options: CompileCSSOptions): string {
       cssRule = `@supports ${support} { ${cssRule} }`;
     }
 
-    return serialize(compile(cssRule), middleware([stringify]));
+    return compileCSSRule(cssRule);
   }
 }

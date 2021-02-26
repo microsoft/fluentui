@@ -7,6 +7,7 @@ import {
   HighContrastSelector,
   hiddenContentStyle,
   ITheme,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
@@ -82,7 +83,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     iconForegroundColor: semanticColors.bodySubtext,
     headerForegroundColor: semanticColors.bodyText,
     headerBackgroundColor: semanticColors.bodyBackground,
-    dropdownChevronForegroundColor: palette.neutralTertiary,
     resizerColor: palette.neutralTertiaryAlt,
   };
 
@@ -276,7 +276,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
       selectors: {
         [HighContrastSelector]: {
           background: 'transparent',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
         },
       },
     },

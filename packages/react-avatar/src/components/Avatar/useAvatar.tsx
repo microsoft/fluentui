@@ -1,54 +1,43 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, defaultAvatarSize } from './Avatar.types';
-import { calcAvatarStyleProps } from './calcAvatarStyleProps';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { AvatarDefaults, AvatarProps, AvatarState, defaultAvatarSize } from './Avatar.types';
 import { getInitials as defaultGetInitials, nullRender } from '@fluentui/utilities';
 import { Image } from '../Image/index';
-import { ContactIcon as DefaultAvatarIcon } from '@fluentui/react-icons-mdl2';
+import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
 export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
-const mergeProps = makeMergeProps({ deepMerge: avatarShorthandProps });
+const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
+export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
     {
       as: 'span',
-      display: props.image ? 'image' : 'label',
       label: { as: 'span' },
-      image: { as: Image },
+      image: { as: props.image ? Image : nullRender },
       badge: { as: nullRender },
-      activeDisplay: 'ring',
       size: defaultAvatarSize,
       getInitials: defaultGetInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
-    },
+    } as AvatarDefaults,
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
 
-  // Add in props used for styling
-  mergeProps(state, calcAvatarStyleProps(state));
-
-  // Display the initials if there's no label
+  // If a label was not provided, use the following priority:
+  // icon => initials => default icon
   if (!state.label.children) {
-    const initials = state.getInitials(state.name || '', /*isRtl: */ false);
-    if (initials) {
-      state.label.children = initials;
-    } else if (state.display === 'label') {
-      state.display = 'icon'; // If there are no initials or image, fall back to the icon
+    if (state.icon) {
+      state.label.children = state.icon;
+    } else {
+      const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+      if (initials) {
+        state.label.children = initials;
+      } else {
+        // useAvatarStyles expects state.icon to be set if displaying an icon
+        state.label.children = state.icon = <DefaultAvatarIcon />;
+      }
     }
-  }
-
-  // Display the icon if requested
-  if (state.display === 'icon') {
-    state.label.children = state.icon || <DefaultAvatarIcon />;
-  }
-
-  // Don't show the image if it's not supposed to be displayed
-  if (state.display !== 'image') {
-    state.image = { as: nullRender };
   }
 
   return state;

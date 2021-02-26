@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Usage',
           editUrl: `${baseUrl}/web/FabricIconsUsage.md`,
-          content: require('!raw-loader!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
+          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
           jumpLinks: [
             // prettier-ignore
             { text: enDash + ' Fluent UI React (font)', url: 'fluent-ui-react-font-based-icons' },

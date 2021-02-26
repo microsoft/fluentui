@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
 import { Header } from '@fluentui/react-northstar';
-import * as React from 'react';
 import { RouteProps } from 'react-router-dom';
 
 import { link } from '../utils/helpers';
@@ -27,9 +27,27 @@ const components = {
     ) : (
       <code>{children}</code>
     ),
-  h1: ({ children }) => <Header as="h1" content={children} />,
-  h2: ({ children }) => <Header as="h2" content={children} />,
-  h3: ({ children }) => <Header as="h3" content={children} />,
+  h1: ({ children }) => (
+    <Header
+      as="h1"
+      content={children}
+      styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
+    />
+  ),
+  h2: ({ children }) => (
+    <Header
+      as="h2"
+      content={children}
+      styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
+    />
+  ),
+  h3: ({ children }) => (
+    <Header
+      as="h3"
+      content={children}
+      styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
+    />
+  ),
   img: props => <img style={{ maxWidth: '100%' }} {...props} />,
 };
 

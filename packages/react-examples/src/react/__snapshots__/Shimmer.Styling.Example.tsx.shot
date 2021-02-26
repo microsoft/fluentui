@@ -84,7 +84,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -93,8 +94,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -167,7 +166,7 @@ Array [
                   min-width: 24px;
                   width: 24px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
           >
@@ -178,7 +177,7 @@ Array [
                     display: block;
                     fill: #0078D4;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     fill: Window;
                   }
               height={24}
@@ -208,7 +207,7 @@ Array [
                   font-weight: 400;
                   height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -238,10 +237,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -334,7 +333,7 @@ Array [
                   font-weight: 400;
                   height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -364,10 +363,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -460,7 +459,7 @@ Array [
                   font-weight: 400;
                   height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -490,10 +489,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -586,7 +585,7 @@ Array [
                   font-weight: 400;
                   height: 16px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -616,10 +615,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -758,7 +757,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -767,8 +767,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -848,7 +846,7 @@ Array [
                     min-width: 40px;
                     width: 40px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
             >
@@ -859,7 +857,7 @@ Array [
                       display: block;
                       fill: #0078D4;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       fill: Window;
                     }
                 height={40}
@@ -889,7 +887,7 @@ Array [
                     font-weight: 400;
                     height: 40px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -940,10 +938,10 @@ Array [
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1037,10 +1035,10 @@ Array [
                     height: 8px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1133,7 +1131,7 @@ Array [
                     font-weight: 400;
                     height: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1203,7 +1201,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -1212,8 +1211,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -1293,7 +1290,7 @@ Array [
                     min-width: 40px;
                     width: 40px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
             >
@@ -1304,7 +1301,7 @@ Array [
                       display: block;
                       fill: #0078D4;
                     }
-                    @media screen and (-ms-high-contrast: active){& {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                       fill: Window;
                     }
                 height={40}
@@ -1334,7 +1331,7 @@ Array [
                     font-weight: 400;
                     height: 40px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1385,10 +1382,10 @@ Array [
                     height: 10px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1482,10 +1479,10 @@ Array [
                     height: 8px;
                     position: relative;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border-color: Window;
                   }
-                  @media screen and (-ms-high-contrast: active){& > * {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                     fill: Window;
                   }
               style={
@@ -1578,7 +1575,7 @@ Array [
                     font-weight: 400;
                     height: 20px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     background-color: Window;
                     border-color: Window;
                   }
@@ -1640,7 +1637,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -1649,8 +1647,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -1723,10 +1719,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -1830,7 +1826,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -1839,8 +1836,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -1913,10 +1908,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -2020,7 +2015,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -2029,8 +2025,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -2103,10 +2097,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -2210,7 +2204,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -2219,8 +2214,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -2293,10 +2286,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={
@@ -2400,7 +2393,8 @@ Array [
             & > * {
               transform: translateZ(0);
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: WindowText
                                     linear-gradient(
                                       to right,
@@ -2409,8 +2403,6 @@ Array [
                                       transparent 100%)
                                     0 0 / 90% 100%
                                     no-repeat;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         style={
@@ -2483,10 +2475,10 @@ Array [
                   height: 16px;
                   position: relative;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   border-color: Window;
                 }
-                @media screen and (-ms-high-contrast: active){& > * {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& > * {
                   fill: Window;
                 }
             style={

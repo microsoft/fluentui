@@ -98,7 +98,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone116"
+            data-focuszone-id="FocusZone118"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -137,9 +137,10 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection117"
-                        role="presentation"
+                        id="GroupedListSection119"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -207,9 +208,10 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection118"
-                        role="presentation"
+                        id="GroupedListSection120"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -362,7 +364,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone116"
+            data-focuszone-id="FocusZone118"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -401,9 +403,10 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection117"
-                        role="presentation"
+                        id="GroupedListSection119"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -479,9 +482,10 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection118"
-                        role="presentation"
+                        id="GroupedListSection120"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -642,7 +646,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone109"
+            data-focuszone-id="FocusZone111"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -681,9 +685,10 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 1
                       </div>
                       <div
+                        aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection110"
-                        role="presentation"
+                        id="GroupedListSection112"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -741,9 +746,10 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 2
                       </div>
                       <div
+                        aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection111"
-                        role="presentation"
+                        id="GroupedListSection113"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -801,9 +807,10 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 3
                       </div>
                       <div
+                        aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection112"
-                        role="presentation"
+                        id="GroupedListSection114"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -861,9 +868,10 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                         one 4
                       </div>
                       <div
+                        aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection113"
-                        role="presentation"
+                        id="GroupedListSection115"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1006,7 +1014,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone109"
+            data-focuszone-id="FocusZone111"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1045,9 +1053,10 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 1
                       </div>
                       <div
+                        aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection110"
-                        role="presentation"
+                        id="GroupedListSection112"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1105,9 +1114,10 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 2
                       </div>
                       <div
+                        aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection111"
-                        role="presentation"
+                        id="GroupedListSection113"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1165,9 +1175,10 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 3
                       </div>
                       <div
+                        aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection112"
-                        role="presentation"
+                        id="GroupedListSection114"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1225,9 +1236,10 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                         one 4
                       </div>
                       <div
+                        aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection113"
-                        role="presentation"
+                        id="GroupedListSection115"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1370,7 +1382,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone109"
+            data-focuszone-id="FocusZone111"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1409,9 +1421,10 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection114"
-                        role="presentation"
+                        id="GroupedListSection116"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1487,9 +1500,10 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection115"
-                        role="presentation"
+                        id="GroupedListSection117"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1650,7 +1664,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone109"
+            data-focuszone-id="FocusZone111"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1689,9 +1703,10 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                         two 1
                       </div>
                       <div
+                        aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection114"
-                        role="presentation"
+                        id="GroupedListSection116"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -1767,9 +1782,10 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                         two 2
                       </div>
                       <div
+                        aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection115"
-                        role="presentation"
+                        id="GroupedListSection117"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -2096,11 +2112,10 @@ exports[`DetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2140,11 +2155,11 @@ exports[`DetailsList renders List correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2701,11 +2716,10 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2745,11 +2759,11 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3902,11 +3916,10 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3946,11 +3959,11 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4508,11 +4521,10 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4552,11 +4564,11 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5493,11 +5505,10 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5537,11 +5548,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -6606,7 +6617,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     transition: transform .1s linear;
                   }
               data-icon-name="ChevronRightMed"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-3\\"",
@@ -6886,10 +6896,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="Group 0"
+                        aria-labelledby="GroupHeader19"
                         aria-level={1}
-                        aria-posinset={1}
-                        aria-setsize={2}
+                        aria-rowcount={3}
+                        aria-rowindex={2}
                         className=
                             ms-GroupHeader
                             {
@@ -7075,6 +7085,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            id="GroupHeader19"
                             role="gridcell"
                           >
                             <span>
@@ -7098,9 +7109,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                       </div>
                       <div
+                        aria-label="Group 0"
                         className="ms-List"
                         id="GroupedListSection18"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -7188,7 +7200,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone20"
+                                data-focuszone-id="FocusZone22"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -7375,7 +7387,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone21"
+                                data-focuszone-id="FocusZone23"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -7512,10 +7524,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-label="Group 1"
+                        aria-labelledby="GroupHeader21"
                         aria-level={1}
-                        aria-posinset={2}
-                        aria-setsize={2}
+                        aria-rowcount={3}
+                        aria-rowindex={3}
                         className=
                             ms-GroupHeader
                             {
@@ -7701,6 +7713,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            id="GroupHeader21"
                             role="gridcell"
                           >
                             <span>
@@ -7724,9 +7737,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                         </div>
                       </div>
                       <div
+                        aria-label="Group 1"
                         className="ms-List"
-                        id="GroupedListSection19"
-                        role="presentation"
+                        id="GroupedListSection20"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -7814,7 +7828,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone22"
+                                data-focuszone-id="FocusZone24"
                                 data-is-focusable={true}
                                 data-item-index={2}
                                 data-selection-index={2}
@@ -8001,7 +8015,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone23"
+                                data-focuszone-id="FocusZone25"
                                 data-is-focusable={true}
                                 data-item-index={3}
                                 data-selection-index={3}
@@ -8188,7 +8202,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone24"
+                                data-focuszone-id="FocusZone26"
                                 data-is-focusable={true}
                                 data-item-index={4}
                                 data-selection-index={4}

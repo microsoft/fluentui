@@ -9,12 +9,11 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior, AccessibilityAttributes } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
 
 import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
@@ -50,6 +49,7 @@ import {
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
+import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
@@ -1694,12 +1694,13 @@ Dropdown.propTypes = {
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
   'aria-labelledby': PropTypes.string,
   'aria-invalid': PropTypes.bool,
+  a11ySelectedItemsMessage: PropTypes.string,
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 
 Dropdown.defaultProps = {
   align: 'start',
-  clearIndicator: {},
+  clearIndicator: <CloseIcon outline />,
   itemToString: item => {
     if (!item || React.isValidElement(item)) {
       return '';
@@ -1718,7 +1719,7 @@ Dropdown.defaultProps = {
   },
   list: {},
   position: 'below',
-  toggleIndicator: {},
+  toggleIndicator: <ChevronDownIcon outline />,
   triggerButton: {},
 };
 

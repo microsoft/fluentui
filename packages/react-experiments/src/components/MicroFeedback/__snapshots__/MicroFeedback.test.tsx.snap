@@ -92,7 +92,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -108,7 +108,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -165,7 +165,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                   text-align: center;
                 }
             data-icon-name="Like"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -221,7 +220,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -237,7 +236,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -294,7 +293,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                   text-align: center;
                 }
             data-icon-name="Dislike"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -402,7 +400,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -418,7 +416,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -475,7 +473,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                   text-align: center;
                 }
             data-icon-name="Like"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -531,7 +528,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -547,7 +544,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               background-color: #f3f2f1;
               color: #106ebe;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -604,7 +601,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                   text-align: center;
                 }
             data-icon-name="Dislike"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",

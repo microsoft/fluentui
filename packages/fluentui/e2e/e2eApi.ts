@@ -1,9 +1,10 @@
-import config from '@fluentui/scripts/config';
 import { Page, Viewport } from 'puppeteer';
 import * as path from 'path';
 import * as _ from 'lodash';
 
-const serverUrl = `http://${config.server_host}:${config.e2e_port}`;
+const serverHost = 'localhost';
+const e2ePort = Number(process.env.E2E_PORT) || 8082;
+const serverUrl = `http://${serverHost}:${e2ePort}`;
 
 export const exampleUrlTokenFromFilePath = (filePath: string) => {
   const testName = path
@@ -28,7 +29,12 @@ type E2EKeys =
   | 'Tab'
   | 'F'
   | 'O'
-  | '*';
+  | '*'
+  | 'T'
+  | 'H'
+  | CyrillicLetters;
+
+type CyrillicLetters = 'т';
 
 const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
 
@@ -167,4 +173,6 @@ export class E2EApi {
   };
 
   public wait = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+  public evaluate = async (fn): Promise<void> => await this.page.evaluate(fn);
 }

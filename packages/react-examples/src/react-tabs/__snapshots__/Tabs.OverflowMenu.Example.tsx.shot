@@ -109,7 +109,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -121,7 +121,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
                 color: Highlight;
               }
@@ -130,7 +130,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -172,7 +172,7 @@ Array [
               &[data-is-overflowing='true'] {
                 display: none;
               }
-              @media screen and (-ms-high-contrast: active){&:before {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                 background-color: Highlight;
               }
               &:hover::before {
@@ -278,7 +278,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -290,7 +290,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -298,7 +298,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -460,7 +460,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -472,7 +472,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -480,7 +480,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -642,7 +642,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -654,7 +654,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -662,7 +662,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -836,7 +836,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -848,7 +848,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -856,7 +856,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1027,7 +1027,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1039,7 +1039,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -1047,7 +1047,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1188,7 +1188,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1200,7 +1200,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -1208,7 +1208,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1349,7 +1349,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1361,7 +1361,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -1369,7 +1369,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1516,7 +1516,7 @@ Array [
                 top: 2px;
                 z-index: 1;
               }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                 bottom: -2px;
                 left: -2px;
                 outline-color: ButtonText;
@@ -1528,7 +1528,7 @@ Array [
                 position: relative;
                 top: 0px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 border-color: Window;
               }
               &:hover {
@@ -1536,7 +1536,7 @@ Array [
                 color: #201f1e;
                 cursor: pointer;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 color: Highlight;
               }
               &:hover .ms-Button-icon {
@@ -1632,7 +1632,6 @@ Array [
                     text-align: center;
                   }
               data-icon-name="More"
-              role="presentation"
               style={
                 Object {
                   "color": "inherit",
@@ -1793,14 +1792,13 @@ Array [
                 background-color: #005a9e;
                 border-color: transparent;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 background-color: Highlight;
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                -ms-high-contrast-adjust: none;
                 background-color: Highlight;
-              }
-              @media screen and (forced-colors: active){& {
                 forced-color-adjust: none;
               }
           data-is-focusable={true}
@@ -1826,7 +1824,7 @@ Array [
                   transition: all 0.1s ease;
                   width: 12px;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background-color: Window;
                   border-color: Window;
                 }
@@ -1972,10 +1970,10 @@ Array [
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}
@@ -2143,10 +2141,10 @@ Array [
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}

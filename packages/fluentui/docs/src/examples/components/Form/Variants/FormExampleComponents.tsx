@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { Form } from '@fluentui/react-northstar';
+import {
+  Form,
+  FormInput,
+  FormDropdown,
+  FormRadioGroup,
+  FormSlider,
+  FormCheckbox,
+  FormDatepicker,
+  FormButton,
+  FormTextArea,
+} from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -25,13 +35,14 @@ const items = [
 
 const FormExampleComponents = () => (
   <Form>
-    <Form.Input label="First name" name="firstName" required />
-    <Form.Dropdown label="City" items={['prague', 'new york']} />
-    <Form.RadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
-    <Form.Slider label="Bid the price" />
-    <Form.Checkbox label="I agree to the Terms and Conditions" />
-    <Form.Datepicker label="Select a date" />
-    <Form.Button content="Submit" />
+    <FormInput label="First name" name="firstName" required />
+    <FormTextArea label="Bio" name="bio" />
+    <FormDropdown label="City" items={['prague', 'new york']} />
+    <FormRadioGroup label="Pizza" vertical defaultCheckedValue="prosciutto" items={items} />
+    <FormSlider label="Bid the price" />
+    <FormCheckbox label="I agree to the Terms and Conditions" />
+    <FormDatepicker label="Select a date" />
+    <FormButton content="Submit" />
   </Form>
 );
 

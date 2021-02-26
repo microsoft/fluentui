@@ -135,7 +135,8 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
   if (xAxisElement) {
     d3Select(xAxisElement)
       .call(xAxis)
-      .selectAll('text');
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -147,20 +148,21 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
  * @param {ITickParams} tickParams
  */
 export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickParams) {
-  const { domainNRangeValues, xAxisElement, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
+  const { domainNRangeValues, xAxisElement, tickPadding = 6, xAxistickSize = 6, xAxisCount = 6 } = xAxisParams;
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
   const xAxis = d3AxisBottom(xAxisScale)
     .tickSize(xAxistickSize)
-    .tickPadding(10)
+    .tickPadding(tickPadding)
     .ticks(xAxisCount);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
     d3Select(xAxisElement)
       .call(xAxis)
-      .selectAll('text');
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -189,7 +191,8 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
   if (xAxisParams.xAxisElement) {
     d3Select(xAxisParams.xAxisElement)
       .call(xAxis)
-      .selectAll('text');
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -252,6 +255,7 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     ? d3Select(yAxisElement)
         .call(yAxis)
         .selectAll('text')
+        .attr('aria-hidden', 'true')
     : '';
   return yAxisScale;
 }
@@ -289,7 +293,17 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
  * This methos creates an object for those 2 charts.
  * @param values
  */
-export function calloutData(values: ILineChartPoints[]) {
+
+type DataPoint = {
+  legend: string;
+  y: number;
+  x: number | Date | string;
+  color: string;
+  yAxisCalloutData: string;
+  index?: number;
+};
+
+export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
   let combinedResult: {
     legend: string;
     y: number;
@@ -298,39 +312,33 @@ export function calloutData(values: ILineChartPoints[]) {
     yAxisCalloutData?: string | { [id: string]: number };
   }[] = [];
 
-  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
+  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
     const elements = element.data.map((ele: ILineChartDataPoint) => {
-      return { legend: element.legend, ...ele, color: element.color };
+      return { legend: element.legend, ...ele, color: element.color, index: element.index };
     });
     combinedResult = combinedResult.concat(elements);
   });
 
   const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach(
-    (
-      e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
-      index: number,
-    ) => {
-      e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
-      const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
-      combinedResult
-        .slice(index + 1)
-        .forEach(
-          (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
-            e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
-            if (e1.x === e2.x) {
-              filteredValues.push({
-                legend: e2.legend,
-                y: e2.y,
-                color: e2.color,
-                yAxisCalloutData: e2.yAxisCalloutData,
-              });
-            }
-          },
-        );
-      result.push({ x: e1.x, values: filteredValues });
-    },
-  );
+  combinedResult.forEach((e1: DataPoint, index: number) => {
+    e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
+    const filteredValues = [
+      { legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData, index: e1.index },
+    ];
+    combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
+      e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
+      if (e1.x === e2.x) {
+        filteredValues.push({
+          legend: e2.legend,
+          y: e2.y,
+          color: e2.color,
+          yAxisCalloutData: e2.yAxisCalloutData,
+          index: e2.index,
+        });
+      }
+    });
+    result.push({ x: e1.x, values: filteredValues });
+  });
   return getUnique(result, 'x');
 }
 
@@ -371,7 +379,7 @@ export function silceOrAppendToArray(array: string[], value: string): string[] {
 }
 
 /**
- * This method used for wrapping of x axis lables (tick values).
+ * This method used for wrapping of x axis labels (tick values).
  * It breaks down given text value by space separated and calculates the total height needed to display all the words.
  * That value = removal value. This value needs to be remove from total svg height, svg will shrink and
  * total text will be displayed.
@@ -410,7 +418,8 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
       .attr('x', 0)
       .attr('y', y)
       .attr('id', 'BaseSpan')
-      .attr('dy', dy + 'em');
+      .attr('dy', dy + 'em')
+      .attr('data-', totalWord);
 
     if (showXAxisLablesTooltip && totalWordLength > noOfCharsToTruncate) {
       tspan = text
@@ -456,7 +465,17 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
           maxHeight = boxHeight;
         }
       });
-      removeVal = (maxDigit - 3) * maxHeight; // we are getting more height if take direclty
+      // If we take directly maxDigit * maxheight, then it will show more height between x axis tick values and bottom.
+      // To avoid this, reducing maxDigit value by removing some digit based on legth of word.
+      let removeDigit: number = 4;
+      if (maxDigit <= 2) {
+        removeDigit = 1;
+      } else if (maxDigit > 2 && maxDigit <= 6) {
+        removeDigit = 2;
+      } else if (maxDigit > 6 && maxDigit <= 9) {
+        removeDigit = 3;
+      }
+      removeVal = (maxDigit - removeDigit) * maxHeight;
     }
   });
   return removeVal > 0 ? removeVal : 0;
@@ -470,22 +489,30 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   const { tooltipCls, xAxis, id } = xAxistooltipProps;
+  if (xAxis === null) {
+    return null;
+  }
   const div = d3Select('body')
     .append('div')
     .attr('id', id)
     .attr('class', tooltipCls)
     .style('opacity', 0);
+  const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
+  const baseSpanLength = aa && Object.keys(aa)!.length;
+  const originalDataArray: string[] = [];
+  for (let i = 0; i < baseSpanLength; i++) {
+    const originalData = aa[i].dataset && (Object.values(aa[i].dataset)[0] as string);
+    originalDataArray.push(originalData);
+  }
   const tickObject = xAxis!.selectAll('.tick')._groups[0];
   const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const data: any = d3Select(d1).data();
     d3Select(d1)
       .on('mouseover', d => {
         div.style('opacity', 0.9);
         div
-          .html(data)
+          .html(originalDataArray[i])
           .style('left', d3Event.pageX + 'px')
           .style('top', d3Event.pageY - 28 + 'px');
       })
@@ -833,4 +860,66 @@ export const getTypeOfAxis = (p: string | number | Date, isXAsix: boolean): XAxi
         return YAxisType.DateAxis;
     }
   }
+};
+
+/**
+ * we need to make sure that if we add any property to this, then
+ * we need to also add that in  pointTypes below and vise-versa
+ */
+
+export enum Points {
+  circle,
+  square,
+  triangle,
+  diamond,
+  pyramid,
+  hexagon,
+  pentagon,
+  octagon,
+}
+
+export type PointTypes = {
+  [key in number]: {
+    /**
+     * For certian shapes like pentagon, hexagon and octagon.
+     * the width of the bouding box increase by the time of the
+     * length of the side, so when we want to render a pentagon
+     * having each side of length 7 units we need to decrease it's
+     * units by width ratio so that the bounding box width of the pentagon
+     * stays as 7
+     */
+    widthRatio: number;
+  };
+};
+
+/**
+ * we need to make sure that if we add any property to this, then
+ * we need to also add that in enum Point and vise-versa
+ */
+
+export const pointTypes: PointTypes = {
+  [Points.circle]: {
+    widthRatio: 1,
+  },
+  [Points.square]: {
+    widthRatio: 1,
+  },
+  [Points.triangle]: {
+    widthRatio: 1,
+  },
+  [Points.diamond]: {
+    widthRatio: 1,
+  },
+  [Points.pyramid]: {
+    widthRatio: 1,
+  },
+  [Points.hexagon]: {
+    widthRatio: 2,
+  },
+  [Points.pentagon]: {
+    widthRatio: 1.168,
+  },
+  [Points.octagon]: {
+    widthRatio: 2.414,
+  },
 };

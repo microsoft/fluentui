@@ -39,6 +39,7 @@
       a.m-skip-to-main:focus {
         border: 1px dashed #000;
       }
+
       a.m-skip-to-main:focus,
       a.m-skip-to-main:active {
         background: #e6e6e6;
@@ -155,9 +156,10 @@
 
     <script type="text/javascript">
       // @ts-check
-      var isLocal = location.hostname === 'localhost' || location.hostname.indexOf('ngrok.io') > -1;
+      var hostname = location.hostname;
+      var isLocal = ['localhost', '[::]', '127.0.0.1'].indexOf(hostname) !== -1;
       var isDev = isLocal || getParameterByName('dev') === '1' || !!getParameterByName('strict');
-      var isProduction = location.hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
+      var isProduction = hostname === 'developer.microsoft.com' || getParameterByName('isProduction') === '1';
       var devhost = getParameterByName('devhost');
       var entryPointFilename = 'fabric-sitev5';
       var appPath = '';
@@ -173,7 +175,7 @@
         loadAppScripts();
       } else if (!isLocal) {
         // Update as new Fluent UI versions and its documentation are supported
-        var fabricVersions = [5, 6, 7];
+        var fabricVersions = [5, 6, 7, 8];
 
         // Get fabricVer from URL param, session value, or latest version in array
         var fabricVersion = Number(

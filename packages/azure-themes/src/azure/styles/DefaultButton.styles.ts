@@ -1,4 +1,4 @@
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import * as StyleConstants from '../Constants';
 import { ITheme } from '@fluentui/react/lib/Styling';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';

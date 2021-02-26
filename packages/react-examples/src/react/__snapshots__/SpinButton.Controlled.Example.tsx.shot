@@ -85,7 +85,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
         &:hover:after {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover:after {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover:after {
           border-color: Highlight;
         }
     data-ktp-target={true}
@@ -132,7 +132,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
             background-color: #0078d4;
             color: #ffffff;
           }
-          @media screen and (-ms-high-contrast: active){&::selection {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){&::selection {
             background-color: Highlight;
             border-color: Highlight;
             color: HighlightText;
@@ -205,7 +205,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -227,7 +227,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
               background-color: #f3f2f1;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -235,7 +235,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
               background-color: #edebe9;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
@@ -290,7 +290,6 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
                   text-align: center;
                 }
             data-icon-name="ChevronUpSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -346,7 +345,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
@@ -368,7 +367,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
               background-color: #f3f2f1;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:hover {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
               border-color: Highlight;
               color: Highlight;
             }
@@ -376,7 +375,7 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
               background-color: #edebe9;
               color: #323130;
             }
-            @media screen and (-ms-high-contrast: active){&:active {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
               background-color: Highlight;
               color: HighlightText;
             }
@@ -431,7 +430,6 @@ exports[`Component Examples renders SpinButton.Controlled.Example.tsx correctly 
                   text-align: center;
                 }
             data-icon-name="ChevronDownSmall"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-3\\"",

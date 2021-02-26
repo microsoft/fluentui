@@ -634,6 +634,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 8px;
                 position: absolute;
                 right: -2px;
@@ -641,7 +642,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
                 top: auto;
                 width: 8px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Highlight;
                 border-color: Window;
               }

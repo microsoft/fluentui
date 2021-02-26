@@ -5,7 +5,7 @@ import { isIE11 } from '@fluentui/react';
 const isIE11Var: boolean = isIE11();
 
 export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyles => {
-  const { className, theme, isRtl, shouldHighlight, href } = props;
+  const { className, theme, isRtl, shouldHighlight, href, lineColor = 'transparent', toDrawShape } = props;
   const { fonts } = theme!;
   return {
     root: [
@@ -66,7 +66,7 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         },
         line: {
           opacity: 0.2,
-          fill: theme.semanticColors.bodyText,
+          stroke: theme.semanticColors.bodyText,
           selectors: {
             [HighContrastSelectorBlack]: {
               opacity: 0.1,
@@ -116,12 +116,22 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         color: theme.semanticColors.bodySubtext,
       },
     ],
-    calloutBlockContainer: {
-      ...fonts.mediumPlus,
-      marginTop: '13px',
-      paddingLeft: '8px',
-      lineHeight: '22px',
-      color: theme.semanticColors.bodyText,
+    calloutBlockContainer: [
+      theme.fonts.mediumPlus,
+      {
+        marginTop: '13px',
+        color: theme.semanticColors.bodyText,
+      },
+      !toDrawShape && {
+        borderLeft: `4px solid ${lineColor}`,
+        paddingLeft: '8px',
+      },
+      toDrawShape && {
+        display: 'flex',
+      },
+    ],
+    shapeStyles: {
+      marginRight: '8px',
     },
     calloutlegendText: {
       ...fonts.small,

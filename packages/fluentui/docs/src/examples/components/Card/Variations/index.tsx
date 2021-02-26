@@ -16,8 +16,8 @@ const Variations = () => (
       examplePath="components/Card/Variations/CardExampleInverted"
     />
     <ComponentExample
-      title="Quiet"
-      description="Card with quiet styles"
+      title="Ghost"
+      description="Card with ghost styles"
       examplePath="components/Card/Variations/CardExampleQuiet"
     />
     <ComponentExample

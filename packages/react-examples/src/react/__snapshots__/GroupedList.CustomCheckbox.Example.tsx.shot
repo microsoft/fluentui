@@ -80,9 +80,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 0"
+                    aria-labelledby="GroupHeader3"
                     aria-level={1}
                     aria-posinset={1}
+                    aria-selected={false}
                     aria-setsize={3}
                     className=
                         ms-GroupHeader
@@ -261,15 +262,15 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     &:hover .ms-Toggle-thumb {
                                       background-color: #201f1e;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                                       border-color: Highlight;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
                                 data-ktp-target={true}
-                                id="Toggle3"
+                                id="Toggle4"
                                 onClick={[Function]}
                                 role="switch"
                                 type="button"
@@ -416,6 +417,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               text-overflow: ellipsis;
                               white-space: nowrap;
                             }
+                        id="GroupHeader3"
                         role="gridcell"
                       >
                         <span>
@@ -439,9 +441,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     </div>
                   </div>
                   <div
+                    aria-label="group 0"
                     className="ms-List"
                     id="GroupedListSection2"
-                    role="presentation"
+                    role="group"
                   >
                     <div
                       className="ms-List-surface"
@@ -529,7 +532,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone8"
+                            data-focuszone-id="FocusZone11"
                             data-is-focusable={true}
                             data-item-index={0}
                             data-selection-index={0}
@@ -712,11 +715,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -756,11 +758,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1058,7 +1060,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone9"
+                            data-focuszone-id="FocusZone12"
                             data-is-focusable={true}
                             data-item-index={1}
                             data-selection-index={1}
@@ -1241,11 +1243,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1285,11 +1286,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1587,7 +1588,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone10"
+                            data-focuszone-id="FocusZone13"
                             data-is-focusable={true}
                             data-item-index={2}
                             data-selection-index={2}
@@ -1770,11 +1771,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1814,11 +1814,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2066,9 +2066,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 1"
+                    aria-labelledby="GroupHeader6"
                     aria-level={1}
                     aria-posinset={2}
+                    aria-selected={false}
                     aria-setsize={3}
                     className=
                         ms-GroupHeader
@@ -2247,15 +2248,15 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     &:hover .ms-Toggle-thumb {
                                       background-color: #201f1e;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                                       border-color: Highlight;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
                                 data-ktp-target={true}
-                                id="Toggle5"
+                                id="Toggle7"
                                 onClick={[Function]}
                                 role="switch"
                                 type="button"
@@ -2402,6 +2403,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               text-overflow: ellipsis;
                               white-space: nowrap;
                             }
+                        id="GroupHeader6"
                         role="gridcell"
                       >
                         <span>
@@ -2425,9 +2427,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     </div>
                   </div>
                   <div
+                    aria-label="group 1"
                     className="ms-List"
-                    id="GroupedListSection4"
-                    role="presentation"
+                    id="GroupedListSection5"
+                    role="group"
                   >
                     <div
                       className="ms-List-surface"
@@ -2515,7 +2518,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone11"
+                            data-focuszone-id="FocusZone14"
                             data-is-focusable={true}
                             data-item-index={3}
                             data-selection-index={3}
@@ -2698,11 +2701,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2742,11 +2744,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3044,7 +3046,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone12"
+                            data-focuszone-id="FocusZone15"
                             data-is-focusable={true}
                             data-item-index={4}
                             data-selection-index={4}
@@ -3227,11 +3229,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3271,11 +3272,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3573,7 +3574,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone13"
+                            data-focuszone-id="FocusZone16"
                             data-is-focusable={true}
                             data-item-index={5}
                             data-selection-index={5}
@@ -3756,11 +3757,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3800,11 +3800,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4052,9 +4052,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                 >
                   <div
                     aria-expanded={true}
-                    aria-label="group 2"
+                    aria-labelledby="GroupHeader9"
                     aria-level={1}
                     aria-posinset={3}
+                    aria-selected={false}
                     aria-setsize={3}
                     className=
                         ms-GroupHeader
@@ -4233,15 +4234,15 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     &:hover .ms-Toggle-thumb {
                                       background-color: #201f1e;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                                       border-color: Highlight;
                                     }
-                                    @media screen and (-ms-high-contrast: active){&:hover {
+                                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                       border-color: Highlight;
                                     }
                                 data-is-focusable={true}
                                 data-ktp-target={true}
-                                id="Toggle7"
+                                id="Toggle10"
                                 onClick={[Function]}
                                 role="switch"
                                 type="button"
@@ -4388,6 +4389,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                               text-overflow: ellipsis;
                               white-space: nowrap;
                             }
+                        id="GroupHeader9"
                         role="gridcell"
                       >
                         <span>
@@ -4411,9 +4413,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                     </div>
                   </div>
                   <div
+                    aria-label="group 2"
                     className="ms-List"
-                    id="GroupedListSection6"
-                    role="presentation"
+                    id="GroupedListSection8"
+                    role="group"
                   >
                     <div
                       className="ms-List-surface"
@@ -4501,7 +4504,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone14"
+                            data-focuszone-id="FocusZone17"
                             data-is-focusable={true}
                             data-item-index={6}
                             data-selection-index={6}
@@ -4684,11 +4687,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4728,11 +4730,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5030,7 +5032,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone15"
+                            data-focuszone-id="FocusZone18"
                             data-is-focusable={true}
                             data-item-index={7}
                             data-selection-index={7}
@@ -5213,11 +5215,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5257,11 +5258,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5559,7 +5560,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                   opacity: 1;
                                 }
                             data-automationid="DetailsRow"
-                            data-focuszone-id="FocusZone16"
+                            data-focuszone-id="FocusZone19"
                             data-is-focusable={true}
                             data-item-index={8}
                             data-selection-index={8}
@@ -5742,11 +5743,10 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                           vertical-align: middle;
                                           width: 18px;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           color: WindowText;
                                         }
                                     data-icon-name="CircleRing"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5786,11 +5786,11 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                         &:hover {
                                           opacity: 1;
                                         }
-                                        @media screen and (-ms-high-contrast: active){& {
+                                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                           -ms-high-contrast-adjust: none;
+                                          forced-color-adjust: none;
                                         }
                                     data-icon-name="StatusCircleCheckmark"
-                                    role="presentation"
                                     style={
                                       Object {
                                         "fontFamily": "\\"FabricMDL2Icons\\"",

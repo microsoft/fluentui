@@ -1,0 +1,3 @@
+`ThemeProvider` is a utility that applies contextual theming to its child components. Themes can be applied to your entire app, to specific subtrees, or to individual components. You can also infinitely nest and override themes. By default, Fluent UI React components use a Fluent theme.
+
+Starting in `@fluentui/react` version 8, `ThemeProvider` provides a standard way to apply your application theme to Fluent UI React components. For Fabric/Fluent UI v7 customers, read more about the differences with previous theming utilities [here](https://github.com/microsoft/fluentui/blob/master/packages/react/src/utilities/ThemeProvider/README.md#how-does-this-change-other-existing-ways-of-theming-fluent-ui-components).

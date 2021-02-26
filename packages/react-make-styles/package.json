@@ -1,0 +1,56 @@
+{
+  "name": "@fluentui/react-make-styles",
+  "version": "9.0.0-alpha.4",
+  "description": "React bindings for @fluentui/make-styles",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev:storybook",
+    "update-api": "just-scripts update-api"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@types/webpack-env": "1.16.0",
+    "@fluentui/scripts": "^1.0.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6"
+  },
+  "dependencies": {
+    "@fluentui/make-styles": "^9.0.0-alpha.2",
+    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/react-provider": "^9.0.0-alpha.4",
+    "@fluentui/react-theme": "^9.0.0-alpha.3",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  }
+}

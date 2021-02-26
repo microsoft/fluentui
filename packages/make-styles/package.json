@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "0.3.0",
+  "version": "9.0.0-alpha.2",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,28 +22,30 @@
     "lint": "just-scripts lint",
     "start": "just-scripts dev:storybook",
     "test": "just-scripts test",
-    "test:watch": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api"
-  },
-  "beachball": {
-    "tag": "latest",
-    "disallowedChangeTypes": [
-      "major"
-    ]
+    "test:watch": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
+    "@fluentui/test-utilities": "^8.0.1",
     "@types/stylis": "^4.0.0",
     "prettier": "~1.19.1"
   },
   "dependencies": {
     "@emotion/hash": "^0.8.0",
-    "@fluentui/set-version": "^8.0.0-beta.0",
+    "@fluentui/set-version": "^8.0.1",
     "csstype": "^2.6.7",
     "inline-style-expand-shorthand": "^1.2.0",
     "rtl-css-js": "^1.14.0",
     "stylis": "^4.0.6",
     "tslib": "^1.10.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }

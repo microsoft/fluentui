@@ -1,13 +1,13 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.51.0",
+  "version": "0.52.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/accessibility": "^0.51.0",
-    "@fluentui/react-icons-northstar": "^0.51.0",
-    "@fluentui/react-northstar": "^0.51.0",
-    "@fluentui/react-northstar-prototypes": "^0.51.0",
+    "@fluentui/accessibility": "^0.52.0",
+    "@fluentui/react-icons-northstar": "^0.52.0",
+    "@fluentui/react-northstar": "^0.52.0",
+    "@fluentui/react-northstar-prototypes": "^0.52.0",
     "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
     "@types/react": "16.9.42",
@@ -22,10 +22,9 @@
   },
   "devDependencies": {
     "@fluentui/scripts": "^1.0.0",
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
-    "@fluentui/react": "^8.0.0-beta",
-    "gulp": "^4.0.2",
-    "typescript": "3.7.2"
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/react": "^8.0.0",
+    "gulp": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"

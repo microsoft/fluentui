@@ -16,7 +16,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_4"
+  id="chart_5"
   role="presentation"
 >
   <div
@@ -25,7 +25,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone5"
+    data-focuszone-id="FocusZone6"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -50,7 +50,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -58,14 +58,14 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_4"
+        id="xAxisGElementchart_5"
         transform="translate(0, -35)"
       />
       <g
@@ -79,21 +79,21 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_4"
+        id="yAxisGElementchart_5"
         transform="translate(40, 0)"
       />
       <g>
@@ -123,9 +123,12 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
             id="circle001"
@@ -136,13 +139,15 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
             id="circle0011L"
@@ -153,9 +158,8 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -252,7 +256,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -268,16 +272,16 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
 
                         {
                           background-color: red;
-                          background-image: ;
                           border-color: red;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, red, red);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
                   />
@@ -324,7 +328,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         overflow: hidden;
         width: 100%;
       }
-  id="chart_22"
+  id="chart_26"
   role="presentation"
 >
   <div
@@ -333,7 +337,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone23"
+    data-focuszone-id="FocusZone27"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -358,7 +362,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -366,14 +370,14 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_22"
+        id="xAxisGElementchart_26"
         transform="translate(0, -35)"
       />
       <g
@@ -387,26 +391,26 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_22"
+        id="yAxisGElementchart_26"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine20"
+          id="verticalLine23"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -417,7 +421,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         />
         <g>
           <line
-            id="lineID1901"
+            id="lineID2201"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -431,12 +435,15 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle1801"
+            id="circle2101"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -444,16 +451,18 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle18011L"
+            id="circle21011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -461,9 +470,8 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -543,7 +551,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -559,16 +567,16 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
 
                   {
                     background-color: red;
-                    background-image: ;
                     border-color: red;
                     border: 1px solid;
+                    content: ;
                     height: 12px;
                     margin-right: 8px;
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
-                    background-image: linear-gradient(to right, red, red);
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    content: linear-gradient(to right, red, red);
                     opacity: ;
                   }
             />
@@ -612,7 +620,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_10"
+  id="chart_12"
   role="presentation"
 >
   <div
@@ -621,7 +629,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone11"
+    data-focuszone-id="FocusZone13"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -646,7 +654,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -654,14 +662,14 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_10"
+        id="xAxisGElementchart_12"
         transform="translate(0, -35)"
       />
       <g
@@ -675,26 +683,26 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_10"
+        id="yAxisGElementchart_12"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine8"
+          id="verticalLine9"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -705,7 +713,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         />
         <g>
           <line
-            id="lineID701"
+            id="lineID801"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -719,12 +727,15 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle601"
+            id="circle701"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -732,16 +743,18 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle6011L"
+            id="circle7011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -749,9 +762,8 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -776,7 +788,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_19"
   role="presentation"
 >
   <div
@@ -785,7 +797,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone20"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -810,7 +822,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -818,14 +830,14 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
+        id="xAxisGElementchart_19"
         transform="translate(0, -35)"
       />
       <g
@@ -839,26 +851,26 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_19"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine14"
+          id="verticalLine16"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -869,7 +881,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         />
         <g>
           <line
-            id="lineID1301"
+            id="lineID1501"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -883,12 +895,15 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle1201"
+            id="circle1401"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -896,16 +911,18 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle12011L"
+            id="circle14011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -913,9 +930,8 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -1012,7 +1028,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1028,16 +1044,16 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
 
                         {
                           background-color: red;
-                          background-image: ;
                           border-color: red;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, red, red);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
                   />
@@ -1084,7 +1100,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_28"
+  id="chart_33"
   role="presentation"
 >
   <div
@@ -1093,7 +1109,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone29"
+    data-focuszone-id="FocusZone34"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1118,7 +1134,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1126,14 +1142,14 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
-        id="xAxisGElementchart_28"
+        id="xAxisGElementchart_33"
         transform="translate(0, -35)"
       />
       <g
@@ -1147,26 +1163,26 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_28"
+        id="yAxisGElementchart_33"
         transform="translate(40, 0)"
       />
       <g>
         <line
-          id="verticalLine26"
+          id="verticalLine30"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1177,7 +1193,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         />
         <g>
           <line
-            id="lineID2501"
+            id="lineID2901"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1191,12 +1207,15 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle2401"
+            id="circle2801"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1204,16 +1223,18 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle24011L"
+            id="circle28011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1221,9 +1242,8 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -1320,7 +1340,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1336,16 +1356,16 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
 
                         {
                           background-color: red;
-                          background-image: ;
                           border-color: red;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, red, red);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
                   />
@@ -1377,314 +1397,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
 `;
 
 exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
-<div
-  className=
-
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        height: 100%;
-        overflow: hidden;
-        width: 100%;
-      }
-  id="chart_34"
-  role="presentation"
->
-  <div
-    className=
-        ms-FocusZone
-        &:focus {
-          outline: none;
-        }
-    data-focuszone-id="FocusZone35"
-    onFocus={[Function]}
-    onKeyDown={[Function]}
-    onMouseDownCapture={[Function]}
-  >
-    <svg
-      height={0}
-      style={
-        Object {
-          "display": "block",
-        }
-      }
-      width={0}
-    >
-      <g
-        className=
-
-            & text {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
-              fill: rgb(179, 179, 179);
-            }
-            & line {
-              opacity: 0.2;
-              stroke: #323130;
-              width: 1px;
-            }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
-            }
-            & path {
-              display: none;
-            }
-        id="xAxisGElementchart_34"
-        transform="translate(0, -35)"
-      />
-      <g
-        className=
-
-            & text {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-weight: 400;
-            }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
-              fill: rgb(179, 179, 179);
-            }
-            & path {
-              display: none;
-            }
-            & line {
-              fill: #323130;
-              opacity: 0.2;
-            }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
-              opacity: 0.1;
-              stroke: rgb(179, 179, 179);
-            }
-        id="yAxisGElementchart_34"
-        transform="translate(40, 0)"
-      />
-      <g>
-        <line
-          id="verticalLine32"
-          stroke="steelblue"
-          strokeDasharray="5,5"
-          visibility="hidden"
-          x1={0}
-          x2={0}
-          y1={0}
-          y2={0}
-        />
-        <g>
-          <line
-            id="lineID3101"
-            onClick={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity={1}
-            stroke="red"
-            strokeLinecap="round"
-            strokeWidth={4}
-            x1={40}
-            x2={-20}
-            y1={-0.625}
-            y2={20}
-          />
-          <circle
-            cx={40}
-            cy={-0.625}
-            data-is-focusable={true}
-            fill="red"
-            id="circle3001"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity={1}
-            r={0.2}
-            stroke="red"
-            strokeWidth={3}
-          />
-          <circle
-            cx={-20}
-            cy={20}
-            data-is-focusable={true}
-            fill="red"
-            id="circle30011L"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onFocus={[Function]}
-            onMouseMove={[Function]}
-            onMouseOut={[Function]}
-            onMouseOver={[Function]}
-            opacity={1}
-            r={0.2}
-            stroke="red"
-            strokeWidth={3}
-          />
-        </g>
-      </g>
-    </svg>
-  </div>
-  <div
-    className=
-
-        {
-          margin-left: 20px;
-          margin-top: 8px;
-        }
-  >
-    <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              className=
-                  ms-OverflowSet
-                  {
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: unset;
-                    position: relative;
-                  }
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet-item
-                    {
-                      display: inherit;
-                      flex-shrink: 0;
-                    }
-              >
-                <button
-                  aria-label="metaData1"
-                  aria-posinset={1}
-                  aria-selected={false}
-                  aria-setsize={1}
-                  className=
-
-                      {
-                        align-items: center;
-                        background: none;
-                        border: none;
-                        cursor: pointer;
-                        display: flex;
-                        outline: transparent;
-                        padding-bottom: 8px;
-                        padding-left: 8px;
-                        padding-right: 8px;
-                        padding-top: 8px;
-                        position: relative;
-                      }
-                      &::-moz-focus-inner {
-                        border: 0;
-                      }
-                      .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid transparent;
-                        bottom: 1px;
-                        content: "";
-                        left: 1px;
-                        outline: 1px solid #605e5c;
-                        position: absolute;
-                        right: 1px;
-                        top: 1px;
-                        z-index: 1;
-                      }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                        outline-color: #605e5c;
-                      }
-                  data-is-focusable={true}
-                  onBlur={[Function]}
-                  onClick={[Function]}
-                  onFocus={[Function]}
-                  onMouseOut={[Function]}
-                  onMouseOver={[Function]}
-                  role="option"
-                >
-                  <div
-                    className=
-
-                        {
-                          background-color: red;
-                          background-image: ;
-                          border-color: red;
-                          border: 1px solid;
-                          height: 12px;
-                          margin-right: 8px;
-                          opacity: ;
-                          width: 12px;
-                        }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, red, red);
-                          opacity: ;
-                        }
-                  />
-                  <div
-                    className=
-
-                        {
-                          -moz-osx-font-smoothing: grayscale;
-                          -webkit-font-smoothing: antialiased;
-                          color: #323130;
-                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                          font-size: 12px;
-                          font-weight: 400;
-                          line-height: 16px;
-                          opacity: ;
-                        }
-                  >
-                    metaData1
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 <div
   className=
 
@@ -1734,7 +1446,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1742,7 +1454,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1763,17 +1475,17 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
               display: none;
             }
             & line {
-              fill: #323130;
               opacity: 0.2;
+              stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1782,7 +1494,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       />
       <g>
         <line
-          id="verticalLine38"
+          id="verticalLine37"
           stroke="steelblue"
           strokeDasharray="5,5"
           visibility="hidden"
@@ -1793,7 +1505,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         />
         <g>
           <line
-            id="lineID3701"
+            id="lineID3601"
             onClick={[Function]}
             onMouseMove={[Function]}
             onMouseOut={[Function]}
@@ -1807,12 +1519,15 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             y1={-0.625}
             y2={20}
           />
-          <circle
-            cx={40}
-            cy={-0.625}
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle3601"
+            id="circle3501"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1820,16 +1535,18 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
-          <circle
-            cx={-20}
-            cy={20}
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
             data-is-focusable={true}
             fill="red"
-            id="circle36011L"
+            id="circle35011L"
             onBlur={[Function]}
             onClick={[Function]}
             onFocus={[Function]}
@@ -1837,9 +1554,8 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             onMouseOut={[Function]}
             onMouseOver={[Function]}
             opacity={1}
-            r={0.2}
             stroke="red"
-            strokeWidth={3}
+            strokeWidth={2}
           />
         </g>
       </g>
@@ -1936,7 +1652,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1952,16 +1668,328 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
 
                         {
                           background-color: red;
-                          background-image: ;
                           border-color: red;
                           border: 1px solid;
+                          content: ;
                           height: 12px;
                           margin-right: 8px;
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
-                          background-image: linear-gradient(to right, red, red);
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, red, red);
+                          opacity: ;
+                        }
+                  />
+                  <div
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          line-height: 16px;
+                          opacity: ;
+                        }
+                  >
+                    metaData1
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
+<div
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        height: 100%;
+        overflow: hidden;
+        width: 100%;
+      }
+  id="chart_47"
+  role="presentation"
+>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone48"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+  >
+    <svg
+      height={0}
+      style={
+        Object {
+          "display": "block",
+        }
+      }
+      width={0}
+    >
+      <g
+        className=
+
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & line {
+              opacity: 0.2;
+              stroke: #323130;
+              width: 1px;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
+              opacity: 0.1;
+              stroke: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+        id="xAxisGElementchart_47"
+        transform="translate(0, -35)"
+      />
+      <g
+        className=
+
+            & text {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 10px;
+              font-weight: 400;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
+              fill: rgb(179, 179, 179);
+            }
+            & path {
+              display: none;
+            }
+            & line {
+              opacity: 0.2;
+              stroke: #323130;
+            }
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
+              opacity: 0.1;
+              stroke: rgb(179, 179, 179);
+            }
+        id="yAxisGElementchart_47"
+        transform="translate(40, 0)"
+      />
+      <g>
+        <line
+          id="verticalLine44"
+          stroke="steelblue"
+          strokeDasharray="5,5"
+          visibility="hidden"
+          x1={0}
+          x2={0}
+          y1={0}
+          y2={0}
+        />
+        <g>
+          <line
+            id="lineID4301"
+            onClick={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={1}
+            stroke="red"
+            strokeLinecap="round"
+            strokeWidth={4}
+            x1={40}
+            x2={-20}
+            y1={-0.625}
+            y2={20}
+          />
+          <path
+            d="M39.5 -0.625
+     A0.5 0.5 0 1 0 40.5 -0.625
+     M39.5 -0.625
+     A 0.5 0.5 0 1 1 40.5 -0.625
+     "
+            data-is-focusable={true}
+            fill="red"
+            id="circle4201"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={1}
+            stroke="red"
+            strokeWidth={2}
+          />
+          <path
+            d="M-20.5 20
+     A0.5 0.5 0 1 0 -19.5 20
+     M-20.5 20
+     A 0.5 0.5 0 1 1 -19.5 20
+     "
+            data-is-focusable={true}
+            fill="red"
+            id="circle42011L"
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onMouseMove={[Function]}
+            onMouseOut={[Function]}
+            onMouseOver={[Function]}
+            opacity={1}
+            stroke="red"
+            strokeWidth={2}
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <div
+    className=
+
+        {
+          margin-left: 20px;
+          margin-top: 8px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              className=
+                  ms-OverflowSet
+                  {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: unset;
+                    position: relative;
+                  }
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet-item
+                    {
+                      display: inherit;
+                      flex-shrink: 0;
+                    }
+              >
+                <button
+                  aria-label="metaData1"
+                  aria-posinset={1}
+                  aria-selected={false}
+                  aria-setsize={1}
+                  className=
+
+                      {
+                        align-items: center;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        display: flex;
+                        outline: transparent;
+                        padding-bottom: 8px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        padding-top: 8px;
+                        position: relative;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        outline-color: #605e5c;
+                      }
+                  data-is-focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  role="option"
+                >
+                  <div
+                    className=
+
+                        {
+                          background-color: red;
+                          border-color: red;
+                          border: 1px solid;
+                          content: ;
+                          height: 12px;
+                          margin-right: 8px;
+                          opacity: ;
+                          width: 12px;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, red, red);
                           opacity: ;
                         }
                   />

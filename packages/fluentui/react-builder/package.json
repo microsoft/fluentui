@@ -1,16 +1,16 @@
 {
   "name": "@fluentui/react-builder",
   "description": "A drag and drop UI builder.",
-  "version": "0.51.0",
+  "version": "0.52.0",
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/docs-components": "^0.51.0",
-    "@fluentui/react-component-event-listener": "^0.51.0",
-    "@fluentui/react-icons-northstar": "^0.51.0",
-    "@fluentui/react-northstar": "^0.51.0",
-    "@fluentui/code-sandbox": "^0.51.0",
-    "immer": "^7.0.5",
+    "@fluentui/docs-components": "^0.52.0",
+    "@fluentui/react-component-event-listener": "^0.52.0",
+    "@fluentui/react-icons-northstar": "^0.52.0",
+    "@fluentui/react-northstar": "^0.52.0",
+    "@fluentui/code-sandbox": "^0.52.0",
+    "immer": "^8.0.1",
     "lodash": "^4.17.15",
     "lz-string": "^1.4.4",
     "react": "16.8.6",
@@ -22,11 +22,10 @@
     "axe-core": "3.5.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/react-frame-component": "^4.1.1",
     "@fluentui/scripts": "^1.0.0",
-    "lerna-alias": "^3.0.3-0",
-    "typescript": "3.7.2"
+    "lerna-alias": "^3.0.3-0"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3"

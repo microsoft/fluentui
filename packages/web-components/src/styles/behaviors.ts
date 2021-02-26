@@ -1,13 +1,13 @@
 import { CSSCustomPropertyBehavior, cssCustomPropertyBehaviorFactory } from '@microsoft/fast-foundation';
+import { Direction } from '@microsoft/fast-web-utilities';
 import {
-  accentBaseColor,
   accentFill,
   accentFillLarge,
   accentForeground,
   accentForegroundCut,
   accentForegroundLarge,
-  DesignSystem,
-  direction,
+  neutralContrastFill,
+  neutralContrastFillRest,
   neutralDividerRest,
   neutralFill,
   neutralFillCard,
@@ -19,6 +19,7 @@ import {
   neutralForeground,
   neutralForegroundHint,
   neutralForegroundHintLarge,
+  neutralForegroundRest,
   neutralForegroundToggle,
   neutralForegroundToggleLarge,
   neutralLayerCard,
@@ -30,8 +31,8 @@ import {
   neutralLayerL3,
   neutralLayerL4,
   neutralOutline,
-} from '@microsoft/fast-components-styles-msft';
-import { Direction } from '@microsoft/fast-web-utilities';
+} from '../color';
+import { accentBaseColor, DesignSystem, direction } from '../fluent-design-system';
 import { FluentDesignSystemProvider } from '../design-system-provider';
 
 /**
@@ -583,7 +584,51 @@ export const neutralFocusInnerAccentBehavior: CSSCustomPropertyBehavior = cssCus
   neutralFocusInnerAccent(accentBaseColor),
   FluentDesignSystemProvider.findProvider,
 );
-
+/**
+ * Behavior to resolve and make available the neutral-contrast-foreground-rest CSS custom property.
+ * @public
+ */
+export const neutralContrastForegroundRestBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-contrast-foreground-rest',
+  x => neutralForegroundRest(neutralContrastFillRest)(x),
+  FluentDesignSystemProvider.findProvider,
+);
+/**
+ * Behavior to resolve and make available the neutral-contrast-fill-rest CSS custom property.
+ * @public
+ */
+export const neutralContrastFillRestBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-contrast-fill-rest',
+  x => neutralContrastFill(x).rest,
+  FluentDesignSystemProvider.findProvider,
+);
+/**
+ * Behavior to resolve and make available the neutral-contrast-fill-hover CSS custom property.
+ * @public
+ */
+export const neutralContrastFillHoverBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-contrast-fill-hover',
+  x => neutralContrastFill(x).hover,
+  FluentDesignSystemProvider.findProvider,
+);
+/**
+ * Behavior to resolve and make available the neutral-contrast-fill-active CSS custom property.
+ * @public
+ */
+export const neutralContrastFillActiveBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-contrast-fill-active',
+  x => neutralContrastFill(x).active,
+  FluentDesignSystemProvider.findProvider,
+);
+/**
+ * Behavior to resolve and make available the neutral-contrast-fill-focus CSS custom property.
+ * @public
+ */
+export const neutralContrastFillFocusBehavior = cssCustomPropertyBehaviorFactory(
+  'neutral-contrast-fill-focus',
+  x => neutralContrastFill(x).focus,
+  FluentDesignSystemProvider.findProvider,
+);
 /**
  * Behavior to resolve and make available the inline-start CSS custom property.
  *

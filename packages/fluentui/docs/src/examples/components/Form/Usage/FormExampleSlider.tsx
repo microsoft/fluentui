@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Form } from '@fluentui/react-northstar';
+import { Form, FormSlider, FormButton } from '@fluentui/react-northstar';
 
 const FormExampleSlider = () => (
   <Form onSubmit={() => alert('Form submitted')}>
-    <Form.Slider label="Age" id="age" />
-    <Form.Button content="Submit" />
+    <FormSlider label="Age" id="age" />
+    <FormButton content="Submit" />
   </Form>
 );
 

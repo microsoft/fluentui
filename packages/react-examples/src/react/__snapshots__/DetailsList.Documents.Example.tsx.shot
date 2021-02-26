@@ -130,10 +130,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}
@@ -305,10 +305,10 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               &:hover .ms-Toggle-thumb {
                 background-color: #201f1e;
               }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                 border-color: Highlight;
               }
           data-is-focusable={true}
@@ -462,10 +462,9 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               &:hover {
                 border-color: #323130;
               }
-              @media screen and (-ms-high-contrast: active){&:hover {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                -ms-high-contrast-adjust: none;
                 border-color: Highlight;
-              }
-              @media screen and (forced-colors: active){&:hover {
                 forced-color-adjust: none;
               }
         >
@@ -512,7 +511,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 &::-ms-clear {
                   display: none;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   background: Window;
                   color: WindowText;
                 }
@@ -525,7 +524,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
                   color: GrayText;
                 }
                 &:-ms-input-placeholder {
@@ -537,7 +536,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&:-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
                   color: GrayText;
                 }
                 &::-ms-input-placeholder {
@@ -549,7 +548,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   font-weight: 400;
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active){&::-ms-input-placeholder {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
                 }
             id="TextField2"
@@ -830,7 +829,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             padding-top: 0px;
                           }
                       data-icon-name="Page"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1043,7 +1041,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           top: 1px;
                         }
                     data-icon-name="SortUp"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
