@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.2.0..@fluentui/react-text_v0.2.1)
+
+### Patches
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.4 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-utilities to v9.0.0-alpha.3 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.0)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v0.2.0..@fluentui/react-text_v0.2.0)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.3 ([PR #17085](https://github.com/microsoft/fluentui/pull/17085) by humbertomakotomorimoto@gmail.com)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v0.2.0)
 

@@ -8,31 +8,6 @@ export type LinkProps = ComponentProps &
   React.AnchorHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement> &
   Omit<React.ButtonHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement>, 'type'> & {
     /**
-     * URL the link points to. If not provided, the link renders as a button (unless that behavior is
-     * overridden using `as`).
-     */
-    href?: string;
-
-    /**
-     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
-     * `_self` (the current window/context), `_parent`, and `_top`.
-     * This prop is only applied if `href` is set.
-     */
-    target?: string;
-
-    /**
-     * Relationship to the linked URL (can be a space-separated list).
-     * Most common values are `noreferrer` and/or `noopener`.
-     * This prop is only applied if `href` is set.
-     */
-    rel?: string;
-
-    /**
-     * Click handler for the link.
-     */
-    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
-
-    /**
      * Whether the link is disabled.
      * @defaultvalue false
      */
@@ -46,16 +21,47 @@ export type LinkProps = ComponentProps &
     disabledFocusable?: boolean;
 
     /**
-     * Built-in HTML attribute with different behavior depending on how the link is rendered.
-     * If rendered as `<a>`, hints at the MIME type.
-     * If rendered as `<button>`, override the type of button (`button` is the default).
+     * URL the link points to. If not provided, the link renders as a button (unless that behavior is
+     * overridden using `as`).
      */
-    type?: string;
+    href?: string;
 
     /**
      * If true, changes styling when the link is being used alongside other text content.
      */
     inline?: boolean;
+
+    /**
+     * Click handler for the link.
+     */
+    onClick?: (event: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLElement>) => void;
+
+    /**
+     * If true, changes the link styling to emphasize that it represents an alternative action.
+     * @defaultvalue false
+     */
+    secondary?: boolean;
+
+    /**
+     * Relationship to the linked URL (can be a space-separated list).
+     * Most common values are `noreferrer` and/or `noopener`.
+     * This prop is only applied if `href` is set.
+     */
+    rel?: string;
+
+    /**
+     * Where to open the linked URL. Common values are `_blank` (a new tab or window),
+     * `_self` (the current window/context), `_parent`, and `_top`.
+     * This prop is only applied if `href` is set.
+     */
+    target?: string;
+
+    /**
+     * Built-in HTML attribute with different behavior depending on how the link is rendered.
+     * If rendered as `<a>`, hints at the MIME type.
+     * If rendered as `<button>`, override the type of button (`button` is the default).
+     */
+    type?: string;
 
     /** Style tokens */
     // tokens?: RecursivePartial<LinkTokens>;

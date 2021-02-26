@@ -18,21 +18,21 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "react": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.0.0-beta.62",
-    "@fluentui/react-provider": "^9.0.0-alpha.2",
-    "@fluentui/react-theme": "^9.0.0-alpha.1",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.2",
-    "@fluentui/theme": "^2.0.0-beta.19",
+    "@fluentui/react": "^8.1.0",
+    "@fluentui/react-provider": "^9.0.0-alpha.4",
+    "@fluentui/react-theme": "^9.0.0-alpha.3",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
+    "@fluentui/theme": "^2.0.1",
     "@storybook/addon-knobs": "6.0.28",
     "@storybook/addons": "6.0.28",
-    "@fluentui/azure-themes": "^8.0.0-beta.60",
-    "@fluentui/theme-samples": "^8.0.0-beta.60",
+    "@fluentui/azure-themes": "^8.0.1",
+    "@fluentui/theme-samples": "^8.0.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

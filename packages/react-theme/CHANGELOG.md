@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Wed, 24 Feb 2021 00:05:29 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.3)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-alpha.2..@fluentui/react-theme_v9.0.0-alpha.3)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [9.0.0-alpha.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.2)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.0.0-alpha.1..@fluentui/react-theme_v9.0.0-alpha.2)
+
+### Changes
+
+- Changing incorrect value for brandForegroundPressed token from brand.shade30 to brand.shade40. ([PR #17085](https://github.com/microsoft/fluentui/pull/17085) by humbertomakotomorimoto@gmail.com)
 
 ## [9.0.0-alpha.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.0.0-alpha.1)
 
