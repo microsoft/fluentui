@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Updating icon documentation to mention open source package",
+  "packageName": "@fluentui/public-docsite",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
