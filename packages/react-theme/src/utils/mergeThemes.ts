@@ -2,7 +2,7 @@ import { PartialTheme, Theme } from '../types';
 
 // TODO
 // We should consider removal merge() function from this file, ideally it should not be required
-// as probably themes will have flat shape 
+// as probably themes will have flat shape
 
 /**
  * Simple deep merge function. Takes all arguments and returns a deep copy of the objects merged
