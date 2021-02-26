@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-examples",
-  "version": "8.0.1",
+  "version": "8.1.0",
   "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
@@ -73,7 +73,7 @@
     "@fluentui/react-theme": "^9.0.0-alpha.3",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
     "@fluentui/react-toggle": "^1.0.0-beta.53",
-    "@fluentui/react-tooltip": "^9.0.0-alpha.0",
+    "@fluentui/react-tooltip": "^9.0.0-alpha.1",
     "@fluentui/scheme-utilities": "^8.0.1",
     "@fluentui/style-utilities": "^8.0.1",
     "@fluentui/theme": "^2.0.1",
