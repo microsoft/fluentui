@@ -2,27 +2,115 @@
 
 ## Background
 
-_Description and use cases of this component_
+Tooltips provide additional information about an element when hovering or focusing on the element.
 
 ## Prior Art
 
-_Include background research done for this component_
+- OpenUI [Tooltip resarch](https://open-ui.org/components/tooltip.research)
+- Tooltip Convergence Epic Issue [#16735](https://github.com/microsoft/fluentui/issues/16735)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Tooltips in Fabric (v8)
+
+TODO
+
+### Tooltips in Northstar (v0)
+
+TODO
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+There are a few ways to add a tooltip to a component.
+
+### A component with a `tooltip` slot
+
+Components can choose to expose a pseudo-slot `tooltip`, by inheriting props from the `WithTooltipSlot` interface and using the `useTooltipSlot` hook.
+
+While this looks and acts like a normal slot to users, the `Tooltip` is not actually rendered by the component, but rather passed to the `TooltipManager` to render. The `useTooltipSlot` hook is lightweight (small bundle size impact); it does not have a direct dependency on the `Tooltip` or `TooltipManager` classes.
+
+For example, to add the `tooltip` slot to Button:
+
+```typescript
+// Button.types.ts:
+export interface ButtonProps extends WithTooltipSlot /*...*/ {
+  // ...
+}
+
+// useButton.ts:
+export const useButton = (/*...*/) => {
+  const state = mergeProps(/*...*/);
+
+  useTooltipSlot(state);
+  // ...
+};
+```
+
+Example usage:
+
+```jsx
+<Button tooltip="Example tooltip" />
+<Button tooltip={<>Custom <b>Tooltip</b> Content!</>} />
+<Button tooltip={{ children: 'Placed Tooltip', placement: 'right' }} />
+<Button tooltip={{ as: MyTooltip, children: 'You can even implement your own tooltip' }} />
+```
+
+### On any element using a ref
+
+To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `useTooltipRef` hook. It takes the same shorthand props that the `tooltip` slot does. This is slightly less ergonomic than the tooltip slot, and requires using a ref, but works with any element.
+
+```jsx
+<div ref={useTooltipRef('Example tooltip')}>A div with a tooltip</div>
+<ThirdPartyComponent ref={useTooltipRef(<>Tooltips <u>everywhere</u>!</>)} />
+```
+
+### Render a Tooltip directly (no positioning or layering):
+
+```jsx
+<Tooltip>Tooltip text</Tooltip>
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+- The tooltip can have a `subtle` style variant with a different background and text color.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+The Tooltip API is split among several components and hooks, in two packages:
+
+- **@fluentui/react-tooltip**
+  - `Tooltip`
+  - `TooltipManager`
+- **@fluentui/react-tooltip-provider**
+  - `TooltipProvider`
+  - `useTooltipSlot`
+  - `useTooltipRef`
+
+### @fluentui/react-tooltip
+
+The `react-tooltip` package contains the bulk of the implementation of tooltips, including rendering, styling, positioning, etc. This will be a larger package, but can be lazy-loaded and doesn't need to be included in an app's bundle directly.
+
+#### Tooltip
+
+`Tooltip` renders the tooltip itself when it is visible.
+
+#### TooltipManager
+
+`TooltipManager` handles showing and hiding tooltips, including positioning and tracking the visible tooltip. There is only one instance at the root of the app.
+
+### @fluentui/react-tooltip-provider
+
+The `react-tooltip-provider` is a lightweight package that allows any component to hook into tooltip functionality.
+
+#### TooltipProvider
+
+`TooltipProvider` is responsible for lazy-loading `TooltipManager`. It creates a React context that provides a ref to the `TooltipManager` once it is loaded. This context will also be built into `FluentContext`.
+
+#### useTooltipSlot
+
+The `useTooltipSlot` hook adds React event listeners for pointer and focus events to the component's state. It passes the tooltip props to the `TooltipManager`.
+
+#### useTooltipRef
+
+The `useTooltipRef` hook creates a ref function that adds native event listeners to any element.
 
 ## Structure
 
@@ -61,3 +149,7 @@ Base accessibility information is included in the design document. After the spe
 - Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
 - List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
 - List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+
+```
+
+```
