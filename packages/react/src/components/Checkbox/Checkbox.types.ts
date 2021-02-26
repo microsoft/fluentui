@@ -22,9 +22,7 @@ export interface ICheckbox {
  * Checkbox properties.
  * {@docCategory Checkbox}
  */
-export interface ICheckboxProps
-  extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>,
-    React.RefAttributes<HTMLDivElement> {
+export interface ICheckboxProps extends React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the `ICheckbox` interface. Use this instead of `ref` for accessing
    * the public methods and properties of the component.
@@ -64,10 +62,28 @@ export interface ICheckboxProps
   onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
 
   /**
-   * Optional props that will be mixed into the input element, *before* other props are applied. This allows
-   * you to apply additional attributes to the input element, such as `data-automation-id` for automation.
-   * Note that if you provide, for example, `disabled` as well as `inputProps.disabled`, the former will take
-   * precedence over the latter.
+   * Title text applied to the root element and the hidden checkbox input.
+   * (Use `label` instead for the visible label.)
+   */
+  title?: string;
+
+  /**
+   * ID for the checkbox input.
+   */
+  id?: string;
+
+  /**
+   * Name for the checkbox input. This is intended for use with forms and NOT displayed in the UI.
+   */
+  name?: string;
+
+  /**
+   * Optional props that will be applied to the input element, *before* other props are applied.
+   * Note that if you provide, for example, `disabled` as well as `inputProps.disabled`, the
+   * top-level prop (`disabled` in this case) will take precedence.
+   *
+   * Including `data-*` props in `inputProps` is supported but currently requires casting since
+   * TS 3.7 doesn't provide a way to allow all keys with a certain prefix.
    */
   inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
 
