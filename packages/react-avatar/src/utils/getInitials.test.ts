@@ -10,7 +10,7 @@ describe('getInitials', () => {
   });
 
   it('calculates an expected initials in LTR', () => {
-    let result = getInitials('Kat Larrson', false);
+    const result = getInitials('Kat Larrson', false);
     expect(result).toEqual('KL');
   });
 
@@ -23,42 +23,45 @@ describe('getInitials', () => {
   });
 
   it('calculates an expected initials in LTR with a hypen', () => {
-    let result = getInitials('David Zearing-Goff', false);
+    const result = getInitials('David Zearing-Goff', false);
     expect(result).toEqual('DZ');
   });
 
   it('calculates an expected initials in LTR with numbers', () => {
-    let result = getInitials('4lex 5loo', false);
+    const result = getInitials('4lex 5loo', false);
     expect(result).toEqual('45');
   });
 
   it('calculates an expected initials in LTR with parentheses', () => {
-    let result = getInitials('David (The man) Goff', false);
+    const result = getInitials('David (The man) Goff', false);
     expect(result).toEqual('DG');
   });
 
   it('calculates an expected initials in LTR with brackets', () => {
-    let result = getInitials('David Goff [The man]', false);
+    const result = getInitials('David Goff [The man]', false);
     expect(result).toEqual('DG');
   });
 
   it('calculates an expected initials in LTR with curly braces', () => {
-    let result = getInitials('David {The man} Goff', false);
+    const result = getInitials('David {The man} Goff', false);
     expect(result).toEqual('DG');
   });
 
   it('calculates an expected initials in LTR with multiple parentheses, extra spaces, and unwanted characters', () => {
-    let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ', false);
+    const result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)    ', false);
     expect(result).toEqual('DG');
   });
 
   it('calculates an expected initials in LTR with multiple types of unwanted text', () => {
-    let result = getInitials(' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)  [Beta]  ', false);
+    const result = getInitials(
+      ' !@#$%^&*()=+ (Alpha) David   (The man) `~<>,./?[]{}|   Goff   (Gamma)  [Beta]  ',
+      false,
+    );
     expect(result).toEqual('DG');
   });
 
   it('calculates an expected initials in RTL if one was not specified', () => {
-    let result = getInitials('Kat Larrson', true);
+    const result = getInitials('Kat Larrson', true);
     expect(result).toEqual('LK');
   });
 
@@ -77,7 +80,7 @@ describe('getInitials', () => {
   });
 
   it('calculates an expected initials for Arabic names', () => {
-    let result = getInitials('خسرو رحیمی', true);
+    const result = getInitials('خسرو رحیمی', true);
     expect(result).toEqual('');
   });
 
