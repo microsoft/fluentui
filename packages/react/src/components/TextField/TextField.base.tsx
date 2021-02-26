@@ -551,7 +551,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     // - the value is undefined (in case one of the IE bugs comes back)
     // - it's a duplicate event (important since onInputChange is called twice per actual user event)
     // - it's the same as the previous value
-    if (value === undefined || value === this._lastChangeValue || value === _getValue(this.props, this.state) || '') {
+    const previousValue = _getValue(this.props, this.state) || '';
+    if (value === undefined || value === this._lastChangeValue || value === previousValue) {
       this._lastChangeValue = undefined;
       return;
     }
