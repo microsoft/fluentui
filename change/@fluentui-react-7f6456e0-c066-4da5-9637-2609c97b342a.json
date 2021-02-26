@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "updated react package snapshots",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
