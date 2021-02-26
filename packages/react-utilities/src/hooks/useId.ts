@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { getId } from '@fluentui/utilities/lib/getId';
+
+let id = 0;
+
+export function getId(prefix?: string): string {
+  return (prefix || '') + id++;
+}
+
+export function resetIds(): void {
+  id = 0;
+}
 
 /**
  * Hook to generate a unique ID in the global scope (spanning across duplicate copies of the same library).

@@ -1,5 +1,6 @@
+import { ax } from '@fluentui/react-make-styles';
 import * as React from 'react';
-import { css } from '@fluentui/utilities';
+
 import { GenericDictionary } from './types';
 
 export type MergePropsOptions = {
@@ -51,7 +52,7 @@ export const makeMergeProps = <TState = GenericDictionary>(options: MergePropsOp
             } else if (propName === 'className') {
               if (propValue) {
                 // for classnames, append
-                target[propName] = css(target[propName], propValue);
+                target[propName] = ax(target[propName], propValue);
               }
             } else {
               target[propName] = propValue;
