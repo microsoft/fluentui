@@ -2,6 +2,29 @@
   "name": "@fluentui/react-flex",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-flex_v0.2.8",
+      "version": "0.2.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-flex"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.17",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 20:16:39 GMT",
       "tag": "@fluentui/react-flex_v0.2.7",
       "version": "0.2.7",

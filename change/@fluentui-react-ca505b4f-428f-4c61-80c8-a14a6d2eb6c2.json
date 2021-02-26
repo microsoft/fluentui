@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "TextField: call onChange with standard timing",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

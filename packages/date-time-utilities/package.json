@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/date-time-utilities",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "Date-time utilities",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,12 +23,12 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@fluentui/set-version": "^8.0.0",
+    "@fluentui/set-version": "^8.0.1",
     "tslib": "^1.10.0"
   }
 }
