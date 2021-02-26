@@ -2,6 +2,29 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-conformance_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update devDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-conformance"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-conformance"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react-conformance_v0.2.1",
       "version": "0.2.1",

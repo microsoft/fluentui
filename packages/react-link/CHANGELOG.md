@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-link
 
-This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.4)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-link_v9.0.0-alpha.3..@fluentui/react-link_v9.0.0-alpha.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.2.14 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.2 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
 
 ## [9.0.0-alpha.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-link_v9.0.0-alpha.3)
 

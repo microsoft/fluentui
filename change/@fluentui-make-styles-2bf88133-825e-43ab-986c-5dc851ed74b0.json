@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Update references to major-bumped packages",
-  "packageName": "@fluentui/make-styles",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

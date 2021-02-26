@@ -1,8 +1,25 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Thu, 25 Feb 2021 20:16:39 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.63)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.62..@fluentui/react-cards_v1.0.0-beta.63)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/keyboard-key to v0.2.14 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.62)
 

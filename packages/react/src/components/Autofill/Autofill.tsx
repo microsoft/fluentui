@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IAutofillProps, IAutofill } from './Autofill.types';
-import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
+import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
   inputValue: string;
@@ -343,5 +343,19 @@ function _doesTextStartWith(text: string, startWith: string): boolean {
   if (!text || !startWith) {
     return false;
   }
+
+  if (process.env.NODE_ENV !== 'production') {
+    for (const val of [text, startWith]) {
+      if (typeof val !== 'string') {
+        throw new Error(
+          `${
+            Autofill.name
+            // eslint-disable-next-line @fluentui/max-len
+          } received non-string value "${val}" of type ${typeof val} from either input's value or suggestedDisplayValue`,
+        );
+      }
+    }
+  }
+
   return text.toLocaleLowerCase().indexOf(startWith.toLocaleLowerCase()) === 0;
 }

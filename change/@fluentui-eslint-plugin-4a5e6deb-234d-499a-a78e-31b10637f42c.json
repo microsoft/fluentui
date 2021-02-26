@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Release major version",
-  "packageName": "@fluentui/eslint-plugin",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -8,7 +8,7 @@
     "@fluentui/styles": "^0.52.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/react": "16.9.42",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",

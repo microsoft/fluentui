@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Release version 8",
-  "packageName": "@fluentui/azure-themes",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}
