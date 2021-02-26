@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add menu role to the menu element underneath menu sections",
+  "packageName": "@fluentui/react",
+  "email": "makopch@microsoft.com",
+  "dependentChangeType": "patch"
+}
