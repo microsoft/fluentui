@@ -4,30 +4,34 @@
 
 ## Background
 
-The `Button` component references data that a user can follow by clicking or tapping it.
+The `Button` component enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
 
 ## Prior Art
 
 ### Open UI
 
-The Open UI [Button Research](https://open-ui.org/components/button.research) page (currently in PR: https://github.com/WICG/open-ui/pull/253), shows how the `Button` component is used in UI platforms across the web. The consensus across libraries seems to center around a simple interface with few variants that mostly attempt to support the functionality of the `<a>` HTML tag.
+The Open UI [Button Research](https://open-ui.org/components/button) page, shows how the `Button` component is used in UI platforms across the web. While there is consensus about some of the basic features that the `Button` needs to support the more advanced features and the variants presented differ significantly among the different UI platforms.
 
 ### Comparison of v8 and v0
 
 The existing components are:
 
 - v8 - [Button](https://developer.microsoft.com/en-us/fluentui#/controls/web/button)
-- v0 - v0 does not currently export a `Button` component
+- v0 - [Button](https://fluentsite.z22.web.core.windows.net/0.52.1/components/button/definition)
 
 ## Sample Code
 
 Basic examples:
 
 ```jsx
-<Button>This is a button</Button>
-<Button href="https://www.bing.com">This is a button</Button>
-<Button href="https://www.bing.com" disabled>This is a button</Button>
-<Button href="https://www.bing.com" target="_blank">This is a button</Button>
+<Button>Text</Button>
+<Button icon={<SVGIcon />} />
+<Button icon={<SVGIcon />}>Text</Button>
+<Button icon={<SVGIcon />} iconPosition="after">Text</Button>
+<Button primary>Text</Button>
+<Button disabled>Text</Button>
+<Button size="small">Text</Button>
+<Button size="large">Text</Button>
 ```
 
 ## Variants
