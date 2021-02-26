@@ -7,7 +7,7 @@ import { GenericDictionary } from './types';
  *
  * @internal
  */
-interface IDictionary {
+interface Dictionary {
   [className: string]: boolean;
 }
 
@@ -16,7 +16,7 @@ interface IDictionary {
  *
  * @internal
  */
-interface ISerializableObject {
+interface SerializableObject {
   toString?: () => string;
 }
 
@@ -25,17 +25,17 @@ interface ISerializableObject {
  *
  * @internal
  */
-type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
+type CssInput = string | SerializableObject | Dictionary | null | undefined | boolean;
 
 /**
  * Concatination helper, which can merge class names together. Skips over falsey values.
  *
  * @public
  */
-function css(...args: ICssInput[]): string {
-  let classes = [];
+function css(...args: CssInput[]): string {
+  const classes = [];
 
-  for (let arg of args) {
+  for (const arg of args) {
     if (arg) {
       if (typeof arg === 'string') {
         classes.push(arg);
@@ -43,7 +43,7 @@ function css(...args: ICssInput[]): string {
         classes.push(arg.toString());
       } else {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        for (let key in arg as any) {
+        for (const key in arg as any) {
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           if ((arg as any)[key]) {
             classes.push(key);
