@@ -48,7 +48,7 @@ Example usage:
 
 ```jsx
 <Button tooltip="Example tooltip" />
-<Button tooltip={<>Custom <b>Tooltip</b> Content!</>} />
+<Button tooltip={<>Custom <b>Tooltip</b> content!</>} />
 <Button tooltip={{ children: 'Placed Tooltip', placement: 'right' }} />
 <Button tooltip={{ as: MyTooltip, children: 'You can even implement your own tooltip' }} />
 ```
@@ -59,6 +59,7 @@ To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `
 
 ```jsx
 <div ref={useTooltipRef('Example tooltip')}>A div with a tooltip</div>
+
 <ThirdPartyComponent ref={useTooltipRef(<>Tooltips <u>everywhere</u>!</>)} />
 ```
 
@@ -76,13 +77,122 @@ To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `
 
 The Tooltip API is split among several components and hooks, in two packages:
 
-- **@fluentui/react-tooltip**
-  - `Tooltip`
-  - `TooltipManager`
 - **@fluentui/react-tooltip-provider**
+  - `TooltipSlotProps`
+  - `TooltipManagerApi`
   - `TooltipProvider`
   - `useTooltipSlot`
   - `useTooltipRef`
+- **@fluentui/react-tooltip**
+  - `Tooltip`
+  - `TooltipManager`
+
+### @fluentui/react-tooltip-provider
+
+The `react-tooltip-provider` is a lightweight package that allows any component to hook into tooltip functionality.
+
+#### TooltipSlotProps
+
+The `TooltipSlotProps` interface defines the props available via the `tooltip` slot or the `useTooltipRef` hook. This is defined in the `react-tooltip-provider` package so that components incorporating tooltips don't need to take a dependency on the `react-tooltip` package.
+
+```typescript
+export interface TooltipSlotProps extends ComponentProps {
+  /**
+   * How to position the tooltip relative to the target element. This is a "best effort" placement,
+   * but the tooltip may be flipped to the other side if there is not enough room.
+   *
+   * @defaultvalue bottom
+   */
+  placement?: TooltipPlacement;
+
+  /**
+   * Subtle color variant
+   */
+  subtle?: boolean;
+}
+
+export type TooltipPlacement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+```
+
+#### TooltipManagerApi
+
+The `TooltipManagerApi` is used internally to communicate between the hooks and the lazy-loaded `TooltipManager`.
+
+```typescript
+/**
+ * Imperative interface to show and hide tooltips.
+ */
+export interface TooltipManagerApi {
+  show: (target: HTMLElement, tooltip: ShorthandProps<TooltipSlotProps>) => void;
+  hide: (target: HTMLElement) => void;
+}
+```
+
+#### TooltipProvider
+
+`TooltipProvider` is responsible for lazy-loading `TooltipManager`. It creates a React context that provides a ref to the `TooltipManager` once it is loaded. This context will also be built into `FluentContext`.
+
+```typescript
+export interface TooltipProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  // TooltipProvider has no additional props
+}
+
+export interface TooltipProviderState extends TooltipProviderProps {
+  /**
+   * Ref to the root slot
+   */
+  ref: React.MutableRefObject<HTMLElement>;
+}
+```
+
+#### useTooltipSlot
+
+The `useTooltipSlot` hook adds React event listeners for pointer and focus events to the component's state. It passes the tooltip props to the `TooltipManager`.
+
+```typescript
+/**
+ * Mixin to add the tooltip slot to a component's Props.
+ *
+ * Note: The tooltip slot should _not_ be listed in the component's slot props for rendering.
+ * Although this has the same API as a slot, the tooltip will not be rendered directly by the component.
+ */
+export interface WithTooltipSlot {
+  /**
+   * The tooltip to display on hover or focus. Can be a string, JSX element tree, or TooltipSlotProps.
+   */
+  tooltip?: ShorthandProps<TooltipSlotProps>;
+}
+
+/**
+ * Implement tooltip functionality on a component with a tooltip slot.
+ */
+export function useTooltipSlot<State extends React.HTMLAttributes<HTMLElement> & WithTooltipSlot>(state: State);
+```
+
+#### useTooltipRef
+
+The `useTooltipRef` hook creates a ref function that adds native event listeners to any element.
+
+```typescript
+/**
+ * Create a ref that, when attached to an element, shows the tooltip on hover or focus.
+ *
+ * @param tooltip The tooltip to display on hover or focus. Can be a string, JSX element tree, or TooltipSlotProps.
+ */
+export function useTooltipRef(tooltip: ShorthandProps<TooltipSlotProps>);
+```
 
 ### @fluentui/react-tooltip
 
@@ -92,25 +202,71 @@ The `react-tooltip` package contains the bulk of the implementation of tooltips,
 
 `Tooltip` renders the tooltip itself when it is visible.
 
+Most of the tooltip's props are defined in the `TooltipComponentProps` interface, which is defined in the `react-tooltip-provider` package below.
+
+```typescript
+import { TooltipSlotProps } from '@fluentui/react-tooltip-provider';
+
+/**
+ * Props for the Tooltip component.
+ *
+ * Note: Most props are defined in the TooltipSlotProps interface.
+ */
+export interface TooltipProps extends TooltipSlotProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * The element that this Tooltip should point to.
+   */
+  targetRef?: React.RefObject<HTMLElement | null>;
+
+  /**
+   * The arrow that points to the target element.
+   */
+  arrow?: ShorthandProps<React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
+}
+
+export type TooltipPlacement =
+  | 'top'
+  | 'top-start'
+  | 'top-end'
+  | 'bottom'
+  | 'bottom-start'
+  | 'bottom-end'
+  | 'right'
+  | 'right-start'
+  | 'right-end'
+  | 'left'
+  | 'left-start'
+  | 'left-end';
+```
+
 #### TooltipManager
 
 `TooltipManager` handles showing and hiding tooltips, including positioning and tracking the visible tooltip. There is only one instance at the root of the app.
 
-### @fluentui/react-tooltip-provider
+Note that the `TooltipManager` has a slot for the visible tooltip on its State, but it's not a public prop. Instead, the tooltip is shown/hidden using the `TooltipManagerApi` imperative interface, which is defined in the `react-tooltip-provider` package below.
 
-The `react-tooltip-provider` is a lightweight package that allows any component to hook into tooltip functionality.
+```typescript
+import { TooltipManagerApi } from '@fluentui/react-tooltip-provider';
 
-#### TooltipProvider
+export interface TooltipManagerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Ref to the imperative interface to show and hide tooltips.
+   */
+  componentRef?: React.Ref<TooltipManagerApi>;
+}
 
-`TooltipProvider` is responsible for lazy-loading `TooltipManager`. It creates a React context that provides a ref to the `TooltipManager` once it is loaded. This context will also be built into `FluentContext`.
+export interface TooltipManagerState extends TooltipManagerProps {
+  /**
+   * Ref to the root slot
+   */
+  ref: React.MutableRefObject<HTMLElement>;
 
-#### useTooltipSlot
-
-The `useTooltipSlot` hook adds React event listeners for pointer and focus events to the component's state. It passes the tooltip props to the `TooltipManager`.
-
-#### useTooltipRef
-
-The `useTooltipRef` hook creates a ref function that adds native event listeners to any element.
+  /**
+   * The Tooltip being rendered, if any.
+   */
+  tooltip?: ObjectShorthandProps<TooltipProps>;
+}
+```
 
 ## Structure
 
