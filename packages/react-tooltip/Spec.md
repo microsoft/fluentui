@@ -1,21 +1,47 @@
 # Tooltip Spec
 
-# Background
-
 Tooltips provide additional information about an element when hovering or focusing on the element.
 
-# Prior Art
+## Prior Art
 
-- OpenUI [Tooltip resarch](https://open-ui.org/components/tooltip.research)
-- Tooltip Convergence Epic Issue [#16735](https://github.com/microsoft/fluentui/issues/16735)
+- OpenUI Tooltip resarch: https://open-ui.org/components/tooltip.research
+- GitHub Epic issue: [Tooltip Convergence #16735](https://github.com/microsoft/fluentui/issues/16735)
 
-## Tooltips in Fabric (v8)
+### Tooltips in v8/Fabric
 
-TODO
+v8 tooltips use a `TooltipHost` wrapped around the target element to provide tooltip functionality. This creates a `div` around the element that listens for mouse and focus events.
 
-## Tooltips in Northstar (v0)
+The `Tooltip` component renders as a `Callout`, and supports all `Callout` props.
 
-TODO
+```jsx
+<TooltipHost
+  content="This is the tooltip content"
+  // This id is used on the tooltip itself, not the host
+  // (so an element with this id only exists when the tooltip is shown)
+  id={tooltipId}
+  calloutProps={calloutProps}
+  styles={hostStyles}
+>
+  <DefaultButton aria-describedby={tooltipId}>Hover over me</DefaultButton>
+</TooltipHost>
+```
+
+#### Drawbacks
+
+There are a few drawbacks with this approach to adding tooltips, which are outlined in [☂ Tooltip: open issues to resolve in converged approach #15102](https://github.com/microsoft/fluentui/issues/15102). To summarize:
+
+- The wrapper `div` created by `TooltipHost` can cause layout issues for the component. It also doesn't always result in proper positioning for the tooltip.
+- The API is overly complex.
+- It's not possible to have a tooltip within a tooltip
+- There's no coordination between tooltips on a page. For example, moving the mouse between two elements with tooltips should cause the second tooltip to appear immediately without fading in/out.
+
+### Tooltips in v0/Northstar
+
+v0 tooltips use a `trigger` property to render the tooltip's target component. However, unlike v8 it does not create a wrapper `div` around the target component, but instead adds listeners to the target component's props.
+
+```jsx
+<Tooltip content="Example tooltip" trigger={<Button content="A button" />} />
+```
 
 # Sample Code
 
@@ -178,7 +204,7 @@ export interface WithTooltipSlot {
 /**
  * Implement tooltip functionality on a component with a tooltip slot.
  */
-export function useTooltipSlot<State extends React.HTMLAttributes<HTMLElement> & WithTooltipSlot>(state: State);
+export function useTooltipSlot(state: React.HTMLAttributes<HTMLElement> & WithTooltipSlot);
 ```
 
 ### useTooltipRef
