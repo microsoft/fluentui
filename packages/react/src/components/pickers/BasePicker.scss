@@ -26,6 +26,15 @@
       border: 2px solid $inputFocusBorderAltColor;
     }
   }
+
+  &.inputDisabled {
+    @include high-contrast {
+      border-color: GrayText;
+      &:after {
+        background: none;
+      }
+    }
+  }
 }
 
 .pickerInput {
