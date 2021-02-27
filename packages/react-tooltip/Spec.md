@@ -1,27 +1,27 @@
-# @fluentui/react-tooltip Spec
+# Tooltip Spec
 
-## Background
+# Background
 
 Tooltips provide additional information about an element when hovering or focusing on the element.
 
-## Prior Art
+# Prior Art
 
 - OpenUI [Tooltip resarch](https://open-ui.org/components/tooltip.research)
 - Tooltip Convergence Epic Issue [#16735](https://github.com/microsoft/fluentui/issues/16735)
 
-### Tooltips in Fabric (v8)
+## Tooltips in Fabric (v8)
 
 TODO
 
-### Tooltips in Northstar (v0)
+## Tooltips in Northstar (v0)
 
 TODO
 
-## Sample Code
+# Sample Code
 
 There are a few ways to add a tooltip to a component.
 
-### A component with a `tooltip` slot
+## A component with a `tooltip` slot
 
 Components can choose to expose a pseudo-slot `tooltip`, by inheriting props from the `WithTooltipSlot` interface and using the `useTooltipSlot` hook.
 
@@ -53,7 +53,7 @@ Example usage:
 <Button tooltip={{ as: MyTooltip, children: 'You can even implement your own tooltip' }} />
 ```
 
-### On any element using a ref
+## On any element using a ref
 
 To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `useTooltipRef` hook. It takes the same shorthand props that the `tooltip` slot does. This is slightly less ergonomic than the tooltip slot, and requires using a ref, but works with any element.
 
@@ -63,17 +63,17 @@ To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `
 <ThirdPartyComponent ref={useTooltipRef(<>Tooltips <u>everywhere</u>!</>)} />
 ```
 
-### Render a Tooltip directly (no positioning or layering):
+## Render a Tooltip directly (no positioning or layering):
 
 ```jsx
 <Tooltip>Tooltip text</Tooltip>
 ```
 
-## Variants
+# Variants
 
 - The tooltip can have a `subtle` style variant with a different background and text color.
 
-## API
+# API
 
 The Tooltip API is split among several components and hooks, in two packages:
 
@@ -87,11 +87,11 @@ The Tooltip API is split among several components and hooks, in two packages:
   - `Tooltip`
   - `TooltipManager`
 
-### @fluentui/react-tooltip-provider
+## @fluentui/react-tooltip-provider
 
 The `react-tooltip-provider` is a lightweight package that allows any component to hook into tooltip functionality.
 
-#### TooltipSlotProps
+### TooltipSlotProps
 
 The `TooltipSlotProps` interface defines the props available via the `tooltip` slot or the `useTooltipRef` hook. This is defined in the `react-tooltip-provider` package so that components incorporating tooltips don't need to take a dependency on the `react-tooltip` package.
 
@@ -126,7 +126,7 @@ export type TooltipPlacement =
   | 'left-end';
 ```
 
-#### TooltipManagerApi
+### TooltipManagerApi
 
 The `TooltipManagerApi` is used internally to communicate between the hooks and the lazy-loaded `TooltipManager`.
 
@@ -140,7 +140,7 @@ export interface TooltipManagerApi {
 }
 ```
 
-#### TooltipProvider
+### TooltipProvider
 
 `TooltipProvider` is responsible for lazy-loading `TooltipManager`. It creates a React context that provides a ref to the `TooltipManager` once it is loaded. This context will also be built into `FluentContext`.
 
@@ -157,7 +157,7 @@ export interface TooltipProviderState extends TooltipProviderProps {
 }
 ```
 
-#### useTooltipSlot
+### useTooltipSlot
 
 The `useTooltipSlot` hook adds React event listeners for pointer and focus events to the component's state. It passes the tooltip props to the `TooltipManager`.
 
@@ -181,7 +181,7 @@ export interface WithTooltipSlot {
 export function useTooltipSlot<State extends React.HTMLAttributes<HTMLElement> & WithTooltipSlot>(state: State);
 ```
 
-#### useTooltipRef
+### useTooltipRef
 
 The `useTooltipRef` hook creates a ref function that adds native event listeners to any element.
 
@@ -194,11 +194,11 @@ The `useTooltipRef` hook creates a ref function that adds native event listeners
 export function useTooltipRef(tooltip: ShorthandProps<TooltipSlotProps>);
 ```
 
-### @fluentui/react-tooltip
+## @fluentui/react-tooltip
 
 The `react-tooltip` package contains the bulk of the implementation of tooltips, including rendering, styling, positioning, etc. This will be a larger package, but can be lazy-loaded and doesn't need to be included in an app's bundle directly.
 
-#### Tooltip
+### Tooltip
 
 `Tooltip` renders the tooltip itself when it is visible.
 
@@ -239,7 +239,7 @@ export type TooltipPlacement =
   | 'left-end';
 ```
 
-#### TooltipManager
+### TooltipManager
 
 `TooltipManager` handles showing and hiding tooltips, including positioning and tracking the visible tooltip. There is only one instance at the root of the app.
 
@@ -268,20 +268,20 @@ export interface TooltipManagerState extends TooltipManagerProps {
 }
 ```
 
-## Structure
+# Structure
 
 - _**Public**_
 - _**Internal**_
 - _**DOM** - how the component will be rendered as HTML elements_
 
-## Migration
+# Migration
 
 _Describe what will need to be done to upgrade from the existing implementations:_
 
 - _Migration from v8_
 - _Migration from v0_
 
-## Behaviors
+# Behaviors
 
 _Explain how the component will behave in use, including:_
 
@@ -292,7 +292,7 @@ _Explain how the component will behave in use, including:_
   - _Touch_
   - _Screen readers_
 
-## Accessibility
+# Accessibility
 
 Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
 
