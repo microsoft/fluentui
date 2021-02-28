@@ -30,8 +30,10 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
   svg: ({ props: p, theme: t, variables: v }: ComponentStyleFunctionParam<LoaderStylesProps, LoaderVariables>) => {
     const outerAnimation: ICSSInJSStyle = {
       animationName: {
-        to: {
-          opacity: 1,
+        keyframe: {
+          to: {
+            opacity: 1,
+          },
         },
       },
       animationDelay: '1.5s',
@@ -47,8 +49,10 @@ export const loaderStyles: ComponentSlotStylesPrepared<LoaderStylesProps, Loader
     };
     const svgAnimation: ICSSInJSStyle = {
       animationName: {
-        to: {
-          transform: `translate3d(0, ${v.svgTranslatePosition[p.size]}, 0)`,
+        keyframe: {
+          to: {
+            transform: `translate3d(0, ${v.svgTranslatePosition[p.size]}, 0)`,
+          },
         },
       },
       animationDelay: '0s',
