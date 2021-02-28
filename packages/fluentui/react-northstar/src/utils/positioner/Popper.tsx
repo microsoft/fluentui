@@ -1,7 +1,6 @@
 import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
 import { Ref, isRefObject } from '@fluentui/react-component-ref';
 import * as PopperJs from '@popperjs/core';
-import maxSize from 'popper-max-size-modifier';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -295,19 +294,29 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
         },
         popperInitialPositionFix.modifier,
 
-        autoSize && maxSize,
         autoSize && {
           name: 'applyMaxSize',
           enabled: true,
           phase: 'beforeWrite' as PopperJs.ModifierPhases,
-          requires: ['maxSize'],
-          fn({ state }) {
-            const { height, width } = state.modifiersData.maxSize;
-            if (autoSize === true || autoSize === 'height') {
-              state.styles.popper.maxHeight = `${height}px`;
+          requiresIfExists: ['offset', 'preventOverflow', 'flip'],
+          options: {
+            altBoundary: true,
+            boundary: getBoundary(contentRef.current, overflowBoundary),
+          },
+          fn({ state, options }: PopperJs.ModifierArguments<{}>) {
+            const overflow = PopperJs.detectOverflow(state, options);
+            const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
+            const { width, height } = state.rects.popper;
+            const [basePlacement] = state.placement.split('-');
+
+            const widthProp = basePlacement === 'left' ? 'left' : 'right';
+            const heightProp = basePlacement === 'top' ? 'top' : 'bottom';
+
+            if (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width')) {
+              state.styles.popper.maxWidth = `${width - overflow[widthProp] - x}px`;
             }
-            if (autoSize === true || autoSize === 'width') {
-              state.styles.popper.maxWidth = `${width}px`;
+            if (overflow[heightProp] > 0 && (autoSize === true || autoSize === 'height')) {
+              state.styles.popper.maxHeight = `${height - overflow[heightProp] - y}px`;
             }
           },
         },
