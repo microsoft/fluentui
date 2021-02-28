@@ -69,9 +69,9 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
   autoFocus?: boolean | AutoFocusZoneProps;
 
   /**
-   * Change the size of the popper to fit it within the available space in viewport.
+   * Applies max-height and max-width on popper to fit it within the available space in viewport.
    * true enables this for both width and height.
-   * 'height' enables this only for height and 'width' enables this only for width
+   * 'height' applies only `max-height` and 'width' for `max-width`
    */
   autoSize?: 'height' | 'width' | boolean;
 }
