@@ -2,7 +2,7 @@
 
 exports[`emotionRenderer animations are not applied if animations are disabled 1`] = ``;
 
-exports[`emotionRenderer animations object value is wrapped in keyframe ittribute 1`] = `
+exports[`emotionRenderer animations object value is wrapped in keyframe attribute 1`] = `
 .fui-e3vlrl {
   -webkit-animation-name: animation-1q8eu9e;
   animation-name: animation-1q8eu9e;
