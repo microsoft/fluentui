@@ -114,7 +114,6 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
             tabIndex={-1}
             data-is-focusable={!buttonDisabled}
             aria-hidden={buttonDisabled}
-            key={'muteAll'}
             ref={buttonRef}
             variables={{ isCallingRosterSectionAction: true }}
             onKeyDown={e => {

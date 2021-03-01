@@ -88,7 +88,7 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
 
   const TreeTitleWithPopupButton = () => {
     const [popupOpen, setPopupOpen] = React.useState(false);
-    const wrapperRef = React.useRef(null);
+    const buttonRef = React.useRef(null);
 
     return (
       <Flex
@@ -128,15 +128,14 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
           }
           onOpenChange={(e, data) => setPopupOpen(data.open)}
           open={popupOpen}
-          target={wrapperRef.current}
+          target={buttonRef.current}
         />
         <Button
           data-cid={'calling_roster_button_mute_all'}
           tabIndex={-1}
           data-is-focusable={false}
           aria-hidden={true}
-          key={'muteAll'}
-          ref={wrapperRef}
+          ref={buttonRef}
           styles={{
             visibility: popupOpen ? 'hidden' : 'visible',
           }}
