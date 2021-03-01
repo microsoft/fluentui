@@ -67,49 +67,49 @@ Below is a table of prop comparison:
 
 ### Flex
 
-| Name              | Type                                                                                                      | Default value | Comments                                                                                                                                                                                                         |
-| ----------------- | --------------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `direction`       | string = "`row`", "`row-reverse`", "`column`", "`column-reverse`"                                         | "`row`"       | To further cement the idea of Flex being an abstraction to flexbox, this would bring a closer experience while also being less biased on our interpretation of the default direction. Absorbs Stack's `reversed` |
-| `horizontalAlign` | string (_see [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items#values)_)         | "`normal`"    | This name gives the user a more verbose and easily recognizable idea for what the prop does. Absorbs Flex's `space`                                                                                              |
-| `verticalAlign`   | string (_see [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content#values)_) | "`normal`"    | _see `horizontalAlign`'s comments_                                                                                                                                                                               |
-| `gap`             | string (_see [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin#values)_)                   | `0`           | `margin` setter for each of the children items                                                                                                                                                                   |
-| `wrap`            | boolean                                                                                                   | `false`       | Interfaces are already aligned. Simplification of `flex-wrap`                                                                                                                                                    |
-| `as`              | `React.ElementType<React.HTMLAttributes<HTMLElement>>`                                                    | "`div`"       | Maintaining same implementation                                                                                                                                                                                  |
-| `grow`            | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                                         | `0`           | Focusing again on abstracting `grow` will affect all the FlexItem's `flex-grow`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack                                       |
-| `shrink`          | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                                         | `1`           | Like `grow`, we're wrapping the item's `flex-shrink` with the `shrink` prop . A `true` value will translate into `1` for ease of use                                                                             |
-| `inline`          | boolean                                                                                                   | `false`       | Abstracts `display` by changing from `flex` to `flex-inline`. Same as the current Flex                                                                                                                           |
+| Name              | Type                                                                                                  | Default value | Comments                                                                                                                                                                                                                                 |
+| ----------------- | ----------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `direction`       | string = "`row`", "`row-reverse`", "`column`", "`column-reverse`"                                     | "`row`"       | To further cement the idea of Flex being an abstraction of flexbox, this would bring the user to a closer experience of flexbox while also being less biased on our interpretation of the default direction. Absorbs Stack's `reversed`. |
+| `horizontalAlign` | string (_see [align-items](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content#values)_) | "`normal`"    | This name gives the user a more verbose and easily recognizable idea for what the prop does. Absorbs Flex's `space`.                                                                                                                     |
+| `verticalAlign`   | string (_see [justify-content](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items#values)_) | "`normal`"    | _see `horizontalAlign`'s comments._                                                                                                                                                                                                      |
+| `gap`             | string (_see [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin#values)_)               | `0`           | `margin` setter for each of the children items.                                                                                                                                                                                          |
+| `wrap`            | boolean                                                                                               | `false`       | Interfaces are already aligned. Simplification of `flex-wrap`.                                                                                                                                                                           |
+| `as`              | `React.ElementType<React.HTMLAttributes<HTMLElement>>`                                                | "`div`"       | Perserving same implementation.                                                                                                                                                                                                          |
+| `grow`            | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                                     | `0`           | Focusing again on abstracting, `grow` will affect all the FlexItem's `flex-grow` styles. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack.                                                      |
+| `shrink`          | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                                     | `1`           | Like `grow`, we're wrapping the item's `flex-shrink` with the `shrink` prop . A `true` value will translate into `1` for ease of use and coherence.                                                                                      |
+| `inline`          | boolean                                                                                               | `false`       | Abstracts `display` by changing from `flex` to `flex-inline`. Same as the current Flex.                                                                                                                                                  |
 
 #### _Deprecating_
 
-| Original Component | Name                   | Comments                                                                                                                                                                                |
-| ------------------ | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Stack              | `reversed`             | Reversing is now down through the new `flex-direction` wrapper, the `direction` property                                                                                                |
-| Stack              | `disableShrink`        | Converted into a wrapper of `flex-shrink` for consistency and simplification                                                                                                            |
-| Stack              | `maxHeight`/`maxWidth` | Removed as this should be defined through a class/style override                                                                                                                        |
-| Stack              | `verticallFill`        | Redundant. Same as a style override of `height: 100%`                                                                                                                                   |
-| Stack/Flex         | `padding`              | Already extended from `HTMLElement`, we can avoid redundancy by leveraging the native prop here                                                                                         |
-| Flex               | `space`                | Given that `horizontalAlign` and `verticalAlign` are abstractions of `align-items` and `justify-content` respectively, spacing can now be defined through them instead of overriding it |
-| Flex               | `debug`                | Only helpful for development phases, extra layer of maintenance with a small added benefit to the user. User can alternatively use style overrides for the same effect                  |
-| Flex               | `fill`                 | Redundant. Same as a style override of `height: 100%; width: 100%`                                                                                                                      |
+| Original Component | Name                   | Comments                                                                                                                                                                                 |
+| ------------------ | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Stack              | `reversed`             | Reversing is now done through the new `flex-direction` wrapper, the `direction` property.                                                                                                |
+| Stack              | `disableShrink`        | Converted into a wrapper of `flex-shrink` for consistency and simplification.                                                                                                            |
+| Stack              | `maxHeight`/`maxWidth` | Removed as this should be defined through a class/style override.                                                                                                                        |
+| Stack              | `verticallFill`        | Redundant. Same as a style override of `height: 100%`.                                                                                                                                   |
+| Stack/Flex         | `padding`              | Already extended from `HTMLElement`, we can avoid redundancy by leveraging the native prop here.                                                                                         |
+| Flex               | `space`                | Given that `horizontalAlign` and `verticalAlign` are abstractions of `align-items` and `justify-content` respectively, spacing can now be defined through them instead of overriding it. |
+| Flex               | `debug`                | Only helpful for development phases, extra layer of maintenance with a small added benefit to the user. User can alternatively use style overrides for the same effect.                  |
+| Flex               | `fill`                 | Redundant. Same as a style override of `height: 100%; width: 100%`.                                                                                                                      |
 
 ### FlexItem
 
-| Name     | Type                                                                                            | Default value | Comments                                                                                                                                                |
-| -------- | ----------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `align`  | string (_see [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self#values)_) | "`auto`"      | Abstraction of `align-self`                                                                                                                             |
-| `grow`   | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `0`           | Abstraction of `flex-grow` and override of Flex's `grow`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack     |
-| `shrink` | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack |
-| `push`   | boolean                                                                                         | `false`       | Defines an auto margin depending on the flex direction. Kept for retro-compatibility but perhaps can be removed                                         |
-| `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`                                                                                               |
-| `order`  | number                                                                                          | `0`           | Abstraction of `order`                                                                                                                                  |
+| Name     | Type                                                                                            | Default value | Comments                                                                                                                                                 |
+| -------- | ----------------------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `align`  | string (_see [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self#values)_) | "`auto`"      | Abstraction of `align-self`.                                                                                                                             |
+| `grow`   | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `0`           | Abstraction of `flex-grow` and override of Flex's `grow`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack.     |
+| `shrink` | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack. |
+| `push`   | boolean                                                                                         | `false`       | Defines an auto margin depending on the flex direction. Kept for retro-compatibility but perhaps can be removed.                                         |
+| `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`.                                                                                               |
+| `order`  | number                                                                                          | `0`           | Abstraction of `order`.                                                                                                                                  |
 
 #### _Deprecating_
 
-| Original Component | Name            | Comments                                              |
-| ------------------ | --------------- | ----------------------------------------------------- |
-| StackItem          | `disableShrink` | Extraneous prop given the existance of `shrink`       |
-| StackItem          | `verticallFill` | Redundant. Same as a style override of `height: 100%` |
-| FlexItem           | `size`          | Renamed to `basis`                                    |
+| Original Component | Name            | Comments                                               |
+| ------------------ | --------------- | ------------------------------------------------------ |
+| StackItem          | `disableShrink` | Extraneous prop given the existance of `shrink`.       |
+| StackItem          | `verticallFill` | Redundant. Same as a style override of `height: 100%`. |
+| FlexItem           | `size`          | Renamed to `basis`.                                    |
 
 ## Sample Code
 
@@ -219,7 +219,7 @@ Below is a table of prop comparison:
 ```HTML
 <Flex
   as="section"
-  direction="row-reversed"
+  direction="row-reverse"
   horizontalAlign="space-between"
   verticalAlign="center"
   gap="5rem"
@@ -230,54 +230,295 @@ Below is a table of prop comparison:
 </Flex>
 ```
 
----
-
----
-
----
-
-WIP
-
----
-
----
-
----
-
-## Structure
-
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
-
 ## Migration
 
 _Describe what will need to be done to upgrade from the existing implementations:_
 
-- _Migration from v8_
-- _Migration from v0_
+### _Migration from v8_
 
-## Behaviors
+#### Stack
 
-_Explain how the component will behave in use, including:_
+##### `disableShrink`
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Renamed from `disableShrink` to `shrink`
 
-## Accessibility
+Before
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+```HTML
+<Stack disableShrink>
+ items
+</Stack>
+```
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+After
+
+```HTML
+<Flex shrink="0">
+  items
+</Flex>
+```
+
+```HTML
+<Flex shrink={false}>
+  items
+</Flex>
+```
+
+##### `horizontal`
+
+Before
+
+```HTML
+<Stack horizontal>
+ items
+</Stack>
+```
+
+After
+
+```HTML
+<Flex>
+  items
+</Flex>
+```
+
+##### `childrenGap`
+
+Renamed from `childrenGap` to `gap`
+
+##### `reversed` [DEPRECATED]
+
+Before
+
+```HTML
+<Stack reversed>
+ items
+</Stack>
+```
+
+Alternative
+
+```HTML
+<Flex direction="column-reverse">
+  items
+</Flex>
+```
+
+##### `maxHeight` [DEPRECATED]
+
+Before
+
+```HTML
+<Stack maxHeight="30px">
+ items
+</Stack>
+```
+
+Alternative
+
+```HTML
+<Flex style={{maxHeight:"30px"}}>
+  items
+</Flex>
+```
+
+##### `maxWidth` [DEPRECATED]
+
+Before
+
+```HTML
+<Stack maxWidth="30px">
+ items
+</Stack>
+```
+
+Alternative
+
+```HTML
+<Flex style={{maxWidth:"30px"}}>
+  items
+</Flex>
+```
+
+##### `verticallFill [DEPRECATED]`
+
+Before
+
+```HTML
+<Stack verticallFill>
+ items
+</Stack>
+```
+
+Alternative
+
+```HTML
+<Flex style={{height: "100%"}}>
+  items
+</Flex>
+```
+
+##### `padding` [DEPRECATED]
+
+#### StackItem
+
+##### `disableShrink`
+
+Renamed from `disableShrink` to `shrink`
+
+Before
+
+```HTML
+<Stack>
+ <Stack.Item grow>item</StackItem>
+ <Stack.Item grow disableShrink>item</StackItem>
+</Stack>
+```
+
+After
+
+```HTML
+<Flex>
+  <Flex.Item grow>item</Flex.Item>
+  <Flex.Item grow shrink="0">item</Flex.Item>
+</Flex>
+```
+
+```HTML
+<Flex>
+  <Flex.Item grow>item</Flex.Item>
+  <Flex.Item grow shrink={false}>item</Flex.Item>
+</Flex>
+```
+
+##### `verticallFill [DEPRECATED]`
+
+Before
+
+```HTML
+<Stack>
+ <Stack.Item verticallFill>item</Stack.Item>
+</Stack>
+```
+
+Alternative
+
+```HTML
+<Flex>
+ <Flex.Item style={{height: "100%"}}>item</Flex.Item>
+</Flex>
+```
+
+### _Migration from v0_
+
+#### Flex
+
+##### `column`
+
+Before
+
+```HTML
+<Flex column>
+ items
+</Flex>
+```
+
+After
+
+```HTML
+<Flex direction="column">
+  items
+</Flex>
+```
+
+##### `hAlign`
+
+Renamed from `hAlign` to `horizontalAlign`
+
+##### `vAlign`
+
+Renamed from `vAlign` to `verticalAlign`
+
+##### `debug` [DEPRECATED]
+
+Before
+
+```HTML
+<Flex debug>
+ items
+</Flex>
+```
+
+Alternative
+
+```HTML
+<Flex style={{
+  border: "1px dotted grey",
+  background: "lightgrey"
+}}>
+  items
+</Flex>
+```
+
+##### `fill` [DEPRECATED]
+
+Before
+
+```HTML
+<Flex fill>
+ items
+</Flex>
+```
+
+Alternative
+
+```HTML
+<Flex style={{
+  height: "100%",
+  width: "100%"
+}}>
+  items
+</Flex>
+```
+
+##### `padding` [DEPRECATED]
+
+Before
+
+```HTML
+<Flex padding="5px">
+ items
+</Flex>
+```
+
+Alternative
+
+```HTML
+<Flex style={{ padding: "5px" }}>
+  items
+</Flex>
+```
+
+##### `space` [DEPRECATED]
+
+Before
+
+```HTML
+<Flex space="around">
+ items
+</Flex>
+```
+
+Alternative
+
+```HTML
+<Flex horizontalAlign="space-around">
+  items
+</Flex>
+```
+
+#### FlexItem
+
+##### `size`
+
+Renamed from `size` to `basis`
