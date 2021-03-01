@@ -16,11 +16,13 @@
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
+    "chromatic": "chromatic",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "start": "just-scripts dev:storybook"
+    "start": "just-scripts dev:storybook",
+    "storybook:build": "just-scripts storybook:build"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
@@ -40,6 +42,7 @@
     "@fluentui/react-theme": "^9.0.0-alpha.3",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
     "@fluentui/set-version": "^8.0.1",
+    "chromatic": "5.6.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
