@@ -1,6 +1,6 @@
-import { useControllableValue, useId } from '@fluentui/react-utilities';
+import { useId } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { useAccordionDescendant } from '../Accordion/useAccordionContext';
+import { useAccordionContext, useAccordionDescendant } from '../Accordion/useAccordionContext';
 import { AccordionItemContext, AccordionItemState } from './AccordionItem.types';
 
 // No default value.
@@ -17,23 +17,27 @@ export function useAccordionItemContext() {
 export function useCreateAccordionItemContext(state: AccordionItemState) {
   const headingId = useId('accordion-item-heading-');
   const panelId = useId('accordion-item-panel-');
-  const [internalOpen, setInternalOpen] = useControllableValue(state.open, state.defaultOpen, state.onToggle);
+  const { requestToggle, openItems } = useAccordionContext();
   const index = useAccordionDescendant({
     element: state.ref.current,
     disabled: state.disabled ?? false,
   });
-  const onAccordionHeaderClick = React.useCallback(
-    (ev: React.MouseEvent<HTMLElement>) => setInternalOpen(curr => !curr, ev),
-    [setInternalOpen],
-  );
+  const open = React.useMemo(() => (Array.isArray(openItems) ? openItems.includes(index) : openItems === index), [
+    openItems,
+    index,
+  ]);
+  const onAccordionHeaderClick = React.useCallback((ev: React.MouseEvent<HTMLElement>) => requestToggle(index), [
+    requestToggle,
+    index,
+  ]);
   const context = React.useMemo<AccordionItemContext>(
     () => ({
       headingId,
       panelId,
-      open: internalOpen ?? false,
+      open,
       onAccordionHeaderClick,
     }),
-    [headingId, panelId, internalOpen, onAccordionHeaderClick],
+    [headingId, panelId, onAccordionHeaderClick, open],
   );
   return context;
 }

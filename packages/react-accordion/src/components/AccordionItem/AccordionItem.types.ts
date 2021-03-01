@@ -13,14 +13,6 @@ export interface AccordionItemContext {
  */
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   * Controls the state of the panel
-   */
-  open?: boolean;
-  /**
-   * Default value for the uncontrolled state of the panel
-   */
-  defaultOpen?: boolean;
-  /**
    * Disables opening/closing of panel
    */
   disabled?: boolean;

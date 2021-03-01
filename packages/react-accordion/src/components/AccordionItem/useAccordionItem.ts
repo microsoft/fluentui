@@ -24,6 +24,7 @@ export const useAccordionItem = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
+      as: React.Fragment,
     },
     defaultProps,
     resolveShorthandProps(props, accordionItemShorthandProps),
