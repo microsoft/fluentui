@@ -29,9 +29,17 @@
 
   &.inputDisabled {
     @include high-contrast {
+      position: relative;
       border-color: GrayText;
       &:after {
-        background: none;
+        pointer-events: none;
+        content: '';
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        background-color: Window;
       }
     }
   }
