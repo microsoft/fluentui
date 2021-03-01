@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "remove unused dependencies",
+  "packageName": "@fluentui/react-button",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
