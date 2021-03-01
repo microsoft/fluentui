@@ -1792,7 +1792,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-<<<<<<< HEAD
 "@jest/types@^26.6.2":
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/@jest/types/-/types-26.6.2.tgz#bef5a532030e1d88a2f5a6d933f84e97226ed48e"
@@ -1804,17 +1803,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@lerna/add@3.15.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.15.0.tgz#10be562f43cde59b60f299083d54ac39520ec60a"
-  integrity sha512-+KrG4GFy/6FISZ+DwWf5Fj5YB4ESa4VTnSn/ujf3VEda6dxngHPN629j+TcPbsdOxUYVah+HuZbC/B8NnkrKpQ==
-  dependencies:
-    "@evocateur/pacote" "^9.6.0"
-    "@lerna/bootstrap" "3.15.0"
-    "@lerna/command" "3.15.0"
-    "@lerna/filter-options" "3.14.2"
-    "@lerna/npm-conf" "3.13.0"
-=======
 "@lerna/add@3.21.0":
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.21.0.tgz#27007bde71cc7b0a2969ab3c2f0ae41578b4577b"
@@ -1825,7 +1813,6 @@
     "@lerna/command" "3.21.0"
     "@lerna/filter-options" "3.20.0"
     "@lerna/npm-conf" "3.16.0"
->>>>>>> f738948632 (update lerna to fix build)
     "@lerna/validation-error" "3.13.0"
     dedent "^0.7.0"
     npm-package-arg "^6.1.0"
@@ -25653,7 +25640,6 @@ test-exclude@^5.2.3:
     read-pkg-up "^4.0.0"
     require-main-filename "^2.0.0"
 
-<<<<<<< HEAD
 test-exclude@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/test-exclude/-/test-exclude-6.0.0.tgz#04a8698661d805ea6fa293b6cb9e63ac044ef15e"
@@ -25662,12 +25648,11 @@ test-exclude@^6.0.0:
     "@istanbuljs/schema" "^0.1.2"
     glob "^7.1.4"
     minimatch "^3.0.4"
-=======
+
 text-extensions@^1.0.0:
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/text-extensions/-/text-extensions-1.9.0.tgz#1853e45fee39c945ce6f6c36b2d659b5aabc2a26"
   integrity sha512-wiBrwC1EhBelW12Zy26JeOUkQ5mRu+5o8rpsJk5+2t+Y5vE7e842qtZDQ2g1NpX/29HdyFeJ4nSIhI47ENSxlQ==
->>>>>>> f738948632 (update lerna to fix build)
 
 text-extensions@^2.0.0:
   version "2.0.0"
