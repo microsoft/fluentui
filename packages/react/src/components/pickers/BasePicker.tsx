@@ -1018,7 +1018,6 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           theme,
           className,
           isFocused,
-          disabled,
           inputClassName: inputProps && inputProps.className,
         })
       : {
