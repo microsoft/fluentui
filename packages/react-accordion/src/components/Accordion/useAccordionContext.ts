@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { createDescendantContext, useDescendant, useDescendantsInit } from '@reach/descendants';
 import { AccordionContext, AccordionDescendant, AccordionOpen, AccordionState } from './Accordion.types';
+import { useConst } from '@fluentui/react-utilities';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
 
@@ -8,7 +9,7 @@ export const accordionContext = React.createContext<AccordionContext>(undefined!
 
 export function useCreateAccordionContext(state: AccordionState) {
   const { open, multiple, collapsible, onToggle } = state;
-  const { current: isControlled } = React.useRef(typeof open !== 'undefined');
+  const isControlled = useConst(typeof open !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   const [openItems, setOpenItems] = React.useState<AccordionOpen>(() => initializeOpenItems(state));
 
