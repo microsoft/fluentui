@@ -1,7 +1,62 @@
 import * as React from 'react';
-import { Accordion, AccordionProps } from '@fluentui/react-accordion';
-import * as classes from '../react-accordion.stories.scss';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
 
-const AccordionExamples = (props: AccordionProps) => <Accordion {...props}>Hello World!</Accordion>;
+export const AccordionExample = () => {
+  return (
+    <Accordion>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+};
 
-export const AccordionExample = () => <AccordionExamples />;
+export const AccordionMultipleExample = () => {
+  return (
+    <Accordion multiple>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+
+export const AccordionCollapsibleExample = () => {
+  return (
+    <Accordion collapsible>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+};
+
+export const AccordionMultipleAndCollapsibleExample = () => {
+  return (
+    <Accordion collapsible multiple>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
+      </AccordionItem>
+    </Accordion>
+  );
+};

@@ -9,7 +9,6 @@ import { accordionItemContext } from './useAccordionItemContext';
  */
 export const renderAccordionItem = (state: AccordionItemState) => {
   const { slots, slotProps } = getSlots(state, accordionItemShorthandProps);
-
   return (
     <accordionItemContext.Provider value={state.context}>
       <slots.root {...slotProps.root}>{state.children}</slots.root>

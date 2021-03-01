@@ -1577,6 +1577,16 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
+"@fluentui/react-conformance@^1.0.0":
+  version "0.2.2"
+  dependencies:
+    chalk "^2.1.0"
+    doctrine "^3.0.0"
+    lodash "^4.17.15"
+    react-docgen-typescript "^1.16.6"
+    react-is "^16.6.3"
+    tslib "^1.10.0"
+
 "@fluentui/react-make-styles@^0.2.6":
   version "0.2.8"
   resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-0.2.8.tgz#1a4be959347ace14ceb1fe77f31b6ee7953fb692"
