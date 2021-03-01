@@ -93,7 +93,7 @@
     "jest-environment-jsdom": "24.9.0",
     "jest-watch-typeahead": "0.4.2",
     "lage": "0.27.0",
-    "lerna": "^3.15.0",
+    "lerna": "^3.21.0",
     "lint-staged": "^10.2.9",
     "satisfied": "^1.1.1",
     "syncpack": "^5.6.10",
