@@ -95,7 +95,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
   });
 }
 
-const NavigationIdleDelay = 250 /* ms */;
+const NavigationIdleDelay = 250; /* ms */
 
 const COMPONENT_NAME = 'ContextualMenu';
 
@@ -387,7 +387,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
     const targetAsHtmlElement = targetRef.current as HTMLElement;
     if ((useTargetWidth || useTargetAsMinWidth) && targetAsHtmlElement && targetAsHtmlElement.offsetWidth) {
       const targetBoundingRect = targetAsHtmlElement.getBoundingClientRect();
-      const targetWidth = targetBoundingRect.width - 2 /* Accounts for 1px border */;
+      const targetWidth = targetBoundingRect.width - 2; /* Accounts for 1px border */
 
       if (useTargetWidth) {
         contextMenuStyle = {
@@ -679,7 +679,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
       return (
         <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div {...groupProps}>
-            <ul className={this._classNames.list}>
+            <ul className={this._classNames.list} role="menu">
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}

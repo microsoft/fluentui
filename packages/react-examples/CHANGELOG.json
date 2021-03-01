@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 07:20:54 GMT",
+      "tag": "@fluentui/react-examples_v8.1.0",
+      "version": "8.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add react-tooltip package",
+            "author": "behowell@microsoft.com",
+            "commit": "2aa9b8664158bd60365c3a5a901f5d5fe08ed44d",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tooltip to v9.0.0-alpha.1",
+            "author": "behowell@microsoft.com",
+            "commit": "2aa9b8664158bd60365c3a5a901f5d5fe08ed44d",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/react-examples_v8.0.1",
       "version": "8.0.1",

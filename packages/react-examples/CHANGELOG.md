@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 07:20:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.1.0)
+
+Fri, 26 Feb 2021 07:20:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v8.0.1..@fluentui/react-examples_v8.1.0)
+
+### Minor changes
+
+- Add react-tooltip package ([PR #17133](https://github.com/microsoft/fluentui/pull/17133) by behowell@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-tooltip to v9.0.0-alpha.1 ([PR #17133](https://github.com/microsoft/fluentui/pull/17133) by behowell@microsoft.com)
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v8.0.1)
 

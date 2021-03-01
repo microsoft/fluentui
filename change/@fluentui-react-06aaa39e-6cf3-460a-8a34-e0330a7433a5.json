@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Fix intermittent issue with Dropdown tests",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
