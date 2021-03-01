@@ -1,10 +1,24 @@
 import * as React from 'react';
+import { ax } from '@fluentui/react-make-styles';
+import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
 import * as classes from '../react-divider.stories.scss';
-import { DividerStory } from './DividerStory';
-import { ClockIcon } from '@fluentui/react-icons-mdl2';
 
 const cssClasses: any = classes;
+export interface DividerStoryProps {
+  label?: string;
+  children?: any;
+  className?: string;
+}
+
+const DividerStory = (props?: DividerStoryProps) => {
+  return (
+    <div className={ax(cssClasses.item, props?.className)}>
+      <label>{props?.label}</label>
+      {props?.children}
+    </div>
+  );
+};
 
 const DividerExamples = (props: DividerProps) => (
   <div className={cssClasses.story}>

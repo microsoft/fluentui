@@ -10,19 +10,9 @@ export const renderDivider = (state: DividerState) => {
   const { slots, slotProps } = getSlots(state, dividerShorthandProps);
   const { children } = state;
 
-  const contentVisible = children;
-
   return (
     <slots.root {...slotProps.root} role="separator">
-      {contentVisible && <div>{children}</div>}
+      {children && <div>{children}</div>}
     </slots.root>
   );
-
-  // return contentVisible ? (
-  //   <slots.root {...slotProps.root} role="separator">
-  //     <div>{children}</div>
-  //   </slots.root>
-  // ) : (
-  //   <slots.root {...slotProps.root} role="separator" />
-  // );
 };

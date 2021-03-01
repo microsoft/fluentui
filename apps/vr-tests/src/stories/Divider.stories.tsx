@@ -21,7 +21,7 @@ storiesOf('Divider', module)
     </Screener>
   ))
   .addStory(
-    'Root',
+    'Horizontal without content',
     () => (
       <div className={horizontalStyles}>
         <Divider />
@@ -30,7 +30,7 @@ storiesOf('Divider', module)
     { rtl: true },
   )
   .addStory(
-    'Root',
+    'Horizontal with content',
     () => (
       <div className={horizontalStyles}>
         <Divider>Today</Divider>
@@ -115,7 +115,7 @@ storiesOf('Divider', module)
     { rtl: true },
   )
   .addStory(
-    'inset',
+    'Inset',
     () => (
       <div className={verticalStyles}>
         <Divider inset>Today</Divider>
@@ -124,7 +124,7 @@ storiesOf('Divider', module)
     { rtl: true },
   )
   .addStory(
-    'vertical inset',
+    'Vertical inset',
     () => (
       <div className={verticalStyles}>
         <Divider inset vertical>
