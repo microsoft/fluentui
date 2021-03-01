@@ -50,7 +50,7 @@ Popper is also used by the following OSS UI libraries in industry:
 - [Semantic UI React](https://react.semantic-ui.com/modules/popup/)
 - [reakit](https://www.npmjs.com/package/reakit)
 - [ing-bank/lion](https://github.com/ing-bank/lion)
-- [AWS chime SDK](https://github.com/ing-bank/lion)
+- [AWS chime SDK](https://github.com/aws/amazon-chime-sdk-js)
 
 ## Problem statement
 
