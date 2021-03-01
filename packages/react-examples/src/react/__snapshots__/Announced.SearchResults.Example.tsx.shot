@@ -87,6 +87,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
               &:hover {
                 border-color: #323130;
               }
+          role="presentation"
         >
           <input
             aria-autocomplete="both"
