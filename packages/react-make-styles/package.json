@@ -35,7 +35,6 @@
   },
   "dependencies": {
     "@fluentui/make-styles": "^9.0.0-alpha.2",
-    "@fluentui/set-version": "^8.0.1",
     "@fluentui/react-provider": "^9.0.0-alpha.4",
     "@fluentui/react-theme": "^9.0.0-alpha.3",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
