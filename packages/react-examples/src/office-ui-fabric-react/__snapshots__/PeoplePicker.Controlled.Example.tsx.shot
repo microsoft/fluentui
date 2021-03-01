@@ -52,6 +52,7 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
                 &:hover {
                   border-color: #323130;
                 }
+            role="presentation"
           >
             <input
               aria-autocomplete="both"
