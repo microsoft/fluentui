@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { getNativeProps, htmlElementProperties } from '@fluentui/utilities';
 import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { getNativeProps, htmlElementProperties } from '@fluentui/react-utilities';
+import * as React from 'react';
 
 const useRootStyles = makeStyles([
   [
