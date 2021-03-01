@@ -31,6 +31,11 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   borderSize?: string | number;
 
   /* Exposed used properties */
+  /*
+   *** NOTE ***
+    Once we have a full story and patterns for component tokens,
+    the following should be removed and the pattern updated.
+  */
   fontColor?: string;
   fontSize?: string;
   fontWeight?: string;
