@@ -311,8 +311,8 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
             const { width, height } = state.rects.popper;
             const [basePlacement] = state.placement.split('-');
 
-            const widthProp = basePlacement === 'left' ? 'left' : 'right';
-            const heightProp = basePlacement === 'top' ? 'top' : 'bottom';
+            const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
+            const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
 
             if (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width')) {
               state.styles.popper.maxWidth = `${width - overflow[widthProp] - x}px`;
