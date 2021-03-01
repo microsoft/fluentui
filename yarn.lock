@@ -1553,19 +1553,6 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
-"@fluentui/make-styles@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/make-styles/-/make-styles-0.6.0.tgz#50ce9225c397bb477164101a415baf682a38632c"
-  integrity sha512-X4aHANbcG+LX4F7nCK8NQRFcI6+7IlEYZW749QRtDMNjePT6F8Bh7M9v6NG6fNl2Q/IJgKTaY6nongYiGgy3qA==
-  dependencies:
-    "@emotion/hash" "^0.8.0"
-    "@fluentui/set-version" "^8.0.0-beta.1"
-    csstype "^2.6.7"
-    inline-style-expand-shorthand "^1.2.0"
-    rtl-css-js "^1.14.0"
-    stylis "^4.0.6"
-    tslib "^1.10.0"
-
 "@fluentui/react-compose@^0.19.6":
   version "0.19.6"
   resolved "https://registry.yarnpkg.com/@fluentui/react-compose/-/react-compose-0.19.6.tgz#a49e118261096116845b2e87db0a85d3e8ffb3cd"
@@ -1575,72 +1562,6 @@
     "@uifabric/set-version" "^7.0.23"
     "@uifabric/utilities" "^7.32.4"
     classnames "^2.2.6"
-    tslib "^1.10.0"
-
-"@fluentui/react-conformance@^1.0.0":
-  version "0.2.2"
-  dependencies:
-    chalk "^2.1.0"
-    doctrine "^3.0.0"
-    lodash "^4.17.15"
-    react-docgen-typescript "^1.16.6"
-    react-is "^16.6.3"
-    tslib "^1.10.0"
-
-"@fluentui/react-make-styles@^0.2.6":
-  version "0.2.8"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-make-styles/-/react-make-styles-0.2.8.tgz#1a4be959347ace14ceb1fe77f31b6ee7953fb692"
-  integrity sha512-UDsfzIcb6C/XXEEPCdcIohr6R3M8qD5lraHGjuJZmBUVx+wUYVv09O4pqKbeYA/wnYbZdjtZkYSIHGTHynJ30Q==
-  dependencies:
-    "@fluentui/make-styles" "^0.6.0"
-    "@fluentui/react-provider" "^0.2.0"
-    "@fluentui/react-theme" "^0.3.3"
-    "@fluentui/react-theme-provider" "^1.0.0-beta.27"
-    "@fluentui/set-version" "^8.0.0-beta.2"
-    tslib "^1.10.0"
-
-"@fluentui/react-provider@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-provider/-/react-provider-0.2.0.tgz#86442ba78205dd6f96fbd97d1d04ecebd85a0c4d"
-  integrity sha512-vKsvrtEJ+dPhm0IZNlEN2t07sUtF13KUF1Upvp5/tFJEuzDOMwDJzyWePolQaAa8UxKyOHuE3U/6P7qjjab7Xg==
-  dependencies:
-    "@fluentui/react-theme" "^0.3.3"
-    "@fluentui/react-theme-provider" "^1.0.0-beta.27"
-    "@fluentui/react-utilities" "^0.4.0"
-    "@fluentui/set-version" "^8.0.0-beta.2"
-    tslib "^1.10.0"
-
-"@fluentui/react-theme-provider@^1.0.0-beta.24", "@fluentui/react-theme-provider@^1.0.0-beta.27":
-  version "1.0.0-beta.27"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme-provider/-/react-theme-provider-1.0.0-beta.27.tgz#ffc78bda275fd3f7b071c6a673f0fc597c9c7de8"
-  integrity sha512-0FlLxOzyN7UF5QBKliaFTJidr1hKr3vP4WcBFE4HYDaBiPZVT9QKI+6DiIuXMb8T7NGdKNmoJAkBKimnisdfeQ==
-  dependencies:
-    "@fluentui/merge-styles" "^8.0.0-beta.5"
-    "@fluentui/react-theme" "^0.3.3"
-    "@fluentui/react-utilities" "^0.4.0"
-    "@fluentui/react-window-provider" "^2.0.0-beta.9"
-    "@fluentui/set-version" "^8.0.0-beta.2"
-    "@fluentui/theme" "^2.0.0-beta.19"
-    "@fluentui/utilities" "^8.0.0-beta.15"
-    classnames "^2.2.6"
-    tslib "^1.10.0"
-
-"@fluentui/react-theme@^0.3.1", "@fluentui/react-theme@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-theme/-/react-theme-0.3.3.tgz#6ccdd93c71dd9fd42dcdd12f22c8aa184791b435"
-  integrity sha512-MrrefusCYHtJpIgWF7Hdl3fuojuPYvVv+aB2R+qLuWERTfaKcmI0TqrOADUsQIu5zeNoixqBtSs4ufcSZFGazQ==
-  dependencies:
-    "@fluentui/set-version" "^8.0.0-beta.2"
-    "@fluentui/utilities" "^8.0.0-beta.15"
-    tslib "^1.10.0"
-
-"@fluentui/react-utilities@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-utilities/-/react-utilities-0.4.0.tgz#a2b82c818945cb6121474927fc58701c2c7504d9"
-  integrity sha512-dLzfDr8tfmHpUiWszTJCw0Quso/gZcxB0fxh65aXS/fzB/10KwRXFjpo6QEelRYoSl0bp3vMgNMwyhdFskiASA==
-  dependencies:
-    "@fluentui/set-version" "^8.0.0-beta.2"
-    "@fluentui/utilities" "^8.0.0-beta.15"
     tslib "^1.10.0"
 
 "@gulp-sourcemaps/identity-map@1.X":

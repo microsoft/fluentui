@@ -6,78 +6,27 @@ export const accordionDescendantContext = createDescendantContext<AccordionDesce
 
 export const accordionContext = React.createContext<AccordionContext>(undefined!);
 
-export function useCreateAccordionContext({ open, defaultOpen, multiple, collapsible, onToggle }: AccordionState) {
+export function useCreateAccordionContext(state: AccordionState) {
+  const { open, multiple, collapsible, onToggle } = state;
   const { current: isControlled } = React.useRef(typeof open !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
-  const [openItems, setOpenItems] = React.useState<AccordionOpen>(() => {
-    switch (true) {
-      case isControlled:
-        return open!;
-
-      // If we have a defaultIndex, we need to do a few checks
-      case defaultOpen !== undefined:
-        /*
-         * If multiple is set to true, we need to make sure the `defaultIndex`
-         * is an array (and vice versa). We'll handle console warnings in
-         * our propTypes, but this will at least keep the component from
-         * blowing up.
-         */
-        if (multiple) {
-          return Array.isArray(defaultOpen) ? defaultOpen : [defaultOpen!];
-        } else {
-          return Array.isArray(defaultOpen) ? defaultOpen[0] ?? 0 : defaultOpen!;
-        }
-
-      /*
-       * Collapsible accordions with no defaultIndex will start with all
-       * panels collapsed. Otherwise the first panel will be our default.
-       */
-      case collapsible:
-        return multiple ? [] : -1;
-      default:
-        return multiple ? [0] : 0;
-    }
-  });
+  const [openItems, setOpenItems] = React.useState<AccordionOpen>(() => initializeOpenItems(state));
 
   const requestToggle = React.useCallback(
     (index: number) => {
       onToggle?.(index);
-
       if (!isControlled) {
-        setOpenItems(prevOpenPanels => {
-          /*
-           * If we're dealing with an uncontrolled component, the index arg
-           * in selectChange will always be a number rather than an array.
-           */
-          index = index as number;
-          // multiple allowed
-          if (multiple) {
-            // state will always be an array here
-            prevOpenPanels = prevOpenPanels as number[];
-            if (
-              // User is clicking on an already-open button
-              prevOpenPanels.includes(index as number)
-            ) {
-              // Other panels are open OR accordion is allowed to collapse
-              if (prevOpenPanels.length > 1 || collapsible) {
-                // Close the panel by filtering it from the array
-                return prevOpenPanels.filter(i => i !== index);
-              }
-            } else {
-              // Open the panel by adding it to the array.
-              return [...prevOpenPanels, index].sort();
-            }
-          } else {
-            prevOpenPanels = prevOpenPanels as number;
-            return prevOpenPanels === index && collapsible ? -1 : index;
-          }
-          return prevOpenPanels;
-        });
+        setOpenItems(previousOpenItems =>
+          updateOpenItems(index, previousOpenItems, {
+            collapsible,
+            multiple,
+          }),
+        );
       }
     },
     [collapsible, isControlled, multiple, onToggle],
   );
-  const context: AccordionContext = React.useMemo(
+  const context = React.useMemo<AccordionContext>(
     () => ({
       openItems: isControlled ? open! : openItems,
       requestToggle,
@@ -97,4 +46,46 @@ export function useAccordionContext() {
 
 export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescendant, 'index'>) {
   return useDescendant<AccordionDescendant>(accordionDescendant, accordionDescendantContext);
+}
+
+function initializeOpenItems({ open, defaultOpen, multiple, collapsible }: AccordionState) {
+  const isControlled = typeof open !== 'undefined';
+  switch (true) {
+    case isControlled:
+      return open!;
+    case defaultOpen !== undefined: {
+      if (multiple) {
+        return Array.isArray(defaultOpen) ? defaultOpen : [defaultOpen!];
+      } else {
+        return Array.isArray(defaultOpen) ? defaultOpen[0] ?? 0 : defaultOpen!;
+      }
+    }
+    case collapsible:
+      return multiple ? [] : -1;
+    default:
+      return multiple ? [0] : 0;
+  }
+}
+
+function isMultiple(open: AccordionOpen, multiple: boolean): open is number[] {
+  return Array.isArray(open) && multiple;
+}
+
+function updateOpenItems(
+  index: number,
+  openItems: AccordionOpen,
+  { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
+) {
+  if (isMultiple(openItems, multiple)) {
+    if (openItems.includes(index)) {
+      if (openItems.length > 1 || collapsible) {
+        return openItems.filter(i => i !== index);
+      }
+    } else {
+      return [...openItems, index].sort();
+    }
+  } else {
+    return openItems === index && collapsible ? -1 : index;
+  }
+  return openItems;
 }

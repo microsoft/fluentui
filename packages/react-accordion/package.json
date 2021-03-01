@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^0.53.3",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.2",
     "@fluentui/react-make-styles": "^9.0.0-alpha.4",
     "@fluentui/react-theme": "^9.0.0-alpha.3",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
