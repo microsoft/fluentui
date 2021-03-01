@@ -15,7 +15,7 @@ export default {
       options: { escapeHTML: false },
     },
   ],
-  stories: [...(packageName === 'react-components' && ['../src/react-components/**/*.stories.mdx'])],
+  stories: packageName === 'react-components' ? ['../src/react-components/**/*.stories.mdx'] : [],
   webpackFinal: (/** @type {webpack.Configuration} */ config) => {
     const customConfig = custom(config);
 
