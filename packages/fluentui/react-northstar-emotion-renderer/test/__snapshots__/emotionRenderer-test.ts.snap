@@ -2,6 +2,38 @@
 
 exports[`emotionRenderer animations are not applied if animations are disabled 1`] = ``;
 
+exports[`emotionRenderer animations object value is wrapped in keyframe ittribute 1`] = `
+.fui-e3vlrl {
+  -webkit-animation-name: animation-1q8eu9e;
+  animation-name: animation-1q8eu9e;
+}
+@-webkit-keyframes animation-1q8eu9e {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes animation-1q8eu9e {
+  from {
+    -webkit-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+`;
+
 exports[`emotionRenderer array returned by keyframe results in CSS fallback values 1`] = `
 .fui-m7zzi0 {
   -webkit-animation-name: animation-avzz4x;
