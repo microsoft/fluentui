@@ -86,7 +86,7 @@ Below is a table of prop comparison:
 | Stack              | `reversed`             | Reversing is now done through the new `flex-direction` wrapper, the `direction` property.                                                                                                |
 | Stack              | `disableShrink`        | Converted into a wrapper of `flex-shrink` for consistency and simplification.                                                                                                            |
 | Stack              | `maxHeight`/`maxWidth` | Removed as this should be defined through a class/style override.                                                                                                                        |
-| Stack              | `verticallFill`        | Redundant. Same as a style override of `height: 100%`.                                                                                                                                   |
+| Stack              | `verticalFill`         | Redundant. Same as a style override of `height: 100%`.                                                                                                                                   |
 | Stack/Flex         | `padding`              | Already extended from `HTMLElement`, we can avoid redundancy by leveraging the native prop here.                                                                                         |
 | Flex               | `space`                | Given that `horizontalAlign` and `verticalAlign` are abstractions of `align-items` and `justify-content` respectively, spacing can now be defined through them instead of overriding it. |
 | Flex               | `debug`                | Only helpful for development phases, extra layer of maintenance with a small added benefit to the user. User can alternatively use style overrides for the same effect.                  |
@@ -108,7 +108,7 @@ Below is a table of prop comparison:
 | Original Component | Name            | Comments                                               |
 | ------------------ | --------------- | ------------------------------------------------------ |
 | StackItem          | `disableShrink` | Extraneous prop given the existance of `shrink`.       |
-| StackItem          | `verticallFill` | Redundant. Same as a style override of `height: 100%`. |
+| StackItem          | `verticalFill`  | Redundant. Same as a style override of `height: 100%`. |
 | FlexItem           | `size`          | Renamed to `basis`.                                    |
 
 ## Sample Code
@@ -340,12 +340,12 @@ Alternative
 </Flex>
 ```
 
-##### `verticallFill [DEPRECATED]`
+##### `verticalFill` [DEPRECATED]
 
 Before
 
 ```HTML
-<Stack verticallFill>
+<Stack verticalFill>
  items
 </Stack>
 ```
@@ -391,13 +391,13 @@ After
 </Flex>
 ```
 
-##### `verticallFill [DEPRECATED]`
+##### `verticalFill` [DEPRECATED]
 
 Before
 
 ```HTML
 <Stack>
- <Stack.Item verticallFill>item</Stack.Item>
+ <Stack.Item verticalFill>item</Stack.Item>
 </Stack>
 ```
 
