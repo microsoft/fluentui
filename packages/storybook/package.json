@@ -30,6 +30,7 @@
     "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
     "@fluentui/theme": "^2.0.1",
     "@storybook/addon-knobs": "6.0.28",
+    "@storybook/addon-essentials": "6.0.28",
     "@storybook/addons": "6.0.28",
     "@fluentui/azure-themes": "^8.0.2",
     "@fluentui/theme-samples": "^8.0.2",
