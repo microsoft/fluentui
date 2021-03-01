@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Fix cranberry color alias",
+  "packageName": "@fluentui/react-theme",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

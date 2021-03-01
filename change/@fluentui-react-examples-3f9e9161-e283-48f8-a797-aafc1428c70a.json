@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Add examples for colorful Avatar",
+  "packageName": "@fluentui/react-examples",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}
