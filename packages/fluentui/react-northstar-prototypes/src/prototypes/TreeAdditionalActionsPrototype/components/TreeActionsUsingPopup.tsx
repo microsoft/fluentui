@@ -131,7 +131,6 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
           target={buttonRef.current}
         />
         <Button
-          data-cid={'calling_roster_button_mute_all'}
           tabIndex={-1}
           data-is-focusable={false}
           aria-hidden={true}
@@ -139,7 +138,6 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
           styles={{
             visibility: popupOpen ? 'hidden' : 'visible',
           }}
-          variables={{ isCallingRosterSectionAction: true }}
           content={<Text size="small" content={'Mute all'} />}
         />
       </Flex>
@@ -148,7 +146,6 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
 
   return (
     <Tree
-      aria-expanded="true"
       accessibility={useMacAccessabilityBehavior ? treeAsListboxBehavior : undefined}
       tabIndex={0}
       aria-setsize={4}

@@ -110,12 +110,10 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
             <Text content={'Tree item with button'} size="small" />
           </Flex.Item>
           <Button
-            data-cid={'calling_roster_button_mute_all'}
             tabIndex={-1}
             data-is-focusable={!buttonDisabled}
             aria-hidden={buttonDisabled}
             ref={buttonRef}
-            variables={{ isCallingRosterSectionAction: true }}
             onKeyDown={e => {
               if (e.key === 'ArrowLeft') {
                 e.preventDefault();
@@ -134,7 +132,6 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
   return (
     <Tree
       accessibility={useMacAccessabilityBehavior ? treeAsListboxBehavior : undefined}
-      aria-expanded="true"
       tabIndex={0}
       aria-setsize={4}
       aria-posinset={1}
