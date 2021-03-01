@@ -360,6 +360,22 @@ Alternative
 
 ##### `padding` [DEPRECATED]
 
+Before
+
+```HTML
+<Stack padding="5px">
+ items
+</Stack>
+```
+
+Alternative
+
+```HTML
+<Flex style={{ padding: "5px" }}>
+  items
+</Flex>
+```
+
 #### StackItem
 
 ##### `disableShrink`
