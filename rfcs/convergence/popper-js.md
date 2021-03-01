@@ -52,10 +52,6 @@ Popper is also used by the following OSS UI libraries in industry:
 - [ing-bank/lion](https://github.com/ing-bank/lion)
 - [AWS chime SDK](https://github.com/ing-bank/lion)
 
-* cons of callout content
-* Risks of allocating resources to maintenance
-* List libraries using this
-
 ## Problem statement
 
 <!--
