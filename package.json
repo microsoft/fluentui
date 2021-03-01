@@ -124,6 +124,10 @@
       "packages/fluentui/*"
     ],
     "nohoist": [
+      "@fluentui/make-styles/stylis",
+      "@fluentui/make-styles/@types/stylis",
+      "@fluentui/react-bindings/stylis",
+      "@fluentui/react-northstar-fela-renderer/stylis",
       "packages/web-components/webpack",
       "packages/web-components/@storybook/**",
       "packages/web-components/typescript",

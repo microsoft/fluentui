@@ -28,7 +28,7 @@
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.1",
-    "@types/stylis": "^4.0.0"
+    "@types/stylis": "4.0.0"
   },
   "dependencies": {
     "@emotion/hash": "^0.8.0",
