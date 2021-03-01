@@ -1,6 +1,6 @@
 import { serializeStyles } from '@emotion/serialize';
 import { EmotionCache } from '@emotion/utils';
-import { AnimationName, ICSSInJSStyle } from '@fluentui/styles';
+import { AnimationKeyFrame, AnimationName, ICSSInJSStyle } from '@fluentui/styles';
 
 import { isStyleObject } from './utils';
 
@@ -41,7 +41,7 @@ export function invokeKeyframes(cache: EmotionCache, styles: ICSSInJSStyle) {
           continue;
         }
 
-        styles[property] = keyframes(cache, style as AnimationName['keyframe'], style.params);
+        styles[property] = keyframes(cache, style as AnimationKeyFrame, style.params);
         continue;
       }
 
