@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove set-version dependency from converged components",
+  "packageName": "@fluentui/react-menu",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "none"
+}
