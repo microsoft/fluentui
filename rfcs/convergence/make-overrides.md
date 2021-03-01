@@ -76,7 +76,7 @@ _Side note:_
 
 To solve these issues we made a step back to the original API of `makeStyles()` (current iteration is a second version) and as we introduced `ax()` to merge atomic classnames we explored different solutions.
 
-Proposed API solve the problem in a "vandal" way 🪓 Matchers are moved to user's scope thus we can have all definitions in a single `makeStyles()` call => we have a single React hook. See a modified snippet below:
+Proposed API solves the problem in a "vandal" way 🪓 Matchers are moved to user's scope thus we can have all definitions in a single `makeStyles()` call => we have a single React hook. See a modified snippet below:
 
 ```tsx
 import { ax, makeOverrides } from "@fluentui/react-make-styles";
