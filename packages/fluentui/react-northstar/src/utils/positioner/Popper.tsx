@@ -295,6 +295,8 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
         popperInitialPositionFix.modifier,
 
         autoSize && {
+          // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
+          // popper-maxsize-modifier only calculates the max sizes. This modifier applies the max sizes when overflow is detected
           name: 'applyMaxSize',
           enabled: true,
           phase: 'beforeWrite' as PopperJs.ModifierPhases,
