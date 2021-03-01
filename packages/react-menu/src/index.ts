@@ -7,3 +7,4 @@ export * from './MenuItemRadio';
 export * from './MenuDivider';
 export * from './MenuGroupHeader';
 export * from './MenuGroup';
+export * from './selectable/index';

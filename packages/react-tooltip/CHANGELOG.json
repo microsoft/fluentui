@@ -1,0 +1,20 @@
+{
+  "name": "@fluentui/react-tooltip",
+  "entries": [
+    {
+      "date": "Fri, 26 Feb 2021 07:20:54 GMT",
+      "tag": "@fluentui/react-tooltip_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Add react-tooltip package",
+            "author": "behowell@microsoft.com",
+            "commit": "2aa9b8664158bd60365c3a5a901f5d5fe08ed44d",
+            "package": "@fluentui/react-tooltip"
+          }
+        ]
+      }
+    }
+  ]
+}
