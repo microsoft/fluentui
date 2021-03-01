@@ -38,8 +38,10 @@ export function invokeKeyframes(cache: EmotionCache, styles: ICSSInJSStyle) {
 
         if (style.keyframe) {
           styles[property] = keyframes(cache, style.keyframe, style.params);
+          continue;
         }
 
+        styles[property] = keyframes(cache, style as AnimationName['keyframe'], style.params);
         continue;
       }
 
