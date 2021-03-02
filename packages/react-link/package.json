@@ -26,6 +26,7 @@
     "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
+    "@fluentui/a11y-testing": "^0.1.0",
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/react-conformance": "^0.2.2",
     "@types/enzyme": "3.10.3",
