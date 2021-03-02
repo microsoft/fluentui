@@ -33,7 +33,6 @@ import { MessageBarBasicExample } from '../components/messageBar.stories';
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
     <Stack gap={8} horizontalAlign="center">
-      <TextField label="Standard" multiline rows={3} />
       <Text>13px body text</Text>
       <Label>MessageBar / InfoBox</Label>
       <MessageBarBasicExample />
