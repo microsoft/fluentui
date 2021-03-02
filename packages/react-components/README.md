@@ -37,4 +37,5 @@ Publishing docs:
 
 1. Set `CHROMATIC_PROJECT_TOKEN` in your shell
 1. Run `yarn chromatic`
-   > @levithomason and @miroslavstastny currently have the token for alpha stage publishing.
+
+> @levithomason and @miroslavstastny currently have the token for alpha stage publishing.
