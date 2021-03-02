@@ -2,10 +2,13 @@
 
 exports[`Divider renders a brand state with content 1`] = `
 <div
+  aria-labelledby="divider-3"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-3"
+  >
     Brand
   </div>
 </div>
@@ -13,10 +16,13 @@ exports[`Divider renders a brand state with content 1`] = `
 
 exports[`Divider renders a content aligned center 1`] = `
 <div
+  aria-labelledby="divider-6"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-6"
+  >
     Center
   </div>
 </div>
@@ -24,10 +30,13 @@ exports[`Divider renders a content aligned center 1`] = `
 
 exports[`Divider renders a content aligned end 1`] = `
 <div
+  aria-labelledby="divider-7"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-7"
+  >
     End
   </div>
 </div>
@@ -35,10 +44,13 @@ exports[`Divider renders a content aligned end 1`] = `
 
 exports[`Divider renders a content aligned start 1`] = `
 <div
+  aria-labelledby="divider-5"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-5"
+  >
     Start
   </div>
 </div>
@@ -53,10 +65,13 @@ exports[`Divider renders a default divider 1`] = `
 
 exports[`Divider renders a divider with content 1`] = `
 <div
+  aria-labelledby="divider-0"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-0"
+  >
     Default Divider
   </div>
 </div>
@@ -71,10 +86,13 @@ exports[`Divider renders a divider with different color 1`] = `
 
 exports[`Divider renders a divider with important 1`] = `
 <div
+  aria-labelledby="divider-8"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-8"
+  >
     Important
   </div>
 </div>
@@ -82,10 +100,13 @@ exports[`Divider renders a divider with important 1`] = `
 
 exports[`Divider renders a divider with inset 1`] = `
 <div
+  aria-labelledby="divider-1"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-1"
+  >
     Inset
   </div>
 </div>
@@ -93,10 +114,13 @@ exports[`Divider renders a divider with inset 1`] = `
 
 exports[`Divider renders a horizontal a fixed width 1`] = `
 <div
+  aria-labelledby="divider-11"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-11"
+  >
     fixed 100px width
   </div>
 </div>
@@ -104,10 +128,13 @@ exports[`Divider renders a horizontal a fixed width 1`] = `
 
 exports[`Divider renders a strong state with content 1`] = `
 <div
+  aria-labelledby="divider-4"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-4"
+  >
     Strong
   </div>
 </div>
@@ -115,10 +142,13 @@ exports[`Divider renders a strong state with content 1`] = `
 
 exports[`Divider renders a subtle state with content 1`] = `
 <div
+  aria-labelledby="divider-2"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-2"
+  >
     Subtle
   </div>
 </div>
@@ -126,10 +156,13 @@ exports[`Divider renders a subtle state with content 1`] = `
 
 exports[`Divider renders a vertical a fixed height 1`] = `
 <div
+  aria-labelledby="divider-10"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-10"
+  >
     fixed 100px height
   </div>
 </div>
@@ -144,10 +177,13 @@ exports[`Divider renders a vertical divider 1`] = `
 
 exports[`Divider renders a vertical divider with content 1`] = `
 <div
+  aria-labelledby="divider-9"
   className=""
   role="separator"
 >
-  <div>
+  <div
+    id="divider-9"
+  >
     Vertical
   </div>
 </div>
