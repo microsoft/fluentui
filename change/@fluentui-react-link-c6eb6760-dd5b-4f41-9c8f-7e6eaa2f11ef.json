@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Adding behavioral, snapshot and accessibility tests and cleaning up useLinkState function.",
-  "packageName": "@fluentui/react-link",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}

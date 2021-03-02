@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add link to version 8 release notes in readme",
-  "packageName": "@fluentui/react",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

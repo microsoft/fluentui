@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adds role=\"presentation\" to BasePicker div for screen reader accessibility",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

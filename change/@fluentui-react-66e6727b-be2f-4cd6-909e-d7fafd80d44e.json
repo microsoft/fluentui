@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix: Layer's div element is not removed from body",
-  "packageName": "@fluentui/react",
-  "email": "feodor@appveyor.com",
-  "dependentChangeType": "patch"
-}
