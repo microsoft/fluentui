@@ -35,7 +35,6 @@
     "@types/webpack-env": "1.15.1",
     "async": "^2.6.1",
     "autoprefixer": "^9.7.6",
-    "beachball": "^1.36.0",
     "chalk": "^2.1.0",
     "circular-dependency-plugin": "^5.0.2",
     "clean-css": "^4.2.3",
