@@ -6,11 +6,15 @@ export const AccordionExample = () => {
     <Accordion>
       <AccordionItem>
         <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
+        <AccordionPanel>
+          Accordion Panel <button>button</button>
+        </AccordionPanel>
       </AccordionItem>
       <AccordionItem>
         <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
+        <AccordionPanel>
+          Accordion Panel <button>button</button>
+        </AccordionPanel>
       </AccordionItem>
     </Accordion>
   );

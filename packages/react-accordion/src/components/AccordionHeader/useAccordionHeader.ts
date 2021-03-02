@@ -30,6 +30,7 @@ export const useAccordionHeader = (
       },
       button: {
         as: 'div',
+        tabIndex: 0,
         role: 'button',
         children: React.Fragment,
         'aria-controls': panelId,
