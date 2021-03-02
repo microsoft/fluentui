@@ -84,7 +84,7 @@ function _parseDotFile(pathToDotFile) {
     if (item.type === 'node_stmt') {
       graph.addNode(item.node_id.id);
     } else {
-      graph.addEdge(item.edge_list[0].id, item.edge_list[1].id);
+      graph.addEdge(item.edge_list[0].id, item.edge_list[1].id, { dir: 'forward' });
     }
   });
 
@@ -119,7 +119,7 @@ function _getSubTree(graph, rootPackage) {
   const edgeIterator = resEdges.values();
   while ((value = edgeIterator.next().value)) {
     const edge = value.split(',');
-    subTree.addEdge(edge[0], edge[1]);
+    subTree.addEdge(edge[0], edge[1], { dir: 'forward' });
   }
   return subTree;
 }

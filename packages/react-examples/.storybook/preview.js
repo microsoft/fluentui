@@ -101,7 +101,7 @@ function generateStoriesFromExamples(key, stories, req) {
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
-        title: componentName,
+        title: 'Components/' + componentName,
       },
     });
   }
@@ -129,3 +129,11 @@ function generateStoriesFromExamples(key, stories, req) {
     }
   }
 }
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ['Concepts/Introduction', 'Concepts', 'Components'],
+    },
+  },
+};
