@@ -56,10 +56,10 @@
     "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
-    "beachball": "^1.36.0",
+    "beachball": "1.53.0",
     "cross-env": "^5.1.4",
     "lerna": "^3.15.0",
-    "lage": "0.24.0",
+    "lage": "0.29.0",
     "lint-staged": "^10.2.9",
     "sass-loader": "^6.0.6",
     "satisfied": "^1.1.1",
@@ -84,7 +84,7 @@
     "peer": false,
     "source": [
       "package.json",
-      "apps/*/package.json",
+      "{apps,packages}/*/package.json",
       "scripts/package.json"
     ]
   }
