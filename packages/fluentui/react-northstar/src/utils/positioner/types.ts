@@ -121,6 +121,13 @@ export interface PositioningProps {
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
   unstable_pinned?: boolean;
+
+  /**
+   * Applies max-height and max-width on popper to fit it within the available space in viewport.
+   * true enables this for both width and height.
+   * 'height' applies only `max-height` and 'width' for `max-width`
+   */
+  autoSize?: 'height' | 'width' | boolean;
 }
 
 export interface PopperProps extends PositioningProps {

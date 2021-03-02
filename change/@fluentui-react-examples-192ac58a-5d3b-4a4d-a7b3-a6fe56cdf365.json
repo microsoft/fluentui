@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove stories for unconverged Provider",
-  "packageName": "@fluentui/react-examples",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

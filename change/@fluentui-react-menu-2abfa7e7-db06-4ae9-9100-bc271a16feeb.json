@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Allow menu to be used uncontrolled",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

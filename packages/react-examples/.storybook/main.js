@@ -6,6 +6,7 @@ import * as webpack from 'webpack';
 export default {
   addons: [
     '@storybook/addon-a11y',
+    '@storybook/addon-essentials',
     'storybook-addon-performance',
     {
       name: '@storybook/addon-knobs',

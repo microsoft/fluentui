@@ -26,7 +26,7 @@
     "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/react": "16.9.42",

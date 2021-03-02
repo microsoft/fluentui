@@ -2,6 +2,10 @@
 
 [![Build Status](https://img.shields.io/azure-devops/build/uifabric/fabricpublic/84/master?style=flat-square)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master) ![GitHub contributors](https://img.shields.io/github/contributors/microsoft/fluentui?style=flat-square) ![GitHub top language](https://img.shields.io/github/languages/top/microsoft/fluentui?style=flat-square) [![Twitter Follow](https://img.shields.io/twitter/follow/fluentui?logo=twitter&style=flat-square)](https://twitter.com/FluentUI?ref_src=twsrc%5Etfw)
 
+> :tada: :tada: :tada: **Version 8 of `@fluentui/react` is now available on npm!** :tada: :tada: :tada:
+>
+> See the [release notes](https://github.com/microsoft/fluentui/wiki/Version-8-release-notes) for more info, and please file an issue if you have any problems.
+
 Fluent UI web represents a collection of utilities, React components, and web components for building web applications.
 
 This repo is home to 3 separate projects today. Mixing components between projects is not currently supported. The goal of these projects is to dedupe functionality and enable interoperability over time. For now, choose the project that best suits your needs.

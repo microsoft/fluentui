@@ -274,6 +274,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
           screenReaderText: legacyStyles.screenReaderOnly,
         };
+
     return (
       <div ref={this.root} className={classNames.root} onKeyDown={this.onKeyDown} onBlur={this.onBlur}>
         <FocusZone
@@ -292,7 +293,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         >
           {this.getSuggestionsAlert(classNames.screenReaderText)}
           <SelectionZone selection={this.selection} selectionMode={SelectionMode.multiple}>
-            <div className={classNames.text}>
+            <div className={classNames.text} role="presentation">
               {items.length > 0 && (
                 <span id={this._ariaMap.selectedItems} className={classNames.itemsWrapper} role={'list'}>
                   {this.renderItems()}
@@ -1021,11 +1022,16 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
-          text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
+          text: css(
+            'ms-BasePicker-text',
+            legacyStyles.pickerText,
+            this.state.isFocused && legacyStyles.inputFocused,
+            disabled && legacyStyles.inputDisabled,
+          ),
+          itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
           screenReaderText: legacyStyles.screenReaderOnly,
         };
-
     return (
       <div ref={this.root} onBlur={this.onBlur}>
         <div className={classNames.root} onKeyDown={this.onKeyDown}>
