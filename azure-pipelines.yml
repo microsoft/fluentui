@@ -74,12 +74,23 @@ jobs:
           filePath: yarn-ci.sh
         displayName: yarn
 
+      ## only do scoped bundle with PRs
       - script: |
-          yarn run:published build --production --no-cache &&
-          yarn run:published test --production &&
-          yarn run:published lint &&
-          yarn run:published bundle --production
+          yarn bundle --no-cache --since $(targetBranch)
         displayName: bundle (pr, scoped)
+        condition: eq(variables['isPR'], true)
+        env:
+          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
+          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
+
+      ## duplicated for master CI builds
+      - script: |
+          yarn bundle --no-cache
+        displayName: bundle (master)
+        condition: eq(variables['isPR'], false)
+        env:
+          BACKFILL_CACHE_PROVIDER: $(backfillProvider)
+          BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
