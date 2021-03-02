@@ -9,7 +9,11 @@ import { withCompatThemeProvider, withFluentProvider, withKeytipLayer, withStric
 addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withKeytipLayer);
-if (['react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes('PACKAGE_NAME')) {
+if (
+  ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
+    'PACKAGE_NAME',
+  )
+) {
   initializeIcons();
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
