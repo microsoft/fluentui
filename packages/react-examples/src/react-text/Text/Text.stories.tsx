@@ -1,4 +1,4 @@
-import { Flex } from '@fluentui/react-flex-stale';
+import { Flex } from '@fluentui/react-flex';
 import { Text } from '@fluentui/react-text';
 import * as React from 'react';
 
