@@ -3,7 +3,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { TextPageProps } from './TextPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps, ImplementationSection } from '@fluentui/react-docsite-components/lib/index2';
-import { ApiKind } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 
 /* eslint-disable @fluentui/max-len */
 

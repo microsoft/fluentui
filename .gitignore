@@ -80,6 +80,7 @@ drop/
 .vs/
 *.sublime-project
 *.sublime-workspace
+*.code-workspace
 .idea
 /.settings/
 

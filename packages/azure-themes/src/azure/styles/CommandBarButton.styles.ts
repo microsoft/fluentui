@@ -1,6 +1,6 @@
 import { ITheme } from '@fluentui/react';
 import { getFocusStyle } from '@fluentui/react/lib/Styling';
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {

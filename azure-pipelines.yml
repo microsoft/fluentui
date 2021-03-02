@@ -7,8 +7,6 @@ trigger:
 variables:
   - group: fabric-variables
   - template: .devops/templates/variables.yml
-    parameters:
-      pathPrefix: SourceVersion
 
 pool: 'Self Host Ubuntu'
 
@@ -31,18 +29,15 @@ jobs:
 
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
-          yarn prelint
-          yarn prettier $(targetBranch) --check
-        displayName: do syncpack and lint-files checks
+          yarn prelint &&
+          yarn format $(targetBranch) --check
+        displayName: do syncpack, lint-files, and prettier checks
 
       ## Danger.js checks for Fluent UI N*
       - script: |
-          if [ $BUILD_REASON == "PullRequest" ]; then
-            yarn danger ci
-          else
-            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-          fi
+          yarn danger ci
         displayName: danger
+        condition: eq(variables['isPR'], true)
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
@@ -50,7 +45,7 @@ jobs:
       - script: |
           yarn buildci --no-cache --since $(targetBranch)
         displayName: build, test, lint (pr, scoped)
-        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: eq(variables['isPR'], true)
         env:
           BACKFILL_CACHE_PROVIDER: $(backfillProvider)
           BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
@@ -59,7 +54,7 @@ jobs:
       - script: |
           yarn buildci --no-cache
         displayName: build, test, lint (master)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: eq(variables['isPR'], false)
         env:
           BACKFILL_CACHE_PROVIDER: $(backfillProvider)
           BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
@@ -83,7 +78,7 @@ jobs:
       - script: |
           yarn bundle --no-cache --since $(targetBranch)
         displayName: bundle (pr, scoped)
-        condition: ne(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: eq(variables['isPR'], true)
         env:
           BACKFILL_CACHE_PROVIDER: $(backfillProvider)
           BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
@@ -92,7 +87,7 @@ jobs:
       - script: |
           yarn bundle --no-cache
         displayName: bundle (master)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: eq(variables['isPR'], false)
         env:
           BACKFILL_CACHE_PROVIDER: $(backfillProvider)
           BACKFILL_CACHE_PROVIDER_OPTIONS: $(backfillOptions)
@@ -125,7 +120,7 @@ jobs:
 
       - task: AzureUpload@2
         displayName: Upload demo images (master)
-        condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        condition: eq(variables['isPR'], false)
         inputs:
           azureSubscription: $(azureSubscription)
           BlobPrefix: 'assets'

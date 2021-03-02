@@ -11,16 +11,15 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.1",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@fluentui/scripts": "^1.0.0",
-    "typescript": "3.7.2"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/code-sandbox": "^0.52.0",
     "@fluentui/react-northstar": "^0.52.0",
-    "prettier": "~1.19.1",
+    "prettier": "1.19.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.10.0"

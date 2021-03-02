@@ -1,40 +1,19 @@
 import * as React from 'react';
-import { ComponentProps, ShorthandProps } from '@fluentui/react-utils';
-import { ColorTokens, RecursivePartial, FontTokens } from '@fluentui/theme';
+import { ComponentProps } from '@fluentui/react-utilities';
 
 /**
- * {@docCategory {{componentName}}\}
+ * {@docCategory {{componentName}} }
  */
-export type {{componentName}}Props = ComponentProps &
-  React.HTMLAttributes<HTMLElement> & {
-    /**
-     * Shorthand children content within the button.
-     */
-    content?: ShorthandProps;
-
-    tokens?: RecursivePartial<{{componentName}}Tokens>;
-  };
-
-/**
- * {@docCategory {{componentName}}\}
- */
-export interface {{componentName}}State extends {{componentName}}Props {
-  {{camelCase componentName}}Ref?: React.RefObject<HTMLElement>;
-
+export interface {{componentName}}Props extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  // TODO Add props and slots here
 }
 
 /**
- * {@docCategory {{componentName}}\}
+ * {@docCategory {{componentName}} }
  */
-export type {{componentName}}Tokens = ColorTokens &
-  FontTokens & {
-
-  };
-
-/**
- * {@docCategory {{componentName}}\}
- */
-export type {{componentName}}Variants<TTokens = {{componentName}}Tokens> = {
-  root?: TTokens;
-
-};
+export interface {{componentName}}State extends {{componentName}}Props {
+  /**
+   * Ref to the root slot
+   */
+  ref: React.MutableRefObject<HTMLElement>;
+}

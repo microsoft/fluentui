@@ -1,10 +1,5 @@
 'use strict';
 
-// Treat warnings as failures.
-console.warn = message => {
-  throw new Error(message);
-};
-
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
 themeLoader.configureLoadStyles(styles => {
@@ -17,7 +12,7 @@ library.setSSR(true);
 library.setRTL(false);
 
 // Assume a large screen.
-let responsiveLib = require('@fluentui/react-internal/lib/utilities/decorators/withResponsiveMode');
+let responsiveLib = require('@fluentui/react/lib/utilities/decorators/withResponsiveMode');
 responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
 // Initialize icons.

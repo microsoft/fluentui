@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { ImageCenterExample } from './Image.Center.Example';
 import { ImageCenterContainExample } from './Image.CenterContain.Example';
 import { ImageCenterCoverExample } from './Image.CenterCover.Example';
@@ -21,7 +21,7 @@ const ImageMaximizeFrameExampleCode = require('!raw-loader?esModule=false!@fluen
 export const ImagePageProps: IDocPageProps = {
   title: 'Image',
   componentName: 'Image',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Image',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Image',
   examples: [
     {
       title: 'ImageFit: Not specified',

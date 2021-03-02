@@ -1,5 +1,37 @@
-import { NeutralColorTokens, ColorVariants, SharedColorTokens, GlobalSharedColors } from '../../types';
+import {
+  NeutralColorTokens,
+  ColorVariants,
+  SharedColorTokens,
+  GlobalSharedColors,
+  BackgroundColorTokens,
+  BrandVariants,
+  BrandColorTokens,
+} from '../../types';
 import { grey, white, black, sharedColors } from '../../global/index';
+
+export const ghostColorTokens: BackgroundColorTokens = {
+  background: 'red',
+  backgroundHover: 'red',
+  backgroundPressed: 'red',
+  backgroundSelected: 'red',
+};
+
+export const transparentColorTokens: BackgroundColorTokens = {
+  background: 'rgba(255, 0, 0, 0.2)',
+  backgroundHover: 'rgba(255, 0, 0, 0.2)',
+  backgroundPressed: 'rgba(255, 0, 0, 0.2)',
+  backgroundSelected: 'rgba(255, 0, 0, 0.2)',
+};
+
+export function createBrandColorTokens(brand: BrandVariants): BrandColorTokens {
+  return {
+    brandBackground: brand.shade10,
+    brandBackgroundHover: brand.primary,
+    brandBackgroundPressed: brand.shade40,
+    brandBackgroundSelected: brand.shade20,
+    brandBackgroundStatic: brand.primary,
+  };
+}
 
 export function createNeutralColorTokens(
   brand: ColorVariants,
@@ -113,7 +145,7 @@ function createSharedColorTokens(color: ColorVariants, customValues: Record<stri
 export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens> = {
   darkRed: createSharedColorTokens(sharedColors.darkRed),
   burgundy: createSharedColorTokens(sharedColors.burgundy),
-  cranberry: createSharedColorTokens(sharedColors.charcoal),
+  cranberry: createSharedColorTokens(sharedColors.cranberry),
   red: createSharedColorTokens(sharedColors.red),
   darkOrange: createSharedColorTokens(sharedColors.darkOrange),
   bronze: createSharedColorTokens(sharedColors.bronze),
@@ -127,12 +159,13 @@ export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorToke
   brown: createSharedColorTokens(sharedColors.brown),
   darkBrown: createSharedColorTokens(sharedColors.darkBrown),
   lime: createSharedColorTokens(sharedColors.lime),
-  forrest: createSharedColorTokens(sharedColors.forrest),
+  forest: createSharedColorTokens(sharedColors.forest),
   seafoam: createSharedColorTokens(sharedColors.seafoam),
   lightGreen: createSharedColorTokens(sharedColors.lightGreen),
   green: createSharedColorTokens(sharedColors.green),
   darkGreen: createSharedColorTokens(sharedColors.darkGreen),
   lightTeal: createSharedColorTokens(sharedColors.lightTeal),
+  teal: createSharedColorTokens(sharedColors.teal),
   darkTeal: createSharedColorTokens(sharedColors.darkTeal),
   cyan: createSharedColorTokens(sharedColors.cyan),
   steel: createSharedColorTokens(sharedColors.steel),

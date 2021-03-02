@@ -12,15 +12,14 @@
     "react-table": "^7.1.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-table": "^7.0.19",
     "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "typescript": "3.7.2"
+    "react-dom": "16.8.6"
   },
   "files": [
     "dist"

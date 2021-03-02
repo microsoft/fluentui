@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { SelectedPeopleListBasicExample } from './SelectedPeopleList.Basic.Example';
 import { SelectedPeopleListControlledExample } from './SelectedPeopleList.Controlled.Example';
@@ -11,8 +11,7 @@ const SelectedPeopleListControlledExampleCode = require('!raw-loader?esModule=fa
 export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',
   componentName: 'SelectedPeopleList',
-  componentUrl:
-    'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/SelectedPeopleList',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/SelectedPeopleList',
   examples: [
     {
       title: 'Selected People List (uncontrolled)',
@@ -28,7 +27,7 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
   propertiesTablesSources: [
     require<
       string
-    >('!raw-loader?esModule=false!@fluentui/react-internal/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
+    >('!raw-loader?esModule=false!@fluentui/react/src/components/SelectedItemsList/BaseSelectedItemsList.types.ts'),
   ],
   overview: '',
   dos: require<

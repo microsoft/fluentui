@@ -1,23 +1,16 @@
-import {
-  createDOMRenderer,
-  makeStyles as vanillaMakeStyles,
-  MakeStylesDefinition,
-  MakeStylesOptions,
-  MakeStylesRenderer,
-} from '@fluentui/make-styles';
+import { makeStyles as vanillaMakeStyles, MakeStylesDefinition, MakeStylesOptions } from '@fluentui/make-styles';
 import { useFluent } from '@fluentui/react-provider';
 import { useTheme } from '@fluentui/react-theme-provider';
 import { Theme } from '@fluentui/react-theme';
-import * as React from 'react';
 
-function useRenderer(document: Document | undefined): MakeStylesRenderer {
-  return React.useMemo(() => {
-    return createDOMRenderer(document);
-  }, [document]);
-}
+import { useRenderer } from './useRenderer';
 
 export function makeStyles<Selectors>(definitions: MakeStylesDefinition<Selectors, Theme>[]) {
   const getStyles = vanillaMakeStyles(definitions);
+
+  if (process.env.NODE_ENV === 'test') {
+    return () => '';
+  }
 
   return function useClasses(selectors: Selectors) {
     const { dir, document } = useFluent();

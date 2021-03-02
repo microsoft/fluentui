@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore(scripts): move prettier to single version policy,make formating abstraction explicit",
+  "packageName": "@fluentui/make-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}

@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/Divider';
+export * from './components/Divider/index';

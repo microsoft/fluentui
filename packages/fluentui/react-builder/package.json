@@ -22,11 +22,10 @@
     "axe-core": "3.5.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@types/react-frame-component": "^4.1.1",
     "@fluentui/scripts": "^1.0.0",
-    "lerna-alias": "^3.0.3-0",
-    "typescript": "3.7.2"
+    "lerna-alias": "^3.0.3-0"
   },
   "peerDependencies": {
     "@babel/standalone": "^7.8.3"

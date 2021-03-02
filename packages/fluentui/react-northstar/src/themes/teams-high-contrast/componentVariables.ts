@@ -34,8 +34,6 @@ export { toolbarMenuRadioGroupVariables as ToolbarMenuRadioGroup } from './compo
 export { toolbarMenuRadioGroupWrapperVariables as ToolbarMenuRadioGroupWrapper } from './components/Toolbar/toolbarMenuRadioGroupWrapperVariables';
 
 export { reactionVariables as Reaction } from './components/Reaction/reactionVariables';
-export { alertVariables as Alert } from './components/Alert/alertVariables';
-export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 export { providerVariables as Provider } from './components/Provider/providerVariables';
 export { dropdownVariables as Dropdown } from './components/Dropdown/dropdownVariables';
 export { dropdownItemVariables as DropdownItem } from './components/Dropdown/dropdownItemVariables';

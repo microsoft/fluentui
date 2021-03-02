@@ -6,19 +6,11 @@ import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
+import * as path from 'path';
 import * as React from 'react';
-import * as ReactIs from 'react-is';
 import { ComponentType, ReactWrapper } from 'enzyme';
-import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
-import {
-  assertBodyContains,
-  getDisplayName,
-  mountWithProvider as mount,
-  syntheticEvent,
-  mountWithProvider,
-} from 'test/utils';
-import { commonHelpers } from './commonHelpers';
+import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithProvider } from 'test/utils';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
@@ -62,16 +54,13 @@ export function isConformant(
     eventTargets = {},
     hasAccessibilityProp = true,
     requiredProps = {},
-    rendersPortal = false,
     wrapperComponent = null,
     autoControlledProps = [],
     targetComponent,
     forwardsRefTo,
   } = options;
 
-  const { throwError } = commonHelpers('isConformant', Component);
-
-  const defaultConfig: Partial<IsConformantOptions> = {
+  const defaultConfig: IsConformantOptions = {
     customMount: mountWithProvider,
     componentPath: testPath
       .replace(/test[/\\]specs/, 'src')
@@ -87,7 +76,6 @@ export function isConformant(
 
   isConformantBase(defaultConfig, options);
 
-  const componentType = typeof Component;
   // composed components store `handledProps` under config
   const isComposedComponent: boolean = !!(Component as ComposedComponent).fluentComposeConfig;
   const handledProps = isComposedComponent
@@ -119,48 +107,6 @@ export function isConformant(
     // thus, we should continue search
     return wrapperComponent ? toNextNonTrivialChild(componentElement) : componentElement;
   };
-
-  // make sure components are properly exported
-  if (!ReactIs.isValidElementType(Component)) {
-    throwError(`Components should export a valid React element type, got: ${componentType}.`);
-  }
-
-  // tests depend on Component constructor names, enforce them
-  if (!constructorName) {
-    throwError(
-      [
-        'Component is not a named function. This should help identify it:\n\n',
-        `${ReactDOMServer.renderToStaticMarkup(<Component />)}`,
-      ].join(''),
-    );
-  }
-
-  // ----------------------------------------
-  // Component info
-  // ----------------------------------------
-  // This is pretty ugly because:
-  // - jest doesn't support custom error messages
-  // - jest will run all test
-  const infoJSONPath = `@fluentui/react-northstar/componentInfo/${constructorName}.info.json`;
-
-  let info;
-
-  try {
-    info = require(infoJSONPath);
-  } catch (err) {
-    // handled in the test() below
-    test('component info file exists', () => {
-      throw new Error(
-        [
-          '!! ==========================================================',
-          `!! Missing ${infoJSONPath}.`,
-          '!! Run `yarn test` or `yarn test:watch` again to generate one.',
-          '!! ==========================================================',
-        ].join('\n'),
-      );
-    });
-    return null;
-  }
 
   // ----------------------------------------
   // Props
@@ -350,7 +296,7 @@ export function isConformant(
 
         // <Dropdown onBlur={handleBlur} />
         //                   ^ was not called once on "blur"
-        const leftPad = ' '.repeat(info.displayName.length + listenerName.length + 3);
+        const leftPad = ' '.repeat(constructorName.length + listenerName.length + 3);
 
         // onKeyDown => handleKeyDown
         const handlerName = _.camelCase(listenerName.replace('on', 'handle'));
@@ -360,7 +306,7 @@ export function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ was not called once on "${eventName}".`,
               'You may need to hoist your event handlers up to the root element.\n',
             ].join(''),
@@ -392,7 +338,7 @@ export function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ ${errorMessage}`,
               'It was called with args:',
               JSON.stringify(handlerSpy.mock.calls[0], null, 2),
@@ -407,79 +353,28 @@ export function isConformant(
   // Handles className
   // ----------------------------------------
   describe('className const (common)', () => {
-    const componentClassName = info.componentClassName || `ui-${Component.displayName}`.toLowerCase();
-    const getClassesOfRootElement = component => {
-      return component
-        .find('[className]')
-        .hostNodes()
-        .at(wrapperComponent ? 1 : 0)
-        .prop('className');
-    };
+    // This className calculation is duplicated from scripts/gulp/plugins/util/getComponentInfo.ts.
+    // The duplication isn't ideal, but the speed benefit from removing the requirement to build
+    // component info before running tests is worth it.
+    const { componentPath } = defaultConfig;
+    const dirname = path.basename(path.dirname(componentPath));
+    const filenameWithoutExt = path.basename(componentPath, path.extname(componentPath));
+    const isParent = filenameWithoutExt === dirname;
+    const parentDisplayName = isParent ? null : dirname;
+    // for example, "Menu" for "ToolbarMenu" since it is accessed as "Toolbar.Menu" in the API
+    const subcomponentName = isParent ? null : constructorName.replace(parentDisplayName!, '');
+
+    const componentClassName = (!isParent
+      ? _.includes(subcomponentName, 'Group')
+        ? `ui-${parentDisplayName}s`
+        : `ui-${parentDisplayName}__${subcomponentName}`
+      : `ui-${constructorName.toLowerCase()}`
+    ).toLowerCase();
 
     const constClassName = _.camelCase(`${Component.displayName}ClassName`);
 
     test(`exports a const equal to "${componentClassName}"`, () => {
       expect(FluentUI[constClassName]).toEqual(componentClassName);
-    });
-
-    test(`is applied to the root element`, () => {
-      const component = mount(<Component {...requiredProps} />);
-
-      // only test components that implement className
-      if (component.find('[className]').hostNodes().length > 0) {
-        expect(_.includes(getClassesOfRootElement(component), componentClassName)).toEqual(true);
-      }
-    });
-
-    test("applies user's className to root component", () => {
-      const className = 'is-conformant-class-string';
-
-      // Portal powered components can render to two elements, a trigger and the actual component
-      // The actual component is shown when the portal is open
-      // If a trigger is rendered, open the portal and make assertions on the portal element
-      // TODO some component using renderPortal = 'true'
-      if (rendersPortal) {
-        const mountNode = document.createElement('div');
-        document.body.appendChild(mountNode);
-
-        const wrapper = mount(<Component {...requiredProps} className={className} />, {
-          attachTo: mountNode,
-        });
-        wrapper.setProps({ open: true } as any);
-
-        // portals/popups/etc may render the component to somewhere besides descendants
-        // we look for the component anywhere in the DOM
-        assertBodyContains(`.${className}`);
-
-        wrapper.detach();
-        document.body.removeChild(mountNode);
-      } else {
-        const component = mount(<Component {...requiredProps} className={className} />);
-        expect(_.includes(getClassesOfRootElement(component), className)).toEqual(true);
-      }
-    });
-
-    test("user's className does not override the default classes", () => {
-      const component = mount(<Component {...requiredProps} />);
-      const defaultClasses = getClassesOfRootElement(component);
-
-      if (!defaultClasses) return;
-
-      const userClasses = 'generate';
-      const wrapperWithCustomClasses = mount(<Component {...requiredProps} className={userClasses} />);
-      const mixedClasses = getClassesOfRootElement(wrapperWithCustomClasses);
-
-      const message = [
-        'Make sure you are using the `getUnhandledProps` util to spread the `unhandledProps` props.',
-        'This may also be of help: https://facebook.github.io/react/docs/transferring-props.html.',
-      ].join(' ');
-
-      defaultClasses.split(' ').forEach(defaultClass => {
-        expect({ message, result: _.includes(mixedClasses, defaultClass) }).toEqual({
-          message,
-          result: true,
-        });
-      });
     });
   });
 

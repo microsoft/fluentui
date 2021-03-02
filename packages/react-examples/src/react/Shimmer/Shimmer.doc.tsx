@@ -4,7 +4,7 @@ import { ShimmerCustomElementsExample } from './Shimmer.CustomElements.Example';
 import { ShimmerLoadDataExample } from './Shimmer.LoadData.Example';
 import { ShimmerApplicationExample } from './Shimmer.Application.Example';
 import { ShimmerStylingExample } from './Shimmer.Styling.Example';
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 const ShimmerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Shimmer/Shimmer.Basic.Example.tsx') as string;
 
@@ -19,7 +19,7 @@ const ShimmerApplicationExampleCode = require('!raw-loader?esModule=false!@fluen
 export const ShimmerPageProps: IDocPageProps = {
   title: 'Shimmer',
   componentName: 'ShimmerExample',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Shimmer',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Shimmer',
   examples: [
     {
       title: 'Shimmer with basic elements using the ~shimmerElements~ prop',

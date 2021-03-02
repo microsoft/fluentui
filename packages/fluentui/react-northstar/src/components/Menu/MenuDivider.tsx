@@ -9,8 +9,8 @@ import {
   useTelemetry,
   useStyles,
   useUnhandledProps,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 

@@ -3,17 +3,28 @@ import custom from '@fluentui/scripts/storybook/webpack.config';
 import * as path from 'path';
 import * as webpack from 'webpack';
 
-export default {
-  addons: ['@storybook/addon-a11y/register', 'storybook-addon-performance/register', '@storybook/addon-knobs/register'],
-  webpackFinal: (/** @type {webpack.Configuration} */ config) => {
-    config = custom(config);
+const packageName = path.basename(process.cwd());
 
-    config.module.rules.push({
+export default {
+  addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-essentials',
+    'storybook-addon-performance',
+    {
+      name: '@storybook/addon-knobs',
+      options: { escapeHTML: false },
+    },
+  ],
+  stories: packageName === 'react-components' ? ['../src/react-components/**/*.stories.mdx'] : [],
+  webpackFinal: (/** @type {webpack.Configuration} */ config) => {
+    const customConfig = custom(config);
+
+    customConfig.module.rules.push({
       // Special loader that only includes stories from the current package
       test: /\.storybook[/\\]preview.js/,
       loader: path.resolve(__dirname, 'preview-loader.js'),
     });
 
-    return config;
+    return customConfig;
   },
 };

@@ -332,7 +332,6 @@ exports[`Component Examples renders SpinButton.Icon.Example.tsx correctly 1`] = 
                     text-align: center;
                   }
               data-icon-name="ChevronUpSmall"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -473,7 +472,6 @@ exports[`Component Examples renders SpinButton.Icon.Example.tsx correctly 1`] = 
                     text-align: center;
                   }
               data-icon-name="ChevronDownSmall"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-3\\"",
@@ -562,9 +560,8 @@ exports[`Component Examples renders SpinButton.Icon.Example.tsx correctly 1`] = 
               word-wrap: break-word;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: GrayText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
         htmlFor="input8"
@@ -816,7 +813,6 @@ exports[`Component Examples renders SpinButton.Icon.Example.tsx correctly 1`] = 
                     color: GrayText;
                   }
               data-icon-name="ChevronUpSmall"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-2\\"",
@@ -961,7 +957,6 @@ exports[`Component Examples renders SpinButton.Icon.Example.tsx correctly 1`] = 
                     color: GrayText;
                   }
               data-icon-name="ChevronDownSmall"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-3\\"",

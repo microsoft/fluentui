@@ -13,6 +13,7 @@ import { Breadcrumb } from '@microsoft/fast-foundation';
 import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
+import { ColorRGBA64 } from '@microsoft/fast-colors';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
@@ -284,6 +285,15 @@ export interface DesignSystem {
     disabledOpacity: number;
     elevatedCornerRadius?: number;
     focusOutlineWidth: number;
+    neutralBaseColor: string;
+    // (undocumented)
+    neutralContrastFillActiveDelta: number;
+    // (undocumented)
+    neutralContrastFillFocusDelta: number;
+    // (undocumented)
+    neutralContrastFillHoverDelta: number;
+    // (undocumented)
+    neutralContrastFillRestDelta: number;
     neutralDividerRestDelta: number;
     // (undocumented)
     neutralFillActiveDelta: number;
@@ -435,15 +445,12 @@ export class FluentButton extends Button {
 }
 
 // @public
-export class FluentCard extends DesignSystemProvider implements Pick<DesignSystem, 'backgroundColor' | 'neutralPalette'> {
-    backgroundColor: string;
+export class FluentCard extends FluentDesignSystemProvider {
     cardBackgroundColor: string;
     // (undocumented)
     connectedCallback(): void;
     // @internal (undocumented)
     handleChange(source: DesignSystem, name: string): void;
-    // @internal
-    neutralPalette: string[];
 }
 
 // @public
@@ -457,6 +464,8 @@ export type FluentDesignSystem = Omit<DesignSystem, 'contrast' | 'fontWeight' | 
 export class FluentDesignSystemProvider extends DesignSystemProvider implements Omit<DesignSystem, 'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'> {
     // (undocumented)
     accentBaseColor: string;
+    // (undocumented)
+    protected accentBaseColorChanged(oldValue: string, newValue: string): void;
     // (undocumented)
     accentFillActiveDelta: number;
     // (undocumented)
@@ -502,6 +511,14 @@ export class FluentDesignSystemProvider extends DesignSystemProvider implements 
     elevatedCornerRadius: number;
     // (undocumented)
     focusOutlineWidth: number;
+    // (undocumented)
+    neutralBaseColor: string;
+    // (undocumented)
+    protected neutralBaseColorChanged(oldValue: string, newValue: string): void;
+    neutralContrastFillActiveDelta: number;
+    neutralContrastFillFocusDelta: number;
+    neutralContrastFillHoverDelta: number;
+    neutralContrastFillRestDelta: number;
     // (undocumented)
     neutralDividerRestDelta: number;
     // (undocumented)
@@ -731,6 +748,41 @@ export const MenuItemStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const MenuStyles: import("@microsoft/fast-element").ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFill" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFill: SwatchFamilyResolver;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillActive" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFillActive: SwatchRecipe;
+
+// @public
+export const neutralContrastFillActiveBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralContrastFillFocusBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillHover" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFillHover: SwatchRecipe;
+
+// @public
+export const neutralContrastFillHoverBehavior: CSSCustomPropertyBehavior;
+
+// Warning: (ae-internal-missing-underscore) The name "neutralContrastFillRest" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const neutralContrastFillRest: SwatchRecipe;
+
+// @public
+export const neutralContrastFillRestBehavior: CSSCustomPropertyBehavior;
+
+// @public
+export const neutralContrastForegroundRestBehavior: CSSCustomPropertyBehavior;
 
 // Warning: (ae-internal-missing-underscore) The name "neutralDividerRest" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1125,6 +1177,9 @@ export enum PaletteType {
     // (undocumented)
     neutral = "neutral"
 }
+
+// @public
+export function parseColorString(color: string): ColorRGBA64;
 
 // @public
 export const ProgressRingStyles: import("@microsoft/fast-element").ElementStyles;

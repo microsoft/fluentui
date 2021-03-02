@@ -21,19 +21,19 @@
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
     "react-is": "^16.6.3",
+    "scheduler": "^0.20.1",
     "stylis": "^3.5.4",
     "stylis-plugin-rtl": "^1.0.0"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@fluentui/scripts": "^1.0.0",
     "lerna-alias": "^3.0.3-0",
     "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "typescript": "3.7.2"
+    "react-dom": "16.8.6"
   },
   "files": [
     "dist"

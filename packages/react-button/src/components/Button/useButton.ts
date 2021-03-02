@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { ButtonProps, ButtonState } from './Button.types';
 import { useButtonState } from './useButtonState';
 
 /**
  * Consts listing which props are shorthand props.
  */
-export const buttonShorthandProps = ['icon', 'loader', 'content'];
+export const buttonShorthandProps = ['icon', 'children'];
 
-const mergeProps = makeMergeProps({ deepMerge: buttonShorthandProps });
+const mergeProps = makeMergeProps<ButtonState>({ deepMerge: buttonShorthandProps });
 
 /**
  * Given user props, returns state and render function for a Button.
  */
-export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps) => {
+export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defaultProps?: ButtonProps): ButtonState => {
   // Ensure that the `ref` prop can be used by other things (like useFocusRects) to refer to the root.
   // NOTE: We are assuming refs should not mutate to undefined. Either they are passed or not.
   // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -21,7 +21,7 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
   const state = mergeProps(
     {
       ref: resolvedRef,
-      as: props.href ? 'a' : 'button',
+      as: 'button',
       icon: { as: 'span' },
       content: { as: 'span', children: props.children },
       loader: { as: 'span' },
@@ -32,5 +32,5 @@ export const useButton = (props: ButtonProps, ref: React.Ref<HTMLElement>, defau
 
   useButtonState(state);
 
-  return state as ButtonState;
+  return state;
 };

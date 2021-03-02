@@ -11,7 +11,7 @@ import {
   mergeStyles,
   Toggle,
 } from '@fluentui/react';
-import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { DefaultButton, IButtonStyles } from '@fluentui/react/lib/Button';
 
 const margin = '0 20px 20px 0';
 const controlWrapperClass = mergeStyles({
@@ -105,7 +105,7 @@ export class DetailsListGroupedExample extends React.Component<{}, IDetailsListG
           columns={this._columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
-          checkButtonAriaLabel="Row checkbox"
+          checkButtonAriaLabel="select row"
           onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true,

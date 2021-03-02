@@ -1,8 +1,173 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Mon, 01 Feb 2021 12:23:48 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.57)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.56..@fluentui/react-tabs_v1.0.0-beta.57)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.2 ([PR #17001](https://github.com/microsoft/fluentui/pull/17001) by feodor@appveyor.com)
+
+## [1.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.56)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.55..@fluentui/react-tabs_v1.0.0-beta.56)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [1.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.55)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.54..@fluentui/react-tabs_v1.0.0-beta.55)
+
+### Patches
+
+- Bump @fluentui/common-styles to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.1.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/eslint-plugin to v1.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-conformance to v0.2.2 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-hooks to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/set-version to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Update references to major-bumped packages ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.54)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.53..@fluentui/react-tabs_v1.0.0-beta.54)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.63 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
+
+## [1.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.53)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.52..@fluentui/react-tabs_v1.0.0-beta.53)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.1 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [1.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.52)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.51..@fluentui/react-tabs_v1.0.0-beta.52)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [1.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.51)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.50..@fluentui/react-tabs_v1.0.0-beta.51)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.60 ([PR #17033](https://github.com/microsoft/fluentui/pull/17033) by martinhochel@microsoft.com)
+
+## [1.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.50)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.49..@fluentui/react-tabs_v1.0.0-beta.50)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.59 ([PR #17066](https://github.com/microsoft/fluentui/pull/17066) by elcraig@microsoft.com)
+
+## [1.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.49)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.48..@fluentui/react-tabs_v1.0.0-beta.49)
+
+### Changes
+
+- Allow React 17 in peerDependencies ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [1.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.48)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.47..@fluentui/react-tabs_v1.0.0-beta.48)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [1.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.47)
+
+Wed, 17 Feb 2021 12:21:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.46..@fluentui/react-tabs_v1.0.0-beta.47)
+
+### Changes
+
+- add labels to calendar tables, date header button, and tweak label wording for conciseness ([PR #16855](https://github.com/microsoft/fluentui/pull/16855) by sarah.higley@microsoft.com)
+
+## [1.0.0-beta.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.46)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.45..@fluentui/react-tabs_v1.0.0-beta.46)
+
+### Changes
+
+- Bump @fluentui/react-hooks to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [1.0.0-beta.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.45)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.44..@fluentui/react-tabs_v1.0.0-beta.45)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.54 ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.44)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.43..@fluentui/react-tabs_v1.0.0-beta.44)
+
+### Changes
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+## [1.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.43)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.42..@fluentui/react-tabs_v1.0.0-beta.43)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+
+## [1.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.42)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.41..@fluentui/react-tabs_v1.0.0-beta.42)
+
+### Changes
+
+- Combine react-internal back into react, and update references ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
+
+## [1.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.41)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v1.0.0-beta.40..@fluentui/react-tabs_v1.0.0-beta.41)
+
+### Changes
+
+- Bump @fluentui/react-internal to v8.0.0-beta.44 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
 
 ## [1.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v1.0.0-beta.39)
 
