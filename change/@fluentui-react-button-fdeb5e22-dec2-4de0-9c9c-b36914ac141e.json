@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Trim react-button down to converged styles and api",
-  "packageName": "@fluentui/react-button",
-  "email": "me@levithomason.com",
-  "dependentChangeType": "patch"
-}

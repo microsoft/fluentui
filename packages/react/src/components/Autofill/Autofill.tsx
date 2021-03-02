@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IAutofillProps, IAutofill } from './Autofill.types';
-import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
+import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
   inputValue: string;
@@ -284,12 +284,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     }
   }
 
-  private _notifyInputChange(newValue: string, composing: boolean): void {
-    if (this.props.onInputValueChange) {
-      this.props.onInputValueChange(newValue, composing);
-    }
-  }
-
   /**
    * Updates the current input value as well as getting a new display value.
    * @param newValue - The new value from the input
@@ -301,12 +295,13 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    this.setState(
-      {
-        inputValue: this._getInputChange(newValue, composing),
-      },
-      () => this._notifyInputChange(newValue, composing),
-    );
+    // eslint-disable-next-line deprecation/deprecation
+    const { onInputChange, onInputValueChange } = this.props;
+    if (onInputChange) {
+      newValue = onInputChange?.(newValue, composing) || '';
+    }
+
+    this.setState({ inputValue: newValue }, () => onInputValueChange?.(newValue, composing));
   };
 
   private _getDisplayValue(): string {
@@ -316,14 +311,6 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
     return this.value;
   }
-
-  private _getInputChange = (newValue: string, composing: boolean) => {
-    const { onInputChange } = this.props;
-    if (onInputChange) {
-      return onInputChange?.(newValue, composing) || '';
-    }
-    return newValue;
-  };
 
   private _getControlledValue(): string | undefined {
     const { value } = this.props;
@@ -356,5 +343,19 @@ function _doesTextStartWith(text: string, startWith: string): boolean {
   if (!text || !startWith) {
     return false;
   }
+
+  if (process.env.NODE_ENV !== 'production') {
+    for (const val of [text, startWith]) {
+      if (typeof val !== 'string') {
+        throw new Error(
+          `${
+            Autofill.name
+            // eslint-disable-next-line @fluentui/max-len
+          } received non-string value "${val}" of type ${typeof val} from either input's value or suggestedDisplayValue`,
+        );
+      }
+    }
+  }
+
   return text.toLocaleLowerCase().indexOf(startWith.toLocaleLowerCase()) === 0;
 }

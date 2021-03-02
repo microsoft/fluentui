@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { getId } from '@fluentui/utilities/lib/getId';
+// TODO
+// getId() is a temporary approach, useId() should be reimplemented to properly support SSR & scenarios with
+// different globals (document, window)
+let id = 0;
+
+export function getId(prefix?: string): string {
+  return (prefix || '') + id++;
+}
+
+export function resetIds(): void {
+  id = 0;
+}
 
 /**
  * Hook to generate a unique ID in the global scope (spanning across duplicate copies of the same library).

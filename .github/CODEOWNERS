@@ -18,6 +18,8 @@
 #### Build stuff
 scripts/ @dzearing @ecraig12345 @xugao
 scripts/babel/ @layershifter @miroslavstastny
+scripts/create-package/ @dzearing @ecraig12345 @joschemd @behowell @layershifter @ling1726
+scripts/create-component/ @joschemd @behowell @layershifter @ling1726
 scripts/gulp/ @layershifter @miroslavstastny
 scripts/webpack/webpack.config.* @layershifter @miroslavstastny
 scripts/fluentui-publish/ @layershifter @ling1726
@@ -94,6 +96,7 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Component packages
+packages/react-avatar/ @behowell
 packages/react-menu/ @ling1726 @layershifter
 packages/react-badge/ @ling1726 @layershifter @assuncaocharles @behowell
 packages/react-button/ @dzearing @khmakoto
@@ -105,6 +108,7 @@ packages/react-link/ @khmakoto
 packages/react-slider/ @joschect
 packages/react-tabs/ @behowell
 packages/react-toggle/ @xugao
+packages/react-tooltip/ @behowell
 
 ## Components
 packages/react/src/components/ActivityItem/ @xugao

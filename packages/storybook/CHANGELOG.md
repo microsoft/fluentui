@@ -1,8 +1,56 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.3 ([PR #17001](https://github.com/microsoft/fluentui/pull/17001) by feodor@appveyor.com)
+
+### Changes
+
+- Bump @fluentui/react-theme to v9.0.0-alpha.4 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.5 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.5 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.2 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/azure-themes to v8.0.1 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-theme-provider to v9.0.0-alpha.4 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-provider to v9.0.0-alpha.4 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+- Bump @fluentui/react-theme to v9.0.0-alpha.3 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v1.0.0..@fluentui/storybook_v1.0.0)
+
+### Changes
+
+- Bump @fluentui/azure-themes to v8.0.0-beta.61 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v1.0.0)
 

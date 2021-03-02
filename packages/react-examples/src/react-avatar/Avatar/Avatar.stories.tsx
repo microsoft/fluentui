@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import {
-  Avatar,
-  AvatarProps,
-  avatarSizeValues,
-  AvatarState,
-  renderAvatar,
-  useAvatar,
-  useAvatarStyles,
-} from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, AvatarState, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
   CalendarIcon,
@@ -31,7 +23,6 @@ import { StoryExample } from '../utils/StoryExample';
 
 const examples = {
   ...AvatarExamples,
-  size: avatarSizeValues,
   icon: [
     /* eslint-disable react/jsx-key */
     <GroupIcon />,
@@ -81,8 +72,20 @@ export const Basic = () => (
       <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
     <StoryExample title="Brand color">
-      <Avatar colorVariant="brand" name={examples.name[4]} badge="info" />
-      <Avatar colorVariant="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+      <Avatar color="brand" name={examples.name[4]} badge="info" />
+      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+    </StoryExample>
+    <StoryExample title="Colorful">
+      <Avatar color="colorful" name={examples.name[13]} />
+      <Avatar color="colorful" name={examples.name[14]} />
+      <Avatar color="colorful" name={examples.name[15]} />
+      <Avatar color="colorful" name={examples.name[16]} />
+      <Avatar color="colorful" name={examples.name[17]} />
+      <Avatar color="colorful" idForColor={examples.name[18]} />
+      <Avatar color="colorful" idForColor={examples.name[19]} />
+      <Avatar color="colorful" idForColor={examples.name[20]} />
+      <Avatar color="colorful" idForColor={examples.name[21]} />
+      <Avatar color="colorful" idForColor={examples.name[22]} />
     </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
@@ -108,9 +111,6 @@ export const AllSizes = () => (
     <StoryExample title="Initials">
       <AvatarExampleList names={examples.name} />
     </StoryExample>
-    <StoryExample title="Initials, brand color">
-      <AvatarExampleList names={examples.name} colorVariant="brand" />
-    </StoryExample>
     <StoryExample title="Initials, square">
       <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
@@ -120,8 +120,28 @@ export const AllSizes = () => (
     <StoryExample title="Icon, square">
       <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
     </StoryExample>
-    <StoryExample title="Icon, brand color">
-      <AvatarExampleList icons={examples.icon} colorVariant="brand" exampleIndex={1} />
+  </>
+);
+
+export const Colors = () => (
+  <>
+    <StoryExample title="Neutral">
+      <Avatar size={40} color="neutral" />
+      <Avatar size={40} color="neutral" name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Brand">
+      <Avatar size={40} color="brand" />
+      <Avatar size={40} color="brand" name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Colorful">
+      {examples.namedColors.map(color => (
+        <Avatar size={40} color={color} key={color} />
+      ))}
+    </StoryExample>
+    <StoryExample title="Colorful, hash of name">
+      {examples.name.map(name => (
+        <Avatar size={40} color="colorful" name={name} key={name} />
+      ))}
     </StoryExample>
   </>
 );
@@ -267,7 +287,7 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
-    useValueSelector('colorVariant', useValueSelectorState(examples.colorVariant)),
+    useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];

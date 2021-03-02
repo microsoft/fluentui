@@ -6,6 +6,7 @@
 
 // @public
 export const AvatarExamples: {
+    readonly size: readonly [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
     readonly nameAndImage: {
         name: string;
         image: string;
@@ -13,7 +14,8 @@ export const AvatarExamples: {
     readonly name: string[];
     readonly image: string[];
     readonly activeDisplay: readonly ["ring", "ring-shadow", "ring-glow", "shadow", "glow"];
-    readonly colorVariant: readonly ["neutral", "brand"];
+    readonly color: readonly ["neutral", "brand", "colorful"];
+    readonly namedColors: readonly ["darkRed", "cranberry", "red", "pumpkin", "peach", "marigold", "gold", "brass", "brown", "forest", "seafoam", "darkGreen", "lightTeal", "teal", "steel", "blue", "royalBlue", "cornflower", "navy", "lavender", "purple", "grape", "lilac", "pink", "magenta", "plum", "beige", "mink", "platinum", "anchor"];
     readonly hexagon: string;
 };
 

@@ -131,9 +131,7 @@
       "packages/web-components/ts-loader",
       "packages/web-components/ts-loader/**",
       "packages/web-components/ts-node",
-      "packages/web-components/ts-node/**",
-      "packages/web-components/mocha",
-      "packages/web-components/mocha/**"
+      "packages/web-components/ts-node/**"
     ]
   },
   "resolutions": {
@@ -204,7 +202,6 @@
         ],
         "dependencies": [
           "@fluentui/dom-utilities",
-          "@fluentui/eslint-plugin",
           "@fluentui/react",
           "@fluentui/react-compose",
           "stylis"

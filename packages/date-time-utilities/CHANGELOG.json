@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/date-time-utilities_v8.0.1",
+      "version": "8.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release version 8",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 18 Feb 2021 12:27:34 GMT",
       "tag": "@fluentui/date-time-utilities_v8.0.0-beta.4",
       "version": "8.0.0-beta.4",

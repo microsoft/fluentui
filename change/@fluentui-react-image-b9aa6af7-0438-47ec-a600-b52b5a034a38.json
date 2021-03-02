@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove set-version dependency from converged components",
+  "packageName": "@fluentui/react-image",
+  "email": "miroslav.stastny@microsoft.com",
+  "dependentChangeType": "patch"
+}
