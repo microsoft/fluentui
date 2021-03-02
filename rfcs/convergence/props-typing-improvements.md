@@ -93,20 +93,21 @@ export type WidgetState = ComponentState<
 
 `useWidget.ts`:
 
+The types are checked, and the bug is fixed! (there was a typo in the problem statement above: the slot name was `test` instead of `text`)
+
 ```typescript
-// Using 'ComponentShorthandProps' provides better type safety
 export const widgetShorthandProps: ComponentShorthandProps<WidgetState>[] = ['icon', 'text'];
 
 export const useWidget = (props: WidgetProps, ref: React.Ref<HTMLElement>, defaultProps?: WidgetProps): WidgetState => {
-  // Defining the default state as a separate typed object provides type safety
-  // Alternatively we could make a wrapper
-  const defaultState: WidgetState = {
-    as: 'div',
-    text: { as: 'span' },
-    propWithDefaultValue: 'hello world',
-  };
-
-  const state = mergeProps(defaultState, defaultProps, resolveShorthandProps(props, widgetShorthandProps));
+  const state = mergeProps(
+    {
+      as: 'div',
+      text: { as: 'span' },
+      propWithDefaultValue: 'hello world',
+    },
+    defaultProps,
+    resolveShorthandProps(props, widgetShorthandProps),
+  );
 
   return state;
 };
