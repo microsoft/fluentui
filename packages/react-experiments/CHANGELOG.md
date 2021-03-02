@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.3)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.2..@fluentui/react-experiments_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/example-data to v8.1.0 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.2)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.1..@fluentui/react-experiments_v8.0.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.66..@fluentui/react-experiments_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.66)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.65..@fluentui/react-experiments_v8.0.0-beta.66)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.63 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
 
 ## [8.0.0-beta.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.65)
 

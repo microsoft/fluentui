@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs, useEventCallback } from '@fluentui/react-utilities';
+import {
+  makeMergeProps,
+  resolveShorthandProps,
+  useMergedRefs,
+  useEventCallback,
+  useControllableValue,
+} from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-focus-management';
 import { MenuListProps, MenuListState } from './MenuList.types';
 
@@ -68,22 +74,27 @@ export const useMenuList = (
     [findAllFocusable, state.ref],
   );
 
-  const { checkedValues, onCheckedValueChange } = state;
+  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
+  state.checkedValues = checkedValues;
+  const { onCheckedValueChange } = state;
   state.toggleCheckbox = useEventCallback(
     (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => {
       const checkedItems = checkedValues?.[name] || [];
+      const newCheckedItems = [...checkedItems];
       if (checked) {
-        const newCheckedItems = [...checkedItems];
         newCheckedItems.splice(newCheckedItems.indexOf(value), 1);
-        onCheckedValueChange?.(e, name, newCheckedItems);
       } else {
-        onCheckedValueChange?.(e, name, [...checkedItems, value]);
+        newCheckedItems.push(value);
       }
+
+      onCheckedValueChange?.(e, name, newCheckedItems);
+      setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     },
   );
 
   state.selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
+    setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
     onCheckedValueChange?.(e, name, newCheckedItems);
   });
 

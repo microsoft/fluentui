@@ -127,6 +127,7 @@ export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.Ref
 // @public (undocumented)
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     checkedValues?: Record<string, string[]>;
+    defaultCheckedValues?: Record<string, string[]>;
     onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
 }
 

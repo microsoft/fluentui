@@ -1,8 +1,53 @@
 # Change Log - ssr-tests
 
-This log was last generated on Thu, 25 Feb 2021 01:15:27 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.0.4 ([PR #17197](https://github.com/microsoft/fluentui/pull/17197) by olfedias@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.0.3 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Fri, 26 Feb 2021 07:20:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/public-docsite-resources to v8.0.2 ([PR #17133](https://github.com/microsoft/fluentui/pull/17133) by behowell@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/ssr-tests_v1.0.0..ssr-tests_v1.0.0)
+
+### Changes
+
+- Bump @fluentui/public-docsite-resources to v8.0.0-beta.9 ([PR #17085](https://github.com/microsoft/fluentui/pull/17085) by humbertomakotomorimoto@gmail.com)
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/ssr-tests_v1.0.0)
 

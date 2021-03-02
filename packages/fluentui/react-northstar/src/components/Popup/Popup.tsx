@@ -155,6 +155,7 @@ export const Popup: React.FC<PopupProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -399,6 +400,7 @@ export const Popup: React.FC<PopupProps> &
           pointerRef: pointerTargetRef,
           trapFocus,
           autoFocus,
+          autoSize,
           className: classes,
         }),
       overrideProps: getContentProps,
@@ -562,6 +564,7 @@ export const Popup: React.FC<PopupProps> &
           rtl={context.rtl}
           unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
+          autoSize={autoSize}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
         >
           {renderPopperChildren(classes)}
@@ -629,6 +632,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),

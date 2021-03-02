@@ -12,6 +12,9 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<HTMLDivElement, ILayerProps>(
   (props, ref) => {
     const [layerElement, setLayerElement] = React.useState<HTMLDivElement | undefined>();
+    const refLayerElement = React.useRef(layerElement);
+    refLayerElement.current = layerElement;
+
     const rootRef = React.useRef<HTMLSpanElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
 
@@ -56,10 +59,11 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     const removeLayerElement = (): void => {
       onLayerWillUnmount?.();
 
-      if (layerElement && layerElement.parentNode) {
-        const parentNode = layerElement.parentNode;
+      const elem = refLayerElement.current;
+      if (elem && elem.parentNode) {
+        const parentNode = elem.parentNode;
         if (parentNode) {
-          parentNode.removeChild(layerElement);
+          parentNode.removeChild(elem);
         }
       }
     };

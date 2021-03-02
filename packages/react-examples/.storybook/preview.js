@@ -43,6 +43,16 @@ addParameters({
 
 configure(loadStories, module);
 
+function getStoryOrder(storyName) {
+  const order = ['Concepts/Introduction', 'Concepts', 'Components'];
+  for (let i = 0; i < order.length; i++) {
+    if (storyName.startsWith(order[i])) {
+      return i;
+    }
+  }
+  return order.length;
+}
+
 /**
  * @typedef {{
  *   default: { title: string };
@@ -67,7 +77,9 @@ function loadStories() {
     // Note that the regex intentionally goes only one directory below the package name
     // (the first `\w+`, which will be the component name) to avoid picking up "next" examples
     // which are under src/pkg-name/ComponentName/next/ComponentName.
-    contexts.push(require.context('../src', true, /(REACT_DEPS)\/\w+\/[\w.]+\.(Example|stories)\.tsx$/));
+    contexts.push(
+      require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
+    );
   }
 
   for (const req of contexts) {
@@ -77,7 +89,18 @@ function loadStories() {
   }
 
   // convert stories Set to array
-  const sorted = [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+  const sorted = [...stories.values()].sort((s1, s2) => {
+    const order1 = getStoryOrder(s1.default.title);
+    const order2 = getStoryOrder(s2.default.title);
+    if (order1 < order2) {
+      // the lowest order goes first
+      return -1;
+    }
+    if (order1 > order2) {
+      return 1;
+    }
+    return s1.default.title > s2.default.title ? 1 : -1;
+  });
   return sorted;
 }
 
@@ -97,12 +120,18 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
+  if (key.endsWith('.mdx')) {
+    // out out of the custom naming for mdx, use meta information
+    stories.set(key, req(key));
+    return;
+  }
+
   const componentName = segments.length === 3 ? segments[1] : `${segments[2]} (${segments[1]})`;
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
-        title: componentName,
+        title: 'Components/' + componentName,
       },
     });
   }
@@ -130,3 +159,11 @@ function generateStoriesFromExamples(key, stories, req) {
     }
   }
 }
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ['Concepts/Introduction', 'Concepts', 'Components'],
+    },
+  },
+};

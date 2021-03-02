@@ -2,6 +2,77 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.4",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-badge"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-badge"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.2",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "40e4e2ed855e0b2a4ac67a462f2b79919aef868b",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 25 Feb 2021 01:15:27 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",
