@@ -190,27 +190,6 @@ The divider control is a direct replacement of the current Separator control. No
 
 Migration from V0 will require removing the content property and nesting that content as a child of the node ex.
 
-```
-<Divider content="My Content">
-<Divider>My Content</Divider>
-
-```
-
-_Note:_ The property theme from the separator control has been removed
-
-```
-<Separator theme={myTheme}>
-<Divider /> /* Handled by the theme provider */
-
-```
-
-_Note:_ The property styles from the separator control has been removed and now uses the inherent react style mechanics
-
-```
-<Separator styles={myStyles}>
-<Divider style={{ direction:ltr }}/> /* Handled by the theme provider */
-```
-
 ## Behaviors
 
 This component has no state.
