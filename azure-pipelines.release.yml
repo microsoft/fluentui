@@ -39,12 +39,13 @@ steps:
 
   - script: |
       yarn generate-version-files
-    displayName: yarn generate-version-files
+    displayName: Generate version files
 
   - script: |
-      yarn run:published build --production
-    displayName: yarn build (Create production build)
+      yarn run:published build --production --no-cache
+    displayName: yarn build
 
+  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
   - script: |
       yarn run:published test --production
     displayName: yarn test

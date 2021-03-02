@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix webpack bundle",
+  "packageName": "@fluentui/react-experiments",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}

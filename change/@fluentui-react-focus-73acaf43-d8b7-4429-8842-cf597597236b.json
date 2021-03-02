@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix webpack bundle",
+  "packageName": "@fluentui/react-focus",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
