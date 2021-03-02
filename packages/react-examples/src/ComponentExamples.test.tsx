@@ -169,7 +169,7 @@ describe('Component Examples', () => {
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 
@@ -215,7 +215,7 @@ describe('Component Examples', () => {
     global.Date.prototype.toLocaleTimeString = realToLocaleTimeString;
     global.Date.prototype.toLocaleDateString = realToLocaleDateString;
 
-    snapshotsStateMap.forEach((snapshotState) => {
+    snapshotsStateMap.forEach(snapshotState => {
       if (snapshotState.getUncheckedCount() > 0) {
         snapshotState.removeUncheckedKeys();
       }
@@ -243,7 +243,7 @@ describe('Component Examples', () => {
 
   for (const examplePath of examplePaths) {
     const [, exampleFile] = getPackageAndExampleName(examplePath);
-    if (excludedExampleFiles.includes(exampleFile) || excludedExampleFileRegexes.some((r) => r.test(exampleFile))) {
+    if (excludedExampleFiles.includes(exampleFile) || excludedExampleFileRegexes.some(r => r.test(exampleFile))) {
       continue;
     }
 
@@ -255,7 +255,7 @@ describe('Component Examples', () => {
       if (exampleExportNames.length > 1 || typeof ComponentUnderTest !== 'function') {
         throw new Error(
           'Examples should export exactly one React component, and nothing else.\n' +
-            `Found: ${exampleExportNames.map((exp) => `${exp} (${typeof exampleModule[exp]})`).join(', ')}`,
+            `Found: ${exampleExportNames.map(exp => `${exp} (${typeof exampleModule[exp]})`).join(', ')}`,
         );
       }
 

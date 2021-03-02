@@ -24,7 +24,7 @@ export const ApplyThemeToBody = () => {
 
   return (
     <ThemeProvider className="root" applyTo="body" theme={isLight ? lightTheme : darkTheme}>
-      <button onClick={() => setIsLight((l) => !l)}>Toggle theme</button>
+      <button onClick={() => setIsLight(l => !l)}>Toggle theme</button>
       <div>I am {isLight ? 'light theme' : 'dark theme'}</div>
       <ThemeProvider theme={isLight ? darkTheme : lightTheme}>
         <div>I am a nested {isLight ? 'dark theme' : 'light theme'}</div>

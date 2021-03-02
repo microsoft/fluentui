@@ -24,19 +24,19 @@ const themes = {
   teamsDark: teamsDarkTheme,
 };
 
-const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = (props) => {
+const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   const { exampleName, rtl } = props.match.params;
 
   const [renderId, setRenderId] = React.useState<number>(0);
   const [themeName, setThemeName] = React.useState<string>();
 
   React.useLayoutEffect(() => {
-    window.resetExternalLayout = () => setRenderId((prevNumber) => prevNumber + 1);
+    window.resetExternalLayout = () => setRenderId(prevNumber => prevNumber + 1);
     window.switchTheme = setThemeName;
   }, []);
 
   const exampleFilename = exampleKebabNameToFilename(exampleName);
-  const examplePath = _.find(examplePaths, (path) => exampleFilename === parseExamplePath(path).exampleName);
+  const examplePath = _.find(examplePaths, path => exampleFilename === parseExamplePath(path).exampleName);
 
   if (!examplePath) return <PageNotFound />;
 

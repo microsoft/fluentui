@@ -69,7 +69,7 @@ describe('Shimmer', () => {
       <Shimmer isDataLoaded={false} ariaLabel={'Shimmer component'}>
         <div>TEST DATA</div>
       </Shimmer>,
-      (shimmer) => {
+      shimmer => {
         expect(shimmer.find('.ms-Shimmer-container').children()).toHaveLength(3);
 
         // update props to trigger the setTimeout.

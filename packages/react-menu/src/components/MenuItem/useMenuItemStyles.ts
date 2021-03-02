@@ -7,7 +7,7 @@ import { MenuItemState } from './MenuItem.types';
 export const useRootStyles = makeStyles<MenuItemState>([
   [
     null,
-    (theme) => ({
+    theme => ({
       color: theme.alias.color.neutral.neutralForeground1,
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
       paddingRight: '12px',

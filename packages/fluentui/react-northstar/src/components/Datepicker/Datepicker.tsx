@@ -160,7 +160,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     CalendarGrid: typeof DatepickerCalendarGrid;
     CalendarGridRow: typeof DatepickerCalendarGridRow;
     Input: typeof Input;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
@@ -213,7 +213,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     'aria-labelledby': ariaLabelledby,
     'aria-invalid': ariaInvalid,
   } = props;
-  const valueFormatter = (date) => (date ? formatMonthDayYear(date, dateFormatting) : '');
+  const valueFormatter = date => (date ? formatMonthDayYear(date, dateFormatting) : '');
 
   const [openState, setOpenState] = useAutoControlled<boolean>({
     defaultValue: props.defaultCalendarOpenState,
@@ -259,7 +259,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Datepicker.displayName,
     actionHandlers: {
-      open: (e) => {
+      open: e => {
         if (allowManualInput) {
           setOpenState(!openState);
         } else {
@@ -333,7 +333,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
 
       _.invoke(predefinedProps, 'onChange', e, predefinedProps);
     },
-    onBlur: (e) => {
+    onBlur: e => {
       if (props.fallbackToLastCorrectDateOnBlur && !!error) {
         const futureFormattedDate = valueFormatter(selectedDate);
         const validationError = validateDate(
@@ -439,13 +439,13 @@ Datepicker.propTypes = {
   maxDate: PropTypes.instanceOf(Date),
   restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
 
-  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map((name) => DayOfWeek[name])),
-  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map((name) => FirstWeekOfYear[name])),
-  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map((name) => DateRangeType[name])),
+  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name])),
+  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map(name => FirstWeekOfYear[name])),
+  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map(name => DateRangeType[name])),
   daysToSelectInDayView: PropTypes.number,
   today: PropTypes.instanceOf(Date),
   showWeekNumbers: PropTypes.bool,
-  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map((name) => DayOfWeek[name]))),
+  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
 
   formatDay: PropTypes.func,
   formatYear: PropTypes.func,

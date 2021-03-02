@@ -14,7 +14,7 @@ export const useRootStyles = makeStyles<CardSectionState>([
   ],
 
   [
-    (s) => s.fitted,
+    s => s.fitted,
     {
       '--card-header-margin': 'var(--card-header-fitted-margin)',
       '--card-header-fitted-margin': 'var(--card-section-fitted-margin)',

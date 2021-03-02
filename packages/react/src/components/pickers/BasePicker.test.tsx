@@ -27,8 +27,8 @@ function onResolveSuggestions(text: string): ISimple[] {
     'white',
     'yellow',
   ]
-    .filter((tag) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
-    .map((item) => ({ key: item, name: item }));
+    .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
+    .map(item => ({ key: item, name: item }));
 }
 
 export interface ISimple {

@@ -107,8 +107,8 @@ const siteInfo = [
 
 var siteLink = document.getElementById('site-list');
 
-window.renderSiteLinks = function (packages) {
-  siteInfo.forEach(function (info) {
+window.renderSiteLinks = function(packages) {
+  siteInfo.forEach(function(info) {
     if (packages.indexOf(info.package) > -1) {
       var li = document.createElement('LI');
       li.className = 'Tile';

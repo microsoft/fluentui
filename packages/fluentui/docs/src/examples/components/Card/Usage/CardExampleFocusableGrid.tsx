@@ -17,7 +17,7 @@ type ClickableCardProps = {
 const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
   const [clickCount, setClickCount] = React.useState(0);
   const updateClickCount = () => {
-    setClickCount((count) => count + 1);
+    setClickCount(count => count + 1);
   };
 
   return (
@@ -40,7 +40,7 @@ const CardExampleFocusableGrid = () => {
 
   return (
     <Grid accessibility={cardsContainerBehavior} columns={3}>
-      {_.times(cardsNumber, (i) => {
+      {_.times(cardsNumber, i => {
         const nonZeroIndex = i + 1;
         return (
           <ClickableCard key={nonZeroIndex} index={nonZeroIndex} aria-label={`${nonZeroIndex} of ${cardsNumber}`} />

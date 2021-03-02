@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom';
 const useBasicStyles = makeStyles<{ primary?: boolean }>([
   [
     null,
-    (theme) => ({
+    theme => ({
       border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
       color: theme.alias.color.neutral.neutralForeground1,
@@ -17,8 +17,8 @@ const useBasicStyles = makeStyles<{ primary?: boolean }>([
     }),
   ],
   [
-    (s) => s.primary,
-    (theme) => ({
+    s => s.primary,
+    theme => ({
       borderColor: theme.alias.color.neutral.brandForeground,
       color: theme.alias.color.neutral.brandForeground,
     }),
@@ -35,13 +35,13 @@ const useOverrideStyles = makeStyles<{}>([
   ],
 ]);
 
-const Container: React.FC<{ className?: string; primary?: boolean }> = (props) => {
+const Container: React.FC<{ className?: string; primary?: boolean }> = props => {
   const className = ax(useBasicStyles({ primary: props.primary }), props.className);
 
   return <div className={className}>{props.children}</div>;
 };
 
-const ContainerWithOverrides: React.FC = (props) => {
+const ContainerWithOverrides: React.FC = props => {
   const className = useOverrideStyles({});
 
   return (
@@ -95,7 +95,7 @@ export const Nesting = () => (
 
 export const Frame = () => (
   <PortalFrame>
-    {(externalDocument) => (
+    {externalDocument => (
       <FluentProvider document={externalDocument} theme={webLightTheme}>
         <Container>Hello world!</Container>
         <Container primary>Hello world!</Container>

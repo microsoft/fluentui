@@ -9,7 +9,7 @@ import { keyboardKey } from '../../keyboard-key';
  * Adds attribute 'aria-hidden=false' to 'root' slot if 'active' property is true. Sets the attribute to 'true' otherwise.
  * Triggers 'arrowKeysNavigationStopPropagation' action with 'ArrowRight' or 'ArrowLeft' on 'root'.
  */
-export const carouselItemBehavior: Accessibility<CarouselItemBehaviorProps> = (props) => ({
+export const carouselItemBehavior: Accessibility<CarouselItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: props.navigation ? 'tabpanel' : undefined,

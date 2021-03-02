@@ -82,7 +82,7 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
           items={[
             {
               key: 'mode',
-              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, (c) => c.toUpperCase())}</b>,
+              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, c => c.toUpperCase())}</b>,
               active: menuOpen,
               menuOpen,
               onMenuOpenChange: (_, { menuOpen }) => setMenuOpen(menuOpen),

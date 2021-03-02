@@ -67,7 +67,7 @@ const staticViewStyles: any = [
 ];
 
 const useStaticViewStyles = makeStyles(staticViewStyles);
-const View: React.FunctionComponent<{ className?: string }> = (props) => {
+const View: React.FunctionComponent<{ className?: string }> = props => {
   const { className } = props;
   const classes = ax(useStaticViewStyles({}, { renderer, tokens: {} }), className);
 

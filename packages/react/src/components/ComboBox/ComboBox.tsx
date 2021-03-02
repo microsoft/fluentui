@@ -770,7 +770,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     if (updatedValue === '') {
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter((option) => isNormalOption(option) && getPreviewText(option) === updatedValue);
+        .filter(option => isNormalOption(option) && getPreviewText(option) === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -793,7 +793,11 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
         .filter(
-          (option) => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase().indexOf(updatedValue) === 0,
+          option =>
+            isNormalOption(option) &&
+            getPreviewText(option)
+              .toLocaleLowerCase()
+              .indexOf(updatedValue) === 0,
         );
       if (items.length > 0) {
         // use ariaLabel as the value when the option is set
@@ -809,7 +813,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // If autoComplete is off, attempt to find a match only when the value is exactly equal to the text of an option
       const items = currentOptions
         .map((item, index) => ({ ...item, index }))
-        .filter((option) => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase() === updatedValue);
+        .filter(option => isNormalOption(option) && getPreviewText(option).toLocaleLowerCase() === updatedValue);
 
       // if we found a match remember the index
       if (items.length === 1) {
@@ -853,7 +857,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         const items = currentOptions
           .map((item, i) => ({ ...item, index: i }))
 
-          .filter((option) => isNormalOption(option) && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
+          .filter(option => isNormalOption(option) && option.text.toLocaleLowerCase().indexOf(updatedValue) === 0);
 
         // If we found a match, update the state
         if (items.length > 0) {
@@ -1297,7 +1301,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         aria-labelledby={id + '-label'}
         role="listbox"
       >
-        {options.map((item) => onRenderItem?.(item, this._onRenderItem))}
+        {options.map(item => onRenderItem?.(item, this._onRenderItem))}
       </div>
     );
   };
@@ -1480,7 +1484,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   /**
    * Mouse clicks to headers, dividers and scrollbar should not make input lose focus
    */
-  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = (ev) => {
+  private _onCalloutMouseDown: ICalloutProps['onMouseDown'] = ev => {
     ev.preventDefault();
   };
 
@@ -2218,13 +2222,15 @@ function getSelectedIndices(
   });
 
   for (const selectedKey of selectedKeys) {
-    const index = findIndex(options, (option) => option.key === selectedKey);
+    const index = findIndex(options, option => option.key === selectedKey);
     if (index > -1) {
       selectedIndices[index] = true;
     }
   }
 
-  return Object.keys(selectedIndices).map(Number).sort();
+  return Object.keys(selectedIndices)
+    .map(Number)
+    .sort();
 }
 
 /**

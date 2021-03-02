@@ -139,7 +139,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     NavigationItem: typeof CarouselNavigationItem;
     Paddle: typeof CarouselPaddle;
     PaddlesContainer: typeof CarouselPaddlesContainer;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
@@ -185,20 +185,20 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
   const getA11yProps = useAccessibility<CarouselBehaviorProps>(accessibility, {
     debugName: Carousel.displayName,
     actionHandlers: {
-      showNextSlideByKeyboardNavigation: (e) => {
+      showNextSlideByKeyboardNavigation: e => {
         e.preventDefault();
         showNextSlide(e, true);
       },
-      showPreviousSlideByKeyboardNavigation: (e) => {
+      showPreviousSlideByKeyboardNavigation: e => {
         e.preventDefault();
         showPreviousSlide(e, true);
       },
-      showNextSlideByPaddlePress: (e) => {
+      showNextSlideByPaddlePress: e => {
         e.preventDefault();
         showNextSlide(e, false);
         handleNextPaddleFocus();
       },
-      showPreviousSlideByPaddlePress: (e) => {
+      showPreviousSlideByPaddlePress: e => {
         e.preventDefault();
         showPreviousSlide(e, false);
         handlePreviousPaddleFocus();
@@ -272,7 +272,7 @@ export const Carousel: ComponentWithAs<'div', CarouselProps> &
     }
   };
 
-  const overrideItemProps = (predefinedProps) => ({
+  const overrideItemProps = predefinedProps => ({
     onFocus: (e, itemProps) => {
       actions.setShouldFocusContainer(e.currentTarget === e.target);
       actions.setIsFromKeyboard(isEventFromKeyboard());

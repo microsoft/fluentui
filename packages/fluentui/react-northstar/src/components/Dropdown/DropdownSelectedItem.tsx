@@ -93,7 +93,7 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
 export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
-  FluentComponentStaticProps<DropdownSelectedItemProps> = (props) => {
+  FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
@@ -144,7 +144,7 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
     _.invoke(props, 'onKeyDown', e, props);
   };
 
-  const handleIconOverrides = (iconProps) => ({
+  const handleIconOverrides = iconProps => ({
     ...iconProps,
     onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();

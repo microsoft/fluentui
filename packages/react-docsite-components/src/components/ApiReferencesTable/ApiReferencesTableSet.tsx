@@ -55,7 +55,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const anchor = extractAnchorLink(window.location.hash);
 
     if (anchor && !this._allVisible) {
-      const section = this._tableProps.filter((x) => x.name === anchor)[0];
+      const section = this._tableProps.filter(x => x.name === anchor)[0];
       if (section) {
         this.setState({ showSeeMore: true });
       }
@@ -117,7 +117,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       this.props.jumpToAnchors && jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
       if (!this._allVisible) {
-        const section = this._tableProps.filter((x) => x.name === anchor)[0];
+        const section = this._tableProps.filter(x => x.name === anchor)[0];
         if (section) {
           this.setState({ showSeeMore: true });
         }
@@ -163,7 +163,7 @@ function _generateTableProps(jsonDocs: IPageJson | undefined): IApiReferencesTab
       const classMembers: IApiInterfaceProperty[] = (tableProps.properties = []);
       const classMethods: IMethod[] = (tableProps.methods = []);
 
-      (members as ITableRowJson[]).forEach((member) => {
+      (members as ITableRowJson[]).forEach(member => {
         if (member.kind === 'method') {
           classMethods.push(member);
         } else {

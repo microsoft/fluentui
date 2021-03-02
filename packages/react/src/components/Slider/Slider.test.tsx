@@ -285,7 +285,7 @@ describe('Slider', () => {
   it('has type=button on all buttons', () => {
     wrapper = mount(<Slider />);
 
-    wrapper.find('button').forEach((button) => {
+    wrapper.find('button').forEach(button => {
       expect(button.prop('type')).toEqual('button');
     });
   });

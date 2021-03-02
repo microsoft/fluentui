@@ -90,7 +90,7 @@ export class NarrationComputer {
     // If the element is focusable, save it together with its path
     const isDirectlyFocusable =
       (element.getAttribute('tabindex') || element.tabIndex >= 0) && element.ariaActiveDescendantElement == null;
-    const isActiveDescendant = activeDescendantsParents.some((parent) => {
+    const isActiveDescendant = activeDescendantsParents.some(parent => {
       // Begin some 1
       return parent.tabIndex >= 0 && parent.ariaActiveDescendantElement === element;
     }); // End some 1
@@ -275,7 +275,7 @@ export class NarrationComputer {
     const definitions = SRNC[type];
 
     // Loop through the platform inheratance list to find the platform which has the searched key
-    const platform = inheritance.find((testedPlatform) => {
+    const platform = inheritance.find(testedPlatform => {
       // Begin find 1
       return definitions[testedPlatform] && definitions[testedPlatform][key] !== undefined;
     }); // End find 1
@@ -288,7 +288,7 @@ export class NarrationComputer {
     const definitions = SRNC[type];
 
     // Loop through the platform inheratance list to find the platform which has the definition
-    const platform = inheritance.find((testedPlatform) => {
+    const platform = inheritance.find(testedPlatform => {
       // Begin find 1
       return definitions[testedPlatform] !== undefined;
     }); // End find 1
@@ -309,7 +309,7 @@ export class NarrationComputer {
     } // End if 1
 
     // Loop through the platform inheratance list to find the definition name and (possibly inherited) platform
-    inheritance.some((testedPlatform) => {
+    inheritance.some(testedPlatform => {
       // Begin some 1
       let testedName = `role=${element.role}`;
       let definition = definitions[testedPlatform] ? definitions[testedPlatform][testedName] : undefined;
@@ -347,7 +347,7 @@ export class NarrationComputer {
     const definitions = SRNC[type];
 
     // Loop through the platform inheratance list to find the platform which has the searched key
-    const platform = inheritance.find((testedPlatform) => {
+    const platform = inheritance.find(testedPlatform => {
       // Begin find 1
       return definitions[testedPlatform] && definitions[testedPlatform][key] !== undefined;
     }); // End find 1
@@ -574,7 +574,7 @@ export class NarrationComputer {
     );
     const readingOrder = SRNC.readingOrder[platform][definitionName];
     const computedNarrationArr = [];
-    readingOrder.forEach((partName) => {
+    readingOrder.forEach(partName => {
       // Begin forEach 1
       const partValue = this.computedParts[partName];
       if (partValue) {

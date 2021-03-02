@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Breadcrumb } from '@fluentui/react-northstar';
 import { ChevronEndMediumIcon } from '@fluentui/react-icons-northstar';
 
-const BreadcrumbExampleIconDivider = (props) => (
+const BreadcrumbExampleIconDivider = props => (
   <Breadcrumb aria-label="breadcrumb">
     <Breadcrumb.Item>
       <Breadcrumb.Link href="">Home</Breadcrumb.Link>

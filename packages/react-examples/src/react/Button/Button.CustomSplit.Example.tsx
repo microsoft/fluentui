@@ -36,7 +36,7 @@ const menuProps: IContextualMenuProps = {
 
 const addIcon: IIconProps = { iconName: 'Add' };
 
-export const ButtonSplitCustomExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonSplitCustomExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (

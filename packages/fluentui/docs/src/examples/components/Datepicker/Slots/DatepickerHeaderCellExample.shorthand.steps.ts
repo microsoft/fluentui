@@ -4,7 +4,7 @@ import { inputClassName, datepickerCalendarHeaderCellClassName } from '@fluentui
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(`.${inputClassName}`)
         .snapshot('Shows datepicker popup.')

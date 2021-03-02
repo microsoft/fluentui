@@ -6,7 +6,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  steps: [(builder) => builder.click(selectors.triggerButton).snapshot('Open menu')],
+  steps: [builder => builder.click(selectors.triggerButton).snapshot('Open menu')],
 };
 
 export default config;

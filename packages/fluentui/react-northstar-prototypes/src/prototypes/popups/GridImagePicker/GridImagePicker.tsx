@@ -62,7 +62,7 @@ class GridImagePicker extends React.Component<GridPickerProps> {
   }
 
   renderGridItems() {
-    return _.map(this.props.items, (item) => <GridImagePickerItem {...item} />);
+    return _.map(this.props.items, item => <GridImagePickerItem {...item} />);
   }
 }
 

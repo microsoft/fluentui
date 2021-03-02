@@ -5,7 +5,7 @@ const SCREENER_ENDPOINT = 'https://screener.io/api/v2/projects';
 const SCREENER_PROXY_ENDPOINT = 'https://screener-proxy.vercel.app/api/ci';
 
 function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function scheduleScreenerBuild(

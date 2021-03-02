@@ -69,7 +69,10 @@ describe('SwatchColorPicker', () => {
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(1).simulate('click');
+    wrapper
+      .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
+      .at(1)
+      .simulate('click');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -79,7 +82,10 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />,
     );
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('mouseenter');
+    wrapper
+      .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
+      .at(0)
+      .simulate('mouseenter');
     expect(onHover).toHaveBeenCalledTimes(1);
   });
 
@@ -89,7 +95,10 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />,
     );
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('focus');
+    wrapper
+      .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
+      .at(0)
+      .simulate('focus');
     expect(onFocus).toHaveBeenCalledTimes(1);
   });
 

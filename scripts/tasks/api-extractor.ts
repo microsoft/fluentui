@@ -4,7 +4,7 @@ import { apiExtractorVerifyTask, task, series } from 'just-scripts';
 
 const apiExtractorConfigs = glob
   .sync(path.join(process.cwd(), 'config/api-extractor*.json'))
-  .map((configPath) => [configPath, configPath.replace(/.*\bapi-extractor(?:-(.*))?\.json$/, '$1') || 'default']);
+  .map(configPath => [configPath, configPath.replace(/.*\bapi-extractor(?:-(.*))?\.json$/, '$1') || 'default']);
 
 // Whether to update automatically on build
 const localBuild = !process.env.TF_BUILD;

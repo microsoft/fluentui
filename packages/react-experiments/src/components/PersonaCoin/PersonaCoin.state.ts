@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { ImageLoadState } from '@fluentui/react';
 import { IPersonaCoinViewProps, IPersonaCoinComponent } from './PersonaCoin.types';
 
-export const usePersonaCoinState: IPersonaCoinComponent['state'] = (props) => {
+export const usePersonaCoinState: IPersonaCoinComponent['state'] = props => {
   // TODO: isPictureLoaded was controlled, does it need to be? it's not exposed through component props...
   //       For now use useState.
   const [isPictureLoaded, setIsPictureLoaded] = useState(false);

@@ -58,7 +58,7 @@ describe('usePrevious', () => {
 
   it('update when keytipProps has changed', () => {
     let keytipData;
-    const TestComponent: React.FunctionComponent<KeytipDataOptions> = (props) => {
+    const TestComponent: React.FunctionComponent<KeytipDataOptions> = props => {
       keytipData = useKeytipData(props);
       return null;
     };

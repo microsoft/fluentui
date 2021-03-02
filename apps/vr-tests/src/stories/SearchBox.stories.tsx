@@ -8,7 +8,7 @@ import { FabricDecorator } from '../utilities/index';
 
 storiesOf('SearchBox', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

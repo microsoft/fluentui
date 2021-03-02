@@ -42,7 +42,7 @@ describe('Callout', () => {
       width: 100,
       height: 768,
     });
-    safeCreate(<CalloutContent>Content</CalloutContent>, (component) => {
+    safeCreate(<CalloutContent>Content</CalloutContent>, component => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });

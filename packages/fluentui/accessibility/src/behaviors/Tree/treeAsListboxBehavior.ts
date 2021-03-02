@@ -8,7 +8,7 @@ import { treeTitleAsOptionBehavior } from './treeTitleAsOptionBehavior';
  * Adds role='listbox'.
  * Adds attribute 'aria-multiselectable=true' to 'root' slot if 'selectable' property is true. Does not set the attribute otherwise.
  */
-export const treeAsListboxBehavior: Accessibility<TreeBehaviorProps> = (props) => {
+export const treeAsListboxBehavior: Accessibility<TreeBehaviorProps> = props => {
   const behavior = treeBehavior(props);
   const definition = {
     attributes: {

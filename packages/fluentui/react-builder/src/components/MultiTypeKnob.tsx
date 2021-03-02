@@ -21,7 +21,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
 
   const knob = knobs[type];
   const handleChangeType = React.useCallback(
-    (e) => setType(e.target.value), // @ts-ignore
+    e => setType(e.target.value), // @ts-ignore
     [],
   );
 
@@ -34,7 +34,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
         {types.length === 1 ? (
           <code style={{ float: 'right' }}>{type}</code>
         ) : (
-          types.map((t) => (
+          types.map(t => (
             <button key={t} onClick={() => handleChangeType(t)}>
               {t}
             </button>
@@ -52,7 +52,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
             margin: 8,
           }}
           aria-label="Remove"
-          onClick={(_) => {
+          onClick={_ => {
             onRemoveProp();
           }}
         >
@@ -65,7 +65,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
 
 export const knobs = {
   boolean: ({ value, onChange, id }) => (
-    <input id={id} type="checkbox" checked={!!value} onChange={(e) => onChange(!!e.target.checked)} />
+    <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
   ),
 
   number: ({ value, onChange, id }) => (
@@ -74,16 +74,16 @@ export const knobs = {
       style={{ width: '100%' }}
       type="number"
       value={Number(value)}
-      onChange={(e) => onChange(Number(e.target.value))}
+      onChange={e => onChange(Number(e.target.value))}
     />
   ),
 
   string: ({ value, onChange, id }) => (
-    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={(e) => onChange(e.target.value)} />
+    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
   ),
 
   literal: ({ options, value, onChange, id }) => (
-    <select id={id} onChange={(e) => onChange(e.target.value)} value={value}>
+    <select id={id} onChange={e => onChange(e.target.value)} value={value}>
       {options?.map((
         opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
       ) => (

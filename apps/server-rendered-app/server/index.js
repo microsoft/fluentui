@@ -22,7 +22,7 @@ initializeIcons();
 let _allStyles = '';
 
 // Push styles into variables for injecting later.
-configureLoadStyles((styles) => {
+configureLoadStyles(styles => {
   _allStyles += styles;
 });
 

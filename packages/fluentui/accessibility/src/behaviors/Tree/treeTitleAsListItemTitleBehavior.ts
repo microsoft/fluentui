@@ -7,7 +7,7 @@ import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
  * @description
  * Adds role 'listitem' if the title is a leaf node inside the tree.
  */
-export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = (props) => {
+export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
 
   const definition = _.merge(behavior, {

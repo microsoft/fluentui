@@ -125,7 +125,7 @@ describe('Button', () => {
 
     it('can handle elementRef', () => {
       const ref = React.createRef<HTMLElement>();
-      safeMount(<DefaultButton elementRef={ref}>Content</DefaultButton>, (button) => {
+      safeMount(<DefaultButton elementRef={ref}>Content</DefaultButton>, button => {
         expect(ref.current).toBeTruthy();
       });
     });

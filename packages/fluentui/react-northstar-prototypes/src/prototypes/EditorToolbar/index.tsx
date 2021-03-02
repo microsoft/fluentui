@@ -35,7 +35,7 @@ const EditorToolbarInWindowPrototype = () => {
 
       {open && (
         <PortalWindow onClose={handleClose}>
-          {(externalDocument) => (
+          {externalDocument => (
             <Provider
               rtl={rtl}
               theme={teamsTheme}

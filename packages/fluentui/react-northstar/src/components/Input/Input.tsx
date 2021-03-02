@@ -220,7 +220,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
     const getA11yProps = useAccessibility<InputBehaviorProps>(props.accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {
-        clear: (e) => {
+        clear: e => {
           if (clearable && value !== '') {
             e.stopPropagation();
             e.nativeEvent && e.nativeEvent.stopPropagation();
@@ -236,7 +236,7 @@ export const Input = compose<'input', InputProps, InputStylesProps, {}, {}>(
       rtl: context.rtl,
     });
 
-    const handleIconOverrides = (predefinedProps) => ({
+    const handleIconOverrides = predefinedProps => ({
       onClick: (e: React.MouseEvent) => {
         if (!disabled) {
           handleOnClear(e);

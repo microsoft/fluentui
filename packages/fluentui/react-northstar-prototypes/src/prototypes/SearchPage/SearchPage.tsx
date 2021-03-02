@@ -24,7 +24,9 @@ interface SearchPageState {
 // Mock Data
 // ----------------------------------------
 const DATA_RECORDS = _.times(100, () => ({
-  id: Math.random().toString(36).slice(2), // random string like "7llt1t638ni"
+  id: Math.random()
+    .toString(36)
+    .slice(2), // random string like "7llt1t638ni"
   avatar: faker.internet.avatar(),
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
@@ -33,7 +35,7 @@ const DATA_RECORDS = _.times(100, () => ({
 }));
 
 // Converts a data record to a <ListItem />'s props object
-const dataRecordToListItem = (record) => ({
+const dataRecordToListItem = record => ({
   key: record.id,
   media: <Avatar name={`${record.firstName} ${record.lastName}`} image={record.avatar} />,
   header: `${record.firstName} ${record.lastName}`,
@@ -48,13 +50,13 @@ class SearchPage extends React.Component<any, SearchPageState> {
   state = { loading: false, query: '', results: [] };
   searchTimer: any;
 
-  handleSearchChange = (e) => {
+  handleSearchChange = e => {
     const query = e.target.value;
     this.setState({ query });
     if (query) this.filterResults(query);
   };
 
-  filterResults = _.debounce((query) => {
+  filterResults = _.debounce(query => {
     clearTimeout(this.searchTimer);
 
     const regExp = new RegExp(_.escapeRegExp(query), 'gi');
@@ -63,7 +65,7 @@ class SearchPage extends React.Component<any, SearchPageState> {
 
     // mock async search query, such as against an API
     this.searchTimer = setTimeout(() => {
-      const results = DATA_RECORDS.filter((record) => _.some(record, (value) => regExp.test(value)));
+      const results = DATA_RECORDS.filter(record => _.some(record, value => regExp.test(value)));
 
       this.setState({ loading: false, results });
     }, 500);

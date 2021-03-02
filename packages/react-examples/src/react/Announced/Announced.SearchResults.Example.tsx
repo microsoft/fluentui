@@ -27,7 +27,7 @@ const _testTags: ITag[] = [
   'violet',
   'white',
   'yellow',
-].map((item) => ({ key: item, name: item }));
+].map(item => ({ key: item, name: item }));
 
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
@@ -39,7 +39,7 @@ const listContainsDocument = (tag: ITag, tagList: ITag[]) => {
   if (!tagList || !tagList.length || tagList.length === 0) {
     return false;
   }
-  return tagList.filter((compareTag) => compareTag.key === tag.key).length > 0;
+  return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
 };
 
 export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
@@ -50,8 +50,8 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
     setHasFilterText(!!filterText);
     const filteredTags = filterText
       ? _testTags
-          .filter((tag) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter((tag) => !listContainsDocument(tag, tagList))
+          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter(tag => !listContainsDocument(tag, tagList))
       : [];
     setSuggestionCount(filteredTags.length);
     return filteredTags;

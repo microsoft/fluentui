@@ -11,7 +11,7 @@ const InlineMarkdown = React.lazy(() => import('../InlineMarkdown'));
 
 type ComponentPropsRowProps = ComponentProp;
 
-const ComponentPropValue: React.FunctionComponent<ComponentPropType> = (props) => {
+const ComponentPropValue: React.FunctionComponent<ComponentPropType> = props => {
   const { name, parameters } = props;
 
   if (name === 'literal') return <span>enum</span>;
@@ -43,13 +43,13 @@ const ComponentPropValue: React.FunctionComponent<ComponentPropType> = (props) =
   return <span>{name}</span>;
 };
 
-const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = (props) => {
+const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = props => {
   const { defaultValue, description, name, required, types } = props;
 
-  const shorthand = types.some((type) => type.name === 'ShorthandValue' || type.name === 'ShorthandCollection');
+  const shorthand = types.some(type => type.name === 'ShorthandValue' || type.name === 'ShorthandCollection');
 
-  const typeValues = _.uniqBy(types, (type) => type.name);
-  const enumValues = _.filter(types, (type) => type.name === 'literal');
+  const typeValues = _.uniqBy(types, type => type.name);
+  const enumValues = _.filter(types, type => type.name === 'literal');
 
   return (
     <tr style={{ borderTop: '1px solid grey' }}>
@@ -70,7 +70,7 @@ const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = (prop
       <td>
         <InlineMarkdown value={description} />
         {enumValues.length > 0 && <b>Values:</b>}
-        {enumValues.map((type) => (
+        {enumValues.map(type => (
           <code key={type.value} style={{ marginRight: 3 }}>
             {type.value}
           </code>

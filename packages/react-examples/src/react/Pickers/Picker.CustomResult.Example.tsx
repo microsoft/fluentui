@@ -348,7 +348,7 @@ const listContainsDocument = (document: IFullDocumentCardProps, items: IFullDocu
     return false;
   }
   const documentTitle = document.documentTitleProps && document.documentTitleProps.title;
-  return items.some((item) => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle);
+  return items.some(item => (item.documentTitleProps && item.documentTitleProps.title) === documentTitle);
 };
 
 const onFilterChanged = (filterText: string, items?: IFullDocumentCardProps[]): IFullDocumentCardProps[] => {
@@ -358,11 +358,11 @@ const onFilterChanged = (filterText: string, items?: IFullDocumentCardProps[]): 
   return filterText
     ? data
         .filter(
-          (item) =>
+          item =>
             item.documentTitleProps &&
             item.documentTitleProps.title.toLowerCase().indexOf(filterText.toLowerCase()) === 0,
         )
-        .filter((item) => !listContainsDocument(item, items))
+        .filter(item => !listContainsDocument(item, items))
     : [];
 };
 

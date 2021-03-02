@@ -21,7 +21,7 @@ const expandingCardProps = {
 
 storiesOf('HoverCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

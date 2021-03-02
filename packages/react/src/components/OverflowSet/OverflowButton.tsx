@@ -50,7 +50,7 @@ export const OverflowButton = (props: IOverflowSetProps) => {
     let currentOverflowItems: IOverflowSetItemProps[] | undefined = [];
 
     if (keytipSequences) {
-      overflowItems?.forEach((overflowItem) => {
+      overflowItems?.forEach(overflowItem => {
         const keytip = (overflowItem as IOverflowSetItemProps).keytipProps;
 
         if (keytip) {

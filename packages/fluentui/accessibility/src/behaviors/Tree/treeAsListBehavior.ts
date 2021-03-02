@@ -6,7 +6,7 @@ import { treeItemAsListItemBehavior } from './treeItemAsListItemBehavior';
  * @specification
  * Adds role 'list' to 'root' slot.
  */
-export const treeAsListBehavior: Accessibility<TreeBehaviorProps> = (props) => {
+export const treeAsListBehavior: Accessibility<TreeBehaviorProps> = props => {
   const behavior = treeBehavior(props);
   const definition = {
     attributes: {

@@ -16,7 +16,7 @@ import {
 } from '@fluentui/react';
 import { appPaddingSm, appPaddingLg, contentWidth, pageHeaderFullHeight } from '../../styles/constants';
 
-const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = (props) => {
+const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = props => {
   const { className, pageTitle, theme } = props;
   const palette = theme!.palette;
   const isLongTitle = pageTitle.length > 20;
@@ -74,11 +74,11 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = (pro
 
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
-const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = (props) => {
+const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
   const { className, pageTitle = 'Page title', pageSubTitle, theme, versionSwitcherDefinition } = props;
   const styles = getClassNames(getStyles, { className, pageTitle, theme });
 
-  const versionOptions: IContextualMenuItem[] | undefined = versionSwitcherDefinition?.versions?.map((version) => ({
+  const versionOptions: IContextualMenuItem[] | undefined = versionSwitcherDefinition?.versions?.map(version => ({
     key: version,
     text: version,
   }));

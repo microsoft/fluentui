@@ -31,7 +31,7 @@ const imageButtonStyles = {
   background: '#fff',
 };
 const renderImages = () => {
-  return _.map(imageNames, (imageName) => (
+  return _.map(imageNames, imageName => (
     <Image
       key={imageName}
       fluid
@@ -42,7 +42,7 @@ const renderImages = () => {
 };
 
 const renderImageButtons = () => {
-  return _.map(imageNames, (imageName) => (
+  return _.map(imageNames, imageName => (
     <Button key={imageName} styles={imageButtonStyles} title={imageName}>
       <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`} />
     </Button>

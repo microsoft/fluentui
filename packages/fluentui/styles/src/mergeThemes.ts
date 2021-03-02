@@ -51,7 +51,7 @@ export const mergeComponentStyles__PROD = (
   const result = {};
 
   if (stylesA) {
-    Object.keys(stylesA).forEach((partName) => {
+    Object.keys(stylesA).forEach(partName => {
       const slotA = stylesA[partName];
       const slotB = stylesB?.[partName];
 
@@ -74,7 +74,7 @@ export const mergeComponentStyles__PROD = (
   }
 
   if (stylesB) {
-    Object.keys(stylesB).forEach((partName) => {
+    Object.keys(stylesB).forEach(partName => {
       const slotA = stylesA?.[partName];
       const slotB = stylesB[partName];
 
@@ -119,8 +119,8 @@ export const mergeComponentStyles__DEV = (
   const mergedKeys = [...(stylesA ? Object.keys(stylesA) : []), ...(stylesB ? Object.keys(stylesB) : [])];
   const result = {};
 
-  mergedKeys.forEach((slotName) => {
-    const slotA = (styleParam) => {
+  mergedKeys.forEach(slotName => {
+    const slotA = styleParam => {
       const { _debug = undefined, ...styles } = callable(stylesA?.[slotName])(styleParam) || {};
 
       // new object required to prevent circular JSON structure error in <Debug />
@@ -130,7 +130,7 @@ export const mergeComponentStyles__DEV = (
       };
     };
 
-    const slotB = (styleParam) => {
+    const slotB = styleParam => {
       const { _debug = undefined, ...styles } = callable(stylesB?.[slotName])(styleParam) || {};
 
       // new object required to prevent circular JSON structure error in <Debug />
@@ -142,7 +142,7 @@ export const mergeComponentStyles__DEV = (
 
     if (stylesA?.[slotName] && stylesB?.[slotName]) {
       // We have both, replace with merge fn
-      result[slotName] = (styleParam) => {
+      result[slotName] = styleParam => {
         // slot* are always prepared, fn is guaranteed, _debug always exists
         const { _debug: debugA, ...resolvedStylesA } = slotA(styleParam);
         const { _debug: debugB, ...resolvedStylesB } = slotB(styleParam);
@@ -200,7 +200,7 @@ export const mergeComponentVariables__DEV = (...sources: ComponentVariablesInput
   const initial = () => ({});
 
   return sources.reduce<ComponentVariablesPrepared>((acc, next) => {
-    return (siteVariables) => {
+    return siteVariables => {
       const { _debug = [], ...accumulatedVariables } = acc(siteVariables);
       const { _debug: computedDebug = undefined, _debugId = undefined, ...computedComponentVariables } =
         callable(next)(siteVariables) || {};
@@ -259,7 +259,7 @@ export const mergeSiteVariables__DEV = (
 
     const merged = deepmerge({ ...accumulatedSiteVariables, _invertedKeys: undefined }, nextSiteVariables);
     merged._debug = _debug.concat(computedDebug || { resolved: nextSiteVariables, debugId: _debugId });
-    merged._invertedKeys = _invertedKeys || objectKeyToValues(merged, (key) => `siteVariables.${key}`);
+    merged._invertedKeys = _invertedKeys || objectKeyToValues(merged, key => `siteVariables.${key}`);
     return merged;
   }, initial);
 };
@@ -295,7 +295,7 @@ export const mergeThemeVariables__DEV = (
   const displayNames = _.union(..._.map(sources, _.keys));
   return displayNames.reduce((componentVariables, displayName) => {
     componentVariables[displayName] = mergeComponentVariables(
-      ..._.map(sources, (source) => source && withDebugId(source[displayName], source._debugId)),
+      ..._.map(sources, source => source && withDebugId(source[displayName], source._debugId)),
     );
     return componentVariables;
   }, {});

@@ -26,7 +26,7 @@ const getOptionId = (option: IChoiceGroupOption, id: string): string => {
 };
 
 const findOption = (options: IChoiceGroupOption[], key: string | number | undefined) => {
-  return key === undefined ? undefined : find(options, (value) => value.key === key);
+  return key === undefined ? undefined : find(options, value => value.key === key);
 };
 
 const useComponentRef = (
@@ -42,7 +42,7 @@ const useComponentRef = (
         return findOption(options, keyChecked);
       },
       focus() {
-        const optionToFocus = findOption(options, keyChecked) || options.filter((option) => !option.disabled)[0];
+        const optionToFocus = findOption(options, keyChecked) || options.filter(option => !option.disabled)[0];
         const elementToFocus = optionToFocus && document.getElementById(getOptionId(optionToFocus, id));
 
         if (elementToFocus) {
@@ -86,7 +86,7 @@ export const ChoiceGroupBase: React.FunctionComponent<IChoiceGroupProps> = React
   const classNames = getClassNames(styles!, {
     theme: theme!,
     className,
-    optionsContainIconOrImage: options.some((option) => !!(option.iconProps || option.imageSrc)),
+    optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc)),
   });
 
   const ariaLabelledBy = props.ariaLabelledBy || (label ? labelId : props['aria-labelledby']);

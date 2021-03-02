@@ -90,7 +90,7 @@ const config = {
     'no-new-wrappers': 'error',
     'no-restricted-globals': [
       'error',
-      ...['blur', 'close', 'focus', 'length', 'name', 'parent', 'self', 'stop'].map((name) => ({
+      ...['blur', 'close', 'focus', 'length', 'name', 'parent', 'self', 'stop'].map(name => ({
         name,
         message: `"${name}" refers to a DOM global. Did you mean to reference a local value instead?`,
       })),

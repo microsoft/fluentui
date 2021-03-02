@@ -7,6 +7,6 @@ preset();
 // (it only runs on src, not config files)
 task('code-style', 'prettier');
 
-task('bundle', (done) => {
+task('bundle', done => {
   run(resolveCwd('webpack.config.js'), {}, done);
 });

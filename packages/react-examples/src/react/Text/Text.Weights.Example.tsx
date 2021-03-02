@@ -4,7 +4,7 @@ import * as React from 'react';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 const Weights: string[] = ['400', '600', '700'];
-const Items = Weights.map((weight) => ({
+const Items = Weights.map(weight => ({
   key: weight,
   variant: weight,
   example: <Text style={{ fontWeight: Number(weight) }}>{TestText}</Text>,
@@ -18,7 +18,7 @@ const Columns: IColumn[] = [
     minWidth: 200,
     maxWidth: 1600,
     isResizable: true,
-    onRender: (item) => item.example,
+    onRender: item => item.example,
   },
 ];
 

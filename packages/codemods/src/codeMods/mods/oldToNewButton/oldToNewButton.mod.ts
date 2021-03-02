@@ -7,7 +7,7 @@ const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
       const tags = findJsxTag(file, 'DefaultButton');
-      return renameProp(tags, 'toggled', 'checked').then((v) => ({
+      return renameProp(tags, 'toggled', 'checked').then(v => ({
         logs: ['rename completed'],
       }));
     } catch (e) {

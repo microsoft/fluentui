@@ -83,7 +83,7 @@ export const listItemSlotClassNames: ListItemSlotClassNames = {
  * A ListItem contains a single piece of content within a List.
  */
 export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> &
-  FluentComponentStaticProps<ListItemProps> = (props) => {
+  FluentComponentStaticProps<ListItemProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ListItem.displayName, context.telemetry);
 
@@ -104,14 +104,14 @@ export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> 
   } = props;
 
   const parentProps: ListContextSubscribedValue = useContextSelectors(ListContext, {
-    debug: (v) => v.debug,
-    navigable: (v) => v.navigable,
-    selectable: (v) => v.selectable,
-    truncateContent: (v) => v.truncateContent,
-    truncateHeader: (v) => v.truncateHeader,
-    variables: (v) => v.variables,
-    onItemClick: (v) => v.onItemClick,
-    selected: (v) => v.selectedIndex === props.index,
+    debug: v => v.debug,
+    navigable: v => v.navigable,
+    selectable: v => v.selectable,
+    truncateContent: v => v.truncateContent,
+    truncateHeader: v => v.truncateHeader,
+    variables: v => v.variables,
+    onItemClick: v => v.onItemClick,
+    selected: v => v.selectedIndex === props.index,
   });
   const {
     debug = parentProps.debug,
@@ -126,7 +126,7 @@ export const ListItem: ComponentWithAs<'li', ListItemProps & { index: number }> 
   const getA11Props = useAccessibility(accessibility, {
     debugName: ListItem.displayName,
     actionHandlers: {
-      performClick: (e) => {
+      performClick: e => {
         e.preventDefault();
         handleClick(e);
       },

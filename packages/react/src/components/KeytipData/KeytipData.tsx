@@ -8,7 +8,7 @@ import { useKeytipData } from './useKeytipData';
  * A small element to help the target component correctly read out its aria-describedby for its Keytip
  * {@docCategory Keytips}
  */
-export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>> = (props) => {
+export const KeytipData: React.FunctionComponent<IKeytipDataProps & IRenderComponent<{}>> = props => {
   const { children, ...keytipDataProps } = props;
   const { keytipId, ariaDescribedBy } = useKeytipData(keytipDataProps);
 

@@ -27,7 +27,7 @@ describe('AccordionTitle', () => {
     });
   });
 
-  const getContent = (wrapper) => wrapper.find(`div.${accordionTitleSlotClassNames.contentWrapper}`);
+  const getContent = wrapper => wrapper.find(`div.${accordionTitleSlotClassNames.contentWrapper}`);
 
   describe('click handler', () => {
     it('is called on click', () => {

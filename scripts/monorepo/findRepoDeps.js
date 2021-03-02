@@ -41,7 +41,7 @@ function findRepoDeps(cwd) {
     if (dep && packageInfo[dep]) {
       result.add(dep);
 
-      getDeps(packageInfo[dep].packageJson).forEach((child) => {
+      getDeps(packageInfo[dep].packageJson).forEach(child => {
         if (child && packageInfo[child] && !result.has(child)) {
           packageDeps.push(child);
         }
@@ -49,7 +49,7 @@ function findRepoDeps(cwd) {
     }
   }
 
-  repoDeps = [...result].map((dep) => packageInfo[dep]);
+  repoDeps = [...result].map(dep => packageInfo[dep]);
   cwdForRepoDeps = cwd;
   return repoDeps;
 }

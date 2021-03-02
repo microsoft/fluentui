@@ -16,7 +16,7 @@ const props: ISwatchColorPickerProps = {
 };
 storiesOf('SwatchColorPicker', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -58,9 +58,6 @@ storiesOf('SwatchColorPicker', module)
       {...props}
       columnCount={4}
       // Duplicate the cells but add unique IDs
-      colorCells={[
-        ...props.colorCells,
-        ...props.colorCells.map((c) => ({ ...c, id: c.id + c.id })),
-      ]}
+      colorCells={[...props.colorCells, ...props.colorCells.map(c => ({ ...c, id: c.id + c.id }))]}
     />
   ));

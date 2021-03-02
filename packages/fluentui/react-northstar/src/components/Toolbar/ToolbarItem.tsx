@@ -140,24 +140,24 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
 
     const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
-      menuSlot: (v) => v.slots.menu,
+      menuSlot: v => v.slots.menu,
     }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const getA11yProps = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {
-        performClick: (event) => {
+        performClick: event => {
           event.preventDefault();
           handleClick(event);
         },
-        performWrapperClick: (event) => {
+        performWrapperClick: event => {
           handleWrapperClick(event);
         },
-        closeMenuAndFocusTrigger: (event) => {
+        closeMenuAndFocusTrigger: event => {
           trySetMenuOpen(false, event);
           _.invoke(itemRef.current, 'focus');
         },
-        doNotNavigateNextToolbarItem: (event) => {
+        doNotNavigateNextToolbarItem: event => {
           event.stopPropagation();
         },
       },
@@ -260,7 +260,7 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
 
     const itemElement = (
       <Ref
-        innerRef={(node) => {
+        innerRef={node => {
           itemRef.current = node;
           handleRef(ref, node);
         }}
@@ -332,9 +332,9 @@ export const ToolbarItem = compose<'button', ToolbarItemProps, ToolbarItemStyles
       if (wrapper) {
         const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
           defaultProps: () => getA11yProps('wrapper', slotProps.wrapper || {}),
-          overrideProps: (predefinedProps) => ({
+          overrideProps: predefinedProps => ({
             children: contentElement,
-            onClick: (e) => {
+            onClick: e => {
               handleWrapperClick(e);
               _.invoke(predefinedProps, 'onClick', e);
             },

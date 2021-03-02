@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
 
-export const popupBehavior: Accessibility<PopupBehaviorProps> = (props) => {
+export const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
   const onAsArray = _.isArray(props.on) ? props.on : [props.on];
   const tabbableTriggerProps = props.tabbableTrigger
     ? { tabIndex: getAriaAttributeFromProps('tabIndex', props, 0) }
@@ -65,7 +65,7 @@ export const popupBehavior: Accessibility<PopupBehaviorProps> = (props) => {
   };
 };
 
-const isFocusable = (propsData) => {
+const isFocusable = propsData => {
   try {
     const { as, href, type } = propsData;
     return type === 'button' || type === 'input' || (type === 'a' && href !== undefined) || as === 'button';

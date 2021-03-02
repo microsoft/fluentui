@@ -30,7 +30,7 @@ class StickerPicker extends React.Component {
   };
 
   getTabListItems = (): MenuItemProps[] => {
-    return _.map(tabListItemsContent, (item) => ({
+    return _.map(tabListItemsContent, item => ({
       key: item,
       content: item,
       onClick: this.onMenuItemClick,

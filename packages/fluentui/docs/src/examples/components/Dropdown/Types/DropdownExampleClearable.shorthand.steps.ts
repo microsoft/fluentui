@@ -9,7 +9,7 @@ const selectors = {
 
 const config: ScreenerTestsConfig = {
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(selectors.triggerButton)
         .click(selectors.item(3))

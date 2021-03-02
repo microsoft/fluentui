@@ -36,7 +36,7 @@ export function getComponentDoc(componentPath: string, exportSubdir: string): Co
     parser = withCompilerOptions(compilerOptions, {
       // Props need to be filtered since react-docgen shows all the props including
       // inherited native props or React built-in props.
-      propFilter: (prop) => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
+      propFilter: prop => !/@types[\\/]react[\\/]/.test(prop.parent?.fileName || ''),
     });
   }
 
@@ -50,7 +50,7 @@ export function getComponentDoc(componentPath: string, exportSubdir: string): Co
 
 function getCompilerOptions(tsconfigPath: string) {
   const basePath = path.dirname(tsconfigPath);
-  const { config, error } = ts.readConfigFile(tsconfigPath, (filename) => fs.readFileSync(filename, 'utf8'));
+  const { config, error } = ts.readConfigFile(tsconfigPath, filename => fs.readFileSync(filename, 'utf8'));
 
   if (error !== undefined) {
     const errorText =

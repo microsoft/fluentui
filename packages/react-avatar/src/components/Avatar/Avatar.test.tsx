@@ -70,7 +70,7 @@ describe('Avatar', () => {
 
   it('displays custom initials via getInitials', () => {
     const component = renderer.create(
-      <Avatar name="First Last" getInitials={(name) => (name[1] + name[7]).toUpperCase()} />,
+      <Avatar name="First Last" getInitials={name => (name[1] + name[7]).toUpperCase()} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

@@ -4,7 +4,7 @@ import { SpinnerPageProps } from './SpinnerPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2';
 
-export const SpinnerPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const SpinnerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

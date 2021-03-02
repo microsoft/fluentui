@@ -12,7 +12,7 @@
   <body>
     <script>
       function fetchManifest() {
-        return fetch('/manifest.json').then((res) => res.json());
+        return fetch('/manifest.json').then(res => res.json());
       }
 
       function getAvailableVersionsFromManifest(manifest) {
@@ -94,7 +94,7 @@
       }
 
       (function init() {
-        fetchManifest().then((manifest) => redirectToDocsite(manifest));
+        fetchManifest().then(manifest => redirectToDocsite(manifest));
       })();
     </script>
   </body>

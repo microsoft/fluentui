@@ -8,7 +8,7 @@ import { popupBehavior, PopupBehaviorProps } from '../Popup/popupBehavior';
  * @description
  * Implements ARIA [MenuButton](https://www.w3.org/TR/wai-aria-practices/#menubutton) design pattern.
  */
-export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = (props) => {
+export const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
   const behavior = popupBehavior({ ...props, inline: !props.contextMenu });
 
   return _.merge(behavior, {

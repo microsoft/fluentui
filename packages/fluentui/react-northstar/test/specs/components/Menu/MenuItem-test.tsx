@@ -32,7 +32,13 @@ describe('MenuItem', () => {
 
     expect(menuItem.is('li')).toBe(true);
     // The ElementType is wrapped with Ref, which is adding two HOC in total, that's why we need the three childAt(0) usages
-    expect(menuItem.childAt(0).childAt(0).childAt(0).is('a')).toBe(true);
+    expect(
+      menuItem
+        .childAt(0)
+        .childAt(0)
+        .childAt(0)
+        .is('a'),
+    ).toBe(true);
     expect(menuItem.text()).toBe('Home');
   });
 
@@ -42,7 +48,12 @@ describe('MenuItem', () => {
       .hostNodes();
 
     expect(menuItem.is('li')).toBe(true);
-    expect(menuItem.childAt(0).hostNodes().exists()).toBe(false);
+    expect(
+      menuItem
+        .childAt(0)
+        .hostNodes()
+        .exists(),
+    ).toBe(false);
     expect(menuItem.text()).toBe('Home');
   });
 
@@ -68,7 +79,7 @@ describe('MenuItem', () => {
       },
       { name: 'tabBehavior', behavior: tabBehavior, expectedAnchorRole: 'tab' },
     ];
-    behaviors.forEach((accessibility) => {
+    behaviors.forEach(accessibility => {
       test(`integration test for ${accessibility.name} behavior`, () => {
         // accessibility functionality is covered by a combination of behavior tests and `handlesAccessibility()`
         // this is just an integration smoke test

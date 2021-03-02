@@ -18,7 +18,7 @@ describe('Import Utilities test', () => {
   it('can find import based on exact string match', () => {
     const file = project.getSourceFileOrThrow(fileName);
     const tag = getImportsByPath(file, buttonPath)
-      .then((v) => v[0].getModuleSpecifierValue())
+      .then(v => v[0].getModuleSpecifierValue())
       .okOrElse('Error');
     expect(tag).toEqual(buttonPath);
   });
@@ -26,7 +26,7 @@ describe('Import Utilities test', () => {
   it('only finds exact matches', () => {
     const file = project.getSourceFileOrThrow(fileName);
     const imp = getImportsByPath(file, rootPath)
-      .then((v) => v.length)
+      .then(v => v.length)
       .okOrElse(-1);
     expect(imp).toEqual(0);
   });
@@ -34,14 +34,14 @@ describe('Import Utilities test', () => {
   it('can find a single import based on a regex string match', () => {
     const file = project.getSourceFileOrThrow(fileName);
     const imp = getImportsByPath(file, /office\-ui\-fabric\-react.+Button/)
-      .chain((v) => {
+      .chain(v => {
         if (v.length !== 1) {
           return Err<ImportDeclaration, NoOp>({ logs: ['wrong number of results'] });
         }
         return Ok(v[0]);
       })
       .resolve(
-        (v) => v.getModuleSpecifierValue(),
+        v => v.getModuleSpecifierValue(),
         () => 'error',
       );
     expect(imp).toEqual(buttonPath);
@@ -50,12 +50,12 @@ describe('Import Utilities test', () => {
   it('can find all imports based on a regex string match', () => {
     const file = project.getSourceFileOrThrow(fileName);
     const imps = getImportsByPath(file, /office\-ui\-fabric\-react/)
-      .chain((v) => {
+      .chain(v => {
         return v.length > 1 ? Ok(v) : Err<ImportDeclaration[], NoOp>({ logs: ['too few values returned'] });
       })
-      .then((v) => v.map((i) => i.getModuleSpecifierValue()))
+      .then(v => v.map(i => i.getModuleSpecifierValue()))
       .resolveOk(() => ['error']);
-    imps.forEach((imp) => {
+    imps.forEach(imp => {
       expect(imp).toContain(rootPath);
     });
   });
@@ -64,10 +64,10 @@ describe('Import Utilities test', () => {
     const replacementString = 'Complete/NewPath';
     const file = project.getSourceFileOrThrow(fileName);
     getImportsByPath(file, /office\-ui\-fabric\-react/)
-      .then((v) => v[0])
-      .then((v) => repathImport(v, replacementString));
+      .then(v => v[0])
+      .then(v => repathImport(v, replacementString));
     expect(
-      file.getImportStringLiterals().some((val) => {
+      file.getImportStringLiterals().some(val => {
         return val.getLiteralValue() === replacementString;
       }),
     ).toBe(true);
@@ -77,10 +77,10 @@ describe('Import Utilities test', () => {
     const replacementRegex = /office\-ui\-fabric\-react/;
     const file = project.getSourceFileOrThrow(fileName);
     getImportsByPath(file, /office\-ui\-fabric\-react/)
-      .then((v) => v.shift()!)
-      .then((v) => repathImport(v, 'NewPath', replacementRegex));
+      .then(v => v.shift()!)
+      .then(v => repathImport(v, 'NewPath', replacementRegex));
     expect(
-      file.getImportStringLiterals().some((val) => {
+      file.getImportStringLiterals().some(val => {
         return val.getLiteralValue() === 'NewPath/lib/Button';
       }),
     ).toBe(true);

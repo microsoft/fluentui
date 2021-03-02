@@ -59,7 +59,9 @@ const jsonTreeToTreeItems: (
 ) => {
   if (typeof tree === 'string') {
     return {
-      id: Math.random().toString(36).slice(2),
+      id: Math.random()
+        .toString(36)
+        .slice(2),
       title: 'string',
     };
   }
@@ -101,7 +103,7 @@ const jsonTreeToTreeItems: (
         );
       },
     }),
-    items: tree.props?.children?.map((item) =>
+    items: tree.props?.children?.map(item =>
       jsonTreeToTreeItems(
         item,
         selectedComponentId,
@@ -133,7 +135,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   );
 
   const handleClone = React.useCallback(
-    (e) => {
+    e => {
       onCloneComponent?.({ clientX: e.clientX, clientY: e.clientY });
       e.stopPropagation();
       e.preventDefault();
@@ -142,7 +144,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   );
 
   const handleMove = React.useCallback(
-    (e) => {
+    e => {
       onMoveComponent?.({ clientX: e.clientX, clientY: e.clientY });
       e.stopPropagation();
       e.preventDefault();
@@ -151,7 +153,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   );
 
   const handleDeleteSelected = React.useCallback(
-    (e) => {
+    e => {
       onDeleteSelectedComponent?.();
       e.stopPropagation();
       e.preventDefault();
@@ -160,10 +162,10 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   );
 
   const activeItems = [];
-  const getActiveItemIds = (item) => {
+  const getActiveItemIds = item => {
     if (item.items) {
       activeItems.push(item.id);
-      item.items.forEach((i) => getActiveItemIds(i));
+      item.items.forEach(i => getActiveItemIds(i));
     }
   };
 
@@ -175,7 +177,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
   );
 
   const handleDeleteComponent = React.useCallback(
-    (uuid) => {
+    uuid => {
       onSelectComponent(jsonTreeFindElement(tree, uuid));
       setTimeout(() => {
         onDeleteSelectedComponent();
@@ -186,7 +188,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
 
   const selectedComponentId = selectedComponent?.uuid as string;
   const items: TreeItemProps[] =
-    tree.props?.children?.map((item) =>
+    tree.props?.children?.map(item =>
       jsonTreeToTreeItems(
         item,
         selectedComponentId,
@@ -198,7 +200,7 @@ export const ComponentTree: React.FunctionComponent<ComponentTreeProps> = ({
         handleDeleteComponent,
       ),
     ) ?? [];
-  items.forEach((item) => getActiveItemIds(item));
+  items.forEach(item => getActiveItemIds(item));
 
   return (
     <Tree

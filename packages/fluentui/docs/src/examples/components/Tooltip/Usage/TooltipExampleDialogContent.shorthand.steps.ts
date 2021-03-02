@@ -3,7 +3,7 @@ import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(`.${buttonClassName}`)
         .hover(`.${dialogSlotClassNames.content} .${buttonClassName}`)

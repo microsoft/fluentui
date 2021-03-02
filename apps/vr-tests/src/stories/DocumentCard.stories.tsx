@@ -85,7 +85,7 @@ const docActivity = (
 
 storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -141,7 +141,7 @@ storiesOf('DocumentCard', module)
   // - previously this used FabricDecoratorFullWidth
   .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'full' }))
 
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

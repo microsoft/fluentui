@@ -65,7 +65,7 @@ export interface DropdownVariables {
   loadingMessageBackgroundColor: string;
 }
 
-const [cornerRadius, _12px_asRem] = [3, 12].map((v) => pxToRem(v));
+const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
 
 export const dropdownVariables = (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colorScheme.default.background2,

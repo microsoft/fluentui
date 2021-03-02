@@ -112,7 +112,7 @@ export class SidebarBasicExample extends React.Component {
             key: 'basic-example-render1',
             name: 'onRender Example',
             iconProps: { iconName: 'AirTickets' },
-            onRender: (item) => {
+            onRender: item => {
               return (
                 <SidebarButton
                   key={item.key}

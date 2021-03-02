@@ -5,7 +5,7 @@ import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
 const menu = ['Open', 'Remove from list'];
 
-const ActiveBarItem = (props) => (
+const ActiveBarItem = props => (
   <Flex column hAlign="center" padding="padding.medium">
     <Avatar name={props.name} size="largest" />
     <Flex gap="gap.small">

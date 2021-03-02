@@ -8,7 +8,7 @@ const imageProps: Partial<IImageProps> = {
   width: 200,
   height: 200,
   // Show a border around the image (just for demonstration purposes)
-  styles: (props) => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
+  styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
 };
 
 export const ImageCenterCoverExample = () => {

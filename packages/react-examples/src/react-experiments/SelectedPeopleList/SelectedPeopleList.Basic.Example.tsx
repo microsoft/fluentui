@@ -53,7 +53,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
   };
 
   private _addMoreItems = (): void => {
-    const moreItems = people.map((obj) => {
+    const moreItems = people.map(obj => {
       return { ...obj, key: ++this.addMultipleKey };
     });
     this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, ...moreItems] });
@@ -61,7 +61,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
 
   private _onItemsRemoved = (items: IPersona[]): void => {
     const currentSelectedItemsCopy = [...this.state.currentSelectedItems];
-    items.forEach((item) => {
+    items.forEach(item => {
       const indexToRemove = currentSelectedItemsCopy.indexOf(item);
       currentSelectedItemsCopy.splice(indexToRemove, 1);
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });

@@ -32,7 +32,7 @@ export const useMenuItemCheckbox = (
 
   useCharacterSearch(state);
 
-  const toggleCheckbox = useMenuListContext((context) => context.toggleCheckbox);
+  const toggleCheckbox = useMenuListContext(context => context.toggleCheckbox);
   useMenuItemSelectable(state, toggleCheckbox);
 
   return state;

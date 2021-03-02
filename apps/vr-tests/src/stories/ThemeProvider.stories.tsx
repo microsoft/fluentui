@@ -8,7 +8,7 @@ import { FabricDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -59,7 +59,7 @@ storiesOf('ThemeProvider', module)
 const LoadThemeTestButton: React.FunctionComponent<{
   buttonAs?: React.ElementType;
   buttonProps?: any;
-}> = (props) => {
+}> = props => {
   const [isThemeCustomized, setIsThemeCustomized] = React.useState(false);
 
   // toggle between default theme and customized theme
@@ -86,7 +86,7 @@ const LoadThemeTestButton: React.FunctionComponent<{
 
 storiesOf('ThemeProvider with loadTheme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -118,7 +118,7 @@ storiesOf('ThemeProvider with loadTheme', module)
 
 storiesOf('ThemeProvider with Customizer', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

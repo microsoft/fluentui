@@ -23,11 +23,11 @@
 <script type="text/javascript">
   var appInsights =
     window.appInsights ||
-    (function (e) {
+    (function(e) {
       function n(e) {
-        t[e] = function () {
+        t[e] = function() {
           var n = arguments;
-          t.queue.push(function () {
+          t.queue.push(function() {
             t[e].apply(t, n);
           });
         };
@@ -36,7 +36,7 @@
       t.initialize = !0;
       var i = document,
         a = window;
-      setTimeout(function () {
+      setTimeout(function() {
         var n = i.createElement('script');
         (n.src = e.url || 'https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js'),
           i.getElementsByTagName('script')[0].parentNode.appendChild(n);
@@ -76,7 +76,7 @@
       ) {
         n('_' + (r = 'onerror'));
         var o = a[r];
-        (a[r] = function (e, n, i, a, s) {
+        (a[r] = function(e, n, i, a, s) {
           var c = o && o(e, n, i, a, s);
           return (
             !0 !== c &&
@@ -150,7 +150,7 @@
 
     var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
-    loadScripts(configScript, function () {
+    loadScripts(configScript, function() {
       if (window.Flight) {
         appPath = window.Flight.baseCDNUrl;
         loadAppScripts();
@@ -159,15 +159,15 @@
   }
 
   function loadScripts(array, callback) {
-    var loader = function (src, handler, failHandler) {
+    var loader = function(src, handler, failHandler) {
       var script = document.createElement('script');
       script.src = src;
-      script.onload = script.onreadystatechange = function () {
+      script.onload = script.onreadystatechange = function() {
         script.onreadystatechange = script.onload = null;
         handler();
       };
 
-      script.onerror = function () {
+      script.onerror = function() {
         script.onerror = null;
         if (failHandler) {
           failHandler();
@@ -180,7 +180,7 @@
     (function run() {
       if (array.length != 0) {
         const scriptName = array.shift();
-        loader(scriptName, run, function () {
+        loader(scriptName, run, function() {
           window.MonacoConfig.useMinified = false;
           loader(scriptName.replace('.min.js', '.js'), run);
         });

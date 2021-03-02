@@ -7,8 +7,8 @@ export const controlsPagesMac: INavPage[] = [
     url: '#/controls/mac',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage),
       ),
   },
@@ -20,15 +20,15 @@ export const controlsPagesMac: INavPage[] = [
         title: 'Button',
         url: '#/controls/mac/button',
         component: () => <LoadingComponent title="Button" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
       },
       {
         title: 'Link',
         url: '#/controls/mac/link',
         component: () => <LoadingComponent title="Link" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage)),
       },
     ],
   },
@@ -40,8 +40,8 @@ export const controlsPagesMac: INavPage[] = [
         title: 'Date Picker',
         url: '#/controls/mac/date-picker',
         component: () => <LoadingComponent title="Date Picker" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage),
           ),
       },
@@ -55,8 +55,8 @@ export const controlsPagesMac: INavPage[] = [
         title: 'Avatar',
         url: '#/controls/mac/avatar',
         component: () => <LoadingComponent title="Avatar" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
       },
     ],
   },
@@ -68,8 +68,8 @@ export const controlsPagesMac: INavPage[] = [
         title: 'Separator',
         url: '#/controls/mac/separator',
         component: () => <LoadingComponent title="Separator" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage),
           ),
       },

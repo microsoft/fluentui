@@ -42,7 +42,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
   }
 
   public componentWillUnmount(): void {
-    this._disposables.forEach((dispose) => dispose());
+    this._disposables.forEach(dispose => dispose());
   }
 
   public render() {

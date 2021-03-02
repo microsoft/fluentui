@@ -29,8 +29,8 @@ export function createApp(
 
     setBaseUrl('./dist/');
 
-    const routes: (JSX.Element | JSX.Element[])[] = groups.map((group) =>
-      group.examples.map((example) => {
+    const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
+      group.examples.map(example => {
         return <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />;
       }),
     );

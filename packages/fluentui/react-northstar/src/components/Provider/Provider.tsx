@@ -96,7 +96,7 @@ export const providerClassName = 'ui-provider';
 export const Provider: ComponentWithAs<'div', ProviderProps> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
-} = (props) => {
+} = props => {
   const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
 
   const ElementType = getElementType(props);

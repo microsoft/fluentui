@@ -8,7 +8,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const FIXTURE_PATH = 'temp/fixtures/';
 
 function createWebpackConfig(entries) {
-  return Object.keys(entries).map((entryName) => {
+  return Object.keys(entries).map(entryName => {
     let anaylizerPluginOptions = {
       analyzerMode: 'static',
       reportFilename: entryName + '.stats.html',
@@ -82,7 +82,7 @@ function createFluentNorthstarFixtures() {
   const packageName = '@fluentui/react-northstar';
   const distPath = path.dirname(require.resolve(packageName).replace('commonjs', 'es'));
   const packagePath = path.resolve(distPath, 'components');
-  fs.readdirSync(packagePath).forEach((itemName) => {
+  fs.readdirSync(packagePath).forEach(itemName => {
     const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
 
     if (isFolder && itemName) {
@@ -105,7 +105,7 @@ function createFluentReactFixtures() {
   const packageName = '@fluentui/react';
   const distPath = path.dirname(require.resolve(packageName).replace('lib-commonjs', 'lib'));
   const packagePath = path.resolve(distPath);
-  fs.readdirSync(packagePath).forEach((itemName) => {
+  fs.readdirSync(packagePath).forEach(itemName => {
     const isFolder = fs.statSync(path.join(packagePath, itemName)).isDirectory();
     const isAllowedFile = itemName && itemName.match(/.js$/) && !TopLevelEntryFileExclusions.includes(itemName);
 
@@ -149,7 +149,7 @@ function buildEntries(packageName, entries = {}, includeStats = true) {
   const folderName = getFolderName(packageName);
   const packagePath = path.join(FIXTURE_PATH, folderName);
 
-  fs.readdirSync(packagePath).forEach((itemName) => {
+  fs.readdirSync(packagePath).forEach(itemName => {
     const entryName = itemName.replace(/.js$/, '');
     const entryPath = path.resolve(path.join(packagePath, itemName));
     entries[`${packageName.replace('@', '').replace('/', '-')}-${entryName}`] = {

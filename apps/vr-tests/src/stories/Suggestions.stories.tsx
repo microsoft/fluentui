@@ -32,7 +32,7 @@ type ProvincesMap = { [key: string]: Province };
 
 const getProvincesMap = () => {
   const provincesObj: ProvincesMap = {};
-  provinceData.forEach((province) => {
+  provinceData.forEach(province => {
     provincesObj[province.id] = province;
   });
   return provincesObj;
@@ -100,7 +100,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
 
           <ProvinceSuggestions
             showRemoveButtons={true}
-            suggestions={Object.keys(this.state.Provinces).map((key) =>
+            suggestions={Object.keys(this.state.Provinces).map(key =>
               makeProvinceIntoSuggestion(this.state.Provinces[key]),
             )}
             onSuggestionClick={(_: any, province: Province) => {
@@ -129,7 +129,7 @@ export class SimpleSuggestionsExample extends React.Component<{}, { Provinces: P
 
 storiesOf('(Dev-Only) Suggestions', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testRoot' })

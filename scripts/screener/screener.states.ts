@@ -18,7 +18,7 @@ const filteredPaths: string[] = minimatch.match(examplePaths, pathFilter || '*',
 
 if (pathFilter) {
   console.log(chalk.bgGreen.black(' --filter '), pathFilter);
-  filteredPaths.forEach((filteredPath) => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
+  filteredPaths.forEach(filteredPath => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
 }
 
 const getStateForPath = (examplePath: string) => {

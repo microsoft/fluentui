@@ -16,7 +16,7 @@ for (const iconName in (IconNames as any).IconNames) {
 
 storiesOf('Icon', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

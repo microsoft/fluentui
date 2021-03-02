@@ -18,7 +18,7 @@ const DropdownExample = () => (
     items={inputItems}
     placeholder="Select your hero"
     checkable
-    getA11ySelectionMessage={{ onAdd: (item) => `${item} has been selected.` }}
+    getA11ySelectionMessage={{ onAdd: item => `${item} has been selected.` }}
   />
 );
 

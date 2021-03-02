@@ -3,7 +3,7 @@ import * as axeCore from 'axe-core';
 
 export function useAxeOnElement(): [any[], (selectedElementUuid: any) => void] {
   const [axeErrors, setAxeErrors] = React.useState([]);
-  const runAxeOnElement = React.useCallback((selectedElementUuid) => {
+  const runAxeOnElement = React.useCallback(selectedElementUuid => {
     const iframe = document.getElementsByTagName('iframe')[0];
     const selectedComponentAxeErrors = [];
     axeCore.run(
@@ -20,8 +20,8 @@ export function useAxeOnElement(): [any[], (selectedElementUuid: any) => void] {
         if (err) {
           console.error('Axe failed', err);
         } else {
-          result.violations.forEach((violation) => {
-            violation.nodes.forEach((node) => {
+          result.violations.forEach(violation => {
+            violation.nodes.forEach(node => {
               if (node.html.includes(`data-builder-id="${selectedElementUuid}"`)) {
                 selectedComponentAxeErrors.push(
                   node.failureSummary

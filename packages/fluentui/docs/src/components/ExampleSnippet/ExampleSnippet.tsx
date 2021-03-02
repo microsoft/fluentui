@@ -19,7 +19,7 @@ const renderedStyle = {
   padding: '1rem',
 };
 
-const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = (props) => {
+const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = props => {
   const { children, render = () => null, value } = props;
 
   const child: React.ReactElement | null = render() || children;

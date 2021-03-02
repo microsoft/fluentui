@@ -22,7 +22,7 @@ export function expectMissing(wrapper: ReactWrapper<any, any>, className: string
 
 /** @deprecated Use fake timers and `jest.runAllTimers()` instead */
 export function delay(millisecond: number): Promise<void> {
-  return new Promise<void>((resolve) => setTimeout(resolve, millisecond));
+  return new Promise<void>(resolve => setTimeout(resolve, millisecond));
 }
 
 /**
@@ -53,5 +53,5 @@ export function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEve
  * https://github.com/facebook/jest/issues/2157#issuecomment-279171856
  */
 export function flushPromises() {
-  return new Promise<void>((resolve) => setImmediate(resolve));
+  return new Promise<void>(resolve => setImmediate(resolve));
 }

@@ -1,7 +1,7 @@
 import { ForwardRef } from 'react-is';
 import { getReactFiberFromNode, Fiber } from '../../utils/getReactFiberFromNode';
 
-const isDOMNode = (e) => e && typeof e.tagName === 'string' && e.nodeType === Node.ELEMENT_NODE;
+const isDOMNode = e => e && typeof e.tagName === 'string' && e.nodeType === Node.ELEMENT_NODE;
 
 export class FiberNavigator {
   __fiber: Fiber;
@@ -11,7 +11,7 @@ export class FiberNavigator {
   //      There is no way to start at a React Component fiber, go the DOM node,
   //      get the current fiber, and find your way back to the React Component fiber.
   //      Probably need to remove fromFiber and re-implement using only DOM node weak map.
-  static fromFiber = (fiber) => {
+  static fromFiber = fiber => {
     if (!fiber) return null;
 
     const fiberNavigator = new FiberNavigator();
@@ -26,7 +26,7 @@ export class FiberNavigator {
     return fiberNavigator;
   };
 
-  static fromDOMNode = (domNode) => {
+  static fromDOMNode = domNode => {
     const fiber = getReactFiberFromNode(domNode);
 
     if (!fiber) return null;
@@ -164,11 +164,11 @@ export class FiberNavigator {
   }
 
   findOwner(condition) {
-    return this.find(condition, (fiber) => fiber.owner);
+    return this.find(condition, fiber => fiber.owner);
   }
 
   findParent(condition) {
-    return this.find(condition, (fiber) => fiber.parent);
+    return this.find(condition, fiber => fiber.parent);
   }
 
   //

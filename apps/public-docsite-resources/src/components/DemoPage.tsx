@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-docsite-components';
 import * as React from 'react';
 
-export const DemoPage: React.FunctionComponent<IDemoPageProps> = (demoPageProps) => {
+export const DemoPage: React.FunctionComponent<IDemoPageProps> = demoPageProps => {
   const {
     exampleKnobs,
     examples,
@@ -31,7 +31,7 @@ export const DemoPage: React.FunctionComponent<IDemoPageProps> = (demoPageProps)
           <div>
             {exampleKnobs}
             {examples &&
-              examples.map((example) => {
+              examples.map(example => {
                 const { view, styles, ...cardProps } = example;
                 return (
                   <ExampleCard key={cardProps.title} styles={styles as IExampleCardProps['styles']} {...cardProps}>

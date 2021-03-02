@@ -51,7 +51,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
           <div className={classNames.buttons}>
             <FocusZone direction={FocusZoneDirection.horizontal}>
               {sideLinks
-                .map((link) => (
+                .map(link => (
                   <a key={link.url} className={classNames.button} href={link.url}>
                     {link.name}
                   </a>

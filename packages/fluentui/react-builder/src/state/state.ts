@@ -251,7 +251,7 @@ export const stateReducer: Reducer<DesignerState, DesignerAction> = (draftState,
         parent = jsonTreeFindElement(draftState.jsonTree, uuid);
       } else {
         parent = jsonTreeFindElement(draftState.jsonTree, parentUuid);
-        index = parent.props.children.findIndex((c) => c['uuid'] === uuid);
+        index = parent.props.children.findIndex(c => c['uuid'] === uuid);
         if (index === -1) {
           index = 0;
         } else {

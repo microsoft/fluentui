@@ -93,7 +93,7 @@ export const tooltipClassName = 'ui-tooltip';
 export const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
   setStart();
@@ -136,7 +136,7 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
-      close: (e) => {
+      close: e => {
         setTooltipOpen(false, e);
         e.stopPropagation();
         e.preventDefault();

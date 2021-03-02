@@ -232,8 +232,8 @@ function generateCategories() {
 
   // Convert the categories to an array (filter out empty categories)
   return categoryNames
-    .filter((category) => !!pagesByCategory[category].length)
-    .map((category) => ({
+    .filter(category => !!pagesByCategory[category].length)
+    .map(category => ({
       title: category,
       isCategory: true,
       pages: pagesByCategory[category],
@@ -251,7 +251,7 @@ function _generatePage(
     title: componentName,
     url: '#/controls/web/' + (url || componentName.toLowerCase()),
     component: () => <LoadingComponent title={overrides.title || componentName} />,
-    getComponent: (cb) => requireContext(pagePath).then((mod: any) => cb(mod[componentName + 'Page'])),
+    getComponent: cb => requireContext(pagePath).then((mod: any) => cb(mod[componentName + 'Page'])),
     ...nonUrlOverrides,
   };
 }
@@ -259,14 +259,14 @@ function _generatePage(
 function _loadReferences(): INavPage[] {
   const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
 
-  return requireContext.keys().map((pagePath) => {
+  return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
     return {
       title: pageName,
       url: '#/controls/web/references/' + pageName.toLowerCase(),
       isFilterable: true,
       component: () => <LoadingComponent title={pageName} />,
-      getComponent: (cb) =>
+      getComponent: cb =>
         requireContext(pagePath).then((jsonDocs: IPageJson) => {
           cb(() => <ControlsAreaPage jsonDocs={jsonDocs} title={pageName} hideImplementationTitle />);
         }),
@@ -280,8 +280,8 @@ export const controlsPagesWeb: INavPage[] = [
     url: '#/controls/web',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage),
       ),
   },

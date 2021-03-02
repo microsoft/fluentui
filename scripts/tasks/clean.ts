@@ -14,5 +14,5 @@ export const clean = cleanTask({
     'coverage',
     'src/**/*.scss.ts',
     ...glob.sync('*.tsbuildinfo', { dot: true }),
-  ].map((p) => path.join(process.cwd(), p)),
+  ].map(p => path.join(process.cwd(), p)),
 });

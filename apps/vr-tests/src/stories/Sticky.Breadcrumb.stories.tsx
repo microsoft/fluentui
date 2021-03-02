@@ -165,7 +165,7 @@ export class ScrollablePaneStickyBreadcrumbExample extends React.Component<{}, {
                 selectionPreservedOnEmptyClick={true}
                 ariaLabelForSelectionColumn="Toggle selection"
                 ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-                onItemInvoked={(item) => console.log(`Item invoked: ${item.name}`)}
+                onItemInvoked={item => console.log(`Item invoked: ${item.name}`)}
               />
             </MarqueeSelection>
           </ScrollablePane>
@@ -221,7 +221,7 @@ const cropTo = { cropTo: '.testWrapper' };
 
 storiesOf('Sticky breadcrumb and sticky details list header', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', cropTo)

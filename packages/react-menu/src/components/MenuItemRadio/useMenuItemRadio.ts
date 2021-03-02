@@ -34,7 +34,7 @@ export const useMenuItemRadio = (
 
   useCharacterSearch(state);
 
-  const selectRadio = useMenuListContext((context) => context.selectRadio);
+  const selectRadio = useMenuListContext(context => context.selectRadio);
   useMenuItemSelectable(state, selectRadio);
   return state;
 };

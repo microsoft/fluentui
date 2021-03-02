@@ -117,11 +117,11 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     if (_isElement(linksFromProps)) {
       links = <div className={classNames.markdownList}>{linksFromProps}</div>;
     } else if (Array.isArray(linksFromProps)) {
-      const linksToRender = linksFromProps.filter((link) => !isPageActive(link.url));
+      const linksToRender = linksFromProps.filter(link => !isPageActive(link.url));
       if (linksToRender.length) {
         links = (
           <ul className={classNames.links}>
-            {linksToRender.map((link) => (
+            {linksToRender.map(link => (
               <li key={link.url} className={classNames.linkWrapper}>
                 <Link href={link.url}>{link.text}</Link>
               </li>

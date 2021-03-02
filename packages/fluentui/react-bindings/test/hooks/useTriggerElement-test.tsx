@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import * as consoleUtil from '../consoleUtil';
 
-const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = (props) => {
+const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = props => {
   return useTriggerElement(props);
 };
 

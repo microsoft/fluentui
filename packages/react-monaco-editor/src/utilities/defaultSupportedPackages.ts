@@ -5,17 +5,17 @@ const fabricGroup: IPackageGroup = {
   // Theoretically we could use import() here, but that pulls things into bundles when using
   // commonjs modules due to the way import is transpiled for commonjs
   // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
-  loadGlobal: (cb) => require.ensure([], (require) => cb(require('@fluentui/react'))),
+  loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/react'))),
   packages: [],
 };
 const hooksGroup: IPackageGroup = {
   globalName: 'FluentUIReactHooks',
-  loadGlobal: (cb) => require.ensure([], (require) => cb(require('@fluentui/react-hooks'))),
+  loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/react-hooks'))),
   packages: [],
 };
 const exampleDataGroup: IPackageGroup = {
   globalName: 'FluentUIExampleData',
-  loadGlobal: (cb) => require.ensure([], (require) => cb(require('@fluentui/example-data'))),
+  loadGlobal: cb => require.ensure([], require => cb(require('@fluentui/example-data'))),
   packages: [],
 };
 
@@ -33,7 +33,7 @@ try {
   // We're probably running in jest, which doesn't have webpack's require.context
 }
 if (typesContext) {
-  typesContext.keys().forEach((dtsPath) => {
+  typesContext.keys().forEach(dtsPath => {
     // The api-extractor .d.ts rollups use the package's unscoped name (such as "utilities")
     // as the filename.
     // (example path: '!raw-loader?esModule=false!@fluentui/react-monaco-editor/dist/types/utilities.d.ts')

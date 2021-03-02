@@ -108,7 +108,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   FluentComponentStaticProps<TreeProps> & {
     Item: typeof TreeItem;
     Title: typeof TreeTitle;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tree.displayName, context.telemetry);
   setStart();
@@ -170,7 +170,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
 
   const renderContent = (): React.ReactElement[] => {
-    return visibleItemIds.map((id) => {
+    return visibleItemIds.map(id => {
       const item = getItemById(id);
       const { expanded, parent, level, index, treeSize } = item;
       return TreeItem.create(item.item, {

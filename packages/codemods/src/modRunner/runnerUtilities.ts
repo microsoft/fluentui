@@ -24,8 +24,8 @@ export function runMods<T>(
     for (let i = 0; i < codeMods.length; i++) {
       const mod = codeMods[i];
       const result = runMod(mod, file, loggingCallback).bothChain<RunResult, ErrorResult>(
-        (v) => Ok({ logs: v.logs, modName: mod.name }),
-        (err) => {
+        v => Ok({ logs: v.logs, modName: mod.name }),
+        err => {
           if ('error' in err) {
             return Err({ modName: mod.name, error: err.error });
           }
@@ -109,16 +109,16 @@ export function loadMod(path: string, errorCallback: (e: Error) => void): Maybe<
 
 export function getEnabledMods(logger: Logger, getPaths = getModsPaths, loadM = loadMod) {
   return getPaths()
-    .map((pth) => {
+    .map(pth => {
       logger.log('fetching codeMod at ', pth);
-      return loadM(pth, (e) => {
+      return loadM(pth, e => {
         logger.error(e);
       });
     })
     .filter(modEnabled)
-    .map((v) => v.value);
+    .map(v => v.value);
 }
 
 export function modEnabled<T>(mod: Maybe<CodeMod<T>>): mod is Something<CodeMod<T>> {
-  return mod.then((v) => !!v.enabled).orElse(false);
+  return mod.then(v => !!v.enabled).orElse(false);
 }

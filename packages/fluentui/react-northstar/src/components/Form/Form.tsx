@@ -54,7 +54,7 @@ export type FormStylesProps = never;
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
  */
-export const Form: ComponentWithAs<'form', FormProps> & FluentComponentStaticProps<FormProps> = (props) => {
+export const Form: ComponentWithAs<'form', FormProps> & FluentComponentStaticProps<FormProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
   setStart();
@@ -89,7 +89,7 @@ export const Form: ComponentWithAs<'form', FormProps> & FluentComponentStaticPro
 
   const renderFields = () => {
     const { fields } = props;
-    return _.map(fields, (field) => FormField.create(field));
+    return _.map(fields, field => FormField.create(field));
   };
 
   const element = (

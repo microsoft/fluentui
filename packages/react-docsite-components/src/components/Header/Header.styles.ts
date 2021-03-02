@@ -10,7 +10,7 @@ const globalClassNames = {
   buttons: 'Header-buttons',
 };
 
-export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = (props) => {
+export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props => {
   const { theme = getTheme(), isLargeDown } = props;
 
   const commonStyles: IRawStyle = {

@@ -8,7 +8,7 @@ export function getPageFirstPlatform<TPlatforms extends string = string>(
   pageTitle: string,
   siteDefinition: ISiteDefinition<TPlatforms>,
 ): TPlatforms {
-  const page = siteDefinition.pages.filter((pg) => pg.title === pageTitle)[0];
+  const page = siteDefinition.pages.filter(pg => pg.title === pageTitle)[0];
   if (page && page.platforms) {
     return Object.keys(page.platforms)[0] as TPlatforms;
   }

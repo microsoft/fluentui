@@ -7,7 +7,7 @@ const overflowItemStyle: IStyle = {
   display: 'inherit',
 };
 
-export const getStyles: IStyleFunction<IOverflowSetStyleProps, IOverflowSetStyles> = (props) => {
+export const getStyles: IStyleFunction<IOverflowSetStyleProps, IOverflowSetStyles> = props => {
   const { className, vertical } = props;
   return {
     root: [

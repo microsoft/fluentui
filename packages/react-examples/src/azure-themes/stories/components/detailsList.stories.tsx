@@ -104,7 +104,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
 
   private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({
-      items: text ? this._allItems.filter((i) => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
     });
   };
 

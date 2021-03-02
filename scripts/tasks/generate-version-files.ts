@@ -25,7 +25,7 @@ function revertLocalChanges() {
   const results = run(['git', 'stash', 'list']);
   if (results) {
     const lines = results.split(/\n/);
-    const foundLine = lines.find((line) => line.includes(stash));
+    const foundLine = lines.find(line => line.includes(stash));
 
     if (foundLine) {
       const matched = foundLine.match(/^[^:]+/);
@@ -61,7 +61,7 @@ export function generateVersionFiles() {
   // 2. gather version info
   const updatedVersionContents = {};
   const packageJsons = glob.sync('+(packages|apps)/*/package.json', { cwd: gitRoot });
-  packageJsons.forEach((packageJsonPath) => {
+  packageJsons.forEach(packageJsonPath => {
     const versionFile = path.join(gitRoot, path.dirname(packageJsonPath), 'src/version.ts');
     const packageJson = fs.readJSONSync(path.join(gitRoot, packageJsonPath));
     const dependencies = packageJson.dependencies || {};
@@ -97,7 +97,7 @@ ${setCurrentVersion}`;
 
   // 4. write version files
   if (updatedVersionContents) {
-    Object.keys(updatedVersionContents).forEach((versionFile) => {
+    Object.keys(updatedVersionContents).forEach(versionFile => {
       console.log(`writing to ${versionFile}`);
       fs.writeFileSync(versionFile, updatedVersionContents[versionFile]);
     });

@@ -133,7 +133,7 @@ export const makeButtonTokens = (theme: Theme): ButtonVariantTokens => ({
 const useRootStyles = makeStyles<ButtonStyleSelectors>([
   [
     null,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -178,7 +178,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ size }) => size === 'small',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -191,7 +191,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ size }) => size === 'large',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -204,7 +204,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ disabled }) => disabled,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -225,7 +225,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ primary }) => primary,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -253,7 +253,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ primary, disabled }) => primary && disabled,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -272,7 +272,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ iconOnly }) => iconOnly,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -284,7 +284,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ iconOnly, size }) => iconOnly && size === 'small',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -297,7 +297,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ iconOnly, size }) => iconOnly && size === 'large',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -314,7 +314,7 @@ const useRootStyles = makeStyles<ButtonStyleSelectors>([
 const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
   [
     null,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -331,7 +331,7 @@ const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ size }) => size === 'small',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -343,7 +343,7 @@ const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ size }) => size === 'large',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -357,7 +357,7 @@ const useChildrenStyles = makeStyles<ButtonStyleSelectors>([
 const useIconStyles = makeStyles<ButtonStyleSelectors>([
   [
     null,
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {
@@ -371,7 +371,7 @@ const useIconStyles = makeStyles<ButtonStyleSelectors>([
   ],
   [
     ({ size }) => size === 'large',
-    (theme) => {
+    theme => {
       const buttonTokens = makeButtonTokens(theme);
 
       return {

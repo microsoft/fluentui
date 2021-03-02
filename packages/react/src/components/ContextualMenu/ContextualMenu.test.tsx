@@ -998,7 +998,7 @@ describe('ContextualMenu', () => {
       const ReactDOM = require('react-dom');
       const createPortal = ReactDOM.createPortal;
       ReactTestUtils.act(() => {
-        ReactDOM.createPortal = jest.fn((element) => {
+        ReactDOM.createPortal = jest.fn(element => {
           return element;
         });
       });

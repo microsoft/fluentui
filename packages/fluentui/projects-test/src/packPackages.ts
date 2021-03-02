@@ -13,7 +13,7 @@ type PackedPackages = Record<string, string>;
 let packedPackages: PackedPackages;
 
 function flattenPackageGraph(rootPackages: string[], projectGraph, packageList = []): string[] {
-  rootPackages.forEach((packageName) => {
+  rootPackages.forEach(packageName => {
     packageList.push(packageName);
 
     flattenPackageGraph([...projectGraph.get(packageName).localDependencies.keys()], projectGraph, packageList);
@@ -27,7 +27,7 @@ export async function addResolutionPathsForProjectPackages(testProjectDir: strin
   const packageJson = require(packageJsonPath);
 
   packageJson.resolutions = packageJson.resolutions || {};
-  Object.keys(packedPackages).forEach((packageName) => {
+  Object.keys(packedPackages).forEach(packageName => {
     packageJson.resolutions[`**/${packageName}`] = `file:${packedPackages[packageName]}`;
   });
 
@@ -50,15 +50,15 @@ export async function packProjectPackages(logger: Function): Promise<PackedPacka
   const projectPackagesGraph = new PackageGraph(projectPackages, 'dependencies');
   const requiredPackages = flattenPackageGraph(['@fluentui/react-northstar'], projectPackagesGraph);
 
-  logger(`✔️ Following packages will be packed:${requiredPackages.map((p) => `\n${' '.repeat(30)}- ${p}`)}`);
+  logger(`✔️ Following packages will be packed:${requiredPackages.map(p => `\n${' '.repeat(30)}- ${p}`)}`);
 
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
 
   await Promise.all(
-    requiredPackages.map(async (packageName) => {
+    requiredPackages.map(async packageName => {
       const filename = path.join(tmpDirectory, path.basename(packageName)) + '.tgz';
-      const packagePath = projectPackages.find((pkg) => pkg.name === packageName).location;
+      const packagePath = projectPackages.find(pkg => pkg.name === packageName).location;
 
       await sh(`yarn pack --filename ${filename}`, packagePath);
       packedPackages[packageName] = filename;

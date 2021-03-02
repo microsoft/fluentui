@@ -6,7 +6,7 @@ import { ActivityItem, Icon } from '@fluentui/react';
 
 storiesOf('ActivityItem', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Steps()

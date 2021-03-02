@@ -4,9 +4,9 @@ const { configHelpers } = require('./packages/eslint-plugin/src/index');
 const { prettierExtensions } = require('./scripts/prettier/prettier-helpers');
 
 // remove leading . for consistency with prettierExtensions
-const eslintExtensions = configHelpers.extensions.map((ext) => ext.slice(1));
+const eslintExtensions = configHelpers.extensions.map(ext => ext.slice(1));
 
-const nonEslintPrettierExtensions = prettierExtensions.filter((ext) => !eslintExtensions.includes(ext));
+const nonEslintPrettierExtensions = prettierExtensions.filter(ext => !eslintExtensions.includes(ext));
 
 // https://www.npmjs.com/package/lint-staged
 module.exports = {

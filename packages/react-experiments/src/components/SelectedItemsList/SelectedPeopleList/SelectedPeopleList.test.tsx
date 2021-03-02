@@ -24,8 +24,8 @@ describe('SelectedPeopleList', () => {
       <SelectedPeopleList selectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
-    const personANodes = rendered.root.findAll((x) => !!x.children.length && x.children.indexOf('Person A') !== -1);
-    const personBNodes = rendered.root.findAll((x) => !!x.children.length && x.children.indexOf('Person B') !== -1);
+    const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
+    const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
     expect(personANodes.length).toEqual(1);
     expect(personBNodes.length).toEqual(1);
 
@@ -38,8 +38,8 @@ describe('SelectedPeopleList', () => {
       <SelectedPeopleList defaultSelectedItems={[{ text: 'Person A' }, { text: 'Person B' }]} ref={pickerRef} />,
     );
 
-    const personANodes = rendered.root.findAll((x) => !!x.children.length && x.children.indexOf('Person A') !== -1);
-    const personBNodes = rendered.root.findAll((x) => !!x.children.length && x.children.indexOf('Person B') !== -1);
+    const personANodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person A') !== -1);
+    const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
     expect(personANodes.length).toEqual(1);
     expect(personBNodes.length).toEqual(1);
 
@@ -57,14 +57,17 @@ describe('SelectedPeopleList', () => {
       />,
     );
 
-    wrapper.find('button.ms-PickerItem-removeButton').at(1).simulate('click');
+    wrapper
+      .find('button.ms-PickerItem-removeButton')
+      .at(1)
+      .simulate('click');
 
     expect(onItemsRemoved).toBeCalledTimes(1);
   });
 
   it('edit render of the items in selected items list', () => {
     const SelectedItem = ItemWithContextMenu({
-      menuItems: (item) => [
+      menuItems: item => [
         {
           key: 'remove',
           text: 'Remove',
@@ -97,11 +100,24 @@ describe('SelectedPeopleList', () => {
 
     // Remove and copy should show up in the menu
     expect(wrapper.find('.ms-ContextualMenu-item')).toHaveLength(2);
-    expect(wrapper.find('.ms-ContextualMenu-item').at(0).text()).toEqual('Remove');
+    expect(
+      wrapper
+        .find('.ms-ContextualMenu-item')
+        .at(0)
+        .text(),
+    ).toEqual('Remove');
 
-    expect(wrapper.find('.ms-ContextualMenu-item').at(1).text()).toEqual('Copy');
+    expect(
+      wrapper
+        .find('.ms-ContextualMenu-item')
+        .at(1)
+        .text(),
+    ).toEqual('Copy');
 
-    wrapper.find('.ms-ContextualMenu-item').at(0).simulate('click');
+    wrapper
+      .find('.ms-ContextualMenu-item')
+      .at(0)
+      .simulate('click');
     expect(removeItems).toBeCalledTimes(1);
   });
 });

@@ -11,7 +11,7 @@ const SkeletonExampleList = () => {
 
   return (
     <List>
-      {_.times(5, (index) => (
+      {_.times(5, index => (
         <List.Item
           key={index}
           styles={{

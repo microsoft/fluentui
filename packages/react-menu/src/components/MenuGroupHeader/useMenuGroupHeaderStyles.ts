@@ -4,7 +4,7 @@ import { MenuGroupHeaderState } from './MenuGroupHeader.types';
 const useHeaderStyles = makeStyles([
   [
     null,
-    (theme) => ({
+    theme => ({
       fontSize: theme.global.type.fontSizes.base[200],
       color: theme.alias.color.neutral.neutralForeground3,
       paddingLeft: '12px',

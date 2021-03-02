@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/DrawerPage/';
 
-export const DrawerPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const DrawerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

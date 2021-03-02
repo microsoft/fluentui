@@ -5,14 +5,14 @@ import { FabricDecorator } from '../utilities/index';
 import { Keytip } from '@fluentui/react';
 
 storiesOf('Keytip', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <div style={{ width: '50px', height: '50px' }}>
       <span data-ktp-target={'ktp-a'} />
       {story()}
     </div>
   ))
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

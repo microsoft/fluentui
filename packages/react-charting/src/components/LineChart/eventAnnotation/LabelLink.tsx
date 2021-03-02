@@ -24,7 +24,7 @@ interface ILabelLinkProps {
   mergedLabel: (count: number) => string;
 }
 
-export const LabelLink: React.FunctionComponent<ILabelLinkProps> = (props) => {
+export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
   const onDismiss = () => setShowCard(false);
@@ -33,7 +33,7 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = (props) => {
 
   let callout: React.ReactNode = null;
   if (showCard) {
-    const cards = props.labelDef.aggregatedIdx.map((i) => props.lineDefs[i].onRenderCard!).filter((c) => !!c);
+    const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
     if (cards.length > 0) {
       callout = (
         <Callout

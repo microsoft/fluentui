@@ -25,7 +25,7 @@ describe('useMergedRefs', () => {
     const refObject: React.RefObject<boolean> = React.createRef<boolean>();
     let refValue: boolean | null = null;
 
-    const { result } = renderHook(() => useMergedRefs<boolean>(refObject, (val) => (refValue = val)));
+    const { result } = renderHook(() => useMergedRefs<boolean>(refObject, val => (refValue = val)));
     result.current(true);
 
     expect(refObject.current).toBe(true);

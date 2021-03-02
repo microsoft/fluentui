@@ -10,7 +10,7 @@ const selectors = {
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(selectors.popupTrigger)
         .click(selectors.toggleIndicator)

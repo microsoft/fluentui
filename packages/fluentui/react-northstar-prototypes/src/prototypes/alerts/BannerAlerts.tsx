@@ -23,7 +23,7 @@ const getBannerContent = (bannerName: BannerName) =>
 
 const bannerNames: BannerName[] = ['info', 'oof', 'danger', 'urgent'];
 
-const bannerRadioItems: RadioGroupItemProps[] = bannerNames.map((bannerName) => ({
+const bannerRadioItems: RadioGroupItemProps[] = bannerNames.map(bannerName => ({
   key: bannerName,
   value: bannerName,
   label: `${_.startCase(bannerName)}`,

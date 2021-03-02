@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Adds attribute 'aria-posinset=2' based on the property 'index' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Triggers 'performClick' action with 'Spacebar' on 'root'.
  */
-export const treeTitleAsOptionBehavior: Accessibility<TreeTitleBehaviorProps> = (props) => {
+export const treeTitleAsOptionBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
 
   const definition = {

@@ -36,19 +36,19 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameEl, controlEl));
   }, []);
 
-  const hideFrame = (frameEl) => {
+  const hideFrame = frameEl => {
     frameEl.style.display = 'none';
   };
 
   const handleMove = React.useCallback(
-    (e) => {
+    e => {
       onMove?.(e);
     },
     [onMove],
   );
 
   const handleClone = React.useCallback(
-    (e) => {
+    e => {
       onClone?.(e);
     },
     [onClone],

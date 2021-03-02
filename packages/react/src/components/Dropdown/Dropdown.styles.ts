@@ -62,7 +62,7 @@ const highContrastBorderState: IRawStyle = {
 
 const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMinMedium);
 
-export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = (props) => {
+export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
   const {
     theme,
     hasError,

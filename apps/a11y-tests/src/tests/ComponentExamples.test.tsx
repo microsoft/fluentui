@@ -13,7 +13,7 @@ const ReactDOM = require('react-dom');
 
 // Keep only errors to reduce snapshot size
 function dehydrateSarifReport(report: SarifLog): Result[] {
-  return report.runs[0]!.results!.filter((item) => item.level === 'error');
+  return report.runs[0]!.results!.filter(item => item.level === 'error');
 }
 
 async function testComponent(
@@ -56,7 +56,7 @@ describe('a11y test', () => {
 
   beforeAll(() => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 
@@ -76,14 +76,14 @@ describe('a11y test', () => {
 
   files
     .filter((componentFile: string) => {
-      return !excludedExampleFiles.some((excludedFile) => componentFile.indexOf('/' + excludedFile) !== -1);
+      return !excludedExampleFiles.some(excludedFile => componentFile.indexOf('/' + excludedFile) !== -1);
     })
     .forEach((componentFile: string) => {
       const componentModule = require(componentFile);
       const [controlName, pageName] = getControlAndPageName(componentFile);
       Object.keys(componentModule)
-        .filter((key) => typeof componentModule[key] === 'function')
-        .forEach((key) => {
+        .filter(key => typeof componentModule[key] === 'function')
+        .forEach(key => {
           const ComponentUnderTest: React.ComponentClass = componentModule[key];
           testComponent(browserPromise, {
             name: controlName,

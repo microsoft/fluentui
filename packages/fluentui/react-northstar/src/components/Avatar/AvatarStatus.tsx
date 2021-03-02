@@ -40,7 +40,7 @@ export const avatarStatusClassName = statusClassName;
 /**
  * A AvatarStatus provides a status for the Avatar.
  */
-export const AvatarStatus: ComponentWithAs<'span', AvatarStatusProps> & FluentComponentStaticProps = (props) => {
+export const AvatarStatus: ComponentWithAs<'span', AvatarStatusProps> & FluentComponentStaticProps = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
   setStart();

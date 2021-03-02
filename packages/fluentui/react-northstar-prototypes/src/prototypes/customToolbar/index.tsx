@@ -119,7 +119,7 @@ const CustomToolbarPrototype: React.FunctionComponent = () => {
               onCameraChange={onCameraChange}
               onMicChange={onMicChange}
               onScreenShareChange={onScreenShareChange}
-              onSidebarChange={(state) => onSidebarChange(state || 'false')}
+              onSidebarChange={state => onSidebarChange(state || 'false')}
               onPptPrevClick={() => setCurrentSlide(_.max([1, currentSlide - 1]))}
               onPptNextClick={() => setCurrentSlide(_.min([totalSlides, currentSlide + 1]))}
             />

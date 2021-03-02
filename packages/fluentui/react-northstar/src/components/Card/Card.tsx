@@ -110,7 +110,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
     TopControls: typeof CardPreview;
     Column: typeof CardColumn;
     ExpandableBox: typeof CardExpandableBox;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
@@ -140,12 +140,12 @@ export const Card: ComponentWithAs<'div', CardProps> &
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Card.displayName,
     actionHandlers: {
-      performClick: (e) => {
+      performClick: e => {
         // prevent Spacebar from scrolling
         e.preventDefault();
         handleClick(e);
       },
-      focusCard: (e) => {
+      focusCard: e => {
         cardRef.current.focus();
       },
     },

@@ -12,7 +12,7 @@ import {
 
 storiesOf('Dropdown', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -180,7 +180,7 @@ storiesOf('Dropdown', module)
 
 storiesOf('Dropdown Disabled', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

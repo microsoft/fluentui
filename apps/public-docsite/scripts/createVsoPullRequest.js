@@ -68,7 +68,7 @@ const postFields = {
  * Main function to kick off the post request
  */
 function createVsoBranch() {
-  request.post({ url: vsoApiUrl, form: postFields }, function (err, httpResponse, body) {
+  request.post({ url: vsoApiUrl, form: postFields }, function(err, httpResponse, body) {
     if (err) {
       console.error(err);
     }

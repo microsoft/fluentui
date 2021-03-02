@@ -25,7 +25,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     // Intentionally not using .filter here as we want to only remove a specific
     // item in case of duplicates of same item.
     const updatedItems: TItem[] = [...items];
-    itemsToRemove.forEach((item) => {
+    itemsToRemove.forEach(item => {
       const index: number = updatedItems.indexOf(item);
       updatedItems.splice(index, 1);
     });

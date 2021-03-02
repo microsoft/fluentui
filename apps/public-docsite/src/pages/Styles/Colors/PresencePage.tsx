@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/Colors/docs';
 
-export const ColorsPresencePage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const ColorsPresencePage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

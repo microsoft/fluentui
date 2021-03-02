@@ -12,7 +12,7 @@ export interface IButtonExampleProps {
 const volume0Icon: IIconProps = { iconName: 'Volume0' };
 const volume3Icon: IIconProps = { iconName: 'Volume3' };
 
-export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonToggleExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
   const [muted, { toggle: setMuted }] = useBoolean(false);
 

@@ -21,7 +21,7 @@ function getItems(minItems = 20, maxItems = 40) {
         { content: 'Age', key: 'action' },
       ],
     };
-    const rowsPlain = _.times(getRandomNumber(minItems, maxItems), (index) => ({
+    const rowsPlain = _.times(getRandomNumber(minItems, maxItems), index => ({
       key: `${index}`,
       items: [
         { content: `${index}`, key: `${index}-1` },

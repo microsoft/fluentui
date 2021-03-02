@@ -46,7 +46,7 @@ const commandProps: IButtonProps = {
 
 storiesOf('Button (compat)', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -77,7 +77,7 @@ storiesOf('Button (compat)', module)
 
 storiesOf('Button Action (compat)', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -98,7 +98,7 @@ storiesOf('Button Action (compat)', module)
 
 storiesOf('Button Compound (compat)', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -124,11 +124,11 @@ storiesOf('Button Compound (compat)', module)
   .addStory('No Icon', () => <CompoundButton {...baseProps} iconProps={undefined} />);
 
 storiesOf('Button Command (compat)', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
   ))
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -150,7 +150,7 @@ storiesOf('Button Command (compat)', module)
 
 storiesOf('Button Split (compat)', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -192,7 +192,7 @@ storiesOf('Button Split (compat)', module)
 
 storiesOf('Button Special Scenarios (compat)', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -225,7 +225,7 @@ storiesOf('Button Special Scenarios (compat)', module)
 
 storiesOf('IconButton Scenarios (compat)', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('icon', { cropTo: '.testWrapper' })

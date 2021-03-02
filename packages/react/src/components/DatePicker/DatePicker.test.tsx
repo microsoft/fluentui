@@ -26,7 +26,7 @@ describe('DatePicker', () => {
 
   it('renders default DatePicker correctly', () => {
     // This will only render the input. Calendar component has its own snapshot.
-    safeCreate(<DatePicker />, (component) => {
+    safeCreate(<DatePicker />, component => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -64,7 +64,12 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.find('i').simulate('click');
 
-    expect(datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns')).toBeDefined();
+    expect(
+      datePicker
+        .find('[aria-owns]')
+        .getDOMNode()
+        .getAttribute('aria-owns'),
+    ).toBeDefined();
   });
 
   // if isDatePickerShown is set, the DatePicker should be rendered
@@ -73,7 +78,10 @@ describe('DatePicker', () => {
     const datePicker = mount(<DatePickerBase />);
     datePicker.find('i').simulate('click');
 
-    const calloutId = datePicker.find('[aria-owns]').getDOMNode().getAttribute('aria-owns');
+    const calloutId = datePicker
+      .find('[aria-owns]')
+      .getDOMNode()
+      .getAttribute('aria-owns');
 
     expect(datePicker.find(`#${calloutId}`).exists()).toBe(true);
   });
@@ -99,9 +107,9 @@ describe('DatePicker', () => {
 
   it('should clear error message when required input has date text and allowTextInput is true', () => {
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
-    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, (datePicker) => {
+    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
       const textfield = datePicker.root.findByType(TextField);
       const input = datePicker.root.findByType('input');
 
@@ -128,9 +136,9 @@ describe('DatePicker', () => {
 
   it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
-    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, (datePicker) => {
+    safeCreate(<DatePickerBase isRequired={true} allowTextInput={true} />, datePicker => {
       const textfield = datePicker.root.findByType(TextField);
       const input = datePicker.root.findByType('input');
 
@@ -158,7 +166,7 @@ describe('DatePicker', () => {
 
   it('should not clear initial error when datepicker is opened', () => {
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
     safeCreate(
       <DatePickerBase
@@ -167,7 +175,7 @@ describe('DatePicker', () => {
         maxDate={new Date('2020-04-01')}
         value={new Date('2020-04-02')}
       />,
-      (datePicker) => {
+      datePicker => {
         const textfield = datePicker.root.findByType(TextField);
         const input = datePicker.root.findByType('input');
 
@@ -189,10 +197,10 @@ describe('DatePicker', () => {
   // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
   it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
     const onSelectDate = jest.fn();
 
-    safeCreate(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />, (datePicker) => {
+    safeCreate(<DatePickerBase allowTextInput={true} onSelectDate={onSelectDate} />, datePicker => {
       const input = datePicker.root.findByType('input');
 
       // open the datepicker then dismiss
@@ -210,9 +218,9 @@ describe('DatePicker', () => {
 
   it('should set "Calendar" as the Callout\'s aria-label', () => {
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
-    safeCreate(<DatePickerBase />, (datePicker) => {
+    safeCreate(<DatePickerBase />, datePicker => {
       const input = datePicker.root.findByType('input');
 
       // open the datepicker then dismiss
@@ -233,11 +241,11 @@ describe('DatePicker', () => {
     // that the datepicker opens on the correct month
 
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
     safeCreate(
       <DatePickerBase allowTextInput={true} today={today} initialPickerDate={initiallySelectedDate} />,
-      (datePicker) => {
+      datePicker => {
         const input = datePicker.root.findByType('input');
 
         // open the datepicker then dismiss
@@ -263,7 +271,7 @@ describe('DatePicker', () => {
     // that the datepicker opens on the correct month
 
     // See https://github.com/facebook/react/issues/11565
-    spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+    spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
 
     safeCreate(
       <DatePickerBase
@@ -272,7 +280,7 @@ describe('DatePicker', () => {
         formatDate={onFormatDate}
         initialPickerDate={initiallySelectedDate}
       />,
-      (datePicker) => {
+      datePicker => {
         const input = datePicker.root.findByType('input');
 
         // open the datepicker then dismiss

@@ -15,7 +15,7 @@ const productIcons = require<
   // eslint-disable-next-line import/no-extraneous-dependencies
 >('@fluentui/public-docsite/lib/data/brand-icons-products.json');
 
-export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const OfficeBrandIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

@@ -25,7 +25,7 @@ const menuProps: IContextualMenuProps = {
 // Example formatting
 // const stackTokens: IStackTokens = { childrenGap: 40 };
 
-export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (

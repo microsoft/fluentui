@@ -194,9 +194,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
        itemsAreEqual prop should be overloaded
        Otherwise it's possible for the indexOf check to fail and return -1 */
     if (itemsAreEqual) {
-      insertIndex = selectedItems.findIndex((currentItem) =>
-        itemsAreEqual ? itemsAreEqual(currentItem, item) : false,
-      );
+      insertIndex = selectedItems.findIndex(currentItem => (itemsAreEqual ? itemsAreEqual(currentItem, item) : false));
     } else {
       insertIndex = selectedItems.indexOf(item);
     }

@@ -133,7 +133,10 @@ export function createNumericXAxis(xAxisParams: IXAxisParams) {
     .ticks(xAxisCount)
     .tickSizeOuter(0);
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -149,11 +152,17 @@ export function createDateXAxis(xAxisParams: IXAxisParams, tickParams: ITickPara
   const xAxisScale = d3ScaleTime()
     .domain([domainNRangeValues.dStartValue, domainNRangeValues.dEndValue])
     .range([domainNRangeValues.rStartValue, domainNRangeValues.rEndValue]);
-  const xAxis = d3AxisBottom(xAxisScale).tickSize(xAxistickSize).tickPadding(tickPadding).ticks(xAxisCount);
+  const xAxis = d3AxisBottom(xAxisScale)
+    .tickSize(xAxistickSize)
+    .tickPadding(tickPadding)
+    .ticks(xAxisCount);
   tickParams.tickValues ? xAxis.tickValues(tickParams.tickValues) : '';
   tickParams.tickFormat ? xAxis.tickFormat(d3TimeFormat.timeFormat(tickParams.tickFormat)) : '';
   if (xAxisElement) {
-    d3Select(xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -180,7 +189,10 @@ export function createStringXAxis(xAxisParams: IXAxisParams, tickParams: ITickPa
     .tickFormat((x: string, index: number) => dataset[index] as string);
 
   if (xAxisParams.xAxisElement) {
-    d3Select(xAxisParams.xAxisElement).call(xAxis).selectAll('text').attr('aria-hidden', 'true');
+    d3Select(xAxisParams.xAxisElement)
+      .call(xAxis)
+      .selectAll('text')
+      .attr('aria-hidden', 'true');
   }
   return xAxisScale;
 }
@@ -239,7 +251,12 @@ export function createYAxis(yAxisParams: IYAxisParams, isRtl: boolean) {
     .tickValues(domainValues)
     .tickSizeInner(-(containerWidth - margins.left! - margins.right!));
   yAxisTickFormat ? yAxis.tickFormat(yAxisTickFormat) : yAxis.tickFormat(d3Format('.2~s'));
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text').attr('aria-hidden', 'true') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+        .attr('aria-hidden', 'true')
+    : '';
   return yAxisScale;
 }
 
@@ -256,11 +273,18 @@ export const createStringYAxis = (yAxisParams: IYAxisParams, dataPoints: string[
     .range([containerHeight - margins.bottom!, margins.top!])
     .padding(yAxisPadding);
   const axis = isRtl ? d3AxisRight(yAxisScale) : d3AxisLeft(yAxisScale);
-  const yAxis = axis.tickPadding(tickPadding).tickValues(dataPoints).tickSize(0);
+  const yAxis = axis
+    .tickPadding(tickPadding)
+    .tickValues(dataPoints)
+    .tickSize(0);
   if (yAxisTickFormat) {
     yAxis.tickFormat(yAxisTickFormat);
   }
-  yAxisElement ? d3Select(yAxisElement).call(yAxis).selectAll('text') : '';
+  yAxisElement
+    ? d3Select(yAxisElement)
+        .call(yAxis)
+        .selectAll('text')
+    : '';
   return yAxisScale;
 };
 
@@ -372,12 +396,15 @@ export function createWrapOfXLabels(wrapLabelProps: IWrapLabelProps) {
   let removeVal = 0;
   const width = 10;
   const arr: number[] = [];
-  axisNode.selectAll('.tick text').each(function () {
+  axisNode.selectAll('.tick text').each(function() {
     const text = d3Select(this);
     const totalWord = text.text();
     const truncatedWord = `${text.text().slice(0, noOfCharsToTruncate)}...`;
     const totalWordLength = text.text().length;
-    const words = text.text().split(/\s+/).reverse();
+    const words = text
+      .text()
+      .split(/\s+/)
+      .reverse();
     arr.push(words.length);
     let word: string = '';
     let line: string[] = [];
@@ -465,7 +492,11 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   if (xAxis === null) {
     return null;
   }
-  const div = d3Select('body').append('div').attr('id', id).attr('class', tooltipCls).style('opacity', 0);
+  const div = d3Select('body')
+    .append('div')
+    .attr('id', id)
+    .attr('class', tooltipCls)
+    .style('opacity', 0);
   const aa = xAxis!.selectAll('#BaseSpan')._groups[0];
   const baseSpanLength = aa && Object.keys(aa)!.length;
   const originalDataArray: string[] = [];
@@ -478,14 +509,14 @@ export function tooltipOfXAxislabels(xAxistooltipProps: any) {
   for (let i = 0; i < tickObjectLength; i++) {
     const d1 = tickObject[i];
     d3Select(d1)
-      .on('mouseover', (d) => {
+      .on('mouseover', d => {
         div.style('opacity', 0.9);
         div
           .html(originalDataArray[i])
           .style('left', d3Event.pageX + 'px')
           .style('top', d3Event.pageY - 28 + 'px');
       })
-      .on('mouseout', (d) => {
+      .on('mouseout', d => {
         div.style('opacity', 0);
       });
   }

@@ -37,8 +37,8 @@ const nameAndImage = [
 export const AvatarExamples = {
   size: [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128],
   nameAndImage: nameAndImage,
-  name: nameAndImage.map((p) => p.name),
-  image: nameAndImage.map((p) => p.image),
+  name: nameAndImage.map(p => p.name),
+  image: nameAndImage.map(p => p.image),
   activeDisplay: ['ring', 'ring-shadow', 'ring-glow', 'shadow', 'glow'],
   color: ['neutral', 'brand', 'colorful'],
   namedColors: [

@@ -9,13 +9,13 @@ expect.addSnapshotSerializer({
     return value?._isMockFunction;
   },
   print(value: jest.Mock) {
-    const css = value.mock.calls.map((call) => call[0]).join(' ');
+    const css = value.mock.calls.map(call => call[0]).join(' ');
 
     return prettier.format(css, { parser: 'css' }).trim();
   },
 });
 
-const TestComponent: React.FC<{ styles: UseCSSStyleInput[] }> = (props) => {
+const TestComponent: React.FC<{ styles: UseCSSStyleInput[] }> = props => {
   const className = useCSS(...props.styles);
 
   return <div className={className} />;

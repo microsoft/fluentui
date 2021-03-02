@@ -13,7 +13,7 @@ export const NotificationContext = React.createContext<NotificationContextValue>
   throw new Error('No matching NotificationContext.Provider');
 });
 
-export const NotificationProvider: React.FC = (props) => {
+export const NotificationProvider: React.FC = props => {
   const { children } = props;
   const [notification, setNotification] = React.useState<React.ReactNode>();
   const [target, setTarget] = React.useState<HTMLElement | null>();

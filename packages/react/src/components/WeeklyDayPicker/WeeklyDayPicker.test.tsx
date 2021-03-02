@@ -19,7 +19,7 @@ describe('WeeklyDayPicker', () => {
   it('renders default WeeklyDayPicker correctly', () => {
     safeCreate(
       <WeeklyDayPicker strings={defaultWeeklyDayPickerStrings} today={new Date('Jan 1 2019')} />,
-      (component) => {
+      component => {
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
       },
@@ -33,7 +33,7 @@ describe('WeeklyDayPicker', () => {
         firstDayOfWeek={DayOfWeek.Friday}
         today={new Date('Jan 1 2019')}
       />,
-      (component) => {
+      component => {
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
       },

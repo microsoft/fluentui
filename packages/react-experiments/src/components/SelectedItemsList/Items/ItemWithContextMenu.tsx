@@ -14,13 +14,13 @@ export type ItemWithContextMenuProps<T> = {
 export const ItemWithContextMenu = <T extends any>(
   itemWithContextMenuProps: ItemWithContextMenuProps<T>,
 ): ItemCanDispatchTrigger<T> => {
-  return React.memo((selectedItemProps) => {
+  return React.memo(selectedItemProps => {
     const [isContextMenuOpen, setIsContextMenuOpen] = React.useState(false);
     const openContextMenu = React.useCallback(() => {
       setIsContextMenuOpen(true);
     }, [setIsContextMenuOpen]);
     const closeContextMenu = React.useCallback(
-      (e) => {
+      e => {
         e.preventDefault();
         setIsContextMenuOpen(false);
       },

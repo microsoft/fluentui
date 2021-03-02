@@ -2,7 +2,7 @@ import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   steps: [
-    (builder) =>
+    builder =>
       builder
         .executeScript("document.querySelector('iframe').contentDocument.querySelector('#overflow-item').click()")
         .snapshot('RTL: Overflow item is properly positioned'),

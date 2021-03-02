@@ -7,7 +7,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/MessageBarPage/';
 
-export const MessageBarPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const MessageBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <ControlsAreaPage
       {...props}

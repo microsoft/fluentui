@@ -47,7 +47,7 @@ const iconClass = mergeStyles({
   margin: '0 25px',
 });
 
-const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: string; color3?: string }> = (props) => {
+const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: string; color3?: string }> = props => {
   const { color1 = 'red', color2 = 'green', color3 = 'blue' } = props;
 
   // FontIcon is an optimized variant of standard Icon.

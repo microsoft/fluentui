@@ -6,7 +6,7 @@ export function MenuTrigger({ children }) {
   const { triggerRef, setOpen } = useMenuContext();
 
   const listener = React.useCallback(
-    (e) => {
+    e => {
       if (e.key !== 'ArrowLeft') {
         setOpen(true);
       }

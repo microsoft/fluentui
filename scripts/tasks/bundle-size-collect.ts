@@ -14,7 +14,7 @@ export function bundleSizeCollect() {
   const outputFilename = 'bundlesize.json';
 
   var items = fs.readdirSync(distRoot);
-  items.forEach((item) => {
+  items.forEach(item => {
     const file = path.join(distRoot, item);
 
     const isMinifiedJavascriptFile = item.match(/.min.js$/);

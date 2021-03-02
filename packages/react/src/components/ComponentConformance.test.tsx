@@ -13,14 +13,14 @@ describe('Top Level Component File Conformance', () => {
 
   const components: string[] = glob
     .sync(path.resolve(process.cwd(), 'src/components/**/index.ts*'))
-    .map((file) => {
+    .map(file => {
       const componentName = path.basename(path.dirname(file));
       return componentName[0] === componentName[0].toUpperCase() ? path.basename(path.dirname(file)) : '';
     })
-    .filter((f) => f && !privateComponents.has(f));
+    .filter(f => f && !privateComponents.has(f));
 
   const topLevelComponentFiles = components
-    .map((f) => {
+    .map(f => {
       for (const fileName of [`${f}.ts`, `${f}.tsx`]) {
         const fullPath = path.resolve(__dirname, '..', fileName);
         if (fs.existsSync(fullPath)) {
@@ -29,7 +29,7 @@ describe('Top Level Component File Conformance', () => {
       }
       return '';
     })
-    .filter((f) => f);
+    .filter(f => f);
 
   beforeEach(() => {
     jest.resetModules();
@@ -37,7 +37,7 @@ describe('Top Level Component File Conformance', () => {
 
   // Top Level Compoennt File Compliance -
   // make sure that there is a corresponding top level component file for each component in the directory
-  components.forEach((componentName) => {
+  components.forEach(componentName => {
     it(`${componentName} has a corresponding top level component file`, () => {
       expect(
         fs.existsSync(path.resolve(__dirname, `../${componentName}.ts`)) ||
@@ -47,7 +47,7 @@ describe('Top Level Component File Conformance', () => {
   });
 
   // make sure that there is a version import in each corresponding top level component file
-  topLevelComponentFiles.forEach((file) => {
+  topLevelComponentFiles.forEach(file => {
     const componentName = path.basename(file).split('.')[0];
     const packageName = componentPackageMap[componentName] || '@fluentui/react';
 

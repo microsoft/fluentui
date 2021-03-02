@@ -14,7 +14,7 @@ export const useMenuItemSelectable = (
 ) => {
   const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = state;
 
-  const checked = useMenuListContext((context) => {
+  const checked = useMenuListContext(context => {
     const checkedItems = context.checkedValues?.[state.name] || [];
     return checkedItems.indexOf(state.value) !== -1;
   });
@@ -22,7 +22,7 @@ export const useMenuItemSelectable = (
   state.checked = checked;
   state['aria-checked'] = state.checked;
 
-  state.onClick = (e) => {
+  state.onClick = e => {
     if (onClickCallback) {
       onClickCallback(e);
     }
@@ -30,7 +30,7 @@ export const useMenuItemSelectable = (
     handleSelection(e, state.name, state.value, state.checked);
   };
 
-  state.onKeyDown = (e) => {
+  state.onKeyDown = e => {
     if (onKeyDownCallback) {
       onKeyDownCallback(e);
     }

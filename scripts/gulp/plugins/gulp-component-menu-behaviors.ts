@@ -24,7 +24,7 @@ type BehaviorMenuItem = {
 };
 
 const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
-  const resultToken = commentTokens.find((token) => token.title === tokenTitle);
+  const resultToken = commentTokens.find(token => token.title === tokenTitle);
   return resultToken ? resultToken.description : '';
 };
 
@@ -48,7 +48,7 @@ export default () => {
       const behaviorVariantName = file.basename;
       const behaviorName = path.basename(dir);
       const fileContent = fs.readFileSync(file.path).toString();
-      const blockComments = extract(fileContent).filter((comment) => comment.type === 'BlockComment'); // filtering only block comments
+      const blockComments = extract(fileContent).filter(comment => comment.type === 'BlockComment'); // filtering only block comments
       const variation = {
         name: behaviorVariantName,
         description: '',
@@ -83,7 +83,7 @@ export default () => {
         // in some cases specification doesn't exists as well not definition for the behavior (alertBaseBehavior.ts)
         if (definition) {
           const specificationFromDefinition = definition
-            .map((definition) => {
+            .map(definition => {
               return definition.getData().hidden ? undefined : definition.stringify();
             })
             .filter(Boolean);

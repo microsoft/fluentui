@@ -38,11 +38,11 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
 
   handleFocus = () => this.setState({ focused: true });
 
-  handleBlur = (e) => {
+  handleBlur = e => {
     this.setState({ focused: e.currentTarget.contains(e.relatedTarget) });
   };
 
-  handleActionableItemClick = (e) => {
+  handleActionableItemClick = e => {
     const { onShowActionMenuChange, chatMessageElement } = this.props;
     onShowActionMenuChange(false);
     // Currently when the action menu is closed because of some actionable item is clicked, we focus the ChatMessage

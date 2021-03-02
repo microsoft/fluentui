@@ -151,14 +151,13 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
 /**
  * A ChatMessage represents a single message in chat.
  */
-export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> & FluentComponentStaticProps<ChatMessageProps> = (
-  props,
-) => {
+export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
+  FluentComponentStaticProps<ChatMessageProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
-  const parentAttached = useContextSelector(ChatItemContext, (v) => v.attached);
+  const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const {
     accessibility,
     attached = parentAttached,
@@ -192,14 +191,14 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> & FluentCompo
     actionHandlers: {
       // prevents default FocusZone behavior, e.g., in ChatMessageBehavior, it prevents FocusZone from using arrow keys
       // as navigation (only Tab key should work)
-      preventDefault: (event) => {
+      preventDefault: event => {
         // preventDefault only if event coming from inside the message
         if (event.currentTarget !== event.target) {
           event.preventDefault();
         }
       },
 
-      focus: (event) => {
+      focus: event => {
         if (messageNode) {
           messageNode.focus();
           event.stopPropagation();

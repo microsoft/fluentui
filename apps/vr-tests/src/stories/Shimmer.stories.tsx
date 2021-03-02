@@ -18,12 +18,12 @@ const wrapperClassName = mergeStyles({
 });
 
 storiesOf('Shimmer', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     // Shimmer without a specified width needs a container with a fixed width or it's collapsing.
     <div style={{ width: '500px' }}>{story()}</div>
   ))
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

@@ -21,7 +21,7 @@ describe('Tooltip', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
     const createPortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 

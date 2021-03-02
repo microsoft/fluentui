@@ -52,7 +52,7 @@ const Example = () => (
 )
 `;
 
-const IntroCard = (props) => {
+const IntroCard = props => {
   const { QnaIcon } = exports;
   return (
     <Card variables={{ borderColor: '#f2f2f2' }} style={cardsStyles} {...props}>
@@ -121,7 +121,7 @@ const playgroundStateReducer = (state: PlaygroundCardState, action: PlaygroundAc
   }
 };
 
-const PlaygroundCard = (props) => {
+const PlaygroundCard = props => {
   const { QnaIcon, EditIcon } = exports;
 
   const [state, dispatch] = React.useReducer(playgroundStateReducer, {
@@ -221,7 +221,7 @@ const IconViewer = () => {
     setQuery(data.value);
   };
 
-  const filteredIcons = icons.filter((IconComponent) => regexQuery.test(IconComponent.displayName));
+  const filteredIcons = icons.filter(IconComponent => regexQuery.test(IconComponent.displayName));
 
   return (
     <DocPage title="Icons" fluid>
@@ -248,7 +248,7 @@ const IconViewer = () => {
             value={query}
           />
           <Flex wrap gap="gap.medium" styles={iconFlexStyles}>
-            {filteredIcons.map((Icon) => (
+            {filteredIcons.map(Icon => (
               <Flex.Item align="center" key={Icon.displayName}>
                 <Card
                   centered

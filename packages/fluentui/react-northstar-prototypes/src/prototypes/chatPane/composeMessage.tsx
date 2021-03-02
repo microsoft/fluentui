@@ -19,7 +19,7 @@ type ComposeMessageProps = Props<{
   style?: React.CSSProperties;
 }>;
 
-const ComposeMessage: React.FunctionComponent<ComposeMessageProps> = (props) => (
+const ComposeMessage: React.FunctionComponent<ComposeMessageProps> = props => (
   <Provider.Consumer
     render={({ siteVariables: siteVars }) => (
       <Flex column role="region" aria-labelledby="chat-compose-reader-text" style={props.style}>
@@ -86,7 +86,7 @@ const getMenuItems = (): ShorthandCollection<MenuItemProps> => {
     SendIcon,
   ].map((Icon, index) => ({
     key: index,
-    icon: <Icon xSpacing="both" variables={(siteVars) => ({ color: siteVars.colors.grey[500] })} />,
+    icon: <Icon xSpacing="both" variables={siteVars => ({ color: siteVars.colors.grey[500] })} />,
     'aria-label': `${name} tool`,
   }));
 

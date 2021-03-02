@@ -107,9 +107,8 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-export const MenuButton: ComponentWithAs<'div', MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps> = (
-  props,
-) => {
+export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
+  FluentComponentStaticProps<MenuButtonProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
@@ -162,9 +161,9 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> & FluentCompone
   const getA11yProps = useAccessibility<MenuButtonBehaviorProps>(accessibility, {
     debugName: MenuButton.displayName,
     actionHandlers: {
-      closeMenu: (e) => closeMenu(e),
-      openAndFocusFirst: (e) => openAndFocus(e, 'first'),
-      openAndFocusLast: (e) => openAndFocus(e, 'last'),
+      closeMenu: e => closeMenu(e),
+      openAndFocusFirst: e => openAndFocus(e, 'first'),
+      openAndFocusLast: e => openAndFocus(e, 'last'),
     },
     mapPropsToBehavior: () => ({
       menuId: menuId.current,

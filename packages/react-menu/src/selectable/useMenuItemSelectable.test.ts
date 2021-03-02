@@ -32,7 +32,7 @@ describe('useMenuItemSelectable', () => {
 
   beforeEach(() => {
     mockContext();
-    (useMenuListContext as jest.Mock).mockImplementation((selector) => {
+    (useMenuListContext as jest.Mock).mockImplementation(selector => {
       return selector(context);
     });
   });
@@ -56,7 +56,7 @@ describe('useMenuItemSelectable', () => {
     expect(state['aria-checked']).toBe(expected);
   });
 
-  it.each(['onClick', 'onKeyDown'])('should set %s handler', (action) => {
+  it.each(['onClick', 'onKeyDown'])('should set %s handler', action => {
     // Arrange
     const state: MenuItemSelectableState = createTestState({ onKeyDown: undefined, onClick: undefined });
 
@@ -71,7 +71,7 @@ describe('useMenuItemSelectable', () => {
     expect(typeof callback).toBe('function');
   });
 
-  it.each([EnterKey, SpacebarKey])('should toggle selection on %s keydown', (keyCode) => {
+  it.each([EnterKey, SpacebarKey])('should toggle selection on %s keydown', keyCode => {
     // Arrange
     const state: MenuItemSelectableState = createTestState();
     const handleSelection = jest.fn();

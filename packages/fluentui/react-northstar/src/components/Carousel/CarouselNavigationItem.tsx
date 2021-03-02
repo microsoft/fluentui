@@ -86,7 +86,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
  * A CarouselItem is an actionable item within a Carousel.
  */
 export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
-  FluentComponentStaticProps<CarouselNavigationItemProps> = (props) => {
+  FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
@@ -111,7 +111,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CarouselNavigationItem.displayName,
     actionHandlers: {
-      performClick: (event) => !event.defaultPrevented && handleClick(event),
+      performClick: event => !event.defaultPrevented && handleClick(event),
     },
     mapPropsToBehavior: () => ({
       active,

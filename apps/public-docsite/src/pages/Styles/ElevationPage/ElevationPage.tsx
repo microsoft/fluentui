@@ -9,7 +9,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/ElevationPage/docs';
 
-export const ElevationPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const ElevationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage
@@ -96,7 +96,7 @@ function _renderDepthsTable() {
         },
       ]}
       formatter={(column, row) => {
-        const depth = depthUsage.filter((x) => x.level === row.level)[0];
+        const depth = depthUsage.filter(x => x.level === row.level)[0];
         switch (column.title) {
           case 'Core class':
             return <MarkdownCode>ms-depth-{row.level}</MarkdownCode>;

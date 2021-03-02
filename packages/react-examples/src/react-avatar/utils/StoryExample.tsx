@@ -4,7 +4,7 @@ import { makeStyles } from '@fluentui/react-make-styles';
 const useStoryExampleRoot = makeStyles([
   [
     null,
-    (theme) => ({
+    theme => ({
       padding: '10px',
       fontFamily: theme.global.type.fontFamilies.base,
       color: theme.alias.color.neutral.neutralForeground1,

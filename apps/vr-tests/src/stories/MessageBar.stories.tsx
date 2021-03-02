@@ -13,7 +13,7 @@ const link = <Link href="www.bing.com">Visit our website</Link>;
 
 storiesOf('MessageBar', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

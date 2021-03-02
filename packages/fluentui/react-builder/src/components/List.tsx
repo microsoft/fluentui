@@ -17,7 +17,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
   const filterRegexp = new RegExp(filter, 'i');
 
   const handleMouseDown = React.useCallback(
-    (componentInfo) => (e) => {
+    componentInfo => e => {
       if (onDragStart) onDragStart(componentInfo, e);
     },
     [onDragStart],
@@ -30,7 +30,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
   const [supportedComponents, unsupportedComponents] = React.useMemo(
     () =>
       _.partition(_.values(componentInfoContext.byDisplayName), ({ displayName }) => {
-        return displayName.match(filterRegexp) && !EXCLUDED_COMPONENTS.some((name) => name === displayName);
+        return displayName.match(filterRegexp) && !EXCLUDED_COMPONENTS.some(name => name === displayName);
       }),
     [filterRegexp],
   );
@@ -56,8 +56,8 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
               content: key,
             },
             items: supportedComponents
-              .filter((info) => COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName))
-              .map((info) => ({
+              .filter(info => COMPONENT_GROUP[key].includes(info.isChild ? info.parentDisplayName : info.displayName))
+              .map(info => ({
                 id: info.displayName,
                 title: (
                   <Box
@@ -84,7 +84,7 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
       }, {}),
     [handleMouseDown, supportedComponents],
   );
-  const treeItems = Object.values(treeObj).filter((treeItem) => treeItem.items.length > 0);
+  const treeItems = Object.values(treeObj).filter(treeItem => treeItem.items.length > 0);
 
   return (
     <div
@@ -105,10 +105,10 @@ export const List: React.FunctionComponent<ListProps> = ({ onDragStart, style })
         onChange={handleFilterChange}
         value={filter}
       />
-      {filter ? <Tree items={treeItems} activeItemIds={treeItems.map((e) => e.id)} /> : <Tree items={treeItems} />}
+      {filter ? <Tree items={treeItems} activeItemIds={treeItems.map(e => e.id)} /> : <Tree items={treeItems} />}
       {unsupportedComponents
-        .filter((info) => info.displayName.match(filterRegexp))
-        .map((info) => (
+        .filter(info => info.displayName.match(filterRegexp))
+        .map(info => (
           <Box
             key={info.displayName}
             styles={{

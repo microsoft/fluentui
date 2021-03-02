@@ -31,7 +31,7 @@ class ChatMock {
 
     this.userIds = _.times(this.options.userCount, random.uuid);
 
-    this.userIds.forEach((id) => {
+    this.userIds.forEach(id => {
       const firstName = name.firstName();
       const lastName = name.lastName();
       const user: UserData = {
@@ -50,7 +50,7 @@ class ChatMock {
     const currentUser = this.usersMap.get(this.userIds[0]);
     const dates = getRandomDates(this.options.msgCount, ChatMock.daysAgo);
 
-    this.chatMessages = _.times(this.options.msgCount, (id) => {
+    this.chatMessages = _.times(this.options.msgCount, id => {
       const mine = random.boolean();
       const from = (mine ? currentUser : this.getRandomUser()).id;
       const date = dates[id];

@@ -11,7 +11,7 @@ import { ApiKind } from '@fluentui/react/lib/common/DocPage.types';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/SeparatorPage/';
 
-export const SeparatorPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const SeparatorPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

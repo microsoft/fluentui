@@ -12,7 +12,7 @@ type CopyToClipboardPrototypeProps = {
   attached?: boolean;
 };
 
-const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = (props) => {
+const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = props => {
   return (
     <Flex gap="gap.medium" vAlign="center" padding="padding.medium">
       <Text content="Commit: " />
@@ -28,7 +28,7 @@ const CopyToClipboardPrototype: React.FC<CopyToClipboardPrototypeProps> = (props
   );
 };
 
-const CopyToClipboardInMenu: React.FC = (props) => {
+const CopyToClipboardInMenu: React.FC = props => {
   const item = {
     key: 'edit',
     content: 'Edit',
@@ -47,7 +47,7 @@ const CopyToClipboardInMenu: React.FC = (props) => {
   return <Menu items={[item]} />;
 };
 
-const CopyToClipboardAttached: React.FC = (props) => {
+const CopyToClipboardAttached: React.FC = props => {
   const [target, setTarget] = React.useState<HTMLElement>(null);
 
   const items = [

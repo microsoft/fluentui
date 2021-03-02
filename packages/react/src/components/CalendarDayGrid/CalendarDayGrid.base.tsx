@@ -75,7 +75,7 @@ function useWeeks(
           onSelected: () => onSelectDate(day.originalDate),
           setRef: getSetRefCallback(day.key),
           ...day,
-          isMarked: day.isMarked || markedDays?.some((markedDay) => compareDates(day.originalDate, markedDay)),
+          isMarked: day.isMarked || markedDays?.some(markedDay => compareDates(day.originalDate, markedDay)),
         };
 
         week.push(dayInfo);

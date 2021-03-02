@@ -71,9 +71,7 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
 /**
  * A FormField represents a Form element containing a label and an input.
  */
-export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = (
-  props,
-) => {
+export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
   setStart();

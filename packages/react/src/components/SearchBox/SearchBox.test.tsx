@@ -170,7 +170,12 @@ describe('SearchBox', () => {
   it('handles rendering 0', () => {
     wrapper = mount(<SearchBox value={0 as any} />);
     // this is not allowed per typings, but users might do it anyway
-    expect(wrapper.find('input').getDOMNode().getAttribute('value')).toBe('0');
+    expect(
+      wrapper
+        .find('input')
+        .getDOMNode()
+        .getAttribute('value'),
+    ).toBe('0');
   });
 
   it('invokes onEscape callback on escape keydown', () => {
@@ -202,7 +207,7 @@ describe('SearchBox', () => {
   });
 
   it('does not clear the value on escape keydown, if onClear calls preventDefault', () => {
-    const onClear = jest.fn((ev) => ev.preventDefault());
+    const onClear = jest.fn(ev => ev.preventDefault());
 
     wrapper = mount(<SearchBox onClear={onClear} defaultValue="test" />);
     wrapper.find('input').simulate('keydown', { which: KeyCodes.escape });

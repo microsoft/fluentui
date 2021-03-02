@@ -6,7 +6,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  steps: [(builder) => builder.click(selectors.trigger).snapshot('Opens a dropdown')],
+  steps: [builder => builder.click(selectors.trigger).snapshot('Opens a dropdown')],
 };
 
 export default config;

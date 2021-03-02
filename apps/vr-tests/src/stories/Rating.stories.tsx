@@ -6,7 +6,7 @@ import { Rating, RatingSize } from '@fluentui/react';
 
 storiesOf('Rating', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

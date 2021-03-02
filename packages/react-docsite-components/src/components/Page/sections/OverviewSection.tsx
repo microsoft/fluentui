@@ -4,7 +4,7 @@ import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 import { hiddenContentStyle } from '@fluentui/react/lib/Styling';
 
-export const OverviewSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = (props) => {
+export const OverviewSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = props => {
   const { className, content: overview, sectionName, readableSectionName = sectionName, style, id } = props;
 
   return (

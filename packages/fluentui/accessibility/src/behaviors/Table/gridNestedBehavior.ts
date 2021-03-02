@@ -20,7 +20,7 @@ export const gridNestedBehavior: Accessibility<GridNestedBehaviorProps> = () => 
   },
   focusZone: {
     props: {
-      shouldEnterInnerZone: (event) => getCode(event) === keyboardKey.ArrowRight,
+      shouldEnterInnerZone: event => getCode(event) === keyboardKey.ArrowRight,
       direction: FocusZoneDirection.vertical,
       shouldResetActiveElementWhenTabFromZone: true,
     },

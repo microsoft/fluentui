@@ -34,7 +34,7 @@ const getCommandBarButtonStyles = memoizeFunction(
 );
 
 // Custom renderer for main command bar items
-const CustomButton: React.FunctionComponent<IButtonProps> = (props) => {
+const CustomButton: React.FunctionComponent<IButtonProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.text} clicked`);
   // eslint-disable-next-line react/jsx-no-bind
   return <CommandBarButton {...props} onClick={buttonOnMouseClick} styles={getCommandBarButtonStyles(props.styles)} />;
@@ -43,7 +43,7 @@ const CustomButton: React.FunctionComponent<IButtonProps> = (props) => {
 // Custom renderer for menu items (these must have a separate custom renderer because it's unlikely
 // that the same component could be rendered properly as both a command bar item and menu item).
 // It's also okay to custom render only the command bar items without changing the menu items.
-const CustomMenuItem: React.FunctionComponent<IContextualMenuItemProps> = (props) => {
+const CustomMenuItem: React.FunctionComponent<IContextualMenuItemProps> = props => {
   // Due to ContextualMenu implementation quirks, passing styles or onClick here doesn't work.
   // The onClick handler must be on the ICommandBarItemProps item instead (_overflowItems in this example).
   return <ContextualMenuItem {...props} />;

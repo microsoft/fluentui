@@ -269,8 +269,8 @@ The return value is a function that should be called to set the ref's value. The
 import { useRefEffect } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
-  const myDivRef = useRefEffect<HTMLElement>((myDiv) => {
-    const observer = new ResizeObserver((entries) => {
+  const myDivRef = useRefEffect<HTMLElement>(myDiv => {
+    const observer = new ResizeObserver(entries => {
       console.log(`myDiv is ${entries[0].contentRect.width} px wide`);
     });
     observer.observe(myDiv);

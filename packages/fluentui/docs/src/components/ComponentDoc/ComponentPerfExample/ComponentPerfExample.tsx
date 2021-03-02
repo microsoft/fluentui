@@ -19,7 +19,7 @@ export interface ComponentPerfExampleProps {
   examplePath: string;
 }
 
-const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = (props) => {
+const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
   const { title, description, examplePath } = props;
   const [activeIndex, setActiveIndex] = React.useState<AccordionProps['activeIndex']>();
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link, ILinkProps } from '@fluentui/react/lib/Link';
 import { removeAnchorLink } from '../../utilities/index2';
 
-export const MarkdownLink: React.FunctionComponent<ILinkProps> = (props) => {
+export const MarkdownLink: React.FunctionComponent<ILinkProps> = props => {
   let href = props.href;
   const { underline = true } = props;
   if (href && href[0] === '#' && href.indexOf('/') === -1) {

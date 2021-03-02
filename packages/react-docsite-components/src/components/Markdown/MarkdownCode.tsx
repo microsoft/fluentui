@@ -31,7 +31,7 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
 
 const getClassNames = classNamesFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles>();
 
-const MarkdownCodeBase: React.FunctionComponent<IMarkdownCodeProps> = (props) => {
+const MarkdownCodeBase: React.FunctionComponent<IMarkdownCodeProps> = props => {
   const { className, styles, ...rest } = props;
   const classNames = getClassNames(styles);
 

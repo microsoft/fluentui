@@ -43,8 +43,8 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
           warnings: true,
           errors: true,
         },
-        renderLicenses: (modules) => {
-          modules.forEach((module) => {
+        renderLicenses: modules => {
+          modules.forEach(module => {
             const packageName = module.packageJson.name;
             const packageVersion = module.packageJson.version;
 

@@ -8,7 +8,7 @@ import {
 } from './CollapsibleSection.types';
 import { CollapsibleSectionTitle } from './CollapsibleSectionTitle';
 
-export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = (props) => {
+export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = props => {
   const { collapsed, titleElementRef, children, onClick, onKeyDown, indent } = props;
 
   const Slots = getSlots<ICollapsibleSectionProps, ICollapsibleSectionSlots>(props, {

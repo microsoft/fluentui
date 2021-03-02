@@ -17,7 +17,7 @@ const globalClassNames = {
 const headerHeight = 50;
 const navWidth = 300;
 
-export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = (props) => {
+export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
   const { responsiveMode, theme = getTheme(), showOnlyExamples } = props;
   const isLargeDown = responsiveMode <= ResponsiveMode.large;
   return {

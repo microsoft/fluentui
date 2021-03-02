@@ -37,9 +37,9 @@ const dependencies = [
 ];
 
 const allPackages = getAllPackageInfo();
-const repoDeps = dependencies.map((dep) => allPackages[dep]);
+const repoDeps = dependencies.map(dep => allPackages[dep]);
 const deployedPackages = new Set<string>();
-repoDeps.forEach((dep) => {
+repoDeps.forEach(dep => {
   const distPath = path.join(gitRoot, dep.packagePath, 'dist');
 
   if (fs.existsSync(distPath)) {

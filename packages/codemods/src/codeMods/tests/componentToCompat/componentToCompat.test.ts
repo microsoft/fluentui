@@ -29,14 +29,14 @@ describe('Component to compat', () => {
     const hash = buildHash([{ componentName: 'Button', namedExports: Object.keys(Root) }], createComponentToCompat);
     repathPathedImports(file, hash.exactPathMatch);
     const imps = file.getImportDeclarations();
-    expect(imps.some((dec) => dec.getModuleSpecifierValue() === 'compat/Button')).toEqual(true);
+    expect(imps.some(dec => dec.getModuleSpecifierValue() === 'compat/Button')).toEqual(true);
   });
 
   it('correctly repaths from index', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: Object.keys(Root) }], createComponentToCompat);
     repathNamedImports(file, hash.namedExportsMatch, './DefaultButton');
-    const repathed = file.getImportDeclaration((d) => d.getModuleSpecifierValue() === 'compat/Button');
+    const repathed = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button');
     expect(repathed).toBeTruthy();
   });
 
@@ -44,9 +44,9 @@ describe('Component to compat', () => {
     const file = project.getSourceFileOrThrow('ImportsStuff.tsx');
     const hash = buildHash([{ componentName: 'Button', namedExports: ['Button'] }], createComponentToCompat);
     repathNamedImports(file, hash.namedExportsMatch, './Button');
-    const repathed = file.getImportDeclaration((d) => d.getModuleSpecifierValue() === 'compat/Button');
+    const repathed = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button');
     expect(repathed).toBeTruthy();
-    const oldImport = file.getImportDeclaration((d) => d.getModuleSpecifierValue() === './Button');
+    const oldImport = file.getImportDeclaration(d => d.getModuleSpecifierValue() === './Button');
     expect(oldImport).toBeTruthy();
     const named = oldImport?.getNamedImports();
     expect(named?.length).toEqual(1);
@@ -58,11 +58,11 @@ describe('Component to compat', () => {
     const hash = buildHash([{ componentName: 'Button', namedExports: Object.keys(Root) }], createComponentToCompat);
     repathNamedImports(file, hash.namedExportsMatch, './Button');
 
-    const named = file.getImportDeclaration((d) => d.getModuleSpecifierValue() === 'compat/Button')?.getNamedImports();
-    named?.forEach((v) => {
+    const named = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button')?.getNamedImports();
+    named?.forEach(v => {
       expect(v.getName() === 'Button' || v.getName() === 'OtherButton').toEqual(true);
     });
-    expect(named?.some((v) => !!v.getAliasNode())).toEqual(true);
+    expect(named?.some(v => !!v.getAliasNode())).toEqual(true);
   });
 
   it('correctly moves all named imports and all other imports', () => {
@@ -70,8 +70,8 @@ describe('Component to compat', () => {
     const hash = buildHash([{ componentName: 'Button', namedExports: Object.keys(Root) }], createComponentToCompat);
     runComponentToCompat(file, hash, './DefaultButton');
 
-    const named = file.getImportDeclaration((d) => d.getModuleSpecifierValue() === 'compat/Button')?.getNamedImports();
-    named?.forEach((v) => {
+    const named = file.getImportDeclaration(d => d.getModuleSpecifierValue() === 'compat/Button')?.getNamedImports();
+    named?.forEach(v => {
       expect(v.getName() === 'Button' || v.getName() === 'DefaultButton').toEqual(true);
     });
   });

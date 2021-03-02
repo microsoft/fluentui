@@ -5,7 +5,7 @@ const useStyles = makeStyles<LinkState>([
   // Common styles.
   [
     null,
-    (tokens) => ({
+    tokens => ({
       backgroundColor: 'transparent',
       border: 'none',
       borderBottom: 'solid transparent',
@@ -39,7 +39,7 @@ const useStyles = makeStyles<LinkState>([
 
   // Overrides when an href is present so the Link renders as an anchor.
   [
-    (s) => !!s.href,
+    s => !!s.href,
     {
       fontSize: 'inherit',
     },
@@ -47,8 +47,8 @@ const useStyles = makeStyles<LinkState>([
 
   // Overrides when the Link is emphasized to represent a secondary action.
   [
-    (s) => s.secondary,
-    (tokens) => ({
+    s => s.secondary,
+    tokens => ({
       color: tokens.alias.color.neutral.neutralForeground2,
 
       ':hover': {
@@ -65,24 +65,24 @@ const useStyles = makeStyles<LinkState>([
 
   // Overrides when the Link is rendered inline within text.
   [
-    (s) => s.inline,
-    (tokens) => ({
+    s => s.inline,
+    tokens => ({
       borderBottomColor: tokens.alias.color.neutral.brandForeground,
     }),
   ],
 
   // Overrides when the Link is rendered inline within text and is emphasized to represent a secondary action.
   [
-    (s) => s.inline && s.secondary,
-    (tokens) => ({
+    s => s.inline && s.secondary,
+    tokens => ({
       borderBottomColor: tokens.alias.color.neutral.neutralForeground2,
     }),
   ],
 
   // Overrides when the Link is disabled.
   [
-    (s) => s['aria-disabled'] as boolean | undefined,
-    (tokens) => ({
+    s => s['aria-disabled'] as boolean | undefined,
+    tokens => ({
       borderBottomColor: 'transparent',
       color: tokens.alias.color.neutral.neutralForegroundDisabled,
       cursor: 'not-allowed',

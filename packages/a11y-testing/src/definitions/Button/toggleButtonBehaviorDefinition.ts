@@ -7,6 +7,8 @@ export const toggleButtonBehaviorDefinition: Rule[] = [
     .forProps({ active: 'true', checked: true })
     .hasAttribute('aria-pressed', 'true')
     .description(`if element has active/checked prop.`),
-  BehaviorRule.root().hasAttribute('aria-pressed', 'false').description(`if element has no 'active/checked' prop.`),
+  BehaviorRule.root()
+    .hasAttribute('aria-pressed', 'false')
+    .description(`if element has no 'active/checked' prop.`),
   ...buttonBehaviorDefinition,
 ];

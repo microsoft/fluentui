@@ -95,8 +95,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   public removeItems = (itemsToRemove: any[]): void => {
     const { items } = this.state;
-    const itemsCanRemove = itemsToRemove.filter((item) => this._canRemoveItem(item));
-    const newItems: T[] = items.filter((item) => itemsCanRemove.indexOf(item) === -1);
+    const itemsCanRemove = itemsToRemove.filter(item => this._canRemoveItem(item));
+    const newItems: T[] = items.filter(item => itemsCanRemove.indexOf(item) === -1);
     const firstItemToRemove = itemsCanRemove[0];
     const index: number = items.indexOf(firstItemToRemove);
 

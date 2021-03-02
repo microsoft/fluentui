@@ -7,8 +7,8 @@ export const stylesPagesWeb: INavPage[] = [
     url: '#/styles/web',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Styles" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) => cb(require<any>('../../../pages/Overviews/StylesPage/StylesPage').StylesPage)),
+    getComponent: cb =>
+      require.ensure([], require => cb(require<any>('../../../pages/Overviews/StylesPage/StylesPage').StylesPage)),
   },
   {
     title: 'Colors',
@@ -20,8 +20,8 @@ export const stylesPagesWeb: INavPage[] = [
         url: '#/styles/web/colors',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Products" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/ThemeSlotsPage/ThemeSlotsPage').ThemeSlotsPage),
           ),
       },
@@ -29,8 +29,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Products',
         url: '#/styles/web/colors/products',
         component: () => <LoadingComponent title="Products" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/Colors/ProductsPage').ColorsProductsPage),
           ),
       },
@@ -38,8 +38,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Neutrals',
         url: '#/styles/web/colors/neutrals',
         component: () => <LoadingComponent title="Neutrals" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/Colors/NeutralsPage').ColorsNeutralsPage),
           ),
       },
@@ -47,15 +47,15 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Shared',
         url: '#/styles/web/colors/shared',
         component: () => <LoadingComponent title="Shared" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Styles/Colors/SharedPage').ColorsSharedPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/SharedPage').ColorsSharedPage)),
       },
       {
         title: 'Personas & Groups',
         url: '#/styles/web/colors/personas',
         component: () => <LoadingComponent title="Personas & Groups" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/Colors/PersonasPage').ColorsPersonasPage),
           ),
       },
@@ -63,8 +63,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Presence',
         url: '#/styles/web/colors/presence',
         component: () => <LoadingComponent title="Presence" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/Colors/PresencePage').ColorsPresencePage),
           ),
       },
@@ -72,8 +72,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Messaging',
         url: '#/styles/web/colors/messaging',
         component: () => <LoadingComponent title="Messaging" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/Colors/MessagingPage').ColorsMessagingPage),
           ),
       },
@@ -81,8 +81,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Theme Slots',
         url: '#/styles/web/colors/theme-slots',
         component: () => <LoadingComponent title="Theme Slots" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/ThemeSlotsPage/ThemeSlotsPage').ThemeSlotsPage),
           ),
       },
@@ -92,8 +92,8 @@ export const stylesPagesWeb: INavPage[] = [
     title: 'Elevation',
     url: '#/styles/web/elevation',
     component: () => <LoadingComponent title="Elevation" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Styles/ElevationPage/ElevationPage').ElevationPage),
       ),
   },
@@ -110,8 +110,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Fluent UI Icons',
         url: '#/styles/web/icons',
         component: () => <LoadingComponent title="Fluent UI Icons" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/FabricIconsPage/FabricIconsPage').FabricIconsPage),
           ),
       },
@@ -125,8 +125,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'Office Brand Icons',
         url: '#/styles/web/office-brand-icons',
         component: () => <LoadingComponent title="Office Brand Icons" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/OfficeBrandIconsPage/OfficeBrandIconsPage').OfficeBrandIconsPage),
           ),
       },
@@ -134,8 +134,8 @@ export const stylesPagesWeb: INavPage[] = [
         title: 'File Type Icons',
         url: '#/styles/web/file-type-icons',
         component: () => <LoadingComponent title="File Type Icons" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/FileTypeIconsPage/FileTypeIconsPage').FileTypeIconsPage),
           ),
       },
@@ -145,22 +145,22 @@ export const stylesPagesWeb: INavPage[] = [
     title: 'Layout',
     url: '#/styles/web/layout',
     component: () => <LoadingComponent title="Layout" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) => cb(require<any>('../../../pages/Styles/LayoutPage/LayoutPage').LayoutPage)),
+    getComponent: cb =>
+      require.ensure([], require => cb(require<any>('../../../pages/Styles/LayoutPage/LayoutPage').LayoutPage)),
   },
   {
     title: 'Motion',
     url: '#/styles/web/motion',
     component: () => <LoadingComponent title="Motion" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) => cb(require<any>('../../../pages/Styles/MotionPage/MotionPage').MotionPage)),
+    getComponent: cb =>
+      require.ensure([], require => cb(require<any>('../../../pages/Styles/MotionPage/MotionPage').MotionPage)),
   },
   {
     title: 'Typography',
     url: '#/styles/web/typography',
     component: () => <LoadingComponent title="Typography" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Styles/TypographyPage/TypographyPage').TypographyPage),
       ),
   },
@@ -168,8 +168,8 @@ export const stylesPagesWeb: INavPage[] = [
     title: 'Localization',
     url: '#/styles/web/localization',
     component: () => <LoadingComponent title="Localization" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage),
       ),
   },

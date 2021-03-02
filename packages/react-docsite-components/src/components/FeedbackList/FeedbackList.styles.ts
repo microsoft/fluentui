@@ -11,7 +11,7 @@ const globalClassNames = {
   timeStamp: 'FeedbackList-timeStamp',
 };
 
-export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListStyles> = (props) => {
+export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListStyles> = props => {
   const { theme = getTheme() } = props;
   const pivotStyles: Partial<IPivotStyles> = {
     root: [{ paddingTop: 20 }, globalClassNames.pivot],

@@ -3,15 +3,15 @@ import { ModFunctionResult, ModResult, NoOp } from '../types';
 import { Ok, Err, Result } from '../../helpers/result';
 
 export function renameImport(file: SourceFile, originalImport: string, renamedImport: string): Result<ModResult, NoOp> {
-  const imps = file.getImportDeclarations().filter((cond) => {
-    return cond.getNamedImports().some((val) => {
+  const imps = file.getImportDeclarations().filter(cond => {
+    return cond.getNamedImports().some(val => {
       return val.getText() === originalImport;
     });
   });
   if (imps.length === 0) {
     return Err({ logs: ['No matching imports could be found.'] });
   }
-  imps[0].getNamedImports().forEach((name) => {
+  imps[0].getNamedImports().forEach(name => {
     if (name.getText() === originalImport) {
       name.renameAlias(renamedImport);
       name.remove();
@@ -32,11 +32,11 @@ export function getImportsByPath(
 ): ModFunctionResult<ImportDeclaration[]> {
   let imps: ImportDeclaration[] = [];
   if (typeof pathOrRegex === 'string') {
-    imps = file.getImportDeclarations().filter((cond) => {
+    imps = file.getImportDeclarations().filter(cond => {
       return cond.getModuleSpecifierValue() === pathOrRegex;
     });
   } else {
-    imps = file.getImportDeclarations().filter((cond) => {
+    imps = file.getImportDeclarations().filter(cond => {
       return pathOrRegex.test(cond.getModuleSpecifierValue());
     });
   }
@@ -49,11 +49,11 @@ export function appendOrCreateNamedImport(
   moduleSpecifier: string,
   namedImports: (string | ImportSpecifierStructure)[],
 ): ModFunctionResult<ImportDeclaration> {
-  const found = file.getImportDeclaration((val) => {
+  const found = file.getImportDeclaration(val => {
     if (val.getModuleSpecifierValue() === moduleSpecifier) {
       const currentNamedImports = val.getNamedImports();
-      namedImports.forEach((str) => {
-        if (!currentNamedImports.some((cname) => cname.getText() === str)) {
+      namedImports.forEach(str => {
+        if (!currentNamedImports.some(cname => cname.getText() === str)) {
           val.addNamedImport(str);
         }
       });

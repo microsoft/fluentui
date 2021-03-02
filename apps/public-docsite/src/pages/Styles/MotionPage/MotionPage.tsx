@@ -30,7 +30,7 @@ const PatternTable = ({ rows }) => (
   />
 );
 
-export const MotionPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const MotionPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

@@ -22,7 +22,7 @@ export const ThemeProviderNestedExample: React.FunctionComponent = () => {
   return (
     <ThemeProvider style={{ padding: '8px' }} theme={isLight ? lightTheme : darkTheme}>
       {/* eslint-disable-next-line react/jsx-no-bind */}
-      <DefaultButton onClick={() => setIsLight((l) => !l)}>Toggle theme</DefaultButton>
+      <DefaultButton onClick={() => setIsLight(l => !l)}>Toggle theme</DefaultButton>
       <div>I am {isLight ? 'light theme' : 'dark theme'}</div>
 
       <ThemeProvider theme={isLight ? darkTheme : lightTheme}>

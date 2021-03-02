@@ -65,9 +65,9 @@ const items = [
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${treeTitleClassName}`).filterWhere((n) => typeof n.type() === 'string');
+  wrapper.find(`.${treeTitleClassName}`).filterWhere(n => typeof n.type() === 'string');
 const getItems = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${treeItemClassName}`).filterWhere((n) => typeof n.type() === 'string');
+  wrapper.find(`.${treeItemClassName}`).filterWhere(n => typeof n.type() === 'string');
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);
@@ -218,10 +218,12 @@ describe('Tree', () => {
       const wrapper = mountWithProvider(<Tree items={items} />);
 
       // open title '2'
-      getTitles(wrapper).at(1).simulate('click');
+      getTitles(wrapper)
+        .at(1)
+        .simulate('click');
 
       // click on icon of title '21'
-      const icon = wrapper.find(`.${svgIconClassName}`).filterWhere((n) => typeof n.type() === 'string');
+      const icon = wrapper.find(`.${svgIconClassName}`).filterWhere(n => typeof n.type() === 'string');
       icon.simulate('click');
       checkOpenTitles(wrapper, ['1', '2', '21', '211', '22', '3']);
     });

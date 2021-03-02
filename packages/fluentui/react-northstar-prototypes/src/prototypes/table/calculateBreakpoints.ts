@@ -15,10 +15,10 @@ export default function calculateBreakpoints(config: Column[], breakpoints: numb
   const configsWithIndex: Column[] = config.map((column, i) => ({ ...column, childIndex: i + 1 }));
   const tempConfig = configsWithIndex.sort((a, b) => a.priority - b.priority);
 
-  breakpoints.forEach((breakPoint) => {
+  breakpoints.forEach(breakPoint => {
     let tempMinTableSize = minTableSize;
     for (let i = 0; tempMinTableSize > breakPoint; i++) {
-      const currColumn = configsWithIndex.find((column) => tempConfig[i].priority === column.priority);
+      const currColumn = configsWithIndex.find(column => tempConfig[i].priority === column.priority);
       breaks[breakPoint] = breaks[breakPoint] ? [...breaks[breakPoint], currColumn] : [currColumn];
       tempMinTableSize -= tempConfig[i].minWidth;
     }

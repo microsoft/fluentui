@@ -42,7 +42,7 @@ module.exports = {
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$',
   }),
   jestAliases,
-  createConfig: (customConfig) =>
+  createConfig: customConfig =>
     merge(
       {
         moduleNameMapper: {

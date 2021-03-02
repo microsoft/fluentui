@@ -15,7 +15,7 @@ export type IMicroFeedbackState = Pick<
   | 'isThanksVisible'
 >;
 
-export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = (props) => {
+export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => {
   const { sendFeedback } = props;
   const likeRef = useRef<HTMLDivElement | null>(null);
   const dislikeRef = useRef<HTMLDivElement | null>(null);

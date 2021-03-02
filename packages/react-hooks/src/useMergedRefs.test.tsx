@@ -48,7 +48,7 @@ describe('useMergedRefs', () => {
     const refObject: React.RefObject<boolean> = React.createRef<boolean>();
     let refValue: boolean | null = null;
     const TestComponent: React.FunctionComponent = () => {
-      const mergedRef = useMergedRefs<boolean>(refObject, (val) => (refValue = val));
+      const mergedRef = useMergedRefs<boolean>(refObject, val => (refValue = val));
 
       mergedRef(true);
 

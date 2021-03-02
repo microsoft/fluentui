@@ -51,7 +51,7 @@ describe('getDayGrid', () => {
 
   it('returns matrix with days', () => {
     const result = DateGrid.getDayGrid(defaultOptions);
-    const resultUTC = result.map((week) => week.map((day) => normalizeDay(day)));
+    const resultUTC = result.map(week => week.map(day => normalizeDay(day)));
     expect(resultUTC).toMatchSnapshot();
   });
 
@@ -73,12 +73,12 @@ describe('getDayGrid', () => {
       dateRangeType: DateRangeType.Day,
       daysToSelectInDayView: daysToSelect,
     });
-    expect(countDays(result, (day) => day.isSelected)).toBe(daysToSelect);
+    expect(countDays(result, day => day.isSelected)).toBe(daysToSelect);
   });
 
   it('returns grid with no selected days', () => {
     const result = DateGrid.getDayGrid({ ...defaultOptions, selectedDate: new Date(0) });
-    expect(countDays(result, (day) => day.isSelected)).toBe(0);
+    expect(countDays(result, day => day.isSelected)).toBe(0);
   });
 
   it('returns grid with proper amount of weeks', () => {
@@ -87,7 +87,7 @@ describe('getDayGrid', () => {
       minDate: addDays(defaultDate, -1),
       maxDate: addDays(defaultDate, 1),
     });
-    expect(countDays(result, (day) => day.isInBounds)).toBe(3);
+    expect(countDays(result, day => day.isInBounds)).toBe(3);
   });
 
   it('returns grid with proper today', () => {
@@ -96,8 +96,8 @@ describe('getDayGrid', () => {
       ...defaultOptions,
       today,
     });
-    expect(countDays(result, (day) => day.isToday)).toBe(1);
-    expect(countDays(result, (day) => compareDates(today, day.originalDate) && day.isToday)).toBe(1);
+    expect(countDays(result, day => day.isToday)).toBe(1);
+    expect(countDays(result, day => compareDates(today, day.originalDate) && day.isToday)).toBe(1);
   });
 
   it('returns grid with proper amount of work week days when over multiple work weeks', () => {
@@ -107,7 +107,7 @@ describe('getDayGrid', () => {
       dateRangeType: DateRangeType.WorkWeek,
       firstDayOfWeek: DayOfWeek.Monday,
     });
-    expect(countDays(result, (day) => day.isSelected)).toBe(7);
+    expect(countDays(result, day => day.isSelected)).toBe(7);
   });
 
   it('returns grid with proper amount of work week days when over single work weeks', () => {
@@ -117,6 +117,6 @@ describe('getDayGrid', () => {
       dateRangeType: DateRangeType.WorkWeek,
       firstDayOfWeek: DayOfWeek.Tuesday,
     });
-    expect(countDays(result, (day) => day.isSelected)).toBe(3);
+    expect(countDays(result, day => day.isSelected)).toBe(3);
   });
 });

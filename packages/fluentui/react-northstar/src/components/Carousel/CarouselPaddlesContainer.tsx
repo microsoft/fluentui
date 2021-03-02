@@ -30,7 +30,7 @@ export const carouselPaddlesContainerClassName = 'ui-carrouselpaddles_container'
  * A CarouselPaddlesContainer is a container for the Carousel Paddles.
  */
 export const CarouselPaddlesContainer: ComponentWithAs<'div', CarouselPaddlesContainerProps> &
-  FluentComponentStaticProps<CarouselPaddlesContainerProps> = (props) => {
+  FluentComponentStaticProps<CarouselPaddlesContainerProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselPaddlesContainer.displayName, context.telemetry);
   setStart();

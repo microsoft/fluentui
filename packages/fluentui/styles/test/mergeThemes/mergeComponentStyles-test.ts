@@ -121,8 +121,8 @@ describe('mergeComponentStyles', () => {
     });
 
     test('functions can accept and apply params', () => {
-      const target = { root: (param) => ({ target: true, ...param }) };
-      const source = { root: (param) => ({ source: true, ...param }) };
+      const target = { root: param => ({ target: true, ...param }) };
+      const source = { root: param => ({ source: true, ...param }) };
 
       const merged = mergeComponentStyles(target, source);
 

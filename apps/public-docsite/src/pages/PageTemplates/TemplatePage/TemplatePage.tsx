@@ -26,7 +26,7 @@ export interface ITemplatePageProps extends IPageProps<Platforms> {}
 // For an example which uses a class component (and state), see ProductsPage.
 
 // Define the base component.
-const TemplatePageBase: React.FunctionComponent<ITemplatePageProps> = (props) => {
+const TemplatePageBase: React.FunctionComponent<ITemplatePageProps> = props => {
   const { platform } = props;
   return (
     // The Page component is a flexible wrapper for content sections and a siderail.

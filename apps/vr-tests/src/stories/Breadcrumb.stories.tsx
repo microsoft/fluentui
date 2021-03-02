@@ -8,7 +8,7 @@ const noOp = () => undefined;
 
 storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -74,7 +74,7 @@ storiesOf('Breadcrumb', module)
 
 // Stories for hovering over actionable and non-actionable items
 storiesOf('Breadcrumb', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .hover('.ms-Breadcrumb-list li:nth-child(2)')

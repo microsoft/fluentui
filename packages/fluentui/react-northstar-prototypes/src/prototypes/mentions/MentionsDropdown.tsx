@@ -10,7 +10,7 @@ type RenderItem = {
   fontWeight: FontWeightProperty;
 };
 
-const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = (props) => {
+const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props => {
   const { searchQuery, items, onOpenChange, onSearchQueryChange, onInputKeyDown } = props;
 
   const renderItem = React.useCallback((args: RenderItem) => getCustomItem({ ...args, searchQuery }), [searchQuery]);

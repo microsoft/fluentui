@@ -14,7 +14,7 @@ export type ColorRampItemProps = {
   value?: string;
 };
 
-export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = (props) => {
+export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = props => {
   const color = new TinyColor(props.value);
   const isDark = color.isDark();
   const isTransparent = color.getAlpha() < 0.5;
@@ -38,7 +38,7 @@ export const ColorRampItem: React.FunctionComponent<ColorRampItemProps> = (props
 /**
  * Renders a color ramp for documentation purposes.
  */
-export const ColorRamp: React.FunctionComponent<ColorRampProps> = (props) => (
+export const ColorRamp: React.FunctionComponent<ColorRampProps> = props => (
   <div>
     {Object.entries(props.ramp).map(([name, value]) => {
       return <ColorRampItem key={name + ':' + value} name={name} value={value} />;

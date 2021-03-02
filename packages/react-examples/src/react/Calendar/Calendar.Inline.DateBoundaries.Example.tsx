@@ -21,7 +21,7 @@ export const CalendarInlineDateBoundariesExample: React.FunctionComponent = () =
       <div>
         Date boundary: {minDate.toLocaleDateString()}-{maxDate.toLocaleDateString()}
       </div>
-      <div>Disabled dates: {restrictedDates.map((d) => d.toLocaleDateString()).join(', ')}</div>
+      <div>Disabled dates: {restrictedDates.map(d => d.toLocaleDateString()).join(', ')}</div>
       <Calendar
         highlightSelectedMonth
         showGoToToday={false}

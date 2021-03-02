@@ -34,7 +34,7 @@ function getStyle(lang: string) {
 
 storiesOf('Fonts', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -46,7 +46,7 @@ storiesOf('Fonts', module)
   )
   .addStory('Weights', () => (
     <div style={getStyle('en')}>
-      {Weights.map((weight) => (
+      {Weights.map(weight => (
         <p key={weight} style={{ fontWeight: weight }}>
           Weight {weight}: Testing fontweight
         </p>

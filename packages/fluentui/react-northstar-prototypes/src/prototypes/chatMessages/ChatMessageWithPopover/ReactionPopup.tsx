@@ -14,7 +14,7 @@ class ReactionPopup extends React.Component<ReactionProps, { open: boolean }> {
     open: false,
   };
 
-  handleKeyDownOnMenu = (e) => {
+  handleKeyDownOnMenu = e => {
     if (e.keyCode === keyboardKey.Tab) {
       this.setState({ open: false });
     }

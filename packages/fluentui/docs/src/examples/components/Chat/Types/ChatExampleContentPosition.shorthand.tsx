@@ -5,7 +5,7 @@ import { AcceptIcon } from '@fluentui/react-icons-northstar';
 const [robinAvatar, timAvatar] = [
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
   'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg',
-].map((src) => ({
+].map(src => ({
   image: src,
   status: { color: 'green', icon: <AcceptIcon /> },
 }));

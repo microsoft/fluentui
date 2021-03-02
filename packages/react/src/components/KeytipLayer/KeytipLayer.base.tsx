@@ -371,7 +371,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   private _getVisibleKeytips(keytips: IKeytipProps[]): IKeytipProps[] {
     // Filter out non-visible keytips and duplicates
     const seenIds: { [childSequence: string]: number } = {};
-    return keytips.filter((keytip) => {
+    return keytips.filter(keytip => {
       let keytipId = sequencesToID(keytip.keySequences);
       if (keytip.overflowSetSequence) {
         // Account for overflow set sequences when checking for duplicates
@@ -678,7 +678,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};
-    return keytipIds.filter((keytipId) => {
+    return keytipIds.filter(keytipId => {
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
       // Only add the first duplicate keytip seen
       return seenIds[keytipId] === 2;

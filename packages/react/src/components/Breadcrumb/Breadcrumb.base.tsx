@@ -33,7 +33,7 @@ const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
 const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
-  styles: (props) => {
+  styles: props => {
     const { theme } = props;
     return {
       root: {

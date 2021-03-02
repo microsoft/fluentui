@@ -46,7 +46,7 @@ describe('Input', () => {
 
   describe('input related HTML attribute', () => {
     // `input` will be always controlled component so there is no need to pass down `defaultValue`
-    _.without(htmlInputAttrs, 'defaultValue').forEach((attr) => {
+    _.without(htmlInputAttrs, 'defaultValue').forEach(attr => {
       it(`'${attr}' is set correctly to '${testValue}'`, () => {
         // as `testValue` is a string it can cause propTypes errors on `Input`
         consoleUtil.disableOnce();
@@ -61,7 +61,10 @@ describe('Input', () => {
     it('calls onChange on Clearable icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
-      wrapper.find(`.${inputSlotClassNames.icon}`).first().simulate('click');
+      wrapper
+        .find(`.${inputSlotClassNames.icon}`)
+        .first()
+        .simulate('click');
       expect(onChange).toBeCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),

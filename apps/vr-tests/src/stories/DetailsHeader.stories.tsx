@@ -115,7 +115,7 @@ const _columnReorderProps = {
 
 storiesOf('DetailsHeader', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })

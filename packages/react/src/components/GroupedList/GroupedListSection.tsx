@@ -383,7 +383,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     return !subGroup || subGroup.count > 0 || (groupProps && groupProps.showEmptyGroups) ? (
       <GroupedListSection
-        ref={(ref) => (this._subGroupRefs['subGroup_' + subGroupIndex] = ref)}
+        ref={ref => (this._subGroupRefs['subGroup_' + subGroupIndex] = ref)}
         key={this._getGroupKey(subGroup, subGroupIndex)}
         dragDropEvents={dragDropEvents}
         dragDropHelper={dragDropHelper}

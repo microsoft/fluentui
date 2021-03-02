@@ -17,7 +17,7 @@ const roleDropdown = {
   content: <Dropdown inline items={['Owner', 'Member']} defaultValue={'Owner'} />,
   truncateContent: false,
   accessibility: gridCellMultipleFocusableBehavior,
-  onClick: (e) => e.stopPropagation(),
+  onClick: e => e.stopPropagation(),
 };
 
 const tagButtons = {

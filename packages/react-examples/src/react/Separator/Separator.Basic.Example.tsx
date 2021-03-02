@@ -8,7 +8,7 @@ const stackTokens: IStackTokens = { childrenGap: 12 };
 
 const HorizontalSeparatorStack = (props: { children: JSX.Element[] }) => (
   <>
-    {React.Children.map(props.children, (child) => {
+    {React.Children.map(props.children, child => {
       return <Stack tokens={stackTokens}>{child}</Stack>;
     })}
   </>
@@ -16,7 +16,7 @@ const HorizontalSeparatorStack = (props: { children: JSX.Element[] }) => (
 
 const VerticalSeparatorStack = (props: { children: JSX.Element[] }) => (
   <Stack horizontal horizontalAlign="space-evenly">
-    {React.Children.map(props.children, (child) => {
+    {React.Children.map(props.children, child => {
       return (
         <Stack horizontalAlign="center" tokens={stackTokens}>
           {child}

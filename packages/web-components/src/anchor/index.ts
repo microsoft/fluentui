@@ -63,7 +63,7 @@ export class FluentAnchor extends Anchor {
    * @internal
    */
   public defaultSlottedContentChanged(): void {
-    const slottedElements = this.defaultSlottedContent.filter((x) => x.nodeType === Node.ELEMENT_NODE);
+    const slottedElements = this.defaultSlottedContent.filter(x => x.nodeType === Node.ELEMENT_NODE);
 
     if (slottedElements.length === 1 && slottedElements[0] instanceof SVGElement) {
       this.control.classList.add('icon-only');

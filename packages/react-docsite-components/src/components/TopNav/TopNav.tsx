@@ -32,7 +32,7 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
 
   public componentWillUnmount(): void {
     this._isMounted = false;
-    this._disposables.forEach((dispose) => dispose());
+    this._disposables.forEach(dispose => dispose());
   }
 
   public render(): JSX.Element {

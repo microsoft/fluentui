@@ -10,7 +10,7 @@ interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
   chartYTop: number;
 }
 
-export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendProps> = (props) => {
+export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendProps> = props => {
   const textWidth = props.labelWidth ? props.labelWidth : 105;
   const textY = props.chartYTop - 20;
   const lineTopY = textY + 7;
@@ -19,11 +19,11 @@ export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendPr
   const fontSize = '10pt';
   const axisRange = props.scale.range();
 
-  const lineDefs: ILineDef[] = props.events.map((e) => ({ ...e, x: props.scale(e.date) }));
+  const lineDefs: ILineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
 
-  const lines = uniqBy(lineDefs, (x) => x.date.toString()).map((x, i) => (
+  const lines = uniqBy(lineDefs, x => x.date.toString()).map((x, i) => (
     <line
       key={i}
       x1={x.x}
@@ -99,7 +99,7 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
 
     let idx = findIndex(
       lineDefs,
-      (ds) => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
+      ds => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
       currentIdx + 1,
     );
     if (idx === -1) {

@@ -56,9 +56,9 @@ export const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProp
     setStart();
 
     const parentProps = (useContextSelectors(MenuContext, {
-      variables: (v) => v.variables,
-      slotProps: (v) => v.slotProps.divider,
-      accessibility: (v) => v.behaviors.divider,
+      variables: v => v.variables,
+      slotProps: v => v.slotProps.divider,
+      accessibility: v => v.behaviors.divider,
     }) as unknown) as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const props = {

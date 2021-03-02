@@ -7,7 +7,7 @@ export interface IButtonExampleProps {
   checked?: boolean;
 }
 
-export const ButtonAnchorExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonAnchorExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   // The href causes this button to be rendered as an anchor.

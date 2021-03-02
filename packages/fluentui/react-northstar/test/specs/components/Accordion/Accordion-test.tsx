@@ -28,27 +28,29 @@ const panels = [
 const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrapper => {
   return wrapper
     .find(`.${accordionTitleSlotClassNames.contentWrapper}`)
-    .filterWhere((n) => typeof n.type() === 'string')
+    .filterWhere(n => typeof n.type() === 'string')
     .at(index);
 };
 
 const getExclusiveItemWithPropIndex = (accordion, prop) =>
-  accordion.find('AccordionTitle').filterWhere((accordionTitle) => accordionTitle.prop(prop));
+  accordion.find('AccordionTitle').filterWhere(accordionTitle => accordionTitle.prop(prop));
 
 const getNonExclusiveItemWithPropIndex = (accordion, prop) =>
   accordion
     .find('AccordionTitle')
-    .filterWhere((accordionTitle) => accordionTitle.prop(prop))
+    .filterWhere(accordionTitle => accordionTitle.prop(prop))
     .prop('index');
 
 const getNonExclusiveItemWithPropArray = (accordion, prop) =>
   accordion
     .find('AccordionTitle')
-    .filterWhere((accordionTitle) => accordionTitle.prop(prop))
-    .map((node) => node.prop('index'));
+    .filterWhere(accordionTitle => accordionTitle.prop(prop))
+    .map(node => node.prop('index'));
 
 const getAccordionTitleAtIndex = (accordion, index) =>
-  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`).at(index).getDOMNode();
+  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`)
+    .at(index)
+    .getDOMNode();
 
 describe('Accordion', () => {
   isConformant(Accordion, {
@@ -101,7 +103,7 @@ describe('Accordion', () => {
       expect(
         accordion
           .find('AccordionTitle')
-          .filterWhere((accordionTitle) => accordionTitle.prop('active'))
+          .filterWhere(accordionTitle => accordionTitle.prop('active'))
           .prop('index'),
       ).toEqual(0);
 
@@ -109,7 +111,7 @@ describe('Accordion', () => {
       expect(
         accordion
           .find('AccordionTitle')
-          .filterWhere((accordionTitle) => accordionTitle.prop('active'))
+          .filterWhere(accordionTitle => accordionTitle.prop('active'))
           .prop('index'),
       ).toEqual(2);
     });

@@ -199,7 +199,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
           value={this.state.barGapMax}
           min={0}
           max={10}
-          onChange={(e) => this.setState({ barGapMax: +e.target.value })}
+          onChange={e => this.setState({ barGapMax: +e.target.value })}
         />
         <ChoiceGroup
           options={options}

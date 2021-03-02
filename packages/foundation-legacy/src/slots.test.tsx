@@ -329,7 +329,7 @@ describe('createFactory', () => {
         componentProps,
         undefined,
         {
-          render: (props) => <span {...props} id="I should be present alongside componentProps" />,
+          render: props => <span {...props} id="I should be present alongside componentProps" />,
         },
         undefined,
       ) as JSX.Element,
@@ -351,7 +351,7 @@ describe('createFactory', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it(`passes props and type arguments to userProp function`, (done) => {
+  it(`passes props and type arguments to userProp function`, done => {
     const slotOptions: ISlotOptions<typeof userProps.props | typeof renderProps> = {
       render: (props, DefaultComponent) => {
         expect(props).toEqual({ ...componentProps, ...renderProps, ...emptyClassName });
@@ -379,7 +379,7 @@ describe('getSlots', () => {
 
   interface ITestProps extends ITestSlots {}
 
-  it(`creates slots and passes merged props to them`, (done) => {
+  it(`creates slots and passes merged props to them`, done => {
     const testUserProps = {
       testSlot1: {
         className: 'testSlot1Classname',
@@ -398,7 +398,7 @@ describe('getSlots', () => {
     };
 
     const testSlotDefinition: ISlotDefinition<Required<ITestSlots>> = {
-      testSlot1: (props) => {
+      testSlot1: props => {
         // User props should override slot props
         expect(props).toEqual({
           ...testUserProps.testSlot1,
@@ -406,7 +406,7 @@ describe('getSlots', () => {
         });
         return null;
       },
-      testSlot2: (props) => {
+      testSlot2: props => {
         // No user prop for slot in this case, so slot props should be present
         expect(props).toEqual({
           ...testSlot2Props,

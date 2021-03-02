@@ -39,14 +39,19 @@ const buttonStyle = ({ active }: { active: boolean }): React.CSSProperties => ({
   zIndex: active ? 2 : 1,
 });
 
-const ColorButton: React.FunctionComponent<
-  {
-    color: ThemeAliasColors;
-    active: boolean;
-    setPreviewColor: (color: ThemeAliasColors | null) => void;
-    setColor: (color: ThemeAliasColors) => void;
-  } & React.ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ style = {}, color, active, setPreviewColor, setColor, ...rest }) => (
+const ColorButton: React.FunctionComponent<{
+  color: ThemeAliasColors;
+  active: boolean;
+  setPreviewColor: (color: ThemeAliasColors | null) => void;
+  setColor: (color: ThemeAliasColors) => void;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
+  style = {},
+  color,
+  active,
+  setPreviewColor,
+  setColor,
+  ...rest
+}) => (
   <button
     style={{
       ...style,
@@ -114,7 +119,7 @@ export const AliasColors = () => {
           //       The selected swatch then is used to populate the alias grid.
           //       But, global.palette has 'grey' and there is no alias.color.grey so it throws.
           //       Filtering grey out here, but this means our structure is wrong.
-          .filter((key) => key !== 'grey' && key !== 'brand')
+          .filter(key => key !== 'grey' && key !== 'brand')
           .map((colorName: Exclude<keyof Theme['global']['palette'], 'grey' | 'brand'>) => (
             <ColorButton
               key={colorName}

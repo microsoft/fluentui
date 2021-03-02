@@ -11,7 +11,7 @@ export const baseCodeStyle: IRawStyle = {
   color: NeutralColors.gray160,
 };
 
-export const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = (props) => {
+export const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = props => {
   return {
     root: [
       {

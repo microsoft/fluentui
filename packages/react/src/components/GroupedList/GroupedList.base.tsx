@@ -397,7 +397,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
     return !!(
       groups &&
-      groups.some((group) => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
+      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
     );
   }
 

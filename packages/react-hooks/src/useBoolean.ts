@@ -28,7 +28,7 @@ export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallback
     setValue(false);
   });
   const toggle = useConst(() => () => {
-    setValue((currentValue) => !currentValue);
+    setValue(currentValue => !currentValue);
   });
 
   return [value, { setTrue, setFalse, toggle }];

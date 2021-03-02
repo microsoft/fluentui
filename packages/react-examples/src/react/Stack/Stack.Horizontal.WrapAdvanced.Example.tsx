@@ -51,7 +51,7 @@ const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
-const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleOptions> = (props) => {
+const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = props;
 
   // Mutating styles definition
@@ -75,7 +75,7 @@ const HorizontalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampl
         styles={stackStyles}
         tokens={wrapStackTokens}
       >
-        {range(1, 10).map((n) => (
+        {range(1, 10).map(n => (
           <span style={itemStyles} key={n}>
             {n}
           </span>

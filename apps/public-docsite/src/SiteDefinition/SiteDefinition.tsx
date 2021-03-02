@@ -35,7 +35,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       isUhfLink: true,
       isContentFullBleed: true,
       component: () => <LoadingComponent title="Welcome to Fluent UI" />,
-      getComponent: (cb) => require.ensure([], (require) => cb(require<any>('../pages/HomePage/HomePage').HomePage)),
+      getComponent: cb => require.ensure([], require => cb(require<any>('../pages/HomePage/HomePage').HomePage)),
     },
     GetStartedPages,
     StylesPages,
@@ -52,8 +52,8 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       url: '#/ms-page-template',
       isHiddenFromMainNav: true,
       component: () => <LoadingComponent title="Template Page" />,
-      getComponent: (cb) =>
-        require.ensure([], (require) =>
+      getComponent: cb =>
+        require.ensure([], require =>
           cb(require<any>('../pages/PageTemplates/TemplatePage/TemplatePage').TemplatePage),
         ),
     },

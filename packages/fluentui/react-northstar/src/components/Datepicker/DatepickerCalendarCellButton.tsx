@@ -88,7 +88,7 @@ export const DatepickerCalendarCellButton = compose<
     const getA11yProps = useAccessibility(props.accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {
-        performClick: (e) => {
+        performClick: e => {
           // prevent Spacebar from scrolling
           e.preventDefault();
           handleClick(e);

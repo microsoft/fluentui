@@ -25,7 +25,7 @@ describe('FormField', () => {
 
   it('renders the component control provided in the control shorthand prop', () => {
     const controls = [Button, Input, RadioGroup];
-    controls.forEach((control) => {
+    controls.forEach(control => {
       const formField = getFormField(control);
       const controlElement = formField.find(control);
       expect(controlElement.length).toEqual(1);
@@ -54,7 +54,12 @@ describe('FormField', () => {
     );
 
     expect(formField.find(inputIconClassName)).toBeDefined();
-    expect(formField.find(`.${formFieldMessageClassName}`).at(0).getDOMNode().textContent).toBe('ERROR');
+    expect(
+      formField
+        .find(`.${formFieldMessageClassName}`)
+        .at(0)
+        .getDOMNode().textContent,
+    ).toBe('ERROR');
   });
 
   it('renders satisfactory indicator', () => {

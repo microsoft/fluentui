@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Button, Grid, Popup } from '@fluentui/react-northstar';
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
-const PopupWithButton = (props) => (
+const PopupWithButton = props => (
   <Popup
     align={props.align}
     content={

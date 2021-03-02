@@ -720,7 +720,7 @@ describe('SpinButton', () => {
     it('continues spinning until mouseUp', () => {
       jest.useFakeTimers();
 
-      const onIncrement = jest.fn((value) => String(+value + 1));
+      const onIncrement = jest.fn(value => String(+value + 1));
       const onChange = jest.fn();
 
       wrapper = mount(<SpinButton componentRef={ref} onIncrement={onIncrement} onChange={onChange} />);

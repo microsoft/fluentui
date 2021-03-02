@@ -11,7 +11,7 @@ const defaultProps = {
 
 storiesOf('Panel', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -81,7 +81,7 @@ storiesOf('Panel', module)
   ));
 
 storiesOf('Panel', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default')

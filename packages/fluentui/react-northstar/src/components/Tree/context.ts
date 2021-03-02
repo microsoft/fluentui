@@ -13,7 +13,7 @@ export interface TreeRenderContextValue {
 }
 
 export const TreeContext = React.createContext<TreeRenderContextValue>({
-  getItemById: (id) => ({ id } as any),
+  getItemById: id => ({ id } as any),
   registerItemRef: _.noop,
   toggleItemActive: _.noop,
   focusItemById: _.noop,

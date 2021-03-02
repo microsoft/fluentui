@@ -43,9 +43,8 @@ export const avatarImageClassName = imageClassName;
 /**
  * An AvatarImage is a graphic representation used by Avatar.
  */
-export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> & FluentComponentStaticProps<AvatarImageProps> = (
-  props,
-) => {
+export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
+  FluentComponentStaticProps<AvatarImageProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarImage.displayName, context.telemetry);
   setStart();

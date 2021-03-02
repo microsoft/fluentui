@@ -81,13 +81,13 @@ export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[
  * Returns true if a list of menu items can contain a checkbox
  */
 export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
-  return items.some((item) => {
+  return items.some(item => {
     if (item.canCheck) {
       return true;
     }
 
     // If the item is a section, check if any of the items in the section can check.
-    if (item.sectionProps && item.sectionProps.items.some((submenuItem) => submenuItem.canCheck === true)) {
+    if (item.sectionProps && item.sectionProps.items.some(submenuItem => submenuItem.canCheck === true)) {
       return true;
     }
 
@@ -419,7 +419,7 @@ class ContextualMenuInternal extends React.Component<IContextualMenuInternalProp
 
       return (
         <MenuContext.Consumer>
-          {(menuContext) => (
+          {menuContext => (
             <Callout
               styles={calloutStyles}
               onRestoreFocus={this._tryFocusPreviousActiveElement}

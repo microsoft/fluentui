@@ -45,7 +45,7 @@ export const PeoplePickerListExample: React.FunctionComponent = () => {
   };
 
   const filterPersonasByText = (filterText: string): IPersonaProps[] => {
-    return peopleList.filter((item) => doesTextStartWith(item.text as string, filterText));
+    return peopleList.filter(item => doesTextStartWith(item.text as string, filterText));
   };
 
   const filterPromise = (personasToReturn: IPersonaProps[]): IPersonaProps[] | Promise<IPersonaProps[]> => {
@@ -133,14 +133,14 @@ function doesTextStartWith(text: string, filterText: string): boolean {
 }
 
 function removeDuplicates(personas: IPersonaProps[], possibleDupes: IPersonaProps[]) {
-  return personas.filter((persona) => !listContainsPersona(persona, possibleDupes));
+  return personas.filter(persona => !listContainsPersona(persona, possibleDupes));
 }
 
 function listContainsPersona(persona: IPersonaProps, personas: IPersonaProps[]) {
   if (!personas || !personas.length || personas.length === 0) {
     return false;
   }
-  return personas.filter((item) => item.text === persona.text).length > 0;
+  return personas.filter(item => item.text === persona.text).length > 0;
 }
 
 function convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {

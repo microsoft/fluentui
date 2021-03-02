@@ -75,7 +75,7 @@ export const resolveStyles = (
   if (performanceFlags.enableBooleanVariablesCaching) {
     if (_.isPlainObject(variables)) {
       const hasOnlyBooleanVariables = Object.keys(variables).every(
-        (variableName) =>
+        variableName =>
           variables[variableName] === null ||
           typeof variables[variableName] === 'undefined' ||
           typeof variables[variableName] === 'boolean',
@@ -97,7 +97,7 @@ export const resolveStyles = (
   if (allDisplayNames.length === 1) {
     mergedStyles = theme.componentStyles[allDisplayNames[0]] || { root: () => ({}) };
   } else {
-    const styles = allDisplayNames.map((displayName) => theme.componentStyles[displayName]).filter(Boolean);
+    const styles = allDisplayNames.map(displayName => theme.componentStyles[displayName]).filter(Boolean);
 
     if (styles.length > 0) {
       mergedStyles = styles.reduce<ComponentSlotStylesPrepared>((acc, styles) => {
@@ -156,7 +156,7 @@ export const resolveStyles = (
       }`
     : '';
 
-  Object.keys(mergedStyles).forEach((slotName) => {
+  Object.keys(mergedStyles).forEach(slotName => {
     // resolve/render slot styles once and cache
     const lazyEvaluationKey = `${slotName}__return`;
     const slotCacheKey = componentCacheKey + slotName;

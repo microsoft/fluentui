@@ -24,7 +24,7 @@ export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
     );
   }
 
-  private _onRenderRow: IDetailsListProps['onRenderRow'] = (props) => {
+  private _onRenderRow: IDetailsListProps['onRenderRow'] = props => {
     const customStyles: Partial<IDetailsRowStyles> = {};
     if (props) {
       if (props.itemIndex % 2 === 0) {

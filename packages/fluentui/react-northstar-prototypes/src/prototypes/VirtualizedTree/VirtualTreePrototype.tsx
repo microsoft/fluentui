@@ -15,7 +15,7 @@ const CustomTreeTitle = (
   </Component>
 );
 
-const itemToString = (item) => item.title;
+const itemToString = item => item.title;
 
 const VirtualizedTreePrototype = () => {
   return (

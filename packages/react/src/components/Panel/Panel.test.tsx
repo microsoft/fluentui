@@ -29,7 +29,7 @@ describe('Panel', () => {
   it('renders Panel correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const originalCreatePortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 
@@ -162,7 +162,7 @@ describe('Panel', () => {
   it('allows the consumer to pass through popup props', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const originalCreatePortal = ReactDOM.createPortal;
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 

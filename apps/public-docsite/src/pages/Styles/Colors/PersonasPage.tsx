@@ -11,7 +11,7 @@ const personaColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data
 // eslint-disable-next-line import/no-extraneous-dependencies
 const personaGroupColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-persona-groups.json');
 
-export const ColorsPersonasPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const ColorsPersonasPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

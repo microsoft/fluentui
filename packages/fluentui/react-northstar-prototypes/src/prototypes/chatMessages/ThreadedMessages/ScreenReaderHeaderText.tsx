@@ -7,7 +7,7 @@ type ScreenReaderTextProps = {
   author?: string;
 };
 
-const ScreenReaderHeaderText: React.FC<ScreenReaderTextProps> = (props) => {
+const ScreenReaderHeaderText: React.FC<ScreenReaderTextProps> = props => {
   return (
     <div style={chatProtoStyle.screenReaderContainerStyles} role="heading" aria-level={4}>
       {getMessagePreviewForScreenReader(props.text, props.author)}

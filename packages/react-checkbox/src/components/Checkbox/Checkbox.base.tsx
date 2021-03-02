@@ -36,10 +36,8 @@ export const CheckboxBase: ComponentWithAs<'div', ICheckboxProps> = compose<
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
 
-          {
-            // eslint-disable-next-line deprecation/deprecation
-            (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)
-          }
+          {// eslint-disable-next-line deprecation/deprecation
+          (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
         </slots.container>
       </slots.root>
     );

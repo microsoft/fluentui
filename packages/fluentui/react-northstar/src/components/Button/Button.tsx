@@ -163,7 +163,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
         disabledFocusable,
       }),
       actionHandlers: {
-        performClick: (event) => {
+        performClick: event => {
           event.preventDefault();
           handleClick(event);
         },
@@ -278,7 +278,7 @@ export const Button = compose<'button', ButtonProps, ButtonStylesProps, {}, {}>(
       icon: Box,
       loader: Loader,
     },
-    slotProps: (props) => ({
+    slotProps: props => ({
       content: {
         size: props.size,
       },

@@ -10,7 +10,7 @@ export interface IButtonExampleProps {
 
 const menuProps: IContextualMenuProps = {
   // For example: disable dismiss if shift key is held down while dismissing
-  onDismiss: (ev) => {
+  onDismiss: ev => {
     if (ev && 'shiftKey' in ev) {
       ev.preventDefault();
     }
@@ -31,7 +31,7 @@ const menuProps: IContextualMenuProps = {
 };
 const addIcon: IIconProps = { iconName: 'Add' };
 
-export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonContextualMenuExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (

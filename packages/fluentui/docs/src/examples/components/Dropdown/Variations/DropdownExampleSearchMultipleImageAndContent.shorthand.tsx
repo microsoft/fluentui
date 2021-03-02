@@ -62,8 +62,8 @@ const DropdownExampleSearchMultipleImageAndContent = () => (
 );
 
 const getA11ySelectionMessage = {
-  onAdd: (item) => `${item.header} selected. Press left or right arrow keys to navigate selected items.`,
-  onRemove: (item) => `${item.header} has been removed.`,
+  onAdd: item => `${item.header} selected. Press left or right arrow keys to navigate selected items.`,
+  onRemove: item => `${item.header} has been removed.`,
 };
 
 export default DropdownExampleSearchMultipleImageAndContent;

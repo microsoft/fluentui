@@ -9,7 +9,7 @@ import {
   ICollapsibleSectionTitleSlots,
 } from './CollapsibleSectionTitle.types';
 
-export const CollapsibleSectionTitleView: ICollapsibleSectionTitleComponent['view'] = (props) => {
+export const CollapsibleSectionTitleView: ICollapsibleSectionTitleComponent['view'] = props => {
   const Slots = getSlots<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleSlots>(props, {
     root: 'button',
     chevron: Icon,

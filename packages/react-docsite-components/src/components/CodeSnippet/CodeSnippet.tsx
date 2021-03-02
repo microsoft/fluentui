@@ -79,7 +79,7 @@ const languageMapping: { [key: string]: string } = {
   css: 'scss',
 };
 
-const CodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = (props) => {
+const CodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, { className: props.className });
   return (
     <SyntaxHighlighter

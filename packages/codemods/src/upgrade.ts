@@ -20,25 +20,25 @@ export function _upgradeInternal(options: CommandParserResult, fns: UpgradeFunct
   if (options.saveSync) {
     logger.log('Saving files synchronously');
   }
-  configs.forEach((configString) => {
+  configs.forEach(configString => {
     // Lazily create/load each project to help deal with large monorepos
     const project = new Project({ tsConfigFilePath: configString });
     let error = false;
     try {
       const files = project.getSourceFiles();
-      runMods(mods, files, (result) => {
+      runMods(mods, files, result => {
         const [okays, errors] = result.resultList;
 
         if (errors.length > 0) {
           error = true;
           logger.error(`File ${result.file.getBaseName()} has had the following mods error: `);
-          errors.forEach((v) => {
+          errors.forEach(v => {
             logger.error('name: ', v.modName, 'errorData: ', v);
           });
         }
 
         logger.log(`File ${result.file.getBaseName()} has had the following mods run: `);
-        okays.forEach((v) => {
+        okays.forEach(v => {
           logger.log('name: ', v.modName, 'logdata: ', v.logs);
         });
         if (!error && options.saveSync) {
@@ -58,8 +58,8 @@ export function _upgradeInternal(options: CommandParserResult, fns: UpgradeFunct
 
 export function upgrade(options: CommandParserResult) {
   _upgradeInternal(options, {
-    saveAsync: (pr) => pr.save(),
-    saveSync: (file) => file.saveSync(),
+    saveAsync: pr => pr.save(),
+    saveSync: file => file.saveSync(),
     getTsConfigs: getTsConfigs,
   });
 }

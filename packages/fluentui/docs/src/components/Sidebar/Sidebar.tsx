@@ -40,11 +40,11 @@ interface SidebarProps {
   treeItemStyle: React.CSSProperties;
 }
 
-const treeItemsByType = _.map(typeOrder, (nextType) => {
+const treeItemsByType = _.map(typeOrder, nextType => {
   const items = _.chain([...componentMenu, ...behaviorMenu])
     .filter(({ type }) => type === nextType)
     .filter(({ displayName }) => !_.includes(componentsBlackList, displayName))
-    .map((info) => ({
+    .map(info => ({
       id: info.displayName.concat(nextType),
       title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) },
     }))
@@ -347,8 +347,8 @@ const baseTreeItems: TreeProps['items'] = [
 
 const changeLogUrl: string = `${config.repoURL}/blob/master/packages/fluentui/CHANGELOG.md`;
 
-const removePublicTags = (prototyptesTreeItems) => {
-  return prototyptesTreeItems.map((p) => {
+const removePublicTags = prototyptesTreeItems => {
+  return prototyptesTreeItems.map(p => {
     delete p.public;
     return p;
   });
@@ -369,14 +369,14 @@ const getSectionsWithPrototypeSectionIfApplicable = (currentSections, allPrototy
   return currentSections.concat(prototypeTreeSection);
 };
 
-const Sidebar: React.FC<RouteComponentProps & SidebarProps> = (props) => {
+const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   const [query, setQuery] = React.useState('');
   const [activeItemIds, setActiveItemIds] = React.useState<string[]>([]);
   const searchInputRef = React.useRef<HTMLInputElement>();
   const regexQuery = React.useMemo(() => new RegExp(`.*${_.escapeRegExp(query)}`, 'i'), [query]);
 
   const handleDocumentKeyDown = React.useCallback(
-    (e) => {
+    e => {
       const code = getCode(e);
       const isAZ = code >= 65 && code <= 90;
       const hasModifier = e.altKey || e.ctrlKey || e.metaKey;
@@ -396,8 +396,8 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = (props) => {
       newAt = newAt.substr(0, newAt.length - 1);
     }
 
-    return sections.find((section) => {
-      return section.items.some((item) => item.title?.to.startsWith(newAt));
+    return sections.find(section => {
+      return section.items.some(item => item.title?.to.startsWith(newAt));
     })?.id;
   };
 
@@ -409,7 +409,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = (props) => {
   React.useEffect(() => {
     const at = props.location.pathname;
     const id = findActiveCategoryId(at, treeItems);
-    setActiveItemIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    setActiveItemIds(prev => (prev.includes(id) ? prev : [...prev, id]));
   }, [props.location.pathname, treeItems]);
 
   React.useEffect(() => {
@@ -425,7 +425,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = (props) => {
         .map((section: TreeItemProps) => {
           return {
             ...section,
-            items: _.filter(section.items as TreeItemProps[], (item) =>
+            items: _.filter(section.items as TreeItemProps[], item =>
               regexQuery.test((item.title as TreeTitleProps).content as string),
             ),
           };
@@ -436,7 +436,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = (props) => {
 
   React.useEffect(() => {
     if (query.length) {
-      setActiveItemIds(allSections.map((section) => section.id));
+      setActiveItemIds(allSections.map(section => section.id));
     }
   }, [allSections, query]);
 

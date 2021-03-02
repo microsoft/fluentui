@@ -201,7 +201,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
-    return (ev) => {
+    return ev => {
       // inactive is deprecated. remove check in 7.0
       // eslint-disable-next-line deprecation/deprecation
       if (item.inactive) {

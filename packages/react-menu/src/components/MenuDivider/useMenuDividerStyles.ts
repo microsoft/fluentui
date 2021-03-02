@@ -4,7 +4,7 @@ import { MenuDividerState } from './MenuDivider.types';
 const useDividerStyles = makeStyles<MenuDividerState>([
   [
     null,
-    (theme) => ({
+    theme => ({
       height: '1px',
       marginBottom: '4px',
       marginTop: '4px',

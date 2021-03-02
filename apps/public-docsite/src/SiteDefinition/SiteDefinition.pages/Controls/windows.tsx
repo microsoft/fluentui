@@ -7,8 +7,8 @@ export const controlsPagesWindows: INavPage[] = [
     url: '#/controls/windows',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage),
       ),
   },

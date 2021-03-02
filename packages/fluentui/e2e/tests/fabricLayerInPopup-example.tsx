@@ -23,7 +23,7 @@ const FabricLayerInPopupExample = () => {
                 content="Open Fabric Menu"
                 id={selectors.menuTrigger}
                 onClick={() => {
-                  setMenuOpen((state) => !state);
+                  setMenuOpen(state => !state);
                 }}
               />
             </Ref>

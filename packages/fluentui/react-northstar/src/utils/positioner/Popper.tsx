@@ -152,7 +152,7 @@ const useUpdateIsomorphicLayoutEffect: typeof React.useLayoutEffect = (effect, d
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
  */
-export const Popper: React.FunctionComponent<PopperProps> = (props) => {
+export const Popper: React.FunctionComponent<PopperProps> = props => {
   const {
     align,
     children,
@@ -293,7 +293,7 @@ export const Popper: React.FunctionComponent<PopperProps> = (props) => {
         },
         popperInitialPositionFix.modifier,
       ].filter(Boolean),
-      onFirstUpdate: (state) => handleUpdate({ state }),
+      onFirstUpdate: state => handleUpdate({ state }),
     };
 
     popperInstanceRef.current = PopperJs.createPopper(reference, contentRef.current, options);

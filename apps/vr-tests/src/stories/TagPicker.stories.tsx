@@ -20,7 +20,7 @@ const testTags: ITag[] = [
   'violet',
   'white',
   'yellow',
-].map((item) => ({ key: item, name: item }));
+].map(item => ({ key: item, name: item }));
 
 const getTextFromItem = (item: ITag) => item.name;
 
@@ -33,7 +33,7 @@ storiesOf('TagPicker', module)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -86,7 +86,7 @@ storiesOf('TagPicker', module)
   // This is a temporary fix until we migrate to CSF format duplication problem
   // - previously this used FabricDecoratorFixedWidth
   .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'fixed' }))
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -108,7 +108,7 @@ storiesOf('TagPicker', module)
 
 storiesOf('TagItem', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

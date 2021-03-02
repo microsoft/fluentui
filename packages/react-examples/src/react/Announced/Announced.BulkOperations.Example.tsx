@@ -28,7 +28,7 @@ const stackTokens: IStackTokens = { childrenGap: 10 };
 export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
   const selection = useConst(() => new Selection());
   const [items, setItems] = React.useState<IExampleItem[]>(() =>
-    createArray(20, (i) => ({
+    createArray(20, i => ({
       key: 'item-' + i,
       name: 'Item ' + i,
     })),
@@ -37,7 +37,7 @@ export const AnnouncedBulkOperationsExample: React.FunctionComponent = () => {
 
   const onDelete = React.useCallback(() => {
     setDeletedCount(selection.count);
-    setItems((prevItems) => {
+    setItems(prevItems => {
       const selectedIndices = selection.getSelectedIndices();
       return prevItems.filter((item, i) => selectedIndices.indexOf(i) === -1);
     });

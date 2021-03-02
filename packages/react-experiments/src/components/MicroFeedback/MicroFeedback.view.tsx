@@ -10,7 +10,7 @@ import {
   IMicroFeedbackQuestion,
 } from './MicroFeedback.types';
 
-export const MicroFeedbackView: IMicroFeedbackComponent['view'] = (props) => {
+export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const {
     children,
     sendFollowUpIndex,

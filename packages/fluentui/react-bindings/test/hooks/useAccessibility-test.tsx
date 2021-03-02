@@ -11,7 +11,7 @@ type ChildBehaviorProps = {
   pressed: boolean;
 };
 
-const testBehavior: Accessibility<TestBehaviorProps> = (props) => ({
+const testBehavior: Accessibility<TestBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
@@ -31,7 +31,7 @@ const testBehavior: Accessibility<TestBehaviorProps> = (props) => ({
   },
 });
 
-const conditionalBehavior: Accessibility<{ disabled: boolean }> = (props) => ({
+const conditionalBehavior: Accessibility<{ disabled: boolean }> = props => ({
   attributes: {
     root: {
       'aria-label': 'Noop behavior',
@@ -62,7 +62,7 @@ const focusZoneBehavior: Accessibility<never> = () => ({
   },
 });
 
-const childOverriddenBehavior: Accessibility<ChildBehaviorProps> = (props) => ({
+const childOverriddenBehavior: Accessibility<ChildBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-pressed': props.pressed,
@@ -71,7 +71,7 @@ const childOverriddenBehavior: Accessibility<ChildBehaviorProps> = (props) => ({
   },
 });
 
-const childBehavior: Accessibility<ChildBehaviorProps> = (props) => ({
+const childBehavior: Accessibility<ChildBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-pressed': props.pressed,
@@ -79,7 +79,7 @@ const childBehavior: Accessibility<ChildBehaviorProps> = (props) => ({
   },
 });
 
-const overriddenChildBehavior: Accessibility<TestBehaviorProps> = (props) => ({
+const overriddenChildBehavior: Accessibility<TestBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
@@ -115,7 +115,7 @@ type ChildComponentProps = {
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
 };
 
-const TestComponent: React.FunctionComponent<TestComponentProps> = (props) => {
+const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   const { accessibility = testBehavior, disabled, onClick, onKeyDown, ...rest } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
@@ -140,7 +140,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = (props) => {
   );
 };
 
-const ChildComponent: React.FunctionComponent<ChildComponentProps> = (props) => {
+const ChildComponent: React.FunctionComponent<ChildComponentProps> = props => {
   const { accessibility = childBehavior, pressed, onKeyDown, ...rest } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
@@ -156,14 +156,14 @@ type FocusZoneComponentProps = {
   rtl?: boolean;
 };
 
-const FocusZoneComponent: React.FunctionComponent<FocusZoneComponentProps> = (props) => {
+const FocusZoneComponent: React.FunctionComponent<FocusZoneComponentProps> = props => {
   const { as: ElementType = 'div', children, rtl = false } = props;
   const getA11Props = useAccessibility(focusZoneBehavior, { rtl });
 
   return getA11Props.unstable_wrapWithFocusZone(<ElementType {...getA11Props('root', {})}>{children}</ElementType>);
 };
 
-const UnstableBehaviorDefinitionComponent: React.FunctionComponent<TestComponentProps> = (props) => {
+const UnstableBehaviorDefinitionComponent: React.FunctionComponent<TestComponentProps> = props => {
   const { accessibility = testBehavior } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
@@ -230,9 +230,12 @@ describe('useAccessibility', () => {
     const onClick = jest.fn();
     const wrapper = mount(<TestComponent onClick={onClick} onKeyDown={onKeyDown} />);
 
-    wrapper.find('div').simulate('click').simulate('keydown', {
-      keyCode: keyboardKey.ArrowDown,
-    });
+    wrapper
+      .find('div')
+      .simulate('click')
+      .simulate('keydown', {
+        keyCode: keyboardKey.ArrowDown,
+      });
 
     expect(onKeyDown).toBeCalledTimes(1);
     expect(onKeyDown).toBeCalledWith(

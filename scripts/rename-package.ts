@@ -33,7 +33,7 @@ const getPackagePath = (unscopedPackageName: string) => {
 const getPackageJson = (unscopedPackageName: string) =>
   readConfig(path.join(getPackagePath(unscopedPackageName), 'package.json'));
 
-const getChangedFiles = (results: ReplaceResult[]) => results.filter((res) => res.hasChanged).map((res) => res.file);
+const getChangedFiles = (results: ReplaceResult[]) => results.filter(res => res.hasChanged).map(res => res.file);
 
 interface RenameInfo {
   oldScope: string;
@@ -134,7 +134,7 @@ function updateDependents(renameInfo: RenameInfo): string[] {
 function updateReferences(renameInfo: RenameInfo): string[] {
   console.log('\nReplacing old package name and path in all tracked files (this will take awhile)...');
 
-  const files = listAllTrackedFiles([], gitRoot).filter((f) => !/CHANGELOG/.test(f));
+  const files = listAllTrackedFiles([], gitRoot).filter(f => !/CHANGELOG/.test(f));
 
   const { oldUnscopedName, oldScope, newUnscopedName, newScope } = renameInfo;
 
@@ -213,7 +213,7 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
       ...replaceInFileSync({
         files: bundleFiles,
         from: new RegExp(`${oldBundleNameMaybe}|${oldUnscopedName}`, 'g'),
-        to: (substr) => {
+        to: substr => {
           return substr === oldBundleNameMaybe ? newBundleName : newUnscopedName;
         },
       }),
@@ -226,7 +226,7 @@ function updateConfigs(renameInfo: RenameInfo): string[] {
 async function runPrettierForFiles(modifiedFiles: string[]) {
   // Only run prettier on supported extensions (note: the slice() is because extname returns
   // .extension but prettierExtensions doesn't include the leading . )
-  const filesToFormat = modifiedFiles.filter((f) => prettierExtensions.includes(path.extname(f).slice(1)));
+  const filesToFormat = modifiedFiles.filter(f => prettierExtensions.includes(path.extname(f).slice(1)));
   if (filesToFormat.length) {
     console.log('\nRunning prettier on changed files...');
     await runPrettier(filesToFormat, true, true);
@@ -268,6 +268,6 @@ Other follow-up steps:
 `);
 }
 
-run().catch((err) => {
+run().catch(err => {
   console.error(err);
 });

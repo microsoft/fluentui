@@ -20,7 +20,7 @@ const getErrorMessage = (value: string): string => {
 };
 
 const getErrorMessagePromise = (value: string): Promise<string> => {
-  return new Promise((resolve) => {
+  return new Promise(resolve => {
     setTimeout(() => resolve(getErrorMessage(value)), 5000);
   });
 };

@@ -19,7 +19,7 @@ const contents = [
   'The GB pixel is down, navigate the virtual interface!',
 ];
 
-const items = _.times(60, (i) => ({
+const items = _.times(60, i => ({
   id: `test${i}`,
   key: `key${i}`,
   content: `${contents[i % contents.length]}`,

@@ -37,13 +37,13 @@ export async function createChrome(): Promise<Browser> {
   console.log(`Chromium version: ${await browser.version()}`);
 
   return {
-    openPage: async (url) => {
+    openPage: async url => {
       const page = await browser.newPage();
 
       await page.goto(url);
 
       return {
-        executeJavaScript: async (code) => {
+        executeJavaScript: async code => {
           return page.evaluate(code);
         },
         close: async () => page.close(),
@@ -81,7 +81,7 @@ async function checkDevtoolsAvailability(host, port, timeout): Promise<boolean> 
 }
 
 async function wait(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function waitUntilDevtoolsAvailable(host = 'localhost', port = 9222, tries = 10) {
@@ -106,7 +106,7 @@ export async function createElectron(electronPath: string): Promise<Browser> {
   console.log(`Electron version: ${electronVersion}`);
 
   return {
-    openPage: async (url) => {
+    openPage: async url => {
       const electronProcess = spawn(electronPath, [`--remote-debugging-port=${devtoolsPort}`]);
       let cdp;
 
@@ -125,7 +125,7 @@ export async function createElectron(electronPath: string): Promise<Browser> {
       }
 
       return {
-        executeJavaScript: async (code) => {
+        executeJavaScript: async code => {
           const { result } = await cdp.Runtime.evaluate({ expression: code, awaitPromise: true, returnByValue: true });
 
           return result.value;

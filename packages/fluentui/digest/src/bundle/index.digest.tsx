@@ -44,14 +44,14 @@ if (selectedKind && selectedStory) {
         <div>Required params: selectedKind, selectedStory</div>
         <div>Optional params: iterations</div>
         <div>Displaying all kinds and stories:</div>{' '}
-        {Object.keys(stories).map((kindKey) => {
+        {Object.keys(stories).map(kindKey => {
           return (
             <div>
               <br />
               <b>Kind: {kindKey}</b>
               {Object.keys(stories[kindKey])
-                .filter((storyKey) => typeof stories[kindKey][storyKey] === 'function')
-                .map((storyKey) => {
+                .filter(storyKey => typeof stories[kindKey][storyKey] === 'function')
+                .map(storyKey => {
                   return (
                     <div>
                       <br />

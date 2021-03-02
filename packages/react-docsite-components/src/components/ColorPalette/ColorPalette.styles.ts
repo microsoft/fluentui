@@ -17,7 +17,7 @@ const square: IRawStyle = {
   },
 };
 
-export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteStyles> = (props) => {
+export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteStyles> = props => {
   const { isCondensed, theme, className } = props;
   return {
     root: [

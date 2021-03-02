@@ -6,7 +6,7 @@ import { getNativeProps, htmlElementProperties } from '../../../Utilities';
 import { IStackItemComponent, IStackItemProps, IStackItemSlots } from './StackItem.types';
 import { StackItemStyles as styles } from './StackItem.styles';
 
-const StackItemView: IStackItemComponent['view'] = (props) => {
+const StackItemView: IStackItemComponent['view'] = props => {
   const { children } = props;
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties);
   // eslint-disable-next-line eqeqeq

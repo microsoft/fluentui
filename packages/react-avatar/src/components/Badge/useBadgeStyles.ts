@@ -49,7 +49,7 @@ const useRootStyles = makeStyles<BadgeState>([
   ],
 
   [
-    (s) => s.state === 'success',
+    s => s.state === 'success',
     {
       '--badge-color': 'var(--badge-success-color)',
       '--badge-iconColor': 'var(--badge-success-iconColor)',
@@ -57,64 +57,64 @@ const useRootStyles = makeStyles<BadgeState>([
   ],
 
   [
-    (s) => s.state === 'info',
+    s => s.state === 'info',
     {
       '--badge-color': 'var(--badge-info-color)',
       '--badge-iconColor': 'var(--badge-info-iconColor)',
     },
   ],
   [
-    (s) => s.state === 'warning',
+    s => s.state === 'warning',
     {
       '--badge-color': 'var(--badge-warning-color)',
       '--badge-iconColor': 'var(--badge-warning-iconColor)',
     },
   ],
   [
-    (s) => s.state === 'error',
+    s => s.state === 'error',
     {
       '--badge-color': 'var(--badge-error-color)',
       '--badge-iconColor': 'var(--badge-error-iconColor)',
     },
   ],
   [
-    (s) => s.size === 'smallest',
+    s => s.size === 'smallest',
     {
       '--badge-size': 'var(--badge-size-smallest)',
     },
   ],
   [
-    (s) => s.size === 'smaller',
+    s => s.size === 'smaller',
     {
       '--badge-size': 'var(--badge-size-smaller)',
     },
   ],
   [
-    (s) => s.size === 'small',
+    s => s.size === 'small',
     {
       '--badge-size': 'var(--badge-size-small)',
     },
   ],
   [
-    (s) => s.size === 'medium',
+    s => s.size === 'medium',
     {
       '--badge-size': 'var(--badge-size-medium)',
     },
   ],
   [
-    (s) => s.size === 'large',
+    s => s.size === 'large',
     {
       '--badge-size': 'var(--badge-size-large)',
     },
   ],
   [
-    (s) => s.size === 'larger',
+    s => s.size === 'larger',
     {
       '--badge-size': 'var(--badge-size-larger)',
     },
   ],
   [
-    (s) => s.size === 'largest',
+    s => s.size === 'largest',
     {
       '--badge-size': 'var(--badge-size-largest)',
     },

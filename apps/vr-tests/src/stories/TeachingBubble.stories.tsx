@@ -7,7 +7,7 @@ import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}
     >

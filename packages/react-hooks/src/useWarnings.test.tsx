@@ -20,7 +20,7 @@ describe('useWarnings', () => {
   }
 
   let renderCount = 0;
-  const TestComponent: React.FunctionComponent<ITestComponentProps> = (props) => {
+  const TestComponent: React.FunctionComponent<ITestComponentProps> = props => {
     useWarnings({ ...warningOptions!, name: 'TestComponent', props });
     renderCount++;
     return <div />;

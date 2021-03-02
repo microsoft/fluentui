@@ -26,7 +26,7 @@ export function resolveStyleRules(
   const properties = Object.keys(expandedStyles);
 
   // TODO: => for-in loop
-  properties.forEach((property) => {
+  properties.forEach(property => {
     const value = expandedStyles[property];
 
     // eslint-disable-next-line eqeqeq

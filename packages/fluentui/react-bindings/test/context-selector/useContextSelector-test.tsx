@@ -5,8 +5,8 @@ import * as React from 'react';
 
 const TestContext = createContext<{ index: number }>({ index: -1 });
 
-const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = (props) => {
-  const active = useContextSelector(TestContext, (v) => v.index === props.index);
+const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = props => {
+  const active = useContextSelector(TestContext, v => v.index === props.index);
 
   React.useEffect(() => {
     props.onUpdate && props.onUpdate();
@@ -15,11 +15,11 @@ const TestComponent: React.FC<{ index: number; onUpdate?: () => void }> = (props
   return <div className="test-component" data-active={active} />;
 };
 
-const TestProvider: React.FC = (props) => {
+const TestProvider: React.FC = props => {
   const [index, setIndex] = React.useState<number>(0);
 
   return (
-    <div className="test-provider" onClick={() => setIndex((prevIndex) => prevIndex + 1)}>
+    <div className="test-provider" onClick={() => setIndex(prevIndex => prevIndex + 1)}>
       <TestContext.Provider value={{ index }}>{props.children}</TestContext.Provider>
     </div>
   );

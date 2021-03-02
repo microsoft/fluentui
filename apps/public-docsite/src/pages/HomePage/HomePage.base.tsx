@@ -58,7 +58,7 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' },
 ];
 
-const TitleStack: React.FunctionComponent<IStackProps> = (props) => (
+const TitleStack: React.FunctionComponent<IStackProps> = props => (
   <Stack style={{ marginBottom: 8 }} horizontal verticalAlign="center" tokens={{ childrenGap: 16 }} {...props} />
 );
 
@@ -171,7 +171,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     const { currentVersionNumber, versions, onVersionMenuClick } = SiteDefinition.versionSwitcherDefinition;
 
-    const versionOptions: IContextualMenuItem[] = versions.map((version) => ({
+    const versionOptions: IContextualMenuItem[] = versions.map(version => ({
       key: version,
       text: version,
     }));
@@ -373,7 +373,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
         className={css(this._classNames.link, dark && this._classNames.linkDark)}
         href={url}
         disabled={!!disabled}
-        onClick={(ev) => (isCTA ? this._onCTAClick(ev) : this._onInternalLinkClick(ev, url))}
+        onClick={ev => (isCTA ? this._onCTAClick(ev) : this._onInternalLinkClick(ev, url))}
       >
         <Icon iconName={icon} className={this._classNames.linkIcon} />
         <span className={this._classNames.linkText}>{text}</span>

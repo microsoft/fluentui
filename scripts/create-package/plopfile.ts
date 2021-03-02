@@ -50,14 +50,14 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'hasTests',
         message: 'Will this package have tests?',
         default: true,
-        when: (answers) => answers.target === 'node', // react always has tests
+        when: answers => answers.target === 'node', // react always has tests
       },
       {
         type: 'confirm',
         name: 'hasExamples',
         message: 'Create example scaffolding?',
         default: true,
-        when: (answers) => answers.target === 'react',
+        when: answers => answers.target === 'react',
       },
       {
         type: 'confirm',
@@ -122,7 +122,7 @@ module.exports = (plop: NodePlopAPI) => {
         {
           type: 'modify',
           path: `${destination}/package.json`,
-          transform: (packageJsonContents) => {
+          transform: packageJsonContents => {
             const { newPackageJson, hasError: hasUpdateError } = updatePackageJson(packageJsonContents, answers);
             hasError = hasError || hasUpdateError;
             return newPackageJson;
@@ -135,13 +135,13 @@ module.exports = (plop: NodePlopAPI) => {
           skip: () => {
             if (!hasExamples) return 'Skipping react-examples package.json update';
           },
-          transform: (packageJsonContents) => updateExamplePackageJson(packageJsonContents, data.packageNpmName),
+          transform: packageJsonContents => updateExamplePackageJson(packageJsonContents, data.packageNpmName),
         },
         // update tsconfig.json
         {
           type: 'modify',
           path: `${destination}/tsconfig.json`,
-          transform: (tsconfigContents) => updateTsconfig(tsconfigContents, hasTests),
+          transform: tsconfigContents => updateTsconfig(tsconfigContents, hasTests),
         },
         () => {
           if (hasError) {
@@ -187,7 +187,7 @@ function replaceVersionsFromReference(
   // This way if a dep is defined in any of them, it can easily be copied to newPackageJson.
   const referenceDeps: Pick<PackageJson, 'dependencies' | 'devDependencies' | 'peerDependencies'> = _.merge(
     {},
-    ...referencePackages.map((pkg) =>
+    ...referencePackages.map(pkg =>
       _.pick(fs.readJSONSync(path.join(root, 'packages', pkg, 'package.json')), ...depTypes),
     ),
   );
@@ -258,6 +258,6 @@ function updateTsconfig(tsconfigContents: string, hasTests: boolean | undefined)
   // Remove jest types if there aren't tests (use jju since tsconfig might have comments)
   const tsconfig = jju.parse(tsconfigContents);
   const types: string[] = tsconfig.compilerOptions.types;
-  tsconfig.compilerOptions.types = types.filter((t) => t !== 'jest');
+  tsconfig.compilerOptions.types = types.filter(t => t !== 'jest');
   return jju.update(tsconfigContents, tsconfig, { mode: 'cjson', indent: 2 });
 }

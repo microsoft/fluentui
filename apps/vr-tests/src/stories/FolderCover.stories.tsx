@@ -38,9 +38,9 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
 };
 
 storiesOf('FolderCover', module)
-  .addDecorator((story) => <Fabric>{story()}</Fabric>)
+  .addDecorator(story => <Fabric>{story()}</Fabric>)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

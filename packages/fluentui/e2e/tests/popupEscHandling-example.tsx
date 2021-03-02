@@ -21,7 +21,7 @@ const PopupEscHandlingExample = () => (
           items={inputItems}
           placeholder="Select your hero"
           getA11ySelectionMessage={{
-            onAdd: (item) => `${item} has been selected.`,
+            onAdd: item => `${item} has been selected.`,
           }}
         />
       </>

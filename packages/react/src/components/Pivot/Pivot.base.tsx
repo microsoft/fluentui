@@ -211,7 +211,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
     const renderedSelectedKey = getSelectedKey();
     const renderedSelectedIndex = renderedSelectedKey ? linkCollection.keyToIndexMapping[renderedSelectedKey] : 0;
 
-    const items = linkCollection.links.map((l) =>
+    const items = linkCollection.links.map(l =>
       renderPivotLink(linkCollection, l, renderedSelectedKey, classNames.link),
     );
 
@@ -261,7 +261,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
         </FocusZone>
         {renderedSelectedKey &&
           linkCollection.links.map(
-            (link) =>
+            link =>
               (link.alwaysRender === true || renderedSelectedKey === link.itemKey) &&
               renderPivotItem(link.itemKey, renderedSelectedKey === link.itemKey),
           )}

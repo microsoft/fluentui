@@ -67,7 +67,7 @@ const farItems: ICommandBarItemProps[] = [
 
 storiesOf('CommandBar', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -84,13 +84,13 @@ storiesOf('CommandBar', module)
   .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { rtl: true })
   .addStory('Text only', () => (
     <CommandBar
-      items={items.map((item) => ({ ...item, iconProps: undefined }))}
-      farItems={farItems.map((item) => ({ ...item, iconProps: undefined }))}
+      items={items.map(item => ({ ...item, iconProps: undefined }))}
+      farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
     />
   ))
   .addStory('Icons only', () => (
     <CommandBar
-      items={items.map((item) => ({ ...item, text: undefined }))}
-      farItems={farItems.map((item) => ({ ...item, iconOnly: true }))}
+      items={items.map(item => ({ ...item, text: undefined }))}
+      farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
     />
   ));

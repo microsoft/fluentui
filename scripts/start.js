@@ -20,10 +20,10 @@ const projectsWithStartCommand = Object.entries(allPackages)
 
     return acc;
   }, [])
-  .filter((n) => n && !defaults.includes(n.title))
+  .filter(n => n && !defaults.includes(n.title))
   .sort((a, b) => (a.title === b.title ? 0 : a.title > b.title ? 1 : -1));
 
-const suggest = (input, choices) => Promise.resolve(choices.filter((i) => i.title.includes(input)));
+const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.includes(input)));
 
 (async () => {
   const response = await prompts({
@@ -32,7 +32,7 @@ const suggest = (input, choices) => Promise.resolve(choices.filter((i) => i.titl
 
     message: 'Which project to start (select or type partial name)?',
     suggest,
-    choices: [...defaults.map((p) => ({ title: p, value: { pkg: p, command: 'start' } })), ...projectsWithStartCommand],
+    choices: [...defaults.map(p => ({ title: p, value: { pkg: p, command: 'start' } })), ...projectsWithStartCommand],
   });
 
   spawnSync(

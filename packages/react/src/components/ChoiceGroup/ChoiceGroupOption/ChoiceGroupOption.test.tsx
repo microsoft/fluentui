@@ -27,7 +27,7 @@ describe('ChoiceGroupOption', () => {
         <ChoiceGroupOption
           itemKey="A"
           text="Option A"
-          onRenderLabel={(option) => {
+          onRenderLabel={option => {
             return <span>{option?.text}</span>;
           }}
         />

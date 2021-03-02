@@ -55,7 +55,7 @@ module.exports = {
    * @param {boolean} prefixWithI - Whether to prefix interfaces with I
    * @returns {import("eslint").Linter.RulesRecord}
    */
-  getNamingConventionRule: (prefixWithI) => ({
+  getNamingConventionRule: prefixWithI => ({
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
@@ -124,7 +124,7 @@ module.exports = {
       const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
       if (tsconfig.include) {
         tsFiles = /** @type {string[]} */ (tsconfig.include).map(
-          (includePath) => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
+          includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
         );
       } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
         tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];

@@ -43,7 +43,7 @@ export type GridStylesProps = Pick<GridProps, 'columns' | 'rows'>;
 /**
  * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
  */
-export const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProps<GridProps> = (props) => {
+export const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProps<GridProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Grid.displayName, context.telemetry);
   setStart();

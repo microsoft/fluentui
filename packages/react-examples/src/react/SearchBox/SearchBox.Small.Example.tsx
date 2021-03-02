@@ -8,13 +8,13 @@ export const SearchBoxSmallExample = () => (
   <SearchBox
     styles={searchBoxStyles}
     placeholder="Search"
-    onEscape={(ev) => {
+    onEscape={ev => {
       console.log('Custom onEscape Called');
     }}
-    onClear={(ev) => {
+    onClear={ev => {
       console.log('Custom onClear Called');
     }}
     onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
-    onSearch={(newValue) => console.log('SearchBox onSearch fired: ' + newValue)}
+    onSearch={newValue => console.log('SearchBox onSearch fired: ' + newValue)}
   />
 );

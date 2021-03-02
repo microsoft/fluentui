@@ -58,7 +58,7 @@ describe('useSetInterval', () => {
   });
 
   it('does not execute the interval when unmounted', () => {
-    safeMount(<TestComponent />, (wrapper) => {
+    safeMount(<TestComponent />, wrapper => {
       expect(timesCalled).toEqual(0);
 
       wrapper.unmount();

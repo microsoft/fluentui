@@ -45,7 +45,7 @@ export interface VirtualItemData {
   createTreeItem: (id: string, style: React.CSSProperties) => React.ReactElement<TreeItemProps> | null;
 }
 
-export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = (props) => {
+export const VirtualTree: ComponentWithAs<'div', VirtualTreeProps> = props => {
   const context = useFluentContext();
 
   const { children, className, design, styles, variables, height, estimatedItemSize } = props;

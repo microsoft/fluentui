@@ -917,7 +917,7 @@ describe('FocusTrapZone', () => {
     });
 
     it('FocusTrapZone maintains a proper stack of FocusTrapZones as more are mounted/unmounted.', async () => {
-      safeMount(<FocusTrapZoneTestComponent />, (wrapper) => {
+      safeMount(<FocusTrapZoneTestComponent />, wrapper => {
         const buttonA = wrapper.find('.a');
         const buttonB = wrapper.find('.b');
         const buttonC = wrapper.find('.c');

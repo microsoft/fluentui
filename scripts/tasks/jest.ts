@@ -21,7 +21,7 @@ const commonArgs = (): JestTaskOptions => {
     // Just specific config
     nodeArgs: args.nodeArgs,
     // pass forward positional args (to narrow down tests to be run)
-    _: (args._ || []).filter((arg) => arg !== 'jest' && arg !== 'jest-watch'),
+    _: (args._ || []).filter(arg => arg !== 'jest' && arg !== 'jest-watch'),
   };
 };
 

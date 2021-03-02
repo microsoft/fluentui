@@ -11,7 +11,7 @@ const isKeyModifiersMatch = (modifierValue: boolean, combinationValue?: boolean)
 
 export const shouldHandleOnKeys = (event: React.KeyboardEvent, keysCombinations: KeyCombinations[]): boolean =>
   keysCombinations.some(
-    (keysCombination) =>
+    keysCombination =>
       keysCombination.keyCode === getCode(event) &&
       isKeyModifiersMatch(event.altKey, keysCombination.altKey) &&
       isKeyModifiersMatch(event.shiftKey, keysCombination.shiftKey) &&

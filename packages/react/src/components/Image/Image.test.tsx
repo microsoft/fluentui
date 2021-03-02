@@ -32,7 +32,7 @@ describe('Image', () => {
     disabledTests: ['component-has-root-ref'],
   });
 
-  it('renders an image', (done) => {
+  it('renders an image', done => {
     const component = mount(<ImageBase src={testImage1x1} onLoad={() => done()} />);
 
     act(() => {
@@ -121,7 +121,7 @@ describe('Image', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('allows onError events to be attached', (done) => {
+  it('allows onError events to be attached', done => {
     const component = mount(<ImageBase src={brokenImage} onError={() => done()} />);
 
     act(() => {

@@ -11,7 +11,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Adds attribute 'aria-describedby' based on the property 'contentId' to 'trigger' slot. This can be overriden by providing 'aria-describedby' property directly to the component.
  * Triggers 'close' action with 'Escape' on 'trigger'.
  */
-export const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = (props) => {
+export const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props => {
   const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props);
 
   return {

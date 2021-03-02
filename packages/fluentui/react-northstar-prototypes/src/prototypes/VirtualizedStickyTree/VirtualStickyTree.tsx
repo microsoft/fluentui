@@ -57,7 +57,7 @@ export const InnerElementContext = React.createContext<InnerElementContextType>(
 
 export const VirtualStickyTreeClassName = 'ui-virtualstickytree';
 
-export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> = (props) => {
+export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> = props => {
   const context = useFluentContext();
 
   const { children, className, design, styles, variables, items, height, itemSize, stickyItemSize } = props;
@@ -81,7 +81,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
     rtl: context.rtl,
   });
 
-  const stickyItemIds = React.useMemo(() => items.map((item) => item.id), [items]);
+  const stickyItemIds = React.useMemo(() => items.map(item => item.id), [items]);
 
   const {
     visibleItemIds,
@@ -110,7 +110,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
   );
 
   const scrollToMakeItemVisible = React.useCallback(
-    (itemOffset) => {
+    itemOffset => {
       const scrollOffset = Math.max(0, itemOffset - (height as number) / 2); // try to position item in the middle of container
       listRef.current.scrollTo(scrollOffset);
     },
@@ -123,7 +123,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
 
       // item is not mounted yet, scroll to make item visible
       if (getItemRef(id) == null) {
-        const getItemOffset = (index) => {
+        const getItemOffset = index => {
           let result = 0;
           for (let i = 0; i < index; ++i) {
             result += getItemSize(i);
@@ -142,7 +142,7 @@ export const VirtualStickyTree: ComponentWithAs<'div', VirtualStickyTreeProps> =
     const result = new Array(stickyItemIds.length).fill(0);
 
     let stickyIndex = 0;
-    visibleItemIds.forEach((id) => {
+    visibleItemIds.forEach(id => {
       if (id === stickyItemIds[stickyIndex]) {
         stickyIndex++;
       } else {
@@ -351,7 +351,7 @@ const InnerElementType = ({ children, style }, ref) => {
         };
       });
 
-      virtualItems.forEach((virtualItem) => {
+      virtualItems.forEach(virtualItem => {
         const virtualItemId = virtualItem.key as string; // our `getItemKey` makes virtual item's key the same as its corresponding tree item's id
         // get the sticky id to which the current virtualItem belongs to
         let parentId = getItemById(virtualItemId)?.parent;
@@ -367,10 +367,10 @@ const InnerElementType = ({ children, style }, ref) => {
       });
 
       const flattenedResult = [];
-      stickyItemIds.forEach((id) => {
+      stickyItemIds.forEach(id => {
         flattenedResult.push(result[id].stickyItem);
         flattenedResult.push(result[id].pusher);
-        result[id].children.forEach((child) => {
+        result[id].children.forEach(child => {
           flattenedResult.push(child);
         });
       });

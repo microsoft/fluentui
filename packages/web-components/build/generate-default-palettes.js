@@ -20,7 +20,7 @@ export const neutralPalette: string[] = ${JSON.stringify(neutralPalette, null, 4
 export const accentPalette: string[] = ${JSON.stringify(accentPalette, null, 4)};
 `;
 
-fs.writeFile(outpath, file, (error) => {
+fs.writeFile(outpath, file, error => {
   if (error) {
     throw error;
   } else {

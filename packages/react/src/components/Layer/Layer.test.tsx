@@ -19,10 +19,10 @@ describe('Layer', () => {
   const context = React.createContext<IFooContext>({ foo: undefined });
 
   const TestChild: React.FunctionComponent<{}> = () => (
-    <context.Consumer>{(val) => <div id="child">{val.foo}</div>}</context.Consumer>
+    <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>
   );
 
-  const Parent: React.FunctionComponent<{ hostId?: string }> = (props) => (
+  const Parent: React.FunctionComponent<{ hostId?: string }> = props => (
     <context.Provider value={{ foo: 'bar' }}>
       <div id="parent">
         <Layer hostId={props.hostId}>
@@ -32,7 +32,7 @@ describe('Layer', () => {
     </context.Provider>
   );
 
-  const TestApp: React.FunctionComponent<{ hostId?: string }> = (props) => (
+  const TestApp: React.FunctionComponent<{ hostId?: string }> = props => (
     <div id="app">
       <Parent hostId={props.hostId} />
       <LayerHost id={props.hostId} />
@@ -43,9 +43,9 @@ describe('Layer', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
 
-    ReactDOM.createPortal = jest.fn((element) => element);
+    ReactDOM.createPortal = jest.fn(element => element);
 
-    safeCreate(<Layer>Content</Layer>, (component) => {
+    safeCreate(<Layer>Content</Layer>, component => {
       const tree = component!.toJSON();
       expect(tree).toMatchSnapshot();
       ReactDOM.createPortal = createPortal;
@@ -132,7 +132,7 @@ describe('Layer', () => {
 
     const targetContent = wrapper.find(`.${targetClassName}`).at(0);
 
-    testEvents.forEach((event) => {
+    testEvents.forEach(event => {
       targetContent.simulate(event, eventObject(event));
     });
 
@@ -168,7 +168,7 @@ describe('Layer', () => {
 
     const targetContent = wrapper.find(`.${targetClassName}`).at(0);
 
-    testEvents.forEach((event) => {
+    testEvents.forEach(event => {
       targetContent.simulate(event, eventObject(event));
     });
 
@@ -197,7 +197,7 @@ describe('Layer', () => {
 
     const targetContent = wrapper.find(`.${targetClassName}`).at(0);
 
-    testEvents.forEach((event) => {
+    testEvents.forEach(event => {
       targetContent.simulate(event, eventObject(event));
     });
 

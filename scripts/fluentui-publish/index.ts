@@ -121,9 +121,9 @@ export function packFluentTarballs() {
   const fluentPackages = JSON.parse(
     execCommandSync(fluentRoot, '../../node_modules/.bin/lerna', ['ls', '--json']).toString(),
   );
-  const fluentPackagesNames = fluentPackages.map((pkg) => pkg.name);
+  const fluentPackagesNames = fluentPackages.map(pkg => pkg.name);
 
-  const replaceDepVersionWithNightlyUrl = (packageLocation) => {
+  const replaceDepVersionWithNightlyUrl = packageLocation => {
     const packageJson = require(`${packageLocation}/package.json`);
     packageJson.version = `0.0.0-nightly+${TODAY}`;
     const dependencies = packageJson.dependencies || {};
@@ -150,7 +150,7 @@ export function packFluentTarballs() {
     throw new Error(`BUILD_ARTIFACTSTAGINGDIRECTORY ${tempFolderForPacks} does not exist`);
   }
 
-  fluentPackages.forEach((fluentPackage) => {
+  fluentPackages.forEach(fluentPackage => {
     if (!fluentPackage.private) {
       replaceDepVersionWithNightlyUrl(fluentPackage.location);
       execCommandSync(tempFolderForPacks, 'npm', ['pack', fluentPackage.location]);

@@ -59,7 +59,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         author="Robin Counts"
         timestamp="Yesterday, 10:15 PM"
         badge={{ icon: <MentionIcon /> }}
-        variables={(siteVars) => ({
+        variables={siteVars => ({
           hasMention: true,
           hasMentionColor: siteVars.colors.brand[600],
         })}
@@ -76,7 +76,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         timestamp="Yesterday, 10:16 PM"
         mine
         badge={{ icon: <RedbangIcon /> }}
-        variables={(siteVars) => ({
+        variables={siteVars => ({
           isImportant: true,
           isImportantColor: siteVars.colors.yellow[400],
         })}

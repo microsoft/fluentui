@@ -31,7 +31,7 @@ const ColorSchemes = createComponent<ColorVariantsProps>({
   render: ({ name, themes, headers, config: { classes } }) => {
     if (themes.length === 0) return <></>;
 
-    const colorSchemes = _.map(themes, (theme) => theme.siteVariables.colorScheme[name]);
+    const colorSchemes = _.map(themes, theme => theme.siteVariables.colorScheme[name]);
 
     const elements = _.flatMap(_.head(colorSchemes), (i, token) => [
       <ColorBox
@@ -52,7 +52,7 @@ const ColorSchemes = createComponent<ColorVariantsProps>({
     return (
       <div className={classes.root}>
         <Grid columns={columns}>
-          {headers && headers.map((header) => Header.create(header))}
+          {headers && headers.map(header => Header.create(header))}
           {elements}
         </Grid>
       </div>

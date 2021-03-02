@@ -12,7 +12,7 @@ import { ITheme } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
-const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = (props) => {
+const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = props => {
   const {
     isVisible = false,
     canSelect = false,

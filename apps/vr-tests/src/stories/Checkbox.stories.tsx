@@ -6,7 +6,7 @@ import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
 
 storiesOf('Checkbox', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -45,7 +45,7 @@ storiesOf('Checkbox', module)
   .addStory('Custom render Checkbox', () => (
     <Checkbox
       label="Persona Checkbox"
-      onRenderLabel={(props) => {
+      onRenderLabel={props => {
         return <Persona text={props!.label} size={PersonaSize.size32} />;
       }}
     />
@@ -53,7 +53,7 @@ storiesOf('Checkbox', module)
 
 storiesOf('Checkbox Indeterminate', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

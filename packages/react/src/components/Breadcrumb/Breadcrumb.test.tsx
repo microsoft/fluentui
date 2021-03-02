@@ -150,7 +150,12 @@ describe('Breadcrumb', () => {
   it('moves items to overflow in the correct order', () => {
     wrapper = mount(<Breadcrumb items={items} maxDisplayedItems={2} />);
 
-    expect(wrapper.find('.ms-Breadcrumb-item').first().text()).toEqual('TestText3');
+    expect(
+      wrapper
+        .find('.ms-Breadcrumb-item')
+        .first()
+        .text(),
+    ).toEqual('TestText3');
   });
 
   it('supports native props on the root element', () => {

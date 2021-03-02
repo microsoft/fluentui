@@ -14,7 +14,7 @@ describe('MaskedTextField', () => {
   });
 
   it('renders correctly', () => {
-    safeCreate(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />, (component) => {
+    safeCreate(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" />, component => {
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });

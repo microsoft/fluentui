@@ -9,8 +9,8 @@ const { argv, logger } = require('@fluentui/scripts');
 /**
  * Task function for the Fluent UI website that generates a manifest for the non-UHF "internal" site
  */
-module.exports.createInternalFlightConfigTask = function () {
-  return function () {
+module.exports.createInternalFlightConfigTask = function() {
+  return function() {
     let date = new Date();
 
     // Produces date string of the form yyyyMMdd, e.g. 20180701
@@ -28,7 +28,7 @@ module.exports.createInternalFlightConfigTask = function () {
     logger.info('config data:');
     logger.info(configData);
 
-    configsToGenerate.forEach((fileName) => {
+    configsToGenerate.forEach(fileName => {
       generateConfig(fileName, path.resolve(process.cwd(), 'flights'), configData);
     });
   };
@@ -37,8 +37,8 @@ module.exports.createInternalFlightConfigTask = function () {
 /**
  * Task function for the Fluent UI website that generates a manifest for the UHF public site
  */
-module.exports.createPublicFlightConfigTask = function () {
-  return function () {
+module.exports.createPublicFlightConfigTask = function() {
+  return function() {
     let date = new Date();
 
     // Produces date string of the form yyyyMMdd, e.g. 20180701
@@ -56,7 +56,7 @@ module.exports.createPublicFlightConfigTask = function () {
     logger.info('config data:');
     logger.info(configData);
 
-    configsToGenerate.forEach((fileName) => {
+    configsToGenerate.forEach(fileName => {
       generateConfig(fileName, path.resolve(process.cwd(), 'flights'), configData);
     });
   };
@@ -70,7 +70,7 @@ function generateConfig(fileName, outDir, configData) {
 
     let configInitializationCode = `var Flight=${JSON.stringify(configData, null)};`;
 
-    fs.writeFile(path.join(outDir, `${fileName}.js`), configInitializationCode, (err) => {
+    fs.writeFile(path.join(outDir, `${fileName}.js`), configInitializationCode, err => {
       if (err) {
         logger.error(`Error writing ${outDir}/${fileName}.js: `, err);
         return;

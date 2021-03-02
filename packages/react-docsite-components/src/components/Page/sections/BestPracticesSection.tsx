@@ -12,7 +12,7 @@ export interface IBestPracticesSectionProps extends IPageSectionPropsWithSection
   donts?: string;
 }
 
-export const BestPracticesSection: React.FunctionComponent<IBestPracticesSectionProps> = (props) => {
+export const BestPracticesSection: React.FunctionComponent<IBestPracticesSectionProps> = props => {
   const {
     className,
     fileNamePrefix,

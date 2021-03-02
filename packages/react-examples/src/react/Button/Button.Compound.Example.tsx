@@ -11,7 +11,7 @@ export interface IButtonExampleProps {
 // Example formatting
 const stackTokens: IStackTokens = { childrenGap: 40 };
 
-export const ButtonCompoundExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonCompoundExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (

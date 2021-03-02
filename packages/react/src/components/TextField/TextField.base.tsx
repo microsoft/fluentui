@@ -533,7 +533,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _onRevealButtonClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
-    this.setState((prevState) => ({ isRevealingPassword: !prevState.isRevealingPassword }));
+    this.setState(prevState => ({ isRevealingPassword: !prevState.isRevealingPassword }));
   };
 
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {

@@ -12,7 +12,7 @@ const baseProps: IToggleProps = {
 
 storiesOf('Toggle', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

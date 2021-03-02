@@ -89,14 +89,14 @@ export const Designer: React.FunctionComponent = () => {
   }, [dispatch]);
 
   const handleShowCodeChange = React.useCallback(
-    (showCode) => {
+    showCode => {
       dispatch({ type: 'SHOW_CODE', show: showCode });
     },
     [dispatch],
   );
 
   const handleEnableVirtualCursorChange = React.useCallback(
-    (enabledVC) => {
+    enabledVC => {
       dispatch({ type: 'ENABLE_VIRTUAL_CURSOR', enabledVirtualCursor: enabledVC });
     },
     [dispatch],
@@ -141,7 +141,7 @@ export const Designer: React.FunctionComponent = () => {
   }, []);
 
   const handleSelectComponent = React.useCallback(
-    (jsonTreeElement) => {
+    jsonTreeElement => {
       dispatch({
         type: 'SELECT_COMPONENT',
         component: jsonTreeElement,

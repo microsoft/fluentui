@@ -40,7 +40,9 @@ describe('SplitButton', () => {
     test('is false when clicking menu item', () => {
       const wrapper = mountWithProvider(<SplitButton menu={mockMenu} button="test" defaultOpen />);
 
-      getMenuItems(wrapper).at(0).simulate('click');
+      getMenuItems(wrapper)
+        .at(0)
+        .simulate('click');
       expect(getMenuItems(wrapper)).toHaveLength(0);
     });
 
@@ -82,7 +84,9 @@ describe('SplitButton', () => {
       const wrapper = mountWithProvider(<SplitButton menu={mockMenu} button="test" defaultOpen />);
 
       getMenu(wrapper).simulate('keydown', { keyCode: keyboardKey.Enter });
-      getMenuItems(wrapper).at(0).simulate('click');
+      getMenuItems(wrapper)
+        .at(0)
+        .simulate('click');
 
       expect(getMenuItems(wrapper)).toHaveLength(0);
     });
@@ -102,7 +106,9 @@ describe('SplitButton', () => {
       <SplitButton menu={mockMenu} button="test" onMenuItemClick={onMenuItemClick} defaultOpen />,
     );
 
-    getMenuItems(wrapper).at(0).simulate('click');
+    getMenuItems(wrapper)
+      .at(0)
+      .simulate('click');
     expect(onMenuItemClick).toHaveBeenCalledTimes(1);
   });
 

@@ -6,7 +6,7 @@ import { Spinner, SpinnerSize } from '@fluentui/react';
 
 storiesOf('Spinner', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

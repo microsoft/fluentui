@@ -4,7 +4,7 @@ import { css } from '@fluentui/react';
 import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
-export const FeedbackSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = (props) => {
+export const FeedbackSection: React.FunctionComponent<IPageSectionPropsWithSectionName> = props => {
   const { className, readableSectionName = props.sectionName, style, title, id } = props;
 
   return (

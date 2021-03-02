@@ -40,7 +40,7 @@ export const useMenuList = (
         startIndex = 0;
       }
 
-      const firstChars = menuItems.map((menuItem) => menuItem.textContent?.charAt(0).toLowerCase());
+      const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
       const char = e.key.toLowerCase();
 
       const getIndexFirstChars = (start: number, firstChar: string) => {

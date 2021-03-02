@@ -47,7 +47,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
 
   handleFocus = () => this.setState({ focused: true });
 
-  handleBlur = (e) => {
+  handleBlur = e => {
     this.setState({ focused: e.currentTarget.contains(e.relatedTarget) });
   };
 
@@ -154,7 +154,7 @@ const ChatWithPopoverPerf = () => {
       }}
     >
       <Chat
-        items={_.times(30, (i) => ({
+        items={_.times(30, i => ({
           key: `a${i}`,
           message: (
             <Chat.Message

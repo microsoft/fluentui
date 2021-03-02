@@ -43,8 +43,19 @@ describe('SelectedItemsList', () => {
       );
       expect(wrapper.exists()).toBeTruthy();
       expect(wrapper.find('div').length).toEqual(3);
-      expect(wrapper.find('div').first().childAt(0).text()).toEqual('a');
-      expect(wrapper.find('div').last().text()).toEqual('b');
+      expect(
+        wrapper
+          .find('div')
+          .first()
+          .childAt(0)
+          .text(),
+      ).toEqual('a');
+      expect(
+        wrapper
+          .find('div')
+          .last()
+          .text(),
+      ).toEqual('b');
     });
   });
 
@@ -66,8 +77,19 @@ describe('SelectedItemsList', () => {
     );
     expect(wrapper.exists()).toBeTruthy();
     expect(wrapper.find('div').length).toEqual(3);
-    expect(wrapper.find('div').first().childAt(0).text()).toEqual('da');
-    expect(wrapper.find('div').last().text()).toEqual('db');
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .childAt(0)
+        .text(),
+    ).toEqual('da');
+    expect(
+      wrapper
+        .find('div')
+        .last()
+        .text(),
+    ).toEqual('db');
   });
 
   it('renders items that are passed in as default', () => {
@@ -82,7 +104,18 @@ describe('SelectedItemsList', () => {
     );
     expect(wrapper.exists()).toBeTruthy();
     expect(wrapper.find('div').length).toEqual(3);
-    expect(wrapper.find('div').first().childAt(0).text()).toEqual('Person A');
-    expect(wrapper.find('div').last().text()).toEqual('Person B');
+    expect(
+      wrapper
+        .find('div')
+        .first()
+        .childAt(0)
+        .text(),
+    ).toEqual('Person A');
+    expect(
+      wrapper
+        .find('div')
+        .last()
+        .text(),
+    ).toEqual('Person B');
   });
 });

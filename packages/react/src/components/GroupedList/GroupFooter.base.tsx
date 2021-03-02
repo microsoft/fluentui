@@ -4,7 +4,7 @@ import { GroupSpacer } from './GroupSpacer';
 import { IGroupFooterStyleProps, IGroupFooterStyles, IGroupFooterProps } from './GroupFooter.types';
 const getClassNames = classNamesFunction<IGroupFooterStyleProps, IGroupFooterStyles>();
 
-export const GroupFooterBase: React.FunctionComponent<IGroupFooterProps> = (props) => {
+export const GroupFooterBase: React.FunctionComponent<IGroupFooterProps> = props => {
   const { group, groupLevel, footerText, indentWidth, styles, theme } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 

@@ -27,7 +27,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   const _insertBeforeItem = (item: T, itemToInsert: IPersona): void => {
     const draggedItems = [itemToInsert];
     const insertIndex = currentSelectedItems.indexOf(item);
-    const items = currentSelectedItems.filter((current) => draggedItems.indexOf(current) === -1);
+    const items = currentSelectedItems.filter(current => draggedItems.indexOf(current) === -1);
     items.splice(insertIndex, 0, ...draggedItems);
 
     setCurrentSelectedItems(items);
@@ -45,7 +45,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
       for (let i = 0; i < data.length; i++) {
         if (data[i].kind === 'string' && data[i].type === 'persona') {
           data[i].getAsString((dropText: string) => {
-            people.forEach((suggestionItem) => {
+            people.forEach(suggestionItem => {
               if (suggestionItem.text === dropText) {
                 _insertBeforeItem(item, suggestionItem);
               }
@@ -90,7 +90,7 @@ const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Element => 
   const _onItemsRemoved = React.useCallback(
     (items: IPersona[]) => {
       const currentSelectedItemsCopy = [...currentSelectedItems];
-      items.forEach((item) => {
+      items.forEach(item => {
         const indexToRemove = currentSelectedItemsCopy.indexOf(item);
         currentSelectedItemsCopy.splice(indexToRemove, 1);
         setCurrentSelectedItems([...currentSelectedItemsCopy]);

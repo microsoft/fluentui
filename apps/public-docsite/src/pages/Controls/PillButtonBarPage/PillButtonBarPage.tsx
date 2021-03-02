@@ -7,7 +7,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PillButtonBarPage/';
 
-export const PillButtonBarPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const PillButtonBarPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <ControlsAreaPage
       {...props}

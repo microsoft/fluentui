@@ -72,7 +72,7 @@ function createEntryWithPolyfill(entry, config) {
     } else if (typeof entry === 'object') {
       const newEntry = { ...entry };
 
-      Object.keys(entry).forEach((entryPoint) => {
+      Object.keys(entry).forEach(entryPoint => {
         newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
       });
 

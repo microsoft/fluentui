@@ -155,7 +155,7 @@ export function withDefaultConfig(parserOpts: ParserOptions = defaultParserOpts)
  */
 export function withCustomConfig(tsconfigPath: string, parserOpts: ParserOptions): FileParser {
   const basePath = path.dirname(tsconfigPath);
-  const { config, error } = ts.readConfigFile(tsconfigPath, (filename) => fs.readFileSync(filename, 'utf8'));
+  const { config, error } = ts.readConfigFile(tsconfigPath, filename => fs.readFileSync(filename, 'utf8'));
 
   if (error !== undefined) {
     const errorText = `Cannot load custom tsconfig.json from provided path: ${tsconfigPath}, with error code: ${error.code}, message: ${error.messageText}`;
@@ -431,7 +431,7 @@ export class Parser {
 
         // Object
         const props: RTObject['props'] = {};
-        typeNode.getProperties().forEach((prop) => {
+        typeNode.getProperties().forEach(prop => {
           const childType = this.checker.getTypeOfSymbolAtLocation(prop, prop.valueDeclaration!);
 
           props[prop.getName()] = this.resolveType(childType, depth + 1);
@@ -457,24 +457,24 @@ export class Parser {
     } else if (typeNode.isIntersection()) {
       return {
         type: 'intersection',
-        types: typeNode.types.map((childTypeNode) => this.resolveType(childTypeNode, depth + 1)),
+        types: typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1)),
         name,
       } as RTIntersection;
     } else if (typeNode.isUnion()) {
-      const subTypes: any[] = typeNode.types.map((childTypeNode) => this.resolveType(childTypeNode, depth + 1));
+      const subTypes: any[] = typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1));
       const allSubTypesAreLiterals = subTypes.filter(Parser.isLiteral).length === subTypes.length;
 
       // Convert union to enum
       if (allSubTypesAreLiterals) {
-        return subTypes.map((st) => ({ name: 'literal', value: st.value, label: st.name })) as any;
+        return subTypes.map(st => ({ name: 'literal', value: st.value, label: st.name })) as any;
       }
 
       // Merge boolean literals to boolean type
       const trueBooleanLiteralIndex = subTypes.findIndex(
-        (subtype) => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === true,
+        subtype => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === true,
       );
       const falseBooleanLiteralIndex = subTypes.findIndex(
-        (subtype) => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === false,
+        subtype => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === false,
       );
       if (trueBooleanLiteralIndex >= 0 && falseBooleanLiteralIndex >= 0) {
         // to keep the order, replace `true` and delete `false` instead of appending
@@ -501,7 +501,7 @@ export class Parser {
 
     const result: Props = {};
 
-    propertiesOfProps.forEach((prop) => {
+    propertiesOfProps.forEach(prop => {
       const propName = prop.getName();
 
       // Find type of prop by looking in context of the props object itself.
@@ -548,9 +548,9 @@ export class Parser {
 
     const rootSymbols = this.checker.getRootSymbols(symbol);
     const commentsOnRootSymbols = rootSymbols
-      .filter((x) => x !== symbol)
-      .map((x) => this.getFullJsDocComment(x))
-      .filter((x) => !!x.fullComment);
+      .filter(x => x !== symbol)
+      .map(x => this.getFullJsDocComment(x))
+      .filter(x => !!x.fullComment);
 
     if (commentsOnRootSymbols.length) {
       return commentsOnRootSymbols[0];
@@ -581,7 +581,7 @@ export class Parser {
     const tagComments: string[] = [];
     const tagMap: StringIndexedObject<string> = {};
 
-    tags.forEach((tag) => {
+    tags.forEach(tag => {
       const trimmedText = (tag.text || '').trim();
       const currentValue = tagMap[tag.name];
       tagMap[tag.name] = currentValue ? `${currentValue}\n${trimmedText}` : trimmedText;
@@ -601,13 +601,13 @@ export class Parser {
   public extractDefaultPropsFromComponent(symbol: ts.Symbol, source: ts.SourceFile) {
     let possibleStatements = source.statements
       // ensure that name property is available
-      .filter((stmt) => !!(stmt as ts.ClassDeclaration).name)
-      .filter((stmt) => this.checker.getSymbolAtLocation((stmt as ts.ClassDeclaration).name!) === symbol);
+      .filter(stmt => !!(stmt as ts.ClassDeclaration).name)
+      .filter(stmt => this.checker.getSymbolAtLocation((stmt as ts.ClassDeclaration).name!) === symbol);
 
     if (!possibleStatements.length) {
       // if no class declaration is found, try to find a
       // expression statement used in a React.StatelessComponent
-      possibleStatements = source.statements.filter((stmt) => ts.isExpressionStatement(stmt));
+      possibleStatements = source.statements.filter(stmt => ts.isExpressionStatement(stmt));
     }
 
     if (!possibleStatements.length) {
@@ -618,7 +618,7 @@ export class Parser {
 
     if (statementIsClassDeclaration(statement) && statement.members.length) {
       const possibleDefaultProps = statement.members.filter(
-        (member) => member.name && getPropertyName(member.name) === 'defaultProps',
+        member => member.name && getPropertyName(member.name) === 'defaultProps',
       );
 
       if (!possibleDefaultProps.length) {
@@ -654,7 +654,7 @@ export class Parser {
       let propMap = {};
       const expressionStatement = statement as ts.ExpressionStatement;
 
-      expressionStatement.getChildren().forEach((child) => {
+      expressionStatement.getChildren().forEach(child => {
         const { right } = child as ts.BinaryExpression;
         if (right) {
           const { properties } = right as ts.ObjectLiteralExpression;
@@ -774,12 +774,12 @@ function formatTag(tag: ts.JSDocTagInfo) {
 
 function getTextValueOfClassMember(classDeclaration: ts.ClassDeclaration, memberName: string): string {
   const [textValue] = classDeclaration.members
-    .filter((member) => ts.isPropertyDeclaration(member))
-    .filter((member) => {
+    .filter(member => ts.isPropertyDeclaration(member))
+    .filter(member => {
       const name = ts.getNameOfDeclaration(member) as ts.Identifier;
       return name && name.text === memberName;
     })
-    .map((member) => {
+    .map(member => {
       const property = member as ts.PropertyDeclaration;
       return property.initializer && (property.initializer as ts.Identifier).text;
     });
@@ -789,8 +789,8 @@ function getTextValueOfClassMember(classDeclaration: ts.ClassDeclaration, member
 
 function getTextValueOfFunctionProperty(exp: ts.Symbol, source: ts.SourceFile, propertyName: string) {
   const [textValue] = source.statements
-    .filter((statement) => ts.isExpressionStatement(statement))
-    .filter((statement) => {
+    .filter(statement => ts.isExpressionStatement(statement))
+    .filter(statement => {
       const expr = (statement as ts.ExpressionStatement).expression as ts.BinaryExpression;
       return (
         expr.left &&
@@ -798,15 +798,15 @@ function getTextValueOfFunctionProperty(exp: ts.Symbol, source: ts.SourceFile, p
         (expr.left as ts.PropertyAccessExpression).name.escapedText === propertyName
       );
     })
-    .filter((statement) => {
+    .filter(statement => {
       const expr = (statement as ts.ExpressionStatement).expression as ts.BinaryExpression;
 
       return ((expr.left as ts.PropertyAccessExpression).expression as ts.Identifier).escapedText === exp.getName();
     })
-    .filter((statement) => {
+    .filter(statement => {
       return ts.isStringLiteral(((statement as ts.ExpressionStatement).expression as ts.BinaryExpression).right);
     })
-    .map((statement) => {
+    .map(statement => {
       return (((statement as ts.ExpressionStatement).expression as ts.BinaryExpression).right as ts.Identifier).text;
     });
 
@@ -904,7 +904,7 @@ export function parseWithProgramProvider(
   const checker = program.getTypeChecker();
 
   return filePaths
-    .map((filePath) => program.getSourceFile(filePath))
+    .map(filePath => program.getSourceFile(filePath))
     .filter((sourceFile): sourceFile is ts.SourceFile => typeof sourceFile !== 'undefined')
     .reduce<ComponentDoc[]>((docs, sourceFile) => {
       const moduleSymbol = checker.getSymbolAtLocation(sourceFile);
@@ -917,10 +917,10 @@ export function parseWithProgramProvider(
         docs,
         checker
           .getExportsOfModule(moduleSymbol)
-          .map((exp) => parser.getComponentInfo(exp, sourceFile, parserOpts.componentNameResolver))
+          .map(exp => parser.getComponentInfo(exp, sourceFile, parserOpts.componentNameResolver))
           .filter((comp): comp is ComponentDoc => comp !== null)
           .filter((comp, index, comps) =>
-            comps.slice(index + 1).every((innerComp) => innerComp!.displayName !== comp!.displayName),
+            comps.slice(index + 1).every(innerComp => innerComp!.displayName !== comp!.displayName),
           ),
       );
 

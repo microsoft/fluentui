@@ -16,7 +16,7 @@ const defaultClassResolver = createClassResolver(classes);
 export const useCheckboxClasses: ClassFunction[] = [
   defaultClassResolver,
   () => GlobalClassNames,
-  (state) => {
+  state => {
     const { boxSide, checked, disabled } = state;
     return {
       root: css(boxSide === 'end' && 'reversed', checked && 'is-checked', disabled ? 'is-disabled' : 'is-enabled'),

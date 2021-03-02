@@ -43,15 +43,15 @@ class CustomChatMessage extends React.Component {
         content={
           <AsyncData
             data={['User 1', 'User 2', 'User 3']}
-            render={(data) => {
-              return !data ? '...loading' : data.map((user) => <div key={user}>{user}</div>);
+            render={data => {
+              return !data ? '...loading' : data.map(user => <div key={user}>{user}</div>);
             }}
           />
         }
         trigger={
           <AsyncData
             data={3}
-            render={(data) => <MenuItem {...props} icon={<LikeIcon />} content={data} onClick={this.togglePopup} />}
+            render={data => <MenuItem {...props} icon={<LikeIcon />} content={data} onClick={this.togglePopup} />}
           />
         }
       />
@@ -116,13 +116,13 @@ class CustomChatMessage extends React.Component {
 const gutterContent = (
   <AsyncData
     data="public/images/avatar/RobinCounts.jpg"
-    render={(data) => (
+    render={data => (
       <Avatar
         image={data}
-        status={(renderStatus) => (
+        status={renderStatus => (
           <AsyncData
             data="available"
-            render={(statusData) =>
+            render={statusData =>
               renderStatus({
                 color: statusData === 'available' ? 'green' : undefined,
                 icon: statusData === 'available' ? <AcceptIcon /> : undefined,

@@ -68,7 +68,7 @@ export const menuItemWrapperClassName = 'ui-menu__itemwrapper';
 export const MenuItemWrapper = compose<'li', MenuItemWrapperProps, MenuItemWrapperStylesProps, BoxProps, {}>(Box, {
   className: menuItemWrapperClassName,
   displayName: 'MenuItemWrapper',
-  mapPropsToStylesProps: (props) => ({
+  mapPropsToStylesProps: props => ({
     active: props.active,
     disabled: props.disabled,
     iconOnly: props.iconOnly,

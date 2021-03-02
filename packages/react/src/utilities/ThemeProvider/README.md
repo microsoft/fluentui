@@ -135,7 +135,7 @@ Theme can be accessed using the `makeStyles` hook. This hook abstracts rendering
 ```jsx
 import { makeStyles } from '@fluentui/react';
 
-const useFooStyles = makeStyles((theme) => ({
+const useFooStyles = makeStyles(theme => ({
   root: {
     background: theme.semanticColors.bodyBackground,
     ':hover': {
@@ -144,7 +144,7 @@ const useFooStyles = makeStyles((theme) => ({
   },
 }));
 
-const Foo = (props) => {
+const Foo = props => {
   const classes = useFooStyles();
 
   return <div className={classes.root} />;

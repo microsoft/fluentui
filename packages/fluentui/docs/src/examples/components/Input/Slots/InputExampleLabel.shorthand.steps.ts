@@ -2,7 +2,7 @@ import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   steps: [
-    (builder) =>
+    builder =>
       builder
         .snapshot('Input: Labels')
         .setValue(`#inside-label`, 'Some text...')

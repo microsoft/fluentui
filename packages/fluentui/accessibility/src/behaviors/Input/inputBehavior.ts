@@ -8,7 +8,7 @@ import { keyboardKey } from '../../keyboard-key';
  * Adds attribute 'aria-invalid=true' based on the property 'error' to 'input' slot.
  * Triggers 'clear' action with 'Escape' on 'input'.
  */
-export const inputBehavior: Accessibility<InputBehaviorProps> = (props) => ({
+export const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
   attributes: {
     input: {
       'aria-disabled': props.disabled,

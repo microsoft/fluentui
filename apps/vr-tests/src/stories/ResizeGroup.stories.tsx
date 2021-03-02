@@ -27,7 +27,7 @@ const noop = () => null;
 
 storiesOf('ResizeGroup', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -45,12 +45,12 @@ storiesOf('ResizeGroup', module)
       <ResizeGroup
         data={list}
         onReduceData={noop}
-        onRenderData={(data) => {
+        onRenderData={data => {
           return (
             <OverflowSet
               items={data.primary}
               overflowItems={data.overflow.length ? data.overflow : null}
-              onRenderItem={(item) => {
+              onRenderItem={item => {
                 return (
                   <DefaultButton
                     text={item.name}
@@ -60,7 +60,7 @@ storiesOf('ResizeGroup', module)
                   />
                 );
               }}
-              onRenderOverflowButton={(overflowItems) => (
+              onRenderOverflowButton={overflowItems => (
                 <DefaultButton className="OverflowButton" menuProps={{ items: overflowItems! }} />
               )}
             />

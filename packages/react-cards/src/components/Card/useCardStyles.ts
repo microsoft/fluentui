@@ -148,7 +148,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.selected,
+    s => s.selected,
     {
       background: 'var(--card-selected-background)',
       borderColor: 'var(--card-selected-borderColor)',
@@ -159,14 +159,14 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.compact,
+    s => s.compact,
     {
       padding: '0',
     },
   ],
 
   [
-    (s) => s.block,
+    s => s.block,
     {
       height: '100%',
       width: '100%',
@@ -174,7 +174,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => !!s.onClick,
+    s => !!s.onClick,
     {
       background: '#ffffff',
       borderColor: 'transparent',
@@ -195,7 +195,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.size === 'smallest',
+    s => s.size === 'smallest',
     {
       borderRadius: 'var(--card-size-smallest-borderRadius)',
       height: 'var(--card-size-smallest-height)',
@@ -206,7 +206,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.size === 'smaller',
+    s => s.size === 'smaller',
     {
       borderRadius: 'var(--card-size-smaller-borderRadius)',
       height: 'var(--card-size-smaller-height)',
@@ -217,7 +217,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.size === 'small',
+    s => s.size === 'small',
     {
       borderRadius: 'var(--card-size-small-borderRadius)',
       height: 'var(--card-size-small-height)',
@@ -228,7 +228,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.size === 'large',
+    s => s.size === 'large',
     {
       borderRadius: 'var(--card-size-large-borderRadius)',
       height: 'var(--card-size-large-height)',
@@ -239,7 +239,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.size === 'larger',
+    s => s.size === 'larger',
     {
       borderRadius: 'var(--card-size-larger-borderRadius)',
       height: 'var(--card-size-larger-height)',
@@ -250,7 +250,7 @@ const useRootStyles = makeStyles<CardState>([
   ],
 
   [
-    (s) => s.size === 'largest',
+    s => s.size === 'largest',
     {
       borderRadius: 'var(--card-size-largest-borderRadius)',
       height: 'var(--card-size-largest-height)',

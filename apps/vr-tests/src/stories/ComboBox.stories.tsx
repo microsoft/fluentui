@@ -39,7 +39,7 @@ const onRenderFontOption = (item: ISelectableOption) => {
 
 storiesOf('ComboBox', module)
   .addDecorator(FabricDecoratorTallFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

@@ -15,7 +15,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const visibilityData = require('../../../data/layout-visibility.json');
 const breakpointsData = require('../../../data/responsive-breakpoints.json');
 
-export const LayoutPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const LayoutPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

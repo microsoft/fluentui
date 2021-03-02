@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MenuContextProvider } from './menuContext';
 import { useEventListener } from '@fluentui/react-component-event-listener';
 
-export const Menu = (props) => {
+export const Menu = props => {
   const { children, trigger = null, open = false } = props;
   const triggerRef = React.useRef<HTMLDivElement>();
   const menuRef = React.useRef<HTMLDivElement>();
@@ -11,7 +11,7 @@ export const Menu = (props) => {
   useEventListener({
     type: 'keydown',
     target: document,
-    listener: (e) => {
+    listener: e => {
       if (e.key === 'Escape') {
         setOpen(false);
       }
@@ -22,14 +22,14 @@ export const Menu = (props) => {
   useEventListener({
     type: 'wheel',
     target: document,
-    listener: (e) => {
+    listener: e => {
       setOpen(false);
     },
   });
   useEventListener({
     type: 'touchmove',
     target: document,
-    listener: (e) => {
+    listener: e => {
       setOpen(false);
     },
   });

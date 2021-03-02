@@ -28,7 +28,7 @@ const DropdownExampleSearch = () => (
     placeholder="Start typing a name"
     noResultsMessage="We couldn't find any matches."
     getA11ySelectionMessage={{
-      onAdd: (item) => `${item} has been selected.`,
+      onAdd: item => `${item} has been selected.`,
     }}
   />
 );

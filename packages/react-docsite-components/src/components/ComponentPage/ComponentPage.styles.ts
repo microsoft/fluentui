@@ -32,7 +32,7 @@ const componentPageColor = '#0f8387';
 const componentPagePadding = 50;
 const ulLeftPadding = 18;
 
-export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageStyles> = (props) => {
+export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageStyles> = props => {
   const { theme = getTheme() } = props;
   return {
     body: globalClassNames.body,

@@ -6,7 +6,7 @@ import { Overlay } from '@fluentui/react';
 
 storiesOf('Overlay', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

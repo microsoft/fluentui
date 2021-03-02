@@ -8,7 +8,7 @@ const FormValidateFormik = () => (
       firstName: '',
       city: '',
     }}
-    validate={(values) => {
+    validate={values => {
       const errors: {
         firstName?: string;
         city?: string;
@@ -41,7 +41,7 @@ const FormValidateFormik = () => (
           id="first-name-inline"
         />
         <FormDropdown
-          onBlur={(e) => {
+          onBlur={e => {
             setTouched({ ...touched, city: true });
           }}
           onChange={(e, props) => {

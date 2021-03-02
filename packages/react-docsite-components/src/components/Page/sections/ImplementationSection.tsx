@@ -15,7 +15,7 @@ export interface IImplementationSectionProps extends IPageSectionPropsWithSectio
   hideImplementationTitle?: boolean;
 }
 
-export const ImplementationSection: React.FunctionComponent<IImplementationSectionProps> = (props) => {
+export const ImplementationSection: React.FunctionComponent<IImplementationSectionProps> = props => {
   const {
     className,
     readableSectionName = props.sectionName,

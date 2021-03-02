@@ -37,7 +37,7 @@ class MB<T> implements MaybeChain<T> {
   }
 
   public then<F>(this: Maybe<T>, fn: (v: NonNullable<T>) => F | Maybe<F>): Maybe<F> {
-    return this.chain((v) => Maybe(fn(v))).flatten() as Maybe<F>;
+    return this.chain(v => Maybe(fn(v))).flatten() as Maybe<F>;
   }
 
   public orElse(mElse: NonNullable<T>): NonNullable<T> {

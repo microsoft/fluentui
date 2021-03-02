@@ -153,7 +153,7 @@ export function _getImports(example: string): IImport[] {
   if (!imports) {
     return [];
   }
-  return imports.map((importStatement) => {
+  return imports.map(importStatement => {
     const importMatch = importStatement.match(IMPORT_REGEX)!;
     const importPath = importMatch[2];
 
@@ -180,7 +180,10 @@ export function _getImportIdentifiers(contents: string | undefined): IImportIden
   // Foo          for `import Foo from 'foo'`
   // { Foo, Bar } for `import { Foo, Bar } from 'foo'`
   const hadBracket = (contents || '').indexOf('{') !== -1;
-  contents = (contents || '').replace('{', '').replace('}', '').trim();
+  contents = (contents || '')
+    .replace('{', '')
+    .replace('}', '')
+    .trim();
 
   const items: IImportIdentifiers[] = [];
   IMPORT_ITEM_REGEX.lastIndex = 0;

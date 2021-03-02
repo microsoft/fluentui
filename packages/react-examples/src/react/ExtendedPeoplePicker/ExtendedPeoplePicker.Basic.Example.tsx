@@ -83,7 +83,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   };
 
   const onCopyItems = (items: IExtendedPersonaProps[]): string => {
-    return items.map((item) => item.text).join(', ');
+    return items.map(item => item.text).join(', ');
   };
 
   const shouldShowForceResolve = (): boolean => {
@@ -108,7 +108,7 @@ export const ExtendedPeoplePickerBasicExample: React.FunctionComponent = () => {
   };
 
   const convertResultsToPromise = (results: IPersonaProps[]): Promise<IPersonaProps[]> => {
-    return new Promise<IPersonaProps[]>((resolve) => setTimeout(() => resolve(results), 150));
+    return new Promise<IPersonaProps[]>(resolve => setTimeout(() => resolve(results), 150));
   };
 
   const validateInput = (input: string): boolean => {

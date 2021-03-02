@@ -6,7 +6,7 @@ import { Slider, ThemeProvider } from '@fluentui/react';
 
 storiesOf('Slider', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <ThemeProvider>
       <Screener
         steps={new Screener.Steps()

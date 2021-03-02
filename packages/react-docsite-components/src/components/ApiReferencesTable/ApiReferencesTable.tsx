@@ -170,21 +170,23 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name} tabIndex={-1}>
         {title}
       </Text>
-    ) : undefined;
+    ) : (
+      undefined
+    );
   }
 }
 
 /**
  * Memoized DetailsList wrapper handling scenarios specific to API reference tables.
  */
-const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo((props) => {
+const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo(props => {
   // Alphabetize the items and add a key to each one.
   const { itemKind, items } = props;
   const processedItems: IApiEnumProperty[] | IApiInterfaceProperty[] | IMethod[] = useConst(() => {
     if (itemKind === 'enum') {
       return (items as IApiEnumProperty[])
         .sort((a, b) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
-        .map((item) => ({ ...item, key: item.name }));
+        .map(item => ({ ...item, key: item.name }));
     }
     return (items as IApiInterfaceProperty[] | IMethod[])
       .sort((a, b) => {
@@ -198,7 +200,7 @@ const ApiDetailsList: React.FunctionComponent<IApiDetailsListProps> = React.memo
         }
         return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
       })
-      .map((item) => ({ ...item, key: item.name }));
+      .map(item => ({ ...item, key: item.name }));
   });
 
   const columns = useConst(() => _getColumns(props));

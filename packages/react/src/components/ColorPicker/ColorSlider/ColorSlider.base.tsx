@@ -197,7 +197,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   };
 
   private _disposeListeners = (): void => {
-    this._disposables.forEach((dispose) => dispose());
+    this._disposables.forEach(dispose => dispose());
     this._disposables = [];
   };
 

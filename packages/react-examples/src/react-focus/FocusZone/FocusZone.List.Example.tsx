@@ -6,7 +6,7 @@ import { Link } from '@fluentui/react/lib/Link';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { DetailsRow, IColumn, Selection, SelectionMode, IDetailsRowStyles } from '@fluentui/react/lib/DetailsList';
 
-const ITEMS = createArray(10, (index) => ({
+const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
   url: 'http://placehold.it/100x' + (100 + index!),
@@ -24,21 +24,21 @@ const COLUMNS: IColumn[] = [
     name: 'Link',
     fieldName: '',
     minWidth: 100,
-    onRender: (item) => <Link href={item.url}>{item.url}</Link>,
+    onRender: item => <Link href={item.url}>{item.url}</Link>,
   },
   {
     key: 'textfield',
     name: 'Link',
     fieldName: '',
     minWidth: 130,
-    onRender: (item) => <TextField readOnly defaultValue={'ReadOnly ' + item.name} />,
+    onRender: item => <TextField readOnly defaultValue={'ReadOnly ' + item.name} />,
   },
   {
     key: 'textfield2',
     name: 'Link2',
     fieldName: '',
     minWidth: 130,
-    onRender: (item) => <TextField defaultValue={item.name} />,
+    onRender: item => <TextField defaultValue={item.name} />,
   },
 ];
 

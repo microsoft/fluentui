@@ -80,10 +80,10 @@ function _useGlobals(supportedPackages: IPackageGroup[]): boolean {
       win.ReactDOM = ReactDOM;
     }
     Promise.all(
-      supportedPackages.map((group) => {
+      supportedPackages.map(group => {
         if (!win[group.globalName]) {
           /* eslint-disable @typescript-eslint/no-explicit-any */
-          return new Promise<any>((resolve) => {
+          return new Promise<any>(resolve => {
             // handle either promise or callback function
             const globalResult = group.loadGlobal(resolve);
             if (globalResult && (globalResult as PromiseLike<any>).then) {
@@ -150,8 +150,8 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
 
   // React types must be loaded first (don't use import() to avoid potential bundling issues)
   promises.push(
-    new Promise<void>((resolve) =>
-      require.ensure([], (require) => {
+    new Promise<void>(resolve =>
+      require.ensure([], require => {
         // raw-loader 0.x exports a single string, and later versions export a default.
         // The package.json specifies 0.x, but handle either just in case.
         const result: string | { default: string } = require('!raw-loader?esModule=false!@types/react/index.d.ts');
@@ -176,7 +176,7 @@ function _loadTypes(supportedPackages: IPackageGroup[]): Promise<void> {
 
       // Call the provided loader function
       promises.push(
-        Promise.resolve(loadTypes()).then((contents) => {
+        Promise.resolve(loadTypes()).then(contents => {
           const indexPath = `${typesPrefix}/${typesPackageName}/index`;
           // This makes TS automatically find typings for package-level imports
           typescriptDefaults.addExtraLib(contents, `${indexPath}.d.ts`);

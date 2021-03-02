@@ -45,7 +45,7 @@ const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
 
 storiesOf('Signals', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

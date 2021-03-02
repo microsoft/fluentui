@@ -11,7 +11,7 @@ import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMark
 import { MarkdownLink } from './MarkdownLink';
 import { MarkdownPre } from './MarkdownPre';
 
-const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = (props) => {
+const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
   const imageStyles: Partial<IImageStyles> = {
     root: {
       maxWidth: '100%',
@@ -27,7 +27,7 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = (props) 
 
 const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>();
 
-const MarkdownBase: React.FunctionComponent<IMarkdownProps> = (props) => {
+const MarkdownBase: React.FunctionComponent<IMarkdownProps> = props => {
   const { styles, theme, children } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 

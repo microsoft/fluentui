@@ -12,7 +12,7 @@ const baseUrl =
 const directionalIconsData = require<[string, string][]>('../../../data/directional-icons.json');
 const localizedFontsData = require<ITableContent>('../../../data/localized-fonts.json');
 
-export const LocalizationPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const LocalizationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

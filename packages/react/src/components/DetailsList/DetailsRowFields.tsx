@@ -23,7 +23,7 @@ const getCellText = (item: any, column: IColumn): string => {
  *
  * {@docCategory DetailsList}
  */
-export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> = (props) => {
+export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> = props => {
   const {
     columns,
     columnStartIndex,

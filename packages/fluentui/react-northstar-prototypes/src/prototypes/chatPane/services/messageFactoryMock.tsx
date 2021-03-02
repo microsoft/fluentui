@@ -93,7 +93,7 @@ function createMessageContent(message: MessageData): ShorthandValue<ChatMessageP
 }
 
 function createMessageContentWithAttachments(content: string, messageId: string): JSX.Element {
-  const menuClickHandler = (message) => (e) => {
+  const menuClickHandler = message => e => {
     alert(`${message} clicked`);
     e.stopPropagation();
   };
@@ -134,7 +134,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
   const action = {
     'aria-label': 'More attachment options',
     icon: <MoreIcon />,
-    onClick: (e) => e.stopPropagation(),
+    onClick: e => e.stopPropagation(),
     onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, SpacebarKey]),
     children: (Component, props) => (
       <Popup content={{ content: contextMenu }} trapFocus trigger={<Component {...props} />} />
@@ -198,7 +198,7 @@ export function generateChatProps(chat: ChatData): ChatItem[] {
   chatProps.push(generateChatMsgProps(lastMsg, members.get(lastMsg.from)));
 
   // Last read divider
-  const myLastMsgIndex = _.findLastIndex(chatProps, (item) => item.mine);
+  const myLastMsgIndex = _.findLastIndex(chatProps, item => item.mine);
   if (myLastMsgIndex < chatProps.length - 1) {
     chatProps.splice(
       myLastMsgIndex + 1,

@@ -100,7 +100,7 @@ const normalizeDateInGrid = (date: Date): Date => {
  * A DatepickerCalendar is used to display dates in sematically grouped way.
  */
 export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps> &
-  FluentComponentStaticProps<DatepickerCalendarProps> = (props) => {
+  FluentComponentStaticProps<DatepickerCalendarProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DatepickerCalendar.displayName, context.telemetry);
   setStart();
@@ -149,27 +149,27 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: DatepickerCalendar.displayName,
     actionHandlers: {
-      addWeek: (e) => {
+      addWeek: e => {
         e.preventDefault();
         const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', 1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
-      subtractWeek: (e) => {
+      subtractWeek: e => {
         e.preventDefault();
         const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Week', -1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
-      addDay: (e) => {
+      addDay: e => {
         e.preventDefault();
         const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', 1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
-      subtractDay: (e) => {
+      subtractDay: e => {
         e.preventDefault();
         const newNavigatedDate = navigateToNewDate(gridNavigatedDate, 'Day', -1, restrictedDatesOptions, true);
         updateNavigatedDate(newNavigatedDate);
       },
-      moveToStartOfWeek: (e) => {
+      moveToStartOfWeek: e => {
         e.preventDefault();
         const targetDate = getStartDateOfWeek(gridNavigatedDate, firstDayOfWeek);
         const newNavigatedDate = contstraintNavigatedDate(
@@ -182,7 +182,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
         updateNavigatedDate(newNavigatedDate);
       },
-      moveToEndOfWeek: (e) => {
+      moveToEndOfWeek: e => {
         e.preventDefault();
         const targetDate = getEndDateOfWeek(gridNavigatedDate, firstDayOfWeek);
         const newNavigatedDate = contstraintNavigatedDate(
@@ -195,10 +195,10 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
         updateNavigatedDate(newNavigatedDate);
       },
-      moveToStartOfColumn: (e) => {
+      moveToStartOfColumn: e => {
         e.preventDefault();
         const targetDayOfWeek = gridNavigatedDate.getDay();
-        const targetDate = _.find(visibleGrid[0], (day) => day.originalDate.getDay() === targetDayOfWeek)?.originalDate;
+        const targetDate = _.find(visibleGrid[0], day => day.originalDate.getDay() === targetDayOfWeek)?.originalDate;
 
         const newNavigatedDate = contstraintNavigatedDate(
           gridNavigatedDate,
@@ -210,12 +210,12 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
         updateNavigatedDate(newNavigatedDate);
       },
-      moveToEndOfColumn: (e) => {
+      moveToEndOfColumn: e => {
         e.preventDefault();
         const targetDayOfWeek = gridNavigatedDate.getDay();
         const targetDate = _.find(
           visibleGrid[visibleGrid.length - 1],
-          (day) => day.originalDate.getDay() === targetDayOfWeek,
+          day => day.originalDate.getDay() === targetDayOfWeek,
         )?.originalDate;
 
         const newNavigatedDate = contstraintNavigatedDate(
@@ -277,8 +277,8 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
 
     if (compareDatePart(newNormalizedDate, normalizedGridDate)) {
       // Do not change the grid immediately the month changes but only once the date stops being visible.
-      const gridContainsNavigatedDate = visibleGrid.find((week) =>
-        week.find((day) => compareDatePart(day.originalDate, gridNavigatedDate) === 0),
+      const gridContainsNavigatedDate = visibleGrid.find(week =>
+        week.find(day => compareDatePart(day.originalDate, gridNavigatedDate) === 0),
       );
       if (!gridContainsNavigatedDate) {
         setNormalizedGridDate(newNormalizedDate);
@@ -345,11 +345,11 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
       overrideProps: (
         predefinedProps: DatepickerCalendarCellButtonProps & { ref: React.Ref<HTMLButtonElement> },
       ): DatepickerCalendarCellButtonProps & { ref: React.Ref<HTMLButtonElement> } => ({
-        onFocus: (e) => {
+        onFocus: e => {
           setGridNavigatedDate(day.originalDate);
           _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
         },
-        onClick: (e) => {
+        onClick: e => {
           _.invoke(props, 'onDateChange', e, {
             ...props,
             value: day,
@@ -398,7 +398,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                   {createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
                     defaultProps: () =>
                       getA11yProps('calendarGridRow', {
-                        children: _.times(DAYS_IN_WEEK, (dayNumber) =>
+                        children: _.times(DAYS_IN_WEEK, dayNumber =>
                           createShorthand(DatepickerCalendarHeaderCell, calendarHeaderCell, {
                             defaultProps: () =>
                               getA11yProps('calendarHeaderCell', {
@@ -412,7 +412,7 @@ export const DatepickerCalendar: ComponentWithAs<'div', DatepickerCalendarProps>
                   })}
                 </thead>
                 <tbody>
-                  {_.map(visibleGrid, (week) =>
+                  {_.map(visibleGrid, week =>
                     createShorthand(DatepickerCalendarGridRow, calendarGridRow, {
                       defaultProps: () =>
                         getA11yProps('calendarGridRow', {
@@ -451,13 +451,13 @@ DatepickerCalendar.propTypes = {
   maxDate: PropTypes.instanceOf(Date),
   restrictedDates: PropTypes.arrayOf(PropTypes.instanceOf(Date)),
 
-  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map((name) => DayOfWeek[name])),
-  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map((name) => FirstWeekOfYear[name])),
-  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map((name) => DateRangeType[name])),
+  firstDayOfWeek: PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name])),
+  firstWeekOfYear: PropTypes.oneOf(Object.keys(FirstWeekOfYear).map(name => FirstWeekOfYear[name])),
+  dateRangeType: PropTypes.oneOf(Object.keys(DateRangeType).map(name => DateRangeType[name])),
   daysToSelectInDayView: PropTypes.number,
   today: PropTypes.instanceOf(Date),
   showWeekNumbers: PropTypes.bool,
-  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map((name) => DayOfWeek[name]))),
+  workWeekDays: PropTypes.arrayOf(PropTypes.oneOf(Object.keys(DayOfWeek).map(name => DayOfWeek[name]))),
   weeksToShow: PropTypes.number,
 
   formatDay: PropTypes.func,

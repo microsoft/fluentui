@@ -51,7 +51,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
   tabRegex = new RegExp(/[^\/]*$/);
 
   getTabIndexOrRedirectToDefault(tab: string, tabs) {
-    const lowercaseTabs = _.map(tabs, (tab) => tab.toLowerCase());
+    const lowercaseTabs = _.map(tabs, tab => tab.toLowerCase());
     const index = lowercaseTabs.indexOf(tab);
     if (index === -1) {
       const { history, location } = this.props;
@@ -152,7 +152,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
             activeIndex={currentTabIndex}
             items={tabs}
             style={{ marginTop: '0.5rem', background: 'none', border: 'none' }}
-            variables={(siteVariables) => ({
+            variables={siteVariables => ({
               underlinedColorHover: siteVariables.colors.black,
               color: siteVariables.colors.grey[500],
               colorActive: siteVariables.colors.black,

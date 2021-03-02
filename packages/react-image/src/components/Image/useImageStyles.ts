@@ -4,7 +4,7 @@ import { ImageState } from './Image.types';
 export const useRootStyles = makeStyles<ImageState>([
   [
     null,
-    (theme) => ({
+    theme => ({
       borderColor: theme.alias.color.neutral.neutralStroke1,
       borderRadius: theme.global.borderRadius.none,
       boxShadow: theme.alias.shadow.shadow4,
@@ -14,26 +14,26 @@ export const useRootStyles = makeStyles<ImageState>([
     }),
   ],
   [
-    (props) => props.bordered,
-    (theme) => ({
+    props => props.bordered,
+    theme => ({
       borderStyle: 'solid',
       borderWidth: theme.global.strokeWidth.thin,
     }),
   ],
   [
-    (props) => props.circular,
-    (theme) => ({
+    props => props.circular,
+    theme => ({
       borderRadius: theme.global.borderRadius.circular,
     }),
   ],
   [
-    (props) => props.rounded,
-    (theme) => ({
+    props => props.rounded,
+    theme => ({
       borderRadius: theme.global.borderRadius.medium,
     }),
   ],
   [
-    (props) => props.fit === 'none',
+    props => props.fit === 'none',
     {
       objectFit: 'none',
       objectPosition: 'left top',
@@ -45,7 +45,7 @@ export const useRootStyles = makeStyles<ImageState>([
     },
   ],
   [
-    (props) => props.fit === 'center',
+    props => props.fit === 'center',
     {
       objectFit: 'none',
       objectPosition: 'center',
@@ -57,7 +57,7 @@ export const useRootStyles = makeStyles<ImageState>([
     },
   ],
   [
-    (props) => props.fit === 'cover',
+    props => props.fit === 'cover',
     {
       objectFit: 'cover',
       objectPosition: 'center',
@@ -69,7 +69,7 @@ export const useRootStyles = makeStyles<ImageState>([
     },
   ],
   [
-    (props) => props.fit === 'contain',
+    props => props.fit === 'contain',
     {
       objectFit: 'contain',
       objectPosition: 'center',
@@ -81,7 +81,7 @@ export const useRootStyles = makeStyles<ImageState>([
     },
   ],
   [
-    (props) => props.fluid,
+    props => props.fluid,
     {
       width: '100%',
     },

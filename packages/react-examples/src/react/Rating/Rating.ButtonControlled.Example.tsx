@@ -5,7 +5,7 @@ import { PrimaryButton } from '@fluentui/react/lib/Button';
 export const RatingButtonControlledExample: React.FunctionComponent = () => {
   const [currentRating, setCurrentRating] = React.useState(5);
   const currentRatingToggle = React.useCallback(() => {
-    setCurrentRating((oldRating) => (oldRating === 0 ? 5 : 0));
+    setCurrentRating(oldRating => (oldRating === 0 ? 5 : 0));
   }, []);
 
   const getRatingAriaLabel = React.useCallback(() => `Rating value is ${currentRating} of 5`, [currentRating]);

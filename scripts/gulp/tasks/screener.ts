@@ -10,7 +10,7 @@ const { paths } = config;
 // Visual
 // ----------------------------------------
 
-task('screener:runner', (cb) => {
+task('screener:runner', cb => {
   // screener-runner doesn't allow to pass custom options
   if (argv.filter) process.env.SCREENER_FILTER = argv.filter as string;
 
@@ -20,7 +20,7 @@ task('screener:runner', (cb) => {
       cb();
       process.exit(0);
     })
-    .catch((err) => {
+    .catch(err => {
       cb(err);
       process.exit(1);
     });

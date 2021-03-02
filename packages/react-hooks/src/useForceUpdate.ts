@@ -6,6 +6,6 @@ import { useConst } from './useConst';
  */
 export function useForceUpdate(): () => void {
   const [, setValue] = React.useState(0);
-  const forceUpdate = useConst(() => () => setValue((value) => ++value));
+  const forceUpdate = useConst(() => () => setValue(value => ++value));
   return forceUpdate;
 }

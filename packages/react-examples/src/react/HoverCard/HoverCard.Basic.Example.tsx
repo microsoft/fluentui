@@ -28,7 +28,7 @@ const classNames = mergeStyleSets({
 const items: IExampleItem[] = createListItems(10);
 
 const buildColumn = (): IColumn[] => {
-  return buildColumns(items).filter((column) => column.name === 'location' || column.name === 'key');
+  return buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
 };
 
 const onRenderCompactCard = (item: IExampleItem): JSX.Element => {

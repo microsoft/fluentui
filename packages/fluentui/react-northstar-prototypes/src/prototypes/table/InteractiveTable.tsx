@@ -21,7 +21,7 @@ const InteractiveTable = () => {
 
   const contextMenuItems = ['Add to selection', 'Remove', 'Download'];
 
-  const withContextMenu = (tableRow) => <MenuButton contextMenu trigger={tableRow} menu={contextMenuItems} />;
+  const withContextMenu = tableRow => <MenuButton contextMenu trigger={tableRow} menu={contextMenuItems} />;
 
   return (
     <>

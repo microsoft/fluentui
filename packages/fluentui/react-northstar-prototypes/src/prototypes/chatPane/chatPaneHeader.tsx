@@ -24,10 +24,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
     return (
       <Segment
         content={
-          <TeamCreateIcon
-            styles={{ margin: 'auto 8px' }}
-            variables={(siteVars) => ({ color: siteVars.colors.white })}
-          />
+          <TeamCreateIcon styles={{ margin: 'auto 8px' }} variables={siteVars => ({ color: siteVars.colors.white })} />
         }
         styles={({ variables: v }) => ({
           backgroundColor: v.backgroundColor,
@@ -36,7 +33,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
           height: '40px',
           padding: 0,
         })}
-        variables={(siteVars) => ({ backgroundColor: siteVars.colors.brand[600] })}
+        variables={siteVars => ({ backgroundColor: siteVars.colors.brand[600] })}
       />
     );
   }
@@ -76,7 +73,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
           circular
           buttons={[CallVideoIcon, CallIcon].map((Icon, index) => ({
             key: index,
-            icon: <Icon variables={(siteVars) => ({ color: siteVars.colors.white, margin: 'auto 8px' })} />,
+            icon: <Icon variables={siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' })} />,
             primary: true,
           }))}
           styles={{ marginRight: '20px' }}
@@ -92,7 +89,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
                 margin: 'auto',
                 ...(!index && { margin: 'auto 1.6rem auto auto' }),
               }}
-              variables={(siteVars) => ({ color: siteVars.colors.grey[350] })}
+              variables={siteVars => ({ color: siteVars.colors.grey[350] })}
             />
           );
         })}

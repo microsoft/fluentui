@@ -423,7 +423,7 @@ export const resolveComponent = (displayName): React.ElementType => {
 };
 
 // FIXME: breaks for <button>btn</button>
-const toJSONTreeElement = (input) => {
+const toJSONTreeElement = input => {
   if (input?.as && _.isPlainObject(input.as)) {
     return {
       type: input.as.displayName,
@@ -535,7 +535,7 @@ const resolveProps = (input, cb) => {
 
 export const renderJSONTreeToJSXElement = (
   tree: JSONTreeElement,
-  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = (x) => x,
+  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = x => x,
 ) => {
   if (tree === null) {
     return null;
@@ -597,7 +597,7 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
     }
   }
 
-  tree.props?.children?.forEach((item) => {
+  tree.props?.children?.forEach(item => {
     if (typeof item !== 'string') {
       imports = JSONTreeToImports(item, imports);
     }
@@ -663,7 +663,7 @@ export const fiberNavFindOwnerInJSONTree = (fiberNav: FiberNavigator, jsonTree: 
   //   edit the components children directly.
   // We need to traverse the parent fibers and find one that has a uuid that exists in the json tree
 
-  return fiberNav.findParent((parent) => {
+  return fiberNav.findParent(parent => {
     return !!jsonTreeFindElement(jsonTree, parent.key);
   });
 };
@@ -672,7 +672,7 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   const newTree = { ...cb(tree) };
 
   if (Array.isArray(newTree.children) && newTree.children.length > 0) {
-    newTree.children = newTree.children.map((child) => {
+    newTree.children = newTree.children.map(child => {
       return jsonTreeMap(child, cb);
     });
   }
@@ -688,7 +688,7 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
 //       If you replace React.Children.map from Flex and just return `children`, no prefixing occurs.
 //       -- FIX?
 //       The builder could use some other way of relating JSON tree elements to React elements besides key.
-const keyToUUID = (key) => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
+const keyToUUID = key => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
 
 export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
   const uuidFromKey = keyToUUID(uuid);
@@ -720,7 +720,7 @@ export const jsonTreeFindParent = (tree: JSONTreeElement, uuid: string | number)
 
   let ret = null;
   if (Array.isArray(tree?.props?.children)) {
-    if (tree.props.children.find((jte) => typeof jte !== 'string' && jte.uuid === uuidFromKey)) {
+    if (tree.props.children.find(jte => typeof jte !== 'string' && jte.uuid === uuidFromKey)) {
       return tree;
     }
     for (let i = 0; i < tree?.props?.children.length && ret === null; ++i) {
@@ -739,8 +739,8 @@ export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | numb
   const omitChildWithUuid = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement => {
     if (Array.isArray(tree?.props?.children)) {
       tree.props.children = tree.props.children
-        .filter((jte) => typeof jte === 'string' || jte.uuid !== uuid)
-        .map((jte) => (typeof jte === 'string' ? jte : omitChildWithUuid(jte, uuid)));
+        .filter(jte => typeof jte === 'string' || jte.uuid !== uuid)
+        .map(jte => (typeof jte === 'string' ? jte : omitChildWithUuid(jte, uuid)));
     }
 
     return tree;

@@ -31,7 +31,7 @@ const useSvgStyles = makeStyles([
 // !!!   A usage of converged icon package should be considered.
 //
 
-export const DefaultAvatarIcon: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (props) => {
+export const DefaultAvatarIcon: React.FC<React.HTMLAttributes<HTMLSpanElement>> = props => {
   const containerProps = props['aria-label']
     ? {}
     : {

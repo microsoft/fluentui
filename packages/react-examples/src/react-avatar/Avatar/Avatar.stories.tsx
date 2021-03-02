@@ -134,12 +134,12 @@ export const Colors = () => (
       <Avatar size={40} color="brand" name={examples.name[0]} />
     </StoryExample>
     <StoryExample title="Colorful">
-      {examples.namedColors.map((color) => (
+      {examples.namedColors.map(color => (
         <Avatar size={40} color={color} key={color} />
       ))}
     </StoryExample>
     <StoryExample title="Colorful, hash of name">
-      {examples.name.map((name) => (
+      {examples.name.map(name => (
         <Avatar size={40} color="colorful" name={name} key={name} />
       ))}
     </StoryExample>
@@ -194,7 +194,7 @@ export const ActiveAnimation = () => {
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
-          <Button primary onClick={React.useCallback(() => setActive((a) => !a), [])}>
+          <Button primary onClick={React.useCallback(() => setActive(a => !a), [])}>
             Toggle Active
           </Button>
           <SpinButton
@@ -224,19 +224,19 @@ export const CustomSizes = () => (
 
 const useRobotAvatarRootStyles = makeStyles<AvatarState>([
   [null, { borderRadius: '0' }],
-  [(s) => s.size === 20, { width: '24px' }],
-  [(s) => s.size === 24, { width: '28px' }],
-  [(s) => s.size === 28, { width: '32px' }],
-  [(s) => s.size === 32, { width: '36px' }],
-  [(s) => s.size === 36, { width: '40px' }],
-  [(s) => s.size === 40, { width: '44px' }],
-  [(s) => s.size === 48, { width: '56px' }],
-  [(s) => s.size === 56, { width: '64px' }],
-  [(s) => s.size === 64, { width: '72px' }],
-  [(s) => s.size === 72, { width: '80px' }],
-  [(s) => s.size === 96, { width: '108px' }],
-  [(s) => s.size === 120, { width: '128px' }],
-  [(s) => s.size === 128, { width: '136px' }],
+  [s => s.size === 20, { width: '24px' }],
+  [s => s.size === 24, { width: '28px' }],
+  [s => s.size === 28, { width: '32px' }],
+  [s => s.size === 32, { width: '36px' }],
+  [s => s.size === 36, { width: '40px' }],
+  [s => s.size === 40, { width: '44px' }],
+  [s => s.size === 48, { width: '56px' }],
+  [s => s.size === 56, { width: '64px' }],
+  [s => s.size === 64, { width: '72px' }],
+  [s => s.size === 72, { width: '80px' }],
+  [s => s.size === 96, { width: '108px' }],
+  [s => s.size === 120, { width: '128px' }],
+  [s => s.size === 128, { width: '136px' }],
 ]);
 
 const useRobotAvatarLabelStyles = makeStyles<AvatarState>([
@@ -302,10 +302,10 @@ export const AvatarPlayground = () => {
         <Avatar {...propValues} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
-        {...propSelectors.map((p) => p.renderSelector())}
+        {...propSelectors.map(p => p.renderSelector())}
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
           {`<Avatar `}
-          {...propSelectors.map((p) => p.renderValue())}
+          {...propSelectors.map(p => p.renderValue())}
           {`/>`}
         </div>
       </div>
@@ -320,14 +320,12 @@ export const AvatarPlayground = () => {
 /**
  * Generate a list of Avatars with sample properties
  */
-const AvatarExampleList: React.FC<
-  AvatarProps & {
-    names?: readonly string[];
-    images?: readonly string[];
-    icons?: readonly JSX.Element[];
-    exampleIndex?: number;
-  }
-> = (props) => {
+const AvatarExampleList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+  icons?: readonly JSX.Element[];
+  exampleIndex?: number;
+}> = props => {
   const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
 
@@ -358,11 +356,11 @@ type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () =
 /**
  * Select a value from an array of values, with next/previous methods
  */
-const useValueSelectorState = function <T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
+const useValueSelectorState = function<T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
   const count = values.length;
   const [index, setIndex] = React.useState<number>(() => values.indexOf(initialValue));
-  const next = React.useCallback(() => setIndex((i) => (i + 1) % count), [count]);
-  const prev = React.useCallback(() => setIndex((i) => (i - 1 + count) % count), [count]);
+  const next = React.useCallback(() => setIndex(i => (i + 1) % count), [count]);
+  const prev = React.useCallback(() => setIndex(i => (i - 1 + count) % count), [count]);
   return [values[index], next, prev];
 };
 
@@ -373,7 +371,7 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
   name: Prop,
   [value, next, prev]: ValueSelectorState<AvatarProps[Prop]>,
   initialEnabled: boolean = false,
-  valueToString: (v: AvatarProps[Prop] | undefined) => string = (v) => `${v}`,
+  valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
 ) => {
   const [enabled, { toggle: toggleEnabled }] = useBoolean(initialEnabled);
 

@@ -34,6 +34,6 @@ const theme: PartialTheme = {
   },
 };
 
-export const ComponentPage: React.FunctionComponent = (props) => {
+export const ComponentPage: React.FunctionComponent = props => {
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
 };

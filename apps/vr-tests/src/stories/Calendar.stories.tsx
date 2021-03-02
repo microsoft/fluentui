@@ -7,7 +7,7 @@ import { Fabric, Calendar } from '@fluentui/react';
 const date = new Date(2010, 1, 12);
 storiesOf('Calendar', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -24,7 +24,7 @@ storiesOf('Calendar', module)
 
 storiesOf('Calendar - No Month Option', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

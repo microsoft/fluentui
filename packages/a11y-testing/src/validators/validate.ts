@@ -50,7 +50,7 @@ export const validateSlot = (rule: SlotRule, baseTestFacade: TestFacade): void =
 export const validateBehavior = (rules: Rule[], testFacade: TestFacade) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const errors: any[] = [];
-  rules.forEach((rule) => {
+  rules.forEach(rule => {
     try {
       if (rule instanceof SlotRule) {
         test(rule.stringify(), () => {

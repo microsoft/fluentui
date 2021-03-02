@@ -9,7 +9,7 @@ const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-d
 // eslint-disable-next-line import/no-extraneous-dependencies
 const sharedColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-shared.json');
 
-export const ColorsSharedPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const ColorsSharedPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

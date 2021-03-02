@@ -2,11 +2,11 @@
 
 // Mock requestAnimationFrame and cancelAnimationFrame for all packages
 // @ts-ignore
-global.requestAnimationFrame = (callback) => {
+global.requestAnimationFrame = callback => {
   return setTimeout(callback, 0);
 };
 // @ts-ignore
-global.cancelAnimationFrame = (id) => {
+global.cancelAnimationFrame = id => {
   clearTimeout(id);
 };
 

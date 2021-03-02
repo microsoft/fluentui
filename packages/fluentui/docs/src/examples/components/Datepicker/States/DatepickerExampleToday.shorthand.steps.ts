@@ -5,7 +5,7 @@ import { datepickerCalendarCellSelector } from '../datepickerCalendarCellSelecto
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(`.${buttonClassName}`)
         .snapshot('Shows datepicker popup through button.')

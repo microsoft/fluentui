@@ -8,7 +8,7 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role='none'.
  */
-export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = (props) => ({
+export const datepickerCalendarCellBehavior: Accessibility<DatepickerCalendarCellBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'none',

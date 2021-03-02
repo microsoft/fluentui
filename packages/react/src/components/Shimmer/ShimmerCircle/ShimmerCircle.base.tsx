@@ -4,7 +4,7 @@ import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } f
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 
-export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps> = (props) => {
+export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps> = props => {
   // eslint-disable-next-line deprecation/deprecation
   const { height, styles, borderStyle, theme } = props;
   const classNames = getClassNames(styles!, {

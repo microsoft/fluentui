@@ -167,7 +167,7 @@ function expandQuads(currentRules: IDictionary, name: string, value: string): vo
 
   if (parts[parts.length - 1] === '!important') {
     // Remove !important from parts, and append it to each part individually
-    parts = parts.slice(0, -1).map((p) => p + ' !important');
+    parts = parts.slice(0, -1).map(p => p + ' !important');
   }
 
   currentRules[name + 'Top'] = parts[0];

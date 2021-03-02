@@ -50,7 +50,7 @@ export class TestHelper {
   }
 
   addTests(testDefinitions: TestDefinition[]) {
-    testDefinitions.forEach((testDefinition) => {
+    testDefinitions.forEach(testDefinition => {
       this.testDefinitions.push(testDefinition);
     });
   }
@@ -62,7 +62,7 @@ export class TestHelper {
 
     _.each(groupedByBehavior, (value, key) => {
       describe(key, () => {
-        value.forEach((singleTest) => {
+        value.forEach(singleTest => {
           test(singleTest.params[0], () => {
             singleTest.testMethod({
               behavior: this.getBehavior(singleTest.behaviorName),
@@ -75,19 +75,19 @@ export class TestHelper {
   }
 
   findRegexAndAssingCorrespondingInfoToArray(behaviorMenuItems: any) {
-    behaviorMenuItems.forEach((behavior) => {
-      behavior.variations.forEach((variant) => {
+    behaviorMenuItems.forEach(behavior => {
+      behavior.variations.forEach(variant => {
         if (!variant.specification && !variant.description) {
           this.failDescriptionPresenceTest(variant.name);
         }
         // should not continue when behavior is skipped/exluded
-        if (skipSpecChecksForFiles.find((item) => item === variant.name)) {
+        if (skipSpecChecksForFiles.find(item => item === variant.name)) {
           return;
         }
         if (!variant.specification) {
           this.failSpecificationPresenceTest(variant.name);
         } else {
-          variant.specification.split('\n').forEach((specLine) => {
+          variant.specification.split('\n').forEach(specLine => {
             if (specLine) {
               this.iterateRegexDefinitions(specLine, variant.name);
             }
@@ -99,7 +99,7 @@ export class TestHelper {
 
   iterateRegexDefinitions(specLine: string, behaviorName: string) {
     let regexMatched = false;
-    this.testDefinitions.forEach((testDefinition) => {
+    this.testDefinitions.forEach(testDefinition => {
       const regex = new RegExp(testDefinition.regexp);
       const result = regex.exec(specLine);
       if (result) {

@@ -131,11 +131,11 @@ function useSelectedItemsState({
     const getAllSelectedIndices = (): number[] => {
       return options
         .map((option: IDropdownOption, index: number) => (option.selected ? index : -1))
-        .filter((index) => index !== -1);
+        .filter(index => index !== -1);
     };
 
     const getSelectedIndex = (searchKey: string | number | null | undefined): number => {
-      return findIndex(options, (option) => {
+      return findIndex(options, option => {
         // eslint-disable-next-line eqeqeq
         if (searchKey != null) {
           return option.key === searchKey;
@@ -398,12 +398,10 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
             aria-posinset={ariaAttrs.ariaPosInSet}
             aria-selected={ariaAttrs.ariaSelected}
           >
-            {
-              // If option is selected render title, otherwise render the placeholder text
-              selectedOptions.length
-                ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                : onRenderPlaceholder(props, this._onRenderPlaceholder)
-            }
+            {// If option is selected render title, otherwise render the placeholder text
+            selectedOptions.length
+              ? onRenderTitle(selectedOptions, this._onRenderTitle)
+              : onRenderPlaceholder(props, this._onRenderPlaceholder)}
           </span>
           <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
         </div>
@@ -569,7 +567,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   /** Get text in dropdown input as a string */
   private _getTitle = (items: IDropdownOption[], _unused?: unknown): string => {
     const { multiSelectDelimiter = ', ' } = this.props;
-    return items.map((i) => i.text).join(multiSelectDelimiter);
+    return items.map(i => i.text).join(multiSelectDelimiter);
   };
 
   /** Render text in dropdown input */

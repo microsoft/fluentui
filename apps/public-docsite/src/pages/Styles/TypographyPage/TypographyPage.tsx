@@ -19,7 +19,7 @@ const typeWeights = require('office-ui-fabric-core/src/data/type-weights.json');
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Styles/TypographyPage/docs';
 
-export const TypographyPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const TypographyPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage
@@ -103,7 +103,7 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
               </span>
             );
           case 'Usage':
-            return weightUsage.filter((x) => x.name === row.name)[0].usage;
+            return weightUsage.filter(x => x.name === row.name)[0].usage;
           default:
             return content;
         }
@@ -139,7 +139,7 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
               </div>
             );
           case 'Usage':
-            return sizeUsage.filter((x) => x.size === row.size)[0].usage;
+            return sizeUsage.filter(x => x.size === row.size)[0].usage;
           default:
             return content;
         }

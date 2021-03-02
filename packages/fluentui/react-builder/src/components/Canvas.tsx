@@ -60,7 +60,13 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
 }) => {
   const [hideDropSelector, setHideDropSelector] = React.useState(false);
 
-  const iframeId = React.useMemo(() => `frame-${Math.random().toString(36).slice(2)}`, []);
+  const iframeId = React.useMemo(
+    () =>
+      `frame-${Math.random()
+        .toString(36)
+        .slice(2)}`,
+    [],
+  );
 
   const [virtualCursorElements, setVirtualCursorElements] = React.useState<HTMLElement[]>([]);
   const [vcIndex, setVcIndex] = React.useState(0);
@@ -101,7 +107,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
   );
 
   const handleKeyDown = React.useCallback(
-    (event) => {
+    event => {
       switch (
         event.code // Begin switch 1
       ) {
@@ -110,7 +116,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
           if (event.ctrlKey) {
             // Begin if 1
             virtualCursorElements[vcIndex].classList.remove('virtual-focused');
-            setVcIndex((index) => {
+            setVcIndex(index => {
               const tempIndex = index + (event.code === 'Period' ? 1 : -1);
 
               // Ensure looping, i.e., that the next element of the last element is the first element, and that the previous element of the first element is the last element
@@ -245,7 +251,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
               // '[role="treeitem"]',
               '.ui-text:not(.ui-checkbox__label)',
             ]
-              .map((selector) => `*:not([aria-hidden]) >  ${selector}`)
+              .map(selector => `*:not([aria-hidden]) >  ${selector}`)
               .join(','),
           ),
         ),
@@ -364,7 +370,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
       const iframe = document.getElementById(iframeId) as HTMLIFrameElement;
       iframe.contentWindow.focus();
     } else {
-      virtualCursorElements.map((e) => e.classList.remove('virtual-focused'));
+      virtualCursorElements.map(e => e.classList.remove('virtual-focused'));
       setFocusedVcElement(null);
     }
   }, [enabledVirtualCursor, iframeId, virtualCursorElements]);
@@ -402,7 +408,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             <DebugSelector
               active={isSelecting}
               key={`debug-selector-${selectedComponent?.uuid ?? 'unknown'}`}
-              filter={(fiberNav) => {
+              filter={fiberNav => {
                 const owner = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
                 if (owner?.props?.['data-builder-id'] === selectedComponent?.uuid) {
                   return null;
@@ -410,7 +416,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
                 return owner;
               }}
               mountDocument={document}
-              renderLabel={(fiberNav) => fiberNav.name}
+              renderLabel={fiberNav => fiberNav.name}
               showBackground={false}
               showClassName={false}
               showElement={false}
@@ -430,7 +436,7 @@ export const Canvas: React.FunctionComponent<CanvasProps> = ({
             )}
             {draggingElement && (
               <DropSelector
-                filter={(fiberNav) => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
+                filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
                 jsonTree={jsonTree}
                 mountDocument={document}
                 onDropPositionChange={onDropPositionChange}

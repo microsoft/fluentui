@@ -9,7 +9,7 @@ const selectors = {
 
 const config: ScreenerTestsConfig = {
   steps: [
-    (builder) =>
+    builder =>
       builder
         .focus(selectors.triggerButtonPopupWithTrapFocus)
         .snapshot('Scroll to trigger button for popup with trap focus')

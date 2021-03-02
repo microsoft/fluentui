@@ -107,15 +107,15 @@ const SelectedPersonaInner = React.memo(
     );
 
     const onExpandClicked = React.useCallback(
-      (ev) => {
+      ev => {
         ev.stopPropagation();
         ev.preventDefault();
         if (onItemChange && getExpandedItems) {
           getExpandedItems(item)
-            .then((value) => {
+            .then(value => {
               onItemChange(value, index);
             })
-            .catch((error) => {
+            .catch(error => {
               // No op
             });
         }
@@ -124,7 +124,7 @@ const SelectedPersonaInner = React.memo(
     );
 
     const onRemoveClicked = React.useCallback(
-      (ev) => {
+      ev => {
         ev.stopPropagation();
         ev.preventDefault();
         onRemoveItem && onRemoveItem();

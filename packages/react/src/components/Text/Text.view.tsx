@@ -4,7 +4,7 @@ import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { getNativeProps, htmlElementProperties } from '../../Utilities';
 import { ITextComponent, ITextProps, ITextSlots } from './Text.types';
 
-export const TextView: ITextComponent['view'] = (props) => {
+export const TextView: ITextComponent['view'] = props => {
   // eslint-disable-next-line eqeqeq
   if (props.children == null) {
     return null;

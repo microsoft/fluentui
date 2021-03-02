@@ -86,11 +86,11 @@ const SelectableTable = () => {
               />
             }
           />
-          {headers.map((item) => (
+          {headers.map(item => (
             <Table.Cell content={item.title} accessibility={gridCellBehavior} key={item.key} />
           ))}
         </Table.Row>
-        {rows.map((row) => {
+        {rows.map(row => {
           return (
             <Table.Row accessibility={gridRowBehavior} selected={state.rows[row.key]} key={row.key}>
               <Table.Cell
@@ -105,7 +105,7 @@ const SelectableTable = () => {
                   />
                 }
               />
-              {row.items.map((item) => (
+              {row.items.map(item => (
                 <Table.Cell content={item.content} accessibility={gridCellBehavior} key={item.key} />
               ))}
             </Table.Row>

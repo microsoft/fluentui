@@ -4,7 +4,7 @@ import { getSlots, withSlots } from '@fluentui/foundation-legacy';
 import { IVerticalPersonaComponent, IVerticalPersonaProps, IVerticalPersonaSlots } from './VerticalPersona.types';
 import { PersonaText } from '../PersonaText/PersonaText';
 
-export const VerticalPersonaView: IVerticalPersonaComponent['view'] = (props) => {
+export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
   const Slots = getSlots<IVerticalPersonaProps, IVerticalPersonaSlots>(props, {
     root: 'div',
     primaryText: PersonaText,

@@ -12,14 +12,20 @@ const getScreenerSteps = (pageUrl: string, stepsModulePath: string): any[] => {
   if (fs.existsSync(`${stepsModulePath}.ts`)) {
     const { steps: screenerSteps, themes = DEFAULT_THEMES }: ScreenerTestsConfig = require(stepsModulePath).default;
 
-    _.forEach(themes, (themeName) => {
-      stepsBuilder.waitForSelector('.ui-provider').switchTheme(themeName).snapshot(`Theme: ${themeName}`);
+    _.forEach(themes, themeName => {
+      stepsBuilder
+        .waitForSelector('.ui-provider')
+        .switchTheme(themeName)
+        .snapshot(`Theme: ${themeName}`);
 
-      _.forEach(screenerSteps, (screenerStep) => {
+      _.forEach(screenerSteps, screenerStep => {
         screenerStep(stepsBuilder, keys);
 
         // We need to reload page to reset mouse position between tests
-        stepsBuilder.url(pageUrl).waitForSelector('.ui-provider').switchTheme(themeName);
+        stepsBuilder
+          .url(pageUrl)
+          .waitForSelector('.ui-provider')
+          .switchTheme(themeName);
       });
     });
   } else {

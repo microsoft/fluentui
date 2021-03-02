@@ -50,7 +50,7 @@ const border = 'solid 1px black';
 
 storiesOf('Image', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

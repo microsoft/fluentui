@@ -192,7 +192,7 @@ storiesOf('PeoplePicker', module).addStory('Normal with text', () => (
 ));
 
 storiesOf('PeoplePicker', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

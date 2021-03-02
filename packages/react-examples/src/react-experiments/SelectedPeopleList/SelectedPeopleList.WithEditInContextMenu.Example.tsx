@@ -27,7 +27,7 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
   const _getSuggestions = (value: string) => {
     const allPeople = people;
     const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', value));
-    const suggestionList = suggestions.map((item) => {
+    const suggestionList = suggestions.map(item => {
       return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
     });
     return suggestionList;
@@ -81,7 +81,7 @@ export const SelectedPeopleListWithEditInContextMenuExample = (): JSX.Element =>
   const _onItemsRemoved = React.useCallback(
     (items: IPersona[]): void => {
       const currentSelectedItemsCopy = [...currentSelectedItems];
-      items.forEach((item) => {
+      items.forEach(item => {
         const indexToRemove = currentSelectedItemsCopy.indexOf(item);
         currentSelectedItemsCopy.splice(indexToRemove, 1);
         setCurrentSelectedItems([...currentSelectedItemsCopy]);

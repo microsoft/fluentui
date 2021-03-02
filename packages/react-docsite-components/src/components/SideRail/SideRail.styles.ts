@@ -7,7 +7,7 @@ export const sideRailClassNames = {
   isActive: 'SideRail-isActive',
 };
 
-export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = (props) => {
+export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = props => {
   const theme = props.theme!;
   return {
     root: {},

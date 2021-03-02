@@ -213,7 +213,7 @@ export const TabsBase: React.FunctionComponent<TabsProps> = React.forwardRef<HTM
     const renderedSelectedKey = getSelectedKey();
     const renderedSelectedIndex = renderedSelectedKey ? tabCollection.keyToIndexMapping[renderedSelectedKey] : 0;
 
-    const items = tabCollection.tabs.map((l) => renderTab(tabCollection, l, renderedSelectedKey, classNames.tab));
+    const items = tabCollection.tabs.map(l => renderTab(tabCollection, l, renderedSelectedKey, classNames.tab));
 
     // The overflow menu starts empty and items[] is updated as the overflow items change
     const overflowMenuProps: IContextualMenuProps = React.useMemo(
@@ -261,7 +261,7 @@ export const TabsBase: React.FunctionComponent<TabsProps> = React.forwardRef<HTM
         </FocusZone>
         {renderedSelectedKey &&
           tabCollection.tabs.map(
-            (tab) =>
+            tab =>
               (tab.alwaysRender === true || renderedSelectedKey === tab.itemKey) &&
               renderTabItem(tab.itemKey, renderedSelectedKey === tab.itemKey),
           )}

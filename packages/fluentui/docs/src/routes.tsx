@@ -99,7 +99,7 @@ const Routes = () => (
                 <Route
                   exact
                   path="/components/:name"
-                  render={(routeProps) => <Redirect to={`${routeProps.location.pathname}/definition`} />}
+                  render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />}
                 />
                 <Route exact path="/behaviors/:name" component={DocsBehaviorRoot} sidebar />
                 <Route exact path="/debugging">

@@ -26,9 +26,7 @@ export const avatarStatusIconClassName = 'ui-avatar__statusicon';
 /**
  * A AvatarStatusIcon provides a status icon for the Avatar.
  */
-export const AvatarStatusIcon: ComponentWithAs<'span', AvatarStatusIconProps> & FluentComponentStaticProps = (
-  props,
-) => {
+export const AvatarStatusIcon: ComponentWithAs<'span', AvatarStatusIconProps> & FluentComponentStaticProps = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatusIcon.displayName, context.telemetry);
   setStart();

@@ -11,11 +11,11 @@ export const DatePickerExternalControlsExample = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(new Date());
 
   const goPrevious = React.useCallback(() => {
-    setSelectedDate((prevSelectedDate) => (prevSelectedDate ? addDays(prevSelectedDate, -1) : undefined));
+    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, -1) : undefined));
   }, []);
 
   const goNext = React.useCallback(() => {
-    setSelectedDate((prevSelectedDate) => (prevSelectedDate ? addDays(prevSelectedDate, 1) : undefined));
+    setSelectedDate(prevSelectedDate => (prevSelectedDate ? addDays(prevSelectedDate, 1) : undefined));
   }, []);
 
   return (

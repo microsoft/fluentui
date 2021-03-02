@@ -30,7 +30,7 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
   }
 
   private _renderChildrenAsActions(): (JSX.Element | null)[] | null | undefined {
-    return React.Children.map(this.props.children, (child) =>
+    return React.Children.map(this.props.children, child =>
       child ? <span className={this._classNames.action}>{child}</span> : null,
     );
   }

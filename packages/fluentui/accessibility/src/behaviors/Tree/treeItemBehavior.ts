@@ -25,7 +25,7 @@ import { treeTitleBehavior } from './treeTitleBehavior';
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusFirstChild' action with 'ArrowRight' on 'root', when has an opened subtree.
  */
-export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = (props) => {
+export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const definition = {
     attributes: {
       root: {

@@ -48,10 +48,10 @@ const components = {
       styles={({ theme: { siteVariables } }) => ({ color: siteVariables.colors.grey[750] })}
     />
   ),
-  img: (props) => <img style={{ maxWidth: '100%' }} {...props} />,
+  img: props => <img style={{ maxWidth: '100%' }} {...props} />,
 };
 
-const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = (props) => {
+const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = props => {
   const { page } = props;
   const { default: Component, meta } = page;
 

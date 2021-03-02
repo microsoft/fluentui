@@ -172,7 +172,7 @@ describe('DetailsList', () => {
     safeMount(
       <DetailsList
         items={mockData(5)}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,
@@ -221,7 +221,11 @@ describe('DetailsList', () => {
     safeMount(
       <DetailsList items={items} skipViewportMeasures={true} onItemInvoked={onItemInvoked} />,
       (wrapper: ReactWrapper) => {
-        wrapper.find('.ms-DetailsRow').first().simulate('dblclick').simulate('keydown', { which: KeyCodes.enter });
+        wrapper
+          .find('.ms-DetailsRow')
+          .first()
+          .simulate('dblclick')
+          .simulate('keydown', { which: KeyCodes.enter });
 
         expect(onItemInvoked).toHaveBeenCalledTimes(2);
       },
@@ -330,7 +334,7 @@ describe('DetailsList', () => {
     safeMount(
       <DetailsList
         items={mockData(5)}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
         onRenderItemColumn={onRenderColumn}
@@ -370,7 +374,7 @@ describe('DetailsList', () => {
         items={mockData(5)}
         setKey={'key1'}
         initialFocusedIndex={0}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         skipViewportMeasures={true}
         onShouldVirtualize={() => false}
       />,

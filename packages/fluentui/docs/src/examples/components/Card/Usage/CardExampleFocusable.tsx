@@ -4,7 +4,7 @@ import * as React from 'react';
 const CardExampleFocusable = () => {
   const [clickCount, setClickCount] = React.useState(0);
   const updateClickCount = () => {
-    setClickCount((count) => count + 1);
+    setClickCount(count => count + 1);
   };
 
   return (

@@ -57,7 +57,7 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'packageNpmName',
         message: 'Which package to create the new component in?',
         choices: () => {
-          return projectsWithStartCommand.map((project) => project.title);
+          return projectsWithStartCommand.map(project => project.title);
         },
       },
 
@@ -65,7 +65,7 @@ module.exports = (plop: NodePlopAPI) => {
         type: 'input',
         name: 'componentName',
         message: 'New component name (ex: MyComponent):',
-        when: (answers) => answers.packageNpmName,
+        when: answers => answers.packageNpmName,
         validate: (input: string) =>
           /^[A-Z][a-zA-Z0-9]+$/.test(input) || 'Must enter a PascalCase component name (ex: MyComponent)',
       },
@@ -74,14 +74,14 @@ module.exports = (plop: NodePlopAPI) => {
         name: 'doComponentTestBuild',
         message: 'Do you wish to run a test build after component creation (Y/n):',
         default: true,
-        when: (answers) => answers.packageNpmName,
+        when: answers => answers.packageNpmName,
       },
       {
         type: 'confirm',
         name: 'hasStorybook',
         message: 'Will this package have storybook examples? (Y/n):',
         default: true,
-        when: (answers) => answers.packageNpmName,
+        when: answers => answers.packageNpmName,
       },
       // Test template implementation for components TBD
       // {
@@ -221,10 +221,10 @@ const appendToPackageIndex = async (answers: object, config: object, plop: objec
   // read contents and see if line is exists
   return fs
     .readFile(indexPath, { encoding: 'utf8', flag: 'r' })
-    .then(async (data) => {
+    .then(async data => {
       const lines = data.split(/\r?\n/);
       const getIndex = (arr: string[], item: string): number =>
-        lines.findIndex((line) => item.toLocaleLowerCase() === line.toLocaleLowerCase());
+        lines.findIndex(line => item.toLocaleLowerCase() === line.toLocaleLowerCase());
       if (getIndex(lines, appendLine) === -1) {
         // doesn't exist so append
         await fs.outputFile(indexPath, `${appendLine}${os.EOL}`, options);
@@ -232,7 +232,7 @@ const appendToPackageIndex = async (answers: object, config: object, plop: objec
       }
       return `Package ${packageName} index.ts already contains reference to ${componentName}`;
     })
-    .catch((error) => {
+    .catch(error => {
       throw `**ABORTING** There was an error reading index file at ${indexPath}. Error: ${error}`;
     });
 };

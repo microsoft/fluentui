@@ -197,7 +197,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
 
 storiesOf('ScrollablePane Details List', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

@@ -30,12 +30,12 @@ export const DatepickerCalendarHeaderAction = compose<
   className: datepickerCalendarHeaderActionClassName,
   displayName: 'DatepickerCalendarHeaderAction',
   handledProps: ['direction', 'disabledNavigatableButton'],
-  mapPropsToStylesProps: (p) => ({
+  mapPropsToStylesProps: p => ({
     iconOnly: true,
     text: true,
     disabled: p.disabledNavigatableButton,
   }),
-  slotProps: (props) => ({
+  slotProps: props => ({
     icon: {
       content: props.direction === 'next' ? <ChevronEndIcon /> : <ChevronStartIcon />,
     },

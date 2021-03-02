@@ -24,7 +24,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
   const [narrationText, setNarrationText] = React.useState('');
 
   // Sets the complete screen reader narration text to be displayed.
-  const setCompleteText = (text) => {
+  const setCompleteText = text => {
     setNarrationText(text !== null ? `Narration: ${text}` : null);
   }; // End setCompleteText
 
@@ -37,7 +37,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
   // Handles the "focusin" event by updating the current and previous narration elements.
   const handleFocusIn = React.useCallback(
-    (event) => {
+    event => {
       allowVirtualCursor = false;
       prevNarrationElement = narrationElement;
       setNarrationElement(event.target as IAriaElement);
@@ -56,11 +56,11 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
     if (selector !== prevSelector) {
       // Begin if 1
       const element = ref.current.ownerDocument.querySelector(selector) as IAriaElement;
-      computer.getFocusableElements(element).then((focusableElementsItems) => {
+      computer.getFocusableElements(element).then(focusableElementsItems => {
         focusableElements = {};
         elementsPaths = [];
         const pathSeparator = ' > ';
-        focusableElementsItems.forEach((focusableElementItem) => {
+        focusableElementsItems.forEach(focusableElementItem => {
           // Begin forEach 1
           const path = focusableElementItem.path.join(pathSeparator);
           focusableElements[path] = focusableElementItem.element;
@@ -71,7 +71,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           // Begin if 2
           // Preselect the path and the narration element to the first focusable element with tabindex >= 0
           const preselectedElementItem =
-            focusableElementsItems.find((item) => item.element.tabIndex >= 0) || focusableElementsItems[0];
+            focusableElementsItems.find(item => item.element.tabIndex >= 0) || focusableElementsItems[0];
           selectedElementPath = preselectedElementItem.path.join(pathSeparator);
           setNarrationElement(preselectedElementItem.element);
         } else {
@@ -112,7 +112,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
 
     // Compute and save the narration text for the current and previous elements and platform
     const platform: SRNCPlatform = vcElement && allowVirtualCursor ? 'Win/JAWS/VPC' : 'Win/JAWS';
-    computer.getNarration(narrationElement, prevNarrationElement, platform).then((text) => {
+    computer.getNarration(narrationElement, prevNarrationElement, platform).then(text => {
       setCompleteText(text);
     }); // En getNarration
   }); // End useEffect
@@ -138,7 +138,7 @@ export const ReaderNarration: React.FunctionComponent<ReaderNarrationProps> = ({
           value={selectedElementPath}
           onChange={handleElementPathChange}
           getA11ySelectionMessage={{
-            onAdd: (item) => `${item} has been selected.`,
+            onAdd: item => `${item} has been selected.`,
           }}
           placeholder="Select the narration element"
         />

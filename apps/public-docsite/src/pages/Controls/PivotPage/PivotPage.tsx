@@ -6,7 +6,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PivotPage/';
 
-export const PivotPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const PivotPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <ControlsAreaPage
       {...props}

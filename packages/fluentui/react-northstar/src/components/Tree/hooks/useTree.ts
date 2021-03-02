@@ -19,7 +19,7 @@ function useGetItemById(flatTree: FlatTree): GetItemById {
 
   // We are assigning a callback during render as it can be used during render and in event handlers. In dev mode we
   // are freezing objects to prevent their mutations
-  callbackRef.current = (itemId) =>
+  callbackRef.current = itemId =>
     process.env.NODE_ENV === 'production' ? flatTree[itemId] : Object.freeze(flatTree[itemId]);
 
   return React.useCallback<GetItemById>((...args) => {
@@ -134,7 +134,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
         return;
       }
 
-      setActiveItemIdsState((activeItemIds) => {
+      setActiveItemIdsState(activeItemIds => {
         let nextActiveItemIds: string[];
         const isActiveId = activeItemIds.indexOf(idToToggle) !== -1;
 
@@ -147,7 +147,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
             // remove active siblings, if any, from activeItemIds
             const parent = getItemById(idToToggle)?.parent;
             const activeSibling = getItemById(parent)?.childrenIds?.find(
-              (id) => id !== idToToggle && nextActiveItemIds.indexOf(id) >= 0,
+              id => id !== idToToggle && nextActiveItemIds.indexOf(id) >= 0,
             );
             if (activeSibling != null) {
               nextActiveItemIds = _.without(nextActiveItemIds, activeSibling);
@@ -184,7 +184,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
         return;
       }
 
-      setActiveItemIdsState((activeItemIds) => {
+      setActiveItemIdsState(activeItemIds => {
         const nextActiveItemIds = _.uniq(activeItemIds.concat(siblingsIds));
         _.invoke(stableProps.current, 'onActiveItemIdsChange', e, {
           ...stableProps.current,
@@ -204,7 +204,7 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
       }
       const leafs = getLeafNodes(getItemById, idToToggle);
 
-      setSelectedItemIdsState((selectedItemIds) => {
+      setSelectedItemIdsState(selectedItemIds => {
         const nextSelectedItemIds =
           item.selected === true
             ? _.without(selectedItemIds, ...leafs) // remove all leaves from selected
@@ -247,7 +247,10 @@ export function useTree(options: UseTreeOptions): UseTreeResult {
     (startIndex: number, endIndex: number, char: string) => {
       for (let i = startIndex; i < endIndex; ++i) {
         // get first charater of tree node using the same way aria does (https://www.w3.org/TR/wai-aria-practices-1.1/examples/treeview/treeview-2/js/treeitemLinks.js)
-        const itemFirstChar = getItemRef(visibleItemIds[i])?.textContent?.trim()?.charAt(0)?.toLowerCase();
+        const itemFirstChar = getItemRef(visibleItemIds[i])
+          ?.textContent?.trim()
+          ?.charAt(0)
+          ?.toLowerCase();
         if (itemFirstChar === char.toLowerCase()) {
           return i;
         }
@@ -302,7 +305,7 @@ function deprecated_getInitialActiveItemIds(items?: ObjectShorthandCollection<Tr
   }
 
   let result = [];
-  items.forEach((item) => {
+  items.forEach(item => {
     if (item.expanded) {
       result.push(item.id);
     }
@@ -318,9 +321,9 @@ function deprecated_getInitialActiveItemIds(items?: ObjectShorthandCollection<Tr
 
 function getLeafNodes(getItemById: (id: string) => FlatTreeItem, rootId: string) {
   const leafs = [];
-  const traverseDown = (id) => {
+  const traverseDown = id => {
     if (getItemById(id)?.childrenIds) {
-      getItemById(id)?.childrenIds.forEach((child) => {
+      getItemById(id)?.childrenIds.forEach(child => {
         traverseDown(child);
       });
     } else {

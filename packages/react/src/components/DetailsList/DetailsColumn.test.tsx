@@ -31,7 +31,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -56,7 +56,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -81,7 +81,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -106,7 +106,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -131,7 +131,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -151,12 +151,15 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
 
-    const ariaDescribedByEl = component.find('[aria-describedby]').first().getDOMNode();
+    const ariaDescribedByEl = component
+      .find('[aria-describedby]')
+      .first()
+      .getDOMNode();
     const referenceId = ariaDescribedByEl.getAttribute('aria-describedby');
 
     expect(component.exists(`#${referenceId}`)).toBe(true);
@@ -185,7 +188,7 @@ describe('DetailsColumn', () => {
             },
           });
         }}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -205,7 +208,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );
@@ -228,7 +231,7 @@ describe('DetailsColumn', () => {
         initialFocusedIndex={0}
         skipViewportMeasures={true}
         columns={columns}
-        componentRef={(ref) => (component = ref)}
+        componentRef={ref => (component = ref)}
         onShouldVirtualize={() => false}
       />,
     );

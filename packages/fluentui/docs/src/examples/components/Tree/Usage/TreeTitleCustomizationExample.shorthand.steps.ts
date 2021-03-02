@@ -7,7 +7,13 @@ const selectors = {
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
-  steps: [(builder, keys) => builder.click(selectors.treeTitle(1)).click(selectors.treeTitle(2)).snapshot('Exapanded')],
+  steps: [
+    (builder, keys) =>
+      builder
+        .click(selectors.treeTitle(1))
+        .click(selectors.treeTitle(2))
+        .snapshot('Exapanded'),
+  ],
 };
 
 export default config;

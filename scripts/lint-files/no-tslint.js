@@ -17,7 +17,7 @@ function checkPackageJsons(packageInfos) {
       ...Object.keys(info.packageJson.peerDependencies || {}),
     ];
 
-    if (deps.some((dep) => /\btslint\b/.test(dep))) {
+    if (deps.some(dep => /\btslint\b/.test(dep))) {
       if (!hasError) {
         hasError = true;
         console.error('\nThe following packages have tslint-related dependencies:');
@@ -40,7 +40,9 @@ function checkPackageJsons(packageInfos) {
 function lintFiles() {
   const hasTslintDep = checkPackageJsons(Object.values(getAllPackageInfo()));
 
-  const tslintLsResult = spawnSync('git', ['ls-files', 'tslint.json', "'**/tslint.json'"]).stdout.toString().trim();
+  const tslintLsResult = spawnSync('git', ['ls-files', 'tslint.json', "'**/tslint.json'"])
+    .stdout.toString()
+    .trim();
   if (tslintLsResult.length) {
     const tslintLines = tslintLsResult.split(/\r?\n/g);
     console.error('\nPlease replace the following new tslint.json files with .eslintrc.json files:');

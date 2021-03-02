@@ -133,7 +133,7 @@ describe('UnifiedPicker', () => {
     let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
     const _onInputChange = (filterText: string): void => {
       const colorSuggestions = allColors.filter((item: string) => _startsWith(item || '', filterText));
-      suggestionList = colorSuggestions.map((item) => {
+      suggestionList = colorSuggestions.map(item => {
         const newItem = {
           key: item,
           name: item,
@@ -193,7 +193,7 @@ describe('UnifiedPicker', () => {
     let suggestionList: IFloatingSuggestionItem<ISimple>[] = [];
     const _onInputChange = (filterText: string): void => {
       const colorSuggestions = allColors.filter((item: string) => _startsWith(item || '', filterText));
-      suggestionList = colorSuggestions.map((item) => {
+      suggestionList = colorSuggestions.map(item => {
         const newItem = {
           key: item,
           name: item,

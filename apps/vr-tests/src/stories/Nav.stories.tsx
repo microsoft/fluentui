@@ -88,7 +88,7 @@ const disabledLinks: INavLink[] = [
 
 storiesOf('Nav', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

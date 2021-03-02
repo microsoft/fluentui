@@ -20,7 +20,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Triggers 'expand' action with 'ArrowRight' on 'root', when has a closed subtree.
  * Triggers 'focusFirstChild' action with 'ArrowRight' on 'root', when has an opened subtree.
  */
-export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = (props) => {
+export const treeItemAsOptionBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const behavior = treeItemBehavior(props);
 
   const definition = {

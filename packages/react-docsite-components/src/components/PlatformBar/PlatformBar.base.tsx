@@ -34,7 +34,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
 
   private _renderPlatformGrid = (platforms: { [key: string]: IPlatform | undefined }): JSX.Element[] => {
     return Object.keys(platforms)
-      .filter((platform) => !!platforms[platform as TPlatforms])
+      .filter(platform => !!platforms[platform as TPlatforms])
       .map((platformKey: TPlatforms) => {
         const platform: IPlatform = platforms[platformKey]!;
         return <li key={platform!.name}>{this._renderPlatformSquare(platform!, platformKey)}</li>;

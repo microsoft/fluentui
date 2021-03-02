@@ -47,7 +47,7 @@ type EditorToolbarProps = EditorToolbarState & {
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: keyof ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: keyof ToolbarMenuItemShorthandKinds }>;
 
-const EditorToolbar: React.FC<EditorToolbarProps> = (props) => {
+const EditorToolbar: React.FC<EditorToolbarProps> = props => {
   const overflowIndex = React.useRef<number>();
 
   const linkItemRef = React.useRef<HTMLElement>(null);
@@ -239,7 +239,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = (props) => {
 
   const linkItemIndex = combinedItems.findIndex(
     // @ts-ignore
-    (item) => item.overflowItem && item.overflowItem.key === 'link',
+    item => item.overflowItem && item.overflowItem.key === 'link',
   );
   const linkInOverflowMenu = overflowIndex.current <= linkItemIndex;
   // Based on position of link item we choose target element for Popup. It's safe to access
@@ -311,11 +311,11 @@ const EditorToolbar: React.FC<EditorToolbarProps> = (props) => {
             items={_.map(combinedItems, 'toolbarItem')}
             overflow
             overflowOpen={props.more}
-            onOverflow={(itemsVisible) => {
+            onOverflow={itemsVisible => {
               overflowIndex.current = itemsVisible - 1;
             }}
             onOverflowOpenChange={(e, { overflowOpen }) => props.dispatch({ type: 'MORE', value: overflowOpen })}
-            getOverflowItems={(startIndex) => {
+            getOverflowItems={startIndex => {
               const firstToolbarItem = combinedItems[startIndex].toolbarItem;
               let actualIndex = startIndex;
 
@@ -325,7 +325,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = (props) => {
                 actualIndex += 1;
               }
 
-              return combinedItems.slice(actualIndex).map((item) => item.overflowItem || item.toolbarItem);
+              return combinedItems.slice(actualIndex).map(item => item.overflowItem || item.toolbarItem);
             }}
           />
         </Ref>

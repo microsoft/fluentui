@@ -68,7 +68,7 @@ const createRenderCell = (propertyName: PropertyName) => {
 };
 
 const getColumns = (columns: Array<Partial<IColumn> & { key: PropertyName; name: string }>): IColumn[] => {
-  return columns.map((column) => ({
+  return columns.map(column => ({
     fieldName: column.key,
     minWidth: 130,
     maxWidth: 150,

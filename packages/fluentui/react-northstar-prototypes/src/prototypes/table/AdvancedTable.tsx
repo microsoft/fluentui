@@ -34,7 +34,7 @@ const AdvancedTable = (props: AdvancedTableProps) => {
   let sortedRows = rows;
 
   if (sortColumn && sortDirection) {
-    const sortColumnIndex = columns.findIndex((column) => column.name === sortColumn);
+    const sortColumnIndex = columns.findIndex(column => column.name === sortColumn);
     const comparator = columns[sortColumnIndex].cellComparator;
     if (comparator) {
       sortedRows = rows.sort((r1: any, r2: any) => {
@@ -59,8 +59,8 @@ const AdvancedTable = (props: AdvancedTableProps) => {
 
   const header = {
     key: 'header',
-    items: columns.map((c) =>
-      sortColumnHeader(c.title, c.name === sortColumn ? sortDirection : 0, (newSortDirection) => {
+    items: columns.map(c =>
+      sortColumnHeader(c.title, c.name === sortColumn ? sortDirection : 0, newSortDirection => {
         setSortColumn(c.name);
         setSortDirection(newSortDirection);
         // Use react-aria-live or similar component to announce change the order

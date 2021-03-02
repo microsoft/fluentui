@@ -18,7 +18,7 @@ const itemClass = mergeStyles({
 const items: IExampleItem[] = createListItems(10);
 const buildColumn = (): IColumn[] => {
   return buildColumns(items).filter(
-    (column) => column.name === 'color' || column.name === 'width' || column.name === 'height',
+    column => column.name === 'color' || column.name === 'width' || column.name === 'height',
   );
 };
 const columns: IColumn[] = buildColumn();

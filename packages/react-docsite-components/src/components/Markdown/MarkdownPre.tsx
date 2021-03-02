@@ -8,7 +8,7 @@ export interface IMarkdownPreProps extends React.HTMLAttributes<HTMLPreElement> 
   enableRenderHtmlBlock?: boolean;
 }
 
-export const MarkdownPre: React.FunctionComponent<IMarkdownPreProps> = (props) => {
+export const MarkdownPre: React.FunctionComponent<IMarkdownPreProps> = props => {
   const { children, enableRenderHtmlBlock, ...rest } = props;
 
   // markdown-to-jsx will render code blocks as <pre><code>code here</code></pre>.

@@ -29,7 +29,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
   const _insertBeforeItem = (item: T): void => {
     const draggedItems = selection.isIndexSelected(draggedIndex) ? (selection.getSelection() as T[]) : [draggedItem!];
     const insertIndex = currentSelectedItems.indexOf(item);
-    const items = currentSelectedItems.filter((current) => draggedItems.indexOf(current) === -1);
+    const items = currentSelectedItems.filter(current => draggedItems.indexOf(current) === -1);
     items.splice(insertIndex, 0, ...draggedItems);
 
     setCurrentSelectedItems(items);
@@ -74,7 +74,7 @@ export const SelectedPeopleListBasicDragDropExample = <T extends {}>(): JSX.Elem
   const _onItemsRemoved = React.useCallback(
     (items: IPersona[]) => {
       const currentSelectedItemsCopy = [...currentSelectedItems];
-      items.forEach((item) => {
+      items.forEach(item => {
         const indexToRemove = currentSelectedItemsCopy.indexOf(item);
         currentSelectedItemsCopy.splice(indexToRemove, 1);
         setCurrentSelectedItems([...currentSelectedItemsCopy]);

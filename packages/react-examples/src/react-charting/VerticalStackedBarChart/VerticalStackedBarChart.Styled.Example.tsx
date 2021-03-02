@@ -107,7 +107,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.width}
             min={200}
             max={1000}
-            onChange={(e) => this.setState({ width: +e.target.value })}
+            onChange={e => this.setState({ width: +e.target.value })}
           />
           <label>Height:</label>
           <input
@@ -115,7 +115,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.height}
             min={200}
             max={1000}
-            onChange={(e) => this.setState({ height: +e.target.value })}
+            onChange={e => this.setState({ height: +e.target.value })}
           />
         </div>
         <div>
@@ -125,7 +125,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barGapMax}
             min={0}
             max={10}
-            onChange={(e) => this.setState({ barGapMax: +e.target.value })}
+            onChange={e => this.setState({ barGapMax: +e.target.value })}
           />
           <label>BarCornerRadius:</label>
           <input
@@ -133,7 +133,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barCornerRadius}
             min={0}
             max={10}
-            onChange={(e) => this.setState({ barCornerRadius: +e.target.value })}
+            onChange={e => this.setState({ barCornerRadius: +e.target.value })}
           />
           <label>BarMinimumHeight:</label>
           <input
@@ -141,7 +141,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             value={this.state.barMinimumHeight}
             min={0}
             max={10}
-            onChange={(e) => this.setState({ barMinimumHeight: +e.target.value })}
+            onChange={e => this.setState({ barMinimumHeight: +e.target.value })}
           />
           <ChoiceGroup
             options={options}
@@ -182,7 +182,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               },
             }}
             // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={(props) =>
+            onRenderCalloutPerDataPoint={props =>
               props ? (
                 <ChartHoverCard
                   XValue={props.xAxisCalloutData}

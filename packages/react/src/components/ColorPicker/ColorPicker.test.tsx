@@ -279,7 +279,7 @@ describe('ColorPicker', () => {
     const allInputs = wrapper.find(`.${inputClassName} input`);
     expect(allInputs.length).toBe(5);
 
-    allInputs.forEach((input) => {
+    allInputs.forEach(input => {
       input.simulate('focus');
       input.simulate('blur');
 

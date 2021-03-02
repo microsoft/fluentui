@@ -26,7 +26,7 @@ const addIcon: IIconProps = { iconName: 'Add' };
 const mailIcon: IIconProps = { iconName: 'Mail' };
 const stackStyles: Partial<IStackStyles> = { root: { height: 44 } };
 
-export const ButtonCommandBarExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonCommandBarExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   // Here we use a Stack to simulate a command bar.

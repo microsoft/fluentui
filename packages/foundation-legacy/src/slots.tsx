@@ -116,7 +116,7 @@ export function createFactory<TProps extends ValidProps, TShorthandProp extends 
 /**
  * Default factory for components without explicit factories.
  */
-const defaultFactory = memoizeFunction((type) => createFactory(type));
+const defaultFactory = memoizeFunction(type => createFactory(type));
 
 /**
  * This function generates slots that can be used in JSX given a definition of slots and their corresponding types.

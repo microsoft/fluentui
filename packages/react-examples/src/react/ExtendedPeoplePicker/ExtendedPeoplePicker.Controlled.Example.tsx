@@ -260,7 +260,7 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
   };
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
-    return items.map((item) => item.text).join(', ');
+    return items.map(item => item.text).join(', ');
   }
 
   private _shouldShowForceResolve = (): boolean => {
@@ -291,7 +291,7 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
   };
 
   private _onItemsRemoved = (items: IExtendedPersonaProps[]): void => {
-    const newItems = this.state.currentlySelectedItems.filter((value) => items.indexOf(value) === -1);
+    const newItems = this.state.currentlySelectedItems.filter(value => items.indexOf(value) === -1);
     this.setState({ currentlySelectedItems: newItems });
   };
 

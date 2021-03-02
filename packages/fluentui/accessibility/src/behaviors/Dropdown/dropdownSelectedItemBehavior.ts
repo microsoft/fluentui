@@ -7,7 +7,7 @@ import { Accessibility } from '../../types';
  * Adds role='option'.
  * Adds attribute 'aria-hidden=true' to 'icon' slot.
  */
-export const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorProps> = (props) => ({
+export const dropdownSelectedItemBehavior: Accessibility<DropdownSelectedItemBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'option',

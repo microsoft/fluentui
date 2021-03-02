@@ -45,12 +45,12 @@ export const ComboBoxControlledMultiExample: React.FunctionComponent = () => {
         // doesn't exist in the options list yet. So there's extra work to manually add it.
         selected = true;
         option = { key: `${newKey++}`, text: value };
-        setOptions((prevOptions) => [...prevOptions, option!]);
+        setOptions(prevOptions => [...prevOptions, option!]);
       }
 
       if (option) {
-        setSelectedKeys((prevSelectedKeys) =>
-          selected ? [...prevSelectedKeys, option!.key as string] : prevSelectedKeys.filter((k) => k !== option!.key),
+        setSelectedKeys(prevSelectedKeys =>
+          selected ? [...prevSelectedKeys, option!.key as string] : prevSelectedKeys.filter(k => k !== option!.key),
         );
       }
     },

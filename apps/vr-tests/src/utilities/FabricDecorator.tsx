@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DecoratorFunction } from '@storybook/addons';
 import { StoryFnReactReturnType } from '@storybook/react/dist/client/preview/types';
 
-export const FabricDecorator: DecoratorFunction<StoryFnReactReturnType> = (story) => (
+export const FabricDecorator: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story()}
@@ -10,7 +10,7 @@ export const FabricDecorator: DecoratorFunction<StoryFnReactReturnType> = (story
   </div>
 );
 
-export const FabricDecoratorTall: DecoratorFunction<StoryFnReactReturnType> = (story) => (
+export const FabricDecoratorTall: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story()}
@@ -18,7 +18,7 @@ export const FabricDecoratorTall: DecoratorFunction<StoryFnReactReturnType> = (s
   </div>
 );
 
-export const FabricDecoratorTallFixedWidth: DecoratorFunction<StoryFnReactReturnType> = (story) => (
+export const FabricDecoratorTallFixedWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story()}
@@ -26,7 +26,7 @@ export const FabricDecoratorTallFixedWidth: DecoratorFunction<StoryFnReactReturn
   </div>
 );
 
-export const FabricDecoratorFixedWidth: DecoratorFunction<StoryFnReactReturnType> = (story) => (
+export const FabricDecoratorFixedWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story()}
@@ -34,7 +34,7 @@ export const FabricDecoratorFixedWidth: DecoratorFunction<StoryFnReactReturnType
   </div>
 );
 
-export const FabricDecoratorFullWidth: DecoratorFunction<StoryFnReactReturnType> = (story) => (
+export const FabricDecoratorFullWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
       {story()}
@@ -74,10 +74,10 @@ export function modifyDeprecatedDecoratorStyles(options: {
   mode: keyof typeof mapper;
 }): DecoratorFunction<StoryFnReactReturnType> {
   const { mode } = options;
-  return (story) => {
+  return story => {
     return (
       <span
-        ref={(el) => {
+        ref={el => {
           if (!el) {
             return;
           }

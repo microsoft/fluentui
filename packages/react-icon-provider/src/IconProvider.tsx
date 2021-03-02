@@ -16,6 +16,6 @@ export const useIconSubset = (): IIconSubset | undefined => React.useContext(Ico
 /**
  * Component to contextually override one or more of the default SVG icons
  */
-export const IconProvider: React.FunctionComponent<IconProviderProps> = (props) => {
+export const IconProvider: React.FunctionComponent<IconProviderProps> = props => {
   return <IconContext.Provider value={props.icons}>{props.children}</IconContext.Provider>;
 };

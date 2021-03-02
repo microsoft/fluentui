@@ -490,7 +490,7 @@ describe('FocusTrapZone', () => {
             forceFocusInsideTrapOnOutsideFocus={false}
             focusPreviouslyFocusedInnerElement={focusPreviouslyFocusedInnerElement}
             data-is-focusable={true}
-            ref={(ftz) => {
+            ref={ftz => {
               focusTrapZoneRef = ftz;
             }}
           >

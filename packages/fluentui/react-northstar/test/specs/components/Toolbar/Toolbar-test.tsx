@@ -11,7 +11,7 @@ type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonEl
 const boldButtonId = 'item1';
 const italicButtonId = 'item2';
 
-const BaseComponent: React.FC<BaseComponentProps> = (props) => {
+const BaseComponent: React.FC<BaseComponentProps> = props => {
   const [bold, setBold] = React.useState(false);
   const [italic, setItalic] = React.useState(true);
 

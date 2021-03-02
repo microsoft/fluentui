@@ -166,7 +166,7 @@ describe('Sidebar', () => {
             name: 'Item 1',
             iconProps: { iconName: 'BuildQueue' },
             active: false,
-            onRender: (item) => {
+            onRender: item => {
               return (
                 <div key={item.key}>
                   <TestButton text={item.name} iconProps={item.iconProps} checked={item.active} />

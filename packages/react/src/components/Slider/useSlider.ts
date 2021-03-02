@@ -308,7 +308,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const disposeListeners = (): void => {
-    disposables.current.forEach((dispose) => dispose());
+    disposables.current.forEach(dispose => dispose());
     disposables.current = [];
   };
 

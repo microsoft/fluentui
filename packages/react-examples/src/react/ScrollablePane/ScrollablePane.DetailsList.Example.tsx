@@ -94,7 +94,7 @@ const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (props, defa
   if (!props) {
     return null;
   }
-  const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = (tooltipHostProps) => (
+  const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = tooltipHostProps => (
     <TooltipHost {...tooltipHostProps} />
   );
   return (

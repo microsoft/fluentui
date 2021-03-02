@@ -73,7 +73,7 @@ export const ListScrollingExample: React.FunctionComponent = () => {
 
     listRef.current?.scrollToIndex(
       updatedSelectedIndex,
-      (idx) => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
+      idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
       scrollToMode,
     );
   };

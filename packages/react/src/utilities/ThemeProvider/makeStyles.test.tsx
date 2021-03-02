@@ -12,7 +12,7 @@ import { ThemeProvider } from './ThemeProvider';
 describe('makeStyles', () => {
   const stylesheet: Stylesheet = Stylesheet.getInstance();
 
-  const useThemedStyles = makeStyles((theme) => ({
+  const useThemedStyles = makeStyles(theme => ({
     root: {
       background: theme.palette.themePrimary,
     },

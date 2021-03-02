@@ -118,7 +118,9 @@ describe('Facepile', () => {
       .join(', ');
 
     expect(
-      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton').getDOMNode().attributes.getNamedItem('title'),
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
+        .getDOMNode()
+        .attributes.getNamedItem('title'),
     ).toHaveProperty('value', overflowPersonasTitle);
   });
 
@@ -134,7 +136,9 @@ describe('Facepile', () => {
       />,
     );
     expect(
-      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton').getDOMNode().attributes.getNamedItem('title'),
+      findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
+        .getDOMNode()
+        .attributes.getNamedItem('title'),
     ).toHaveProperty('value', title);
   });
 
@@ -197,7 +201,7 @@ describe('Facepile', () => {
     let wrapper = mount(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size24} />);
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
-    wrapper.find(PersonaCoin).forEach((node) => {
+    wrapper.find(PersonaCoin).forEach(node => {
       // Need multiple Dives since PersonaCoin is decorated
       expect(node.find('.ms-Persona--size24').length).toEqual(1);
     });
@@ -206,7 +210,7 @@ describe('Facepile', () => {
     wrapper = mount(<Facepile personas={facepilePersonas} personaSize={PersonaSize.size40} />);
 
     expect(wrapper.find(PersonaCoin).length).toEqual(facepilePersonas.length);
-    wrapper.find(PersonaCoin).forEach((node) => {
+    wrapper.find(PersonaCoin).forEach(node => {
       // Need multiple Dives since PersonaCoin is decorated
       expect(node.find('.ms-Persona--size40').length).toEqual(1);
     });

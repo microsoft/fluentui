@@ -143,7 +143,7 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
 export const Dialog: ComponentWithAs<'div', DialogProps> &
   FluentComponentStaticProps<DialogProps> & {
     Footer: typeof DialogFooter;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
   setStart();
@@ -183,13 +183,13 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
   const getA11yProps = useAccessibility<DialogBehaviorProps>(accessibility, {
     debugName: Dialog.displayName,
     actionHandlers: {
-      closeAndFocusTrigger: (e) => {
+      closeAndFocusTrigger: e => {
         handleDialogCancel(e);
         e.stopPropagation();
 
         _.invoke(triggerRef, 'current.focus');
       },
-      close: (e) => handleDialogCancel(e),
+      close: e => handleDialogCancel(e),
     },
     mapPropsToBehavior: () => ({
       headerId: headerId.current,

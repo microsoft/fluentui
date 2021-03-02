@@ -4,21 +4,21 @@ const lernaAlias = require('lerna-alias');
 const excludedPackages = ['@fluentui/date-time-utilities', '@fluentui/dom-utilities', '@fluentui/react-compose'];
 
 module.exports = {
-  jest: (options) => {
+  jest: options => {
     const aliases = lernaAlias.jest(options);
     for (const pkg of excludedPackages) {
       delete aliases[`^${pkg}$`];
     }
     return aliases;
   },
-  rollup: (options) => {
+  rollup: options => {
     const aliases = lernaAlias.rollup(options);
     for (const pkg of excludedPackages) {
       delete aliases[pkg];
     }
     return aliases;
   },
-  webpack: (options) => {
+  webpack: options => {
     const aliases = lernaAlias.webpack(options);
     for (const pkg of excludedPackages) {
       delete aliases[`${pkg}$`];

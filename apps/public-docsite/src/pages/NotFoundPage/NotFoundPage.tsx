@@ -57,7 +57,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
           <p>The URL may be misspelled or the page you are looking for is no longer available.</p>
           <ul>
             <li>
-              <Link href="#/" onClick={(ev) => this._onInternalLinkClick(ev, '#/')} underline>
+              <Link href="#/" onClick={ev => this._onInternalLinkClick(ev, '#/')} underline>
                 Fluent UI Home
               </Link>
             </li>
@@ -72,13 +72,13 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   /** Gets the top level page from the current URL and returns a link to it. */
   private _getAreaLink = (): JSX.Element => {
     const area = getSiteArea(SiteDefinition.pages);
-    const pageForArea = SiteDefinition.pages.filter((page) => page.title === area)[0];
+    const pageForArea = SiteDefinition.pages.filter(page => page.title === area)[0];
     if (pageForArea) {
       const { title, url } = pageForArea;
 
       return (
         <li>
-          <Link href={url} onClick={(ev) => this._onInternalLinkClick(ev, url)} underline>
+          <Link href={url} onClick={ev => this._onInternalLinkClick(ev, url)} underline>
             {title}
           </Link>
         </li>

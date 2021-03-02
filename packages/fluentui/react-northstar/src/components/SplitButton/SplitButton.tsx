@@ -106,7 +106,7 @@ export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & 
 export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButton.displayName, context.telemetry);
   setStart();
@@ -247,7 +247,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
             onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
               _.invoke(predefinedProps, 'onClick', e, buttonProps);
 
-              setOpen((isOpen) => {
+              setOpen(isOpen => {
                 const open = !isOpen;
                 _.invoke(props, 'onOpenChange', e, { ...props, open });
                 return open;

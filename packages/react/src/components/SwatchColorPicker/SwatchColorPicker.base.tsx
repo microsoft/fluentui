@@ -88,7 +88,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
   const mergedOnChange = React.useCallback(
     (ev: React.FormEvent<HTMLElement>, newSelectedId: string | undefined) => {
       // Call both new and old change handlers, and add the extra `color` parameter
-      const newColor = colorCells.filter((c) => c.id === newSelectedId)[0]?.color;
+      const newColor = colorCells.filter(c => c.id === newSelectedId)[0]?.color;
       onChange?.(ev, newSelectedId, newColor);
       onColorChanged?.(newSelectedId, newColor);
     },

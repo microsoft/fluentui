@@ -9,7 +9,7 @@ const selectors = {
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .hover(selectors.item(2))
         .snapshot('Highlights an item')

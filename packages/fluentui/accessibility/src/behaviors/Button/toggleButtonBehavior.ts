@@ -1,7 +1,7 @@
 import { Accessibility } from '../../types';
 import { buttonBehavior, ButtonBehaviorProps } from './buttonBehavior';
 
-export const toggleButtonBehavior: Accessibility<ToggleButtonBehaviorProps> = (props) => {
+export const toggleButtonBehavior: Accessibility<ToggleButtonBehaviorProps> = props => {
   const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,

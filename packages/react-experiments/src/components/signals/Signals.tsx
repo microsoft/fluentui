@@ -162,7 +162,7 @@ type IIconSignalProps = ISignalProps &
 /**
  * Renders a signal as just an Icon. This is the simplest Signal case.
  */
-const IconSignal: React.FunctionComponent<IIconSignalProps> = (props) => {
+const IconSignal: React.FunctionComponent<IIconSignalProps> = props => {
   const { ariaLabel, className, signalClass, ...spanProps } = props;
 
   return (

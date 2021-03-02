@@ -33,7 +33,7 @@ const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined): Be
   return availableBehaviorNames
     .replace(/\s/g, '')
     .split(',')
-    .map((name) => ({
+    .map(name => ({
       name,
       displayName: _.upperFirst(name.replace('Behavior', '')),
       category: _.upperFirst(name.split(/(?=[A-Z])/)[0]),
@@ -96,8 +96,8 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
   const subcomponents = isParent
     ? fs
         .readdirSync(dir)
-        .filter((file) => subcomponentRegExp.test(file))
-        .map((file) => path.basename(file, path.extname(file)))
+        .filter(file => subcomponentRegExp.test(file))
+        .map(file => path.basename(file, path.extname(file)))
     : null;
 
   // where this component should be exported in the api

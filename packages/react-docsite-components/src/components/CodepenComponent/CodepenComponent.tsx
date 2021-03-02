@@ -27,7 +27,7 @@ interface ICodepenPrefill {
   // and other options--see https://blog.codepen.io/documentation/api/prefill/
 }
 
-const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = (props) => {
+const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
   const { jsContent = '', buttonAs: ButtonType = CommandButton, styles, theme } = props;
 
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -50,7 +50,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = (props) => 
         : '',
       `<div id="${CONTENT_ID}"></div>`,
     ]
-      .filter((line) => !!line)
+      .filter(line => !!line)
       .join('\n');
 
     const headContent = `${script('react@16.8.6/umd/react.development.js')}\n${script(
@@ -70,7 +70,9 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = (props) => 
     };
 
     // reformat the JSON string to take out the quotes so it'll work with the Codepen API
-    const JSONstring = JSON.stringify(valueData).replace(/"/g, '&quot;').replace(/'/g, '&apos;');
+    const JSONstring = JSON.stringify(valueData)
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
 
     // set the value and allow the form submit action to continue
     inputRef.current!.value = JSONstring;

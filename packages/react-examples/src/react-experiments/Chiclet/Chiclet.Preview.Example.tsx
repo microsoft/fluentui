@@ -4,7 +4,7 @@ import { Chiclet, ChicletSize } from '@fluentui/react-experiments/lib/Chiclet';
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 export const ChicletPreviewExample: React.FunctionComponent<{}> = () => {
-  const Preview: React.FunctionComponent<{}> = (props) => {
+  const Preview: React.FunctionComponent<{}> = props => {
     return <img src="http://placehold.it/100x100" {...props} />;
   };
 

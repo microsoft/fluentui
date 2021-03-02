@@ -10,7 +10,7 @@ will auto unmount after executing the given callback.
 Example:
 
 ```tsx
-safeCreate(<Foo />, (foo) => {
+safeCreate(<Foo />, foo => {
   // assert things about foo
 });
 ```
@@ -21,7 +21,7 @@ will auto unmount after executing the given callback.
 Example:
 
 ```tsx
-safeMount(<Foo />, (foo) => {
+safeMount(<Foo />, foo => {
   // assert things about foo
 });
 ```

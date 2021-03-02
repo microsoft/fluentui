@@ -14,7 +14,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
 
   const onChange = React.useCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     const filteredItems = menuItems.filter(
-      (item) => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1,
+      item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1,
     );
 
     if (!filteredItems || !filteredItems.length) {

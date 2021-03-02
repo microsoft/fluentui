@@ -215,7 +215,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         // injecting corresponding x data point in each of the line data
         // we inject index also , it will be helpful to draw lines when x axis is
         // of string type
-        item.lineData.forEach((line) => {
+        item.lineData.forEach(line => {
           linesData.push({
             ...line,
             index,
@@ -224,7 +224,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         });
       }
     });
-    linesData.forEach((item) => {
+    linesData.forEach(item => {
       if (formattedLineData[item.legend]) {
         formattedLineData[item.legend].push(item);
       } else {
@@ -363,7 +363,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _createDataSetLayer(): IDataPoint[] {
     const tempArr: string[] = [];
-    const dataset: IDataPoint[] = this._points.map((singlePointData) => {
+    const dataset: IDataPoint[] = this._points.map(singlePointData => {
       let total: number = 0;
       singlePointData.chartData!.forEach((point: IVSChartDataPoint) => {
         total = total + point.data;
@@ -470,9 +470,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             this._onLegendClick(point.legend);
           },
           hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.legend) : undefined,
-          onMouseOutAction: allowHoverOnLegend
-            ? (isLegendSelected) => this._onLegendLeave(isLegendSelected)
-            : undefined,
+          onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
         };
 
         actions.push(legend);
@@ -489,9 +487,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             this._onLegendClick(point.title);
           },
           hoverAction: allowHoverOnLegend ? () => this._onLegendHover(point.title) : undefined,
-          onMouseOutAction: allowHoverOnLegend
-            ? (isLegendSelected) => this._onLegendLeave(isLegendSelected)
-            : undefined,
+          onMouseOutAction: allowHoverOnLegend ? isLegendSelected => this._onLegendLeave(isLegendSelected) : undefined,
         };
         legendsOfLine.push(legend);
       });
@@ -669,7 +665,7 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
 
       // Removing datapoints with zero data
-      const barsToDisplay = singleChartData.chartData.filter((point) => point.data > 0);
+      const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
 
       if (!barsToDisplay.length) {
         return undefined;
@@ -727,7 +723,7 @@ export class VerticalStackedBarChartBase extends React.Component<
                 z
               `}
               fill={color}
-              ref={(e) => (ref.refElement = e)}
+              ref={e => (ref.refElement = e)}
               {...rectFocusProps}
             />
           );
@@ -742,7 +738,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             width={this._barWidth}
             height={barHeight}
             fill={color}
-            ref={(e) => (ref.refElement = e)}
+            ref={e => (ref.refElement = e)}
             {...rectFocusProps}
           />
         );
@@ -762,7 +758,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         <g
           key={indexNumber + `${shouldFocusWholeStack}`}
           id={`${indexNumber}-singleBar`}
-          ref={(e) => (groupRef.refElement = e)}
+          ref={e => (groupRef.refElement = e)}
           {...stackFocusProps}
         >
           {singleBar}

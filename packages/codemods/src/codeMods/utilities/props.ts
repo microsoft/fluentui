@@ -11,7 +11,7 @@ export function renameProp(
   replacementValue?: string,
   transform?: PropTransform,
 ): Result<string, NoOp> {
-  instances.forEach((val) => {
+  instances.forEach(val => {
     /* For each instance, first see if desired prop exists in the open. */
     const foundProp = Maybe(val.getAttribute(toRename));
     if (foundProp.something) {

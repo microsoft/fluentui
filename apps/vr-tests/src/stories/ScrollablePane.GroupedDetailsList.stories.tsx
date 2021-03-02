@@ -235,7 +235,7 @@ const cropTo = { cropTo: '.testWrapper' };
 
 storiesOf('ScrollablePane Grouped Details List', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default: scrollbars should be visible', cropTo)

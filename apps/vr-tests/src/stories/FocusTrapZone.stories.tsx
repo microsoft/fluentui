@@ -6,7 +6,7 @@ import { Panel, PanelType, Dialog, DialogType } from '@fluentui/react';
 
 storiesOf('FocusTrapZones', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default')

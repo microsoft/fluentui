@@ -5,7 +5,7 @@ import * as styles from '../Page.module.scss';
 import { EditSection } from '../../EditSection/index';
 import { Markdown } from '../../Markdown/index';
 
-export const OtherPageSection: React.FunctionComponent<IPageSectionProps> = (props) => {
+export const OtherPageSection: React.FunctionComponent<IPageSectionProps> = props => {
   const {
     // prettier-ignore
     className,

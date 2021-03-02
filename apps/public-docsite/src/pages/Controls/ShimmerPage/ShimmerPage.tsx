@@ -6,7 +6,7 @@ import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2
 
 const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/ShimmerPage/';
 
-export const ShimmerPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const ShimmerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

@@ -55,7 +55,7 @@ const configureStackTokens: IStackTokens = { childrenGap: 20 };
 const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
-const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = (props) => {
+const HorizontalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
     numItems,
     showBoxShadow,

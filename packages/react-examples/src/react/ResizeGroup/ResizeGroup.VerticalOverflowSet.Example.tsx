@@ -18,7 +18,7 @@ export interface IOverflowData {
 const generateData = (count: number, cachingEnabled: boolean, checked: boolean): IOverflowData => {
   const icons = ['Add', 'Share', 'Upload'];
   let cacheKey = '';
-  const dataItems = createArray(count, (index) => {
+  const dataItems = createArray(count, index => {
     cacheKey = cacheKey + `item${index}`;
     return {
       key: `item${index}`,

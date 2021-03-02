@@ -20,7 +20,7 @@ export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
   const [isDialogVisible, { setTrue: showDialog, setFalse: hideDialog }] = useBoolean(false);
 
   const onHideDialog = React.useCallback(
-    (ev) => {
+    ev => {
       ev.preventDefault();
       hideDialog();
     },

@@ -198,15 +198,14 @@ export const PersonaBase: React.FunctionComponent<IPersonaProps> = React.forward
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >
         {onRenderPersonaCoin(personaCoinProps, onRenderPersonaCoin)}
-        {
-          /* eslint-disable deprecation/deprecation */
+        {/* eslint-disable deprecation/deprecation */
 
-          (!hidePersonaDetails ||
-            size === PersonaSize.size8 ||
-            size === PersonaSize.size10 ||
-            size === PersonaSize.tiny) &&
-            personaDetails
-          /* eslint-enable deprecation/deprecation */
+        (!hidePersonaDetails ||
+          size === PersonaSize.size8 ||
+          size === PersonaSize.size10 ||
+          size === PersonaSize.tiny) &&
+          personaDetails
+        /* eslint-enable deprecation/deprecation */
         }
       </div>
     );

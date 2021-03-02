@@ -7,7 +7,7 @@ export interface IButtonExampleProps {
   checked?: boolean;
 }
 
-export const ButtonScreenReaderExample: React.FunctionComponent<IButtonExampleProps> = (props) => {
+export const ButtonScreenReaderExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;
 
   return (

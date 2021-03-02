@@ -126,7 +126,7 @@ const languageMapping: { [key: string]: string } = {
   css: 'scss',
 };
 
-const PrismCodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = (props) => {
+const PrismCodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, {});
   return (
     <SyntaxHighlighter

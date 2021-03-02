@@ -62,7 +62,7 @@ describe('composed', () => {
 
     const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent2',
-      slots: (props) => ({
+      slots: props => ({
         ...resolveSlots(baseSlots, props),
         ...resolveSlots(recompositionSlots, props),
       }),
@@ -120,7 +120,7 @@ describe('composed', () => {
 
     const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent2',
-      slots: (props) => ({
+      slots: props => ({
         ...resolveSlots(baseSlots, props),
       }),
       view: TestView2,

@@ -3,7 +3,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { DetailsListDragDropPageProps } from './DetailsListDragDropPage.doc';
 import { mergeStyles } from '@fluentui/react';
 
-export const DetailsListDragDropPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const DetailsListDragDropPage: React.FunctionComponent<IControlsPageProps> = props => {
   const className = mergeStyles({
     selectors: {
       '.ExampleCard .ms-Icon.ms-DetailsHeader-dropHintCaretStyle': {

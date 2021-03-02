@@ -6,7 +6,7 @@ const selectors = {
 };
 
 const config: ScreenerTestsConfig = {
-  steps: [(builder) => builder.hover(selectors.triggerButton).snapshot('Hover primary trigger')],
+  steps: [builder => builder.hover(selectors.triggerButton).snapshot('Hover primary trigger')],
 };
 
 export default config;

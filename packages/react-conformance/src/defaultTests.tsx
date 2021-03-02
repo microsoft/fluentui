@@ -181,7 +181,11 @@ export const defaultTests: TestObject = {
       }
       const defaultEl = customMount(<Component {...requiredProps} />);
       const defaultComponent = getComponent(defaultEl, helperComponents, wrapperComponent);
-      const defaultClassNames = defaultComponent.getDOMNode().getAttribute('class')?.split(' ') || [];
+      const defaultClassNames =
+        defaultComponent
+          .getDOMNode()
+          .getAttribute('class')
+          ?.split(' ') || [];
 
       const el = customMount(<Component {...mergedProps} />);
       const component = getComponent(el, helperComponents, wrapperComponent);
@@ -348,7 +352,10 @@ export const defaultTests: TestObject = {
             expect(component.type()).toBe(MyComponent);
           } catch (err) {
             expect(component.type()).not.toBe(Component);
-            const comp = component.find('[as]').last().prop('as');
+            const comp = component
+              .find('[as]')
+              .last()
+              .prop('as');
             expect(comp).toBe(MyComponent);
           }
         } catch (e) {
@@ -428,7 +435,7 @@ export const defaultTests: TestObject = {
           const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
           const { Component, customMount = mount, requiredProps, wrapperComponent, helperComponents = [] } = testInfo;
 
-          tags.forEach((tag) => {
+          tags.forEach(tag => {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const wrapper = customMount(<Component {...requiredProps} {...({ as: tag } as any)} />);
             const component = getComponent(wrapper, helperComponents, wrapperComponent);

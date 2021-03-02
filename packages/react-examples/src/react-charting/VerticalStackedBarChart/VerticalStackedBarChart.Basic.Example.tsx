@@ -202,7 +202,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           value={this.state.barGapMax}
           min={0}
           max={10}
-          onChange={(e) => this.setState({ barGapMax: +e.target.value })}
+          onChange={e => this.setState({ barGapMax: +e.target.value })}
         />
         <Checkbox
           label="show the lines (hide or show the lines)"

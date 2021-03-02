@@ -83,7 +83,7 @@ export type EmbedStylesProps = Required<Pick<EmbedProps, 'active'>> & { iframeLo
  * A `placeholder` slot represents an [`Image`](/components/image/definition) component, please follow recommendations from its
  * accessibility section.
  */
-export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticProps<EmbedProps> = (props) => {
+export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticProps<EmbedProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Embed.displayName, context.telemetry);
   setStart();
@@ -94,7 +94,7 @@ export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticP
   const getA11yProps = useAccessibility<EmbedBehaviorProps>(props.accessibility, {
     debugName: Embed.displayName,
     actionHandlers: {
-      performClick: (event) => handleClick(event),
+      performClick: event => handleClick(event),
     },
     mapPropsToBehavior: () => ({
       alt,
@@ -112,7 +112,7 @@ export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticP
   const [iframeLoaded, setIframeLoaded] = React.useState(false);
   const frameRef = React.useRef<HTMLFrameElement>();
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     e.stopPropagation();
     e.preventDefault();
 
@@ -127,7 +127,7 @@ export const Embed: ComponentWithAs<'span', EmbedProps> & FluentComponentStaticP
     _.invoke(props, 'onClick', e, { ...props, active: newActive });
   };
 
-  const handleFrameOverrides = (predefinedProps) => ({
+  const handleFrameOverrides = predefinedProps => ({
     onLoad: (e: React.SyntheticEvent) => {
       _.invoke(predefinedProps, 'onLoad', e);
       setIframeLoaded(true);

@@ -54,7 +54,7 @@ const AppearanceExample = (props: ButtonProps) => (
 storiesOf('React Button', module)
   .addDecorator(FabricDecorator)
   .addDecorator(FluentProviderDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

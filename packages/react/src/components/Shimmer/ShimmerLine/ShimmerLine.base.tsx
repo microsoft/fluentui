@@ -7,7 +7,7 @@ const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineSty
 /**
  * {@docCategory Shimmer}
  */
-export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps> = (props) => {
+export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps> = props => {
   // eslint-disable-next-line deprecation/deprecation
   const { height, styles, width = '100%', borderStyle, theme } = props;
 

@@ -48,7 +48,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
   }
 
   public componentWillUnmount() {
-    this._events.forEach((dispose) => dispose());
+    this._events.forEach(dispose => dispose());
   }
 
   public render() {
@@ -209,7 +209,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     }
 
     // Remove event handlers
-    this._events.forEach((dispose) => dispose());
+    this._events.forEach(dispose => dispose());
   };
 
   /**

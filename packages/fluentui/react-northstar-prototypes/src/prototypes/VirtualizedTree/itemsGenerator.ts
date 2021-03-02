@@ -43,7 +43,7 @@ function getItemsWithHeight(
 
   function generateLevel(level, parent = '') {
     const result = [];
-    _.times(getItemsNumber(minItems, maxItems), (index) => {
+    _.times(getItemsNumber(minItems, maxItems), index => {
       const item = {
         id: `${parent}${parent ? '-' : ''}${index}`,
         title: `${getRandomFruit()}-${parent}${parent ? '-' : ''}${index}`,

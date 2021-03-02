@@ -97,7 +97,7 @@ export const imports: Record<string, CodeSandboxImport> = {
   },
 };
 
-export const importResolver = (importName) => {
+export const importResolver = importName => {
   if (imports[importName]) {
     return imports[importName].module;
   }

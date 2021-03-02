@@ -305,7 +305,9 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     for (let i = 0; i < this._colors.length; i++) {
       domainValues.push(increment * i * this._yMax);
     }
-    const colorScale = d3ScaleLinear<string>().domain(domainValues).range(this._colors);
+    const colorScale = d3ScaleLinear<string>()
+      .domain(domainValues)
+      .range(this._colors);
     return colorScale;
   }
 

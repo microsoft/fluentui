@@ -7,8 +7,8 @@ export const GetStartedPages: INavPage = {
   isUhfLink: true,
   hasPlatformPicker: true,
   component: () => <LoadingComponent title="Get started" />,
-  getComponent: (cb) =>
-    require.ensure([], (require) =>
+  getComponent: cb =>
+    require.ensure([], require =>
       cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
     ),
   platforms: {
@@ -18,8 +18,8 @@ export const GetStartedPages: INavPage = {
         url: '#/get-started/web',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
           ),
       },
@@ -30,8 +30,8 @@ export const GetStartedPages: INavPage = {
         url: '#/get-started/ios',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
           ),
       },
@@ -42,8 +42,8 @@ export const GetStartedPages: INavPage = {
         url: '#/get-started/android',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
           ),
       },
@@ -54,8 +54,8 @@ export const GetStartedPages: INavPage = {
         url: '#/get-started/mac',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
           ),
       },
@@ -66,8 +66,8 @@ export const GetStartedPages: INavPage = {
         url: '#/get-started/windows',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
           ),
       },
@@ -78,8 +78,8 @@ export const GetStartedPages: INavPage = {
         url: '#/get-started/crossplatform',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Get started" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
           ),
       },

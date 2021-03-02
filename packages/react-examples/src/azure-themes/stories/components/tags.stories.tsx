@@ -26,7 +26,7 @@ const testTags: ITag[] = [
   'violet',
   'white',
   'yellow',
-].map((item) => ({ key: item, name: item }));
+].map(item => ({ key: item, name: item }));
 
 export interface ITagPickerDemoPageState {
   isPickerDisabled?: boolean;
@@ -106,13 +106,13 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
   private _onFilterChanged = (filterText: string, tagList: ITag[]): ITag[] => {
     return filterText
       ? testTags
-          .filter((tag) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
-          .filter((tag) => !this._listContainsDocument(tag, tagList))
+          .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
+          .filter(tag => !this._listContainsDocument(tag, tagList))
       : [];
   };
 
   private _onFilterChangedNoFilter = (filterText: string, tagList: ITag[]): ITag[] => {
-    return filterText ? testTags.filter((tag) => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
+    return filterText ? testTags.filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0) : [];
   };
 
   private _onItemSelected = (item: ITag): ITag | null => {
@@ -126,6 +126,6 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
     if (!tagList || !tagList.length || tagList.length === 0) {
       return false;
     }
-    return tagList.filter((compareTag) => compareTag.key === tag.key).length > 0;
+    return tagList.filter(compareTag => compareTag.key === tag.key).length > 0;
   }
 }

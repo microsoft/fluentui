@@ -11,7 +11,7 @@ import { getSubTitle } from '../../../utilities/index';
 import * as styles from './StylesPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const StylesPageBase: React.FunctionComponent<IPageProps<Platforms>> = (props) => {
+const StylesPageBase: React.FunctionComponent<IPageProps<Platforms>> = props => {
   const { platform } = props;
   return (
     <Page

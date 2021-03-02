@@ -22,7 +22,7 @@ export const observeResize = (
     const observer = new ResizeObserver(onResize);
 
     if (Array.isArray(target)) {
-      target.forEach((t) => observer.observe(t));
+      target.forEach(t => observer.observe(t));
     } else {
       observer.observe(target);
     }

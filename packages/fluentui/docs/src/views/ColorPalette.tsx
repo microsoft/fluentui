@@ -61,7 +61,7 @@ const ColorPalette = () => {
               copy-pasting values directly, but as a reference to the designers about which colors are available.
             </p>
             <Grid columns={2} variables={{ gridGap: '2rem' }}>
-              {_.map(['black', 'white'], (color) => (
+              {_.map(['black', 'white'], color => (
                 <div key={color}>
                   <ColorBox name={color} size="big" value={colors[color]} />
                 </div>

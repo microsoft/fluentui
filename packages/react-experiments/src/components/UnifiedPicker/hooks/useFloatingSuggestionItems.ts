@@ -65,7 +65,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
 
   const headerFooterItemsHaveExecute = (items: IFloatingSuggestionsHeaderFooterProps[]): boolean => {
     let haveExecute = false;
-    items!.forEach((item) => {
+    items!.forEach(item => {
       if (item.onExecute !== undefined) {
         haveExecute = true;
       }

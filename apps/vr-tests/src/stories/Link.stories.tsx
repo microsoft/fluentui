@@ -6,7 +6,7 @@ import { Link } from '@fluentui/react';
 
 storiesOf('Link', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

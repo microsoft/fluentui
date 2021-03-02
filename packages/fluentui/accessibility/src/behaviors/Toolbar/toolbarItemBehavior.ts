@@ -13,7 +13,7 @@ import { buttonBehavior, ButtonBehaviorProps } from '../Button/buttonBehavior';
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper', when toolbar button has submenu and it is opened.
  * Triggers 'doNotNavigateNextToolbarItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
  */
-export const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = (props) => {
+export const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,

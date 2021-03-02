@@ -27,7 +27,7 @@ const iconProps = { iconName: 'IncreaseIndentLegacy' };
 
 storiesOf('SpinButton', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -71,7 +71,7 @@ storiesOf('SpinButton', module)
   // This is a temporary fix until we migrate to CSF format duplication problem
   // previously this used FabricDecorator
   .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'default' }))
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

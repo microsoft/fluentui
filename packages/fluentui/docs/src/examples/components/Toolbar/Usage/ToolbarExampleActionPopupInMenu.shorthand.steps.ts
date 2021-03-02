@@ -4,7 +4,7 @@ import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(`.${toolbarItemWrapperClassName} button`)
         .snapshot('Shows menu')

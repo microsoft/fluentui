@@ -47,9 +47,8 @@ export const avatarlabelClassName = labelClassName;
 /**
  * A AvatarLabel allows user to classify content.
  */
-export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> & FluentComponentStaticProps<AvatarLabelProps> = (
-  props,
-) => {
+export const AvatarLabel: ComponentWithAs<'span', AvatarLabelProps> &
+  FluentComponentStaticProps<AvatarLabelProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarLabel.displayName, context.telemetry);
   setStart();

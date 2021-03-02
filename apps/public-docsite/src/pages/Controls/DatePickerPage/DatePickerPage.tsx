@@ -7,7 +7,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/DatePickerPage/';
 
-export const DatePickerPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const DatePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

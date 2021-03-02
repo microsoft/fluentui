@@ -53,7 +53,7 @@ export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
 /**
  * Component represents a single row in a tabular structure
  */
-export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = (props) => {
+export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
   setStart();
@@ -67,10 +67,10 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
     debugName: TableRow.displayName,
     actionHandlers: {
       // https://github.com/microsoft/fluent-ui-react/issues/2150
-      unsetRowTabbable: (e) => {
+      unsetRowTabbable: e => {
         rowRef.current.setAttribute('tabindex', '-1');
       },
-      performClick: (e) => {
+      performClick: e => {
         if (e.currentTarget === e.target) {
           _.invoke(props, 'onClick', e, props);
           e.preventDefault();
@@ -103,7 +103,7 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
     return _.map(items, (item: TableCellProps) => {
       return TableCell.create(item, {
         defaultProps: () => getA11yProps('cell', {}),
-        overrideProps: (predefinedProps) => ({
+        overrideProps: predefinedProps => ({
           variables: mergeVariablesOverrides(variables, predefinedProps.variables),
         }),
       });

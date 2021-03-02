@@ -27,7 +27,7 @@ const defaultProps: ICalloutProps = {
 };
 
 storiesOf('Callout', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <div
       style={{
         alignItems: 'center',
@@ -41,7 +41,7 @@ storiesOf('Callout', module)
       {story()}
     </div>
   ))
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

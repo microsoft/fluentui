@@ -34,7 +34,7 @@ export function compileCSSRules(cssRules: string): string[] {
       // 💡 we are using `.insertRule()` API for DOM operations, which does not support
       // insertion of multiple CSS rules in a single call. `rulesheet` plugin extracts
       // individual rules to be used with this API
-      rulesheet((rule) => rules.push(rule)),
+      rulesheet(rule => rules.push(rule)),
     ]),
   );
 

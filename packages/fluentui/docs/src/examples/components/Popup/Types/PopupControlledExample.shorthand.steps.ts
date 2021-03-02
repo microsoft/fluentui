@@ -8,7 +8,7 @@ const selectors = {
 
 const config: ScreenerTestsConfig = {
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(selectors.triggerButton)
         .snapshot('Click on the trigger (opens popup)')

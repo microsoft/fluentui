@@ -127,7 +127,7 @@ export const popupClassName = 'ui-popup';
 export const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
     Content: typeof PopupContent;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Popup.displayName, context.telemetry);
   setStart();
@@ -176,28 +176,28 @@ export const Popup: React.FC<PopupProps> &
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
     actionHandlers: {
-      closeAndFocusTrigger: (e) => {
+      closeAndFocusTrigger: e => {
         e.preventDefault();
         close(e, () => _.invoke(triggerFocusableRef.current, 'focus'));
       },
-      close: (e) => {
+      close: e => {
         close(e);
       },
-      toggle: (e) => {
+      toggle: e => {
         e.preventDefault();
         trySetOpen(!open, e);
       },
-      open: (e) => {
+      open: e => {
         e.preventDefault();
         setPopupOpen(true, e);
       },
-      click: (e) => {
+      click: e => {
         _.invoke(triggerRef.current, 'click');
       },
-      preventScroll: (e) => {
+      preventScroll: e => {
         e.preventDefault();
       },
-      stopPropagation: (e) => {
+      stopPropagation: e => {
         e.stopPropagation();
       },
     },
@@ -261,7 +261,7 @@ export const Popup: React.FC<PopupProps> &
     return isOutsidePopup;
   };
 
-  const getTriggerProps = (triggerElement) => {
+  const getTriggerProps = triggerElement => {
     const triggerProps: any = {};
     const normalizedOn = _.isArray(on) ? on : [on];
 
@@ -388,7 +388,7 @@ export const Popup: React.FC<PopupProps> &
     return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
-  const renderPopperChildren = (classes) => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
+  const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
     const content = renderContent ? renderContent(scheduleUpdate) : props.content;
     const popupContent = Popup.Content.create(content || {}, {
       defaultProps: () =>
@@ -409,7 +409,7 @@ export const Popup: React.FC<PopupProps> &
         {(getRefs, nestingRef) => (
           <>
             <Ref
-              innerRef={(domElement) => {
+              innerRef={domElement => {
                 popupContentRef.current = domElement;
                 handleRef(contentRef, domElement);
                 nestingRef.current = domElement;

@@ -9,7 +9,7 @@ export interface IControlsPageProps extends IPageProps<Platforms> {}
 
 const apiRequireContext = require.context('@fluentui/api-docs/lib/pages/', true, /^(?!references).*/);
 
-const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = (props) => {
+const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props => {
   let jsonDocs: IPageJson;
   if (props.platform === 'web' && !props.jsonDocs) {
     // Get the control's .page.json file for API docs if it exists

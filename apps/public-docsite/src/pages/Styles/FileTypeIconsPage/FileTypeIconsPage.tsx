@@ -13,7 +13,7 @@ const baseUrl =
 // eslint-disable-next-line import/no-extraneous-dependencies
 const documentIcons = require<{ name: string }[]>('@fluentui/public-docsite/lib/data/brand-icons-documents.json');
 
-export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

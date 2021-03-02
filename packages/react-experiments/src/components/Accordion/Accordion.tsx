@@ -7,7 +7,7 @@ import { styles } from './Accordion.styles';
 
 const AccordionItemType = ((<CollapsibleSection />) as React.ReactElement<ICollapsibleSectionProps>).type;
 
-const AccordionView: IAccordionComponent['view'] = (props) => {
+const AccordionView: IAccordionComponent['view'] = props => {
   const { collapseItems } = props;
 
   const children: React.ReactChild[] | undefined | null = React.Children.map(

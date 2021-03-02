@@ -25,7 +25,7 @@ describe('Modal', () => {
   it('renders Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 
@@ -33,7 +33,7 @@ describe('Modal', () => {
       <Modal isOpen={true} className={'test-className'} containerClassName={'test-containerClassName'}>
         Test Content
       </Modal>,
-      (component) => {
+      component => {
         expect(component.toJSON()).toMatchSnapshot();
         ReactDOM.createPortal.mockClear();
       },
@@ -43,7 +43,7 @@ describe('Modal', () => {
   it('renders Modeless Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
     safeCreate(
@@ -55,7 +55,7 @@ describe('Modal', () => {
       >
         Test Content
       </Modal>,
-      (component) => {
+      component => {
         expect(component!.toJSON()).toMatchSnapshot();
         ReactDOM.createPortal.mockClear();
       },
@@ -65,7 +65,7 @@ describe('Modal', () => {
   it('renders Draggable Modal correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const ReactDOM = require('react-dom');
-    ReactDOM.createPortal = jest.fn((element) => {
+    ReactDOM.createPortal = jest.fn(element => {
       return element;
     });
 
@@ -83,7 +83,7 @@ describe('Modal', () => {
       >
         Test Content
       </Modal>,
-      (component) => {
+      component => {
         expect(component!.toJSON()).toMatchSnapshot();
         ReactDOM.createPortal.mockClear();
       },

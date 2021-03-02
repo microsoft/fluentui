@@ -19,7 +19,7 @@ const Participant: React.FC<{
       fill
       gap="gap.small"
       space="between"
-      onContextMenu={(e) => {
+      onContextMenu={e => {
         setOpenMenu(!openMenu);
         e.preventDefault();
       }}

@@ -14,7 +14,7 @@ import { keyboardKey } from '../../keyboard-key';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'focusCard' action with 'Escape' on 'root'.
  */
-export const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = (props) => ({
+export const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',

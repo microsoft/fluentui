@@ -23,7 +23,7 @@ const globalClassNames = {
   isScrollable: 'is-scrollable',
 };
 
-export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyles> = (props) => {
+export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyles> = props => {
   const { isRightAligned, isScrollable, isCodeVisible, theme = getTheme() } = props;
 
   const sharedToggleButtonStyles = {

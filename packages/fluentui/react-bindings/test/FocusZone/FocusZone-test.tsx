@@ -837,13 +837,13 @@ describe('FocusZone', () => {
       <div {...{ onFocusCapture: onFocus }}>
         <textarea id="t" />
         <FocusZone
-          ref={(focus) => {
+          ref={focus => {
             focusZone = focus;
           }}
         >
           <button
             id="a"
-            ref={(button) => {
+            ref={button => {
               buttonA = button;
             }}
           >
@@ -851,7 +851,7 @@ describe('FocusZone', () => {
           </button>
           <button
             id="b"
-            ref={(button) => {
+            ref={button => {
               buttonB = button;
             }}
           >
@@ -904,13 +904,13 @@ describe('FocusZone', () => {
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
         <FocusZone
-          ref={(focus) => {
+          ref={focus => {
             focusZone = focus;
           }}
         >
           <button
             id="a"
-            ref={(button) => {
+            ref={button => {
               buttonA = button;
             }}
           >
@@ -918,7 +918,7 @@ describe('FocusZone', () => {
           </button>
           <button
             id="b"
-            ref={(button) => {
+            ref={button => {
               buttonB = button;
             }}
           >

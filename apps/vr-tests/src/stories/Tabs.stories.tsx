@@ -7,7 +7,7 @@ import { Tabs, TabItem, TabItemProps } from '@fluentui/react-tabs';
 
 storiesOf('Tabs', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -115,14 +115,14 @@ storiesOf('Tabs', module)
   ));
 
 storiesOf('Tabs - Overflow', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <div style={{ display: 'flex' }}>
       <div id="testWrapper" className="testWrapper" style={{ padding: '10px 10px 200px' }}>
         {story()}
       </div>
     </div>
   ))
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .executeScript('document.getElementById("testWrapper").style.width = "500px"')

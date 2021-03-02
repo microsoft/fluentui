@@ -8,7 +8,7 @@ import { hideInitialsWhenImageIsLoaded } from './propHelpers';
 import PersonaCoinSize10 from './PersonaCoinSize10/PersonaCoinSize10';
 import { PersonaCoinInitials } from './PersonaCoinInitials/PersonaCoinInitials';
 
-export const PersonaCoinView: IPersonaCoinComponent['view'] = (props) => {
+export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
   const coinSize = props.size || DEFAULT_PERSONA_COIN_SIZE;
 
   const Slots = getSlots<IPersonaCoinProps, IPersonaCoinSlots>(props, {

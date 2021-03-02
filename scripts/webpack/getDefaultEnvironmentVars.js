@@ -12,7 +12,7 @@
  * @param options - A object where the keys are the environment variables to read,
  * and their values represent the default value to use if the variable is not present.
  */
-const getVariables = (options) => {
+const getVariables = options => {
   const variables = {};
 
   for (const key of Object.keys(options)) {
@@ -31,7 +31,7 @@ const getVariables = (options) => {
  * @param {boolean=} isProduction - (optional) If true will ensure NODE_ENV is 'production', even
  * if environment variables specify otherwise.
  */
-module.exports = (isProduction) => ({
+module.exports = isProduction => ({
   'process.env': {
     NODE_ENV: JSON.stringify(isProduction ? 'production' : process.env.NODE_ENV || 'development'),
 

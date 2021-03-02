@@ -94,7 +94,7 @@ export type RadioGroupItemStylesProps = Required<Pick<RadioGroupItemProps, 'disa
  * Radio items need to be grouped to correctly handle accessibility.
  */
 export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
-  FluentComponentStaticProps<RadioGroupItemProps> = (props) => {
+  FluentComponentStaticProps<RadioGroupItemProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroupItem.displayName, context.telemetry);
   setStart();
@@ -124,7 +124,7 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);
-    setChecked((prevChecked) => {
+    setChecked(prevChecked => {
       return !prevChecked;
     });
   };
@@ -161,7 +161,7 @@ export const RadioGroupItem: ComponentWithAs<'div', RadioGroupItemProps> &
   const getA11yProps = useAccessibility<RadioGroupItemBehaviorProps>(props.accessibility, {
     debugName: RadioGroupItem.displayName,
     actionHandlers: {
-      performClick: (e) => {
+      performClick: e => {
         if (shouldPreventDefaultOnKeyDown(e)) {
           e.preventDefault();
         }

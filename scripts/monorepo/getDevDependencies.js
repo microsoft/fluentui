@@ -4,7 +4,7 @@ const path = require('path');
 const findGitRoot = require('./findGitRoot');
 
 function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
-  rootPackages.forEach((packageName) => {
+  rootPackages.forEach(packageName => {
     packageList.push(packageName);
 
     flattenPackageGraph([...projectGraph.get(packageName).localDependencies.keys()], projectGraph, packageList);
@@ -24,7 +24,7 @@ async function getDevDependencies(packageName) {
   const allDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages));
   const productionDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages, 'dependencies'));
 
-  const devDependencies = allDepsGraph.filter((dep) => !productionDepsGraph.includes(dep));
+  const devDependencies = allDepsGraph.filter(dep => !productionDepsGraph.includes(dep));
 
   return devDependencies;
 }

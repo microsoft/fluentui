@@ -40,7 +40,7 @@ describe('ButtonGrid', () => {
           return <button role="gridcell">item.text</button>;
         }}
       />,
-      (wrapper) => {
+      wrapper => {
         expect(wrapper.find('table[role="grid"]').length).toEqual(1);
         expect(wrapper.find('tr[role="row"]').length).toEqual(2);
         expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
@@ -59,7 +59,7 @@ describe('ButtonGrid', () => {
           return <button role="gridcell">item.text</button>;
         }}
       />,
-      (wrapper) => {
+      wrapper => {
         expect(wrapper.find('table[role="grid"]').length).toEqual(1);
         expect(wrapper.find('tr[role="row"]').length).toEqual(4);
         expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);
@@ -80,7 +80,7 @@ describe('ButtonGrid', () => {
         positionInSet={1}
         setSize={2}
       />,
-      (wrapper) => {
+      wrapper => {
         expect(wrapper.find('table[role="grid"]').length).toEqual(1);
         expect(wrapper.find('tr[role="row"]').length).toEqual(4);
         expect(wrapper.find('td [role="gridcell"]').length).toEqual(8);

@@ -10,7 +10,7 @@ export interface IEditorLoadingProps {
 /**
  * Renders a loading spinner and message.
  */
-export const EditorLoading: React.FunctionComponent<IEditorLoadingProps> = (props) => {
+export const EditorLoading: React.FunctionComponent<IEditorLoadingProps> = props => {
   return (
     <Stack horizontalAlign="center" verticalAlign="center" styles={{ root: { height: props.height } }}>
       <Spinner size={SpinnerSize.large} label="Loading editor..." />

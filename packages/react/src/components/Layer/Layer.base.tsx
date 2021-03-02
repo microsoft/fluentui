@@ -175,7 +175,7 @@ function getFilteredEvents() {
       'onInput',
       'onInvalid',
       'onSubmit',
-    ].forEach((name) => (filteredEventProps[name] = onFilterEvent));
+    ].forEach(name => (filteredEventProps[name] = onFilterEvent));
   }
   return filteredEventProps;
 }

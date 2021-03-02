@@ -121,11 +121,11 @@ task('build:docs:schema', () =>
   ),
 );
 
-task('build:docs:webpack', (cb) => {
+task('build:docs:webpack', cb => {
   webpackPlugin(require('../../webpack/webpack.config').default, cb);
 });
 
-task('build:docs:assets:component:info', (cb) => {
+task('build:docs:assets:component:info', cb => {
   const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
   const lernaArgs = ['lerna', 'run', 'build:info'];
 
@@ -152,7 +152,7 @@ task(
   ),
 );
 
-task('component-info:debug', (done) => {
+task('component-info:debug', done => {
   const componentInfo = getComponentInfo({
     tsconfigPath: paths.docs('tsconfig.json'),
     filePath: paths.packageSrc('react-northstar', 'components/Skeleton/SkeletonAvatar.tsx'),
@@ -170,7 +170,7 @@ task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
 // Deploy
 // ----------------------------------------
 
-task('deploy:docs', (cb) => {
+task('deploy:docs', cb => {
   const relativePath = path.relative(process.cwd(), paths.docsDist());
   return sh(`gh-pages -d ${relativePath} -m "deploy docs [ci skip]"`);
 });
@@ -189,7 +189,7 @@ task('serve:docs:hot', async () => {
   const webpackConfig = require('../../webpack/webpack.config').default;
   const compiler = webpack(webpackConfig);
 
-  server = await serve(paths.docsDist(), config.server_host, config.server_port, (app) => {
+  server = await serve(paths.docsDist(), config.server_host, config.server_port, app => {
     app.get('/public/*', (req, res) => {
       res.status(404);
       res.send(
@@ -219,7 +219,7 @@ task('serve:docs:stop', () => forceClose(server));
 // ----------------------------------------
 
 task('watch:docs:component-info', () => {
-  Object.values(getAllPackageInfo()).forEach((pkg) => {
+  Object.values(getAllPackageInfo()).forEach(pkg => {
     if (pkg.packageJson.gulp?.componentInfo) {
       const internalTask: TaskFunction = () =>
         src(pkg.packageJson.gulp?.componentInfo, { cwd: pkg.packagePath })
@@ -249,28 +249,28 @@ const allBehaviorSrc = [
   // new behavior files in @fluentui/a11y-testing. They are required dynamically by gulpComponentMenuBehaviors
   `${paths.posix.allPackages('a11y-testing')}/src/definitions/*/[a-z]*Definition.ts`,
 ];
-task('watch:docs:component-menu-behaviors', (cb) => {
+task('watch:docs:component-menu-behaviors', cb => {
   watch(allBehaviorSrc, series('build:docs:component-menu-behaviors'))
     .on('add', logWatchAdd)
     .on('change', logWatchChange)
-    .on('unlink', (filePath) => handleWatchUnlink('component-menu-behaviors', filePath));
+    .on('unlink', filePath => handleWatchUnlink('component-menu-behaviors', filePath));
 
   cb();
 });
 
-task('watch:docs:other', (cb) => {
+task('watch:docs:other', cb => {
   watch(schemaSrc, series('build:docs:schema')).on('change', logWatchChange);
 
   // rebuild example menus
   watch(examplesIndexSrc, series('build:docs:example-menu'))
     .on('add', logWatchAdd)
     .on('change', logWatchChange)
-    .on('unlink', (filePath) => handleWatchUnlink('example-menu', filePath));
+    .on('unlink', filePath => handleWatchUnlink('example-menu', filePath));
 
   watch(examplesSrc, series('build:docs:example-sources'))
     .on('add', logWatchAdd)
     .on('change', logWatchChange)
-    .on('unlink', (filePath) => {
+    .on('unlink', filePath => {
       logWatchUnlink(filePath);
 
       const sourceFilename = getRelativePathToSourceFile(filePath);

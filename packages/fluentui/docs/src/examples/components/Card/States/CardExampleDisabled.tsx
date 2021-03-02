@@ -7,7 +7,7 @@ const CardExampleDisabled = () => {
   const [inverted] = useBooleanKnob({ name: 'inverted', initialValue: false });
   const [ghost] = useBooleanKnob({ name: 'ghost', initialValue: false });
   const updateClickCount = () => {
-    setClickCount((count) => count + 1);
+    setClickCount(count => count + 1);
   };
 
   return (

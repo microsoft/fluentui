@@ -87,7 +87,7 @@ const rendererConfig = {
   ],
 };
 
-export const createFelaRenderer: CreateRenderer = (target) => {
+export const createFelaRenderer: CreateRenderer = target => {
   const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
     listeners: [];
     nodes: Record<string, HTMLStyleElement>;
@@ -97,7 +97,7 @@ export const createFelaRenderer: CreateRenderer = (target) => {
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-  const Provider: React.FC = (props) => (
+  const Provider: React.FC = props => (
     <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
       {props.children}
     </RendererProvider>
@@ -117,7 +117,7 @@ export const createFelaRenderer: CreateRenderer = (target) => {
       }
     },
 
-    renderFont: (font) => {
+    renderFont: font => {
       felaRenderer.renderFont(font.name, font.paths, font.props);
     },
     renderGlobal: felaRenderer.renderStatic,

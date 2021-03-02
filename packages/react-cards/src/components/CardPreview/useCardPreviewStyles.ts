@@ -13,7 +13,7 @@ const useRootStyles = makeStyles<CardSectionState>([
     },
   ],
   [
-    (s) => s.fitted,
+    s => s.fitted,
     {
       '--card-preview-margin': 'var(--card-preview-fitted-margin)',
       '--card-preview-fitted-margin': 'var(--card-section-fitted-margin)',

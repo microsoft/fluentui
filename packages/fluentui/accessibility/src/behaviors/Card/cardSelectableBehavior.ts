@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'performClick' action with 'Spacebar' on 'root'.
  */
-export const cardSelectableBehavior: Accessibility<CardBehaviorProps> = (props) => ({
+export const cardSelectableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'group',

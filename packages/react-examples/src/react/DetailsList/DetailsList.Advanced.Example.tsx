@@ -710,7 +710,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       groupedColumnKey,
     );
 
-    columns.forEach((column) => {
+    columns.forEach(column => {
       column.onRenderDivider = this._onRenderDivider;
       column.onColumnContextMenu = onColumnContextMenu;
       column.ariaLabel = `Operations for ${column.name}`;

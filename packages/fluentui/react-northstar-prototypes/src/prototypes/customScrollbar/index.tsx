@@ -26,7 +26,7 @@ const ScrollbarMenuPrototype = () => {
 };
 
 const ScrollbarPopupPrototype = () => {
-  const lines = _.times(50, (i) => <p key={i}>Long long text line {i}</p>);
+  const lines = _.times(50, i => <p key={i}>Long long text line {i}</p>);
 
   return (
     <Popup
@@ -42,7 +42,7 @@ const ScrollbarPopupPrototype = () => {
 };
 
 const ScrollbarDialogPrototype = () => {
-  const lines = _.times(50, (i) => <p key={i}>Long long text line {i}</p>);
+  const lines = _.times(50, i => <p key={i}>Long long text line {i}</p>);
 
   return (
     <Dialog
@@ -82,12 +82,12 @@ const ScrollbarDropdownPrototype = () => {
     <div>
       <Dropdown
         items={items}
-        list={{ wrap: (children) => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }}
+        list={{ wrap: children => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }}
       />
       <Dropdown
         search
         items={items}
-        list={{ wrap: (children) => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }}
+        list={{ wrap: children => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }}
       />
     </div>
   );

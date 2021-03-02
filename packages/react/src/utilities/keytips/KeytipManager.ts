@@ -153,7 +153,7 @@ export class KeytipManager {
    * @returns All keytips stored in the manager
    */
   public getKeytips(): IKeytipProps[] {
-    return Object.keys(this.keytips).map((key) => this.keytips[key].keytip);
+    return Object.keys(this.keytips).map(key => this.keytips[key].keytip);
   }
 
   /**

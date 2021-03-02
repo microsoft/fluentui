@@ -16,7 +16,7 @@ export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
   }
 
   const components = getComponentDoc(componentPath, exportSubdir);
-  const mainComponents = components.filter((comp) => comp.displayName === displayName);
+  const mainComponents = components.filter(comp => comp.displayName === displayName);
 
   if (mainComponents.length === 1) {
     const componentInfo = mainComponents[0];
@@ -59,7 +59,7 @@ export function isConformant(...testInfo: Partial<IsConformantOptions>[]) {
         os.EOL.repeat(2) +
         'These are the exported component names:' +
         os.EOL.repeat(2) +
-        chalk.white.bold.italic.bgHex('#2e2e2e')(components.map((component) => component.displayName).join(', ')),
+        chalk.white.bold.italic.bgHex('#2e2e2e')(components.map(component => component.displayName).join(', ')),
     );
     throw new Error(`No component was found that matches the displayName.`);
   }

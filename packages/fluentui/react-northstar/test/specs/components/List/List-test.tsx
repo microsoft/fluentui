@@ -35,7 +35,11 @@ describe('List', () => {
       const onClick = jest.fn();
       const listItems = mountWithProvider(<List items={getItems(onClick)} />).find('ListItem');
 
-      listItems.first().find('li').first().simulate('click');
+      listItems
+        .first()
+        .find('li')
+        .first()
+        .simulate('click');
       expect(onClick).toHaveBeenCalled();
     });
   });
@@ -44,23 +48,46 @@ describe('List', () => {
     it('should not be set by default', () => {
       const wrapper = mountWithProvider(<List selectable items={getItems()} />);
 
-      expect(wrapper.find('li').filterWhere((item) => Boolean(item.prop('aria-selected')))).toHaveLength(0);
+      expect(wrapper.find('li').filterWhere(item => Boolean(item.prop('aria-selected')))).toHaveLength(0);
     });
 
     it('can be set a default value', () => {
       const wrapper = mountWithProvider(<List selectable defaultSelectedIndex={0} items={getItems()} />);
-      expect(wrapper.find('li').at(0).prop('aria-selected')).toBe(true);
+      expect(
+        wrapper
+          .find('li')
+          .at(0)
+          .prop('aria-selected'),
+      ).toBe(true);
     });
 
     it('should be set when item is clicked', () => {
       const wrapper = mountWithProvider(<List selectable defaultSelectedIndex={0} items={getItems()} />);
 
-      expect(wrapper.find('li').at(0).prop('aria-selected')).toBe(true);
+      expect(
+        wrapper
+          .find('li')
+          .at(0)
+          .prop('aria-selected'),
+      ).toBe(true);
 
-      wrapper.find('li').at(1).simulate('click');
+      wrapper
+        .find('li')
+        .at(1)
+        .simulate('click');
 
-      expect(wrapper.find('li').at(0).prop('aria-selected')).toBe(false);
-      expect(wrapper.find('li').at(1).prop('aria-selected')).toBe(true);
+      expect(
+        wrapper
+          .find('li')
+          .at(0)
+          .prop('aria-selected'),
+      ).toBe(false);
+      expect(
+        wrapper
+          .find('li')
+          .at(1)
+          .prop('aria-selected'),
+      ).toBe(true);
     });
 
     it('calls onClick handler for item if `selectable`', () => {
@@ -70,7 +97,11 @@ describe('List', () => {
         <List items={getItems(onClick)} onSelectedIndexChange={onSelectedIndexChange} selectable />,
       ).find('ListItem');
 
-      listItems.first().find('li').first().simulate('click');
+      listItems
+        .first()
+        .find('li')
+        .first()
+        .simulate('click');
 
       expect(onClick).toHaveBeenCalled();
       expect(onClick).toHaveBeenCalledWith(

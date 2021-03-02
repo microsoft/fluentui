@@ -18,7 +18,7 @@ const useContainerStyles = makeStyles([
   // This should eventually be the popup container styles
   [
     null,
-    (theme) => ({
+    theme => ({
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
       minWidth: '128px',
       minHeight: '48px',
@@ -29,7 +29,7 @@ const useContainerStyles = makeStyles([
     }),
   ],
 ]);
-const Container: React.FC = (props) => {
+const Container: React.FC = props => {
   const classNames = useContainerStyles({});
   return <div className={classNames}>{props.children}</div>;
 };
@@ -92,7 +92,7 @@ export const MenuListWithCheckboxes = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues((s) => ({ ...s, [name]: items }));
+    setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
   return (
@@ -116,7 +116,7 @@ export const MenuListWithRadios = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues((s) => ({ ...s, [name]: items }));
+    setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
   return (
@@ -140,7 +140,7 @@ export const MenuListWithSelectionGroups = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues((s) => ({ ...s, [name]: items }));
+    setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
   return (
@@ -190,7 +190,7 @@ export const MemoRadioItems = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = React.useCallback(
     (e: React.SyntheticEvent, name: string, items: string[]) => {
-      setCheckedValues((s) => ({ ...s, [name]: items }));
+      setCheckedValues(s => ({ ...s, [name]: items }));
     },
     [setCheckedValues],
   );
@@ -226,7 +226,7 @@ export const MemoCheckboxItems = () => {
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = React.useCallback(
     (e: React.SyntheticEvent, name: string, items: string[]) => {
-      setCheckedValues((s) => ({ ...s, [name]: items }));
+      setCheckedValues(s => ({ ...s, [name]: items }));
     },
     [setCheckedValues],
   );

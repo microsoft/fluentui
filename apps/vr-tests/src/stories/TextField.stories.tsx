@@ -6,7 +6,7 @@ import { TextField } from '@fluentui/react';
 
 storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

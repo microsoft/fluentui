@@ -15,7 +15,7 @@ import { isConformant } from '../../common/isConformant';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(
-    Object.keys(keytipManager.keytips).map((key) => keytipManager.keytips[key]),
+    Object.keys(keytipManager.keytips).map(key => keytipManager.keytips[key]),
     (uniqueKeytip: IUniqueKeytip) => {
       return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
     },
@@ -25,7 +25,7 @@ function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeyti
 
 function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(
-    Object.keys(keytipManager.persistedKeytips).map((key) => keytipManager.persistedKeytips[key]),
+    Object.keys(keytipManager.persistedKeytips).map(key => keytipManager.persistedKeytips[key]),
     (uniqueKeytip: IUniqueKeytip) => {
       return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
     },

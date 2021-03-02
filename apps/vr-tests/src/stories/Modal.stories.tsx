@@ -6,7 +6,7 @@ import { Modal } from '@fluentui/react/lib/Modal';
 
 storiesOf('Modal', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

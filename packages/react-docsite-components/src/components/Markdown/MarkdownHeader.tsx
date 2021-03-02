@@ -31,7 +31,7 @@ export interface IMarkdownHeaderStyles {
   root: IStyle;
 }
 
-const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles> = (props) => {
+const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles> = props => {
   const { className } = props;
   return {
     root: [
@@ -87,7 +87,7 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
 
 const getClassNames = classNamesFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles>();
 
-const MarkdownHeaderBase: React.FunctionComponent<IMarkdownHeaderProps> = (props) => {
+const MarkdownHeaderBase: React.FunctionComponent<IMarkdownHeaderProps> = props => {
   const { as: RootType = 'h1', children, id, styles, className } = props;
 
   const classNames = getClassNames(styles, { as: RootType, className });

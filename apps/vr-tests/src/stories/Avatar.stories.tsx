@@ -9,12 +9,10 @@ import { AvatarExamples as examples } from '@fluentui/example-data';
 import { FluentProviderDecorator } from '../utilities/index';
 
 /** Renders an Avatar at every standard size */
-const AvatarList: React.FC<
-  AvatarProps & {
-    names?: readonly string[];
-    images?: readonly string[];
-  }
-> = (props) => {
+const AvatarList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+}> = props => {
   const { names, images, ...restOfProps } = props;
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
@@ -41,12 +39,10 @@ const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
 ];
 
 /** Renders an Avatar at a few custom sizes */
-const AvatarCustomSizeList: React.FC<
-  AvatarProps & {
-    names?: readonly string[];
-    images?: readonly string[];
-  }
-> = (props) => {
+const AvatarCustomSizeList: React.FC<AvatarProps & {
+  names?: readonly string[];
+  images?: readonly string[];
+}> = props => {
   const { names, images, ...restOfProps } = props;
 
   return (
@@ -66,7 +62,7 @@ const AvatarCustomSizeList: React.FC<
 };
 
 storiesOf('Avatar', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <div style={{ display: 'flex' }}>
       <Stack
         className="testWrapper"
@@ -78,7 +74,7 @@ storiesOf('Avatar', module)
     </div>
   ))
   .addDecorator(FluentProviderDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -133,12 +129,12 @@ storiesOf('Avatar', module)
         <Avatar color="brand" />
       </Stack>
       <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        {examples.name.map((name) => (
+        {examples.name.map(name => (
           <Avatar color="colorful" name={name} key={name} />
         ))}
       </Stack>
       <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
-        {examples.namedColors.map((color) => (
+        {examples.namedColors.map(color => (
           <Avatar color={color} key={color} />
         ))}
       </Stack>

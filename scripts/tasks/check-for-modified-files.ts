@@ -3,7 +3,7 @@ import { EOL } from 'os';
 import { execSync } from 'child_process';
 
 export function checkForModifiedFiles() {
-  const notEmpty = (value) => value.trim() !== '';
+  const notEmpty = value => value.trim() !== '';
 
   const gitStatusOutput = execSync('git status -s --untracked-files=no').toString('utf8');
   const hasChangedFiles = gitStatusOutput.split(EOL).filter(notEmpty).length > 0;

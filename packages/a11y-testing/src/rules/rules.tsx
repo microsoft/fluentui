@@ -91,10 +91,10 @@ export class SlotRule implements Rule {
     }
 
     return this.data.props
-      .map((prop) => {
+      .map(prop => {
         const propNames = Object.keys(prop);
         return propNames
-          .map((propName) => {
+          .map(propName => {
             const propValue = prop[propName];
             return `prop '${propName}' is '${propValue}'`;
           })

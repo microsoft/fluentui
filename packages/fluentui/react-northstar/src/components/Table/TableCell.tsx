@@ -55,9 +55,7 @@ export const tableCellSlotClassNames: TableCellSlotClassNames = {
 /**
  * Component represents a table cell.
  */
-export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = (
-  props,
-) => {
+export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponentStaticProps<TableCellProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableCell.displayName, context.telemetry);
   setStart();
@@ -70,11 +68,11 @@ export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponent
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: TableCell.displayName,
     actionHandlers: {
-      focusCell: (e) => {
+      focusCell: e => {
         e.preventDefault();
         cellRef.current.focus();
       },
-      performClick: (e) => {
+      performClick: e => {
         if (e.currentTarget === e.target) {
           _.invoke(props, 'onClick', e, props);
           e.preventDefault();

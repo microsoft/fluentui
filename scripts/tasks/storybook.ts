@@ -11,7 +11,7 @@ export function startStorybookTask(options?: { port?: number; quiet?: boolean; c
   // storybook lib/core/src/server/config/utils.js
   process.env.NODE_ENV = 'development';
 
-  return async function () {
+  return async function() {
     let { port, quiet, ci } = argv();
 
     port = options.port || port;
@@ -35,7 +35,7 @@ export function startStorybookTask(options?: { port?: number; quiet?: boolean; c
 
 export function buildStorybookTask(options?: { quiet?: boolean }) {
   options = options || {};
-  return async function () {
+  return async function() {
     const localConfigDir = path.join(process.cwd(), '.storybook');
 
     await storybook({

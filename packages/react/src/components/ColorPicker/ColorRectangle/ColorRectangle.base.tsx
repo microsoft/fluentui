@@ -195,7 +195,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   };
 
   private _disposeListeners = (): void => {
-    this._disposables.forEach((dispose) => dispose());
+    this._disposables.forEach(dispose => dispose());
     this._disposables = [];
   };
 }

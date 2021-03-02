@@ -8,7 +8,7 @@ import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import { StackItem } from './StackItem/StackItem';
 import { IStackItemProps } from './StackItem/StackItem.types';
 
-const StackView: IStackComponent['view'] = (props) => {
+const StackView: IStackComponent['view'] = props => {
   const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
 
   warnDeprecations('Stack', props, {

@@ -7,7 +7,7 @@ const FormValidateHooks = () => {
     mode: 'onBlur',
   });
 
-  const onSubmit = (data) => {
+  const onSubmit = data => {
     // eslint-disable-next-line no-console
     console.log('errors: ', errors);
     // eslint-disable-next-line no-console
@@ -31,7 +31,7 @@ const FormValidateHooks = () => {
         name="firstName"
         ref={register({
           required: { value: true, message: 'first name is required' },
-          validate: (val) => (val.length <= 4 ? 'Too Short' : null),
+          validate: val => (val.length <= 4 ? 'Too Short' : null),
         })}
         errorMessage={errors.firstName?.message}
         showSuccessIndicator={!errors.firstName && formState.touched.firstName}

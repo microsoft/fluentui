@@ -125,12 +125,12 @@ export async function getPerfRegressions() {
 
   const scenariosAvailable = fs
     .readdirSync(path.join(__dirname, '../src/scenarios'))
-    .filter((name) => name.indexOf('scenarioList') < 0)
-    .map((name) => path.basename(name, '.tsx'));
+    .filter(name => name.indexOf('scenarioList') < 0)
+    .map(name => path.basename(name, '.tsx'));
 
   const scenariosArgv: string = argv().scenarios;
   const scenariosArg = (scenariosArgv && scenariosArgv.split && scenariosArgv.split(',')) || [];
-  scenariosArg.forEach((scenario) => {
+  scenariosArg.forEach(scenario => {
     if (!scenariosAvailable.includes(scenario)) {
       throw new Error(`Invalid scenario: ${scenario}.`);
     }
@@ -140,14 +140,14 @@ export async function getPerfRegressions() {
 
   const scenarios: Scenarios = {};
   const scenarioSettings = {};
-  scenarioList.forEach((scenarioName) => {
+  scenarioList.forEach(scenarioName => {
     if (!scenariosAvailable.includes(scenarioName)) {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
     const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
     const renderTypes = scenarioRenderTypes[scenarioName] || DefaultRenderTypes;
 
-    renderTypes.forEach((renderType) => {
+    renderTypes.forEach(renderType => {
       const scenarioKey = `${scenarioName}-${renderType}`;
       const testUrlParams = `?scenario=${scenarioName}&iterations=${iterations}&renderType=${renderType}`;
 
@@ -172,7 +172,7 @@ export async function getPerfRegressions() {
 
     if (tempContents.length > 0) {
       console.log(`Unexpected files already present in ${tempDir}`);
-      tempContents.forEach((logFile) => {
+      tempContents.forEach(logFile => {
         const logFilePath = path.join(tempDir, logFile);
         console.log(`Deleting ${logFilePath}`);
         fs.unlinkSync(logFilePath);
@@ -241,7 +241,7 @@ function createReport(scenarioSettings, testResults) {
  */
 function createScenarioTable(scenarioSettings, testResults, showAll) {
   const resultsToDisplay = Object.keys(testResults).filter(
-    (key) =>
+    key =>
       showAll ||
       (testResults[key].analysis &&
         testResults[key].analysis.regression &&
@@ -267,7 +267,7 @@ function createScenarioTable(scenarioSettings, testResults, showAll) {
     <th>Status</th>
   </tr>`.concat(
     resultsToDisplay
-      .map((key) => {
+      .map(key => {
         const testResult = testResults[key];
         const { scenarioName, iterations, renderType } = scenarioSettings[key] || {};
 

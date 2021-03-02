@@ -1051,7 +1051,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   private _notifyColumnsResized(): void {
-    this.state.adjustedColumns.forEach((column) => {
+    this.state.adjustedColumns.forEach(column => {
       if (column.onColumnResize) {
         column.onColumnResize(column.currentWidth);
       }
@@ -1107,7 +1107,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       adjustedColumns = this._getFixedColumns(newColumns);
 
       // Preserve adjusted column calculated widths.
-      adjustedColumns.forEach((column) => {
+      adjustedColumns.forEach(column => {
         this._rememberCalculatedWidth(column, column.calculatedWidth!);
       });
     } else {
@@ -1122,7 +1122,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         adjustedColumns = this._getJustifiedColumns(newColumns, viewportWidth, newProps, 0);
       }
 
-      adjustedColumns.forEach((column) => {
+      adjustedColumns.forEach(column => {
         this._getColumnOverride(column.key).currentWidth = column.calculatedWidth;
       });
     }
@@ -1132,7 +1132,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
   private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
-    return newColumns.map((column) => {
+    return newColumns.map(column => {
       const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
       if (!newColumn.calculatedWidth) {
@@ -1150,7 +1150,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     resizingColumnIndex: number,
   ): IColumn[] {
     const fixedColumns = newColumns.slice(0, resizingColumnIndex);
-    fixedColumns.forEach((column) => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
+    fixedColumns.forEach(column => (column.calculatedWidth = this._getColumnOverride(column.key).currentWidth));
 
     const fixedWidth = fixedColumns.reduce((total, column, i) => total + getPaddedWidth(column, i === 0, props), 0);
 

@@ -24,7 +24,7 @@ const DEFAULT_PROPS: Partial<IChoiceGroupOptionProps> = {
   imageSize: { width: 32, height: 32 },
 };
 
-export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionProps> = (propsWithoutDefaults) => {
+export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionProps> = propsWithoutDefaults => {
   // Mix the `key` prop back in since custom render functions may be expecting it
   // (React uses `key` internally rather than passing it through to the component)
   const props = getPropsWithDefaults({ ...DEFAULT_PROPS, key: propsWithoutDefaults.itemKey }, propsWithoutDefaults);

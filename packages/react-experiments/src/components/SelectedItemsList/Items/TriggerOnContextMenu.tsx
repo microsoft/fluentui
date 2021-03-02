@@ -8,7 +8,7 @@ export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.Compone
     const { onTrigger } = props;
     // eslint-disable-next-line react-hooks/rules-of-hooks -- this is a component
     const trigger = React.useCallback(
-      (e) => {
+      e => {
         e.preventDefault();
         e.stopPropagation();
         onTrigger?.();

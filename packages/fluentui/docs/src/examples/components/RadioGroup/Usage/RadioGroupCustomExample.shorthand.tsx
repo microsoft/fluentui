@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Divider, RadioGroup, Input, Flex } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
-const RadioGroupCustomExample = (props) => {
+const RadioGroupCustomExample = props => {
   const [vertical] = useBooleanKnob({
     name: 'vertical',
     initialValue: false,

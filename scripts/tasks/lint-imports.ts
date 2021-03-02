@@ -103,7 +103,7 @@ export function lintImports() {
 
     const files = fs.readdirSync(dir);
 
-    files.forEach((file) => {
+    files.forEach(file => {
       const fullPath = path.join(dir, file);
 
       if (fs.statSync(fullPath).isDirectory()) {
@@ -127,7 +127,7 @@ export function lintImports() {
     const importStatements = fileContent.match(new RegExp(importStatementRegex, 'gm'));
 
     if (importStatements) {
-      importStatements.forEach((statement) => {
+      importStatements.forEach(statement => {
         const parts = importStatementRegex.exec(statement);
 
         if (parts) {
@@ -147,7 +147,7 @@ export function lintImports() {
       if (!exportStatements) {
         _addError(importErrors.exportMulti, relativePath, 'no exported class or const');
       } else if (exportStatements.length > 1) {
-        const exports = exportStatements.map((exp) => exp.match(exportRegex)[2]);
+        const exports = exportStatements.map(exp => exp.match(exportRegex)[2]);
         _addError(importErrors.exportMulti, relativePath, 'choose one of ' + exports.join(', '));
       }
 

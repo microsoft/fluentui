@@ -6,7 +6,7 @@ import { Link } from '@fluentui/react/lib/Link';
 import { useBoolean } from '@fluentui/react-hooks';
 
 // The panel type and description are passed in by the PanelSizesExample component (later in this file)
-const PanelExample: React.FunctionComponent<{ panelType: PanelType; description: string }> = (props) => {
+const PanelExample: React.FunctionComponent<{ panelType: PanelType; description: string }> = props => {
   const { description, panelType } = props;
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] = useBoolean(false);
 

@@ -6,7 +6,7 @@ import { ColorPicker, Fabric } from '@fluentui/react';
 
 storiesOf('ColorPicker', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

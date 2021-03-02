@@ -7,7 +7,7 @@ import { ImageProps, ImageState } from './Image.types';
 
 const mergeProps = makeMergeProps<ImageState>();
 
-const isFitSupported = (function () {
+const isFitSupported = (function() {
   const testImg = new Image();
 
   return 'object-fit' in testImg.style && 'object-position' in testImg.style;

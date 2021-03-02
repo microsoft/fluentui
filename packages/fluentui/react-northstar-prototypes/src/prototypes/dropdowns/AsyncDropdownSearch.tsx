@@ -57,7 +57,7 @@ class AsyncDropdownSearch extends React.Component<{}, SearchPageState> {
 
     this.setState({ loading: true });
     this.searchTimer = window.setTimeout(() => {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         loading: false,
         items: [...prevState.items, ..._.times<Entry>(2, createEntry)],
       }));

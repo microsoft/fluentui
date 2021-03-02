@@ -5,7 +5,7 @@ import { datepickerCalendarCellSelector } from '../datepickerCalendarCellSelecto
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .snapshot('Input shows error.')
         .click(`.${buttonClassName}`)

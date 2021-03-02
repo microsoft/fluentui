@@ -265,7 +265,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _getStackedData = (keys: string[], dataSet: any) => {
     const stackedValues = d3Stack().keys(keys)(dataSet);
-    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], (dp) => dp[1])!;
+    const maxOfYVal = d3Max(stackedValues[stackedValues.length - 1], dp => dp[1])!;
     const stackedData: Array<IAreaChartDataSetPoint[]> = [];
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     stackedValues.forEach((layer: any) => {

@@ -58,7 +58,7 @@ describe('useSetTimeout', () => {
   });
 
   it('does not execute the timeout when unmounted', () => {
-    safeMount(<TestComponent />, (wrapper) => {
+    safeMount(<TestComponent />, wrapper => {
       expect(timesCalled).toEqual(0);
 
       wrapper.unmount();

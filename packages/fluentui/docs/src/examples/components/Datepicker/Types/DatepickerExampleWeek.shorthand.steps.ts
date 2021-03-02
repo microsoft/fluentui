@@ -4,7 +4,7 @@ import { buttonClassName, datepickerCalendarCellClassName } from '@fluentui/reac
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    (builder) =>
+    builder =>
       builder
         .click(`.${buttonClassName}`)
         .snapshot('Shows calendar.')

@@ -6,7 +6,7 @@ import { checkboxIndicatorUrl } from './checkboxIndicatorUrl';
 import { checkboxIndicatorIndeterminateUrl } from './checkboxIndeterminateIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const commonToggleBeforeStyles = (v) => ({
+const commonToggleBeforeStyles = v => ({
   content: "' '",
   display: 'block',
   borderRadius: '50%',

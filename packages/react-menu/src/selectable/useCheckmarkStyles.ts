@@ -16,7 +16,7 @@ const useStyles = makeStyles<MenuItemSelectableState>([
     }),
   ],
   [
-    (state) => state.checked,
+    state => state.checked,
     () => ({
       visibility: 'visible',
     }),

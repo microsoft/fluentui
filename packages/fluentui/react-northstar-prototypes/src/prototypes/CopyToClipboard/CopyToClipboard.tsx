@@ -15,7 +15,7 @@ export type CopyToClipboardProps = {
   trigger: JSX.Element;
 };
 
-const CopyToClipboard: React.FC<CopyToClipboardProps> = (props) => {
+const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
   const { value, trigger, tooltip, attached, notification, timeout, target } = props;
 
   const setNotification = React.useContext(NotificationContext);

@@ -130,7 +130,7 @@ export class Steps implements ScreenerStepBuilder {
   };
 
   /** This executes custom JS code against the client browser the test is running in. */
-  executeScript = (code) => {
+  executeScript = code => {
     this.steps.push({
       type: 'executeScript',
       code: code,
@@ -183,7 +183,7 @@ export class Steps implements ScreenerStepBuilder {
   };
 
   /** This will override the global cssAnimations option for the current UI state. Set to true to enable CSS Animations, and set to false to disable. */
-  cssAnimations = (isEnabled) => {
+  cssAnimations = isEnabled => {
     this.steps.push({
       type: 'cssAnimations',
       isEnabled: isEnabled,

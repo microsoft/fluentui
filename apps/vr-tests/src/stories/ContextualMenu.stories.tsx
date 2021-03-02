@@ -280,7 +280,7 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
 
 storiesOf('ContextualMenu', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
@@ -306,7 +306,7 @@ storiesOf('ContextualMenu', module)
   ));
 
 storiesOf('ContextualMenu', module)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .click('#button')

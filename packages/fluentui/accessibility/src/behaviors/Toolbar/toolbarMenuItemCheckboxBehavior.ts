@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  * Adds role 'presentation' to 'wrapper' slot.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-export const toolbarMenuItemCheckboxBehavior: Accessibility<ToolbarMenuItemCheckboxBehaviorProps> = (props) => ({
+export const toolbarMenuItemCheckboxBehavior: Accessibility<ToolbarMenuItemCheckboxBehaviorProps> = props => ({
   attributes: {
     wrapper: {
       role: 'presentation',

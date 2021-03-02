@@ -9,10 +9,10 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
 
   public render() {
     const { activeThemeName } = this.state;
-    const activeThemeData = SharePointThemes.filter((theme) => theme.name === activeThemeName)[0];
+    const activeThemeData = SharePointThemes.filter(theme => theme.name === activeThemeName)[0];
     const activeThemeColors = activeThemeData && activeThemeData.colors;
     const activeNeutralData =
-      activeThemeData && SharePointNeutrals.filter((theme) => theme.background === activeThemeData.background)[0];
+      activeThemeData && SharePointNeutrals.filter(theme => theme.background === activeThemeData.background)[0];
     const activeNeutralColors = activeNeutralData && activeNeutralData.colors;
 
     return (
@@ -21,10 +21,10 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
 
         <MarkdownHeader as="h3">Themes</MarkdownHeader>
         <ColorPalette
-          colors={SharePointThemes.map((theme) => ({
+          colors={SharePointThemes.map(theme => ({
             name: theme.name,
-            hex: theme.colors.filter((color) => color.name === 'themePrimary')[0].hex,
-            code: theme.colors.filter((color) => color.name === 'themePrimary')[0].code,
+            hex: theme.colors.filter(color => color.name === 'themePrimary')[0].hex,
+            code: theme.colors.filter(color => color.name === 'themePrimary')[0].code,
           }))}
           onColorSelected={this._changeTheme}
         />
@@ -46,7 +46,7 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
 
   private _changeTheme = (theme: IColorSwatch) => {
     this.setState(
-      (prevState) =>
+      prevState =>
         prevState.activeThemeName !== theme.name && {
           activeThemeName: theme.name,
         },

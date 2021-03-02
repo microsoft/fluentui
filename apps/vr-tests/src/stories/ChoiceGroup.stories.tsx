@@ -13,7 +13,7 @@ const options: IChoiceGroupOption[] = [
 
 storiesOf('ChoiceGroup', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

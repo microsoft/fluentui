@@ -79,7 +79,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  * @accessibility
  * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
  */
-export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = (props) => {
+export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();

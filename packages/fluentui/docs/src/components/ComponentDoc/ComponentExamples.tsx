@@ -15,9 +15,7 @@ interface ComponentExamplesProps {
 
 function getExamplesElement(displayName: string) {
   // rule #1
-  const indexPath = _.find(exampleIndexContext.keys(), (path) =>
-    new RegExp(`\/${displayName}\/index\.tsx$`).test(path),
-  );
+  const indexPath = _.find(exampleIndexContext.keys(), path => new RegExp(`\/${displayName}\/index\.tsx$`).test(path));
   if (!indexPath) {
     return null;
   }
@@ -92,18 +90,18 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
     const [normalExtension, shorthandExtension] = [
       componentAPIs.children.fileSuffix,
       componentAPIs.shorthand.fileSuffix,
-    ].map((pattern) => `${pattern}.source.json`);
+    ].map(pattern => `${pattern}.source.json`);
 
     const [normalRegExp, shorthandRegExp] = [normalExtension, shorthandExtension].map(
-      (extension) => new RegExp(`${examplesPattern}${extension}$`),
+      extension => new RegExp(`${examplesPattern}${extension}$`),
     );
 
     const expectedShorthandExamples = allPaths
-      .filter((path) => normalRegExp.test(path))
-      .map((path) => path.replace(normalExtension, shorthandExtension));
-    const actualShorthandExamples = allPaths.filter((path) => shorthandRegExp.test(path));
+      .filter(path => normalRegExp.test(path))
+      .map(path => path.replace(normalExtension, shorthandExtension));
+    const actualShorthandExamples = allPaths.filter(path => shorthandRegExp.test(path));
 
-    return _.difference(expectedShorthandExamples, actualShorthandExamples).map((exampleFile) =>
+    return _.difference(expectedShorthandExamples, actualShorthandExamples).map(exampleFile =>
       exampleFile.replace(/\.source\.json$/, '.tsx'),
     );
   }

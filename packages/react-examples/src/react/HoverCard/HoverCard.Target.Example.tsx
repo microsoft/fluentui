@@ -40,7 +40,7 @@ const log = (text: string): (() => void) => {
 };
 
 const items: IExampleItem[] = createListItems(10);
-const columns: IColumn[] = buildColumns(items).filter((column) => column.name === 'location' || column.name === 'key');
+const columns: IColumn[] = buildColumns(items).filter(column => column.name === 'location' || column.name === 'key');
 
 const onRenderCompactCard = (item: IExampleItem): JSX.Element => {
   return (

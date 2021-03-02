@@ -37,7 +37,7 @@ beforeEach(async () => {
 
   // setup console errors detection
   consoleErrors = [];
-  page.on('console', (message) => {
+  page.on('console', message => {
     if (message.type() === 'error') {
       consoleErrors.push(message.text());
     }

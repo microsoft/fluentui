@@ -7,12 +7,12 @@ const searchString = /^office\-ui\-fabric\-react/;
 const newString = '@fluentui/react';
 
 const combineResults = (result: CodeModResult, result2: CodeModResult) => {
-  return result.chain((v) =>
+  return result.chain(v =>
     result2.bothChain(
-      (r) => {
+      r => {
         return Ok({ logs: v.logs.concat(...r.logs) });
       },
-      (e) => {
+      e => {
         if ('error' in e) {
           return Err(e);
         }
@@ -25,14 +25,14 @@ const combineResults = (result: CodeModResult, result2: CodeModResult) => {
 const RepathOfficeToFluentImports: CodeMod = {
   run: (file: SourceFile) => {
     return getImportsByPath(file, searchString)
-      .then((imports) =>
-        imports.map((val) =>
-          repathImport(val, newString, searchString).then((i) => ({
+      .then(imports =>
+        imports.map(val =>
+          repathImport(val, newString, searchString).then(i => ({
             logs: [i.getModuleSpecifierValue()],
           })),
         ),
       )
-      .chain((v) => {
+      .chain(v => {
         if (v.length > 0) {
           return v.reduce(combineResults);
         } else {

@@ -27,19 +27,19 @@ import { createFactory, ISlottableComponentType, ISlotFactory } from '@fluentui/
 
 // These wrappers will temporarily add a layer to the hierarchy (identified with displayName) until their functionality
 // can be absorbed into their respective OUFR components.
-export const FontIcon: ISlottableComponentType<IFontIconProps, string> = (props) =>
+export const FontIcon: ISlottableComponentType<IFontIconProps, string> = props =>
   props.iconName ? <FabricFontIcon {...props} /> : null;
 FontIcon.displayName = 'FontIcon';
 const fontIconFactory: ISlotFactory<IFontIconProps, string> = createFactory(FontIcon, { defaultProp: 'iconName' });
 FontIcon.create = fontIconFactory;
 
-export const Icon: ISlottableComponentType<IIconProps, string> = (props) =>
+export const Icon: ISlottableComponentType<IIconProps, string> = props =>
   props.iconName ? <FabricIcon {...props} /> : null;
 Icon.displayName = 'Icon';
 const iconFactory: ISlotFactory<IIconProps, string> = createFactory(Icon, { defaultProp: 'iconName' });
 Icon.create = iconFactory;
 
-export const Label: ISlottableComponentType<ILabelProps, string> = (props) =>
+export const Label: ISlottableComponentType<ILabelProps, string> = props =>
   React.Children.count(props.children) > 0 ? <FabricLabel {...props} /> : null;
 Label.displayName = 'Label';
 const labelFactory = createFactory(Label) as ISlotFactory<ILabelProps, string>;
@@ -48,7 +48,7 @@ Label.create = labelFactory;
 export const PersonaPresence: ISlottableComponentType<IPersonaPresenceProps, number> =
   // TODO: This is a bug in PersonaPresence that needs to be fixed. 'presence' prop comment mentions that it
   // won't render if presence is undefined, but it does render. Check for undefined here for now.
-  (props) => (props.presence !== undefined ? <FabricPersonaPresence {...props} /> : null);
+  props => (props.presence !== undefined ? <FabricPersonaPresence {...props} /> : null);
 PersonaPresence.displayName = 'PersonaPresence';
 const personaPresenceFactory: ISlotFactory<IPersonaPresenceProps, number> = createFactory(PersonaPresence, {
   defaultProp: 'presence',

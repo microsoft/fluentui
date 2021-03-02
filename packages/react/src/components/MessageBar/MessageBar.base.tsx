@@ -98,26 +98,22 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
             </DelayedRender>
           </span>
         </div>
-        {
-          /* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
-            <div className={classNames.expandSingleLine}>
-              <IconButton
-                disabled={false}
-                className={classNames.expand}
-                onClick={toggleExpandSingleLine}
-                iconProps={expandIconProps}
-                ariaLabel={overflowButtonAriaLabel}
-                aria-expanded={expandSingleLine}
-              />
-            </div>
-          )
-        }
+        {/* singleline expand/collapse button */ !isMultiline && !actionsDiv && truncated && (
+          <div className={classNames.expandSingleLine}>
+            <IconButton
+              disabled={false}
+              className={classNames.expand}
+              onClick={toggleExpandSingleLine}
+              iconProps={expandIconProps}
+              ariaLabel={overflowButtonAriaLabel}
+              aria-expanded={expandSingleLine}
+            />
+          </div>
+        )}
         {/* singleline actions */ !isMultiline && actionsDiv}
-        {
-          /* singleline dismiss */ !isMultiline && dismissButton && (
-            <div className={classNames.dismissSingleLine}>{dismissButton}</div>
-          )
-        }
+        {/* singleline dismiss */ !isMultiline && dismissButton && (
+          <div className={classNames.dismissSingleLine}>{dismissButton}</div>
+        )}
         {/* multiline dismiss */ isMultiline && dismissButton}
       </div>
       {/* multiline actions */ isMultiline && actionsDiv}

@@ -15,7 +15,7 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
       <FocusZone className={styles.platformPicker}>
         <ul className={styles.platformPickerList}>
           {Object.keys(platforms)
-            .filter((platform) => !!platforms[platform as TPlatforms])
+            .filter(platform => !!platforms[platform as TPlatforms])
             .map((platformKey: TPlatforms) => {
               const platform: IPlatform = platforms[platformKey]!;
               let disabled: boolean = true;

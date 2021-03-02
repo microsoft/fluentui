@@ -5,7 +5,7 @@ import { Platforms } from '../../interfaces/Platforms';
 
 export interface IStylesPageProps extends IPageProps<Platforms> {}
 
-export const StylesAreaPageBase: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const StylesAreaPageBase: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return <Page {...props} platform={platform} subTitle={getSubTitle(platform)} />;
 };

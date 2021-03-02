@@ -1,6 +1,6 @@
 import { JSONTreeElement } from '../components/types';
 
-export const focusTreeTitle = (uuid) => {
+export const focusTreeTitle = uuid => {
   // TODO: use refs
   const element = document.querySelector(`#${uuid} [data-is-focusable]`) as HTMLElement;
   element && element.focus();

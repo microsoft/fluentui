@@ -7,7 +7,7 @@ import { RadioGroupItemVariables } from './radioGroupItemVariables';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 
-const restHoverFocusTextColor = (textColor) => ({
+const restHoverFocusTextColor = textColor => ({
   color: textColor,
 
   ':hover': {

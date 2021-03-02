@@ -1587,13 +1587,13 @@ describe('FocusZone', () => {
       <div {...{ onFocusCapture: _onFocus }}>
         <textarea className="t" />
         <FocusZone
-          ref={(focus) => {
+          ref={focus => {
             focusZone = focus;
           }}
         >
           <button
             className="a"
-            ref={(button) => {
+            ref={button => {
               buttonA = button;
             }}
           >
@@ -1601,7 +1601,7 @@ describe('FocusZone', () => {
           </button>
           <button
             className="b"
-            ref={(button) => {
+            ref={button => {
               buttonB = button;
             }}
           >
@@ -1711,13 +1711,13 @@ describe('FocusZone', () => {
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus }}>
         <FocusZone
-          ref={(focus) => {
+          ref={focus => {
             focusZone = focus;
           }}
         >
           <button
             className="a"
-            ref={(button) => {
+            ref={button => {
               buttonA = button;
             }}
           >
@@ -1725,7 +1725,7 @@ describe('FocusZone', () => {
           </button>
           <button
             className="b"
-            ref={(button) => {
+            ref={button => {
               buttonB = button;
             }}
           >
@@ -1969,7 +1969,7 @@ describe('FocusZone', () => {
           {...{
             handleTabKey: FocusZoneTabbableElements.all,
             isCircularNavigation: false,
-            shouldInputLoseFocusOnArrowKey: (element) => {
+            shouldInputLoseFocusOnArrowKey: element => {
               return true;
             },
           }}

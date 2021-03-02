@@ -7,7 +7,7 @@ const imageProps: IImageProps = {
   imageFit: ImageFit.contain,
   src: 'http://placehold.it/700x300',
   // Show a border around the image (just for demonstration purposes)
-  styles: (props) => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
+  styles: props => ({ root: { border: '1px solid ' + props.theme.palette.neutralSecondary } }),
 };
 
 export const ImageContainExample = () => {

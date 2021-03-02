@@ -116,15 +116,15 @@ export const FloatingPeopleSuggestionsCustomRenderExample = (): JSX.Element => {
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
     suggestionToRemove: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
-    setPeopleSuggestions((suggestions) => {
-      const modifiedSuggestions = suggestions.filter((item) => item.id !== suggestionToRemove.id);
+    setPeopleSuggestions(suggestions => {
+      const modifiedSuggestions = suggestions.filter(item => item.id !== suggestionToRemove.id);
       return modifiedSuggestions;
     });
   };
 
   const _markSuggestionSelected = (selectedSuggestion: IFloatingSuggestionItemProps<IPersonaProps>) => {
-    setPeopleSuggestions((suggestions) => {
-      const modifiedSuggestions = suggestions.map((suggestion) =>
+    setPeopleSuggestions(suggestions => {
+      const modifiedSuggestions = suggestions.map(suggestion =>
         suggestion.id === selectedSuggestion.id
           ? { ...suggestion, isSelected: true }
           : { ...suggestion, isSelected: false },

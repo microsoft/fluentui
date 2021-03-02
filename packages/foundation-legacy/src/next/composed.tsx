@@ -140,7 +140,7 @@ export function composed<
     options = {
       ...baseComponentOptions,
       ...recompositionOptions,
-      slots: (props) => ({
+      slots: props => ({
         ...resolveSlots(baseComponentOptions.slots, props),
         ...resolveSlots(recompositionSlots, props),
       }),

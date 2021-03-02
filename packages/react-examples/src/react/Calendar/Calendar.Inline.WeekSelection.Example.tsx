@@ -21,7 +21,7 @@ export const CalendarInlineWeekSelectionExample: React.FunctionComponent = () =>
   }, []);
 
   const goPrevious = React.useCallback((): void => {
-    setSelectedDate((prevSelectedDate) => {
+    setSelectedDate(prevSelectedDate => {
       prevSelectedDate = prevSelectedDate || new Date();
       const dateRangeArray = getDateRangeArray(prevSelectedDate, dateRangeType, firstDayOfWeek);
 
@@ -33,7 +33,7 @@ export const CalendarInlineWeekSelectionExample: React.FunctionComponent = () =>
   }, []);
 
   const goNext = React.useCallback((): void => {
-    setSelectedDate((prevSelectedDate) => {
+    setSelectedDate(prevSelectedDate => {
       prevSelectedDate = prevSelectedDate || new Date();
       const dateRangeArray = getDateRangeArray(prevSelectedDate, dateRangeType, firstDayOfWeek);
       return addDays(dateRangeArray.pop()!, 1);

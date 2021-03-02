@@ -15,10 +15,10 @@ const TsxEditorLazy = React.lazy(
     // Theoretically we could use import() here, but that pulls things into bundles when using
     // commonjs modules due to the way import is transpiled for commonjs
     // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
-    new Promise<typeof TsxEditorModule>((resolve) => require.ensure([], (require) => resolve(require('./TsxEditor')))),
+    new Promise<typeof TsxEditorModule>(resolve => require.ensure([], require => resolve(require('./TsxEditor')))),
 );
 
-export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = (props) => {
+export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props => {
   const {
     code,
     previewAs: Preview = EditorPreview,
@@ -79,6 +79,6 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = (prop
   );
 };
 
-const EditorPreview: React.FunctionComponent<{}> = (props) => {
+const EditorPreview: React.FunctionComponent<{}> = props => {
   return <div {...props} />;
 };

@@ -27,8 +27,8 @@ function onResolveSuggestions(text: string): ITag[] {
     'white',
     'yellow',
   ]
-    .filter((tag) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
-    .map((item) => ({ key: item, name: item }));
+    .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
+    .map(item => ({ key: item, name: item }));
 }
 
 const runAllTimers = () =>
@@ -138,7 +138,7 @@ describe('TagPicker', () => {
     ReactDOM.unmountComponentAtNode(root);
   });
 
-  it('fires change events correctly for controlled components', (done) => {
+  it('fires change events correctly for controlled components', done => {
     jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);

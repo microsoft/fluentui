@@ -48,7 +48,7 @@ const CoachmarkUsage = ({ isCollapsed = true }: { isCollapsed?: boolean }) => {
 
 storiesOf('Coachmark', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

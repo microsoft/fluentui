@@ -132,7 +132,7 @@ const onRenderCell = (item: any) => <div>{item.name}</div>;
 
 storiesOf('List', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

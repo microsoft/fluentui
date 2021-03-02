@@ -122,7 +122,7 @@ export const treeItemClassName = 'ui-tree__item';
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = (props) => {
+export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentStaticProps<TreeItemProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -161,42 +161,42 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
-      performClick: (e) => {
+      performClick: e => {
         if (shouldPreventDefaultOnKeyDown(e)) {
           e.preventDefault();
         }
         e.stopPropagation();
         toggleItemActive(e, id);
       },
-      focusParent: (e) => {
+      focusParent: e => {
         e.preventDefault();
         e.stopPropagation();
 
         handleFocusParent(e);
       },
-      collapse: (e) => {
+      collapse: e => {
         e.preventDefault();
         e.stopPropagation();
         toggleItemActive(e, id);
       },
-      expand: (e) => {
+      expand: e => {
         e.preventDefault();
         e.stopPropagation();
         toggleItemActive(e, id);
       },
-      focusFirstChild: (e) => {
+      focusFirstChild: e => {
         e.preventDefault();
         e.stopPropagation();
 
         handleFocusFirstChild(e);
       },
-      expandSiblings: (e) => {
+      expandSiblings: e => {
         e.preventDefault();
         e.stopPropagation();
 
         handleSiblingsExpand(e);
       },
-      performSelection: (e) => {
+      performSelection: e => {
         e.preventDefault();
         e.stopPropagation();
         handleSelection(e);
@@ -226,24 +226,24 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     rtl: context.rtl,
   });
 
-  const handleSelection = (e) => {
+  const handleSelection = e => {
     if (selectable) {
       toggleItemSelect(e, id);
     }
     _.invoke(props, 'onTitleClick', e, props);
   };
 
-  const handleFocusFirstChild = (e) => {
+  const handleFocusFirstChild = e => {
     _.invoke(props, 'onFocusFirstChild', e, props);
     focusItemById(childrenIds?.[0]);
   };
 
-  const handleFocusParent = (e) => {
+  const handleFocusParent = e => {
     _.invoke(props, 'onFocusParent', e, props);
     focusItemById(parent);
   };
 
-  const handleSiblingsExpand = (e) => {
+  const handleSiblingsExpand = e => {
     _.invoke(props, 'onSiblingsExpand', e, props);
     expandSiblings(e, props.id);
   };
@@ -279,7 +279,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
   };
 
   const ref = React.useCallback(
-    (node) => {
+    node => {
       registerItemRef(id, node);
       handleRef(contentRef, node);
     },

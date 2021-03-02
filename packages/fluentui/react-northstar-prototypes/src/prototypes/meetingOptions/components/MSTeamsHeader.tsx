@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Provider } from '@fluentui/react-northstar';
 import { middleColumnStyles } from '../styles';
 
-export default (props) => {
+export default props => {
   return (
     <Provider.Consumer
       render={({ siteVariables }) => {

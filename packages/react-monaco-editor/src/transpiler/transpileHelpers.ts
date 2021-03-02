@@ -16,7 +16,7 @@ export interface IDiagnostic {
 
 export function _getErrorMessages(errors: IDiagnostic[], text: string) {
   const lineStarts = _getLineStarts(text);
-  return errors.map((error) => {
+  return errors.map(error => {
     if (error.messageText && typeof error.messageText === 'object') {
       // This is a multi-line ts.DiagnosticMessageChain (not sure if this happens, but handling per typings)
       error.code = error.messageText.code;

@@ -14,7 +14,7 @@ const horizontalStyles = mergeStyles({
 
 storiesOf('Separator', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

@@ -127,7 +127,7 @@ export class E2EApi {
 
   public isFocused = async (selector: string): Promise<void> => {
     await this.page.waitForFunction(
-      (selector) => {
+      selector => {
         const activeElement = document.activeElement;
         const selectorElement = document.querySelector(selector);
 
@@ -163,7 +163,7 @@ export class E2EApi {
 
   // Once we update puppeteer we should replace this by using https://pptr.dev/#?product=Puppeteer&version=v5.2.1&show=api-mousewheeloptions
   public simulatePageMove = async (): Promise<void> => {
-    await this.page.evaluate((_) => {
+    await this.page.evaluate(_ => {
       const type = 'move';
       const event = document.createEvent('Event') as TouchEvent;
       event.initEvent(`touch${type}`, true, true);
@@ -172,7 +172,7 @@ export class E2EApi {
     });
   };
 
-  public wait = async (ms: number): Promise<void> => new Promise((resolve) => setTimeout(resolve, ms));
+  public wait = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
 
   public evaluate = async (fn): Promise<void> => await this.page.evaluate(fn);
 }

@@ -248,7 +248,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const handleDrag = React.useCallback(
       (ev: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, dragData: IDragData): void => {
-        setCoordinates((prevValue) => ({
+        setCoordinates(prevValue => ({
           x: getClampedAxis('x', prevValue.x + dragData.delta.x),
           y: getClampedAxis('y', prevValue.y + dragData.delta.y),
         }));
@@ -299,19 +299,19 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
               break;
             }
             case KeyCodes.up: {
-              setCoordinates((prevValue) => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y - delta) }));
+              setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y - delta) }));
               break;
             }
             case KeyCodes.down: {
-              setCoordinates((prevValue) => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y + delta) }));
+              setCoordinates(prevValue => ({ x: prevValue.x, y: getClampedAxis('y', prevValue.y + delta) }));
               break;
             }
             case KeyCodes.left: {
-              setCoordinates((prevValue) => ({ x: getClampedAxis('x', prevValue.x - delta), y: prevValue.y }));
+              setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x - delta), y: prevValue.y }));
               break;
             }
             case KeyCodes.right: {
-              setCoordinates((prevValue) => ({ x: getClampedAxis('x', prevValue.x + delta), y: prevValue.y }));
+              setCoordinates(prevValue => ({ x: getClampedAxis('x', prevValue.x + delta), y: prevValue.y }));
               break;
             }
             default: {

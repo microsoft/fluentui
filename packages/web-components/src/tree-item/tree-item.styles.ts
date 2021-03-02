@@ -59,13 +59,13 @@ export const expandCollapseButtonSize =
 
 const expandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-stealth-hover-over-hover',
-  (x) => neutralFillStealthHover(neutralFillStealthHover)(x),
+  x => neutralFillStealthHover(neutralFillStealthHover)(x),
   FluentDesignSystemProvider.findProvider,
 );
 
 const selectedExpandCollapseHoverBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-stealth-hover-over-selected',
-  (x) => neutralFillStealthHover(neutralFillStealthSelected)(x),
+  x => neutralFillStealthHover(neutralFillStealthSelected)(x),
   FluentDesignSystemProvider.findProvider,
 );
 

@@ -6,9 +6,9 @@ import { link, code } from '../utils/helpers';
 import { CodeSnippet } from '@fluentui/docs-components';
 import { Header } from '@fluentui/react-northstar';
 
-const Category = (props) => <Header as="h2" {...props} />;
-const Question = (props) => <Header as="h3" {...props} />;
-const Answer = (props) => <p>{props.content}</p>;
+const Category = props => <Header as="h2" {...props} />;
+const Question = props => <Header as="h3" {...props} />;
+const Answer = props => <p>{props.content}</p>;
 
 export default () => (
   <DocPage title="FAQ">

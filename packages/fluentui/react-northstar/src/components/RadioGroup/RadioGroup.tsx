@@ -65,7 +65,7 @@ export type RadioGroupStylesProps = Required<Pick<RadioGroupProps, 'vertical'>>;
 export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
     Item: typeof RadioGroupItem;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroup.displayName, context.telemetry);
   setStart();
@@ -77,8 +77,8 @@ export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
   const getA11yProps = useAccessibility<RadioGroupBehaviorProps>(props.accessibility, {
     debugName: RadioGroup.displayName,
     actionHandlers: {
-      nextItem: (event) => setCheckedItem(event, 1),
-      prevItem: (event) => setCheckedItem(event, -1),
+      nextItem: event => setCheckedItem(event, 1),
+      prevItem: event => setCheckedItem(event, -1),
     },
     rtl: context.rtl,
   });
@@ -130,7 +130,7 @@ export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
 
     const currentIndex =
       // if none of the values selected, set current index to the first item
-      checkedValue !== undefined ? _.findIndex(props.items, (item) => getItemProps(item).value === checkedValue) : 0;
+      checkedValue !== undefined ? _.findIndex(props.items, item => getItemProps(item).value === checkedValue) : 0;
 
     for (let newIndex = currentIndex + direction; newIndex !== currentIndex; newIndex += direction) {
       if (newIndex < 0) {
@@ -151,7 +151,7 @@ export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
     return undefined;
   };
 
-  const handleItemOverrides = (predefinedProps) => ({
+  const handleItemOverrides = predefinedProps => ({
     checked: typeof checkedValue !== 'undefined' && checkedValue === predefinedProps.value,
     onClick: (event, itemProps) => {
       const { value, disabled } = itemProps;

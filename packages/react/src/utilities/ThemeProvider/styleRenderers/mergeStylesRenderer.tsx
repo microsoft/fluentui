@@ -24,7 +24,7 @@ export const mergeStylesRenderer: StyleRenderer = {
     return mergeFontFace(fontFace);
   },
 
-  renderKeyframes: (keyframes) => {
+  renderKeyframes: keyframes => {
     return mergeKeyframes(keyframes as any);
   },
 };

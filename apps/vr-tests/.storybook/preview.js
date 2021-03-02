@@ -27,13 +27,13 @@ const defaultConfig = {
  */
 setAddon({
   addStory(storyName, storyFn, config = defaultConfig) {
-    this.add(storyName, (context) => {
+    this.add(storyName, context => {
       setRTL(false);
       return storyFn(context);
     });
 
     if (config.rtl) {
-      this.add(storyName + ' - RTL', (context) => {
+      this.add(storyName + ' - RTL', context => {
         setRTL(true);
         return storyFn(context);
       });

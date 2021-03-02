@@ -20,7 +20,7 @@ const text = {
 
 storiesOf('Dialog', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

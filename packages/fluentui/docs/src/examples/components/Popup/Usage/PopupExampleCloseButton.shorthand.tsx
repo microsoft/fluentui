@@ -52,8 +52,8 @@ const inputItems = [
 ];
 
 const getA11ySelectionMessage = {
-  onAdd: (item) => `${item} has been selected.`,
-  onRemove: (item) => `${item} has been removed.`,
+  onAdd: item => `${item} has been selected.`,
+  onRemove: item => `${item} has been removed.`,
 };
 
 const PopupControlledExample = () => {

@@ -107,9 +107,12 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
 
   const searchByFirstChar = React.useCallback(
     (startIndex: number, endIndex: number, char: string) => {
-      const itemToString = props.itemToString || ((item) => (item as any).content || '');
+      const itemToString = props.itemToString || (item => (item as any).content || '');
       for (let i = startIndex; i < endIndex; ++i) {
-        const itemFirstChar = itemToString(getItemById(visibleItemIds[i]).item)?.trim()?.charAt(0)?.toLowerCase();
+        const itemFirstChar = itemToString(getItemById(visibleItemIds[i]).item)
+          ?.trim()
+          ?.charAt(0)
+          ?.toLowerCase();
         if (itemFirstChar === char.toLowerCase()) {
           return i;
         }

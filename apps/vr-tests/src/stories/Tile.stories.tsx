@@ -128,9 +128,9 @@ const MediaTileWithThumbnail: React.FunctionComponent<IMediaTileWithThumbnailPro
 };
 
 storiesOf('Tile', module)
-  .addDecorator((story) => <Fabric>{story()}</Fabric>)
+  .addDecorator(story => <Fabric>{story()}</Fabric>)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -213,9 +213,9 @@ storiesOf('Tile', module)
   ));
 
 storiesOf('MediaTile', module)
-  .addDecorator((story) => <Fabric>{story()}</Fabric>)
+  .addDecorator(story => <Fabric>{story()}</Fabric>)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

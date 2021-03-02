@@ -167,7 +167,7 @@ function useHeightOffset({ finalHeight, hidden }: ICalloutProps, calloutElement:
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        setHeightOffset((currentHeightOffset) => currentHeightOffset + scrollDiff);
+        setHeightOffset(currentHeightOffset => currentHeightOffset + scrollDiff);
 
         if (calloutMainElem.offsetHeight < finalHeight) {
           setHeightOffsetEveryFrame();
@@ -389,7 +389,7 @@ function useDismissHandlers(
         ];
 
         return () => {
-          disposables.forEach((dispose) => dispose());
+          disposables.forEach(dispose => dispose());
         };
       }
     }, 0);

@@ -46,7 +46,7 @@ export function copy() {
       destination = path.resolve(process.cwd(), destination);
       tasks.push(
         copyTask({
-          paths: sources.map((src) => expandSourcePath(src)),
+          paths: sources.map(src => expandSourcePath(src)),
           dest: destination,
         }),
       );

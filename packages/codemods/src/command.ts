@@ -74,7 +74,7 @@ export class CommandParser {
     if (parsed.list) {
       const mods = getEnabledMods(console, getModsPaths);
       console.log('Here are the enabled code mod names:\n');
-      mods.forEach((mod) => {
+      mods.forEach(mod => {
         console.log(mod.name);
       });
       return { shouldExit: true, modsFilter: () => true };

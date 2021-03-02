@@ -47,7 +47,7 @@ const horizontalAlignmentOptions: IDropdownOption[] = [
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
-const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = (props) => {
+const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
     numItems,
     showBoxShadow,

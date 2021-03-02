@@ -31,10 +31,10 @@ export function createCodeModsFromJson(userMods?: CodeMod[]): CodeMod[] | undefi
    an array that is returned to the user. */
 export function getCodeModsFromJson(): CodeMod[] {
   return jsonObj.upgrades
-    .map((modDetail) =>
+    .map(modDetail =>
       codeModMap[modDetail.type]
-        .then((v) => v(modDetail))
-        .then((v) => {
+        .then(v => v(modDetail))
+        .then(v => {
           const options: ModOptions = {
             name: modDetail.name,
             version: modDetail.version ? modDetail.version! : '100000',
@@ -43,7 +43,7 @@ export function getCodeModsFromJson(): CodeMod[] {
         }),
     )
     .filter(isSomething)
-    .map((v) => v.value);
+    .map(v => v.value);
 }
 
 /* Helper function that creates a codeMod given a name and a list of functions that compose the mod. */
@@ -91,8 +91,8 @@ const _codeModMap: CodeModMapType = {
           )
         : mod.options.from.searchString;
       return getImportsByPath(file, searchString)
-        .then((v) => v.map((imp) => repathImport(imp, mod.options.to.replacementValue)))
-        .chain((v) => Ok({ logs: ['Successfully repathed imports'] }));
+        .then(v => v.map(imp => repathImport(imp, mod.options.to.replacementValue)))
+        .chain(v => Ok({ logs: ['Successfully repathed imports'] }));
     };
   },
   renameImport: (mod: RenameImportType) => {
@@ -103,12 +103,12 @@ const _codeModMap: CodeModMapType = {
 };
 
 const combineResults = (result: CodeModResult, result2: CodeModResult) => {
-  return result.chain((v) =>
+  return result.chain(v =>
     result2.bothChain(
-      (r) => {
+      r => {
         return Ok({ logs: v.logs.concat(...r.logs) });
       },
-      (e) => {
+      e => {
         if ('error' in e) {
           return Err(e);
         }

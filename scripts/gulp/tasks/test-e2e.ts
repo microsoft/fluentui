@@ -19,7 +19,7 @@ const argv = yargs
 
 task('test:e2e:clean', () => del(paths.e2eDist(), { force: true }));
 
-task('test:e2e:build', (cb) => {
+task('test:e2e:build', cb => {
   webpackPlugin(require('../../webpack/webpack.config.e2e').default, cb);
 });
 
@@ -30,7 +30,7 @@ task('test:e2e:serve:start', async () => {
   // Assign a port to make it visible for "test:e2e:run" task
   process.env.E2E_PORT = String(serverPort);
 
-  server = await serve(paths.e2eDist(), config.server_host, serverPort, (app) =>
+  server = await serve(paths.e2eDist(), config.server_host, serverPort, app =>
     app.get('/favicon.ico', (req, res) => res.status(204)),
   );
 });

@@ -9,7 +9,7 @@ function startServer(publicDirectory: string, listenPort: number) {
     const app = express();
     app.use(express.static(publicDirectory));
 
-    const server = app.listen(listenPort, config.server_host, (e) => {
+    const server = app.listen(listenPort, config.server_host, e => {
       if (e) return reject(e);
 
       resolve(server);
@@ -40,12 +40,12 @@ export async function performBrowserTest(publicDirectory: string, listenPort: nu
   const page = await browser.newPage();
   let error: Error | undefined;
 
-  page.on('console', (message) => {
+  page.on('console', message => {
     if (message.type() === 'error') {
       error = new Error(`[Browser]: console.error(${message.text()})`);
     }
   });
-  page.on('pageerror', (pageError) => {
+  page.on('pageerror', pageError => {
     error = pageError;
   });
 
@@ -53,7 +53,7 @@ export async function performBrowserTest(publicDirectory: string, listenPort: nu
 
   await page.close();
   await browser.close();
-  await new Promise((resolve) => server.close(resolve));
+  await new Promise(resolve => server.close(resolve));
 
   if (error) throw error;
 }

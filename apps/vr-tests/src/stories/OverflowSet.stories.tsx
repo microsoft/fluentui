@@ -12,7 +12,7 @@ const onRenderOverflowButton = (overflowItems: any[]) => {
 
 storiesOf('OverflowSet', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -48,7 +48,7 @@ storiesOf('OverflowSet', module)
 
 storiesOf('OverflowSet variant', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

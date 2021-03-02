@@ -78,7 +78,7 @@ export const ListBasicExample: React.FunctionComponent = () => {
     items.length === originalItems.length ? '' : ` (${items.length} of ${originalItems.length} shown)`;
 
   const onFilterChanged = (_: any, text: string): void => {
-    setItems(originalItems.filter((item) => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0));
+    setItems(originalItems.filter(item => item.name.toLowerCase().indexOf(text.toLowerCase()) >= 0));
   };
 
   return (

@@ -7,7 +7,7 @@ import { IPageSectionProps } from '@fluentui/react-docsite-components/lib/index2
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/PeoplePickerPage/';
 
-export const PeoplePickerPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const PeoplePickerPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage

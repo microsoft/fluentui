@@ -60,9 +60,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     const { icons } = this.props;
     const { searchQuery } = this.state;
 
-    return icons.filter(
-      (icon) => icon && icon.name && icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
-    );
+    return icons.filter(icon => icon && icon.name && icon.name.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1);
   };
 
   private _renderIcon = (icon: { name: string }, index?: number): JSX.Element => {

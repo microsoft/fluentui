@@ -28,7 +28,7 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
 
   return (
     <Flex
-      onKeyDown={(e) => {
+      onKeyDown={e => {
         const eventCode = getCode(e);
         if (eventCode === keyboardKey.Enter) {
           setExpanded(true);

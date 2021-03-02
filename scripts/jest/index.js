@@ -2,7 +2,7 @@
 const lernaAlias = require('../lernaAliasNorthstar');
 const findGitRoot = require('../monorepo/findGitRoot');
 
-module.exports = (customConfig) => ({
+module.exports = customConfig => ({
   coverageDirectory: './coverage/',
   coverageReporters: ['json', 'lcov'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],

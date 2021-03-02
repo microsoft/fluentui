@@ -8,9 +8,9 @@ import { getStyles } from './SuggestionsItem.styles';
 
 const getClassNames = classNamesFunction<ISuggestionsItemStyleProps, ISuggestionsItemStyles>();
 
-export const SuggestionsItemInner: <TSuggestion>(props: ISuggestionItemProps<TSuggestion>) => React.ReactElement = (
-  props,
-) => {
+export const SuggestionsItemInner: <TSuggestion>(
+  props: ISuggestionItemProps<TSuggestion>,
+) => React.ReactElement = props => {
   const {
     suggestionModel,
     onRenderSuggestion: RenderSuggestion,

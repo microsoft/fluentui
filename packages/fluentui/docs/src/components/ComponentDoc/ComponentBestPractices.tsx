@@ -17,7 +17,7 @@ export default class ComponentBestPractices extends React.Component<ComponentBes
   render() {
     const { displayName } = this.props;
 
-    const bestPracticesPath = _.find(exampleBestPracticesContext.keys(), (path) =>
+    const bestPracticesPath = _.find(exampleBestPracticesContext.keys(), path =>
       new RegExp(`\/${displayName}\/BestPractices\/${displayName}BestPractices\.tsx$`).test(path),
     );
 

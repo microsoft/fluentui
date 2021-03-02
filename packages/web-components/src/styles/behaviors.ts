@@ -41,7 +41,7 @@ import { FluentDesignSystemProvider } from '../design-system-provider';
  */
 export const neutralForegroundRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-foreground-rest',
-  (x) => neutralForeground(x).rest,
+  x => neutralForeground(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -50,7 +50,7 @@ export const neutralForegroundRestBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const neutralForegroundHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-foreground-hover',
-  (x) => neutralForeground(x).hover,
+  x => neutralForeground(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -59,7 +59,7 @@ export const neutralForegroundHoverBehavior: CSSCustomPropertyBehavior = cssCust
  */
 export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-foreground-active',
-  (x) => neutralForeground(x).active,
+  x => neutralForeground(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -68,7 +68,7 @@ export const neutralForegroundActiveBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const neutralForegroundFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-foreground-focus',
-  (x) => neutralForeground(x).focus,
+  x => neutralForeground(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -113,7 +113,7 @@ export const neutralForegroundHintLargeBehavior: CSSCustomPropertyBehavior = css
  */
 export const accentForegroundRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-rest',
-  (x) => accentForeground(x).rest,
+  x => accentForeground(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -122,7 +122,7 @@ export const accentForegroundRestBehavior: CSSCustomPropertyBehavior = cssCustom
  */
 export const accentForegroundHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-hover',
-  (x) => accentForeground(x).hover,
+  x => accentForeground(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -131,7 +131,7 @@ export const accentForegroundHoverBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const accentForegroundActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-active',
-  (x) => accentForeground(x).active,
+  x => accentForeground(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -140,7 +140,7 @@ export const accentForegroundActiveBehavior: CSSCustomPropertyBehavior = cssCust
  */
 export const accentForegroundFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-focus',
-  (x) => accentForeground(x).focus,
+  x => accentForeground(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -149,7 +149,7 @@ export const accentForegroundFocusBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-cut-rest',
-  (x) => accentForegroundCut(x),
+  x => accentForegroundCut(x),
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -158,7 +158,7 @@ export const accentForegroundCutRestBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const accentForegroundLargeRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-large-rest',
-  (x) => accentForegroundLarge(x).rest,
+  x => accentForegroundLarge(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -167,7 +167,7 @@ export const accentForegroundLargeRestBehavior: CSSCustomPropertyBehavior = cssC
  */
 export const accentForegroundLargeHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-large-hover',
-  (x) => accentForegroundLarge(x).hover,
+  x => accentForegroundLarge(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -176,7 +176,7 @@ export const accentForegroundLargeHoverBehavior: CSSCustomPropertyBehavior = css
  */
 export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-large-active',
-  (x) => accentForegroundLarge(x).active,
+  x => accentForegroundLarge(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -185,7 +185,7 @@ export const accentForegroundLargeActiveBehavior: CSSCustomPropertyBehavior = cs
  */
 export const accentForegroundLargeFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-foreground-large-focus',
-  (x) => accentForegroundLarge(x).focus,
+  x => accentForegroundLarge(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -194,7 +194,7 @@ export const accentForegroundLargeFocusBehavior: CSSCustomPropertyBehavior = css
  */
 export const neutralFillRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-rest',
-  (x) => neutralFill(x).rest,
+  x => neutralFill(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -203,7 +203,7 @@ export const neutralFillRestBehavior: CSSCustomPropertyBehavior = cssCustomPrope
  */
 export const neutralFillHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-hover',
-  (x) => neutralFill(x).hover,
+  x => neutralFill(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -212,7 +212,7 @@ export const neutralFillHoverBehavior: CSSCustomPropertyBehavior = cssCustomProp
  */
 export const neutralFillActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-active',
-  (x) => neutralFill(x).active,
+  x => neutralFill(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -221,7 +221,7 @@ export const neutralFillActiveBehavior: CSSCustomPropertyBehavior = cssCustomPro
  */
 export const neutralFillFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-focus',
-  (x) => neutralFill(x).focus,
+  x => neutralFill(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -230,7 +230,7 @@ export const neutralFillFocusBehavior: CSSCustomPropertyBehavior = cssCustomProp
  */
 export const neutralFillSelectedBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-selected',
-  (x) => neutralFill(x).selected,
+  x => neutralFill(x).selected,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -239,7 +239,7 @@ export const neutralFillSelectedBehavior: CSSCustomPropertyBehavior = cssCustomP
  */
 export const neutralFillStealthRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-stealth-rest',
-  (x) => neutralFillStealth(x).rest,
+  x => neutralFillStealth(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -248,7 +248,7 @@ export const neutralFillStealthRestBehavior: CSSCustomPropertyBehavior = cssCust
  */
 export const neutralFillStealthHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-stealth-hover',
-  (x) => neutralFillStealth(x).hover,
+  x => neutralFillStealth(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -257,7 +257,7 @@ export const neutralFillStealthHoverBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-stealth-active',
-  (x) => neutralFillStealth(x).active,
+  x => neutralFillStealth(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -266,7 +266,7 @@ export const neutralFillStealthActiveBehavior: CSSCustomPropertyBehavior = cssCu
  */
 export const neutralFillStealthFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-stealth-focus',
-  (x) => neutralFillStealth(x).focus,
+  x => neutralFillStealth(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -275,7 +275,7 @@ export const neutralFillStealthFocusBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const neutralFillStealthSelectedBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-stealth-selected',
-  (x) => neutralFillStealth(x).selected,
+  x => neutralFillStealth(x).selected,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -284,7 +284,7 @@ export const neutralFillStealthSelectedBehavior: CSSCustomPropertyBehavior = css
  */
 export const neutralFillToggleRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-toggle-rest',
-  (x) => neutralFillToggle(x).rest,
+  x => neutralFillToggle(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -293,7 +293,7 @@ export const neutralFillToggleRestBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const neutralFillToggleHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-toggle-hover',
-  (x) => neutralFillToggle(x).hover,
+  x => neutralFillToggle(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -302,7 +302,7 @@ export const neutralFillToggleHoverBehavior: CSSCustomPropertyBehavior = cssCust
  */
 export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-toggle-active',
-  (x) => neutralFillToggle(x).active,
+  x => neutralFillToggle(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -311,7 +311,7 @@ export const neutralFillToggleActiveBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const neutralFillToggleFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-toggle-focus',
-  (x) => neutralFillToggle(x).focus,
+  x => neutralFillToggle(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -320,7 +320,7 @@ export const neutralFillToggleFocusBehavior: CSSCustomPropertyBehavior = cssCust
  */
 export const neutralFillInputRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-input-rest',
-  (x) => neutralFillInput(x).rest,
+  x => neutralFillInput(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -329,7 +329,7 @@ export const neutralFillInputRestBehavior: CSSCustomPropertyBehavior = cssCustom
  */
 export const neutralFillInputHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-input-hover',
-  (x) => neutralFillInput(x).hover,
+  x => neutralFillInput(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -338,7 +338,7 @@ export const neutralFillInputHoverBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-input-active',
-  (x) => neutralFillInput(x).active,
+  x => neutralFillInput(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -347,7 +347,7 @@ export const neutralFillInputActiveBehavior: CSSCustomPropertyBehavior = cssCust
  */
 export const neutralFillInputFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-input-focus',
-  (x) => neutralFillInput(x).focus,
+  x => neutralFillInput(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -356,7 +356,7 @@ export const neutralFillInputFocusBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const accentFillRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-rest',
-  (x) => accentFill(x).rest,
+  x => accentFill(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -365,7 +365,7 @@ export const accentFillRestBehavior: CSSCustomPropertyBehavior = cssCustomProper
  */
 export const accentFillHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-hover',
-  (x) => accentFill(x).hover,
+  x => accentFill(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -374,7 +374,7 @@ export const accentFillHoverBehavior: CSSCustomPropertyBehavior = cssCustomPrope
  */
 export const accentFillActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-active',
-  (x) => accentFill(x).active,
+  x => accentFill(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -383,7 +383,7 @@ export const accentFillActiveBehavior: CSSCustomPropertyBehavior = cssCustomProp
  */
 export const accentFillFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-focus',
-  (x) => accentFill(x).focus,
+  x => accentFill(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -392,7 +392,7 @@ export const accentFillFocusBehavior: CSSCustomPropertyBehavior = cssCustomPrope
  */
 export const accentFillSelectedBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-selected',
-  (x) => accentFill(x).selected,
+  x => accentFill(x).selected,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -401,7 +401,7 @@ export const accentFillSelectedBehavior: CSSCustomPropertyBehavior = cssCustomPr
  */
 export const accentFillLargeRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-large-rest',
-  (x) => accentFillLarge(x).rest,
+  x => accentFillLarge(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -410,7 +410,7 @@ export const accentFillLargeRestBehavior: CSSCustomPropertyBehavior = cssCustomP
  */
 export const accentFillLargeHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-large-hover',
-  (x) => accentFillLarge(x).hover,
+  x => accentFillLarge(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -419,7 +419,7 @@ export const accentFillLargeHoverBehavior: CSSCustomPropertyBehavior = cssCustom
  */
 export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-large-active',
-  (x) => accentFillLarge(x).active,
+  x => accentFillLarge(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -428,7 +428,7 @@ export const accentFillLargeActiveBehavior: CSSCustomPropertyBehavior = cssCusto
  */
 export const accentFillLargeFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-large-focus',
-  (x) => accentFillLarge(x).focus,
+  x => accentFillLarge(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -437,7 +437,7 @@ export const accentFillLargeFocusBehavior: CSSCustomPropertyBehavior = cssCustom
  */
 export const accentFillLargeSelectedBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'accent-fill-large-selected',
-  (x) => accentFillLarge(x).selected,
+  x => accentFillLarge(x).selected,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -446,7 +446,7 @@ export const accentFillLargeSelectedBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-fill-card-rest',
-  (x) => neutralFillCard(x),
+  x => neutralFillCard(x),
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -455,7 +455,7 @@ export const neutralFillCardRestBehavior: CSSCustomPropertyBehavior = cssCustomP
  */
 export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-outline-rest',
-  (x) => neutralOutline(x).rest,
+  x => neutralOutline(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -464,7 +464,7 @@ export const neutralOutlineRestBehavior: CSSCustomPropertyBehavior = cssCustomPr
  */
 export const neutralOutlineHoverBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-outline-hover',
-  (x) => neutralOutline(x).hover,
+  x => neutralOutline(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -473,7 +473,7 @@ export const neutralOutlineHoverBehavior: CSSCustomPropertyBehavior = cssCustomP
  */
 export const neutralOutlineActiveBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-outline-active',
-  (x) => neutralOutline(x).active,
+  x => neutralOutline(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -482,7 +482,7 @@ export const neutralOutlineActiveBehavior: CSSCustomPropertyBehavior = cssCustom
  */
 export const neutralOutlineFocusBehavior: CSSCustomPropertyBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-outline-focus',
-  (x) => neutralOutline(x).focus,
+  x => neutralOutline(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -590,7 +590,7 @@ export const neutralFocusInnerAccentBehavior: CSSCustomPropertyBehavior = cssCus
  */
 export const neutralContrastForegroundRestBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-contrast-foreground-rest',
-  (x) => neutralForegroundRest(neutralContrastFillRest)(x),
+  x => neutralForegroundRest(neutralContrastFillRest)(x),
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -599,7 +599,7 @@ export const neutralContrastForegroundRestBehavior = cssCustomPropertyBehaviorFa
  */
 export const neutralContrastFillRestBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-contrast-fill-rest',
-  (x) => neutralContrastFill(x).rest,
+  x => neutralContrastFill(x).rest,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -608,7 +608,7 @@ export const neutralContrastFillRestBehavior = cssCustomPropertyBehaviorFactory(
  */
 export const neutralContrastFillHoverBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-contrast-fill-hover',
-  (x) => neutralContrastFill(x).hover,
+  x => neutralContrastFill(x).hover,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -617,7 +617,7 @@ export const neutralContrastFillHoverBehavior = cssCustomPropertyBehaviorFactory
  */
 export const neutralContrastFillActiveBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-contrast-fill-active',
-  (x) => neutralContrastFill(x).active,
+  x => neutralContrastFill(x).active,
   FluentDesignSystemProvider.findProvider,
 );
 /**
@@ -626,7 +626,7 @@ export const neutralContrastFillActiveBehavior = cssCustomPropertyBehaviorFactor
  */
 export const neutralContrastFillFocusBehavior = cssCustomPropertyBehaviorFactory(
   'neutral-contrast-fill-focus',
-  (x) => neutralContrastFill(x).focus,
+  x => neutralContrastFill(x).focus,
   FluentDesignSystemProvider.findProvider,
 );
 /**

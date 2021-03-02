@@ -57,7 +57,7 @@ export const avatarClassName = 'ui-avatar';
 /**
  * An Avatar is a graphical representation of a user.
  */
-export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = (props) => {
+export const Avatar: ComponentWithAs<'div', AvatarProps> & FluentComponentStaticProps<AvatarProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
@@ -171,8 +171,8 @@ Avatar.defaultProps = {
 
     const initials = reducedName
       .split(' ')
-      .filter((item) => item !== '')
-      .map((item) => item.charAt(0))
+      .filter(item => item !== '')
+      .map(item => item.charAt(0))
       .reduce((accumulator, currentValue) => accumulator + currentValue, '');
 
     if (initials.length > 2) {

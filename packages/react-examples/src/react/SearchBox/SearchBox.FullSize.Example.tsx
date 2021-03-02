@@ -8,10 +8,10 @@ const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 export const SearchBoxFullSizeExample = () => {
   return (
     <Stack tokens={stackTokens}>
-      <SearchBox placeholder="Search" onSearch={(newValue) => console.log('value is ' + newValue)} />
+      <SearchBox placeholder="Search" onSearch={newValue => console.log('value is ' + newValue)} />
       <SearchBox
         placeholder="Search with no animation"
-        onSearch={(newValue) => console.log('value is ' + newValue)}
+        onSearch={newValue => console.log('value is ' + newValue)}
         disableAnimation
       />
     </Stack>

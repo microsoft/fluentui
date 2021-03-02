@@ -130,7 +130,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (props: ChatMessageProps) =
   const [forceShowActionMenu, setForceShowActionMenu] = React.useState(false);
   const [chatMessageElement, setChatMessageElement] = React.useState<HTMLElement>(null);
 
-  const handleBlur = (e) => !e.currentTarget.contains(e.relatedTarget) && setShowActionMenu(false);
+  const handleBlur = e => !e.currentTarget.contains(e.relatedTarget) && setShowActionMenu(false);
 
   return (
     <Ref innerRef={setChatMessageElement}>

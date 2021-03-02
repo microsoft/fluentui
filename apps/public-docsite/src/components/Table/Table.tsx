@@ -68,7 +68,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
       <table className={styles.table}>
         <thead>
           <tr>
-            {content.headers.map((heading) => (
+            {content.headers.map(heading => (
               <th key={heading}>{this._capitalizeFirstLetter(heading)}</th>
             ))}
           </tr>

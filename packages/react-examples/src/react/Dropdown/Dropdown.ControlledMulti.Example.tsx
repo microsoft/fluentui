@@ -22,7 +22,7 @@ export const DropdownControlledMultiExample: React.FunctionComponent = () => {
   const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
     if (item) {
       setSelectedKeys(
-        item.selected ? [...selectedKeys, item.key as string] : selectedKeys.filter((key) => key !== item.key),
+        item.selected ? [...selectedKeys, item.key as string] : selectedKeys.filter(key => key !== item.key),
       );
     }
   };

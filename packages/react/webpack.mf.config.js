@@ -18,8 +18,8 @@ const shared = {
 // These rootComponents are part of the "public API" of the @fluentui/react module federated bundle
 const rootComponents = fs
   .readdirSync(path.join(__dirname, 'src'))
-  .filter((filename) => filename[0].toUpperCase() === filename[0])
-  .map((filename) => filename.replace(/\.tsx?/, ''));
+  .filter(filename => filename[0].toUpperCase() === filename[0])
+  .map(filename => filename.replace(/\.tsx?/, ''));
 const rootComponentsExposes = {};
 for (const component of rootComponents) {
   rootComponentsExposes[`./lib/${component}`] = `@fluentui/react/src/${component}`;

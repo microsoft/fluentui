@@ -28,7 +28,7 @@ const commonProps: Partial<IDatePickerProps> = {
 
 storiesOf('DatePicker', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -83,7 +83,7 @@ storiesOf('DatePicker', module)
 
 storiesOf('DatePicker - No Month Option', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -107,7 +107,7 @@ storiesOf('DatePicker - No Month Option', module)
 
 storiesOf('DatePicker - Disabled', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator((story) => (
+  .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

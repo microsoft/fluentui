@@ -6,7 +6,7 @@ import { SvgIconCreateFnParams } from './types';
 import { useIconSubset } from '@fluentui/react-icon-provider';
 
 const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<TProps>) => {
-  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & ISvgIconProps> = (props) => {
+  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & ISvgIconProps> = props => {
     const { className, style = {} } = props;
     const icons = useIconSubset(); // TODO: handle fontFace and styles
 

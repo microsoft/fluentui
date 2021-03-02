@@ -72,7 +72,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const { siteDefinition } = this.props;
     if (siteDefinition.pages) {
       // Get top level pages with platforms.
-      const topLevelPages = siteDefinition.pages.filter((page) => !!page.platforms).map((page) => page.title);
+      const topLevelPages = siteDefinition.pages.filter(page => !!page.platforms).map(page => page.title);
 
       // Get session storage platforms for top level pages.
       try {
@@ -83,7 +83,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
       // Set active platform for each top level page to local storage platform or the first platform defined for
       // that page.
-      topLevelPages.forEach((item) => {
+      topLevelPages.forEach(item => {
         activePlatforms[item] = activePlatforms[item] || getPageFirstPlatform(item, siteDefinition);
       });
     }
@@ -207,8 +207,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const activePages: INavPage<TPlatforms>[] = [];
 
     pages
-      .filter((page) => !page.isHiddenFromMainNav && hasActiveChild(page, platform))
-      .forEach((page) => {
+      .filter(page => !page.isHiddenFromMainNav && hasActiveChild(page, platform))
+      .forEach(page => {
         isContentFullBleed = !!page.isContentFullBleed;
         hasPlatformPicker = !!page.hasPlatformPicker;
         if (page.isSearchable) {

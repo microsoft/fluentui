@@ -126,7 +126,7 @@ export function isConformant(
   // Autocontrolled props
   // ---------------------------------------
   test('autoControlled props should have prop, default prop and on change handler in handled props', () => {
-    autoControlledProps.forEach((propName) => {
+    autoControlledProps.forEach(propName => {
       const capitalisedPropName = `${propName.slice(0, 1).toUpperCase()}${propName.slice(1)}`;
       const expectedDefaultProp = `default${capitalisedPropName}`;
       const expectedChangeHandler =
@@ -225,7 +225,7 @@ export function isConformant(
       expect(element.prop(IS_FOCUSABLE_ATTRIBUTE)).toBe(false);
     });
 
-    _.forEach(['onKeyDown', 'onKeyPress', 'onKeyUp'], (listenerName) => {
+    _.forEach(['onKeyDown', 'onKeyPress', 'onKeyUp'], listenerName => {
       test(`handles ${listenerName} transparently`, () => {
         // onKeyDown => keyDown
         const eventName = _.camelCase(listenerName.replace('on', ''));
@@ -258,7 +258,7 @@ export function isConformant(
     // This test catches the case where a developer forgot to call the event prop
     // after handling it internally. It also catch cases where the synthetic event was not passed back.
     _.each(syntheticEvent.types, ({ eventShape, listeners }) => {
-      _.each(listeners, (listenerName) => {
+      _.each(listeners, listenerName => {
         // onKeyDown => keyDown
         const eventName = _.camelCase(listenerName.replace('on', ''));
 
@@ -443,7 +443,7 @@ export function isConformant(
           Component as ComposedComponent,
           {
             className: 'ui-composed',
-            mapPropsToStylesProps: (props) => ({ stylesTest: props.test }),
+            mapPropsToStylesProps: props => ({ stylesTest: props.test }),
             handledProps: ['test'],
           },
         );
@@ -457,7 +457,7 @@ export function isConformant(
 
         it('allows to define additional styles props', () => {
           const renderer: Partial<Renderer> = {
-            renderRule: (styles) => {
+            renderRule: styles => {
               const props = (styles as unknown) as ComposedComponentStylesProps;
 
               return props.stylesTest ? 'has-test' : 'has-not-test';

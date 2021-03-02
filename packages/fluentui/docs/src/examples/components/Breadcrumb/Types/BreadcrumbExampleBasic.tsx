@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Breadcrumb } from '@fluentui/react-northstar';
 
-const BreadcrumbExample = (props) => (
+const BreadcrumbExample = props => (
   <Breadcrumb aria-label="breadcrumb">
     <Breadcrumb.Item>
       <Breadcrumb.Link href="">Home</Breadcrumb.Link>

@@ -10,7 +10,7 @@ import { keyboardKey } from '../../keyboard-key';
  * Adds attribute 'aria-invalid' based on the property 'aria-invalid' to 'input' slot.
  */
 
-export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = (props) => ({
+export const datepickerBehavior: Accessibility<DatepickerBehaviorProps> = props => ({
   attributes: {
     input: {
       'aria-labelledby': props['aria-labelledby'],

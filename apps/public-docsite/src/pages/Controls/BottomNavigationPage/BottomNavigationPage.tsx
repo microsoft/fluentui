@@ -7,7 +7,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/BottomNavigationPage/';
 
-export const BottomNavigationPage: React.FunctionComponent<IControlsPageProps> = (props) => {
+export const BottomNavigationPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
     <ControlsAreaPage
       {...props}

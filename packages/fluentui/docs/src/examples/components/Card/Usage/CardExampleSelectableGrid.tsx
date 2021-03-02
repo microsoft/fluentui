@@ -101,7 +101,7 @@ const CardExampleSelectableGrid = () => {
         }}
       />
       <Grid accessibility={cardsContainerBehavior} columns={3}>
-        {cards.map((card) => {
+        {cards.map(card => {
           return (
             <SelectableCard
               key={card.index}

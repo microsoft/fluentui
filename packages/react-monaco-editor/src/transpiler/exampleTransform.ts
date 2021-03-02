@@ -80,7 +80,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     const globalName = supportedPackagesToGlobals[imprt.packageName];
     identifiersByGlobal[globalName] = identifiersByGlobal[globalName] || [];
     identifiersByGlobal[globalName].push(
-      ...imprt.identifiers.map((item) => (item.as ? `${item.name}: ${item.as}` : item.name)),
+      ...imprt.identifiers.map(item => (item.as ? `${item.name}: ${item.as}` : item.name)),
     );
   }
 
@@ -112,7 +112,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
   // Add const destructuring for formerly-imported identifiers
   lines.unshift('');
   lines = Object.keys(identifiersByGlobal)
-    .map((globalName) => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`)
+    .map(globalName => `const { ${identifiersByGlobal[globalName].join(', ')} } = window.${globalName};`)
     .concat(lines);
 
   if (returnFunction) {

@@ -6,7 +6,7 @@ import { Markdown } from '../../Markdown/index';
 import { IPageSectionProps } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
-export const MarkdownSection: React.FunctionComponent<IPageSectionProps> = (props) => {
+export const MarkdownSection: React.FunctionComponent<IPageSectionProps> = props => {
   const {
     className,
     content: markdown,

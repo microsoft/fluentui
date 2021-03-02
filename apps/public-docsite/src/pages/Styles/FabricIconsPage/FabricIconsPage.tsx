@@ -14,7 +14,7 @@ const fabricReactIcons = require('@fluentui/font-icons-mdl2/lib/data/AllIconName
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
-export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = (props) => {
+export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
     <StylesAreaPage

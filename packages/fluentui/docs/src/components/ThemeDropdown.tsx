@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Dropdown } from '@fluentui/react-northstar';
 
 const getA11ySelectionMessage = {
-  onAdd: (item) => `${item} has been selected.`,
-  onRemove: (item) => `${item} has been removed.`,
+  onAdd: item => `${item} has been selected.`,
+  onRemove: item => `${item} has been removed.`,
 };
 
 const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resultCount, selectedItem }) => {

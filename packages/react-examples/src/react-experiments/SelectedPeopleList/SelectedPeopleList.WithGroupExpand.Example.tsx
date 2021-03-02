@@ -66,7 +66,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<
 
   private _onItemsRemoved = (items: IPersona[]): void => {
     const currentSelectedItemsCopy = [...this.state.currentSelectedItems];
-    items.forEach((item) => {
+    items.forEach(item => {
       const indexToRemove = currentSelectedItemsCopy.indexOf(item);
       currentSelectedItemsCopy.splice(indexToRemove, 1);
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });

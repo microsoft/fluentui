@@ -22,11 +22,9 @@ export const PanelNavigationExample: React.FunctionComponent = () => {
           styles={searchboxStyles}
           ariaLabel="Sample search box. Does not actually search anything."
         />
-        {
-          // This custom navigation still renders the close button (defaultRender).
-          // If you don't use defaultRender, be sure to provide some other way to close the panel.
-          defaultRender!(props)
-        }
+        {// This custom navigation still renders the close button (defaultRender).
+        // If you don't use defaultRender, be sure to provide some other way to close the panel.
+        defaultRender!(props)}
       </>
     ),
     [],

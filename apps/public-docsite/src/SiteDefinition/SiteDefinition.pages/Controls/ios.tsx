@@ -7,8 +7,8 @@ export const controlsPagesIos: INavPage[] = [
     url: '#/controls/ios',
     isHiddenFromMainNav: true,
     component: () => <LoadingComponent title="Controls" />,
-    getComponent: (cb) =>
-      require.ensure([], (require) =>
+    getComponent: cb =>
+      require.ensure([], require =>
         cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage),
       ),
   },
@@ -20,8 +20,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Button',
         url: '#/controls/ios/button',
         component: () => <LoadingComponent title="Button" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage)),
       },
     ],
   },
@@ -33,8 +33,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Date & Time Picker',
         url: '#/controls/ios/date-time-picker',
         component: () => <LoadingComponent title="Date & Time Picker" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage),
           ),
       },
@@ -48,22 +48,22 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Avatar',
         url: '#/controls/ios/avatar',
         component: () => <LoadingComponent title="Avatar" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage)),
       },
       {
         title: 'Chip',
         url: '#/controls/ios/chip',
         component: () => <LoadingComponent title="Chip" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage)),
       },
       {
         title: 'List Cells',
         url: '#/controls/ios/listcells',
         component: () => <LoadingComponent title="List Cells" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage),
           ),
       },
@@ -71,8 +71,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Persona',
         url: '#/controls/ios/persona',
         component: () => <LoadingComponent title="Persona" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage),
           ),
       },
@@ -86,15 +86,15 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Navigation Bar',
         url: '#/controls/ios/navigationbar',
         component: () => <LoadingComponent title="NavBar" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/NavBarPage/NavBarPage').NavBarPage)),
       },
       {
         title: 'Pill Button Bar',
         url: '#/controls/ios/pillbuttonbar',
         component: () => <LoadingComponent title="Pill Button Bar" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/PillButtonBarPage/PillButtonBarPage').PillButtonBarPage),
           ),
       },
@@ -102,15 +102,15 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Pivot',
         url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage)),
       },
       {
         title: 'Popup Menu',
         url: '#/controls/ios/popupmenu',
         component: () => <LoadingComponent title="Popup Menu" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage),
           ),
       },
@@ -118,8 +118,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Tab Bar',
         url: '#/controls/ios/tabbar',
         component: () => <LoadingComponent title="Tab Bar" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/BottomNavigationPage/BottomNavigationPage').BottomNavigationPage),
           ),
       },
@@ -133,8 +133,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Message Bar',
         url: '#/controls/ios/messagebar',
         component: () => <LoadingComponent title="Message Bar" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/MessageBarPage/MessageBarPage').MessageBarPage),
           ),
       },
@@ -142,8 +142,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Tooltip',
         url: '#/controls/ios/tooltip',
         component: () => <LoadingComponent title="Tooltip" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage),
           ),
       },
@@ -157,8 +157,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Shimmer',
         url: '#/controls/ios/shimmer',
         component: () => <LoadingComponent title="Shimmer" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/ShimmerPage/ShimmerPage').ShimmerPage),
           ),
       },
@@ -166,8 +166,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Spinner',
         url: '#/controls/ios/spinner',
         component: () => <LoadingComponent title="Spinner" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage),
           ),
       },
@@ -181,8 +181,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Drawer',
         url: '#/controls/ios/drawer',
         component: () => <LoadingComponent title="Drawer" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage)),
       },
     ],
   },
@@ -194,8 +194,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Separator',
         url: '#/controls/ios/separator',
         component: () => <LoadingComponent title="Separator" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) =>
+        getComponent: cb =>
+          require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage),
           ),
       },
@@ -203,8 +203,8 @@ export const controlsPagesIos: INavPage[] = [
         title: 'Text',
         url: '#/controls/ios/text',
         component: () => <LoadingComponent title="Text" />,
-        getComponent: (cb) =>
-          require.ensure([], (require) => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
       },
     ],
   },

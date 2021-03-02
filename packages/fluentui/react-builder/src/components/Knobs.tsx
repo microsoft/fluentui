@@ -155,11 +155,11 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
 }) => {
   const [menuActivePane, setMenuActivePane] = React.useState<'props' | 'accessibility'>('props');
   const getValues = React.useCallback(
-    (prop) => {
+    prop => {
       const propValue = jsonTreeElement.props?.[prop.name];
       const tempTypes = _.uniq(_.map(prop.types, 'name'));
       const types = isHandledType(tempTypes[0]) ? tempTypes : _.uniq(_.map(prop.resolvedType, 'name'));
-      const isLiteral = _.every(types, (name) => name === 'literal');
+      const isLiteral = _.every(types, name => name === 'literal');
       // console.log(prop.name, types, prop);
       const options = isLiteral
         ? _.map(Array.isArray(prop.resolvedType) ? prop.resolvedType : prop.types, 'value')
@@ -202,8 +202,8 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
       {menuActivePane === 'props' &&
         info.props
           // only allow knobs for regular props, not default props
-          .filter((prop) => !/default[A-Z]/.test(prop.name))
-          .map((prop) => {
+          .filter(prop => !/default[A-Z]/.test(prop.name))
+          .map(prop => {
             const { types, options, value } = getValues(prop);
 
             return (
@@ -217,7 +217,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
                 onRemoveProp={() => {
                   onPropDelete({ jsonTreeElement, name: prop.name });
                 }}
-                onChange={(value) => {
+                onChange={value => {
                   onPropChange({ jsonTreeElement, name: prop.name, value });
                 }}
               />
@@ -225,7 +225,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
           })}
 
       {menuActivePane === 'accessibility' &&
-        A11YPROPS.filter((prop) => !/default[A-Z]/.test(prop.name)).map((prop) => {
+        A11YPROPS.filter(prop => !/default[A-Z]/.test(prop.name)).map(prop => {
           const { types, options, value } = getValues(prop);
 
           return (
@@ -239,7 +239,7 @@ export const Knobs: React.FunctionComponent<DesignKnobProps> = ({
               types={types as any}
               options={options}
               value={value}
-              onChange={(value) => {
+              onChange={value => {
                 onPropChange({ jsonTreeElement, name: prop.name, value });
               }}
             />

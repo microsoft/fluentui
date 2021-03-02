@@ -24,7 +24,7 @@ const neutralColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data
 const accentColors = require<IColorSwatch[]>('@fluentui/public-docsite/lib/data/colors-theme-accents.json');
 /* eslint-enable import/no-extraneous-dependencies */
 
-export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = (props) => {
+export const ThemeSlotsPageBase: React.FunctionComponent<IThemeSlotsPageProps> = props => {
   const { theme, styles, className } = props;
   const classNames = getClassNames(styles, { theme, className });
 

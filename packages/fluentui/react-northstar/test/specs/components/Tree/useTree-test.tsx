@@ -60,7 +60,7 @@ const TestHook = ({ callback }) => {
   return null;
 };
 
-const testHook = (callback) => {
+const testHook = callback => {
   mountWithProvider(<TestHook callback={callback} />);
 };
 
@@ -95,7 +95,7 @@ describe('useTree', () => {
     act(() => {
       useTreeResult.toggleItemSelect({} as React.SyntheticEvent, '2'); // all items under 2 should become unselected
     });
-    ['2', '21', '211', '22'].forEach((id) => {
+    ['2', '21', '211', '22'].forEach(id => {
       expect(useTreeResult.getItemById(id).selected).toBe(false);
     });
   });

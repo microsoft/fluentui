@@ -69,7 +69,7 @@ const defaultProps = {
 
 storiesOf('Stack', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

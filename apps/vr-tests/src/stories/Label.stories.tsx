@@ -6,7 +6,7 @@ import { Label } from '@fluentui/react';
 
 storiesOf('Label', module)
   .addDecorator(FabricDecorator)
-  .addDecorator((story) =>
+  .addDecorator(story =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

@@ -97,7 +97,7 @@ export const treeTitleSlotClassNames = {
 /**
  * A TreeTitle renders a title of TreeItem.
  */
-export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = (props) => {
+export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps> = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
@@ -126,14 +126,14 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const getA11Props = useAccessibility<TreeTitleBehaviorProps>(accessibility, {
     debugName: TreeTitle.displayName,
     actionHandlers: {
-      performClick: (e) => {
+      performClick: e => {
         if (shouldPreventDefaultOnKeyDown(e)) {
           e.preventDefault();
         }
         e.stopPropagation();
         handleClick(e);
       },
-      focusParent: (e) => {
+      focusParent: e => {
         // allow bubbling up to parent treeItem
         focusItemById(props.parent);
       },
@@ -171,7 +171,7 @@ export const TreeTitle: ComponentWithAs<'a', TreeTitleProps> & FluentComponentSt
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     if (hasSubtree) {
       toggleItemActive(e, id);
     } else {

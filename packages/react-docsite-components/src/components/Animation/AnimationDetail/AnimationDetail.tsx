@@ -25,7 +25,7 @@ const styles = mergeStyleSets({
   },
 });
 
-export const AnimationDetail: React.FunctionComponent<IAnimationDetailProps> = (props) => {
+export const AnimationDetail: React.FunctionComponent<IAnimationDetailProps> = props => {
   const { animation, coreClass, reactVariable } = props;
 
   return (

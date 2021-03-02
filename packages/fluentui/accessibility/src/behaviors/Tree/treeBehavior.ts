@@ -13,7 +13,7 @@ import { treeItemBehavior } from './treeItemBehavior';
  * Triggers 'expandSiblings' action with '*' on 'root'.
  * Adds attribute 'aria-multiselectable=true' to 'root' slot if 'selectable' property is true. Does not set the attribute otherwise.
  */
-export const treeBehavior: Accessibility<TreeBehaviorProps> = (props) => {
+export const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
   return {
     attributes: {
       root: {

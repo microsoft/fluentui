@@ -21,7 +21,7 @@ type ThreadRepliesProps = {
   replies?: ThreadReplyProps[];
 };
 
-const ThreadReplies: React.FC<ThreadRepliesProps> = (props) => {
+const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
   const [expanded, setExpanded] = React.useState(false);
   const { replies = [] } = props;
   const repliesCount = replies.length;

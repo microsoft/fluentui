@@ -14,7 +14,7 @@ const baseUrl =
 
 export interface IResourcesPageProps extends IPageProps<Platforms> {}
 
-const ResourcesPageBase: React.FunctionComponent<IResourcesPageProps> = (props) => {
+const ResourcesPageBase: React.FunctionComponent<IResourcesPageProps> = props => {
   return <Page {...props} {...ResourcesPageProps} otherSections={_otherSections()} />;
 };
 

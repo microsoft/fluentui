@@ -44,7 +44,7 @@ export const ComboBoxControlledExample: React.FunctionComponent = () => {
         // If allowFreeform is true, the newly selected option might be something the user typed that
         // doesn't exist in the options list yet. So there's extra work to manually add it.
         key = `${newKey++}`;
-        setOptions((prevOptions) => [...prevOptions, { key: key!, text: value }]);
+        setOptions(prevOptions => [...prevOptions, { key: key!, text: value }]);
       }
 
       setSelectedKey(key);

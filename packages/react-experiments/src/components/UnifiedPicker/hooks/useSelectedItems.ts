@@ -54,7 +54,7 @@ export const useSelectedItems = <T extends {}>(
         const item = currentItems[i];
         // If this is the insert before index, insert the dragged items, then the current item
         if (i === insertIndex) {
-          itemsToAdd.forEach((draggedItem) => {
+          itemsToAdd.forEach(draggedItem => {
             updatedItems.push(draggedItem);
           });
         }
@@ -65,7 +65,7 @@ export const useSelectedItems = <T extends {}>(
       }
       // if the insert index is at the end, add them now
       if (insertIndex === currentItems.length) {
-        itemsToAdd.forEach((draggedItem) => {
+        itemsToAdd.forEach(draggedItem => {
           updatedItems.push(draggedItem);
         });
       }
@@ -117,7 +117,7 @@ export const useSelectedItems = <T extends {}>(
       const updatedItems: T[] = currentItems;
       // Intentionally not using .filter here as we want to only remove a specific
       // item in case of duplicates of same item.
-      itemsToRemove.forEach((item) => {
+      itemsToRemove.forEach(item => {
         const index: number = updatedItems.indexOf(item);
         updatedItems.splice(index, 1);
       });

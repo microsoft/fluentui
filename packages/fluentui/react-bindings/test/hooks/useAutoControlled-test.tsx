@@ -11,7 +11,7 @@ type TestComponentProps = {
   onChange?: (value: string) => void;
 };
 
-const TestComponent: React.FunctionComponent<TestComponentProps> = (props) => {
+const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
     value: props.value,
@@ -22,7 +22,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = (props) => {
   return (
     <>
       <input
-        onChange={(e) => {
+        onChange={e => {
           setValue(e.target.value);
           if (props.onChange) props.onChange(e.target.value);
         }}
@@ -30,7 +30,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = (props) => {
       />
       <button
         onClick={() => {
-          setValue((state) => `${state}onClick`);
+          setValue(state => `${state}onClick`);
         }}
       />
     </>

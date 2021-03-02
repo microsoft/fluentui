@@ -12,7 +12,7 @@ interface ITextboxProps {
   fill?: string;
 }
 
-export const Textbox: React.FunctionComponent<ITextboxProps> = (props) => {
+export const Textbox: React.FunctionComponent<ITextboxProps> = props => {
   const textElementRef: React.RefObject<SVGTextElement> = React.useRef(null);
 
   const wrapWords = () => {
@@ -25,7 +25,7 @@ export const Textbox: React.FunctionComponent<ITextboxProps> = (props) => {
     let tspan = text.append<SVGTSpanElement>('tspan');
     let numLines = 0;
 
-    words.forEach((word) => {
+    words.forEach(word => {
       line.push(word);
       tspan.text(line.join(' '));
       const node = tspan.node();
@@ -34,7 +34,11 @@ export const Textbox: React.FunctionComponent<ITextboxProps> = (props) => {
         line.pop();
         tspan.text(line.join(' '));
         line = [word];
-        tspan = text.append<SVGTSpanElement>('tspan').text(word).attr('dy', props.lineHeight).attr('x', props.x);
+        tspan = text
+          .append<SVGTSpanElement>('tspan')
+          .text(word)
+          .attr('dy', props.lineHeight)
+          .attr('x', props.x);
       }
     });
     // bottom aligns text

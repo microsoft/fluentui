@@ -11,7 +11,7 @@ const baseUrl =
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
-const GetStartedPageBase: React.FunctionComponent<IGetStartedPageProps> = (props) => {
+const GetStartedPageBase: React.FunctionComponent<IGetStartedPageProps> = props => {
   const { platform } = props;
   return (
     <Page

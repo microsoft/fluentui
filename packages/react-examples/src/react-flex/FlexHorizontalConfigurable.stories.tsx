@@ -22,7 +22,7 @@ export interface ExampleOptions {
   emptyChildren: string[];
 }
 
-const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = (props) => {
+const FlexConfigureExampleContent: React.FunctionComponent<ExampleOptions> = props => {
   const {
     numItems,
     showBoxShadow,

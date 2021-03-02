@@ -324,7 +324,7 @@ function getFilteredValues(
   const { items, itemToString, itemToValue, multiple, search, searchQuery, value } = options;
 
   const filteredItemsByValue = multiple ? _.differenceBy(items, value, itemToValue) : items;
-  const filteredItemStrings = _.map(filteredItemsByValue, (filteredItem) => itemToString(filteredItem).toLowerCase());
+  const filteredItemStrings = _.map(filteredItemsByValue, filteredItem => itemToString(filteredItem).toLowerCase());
 
   if (search) {
     if (_.isFunction(search)) {
@@ -336,7 +336,10 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        (item) => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
+        item =>
+          itemToString(item)
+            .toLowerCase()
+            .indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -348,7 +351,7 @@ function getFilteredValues(
   };
 }
 
-const isEmpty = (prop) => {
+const isEmpty = prop => {
   return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
 };
 
@@ -366,7 +369,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     Item: typeof DropdownItem;
     SearchInput: typeof DropdownSearchInput;
     SelectedItem: typeof DropdownSelectedItem;
-  } = (props) => {
+  } = props => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
 
@@ -534,12 +537,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       disabled,
       onFocus: handleTriggerButtonOrListFocus,
       onBlur: handleTriggerButtonBlur,
-      onKeyDown: (e) => {
+      onKeyDown: e => {
         handleTriggerButtonKeyDown(e);
       },
       'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter((l) => !!l).join(' '),
+      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;
@@ -557,22 +560,22 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             ...restTriggerButtonProps,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
-            onClick: (e) => {
+            onClick: e => {
               onClick(e);
               _.invoke(predefinedProps, 'onClick', e, predefinedProps);
             },
-            onFocus: (e) => {
+            onFocus: e => {
               onFocus(e);
               _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
             },
-            onBlur: (e) => {
+            onBlur: e => {
               if (!disabled) {
                 onBlur(e);
               }
 
               _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
             },
-            onKeyDown: (e) => {
+            onKeyDown: e => {
               if (!disabled) {
                 onKeyDown(e);
               }
@@ -629,7 +632,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       const accessibilityInputProps = getInputProps();
 
       accessibilityMenuProps['aria-activedescendant'] = accessibilityInputProps['aria-activedescendant'];
-      accessibilityMenuProps['onKeyDown'] = (e) => {
+      accessibilityMenuProps['onKeyDown'] = e => {
         handleListKeyDown(e, highlightedIndex, accessibilityInputProps['onKeyDown'], toggleMenu, selectItemAtIndex);
       };
     }
@@ -969,7 +972,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         item,
         index,
         disabled: item['disabled'],
-        onClick: (e) => {
+        onClick: e => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
           _.invoke(predefinedProps, 'onClick', e, predefinedProps);
@@ -1076,10 +1079,10 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       accessibilityInputProps: {
         ...getInputProps({
           disabled,
-          onBlur: (e) => {
+          onBlur: e => {
             handleInputBlur(e, predefinedProps);
           },
-          onKeyDown: (e) => {
+          onKeyDown: e => {
             handleInputKeyDown(e, predefinedProps);
           },
           onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1283,14 +1286,14 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     setIsFromKeyboard(detectIsFromKeyboard());
   };
 
-  const handleTriggerButtonBlur = (e) => {
+  const handleTriggerButtonBlur = e => {
     if (listRef.current !== e.relatedTarget) {
       setFocused(false);
       setIsFromKeyboard(detectIsFromKeyboard());
     }
   };
 
-  const handleListBlur = (e) => {
+  const handleListBlur = e => {
     if (buttonRef.current !== e.relatedTarget) {
       setFocused(false);
       setIsFromKeyboard(detectIsFromKeyboard());
@@ -1313,13 +1316,13 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     if (_.isNumber(highlightedIndex)) {
       newHighlightedIndex = _.findIndex(
         filteredItemStrings,
-        (item) => item.startsWith(newStartingString),
+        item => item.startsWith(newStartingString),
         highlightedIndex + (startingString.length > 0 ? 0 : 1),
       );
     }
 
     if (newHighlightedIndex < 0) {
-      newHighlightedIndex = _.findIndex(filteredItemStrings, (item) => item.startsWith(newStartingString));
+      newHighlightedIndex = _.findIndex(filteredItemStrings, item => item.startsWith(newStartingString));
     }
 
     if (newHighlightedIndex >= 0) {
@@ -1349,7 +1352,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     let newValue = [...value];
 
     if (poppedItem) {
-      newValue = newValue.filter((currentElement) => currentElement !== item);
+      newValue = newValue.filter(currentElement => currentElement !== item);
     } else {
       poppedItem = newValue.pop();
     }
@@ -1395,7 +1398,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       setValue(newState.value);
     }
 
-    handlerNames.forEach((handlerName) => {
+    handlerNames.forEach(handlerName => {
       _.invoke(props, handlerName, event, { ...props, ...newState, value: newValue });
     });
   };
@@ -1594,7 +1597,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                         accessibility: indicatorBehavior,
                       }),
                       overrideProps: (predefinedProps: BoxProps) => ({
-                        onClick: (e) => {
+                        onClick: e => {
                           if (!disabled) {
                             getToggleButtonProps({ disabled }).onClick(e);
                           }
@@ -1698,7 +1701,7 @@ Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 Dropdown.defaultProps = {
   align: 'start',
   clearIndicator: <CloseIcon outline />,
-  itemToString: (item) => {
+  itemToString: item => {
     if (!item || React.isValidElement(item)) {
       return '';
     }
@@ -1706,7 +1709,7 @@ Dropdown.defaultProps = {
     // targets DropdownItem shorthand objects
     return (item as any).header || String(item);
   },
-  itemToValue: (item) => {
+  itemToValue: item => {
     if (!item || React.isValidElement(item)) {
       return '';
     }

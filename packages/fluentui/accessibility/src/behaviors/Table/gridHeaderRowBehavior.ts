@@ -15,7 +15,7 @@ import { GridRowBehaviorProps } from './gridRowBehavior';
  * Triggers 'unsetRowTabbable' action using 'shiftKey' + 'Tab' key on 'root'.
  * Applies 'gridHeaderCellBehavior' for 'cell' child component.
  */
-export const gridHeaderRowBehavior: Accessibility<GridRowBehaviorProps> = (props) => ({
+export const gridHeaderRowBehavior: Accessibility<GridRowBehaviorProps> = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,

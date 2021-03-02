@@ -3,7 +3,7 @@ import { IGroupSpacerProps } from './GroupSpacer.types';
 
 export const SPACER_WIDTH = 36;
 
-export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps> = (props) => {
+export const GroupSpacer: React.FunctionComponent<IGroupSpacerProps> = props => {
   const { count, indentWidth = SPACER_WIDTH, role = 'presentation' } = props;
   const width = count * indentWidth;
 

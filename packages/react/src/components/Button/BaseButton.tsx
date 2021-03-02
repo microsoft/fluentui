@@ -536,7 +536,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     );
   };
 
-  private _onDismissMenu: IContextualMenuProps['onDismiss'] = (ev) => {
+  private _onDismissMenu: IContextualMenuProps['onDismiss'] = ev => {
     const { menuProps } = this.props;
 
     if (menuProps && menuProps.onDismiss) {

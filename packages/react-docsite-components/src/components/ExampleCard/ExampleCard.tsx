@@ -169,10 +169,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </EditorWrapper>
               ) : (
                 <ExamplePreview>
-                  {
-                    // Only use strict mode when not editing. Might have unpredictable results otherwise.
-                    this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children
-                  }
+                  {// Only use strict mode when not editing. Might have unpredictable results otherwise.
+                  this._isStrict ? <React.StrictMode>{children}</React.StrictMode> : children}
                 </ExamplePreview>
               )}
 
@@ -206,7 +204,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   private _getPreviewComponent = memoizeFunction(
     (activeTheme: Theme | undefined, scheme: ISchemeNames): React.FunctionComponent => {
       // Generate a component which renders the children with the current
-      return (props) => {
+      return props => {
         const { children } = props;
         const content = (
           <div className={this._classNames.example} data-is-scrollable={true}>

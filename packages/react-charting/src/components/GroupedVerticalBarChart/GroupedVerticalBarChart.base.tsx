@@ -173,7 +173,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[]) => {
     const keys: string[] = [];
-    const xAxisLabels: string[] = points.map((singlePoint) => singlePoint.name);
+    const xAxisLabels: string[] = points.map(singlePoint => singlePoint.name);
     points[0].series.forEach((singleKey: IGVBarChartSeriesPoint) => {
       keys.push(singleKey.key);
     });

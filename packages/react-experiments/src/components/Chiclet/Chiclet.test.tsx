@@ -70,7 +70,7 @@ describe('Chiclet', () => {
       onClick: () => console.log('test'),
     };
 
-    const Preview: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = (props) => {
+    const Preview: React.FunctionComponent<React.HTMLAttributes<HTMLElement>> = props => {
       return <img src="http://placehold.it/100x100" {...props} />;
     };
 
