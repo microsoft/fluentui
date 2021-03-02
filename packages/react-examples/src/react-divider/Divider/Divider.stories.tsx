@@ -1,220 +1,266 @@
 import * as React from 'react';
-import { ax } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { ClockIcon } from '@fluentui/react-icons-mdl2';
 import { Divider, DividerProps } from '@fluentui/react-divider';
-import * as classes from '../react-divider.stories.scss';
 
-const cssClasses: any = classes;
 export interface DividerStoryProps {
   label?: string;
   children?: any;
   className?: string;
 }
 
+const useCssClasses = makeStyles([
+  [
+    null,
+    theme => ({
+      margin: `10px 10px 60px 10px`,
+      padding: 0,
+      backgroundColor: theme.alias.color.neutral.neutralBackground1,
+      '&>.story': {
+        margin: 0,
+        padding: 0,
+        maxWidth: `100%`,
+        fontFamily: `'Segoe UI', Tahoma, Geneva, Verdana, sans-serif`,
+      },
+      label: {
+        fontWeight: 600,
+        lineHeight: `28px`,
+        margin: `10px 0`,
+      },
+      '& .item': {
+        flex: 1,
+        display: `flex`,
+        alignItems: `flex-start`,
+        flexDirection: `column`,
+        justifyContent: `center`,
+        margin: `10px 0`,
+        width: `100%`,
+        maxWidth: `100%`,
+      },
+      '& .vertical label': {
+        flexShrink: 1,
+        flexGrow: 0,
+        flexBasis: `100%`,
+      },
+      '& .verticalContent': {
+        display: `flex`,
+        flexDirection: `row`,
+        alignSelf: `stretch`,
+        border: `dashed 1px #d0d0d0`,
+      },
+    }),
+  ],
+]);
+
 const DividerStory = (props?: DividerStoryProps) => {
   return (
-    <div className={ax(cssClasses.item, props?.className)}>
+    <div className={ax('item', props?.className)}>
       <label>{props?.label}</label>
       {props?.children}
     </div>
   );
 };
 
-const DividerExamples = (props: DividerProps) => (
-  <div className={cssClasses.story}>
-    <h2>Horizontal Divider</h2>
-    <DividerStory label="Default">
-      <Divider {...props} />
-      <Divider {...props}>With content</Divider>
-    </DividerStory>
+const DividerExamples = (props: DividerProps) => {
+  const classNames = useCssClasses({});
+  return (
+    <div className={classNames}>
+      <div className="story">
+        <h2>Horizontal Divider</h2>
+        <DividerStory label="Default">
+          <Divider {...props} />
+          <Divider {...props}>With content</Divider>
+        </DividerStory>
 
-    <DividerStory label="With Icon">
-      <Divider {...props}>
-        <ClockIcon />
-      </Divider>
-    </DividerStory>
+        <DividerStory label="With Icon">
+          <Divider {...props}>
+            <ClockIcon />
+          </Divider>
+        </DividerStory>
 
-    <DividerStory label="Inset">
-      <Divider {...props} inset />
-      <Divider {...props} inset>
-        Inset with content
-      </Divider>
-    </DividerStory>
+        <DividerStory label="Inset">
+          <Divider {...props} inset />
+          <Divider {...props} inset>
+            Inset with content
+          </Divider>
+        </DividerStory>
 
-    <DividerStory label="Important">
-      <Divider {...props} important={true}>
-        This is important!
-      </Divider>
-    </DividerStory>
+        <DividerStory label="Important">
+          <Divider {...props} important={true}>
+            This is important!
+          </Divider>
+        </DividerStory>
 
-    <DividerStory label="Alignments">
-      <Divider {...props} alignContent="start">
-        start
-      </Divider>
-      <Divider {...props} alignContent="center">
-        center(default)
-      </Divider>
-      <Divider {...props} alignContent="end">
-        end
-      </Divider>
-    </DividerStory>
+        <DividerStory label="Alignments">
+          <Divider {...props} alignContent="start">
+            start
+          </Divider>
+          <Divider {...props} alignContent="center">
+            center(default)
+          </Divider>
+          <Divider {...props} alignContent="end">
+            end
+          </Divider>
+        </DividerStory>
 
-    <DividerStory label="Appearance">
-      <Divider {...props} appearance="default">
-        default
-      </Divider>
-      <Divider {...props} appearance="subtle">
-        subtle
-      </Divider>
-      <Divider {...props} appearance="brand">
-        brand
-      </Divider>
-      <Divider {...props} appearance="strong">
-        strong
-      </Divider>
-    </DividerStory>
+        <DividerStory label="Appearance">
+          <Divider {...props} appearance="default">
+            default
+          </Divider>
+          <Divider {...props} appearance="subtle">
+            subtle
+          </Divider>
+          <Divider {...props} appearance="brand">
+            brand
+          </Divider>
+          <Divider {...props} appearance="strong">
+            strong
+          </Divider>
+        </DividerStory>
 
-    <DividerStory label="Colors">
-      <Divider {...props} color="red">
-        Red
-      </Divider>
-      <Divider {...props} color="green">
-        Green
-      </Divider>
-      <Divider {...props} color="blue">
-        Blue
-      </Divider>
-      <Divider {...props} color="yellow">
-        Yellow
-      </Divider>
-      <Divider {...props} color="#FF00FF">
-        Custom (#FF00FF)
-      </Divider>
-    </DividerStory>
+        <DividerStory label="Colors">
+          <Divider {...props} color="red">
+            Red
+          </Divider>
+          <Divider {...props} color="green">
+            Green
+          </Divider>
+          <Divider {...props} color="blue">
+            Blue
+          </Divider>
+          <Divider {...props} color="yellow">
+            Yellow
+          </Divider>
+          <Divider {...props} color="#FF00FF">
+            Custom (#FF00FF)
+          </Divider>
+        </DividerStory>
 
-    <h2>Vertical</h2>
-    <DividerStory label="Default without container height and content" className={cssClasses.vertical}>
-      <Divider {...props} vertical />
-    </DividerStory>
+        <h2>Vertical</h2>
+        <DividerStory label="Default without container height and content" className="vertical">
+          <Divider {...props} vertical />
+        </DividerStory>
 
-    <DividerStory label="With and without content" className={cssClasses.vertical}>
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} vertical>
-          With Content
-        </Divider>
-        <Divider {...props} vertical />
+        <DividerStory label="With and without content" className="vertical">
+          <div className="verticalContent">
+            <Divider {...props} vertical>
+              With Content
+            </Divider>
+            <Divider {...props} vertical />
+          </div>
+        </DividerStory>
+
+        <DividerStory label="With Icon">
+          <div className="verticalContent">
+            <Divider {...props} vertical>
+              <ClockIcon />
+            </Divider>
+          </div>
+        </DividerStory>
+
+        <DividerStory label="Inset">
+          <div className="verticalContent">
+            <Divider {...props} inset vertical />
+            <Divider {...props} inset vertical>
+              Inset with content
+            </Divider>
+          </div>
+        </DividerStory>
+
+        <DividerStory label="Important">
+          <div className="verticalContent">
+            <Divider {...props} important vertical>
+              Important!
+            </Divider>
+          </div>
+        </DividerStory>
+
+        <DividerStory label="Alignments" className="vertical">
+          <div className="verticalContent">
+            <Divider {...props} alignContent="start" vertical>
+              start
+            </Divider>
+            <Divider {...props} alignContent="center" vertical>
+              center(default)
+            </Divider>
+            <Divider {...props} alignContent="end" vertical>
+              end
+            </Divider>
+          </div>
+        </DividerStory>
+
+        <DividerStory label="Appearance" className="vertical">
+          <div className="verticalContent">
+            <Divider {...props} appearance="default" vertical>
+              default
+            </Divider>
+            <Divider {...props} appearance="subtle" vertical>
+              subtle
+            </Divider>
+            <Divider {...props} appearance="brand" vertical>
+              brand
+            </Divider>
+            <Divider {...props} appearance="strong" vertical>
+              strong
+            </Divider>
+          </div>
+        </DividerStory>
+
+        <DividerStory label="Colors" className="vertical">
+          <div className="verticalContent">
+            <Divider {...props} color="red" vertical>
+              Red
+            </Divider>
+            <Divider {...props} color="green" vertical>
+              Green
+            </Divider>
+            <Divider {...props} color="blue" vertical>
+              Blue
+            </Divider>
+            <Divider {...props} color="yellow" vertical>
+              Yellow
+            </Divider>
+            <Divider {...props} color="#FF00FF" vertical>
+              Custom (#FF00FF)
+            </Divider>
+          </div>
+        </DividerStory>
+
+        <DividerStory label="Specified Height" className="vertical">
+          <div className="verticalContent" style={{ height: '200px', alignItems: 'center' }}>
+            <Divider {...props} vertical height="50px">
+              50px
+            </Divider>
+            <Divider {...props} vertical height="100px">
+              100px
+            </Divider>
+            <Divider {...props} vertical height="150px">
+              150px
+            </Divider>
+            <Divider {...props} vertical height="100%">
+              100%*
+            </Divider>
+          </div>
+          <span>*100% requires parent container to have a set height</span>
+        </DividerStory>
+
+        <h2>Other Appearance Modifications</h2>
+        <DividerStory>
+          <Divider {...props} margin="30px" width="800px">
+            30px margin, 800px width
+          </Divider>
+          <Divider {...props} fontWeight="800" margin="10px 0">
+            800 font weight
+          </Divider>
+          <Divider {...props} fontColor="green" fontSize="16px" margin="10px 0">
+            Green font color @ 16px font size
+          </Divider>
+          <Divider {...props} borderStyle="dashed" borderSize={2} margin="10px 0">
+            Dashed border with a size of 2
+          </Divider>
+        </DividerStory>
       </div>
-    </DividerStory>
-
-    <DividerStory label="With Icon">
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} vertical>
-          <ClockIcon />
-        </Divider>
-      </div>
-    </DividerStory>
-
-    <DividerStory label="Inset">
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} inset vertical />
-        <Divider {...props} inset vertical>
-          Inset with content
-        </Divider>
-      </div>
-    </DividerStory>
-
-    <DividerStory label="Important">
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} important vertical>
-          Important!
-        </Divider>
-      </div>
-    </DividerStory>
-
-    <DividerStory label="Alignments" className={cssClasses.vertical}>
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} alignContent="start" vertical>
-          start
-        </Divider>
-        <Divider {...props} alignContent="center" vertical>
-          center(default)
-        </Divider>
-        <Divider {...props} alignContent="end" vertical>
-          end
-        </Divider>
-      </div>
-    </DividerStory>
-
-    <DividerStory label="Appearance" className={cssClasses.vertical}>
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} appearance="default" vertical>
-          default
-        </Divider>
-        <Divider {...props} appearance="subtle" vertical>
-          subtle
-        </Divider>
-        <Divider {...props} appearance="brand" vertical>
-          brand
-        </Divider>
-        <Divider {...props} appearance="strong" vertical>
-          strong
-        </Divider>
-      </div>
-    </DividerStory>
-
-    <DividerStory label="Colors" className={cssClasses.vertical}>
-      <div className={cssClasses.verticalContent}>
-        <Divider {...props} color="red" vertical>
-          Red
-        </Divider>
-        <Divider {...props} color="green" vertical>
-          Green
-        </Divider>
-        <Divider {...props} color="blue" vertical>
-          Blue
-        </Divider>
-        <Divider {...props} color="yellow" vertical>
-          Yellow
-        </Divider>
-        <Divider {...props} color="#FF00FF" vertical>
-          Custom (#FF00FF)
-        </Divider>
-      </div>
-    </DividerStory>
-
-    <DividerStory label="Specified Height" className={cssClasses.vertical}>
-      <div className={cssClasses.verticalContent} style={{ height: '200px', alignItems: 'center' }}>
-        <Divider {...props} vertical height="50px">
-          50px
-        </Divider>
-        <Divider {...props} vertical height="100px">
-          100px
-        </Divider>
-        <Divider {...props} vertical height="150px">
-          150px
-        </Divider>
-        <Divider {...props} vertical height="100%">
-          100%*
-        </Divider>
-      </div>
-      <span>*100% requires parent container to have a set height</span>
-    </DividerStory>
-
-    <h2>Other Appearance Modifications</h2>
-    <DividerStory>
-      <Divider {...props} margin="30px" width="800px">
-        30px margin, 800px width
-      </Divider>
-      <Divider {...props} fontWeight="800" margin="10px 0">
-        800 font weight
-      </Divider>
-      <Divider {...props} fontColor="green" fontSize="16px" margin="10px 0">
-        Green font color @ 16px font size
-      </Divider>
-      <Divider {...props} borderStyle="dashed" borderSize={2} margin="10px 0">
-        Dashed border with a size of 2
-      </Divider>
-    </DividerStory>
-  </div>
-);
+    </div>
+  );
+};
 export const DividerExample = () => <DividerExamples />;
