@@ -16,7 +16,6 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
    * Disables opening/closing of panel
    */
   disabled?: boolean;
-  onToggle?(ev: React.MouseEvent<HTMLElement>, open: boolean): void;
 }
 
 /**

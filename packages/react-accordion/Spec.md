@@ -33,31 +33,26 @@ Sample usages will be given in the following section of this document [Sample co
 
 The root level component serves context and common API between all children.
 
-| Prop name          | Type                | Default Value | Details                                          |
-| ------------------ | ------------------- | ------------- | ------------------------------------------------ |
-| multiple           | boolean             | false         | Allows multiple panels to be expanded            |
-| collapsible        | boolean             | false         | Allows multiple panels to be collapsed           |
-| expandIconPosition | "start" or "end"    | "start"       | Position of the icon to indicate expansion       |
-| onToggle           | ToggleEventListener |               | Equivalent to onToggle on AccordionPanel element |
-
-By default, the Accordion is an Uncontrolled component. From the moment that one internal AccordionPanel has the property `open` declared, the Accordion becomes a Controlled component and to ensure behavior `onToggle` must be used.
-
-> Perhaps some error could be emitted in dev when multiple, collapsible and open are being used, like React does when you try to control an uncontrolled component.
+| Prop name          | Type                | Default Value | Details                                                                                                                    |
+| ------------------ | ------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| multiple           | boolean             | false         | Allows multiple panels to be expanded                                                                                      |
+| collapsible        | boolean             | false         | Allows multiple panels to be collapsed                                                                                     |
+| expandIconPosition | "start" or "end"    | "start"       | Position of the icon to indicate expansion                                                                                 |
+| onToggle           | ToggleEventListener |               | Equivalent to onToggle on AccordionPanel element                                                                           |
+| open               | number or number[]  | undefined     | The index (or a list of indexes) of opened items. If this property is being used than the element is considered Controlled |
+| defaultOpen        | number or number[]  | undefined     | The index (or a list of indexes) of opened items by default.                                                               |
 
 ```tsx
 interface ToggleEventListener {
-  (open: boolean, index: number): void;
+  (index: number): void;
 }
 ```
 
 ### AccordionItem
 
-| Prop name   | Type      | Details                                                      |
-| ----------- | --------- | ------------------------------------------------------------ |
-| children    | ReactNode | AccordionHeader **and** an AccordionPanel should be provided |
-| open        | boolean   | Controls the state of the panel                              |
-| defaultOpen | boolean   | Default value for the state of the panel                     |
-| disabled    | boolean   | Disables opening/closing of panel                            |
+| Prop name | Type    | Details                           |
+| --------- | ------- | --------------------------------- |
+| disabled  | boolean | Disables opening/closing of panel |
 
 ### AccordionHeader
 
@@ -134,9 +129,9 @@ Expected DOM output
 
 ```tsx
 const accordion = (
-  <Accordion>
+  <Accordion open={0}>
     <AccordionItem>
-      <AccordionHeader open>
+      <AccordionHeader>
         First Panel
       </AccordionHeader>
       <AccordionPanel>
@@ -186,8 +181,8 @@ To have multiple panels opened at the same time an Accordion must use the `multi
 
 ```tsx
 const accordion = (
-  <Accordion multiple>
-    <AccordionItem open>
+  <Accordion open={[0, 1]} multiple>
+    <AccordionItem>
       <AccordionHeader>
         First Panel
       </AccordionHeader>
@@ -195,7 +190,7 @@ const accordion = (
         This is the content of the first Panel
       </AccordionPanel>
     </AccordionItem>
-    <AccordionItem open>
+    <AccordionItem>
       <AccordionHeader>
         Second Panel
       </AccordionHeader>
