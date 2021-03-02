@@ -5,8 +5,8 @@ import {
   designSystemProperty,
   DesignSystemProvider,
   designSystemProvider,
-  DesignSystemProviderTemplate as template,
   forcedColorsStylesheetBehavior,
+  DesignSystemProviderTemplate as template,
 } from '@microsoft/fast-foundation';
 import { parseColorHexRGB } from '@microsoft/fast-colors';
 import { createColorPalette, neutralForegroundRest } from '../color';
