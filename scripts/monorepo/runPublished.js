@@ -24,7 +24,7 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => !/[\\/]fluentui[\\/]/.test(packagePath) && packageJson.private !== true)
   .map(([packageName]) => `--to=${packageName}`);
 
-const lageArgs = ['run', ...argv, ...beachballPackageScopes];
+const lageArgs = ['run', ...argv, ...beachballPackageScopes, '--verbose'];
 console.log(`lage ${lageArgs.join(' ')}`); // for debugging
 
 const result = spawnSync(process.execPath, [lageBin, ...lageArgs], {
