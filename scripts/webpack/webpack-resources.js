@@ -72,7 +72,7 @@ function createEntryWithPolyfill(entry, config) {
     } else if (typeof entry === 'object') {
       const newEntry = { ...entry };
 
-      Object.keys(entry).forEach(entryPoint => {
+      Object.keys(entry).forEach((entryPoint) => {
         newEntry[entryPoint] = createEntryWithPolyfill(entry[entryPoint], config);
       });
 
@@ -190,7 +190,7 @@ module.exports = {
       output,
       bundleName = path.basename(process.cwd()),
       entry = './lib/index.js',
-      isProduction = process.argv.indexOf('--production') > -1,
+      isProduction = process.argv.includes('--mode=production'),
       onlyProduction = false,
       customConfig = {},
     } = options;
