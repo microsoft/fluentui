@@ -256,7 +256,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
-        rowHeaderId={`${this._rowHeaderId}`}
+        rowHeaderId={this._rowHeaderId}
         cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
@@ -330,7 +330,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           >
             <RowFields
               rowClassNames={this._rowClassNames}
-              rowHeaderId={`${this._rowHeaderId}`}
+              rowHeaderId={this._rowHeaderId}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}
