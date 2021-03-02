@@ -23,7 +23,7 @@ If multiple packages match a pattern, they will all be built (along with their d
     process.exit(0);
   }
 
-  const restIndex = argv.findIndex(arg => arg.startsWith('--'));
+  const restIndex = argv.findIndex((arg) => arg.startsWith('--'));
   const script = argv[0];
   const projects = restIndex === -1 ? argv.slice(1) : argv.slice(1, restIndex);
   const rest = restIndex === -1 ? [] : argv.slice(argv[restIndex] === '--' ? restIndex + 1 : restIndex);
@@ -46,7 +46,7 @@ function runTo(script, projects, rest) {
     if (allPackages[project]) {
       foundProjects.push(project);
     } else {
-      const packagesForProject = Object.keys(allPackages).filter(name => name.includes(project));
+      const packagesForProject = Object.keys(allPackages).filter((name) => name.includes(project));
       if (packagesForProject.length === 0) {
         console.log(`There is no project matching "${project}" in this repo`);
       } else if (packagesForProject.length > 1) {
@@ -59,7 +59,7 @@ function runTo(script, projects, rest) {
   }
 
   const scopes = [];
-  foundProjects.forEach(projectName => {
+  foundProjects.forEach((projectName) => {
     // --scope limits build to a specified package
     scopes.push('--scope');
     scopes.push(projectName);
@@ -67,7 +67,7 @@ function runTo(script, projects, rest) {
 
   // --include-filtered-Dependencies makes the build include dependencies
   // --stream allows the build to proceed in parallel but still in order
-  spawnSync(
+  const result = spawnSync(
     process.execPath,
     [
       lernaBin,
@@ -85,6 +85,10 @@ function runTo(script, projects, rest) {
       stdio: 'inherit',
     },
   );
+
+  if (result.status !== 0) {
+    process.exit(result.status);
+  }
 }
 
 module.exports = runTo;
