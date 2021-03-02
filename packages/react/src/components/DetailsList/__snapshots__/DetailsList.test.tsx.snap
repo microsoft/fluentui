@@ -98,7 +98,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone118"
+            data-focuszone-id="FocusZone228"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -139,7 +139,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection119"
+                        id="GroupedListSection229"
                         role="rowgroup"
                       >
                         <div
@@ -210,7 +210,7 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection120"
+                        id="GroupedListSection230"
                         role="rowgroup"
                       >
                         <div
@@ -364,7 +364,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone118"
+            data-focuszone-id="FocusZone228"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -405,7 +405,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection119"
+                        id="GroupedListSection229"
                         role="rowgroup"
                       >
                         <div
@@ -484,7 +484,7 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection120"
+                        id="GroupedListSection230"
                         role="rowgroup"
                       >
                         <div
@@ -646,7 +646,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone111"
+            data-focuszone-id="FocusZone221"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -687,7 +687,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection112"
+                        id="GroupedListSection222"
                         role="rowgroup"
                       >
                         <div
@@ -748,7 +748,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection113"
+                        id="GroupedListSection223"
                         role="rowgroup"
                       >
                         <div
@@ -809,7 +809,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection114"
+                        id="GroupedListSection224"
                         role="rowgroup"
                       >
                         <div
@@ -870,7 +870,7 @@ exports[`DetailsList handles updates to items and groups 1`] = `
                       <div
                         aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection115"
+                        id="GroupedListSection225"
                         role="rowgroup"
                       >
                         <div
@@ -1014,7 +1014,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone111"
+            data-focuszone-id="FocusZone221"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1055,7 +1055,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 1"
                         className="ms-List"
-                        id="GroupedListSection112"
+                        id="GroupedListSection222"
                         role="rowgroup"
                       >
                         <div
@@ -1116,7 +1116,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 2"
                         className="ms-List"
-                        id="GroupedListSection113"
+                        id="GroupedListSection223"
                         role="rowgroup"
                       >
                         <div
@@ -1177,7 +1177,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 3"
                         className="ms-List"
-                        id="GroupedListSection114"
+                        id="GroupedListSection224"
                         role="rowgroup"
                       >
                         <div
@@ -1238,7 +1238,7 @@ exports[`DetailsList handles updates to items and groups 2`] = `
                       <div
                         aria-label="one 4"
                         className="ms-List"
-                        id="GroupedListSection115"
+                        id="GroupedListSection225"
                         role="rowgroup"
                       >
                         <div
@@ -1382,7 +1382,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone111"
+            data-focuszone-id="FocusZone221"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1423,7 +1423,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection116"
+                        id="GroupedListSection226"
                         role="rowgroup"
                       >
                         <div
@@ -1502,7 +1502,7 @@ exports[`DetailsList handles updates to items and groups 3`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection117"
+                        id="GroupedListSection227"
                         role="rowgroup"
                       >
                         <div
@@ -1664,7 +1664,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                   min-width: 100%;
                 }
             data-automationid="GroupedList"
-            data-focuszone-id="FocusZone111"
+            data-focuszone-id="FocusZone221"
             data-is-scrollable="false"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -1705,7 +1705,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         aria-label="two 1"
                         className="ms-List"
-                        id="GroupedListSection116"
+                        id="GroupedListSection226"
                         role="rowgroup"
                       >
                         <div
@@ -1784,7 +1784,7 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                       <div
                         aria-label="two 2"
                         className="ms-List"
-                        id="GroupedListSection117"
+                        id="GroupedListSection227"
                         role="rowgroup"
                       >
                         <div
@@ -7200,7 +7200,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone22"
+                                data-focuszone-id="FocusZone24"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -7387,7 +7387,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone23"
+                                data-focuszone-id="FocusZone27"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -7828,7 +7828,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone24"
+                                data-focuszone-id="FocusZone30"
                                 data-is-focusable={true}
                                 data-item-index={2}
                                 data-selection-index={2}
@@ -8015,7 +8015,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone25"
+                                data-focuszone-id="FocusZone33"
                                 data-is-focusable={true}
                                 data-item-index={3}
                                 data-selection-index={3}
@@ -8202,7 +8202,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone26"
+                                data-focuszone-id="FocusZone36"
                                 data-is-focusable={true}
                                 data-item-index={4}
                                 data-selection-index={4}
