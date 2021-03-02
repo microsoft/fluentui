@@ -44,7 +44,7 @@
     "@fluentui/jest-serializer-merge-styles": "^8.0.0-beta.7",
     "@fluentui/test-utilities": "^8.0.0-beta.9",
     "@fluentui/webpack-utilities": "^8.0.0-beta.4",
-    "@fluentui/react-conformance": "^0.2.1",
+    "@fluentui/react-conformance": "^1.0.0",
     "chalk": "^2.1.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
