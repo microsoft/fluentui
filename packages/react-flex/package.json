@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-flex-stale",
+  "name": "@fluentui/react-flex",
   "version": "0.2.4",
   "description": "Flexbox abstraction that provides a component to align and distribute its children.",
   "main": "lib-commonjs/index.js",
