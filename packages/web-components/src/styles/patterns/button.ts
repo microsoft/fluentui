@@ -121,21 +121,24 @@ export const BaseButtonStyles: ElementStyles = css`
   neutralFillActiveBehavior,
   forcedColorsStylesheetBehavior(
     css`
-        :host {
+        :host,
+        :host(.neutral) .control {
           background-color: ${SystemColors.ButtonFace};
           border-color: ${SystemColors.ButtonText};
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
         }
 
-        :host(:hover) {
+        :host(:hover),
+        :host(.neutral:hover) .control {
           forced-color-adjust: none;
           background-color: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
 
         .control:${focusVisible},
-        :host(.outline) .control:${focusVisible} {
+        :host(.outline) .control:${focusVisible},
+        :host(.neutral:${focusVisible}) .control {
           forced-color-adjust: none;
           background-color: ${SystemColors.Highlight};
           border-color: ${SystemColors.ButtonText};
@@ -371,6 +374,9 @@ export const LightweightButtonStyles = css`
   neutralForegroundRestBehavior,
   forcedColorsStylesheetBehavior(
     css`
+        :host(.lightweight) {
+            color: ${SystemColors.ButtonText};
+        }
         :host(.lightweight) .control:hover,
         :host(.lightweight) .control:${focusVisible} {
             forced-color-adjust: none;
@@ -442,6 +448,10 @@ export const OutlineButtonStyles = css`
   neutralFocusBehavior,
   forcedColorsStylesheetBehavior(
     css`
+      :host(.outline) {
+        border-color: ${SystemColors.ButtonText};
+      }
+
       :host(.outline.disabled) .control {
         border-color: ${SystemColors.GrayText};
       }
@@ -474,33 +484,35 @@ export const StealthButtonStyles = css`
   neutralFillStealthActiveBehavior,
   forcedColorsStylesheetBehavior(
     css`
+        :host(.stealth),
         :host(.stealth) .control {
             forced-color-adjust: none;
-            background-color: none;
+            background: ${SystemColors.ButtonFace};
             border-color: transparent;
             color: ${SystemColors.ButtonText};
             fill: currentcolor;
         }
 
         :host(.stealth:hover) .control {
-            background-color: ${SystemColors.Highlight};
+            background: ${SystemColors.Highlight};
             border-color: ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
             fill: currentcolor;
         }
 
         :host(.stealth:${focusVisible}) .control {
+            background: ${SystemColors.Highlight};
             box-shadow: 0 0 0 1px ${SystemColors.Highlight};
             color: ${SystemColors.HighlightText};
             fill: currentcolor;
         }
 
         :host(.stealth.disabled) {
-          background-color: ${SystemColors.ButtonFace};
+            background: ${SystemColors.ButtonFace};
         }
 
         :host(.stealth.disabled) .control {
-            background-color: ${SystemColors.ButtonFace};
+            background: ${SystemColors.ButtonFace};
             border-color: transparent;
             color: ${SystemColors.GrayText};
         }
@@ -509,8 +521,9 @@ export const StealthButtonStyles = css`
             color: ${SystemColors.LinkText};
         }
 
-        :host(.stealth:hover[href]) .control {
-            background-color: ${SystemColors.LinkText};
+        :host(.stealth:hover[href]) .control,
+        :host(.stealth:${focusVisible}[href]) .control {
+            background: ${SystemColors.LinkText};
             border-color: ${SystemColors.LinkText};
             color: ${SystemColors.HighlightText};
             fill: currentcolor;
@@ -518,8 +531,6 @@ export const StealthButtonStyles = css`
 
       :host(.stealth:${focusVisible}[href]) .control {
           box-shadow: 0 0 0 1px ${SystemColors.LinkText};
-          color: ${SystemColors.LinkText};
-          fill: currentcolor;
       }
     `,
   ),
