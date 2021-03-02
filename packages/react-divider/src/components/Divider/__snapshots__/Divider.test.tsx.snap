@@ -1,0 +1,154 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider renders a brand state with content 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Brand
+  </div>
+</div>
+`;
+
+exports[`Divider renders a content aligned center 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Center
+  </div>
+</div>
+`;
+
+exports[`Divider renders a content aligned end 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    End
+  </div>
+</div>
+`;
+
+exports[`Divider renders a content aligned start 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Start
+  </div>
+</div>
+`;
+
+exports[`Divider renders a default divider 1`] = `
+<div
+  className=""
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a divider with content 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Default Divider
+  </div>
+</div>
+`;
+
+exports[`Divider renders a divider with different color 1`] = `
+<div
+  className=""
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a divider with important 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Important
+  </div>
+</div>
+`;
+
+exports[`Divider renders a divider with inset 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Inset
+  </div>
+</div>
+`;
+
+exports[`Divider renders a horizontal a fixed width 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    fixed 100px width
+  </div>
+</div>
+`;
+
+exports[`Divider renders a strong state with content 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Strong
+  </div>
+</div>
+`;
+
+exports[`Divider renders a subtle state with content 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Subtle
+  </div>
+</div>
+`;
+
+exports[`Divider renders a vertical a fixed height 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    fixed 100px height
+  </div>
+</div>
+`;
+
+exports[`Divider renders a vertical divider 1`] = `
+<div
+  className=""
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a vertical divider with content 1`] = `
+<div
+  className=""
+  role="separator"
+>
+  <div>
+    Vertical
+  </div>
+</div>
+`;
