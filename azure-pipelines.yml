@@ -30,7 +30,7 @@ jobs:
       ## manually call this since lage is now used and it calls lint per package, not per repo
       - script: |
           yarn prelint &&
-          yarn format $(targetBranch) --check
+          yarn format --commit-hash $(targetBranch) --check
         displayName: do syncpack, lint-files, and prettier checks
 
       ## Danger.js checks for Fluent UI N*
