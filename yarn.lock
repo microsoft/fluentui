@@ -2246,7 +2246,7 @@
     tar "^4.4.10"
     temp-write "^3.4.0"
 
-"@lerna/package-graph@3.18.5":
+"@lerna/package-graph@3.18.5", "@lerna/package-graph@^3.21.0":
   version "3.18.5"
   resolved "https://registry.yarnpkg.com/@lerna/package-graph/-/package-graph-3.18.5.tgz#c740e2ea3578d059e551633e950690831b941f6b"
   integrity sha512-8QDrR9T+dBegjeLr+n9WZTVxUYUhIUjUgZ0gvNxUBN8S1WB9r6H5Yk56/MVaB64tA3oGAN9IIxX6w0WvTfFudA==
@@ -2257,26 +2257,6 @@
     npmlog "^4.1.2"
     semver "^6.2.0"
 
-"@lerna/package-graph@^3.14.0":
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/@lerna/package-graph/-/package-graph-3.14.0.tgz#4ccdf446dccedfbbeb4efff3eb720cb6fcb109fc"
-  integrity sha512-dNpA/64STD5YXhaSlg4gT6Z474WPJVCHoX1ibsVIFu0fVgH609Y69bsdmbvTRdI7r6Dcu4ZfGxdR636RTrH+Eg==
-  dependencies:
-    "@lerna/prerelease-id-from-version" "3.14.0"
-    "@lerna/validation-error" "3.13.0"
-    npm-package-arg "^6.1.0"
-    npmlog "^4.1.2"
-    semver "^5.5.0"
-
-"@lerna/package@3.14.2":
-  version "3.14.2"
-  resolved "https://registry.yarnpkg.com/@lerna/package/-/package-3.14.2.tgz#f893cb42e26c869df272dafbe1dd5a3473b0bd4d"
-  integrity sha512-YR/+CzYdufJYfsUlrfuhTjA35iSZpXK7mVOZmeR9iRWhSaqesm4kq2zfxm9vCpZV2oAQQZOwi4eo5h0rQBtdiw==
-  dependencies:
-    load-json-file "^4.0.0"
-    npm-package-arg "^6.1.0"
-    write-pkg "^3.1.0"
-
 "@lerna/package@3.16.0":
   version "3.16.0"
   resolved "https://registry.yarnpkg.com/@lerna/package/-/package-3.16.0.tgz#7e0a46e4697ed8b8a9c14d59c7f890e0d38ba13c"
@@ -2285,13 +2265,6 @@
     load-json-file "^5.3.0"
     npm-package-arg "^6.1.0"
     write-pkg "^3.1.0"
-
-"@lerna/prerelease-id-from-version@3.14.0":
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/@lerna/prerelease-id-from-version/-/prerelease-id-from-version-3.14.0.tgz#d5da9c26ac4a0d0ecde09018f06e41ca4dd444c2"
-  integrity sha512-Ap3Z/dNhqQuSrKmK+JmzYvQYI2vowxHvUVxZJiDVilW8dyNnxkCsYFmkuZytk5sxVz4VeGLNPS2RSsU5eeSS+Q==
-  dependencies:
-    semver "^5.5.0"
 
 "@lerna/prerelease-id-from-version@3.16.0":
   version "3.16.0"
@@ -2310,7 +2283,7 @@
     npmlog "^4.1.2"
     upath "^1.2.0"
 
-"@lerna/project@3.21.0", "@lerna/project@^3.18.0":
+"@lerna/project@3.21.0", "@lerna/project@^3.18.0", "@lerna/project@^3.21.0":
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/@lerna/project/-/project-3.21.0.tgz#5d784d2d10c561a00f20320bcdb040997c10502d"
   integrity sha512-xT1mrpET2BF11CY32uypV2GPtPVm6Hgtha7D81GQP9iAitk9EccrdNjYGt5UBYASl4CIDXBRxwmTTVGfrCx82A==
@@ -2327,24 +2300,6 @@
     p-map "^2.1.0"
     resolve-from "^4.0.0"
     write-json-file "^3.2.0"
-
-"@lerna/project@^3.15.0":
-  version "3.15.0"
-  resolved "https://registry.yarnpkg.com/@lerna/project/-/project-3.15.0.tgz#733b0993a849dcf5b68fcd0ec11d8f7de38a6999"
-  integrity sha512-eNGUWiMbQ9kh9kGkomtMnsLypS0rfLqxKgZP2+VnNVtIXjnLv4paeTm+1lkL+naNJUwhnpMk2NSLEeoxT/20QA==
-  dependencies:
-    "@lerna/package" "3.14.2"
-    "@lerna/validation-error" "3.13.0"
-    cosmiconfig "^5.1.0"
-    dedent "^0.7.0"
-    dot-prop "^4.2.0"
-    glob-parent "^3.1.0"
-    globby "^8.0.1"
-    load-json-file "^4.0.0"
-    npmlog "^4.1.2"
-    p-map "^1.2.0"
-    resolve-from "^4.0.0"
-    write-json-file "^2.3.0"
 
 "@lerna/prompt@3.18.5":
   version "3.18.5"
@@ -13682,7 +13637,7 @@ globby@*, globby@^10.0.1:
     merge2 "^1.2.3"
     slash "^3.0.0"
 
-globby@8.0.2, globby@^8.0.1:
+globby@8.0.2:
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/globby/-/globby-8.0.2.tgz#5697619ccd95c5275dbb2d6faa42087c1a941d8d"
   integrity sha512-yTzMmKygLp8RUpG1Ymu2VXPSJQZjNAZPD4ywgYEaG7e4tBJeUQBO8OpXrf1RCNcEs5alsoJYPAMiIHP0cmeC7w==
@@ -20315,11 +20270,6 @@ p-map-series@^1.0.0:
   integrity sha1-v5j+V1cFZYqeE1G++4WuTB8Hvco=
   dependencies:
     p-reduce "^1.0.0"
-
-p-map@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/p-map/-/p-map-1.2.0.tgz#e4e94f311eabbc8633a1e79908165fca26241b6b"
-  integrity sha512-r6zKACMNhjPJMTl8KcFH4li//gkrXWfbD6feV8l6doRHlzljFWGJ2AP6iKaCJXyZmAUMOPtvbW7EXkbWO/pLEA==
 
 p-map@^2.0.0, p-map@^2.1.0:
   version "2.1.0"
@@ -27827,7 +27777,7 @@ write-file-webpack-plugin@^4.1.0:
     moment "^2.22.1"
     write-file-atomic "^2.3.0"
 
-write-json-file@^2.2.0, write-json-file@^2.3.0:
+write-json-file@^2.2.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/write-json-file/-/write-json-file-2.3.0.tgz#2b64c8a33004d54b8698c76d585a77ceb61da32f"
   integrity sha1-K2TIozAE1UuGmMdtWFp3zrYdoy8=
