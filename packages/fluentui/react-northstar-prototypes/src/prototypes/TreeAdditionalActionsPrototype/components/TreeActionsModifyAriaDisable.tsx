@@ -113,6 +113,9 @@ const TreeActionsUsingPopup = ({ useMacAccessabilityBehavior }) => {
             tabIndex={-1}
             data-is-focusable={!buttonDisabled}
             aria-hidden={buttonDisabled}
+            role="application"
+            aria-label="Mute all"
+            aria-roledescription="button"
             ref={buttonRef}
             onKeyDown={e => {
               if (e.key === 'ArrowLeft') {
