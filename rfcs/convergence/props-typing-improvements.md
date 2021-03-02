@@ -16,7 +16,7 @@ For example, given a component named `Widget` with slots `icon` and `text`, and 
 ```typescript
 export interface WidgetProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   icon?: ShorthandProps<IconProps>;
-  text?: ShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  text?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 
   // This prop has a default defined in useWidget:
   propWithDefaultValue?: string;
@@ -31,7 +31,7 @@ export interface WidgetProps extends ComponentProps, React.HTMLAttributes<HTMLEl
 ```typescript
 export interface WidgetState extends WidgetProps {
   icon?: ObjectShorthandProps<IconProps>;
-  text: ObjectShorthandProps<React.HTMLAttributes<HTMLSpanElement>>;
+  text: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
   propWithDefaultValue: string;
 }
 ```
