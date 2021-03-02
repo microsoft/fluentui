@@ -102,8 +102,6 @@ From [Divider.types.tsx](http://about:blank)
 
 ```ts
 export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
-  tokens?: RecursivePartial<DividerTokens>;
-
   /**
    * Determines the alignment of the content within the divider.
    * @defaultvalue 'center'
@@ -125,22 +123,26 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
   /* A divider can be horizontal (default) or vertical*/
   vertical?: boolean;
 
-  /* Overrides for custom appearances */
-  height?: string;
-  width?: string;
+  /* Overrides for border visuals */
+  borderStyle?: string;
+  borderSize?: string | number;
 
+  /* Exposed used properties */
+  /*
+   *** NOTE ***
+    Once we have a full story and patterns for component tokens,
+    the following should be removed and the pattern updated.
+  */
+  fontColor?: string;
   fontSize?: string;
   fontWeight?: string;
-  fontColor?: string;
-
+  height?: string;
   margin?: string;
-  marginTop?: string;
   marginBottom?: string;
   marginLeft?: string;
   marginRight?: string;
-
-  borderStyle?: string;
-  borderSize?: string | number;
+  marginTop?: string;
+  width?: string;
 }
 ```
 
