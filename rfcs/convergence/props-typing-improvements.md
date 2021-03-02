@@ -78,16 +78,20 @@ The fix would be to:
    - `ComponentShorthandProps`: a list of the shorthand props from the state.
 2. Update `mergeProps` (`makeMergeProps`) to require that the first argument is of type `TState`.
    - This will enforce that all props with defaults are provided and are of the correct type.
+3. Declare the `widgetShorthandProps` array "`as const`" and put it in the .types.ts file.
+   - This allows it to be used to declare the type used for the shorthand prop names.
 
 ### Usage example
 
 `Widget.types.ts`:
 
 ```typescript
+export const widgetShorthandProps = ['icon', 'text'] as const;
+
 export type WidgetState = ComponentState<
   WidgetProps,
-  { ShorthandProps: 'icon' | 'text' },
-  { DefaultedProps: 'text' | 'propWithDefaultValue' }
+  /* ShorthandProps: */ typeof widgetShorthandProps[number],
+  /* DefaultedProps: */ 'text' | 'propWithDefaultValue'
 >;
 ```
 
@@ -96,7 +100,7 @@ export type WidgetState = ComponentState<
 The types are checked, and the bug is fixed! (there was a typo in the problem statement above: the slot name was `test` instead of `text`)
 
 ```typescript
-export const widgetShorthandProps: ComponentShorthandProps<WidgetState>[] = ['icon', 'text'];
+const mergeProps = makeMergeProps<WidgetState>({ deepMerge: widgetShorthandProps });
 
 export const useWidget = (props: WidgetProps, ref: React.Ref<HTMLElement>, defaultProps?: WidgetProps): WidgetState => {
   const state = mergeProps(
@@ -104,6 +108,7 @@ export const useWidget = (props: WidgetProps, ref: React.Ref<HTMLElement>, defau
       as: 'div',
       text: { as: 'span' },
       propWithDefaultValue: 'hello world',
+      ref,
     },
     defaultProps,
     resolveShorthandProps(props, widgetShorthandProps),
@@ -127,22 +132,33 @@ N/A
 
 ## Open Issues
 
-In desigining the `ComponentState` type, I opted for explicitly naming the ShorthandProps and DefaultedProps, in a nonconventional syntax:
+What do people think of defining the shorthand props types via the `widgetShorthandProps` array using `as const`.
+
+- Pros:
+  - Only write the names of the shorthand props in a single place
+  - Avoids creating an extra exported type `WidgetShorthandProps`, which would only be used in one other place (to define the array).
+- Cons:
+  - Less conventional syntax (`typeof widgetShorthandProps[number]`)
 
 ```typescript
+export const widgetShorthandProps = ['icon', 'text'] as const;
+
 export type WidgetState = ComponentState<
   WidgetProps,
-  { ShorthandProps: 'icon' | 'text' },
-  { DefaultedProps: 'text' | 'propWithDefaultValue' }
+  /* ShorthandProps: */ typeof widgetShorthandProps[number],
+  /* DefaultedProps: */ 'text' | 'propWithDefaultValue'
 >;
 ```
 
-Is this syntax weird? The alternative is to have two normal type params, and rely on comments:
+The alternative is to manually write the `WidgetShorthandProps` type, and use it as the type of the `widgetShorthandProps` array.
 
 ```typescript
+export type WidgetShorthandProps = 'icon' | 'text';
 export type WidgetState = ComponentState<
   WidgetProps,
-  /* ShorthandProps: */ 'icon' | 'text',
+  WidgetShorthandProps,
   /* DefaultedProps: */ 'text' | 'propWithDefaultValue'
 >;
+
+export const widgetShorthandProps: WidgetShorthandProps[] = ['icon', 'text'];
 ```

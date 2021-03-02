@@ -51,10 +51,10 @@ export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React
 };
 
 /**
- * Helper type to convert the given props of type ShorthandProps<...> into ObjectShorthandProps<...>
+ * Helper type to convert the given props of type ShorthandProps into ObjectShorthandProps
  */
 export type ResolvedShorthandProps<Props, ShorthandPropNames extends keyof Props> = Omit<Props, ShorthandPropNames> &
-  { [P in ShorthandPropNames]: Props[P] extends ShorthandProps<infer T> ? ObjectShorthandProps<T> : Props[P] };
+  { [P in ShorthandPropNames]: Props[P] extends ShorthandProps<infer T> ? ObjectShorthandProps<T> : never };
 
 /**
  * Helper type to mark the given props as required.
@@ -68,35 +68,12 @@ export type RequiredProps<Props, RequiredProps extends keyof Props> = Omit<Props
  * * Adds the 'ref' and 'as' types as required values
  * * Ensures the specified ShorthandProps are of type ObjectShorthandProps<T>
  * * Marks the given DefaultedProps as required (-?)
- *
- * Example usage:
- * ```typescript
- * export type ExampleState = ComponentState<
- *    ExampleProps,
- *    { ShorthandProps: 'icon' | 'text' },
- *    { DefaultedProps: 'color' | 'size' }
- *  >;
- * ```
  */
 export type ComponentState<
   Props extends ComponentProps,
-  ShorthandProps extends { ShorthandProps: keyof Props },
-  DefaultedProps extends { DefaultedProps: keyof Props } = { DefaultedProps: never }
-> = RequiredProps<
-  ResolvedShorthandProps<Props, ShorthandProps['ShorthandProps']>,
-  'as' | DefaultedProps['DefaultedProps']
-> & {
-  ref: React.RefObject<HTMLElement>;
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  _internal_ShorthandProps?: ShorthandProps['ShorthandProps'];
+  ShorthandProps extends keyof Props = never,
+  DefaultedProps extends keyof ResolvedShorthandProps<Props, ShorthandProps> = never
+> = RequiredProps<ResolvedShorthandProps<Props, ShorthandProps>, DefaultedProps> & {
+  as: React.ElementType;
+  ref: React.Ref<HTMLElement>;
 };
-
-/**
- * Gets the list of shorthand props from a component's State type
- */
-export type ComponentShorthandProps<
-  State extends {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
-    _internal_ShorthandProps?: string | never;
-  }
-> = Required<State>['_internal_ShorthandProps'];
