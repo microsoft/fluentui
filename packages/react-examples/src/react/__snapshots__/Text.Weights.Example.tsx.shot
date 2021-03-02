@@ -588,7 +588,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone5"
+                      data-focuszone-id="FocusZone3"
                       data-is-focusable={true}
                       data-item-index={0}
                       data-selection-index={0}
@@ -837,7 +837,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone8"
+                      data-focuszone-id="FocusZone4"
                       data-is-focusable={true}
                       data-item-index={1}
                       data-selection-index={1}
@@ -1086,7 +1086,7 @@ exports[`Component Examples renders Text.Weights.Example.tsx correctly 1`] = `
                             opacity: 1;
                           }
                       data-automationid="DetailsRow"
-                      data-focuszone-id="FocusZone11"
+                      data-focuszone-id="FocusZone5"
                       data-is-focusable={true}
                       data-item-index={2}
                       data-selection-index={2}

@@ -993,7 +993,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone6"
+                                data-focuszone-id="FocusZone4"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -1059,7 +1059,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox4 rowHeader5"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -1109,7 +1108,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox4"
                                     role="checkbox"
                                   >
                                     <div
@@ -1410,7 +1408,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone9"
+                                data-focuszone-id="FocusZone5"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -1476,7 +1474,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox7 rowHeader8"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -1526,7 +1523,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox7"
                                     role="checkbox"
                                   >
                                     <div
@@ -1827,7 +1823,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone12"
+                                data-focuszone-id="FocusZone6"
                                 data-is-focusable={true}
                                 data-item-index={2}
                                 data-selection-index={2}
@@ -1893,7 +1889,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox10 rowHeader11"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -1943,7 +1938,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox10"
                                     role="checkbox"
                                   >
                                     <div
@@ -2244,7 +2238,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone15"
+                                data-focuszone-id="FocusZone7"
                                 data-is-focusable={true}
                                 data-item-index={3}
                                 data-selection-index={3}
@@ -2310,7 +2304,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox13 rowHeader14"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -2360,7 +2353,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox13"
                                     role="checkbox"
                                   >
                                     <div
@@ -2661,7 +2653,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone18"
+                                data-focuszone-id="FocusZone8"
                                 data-is-focusable={true}
                                 data-item-index={4}
                                 data-selection-index={4}
@@ -2727,7 +2719,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox16 rowHeader17"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -2777,7 +2768,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox16"
                                     role="checkbox"
                                   >
                                     <div
@@ -3078,7 +3068,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone21"
+                                data-focuszone-id="FocusZone9"
                                 data-is-focusable={true}
                                 data-item-index={5}
                                 data-selection-index={5}
@@ -3144,7 +3134,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox19 rowHeader20"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -3194,7 +3183,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox19"
                                     role="checkbox"
                                   >
                                     <div
@@ -3495,7 +3483,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone24"
+                                data-focuszone-id="FocusZone10"
                                 data-is-focusable={true}
                                 data-item-index={6}
                                 data-selection-index={6}
@@ -3561,7 +3549,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox22 rowHeader23"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -3611,7 +3598,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox22"
                                     role="checkbox"
                                   >
                                     <div
@@ -3912,7 +3898,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone27"
+                                data-focuszone-id="FocusZone11"
                                 data-is-focusable={true}
                                 data-item-index={7}
                                 data-selection-index={7}
@@ -3978,7 +3964,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox25 rowHeader26"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -4028,7 +4013,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox25"
                                     role="checkbox"
                                   >
                                     <div
@@ -4329,7 +4313,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone30"
+                                data-focuszone-id="FocusZone12"
                                 data-is-focusable={true}
                                 data-item-index={8}
                                 data-selection-index={8}
@@ -4395,7 +4379,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox28 rowHeader29"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -4445,7 +4428,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox28"
                                     role="checkbox"
                                   >
                                     <div
@@ -4746,7 +4728,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                       opacity: 1;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone33"
+                                data-focuszone-id="FocusZone13"
                                 data-is-focusable={true}
                                 data-item-index={9}
                                 data-selection-index={9}
@@ -4812,7 +4794,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-labelledby="checkbox31 rowHeader32"
                                     aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
@@ -4862,7 +4843,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                         }
                                     data-automationid="DetailsRowCheck"
                                     data-selection-toggle={true}
-                                    id="checkbox31"
                                     role="checkbox"
                                   >
                                     <div
