@@ -128,6 +128,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
     offset,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     className,
     design,
     styles,
@@ -230,6 +231,7 @@ export const SplitButton: ComponentWithAs<'div', SplitButtonProps> &
                 offset,
                 unstable_disableTether,
                 unstable_pinned,
+                autoSize,
               }),
             overrideProps: handleMenuButtonOverrides,
           },
@@ -305,6 +307,7 @@ SplitButton.propTypes = {
   ]),
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
 };
 
 SplitButton.defaultProps = {
