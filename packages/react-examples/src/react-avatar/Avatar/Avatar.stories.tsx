@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { AvatarExamples } from '@fluentui/example-data';
 import { Button, SpinButton, Stack, ThemeProvider } from '@fluentui/react';
-import {
-  Avatar,
-  AvatarProps,
-  avatarSizeValues,
-  AvatarState,
-  renderAvatar,
-  useAvatar,
-  useAvatarStyles,
-} from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, AvatarState, renderAvatar, useAvatar, useAvatarStyles } from '@fluentui/react-avatar';
 import { useBoolean } from '@fluentui/react-hooks';
 import {
   CalendarIcon,
@@ -31,7 +23,6 @@ import { StoryExample } from '../utils/StoryExample';
 
 const examples = {
   ...AvatarExamples,
-  size: avatarSizeValues,
   icon: [
     /* eslint-disable react/jsx-key */
     <GroupIcon />,
@@ -81,8 +72,20 @@ export const Basic = () => (
       <Avatar size={96} name={examples.name[6]} image={examples.image[6]} badge="warning" />
     </StoryExample>
     <StoryExample title="Brand color">
-      <Avatar colorVariant="brand" name={examples.name[4]} badge="info" />
-      <Avatar colorVariant="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+      <Avatar color="brand" name={examples.name[4]} badge="info" />
+      <Avatar color="brand" name={examples.name[5]} icon={examples.icon[5]} badge="success" />
+    </StoryExample>
+    <StoryExample title="Colorful">
+      <Avatar color="colorful" name={examples.name[13]} />
+      <Avatar color="colorful" name={examples.name[14]} />
+      <Avatar color="colorful" name={examples.name[15]} />
+      <Avatar color="colorful" name={examples.name[16]} />
+      <Avatar color="colorful" name={examples.name[17]} />
+      <Avatar color="colorful" idForColor={examples.name[18]} />
+      <Avatar color="colorful" idForColor={examples.name[19]} />
+      <Avatar color="colorful" idForColor={examples.name[20]} />
+      <Avatar color="colorful" idForColor={examples.name[21]} />
+      <Avatar color="colorful" idForColor={examples.name[22]} />
     </StoryExample>
     <StoryExample title="Active/inactive">
       <Stack horizontal wrap tokens={{ childrenGap: 16 }}>
@@ -108,9 +111,6 @@ export const AllSizes = () => (
     <StoryExample title="Initials">
       <AvatarExampleList names={examples.name} />
     </StoryExample>
-    <StoryExample title="Initials, brand color">
-      <AvatarExampleList names={examples.name} colorVariant="brand" />
-    </StoryExample>
     <StoryExample title="Initials, square">
       <AvatarExampleList names={examples.name} square exampleIndex={1} />
     </StoryExample>
@@ -120,8 +120,28 @@ export const AllSizes = () => (
     <StoryExample title="Icon, square">
       <AvatarExampleList icons={examples.icon} square exampleIndex={1} />
     </StoryExample>
-    <StoryExample title="Icon, brand color">
-      <AvatarExampleList icons={examples.icon} colorVariant="brand" exampleIndex={1} />
+  </>
+);
+
+export const Colors = () => (
+  <>
+    <StoryExample title="Neutral">
+      <Avatar size={40} color="neutral" />
+      <Avatar size={40} color="neutral" name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Brand">
+      <Avatar size={40} color="brand" />
+      <Avatar size={40} color="brand" name={examples.name[0]} />
+    </StoryExample>
+    <StoryExample title="Colorful">
+      {examples.namedColors.map((color) => (
+        <Avatar size={40} color={color} key={color} />
+      ))}
+    </StoryExample>
+    <StoryExample title="Colorful, hash of name">
+      {examples.name.map((name) => (
+        <Avatar size={40} color="colorful" name={name} key={name} />
+      ))}
     </StoryExample>
   </>
 );
@@ -174,7 +194,7 @@ export const ActiveAnimation = () => {
           />
         </div>
         <Stack tokens={{ childrenGap: 8, maxWidth: 220 }}>
-          <Button primary onClick={React.useCallback(() => setActive(a => !a), [])}>
+          <Button primary onClick={React.useCallback(() => setActive((a) => !a), [])}>
             Toggle Active
           </Button>
           <SpinButton
@@ -204,19 +224,19 @@ export const CustomSizes = () => (
 
 const useRobotAvatarRootStyles = makeStyles<AvatarState>([
   [null, { borderRadius: '0' }],
-  [s => s.size === 20, { width: '24px' }],
-  [s => s.size === 24, { width: '28px' }],
-  [s => s.size === 28, { width: '32px' }],
-  [s => s.size === 32, { width: '36px' }],
-  [s => s.size === 36, { width: '40px' }],
-  [s => s.size === 40, { width: '44px' }],
-  [s => s.size === 48, { width: '56px' }],
-  [s => s.size === 56, { width: '64px' }],
-  [s => s.size === 64, { width: '72px' }],
-  [s => s.size === 72, { width: '80px' }],
-  [s => s.size === 96, { width: '108px' }],
-  [s => s.size === 120, { width: '128px' }],
-  [s => s.size === 128, { width: '136px' }],
+  [(s) => s.size === 20, { width: '24px' }],
+  [(s) => s.size === 24, { width: '28px' }],
+  [(s) => s.size === 28, { width: '32px' }],
+  [(s) => s.size === 32, { width: '36px' }],
+  [(s) => s.size === 36, { width: '40px' }],
+  [(s) => s.size === 40, { width: '44px' }],
+  [(s) => s.size === 48, { width: '56px' }],
+  [(s) => s.size === 56, { width: '64px' }],
+  [(s) => s.size === 64, { width: '72px' }],
+  [(s) => s.size === 72, { width: '80px' }],
+  [(s) => s.size === 96, { width: '108px' }],
+  [(s) => s.size === 120, { width: '128px' }],
+  [(s) => s.size === 128, { width: '136px' }],
 ]);
 
 const useRobotAvatarLabelStyles = makeStyles<AvatarState>([
@@ -267,7 +287,7 @@ export const AvatarPlayground = () => {
     useValueSelector('name', [nameAndImage.name, nextNameAndImage, prevNameAndImage], true),
     useValueSelector('image', [nameAndImage.image, nextNameAndImage, prevNameAndImage], true, getFilenameFromUrl),
     useValueSelector('icon', useValueSelectorState(examples.icon), false, iconToString),
-    useValueSelector('colorVariant', useValueSelectorState(examples.colorVariant)),
+    useValueSelector('color', useValueSelectorState([...examples.color, ...examples.namedColors])),
     useValueSelector('active', useValueSelectorState(['active', 'inactive'] as const)),
     useValueSelector('activeDisplay', useValueSelectorState(examples.activeDisplay)),
   ];
@@ -282,10 +302,10 @@ export const AvatarPlayground = () => {
         <Avatar {...propValues} />
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', fontFamily: 'Consolas, monospaced', fontSize: '14px' }}>
-        {...propSelectors.map(p => p.renderSelector())}
+        {...propSelectors.map((p) => p.renderSelector())}
         <div style={{ display: 'flex', flexDirection: 'column', marginTop: '20px' }}>
           {`<Avatar `}
-          {...propSelectors.map(p => p.renderValue())}
+          {...propSelectors.map((p) => p.renderValue())}
           {`/>`}
         </div>
       </div>
@@ -300,12 +320,14 @@ export const AvatarPlayground = () => {
 /**
  * Generate a list of Avatars with sample properties
  */
-const AvatarExampleList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-  icons?: readonly JSX.Element[];
-  exampleIndex?: number;
-}> = props => {
+const AvatarExampleList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+    icons?: readonly JSX.Element[];
+    exampleIndex?: number;
+  }
+> = (props) => {
   const { names, images, icons, exampleIndex = 0, ...restOfProps } = props;
   const offset = exampleIndex * examples.size.length;
 
@@ -336,11 +358,11 @@ type ValueSelectorState<T> = [/*value:*/ T, /*next:*/ () => void, /*prev:*/ () =
 /**
  * Select a value from an array of values, with next/previous methods
  */
-const useValueSelectorState = function<T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
+const useValueSelectorState = function <T>(values: readonly T[], initialValue: T = values[0]): ValueSelectorState<T> {
   const count = values.length;
   const [index, setIndex] = React.useState<number>(() => values.indexOf(initialValue));
-  const next = React.useCallback(() => setIndex(i => (i + 1) % count), [count]);
-  const prev = React.useCallback(() => setIndex(i => (i - 1 + count) % count), [count]);
+  const next = React.useCallback(() => setIndex((i) => (i + 1) % count), [count]);
+  const prev = React.useCallback(() => setIndex((i) => (i - 1 + count) % count), [count]);
   return [values[index], next, prev];
 };
 
@@ -351,7 +373,7 @@ const useValueSelector = <Prop extends keyof AvatarProps>(
   name: Prop,
   [value, next, prev]: ValueSelectorState<AvatarProps[Prop]>,
   initialEnabled: boolean = false,
-  valueToString: (v: AvatarProps[Prop] | undefined) => string = v => `${v}`,
+  valueToString: (v: AvatarProps[Prop] | undefined) => string = (v) => `${v}`,
 ) => {
   const [enabled, { toggle: toggleEnabled }] = useBoolean(initialEnabled);
 

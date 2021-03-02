@@ -86,7 +86,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
             selectionPreservedOnEmptyClick={true}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
+            checkButtonAriaLabel="select row"
             onItemInvoked={this._onItemInvoked}
           />
         </MarqueeSelection>
@@ -109,7 +109,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
 
   private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
+      items: text ? this._allItems.filter((i) => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
     });
   };
 

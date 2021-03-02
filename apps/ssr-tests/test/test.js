@@ -1,13 +1,8 @@
 'use strict';
 
-// Treat warnings as failures.
-console.warn = message => {
-  throw new Error(message);
-};
-
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
-themeLoader.configureLoadStyles(styles => {
+themeLoader.configureLoadStyles((styles) => {
   // noop
 });
 
@@ -40,7 +35,7 @@ describe('Fabric components', () => {
 });
 
 function testRender(componentName, component) {
-  it(`${componentName} can render in a server environment`, done => {
+  it(`${componentName} can render in a server environment`, (done) => {
     let elem = React.createElement(component);
 
     try {

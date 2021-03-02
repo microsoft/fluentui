@@ -80,11 +80,11 @@ function _parseDotFile(pathToDotFile) {
   const parsed = parser(content.toString());
 
   const items = parsed[0].children;
-  items.forEach(item => {
+  items.forEach((item) => {
     if (item.type === 'node_stmt') {
       graph.addNode(item.node_id.id);
     } else {
-      graph.addEdge(item.edge_list[0].id, item.edge_list[1].id);
+      graph.addEdge(item.edge_list[0].id, item.edge_list[1].id, { dir: 'forward' });
     }
   });
 
@@ -109,9 +109,9 @@ function _getSubTree(graph, rootPackage) {
     subTree.addNode(currentNode);
     const { edges, children } = _getEdgesAndChildren(graph, currentNode);
 
-    children.forEach(child => nodesToProcess.push(child));
+    children.forEach((child) => nodesToProcess.push(child));
 
-    edges.forEach(edge => resEdges.add(`${edge.nodeOne.id},${edge.nodeTwo.id}`));
+    edges.forEach((edge) => resEdges.add(`${edge.nodeOne.id},${edge.nodeTwo.id}`));
 
     i++;
   }
@@ -119,7 +119,7 @@ function _getSubTree(graph, rootPackage) {
   const edgeIterator = resEdges.values();
   while ((value = edgeIterator.next().value)) {
     const edge = value.split(',');
-    subTree.addEdge(edge[0], edge[1]);
+    subTree.addEdge(edge[0], edge[1], { dir: 'forward' });
   }
   return subTree;
 }
@@ -132,7 +132,7 @@ function _getSubTree(graph, rootPackage) {
 function _getEdgesAndChildren(graph, node) {
   const edges = [];
   const children = [];
-  graph.edges.forEach(edge => {
+  graph.edges.forEach((edge) => {
     if (ignoreDevDependencies.includes(edge.nodeOne.id) || ignoreDevDependencies.includes(edge.nodeTwo.id)) {
       return;
     }
@@ -152,7 +152,7 @@ require('yargs')
   .command(
     '$0',
     'Generates dependency graphs for packages in the repo',
-    yargs => {
+    (yargs) => {
       yargs
         .positional('root', {
           type: 'string',
@@ -168,7 +168,7 @@ require('yargs')
           description: 'The path to graphviz which needs to be installed, required for windows users',
         });
     },
-    async argv => await main(argv),
+    async (argv) => await main(argv),
   )
   .demand('root')
   .help().argv;

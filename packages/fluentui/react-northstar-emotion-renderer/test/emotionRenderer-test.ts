@@ -105,6 +105,22 @@ describe('emotionRenderer', () => {
     expect(document).toMatchSnapshot();
   });
 
+  test('animations object value is wrapped in keyframe attribute', () => {
+    const styles: ICSSInJSStyle = {
+      animationName: {
+        from: {
+          transform: 'rotate(0deg)',
+        },
+        to: {
+          transform: 'rotate(360deg)',
+        },
+      },
+    };
+
+    createEmotionRenderer().renderRule(styles, defaultRendererParam);
+    expect(document).toMatchSnapshot();
+  });
+
   test('marginLeft is rendered into marginRight due to RTL', () => {
     createEmotionRenderer().renderRule({ marginLeft: '10px' }, { ...defaultRendererParam, direction: 'rtl' });
     expect(document).toMatchSnapshot();

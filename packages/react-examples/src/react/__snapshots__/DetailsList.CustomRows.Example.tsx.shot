@@ -706,8 +706,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox3 rowHeader4"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1112,8 +1112,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox6 rowHeader7"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1519,8 +1519,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox9 rowHeader10"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1925,8 +1925,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox12 rowHeader13"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2332,8 +2332,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox15 rowHeader16"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2738,8 +2738,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox18 rowHeader19"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3145,8 +3145,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox21 rowHeader22"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3551,8 +3551,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox24 rowHeader25"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3958,8 +3958,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox27 rowHeader28"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4364,8 +4364,8 @@ exports[`Component Examples renders DetailsList.CustomRows.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
                           aria-labelledby="checkbox30 rowHeader31"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost

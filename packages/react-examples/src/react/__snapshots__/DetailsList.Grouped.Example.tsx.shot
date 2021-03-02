@@ -1786,8 +1786,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   >
                                     <div
                                       aria-checked={false}
-                                      aria-label="Row checkbox"
                                       aria-labelledby="checkbox14 rowHeader15"
+                                      aria-label="select row"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -2268,8 +2268,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   >
                                     <div
                                       aria-checked={false}
-                                      aria-label="Row checkbox"
                                       aria-labelledby="checkbox17 rowHeader18"
+                                      aria-label="select row"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -3602,8 +3602,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   >
                                     <div
                                       aria-checked={false}
-                                      aria-label="Row checkbox"
                                       aria-labelledby="checkbox20 rowHeader21"
+                                      aria-label="select row"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -4084,8 +4084,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   >
                                     <div
                                       aria-checked={false}
-                                      aria-label="Row checkbox"
                                       aria-labelledby="checkbox23 rowHeader24"
+                                      aria-label="select row"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost
@@ -4566,8 +4566,8 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
                                   >
                                     <div
                                       aria-checked={false}
-                                      aria-label="Row checkbox"
                                       aria-labelledby="checkbox26 rowHeader27"
+                                      aria-label="select row"
                                       className=
                                           ms-DetailsRow-check
                                           ms-Check-checkHost

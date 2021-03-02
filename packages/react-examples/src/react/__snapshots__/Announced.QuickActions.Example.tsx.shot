@@ -676,6 +676,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox5 rowHeader6"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1216,6 +1217,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox11 rowHeader12"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1756,6 +1758,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox17 rowHeader18"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2296,6 +2299,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox23 rowHeader24"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2836,6 +2840,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox29 rowHeader30"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3376,6 +3381,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox35 rowHeader36"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3916,6 +3922,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox41 rowHeader42"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4456,6 +4463,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox47 rowHeader48"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4996,6 +5004,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox53 rowHeader54"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5536,6 +5545,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         <div
                           aria-checked={false}
                           aria-labelledby="checkbox59 rowHeader60"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost

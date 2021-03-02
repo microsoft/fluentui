@@ -127,7 +127,7 @@ export const popupClassName = 'ui-popup';
 export const Popup: React.FC<PopupProps> &
   FluentComponentStaticProps<PopupProps> & {
     Content: typeof PopupContent;
-  } = props => {
+  } = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Popup.displayName, context.telemetry);
   setStart();
@@ -155,6 +155,7 @@ export const Popup: React.FC<PopupProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -176,28 +177,28 @@ export const Popup: React.FC<PopupProps> &
   const getA11yProps = useAccessibility(accessibility, {
     debugName: Popup.displayName,
     actionHandlers: {
-      closeAndFocusTrigger: e => {
+      closeAndFocusTrigger: (e) => {
         e.preventDefault();
         close(e, () => _.invoke(triggerFocusableRef.current, 'focus'));
       },
-      close: e => {
+      close: (e) => {
         close(e);
       },
-      toggle: e => {
+      toggle: (e) => {
         e.preventDefault();
         trySetOpen(!open, e);
       },
-      open: e => {
+      open: (e) => {
         e.preventDefault();
         setPopupOpen(true, e);
       },
-      click: e => {
+      click: (e) => {
         _.invoke(triggerRef.current, 'click');
       },
-      preventScroll: e => {
+      preventScroll: (e) => {
         e.preventDefault();
       },
-      stopPropagation: e => {
+      stopPropagation: (e) => {
         e.stopPropagation();
       },
     },
@@ -261,7 +262,7 @@ export const Popup: React.FC<PopupProps> &
     return isOutsidePopup;
   };
 
-  const getTriggerProps = triggerElement => {
+  const getTriggerProps = (triggerElement) => {
     const triggerProps: any = {};
     const normalizedOn = _.isArray(on) ? on : [on];
 
@@ -388,7 +389,7 @@ export const Popup: React.FC<PopupProps> &
     return relatedTarget && !(isInsideContent || isInsideTarget);
   };
 
-  const renderPopperChildren = classes => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
+  const renderPopperChildren = (classes) => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
     const content = renderContent ? renderContent(scheduleUpdate) : props.content;
     const popupContent = Popup.Content.create(content || {}, {
       defaultProps: () =>
@@ -399,6 +400,7 @@ export const Popup: React.FC<PopupProps> &
           pointerRef: pointerTargetRef,
           trapFocus,
           autoFocus,
+          autoSize,
           className: classes,
         }),
       overrideProps: getContentProps,
@@ -409,7 +411,7 @@ export const Popup: React.FC<PopupProps> &
         {(getRefs, nestingRef) => (
           <>
             <Ref
-              innerRef={domElement => {
+              innerRef={(domElement) => {
                 popupContentRef.current = domElement;
                 handleRef(contentRef, domElement);
                 nestingRef.current = domElement;
@@ -562,6 +564,7 @@ export const Popup: React.FC<PopupProps> &
           rtl={context.rtl}
           unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
+          autoSize={autoSize}
           targetRef={rightClickReferenceObject.current || target || triggerRef}
         >
           {renderPopperChildren(classes)}
@@ -629,6 +632,7 @@ Popup.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),

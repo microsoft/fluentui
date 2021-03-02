@@ -48,6 +48,9 @@ describe('Dropdown', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
+    if ((setTimeout as any).mock) {
+      jest.useRealTimers();
+    }
 
     document.body.innerHTML = '';
   });
@@ -66,7 +69,11 @@ describe('Dropdown', () => {
 
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+      // There's intermittent variation (maybe measurement-related) on different computers,
+      // so use fake timers to make it more predictable even though we never advance the timers.
+      jest.useFakeTimers();
+
       const ref = React.createRef<IDropdown>();
       wrapper = mount(<Dropdown options={RENDER_OPTIONS} componentRef={ref} />);
       ref.current!.focus(true);
@@ -166,8 +173,8 @@ describe('Dropdown', () => {
     });
 
     it('clears when the selectedKey is null', () => {
-      safeCreate(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<Dropdown selectedKey="1" options={DEFAULT_OPTIONS} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe('1');
@@ -250,8 +257,8 @@ describe('Dropdown', () => {
         { key: 1, text: 'item2' },
       ];
 
-      safeCreate(<Dropdown options={options} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<Dropdown options={options} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe(undefined);
@@ -269,8 +276,8 @@ describe('Dropdown', () => {
         { key: 1, text: 'item2' },
       ];
 
-      safeCreate(<Dropdown selectedKey={0} options={options} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<Dropdown selectedKey={0} options={options} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe('item1');
@@ -482,7 +489,11 @@ describe('Dropdown', () => {
 
     it('Renders correctly when open', () => {
       // Mock createPortal so that the options list ends up inside the wrapper for snapshotting
-      spyOn(ReactDOM, 'createPortal').and.callFake(node => node);
+      spyOn(ReactDOM, 'createPortal').and.callFake((node) => node);
+      // There's intermittent variation (maybe measurement-related) on different computers,
+      // so use fake timers to make it more predictable even though we never advance the timers.
+      jest.useFakeTimers();
+
       const ref = React.createRef<IDropdown>();
       wrapper = mount(<Dropdown multiSelect options={RENDER_OPTIONS} componentRef={ref} />);
       ref.current!.focus(true);
@@ -532,8 +543,8 @@ describe('Dropdown', () => {
         { key: 1, text: 'item2' },
       ];
 
-      safeCreate(<Dropdown multiSelect options={options} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<Dropdown multiSelect options={options} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe(undefined);
@@ -552,8 +563,8 @@ describe('Dropdown', () => {
       ];
       const selectedKeys = [0];
 
-      safeCreate(<Dropdown multiSelect options={options} selectedKeys={selectedKeys} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<Dropdown multiSelect options={options} selectedKeys={selectedKeys} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe('item1');
@@ -821,8 +832,8 @@ describe('Dropdown', () => {
     }
 
     it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
-      safeCreate(<DropdownWithChangingProps multi={false} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<DropdownWithChangingProps multi={false} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe('Option b');
@@ -830,8 +841,8 @@ describe('Dropdown', () => {
     });
 
     it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
-      safeCreate(<DropdownWithChangingProps multi={true} />, container => {
-        const dropdownOptionText = container.root.find(node => {
+      safeCreate(<DropdownWithChangingProps multi={true} />, (container) => {
+        const dropdownOptionText = container.root.find((node) => {
           return node.props.className?.includes?.('ms-Dropdown-title');
         });
         expect(dropdownOptionText.children?.[0]).toBe('Option b, Option d');

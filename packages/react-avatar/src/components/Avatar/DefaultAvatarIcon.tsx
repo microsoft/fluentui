@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { getNativeProps, htmlElementProperties } from '@fluentui/utilities';
 import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { getNativeProps, htmlElementProperties } from '@fluentui/react-utilities';
+import * as React from 'react';
 
 const useRootStyles = makeStyles([
   [
@@ -31,7 +31,7 @@ const useSvgStyles = makeStyles([
 // !!!   A usage of converged icon package should be considered.
 //
 
-export const DefaultAvatarIcon: React.FC<React.HTMLAttributes<HTMLSpanElement>> = props => {
+export const DefaultAvatarIcon: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (props) => {
   const containerProps = props['aria-label']
     ? {}
     : {

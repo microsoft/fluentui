@@ -69,20 +69,20 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
         getGroupHeight={this._getGroupHeight}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        checkButtonAriaLabel="Row checkbox"
+        checkButtonAriaLabel="select row"
         onRenderDetailsHeader={this._onRenderDetailsHeader}
       />
     );
   }
 
-  private _onRenderDetailsHeader: IDetailsListProps['onRenderDetailsHeader'] = props => {
+  private _onRenderDetailsHeader: IDetailsListProps['onRenderDetailsHeader'] = (props) => {
     if (props) {
       return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Toggle selection'} />;
     }
     return null;
   };
 
-  private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = props => {
+  private _onRenderGroupHeader: IDetailsGroupRenderProps['onRenderHeader'] = (props) => {
     if (props) {
       return (
         <div className={classNames.headerAndFooter}>
@@ -102,7 +102,7 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
     return null;
   };
 
-  private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = props => {
+  private _onRenderGroupFooter: IDetailsGroupRenderProps['onRenderFooter'] = (props) => {
     if (props) {
       return (
         <div className={classNames.headerAndFooter}>

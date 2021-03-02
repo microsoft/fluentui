@@ -107,8 +107,9 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
-  FluentComponentStaticProps<MenuButtonProps> = props => {
+export const MenuButton: ComponentWithAs<'div', MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps> = (
+  props,
+) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
@@ -138,6 +139,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   } = props;
 
@@ -161,9 +163,9 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
   const getA11yProps = useAccessibility<MenuButtonBehaviorProps>(accessibility, {
     debugName: MenuButton.displayName,
     actionHandlers: {
-      closeMenu: e => closeMenu(e),
-      openAndFocusFirst: e => openAndFocus(e, 'first'),
-      openAndFocusLast: e => openAndFocus(e, 'last'),
+      closeMenu: (e) => closeMenu(e),
+      openAndFocusFirst: (e) => openAndFocus(e, 'first'),
+      openAndFocusLast: (e) => openAndFocus(e, 'last'),
     },
     mapPropsToBehavior: () => ({
       menuId: menuId.current,
@@ -200,6 +202,7 @@ export const MenuButton: ComponentWithAs<'div', MenuButtonProps> &
     trigger,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
     variables,
   };
 
@@ -332,6 +335,7 @@ MenuButton.propTypes = {
   tabbableTrigger: PropTypes.bool,
   unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
+  autoSize: PropTypes.oneOf([true, false, 'height', 'width']),
   menu: PropTypes.oneOfType([
     customPropTypes.itemShorthandWithoutJSX,
     PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),

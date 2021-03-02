@@ -19,7 +19,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const textField = React.useRef<ITextField>(null);
   const selection = useConst(() => new Selection());
   const [items, setItems] = React.useState<IExampleItem[]>(() =>
-    createArray(20, i => ({
+    createArray(20, (i) => ({
       key: i,
       name: 'Item ' + i,
     })),
@@ -29,14 +29,14 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
   const [announced, setAnnounced] = React.useState<JSX.Element | undefined>(undefined);
 
   const deleteItem = React.useCallback((index: number): void => {
-    setItems(prevItems => prevItems.filter((item, i) => i !== index));
+    setItems((prevItems) => prevItems.filter((item, i) => i !== index));
     setAnnounced(<Announced message="Item deleted" aria-live="assertive" />);
   }, []);
 
   const renameItem = React.useCallback((item: IExampleItem, index: number): void => {
     const updateItemName = () => {
       if (textField && textField.current) {
-        setItems(prevItems => {
+        setItems((prevItems) => {
           const renamedItems = [...prevItems];
           renamedItems[index] = { ...prevItems[index], name: textField.current?.value || renamedItems[index].name };
           return renamedItems;
@@ -112,6 +112,7 @@ export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
         selectionPreservedOnEmptyClick
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
       />
       <Dialog hidden={!dialogContent} onDismiss={closeRenameDialog} closeButtonAriaLabel="Close">
         {dialogContent}

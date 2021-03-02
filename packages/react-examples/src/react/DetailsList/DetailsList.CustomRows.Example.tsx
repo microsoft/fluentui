@@ -15,16 +15,11 @@ export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
 
   public render() {
     return (
-      <DetailsList
-        items={this._items}
-        setKey="set"
-        onRenderRow={this._onRenderRow}
-        checkButtonAriaLabel="Row checkbox"
-      />
+      <DetailsList items={this._items} setKey="set" onRenderRow={this._onRenderRow} checkButtonAriaLabel="select row" />
     );
   }
 
-  private _onRenderRow: IDetailsListProps['onRenderRow'] = props => {
+  private _onRenderRow: IDetailsListProps['onRenderRow'] = (props) => {
     const customStyles: Partial<IDetailsRowStyles> = {};
     if (props) {
       if (props.itemIndex % 2 === 0) {

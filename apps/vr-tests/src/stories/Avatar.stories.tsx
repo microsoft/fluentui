@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { Avatar, AvatarProps, AvatarSizeValue, avatarSizeValues } from '@fluentui/react-avatar';
+import { Avatar, AvatarProps, AvatarSizeValue } from '@fluentui/react-avatar';
 import { Stack } from '@fluentui/react';
 import { ContactIcon, GroupIcon, TelemarketerIcon } from '@fluentui/react-icons-mdl2';
 import { AvatarExamples as examples } from '@fluentui/example-data';
@@ -9,14 +9,16 @@ import { AvatarExamples as examples } from '@fluentui/example-data';
 import { FluentProviderDecorator } from '../utilities/index';
 
 /** Renders an Avatar at every standard size */
-const AvatarList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-}> = props => {
+const AvatarList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+  }
+> = (props) => {
   const { names, images, ...restOfProps } = props;
   return (
     <Stack wrap horizontal tokens={{ childrenGap: 48 }}>
-      {avatarSizeValues.map((size, i) => (
+      {examples.size.map((size, i) => (
         <Avatar
           key={size}
           size={size}
@@ -39,10 +41,12 @@ const customSizes: { baseSize: AvatarSizeValue; customSize: string }[] = [
 ];
 
 /** Renders an Avatar at a few custom sizes */
-const AvatarCustomSizeList: React.FC<AvatarProps & {
-  names?: readonly string[];
-  images?: readonly string[];
-}> = props => {
+const AvatarCustomSizeList: React.FC<
+  AvatarProps & {
+    names?: readonly string[];
+    images?: readonly string[];
+  }
+> = (props) => {
   const { names, images, ...restOfProps } = props;
 
   return (
@@ -62,7 +66,7 @@ const AvatarCustomSizeList: React.FC<AvatarProps & {
 };
 
 storiesOf('Avatar', module)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <div style={{ display: 'flex' }}>
       <Stack
         className="testWrapper"
@@ -74,7 +78,7 @@ storiesOf('Avatar', module)
     </div>
   ))
   .addDecorator(FluentProviderDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener steps={new Screener.Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -121,4 +125,22 @@ storiesOf('Avatar', module)
   ))
   .addStory('customSize+icon+active', () => (
     <AvatarCustomSizeList icon={<ContactIcon />} active="active" />
+  ))
+  .addStory('color', () => (
+    <Stack tokens={{ childrenGap: 24 }}>
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        <Avatar color="neutral" />
+        <Avatar color="brand" />
+      </Stack>
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        {examples.name.map((name) => (
+          <Avatar color="colorful" name={name} key={name} />
+        ))}
+      </Stack>
+      <Stack wrap horizontal tokens={{ childrenGap: 8 }}>
+        {examples.namedColors.map((color) => (
+          <Avatar color={color} key={color} />
+        ))}
+      </Stack>
+    </Stack>
   ));

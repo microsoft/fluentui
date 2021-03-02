@@ -35,7 +35,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        checkButtonAriaLabel="Row checkbox"
+        checkButtonAriaLabel="select row"
       />
     );
   }
@@ -56,7 +56,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     // Reset the items and columns to match the state.
     this.setState({
       sortedItems: sortedItems,
-      columns: columns.map(col => {
+      columns: columns.map((col) => {
         col.isSorted = col.key === column.key;
 
         if (col.isSorted) {
@@ -80,7 +80,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 function _buildColumns(items: IExampleItem[]): IColumn[] {
   const columns = buildColumns(items);
 
-  const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
+  const thumbnailColumn = columns.filter((column) => column.name === 'thumbnail')[0];
 
   // Special case one column's definition.
   thumbnailColumn.name = '';

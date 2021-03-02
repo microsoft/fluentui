@@ -70,7 +70,7 @@ function loadStories() {
   }
 
   for (const req of contexts) {
-    req.keys().forEach(key => {
+    req.keys().forEach((key) => {
       generateStoriesFromExamples(key, stories, req);
     });
   }
@@ -101,15 +101,12 @@ function generateStoriesFromExamples(key, stories, req) {
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
-        title: componentName,
+        title: 'Components/' + componentName,
       },
     });
   }
 
-  const storyName = segments
-    .slice(-1)[0]
-    .replace('.tsx', '')
-    .replace(/\./g, '_');
+  const storyName = segments.slice(-1)[0].replace('.tsx', '').replace(/\./g, '_');
 
   const story = stories.get(componentName);
   const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
@@ -129,3 +126,11 @@ function generateStoriesFromExamples(key, stories, req) {
     }
   }
 }
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ['Concepts/Introduction', 'Concepts', 'Components'],
+    },
+  },
+};

@@ -18,7 +18,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     {
       key: 'filepath',
       name: 'File path',
-      onRender: item => (
+      onRender: (item) => (
         // eslint-disable-next-line react/jsx-no-bind
         <Link key={item} onClick={() => this._navigate(item)}>
           {item}
@@ -28,7 +28,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
     {
       key: 'size',
       name: 'Size',
-      onRender: item => '4 KB',
+      onRender: (item) => '4 KB',
     } as IColumn,
   ];
 
@@ -45,7 +45,7 @@ export class DetailsListNavigatingFocusExample extends React.Component<{}, IDeta
         initialFocusedIndex={this.state.initialFocusedIndex}
         ariaLabelForSelectionColumn="Toggle selection"
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-        checkButtonAriaLabel="Row checkbox"
+        checkButtonAriaLabel="select row"
       />
     );
   }
