@@ -31,7 +31,7 @@
     "react-window": "^1.8.6"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta",
+    "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",

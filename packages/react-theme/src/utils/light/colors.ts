@@ -62,7 +62,7 @@ export function createNeutralColorTokens(
 
     brandForeground: brand.shade10,
     brandForegroundHover: brand.shade20,
-    brandForegroundPressed: brand.shade30,
+    brandForegroundPressed: brand.shade40,
     brandForegroundSelected: brand.shade10,
 
     neutralForegroundInverted: white,
@@ -145,7 +145,7 @@ function createSharedColorTokens(color: ColorVariants, customValues: Record<stri
 export const sharedColorTokens: Record<keyof GlobalSharedColors, SharedColorTokens> = {
   darkRed: createSharedColorTokens(sharedColors.darkRed),
   burgundy: createSharedColorTokens(sharedColors.burgundy),
-  cranberry: createSharedColorTokens(sharedColors.charcoal),
+  cranberry: createSharedColorTokens(sharedColors.cranberry),
   red: createSharedColorTokens(sharedColors.red),
   darkOrange: createSharedColorTokens(sharedColors.darkOrange),
   bronze: createSharedColorTokens(sharedColors.bronze),

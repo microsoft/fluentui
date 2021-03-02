@@ -174,7 +174,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -351,7 +350,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -528,7 +526,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -705,7 +702,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -882,7 +878,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1059,7 +1054,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1236,7 +1230,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1413,7 +1406,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1590,7 +1582,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1767,7 +1758,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1944,7 +1934,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2121,7 +2110,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2298,7 +2286,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2475,7 +2462,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2652,7 +2638,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2829,7 +2814,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3006,7 +2990,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3183,7 +3166,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Upload"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3360,7 +3342,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Add"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3537,7 +3518,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                         text-align: center;
                       }
                   data-icon-name="Share"
-                  role="presentation"
                   style={
                     Object {
                       "fontFamily": "\\"FabricMDL2Icons\\"",
