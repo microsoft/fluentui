@@ -19,7 +19,7 @@ const useContainerStyles = makeStyles([
   // This should eventually be the popup container styles
   [
     null,
-    (theme) => ({
+    theme => ({
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
       minWidth: '128px',
       minHeight: '48px',
@@ -30,7 +30,7 @@ const useContainerStyles = makeStyles([
     }),
   ],
 ]);
-const Container: React.FC = (props) => {
+const Container: React.FC = props => {
   const classNames = useContainerStyles({});
   return <div className={classNames}>{props.children}</div>;
 };
@@ -227,7 +227,7 @@ export const MenuListWithCheckboxesControlled = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({});
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues((s) => {
+    setCheckedValues(s => {
       return s ? { ...s, [name]: items } : { [name]: items };
     });
   };
@@ -253,7 +253,7 @@ export const MenuListWithRadiosControlled = () => {
   const checkmark = <AcceptIcon />;
   const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({ checkbox: ['2'] });
   const onChange = (e: React.SyntheticEvent, name: string, items: string[]) => {
-    setCheckedValues((s) => ({ ...s, [name]: items }));
+    setCheckedValues(s => ({ ...s, [name]: items }));
   };
 
   return (
