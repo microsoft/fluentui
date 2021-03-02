@@ -45,7 +45,7 @@ gulp.task('clean:component-info', async () => {
 gulp.task('build:component-info', async () => {
   const { componentsSrc, outputPath, tsconfigPath } = await detectPaths();
 
-  await new Promise(resolve => {
+  await new Promise((resolve) => {
     gulp
       .src(componentsSrc, { since: gulp.lastRun('build:component-info') })
       .pipe(
@@ -54,7 +54,7 @@ gulp.task('build:component-info', async () => {
             ignoredParentInterfaces: ['DOMAttributes', 'HTMLAttributes'],
             tsconfigPath,
           }),
-          { name: 'componentInfo-3' },
+          { name: 'componentInfo-4' },
         ),
       )
       .pipe(gulp.dest(outputPath))

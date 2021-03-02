@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ThemeProvider } from '@fluentui/react-next';
+import { ThemeProvider } from '@fluentui/react';
 
 const Scenario = () => <ThemeProvider />;
 

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Selection';
+export * from './utilities/selection/index';

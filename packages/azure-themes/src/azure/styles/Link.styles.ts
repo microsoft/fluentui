@@ -1,4 +1,4 @@
-import { ILinkStyleProps, ILinkStyles } from 'office-ui-fabric-react/lib/Link';
+import { ILinkStyleProps, ILinkStyles } from '@fluentui/react/lib/Link';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {

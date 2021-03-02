@@ -31,10 +31,10 @@ export const inputVariables = (siteVars): InputVariables => ({
   borderColorError: siteVars.colorScheme.red.background,
   iconPosition: 'absolute',
   iconRight: pxToRem(10),
-  iconLeft: pxToRem(6),
+  iconLeft: pxToRem(9),
 
-  inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(24)}`,
-  inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(24)} ${pxToRem(5)} ${pxToRem(12)}`,
+  inputPaddingWithIconAtStart: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(5)} ${pxToRem(34)}`,
+  inputPaddingWithIconAtEnd: `${pxToRem(5)} ${pxToRem(35)} ${pxToRem(5)} ${pxToRem(12)}`,
   inputPadding: `${pxToRem(5)} ${pxToRem(12)}`,
   inputInsideLabelPaddingTop: pxToRem(14),
 

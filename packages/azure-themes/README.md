@@ -1,4 +1,4 @@
-# @uifabric/azure-themes
+# @fluentui/azure-themes
 
 **Azure theme for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
@@ -6,17 +6,34 @@
 The Azure themes require the following import statements:
 
 ```js
-import { Fabric, Customizer } from '@fluentui/react';
-import { AzureCustomizationsLight, AzureCustomizationsDark } from '@uifabric/azure-themes';
+import {
+  AzureThemeDark,
+  AzureThemeLight,
+  AzureCustomizationsLight,
+  AzureCustomizationsDark,
+} from '@fluentui/azure-themes';
 ```
 
-The theme may subsequently be set to either the Azure or Azure-Dark themes
+The theme may subsequently be set to either the Azure or Azure-Dark themes.
+
+In case of applying theme using `Customizer`:
 
 ```jsx
-  const customizations = AzureCustomizationsDark // or alternatively AzureCustomizationsLight
+  import { Customizer } from '@fluentui/react';
+  const customizations = AzureCustomizationsDark; // or alternatively AzureCustomizationsLight
+
   <Customizer {...customizations}>
-    <Fabric>
-        <div>{child component}</div>
-    </Fabric>
+    <div>{child component}</div>
   </Customizer>
+```
+
+In case of applying theme using `ThemeProvider`:
+
+```jsx
+  import { ThemeProvider } from '@fluentui/react';
+  const theme = AzureThemeDark; // or alternatively AzureThemeLight
+
+  <ThemeProvider theme={theme}>
+    <div>{child component}</div>
+  </ThemeProvider>
 ```

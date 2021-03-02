@@ -2,31 +2,55 @@ import * as React from 'react';
 import { Carousel, Image } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Ade',
-  elliot: 'Portrait of Elliot',
-  kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan',
+  allan: 'Portrait of Allan',
+  carole: 'Portrait of Carole',
+  elvia: 'Portrait of Elvia',
+  kat: 'Portrait of Kat',
 };
 const carouselItems = [
   {
-    key: 'ade',
-    id: 'ade',
-    content: <Image src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />,
+    key: 'allan',
+    id: 'allan',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        fluid
+        alt={imageAltTags.allan}
+      />
+    ),
   },
   {
-    key: 'elliot',
-    id: 'elliot',
-    content: <Image src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />,
+    key: 'carole',
+    id: 'carole',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+        fluid
+        alt={imageAltTags.carole}
+      />
+    ),
   },
   {
-    key: 'kristy',
-    id: 'kristy',
-    content: <Image src="public/images/avatar/large/kristy.png" fluid alt={imageAltTags.kristy} />,
+    key: 'elvia',
+    id: 'elvia',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
+        fluid
+        alt={imageAltTags.elvia}
+      />
+    ),
   },
   {
-    key: 'nan',
-    id: 'nan',
-    content: <Image src="public/images/avatar/large/nan.jpg" fluid alt={imageAltTags.nan} />,
+    key: 'kat',
+    id: 'kat',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
+        fluid
+        alt={imageAltTags.kat}
+      />
+    ),
   },
 ];
 

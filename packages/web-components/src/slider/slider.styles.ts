@@ -81,7 +81,7 @@ export const SliderStyles = css`
     :host(.vertical) .track {
         top: calc(var(--track-overhang) * 1px);
         bottom: calc(var(--track-overhang) * 1px);
-        margin-left: calc((var(--design-unit) + calc(var(--density) + 2)) * 1px);
+        margin-inline-start: calc((var(--design-unit) + calc(var(--density) + 2)) * 1px);
         width: calc(var(--track-width) * 1px);
         height: 100%;
     }
@@ -94,10 +94,7 @@ export const SliderStyles = css`
         min-height: calc(var(--design-unit) * 60px);
         min-width: calc(var(--design-unit) * 20px);
     }
-    :host(.disabled) .label,
-    :host(.readonly) .label,
-    :host(.readonly) .slider,
-    :host(.disabled) .slider {
+    :host(.disabled), :host(.readonly) {
         cursor: ${disabledCursor};
     }
     :host(.disabled) {
@@ -132,9 +129,7 @@ export const SliderStyles = css`
             }
             :host(.disabled) {
                 opacity: 1;
-                cursor: ${disabledCursor};
             }
-            :host(.disabled) .slider,
             :host(.disabled) .track,
             :host(.disabled) .thumb-cursor {
                 forced-color-adjust: none;

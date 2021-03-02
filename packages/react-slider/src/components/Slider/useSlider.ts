@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { useId, useBoolean, useControllableValue } from '@uifabric/react-hooks';
+import { useId, useBoolean, useControllableValue } from '@fluentui/react-hooks';
 import {
   KeyCodes,
   css,
@@ -10,13 +10,11 @@ import {
   classNamesFunction,
   getNativeProps,
   divProperties,
-} from '@uifabric/utilities';
+} from '@fluentui/utilities';
 
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
-const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>({
-  useStaticStyles: true,
-});
+const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 
 type Dimension = 'height' | 'width';
 type Position = 'bottom' | 'left' | 'right';
@@ -129,7 +127,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const updateValue = (valueProp: number, renderedValueProp: number): void => {
-    const snapToStep = props;
+    const { snapToStep } = props;
     let numDec = 0;
     if (isFinite(step!)) {
       while (Math.round(step! * Math.pow(10, numDec)) / Math.pow(10, numDec) !== step!) {
@@ -256,7 +254,7 @@ export const useSlider = (props: ISliderProps, ref: React.Ref<HTMLDivElement>) =
   };
 
   const disposeListeners = (): void => {
-    disposables.current.forEach(dispose => dispose());
+    disposables.current.forEach((dispose) => dispose());
     disposables.current = [];
   };
 

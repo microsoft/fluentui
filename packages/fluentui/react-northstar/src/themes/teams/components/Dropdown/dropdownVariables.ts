@@ -46,6 +46,7 @@ export interface DropdownVariables {
   selectedItemIconColorHover: string;
   selectedItemColorFocus: string;
   selectedItemsMaxHeight: string;
+  selectedItemsMaxWidth: string;
   toggleIndicatorSize: string;
   triggerButtonColorFocusActive: string;
   triggerButtonColorHover: string;
@@ -64,7 +65,7 @@ export interface DropdownVariables {
   loadingMessageBackgroundColor: string;
 }
 
-const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
+const [cornerRadius, _12px_asRem] = [3, 12].map((v) => pxToRem(v));
 
 export const dropdownVariables = (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colorScheme.default.background2,
@@ -111,7 +112,7 @@ export const dropdownVariables = (siteVars): DropdownVariables => ({
   selectedItemColorHover: siteVars.colorScheme.default.foregroundHover,
   selectedItemIconColor: siteVars.colorScheme.default.foreground1,
   selectedItemIconColorHover: siteVars.colorScheme.brand.foregroundHover,
-
+  selectedItemsMaxWidth: pxToRem(140),
   selectedItemColorFocus: siteVars.bodyColor,
 
   selectedItemsMaxHeight: pxToRem(82),

@@ -2,5 +2,5 @@ import { AttachmentDescription } from 'src/components/Attachment/AttachmentDescr
 import { isConformant } from 'test/specs/commonTests';
 
 describe('AttachmentDescription', () => {
-  isConformant(AttachmentDescription, { constructorName: 'AttachmentDescription' });
+  isConformant(AttachmentDescription, { testPath: __filename, constructorName: 'AttachmentDescription' });
 });

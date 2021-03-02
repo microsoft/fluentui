@@ -13,10 +13,20 @@ export { attachmentHeaderStyles as AttachmentHeader } from './components/Attachm
 export { attachmentIconStyles as AttachmentIcon } from './components/Attachment/attachmentIconStyles';
 
 export { avatarStyles as Avatar } from './components/Avatar/avatarStyles';
+export { avatarStatusStyles as AvatarStatus } from './components/Avatar/avatarStatusStyles';
+export { avatarStatusIconStyles as AvatarStatusIcon } from './components/Avatar/avatarStatusIconStyles';
+export { avatarImageStyles as AvatarImage } from './components/Avatar/avatarImageStyles';
+export { avatarIconStyles as AvatarIcon } from './components/Avatar/avatarIconStyles';
+export { avatarLabelStyles as AvatarLabel } from './components/Avatar/avatarLabelStyles';
 
 export { buttonStyles as Button } from './components/Button/buttonStyles';
 export { buttonGroupStyles as ButtonGroup } from './components/Button/buttonGroupStyles';
 export { buttonContentStyles as ButtonContent } from './components/Button/buttonContentStyles';
+
+export { breadcrumbItemStyles as BreadcrumbItem } from './components/Breadcrumb/breadcrumbItemStyles';
+export { breadcrumbDividerStyles as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerStyles';
+export { breadcrumbLinkStyles as BreadcrumbLink } from './components/Breadcrumb/breadcrumbLinkStyles';
+export { breadcrumbStyles as Breadcrumb } from './components/Breadcrumb/breadcrumbStyles';
 
 export { chatStyles as Chat } from './components/Chat/chatStyles';
 export { chatItemStyles as ChatItem } from './components/Chat/chatItemStyles';
@@ -91,6 +101,7 @@ export { popupContentStyles as PopupContent } from './components/Popup/popupCont
 
 export { providerStyles as Provider } from './components/Provider/providerStyles';
 
+export { radioGroupStyles as RadioGroup } from './components/RadioGroup/radioGroupStyles';
 export { radioGroupItemStyles as RadioGroupItem } from './components/RadioGroup/radioGroupItemStyles';
 
 export { segmentStyles as Segment } from './components/Segment/segmentStyles';
@@ -144,6 +155,7 @@ export { carouselItemStyles as CarouselItem } from './components/Carousel/carous
 export { carouselNavigationStyles as CarouselNavigation } from './components/Carousel/carouselNavigationStyles';
 export { carouselNavigationItemStyles as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemStyles';
 export { carouselPaddleStyles as CarouselPaddle } from './components/Carousel/carouselPaddleStyles';
+export { carouselPaddlesContainerStyles as CarouselPaddlesContainer } from './components/Carousel/carouselPaddlesContainerStyles';
 
 export { tableStyles as Table } from './components/Table/tableStyles';
 export { tableRowStyles as TableRow } from './components/Table/tableRowStyles';
@@ -162,3 +174,6 @@ export { datepickerCalendarStyles as DatepickerCalendar } from './components/Dat
 export { datepickerCalendarHeaderStyles as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderStyles';
 export { datepickerCalendarHeaderCellStyles as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellStyles';
 export { datepickerCalendarCellStyles as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellStyles';
+export { datepickerCalendarCellButtonStyles as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonStyles';
+export { datepickerCalendarGridStyles as DatepickerCalendarGrid } from './components/Datepicker/datepickerCalendarGridStyles';
+export { datepickerCalendarGridRowStyles as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowStyles';

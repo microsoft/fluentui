@@ -1,0 +1,1650 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Monitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone1"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout0"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#e81123"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout0"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Unmonitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone2"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout0"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#0078d4"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout0"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          margin-top: 5px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              className=
+                  ms-OverflowSet
+                  {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: unset;
+                    position: relative;
+                  }
+              role="listbox"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Monitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone13"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout12"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#e81123"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout12"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Unmonitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone14"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout12"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#0078d4"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout12"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          margin-top: 5px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              className=
+                  ms-OverflowSet
+                  {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: unset;
+                    position: relative;
+                  }
+              role="listbox"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Monitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone4"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout3"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#e81123"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout3"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Unmonitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone5"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout3"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#0078d4"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout3"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Monitored
+          </strong>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone10"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout9"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#e81123"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout9"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Unmonitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone11"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout9"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#0078d4"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout9"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={true}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          margin-top: 5px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              className=
+                  ms-OverflowSet
+                  {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: unset;
+                    position: relative;
+                  }
+              role="listbox"
+            >
+              <div
+                className=
+                    ms-OverflowSet-item
+                    {
+                      display: inherit;
+                      flex-shrink: 0;
+                    }
+              >
+                <button
+                  aria-label="Debit card numbers (EU and USA)"
+                  aria-posinset={1}
+                  aria-selected={false}
+                  aria-setsize={2}
+                  className=
+
+                      {
+                        align-items: center;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        display: flex;
+                        outline: transparent;
+                        padding-bottom: 8px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        padding-top: 8px;
+                        position: relative;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        outline-color: #605e5c;
+                      }
+                  data-is-focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  role="option"
+                >
+                  <div
+                    className=
+
+                        {
+                          background-color: #e81123;
+                          border-color: #e81123;
+                          border: 1px solid;
+                          content: ;
+                          height: 12px;
+                          margin-right: 8px;
+                          opacity: ;
+                          width: 12px;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #e81123, #e81123);
+                          opacity: ;
+                        }
+                  />
+                  <div
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          line-height: 16px;
+                          opacity: ;
+                        }
+                  >
+                    Debit card numbers (EU and USA)
+                  </div>
+                </button>
+              </div>
+              <div
+                className=
+                    ms-OverflowSet-item
+                    {
+                      display: inherit;
+                      flex-shrink: 0;
+                    }
+              >
+                <button
+                  aria-label="Passport numbers (USA)"
+                  aria-posinset={2}
+                  aria-selected={false}
+                  aria-setsize={2}
+                  className=
+
+                      {
+                        align-items: center;
+                        background: none;
+                        border: none;
+                        cursor: pointer;
+                        display: flex;
+                        outline: transparent;
+                        padding-bottom: 8px;
+                        padding-left: 8px;
+                        padding-right: 8px;
+                        padding-top: 8px;
+                        position: relative;
+                      }
+                      &::-moz-focus-inner {
+                        border: 0;
+                      }
+                      .ms-Fabric--isFocusVisible &:focus:after {
+                        border: 1px solid transparent;
+                        bottom: 1px;
+                        content: "";
+                        left: 1px;
+                        outline: 1px solid #605e5c;
+                        position: absolute;
+                        right: 1px;
+                        top: 1px;
+                        z-index: 1;
+                      }
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                        outline-color: #605e5c;
+                      }
+                  data-is-focusable={true}
+                  onBlur={[Function]}
+                  onClick={[Function]}
+                  onFocus={[Function]}
+                  onMouseOut={[Function]}
+                  onMouseOver={[Function]}
+                  role="option"
+                >
+                  <div
+                    className=
+
+                        {
+                          background-color: #107c10;
+                          border-color: #107c10;
+                          border: 1px solid;
+                          content: ;
+                          height: 12px;
+                          margin-right: 8px;
+                          opacity: ;
+                          width: 12px;
+                        }
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                          content: linear-gradient(to right, #107c10, #107c10);
+                          opacity: ;
+                        }
+                  />
+                  <div
+                    className=
+
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 12px;
+                          font-weight: 400;
+                          line-height: 16px;
+                          opacity: ;
+                        }
+                  >
+                    Passport numbers (USA)
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;
+
+exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
+<div
+  className=
+      ms-StackedBarChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+      }
+>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Monitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone7"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout6"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#e81123"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout6"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            width: 100%;
+          }
+    >
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 12px;
+              font-weight: 400;
+              justify-content: space-between;
+              margin-bottom: 5px;
+            }
+      >
+        <div>
+          <strong>
+            Unmonitored
+          </strong>
+        </div>
+        <div>
+          <strong>
+            40
+          </strong>
+          <span>
+            /
+            63
+          </span>
+        </div>
+      </div>
+      <div
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+        data-focuszone-id="FocusZone8"
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseDownCapture={[Function]}
+      >
+        <div>
+          <svg
+            className=
+
+                {
+                  height: 16px;
+                  width: 100%;
+                }
+          >
+            <g
+              aria-labelledby="callout6"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#0078d4"
+                height={16}
+                width="63.49206349206349%"
+                x="0%"
+                y={0}
+              />
+            </g>
+            <g
+              aria-labelledby="callout6"
+              className=
+
+                  {
+                    cursor: default;
+                    opacity: ;
+                    stroke-width: 2px;
+                    stroke: #ffffff;
+                  }
+              data-is-focusable={false}
+              onBlur={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onMouseLeave={[Function]}
+              onMouseMove={[Function]}
+              onMouseOver={[Function]}
+            >
+              <rect
+                fill="#107c10"
+                height={16}
+                width="36.507936507936506%"
+                x="63.49206349206349%"
+                y={0}
+              />
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+
+        {
+          margin-top: 5px;
+        }
+  >
+    <div
+      className=
+
+          {
+            align-items: center;
+            margin-bottom: 0;
+            margin-left: -8px;
+            margin-right: 0;
+            margin-top: -8px;
+            white-space: nowrap;
+            width: 100%;
+          }
+    >
+      <div>
+        <div
+          style={
+            Object {
+              "position": "relative",
+            }
+          }
+        >
+          <div
+            data-automation-id="visibleContent"
+            style={
+              Object {
+                "position": "fixed",
+                "visibility": "hidden",
+              }
+            }
+          >
+            <div
+              className=
+                  ms-OverflowSet
+                  {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: unset;
+                    position: relative;
+                  }
+              role="listbox"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <span
+    className="ms-layer"
+  />
+</div>
+`;

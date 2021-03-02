@@ -13,6 +13,9 @@ export type RendererRenderGlobal = (styles: ICSSInJSStyle | string, selector?: s
 export type RendererRenderRule = (styles: ICSSInJSStyle, param: RendererParam) => string;
 
 export type Renderer = {
+  registerUsage: () => void;
+  unregisterUsage: () => void;
+
   renderGlobal: RendererRenderGlobal;
   renderFont: RendererRenderFont;
   renderRule: RendererRenderRule;

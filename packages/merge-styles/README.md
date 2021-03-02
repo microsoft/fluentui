@@ -1,4 +1,4 @@
-# @uifabric/merge-styles
+# @fluentui/merge-styles
 
 The `merge-styles` library provides utilities for loading styles through javascript. It is designed to make it simple to style components through javascript. It generates css classes, rather than using inline styling, to ensure we can use css features like pseudo selectors (:hover) and parent/child selectors (media queries).
 
@@ -7,7 +7,7 @@ The library was built for speed and size; the entire package is 2.62k gzipped. I
 Simple usage:
 
 ```
-import { mergeStyles, mergeStyleSets } from '@uifabric/merge-styles';
+import { mergeStyles, mergeStyleSets } from '@fluentui/merge-styles';
 
 // Produces 'css-0' class name which can be used anywhere
 mergeStyles({ background: 'red' });
@@ -113,7 +113,7 @@ When building a component, you will need a **style set** map of class names to i
 The recommended pattern is to provide the classnames in a separate function, typically in a separate file `ComponentName.classNames.ts`.
 
 ```tsx
-import { IStyle, mergeStyleSets } from '@uifabric/merge-styles';
+import { IStyle, mergeStyleSets } from '@fluentui/merge-styles';
 
 export interface IComponentClassNames {
   root: string;
@@ -386,10 +386,10 @@ Resolving the class names on every render can be an unwanted expense especially 
 
 1. For your `getClassNames` function, flatten all input parameters into simple immutable values. This helps the `memoizeFunction` utility to cache the results based on the input.
 
-2. Use the `memoizeFunction` function from the `@uifabric/utilities` package to cache the results, given a unique combination of inputs. Example:
+2. Use the `memoizeFunction` function from the `@fluentui/utilities` package to cache the results, given a unique combination of inputs. Example:
 
 ```tsx
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from '@fluentui/utilities';
 
 export const getClassNames = memoizeFunction((isToggled: boolean) => {
   return mergeStyleSets({
@@ -403,7 +403,7 @@ export const getClassNames = memoizeFunction((isToggled: boolean) => {
 Registering font faces example:
 
 ```tsx
-import { fontFace } from '@uifabric/merge-styles';
+import { fontFace } from '@fluentui/merge-styles';
 
 fontFace({
   fontFamily: `"Segoe UI"`,
@@ -419,7 +419,7 @@ Note that in cases like `fontFamily` you may need to embed quotes in the string 
 Registering animation keyframes example:
 
 ```tsx
-import { keyframes, mergeStyleSets } from '@uifabric/merge-styles';
+import { keyframes, mergeStyleSets } from '@fluentui/merge-styles';
 
 let fadeIn = keyframes({
   from: {
@@ -460,7 +460,7 @@ You can import `renderStatic` method from the `/lib/server` entry to render cont
 Example:
 
 ```tsx
-import { renderStatic } from '@uifabric/merge-styles/lib/server';
+import { renderStatic } from '@fluentui/merge-styles/lib/server';
 
 let { html, css } = renderStatic(() => {
   return ReactDOM.renderToString(...);

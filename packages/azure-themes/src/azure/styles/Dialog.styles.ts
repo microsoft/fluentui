@@ -3,7 +3,7 @@ import {
   IDialogContentStyles,
   IDialogFooterStyleProps,
   IDialogFooterStyles,
-} from 'office-ui-fabric-react/lib/Dialog';
+} from '@fluentui/react/lib/Dialog';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
 import { BaseColors } from '../AzureColors';

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Pivot';
+export * from './components/Pivot/index';

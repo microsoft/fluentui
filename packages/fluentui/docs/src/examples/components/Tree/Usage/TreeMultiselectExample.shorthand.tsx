@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, Text } from '@fluentui/react-northstar';
+import { Tree } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -9,7 +9,6 @@ const items = [
       {
         id: 'tree-item-11',
         title: 'Tywin',
-        selectableParent: true,
         items: [
           {
             id: '1',
@@ -28,21 +27,6 @@ const items = [
           {
             id: '4',
             title: 'Cersei',
-            selectionIndicator: {
-              children: (Component, { selected, onClick, ...props }) => {
-                return (
-                  <Component {...props}>
-                    <input
-                      data-is-focusable={false}
-                      type="checkbox"
-                      checked={selected}
-                      onClick={onClick}
-                      onChange={() => {}}
-                    />
-                  </Component>
-                );
-              },
-            },
           },
           {
             id: '5',
@@ -73,12 +57,6 @@ const items = [
   {
     id: 'tree-item-2',
     title: 'House Targaryen',
-    selectionIndicator: {
-      children: (Component, { expanded, selected, ...props }) => {
-        return <Text {...props} content={expanded && (selected ? 'unselect all' : 'select all')} />;
-      },
-    },
-    selectableParent: true,
     items: [
       {
         id: 'tree-item-21',
@@ -104,7 +82,6 @@ const items = [
   {
     id: '100',
     title: 'House Skywalker',
-    selectableParent: true,
     items: [
       {
         id: '102',
@@ -124,7 +101,12 @@ const items = [
 ];
 
 const TreeMultiselectExample = () => (
-  <Tree defaultSelectedItemIds={['tree-item-122', 'tree-item-123']} selectable aria-label="default" items={items} />
+  <Tree
+    defaultSelectedItemIds={['tree-item-122', 'tree-item-123']}
+    selectable
+    aria-label="Multi Select"
+    items={items}
+  />
 );
 
 export default TreeMultiselectExample;

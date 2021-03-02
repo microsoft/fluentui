@@ -1,4 +1,4 @@
-# @uifabric/react-cards
+# @fluentui/react-cards
 
 **Card components for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
@@ -23,5 +23,5 @@ Please take note that, at the moment, these are not production-ready components 
 To import card components:
 
 ```js
-import { ComponentName } from '@uifabric/react-cards';
+import { ComponentName } from '@fluentui/react-cards';
 ```

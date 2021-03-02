@@ -1,7 +1,22 @@
 import * as React from 'react';
-import { Button, Checkbox, Image, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
+import {
+  Box,
+  Button,
+  Image,
+  MenuButton,
+  Toolbar as FUIToolbar,
+  ToolbarItemProps,
+  Tooltip,
+} from '@fluentui/react-northstar';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon, TrashCanIcon, UndoIcon, RedoIcon } from '@fluentui/react-icons-northstar';
+import {
+  CodeSnippetIcon,
+  OpenOutsideIcon,
+  TrashCanIcon,
+  UndoIcon,
+  RedoIcon,
+  TranslationIcon,
+} from '@fluentui/react-icons-northstar';
 
 export type ToolbarProps = {
   isExpanding: boolean;
@@ -17,6 +32,8 @@ export type ToolbarProps = {
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
+  enabledVirtualCursor: boolean;
+  onEnableVirtualCursor: (enabledVirtualCursor: boolean) => void;
   style?: React.CSSProperties;
 };
 
@@ -34,72 +51,163 @@ export const Toolbar: React.FunctionComponent<ToolbarProps> = ({
   mode,
   showCode,
   showJSONTree,
+  enabledVirtualCursor,
+  onEnableVirtualCursor,
   style,
-}) => (
-  <div
-    style={{
-      display: 'flex',
-      padding: '0 1rem',
-      alignItems: 'center',
-      boxShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
-      ...style,
-    }}
-  >
-    <Image styles={{ height: '1.5rem', marginRight: '0.25rem' }} src={`public/images/fluent-ui-logo.png`} />
-    <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
-      FluentUI
-      <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
-    </div>
-    <div>
-      <strong>Mode:</strong>
-      &emsp;
-      <RadioGroup
-        style={{ display: 'inline-block' }}
-        checkedValue={mode}
-        onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
-          onModeChange(data.value);
-        }}
-        items={[
-          {
-            key: 'build',
-            label: 'Build',
-            value: 'build',
-          },
-          {
-            key: 'design',
-            label: 'Design',
-            value: 'design',
-          },
-          {
-            key: 'use',
-            label: 'Use',
-            value: 'use',
-          },
-        ]}
+}) => {
+  const [showVcInfo, setShowVcInfo] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
+  return (
+    <Box
+      styles={({ theme }) => ({
+        display: 'flex',
+        padding: '0 1rem',
+        alignItems: 'center',
+        borderBottom: `1px solid ${theme.siteVariables.colorScheme.default.border2}`,
+        background: theme.siteVariables.colorScheme.default.background1,
+        ...style,
+      })}
+    >
+      <Image
+        styles={{ height: '1.5rem' }}
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/fluent-ui-logo.png"
       />
-    </div>
-    &nbsp; &nbsp;
-    <Button
-      text
-      icon={<OpenOutsideIcon />}
-      content="Popout"
-      onClick={() => {
-        window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
-      }}
-    />
-    <Button text icon={<UndoIcon />} content="Undo" onClick={onUndo} disabled={!canUndo} />
-    <Button text icon={<RedoIcon />} content="Redo" onClick={onRedo} disabled={!canRedo} />
-    <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-      <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
-      &emsp;
-      <Checkbox
-        label="Show JSON"
-        toggle
-        checked={!!showJSONTree}
-        onChange={(e, data) => onShowJSONTreeChange(data.checked)}
-      />
-      &emsp;
-      <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
-    </div>
-  </div>
-);
+      <div style={{ position: 'relative', padding: '0 .8rem', fontSize: '14px', lineHeight: 1, fontWeight: 'bold' }}>
+        FluentUI <span style={{ fontWeight: 'normal' }}>Builder</span>
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+        <FUIToolbar
+          aria-label="Builder toolbar"
+          items={[
+            {
+              key: 'mode',
+              children: <b aria-label={`${mode} - change mode`}>{mode.replace(/^\w/, (c) => c.toUpperCase())}</b>,
+              active: menuOpen,
+              menuOpen,
+              onMenuOpenChange: (_, { menuOpen }) => setMenuOpen(menuOpen),
+              menu: {
+                items: [
+                  {
+                    key: 'build',
+                    content: 'Build',
+                    onClick: () => {
+                      onModeChange('build');
+                      onEnableVirtualCursor(false);
+                    },
+                  },
+                  {
+                    key: 'design',
+                    content: 'Design',
+                    onClick: () => {
+                      onModeChange('design');
+                      onEnableVirtualCursor(false);
+                    },
+                  },
+                  {
+                    key: 'use',
+                    content: 'Use',
+                    onClick: () => {
+                      onModeChange('use');
+                    },
+                  },
+                ],
+              },
+            },
+            {
+              key: 'divider-1',
+              kind: 'divider',
+            },
+            {
+              icon: <UndoIcon outline={true} />,
+              key: 'undo',
+              // kind: 'toggle',
+              disabled: !canUndo,
+              title: 'Undo',
+              onClick: () => {
+                onUndo();
+              },
+            },
+            {
+              icon: <RedoIcon outline={true} />,
+              key: 'redo',
+              // kind: 'toggle',
+              disabled: !canRedo,
+              title: 'Redo',
+              onClick: () => {
+                onRedo();
+              },
+            },
+            {
+              key: 'divider-2',
+              kind: 'divider',
+            },
+            {
+              icon: <TrashCanIcon outline={true} />,
+              key: 'delete',
+              // kind: 'toggle',
+              title: 'Start over',
+              onClick: () => {
+                onReset();
+              },
+            },
+            mode === 'use'
+              ? ({
+                  key: 'screen-reader',
+                  icon: <TranslationIcon outline={true} />,
+                  kind: 'toggle',
+                  active: !!enabledVirtualCursor,
+                  title: 'Screen reader simulation',
+                  onClick: () => {
+                    onEnableVirtualCursor(!enabledVirtualCursor);
+                    setShowVcInfo(true);
+                    setTimeout(() => setShowVcInfo(false), 10000);
+                  },
+                  children: (C, p) => (
+                    <Tooltip
+                      accessibility={null}
+                      trigger={<C {...p} />}
+                      content={<span role="alert">Use Ctrl+, and Ctrl+. to navigate in the canvas</span>}
+                      open={enabledVirtualCursor && showVcInfo}
+                    />
+                  ),
+                } as ToolbarItemProps)
+              : undefined,
+          ]}
+        />
+      </div>
+      <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+        <MenuButton
+          trigger={<Button iconOnly icon={<CodeSnippetIcon outline />} aria-label="Show code" />}
+          menu={[
+            {
+              key: 'code',
+              content: 'Show code',
+              onClick: () => {
+                onShowCodeChange(!showCode);
+                if (showJSONTree) onShowJSONTreeChange(!showJSONTree);
+              },
+            },
+            {
+              key: 'json',
+              content: 'Show JSON',
+              onClick: () => {
+                onShowJSONTreeChange(!showJSONTree);
+                if (showCode) onShowCodeChange(!showCode);
+              },
+            },
+          ]}
+        />
+        <Button
+          style={{ marginLeft: '.8rem' }}
+          iconOnly
+          icon={<OpenOutsideIcon outline />}
+          aria-label="Popout"
+          onClick={() => {
+            window.open(`/builder/maximize${window.location.hash}`, '_blank', 'noopener noreferrer');
+          }}
+        />
+      </div>
+    </Box>
+  );
+};

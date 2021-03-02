@@ -47,7 +47,7 @@ export type VideoStylesProps = Required<Pick<VideoProps, 'variables'>>;
 /**
  * A Video provides ability to embed video content.
  */
-export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStaticProps<VideoProps> = props => {
+export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStaticProps<VideoProps> = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Video.displayName, context.telemetry);
   setStart();
@@ -61,6 +61,18 @@ export const Video: ComponentWithAs<'video', VideoProps> & FluentComponentStatic
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Video.displayName,
   });
+
+  React.useEffect(() => {
+    // this is a workaround for a potential memory leak in Chromium which retains a Detached HTMLVideoElement when <video autoplay> is unmounted
+    // https://bugs.chromium.org/p/chromium/issues/detail?id=969049
+    return () => {
+      if (videoRef.current) {
+        // we want to perform the cleanup on the latest element rendered
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        videoRef.current.src = '';
+      }
+    };
+  }, []);
 
   React.useEffect(() => {
     // React doesn't guaranty that props will be set:

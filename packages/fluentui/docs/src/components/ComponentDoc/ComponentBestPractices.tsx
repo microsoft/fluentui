@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { exampleBestPracticesContext } from '../../utils';
+import { exampleBestPracticesContext } from '../../contexts/exampleBestPracticesContext';
 import ExampleSection from '../ComponentDoc/ExampleSection';
 
 interface ComponentBestPracticesProps {
@@ -17,7 +17,7 @@ export default class ComponentBestPractices extends React.Component<ComponentBes
   render() {
     const { displayName } = this.props;
 
-    const bestPracticesPath = _.find(exampleBestPracticesContext.keys(), path =>
+    const bestPracticesPath = _.find(exampleBestPracticesContext.keys(), (path) =>
       new RegExp(`\/${displayName}\/BestPractices\/${displayName}BestPractices\.tsx$`).test(path),
     );
 

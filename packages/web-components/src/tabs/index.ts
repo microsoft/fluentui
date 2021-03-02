@@ -15,6 +15,9 @@ import { TabsStyles as styles } from './tabs.styles';
   name: 'fluent-tabs',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentTabs extends Tabs {}
 export * from './tab/';

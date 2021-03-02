@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toggle } from 'office-ui-fabric-react';
+import { Toggle } from '@fluentui/react';
 
 const Scenario = () => <Toggle checked />;
 

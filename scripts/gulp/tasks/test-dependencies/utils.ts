@@ -1,5 +1,5 @@
 import * as path from 'path';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../../../lernaAliasNorthstar';
 import { LicenseWebpackPlugin } from 'license-webpack-plugin';
 import webpack from 'webpack';
 
@@ -43,8 +43,8 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
           warnings: true,
           errors: true,
         },
-        renderLicenses: modules => {
-          modules.forEach(module => {
+        renderLicenses: (modules) => {
+          modules.forEach((module) => {
             const packageName = module.packageJson.name;
             const packageVersion = module.packageJson.version;
 

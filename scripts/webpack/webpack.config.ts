@@ -1,6 +1,6 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import _ from 'lodash';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -8,6 +8,7 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import config from '../config';
+import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
 
 const { paths } = config;
 const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
@@ -26,7 +27,7 @@ const webpackConfig: webpack.Configuration = {
     pathinfo: true,
     publicPath: config.compiler_public_path,
   },
-  devtool: config.compiler_devtool as webpack.Options.Devtool,
+  devtool: config.compiler_devtool,
   externals: {
     '@babel/standalone': 'Babel',
     'anchor-js': 'AnchorJS',
@@ -41,11 +42,7 @@ const webpackConfig: webpack.Configuration = {
     'react-dom/server': 'ReactDOMServer',
   },
   node: {
-    fs: 'empty',
-    module: 'empty',
-    child_process: 'empty',
-    net: 'empty',
-    readline: 'empty',
+    global: true,
   },
   module: {
     noParse: [/anchor-js/],
@@ -64,21 +61,40 @@ const webpackConfig: webpack.Configuration = {
         test: /\.mdx?$/,
         use: ['babel-loader', '@mdx-js/loader'],
       },
+      // solution to process.cwd() is not a function for react-markdown/vfile
+      // https://github.com/remarkjs/react-markdown/issues/339#issuecomment-683199835
+      // https://github.com/vfile/vfile/issues/38
+      {
+        test: /node_modules[\\|/]vfile[\\|/]core\.js/,
+        use: [
+          {
+            loader: 'imports-loader',
+            options: {
+              type: 'commonjs',
+              imports: ['single process/browser process'],
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: paths.docs('tsconfig.json'),
-      watch: [paths.docsSrc(), paths.packages()],
+      typescript: {
+        configFile: paths.docs('tsconfig.json'),
+      },
     }),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
     new webpack.DefinePlugin(config.compiler_globals),
     new webpack.ContextReplacementPlugin(/node_modules[\\|/]typescript[\\|/]lib/, /typescript\.js/, false),
-    new (CopyWebpackPlugin as any)([
-      {
-        from: paths.docsSrc('public'),
-        to: paths.docsDist('public'),
-      },
-    ]),
+    new (CopyWebpackPlugin as any)({
+      patterns: [
+        {
+          from: paths.docsSrc('public'),
+          to: paths.docsDist('public'),
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: paths.docsSrc('index.ejs'),
       filename: 'index.html',
@@ -115,7 +131,11 @@ const webpackConfig: webpack.Configuration = {
     alias: {
       ...lernaAliases(),
       src: paths.packageSrc('react-northstar'),
+      faker: 'faker/locale/en',
       'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
+    },
+    fallback: {
+      path: require.resolve('path-browserify'),
     },
   },
   optimization: {

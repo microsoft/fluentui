@@ -2,22 +2,22 @@ import * as React from 'react';
 import { Button, Dialog, Dropdown } from '@fluentui/react-northstar';
 
 export const selectors = {
-  outerTrigger: 'outer-trigger',
+  dialogTrigger: 'outer-trigger',
   dropdown: 'dropdown-id',
-  closer: 'dialog-close',
+  dialogClose: 'dialog-close',
   dialogHeader: 'header',
 };
 
 const inputItems = [
-  'Bruce Wayne',
-  'Natasha Romanoff',
-  'Steven Strange',
-  'Alfred Pennyworth',
-  `Scarlett O'Hara`,
-  'Imperator Furiosa',
-  'Bruce Banner',
-  'Peter Parker',
-  'Selina Kyle',
+  'Robert Tolbert',
+  'Wanda Howard',
+  'Tim Deboer',
+  'Amanda Brady',
+  'Ashley McCarthy',
+  'Cameron Evans',
+  'Carlos Slattery',
+  'Carole Poland',
+  'Robin Counts',
 ];
 
 const DropdownExampleSearch = () => (
@@ -28,17 +28,17 @@ const DropdownExampleSearch = () => (
     placeholder="Start typing a name"
     noResultsMessage="We couldn't find any matches."
     getA11ySelectionMessage={{
-      onAdd: item => `${item} has been selected.`,
+      onAdd: (item) => `${item} has been selected.`,
     }}
   />
 );
 
 const DialogWithDropdown = () => (
   <Dialog
-    cancelButton={{ content: 'Close', id: selectors.closer }}
+    cancelButton={{ content: 'Close', id: selectors.dialogClose }}
     content={<DropdownExampleSearch />}
     header={{ content: 'An outer', id: selectors.dialogHeader }}
-    trigger={<Button id={selectors.outerTrigger} content="Open a dialog" />}
+    trigger={<Button id={selectors.dialogTrigger} content="Open a dialog" />}
   />
 );
 

@@ -1,0 +1,54 @@
+{
+  "name": "@fluentui/foundation-legacy",
+  "version": "8.0.1",
+  "description": "Legacy utilities for building Fluent UI React components.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start": "just-scripts dev",
+    "start-test": "just-scripts jest-watch",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/react": "16.9.42",
+    "@types/react-test-renderer": "^16.0.0",
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/jest-serializer-merge-styles": "^8.0.1",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-hooks-testing-library": "^0.5.0",
+    "react-test-renderer": "^16.3.0"
+  },
+  "dependencies": {
+    "@fluentui/merge-styles": "^8.0.1",
+    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/style-utilities": "^8.0.1",
+    "@fluentui/utilities": "^8.0.1",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0"
+  }
+}

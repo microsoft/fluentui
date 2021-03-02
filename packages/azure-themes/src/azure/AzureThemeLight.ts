@@ -1,8 +1,9 @@
-import { createTheme, ITheme } from 'office-ui-fabric-react';
+import { createTheme, Theme } from '@fluentui/react';
 import { CommonSemanticColors, LightSemanticColors } from './AzureColors';
 import { IExtendedSemanticColors } from './IExtendedSemanticColors';
 import { FontSizes } from './AzureType';
 import * as StyleConstants from './Constants';
+import { AzureStyleSettings } from './AzureStyleSettings';
 
 const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   bodyBackground: LightSemanticColors.background,
@@ -87,10 +88,10 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   variantBorder: CommonSemanticColors.dividers.lineSeparator,
   // extended
   controlAccent: LightSemanticColors.controlOutlines.accent,
+  controlBackground: LightSemanticColors.controlOutlines.background,
   controlOutline: LightSemanticColors.controlOutlines.rest,
   controlOutlineDisabled: LightSemanticColors.controlOutlines.disabled,
   controlOutlineHovered: LightSemanticColors.controlOutlines.hover,
-  iconButtonBackground: StyleConstants.transparent,
   iconButtonFill: LightSemanticColors.primaryButton.rest.background,
   iconButtonFillHovered: LightSemanticColors.primaryButton.hover.background,
   labelText: LightSemanticColors.text.label,
@@ -113,6 +114,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusWarningText: LightSemanticColors.text.body,
   statusWarningIcon: LightSemanticColors.statusBar.icon.warning,
   teachingBubbleBackground: LightSemanticColors.teachingBubble.rest.background,
+  teachingBubbleBorder: LightSemanticColors.teachingBubble.rest.border,
   teachingBubblePrimaryButtonHover: LightSemanticColors.teachingBubble.hover.primaryButtonBackground,
   teachingBubbleSecondaryBackground: LightSemanticColors.teachingBubble.rest.secondaryBackround,
   teachingBubbleText: LightSemanticColors.teachingBubble.rest.text,
@@ -120,16 +122,20 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
 
   // temporary work around for high contrast themes
   choiceGroupContainerBorder: '0px',
+  callOutBorderStyle: 'solid',
   choiceGroupContainerBorderStyle: 'solid',
   listUnderline: 'none',
   linkBorderStyle: 'dashed',
 };
 
-export const AzureThemeLight: ITheme = createTheme({
+export const AzureThemeLight: Theme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
       fontSize: FontSizes.size13,
+    },
+    large: {
+      fontSize: FontSizes.size14,
     },
   },
   palette: {
@@ -145,3 +151,5 @@ export const AzureThemeLight: ITheme = createTheme({
   },
   semanticColors: lightExtendedSemanticColors,
 });
+
+AzureThemeLight.components = AzureStyleSettings(AzureThemeLight);

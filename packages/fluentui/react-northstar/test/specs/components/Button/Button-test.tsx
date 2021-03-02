@@ -10,9 +10,16 @@ import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils'
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 
 import { Button } from 'src/components/Button/Button';
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  buttonBehaviorDefinition,
+  toggleButtonBehaviorDefinition,
+} from '@fluentui/a11y-testing';
 
 describe('Button', () => {
   isConformant(Button, {
+    testPath: __filename,
     constructorName: 'Button',
   });
 
@@ -27,18 +34,6 @@ describe('Button', () => {
       handlesAccessibility(Button, {
         requiredProps: { as: 'div' },
         defaultRootRole: 'button',
-      });
-    });
-
-    describe('aria-disabled', () => {
-      test('is set to true, if disabled attribute is provided', () => {
-        const renderedComponent = mountWithProviderAndGetComponent(Button, <Button disabled />);
-        expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe('true');
-      });
-
-      test('is set to undefined, if disabled attribute is not provided', () => {
-        const renderedComponent = mountWithProviderAndGetComponent(Button, <Button />);
-        expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe(undefined);
       });
     });
 
@@ -85,43 +80,6 @@ describe('Button', () => {
           expect(getRenderedAttribute(renderedComponent, 'role', '')).toBe('button');
         });
       });
-
-      describe('aria-pressed', () => {
-        test('is set to true, if active attribute is provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            // @ts-ignore
-            <Button active="true" accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-pressed', '')).toBe('true');
-        });
-
-        test('is set to false, if active attribute is not provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            <Button accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-pressed', '')).toBe('false');
-        });
-      });
-
-      describe('aria-disabled', () => {
-        test('is set to true, if disabled attribute is provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            <Button disabled accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe('true');
-        });
-
-        test('is set to undefined, if disabled attribute is not provided', () => {
-          const renderedComponent = mountWithProviderAndGetComponent(
-            Button,
-            <Button accessibility={toggleButtonBehavior} />,
-          );
-          expect(getRenderedAttribute(renderedComponent, 'aria-disabled', '')).toBe(undefined);
-        });
-      });
     });
   });
 
@@ -161,5 +119,17 @@ describe('Button', () => {
         expect.objectContaining({ onClick }),
       );
     });
+  });
+
+  describe('ButtonBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, {});
+    const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('ButtonToggleBehavior', () => {
+    const testFacade = new ComponentTestFacade(Button, { accessibility: toggleButtonBehavior });
+    const errors = validateBehavior(toggleButtonBehaviorDefinition, testFacade);
+    expect(errors).toEqual([]);
   });
 });

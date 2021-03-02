@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react';
+import { FabricDecoratorTall } from '../utilities/index';
+import { CommandBar, ICommandBarItemProps } from '@fluentui/react';
 
 const items: ICommandBarItemProps[] = [
   {
@@ -68,7 +67,7 @@ const farItems: ICommandBarItemProps[] = [
 
 storiesOf('CommandBar', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -85,13 +84,13 @@ storiesOf('CommandBar', module)
   .addStory('Root', () => <CommandBar items={items} farItems={farItems} />, { rtl: true })
   .addStory('Text only', () => (
     <CommandBar
-      items={items.map(item => ({ ...item, iconProps: undefined }))}
-      farItems={farItems.map(item => ({ ...item, iconProps: undefined }))}
+      items={items.map((item) => ({ ...item, iconProps: undefined }))}
+      farItems={farItems.map((item) => ({ ...item, iconProps: undefined }))}
     />
   ))
   .addStory('Icons only', () => (
     <CommandBar
-      items={items.map(item => ({ ...item, text: undefined }))}
-      farItems={farItems.map(item => ({ ...item, iconOnly: true }))}
+      items={items.map((item) => ({ ...item, text: undefined }))}
+      farItems={farItems.map((item) => ({ ...item, iconOnly: true }))}
     />
   ));

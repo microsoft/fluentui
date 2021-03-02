@@ -1,10 +1,41 @@
 import { IDateGridStrings, IDateFormatting, ICalendarStrings } from './dateFormatting.types';
-import { formatDay } from './formatDay';
-import { formatYear } from './formatYear';
-import { formatMonthDayYear } from './formatMonthDayYear';
-import { formatMonthYear } from './formatMonthYear';
 
-export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
+/**
+ * Format date to a day string representation
+ * @param date - input date to format
+ */
+export const formatDay = (date: Date) => date.getDate().toString();
+
+/**
+ * Format date to a month-day-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthDayYear = (date: Date, strings: IDateGridStrings) =>
+  strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+
+/**
+ * Format date to a month-year string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonthYear = (date: Date, strings: IDateGridStrings) =>
+  strings.months[date.getMonth()] + ' ' + date.getFullYear();
+
+/**
+ * Format date to a month string
+ * @param date - input date to format
+ * @param strings - localized strings
+ */
+export const formatMonth = (date: Date, strings: IDateGridStrings) => strings.months[date.getMonth()];
+
+/**
+ * Format date to a year string representation
+ * @param date - input date to format
+ */
+export const formatYear = (date: Date) => date.getFullYear().toString();
+
+export const DEFAULT_DATE_GRID_STRINGS: IDateGridStrings = {
   months: [
     'January',
     'February',
@@ -25,27 +56,17 @@ export const DEFAULT_LOCALIZED_STRINGS: IDateGridStrings = {
 };
 
 export const DEFAULT_DATE_FORMATTING: IDateFormatting = {
-  formatDay: formatDay,
-  formatYear: formatYear,
-  formatMonthDayYear: formatMonthDayYear,
-  formatMonthYear: formatMonthYear,
-  parseDate: (dateStr: string) => {
-    const date = Date.parse(dateStr);
-    if (date) {
-      return new Date(date);
-    }
-
-    return null;
-  },
-  ...DEFAULT_LOCALIZED_STRINGS,
+  formatDay,
+  formatMonth,
+  formatYear,
+  formatMonthDayYear,
+  formatMonthYear,
 };
 
 export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
-  ...DEFAULT_DATE_FORMATTING,
+  ...DEFAULT_DATE_GRID_STRINGS,
 
   goToToday: 'Go to today',
-  openCalendarTitle: 'Open calendar',
-  inputPlaceholder: 'Select a date...',
   weekNumberFormatString: 'Week number {0}',
   prevMonthAriaLabel: 'Previous month',
   nextMonthAriaLabel: 'Next month',
@@ -56,9 +77,7 @@ export const DEFAULT_CALENDAR_STRINGS: ICalendarStrings = {
   closeButtonAriaLabel: 'Close',
   selectedDateFormatString: 'Selected date {0}',
   todayDateFormatString: "Today's date {0}",
-  monthPickerHeaderAriaLabel: '{0}, select to change the year',
-  yearPickerHeaderAriaLabel: '{0}, select to change the month',
-  isRequiredErrorMessage: 'A date selection is required',
-  invalidInputErrorMessage: 'Manually entered date is not in correct format.',
-  isOutOfBoundsErrorMessage: 'The selected date is from the restricted range.',
+  monthPickerHeaderAriaLabel: '{0}, change year',
+  yearPickerHeaderAriaLabel: '{0}, change month',
+  dayMarkedAriaLabel: 'marked',
 };

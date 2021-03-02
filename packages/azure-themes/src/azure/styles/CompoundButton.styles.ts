@@ -1,5 +1,5 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

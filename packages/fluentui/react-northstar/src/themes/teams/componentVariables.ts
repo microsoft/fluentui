@@ -12,10 +12,20 @@ export { alertVariables as Alert } from './components/Alert/alertVariables';
 export { alertDismissActionVariables as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 
 export { avatarVariables as Avatar } from './components/Avatar/avatarVariables';
+export { avatarStatusVariables as AvatarStatus } from './components/Avatar/avatarStatusVariables';
+export { avatarStatusIconVariables as AvatarStatusIcon } from './components/Avatar/avatarStatusIconVariables';
+export { avatarImageVariables as AvatarImage } from './components/Avatar/avatarImageVariables';
+export { avatarIconVariables as AvatarIcon } from './components/Avatar/avatarIconVariables';
+export { avatarLabelVariables as AvatarLabel } from './components/Avatar/avatarLabelVariables';
 
 export { buttonVariables as Button } from './components/Button/buttonVariables';
 export { buttonGroupVariables as ButtonGroup } from './components/Button/buttonGroupVariables';
 export { buttonContentVariables as ButtonContent } from './components/Button/buttonContentVariables';
+
+export { breadcrumbVariables as Breadcrumb } from './components/Breadcrumb/breadcrumbVariables';
+export { breadcrumbItemVariables as BreadcrumbItem } from './components/Breadcrumb/breadcrumbItemVariables';
+export { breadcrumbLinkVariables as BreadcrumbLink } from './components/Breadcrumb/breadcrumbLinkVariables';
+export { breadcrumbDividerVariables as BreadcrumbDivider } from './components/Breadcrumb/breadcrumbDividerVariables';
 
 export { chatVariables as Chat } from './components/Chat/chatVariables';
 export { chatItemVariables as ChatItem } from './components/Chat/chatItemVariables';
@@ -131,6 +141,7 @@ export { splitButtonToggleVariables as SplitButtonToggle } from './components/Sp
 
 export { carouselVariables as Carousel } from './components/Carousel/carouselVariables';
 export { carouselItemVariables as CarouselItem } from './components/Carousel/carouselItemVariables';
+export { carouselPaddlesContainerVariables as CarouselPaddlesContainer } from './components/Carousel/carouselPaddlesContainerVariables';
 export { carouselNavigationVariables as CarouselNavigation } from './components/Carousel/carouselNavigationVariables';
 export { carouselNavigationItemVariables as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemVariables';
 export { carouselPaddleVariables as CarouselPaddle } from './components/Carousel/carouselPaddleVariables';
@@ -149,6 +160,9 @@ export { cardExpandableBoxVariables as CardExpandableBox } from './components/Ca
 
 export { datepickerVariables as Datepicker } from './components/Datepicker/datepickerVariables';
 export { datepickerCalendarCellVariables as DatepickerCalendarCell } from './components/Datepicker/datepickerCalendarCellVariables';
+export { datepickerCalendarCellButtonVariables as DatepickerCalendarCellButton } from './components/Datepicker/datepickerCalendarCellButtonVariables';
 export { datepickerCalendarVariables as DatepickerCalendar } from './components/Datepicker/datepickerCalendarVariables';
 export { datepickerCalendarHeaderVariables as DatepickerCalendarHeader } from './components/Datepicker/datepickerCalendarHeaderVariables';
 export { datepickerCalendarHeaderCellVariables as DatepickerCalendarHeaderCell } from './components/Datepicker/datepickerCalendarHeaderCellVariables';
+export { datepickerCalendarGridVariables as DatepickerCalendarGrid } from './components/Datepicker/datepickerCalendarGridVariables';
+export { datepickerCalendarGridRowVariables as DatepickerCalendarGridRow } from './components/Datepicker/datepickerCalendarGridRowVariables';

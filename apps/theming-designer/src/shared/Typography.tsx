@@ -1,4 +1,4 @@
-import { ITextProps, Text } from 'office-ui-fabric-react';
+import { ITextProps, Text } from '@fluentui/react';
 import * as React from 'react';
 
 const titleTextStyles: ITextProps['styles'] = (p, theme) => ({

@@ -1,4 +1,4 @@
-import { Async } from '@uifabric/utilities';
+import { Async } from '@fluentui/utilities';
 import * as React from 'react';
 import { useConst } from './useConst';
 

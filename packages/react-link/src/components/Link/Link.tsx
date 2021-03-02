@@ -1,39 +1,19 @@
 import * as React from 'react';
-import { getGlobalClassNames, ITheme } from '@uifabric/styling';
-import { css, memoizeFunction, styled } from '@uifabric/utilities';
-import { LinkBase } from './LinkBase';
-import { ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
-import * as classes from './Link.scss';
+import { useLink } from './useLink';
+import { LinkProps } from './Link.types';
+import { useLinkStyles } from './useLinkStyles';
+import { renderLink } from './renderLink';
 
-const GlobalClassNames = {
-  root: 'ms-Link',
-};
+/**
+ * Defines a styled Link, using the `useLink` hook.
+ * {@docCategory Link }
+ */
+export const Link = React.forwardRef<HTMLElement, LinkProps>((props, ref) => {
+  const state = useLink(props, ref);
 
-const getStaticStylesMemoized = memoizeFunction(
-  (theme: ITheme, className?: string, isButton?: boolean, isDisabled?: boolean) => {
-    const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
+  useLinkStyles(state);
 
-    const propControlledClasses = [isButton && classes.button, isDisabled && classes.disabled];
+  return renderLink(state);
+});
 
-    const rootStaticClasses = [isDisabled && 'is-disabled'];
-
-    return {
-      root: css(className, classes.root, globalClassNames.root, ...rootStaticClasses, ...propControlledClasses),
-    };
-  },
-);
-
-const getStaticStyles = (props: ILinkStyleProps): Required<ILinkStyles> => {
-  const { className, isButton, isDisabled, theme } = props;
-
-  return getStaticStylesMemoized(theme!, className, isButton, isDisabled);
-};
-
-export const Link: React.FunctionComponent<ILinkProps> = styled<ILinkProps, ILinkStyleProps, ILinkStyles>(
-  LinkBase,
-  getStaticStyles,
-  undefined,
-  {
-    scope: 'Link',
-  },
-);
+Link.displayName = 'Link';

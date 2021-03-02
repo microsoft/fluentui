@@ -1,12 +1,9 @@
 import { spawn, spawnSync } from 'child_process';
 import CDP from 'chrome-remote-interface';
-import electron from 'electron';
 import puppeteer from 'puppeteer';
 import * as net from 'net';
 
 import { safeLaunchOptions } from '../../puppeteer/puppeteer.config';
-
-const DEFAULT_ELECTRON_PATH = (electron as unknown) as string;
 
 export type Page = {
   executeJavaScript: <R>(code: string) => Promise<R>;
@@ -20,17 +17,33 @@ export type Browser = {
 };
 
 export async function createChrome(): Promise<Browser> {
-  const browser = await puppeteer.launch(safeLaunchOptions());
+  const options = safeLaunchOptions();
+  let browser: puppeteer.Browser;
+  let attempt = 1;
+  while (!browser) {
+    try {
+      browser = await puppeteer.launch(options);
+    } catch (err) {
+      if (attempt === 5) {
+        console.error(`Puppeteer failed to launch after 5 attempts`);
+        throw err;
+      }
+      console.warn('Puppeteer failed to launch (will retry):');
+      console.warn(err);
+      attempt++;
+    }
+  }
+
   console.log(`Chromium version: ${await browser.version()}`);
 
   return {
-    openPage: async url => {
+    openPage: async (url) => {
       const page = await browser.newPage();
 
       await page.goto(url);
 
       return {
-        executeJavaScript: async code => {
+        executeJavaScript: async (code) => {
           return page.evaluate(code);
         },
         close: async () => page.close(),
@@ -68,7 +81,7 @@ async function checkDevtoolsAvailability(host, port, timeout): Promise<boolean> 
 }
 
 async function wait(ms: number) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 async function waitUntilDevtoolsAvailable(host = 'localhost', port = 9222, tries = 10) {
@@ -84,7 +97,7 @@ async function waitUntilDevtoolsAvailable(host = 'localhost', port = 9222, tries
   throw new Error('A browser process started, but Devtools are not available');
 }
 
-export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PATH): Promise<Browser> {
+export async function createElectron(electronPath: string): Promise<Browser> {
   const electronVersion = spawnSync(electronPath, ['-v'], {
     encoding: 'utf8',
   }).stdout.trim();
@@ -93,7 +106,7 @@ export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PAT
   console.log(`Electron version: ${electronVersion}`);
 
   return {
-    openPage: async url => {
+    openPage: async (url) => {
       const electronProcess = spawn(electronPath, [`--remote-debugging-port=${devtoolsPort}`]);
       let cdp;
 
@@ -112,7 +125,7 @@ export async function createElectron(electronPath: string = DEFAULT_ELECTRON_PAT
       }
 
       return {
-        executeJavaScript: async code => {
+        executeJavaScript: async (code) => {
           const { result } = await cdp.Runtime.evaluate({ expression: code, awaitPromise: true, returnByValue: true });
 
           return result.value;

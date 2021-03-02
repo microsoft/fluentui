@@ -1,25 +1,22 @@
 import { SourceFile } from 'ts-morph';
 import { CodeMod } from '../../types';
 import { renameProp, findJsxTag } from '../../utilities/index';
-import { Ok, Err } from '../../../helpers/result';
+import { Err } from '../../../helpers/result';
 
 const oldToNewButton: CodeMod = {
   run: (file: SourceFile) => {
     try {
       const tags = findJsxTag(file, 'DefaultButton');
-      const res = renameProp(tags, 'toggled', 'checked');
-      if (res.ok) {
-        return Ok({ logs: ['Renaming completed.'] });
-      } else {
-        return Err({ reason: `Unable to complete renaming: ${res.value}` });
-      }
+      return renameProp(tags, 'toggled', 'checked').then((v) => ({
+        logs: ['rename completed'],
+      }));
     } catch (e) {
-      return Err({ reason: e });
+      return Err({ error: e });
     }
   },
   version: '100000',
   name: 'oldToNewButton',
-  enabled: true,
+  enabled: false, // No longer needed; remains for demo purposes
 };
 
 export default oldToNewButton;

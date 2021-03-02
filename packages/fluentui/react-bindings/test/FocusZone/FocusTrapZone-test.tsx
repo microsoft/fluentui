@@ -1,8 +1,7 @@
-import { FocusZoneDirection } from '@fluentui/accessibility';
+import { FocusZoneDirection, keyboardKey } from '@fluentui/accessibility';
 import { FocusTrapZone, FocusZone, FocusTrapZoneProps } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { keyboardKey } from '@fluentui/keyboard-key';
 
 // rAF does not exist in node - let's mock it
 window.requestAnimationFrame = (callback: FrameRequestCallback) => {
@@ -491,7 +490,7 @@ describe('FocusTrapZone', () => {
             forceFocusInsideTrapOnOutsideFocus={false}
             focusPreviouslyFocusedInnerElement={focusPreviouslyFocusedInnerElement}
             data-is-focusable={true}
-            ref={ftz => {
+            ref={(ftz) => {
               focusTrapZoneRef = ftz;
             }}
           >

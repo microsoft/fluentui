@@ -2,6 +2,8 @@ import {
   Accessibility,
   dropdownSelectedItemBehavior,
   DropdownSelectedItemBehaviorProps,
+  getCode,
+  keyboardKey,
 } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -9,7 +11,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import { CloseIcon } from '@fluentui/react-icons-northstar';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import {
   ComponentEventHandler,
   ShorthandValue,
@@ -92,7 +93,7 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
 export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
-  FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
+  FluentComponentStaticProps<DropdownSelectedItemProps> = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
@@ -143,7 +144,7 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
     _.invoke(props, 'onKeyDown', e, props);
   };
 
-  const handleIconOverrides = iconProps => ({
+  const handleIconOverrides = (iconProps) => ({
     ...iconProps,
     onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();

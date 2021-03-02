@@ -20,6 +20,11 @@ const States = () => (
       description="The user can fill out the today's date."
       examplePath="components/Datepicker/States/DatepickerExampleToday"
     />
+    <ComponentExample
+      title="Selected Date"
+      description="The user can pre-fill the selected date."
+      examplePath="components/Datepicker/States/DatepickerExampleSelectedDate"
+    />
   </ExampleSection>
 );
 

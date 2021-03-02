@@ -9,11 +9,12 @@ const testFiles = [
   '**/*.stories.tsx',
   '**/{test,tests,stories}/**',
   '**/testUtilities.{ts,tsx}',
+  '**/common/isConformant.{ts,tsx}',
 ];
 
 const docsFiles = ['**/*Page.tsx', '**/{docs,demo}/**', '**/*.doc.{ts,tsx}'];
 
-const configFiles = ['/just.config.ts', '/gulpfile.ts', '/*.js', '/.*.js', '/config', '/scripts', '/tasks'];
+const configFiles = ['./just.config.ts', './gulpfile.ts', './*.js', './.*.js', './config', './scripts', './tasks'];
 
 /**
  * Whether linting is running in context of lint-staged (which should disable rules requiring
@@ -28,21 +29,33 @@ const upperCase = '[A-Z][A-Z\\d]*(_[A-Z\\d]*)*'; // must start with letter, no c
 const camelOrPascalOrUpperCase = `(${camelOrPascalCase}|${upperCase})`;
 const builtins = '^(any|Number|number|String|string|Boolean|boolean|Undefined|undefined)$';
 
-// See the types file (or hover over members) for docs.
-// This helps ensure the docs stay in sync.
-/** @type {import("./configHelpers.d").ConfigHelpers} */
 module.exports = {
+  /** File extensions to lint (with leading .) */
   extensions: ['.ts', '.tsx', '.js', '.jsx'],
 
+  /** Test-related files */
   testFiles,
 
+  /** Doc-related files, not including examples */
   docsFiles,
 
+  /** Files which may reference devDependencies: tests, docs (excluding examples), config/build */
   devDependenciesFiles: [...testFiles, ...docsFiles, ...configFiles],
 
+  /**
+   * Whether linting is running in context of lint-staged (which should disable rules requiring
+   * type info due to their significant perf penalty).
+   */
   isLintStaged,
 
-  getNamingConventionRule: prefixWithI => ({
+  /**
+   * Returns a rule configuration for [`@typescript-eslint/naming-convention`](https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md).
+   * This provides the ability to override *only* the interface rule without having to repeat or
+   * lose the rest of the (very complicated) config.
+   * @param {boolean} prefixWithI - Whether to prefix interfaces with I
+   * @returns {import("eslint").Linter.RulesRecord}
+   */
+  getNamingConventionRule: (prefixWithI) => ({
     '@typescript-eslint/naming-convention': [
       'error',
       { selector: 'function', format: ['camelCase'], leadingUnderscore: 'allow' },
@@ -85,6 +98,16 @@ module.exports = {
     ],
   }),
 
+  /**
+   * Rules requiring type information should be defined in the `overrides` section since they must
+   * only run on TS files included in a tsconfig.json (generally those files under `src`), and they
+   * require some extra configuration. They should be disabled entirely when running lint-staged
+   * due to their significant perf penalty. (Any violations checked in will be caught in CI.)
+   * @param {import("eslint").Linter.RulesRecord} rules - Rules to enable for TS files
+   * @param {string} [tsconfigPath] - Path to tsconfig, default `path.join(process.cwd()), 'tsconfig.json')`
+   * @returns {import("eslint").Linter.ConfigOverride[]} A single-entry array with a config for TS files if
+   * *not* running lint-staged (or empty array for lint-staged)
+   */
   getTypeInfoRuleOverrides: (rules, tsconfigPath) => {
     if (isLintStaged) {
       return [];
@@ -101,7 +124,7 @@ module.exports = {
       const tsconfig = jju.parse(fs.readFileSync(tsconfigPath).toString());
       if (tsconfig.include) {
         tsFiles = /** @type {string[]} */ (tsconfig.include).map(
-          includePath => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
+          (includePath) => `${includePath.replace(/\*.*/, '')}/${tsGlob}`,
         );
       } else if (tsconfig.compilerOptions && tsconfig.compilerOptions.rootDir) {
         tsFiles = [`${tsconfig.compilerOptions.rootDir}/${tsGlob}`];
@@ -117,5 +140,19 @@ module.exports = {
         rules,
       },
     ];
+  },
+
+  /** Finds the root folder of the git repo */
+  findGitRoot: () => {
+    let cwd = process.cwd();
+    const root = path.parse(cwd).root;
+    while (cwd !== root) {
+      // .git is usually a folder, but it's a file in worktrees
+      if (fs.existsSync(path.join(cwd, '.git'))) {
+        break;
+      }
+      cwd = path.dirname(cwd);
+    }
+    return cwd;
   },
 };

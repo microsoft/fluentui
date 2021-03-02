@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { IconButton, IIconProps, IContextualMenuProps } from 'office-ui-fabric-react';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { IIconProps, IContextualMenuProps } from '@fluentui/react';
 
 const emojiIcon: IIconProps = { iconName: 'Emoji2' };
 

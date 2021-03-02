@@ -1,0 +1,118 @@
+@import '~@fluentui/common-styles/src/common';
+
+.personaContainer {
+  @include focus-border(-2px);
+  border-radius: 15px;
+  display: inline-flex;
+  align-items: center;
+  background: $ms-color-neutralLighter;
+  margin: 1px 2px;
+  cursor: default;
+  user-select: none;
+  max-width: 300px;
+  vertical-align: middle;
+
+  &:hover {
+    background: $ms-color-neutralLight;
+
+    .removeButton {
+      color: $ms-color-neutralPrimary;
+    }
+  }
+
+  &.personaContainerIsSelected {
+    background: $ms-color-blue;
+
+    // Setting global values here to override persona's normal behavior specifically in this selected variation
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-white;
+
+      @include high-contrast {
+        color: HighlightText;
+      }
+    }
+
+    .removeButton {
+      :global(.ms-Button-icon) {
+        color: $ms-color-white;
+
+        @include high-contrast {
+          color: HighlightText;
+        }
+      }
+
+      &:hover {
+        color: $ms-color-white;
+        background: $ms-color-themeDark;
+      }
+    }
+
+    @include high-contrast {
+      border-color: Highlight;
+      background: Highlight;
+      -ms-high-contrast-adjust: none;
+    }
+  }
+
+  &.validationError {
+    // Setting global values here to override persona's normal behavior in the error version
+    :global(.ms-Persona-primaryText) {
+      color: $ms-color-redDark;
+      border-bottom: 2px dotted $ms-color-redDark;
+    }
+
+    :global(.ms-Persona-initials) {
+      font-size: 20px;
+    }
+
+    &.personaContainerIsSelected {
+      background: $ms-color-redDark;
+
+      :global(.ms-Persona-primaryText) {
+        color: $ms-color-white;
+        border-bottom: 2px dotted $ms-color-white;
+      }
+
+      .removeButton:hover {
+        background: $ms-color-red;
+      }
+    }
+  }
+
+  @include high-contrast {
+    border: 1px solid WindowText;
+  }
+
+  .itemContent {
+    flex: 0 1 auto;
+    min-width: 0px;
+
+    /** CSS below is needed for IE 11 to properly truncate long persona names in the picker
+     ** and to clip the presence indicator (in all browsers)
+     **/
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  .removeButton {
+    border-radius: 15px;
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+
+    &:hover {
+      background: $ms-color-neutralTertiaryAlt;
+      color: $ms-color-neutralDark;
+    }
+  }
+
+  .personaDetails {
+    flex: 0 1 auto;
+  }
+}
+
+.itemContainer {
+  display: inline-block;
+  vertical-align: top;
+}

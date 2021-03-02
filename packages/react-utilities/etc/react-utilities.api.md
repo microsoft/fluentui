@@ -7,7 +7,184 @@
 import * as React from 'react';
 
 // @public
-export const childrenExist: (children: React.ReactNode) => boolean;
+export const anchorProperties: Record<string, number>;
+
+// @public
+export const audioProperties: Record<string, number>;
+
+// @public
+export const baseElementEvents: Record<string, number>;
+
+// @public
+export const baseElementProperties: Record<string, number>;
+
+// @public (undocumented)
+export interface BaseSlots {
+    // (undocumented)
+    root: React.ElementType;
+}
+
+// @public
+export const buttonProperties: Record<string, number>;
+
+// @public (undocumented)
+export type ChangeCallback<TElement extends HTMLElement, TValue, TEvent extends React.SyntheticEvent<TElement> | undefined> = (ev: TEvent, newValue: TValue | undefined) => void;
+
+// @public
+export type ClassDictionary = Record<string, string>;
+
+// @public (undocumented)
+export const colGroupProperties: Record<string, number>;
+
+// @public (undocumented)
+export const colProperties: Record<string, number>;
+
+// @public (undocumented)
+export interface ComponentProps {
+    // (undocumented)
+    as?: React.ElementType;
+    // (undocumented)
+    children?: React.ReactNode;
+    // (undocumented)
+    className?: string;
+}
+
+// @public
+export const divProperties: Record<string, number>;
+
+// @public
+export const formProperties: Record<string, number>;
+
+// @public
+export type GenericDictionary = Record<string, any>;
+
+// @public
+export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
+
+// @public
+export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
+
+// @public
+export const getSlots: (state: Record<string, any>, slotNames?: string[] | undefined) => {
+    slots: Record<string, any>;
+    slotProps: Record<string, any>;
+};
+
+// @public
+export const htmlElementProperties: Record<string, number>;
+
+// @public
+export const iframeProperties: Record<string, number>;
+
+// @public @deprecated (undocumented)
+export const imageProperties: Record<string, number>;
+
+// @public
+export const imgProperties: Record<string, number>;
+
+// @public
+export const inputProperties: Record<string, number>;
+
+// @public
+export const labelProperties: Record<string, number>;
+
+// @public
+export const liProperties: Record<string, number>;
+
+// @public
+export const makeMergeProps: <TState = Record<string, any>>(options?: MergePropsOptions) => (target: Record<string, any>, ...propSets: (Record<string, any> | undefined)[]) => TState;
+
+// @public (undocumented)
+export type MergePropsOptions = {
+    deepMerge?: string[];
+};
+
+// @public
+export const nullRender: () => null;
+
+// @public (undocumented)
+export type ObjectShorthandProps<TProps extends ComponentProps = {}> = TProps & {
+    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+};
+
+// @public
+export const olProperties: Record<string, number>;
+
+// @public
+export function omit<TObj extends Record<string, any>>(obj: TObj, exclusions: (keyof TObj)[]): TObj;
+
+// @public (undocumented)
+export const optionProperties: Record<string, number>;
+
+// @public
+export type RefObjectFunction<T> = React.RefObject<T> & ((value: T) => void);
+
+// @public
+export const resolveShorthandProps: <TProps>(props: TProps, shorthandPropNames: string[]) => TProps;
+
+// @public
+export const selectProperties: Record<string, number>;
+
+// @public (undocumented)
+export type ShorthandProps<TProps extends ComponentProps = {}> = React.ReactChild | React.ReactNodeArray | React.ReactPortal | boolean | number | null | undefined | (TProps & ComponentProps & {
+    children?: TProps['children'] | ShorthandRenderFunction<TProps>;
+});
+
+// @public (undocumented)
+export type ShorthandRenderFunction<TProps> = (Component: React.ElementType<TProps>, props: TProps) => React.ReactNode;
+
+// @public (undocumented)
+export type SlotProps<TSlots extends BaseSlots, TProps, TRootProps extends React.HTMLAttributes<HTMLElement>> = {
+    [key in keyof Omit<TSlots, 'root'>]: key extends keyof TProps ? TProps[key] : any;
+} & {
+    root: TRootProps;
+};
+
+// @public
+export const tableProperties: Record<string, number>;
+
+// @public
+export const tdProperties: Record<string, number>;
+
+// @public
+export const textAreaProperties: Record<string, number>;
+
+// @public
+export const thProperties: Record<string, number>;
+
+// @public
+export const trProperties: Record<string, number>;
+
+// @public
+export function useBoolean(initialState: boolean): [boolean, UseBooleanCallbacks];
+
+// @public
+export interface UseBooleanCallbacks {
+    setFalse: () => void;
+    setTrue: () => void;
+    toggle: () => void;
+}
+
+// @public
+export function useConst<T>(initialValue: T | (() => T)): T;
+
+// @public
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+
+// @public (undocumented)
+export function useControllableValue<TValue, TElement extends HTMLElement, TEvent extends React.SyntheticEvent<TElement> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: ChangeCallback<TElement, TValue, TEvent> | undefined): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]>;
+
+// @public
+export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Args) => Return) => (...args: Args) => Return;
+
+// @public
+export function useId(prefix?: string, providedId?: string): string;
+
+// @public
+export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
+
+// @public
+export const videoProperties: Record<string, number>;
 
 
 // (No @packageDocumentation comment for this package)

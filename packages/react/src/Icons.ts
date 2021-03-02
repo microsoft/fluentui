@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Icons';
+export * from '@fluentui/font-icons-mdl2';

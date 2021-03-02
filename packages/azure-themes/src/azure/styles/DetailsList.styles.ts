@@ -1,10 +1,10 @@
-import { ICheckStyleProps, ICheckStyles } from 'office-ui-fabric-react/lib/Check';
+import { ICheckStyleProps, ICheckStyles } from '@fluentui/react/lib/Check';
 import {
   IDetailsRowStyleProps,
   IDetailsRowStyles,
   IDetailsListStyleProps,
   IDetailsListStyles,
-} from 'office-ui-fabric-react/lib/DetailsList';
+} from '@fluentui/react/lib/DetailsList';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';

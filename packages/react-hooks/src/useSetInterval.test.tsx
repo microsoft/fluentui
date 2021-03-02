@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSetInterval } from './useSetInterval';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useSetInterval', () => {
@@ -58,7 +58,7 @@ describe('useSetInterval', () => {
   });
 
   it('does not execute the interval when unmounted', () => {
-    safeMount(<TestComponent />, wrapper => {
+    safeMount(<TestComponent />, (wrapper) => {
       expect(timesCalled).toEqual(0);
 
       wrapper.unmount();

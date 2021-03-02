@@ -1,15 +1,14 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
   IColumn,
   CheckboxVisibility,
   SelectionMode,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 const items = [
   {
@@ -119,7 +118,7 @@ const groups = [
 
 storiesOf('DetailsList', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

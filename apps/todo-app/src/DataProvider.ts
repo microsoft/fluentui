@@ -1,6 +1,6 @@
 import * as update from 'immutability-helper';
 import { Promise } from 'es6-promise';
-import { findIndex } from 'office-ui-fabric-react/lib/Utilities';
+import { findIndex } from '@fluentui/react/lib/Utilities';
 import { ITodoItem, IDataProvider } from './types/index';
 
 const ADD_ITEMS_DELAY = 500;
@@ -81,7 +81,7 @@ export default class DataProvider implements IDataProvider {
   public createItem(title: string): Promise<ITodoItem[]> {
     this.isLoading = true;
 
-    return new Promise<ITodoItem[]>(resolve => {
+    return new Promise<ITodoItem[]>((resolve) => {
       const newItem: ITodoItem = {
         id: this._generateGuid(),
         title: title,
@@ -100,7 +100,7 @@ export default class DataProvider implements IDataProvider {
    * Delete a item from the list through data provider.
    */
   public deleteItem(delItem: ITodoItem): Promise<ITodoItem[]> {
-    return new Promise<ITodoItem[]>(resolve => {
+    return new Promise<ITodoItem[]>((resolve) => {
       this.items = this.items.filter((item: ITodoItem) => item.id !== delItem.id);
       resolve(this.items);
     });
@@ -158,7 +158,7 @@ export default class DataProvider implements IDataProvider {
   }
 
   private _generateGuid(): string {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
       // eslint-disable-next-line no-bitwise
       const r = (Math.random() * 16) | 0;
       // eslint-disable-next-line no-bitwise

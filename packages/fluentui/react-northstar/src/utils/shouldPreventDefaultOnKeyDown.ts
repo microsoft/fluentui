@@ -1,4 +1,4 @@
-import { getCode, SpacebarKey, EnterKey } from '@fluentui/keyboard-key';
+import { getCode, SpacebarKey, EnterKey } from '@fluentui/accessibility';
 import * as React from 'react';
 
 /**
@@ -9,6 +9,11 @@ export function shouldPreventDefaultOnKeyDown(e: KeyboardEvent | React.KeyboardE
   const target: HTMLElement | undefined = e.target as HTMLElement;
 
   const matchesByKey = code === SpacebarKey || code === EnterKey;
+
+  if (target?.tagName === 'A') {
+    return code === SpacebarKey;
+  }
+
   const ignoredByTag =
     target?.tagName === 'INPUT' || target?.tagName === 'TEXTAREA' || target?.isContentEditable === true;
 

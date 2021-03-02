@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ActivityItem';
+export * from './components/ActivityItem/index';

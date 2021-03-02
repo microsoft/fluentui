@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { List } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { List } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
 const items = [
@@ -133,7 +132,7 @@ const onRenderCell = (item: any) => <div>{item.name}</div>;
 
 storiesOf('List', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Panel, PanelType, SearchBox } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Panel, PanelType, SearchBox } from '@fluentui/react';
 
 const defaultProps = {
   isOpen: true,
@@ -12,7 +11,7 @@ const defaultProps = {
 
 storiesOf('Panel', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -82,8 +81,7 @@ storiesOf('Panel', module)
   ));
 
 storiesOf('Panel', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default')

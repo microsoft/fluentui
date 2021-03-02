@@ -1,10 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
-import { TestImages } from '@uifabric/example-data';
+import { FabricDecorator } from '../utilities/index';
+import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from '@fluentui/react';
+import { TestImages } from '@fluentui/example-data';
 
 const examplePersona: IPersonaProps = {
   imageUrl: TestImages.personaFemale,

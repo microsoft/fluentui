@@ -1,8 +1,95 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 27 Aug 2020 12:36:50 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.5..@fluentui/codemods_v8.0.1)
+
+### Patches
+
+- Enable office-ui-fabric-react to fluentui repath ([PR #16852](https://github.com/microsoft/fluentui/pull/16852) by joschect@microsoft.com)
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.5)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.4..@fluentui/codemods_v1.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.4)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.3..@fluentui/codemods_v1.0.0-beta.4)
+
+### Changes
+
+- Disable unneeded codemods ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+## [1.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.2)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.1..@fluentui/codemods_v1.0.0-beta.2)
+
+### Changes
+
+- Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.1)
+
+Tue, 03 Nov 2020 12:32:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.0..@fluentui/codemods_v1.0.0-beta.1)
+
+### Changes
+
+- Codemods: fix an issue where they would not save synchronously ([PR #15800](https://github.com/microsoft/fluentui/pull/15800) by joschect@microsoft.com)
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.14..@fluentui/codemods_v1.0.0-beta.0)
+
+### Changes
+
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- fix memory overflow in codemods ([PR #15353](https://github.com/microsoft/fluentui/pull/15353) by joschect@microsoft.com)
+- Codemods: Tighten up NoOp return types ([PR #15377](https://github.com/microsoft/fluentui/pull/15377) by joschect@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Fixes tests to correctly run on Windows machines. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.14](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.14)
+
+Thu, 24 Sep 2020 00:46:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.3..@fluentui/codemods_v0.11.14)
+
+### Patches
+
+- Codemods: Fix config mod to run if no changes present ([PR #15159](https://github.com/microsoft/fluentui/pull/15159) by joschect@microsoft.com)
+
+## [0.11.3](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.3)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.11.0..@fluentui/codemods_v0.11.3)
+
+### Patches
+
+- Support for configmod ([PR #14837](https://github.com/microsoft/fluentui/pull/14837) by t-dama@microsoft.com)
+- Codemods: Remove unneeded compat mods and refactor ([PR #14849](https://github.com/microsoft/fluentui/pull/14849) by joschect@microsoft.com)
+
+## [0.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.11.0)
+
+Fri, 28 Aug 2020 12:29:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v0.10.0..@fluentui/codemods_v0.11.0)
+
+### Minor changes
+
+- add list feature to codemods modruner ([PR #14785](https://github.com/microsoft/fluentui/pull/14785) by t-dama@microsoft.com)
 
 ## [0.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v0.10.0)
 

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IStyleFunctionOrObject, IRefObject } from '@uifabric/utilities';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject, IRefObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Slider}
@@ -16,7 +16,9 @@ export interface ISlider {
 /**
  * {@docCategory Slider}
  */
-export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'> {
+export interface ISliderProps
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'defaultValue' | 'onChange'>,
+    React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -86,53 +88,49 @@ export interface ISliderProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
 
   /**
    * A description of the Slider for the benefit of screen readers.
-   * @deprecated use aria-label instead.
    */
   ariaLabel?: string;
 
-  /**
-   * A description of the Slider for the benefit of screen readers.
-   */
-  'aria-label'?: string;
   /**
    * A text description of the Slider number value for the benefit of screen readers.
    * This should be used when the Slider number value is not accurately represented by a number.
    */
   ariaValueText?: (value: number) => string;
   /**
-   * Optional flag to render the slider vertically. Defaults to rendering horizontal.
+   * Whether to render the slider vertically.
+   * @default `false` (render horizontally)
    */
   vertical?: boolean;
 
   /**
-   * Optional flag to render the Slider as disabled.
+   * Whether to render the Slider as disabled.
    * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
-   * Optional flag to decide that thumb will snap to closest value while moving the slider
+   * Whether to decide that thumb will snap to closest value while moving the slider
    * @defaultvalue false
    */
   snapToStep?: boolean;
 
   /**
-   * Optional className to attach to the slider root element.
+   * Class name to attach to the slider root element.
    */
   className?: string;
 
   /**
-   * Optional mixin for additional props on the thumb button within the slider.
+   * Additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
 
   /**
-   * Optional function to format the slider value.
+   * Custom formatter for the slider value.
    */
   valueFormat?: (value: number) => string;
 
   /**
-   * Optional flag to attach the origin of slider to zero. Helpful when the range include negatives.
+   * Whether to attach the origin of slider to zero. Helpful when the range include negatives.
    * @defaultvalue false
    */
   originFromZero?: boolean;

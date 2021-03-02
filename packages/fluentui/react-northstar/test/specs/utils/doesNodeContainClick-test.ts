@@ -27,30 +27,27 @@ describe('doesNodeContainClick', () => {
 
   describe('e.target', () => {
     test('returns node.contains(e.target) if exists', () => {
-      const node = makeNode();
+      const node = document.createElement('div');
       const target = document.createElement('div');
-      document.body.appendChild(target);
       const event = makeEvent({ target });
 
-      expect(node.contains).not.toHaveBeenCalled();
+      node.appendChild(target);
+      document.body.appendChild(node);
 
-      doesNodeContainClick(node, event);
+      expect(doesNodeContainClick(node, event)).toBe(true);
 
-      expect(node.contains).toHaveBeenCalledTimes(1);
-      expect(node.contains).toHaveBeenCalledWith(event.target);
-      document.body.removeChild(target);
+      document.body.removeChild(node);
     });
 
     test("does not call node.contains(e.target) if doesn't exist", () => {
-      const node = makeNode();
+      const node = document.createElement('div');
       const target = null;
       const event = makeEvent({ target });
 
-      expect(node.contains).not.toHaveBeenCalled();
+      document.body.appendChild(node);
+      expect(doesNodeContainClick(node, event)).toBe(false);
 
-      doesNodeContainClick(node, event);
-
-      expect(node.contains).not.toHaveBeenCalled();
+      document.body.removeChild(node);
     });
   });
 

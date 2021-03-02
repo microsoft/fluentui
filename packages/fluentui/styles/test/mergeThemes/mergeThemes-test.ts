@@ -151,13 +151,13 @@ describe('mergeThemes', () => {
     test('functions accept and apply siteVariables', () => {
       const target = {
         componentVariables: {
-          Button: siteVariables => ({ one: 1, target: true, ...siteVariables }),
+          Button: (siteVariables) => ({ one: 1, target: true, ...siteVariables }),
         },
       };
 
       const source = {
         componentVariables: {
-          Button: siteVariables => ({ two: 2, source: true, ...siteVariables }),
+          Button: (siteVariables) => ({ two: 2, source: true, ...siteVariables }),
         },
       };
 
@@ -183,16 +183,6 @@ describe('mergeThemes', () => {
 
       expect(merged.componentStyles).toHaveProperty('Button');
       expect(merged.componentStyles).toHaveProperty('Icon');
-    });
-
-    test('component parts without styles are not merged', () => {
-      const target = { componentStyles: { Button: { root: {} } } };
-      const source = { componentStyles: { Button: { icon: {} } } };
-
-      const merged = mergeThemes(target, source);
-
-      expect(merged.componentStyles.Button).not.toHaveProperty('root');
-      expect(merged.componentStyles.Button).not.toHaveProperty('icon');
     });
 
     test('component parts with style properties are merged', () => {
@@ -267,7 +257,7 @@ describe('mergeThemes', () => {
       const target = {
         componentStyles: {
           Button: {
-            root: param => ({ target: true, ...param }),
+            root: (param) => ({ target: true, ...param }),
           },
         },
       };
@@ -275,7 +265,7 @@ describe('mergeThemes', () => {
       const source = {
         componentStyles: {
           Button: {
-            root: param => ({ source: true, ...param }),
+            root: (param) => ({ source: true, ...param }),
           },
         },
       };
@@ -451,7 +441,7 @@ describe('mergeThemes', () => {
       };
       const source = {
         siteVariables: { varA: 'sVarA' },
-        componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
+        componentVariables: { Button: (sv) => ({ btnVar: sv.varA }) },
         componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
       };
 
@@ -495,7 +485,7 @@ describe('mergeThemes', () => {
       };
       const source = {
         siteVariables: { varA: 'sVarA' },
-        componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
+        componentVariables: { Button: (sv) => ({ btnVar: sv.varA }) },
         componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
       };
 
@@ -522,7 +512,7 @@ describe('mergeThemes', () => {
       const source = withDebugId(
         {
           siteVariables: { varA: 'sVarA' },
-          componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
+          componentVariables: { Button: (sv) => ({ btnVar: sv.varA }) },
           componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
         },
         'source',

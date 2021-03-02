@@ -3,7 +3,7 @@ export const pulse = {
     opacity: 1,
   },
   '50%': {
-    opacity: 0.2,
+    opacity: 0.5,
   },
   to: {
     opacity: 1,

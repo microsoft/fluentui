@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility, AccessibilityAttributes } from '../../types';
@@ -25,7 +25,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
  * Triggers 'openMenu' action with 'ArrowDown' on 'wrapper', when orientation is horizontal.
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper', when orientation is vertical.
  */
-export const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
+export const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = (props) => ({
   attributes: {
     wrapper: {
       role: 'presentation',

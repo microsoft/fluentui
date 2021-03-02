@@ -1,8 +1,6 @@
 import { FocusZoneDirection, FocusZoneProperties, FocusZoneTabbableElements } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import { FocusZone } from './FocusZone';
-
 /**
  * FocusZone component class interface.
  */
@@ -25,9 +23,10 @@ export interface IFocusZone {
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
    * @param element - The child element within the zone to focus.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focusElement(childElement?: HTMLElement): boolean;
+  focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
 }
 
 // Heads up! Keep in sync with packages/accessibility/src/focusZone/types.ts
@@ -165,7 +164,7 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    * Callback called when "focus" event triggered in FocusZone.
    * @param event - React's original FocusEvent.
    */
-  onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.

@@ -1,6 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '../../keyboard-key';
 
 /**
  * @description
@@ -15,7 +15,7 @@ export const cardsContainerBehavior: Accessibility<CardsContainerBehaviorProps> 
   attributes: {},
   focusZone: {
     props: {
-      shouldEnterInnerZone: event => getCode(event) === keyboardKey.Enter,
+      shouldEnterInnerZone: (event) => getCode(event) === keyboardKey.Enter,
       direction: FocusZoneDirection.bidirectional,
     },
   },

@@ -1,22 +1,28 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { tabListBehavior, Header, Dropdown, Text, Flex, Menu } from '@fluentui/react-northstar';
+import DocumentTitle from 'react-document-title';
+import { tabListBehavior, Header, Text, Flex, Menu } from '@fluentui/react-northstar';
 import { ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 import { getFormattedHash } from '../../utils';
 // import ComponentDocLinks from './ComponentDocLinks'
 // import ComponentDocSee from './ComponentDocSee'
-import { ComponentExamples } from './ComponentExamples';
 import ComponentProps from './ComponentProps';
 import { ComponentDocAccessibility } from './ComponentDocAccessibility';
 import { ThemeContext } from '../../context/ThemeContext';
 import ExampleContext from '../../context/ExampleContext';
 import { ComponentInfo } from '../../types';
-import ComponentBestPractices from './ComponentBestPractices';
 import * as _ from 'lodash';
+import ThemeDropdown from '../ThemeDropdown';
 
+const ComponentExamples = React.lazy(async () => ({
+  default: (await import(/* webpackChunkName: "examples-with-source" */ './ComponentExamples')).ComponentExamples,
+}));
 const ComponentPlayground = React.lazy(() =>
   import(/* webpackChunkName: "playground" */ '../ComponentPlayground/ComponentPlayground'),
+);
+const ComponentBestPractices = React.lazy(() =>
+  import(/* webpackChunkName: "best-practices" */ './ComponentBestPractices'),
 );
 
 const exampleEndStyle: React.CSSProperties = {
@@ -45,7 +51,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
   tabRegex = new RegExp(/[^\/]*$/);
 
   getTabIndexOrRedirectToDefault(tab: string, tabs) {
-    const lowercaseTabs = _.map(tabs, tab => tab.toLowerCase());
+    const lowercaseTabs = _.map(tabs, (tab) => tab.toLowerCase());
     const index = lowercaseTabs.indexOf(tab);
     if (index === -1) {
       const { history, location } = this.props;
@@ -110,32 +116,13 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
   };
 
   render() {
-    const getA11ySelectionMessage = {
-      onAdd: item => `${item} has been selected.`,
-      onRemove: item => `${item} has been removed.`,
-    };
-
-    const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resultCount, selectedItem }) => {
-      if (!isOpen) {
-        return selectedItem ? itemToString(selectedItem) : '';
-      }
-      if (!resultCount) {
-        return 'No results are available.';
-      }
-      if (resultCount !== previousResultCount) {
-        return `${resultCount} result${
-          resultCount === 1 ? ' is' : 's are'
-        } available, use up and down arrow keys to navigate. Press Enter key to select.`;
-      }
-      return '';
-    };
-
     const { info, tabs } = this.props;
     const { activePath, currentTabIndex } = this.state;
 
     const PAGE_PADDING = '20px';
     return (
       <div>
+        <DocumentTitle title={`Fluent UI - ${info.displayName}`} />
         <div
           id="docs-sticky-header"
           style={{
@@ -150,15 +137,7 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
         >
           <ThemeContext.Consumer>
             {({ changeTheme, themeOptions }) => (
-              <Dropdown
-                style={{ float: 'right' }}
-                getA11yStatusMessage={getA11yStatusMessage}
-                getA11ySelectionMessage={getA11ySelectionMessage}
-                noResultsMessage="We couldn't find any matches."
-                placeholder="Theme"
-                onChange={changeTheme}
-                items={themeOptions.map(({ text, value }) => ({ header: text, value }))}
-              />
+              <ThemeDropdown style={{ float: 'right' }} onChange={changeTheme} themeOptions={themeOptions} />
             )}
           </ThemeContext.Consumer>
           <Header
@@ -173,6 +152,15 @@ class ComponentDoc extends React.Component<ComponentDocProps, ComponentDocState>
             activeIndex={currentTabIndex}
             items={tabs}
             style={{ marginTop: '0.5rem', background: 'none', border: 'none' }}
+            variables={(siteVariables) => ({
+              underlinedColorHover: siteVariables.colors.black,
+              color: siteVariables.colors.grey[500],
+              colorActive: siteVariables.colors.black,
+              activeUnderlinedBorderBottomColor: siteVariables.colors.black,
+              underlinedWrapperColorHover: siteVariables.colors.black,
+              backgroundColorActive: siteVariables.colors.black,
+              activeUnderlinedColor: siteVariables.colors.black,
+            })}
             onItemClick={this.handleTabClick}
             accessibility={tabListBehavior}
           />

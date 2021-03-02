@@ -117,22 +117,20 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/checkbox
 
 ### Recommended props
 
-| Name                 | Type                                |
-| -------------------- | ----------------------------------- |
-| ariaDescribedBy      | string                              |
-| ariaLabel            | string                              |
-| ariaLabelledBy       | string                              |
-| as                   | keyof JSX.IntrinsicElements         |
-| checked              | boolean                             |
-| className            | string                              |
-| defaultChecked       | boolean                             |
-| defaultIndeterminate | boolean                             |
-| disabled             | boolean                             |
-| indeterminate        | boolean                             |
-| label                | string                              |
-| name                 | string                              |
-| onChange             | (ev: Event, value: boolean) => void |
-| labelPosition        | start or end                        |
+| Name            | Type                                |
+| --------------- | ----------------------------------- |
+| ariaDescribedBy | string                              |
+| ariaLabel       | string                              |
+| ariaLabelledBy  | string                              |
+| as              | keyof JSX.IntrinsicElements         |
+| checked         | boolean \| 'mixed'                  |
+| className       | string                              |
+| defaultChecked  | boolean                             |
+| disabled        | boolean                             |
+| label           | string                              |
+| name            | string                              |
+| onChange        | (ev: Event, value: boolean) => void |
+| labelPosition   | start or end                        |
 
 Note: rtl, styles, and theme come from compose or the ThemeProvider. And name has been added to support checkbox in form scenarios.
 
@@ -147,27 +145,25 @@ Removing the following two props because the ARIA spec dictates role='checkbox' 
 
 #### Fluent Checkbox recommended props interface
 
-| Name                   | To transition or not? | Property transitioned? | Breaking change? | Codemod/Shim created? |
-| ---------------------- | --------------------- | :--------------------: | :--------------: | :-------------------: |
-| `ariaDescribedBy`      | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaLabel`            | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaLabelledBy`       | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaPositionInSet`    | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaSetSize`          | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `boxSide`              | No; labelPosition     |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `checked`              | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `checkmarkIconProps`   | No                    |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `className`            | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `defaultChecked`       | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `defaultIndetermiante` | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `disabled`             | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `indeterminate`        | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `keytipProps`          | Yes - redesign        |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `label`                | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `onChange`             | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `onRenderLabel`        | No; shorthand         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `styles`               | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `theme`                | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| Name                 | To transition or not? | Property transitioned? | Breaking change? | Codemod/Shim created? |
+| -------------------- | --------------------- | :--------------------: | :--------------: | :-------------------: |
+| `ariaDescribedBy`    | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaLabel`          | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaLabelledBy`     | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaPositionInSet`  | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaSetSize`        | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `boxSide`            | No; labelPosition     |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `checked`            | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `checkmarkIconProps` | No                    |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `className`          | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `defaultChecked`     | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `disabled`           | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `keytipProps`        | Yes - redesign        |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `label`              | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `onChange`           | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `onRenderLabel`      | No; shorthand         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `styles`             | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `theme`              | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
 
 Props being removed:
 

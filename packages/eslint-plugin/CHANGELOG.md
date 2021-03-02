@@ -1,8 +1,53 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Thu, 20 Aug 2020 12:37:22 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.0.0-beta.2..@fluentui/eslint-plugin_v1.0.1)
+
+### Patches
+
+- Release major version ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.0-beta.2)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.0.0-beta.1..@fluentui/eslint-plugin_v1.0.0-beta.2)
+
+### Changes
+
+- Allow references to devDependencies defined in root package.json ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [1.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.0-beta.1)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.0.0-beta.0..@fluentui/eslint-plugin_v1.0.0-beta.1)
+
+### Changes
+
+- Tweaking max-len exclusion matching. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+
+## [1.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.54.1..@fluentui/eslint-plugin_v1.0.0-beta.0)
+
+### Changes
+
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+
+## [0.54.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.1)
+
+Wed, 16 Sep 2020 12:27:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v0.54.0..@fluentui/eslint-plugin_v0.54.1)
+
+### Patches
+
+- Adding isConformant files to list of test files. ([PR #14853](https://github.com/microsoft/fluentui/pull/14853) by czearing@outlook.com)
 
 ## [0.54.0](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v0.54.0)
 

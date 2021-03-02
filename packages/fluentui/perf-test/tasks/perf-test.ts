@@ -49,8 +49,8 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
 
   if (!baselineOnly) {
     urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
-      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
+      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test-northstar/index.html`
+      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test-northstar/index.html';
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
@@ -66,10 +66,10 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
   console.log('stories:');
   console.dir(stories, { depth: null });
 
-  Object.keys(stories).forEach(kindKey => {
+  Object.keys(stories).forEach((kindKey) => {
     Object.keys(stories[kindKey])
-      .filter(storyKey => typeof stories[kindKey][storyKey] === 'function')
-      .forEach(storyKey => {
+      .filter((storyKey) => typeof stories[kindKey][storyKey] === 'function')
+      .forEach((storyKey) => {
         const scenarioName = `${kindKey}.${storyKey}`;
         scenarioList.push(scenarioName);
         scenarios[scenarioName] = {
@@ -94,7 +94,7 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
 
   if (tempContents.length > 0) {
     console.log(`Unexpected files already present in ${tempDir}`);
-    tempContents.forEach(logFile => {
+    tempContents.forEach((logFile) => {
       const logFilePath = path.join(tempDir, logFile);
       console.log(`Deleting ${logFilePath}`);
       fs.unlinkSync(logFilePath);
@@ -187,13 +187,13 @@ function createReport(stories, testResults: ExtendedCookResults): string {
 function createScenarioTable(stories, testResults: ExtendedCookResults, showAll: boolean): string {
   const resultsToDisplay = Object.keys(testResults)
     .filter(
-      key =>
+      (key) =>
         showAll ||
         (testResults[key].analysis &&
           testResults[key].analysis.regression &&
           testResults[key].analysis.regression.isRegression),
     )
-    .filter(testResultKey => getStoryKey(testResultKey) !== 'Fabric')
+    .filter((testResultKey) => getStoryKey(testResultKey) !== 'Fabric')
     .sort();
 
   if (resultsToDisplay.length === 0) {
@@ -243,7 +243,7 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
     </th>
   </tr>`.concat(
     resultsToDisplay
-      .map(resultKey => {
+      .map((resultKey) => {
         const testResult = testResults[resultKey];
         const tpi = testResult.extended.tpi
           ? linkifyResult(

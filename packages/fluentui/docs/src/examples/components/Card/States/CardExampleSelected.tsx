@@ -7,7 +7,7 @@ const CardExampleSelected = () => (
       <Text content="Selected card" weight="bold" />
     </Card.Header>
     <Card.Body>
-      <Image src="public/images/wireframe/square-image.png" />
+      <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
     </Card.Body>
   </Card>
 );

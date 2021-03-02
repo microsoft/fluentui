@@ -1,4 +1,5 @@
 import { dropdownSlotClassNames } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   triggerButton: `.${dropdownSlotClassNames.triggerButton}`,
@@ -7,7 +8,7 @@ const selectors = {
 
 export const config: ScreenerTestsConfig = {
   steps: [
-    builder =>
+    (builder) =>
       builder
         .click(selectors.triggerButton)
         .snapshot('RTL: Shows list')

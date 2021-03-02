@@ -31,7 +31,7 @@ const CategoryColorSchemes = createComponent<ColorVariantsProps>({
   render: ({ name, themes, headers, config: { classes } }) => {
     if (themes.length === 0) return <></>;
 
-    const colorSchemes = _.map(themes, theme => theme.siteVariables.categoryColorScheme[name]);
+    const colorSchemes = _.map(themes, (theme) => theme.siteVariables.categoryColorScheme[name]);
 
     const elements = _.flatMap(_.head(colorSchemes), (i, token) => [
       <ColorBox
@@ -48,16 +48,11 @@ const CategoryColorSchemes = createComponent<ColorVariantsProps>({
       )),
     ]);
 
-    const columns = _.times(themes.length, () => '180px').join(' ');
+    const columns = `auto ${_.times(themes.length, () => '180px').join(' ')}`;
     return (
       <div className={classes.root}>
-        <Grid
-          styles={{
-            gridTemplateColumns: `auto ${columns}`,
-            msGridColumns: `minmax(min-content, 1fr) ${columns}`,
-          }}
-        >
-          {headers && headers.map(header => Header.create(header))}
+        <Grid columns={columns}>
+          {headers && headers.map((header) => Header.create(header))}
           {elements}
         </Grid>
       </div>

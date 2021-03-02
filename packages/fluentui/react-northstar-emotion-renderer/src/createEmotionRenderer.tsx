@@ -42,7 +42,7 @@ export function createEmotionRenderer(target?: Document): Renderer {
     container: cacheLtr.sheet.container,
   });
 
-  const Provider: React.FC = props => {
+  const Provider: React.FC = (props) => {
     // TODO: Find a way to cleanup global styles
     // React.useEffect(() => {
     // return () => sheet.flush();
@@ -95,7 +95,7 @@ export function createEmotionRenderer(target?: Document): Renderer {
       cacheLtr.insert(``, serializedStyles, sheet, false);
     }
   };
-  const renderFont: RendererRenderFont = font => {
+  const renderFont: RendererRenderFont = (font) => {
     const { localAlias, ...otherProperties } = font.props;
 
     const fontLocals = getFontLocals(localAlias);
@@ -112,6 +112,10 @@ export function createEmotionRenderer(target?: Document): Renderer {
   };
 
   return {
+    // TODO: check that should be in clean up for Emotion
+    registerUsage: () => {},
+    unregisterUsage: () => {},
+
     renderGlobal,
     renderFont,
     renderRule,

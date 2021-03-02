@@ -1,7 +1,5 @@
-module.exports = {
-  ...require('@uifabric/build/jest'),
+const commonConfig = require('@fluentui/scripts/jest');
+
+module.exports = commonConfig({
   name: 'react-component-ref',
-  moduleNameMapper: require('lerna-alias').jest({
-    directory: require('@uifabric/build/monorepo/findGitRoot')(),
-  }),
-};
+});

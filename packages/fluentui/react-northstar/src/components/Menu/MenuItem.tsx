@@ -13,6 +13,7 @@ import {
   useStyles,
   ComponentWithAs,
   ShorthandConfig,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -40,7 +41,6 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../.
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -187,12 +187,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     setStart();
 
     const parentProps = (useContextSelectors(MenuContext, {
-      active: v => v.activeIndex === inputProps.index,
-      onItemSelect: v => v.onItemSelect,
-      variables: v => v.variables,
-      menuSlot: v => v.slots.menu,
-      slotProps: v => v.slotProps.item,
-      accessibility: v => v.behaviors.item,
+      active: (v) => v.activeIndex === inputProps.index,
+      onItemClick: (v) => v.onItemClick,
+      onItemSelect: (v) => v.onItemSelect,
+      variables: (v) => v.variables,
+      menuSlot: (v) => v.slots.menu,
+      slotProps: (v) => v.slotProps.item,
+      accessibility: (v) => v.behaviors.item,
     }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const props = {
@@ -250,21 +251,22 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     const getA11yProps = useAccessibility<MenuItemBehaviorProps>(accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {
-        performClick: event => !event.defaultPrevented && handleClick(event),
-        openMenu: event => openMenu(event),
-        closeAllMenusAndFocusNextParentItem: event => closeAllMenus(event),
-        closeMenu: event => closeMenu(event),
-        closeMenuAndFocusTrigger: event => closeMenu(event, true),
-        doNotNavigateNextParentItem: event => {
+        performClick: (event) => !event.defaultPrevented && handleClick(event),
+        openMenu: (event) => openMenu(event),
+        closeAllMenusAndFocusNextParentItem: (event) => closeAllMenus(event),
+        closeMenu: (event) => closeMenu(event),
+        closeMenuAndFocusTrigger: (event) => closeMenu(event, true),
+        doNotNavigateNextParentItem: (event) => {
           event.stopPropagation();
         },
-        closeAllMenus: event => closeAllMenus(event),
+        closeAllMenus: (event) => closeAllMenus(event),
       },
       mapPropsToBehavior: () => ({
         menuOpen,
         hasMenu: !!menu,
         disabled,
         vertical,
+        active, // for tabBehavior
       }),
       rtl: context.rtl,
     });
@@ -341,6 +343,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       performClick(e);
 
       _.invoke(props, 'onClick', e, props);
+      _.invoke(parentProps, 'onItemClick', e, props);
     };
 
     const handleBlur = (e: React.FocusEvent) => {
@@ -406,13 +409,13 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       ...(!wrapper && {
         onClick: handleClick,
         ...(on === 'hover' && {
-          onMouseEnter: e => {
+          onMouseEnter: (e) => {
             setWhatInputSource(context.target, 'mouse');
             trySetMenuOpen(true, e);
             _.invoke(props, 'onMouseEnter', e, props);
-            _.invoke(parentProps, 'onItemSelect', e, props);
+            _.invoke(parentProps, 'onItemSelect', e, props.index);
           },
-          onMouseLeave: e => {
+          onMouseLeave: (e) => {
             trySetMenuOpen(false, e);
             _.invoke(props, 'onMouseLeave', e, props);
           },
@@ -439,7 +442,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const menuItemInner = (
       <Ref
-        innerRef={node => {
+        innerRef={(node) => {
           itemRef.current = node;
           handleRef(ref, node);
         }}
@@ -450,6 +453,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
             disabled,
             onBlur: handleBlur,
             onFocus: handleFocus,
+            onClick: handleClick,
             ...unhandledProps,
           })}
           {...rootHandlers}
@@ -474,23 +478,19 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
       </Ref>
     );
 
-    const handleWrapperOverrides = predefinedProps => ({
+    const handleWrapperOverrides = (predefinedProps) => ({
       onBlur: (e: React.FocusEvent) => {
         handleWrapperBlur(e);
         _.invoke(predefinedProps, 'onBlur', e, props);
       },
-      onClick: (e: React.MouseEvent) => {
-        handleClick(e);
-        _.invoke(predefinedProps, 'onClick', e, props);
-      },
       ...(on === 'hover' && {
-        onMouseEnter: e => {
+        onMouseEnter: (e) => {
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
           _.invoke(predefinedProps, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props);
+          _.invoke(parentProps, 'onItemSelect', e, props.index);
         },
-        onMouseLeave: e => {
+        onMouseLeave: (e) => {
           trySetMenuOpen(false, e);
           _.invoke(predefinedProps, 'onMouseLeave', e, props);
         },
@@ -512,6 +512,12 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
                   ...slotProps.menu,
                   styles: resolvedStyles.menu,
                 }),
+                overrideProps: (predefinedProps: MenuProps) => ({
+                  onClick: (e) => {
+                    handleClick(e);
+                    _.invoke(predefinedProps, 'onClick', e, props);
+                  },
+                }),
               })}
             </Popper>
           </Ref>
@@ -524,7 +530,7 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
     if (wrapper) {
       const wrapperElement = createShorthand(composeOptions.slots.wrapper, wrapper, {
         defaultProps: () => getA11yProps('wrapper', slotProps.wrapper),
-        overrideProps: predefinedProps => ({
+        overrideProps: (predefinedProps) => ({
           children: (
             <>
               {menuItemInner}
@@ -583,6 +589,8 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
         underlined: props.underlined,
         vertical: props.vertical,
         primary: props.primary,
+        on: props.on,
+        variables: props.variables,
       },
       menu: {
         accessibility: submenuBehavior,

@@ -3,6 +3,7 @@ import { MenuItemIndicator } from 'src/components/Menu/MenuItemIndicator';
 
 describe('MenuItemIndicator', () => {
   isConformant(MenuItemIndicator, {
+    testPath: __filename,
     constructorName: 'MenuItemIndicator',
   });
 });

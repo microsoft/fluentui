@@ -2,65 +2,47 @@ import * as React from 'react';
 import { Grid, Image } from '@fluentui/react-northstar';
 
 const images = [
+  <Image key="allan" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg" />,
   <Image
-    key="ade"
+    key="amanda"
     fluid
-    src="public/images/avatar/large/ade.jpg"
-    style={{ msGridRow: 1, msGridColumn: 1 } as React.CSSProperties}
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg"
   />,
   <Image
-    key="chris"
+    key="cameron"
     fluid
-    src="public/images/avatar/large/chris.jpg"
-    style={{ msGridRow: 1, msGridColumn: 2 } as React.CSSProperties}
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg"
   />,
   <Image
-    key="christian"
+    key="carlos"
     fluid
-    src="public/images/avatar/large/christian.jpg"
-    style={{ msGridRow: 1, msGridColumn: 3 } as React.CSSProperties}
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg"
   />,
   <Image
-    key="daniel"
+    key="carole"
     fluid
-    src="public/images/avatar/large/daniel.jpg"
-    style={{ msGridRow: 1, msGridColumn: 4 } as React.CSSProperties}
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+  />,
+  <Image key="cecil" fluid src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" />,
+  <Image
+    key="celeste"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg"
+  />,
+  <Image
+    key="colin"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ColinBallinger.jpg"
+  />,
+  <Image
+    key="daisy"
+    fluid
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/DaisyPhillips.jpg"
   />,
   <Image
     key="elliot"
     fluid
-    src="public/images/avatar/large/elliot.jpg"
-    style={{ msGridRow: 1, msGridColumn: 5 } as React.CSSProperties}
-  />,
-  <Image
-    key="elyse"
-    fluid
-    src="public/images/avatar/large/elyse.png"
-    style={{ msGridRow: 2, msGridColumn: 1 } as React.CSSProperties}
-  />,
-  <Image
-    key="helen"
-    fluid
-    src="public/images/avatar/large/helen.jpg"
-    style={{ msGridRow: 2, msGridColumn: 2 } as React.CSSProperties}
-  />,
-  <Image
-    key="jenny"
-    fluid
-    src="public/images/avatar/large/jenny.jpg"
-    style={{ msGridRow: 2, msGridColumn: 3 } as React.CSSProperties}
-  />,
-  <Image
-    key="joe"
-    fluid
-    src="public/images/avatar/large/joe.jpg"
-    style={{ msGridRow: 2, msGridColumn: 4 } as React.CSSProperties}
-  />,
-  <Image
-    key="justen"
-    fluid
-    src="public/images/avatar/large/justen.jpg"
-    style={{ msGridRow: 2, msGridColumn: 5 } as React.CSSProperties}
+    src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElliotWoodward.jpg"
   />,
 ];
 

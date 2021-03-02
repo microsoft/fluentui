@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { SwatchColorPicker, ISwatchColorPickerProps } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { SwatchColorPicker, ISwatchColorPickerProps } from '@fluentui/react';
 
 const props: ISwatchColorPickerProps = {
   columnCount: 4,
@@ -17,7 +16,7 @@ const props: ISwatchColorPickerProps = {
 };
 storiesOf('SwatchColorPicker', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -58,6 +57,10 @@ storiesOf('SwatchColorPicker', module)
     <SwatchColorPicker
       {...props}
       columnCount={4}
-      colorCells={props.colorCells.concat(props.colorCells)}
+      // Duplicate the cells but add unique IDs
+      colorCells={[
+        ...props.colorCells,
+        ...props.colorCells.map((c) => ({ ...c, id: c.id + c.id })),
+      ]}
     />
   ));

@@ -44,9 +44,12 @@ export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A textarea can take the width of its container. */
   fluid?: boolean;
+
+  /** A text area can have error state. */
+  error?: boolean;
 }
 
-export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled'>>;
+export type TextAreaStylesProps = Required<Pick<TextAreaProps, 'inverted' | 'resize' | 'fluid' | 'disabled' | 'error'>>;
 
 export const textAreaClassName = 'ui-textarea';
 
@@ -60,14 +63,15 @@ export const textAreaClassName = 'ui-textarea';
  * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
  * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
  */
-export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
-  FluentComponentStaticProps<TextAreaProps> = props => {
+export const TextArea: ComponentWithAs<'textarea', TextAreaProps> & FluentComponentStaticProps<TextAreaProps> = (
+  props,
+) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
   setStart();
 
-  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables } = props;
+  const { disabled, accessibility, inverted, resize, fluid, className, design, styles, variables, error } = props;
 
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
@@ -92,6 +96,7 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
       resize,
       fluid,
       disabled,
+      error,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -137,6 +142,9 @@ TextArea.propTypes = {
   value: PropTypes.string,
   disabled: PropTypes.bool,
   inverted: PropTypes.bool,
+  fluid: PropTypes.bool,
+  error: PropTypes.bool,
+  resize: PropTypes.oneOf(['none', 'both', 'horizontal', 'vertical']),
 };
 
 TextArea.defaultProps = {

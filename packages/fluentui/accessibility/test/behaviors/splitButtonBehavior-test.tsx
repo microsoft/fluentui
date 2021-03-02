@@ -1,9 +1,8 @@
-import { splitButtonBehavior } from '@fluentui/accessibility';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { splitButtonBehavior, keyboardKey } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 
 function verifyKeys(supportedKeys, keysFromBehavior) {
-  keysFromBehavior.forEach(keyCombination => {
+  keysFromBehavior.forEach((keyCombination) => {
     const keyCombinationFound = _.find(supportedKeys, keyCombination);
     expect(keyCombinationFound).toEqual(keyCombination);
   });

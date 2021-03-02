@@ -1,5 +1,6 @@
-import { CodeSnippet, renderElementToJSX } from '@fluentui/docs-components';
 import * as React from 'react';
+import { CodeSnippet, renderElementToJSX } from '@fluentui/docs-components';
+import { Box } from '@fluentui/react-northstar';
 
 export type ExampleSnippetProps = {
   children?: React.ReactElement;
@@ -7,17 +8,18 @@ export type ExampleSnippetProps = {
   value?: string;
 };
 
-const rootStyle = {
-  background: 'white',
+const rootStyle = ({ theme: { siteVariables } }) => ({
+  color: siteVariables.bodyColor,
+  background: siteVariables.bodyBackground,
   marginBottom: '2rem',
   boxShadow: '0 0 2px rgba(0, 0, 0, 0.2)',
-};
+});
 
 const renderedStyle = {
   padding: '1rem',
 };
 
-const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = props => {
+const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = (props) => {
   const { children, render = () => null, value } = props;
 
   const child: React.ReactElement | null = render() || children;
@@ -27,10 +29,10 @@ const ExampleSnippet: React.FunctionComponent<ExampleSnippetProps> = props => {
   const string = value || renderElementToJSX(element, !isFunctionWithoutValue);
 
   return (
-    <div style={rootStyle}>
+    <Box styles={rootStyle}>
       <CodeSnippet value={string} fitted />
       {element && <div style={renderedStyle}>{element}</div>}
-    </div>
+    </Box>
   );
 };
 

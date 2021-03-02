@@ -3,8 +3,6 @@ import { dropdownSlotClassNames, DropdownStylesProps } from '../../../../compone
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
-import { clearIndicatorUrl } from './clearIndicatorUrl';
-import { toggleIndicatorUrl } from './toggleIndicatorUrl';
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
@@ -39,20 +37,20 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     ...(p.inline && { display: 'inline-flex' }),
   }),
 
-  clearIndicator: ({ variables: v, props: p }) => ({
+  clearIndicator: ({ variables: v, theme: { siteVariables } }) => ({
     alignItems: 'center',
+    alignSelf: 'center',
     display: 'flex',
     justifyContent: 'center',
-    ...(p.isEmptyClearIndicator && { backgroundImage: clearIndicatorUrl(v.color) }),
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     userSelect: 'none',
     margin: 0,
     position: 'absolute',
     right: pxToRem(6),
-    height: '100%',
-    width: pxToRem(16),
+    padding: pxToRem(2),
+    color: v.color,
+
+    ...getBorderFocusStyles({ variables: siteVariables }),
   }),
 
   container: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -145,17 +143,34 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     maxHeight: v.selectedItemsMaxHeight,
     width: '100%',
     ...(p.hasToggleIndicator && { paddingRight: v.toggleIndicatorSize }),
+    ...(p.multiple &&
+      p.hasItemsSelected && {
+        paddingTop: pxToRem(1),
+        paddingBottom: pxToRem(4),
+      }),
   }),
 
   triggerButton: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       overflow: 'hidden',
       boxShadow: 'none',
+      minHeight: pxToRem(32),
       ...transparentColorStyleObj,
       margin: '0',
       justifyContent: 'left',
       padding: v.comboboxPaddingButton,
-      ...(p.multiple && { minWidth: 0, flex: 1 }),
+      ...(p.multiple && {
+        minWidth: 0,
+        flex: 1,
+        ...(p.hasItemsSelected && {
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          height: '100%',
+        }),
+      }),
       ...transparentColorStyleObj,
       ':focus': {
         color: v.color,
@@ -215,7 +230,6 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
 
   noResultsMessage: ({ variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.noResultsMessageBackgroundColor,
-    fontWeight: 'bold',
   }),
 
   headerMessage: ({ variables: v }): ICSSInJSStyle => ({
@@ -226,10 +240,8 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
+    alignSelf: 'center',
 
-    backgroundImage: toggleIndicatorUrl(p.disabled ? v.disabledColor : v.color),
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     ...(p.disabled && {
       cursor: 'default',
@@ -239,7 +251,12 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
     margin: 0,
     position: 'absolute',
     right: pxToRem(8),
-    height: '100%',
-    width: pxToRem(12),
+    ...(p.multiple &&
+      p.hasItemsSelected && {
+        top: pxToRem(8),
+      }),
+
+    color: v.color,
+    ...(p.disabled && { color: v.disabledColor }),
   }),
 };

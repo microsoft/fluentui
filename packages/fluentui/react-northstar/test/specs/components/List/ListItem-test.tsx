@@ -1,6 +1,5 @@
-import { selectableListItemBehavior } from '@fluentui/accessibility';
+import { selectableListItemBehavior, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 import * as React from 'react';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
 
@@ -8,6 +7,7 @@ import { ListItem } from 'src/components/List/ListItem';
 
 describe('ListItem', () => {
   isConformant(ListItem, {
+    testPath: __filename,
     constructorName: 'ListItem',
   });
   handlesAccessibility(ListItem, { defaultRootRole: 'listitem' });

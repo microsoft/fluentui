@@ -34,7 +34,7 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   defaultChecked?: SupportedIntrinsicInputProps['defaultChecked'];
 
   /** A checkbox's checked state can be controlled. */
-  checked?: SupportedIntrinsicInputProps['checked'];
+  checked?: SupportedIntrinsicInputProps['checked'] | 'mixed';
 
   /** A checkbox can appear disabled and be unable to change states. */
   disabled?: SupportedIntrinsicInputProps['disabled'];
@@ -53,14 +53,14 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onChange?: ComponentEventHandler<CheckboxProps>;
+  onChange?: ComponentEventHandler<Omit<CheckboxProps, 'checked'> & { checked: boolean }>;
 
   /**
    * Called after a checkbox is clicked.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
-  onClick?: ComponentEventHandler<CheckboxProps>;
+  onClick?: ComponentEventHandler<Omit<CheckboxProps, 'checked'> & { checked: boolean }>;
 
   /** A checkbox can be formatted to show an "on or off" choice. */
   toggle?: boolean;
@@ -79,7 +79,7 @@ export const checkboxSlotClassNames: CheckboxSlotClassNames = {
  * @accessibility
  * Implements [ARIA Checkbox](https://www.w3.org/TR/wai-aria-practices-1.1/#checkbox) design pattern.
  */
-export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = props => {
+export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentStaticProps<CheckboxProps> = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
@@ -100,8 +100,9 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
 
   const { state, actions } = useStateManager(createCheckboxManager, {
     mapPropsToInitialState: () => ({ checked: defaultChecked }),
-    mapPropsToState: () => ({ checked }),
+    mapPropsToState: () => ({ checked: checked === 'mixed' ? false : checked }),
   });
+
   const getA11Props = useAccessibility(props.accessibility, {
     debugName: Checkbox.displayName,
     mapPropsToBehavior: () => ({
@@ -116,10 +117,11 @@ export const Checkbox: ComponentWithAs<'div', CheckboxProps> & FluentComponentSt
     },
     rtl: context.rtl,
   });
+
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
     className: checkboxClassName,
     mapPropsToStyles: () => ({
-      checked: state.checked,
+      checked: checked === 'mixed' ? 'mixed' : state.checked,
       disabled,
       labelPosition,
       toggle,
@@ -201,7 +203,7 @@ Checkbox.propTypes = {
   ...commonPropTypes.createCommon({
     content: false,
   }),
-  checked: PropTypes.bool,
+  checked: PropTypes.oneOf([true, false, 'mixed']),
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
   indicator: customPropTypes.shorthandAllowingChildren,

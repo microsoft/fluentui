@@ -1,8 +1,9 @@
 import { buttonClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   steps: [
-    builder => builder.hover(`.${buttonClassName}`).snapshot('Shows tooltip'),
+    (builder) => builder.hover(`.${buttonClassName}`).snapshot('Shows tooltip'),
     (builder, keys) =>
       builder
         .keys('body', keys.tab)

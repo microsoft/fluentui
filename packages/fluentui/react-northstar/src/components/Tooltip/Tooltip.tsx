@@ -93,7 +93,7 @@ export const tooltipClassName = 'ui-tooltip';
 export const Tooltip: React.FC<TooltipProps> &
   FluentComponentStaticProps<TooltipProps> & {
     Content: typeof TooltipContent;
-  } = props => {
+  } = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
   setStart();
@@ -113,6 +113,7 @@ export const Tooltip: React.FC<TooltipProps> &
     positionFixed,
     target,
     trigger,
+    unstable_disableTether,
     unstable_pinned,
   } = props;
 
@@ -135,7 +136,7 @@ export const Tooltip: React.FC<TooltipProps> &
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
-      close: e => {
+      close: (e) => {
         setTooltipOpen(false, e);
         e.stopPropagation();
         e.preventDefault();
@@ -243,6 +244,7 @@ export const Tooltip: React.FC<TooltipProps> &
           rtl={context.rtl}
           targetRef={target || triggerRef}
           children={renderPopperChildren}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
         />
       </PortalInner>
@@ -284,6 +286,7 @@ Tooltip.propTypes = {
   target: customPropTypes.domNode,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   popperRef: customPropTypes.ref,
   flipBoundary: PropTypes.oneOfType([

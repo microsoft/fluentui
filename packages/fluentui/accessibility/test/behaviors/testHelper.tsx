@@ -18,6 +18,11 @@ export interface TestDefinition {
 }
 
 const skipSpecChecksForFiles = [
+  'menuButtonBehavior.ts', // tests are written new way in menuButtonBehaviorDefinition.ts
+  'popupBehavior.ts', // tests are written new way in popupBehaviorDefinition.ts
+  'buttonBehavior.ts', // tests are written new way in buttonBehaviorDefinition.ts
+  'buttonGroupBehavior.ts', // tests are written new way in buttonGroupBehaviorDefinition.ts
+  'toggleButtonBehavior.ts', // tests are written new way in toggleButtonBehaviorDefinition.ts
   'listBehavior.ts', // tests are written in listBehavior-test.tsx
   'listItemBehavior.ts', // tests are written in listItemBehavior-test.tsx
   'alertBehavior.ts', // tests are written in alertBehavior-test.tsx
@@ -25,6 +30,8 @@ const skipSpecChecksForFiles = [
   'sliderBehavior.ts', // tests are written in sliderBehavior-test.ts
   'treeItemAsListItemBehavior.ts', // tests are written in treeItemAsListItemBehavior-test.ts
   'treeTitleAsListItemTitleBehavior.ts', // tests are written in treeTitleAsListItemTitleBehavior-test.ts
+  'treeItemAsOptionBehavior.ts', // tests are written in treeItemAsOptionBehavior-test.ts
+  'treeTitleAsOptionBehavior.ts', // tests are written in treeTitleAsOptionBehavior-test.ts
   'gridRowBehavior.ts', // tests are written in gridRowBehavior-test.ts
 ];
 
@@ -43,7 +50,7 @@ export class TestHelper {
   }
 
   addTests(testDefinitions: TestDefinition[]) {
-    testDefinitions.forEach(testDefinition => {
+    testDefinitions.forEach((testDefinition) => {
       this.testDefinitions.push(testDefinition);
     });
   }
@@ -55,7 +62,7 @@ export class TestHelper {
 
     _.each(groupedByBehavior, (value, key) => {
       describe(key, () => {
-        value.forEach(singleTest => {
+        value.forEach((singleTest) => {
           test(singleTest.params[0], () => {
             singleTest.testMethod({
               behavior: this.getBehavior(singleTest.behaviorName),
@@ -68,15 +75,19 @@ export class TestHelper {
   }
 
   findRegexAndAssingCorrespondingInfoToArray(behaviorMenuItems: any) {
-    behaviorMenuItems.forEach(behavior => {
-      behavior.variations.forEach(variant => {
+    behaviorMenuItems.forEach((behavior) => {
+      behavior.variations.forEach((variant) => {
         if (!variant.specification && !variant.description) {
           this.failDescriptionPresenceTest(variant.name);
         }
-        if (!variant.specification && !skipSpecChecksForFiles.find(item => item === variant.name)) {
+        // should not continue when behavior is skipped/exluded
+        if (skipSpecChecksForFiles.find((item) => item === variant.name)) {
+          return;
+        }
+        if (!variant.specification) {
           this.failSpecificationPresenceTest(variant.name);
         } else {
-          variant.specification.split('\n').forEach(specLine => {
+          variant.specification.split('\n').forEach((specLine) => {
             if (specLine) {
               this.iterateRegexDefinitions(specLine, variant.name);
             }
@@ -88,7 +99,7 @@ export class TestHelper {
 
   iterateRegexDefinitions(specLine: string, behaviorName: string) {
     let regexMatched = false;
-    this.testDefinitions.forEach(testDefinition => {
+    this.testDefinitions.forEach((testDefinition) => {
       const regex = new RegExp(testDefinition.regexp);
       const result = regex.exec(specLine);
       if (result) {

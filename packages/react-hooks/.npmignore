@@ -13,10 +13,10 @@ coverage
 temp
 images
 results
-dist-storybook
+dist/storybook
 dist/*.stats.html
 dist/*.stats.json
-dist/demo*.*
+dist/demo
 gulpfile.js
 index.html
 jsconfig.json

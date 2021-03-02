@@ -14,8 +14,9 @@ import {
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
+import { VersionDropdown } from './VersionDropdown';
 import { getComponentPathname } from '../../utils';
-import { getCode } from '@fluentui/keyboard-key';
+import { getCode } from '@fluentui/accessibility';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink, withRouter, RouteComponentProps } from 'react-router-dom';
@@ -31,7 +32,7 @@ const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = _.sortBy(componentInfoContext.parents, 'displayName');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
-const componentsBlackList = ['Debug', 'Design', 'Datepicker'];
+const componentsBlackList = ['Debug', 'Design', process.env.NODE_ENV === 'production' && 'SvgIcon'];
 const typeOrder = ['component', 'behavior'];
 
 interface SidebarProps {
@@ -39,11 +40,11 @@ interface SidebarProps {
   treeItemStyle: React.CSSProperties;
 }
 
-const treeItemsByType = _.map(typeOrder, nextType => {
+const treeItemsByType = _.map(typeOrder, (nextType) => {
   const items = _.chain([...componentMenu, ...behaviorMenu])
     .filter(({ type }) => type === nextType)
     .filter(({ displayName }) => !_.includes(componentsBlackList, displayName))
-    .map(info => ({
+    .map((info) => ({
       id: info.displayName.concat(nextType),
       title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) },
     }))
@@ -119,6 +120,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'roster',
+    title: { content: 'Roster', as: NavLink, to: '/prototype-roster' },
+    public: false,
+  },
+  {
     id: 'searchpage',
     title: { content: 'Search Page', as: NavLink, to: '/prototype-search-page' },
     public: false,
@@ -140,6 +146,11 @@ const prototypesTreeItems: TreeProps['items'] = [
   {
     id: 'virtualized-tree',
     title: { content: 'VirtualizedTree', as: NavLink, to: '/virtualized-tree' },
+    public: true,
+  },
+  {
+    id: 'virtualized-sticky-tree',
+    title: { content: 'Virtualized StickyTree', as: NavLink, to: '/virtualized-sticky-tree' },
     public: true,
   },
   {
@@ -166,13 +177,26 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
-    id: 'virtualized-table',
-    title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
+    id: 'menulist',
+    title: {
+      content: 'Menu List',
+      as: NavLink,
+      to: '/prototype-menu-list',
+    },
+    public: false,
+  },
+  {
+    id: 'text-area',
+    title: {
+      content: 'TextArea Auto Size',
+      as: NavLink,
+      to: '/prototype-text-area-autosize',
+    },
     public: true,
   },
   {
-    id: 'unstable-datepicker',
-    title: { content: 'Datepicker', as: NavLink, to: '/unstable-datepicker' },
+    id: 'virtualized-table',
+    title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
     public: true,
   },
 ];
@@ -217,15 +241,6 @@ const baseTreeItems: TreeProps['items'] = [
           content: 'Icons',
           activeClassName: 'active',
           to: '/icon-viewer',
-        },
-      },
-      {
-        id: 'component-architecture',
-        title: {
-          as: NavLink,
-          content: 'Component Architecture',
-          activeClassName: 'active',
-          to: '/component-architecture',
         },
       },
       ...(process.env.NODE_ENV !== 'production'
@@ -332,8 +347,8 @@ const baseTreeItems: TreeProps['items'] = [
 
 const changeLogUrl: string = `${config.repoURL}/blob/master/packages/fluentui/CHANGELOG.md`;
 
-const removePublicTags = prototyptesTreeItems => {
-  return prototyptesTreeItems.map(p => {
+const removePublicTags = (prototyptesTreeItems) => {
+  return prototyptesTreeItems.map((p) => {
     delete p.public;
     return p;
   });
@@ -354,14 +369,14 @@ const getSectionsWithPrototypeSectionIfApplicable = (currentSections, allPrototy
   return currentSections.concat(prototypeTreeSection);
 };
 
-const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
+const Sidebar: React.FC<RouteComponentProps & SidebarProps> = (props) => {
   const [query, setQuery] = React.useState('');
   const [activeItemIds, setActiveItemIds] = React.useState<string[]>([]);
   const searchInputRef = React.useRef<HTMLInputElement>();
   const regexQuery = React.useMemo(() => new RegExp(`.*${_.escapeRegExp(query)}`, 'i'), [query]);
 
   const handleDocumentKeyDown = React.useCallback(
-    e => {
+    (e) => {
       const code = getCode(e);
       const isAZ = code >= 65 && code <= 90;
       const hasModifier = e.altKey || e.ctrlKey || e.metaKey;
@@ -381,8 +396,8 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
       newAt = newAt.substr(0, newAt.length - 1);
     }
 
-    return sections.find(section => {
-      return section.items.some(item => item.title?.to.startsWith(newAt));
+    return sections.find((section) => {
+      return section.items.some((item) => item.title?.to.startsWith(newAt));
     })?.id;
   };
 
@@ -394,7 +409,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
   React.useEffect(() => {
     const at = props.location.pathname;
     const id = findActiveCategoryId(at, treeItems);
-    setActiveItemIds(prev => (prev.includes(id) ? prev : [...prev, id]));
+    setActiveItemIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
   }, [props.location.pathname, treeItems]);
 
   React.useEffect(() => {
@@ -410,7 +425,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         .map((section: TreeItemProps) => {
           return {
             ...section,
-            items: _.filter(section.items as TreeItemProps[], item =>
+            items: _.filter(section.items as TreeItemProps[], (item) =>
               regexQuery.test((item.title as TreeTitleProps).content as string),
             ),
           };
@@ -421,7 +436,7 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
 
   React.useEffect(() => {
     if (query.length) {
-      setActiveItemIds(allSections.map(section => section.id));
+      setActiveItemIds(allSections.map((section) => section.id));
     }
   }, [allSections, query]);
 
@@ -473,36 +488,44 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
         >
           Fluent <span style={gradientTextStyles}>UI</span>
         </Text>
-        <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
-          {(active, onClick) => (
-            <Box
-              as="code"
-              onClick={onClick}
-              styles={{
-                display: 'block',
-                fontWeight: 'normal',
-                fontSize: '12px',
-                opacity: active ? 1 : 0.6,
-                color: active ? 'rgb(138, 255, 124)' : 'inherit',
-                marginTop: '10px',
-                cursor: 'pointer',
-                ...(!active && {
-                  ':hover': {
-                    opacity: 0.75,
-                  },
-                }),
-              }}
-            >
-              {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
-            </Box>
-          )}
-        </CopyToClipboard>
+        <VersionDropdown width={props.width} />
+        {process.env.NIGHTLYRELEASEDATE ? null : (
+          <CopyToClipboard value={`yarn add ${pkg.name}@${pkg.version}`} timeout={3000}>
+            {(active, onClick) => (
+              <Box
+                as="code"
+                onClick={onClick}
+                styles={{
+                  display: 'block',
+                  fontWeight: 'normal',
+                  fontSize: '12px',
+                  opacity: active ? 1 : 0.6,
+                  color: active ? 'rgb(138, 255, 124)' : 'inherit',
+                  marginTop: '10px',
+                  cursor: 'pointer',
+                  ...(!active && {
+                    ':hover': {
+                      opacity: 0.75,
+                    },
+                  }),
+                }}
+              >
+                {active ? 'Copied! Happy coding :)' : `${pkg.name}@${pkg.version}`}
+              </Box>
+            )}
+          </CopyToClipboard>
+        )}
       </Flex>
       <Flex column>
         <a href={config.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
           <Box>
             GitHub
-            <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
+            <Image
+              src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+              width="20px"
+              height="20px"
+              styles={{ float: 'right' }}
+            />
           </Box>
         </a>
         <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>
@@ -543,6 +566,12 @@ const Sidebar: React.FC<RouteComponentProps & SidebarProps> = props => {
           setActiveItemIds(activeItemIds);
         }}
       />
+      {/* TODO enable after we have data
+      <Flex column>
+        <NavLink to="/perf-tests" exact style={topItemTheme}>
+          <Box>Performance Tests</Box>
+        </NavLink>
+      </Flex> */}
     </Segment>
   );
 };

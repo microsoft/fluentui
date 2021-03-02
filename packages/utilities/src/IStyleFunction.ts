@@ -1,1 +1,1 @@
-export { IStyleFunction } from '@uifabric/merge-styles';
+export { IStyleFunction } from '@fluentui/merge-styles';

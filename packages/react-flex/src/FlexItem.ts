@@ -1,1 +1,1 @@
-export * from './components/FlexItem';
+export * from './components/FlexItem/index';

@@ -1,8 +1,11 @@
-import * as path from 'path';
 import * as fse from 'fs-extra';
+import * as os from 'os';
+import * as path from 'path';
 import { ApiModel } from '@microsoft/api-extractor-model';
 import { IPageJsonOptions } from './types';
 import { generatePageJson } from './pageJson';
+
+const tmpFile = path.join(os.tmpdir(), 'compat.api.json');
 
 /**
  * Main entry point to create API \*.page.json files.
@@ -23,7 +26,24 @@ export function generatePageJsonFiles(options: IPageJsonOptions): void {
   const apiModel = new ApiModel();
   for (const apiJsonPath of apiJsonPaths) {
     console.log('Loading ' + apiJsonPath);
-    apiModel.loadPackage(apiJsonPath);
+
+    // If the file belongs to the compat layer.
+    if (apiJsonPath.indexOf('compat') !== -1) {
+      // Get the json info and change the package name.
+      const jsonObject = require(apiJsonPath);
+      jsonObject.name = jsonObject.name + '-compat';
+
+      // Write the info into a temporary file.
+      fse.writeJSONSync(tmpFile, jsonObject);
+
+      // Load the package info into the API model.
+      apiModel.loadPackage(tmpFile);
+
+      // Delete the temporary file.
+      fse.unlinkSync(tmpFile);
+    } else {
+      apiModel.loadPackage(apiJsonPath);
+    }
   }
 
   // Generate the page data

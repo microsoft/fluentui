@@ -1,3 +1,6 @@
+/**
+ * {@docCategory DateTimeUtilities}
+ */
 export interface IDateGridStrings {
   /**
    * An array of strings for the full names of months.
@@ -24,67 +27,44 @@ export interface IDateGridStrings {
   shortDays: string[];
 }
 
-export interface IDateFormatting extends IDateGridStrings {
+/**
+ * {@docCategory DateTimeUtilities}
+ */
+export interface IDateFormatting {
   /**
-   * Format the day according to specified function.
-   * Intended use case is localization.
+   * Get a localized string for a day.
    */
   formatDay: (date: Date) => string;
 
   /**
-   * Format the year according to specified function.
-   * Intended use case is localization.
+   * Get a localized string for a month.
+   */
+  formatMonth: (date: Date, strings: IDateGridStrings) => string;
+
+  /**
+   * Get a localized string for a year.
    */
   formatYear: (date: Date) => string;
 
   /**
-   * Format the month, day and year according to specified function.
-   * Intended use case is localization.
+   * Get a localized string for a month, day, and year.
    */
   formatMonthDayYear: (date: Date, strings: IDateGridStrings) => string;
 
   /**
-   * Format the month and year according to specified function.
-   * Intended use case is localization.
+   * Get a localized string for a month and year.
    */
   formatMonthYear: (date: Date, strings: IDateGridStrings) => string;
-
-  /**
-   * Parse date from string representation into Date type.
-   */
-  parseDate: (date: string) => Date | null;
 }
 
-export interface ICalendarStrings extends IDateFormatting {
-  /**
-   * Error message to render for TextField if isRequired validation fails.
-   */
-  isRequiredErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if input date string parsing fails.
-   */
-  invalidInputErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
-   */
-  isOutOfBoundsErrorMessage?: string;
-
+/**
+ * {@docCategory DateTimeUtilities}
+ */
+export interface ICalendarStrings extends IDateGridStrings {
   /**
    * String to render for button to direct the user to today's date.
    */
   goToToday: string;
-
-  /**
-   * Title for button to open the calendar.
-   */
-  openCalendarTitle: string;
-
-  /**
-   * Placeholder string for an unfilled input.
-   */
-  inputPlaceholder: string;
 
   /**
    * Aria-label for the "previous month" button in day picker.
@@ -148,4 +128,9 @@ export interface ICalendarStrings extends IDateFormatting {
    * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
    */
   todayDateFormatString?: string;
+
+  /**
+   * Aria-label for when a date is marked
+   */
+  dayMarkedAriaLabel?: string;
 }

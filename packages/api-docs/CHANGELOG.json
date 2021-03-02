@@ -1,646 +1,498 @@
 {
-  "name": "@uifabric/api-docs",
+  "name": "@fluentui/api-docs",
   "entries": [
     {
-      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
-      "tag": "@uifabric/api-docs_v7.3.40",
-      "version": "7.3.40",
+      "date": "Mon, 01 Mar 2021 07:20:46 GMT",
+      "tag": "@fluentui/api-docs_v8.0.2",
+      "version": "8.0.2",
       "comments": {
         "patch": [
           {
-            "comment": "fixing publish",
-            "author": "kchau@microsoft.com",
-            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
-            "package": "@uifabric/api-docs"
+            "comment": "Bump @fluentui/react to v8.1.1",
+            "author": "hantatsang@gmail.com",
+            "commit": "058c7645b6289f54e3cb378183096771e7fdddad",
+            "package": "@fluentui/api-docs"
           }
         ]
       }
     },
     {
-      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
-      "tag": "@uifabric/api-docs_v7.3.15",
-      "version": "7.3.15",
-      "comments": {
-        "none": [
-          {
-            "comment": "Remove tslint references",
-            "author": "elcraig@microsoft.com",
-            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
-            "package": "@uifabric/api-docs"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
-      "tag": "@uifabric/api-docs_v7.3.5",
-      "version": "7.3.5",
-      "comments": {
-        "none": [
-          {
-            "comment": "Update config files in preparation for enabling ESLint",
-            "author": "elcraig@microsoft.com",
-            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
-            "package": "@uifabric/api-docs"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 17 Jun 2020 12:37:16 GMT",
-      "tag": "@uifabric/api-docs_v7.3.0",
-      "version": "7.3.0",
-      "comments": {
-        "minor": [
-          {
-            "comment": "Add Datetime utilities package",
-            "author": "pompomon@gmail.com",
-            "commit": "ae2604b53ac23c13faf40e8dd7de76e324a1c456",
-            "package": "@uifabric/api-docs"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Mon, 25 May 2020 12:38:22 GMT",
-      "tag": "@uifabric/api-docs_v7.2.84",
-      "version": "7.2.84",
-      "comments": {
-        "none": [
-          {
-            "comment": "Fix tsconfig and just config issues",
-            "author": "elcraig@microsoft.com",
-            "commit": "ea77eb18bd42bdca8bb63df675abe01cf7bbd6b4",
-            "package": "@uifabric/api-docs"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Thu, 07 May 2020 01:06:55 GMT",
-      "tag": "@uifabric/api-docs_v7.2.68",
-      "version": "7.2.68",
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/api-docs_v8.0.1",
+      "version": "8.0.1",
       "comments": {
         "patch": [
           {
-            "comment": "Addressing commonjs imports.",
-            "author": "dzearing@microsoft.com",
-            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
-            "package": "@uifabric/api-docs"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
-      "tag": "@uifabric/api-docs_v7.2.50",
-      "version": "7.2.50",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Readme: Fabric=>Fluent wording updates",
+            "comment": "Release version 8",
             "author": "elcraig@microsoft.com",
-            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
-            "package": "@uifabric/api-docs"
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/api-docs"
           }
         ],
         "none": [
           {
-            "comment": "sync package version",
+            "comment": "Bump @fluentui/react to v8.1.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.9",
+      "version": "8.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.63",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "23722afddd66499a1c29c511a01fe5f5ca191c76",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.8",
+      "version": "8.0.0-beta.8",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.62",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "99a951fc9337d55001fdc9e6d280d9f7cbe825ca",
+            "package": "@fluentui/api-docs"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.0-beta.25",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 07:19:56 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.7",
+      "version": "8.0.0-beta.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.61",
+            "author": "shi.cheng@microsoft.com",
+            "commit": "c17273e7dcdb5da25451da134b0c8259dbf72ca3",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.6",
+      "version": "8.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9 for converged packages",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/api-docs"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.60",
+            "author": "martinhochel@microsoft.com",
+            "commit": "1d57d1929a9b713a5d717c93f35617b8c9340026",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.5",
+      "version": "8.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.0-beta.24",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/api-docs"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.27",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.4",
+      "version": "8.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.58",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/api-docs"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.26",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.3",
+      "version": "8.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/api-docs"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.0-beta.22",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.25",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.57",
+            "author": "evlevy@microsoft.com",
+            "commit": "98d7d6b2ebcd4b2fa79c80b08e5719d5f0fdfa7f",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.2",
+      "version": "8.0.0-beta.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/date-time-utilities to v8.0.0-beta.3",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "b6432f371a9ed22b31657dbe9b57699bbff439ba",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.2",
+      "version": "8.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
             "author": "xgao@microsoft.com",
-            "commit": "6f39958352207acb3029458503db0969a4359806",
-            "package": "@uifabric/api-docs"
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/api-docs"
           }
         ]
       }
     },
     {
-      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
-      "tag": "@uifabric/api-docs_v7.2.40",
-      "version": "7.2.40",
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/api-docs_v8.0.0-beta.1",
+      "version": "8.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Removing react-cards from api-docs generation.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "e0b427b2868e2ff0e9e2870bc8bd7977f0a6aede",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Changing version to pre-release.",
+            "author": "dzearing@microsoft.com",
+            "commit": "e226efa45d5b2bbeac7141ce081fc8bfd704a65c",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/api-docs_v1.0.3",
+      "version": "1.0.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/api-docs_v1.0.3",
+      "version": "1.0.3",
       "comments": {
         "patch": [
           {
-            "comment": "Changing references of Fabric to Fluent",
-            "author": "mgodbolt@microsoft.com",
-            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
-      "tag": "@uifabric/api-docs_v7.2.39",
-      "version": "7.2.39",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "comment": "Remove compat Button imports",
             "author": "elcraig@microsoft.com",
-            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
-      "tag": "@uifabric/api-docs_v7.2.38",
-      "version": "7.2.38",
-      "comments": {
-        "none": [
-          {
-            "comment": "Run prettier: 120 line length, trailing commas",
-            "author": "elcraig@microsoft.com",
-            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
-      "tag": "@uifabric/api-docs_v7.2.22",
-      "version": "7.2.22",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Delete PositioningContainer docs",
-            "author": "elcraig@microsoft.com",
-            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
-      "tag": "@uifabric/api-docs_v7.2.18",
-      "version": "7.2.18",
-      "comments": {
-        "none": [
-          {
-            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
-            "author": "jagore@microsoft.com",
-            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 12 Feb 2020 12:24:27 GMT",
-      "tag": "@uifabric/api-docs_v7.2.16",
-      "version": "7.2.16",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Add react-focus support",
-            "author": "elcraig@microsoft.com",
-            "commit": "5e6d8c691d23f7881afe569ec1f19edd56242656"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
-      "tag": "@uifabric/api-docs_v7.2.15",
-      "version": "7.2.15",
-      "comments": {
-        "none": [
-          {
-            "comment": "fixing released versions",
-            "author": "kchau@microsoft.com",
-            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
-      "tag": "@uifabric/api-docs_v7.2.12",
-      "version": "7.2.12",
-      "comments": {
-        "none": [
-          {
-            "comment": "Remove unused config files",
-            "author": "elcraig@microsoft.com",
-            "commit": "75385949f9a552bdf64ac4f0b074b28cdd530ddb"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
-      "tag": "@uifabric/api-docs_v7.2.8",
-      "version": "7.2.8",
-      "comments": {
-        "none": [
-          {
-            "comment": "bumping versions to fix broken publishes",
-            "author": "kchau@microsoft.com",
-            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
-      "tag": "@uifabric/api-docs_v7.2.5",
-      "version": "7.2.5",
-      "comments": {
-        "none": [
-          {
-            "comment": "Rename all just configs to TS.",
-            "author": "jagore@microsoft.com",
-            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Thu, 16 Jan 2020 12:28:58 GMT",
-      "tag": "@uifabric/api-docs_v7.2.0",
-      "version": "7.2.0",
-      "comments": {
-        "minor": [
-          {
-            "comment": "Upgrade repo to TS3.7.",
-            "author": "jagore@microsoft.com",
-            "commit": "e04fd44af0b978bc0c8c55658bf6b9d0ff3eac49"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
-      "tag": "@uifabric/api-docs_v7.1.2",
-      "version": "7.1.2",
-      "comments": {
-        "none": [
-          {
-            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
-            "author": "jagore@microsoft.com",
-            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+            "commit": "70b63061357489ccc43878d0d0b054953690d5b2",
+            "package": "@fluentui/api-docs"
           }
         ],
-        "patch": [
+        "prerelease": [
           {
-            "comment": "Fix API reference generation bugs",
+            "comment": "Bump @fluentui/react to v8.0.0-beta.53",
             "author": "elcraig@microsoft.com",
-            "commit": "0d8e4da2a7c3d0f4855b3dfade06654c1def6cfb"
+            "commit": "70b63061357489ccc43878d0d0b054953690d5b2",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.53",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-focus to v8.0.0-beta.19",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.22",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.14",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/theme to v2.0.0-beta.14",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/api-docs"
           }
         ]
       }
     },
     {
-      "date": "Tue, 12 Nov 2019 12:32:39 GMT",
-      "tag": "@uifabric/api-docs_v7.1.1",
-      "version": "7.1.1",
+      "date": "Wed, 10 Feb 2021 12:20:53 GMT",
+      "tag": "@fluentui/api-docs_v1.0.2",
+      "version": "1.0.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.52",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.52",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "06e8eda9b5b6eefb3c3c9d34a92998e605a99e8f",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 12:24:19 GMT",
+      "tag": "@fluentui/api-docs_v1.0.2",
+      "version": "1.0.2",
       "comments": {
         "patch": [
           {
-            "comment": "Major refactoring of code: split between more files, change input shape, and simplify some logic",
+            "comment": "Combine react-internal back into react, and update references",
             "author": "elcraig@microsoft.com",
-            "commit": "32afa854a8d36c21859d44b312ea02b9261e0238"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 06 Nov 2019 12:34:07 GMT",
-      "tag": "@uifabric/api-docs_v7.1.0",
-      "version": "7.1.0",
-      "comments": {
-        "minor": [
-          {
-            "comment": "Update API doc generation to handle deprecated messages",
-            "author": "elcraig@microsoft.com",
-            "commit": "3922bd804a64f9b2c25ff7c1bc7df911b898e69d"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Fri, 23 Aug 2019 12:35:28 GMT",
-      "tag": "@uifabric/api-docs_v7.0.7",
-      "version": "7.0.7",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Fix up readme and package.json descriptions",
-            "author": "elcraig@microsoft.com",
-            "commit": "b1aef500b4b86eb5643d9f7db4c06114b5d7cc71"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Thu, 15 Aug 2019 12:30:43 GMT",
-      "tag": "@uifabric/api-docs_v7.0.6",
-      "version": "7.0.6",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Card: Showing examples on demo page and website.",
-            "author": "Humberto.Morimoto@microsoft.com",
-            "commit": "6a6de09946ec1473cf7fcc483474e11384508c1f"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Mon, 12 Aug 2019 12:30:25 GMT",
-      "tag": "@uifabric/api-docs_v7.0.5",
-      "version": "7.0.5",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Upgrade api-extractor-model",
-            "author": "naethell@microsoft.com",
-            "commit": "1f84eeff39abbeb9783b12aea439b2a517ad4d50"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
-      "tag": "@uifabric/api-docs_v7.0.4",
-      "version": "7.0.4",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
-            "author": "makotom@microsoft.com",
-            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
+            "commit": "47b42efbbe9e869864973f3b2cb717e6112b8106",
+            "package": "@fluentui/api-docs"
           }
         ],
-        "none": [
+        "prerelease": [
           {
-            "comment": "get rid of npx",
-            "author": "kchau@microsoft.com",
-            "commit": "472993033369aa470e59197a534045c02c24e852"
+            "comment": "Bump @fluentui/react to v8.0.0-beta.51",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "47b42efbbe9e869864973f3b2cb717e6112b8106",
+            "package": "@fluentui/api-docs"
           },
           {
-            "comment": "bumping versions to match what was published already",
-            "author": "kchau@microsoft.com",
-            "commit": "75e4ad16a2e6a54672e4929a9e003c7fd6f6ae52"
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.51",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "47b42efbbe9e869864973f3b2cb717e6112b8106",
+            "package": "@fluentui/api-docs"
           }
         ]
       }
     },
     {
-      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
-      "tag": "@uifabric/api-docs_v7.0.2",
-      "version": "7.0.2",
-      "comments": {
-        "none": [
-          {
-            "comment": "Use resolves for all package paths",
-            "author": "kchau@microsoft.com",
-            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
-          },
-          {
-            "comment": "adding build cache",
-            "author": "kchau@microsoft.com",
-            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 03 Jul 2019 12:30:55 GMT",
-      "tag": "@uifabric/api-docs_v7.0.2",
-      "version": "7.0.2",
-      "comments": {
-        "none": [
-          {
-            "comment": "No comment",
-            "author": "nishikaza@berkeley.edu",
-            "commit": "9716916a8b30fa006c4261f714899949ecddce29"
-          }
-        ]
-      }
-    },
-    {
-      "version": "7.0.2",
-      "tag": "@uifabric/api-docs_v7.0.2",
-      "date": "Fri, 14 Jun 2019 12:26:30 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Fix missing assets in production build.",
-            "author": "JD Huntington <jdh@microsoft.com>",
-            "commit": "e1bebe54dd798847060baaf4a52956c2f6dd866b"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.1` to `^7.0.2`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.1` to `^7.0.2`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.1` to `^7.0.2`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.2` to `^7.0.3`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.0` to `^7.1.1`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "7.0.1",
-      "tag": "@uifabric/api-docs_v7.0.1",
-      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Update dependencies",
-            "author": "Elizabeth Craig <elcraig@microsoft.com>",
-            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.0` to `^7.0.1`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.1` to `^7.0.2`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "1.1.4",
-      "tag": "@uifabric/api-docs_v1.1.4",
-      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Generate API docs for legacy controls",
-            "author": "Elizabeth Craig <elcraig@microsoft.com>",
-            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
-          },
-          {
-            "comment": "Remove reference to legacy package",
-            "author": "JD Huntington <jdh@microsoft.com>",
-            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "1.1.3",
-      "tag": "@uifabric/api-docs_v1.1.3",
-      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "upgrade to api-extractor 7.1.6",
-            "author": "Natalie Ethell <naethell@microsoft.com>",
-            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "1.1.2",
-      "tag": "@uifabric/api-docs_v1.1.2",
-      "date": "Mon, 20 May 2019 12:22:33 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "PageJsonGenerator: separate out the get token hyperlinks logic into a function",
-            "author": "Natalie Ethell <naethell@microsoft.com>",
-            "commit": "fca062e407e9e58169d7cf9a475ccefe774985d1"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.182.1` to `^6.183.0`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "1.1.1",
-      "tag": "@uifabric/api-docs_v1.1.1",
-      "date": "Tue, 14 May 2019 07:50:30 GMT",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Update Fabric assets link",
-            "author": "Peter Jahn <pejahn@microsoft.com>",
-            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.1 <2.0.0` to `>=1.0.2 <2.0.0`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.5` to `^6.47.6`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.2` to `^6.17.3`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.2` to `^6.38.3`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
-          }
-        ]
-      }
-    },
-    {
-      "version": "1.1.0",
-      "tag": "@uifabric/api-docs_v1.1.0",
-      "date": "Tue, 14 May 2019 01:56:43 GMT",
-      "comments": {
-        "minor": [
-          {
-            "comment": "PageJsonGenerator: handle type aliases.",
-            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
-            "commit": "97917560d3624d7bec09a7fd7cc2bb1144132bba"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.4` to `^6.47.5`"
-          },
-          {
-            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.1` to `^6.38.2`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
-          }
-        ]
-      }
-    },
-    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/api-docs_v1.0.1",
       "version": "1.0.1",
-      "tag": "@uifabric/api-docs_v1.0.1",
-      "date": "Sat, 04 May 2019 00:01:53 GMT",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-button to v1.0.0-beta.29",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-internal to v8.0.0-beta.44",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-date-time to v8.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.50",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.50",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.41",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.40",
+            "author": "ololubek@microsoft.com",
+            "commit": "e5458229c84393f83f794decc68e3b9a36d96fbb",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/api-docs_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.20",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v1.0.0-beta.28",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.49",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:20:17 GMT",
+      "tag": "@fluentui/api-docs_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react to v8.0.0-beta.49",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/api-docs"
+          },
+          {
+            "comment": "Bump @fluentui/react-cards to v1.0.0-beta.48",
+            "author": "czearing@outlook.com",
+            "commit": "0d0fe5677db29dc9c850a013d98fc381bc941f91",
+            "package": "@fluentui/api-docs"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 22:54:59 GMT",
+      "tag": "@fluentui/api-docs_v1.0.1",
+      "version": "1.0.1",
       "comments": {
         "patch": [
           {
-            "comment": "Updates for new website",
-            "author": "Elizabeth Craig <elcraig@microsoft.com>",
-            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
-          }
-        ],
-        "none": [
-          {
-            "comment": "add README",
-            "author": "Natalie Ethell <naethell@microsoft.com>",
-            "commit": "be19c7170906e5cd4b34d88a24e6b1ca5fd9a77b"
-          }
-        ],
-        "dependency": [
-          {
-            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.2` to `^6.47.3`"
-          },
-          {
-            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+            "comment": "Publishing public docsite output.",
+            "author": "dzearing@microsoft.com",
+            "commit": "e24c3b46e24f2e7005d2d1cb93f4f8a8843a2070",
+            "package": "@fluentui/api-docs"
           }
         ]
       }

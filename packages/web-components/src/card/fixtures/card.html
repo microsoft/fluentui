@@ -1,23 +1,100 @@
-<fluent-design-system-provider use-defaults>
+<fluent-design-system-provider use-defaults background-color="#F7F7F7" corner-radius="10">
   <style>
+    fluent-card {
+      --card-height: 400px;
+      --card-width: 500px;
+      padding: 20px;
+      margin: 12px;
+    }
+
     .class-override {
       height: 163px;
       width: 300px;
     }
 
+    .state-override {
+      --card-width: 350px;
+      --card-height: 300px;
+      --elevation: 6;
+    }
+
     .state-override:hover {
       --elevation: 12;
     }
+
+    .contents {
+      display: flex;
+      flex-direction: column;
+    }
   </style>
   <div>
-    <fluent-card style="--card-height: 400px; --card-width: 500px;">
-      Card with text
+    <fluent-card class="state-override">Custom size and elevation on hover using CSS</fluent-card>
+
+    <fluent-design-system-provider background-color="#333333">
+      <fluent-card>
+        <div class="contents">
+          Dark
+          <fluent-button appearance="accent">Accent</fluent-button>
+          <fluent-button appearance="stealth">Stealth</fluent-button>
+          <fluent-button appearance="outline">Outline</fluent-button>
+          <fluent-button appearance="lightweight">Lightweight</fluent-button>
+        </div>
+      </fluent-card>
+    </fluent-design-system-provider>
+
+    <fluent-design-system-provider background-color="#E5E5E5">
+      <fluent-card neutral-base-color="#3995C9">
+        <div class="contents">
+          Tinted neutral, light
+          <fluent-button appearance="accent">Accent</fluent-button>
+          <fluent-button appearance="stealth">Stealth</fluent-button>
+          <fluent-button appearance="outline">Outline</fluent-button>
+          <fluent-button appearance="lightweight">Lightweight</fluent-button>
+        </div>
+      </fluent-card>
+    </fluent-design-system-provider>
+
+    <fluent-design-system-provider background-color="#333333">
+      <fluent-card neutral-base-color="#3995C9">
+        <div class="contents">
+          Tinted neutral, dark
+          <fluent-button appearance="accent">Accent</fluent-button>
+          <fluent-button appearance="stealth">Stealth</fluent-button>
+          <fluent-button appearance="outline">Outline</fluent-button>
+          <fluent-button appearance="lightweight">Lightweight</fluent-button>
+        </div>
+      </fluent-card>
+    </fluent-design-system-provider>
+
+    <fluent-design-system-provider background-color="#333333">
+      <fluent-card neutral-base-color="#3995C9">
+        <div class="contents">
+          Tinted neutral, dark
+          <fluent-button appearance="accent">Accent</fluent-button>
+          <fluent-button appearance="stealth">Stealth</fluent-button>
+          <fluent-button appearance="outline">Outline</fluent-button>
+          <fluent-button appearance="lightweight">Lightweight</fluent-button>
+        </div>
+        <fluent-card neutral-base-color="#00A900" style="margin: 0; --card-height: 200px; --card-width: 460px;">
+          <div class="contents">
+            Tinted neutral, nested, dark
+            <fluent-button appearance="accent">Accent</fluent-button>
+            <fluent-button appearance="stealth">Stealth</fluent-button>
+            <fluent-button appearance="outline">Outline</fluent-button>
+            <fluent-button appearance="lightweight">Lightweight</fluent-button>
+          </div>
+        </fluent-card>
+      </fluent-card>
+    </fluent-design-system-provider>
+
+    <fluent-card card-background-color="#2A5193">
+      <div class="contents">
+        Custom card background color
+        <fluent-button appearance="accent">Accent</fluent-button>
+        <fluent-button appearance="stealth">Stealth</fluent-button>
+        <fluent-button appearance="outline">Outline</fluent-button>
+        <fluent-button appearance="lightweight">Lightweight</fluent-button>
+      </div>
     </fluent-card>
-    <br />
-    <fluent-card class="class-override" style="--elevation: 12;">
-      Custom depth with class-based height/width
-    </fluent-card>
-    <br />
-    <fluent-card class="state-override">Custom depth on hover using CSS</fluent-card>
   </div>
 </fluent-design-system-provider>

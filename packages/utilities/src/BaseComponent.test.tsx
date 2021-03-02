@@ -20,6 +20,6 @@ describe('BaseComponent', () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ) as any;
 
-    expect(component.root).toBeDefined();
+    expect(component.root).toBeTruthy();
   });
 });

@@ -1,22 +1,23 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { Slider } from 'office-ui-fabric-react';
+import { FabricDecoratorTall } from '../utilities/index';
+import { Slider, ThemeProvider } from '@fluentui/react';
 
 storiesOf('Slider', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .hover('.ms-Slider-line')
-        .snapshot('hover', { cropTo: '.testWrapper' })
-        .end()}
-    >
-      {story()}
-    </Screener>
+  .addDecorator((story) => (
+    <ThemeProvider>
+      <Screener
+        steps={new Screener.Steps()
+          .snapshot('default', { cropTo: '.testWrapper' })
+          .hover('.ms-Slider-line')
+          .snapshot('hover', { cropTo: '.testWrapper' })
+          .end()}
+      >
+        {story()}
+      </Screener>
+    </ThemeProvider>
   ))
   .addStory(
     'Root',

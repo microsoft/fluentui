@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Overlay';
+export * from './components/Overlay/index';

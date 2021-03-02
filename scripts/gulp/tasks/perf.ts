@@ -52,10 +52,10 @@ const reduceMeasures = (measures: ProfilerMeasure[], key: MeasuredValues): Reduc
 
   return {
     avg: floor(sum / measures.length),
-    median: floor(computeMeasureMedian(_.map(measures, measure => measure[key]))),
+    median: floor(computeMeasureMedian(_.map(measures, (measure) => measure[key]))),
     min: floor(min),
     max: floor(max),
-    values: _.map(measures, measure => ({
+    values: _.map(measures, (measure) => ({
       exampleIndex: measure.exampleIndex,
       value: measure[key],
     })),
@@ -97,12 +97,12 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
 
   const fieldLabels = _.keys(fieldsMapping);
   const fieldValues = _.map(perExamplePerfMeasures, (value, exampleName) => {
-    return [exampleName, ..._.map(_.values(fieldsMapping), measure => _.get(value, measure))];
+    return [exampleName, ..._.map(_.values(fieldsMapping), (measure) => _.get(value, measure))];
   });
 
   return markdownTable([
     ['Example', ...fieldLabels],
-    ..._.sortBy(fieldValues, row => -row[fieldLabels.indexOf('median') + 1]), // +1 is for exampleName
+    ..._.sortBy(fieldValues, (row) => -row[fieldLabels.indexOf('median') + 1]), // +1 is for exampleName
   ]);
 };
 
@@ -154,17 +154,30 @@ async function runMeasures(
 
 task('perf:clean', () => del(paths.perfDist(), { force: true }));
 
-task('perf:build', cb => {
+task('perf:build', (cb) => {
   webpackPlugin(require('../../webpack/webpack.config.perf').default, cb);
 });
 
 task('perf:run', async () => {
   const filter = (argv.filter as string) || '';
-  const browserName: 'chrome' | 'electron' = (argv.browser as 'chrome' | 'electron') || 'chrome';
   const mode = (argv.mode as string) || 'new-page';
   const times = (argv.times as number) || DEFAULT_RUN_TIMES;
 
-  const browser = browserName === 'electron' ? await createElectron(argv.electronPath as string) : await createChrome();
+  const browserName: 'chrome' | 'electron' = (argv.browser as 'chrome' | 'electron') || 'chrome';
+  let browser: Browser;
+
+  if (browserName === 'electron') {
+    if (typeof argv.electronPath === 'undefined') {
+      throw new Error(
+        `To run perf tests with Electron, please provide a path to Electron's binary via "--electronPath" argument`,
+      );
+    }
+
+    browser = await createElectron(argv.electronPath as string);
+  } else {
+    browser = await createChrome();
+  }
+
   let measures: ProfilerMeasureCycle[];
 
   try {
@@ -183,7 +196,7 @@ task('perf:run', async () => {
   console.log(createMarkdownTable(perExamplePerfMeasures));
 });
 
-task('perf:serve', cb => {
+task('perf:serve', (cb) => {
   server = express()
     .use(express.static(paths.perfDist()))
     .listen(config.perf_port, config.server_host, () => {
@@ -192,7 +205,7 @@ task('perf:serve', cb => {
     });
 });
 
-task('perf:serve:stop', cb => {
+task('perf:serve:stop', (cb) => {
   if (server) server.close(cb);
 });
 

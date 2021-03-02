@@ -1,4 +1,4 @@
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import { getCode, keyboardKey } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -53,7 +53,7 @@ export class Debug extends React.Component<DebugProps, DebugState> {
     }
   }
 
-  debugReactComponent = r => {
+  debugReactComponent = (r) => {
     if (!r) {
       console.error(
         "No React component selected. Please select a Fluent UI component from the React's Component panel.",
@@ -75,7 +75,7 @@ export class Debug extends React.Component<DebugProps, DebugState> {
     this.setState({ fiberNav, isSelecting: false, selectedFiberNav: null });
   };
 
-  debugDOMNode = domNode => {
+  debugDOMNode = (domNode) => {
     let fiberNav = FiberNavigator.fromDOMNode(domNode);
 
     if (!fiberNav) {
@@ -83,14 +83,14 @@ export class Debug extends React.Component<DebugProps, DebugState> {
       return;
     }
 
-    fiberNav = fiberNav.findOwner(fiber => fiber.fluentUIDebug);
+    fiberNav = fiberNav.findOwner((fiber) => fiber.fluentUIDebug);
 
     if (fiberNav !== this.state.fiberNav) {
       this.setState({ fiberNav });
     }
   };
 
-  handleKeyDown = e => {
+  handleKeyDown = (e) => {
     const code = getCode(e);
 
     switch (code) {
@@ -106,11 +106,11 @@ export class Debug extends React.Component<DebugProps, DebugState> {
     }
   };
 
-  handleMouseMove = e => {
+  handleMouseMove = (e) => {
     this.debugDOMNode(e.target);
   };
 
-  handleDOMNodeClick = e => {
+  handleDOMNodeClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -130,9 +130,9 @@ export class Debug extends React.Component<DebugProps, DebugState> {
     this.setState(INITIAL_STATE);
   };
 
-  selectFiber = selectedFiberNav => this.setState({ selectedFiberNav });
+  selectFiber = (selectedFiberNav) => this.setState({ selectedFiberNav });
 
-  changeFiber = fiberNav => this.setState({ fiberNav });
+  changeFiber = (fiberNav) => this.setState({ fiberNav });
 
   positionRight = () => this.setState({ debugPanelPosition: 'right' });
 

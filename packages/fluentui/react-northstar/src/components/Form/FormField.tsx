@@ -30,7 +30,10 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
    */
   accessibility?: Accessibility<FormFieldBehaviorProps>;
 
-  /** A control for the form field. */
+  /**
+   * @deprecated
+   * A control for the form field.
+   */
   control?: ShorthandValue<BoxProps>;
 
   /** The HTML input id. This will be set on the control element and will be use for linking it with the label for correct accessibility. */
@@ -68,7 +71,9 @@ export type FormFieldStylesProps = Required<Pick<FormFieldProps, 'type' | 'inlin
 /**
  * A FormField represents a Form element containing a label and an input.
  */
-export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = props => {
+export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponentStaticProps<FormFieldProps> = (
+  props,
+) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FormField.displayName, context.telemetry);
   setStart();
@@ -148,6 +153,7 @@ export const FormField: ComponentWithAs<'div', FormFieldProps> & FluentComponent
       getA11yProps('control', {
         required,
         name,
+        id,
         type,
         error: !!errorMessage || null,
         styles: resolvedStyles.control,

@@ -2,7 +2,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
-import { Accessibility, tabBehavior } from '@fluentui/accessibility';
+import { Accessibility, tabBehavior, TabBehaviorProps } from '@fluentui/accessibility';
 
 import {
   childrenExist,
@@ -35,7 +35,7 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TabBehaviorProps>;
 
   /** A menu item can be active. */
   active?: boolean;
@@ -86,7 +86,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
  * A CarouselItem is an actionable item within a Carousel.
  */
 export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
-  FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
+  FluentComponentStaticProps<CarouselNavigationItemProps> = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
@@ -111,8 +111,11 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CarouselNavigationItem.displayName,
     actionHandlers: {
-      performClick: event => !event.defaultPrevented && handleClick(event),
+      performClick: (event) => !event.defaultPrevented && handleClick(event),
     },
+    mapPropsToBehavior: () => ({
+      active,
+    }),
   });
 
   const { classes, styles: resolvedStyles } = useStyles<CarouselNavigationItemStylesProps>(

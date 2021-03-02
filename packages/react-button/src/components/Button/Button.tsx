@@ -1,27 +1,29 @@
 import * as React from 'react';
 import { useButton } from './useButton';
-import { ButtonProps } from './Button.types';
-import { useFocusRects } from '@uifabric/utilities';
-import { makeClasses } from '@fluentui/react-compose/lib/next/index';
-import { useInlineTokens } from '@fluentui/react-theme-provider';
-import * as classes from './Button.scss';
-
-// Create a hook to resolve classnames.
-export const useButtonClasses = makeClasses(classes);
+import { ButtonProps, ButtonStyleSelectors } from './Button.types';
+import { renderButton } from './renderButton';
+import { useButtonStyles } from './useButtonStyles';
 
 /**
  * Define a styled Button, using the `useButton` hook.
+ * {@docCategory Button}
  */
 export const Button = React.forwardRef<HTMLElement, ButtonProps>((props, ref) => {
-  const { render, state } = useButton(props, ref);
+  const state = useButton(props, ref);
 
-  // Apply styling.
-  useButtonClasses(state);
-  useFocusRects(state.ref);
-  useInlineTokens(state, '--button');
+  const receivedChildren = !!state.children?.children;
+  const receivedIcon = !!state.icon?.children;
 
-  // Render component.
-  return render(state);
+  const styleSelectors: ButtonStyleSelectors = {
+    disabled: state.disabled,
+    primary: state.primary,
+    iconOnly: receivedIcon && !receivedChildren,
+    size: state.size,
+  };
+
+  useButtonStyles(state, styleSelectors);
+
+  return renderButton(state);
 });
 
 Button.displayName = 'Button';

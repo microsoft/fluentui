@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Separator, mergeStyles } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Separator, mergeStyles } from '@fluentui/react';
 
 const verticalStyles = mergeStyles({
   height: '400px',
@@ -15,7 +14,7 @@ const horizontalStyles = mergeStyles({
 
 storiesOf('Separator', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

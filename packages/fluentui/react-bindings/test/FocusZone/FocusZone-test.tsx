@@ -1,9 +1,14 @@
-import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import {
+  FocusZoneDirection,
+  FocusZoneTabbableElements,
+  IS_FOCUSABLE_ATTRIBUTE,
+  getCode,
+  keyboardKey,
+} from '@fluentui/accessibility';
 import { FocusZone } from '@fluentui/react-bindings';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 
 describe('FocusZone', () => {
   let lastFocusedElement: HTMLElement | undefined;
@@ -832,13 +837,13 @@ describe('FocusZone', () => {
       <div {...{ onFocusCapture: onFocus }}>
         <textarea id="t" />
         <FocusZone
-          ref={focus => {
+          ref={(focus) => {
             focusZone = focus;
           }}
         >
           <button
             id="a"
-            ref={button => {
+            ref={(button) => {
               buttonA = button;
             }}
           >
@@ -846,7 +851,7 @@ describe('FocusZone', () => {
           </button>
           <button
             id="b"
-            ref={button => {
+            ref={(button) => {
               buttonB = button;
             }}
           >
@@ -899,13 +904,13 @@ describe('FocusZone', () => {
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
         <FocusZone
-          ref={focus => {
+          ref={(focus) => {
             focusZone = focus;
           }}
         >
           <button
             id="a"
-            ref={button => {
+            ref={(button) => {
               buttonA = button;
             }}
           >
@@ -913,7 +918,7 @@ describe('FocusZone', () => {
           </button>
           <button
             id="b"
-            ref={button => {
+            ref={(button) => {
               buttonB = button;
             }}
           >

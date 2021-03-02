@@ -1,13 +1,12 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Link } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Link } from '@fluentui/react';
 
 storiesOf('Link', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -50,6 +49,16 @@ storiesOf('Link', module)
   ))
   .addStory('No Href Disabled', () => (
     <Link disabled styles={{ root: { fontSize: '14px' } }}>
+      I'm rendered as a button because I have no href and am disabled
+    </Link>
+  ))
+  .addStory('Underlined', () => (
+    <Link href="#" underline styles={{ root: { fontSize: '14px' } }}>
+      I'm rendered as a button because I have no href
+    </Link>
+  ))
+  .addStory('Underlined Disabled', () => (
+    <Link href="#" disabled underline styles={{ root: { fontSize: '14px' } }}>
       I'm rendered as a button because I have no href and am disabled
     </Link>
   ));

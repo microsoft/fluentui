@@ -1,4 +1,4 @@
-# @uifabric/theme-samples
+# @fluentui/theme-samples
 
 **Theme samples for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
@@ -8,5 +8,5 @@ This is not a production-ready package and **should never be used in product**. 
 To import sample themes:
 
 ```js
-import { ThemeName } from '@uifabric/theme-samples';
+import { ThemeName } from '@fluentui/theme-samples';
 ```

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Nav';
+export * from './components/Nav/index';

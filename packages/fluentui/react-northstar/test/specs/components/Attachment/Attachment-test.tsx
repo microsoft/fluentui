@@ -2,7 +2,7 @@ import { ReactWrapper } from 'enzyme';
 import * as React from 'react';
 import { isConformant, implementsShorthandProp, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider, findIntrinsicElement } from 'test/utils';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 
 import { Attachment, attachmentClassName } from 'src/components/Attachment/Attachment';
 import { AttachmentAction, attachmentActionClassName } from 'src/components/Attachment/AttachmentAction';
@@ -26,7 +26,7 @@ const getAttachment = (onClickAttachment: jest.Mock, onClickButton: jest.Mock): 
 };
 
 describe('Attachment', () => {
-  isConformant(Attachment, { constructorName: 'Attachment' });
+  isConformant(Attachment, { testPath: __filename, constructorName: 'Attachment' });
 
   attachmentImplementsShorthandProp('action', AttachmentAction);
   attachmentImplementsShorthandProp('description', AttachmentDescription);

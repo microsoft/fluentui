@@ -1,3 +1,5 @@
 import './version';
 
-export * from './components/Avatar/index';
+export * from './Avatar';
+export * from './Badge';
+export * from './utils/index';

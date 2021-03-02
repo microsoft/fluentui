@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/HoverCard';
+export * from './components/HoverCard/index';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 
 import { SplitButton } from 'src/components/SplitButton/SplitButton';
 import { splitButtonToggleClassName } from 'src/components/SplitButton/SplitButtonToggle';
@@ -22,7 +22,7 @@ const getMenuItems = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElem
 const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${menuClassName}`);
 
 describe('SplitButton', () => {
-  isConformant(SplitButton, { constructorName: 'SplitButton', autoControlledProps: ['open'] });
+  isConformant(SplitButton, { testPath: __filename, constructorName: 'SplitButton', autoControlledProps: ['open'] });
   implementsPopperProps(SplitButton, { requiredProps: { open: true } });
 
   describe('open', () => {
@@ -40,9 +40,7 @@ describe('SplitButton', () => {
     test('is false when clicking menu item', () => {
       const wrapper = mountWithProvider(<SplitButton menu={mockMenu} button="test" defaultOpen />);
 
-      getMenuItems(wrapper)
-        .at(0)
-        .simulate('click');
+      getMenuItems(wrapper).at(0).simulate('click');
       expect(getMenuItems(wrapper)).toHaveLength(0);
     });
 
@@ -84,9 +82,7 @@ describe('SplitButton', () => {
       const wrapper = mountWithProvider(<SplitButton menu={mockMenu} button="test" defaultOpen />);
 
       getMenu(wrapper).simulate('keydown', { keyCode: keyboardKey.Enter });
-      getMenuItems(wrapper)
-        .at(0)
-        .simulate('click');
+      getMenuItems(wrapper).at(0).simulate('click');
 
       expect(getMenuItems(wrapper)).toHaveLength(0);
     });
@@ -106,9 +102,7 @@ describe('SplitButton', () => {
       <SplitButton menu={mockMenu} button="test" onMenuItemClick={onMenuItemClick} defaultOpen />,
     );
 
-    getMenuItems(wrapper)
-      .at(0)
-      .simulate('click');
+    getMenuItems(wrapper).at(0).simulate('click');
     expect(onMenuItemClick).toHaveBeenCalledTimes(1);
   });
 

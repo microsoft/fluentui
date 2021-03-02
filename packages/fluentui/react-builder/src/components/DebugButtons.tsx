@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const TrashAltRegularIcon = props => (
+const TrashAltRegularIcon = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -19,7 +19,7 @@ const TrashAltRegularIcon = props => (
   </svg>
 );
 
-const LevelUpAltIcon = props => (
+const LevelUpAltIcon = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -38,7 +38,7 @@ const LevelUpAltIcon = props => (
   </svg>
 );
 
-const CloneIcon = props => (
+const CloneIcon = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -57,7 +57,7 @@ const CloneIcon = props => (
   </svg>
 );
 
-const ArrowsAltSolidIcon = props => (
+const ArrowsAltSolidIcon = (props) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -76,9 +76,12 @@ const ArrowsAltSolidIcon = props => (
   </svg>
 );
 
-export const DebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => {
+export const DebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = (props) => {
   return (
     <button
+      tabIndex={-1}
+      data-is-focusable={false}
+      aria-hidden={true}
       style={{
         border: 'none',
         background: 'none',
@@ -92,25 +95,25 @@ export const DebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButto
   );
 };
 
-export const TrashDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const TrashDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = (props) => (
   <DebugButton title="Delete" {...props}>
     <TrashAltRegularIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>
 );
 
-export const LevelUpDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const LevelUpDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = (props) => (
   <DebugButton title="Go to parent" {...props}>
     <LevelUpAltIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>
 );
 
-export const CloneDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const CloneDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = (props) => (
   <DebugButton title="Clone" {...props}>
     <CloneIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>
 );
 
-export const MoveDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = props => (
+export const MoveDebugButton: React.FunctionComponent<React.HTMLAttributes<HTMLButtonElement>> = (props) => (
   <DebugButton title="Move" {...props}>
     <ArrowsAltSolidIcon style={{ widht: '1em', height: '1em' }} />
   </DebugButton>

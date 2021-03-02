@@ -1,9 +1,15 @@
 import * as React from 'react';
-import * as path from 'path';
-import { isConformant } from '@fluentui/react-conformance';
-import { Button } from './Button';
+import { mount, shallow, ReactWrapper } from 'enzyme';
 import * as renderer from 'react-test-renderer';
-import { mount, ReactWrapper } from 'enzyme';
+import { isConformant } from '../../common/isConformant';
+import { Button } from './Button';
+// import { validateBehavior, ComponentTestFacade, buttonBehaviorDefinition } from '@fluentui/a11y-testing';
+
+describe('Button (isConformant)', () =>
+  isConformant({
+    Component: Button,
+    displayName: 'Button',
+  }));
 
 describe('Button', () => {
   let wrapper: ReactWrapper | undefined;
@@ -13,13 +19,6 @@ describe('Button', () => {
       wrapper.unmount();
       wrapper = undefined;
     }
-  });
-
-  isConformant({
-    componentPath: path.join(__dirname, 'Button.tsx'),
-    Component: Button,
-    displayName: 'Button',
-    disabledTests: ['has-docblock', 'as-renders-html', 'as-passes-as-value', 'as-renders-react-class', 'as-renders-fc'],
   });
 
   /**
@@ -43,4 +42,33 @@ describe('Button', () => {
 
     expect(document.activeElement).toEqual(rootRef.current);
   });
+
+  it('does not trigger a function by being clicked when button is disabled', () => {
+    const onClick = jest.fn();
+    shallow(
+      <Button disabled onClick={onClick}>
+        I am a button
+      </Button>,
+    ).simulate('click');
+
+    expect(onClick).not.toHaveBeenCalled();
+  });
+
+  // it(`does not trigger a function by being clicked when button is disabled, even when disabledFocusable has been
+  //     provided`, () => {
+  //   const onClick = jest.fn();
+  //   shallow(
+  //     <Button disabled disabledFocusable onClick={onClick}>
+  //       I am a button
+  //     </Button>,
+  //   ).simulate('click');
+  //
+  //   expect(onClick).not.toHaveBeenCalled();
+  // });
+
+  // describe('AccessibilityButtonBehavior', () => {
+  //   const testFacade = new ComponentTestFacade(Button, {});
+  //   const errors = validateBehavior(buttonBehaviorDefinition, testFacade);
+  //   expect(errors).toEqual([]);
+  // });
 });

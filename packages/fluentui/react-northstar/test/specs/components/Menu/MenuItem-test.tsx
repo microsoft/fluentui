@@ -7,29 +7,18 @@ import {
   getRenderedAttribute,
   implementsShorthandProp,
 } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent, sharedIsConformant } from 'test/utils';
+import { mountWithProviderAndGetComponent, mountWithProvider } from 'test/utils';
 import { MenuItem } from 'src/components/Menu/MenuItem';
 import { Menu } from 'src/components/Menu/Menu';
 import { MenuItemWrapper, menuItemWrapperClassName } from 'src/components/Menu/MenuItemWrapper';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
+    testPath: __filename,
     constructorName: 'MenuItem',
-    eventTargets: {
-      onClick: `.${menuItemWrapperClassName}`,
-    },
     wrapperComponent: MenuItemWrapper,
     autoControlledProps: ['menuOpen'],
   });
-
-  sharedIsConformant(
-    {
-      Component: MenuItem,
-      displayName: 'MenuItem',
-      wrapperComponent: MenuItemWrapper,
-    },
-    __filename,
-  );
 
   implementsShorthandProp(MenuItem)('menu', Menu, {
     implementsPopper: true,
@@ -43,13 +32,7 @@ describe('MenuItem', () => {
 
     expect(menuItem.is('li')).toBe(true);
     // The ElementType is wrapped with Ref, which is adding two HOC in total, that's why we need the three childAt(0) usages
-    expect(
-      menuItem
-        .childAt(0)
-        .childAt(0)
-        .childAt(0)
-        .is('a'),
-    ).toBe(true);
+    expect(menuItem.childAt(0).childAt(0).childAt(0).is('a')).toBe(true);
     expect(menuItem.text()).toBe('Home');
   });
 
@@ -59,13 +42,18 @@ describe('MenuItem', () => {
       .hostNodes();
 
     expect(menuItem.is('li')).toBe(true);
-    expect(
-      menuItem
-        .childAt(0)
-        .hostNodes()
-        .exists(),
-    ).toBe(false);
+    expect(menuItem.childAt(0).hostNodes().exists()).toBe(false);
     expect(menuItem.text()).toBe('Home');
+  });
+
+  describe('wrapper', () => {
+    it('onClick should be called', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithProvider(<MenuItem wrapper={{ onClick }}>Home</MenuItem>);
+
+      wrapper.find('MenuItemWrapper').simulate('click');
+      expect(onClick).toHaveBeenCalled();
+    });
   });
 
   describe('accessibility', () => {
@@ -80,7 +68,7 @@ describe('MenuItem', () => {
       },
       { name: 'tabBehavior', behavior: tabBehavior, expectedAnchorRole: 'tab' },
     ];
-    behaviors.forEach(accessibility => {
+    behaviors.forEach((accessibility) => {
       test(`integration test for ${accessibility.name} behavior`, () => {
         // accessibility functionality is covered by a combination of behavior tests and `handlesAccessibility()`
         // this is just an integration smoke test

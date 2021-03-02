@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFullWidth } from '../utilities';
-import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from 'office-ui-fabric-react';
+import { FabricDecoratorFullWidth } from '../utilities/index';
+import { Fabric, mergeStyleSets, DefaultPalette, IStyle, Stack } from '@fluentui/react';
 
 const rootStyles = {
   background: DefaultPalette.themeTertiary,
@@ -70,7 +69,7 @@ const defaultProps = {
 
 storiesOf('Stack', module)
   .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

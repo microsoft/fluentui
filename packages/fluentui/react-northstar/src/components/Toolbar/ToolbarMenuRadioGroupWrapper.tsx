@@ -1,5 +1,5 @@
 import { compose } from '@fluentui/react-bindings';
-
+import { toolbarMenuRadioGroupWrapperBehavior } from '@fluentui/accessibility';
 import { commonPropTypes } from '../../utils';
 import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 
@@ -28,5 +28,6 @@ export const ToolbarMenuRadioGroupWrapper = compose<
 
 ToolbarMenuRadioGroupWrapper.defaultProps = {
   as: 'li',
+  accessibility: toolbarMenuRadioGroupWrapperBehavior,
 };
 ToolbarMenuRadioGroupWrapper.propTypes = commonPropTypes.createCommon();

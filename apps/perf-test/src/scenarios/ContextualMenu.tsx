@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from 'office-ui-fabric-react';
+import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
 
 const menuItems: IContextualMenuItem[] = [
   {

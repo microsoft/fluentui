@@ -1,9 +1,10 @@
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 import { inputClassName, buttonClassName } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    builder =>
+    (builder) =>
       builder
         .click(`.${buttonClassName}`)
         .snapshot('Shows calendar.')

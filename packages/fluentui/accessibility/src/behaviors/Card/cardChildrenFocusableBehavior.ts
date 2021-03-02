@@ -2,7 +2,7 @@ import { Accessibility } from '../../types';
 import { CardBehaviorProps } from './cardBehavior';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { FocusZoneTabbableElements } from '../../focusZone/types';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 
 /**
  * @description
@@ -14,7 +14,7 @@ import { keyboardKey } from '@fluentui/keyboard-key';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Triggers 'focusCard' action with 'Escape' on 'root'.
  */
-export const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
+export const cardChildrenFocusableBehavior: Accessibility<CardBehaviorProps> = (props) => ({
   attributes: {
     root: {
       role: 'group',

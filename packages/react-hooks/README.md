@@ -1,4 +1,4 @@
-# @uifabric/react-hooks
+# @fluentui/react-hooks
 
 **[Fluent UI React](https://developer.microsoft.com/en-us/fluentui) hooks**
 
@@ -6,7 +6,6 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 
 - [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling
 - [useConst](#useconst) - Initialize and return a value that's always constant
-- [useConstCallback](#useconstcallback) - Like `useConst` but for functions
 - [useControllableValue](#usecontrollablevalue) - Manage the current value for a component that could be either controlled or uncontrolled
 - [useForceUpdate](#useforceupdate) - Force a function component to update
 - [useId](#useid) - Get a globally unique ID
@@ -16,6 +15,7 @@ Helpful hooks not provided by React itself. These hooks were built for use in Fl
 - [useRefEffect](#userefeffect) - Call a function with cleanup when a ref changes. Like `useEffect` with a dependency on a ref.
 - [useSetInterval](#usesetinterval) - Version of `setInterval` that automatically cleans up when component is unmounted
 - [useSetTimeout](#usesettimeout) - Version of `setTimeout` that automatically cleans up when component is unmounted
+- [useTarget](#usetarget) - Logic used by several popup components to determine the target element or point to position against
 - [useWarnings](#usewarnings) - Display debug-only warnings for invalid or deprecated props or other issues
 
 ## useBoolean
@@ -39,14 +39,14 @@ Each callback will always have the same identity.
 ### Example
 
 ```jsx
-import { useBoolean } from '@uifabric/react-hooks';
+import { useBoolean } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const [value, { setTrue: showDialog, setFalse: hideDialog, toggle: toggleDialogVisible }] = useBoolean(false);
   // ^^^ Instead of:
   // const [isDialogVisible, setIsDialogVisible] = React.useState(false);
-  // const showDialog = useConstCallback(() => setIsDialogVisible(true));
-  // const hideDialog = useConstCallback(() => setIsDialogVisible(false));
+  // const showDialog = React.useCallback(() => setIsDialogVisible(true), []);
+  // const hideDialog = React.useCallback(() => setIsDialogVisible(false), []);
   // const toggleDialogVisible = isDialogVisible ? setFalse : setTrue;
 
   // ... code that shows a dialog when a button is clicked ...
@@ -65,12 +65,10 @@ Its one parameter is the initial value, or a function to get the initial value. 
 
 If the value should ever change based on dependencies, use `React.useMemo` instead.
 
-If the value itself is a function, consider using [`useConstCallback`](#useconstcallback) instead.
-
 ### Example
 
 ```jsx
-import { useConst } from '@uifabric/react-hooks';
+import { useConst } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const value = useConst(() => {
@@ -88,20 +86,6 @@ According to the [React docs](https://reactjs.org/docs/hooks-reference.html#usem
 > **You may rely on `useMemo` as a performance optimization, not as a semantic guarantee.** In the future, React may choose to “forget” some previously memoized values and recalculate them on next render, e.g. to free memory for offscreen components. Write your code so that it still works without `useMemo` — and then add it to optimize performance.
 
 In cases where the value **must** never change, the recommended workaround is to store it with `useRef`, but refs are more awkward to initialize and don't enforce or even communicate that the value should be immutable. An alternative workaround is `const [value] = useState(initializer)`, but this is semantically wrong and more costly under the hood.
-
-## useConstCallback
-
-```ts
-function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
-```
-
-Hook to ensure a callback function always has the same identity. Unlike `React.useCallback`, this is guaranteed to always return the same value.
-
-Its one parameter is the callback. Similar to `useState`, only the first value/function passed in is respected.
-
-If the callback should ever change based on dependencies, use `React.useCallback` instead.
-
-`useConstCallback(fn)` has the same behavior as `useConst(() => fn)`.
 
 ## useControllableValue
 
@@ -169,7 +153,7 @@ Useful for cases in which a component may be rendered multiple times on the same
 ### Example
 
 ```jsx
-import { useId } from '@uifabric/react-hooks';
+import { useId } from '@fluentui/react-hooks';
 
 const TextField = ({ labelText, defaultValue }) => {
   const id = useId('field');
@@ -203,6 +187,47 @@ const Example = React.forwardRef(function Example(props: {}, forwardedRef: React
 });
 ```
 
+## useMount
+
+```ts
+const useMount: (callback: () => void) => void;
+```
+
+Hook which asynchronously executes a callback once the component has been mounted using [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect)..
+
+```tsx
+import { useMount } from '@fluentui/react-hooks';
+
+const MyComponent = () => {
+  useMount(() => {
+    console.log('Example');
+   })
+
+  return <div />;
+};
+});
+```
+
+## useMountSync
+
+```ts
+const useMountSync: (callback: () => void) => void;
+```
+
+Hook which synchronously execute a callback when the component has been mounted using [useLayoutEffect](https://reactjs.org/docs/hooks-reference.html#uselayouteffect). Use `useMount` for most scenarios. You should only use the synchronous version in the rare case you need to perform an action after the component has been mounted and before the browser paints, such as measuring content and adjusting the result. Using this will trigger debug warnings in server-rendered scenarios.
+
+```tsx
+import { useMountSync } from '@fluentui/react-hooks';
+
+const MyComponent = () => {
+  useMountSync(() => {
+    console.log('Example');
+  });
+
+  return <div />;
+};
+```
+
 ## useOnEvent
 
 ```ts
@@ -214,7 +239,7 @@ function useOnEvent<TElement extends Element, TEvent extends Event>(
 ): void;
 ```
 
-Attach an event handler on mount and handle cleanup. The event handler is attached using `on()` from `@uifabric/utilities`.
+Attach an event handler on mount and handle cleanup. The event handler is attached using `on()` from `@fluentui/utilities`.
 
 ## usePrevious
 
@@ -241,11 +266,11 @@ The return value is a function that should be called to set the ref's value. The
 ### Example
 
 ```tsx
-import { useRefEffect } from '@uifabric/react-hooks';
+import { useRefEffect } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
-  const myDivRef = useRefEffect<HTMLElement>(myDiv => {
-    const observer = new ResizeObserver(entries => {
+  const myDivRef = useRefEffect<HTMLElement>((myDiv) => {
+    const observer = new ResizeObserver((entries) => {
       console.log(`myDiv is ${entries[0].contentRect.width} px wide`);
     });
     observer.observe(myDiv);
@@ -274,7 +299,7 @@ The returned callbacks always have the same identity.
 ### Example
 
 ```jsx
-import { useSetInterval } from '@uifabric/react-hooks';
+import { useSetInterval } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const { setInterval, clearInterval } = useSetInterval();
@@ -303,7 +328,7 @@ The returned callbacks always have the same identity.
 ### Example
 
 ```jsx
-import { useSetTimeout } from '@uifabric/react-hooks';
+import { useSetTimeout } from '@fluentui/react-hooks';
 
 const MyComponent = () => {
   const { setTimeout, clearTimeout } = useSetTimeout();
@@ -313,6 +338,39 @@ const MyComponent = () => {
 
   // If needed, clear an timeout manually.
   clearTimeout(id);
+};
+```
+
+## useTarget
+
+```ts
+type Target = Element | string | MouseEvent | Point | null | React.RefObject<Element>;
+
+function useTarget<TElement extends HTMLElement = HTMLElement>(
+  target: Target | undefined,
+  hostElement?: React.RefObject<TElement | null>,
+): Readonly<[React.RefObject<Element | MouseEvent | Point | null>, React.RefObject<Window | undefined>]>;
+```
+
+Hook which queries the document for the element indicated by a CSS query string (if provided), or returns the element/event/point provided. Also attempts to determine the Window object for the provided target.
+
+## useUnmount
+
+```ts
+const useUnmount: (callback: () => void) => void;
+```
+
+Hook that asynchronously fires a callback during unmount using [useEffect](https://reactjs.org/docs/hooks-reference.html#useeffect).
+
+```tsx
+import { useUnmount } from '@fluentui/react-hooks';
+
+const MyComponent = () => {
+  useUnmount(() => {
+    console.log('Example');
+  });
+
+  return <div />;
 };
 ```
 
@@ -336,3 +394,11 @@ The following types of warnings are supported (see typings for details on how to
   - The component is attempting to switch between controlled and uncontrolled
 
 Note that all warnings except `controlledUsage` will only be shown on first render. New `controlledUsage` warnings may be shown later based on prop changes. All warnings are shown synchronously during render (not wrapped in `useEffect`) for easier tracing/debugging.
+
+## Deprecated hooks
+
+### useConstCallback
+
+This hook was intended for creating callbacks which have no dependencies, and therefore never need to change. It works fine if everyone using it is extremely mindful of how closures work, but that's not a safe assumption--so in practice, usage of this hook tends to result in bugs like unintentionally capturing the first value of a prop and not respecting updates (when updates should be respected).
+
+If absolutely necessary, you can imitate `useConstCallback`'s behavior with `useConst`: `const myCallback = useConst(() => () => { /* callback body */ })`. (The extra function wrapper is necessary to prevent the callback itself from being interpreted as an initializer.)

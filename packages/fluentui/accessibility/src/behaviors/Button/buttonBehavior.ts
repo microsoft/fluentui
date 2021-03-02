@@ -1,22 +1,14 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 import { Accessibility, AccessibilityDefinition } from '../../types';
 
-/**
- * @specification
- * Adds role='button' if element type is other than 'button'. This allows screen readers to handle the component as a button.
- * Adds attribute 'tabIndex=0' if element type is other than 'button'.
- * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
- * Adds attribute 'aria-disabled=true' based on the property 'loading'.
- * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
- */
-export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
+export const buttonBehavior: Accessibility<ButtonBehaviorProps> = (props) => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {
         role: props.as === 'button' ? undefined : 'button',
-        tabIndex: props.as === 'button' ? undefined : 0,
-        disabled: props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
-        'aria-disabled': props.disabled || props.loading,
+        tabIndex: props.as === 'button' || props.disabled ? undefined : 0,
+        disabled: props.as === 'button' ? props.disabled : undefined,
+        'aria-disabled': props.disabledFocusable,
       },
     },
 
@@ -32,9 +24,11 @@ export const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
     },
   };
 
-  if (process.env.NODE_ENV !== 'production' && props.loading) {
+  if (process.env.NODE_ENV !== 'production') {
     // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'LoadingButton';
+    if (props.disabledFocusable) {
+      definition.attributes.root['data-aa-class'] = 'DisabledFocusableButton';
+    }
   }
 
   return definition;
@@ -45,5 +39,5 @@ export type ButtonBehaviorProps = {
   as: string;
   /** A button can show it is currently unable to be interacted with. */
   disabled?: boolean;
-  loading?: boolean;
+  disabledFocusable?: boolean;
 };

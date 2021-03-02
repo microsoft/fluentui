@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Customizations } from './Customizations';
 import { hoistStatics } from '../hoistStatics';
 import { CustomizerContext, ICustomizerContext } from './CustomizerContext';
-import { concatStyleSets } from '@uifabric/merge-styles';
+import { concatStyleSets } from '@fluentui/merge-styles';
 
 export function customizable(
   scope: string,

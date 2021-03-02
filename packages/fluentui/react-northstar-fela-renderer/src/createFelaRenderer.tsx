@@ -46,9 +46,18 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   }
 }
 
-// Blacklist contains a list of classNames that are used by FontAwesome
-// https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
-const blacklistedClassNames = ['fa', 'fas', 'far', 'fal', 'fab'];
+const blacklistedClassNames = [
+  // Blacklist contains a list of classNames that are used by FontAwesome
+  // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
+  'fa',
+  'fas',
+  'far',
+  'fal',
+  'fab',
+  // .cke is used by CKEditor
+  'ck',
+  'cke',
+];
 
 const filterClassName = (className: string): boolean =>
   className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1;
@@ -78,19 +87,37 @@ const rendererConfig = {
   ],
 };
 
-export const createFelaRenderer: CreateRenderer = target => {
-  const felaRenderer = createRenderer(rendererConfig);
+export const createFelaRenderer: CreateRenderer = (target) => {
+  const felaRenderer = createRenderer(rendererConfig) as IRenderer & {
+    listeners: [];
+    nodes: Record<string, HTMLStyleElement>;
+    updateSubscription: Function | undefined;
+  };
+  let usedRenderers: number = 0;
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
-  const Provider: React.FC = props => (
+  const Provider: React.FC = (props) => (
     <RendererProvider renderer={felaRenderer} {...{ rehydrate: false, targetDocument: target }}>
       {props.children}
     </RendererProvider>
   );
 
   return {
-    renderFont: font => {
+    registerUsage: () => {
+      usedRenderers += 1;
+    },
+    unregisterUsage: () => {
+      usedRenderers -= 1;
+
+      if (usedRenderers === 0) {
+        felaRenderer.listeners = [];
+        felaRenderer.nodes = {};
+        felaRenderer.updateSubscription = undefined;
+      }
+    },
+
+    renderFont: (font) => {
       felaRenderer.renderFont(font.name, font.paths, font.props);
     },
     renderGlobal: felaRenderer.renderStatic,

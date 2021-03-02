@@ -18,6 +18,7 @@ const AlertExampleWidth = () => {
         actions={[{ content: 'Join and add the room', primary: true, key: 'content-1' }]}
         header="There is a conference room close to you."
         dismissible
+        dismissAction={{ 'aria-label': 'close' }}
         icon={<ScreencastIcon />}
       />
     </div>

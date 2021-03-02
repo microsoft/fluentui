@@ -1,7 +1,4 @@
-/**
- * Common constants and methods
- */
-const TimeConstants = {
+export const TimeConstants = {
   MillisecondsInOneDay: 86400000,
   MillisecondsIn1Sec: 1000,
   MillisecondsIn1Min: 60000,
@@ -12,4 +9,3 @@ const TimeConstants = {
   DaysInOneWeek: 7,
   MonthInOneYear: 12,
 };
-export default TimeConstants;

@@ -10,6 +10,7 @@ const AlertExampleDismissible = () => {
       content="This is a special notification which you can dismiss if you're bored with it."
       dismissible
       onVisibleChange={() => setVisible(false)}
+      dismissAction={{ 'aria-label': 'close' }}
       visible={visible}
     />
   );

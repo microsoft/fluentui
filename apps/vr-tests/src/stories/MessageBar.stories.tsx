@@ -1,9 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { MessageBarButton, Link, MessageBar, MessageBarType } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Link, MessageBar, MessageBarType } from '@fluentui/react';
+import { MessageBarButton } from '@fluentui/react/lib/Button';
 
 const noop = (): void => undefined;
 const longText =
@@ -13,7 +13,7 @@ const link = <Link href="www.bing.com">Visit our website</Link>;
 
 storiesOf('MessageBar', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

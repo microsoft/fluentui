@@ -2,8 +2,10 @@ import { GridVariables } from './gridVariables';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { GridStylesProps } from '../../../../components/Grid/Grid';
 
-const getCSSTemplateValue = (template: number, gap: string = ''): string => {
-  return Array.from({ length: template }, () => '1fr').join(` ${gap} `);
+const getCSSTemplateValue = (template: string | number): string => {
+  const templateAsNumber = Number(template);
+
+  return !isNaN(templateAsNumber) && templateAsNumber > 0 ? `repeat(${template}, 1fr)` : String(template);
 };
 
 export const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariables> = {
@@ -21,11 +23,11 @@ export const gridStyles: ComponentSlotStylesPrepared<GridStylesProps, GridVariab
       ...(rows && !columns && { gridAutoFlow: 'column' }),
       ...(rows && {
         gridTemplateRows: getCSSTemplateValue(rows),
-        msGridRows: getCSSTemplateValue(rows, gridGap),
+        msGridRows: getCSSTemplateValue(rows),
       }),
       ...(columns && {
         gridTemplateColumns: getCSSTemplateValue(columns),
-        msGridColumns: getCSSTemplateValue(columns, gridGap),
+        msGridColumns: getCSSTemplateValue(columns),
       }),
 
       '& > *': { outlineOffset: '-3px' },

@@ -1,13 +1,12 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Checkbox, Persona, PersonaSize } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Checkbox, Persona, PersonaSize } from '@fluentui/react';
 
 storiesOf('Checkbox', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -46,7 +45,7 @@ storiesOf('Checkbox', module)
   .addStory('Custom render Checkbox', () => (
     <Checkbox
       label="Persona Checkbox"
-      onRenderLabel={props => {
+      onRenderLabel={(props) => {
         return <Persona text={props!.label} size={PersonaSize.size32} />;
       }}
     />
@@ -54,7 +53,7 @@ storiesOf('Checkbox', module)
 
 storiesOf('Checkbox Indeterminate', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

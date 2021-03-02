@@ -5,6 +5,9 @@ import Vinyl from 'vinyl';
 import _ from 'lodash';
 import fs from 'fs';
 import { Transform } from 'stream';
+import config from '../../config';
+
+const { paths } = config;
 
 const pluginName = 'gulp-component-menu-behaviors';
 const extract = require('extract-comments');
@@ -21,7 +24,7 @@ type BehaviorMenuItem = {
 };
 
 const getTextFromCommentToken = (commentTokens, tokenTitle): string => {
-  const resultToken = commentTokens.find(token => token.title === tokenTitle);
+  const resultToken = commentTokens.find((token) => token.title === tokenTitle);
   return resultToken ? resultToken.description : '';
 };
 
@@ -45,7 +48,7 @@ export default () => {
       const behaviorVariantName = file.basename;
       const behaviorName = path.basename(dir);
       const fileContent = fs.readFileSync(file.path).toString();
-      const blockComments = extract(fileContent).filter(comment => comment.type === 'BlockComment'); // filtering only block comments
+      const blockComments = extract(fileContent).filter((comment) => comment.type === 'BlockComment'); // filtering only block comments
       const variation = {
         name: behaviorVariantName,
         description: '',
@@ -59,12 +62,49 @@ export default () => {
         variation.specification = getTextFromCommentToken(commentTokens, 'specification');
       }
 
-      result.push({
-        displayName: behaviorName,
-        type: componentType,
-        variations: variation,
-      });
-      cb();
+      // generate behavior description from 'behavior definition' file if no was found in behavior file
+      if (!variation.specification) {
+        const variationName = variation.name.replace('.ts', '');
+        const definitionName = `${variationName}Definition`;
+
+        const absPathToBehaviorDefinition = path.normalize(
+          `${paths.posix.allPackages('a11y-testing')}/src/definitions/${behaviorName}/${definitionName}.ts`,
+        );
+        // delete require cache only works for absolute file path. This is required to get latest changes in behaviors for watch process
+        delete require.cache[absPathToBehaviorDefinition];
+        let definition;
+        try {
+          // behavior definition file may not exist for components that haven't migrate to using a11y-testing
+          definition = require(absPathToBehaviorDefinition)?.[definitionName];
+        } catch (e) {
+          // require throws error when file is not found
+        }
+
+        // in some cases specification doesn't exists as well not definition for the behavior (alertBaseBehavior.ts)
+        if (definition) {
+          const specificationFromDefinition = definition
+            .map((definition) => {
+              return definition.getData().hidden ? undefined : definition.stringify();
+            })
+            .filter(Boolean);
+
+          variation.specification = specificationFromDefinition.join('\r\n');
+        }
+
+        result.push({
+          displayName: behaviorName,
+          type: componentType,
+          variations: variation,
+        });
+        cb();
+      } else {
+        result.push({
+          displayName: behaviorName,
+          type: componentType,
+          variations: variation,
+        });
+        cb();
+      }
     } catch (err) {
       const pluginError = new gutil.PluginError(pluginName, err);
       const relativePath = path.relative(process.cwd(), file.path);

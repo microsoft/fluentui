@@ -1,4 +1,4 @@
-import { createContext } from '@fluentui/react-context-selector';
+import { createContext } from '@fluentui/react-bindings';
 import { ComponentVariablesInput } from '@fluentui/styles';
 import * as React from 'react';
 
@@ -19,19 +19,16 @@ export type ListContextSubscribedValue = Pick<
   'debug' | 'selectable' | 'navigable' | 'truncateContent' | 'truncateHeader' | 'variables' | 'onItemClick'
 > & { selected: boolean };
 
-export const ListContext = createContext<ListContextValue>(
-  {
-    debug: false,
-    selectable: false,
-    navigable: false,
-    truncateContent: false,
-    truncateHeader: false,
-    variables: {},
+export const ListContext = createContext<ListContextValue>({
+  debug: false,
+  selectable: false,
+  navigable: false,
+  truncateContent: false,
+  truncateHeader: false,
+  variables: {},
 
-    onItemClick: () => {},
-    selectedIndex: -1,
-  },
-  { strict: false },
-);
+  onItemClick: () => {},
+  selectedIndex: -1,
+});
 
 export const ListContextProvider = ListContext.Provider;

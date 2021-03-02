@@ -1,4 +1,4 @@
-import { ISemanticColors } from 'office-ui-fabric-react';
+import { ISemanticColors } from '@fluentui/react';
 
 export interface IExtendedSemanticColors extends ISemanticColors {
   checkboxBorderChecked: string;
@@ -30,11 +30,13 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   checkBoxDisabled: string;
   checkBoxIndeterminateBackground: string;
   checkBoxIndeterminateDefaultChecked: string;
+  callOutBorderStyle: string;
   choiceGroupContainerBorder: string;
   choiceGroupContainerBorderStyle: string;
   choiceGroupUncheckedDotHover: string;
   commandBarBorder: string;
   controlAccent: string;
+  controlBackground: string;
   controlOutline: string;
   controlOutlineDisabled: string;
   controlOutlineHovered: string;
@@ -46,7 +48,6 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   errorBackground: string;
   errorText: string;
   focusBorder: string;
-  iconButtonBackground: string;
   iconButtonFill: string;
   iconButtonFillHovered: string;
   inputBackground: string;
@@ -114,6 +115,7 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   textFieldBorderDisabled: string;
   tabHover: string;
   teachingBubbleBackground: string;
+  teachingBubbleBorder: string;
   teachingBubblePrimaryButtonHover: string;
   teachingBubbleSecondaryBackground: string;
   teachingBubbleText: string;

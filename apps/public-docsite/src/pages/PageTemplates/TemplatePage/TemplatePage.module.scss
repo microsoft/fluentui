@@ -1,0 +1,19 @@
+// Import variables
+@import '../../../styles/common';
+
+// Define your classNames using camel case (NO DASHES)
+.customSection {
+  // Fluent background color mixin
+  @include ms-bgColor-communicationPrimary;
+
+  // Fluent depth mixin
+  @include ms-depth-64;
+
+  border: 15px solid white;
+
+  h2,
+  p {
+    color: $ms-color-white;
+    font-weight: 700;
+  }
+}

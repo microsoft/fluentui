@@ -50,6 +50,7 @@ const ChatExampleInScrollableShorthand = () => {
       title: 'More actions',
       children: (Component, props) => (
         <MenuButton
+          align="bottom"
           key="more"
           menu={[
             { key: 'reply', content: 'Reply', icon: <ReplyIcon /> },
@@ -57,7 +58,7 @@ const ChatExampleInScrollableShorthand = () => {
             { key: 'save', content: 'Save message', icon: <BookmarkIcon /> },
             { key: 'delete', content: 'Delete', icon: <CloseIcon /> },
           ]}
-          position="above"
+          position="after"
           trigger={<Component {...props} />}
           {...(overflow && {
             flipBoundary: 'window',
@@ -79,7 +80,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="John Doe"
+          author="Cecil Folk"
           content="Hello"
           mine
           timestamp="Yesterday, 10:15 PM"
@@ -95,7 +96,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="John Doe"
+          author="Cecil Folk"
           content="I'm back!"
           mine
           timestamp="Yesterday, 10:15 PM"
@@ -104,11 +105,11 @@ const ChatExampleInScrollableShorthand = () => {
       ),
     },
     {
-      gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
+      gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg" />,
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="Jane Doe"
+          author="Robin Counts"
           content="Hi"
           timestamp="Yesterday, 10:15 PM"
           unstable_overflow={overflow}
@@ -121,7 +122,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="Jane Doe"
+          author="Robin Counts"
           content="How are you?"
           timestamp="Yesterday, 10:15 PM"
           unstable_overflow={overflow}
@@ -134,7 +135,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="Jane Doe"
+          author="Robin Counts"
           content="Do you want something?"
           timestamp="Yesterday, 10:15 PM"
           unstable_overflow={overflow}
@@ -148,7 +149,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="Jane Doe"
+          author="Robin Counts"
           content="Yes"
           mine
           timestamp="Yesterday, 10:16 PM"
@@ -164,7 +165,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="John Doe"
+          author="Cecil Folk"
           content={
             <>
               Please order a{' '}
@@ -184,7 +185,7 @@ const ChatExampleInScrollableShorthand = () => {
       message: (
         <Chat.Message
           actionMenu={actionMenu}
-          author="Jane Doe"
+          author="Robin Counts"
           content="Pepperoni?"
           timestamp="Yesterday, 10:17 PM"
           unstable_overflow={overflow}

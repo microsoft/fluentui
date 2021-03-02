@@ -38,7 +38,7 @@ export const DialogStyles = css`
     ${elevation}
     margin-top: auto;
     margin-bottom: auto;
-    border-radius: calc(var(--elevated-corner-radius));
+    border-radius: calc(var(--elevated-corner-radius) * 1px);
     width: var(--dialog-width);
     height: var(--dialog-height);
     background: var(--background-color);

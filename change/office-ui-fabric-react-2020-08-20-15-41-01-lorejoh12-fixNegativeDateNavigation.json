@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fixing negative date navigation by changing the date clone method from using strings to using the date object itself",
-  "packageName": "office-ui-fabric-react",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-20T22:41:01.069Z"
-}

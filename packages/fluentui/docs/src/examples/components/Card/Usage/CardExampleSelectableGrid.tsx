@@ -47,7 +47,7 @@ const SelectableCard: React.FC<SelectableCardProps> = ({ title, index, selected,
 
       <Card.Body>
         <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
         </Flex>
       </Card.Body>
     </Card>
@@ -101,7 +101,7 @@ const CardExampleSelectableGrid = () => {
         }}
       />
       <Grid accessibility={cardsContainerBehavior} columns={3}>
-        {cards.map(card => {
+        {cards.map((card) => {
           return (
             <SelectableCard
               key={card.index}

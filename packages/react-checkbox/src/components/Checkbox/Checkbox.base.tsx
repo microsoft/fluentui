@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { compose, mergeProps } from '@fluentui/react-compose';
+import { compose, mergeProps, ComponentWithAs } from '@fluentui/react-compose';
 import { ICheckboxProps, ICheckboxSlots, ICheckboxState, ICheckboxSlotProps } from './Checkbox.types';
 import { useCheckbox } from './useCheckbox';
 
@@ -11,7 +11,13 @@ const defaultSlots: Omit<ICheckboxSlots, 'root'> = {
   checkbox: 'div',
 };
 
-export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {}>(
+export const CheckboxBase: ComponentWithAs<'div', ICheckboxProps> = compose<
+  'div',
+  ICheckboxProps,
+  {},
+  ICheckboxProps,
+  {}
+>(
   (props, forwardedRef, composeOptions) => {
     const { slotProps, slots } = mergeProps<ICheckboxProps, ICheckboxState, ICheckboxSlots, ICheckboxSlotProps>(
       composeOptions.state,
@@ -30,8 +36,10 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
             <slots.checkmark {...slotProps.checkmark} />
           </slots.checkbox>
 
-          {// eslint-disable-next-line deprecation/deprecation
-          (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+          {
+            // eslint-disable-next-line deprecation/deprecation
+            (props.onRenderLabel || onRenderLabel)(props, onRenderLabel)
+          }
         </slots.container>
       </slots.root>
     );
@@ -58,7 +66,6 @@ export const CheckboxBase = compose<'div', ICheckboxProps, {}, ICheckboxProps, {
       'ariaSetSize',
       'styles',
       'onRenderLabel',
-      'keytipProps',
       'indeterminate',
       'defaultIndeterminate',
     ],

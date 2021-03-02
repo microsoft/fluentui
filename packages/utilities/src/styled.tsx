@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@uifabric/merge-styles';
+import { IStyleSet, IStyleFunctionOrObject, concatStyleSetsWithProps } from '@fluentui/merge-styles';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
@@ -123,5 +123,11 @@ export function styled<
   Wrapped.displayName = `Styled${Component.displayName || (Component as any).name}`;
 
   // This preserves backwards compatibility.
-  return pure ? React.memo(Wrapped) : Wrapped;
+  const pureComponent = pure ? React.memo(Wrapped) : Wrapped;
+  // Check if the wrapper has a displayName after it has been memoized. Then assign it to the pure component.
+  if (Wrapped.displayName) {
+    pureComponent.displayName = Wrapped.displayName;
+  }
+
+  return pureComponent;
 }

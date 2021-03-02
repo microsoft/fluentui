@@ -61,7 +61,12 @@ const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsic
 jest.useFakeTimers();
 
 describe('Carousel', () => {
-  isConformant(Carousel, { constructorName: 'Carousel', autoControlledProps: ['activeIndex'] });
+  isConformant(Carousel, {
+    testPath: __filename,
+    constructorName: 'Carousel',
+    autoControlledProps: ['activeIndex'],
+    disabledTests: ['kebab-aria-attributes'],
+  });
 
   describe('activeIndex', () => {
     it('should increase at paddle next press', () => {
@@ -72,6 +77,19 @@ describe('Carousel', () => {
       paddleNext.simulate('click');
 
       expect(pagination.getDOMNode().textContent).toBe(`2 of ${items.length}`);
+    });
+
+    it('should pass activeIndex onActiveIndexChange', () => {
+      const onActiveIndexChange = jest.fn();
+      const wrapper = renderCarousel({ onActiveIndexChange });
+      const paddleNext = getPaddleNextWrapper(wrapper);
+
+      paddleNext.simulate('click');
+
+      expect(onActiveIndexChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' }),
+        expect.objectContaining({ activeIndex: 1 }),
+      );
     });
 
     it('should decrese at paddle previous press', () => {
@@ -217,7 +235,7 @@ describe('Carousel', () => {
 
   describe('navigation', () => {
     const navigation = {
-      items: items.map(item => ({ key: item.key, icon: { name: 'icon-circle' } })),
+      items: items.map((item) => ({ key: item.key, icon: { name: 'icon-circle' } })),
     };
 
     afterEach(() => {

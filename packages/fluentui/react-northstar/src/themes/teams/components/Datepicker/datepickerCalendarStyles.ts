@@ -6,7 +6,7 @@ export const datepickerCalendarStyles: ComponentSlotStylesPrepared<
   DatepickerCalendarStylesProps,
   DatepickerVariables
 > = {
-  root: (): ICSSInJSStyle => {
-    return {};
-  },
+  root: ({ variables: v }): ICSSInJSStyle => ({
+    minHeight: v.calendarMinHeight,
+  }),
 };

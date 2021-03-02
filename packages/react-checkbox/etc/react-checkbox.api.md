@@ -5,22 +5,23 @@
 ```ts
 
 import { BaseSlots } from '@fluentui/react-compose';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
-import { IRefObject } from '@uifabric/utilities';
-import { IRenderFunction } from '@uifabric/utilities';
-import { IStyle } from '@uifabric/styling';
-import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { ISvgIconProps } from '@fluentui/react-icons';
-import { ITheme } from '@uifabric/styling';
+import { ClassFunction } from '@fluentui/react-compose';
+import { ComponentWithAs } from '@fluentui/react-compose';
+import { IRefObject } from '@fluentui/utilities';
+import { IRenderFunction } from '@fluentui/utilities';
+import { IStyle } from '@fluentui/style-utilities';
+import { IStyleFunctionOrObject } from '@fluentui/utilities';
+import { ISvgIconProps } from '@fluentui/react-icons-mdl2';
+import { ITheme } from '@fluentui/style-utilities';
 import * as React from 'react';
 import { SlotProp } from '@fluentui/react-compose';
 import { SlotProps } from '@fluentui/react-compose';
 
 // @public (undocumented)
-export const Checkbox: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
+export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
-export const CheckboxBase: import("@fluentui/react-compose").ComponentWithAs<"div", ICheckboxProps>;
+export const CheckboxBase: ComponentWithAs<'div', ICheckboxProps>;
 
 // @public
 export interface ICheckbox {
@@ -35,7 +36,7 @@ export type ICheckboxClasses = {
 };
 
 // @public
-export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
+export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement>, React.RefAttributes<HTMLElement> {
     ariaDescribedBy?: string;
     ariaLabel?: string;
     ariaLabelledBy?: string;
@@ -52,8 +53,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
     disabled?: boolean;
     indeterminate?: boolean;
     inputProps?: React.ButtonHTMLAttributes<HTMLElement | HTMLButtonElement>;
-    // @deprecated
-    keytipProps?: IKeytipProps;
     label?: SlotProp<React.HTMLAttributes<HTMLSpanElement>>;
     onChange?: (ev?: React.FormEvent<HTMLElement | HTMLInputElement>, checked?: boolean) => void;
     // @deprecated
@@ -113,6 +112,12 @@ export interface ICheckboxStyles {
     root?: IStyle;
     text?: IStyle;
 }
+
+// @public (undocumented)
+export const useCheckbox: (props: ICheckboxProps, forwardedRef: React.Ref<HTMLElement>) => ICheckboxState;
+
+// @public (undocumented)
+export const useCheckboxClasses: ClassFunction[];
 
 
 // (No @packageDocumentation comment for this package)

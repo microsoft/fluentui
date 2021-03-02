@@ -1,4 +1,4 @@
-import { ISliderStyleProps, ISliderStyles } from 'office-ui-fabric-react/lib/Slider';
+import { ISliderStyleProps, ISliderStyles } from '@fluentui/react/lib/Slider';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

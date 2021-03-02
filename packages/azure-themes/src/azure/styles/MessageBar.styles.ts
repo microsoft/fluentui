@@ -1,5 +1,5 @@
-import { IStyle } from 'office-ui-fabric-react';
-import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { IStyle } from '@fluentui/react';
+import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from '@fluentui/react/lib/MessageBar';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 const generateBaseStyle = (backgroundColor: string, textColor: string): IStyle => {
@@ -39,7 +39,7 @@ const IconButtonStyles = (props: IMessageBarStyleProps): IStyle => {
     (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) &&
       generateBaseStyle(semanticColors.statusWarningBackground, semanticColors.statusWarningText),
 
-    !messageBarType && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText),
+    typeof messageBarType !== 'number' && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText),
   ];
 };
 

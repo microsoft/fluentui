@@ -1,5 +1,4 @@
-import { FocusZoneDirection, FocusZoneTabbableElements } from '@fluentui/accessibility';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { FocusZoneDirection, FocusZoneTabbableElements, keyboardKey, SpacebarKey } from '@fluentui/accessibility';
 
 import { TestDefinition, TestMethod, TestHelper } from './testHelper';
 
@@ -670,6 +669,21 @@ definitions.push({
     const expectedKeyNumberVertical = parameters.behavior(propertyOpenedSubtree).keyActions[elementToPerformAction][
       action
     ].keyCombinations[0].keyCode;
+    expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
+  },
+});
+
+// Triggers 'focusParent' action with 'ArrowLeft' on 'root', when has no subtree.
+definitions.push({
+  regexp: /Triggers '(\w+)' action with '(\w+)' on '([\w-]+)', when has no subtree\./g,
+  testMethod: (parameters: TestMethod) => {
+    const [action, key, elementToPerformAction] = [...parameters.props];
+    const propertyNoSubtree = {
+      hasItems: false,
+      hasSubtree: false,
+    };
+    const expectedKeyNumberVertical = parameters.behavior(propertyNoSubtree).keyActions[elementToPerformAction][action]
+      .keyCombinations[0].keyCode;
     expect(expectedKeyNumberVertical).toBe(keysAndAliases[key]);
   },
 });

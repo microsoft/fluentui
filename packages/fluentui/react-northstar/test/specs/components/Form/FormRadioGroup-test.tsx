@@ -4,9 +4,10 @@ import { RadioGroup } from 'src/components/RadioGroup/RadioGroup';
 
 describe('FormRadioGroup', () => {
   isConformant(FormRadioGroup, {
+    testPath: __filename,
     constructorName: 'FormRadioGroup',
     // TODO: point to correct once RadioGroup will be using compose
     forwardsRefTo: false,
-    passesUnhandledPropsTo: RadioGroup,
+    targetComponent: RadioGroup,
   });
 });

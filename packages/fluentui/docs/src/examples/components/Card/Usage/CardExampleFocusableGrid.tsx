@@ -17,7 +17,7 @@ type ClickableCardProps = {
 const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
   const [clickCount, setClickCount] = React.useState(0);
   const updateClickCount = () => {
-    setClickCount(count => count + 1);
+    setClickCount((count) => count + 1);
   };
 
   return (
@@ -28,7 +28,7 @@ const ClickableCard: React.FC<ClickableCardProps> = ({ index }) => {
       </Card.Header>
       <Card.Body>
         <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" />
         </Flex>
       </Card.Body>
     </Card>
@@ -40,7 +40,7 @@ const CardExampleFocusableGrid = () => {
 
   return (
     <Grid accessibility={cardsContainerBehavior} columns={3}>
-      {_.times(cardsNumber, i => {
+      {_.times(cardsNumber, (i) => {
         const nonZeroIndex = i + 1;
         return (
           <ClickableCard key={nonZeroIndex} index={nonZeroIndex} aria-label={`${nonZeroIndex} of ${cardsNumber}`} />

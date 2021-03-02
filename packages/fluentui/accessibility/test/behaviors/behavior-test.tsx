@@ -51,6 +51,8 @@ import {
   toolbarMenuItemBehavior,
   toolbarMenuItemRadioBehavior,
   toolbarMenuRadioGroupBehavior,
+  toolbarMenuDividerBehavior,
+  toolbarMenuRadioGroupWrapperBehavior,
   toolbarRadioGroupBehavior,
   toolbarRadioGroupItemBehavior,
   tooltipAsDescriptionBehavior,
@@ -64,6 +66,9 @@ import {
   treeAsListBehavior,
   treeItemAsListItemBehavior,
   treeTitleAsListItemTitleBehavior,
+  treeAsListboxBehavior,
+  treeItemAsOptionBehavior,
+  treeTitleAsOptionBehavior,
   carouselItemBehavior,
   carouselBehavior,
   tableBehavior,
@@ -86,11 +91,16 @@ import {
   hiddenComponentBehavior,
   cardSelectableBehavior,
   dropdownSelectedItemBehavior,
+  datepickerBehavior,
   datepickerCalendarBehavior,
   datepickerCalendarHeaderBehavior,
   datepickerCalendarGridBehavior,
+  datepickerCalendarGridRowBehavior,
   datepickerCalendarCellBehavior,
-  skeletonBehavior,
+  datepickerCalendarCellButtonBehavior,
+  breadcrumbBehavior,
+  breadcrumbItemBehavior,
+  breadcrumbDividerBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import { definitions } from './testDefinitions';
@@ -147,7 +157,9 @@ testHelper.addBehavior('toolbarMenuBehavior', toolbarMenuBehavior);
 testHelper.addBehavior('toolbarMenuItemBehavior', toolbarMenuItemBehavior);
 testHelper.addBehavior('toolbarMenuItemCheckboxBehavior', toolbarMenuItemCheckboxBehavior);
 testHelper.addBehavior('toolbarMenuItemRadioBehavior', toolbarMenuItemRadioBehavior);
+testHelper.addBehavior('toolbarMenuDividerBehavior', toolbarMenuDividerBehavior);
 testHelper.addBehavior('toolbarMenuRadioGroupBehavior', toolbarMenuRadioGroupBehavior);
+testHelper.addBehavior('toolbarMenuRadioGroupWrapperBehavior', toolbarMenuRadioGroupWrapperBehavior);
 testHelper.addBehavior('toolbarRadioGroupBehavior', toolbarRadioGroupBehavior);
 testHelper.addBehavior('toolbarRadioGroupItemBehavior', toolbarRadioGroupItemBehavior);
 testHelper.addBehavior('tooltipAsDescriptionBehavior', tooltipAsDescriptionBehavior);
@@ -160,6 +172,9 @@ testHelper.addBehavior('textAreaBehavior', textAreaBehavior);
 testHelper.addBehavior('treeAsListBehavior', treeAsListBehavior);
 testHelper.addBehavior('treeItemAsListItemBehavior', treeItemAsListItemBehavior);
 testHelper.addBehavior('treeTitleAsListItemTitleBehavior', treeTitleAsListItemTitleBehavior);
+testHelper.addBehavior('treeAsListboxBehavior', treeAsListboxBehavior);
+testHelper.addBehavior('treeItemAsOptionBehavior', treeItemAsOptionBehavior);
+testHelper.addBehavior('treeTitleAsOptionBehavior', treeTitleAsOptionBehavior);
 testHelper.addBehavior('carouselItemBehavior', carouselItemBehavior);
 testHelper.addBehavior('carouselBehavior', carouselBehavior);
 testHelper.addBehavior('tableBehavior', tableBehavior);
@@ -181,10 +196,15 @@ testHelper.addBehavior('videoBehavior', videoBehavior);
 testHelper.addBehavior('hiddenComponentBehavior', hiddenComponentBehavior);
 testHelper.addBehavior('cardSelectableBehavior', cardSelectableBehavior);
 testHelper.addBehavior('dropdownSelectedItemBehavior', dropdownSelectedItemBehavior);
+testHelper.addBehavior('datepickerBehavior', datepickerBehavior);
 testHelper.addBehavior('datepickerCalendarBehavior', datepickerCalendarBehavior);
 testHelper.addBehavior('datepickerCalendarHeaderBehavior', datepickerCalendarHeaderBehavior);
 testHelper.addBehavior('datepickerCalendarGridBehavior', datepickerCalendarGridBehavior);
+testHelper.addBehavior('datepickerCalendarGridRowBehavior', datepickerCalendarGridRowBehavior);
 testHelper.addBehavior('datepickerCalendarCellBehavior', datepickerCalendarCellBehavior);
-testHelper.addBehavior('skeletonBehavior', skeletonBehavior);
+testHelper.addBehavior('datepickerCalendarCellButtonBehavior', datepickerCalendarCellButtonBehavior);
+testHelper.addBehavior('breadcrumbBehavior', breadcrumbBehavior);
+testHelper.addBehavior('breadcrumbItemBehavior', breadcrumbItemBehavior);
+testHelper.addBehavior('breadcrumbDividerBehavior', breadcrumbDividerBehavior);
 
 testHelper.run(behaviorMenuItems);

@@ -36,13 +36,13 @@ const jestAliases = () => {
 };
 
 module.exports = {
-  resolveMergeStylesSerializer: () => resolveCwd('@uifabric/jest-serializer-merge-styles'),
+  resolveMergeStylesSerializer: () => resolveCwd('@fluentui/jest-serializer-merge-styles'),
   createRawConfig: () => ({
     rootDir: 'lib',
     testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$',
   }),
   jestAliases,
-  createConfig: customConfig =>
+  createConfig: (customConfig) =>
     merge(
       {
         moduleNameMapper: {

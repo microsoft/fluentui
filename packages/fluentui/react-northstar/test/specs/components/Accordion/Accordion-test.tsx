@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 
 import { Accordion } from 'src/components/Accordion/Accordion';
-import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
+import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
 import { mountWithProvider, mountWithProviderAndGetComponent, findIntrinsicElement } from 'test/utils';
 import { accordionTitleSlotClassNames } from 'src/components/Accordion/AccordionTitle';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
@@ -28,32 +28,34 @@ const panels = [
 const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrapper => {
   return wrapper
     .find(`.${accordionTitleSlotClassNames.contentWrapper}`)
-    .filterWhere(n => typeof n.type() === 'string')
+    .filterWhere((n) => typeof n.type() === 'string')
     .at(index);
 };
 
 const getExclusiveItemWithPropIndex = (accordion, prop) =>
-  accordion.find('AccordionTitle').filterWhere(accordionTitle => accordionTitle.prop(prop));
+  accordion.find('AccordionTitle').filterWhere((accordionTitle) => accordionTitle.prop(prop));
 
 const getNonExclusiveItemWithPropIndex = (accordion, prop) =>
   accordion
     .find('AccordionTitle')
-    .filterWhere(accordionTitle => accordionTitle.prop(prop))
+    .filterWhere((accordionTitle) => accordionTitle.prop(prop))
     .prop('index');
 
 const getNonExclusiveItemWithPropArray = (accordion, prop) =>
   accordion
     .find('AccordionTitle')
-    .filterWhere(accordionTitle => accordionTitle.prop(prop))
-    .map(node => node.prop('index'));
+    .filterWhere((accordionTitle) => accordionTitle.prop(prop))
+    .map((node) => node.prop('index'));
 
 const getAccordionTitleAtIndex = (accordion, index) =>
-  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`)
-    .at(index)
-    .getDOMNode();
+  findIntrinsicElement(accordion, `.${accordionTitleSlotClassNames.contentWrapper}`).at(index).getDOMNode();
 
 describe('Accordion', () => {
-  isConformant(Accordion, { constructorName: 'Accordion', autoControlledProps: ['activeIndex'] });
+  isConformant(Accordion, {
+    testPath: __filename,
+    constructorName: 'Accordion',
+    autoControlledProps: ['activeIndex'],
+  });
 
   describe('activeIndex', () => {
     it('has no active item by default when exclusive', () => {
@@ -99,7 +101,7 @@ describe('Accordion', () => {
       expect(
         accordion
           .find('AccordionTitle')
-          .filterWhere(accordionTitle => accordionTitle.prop('active'))
+          .filterWhere((accordionTitle) => accordionTitle.prop('active'))
           .prop('index'),
       ).toEqual(0);
 
@@ -107,7 +109,7 @@ describe('Accordion', () => {
       expect(
         accordion
           .find('AccordionTitle')
-          .filterWhere(accordionTitle => accordionTitle.prop('active'))
+          .filterWhere((accordionTitle) => accordionTitle.prop('active'))
           .prop('index'),
       ).toEqual(2);
     });

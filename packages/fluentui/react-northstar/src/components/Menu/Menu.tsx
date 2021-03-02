@@ -242,11 +242,14 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       [actualProps, setActiveIndex],
     );
 
-    const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
-      onClick: (e, itemProps) => {
-        handleClick(e, itemProps);
-        _.invoke(predefinedProps, 'onClick', e, itemProps);
+    const handleSelect = React.useCallback(
+      (e, index) => {
+        setActiveIndex(e, index);
       },
+      [setActiveIndex],
+    );
+
+    const handleItemOverrides = (predefinedProps: MenuItemProps): MenuItemProps => ({
       onActiveChanged: (e, props) => {
         const { index, active } = props;
         if (active) {
@@ -259,12 +262,12 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     });
 
-    const handleDividerOverrides = predefinedProps => ({
+    const handleDividerOverrides = (predefinedProps) => ({
       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
     });
 
     const renderItems = () => {
-      const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
+      const itemsCount = _.filter(items, (item) => getKindProp(item, 'item') !== 'divider').length;
       let itemPosition = 0;
 
       return _.map(items, (item, index) => {
@@ -295,7 +298,8 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
 
     const childProps: MenuContextValue = {
       activeIndex: +activeIndex,
-      onItemSelect: handleClick,
+      onItemClick: handleClick,
+      onItemSelect: handleSelect,
       variables,
 
       slotProps: {
@@ -340,7 +344,7 @@ export const Menu = compose<'ul', MenuProps, MenuStylesProps, {}, {}>(
       divider: MenuDivider,
       item: MenuItem,
     },
-    slotProps: props => ({
+    slotProps: (props) => ({
       divider: {
         inSubmenu: props.submenu,
         pills: props.pills,

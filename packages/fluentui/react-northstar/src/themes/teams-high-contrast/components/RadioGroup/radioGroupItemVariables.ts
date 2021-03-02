@@ -7,7 +7,7 @@ export const radioGroupItemVariables = (siteVars: any): Partial<RadioGroupItemVa
   textColorDefaultHoverFocus: siteVars.colors.white,
   textColorChecked: siteVars.colors.white,
 
-  indicatorBorderColorDefault: siteVars.colors.white,
+  indicatorColorDefault: siteVars.colors.white,
   indicatorBorderColorDefaultHover: siteVars.accessibleCyan,
   indicatorBorderColorChecked: siteVars.accessibleCyan,
 

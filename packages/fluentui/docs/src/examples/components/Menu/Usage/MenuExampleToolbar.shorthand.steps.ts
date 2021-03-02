@@ -1,5 +1,6 @@
 import { menuClassName } from '@fluentui/react-northstar';
 import getScreenerSteps from '../commonScreenerSteps';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   menu: `.${menuClassName}`,

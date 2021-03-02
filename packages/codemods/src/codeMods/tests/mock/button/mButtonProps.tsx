@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
+// @ts-ignore
 import { Button } from 'office-ui-fabric-react/lib/Button';
 
 export const RenderButton = (props: any) => {

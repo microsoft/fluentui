@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import { SpacebarKey } from '@fluentui/keyboard-key';
+import { SpacebarKey } from '../../keyboard-key';
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
@@ -13,7 +13,7 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
  *  Triggers 'performClick' action with 'Spacebar' on 'root'.
  *  Implements roving tabIndex.
  */
-export const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props => ({
+export const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = (props) => ({
   attributes: {
     root: {
       role: 'radio',

@@ -1,5 +1,4 @@
-import { KeyActions } from '@fluentui/accessibility';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { KeyActions, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
 
 import { shouldHandleOnKeys } from './shouldHandleOnKeys';
@@ -30,9 +29,9 @@ export const getKeyDownHandlers = (
 
   const componentHandlerNames = Object.keys(componentActionHandlers);
 
-  Object.keys(behaviorActions).forEach(slotName => {
+  Object.keys(behaviorActions).forEach((slotName) => {
     const behaviorSlotActions = behaviorActions[slotName];
-    const handledActions = Object.keys(behaviorSlotActions).filter(actionName => {
+    const handledActions = Object.keys(behaviorSlotActions).filter((actionName) => {
       const slotAction = behaviorSlotActions[actionName];
 
       const actionHasKeyCombinations =
@@ -45,12 +44,12 @@ export const getKeyDownHandlers = (
     if (handledActions.length > 0) {
       slotKeyHandlers[slotName] = {
         onKeyDown: (event: React.KeyboardEvent) => {
-          handledActions.forEach(actionName => {
+          handledActions.forEach((actionName) => {
             let keyCombinations = behaviorSlotActions[actionName].keyCombinations;
 
             if (keyCombinations) {
               if (isRtlEnabled) {
-                keyCombinations = keyCombinations.map(keyCombination => {
+                keyCombinations = keyCombinations.map((keyCombination) => {
                   const keyToRtlKey = rtlKeyMap[keyCombination.keyCode];
                   if (keyToRtlKey) {
                     keyCombination.keyCode = keyToRtlKey;

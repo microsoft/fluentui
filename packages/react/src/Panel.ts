@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Panel';
+export * from './components/Panel/index';

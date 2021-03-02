@@ -9,8 +9,8 @@ import {
   useTelemetry,
   useStyles,
   useUnhandledProps,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -56,9 +56,9 @@ export const MenuDivider = compose<'li', MenuDividerProps, MenuDividerStylesProp
     setStart();
 
     const parentProps = (useContextSelectors(MenuContext, {
-      variables: v => v.variables,
-      slotProps: v => v.slotProps.divider,
-      accessibility: v => v.behaviors.divider,
+      variables: (v) => v.variables,
+      slotProps: (v) => v.slotProps.divider,
+      accessibility: (v) => v.behaviors.divider,
     }) as unknown) as MenuDividerSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const props = {

@@ -1,17 +1,16 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   Facepile,
   PersonaInitialsColor,
   PersonaSize,
   OverflowButtonType,
   IFacepileProps,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const facepilePersonas = [
   {
@@ -54,7 +53,7 @@ const facepileProps: IFacepileProps = {
 
 storiesOf('Facepile', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

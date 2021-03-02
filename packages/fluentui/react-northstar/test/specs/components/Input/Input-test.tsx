@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 import { ReactWrapper } from 'enzyme';
 import * as faker from 'faker';
 import * as _ from 'lodash';
@@ -21,6 +21,7 @@ const setUserInputValue = (inputComp: ReactWrapper, value: string) => {
 
 describe('Input', () => {
   isConformant(Input, {
+    testPath: __filename,
     constructorName: 'Input',
     eventTargets: {
       onChange: 'input',
@@ -45,7 +46,7 @@ describe('Input', () => {
 
   describe('input related HTML attribute', () => {
     // `input` will be always controlled component so there is no need to pass down `defaultValue`
-    _.without(htmlInputAttrs, 'defaultValue').forEach(attr => {
+    _.without(htmlInputAttrs, 'defaultValue').forEach((attr) => {
       it(`'${attr}' is set correctly to '${testValue}'`, () => {
         // as `testValue` is a string it can cause propTypes errors on `Input`
         consoleUtil.disableOnce();
@@ -60,10 +61,7 @@ describe('Input', () => {
     it('calls onChange on Clearable icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
-      wrapper
-        .find(`.${inputSlotClassNames.icon}`)
-        .first()
-        .simulate('click');
+      wrapper.find(`.${inputSlotClassNames.icon}`).first().simulate('click');
       expect(onChange).toBeCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),

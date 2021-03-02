@@ -15,6 +15,9 @@ import { RadioGroupStyles as styles } from './radio-group.styles';
   name: 'fluent-radio-group',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentRadioGroup extends RadioGroup {}
 

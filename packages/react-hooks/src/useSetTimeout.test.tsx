@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useSetTimeout } from './useSetTimeout';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 import { validateHookValueNotChanged } from './testUtilities';
 
 describe('useSetTimeout', () => {
@@ -58,7 +58,7 @@ describe('useSetTimeout', () => {
   });
 
   it('does not execute the timeout when unmounted', () => {
-    safeMount(<TestComponent />, wrapper => {
+    safeMount(<TestComponent />, (wrapper) => {
       expect(timesCalled).toEqual(0);
 
       wrapper.unmount();

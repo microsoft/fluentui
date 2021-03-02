@@ -1,12 +1,4 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
-  "root": true,
-  "overrides": [
-    {
-      "files": "**/stories/**",
-      "rules": {
-        "no-alert": "off"
-      }
-    }
-  ]
+  "root": true
 }

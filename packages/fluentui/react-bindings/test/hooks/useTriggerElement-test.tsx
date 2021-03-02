@@ -4,11 +4,19 @@ import * as React from 'react';
 
 import * as consoleUtil from '../consoleUtil';
 
-const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = props => {
+const TestComponent: React.FC<{ trigger?: React.ReactElement | null }> = (props) => {
   return useTriggerElement(props);
 };
 
+const OLD_ENV = process.env.NODE_ENV;
+
 describe('useTriggerElement', () => {
+  beforeEach(() => {
+    process.env.NODE_ENV = 'development';
+  });
+  afterAll(() => {
+    process.env.NODE_ENV = OLD_ENV;
+  });
   it('"children" can be null', () => {
     const wrapper = mount(<TestComponent>{null}</TestComponent>);
 

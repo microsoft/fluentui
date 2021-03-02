@@ -15,6 +15,9 @@ import { TreeItemStyles as styles } from './tree-item.styles';
   name: 'fluent-tree-item',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentTreeItem extends TreeItem {}
 

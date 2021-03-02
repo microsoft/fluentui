@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { ITheme, IPalette, ISemanticColors } from 'office-ui-fabric-react/lib/Styling';
-import { Stack } from 'office-ui-fabric-react';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { ITheme, IPalette, ISemanticColors } from '@fluentui/react/lib/Styling';
+import { Stack } from '@fluentui/react';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
-import { getVariant, VariantThemeType } from '@uifabric/variants';
+import { getVariant, VariantThemeType } from '@fluentui/scheme-utilities';
 
 export interface ISemanticSlotsProps {
   theme?: ITheme;

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Checkbox';
+export * from './components/Checkbox/index';

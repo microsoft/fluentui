@@ -3,23 +3,23 @@ import { Grid, Image, Button, Text, Label, gridBehavior, gridHorizontalBehavior 
 import * as _ from 'lodash';
 
 const imageNames = [
-  'ade',
-  'chris',
-  'christian',
-  'daniel',
-  'elliot',
-  'helen',
-  'jenny',
-  'joe',
-  'justen',
-  'laura',
-  'matt',
-  'nan',
-  'nom',
-  'stevie',
-  'steve',
-  'tom',
-  'veronika',
+  'WandaHoward',
+  'TimDeboer',
+  'RobinCounts',
+  'RobertTolbert',
+  'MonaKane',
+  'MiguelGarcia',
+  'MauricioAugust',
+  'LydiaBauer',
+  'KristinPatterson',
+  'KevinSturgis',
+  'KatriAthokas',
+  'KatLarsson',
+  'JohnieMcConnell',
+  'IsaacFielder',
+  'HenryBrill',
+  'ErikNason',
+  'ElviaAtkins',
 ];
 
 const imageButtonStyles = {
@@ -30,33 +30,21 @@ const imageButtonStyles = {
   margin: '0',
   background: '#fff',
 };
-
-const getMSGridPositions = (msGridColumn, msGridRow) =>
-  ({
-    msGridColumn,
-    msGridRow,
-  } as React.CSSProperties);
-
 const renderImages = () => {
-  return _.map(imageNames, (imageName, index) => (
+  return _.map(imageNames, (imageName) => (
     <Image
       key={imageName}
-      style={getMSGridPositions(index % 7, index % 3)}
       fluid
-      src={`public/images/avatar/large/${imageName}.jpg`}
+      src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`}
       data-is-focusable="true"
     />
   ));
 };
 
 const renderImageButtons = () => {
-  return _.map(imageNames, (imageName, index) => (
-    <Button
-      key={imageName}
-      style={{ ...imageButtonStyles, ...getMSGridPositions(index % 7, index % 3) }}
-      title={imageName}
-    >
-      <Image fluid src={`public/images/avatar/large/${imageName}.jpg`} />
+  return _.map(imageNames, (imageName) => (
+    <Button key={imageName} styles={imageButtonStyles} title={imageName}>
+      <Image fluid src={`https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/${imageName}.jpg`} />
     </Button>
   ));
 };
@@ -73,7 +61,7 @@ const GridExample = () => (
       item to make grid items focusable and navigable. Use <Label>gridBehavior</Label> to provide arrow key navigation
       in 4 directions.
     </Text>
-    <Grid accessibility={gridBehavior} styles={gridStyles} columns={7}>
+    <Grid accessibility={gridBehavior} styles={gridStyles} columns="7">
       {renderImages()}
     </Grid>
     <br />
@@ -81,7 +69,7 @@ const GridExample = () => (
       Grid with buttons images, which are natively focusable elements. <b>No need</b> to add{' '}
       <Label>data-is-focusable=true</Label>
     </Text>
-    <Grid accessibility={gridBehavior} styles={gridStyles} columns={7}>
+    <Grid accessibility={gridBehavior} styles={gridStyles} columns="7">
       {renderImageButtons()}
     </Grid>
     <br />
@@ -89,7 +77,7 @@ const GridExample = () => (
       Grid with buttons images, which are natively focusable elements. Use <Label>gridHorizontalBehavior</Label> to
       provide horizontal navigation within Grid with 4 arrow keys.
     </Text>
-    <Grid accessibility={gridHorizontalBehavior} styles={gridStyles} columns={7}>
+    <Grid accessibility={gridHorizontalBehavior} styles={gridStyles} columns="7">
       {renderImageButtons()}
     </Grid>
   </div>

@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
@@ -24,4 +24,4 @@ export const attachmentBehavior: Accessibility<AttachmentBehaviorProps> = () => 
   },
 });
 
-export type AttachmentBehaviorProps = never;
+export declare type AttachmentBehaviorProps = { actionable?: boolean };

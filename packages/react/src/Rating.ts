@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Rating';
+export * from './components/Rating/index';

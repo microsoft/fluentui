@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Sticky';
+export * from './components/Sticky/index';

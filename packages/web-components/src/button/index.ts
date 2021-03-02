@@ -25,6 +25,7 @@ export type ButtonAppearance = 'accent' | 'lightweight' | 'neutral' | 'outline' 
   styles,
   shadowOptions: {
     delegatesFocus: true,
+    mode: 'closed',
   },
 })
 export class FluentButton extends Button {
@@ -52,6 +53,21 @@ export class FluentButton extends Button {
 
     if (!this.appearance) {
       this.appearance = 'neutral';
+    }
+  }
+
+  /**
+   * Applies 'icon-only' class when there is only an SVG in the default slot
+   *
+   * @internal
+   */
+  public defaultSlottedContentChanged(): void {
+    const slottedElements = this.defaultSlottedContent.filter((x) => x.nodeType === Node.ELEMENT_NODE);
+
+    if (slottedElements.length === 1 && slottedElements[0] instanceof SVGElement) {
+      this.control.classList.add('icon-only');
+    } else {
+      this.control.classList.remove('icon-only');
     }
   }
 }

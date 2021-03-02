@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Tooltip';
+export * from './components/Tooltip/index';

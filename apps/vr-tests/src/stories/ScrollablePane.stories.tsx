@@ -1,10 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Fabric, ScrollablePane, StickyPositionType, Sticky } from 'office-ui-fabric-react';
-import { lorem } from '@uifabric/example-data';
+import { FabricDecorator } from '../utilities/index';
+import { Fabric, ScrollablePane, StickyPositionType, Sticky } from '@fluentui/react';
+import { lorem } from '@fluentui/example-data';
 
 const colors = ['#eaeaea', '#dadada', '#d0d0d0', '#c8c8c8', '#a6a6a6', '#c7e0f4'];
 
@@ -44,7 +43,7 @@ function createContentArea(index: number) {
 
 storiesOf('ScrollablePane', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -71,7 +70,7 @@ storiesOf('ScrollablePane', module)
           className="scrollablePaneDefaultExample"
           style={{ maxWidth: '400px', border: '1px solid #edebe9' }}
         >
-          {contentAreas.map(ele => {
+          {contentAreas.map((ele) => {
             return ele;
           })}
         </ScrollablePane>

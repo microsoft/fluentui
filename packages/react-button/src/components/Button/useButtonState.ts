@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { getCode, EnterKey, SpacebarKey } from '@fluentui/keyboard-key';
 import { ButtonState } from './Button.types';
 
 /**
@@ -6,22 +7,21 @@ import { ButtonState } from './Button.types';
  * @param draftState - Button draft state to mutate.
  */
 export const useButtonState = (draftState: ButtonState) => {
-  // Update the button's tab-index, keyboard handling, and aria attributes.
   if (draftState.as !== 'button') {
     draftState.role = 'button';
 
     if (draftState.as !== 'a') {
-      const { onKeyDown, onClick } = draftState;
+      const { onClick: onClickCallback, onKeyDown: onKeyDownCallback } = draftState;
 
-      draftState['data-isFocusable'] = true;
       draftState.tabIndex = 0;
 
       draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-        if (onKeyDown) {
-          onKeyDown(ev);
+        if (onKeyDownCallback) {
+          onKeyDownCallback(ev);
         }
 
-        if (!ev.defaultPrevented && onClick && (ev.which === 20 || ev.which === 13)) {
+        const keyCode = getCode(ev);
+        if (!ev.defaultPrevented && onClickCallback && (keyCode === EnterKey || keyCode === SpacebarKey)) {
           // Translate the keydown enter/space to a click.
           ev.preventDefault();
           ev.stopPropagation();
@@ -32,5 +32,21 @@ export const useButtonState = (draftState: ButtonState) => {
     }
   }
 
-  draftState['aria-disabled'] = draftState.disabled || draftState.loading;
+  // Disallow click and keyboard events when component is disabled and eat events when disabledFocusable is set to true.
+  const { disabled, /* disabledFocusable, */ onKeyDown } = draftState;
+  if (disabled) {
+    draftState.onClick = undefined;
+  }
+  draftState.onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
+    const keyCode = getCode(ev);
+    if (disabled && (keyCode === EnterKey || keyCode === SpacebarKey)) {
+      ev.preventDefault();
+      ev.stopPropagation();
+    } else {
+      onKeyDown?.(ev);
+    }
+  };
+
+  draftState['aria-disabled'] = disabled /* || disabledFocusable*/;
+  draftState.disabled = draftState.as === 'button' ? disabled /* && !disabledFocusable */ : undefined;
 };

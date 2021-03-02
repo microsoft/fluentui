@@ -28,6 +28,7 @@ describe('getDateRangeTypeToUse', () => {
     );
     expect(resultWorkWeek).toBe(DateRangeType.WorkWeek);
   });
+  // eslint-disable-next-line @fluentui/max-len
   it('returns WorkWeek range type if working days are not contiguous from Saturday to Sunday and incoming type is WorkWeek', () => {
     const resultWorkWeek = DateGrid.getDateRangeTypeToUse(
       DateRangeType.WorkWeek,
@@ -36,6 +37,7 @@ describe('getDateRangeTypeToUse', () => {
     );
     expect(resultWorkWeek).toBe(DateRangeType.Week);
   });
+  // eslint-disable-next-line @fluentui/max-len
   it('returns WorkWeek range type if working days are contiguous from Saturday to Sunday and incoming type is WorkWeek', () => {
     const resultWorkWeek = DateGrid.getDateRangeTypeToUse(
       DateRangeType.WorkWeek,

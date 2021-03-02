@@ -5,8 +5,8 @@ import minimatch from 'minimatch';
 import path from 'path';
 
 import getScreenerSteps from './screener.steps';
-import config from '../config';
 
+const baseUrl = `https://${process.env.DEPLOYHOST}/${process.env.DEPLOYBASEPATH}/react-northstar`;
 const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
   ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx'],
 });
@@ -18,7 +18,7 @@ const filteredPaths: string[] = minimatch.match(examplePaths, pathFilter || '*',
 
 if (pathFilter) {
   console.log(chalk.bgGreen.black(' --filter '), pathFilter);
-  filteredPaths.forEach(filteredPath => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
+  filteredPaths.forEach((filteredPath) => console.log(`${_.repeat(' ', 10)} ${filteredPath}`));
 }
 
 const getStateForPath = (examplePath: string) => {
@@ -28,8 +28,7 @@ const getStateForPath = (examplePath: string) => {
 
   const rtl = exampleNameWithExtension.endsWith('.rtl.tsx');
   const exampleUrl = _.kebabCase(exampleNameWithoutExtension);
-
-  const pageUrl = `http://${config.server_host}:${config.server_port}/maximize/${exampleUrl}/${rtl}`;
+  const pageUrl = `${baseUrl}/maximize/${exampleUrl}/${rtl}`;
 
   return {
     url: pageUrl,

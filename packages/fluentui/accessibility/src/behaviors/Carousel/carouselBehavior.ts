@@ -1,5 +1,5 @@
 import { Accessibility } from '../../types';
-import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
+import { keyboardKey, SpacebarKey } from '../../keyboard-key';
 
 /**
  * @description
@@ -22,7 +22,7 @@ import { keyboardKey, SpacebarKey } from '@fluentui/keyboard-key';
  * Triggers 'showNextSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddleNext'.
  * Triggers 'showPreviousSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddlePrevious'.
  */
-export const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
+export const carouselBehavior: Accessibility<CarouselBehaviorProps> = (props) => ({
   attributes: {
     root: {
       ...(!props.navigation && {

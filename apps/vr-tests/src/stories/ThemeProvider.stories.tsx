@@ -1,15 +1,14 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { loadTheme, createTheme, Customizer } from 'office-ui-fabric-react';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { ThemeProvider } from '@fluentui/react-theme-provider';
-import { Button } from '@fluentui/react-button';
-import { FabricDecorator } from '../utilities';
+import { loadTheme, createTheme, Customizer } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { ThemeProvider } from '@fluentui/react';
+import { FabricDecorator } from '../utilities/index';
 
 storiesOf('ThemeProvider', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -37,8 +36,10 @@ storiesOf('ThemeProvider', module)
       <PrimaryButton>Customized theme 1</PrimaryButton>
       <ThemeProvider
         theme={{
+          palette: {
+            themePrimary: '#FFF',
+          },
           semanticColors: {
-            primaryButtonBackground: '#FFF',
             primaryButtonText: '#000',
           },
         }}
@@ -53,31 +54,12 @@ storiesOf('ThemeProvider', module)
     >
       <PrimaryButton>Customized styles</PrimaryButton>
     </ThemeProvider>
-  ))
-  .addStory('Use tokens on new button', () => (
-    <ThemeProvider
-      theme={{
-        tokens: {
-          button: {
-            background: 'yellow',
-          },
-        },
-      }}
-    >
-      <Button>New Button customized with tokens</Button>
-    </ThemeProvider>
-  ))
-  .addStory('Use compat theme on new button', () => (
-    <ThemeProvider
-      theme={{
-        semanticColors: { buttonBackground: 'yellow' },
-      }}
-    >
-      <Button>New Button customized with compat theme</Button>
-    </ThemeProvider>
   ));
 
-const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
+const LoadThemeTestButton: React.FunctionComponent<{
+  buttonAs?: React.ElementType;
+  buttonProps?: any;
+}> = (props) => {
   const [isThemeCustomized, setIsThemeCustomized] = React.useState(false);
 
   // toggle between default theme and customized theme
@@ -93,16 +75,18 @@ const LoadThemeTestButton: React.FunctionComponent<{}> = props => {
     }
   };
 
+  const Root = props.buttonAs || PrimaryButton;
+
   return (
-    <PrimaryButton className="testLoadTheme" onClick={onClick}>
+    <Root className="testLoadTheme" onClick={onClick} {...props.buttonProps}>
       {props.children}
-    </PrimaryButton>
+    </Root>
   );
 };
 
 storiesOf('ThemeProvider with loadTheme', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -134,7 +118,7 @@ storiesOf('ThemeProvider with loadTheme', module)
 
 storiesOf('ThemeProvider with Customizer', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>

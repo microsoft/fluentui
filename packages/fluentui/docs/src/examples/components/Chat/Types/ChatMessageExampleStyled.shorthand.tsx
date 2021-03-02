@@ -7,8 +7,8 @@ const reactions: ShorthandCollection<ReactionProps> = [
   { key: 'smile', icon: <EmojiIcon />, content: 5 },
 ];
 
-const janeAvatar: AvatarProps = {
-  image: 'public/images/avatar/small/ade.jpg',
+const robinAvatar: AvatarProps = {
+  image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
   status: { color: 'green', icon: <AcceptIcon /> },
 };
 
@@ -84,7 +84,7 @@ const ChatMessageExampleStyled = () => (
         },
       },
       componentVariables: {
-        ChatMessage: siteVars => ({
+        ChatMessage: (siteVars) => ({
           content: {
             focusOutlineColor: siteVars.colors.red[400],
           },
@@ -99,7 +99,7 @@ const ChatMessageExampleStyled = () => (
             content: (
               <Chat.Message
                 content="Hey, do you know any restaurants with good food?"
-                author="John Doe"
+                author="Cecil Folk"
                 timestamp="Yesterday, 10:15 PM"
                 mine
                 badge={{ icon: <MentionIcon /> }}
@@ -113,11 +113,11 @@ const ChatMessageExampleStyled = () => (
         },
         {
           key: 'message-id-2',
-          gutter: <Avatar {...janeAvatar} />,
+          gutter: <Avatar {...robinAvatar} />,
           message: (
             <Chat.Message
               content={{ content }}
-              author="Jane Doe"
+              author="Robin Counts"
               timestamp="Yesterday, 10:15 PM"
               badge={{ icon: <ExclamationCircleIcon /> }}
               reactionGroup={reactions}

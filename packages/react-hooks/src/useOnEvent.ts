@@ -1,4 +1,4 @@
-import { on } from '@uifabric/utilities';
+import { on } from '@fluentui/utilities';
 import * as React from 'react';
 
 /**

@@ -20,12 +20,12 @@ export interface PackageInfo {
 
 export type AllPackageInfo = { [packageName: string]: PackageInfo };
 
-export declare function findGitRoot(): string;
+export declare function findGitRoot(cwd?: string): string;
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package
  * (in the CWD when this was called)
  */
-export declare function findRepoDeps(): PackageInfo[];
+export declare function findRepoDeps(cwd?: string): PackageInfo[];
 
 export declare function getAllPackageInfo(): AllPackageInfo;

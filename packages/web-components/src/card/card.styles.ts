@@ -11,9 +11,16 @@ export const CardStyles = css`
     height: var(--card-height, 100%);
     width: var(--card-width, 100%);
     box-sizing: border-box;
-    background: ${neutralFillCardRestBehavior.var};
     border-radius: calc(var(--elevated-corner-radius) * 1px);
     ${elevation}
+  }
+
+  :host(:hover) {
+    --elevation: 8;
+  }
+
+  :host(:focus-within) {
+    --elevation: 8;
   }
 `.withBehaviors(
   neutralFillCardRestBehavior,

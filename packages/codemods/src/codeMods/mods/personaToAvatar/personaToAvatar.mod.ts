@@ -21,13 +21,13 @@ export function renameProperty(
   attributeName: string,
   attributeReplacement: string,
 ) {
-  elements.forEach(val => {
+  elements.forEach((val) => {
     const att = val.getAttribute(attributeName);
     if (att) {
       att.set({ name: attributeReplacement });
     } else {
       const atts = val.getAttributes();
-      atts.forEach(a => {
+      atts.forEach((a) => {
         if (a.getKind() === SyntaxKind.JsxSpreadAttribute) {
           const id = (a as JsxSpreadAttribute).getFirstChildByKind(SyntaxKind.Identifier);
           if (id) {
@@ -36,7 +36,7 @@ export function renameProperty(
               id
                 .getType()
                 .getProperties()
-                .some(typeVal => {
+                .some((typeVal) => {
                   return typeVal.getName() === attributeName;
                 })
             ) {
@@ -85,9 +85,9 @@ export function renameProperty(
 
 export function replacePersonaImport(file: SourceFile) {
   let found = false;
-  file.getImportDeclarations().forEach(imp => {
+  file.getImportDeclarations().forEach((imp) => {
     if (imp.getModuleSpecifierValue() === personaPath) {
-      imp.getNamedImports().forEach(val => {
+      imp.getNamedImports().forEach((val) => {
         if (val.getText() === 'Persona') {
           found = true;
           val.renameAlias('Avatar');
@@ -105,9 +105,9 @@ export function replaceIPersonaPropsImport(file: SourceFile) {
   // Figure out if I should actually make this change
   // TODO need to test with a variety of things, maybe one that serves as a passthrough
   let found = false;
-  file.getImportDeclarations().forEach(imp => {
+  file.getImportDeclarations().forEach((imp) => {
     if (imp.getModuleSpecifierValue() === personaPath) {
-      imp.getNamedImports().forEach(val => {
+      imp.getNamedImports().forEach((val) => {
         if (val.getText() === 'IPersonaProps') {
           val.renameAlias('AvatarProps');
           val.remove();
@@ -123,9 +123,9 @@ export function replaceIPersonaPropsImport(file: SourceFile) {
 
 export function replacePersonaSizeImport(file: SourceFile) {
   let found = false;
-  file.getImportDeclarations().forEach(imp => {
+  file.getImportDeclarations().forEach((imp) => {
     if (imp.getModuleSpecifierValue() === personaPath) {
-      imp.getNamedImports().forEach(val => {
+      imp.getNamedImports().forEach((val) => {
         if (val.getText() === 'PersonaSize') {
           found = true;
           val.renameAlias('AvatarSize');
@@ -142,7 +142,7 @@ export function replacePersonaSizeImport(file: SourceFile) {
 // Gets the parent that is a direct descendant of a block
 // Which should allow for better inserting
 function getBlockContainer(node: Node<ts.Node>) {
-  return node.getFirstAncestor(ans => {
+  return node.getFirstAncestor((ans) => {
     const ansPar = ans.getParent();
     return ansPar?.getKind() === SyntaxKind.Block;
   });
@@ -170,7 +170,7 @@ const PersonaToAvatarMod: CodeMod = {
       renamePrimaryTextProp(file);
       renameRenderCoin(file);
     } catch (e) {
-      return Err({ reason: 'Error', log: JSON.stringify(e) });
+      return Err({ error: e });
     }
     return Ok({ logs: ['Replaced Persona with Avatar'] });
   },

@@ -1,39 +1,95 @@
 import * as React from 'react';
-import { mergeProps, getSlots, resolveShorthandProps } from '@fluentui/react-compose/lib/next/index';
-import { AvatarProps, AvatarState } from './Avatar.types';
-import { useMergedRefs } from '@uifabric/react-hooks';
-import { getInitials, nullRender } from '@uifabric/utilities';
+import { makeMergeProps, nullRender, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getInitials as defaultGetInitials } from '../../utils/index';
 import { Image } from '../Image/index';
+import { AvatarDefaults, AvatarProps, AvatarState, AvatarNamedColor } from './Avatar.types';
+import { DefaultAvatarIcon } from './DefaultAvatarIcon';
 
-const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'status'];
+export const avatarShorthandProps: (keyof AvatarProps)[] = ['label', 'image', 'badge'];
 
-export const renderAvatar = (state: AvatarState) => {
-  const { slots, slotProps } = getSlots(state, avatarShorthandProps);
+const mergeProps = makeMergeProps<AvatarState>({ deepMerge: avatarShorthandProps });
 
-  return (
-    <slots.root {...slotProps.root}>
-      <slots.label {...slotProps.label} />
-      <slots.image {...slotProps.image} />
-      <slots.status {...slotProps.status} />
-    </slots.root>
-  );
-};
-
-export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps) => {
+export const useAvatar = (props: AvatarProps, ref: React.Ref<HTMLElement>, defaultProps?: AvatarProps): AvatarState => {
   const state = mergeProps(
     {
       as: 'span',
-      label: {
-        as: 'span',
-        children: props.getInitials ? props.getInitials(props.name || '', false) : getInitials(props.name || '', false),
-      },
+      label: { as: 'span' },
       image: { as: props.image ? Image : nullRender },
-      status: { as: 'span', size: props.size },
+      badge: { as: nullRender },
+      size: 32,
+      getInitials: defaultGetInitials,
       ref: useMergedRefs(ref, React.useRef(null)),
-    },
+    } as AvatarDefaults,
     defaultProps,
     resolveShorthandProps(props, avatarShorthandProps),
   );
 
-  return { state, render: renderAvatar };
+  // If a label was not provided, use the following priority:
+  // icon => initials => default icon
+  if (!state.label.children) {
+    if (state.icon) {
+      state.label.children = state.icon;
+    } else {
+      const initials = state.getInitials(state.name || '', /*isRtl: */ false);
+      if (initials) {
+        state.label.children = initials;
+      } else {
+        // useAvatarStyles expects state.icon to be set if displaying an icon
+        state.label.children = state.icon = <DefaultAvatarIcon />;
+      }
+    }
+  }
+
+  if (state.color === 'colorful') {
+    const value = state.idForColor || state.name;
+    if (value) {
+      state.color = avatarColors[getHashCode(value) % avatarColors.length];
+    }
+  }
+
+  return state;
+};
+
+const avatarColors: AvatarNamedColor[] = [
+  'darkRed',
+  'cranberry',
+  'red',
+  'pumpkin',
+  'peach',
+  'marigold',
+  'gold',
+  'brass',
+  'brown',
+  'forest',
+  'seafoam',
+  'darkGreen',
+  'lightTeal',
+  'teal',
+  'steel',
+  'blue',
+  'royalBlue',
+  'cornflower',
+  'navy',
+  'lavender',
+  'purple',
+  'grape',
+  'lilac',
+  'pink',
+  'magenta',
+  'plum',
+  'beige',
+  'mink',
+  'platinum',
+  'anchor',
+];
+
+const getHashCode = (str: string): number => {
+  let hashCode = 0;
+  for (let len: number = str.length - 1; len >= 0; len--) {
+    const ch = str.charCodeAt(len);
+    const shift = len % 8;
+    hashCode ^= (ch << shift) + (ch >> (8 - shift)); // eslint-disable-line no-bitwise
+  }
+
+  return hashCode;
 };

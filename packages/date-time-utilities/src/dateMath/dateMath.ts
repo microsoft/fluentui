@@ -1,5 +1,5 @@
 import { DayOfWeek, MonthOfYear, FirstWeekOfYear, DateRangeType } from '../dateValues/dateValues';
-import TimeConstants from '../dateValues/timeConstants';
+import { TimeConstants } from '../dateValues/timeConstants';
 
 /**
  * Returns a date offset from the given date by the specified number of days.
@@ -167,7 +167,7 @@ export function getDateRangeArray(
   workWeekDays?: DayOfWeek[],
   daysToSelectInDayView: number = 1,
 ): Date[] {
-  const datesArray = new Array<Date>();
+  const datesArray: Date[] = [];
   let startDate: Date;
   let endDate = null;
 
@@ -304,6 +304,22 @@ export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date 
 }
 
 /**
+ * Gets the date for the last day of the week based on the given date assuming
+ * the specified first day of the week.
+ * @param date - The date to find the beginning of the week date for.
+ * @returns A new date object representing the first day of the week containing the input date.
+ */
+export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
+  const lastDayOfWeek = firstDayOfWeek - 1 >= 0 ? firstDayOfWeek - 1 : TimeConstants.DaysInOneWeek - 1;
+  let daysOffset = lastDayOfWeek - date.getDay();
+  if (daysOffset < 0) {
+    // If last day of week is < date, go 1 week forward, to ensure resulting date is in the future.
+    daysOffset += TimeConstants.DaysInOneWeek;
+  }
+  return addDays(date, daysOffset);
+}
+
+/**
  * Gets a new date with the time portion zeroed out, i.e., set to midnight
  * @param date - The origin date
  * @returns A new date with the time set to midnight
@@ -317,12 +333,13 @@ function getDatePart(date: Date): Date {
  */
 export function getDatePartHashValue(date: Date): number {
   // Generate date hash value created as sum of Date (up to 31 = 5 bits), Month (up to 11 = 4 bits) and Year.
+  // eslint-disable-next-line no-bitwise
   return date.getDate() + (date.getMonth() << 5) + (date.getFullYear() << 9);
 }
 
 /**
- * Helper function for getWeekNumber.
- * Returns week number for a date
+ * Helper function for `getWeekNumber`.
+ * Returns week number for a date.
  * @param date - current selected date.
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @param numberOfFullDays - week settings.
@@ -355,8 +372,8 @@ function getWeekOfYearFullDays(date: Date, firstDayOfWeek: DayOfWeek, numberOfFu
 }
 
 /**
- * Helper function for getWeekNumber.
- * Returns week number for a date
+ * Helper function for `getWeekNumber`.
+ * Returns week number for a date.
  * @param date - current selected date.
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @returns The week's number in the year.
@@ -370,8 +387,8 @@ function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number): number {
 }
 
 /**
- * Helper function for getWeekNumber.
- * Returns adjusted week day number when firstDayOfWeek is other than Sunday
+ * Helper function for `getWeekNumber`.
+ * Returns adjusted week day number when `firstDayOfWeek` is other than Sunday.
  * For Week Day Number comparison checks
  * @param firstDayOfWeek - The first day of week (0-6, Sunday = 0)
  * @param dateWeekDay - shifts number forward to 1 week in case passed as true
@@ -385,8 +402,8 @@ function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek): numbe
 }
 
 /**
- * Returns the day number for a date in a year
- * The number of days since January 1st in the particular year.
+ * Returns the day number for a date in a year:
+ * the number of days since January 1st in the particular year.
  * @param date - A date to find the day number for.
  * @returns The day's number in the year.
  */

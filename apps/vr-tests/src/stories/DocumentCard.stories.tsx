@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
+import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -13,9 +12,9 @@ import {
   DocumentCardDetails,
   Fabric,
   IDocumentCardPreviewProps,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const previewProps: IDocumentCardPreviewProps = {
   previewImages: [
@@ -86,7 +85,7 @@ const docActivity = (
 
 storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()
@@ -96,12 +95,14 @@ storiesOf('DocumentCard', module)
       {story()}
     </Screener>,
   )
-  // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
+  // Commenting out this story as it has some racing issues with the truncation logic
+  // and causes the test to fail on unrelated PRs
   // .addStory('Root', () => (
   //   <Fabric>
   //     <DocumentCard onClickHref="http://bing.com">
   //       <DocumentCardPreview {...previewProps} />
   //       <DocumentCardTitle
+  // eslint-disable-next-line @fluentui/max-len
   //         title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
   //         shouldTruncate={true}
   //       />
@@ -114,7 +115,10 @@ storiesOf('DocumentCard', module)
       <DocumentCard onClickHref="http://bing.com">
         <DocumentCardPreview {...previewProps} />
         <DocumentCardTitle
-          title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+          title={
+            'Large_file_name_with_underscores_used_to_separate_all_of_the_' +
+            'words_and_there_are_so_many_words_it_needs_truncating.pptx'
+          }
           shouldTruncate={false}
         />
         {docActivity}
@@ -132,8 +136,12 @@ storiesOf('DocumentCard', module)
   ));
 
 storiesOf('DocumentCard', module)
-  .addDecorator(FabricDecoratorFullWidth)
-  .addDecorator(story =>
+  // FIXME: SB6 duplicates same story ID decorators
+  // This is a temporary fix until we migrate to CSF format duplication problem
+  // - previously this used FabricDecoratorFullWidth
+  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'full' }))
+
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

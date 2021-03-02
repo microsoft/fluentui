@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const alertClicked = (): void => {
   console.log('Clicked');

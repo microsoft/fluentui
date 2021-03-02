@@ -13,8 +13,8 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  useContextSelector,
 } from '@fluentui/react-bindings';
-import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';
@@ -151,13 +151,14 @@ export const chatMessageSlotClassNames: ChatMessageSlotClassNames = {
 /**
  * A ChatMessage represents a single message in chat.
  */
-export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
-  FluentComponentStaticProps<ChatMessageProps> = props => {
+export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> & FluentComponentStaticProps<ChatMessageProps> = (
+  props,
+) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
 
-  const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
+  const parentAttached = useContextSelector(ChatItemContext, (v) => v.attached);
   const {
     accessibility,
     attached = parentAttached,
@@ -191,14 +192,14 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     actionHandlers: {
       // prevents default FocusZone behavior, e.g., in ChatMessageBehavior, it prevents FocusZone from using arrow keys
       // as navigation (only Tab key should work)
-      preventDefault: event => {
+      preventDefault: (event) => {
         // preventDefault only if event coming from inside the message
         if (event.currentTarget !== event.target) {
           event.preventDefault();
         }
       },
 
-      focus: event => {
+      focus: (event) => {
         if (messageNode) {
           messageNode.focus();
           event.stopPropagation();
@@ -342,7 +343,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const readStatusElement = createShorthand(ChatMessageReadStatus, readStatus, {});
 
-  const headerElement = createShorthand(ChatMessageHeader, header, {
+  const headerElement = createShorthand(ChatMessageHeader, header || {}, {
     overrideProps: () => ({
       content: (
         <>
@@ -395,7 +396,6 @@ ChatMessage.displayName = 'ChatMessage';
 ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
-  header: {},
   positionActionMenu: true,
   reactionGroupPosition: 'start',
 };

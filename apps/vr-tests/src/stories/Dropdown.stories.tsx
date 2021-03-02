@@ -1,19 +1,18 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   Dropdown,
   DropdownMenuItemType,
   IDropdownProps,
   Icon,
   IDropdownOption,
-} from 'office-ui-fabric-react';
+} from '@fluentui/react';
 
 storiesOf('Dropdown', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -44,6 +43,7 @@ storiesOf('Dropdown', module)
           { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
           { key: 'F', text: 'Option f', disabled: true },
           { key: 'G', text: 'Option g' },
+          { key: 'Long', text: 'Option long long long long long long long long long' },
         ]}
       />
     ),
@@ -80,6 +80,7 @@ storiesOf('Dropdown', module)
           { key: 'Banana', text: 'banana', disabled: true },
           { key: 'Lemon', text: 'lemon', disabled: true },
           { key: 'Orange', text: 'orange' },
+          { key: 'Long', text: 'Option long long long long long long long long long' },
         ]}
       />
     ),
@@ -179,7 +180,7 @@ storiesOf('Dropdown', module)
 
 storiesOf('Dropdown Disabled', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

@@ -22,7 +22,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import * as copyToClipboard from 'copy-to-clipboard';
-import qs from 'qs';
+import * as qs from 'qs';
 
 import { examplePathToHash, getFormattedHash, scrollToAnchor } from '../../../utils';
 import { babelConfig, importResolver } from '../../Playground/renderConfig';
@@ -83,16 +83,16 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     showTransparent: false,
   });
 
-  static getAnchorName = props => examplePathToHash(props.examplePath);
+  static getAnchorName = (props) => examplePathToHash(props.examplePath);
 
-  static isActiveHash = props => {
+  static isActiveHash = (props) => {
     const anchorName = ComponentExample.getAnchorName(props);
     const formattedHash = getFormattedHash(props.location.hash);
 
     return anchorName === formattedHash;
   };
 
-  static getStateFromURL = props => {
+  static getStateFromURL = (props) => {
     return qs.parse(props.location.search, {
       ignoreQueryPrefix: true,
       decoder: (raw, parse) => {
@@ -167,7 +167,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       showVariables: false,
       ...(isActiveHash && ComponentExample.getStateFromURL(props)),
       ...(/\.rtl$/.test(props.examplePath) && { showRtl: true }),
-    };
+      // FIXME: this is potentially dangerous operation. Original author should specifi explicit return type of `ComponentExample.getStateFromURL` call to match the state shape
+    } as ComponentExampleState;
   }
 
   updateHash = () => {
@@ -192,7 +193,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
   handleShowRtlClick = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    this.setState(prevState => ({ showRtl: !prevState.showRtl }));
+    this.setState((prevState) => ({ showRtl: !prevState.showRtl }));
   };
 
   handleShowCodeClick = (e: React.SyntheticEvent) => {
@@ -235,11 +236,11 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     return `Source code: ${this.props.examplePath.split('/').pop()}`;
   };
 
-  handleCodeApiChange = apiType => () => {
+  handleCodeApiChange = (apiType) => () => {
     this.props.handleCodeAPIChange(apiType);
   };
 
-  handleCodeLanguageChange = language => () => {
+  handleCodeLanguageChange = (language) => () => {
     const { handleCodeLanguageChange, wasCodeChanged } = this.props;
 
     if (wasCodeChanged) {
@@ -251,7 +252,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     }
   };
 
-  exampleMenuVariables = siteVars => ({
+  exampleMenuVariables = (siteVars) => ({
     backgroundColorActive: 'transparent',
     borderColorActive: siteVars.colors.white,
     colorActive: siteVars.colors.white,
@@ -355,7 +356,13 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: <Image src="public/images/github.png" width="16px" height="16px" />,
+        icon: (
+          <Image
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/github.png"
+            width="16px"
+            height="16px"
+          />
+        ),
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',
@@ -406,7 +413,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
   };
 
   handleVariableChange = (componentName: string, variableName: string, variableValue: string) => {
-    this.setState(state => ({
+    this.setState((state) => ({
       componentVariables: {
         ...state.componentVariables,
         [componentName]: {
@@ -417,7 +424,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     }));
   };
 
-  handleVariableResolve = variables => {
+  handleVariableResolve = (variables) => {
     // Remove Provider to hide it in variables
     delete variables['Provider'];
     this.setState({ usedVariables: variables });
@@ -496,7 +503,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                 />
               </Flex>
 
-              <KnobInspector>{knobs => knobs && <KnobsSnippet>{knobs}</KnobsSnippet>}</KnobInspector>
+              <KnobInspector>{(knobs) => knobs && <KnobsSnippet>{knobs}</KnobsSnippet>}</KnobInspector>
             </Segment>
 
             {children && <Segment styles={childrenStyle}>{children}</Segment>}
@@ -566,7 +573,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
   }
 }
 
-const ComponentExampleWithTheme = props => {
+const ComponentExampleWithTheme = (props) => {
   const exampleProps = React.useContext(ExampleContext);
 
   // This must be under ComponentExample:
@@ -575,7 +582,7 @@ const ComponentExampleWithTheme = props => {
 
   return (
     <ComponentSourceManager examplePath={props.examplePath}>
-      {codeProps => <ComponentExample {...props} {...exampleProps} {...codeProps} onError={setError} error={error} />}
+      {(codeProps) => <ComponentExample {...props} {...exampleProps} {...codeProps} onError={setError} error={error} />}
     </ComponentSourceManager>
   );
 };

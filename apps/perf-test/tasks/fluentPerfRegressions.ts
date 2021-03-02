@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 
-import config from '@uifabric/build/config';
+import config from '@fluentui/scripts/config';
 
 // TODO: check false positive potential regression reports in fluent ui repo and fix
 
@@ -28,7 +28,7 @@ export function getFluentPerfRegressions() {
 
 function linkToFlamegraph(value: string, filename: string) {
   const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
-    ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/fluentui`
+    ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test-northstar`
     : 'file://' + config.paths.packageDist('perf-test');
 
   return `[${value}](${urlForDeployPath}/${path.basename(filename)})`;
@@ -37,7 +37,7 @@ function linkToFlamegraph(value: string, filename: string) {
 function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
   const results = _.mapValues(
     _.pickBy(perfCounts, (value, key) => key.endsWith('.Fluent')),
-    stats => {
+    (stats) => {
       const fluentTpi = _.get(stats, 'extended.tpi');
       const fabricTpi = _.get(stats, 'extended.fabricTpi');
       return {
@@ -51,7 +51,7 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
     },
   );
 
-  const getStatus: (arg: number) => string = fluentToFabric =>
+  const getStatus: (arg: number) => string = (fluentToFabric) =>
     fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄';
 
   reporter.markdown(
@@ -80,7 +80,7 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
 
 function reportResults(perfCounts: any, reporter: Reporter) {
   const results = _.map(
-    _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
+    _.pickBy(perfCounts, (value) => _.has(value, 'analysis.regression')),
     (stats, name) => {
       const currentTicks = _.get(stats, 'analysis.numTicks');
       const baselineTicks = _.get(stats, 'analysis.baseline.numTicks');
@@ -100,7 +100,7 @@ function reportResults(perfCounts: any, reporter: Reporter) {
     },
   );
 
-  const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
+  const regressions = _.sortBy(_.filter(results, 'isRegression'), (stats) => stats.currentToBaseline * -1);
 
   if (regressions.length > 0) {
     reporter.warn(`${regressions.length} potential perf regressions detected`);
@@ -126,8 +126,8 @@ function reportResults(perfCounts: any, reporter: Reporter) {
   fluentFabricComparison(perfCounts, reporter);
 
   const noRegressions = _.sortBy(
-    _.filter(results, stats => !stats.isRegression),
-    stats => stats.currentToBaseline * -1,
+    _.filter(results, (stats) => !stats.isRegression),
+    (stats) => stats.currentToBaseline * -1,
   );
   reporter.markdown(
     [

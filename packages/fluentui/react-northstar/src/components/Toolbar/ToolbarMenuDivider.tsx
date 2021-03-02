@@ -1,4 +1,4 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, toolbarMenuDividerBehavior, ToolbarMenuDividerBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
   mergeVariablesOverrides,
@@ -19,7 +19,7 @@ export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenCompo
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<ToolbarMenuDividerBehaviorProps>;
 }
 
 export type ToolbarMenuDividerStylesProps = never;
@@ -74,4 +74,5 @@ export const ToolbarMenuDivider = compose<'li', ToolbarMenuDividerProps, Toolbar
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
 ToolbarMenuDivider.defaultProps = {
   as: 'li',
+  accessibility: toolbarMenuDividerBehavior,
 };

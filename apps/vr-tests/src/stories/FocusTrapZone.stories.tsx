@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Panel, PanelType, Dialog, DialogType } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Panel, PanelType, Dialog, DialogType } from '@fluentui/react';
 
 storiesOf('FocusTrapZones', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default')
@@ -34,7 +34,8 @@ storiesOf('FocusTrapZones', module)
             dialogContentProps={{
               type: DialogType.normal,
               title:
-                'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
+                'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. ' +
+                'Focus should be trapped in the dialog.',
               subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
             }}
             modalProps={{

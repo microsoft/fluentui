@@ -1,1 +1,2 @@
-export * from 'office-ui-fabric-react/lib/Link';
+import './version';
+export * from './components/Link/index';

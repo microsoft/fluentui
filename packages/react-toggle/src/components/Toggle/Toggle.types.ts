@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import * as React from 'react';
-import { IStyle, ITheme } from '@uifabric/styling';
-import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@uifabric/utilities';
-import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
+import { IStyle, ITheme } from '@fluentui/style-utilities';
+import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '@fluentui/utilities';
 
 /**
  * {@docCategory Toggle}
@@ -16,7 +15,7 @@ export interface IToggle {
  * Toggle component props.
  * {@docCategory Toggle}
  */
-export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
+export interface IToggleProps extends React.HTMLAttributes<HTMLElement>, React.RefAttributes<HTMLElement> {
   /**
    * Render the root element as another type.
    */
@@ -103,13 +102,6 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
    * Optional styles for the component.
    */
   styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
-
-  /**
-   * Optional keytip.
-   *
-   * @deprecated This no longer works. Use `useKeytipData` hook instead.
-   */
-  keytipProps?: IKeytipProps;
 
   /**
    * (Optional) Specify whether to use the "switch" role (ARIA 1.1) or the checkbox role (ARIA 1.0).

@@ -2,7 +2,7 @@
 
 const path = require('path');
 const webpack = require('webpack');
-// This script shouldn't depend on @uifabric/build since it's meant as a utility for other packages
+// This script shouldn't depend on @fluentui/scripts since it's meant as a utility for other packages
 // (potentially outside our repo)
 
 /**
@@ -30,13 +30,13 @@ function addMonacoWebpackConfig(config, includeAllLanguages) {
     ...config,
     entry: {
       .../** @type {webpack.Entry} */ (entry),
-      'editor.worker': '@uifabric/monaco-editor/esm/vs/editor/editor.worker.js',
-      'ts.worker': '@uifabric/monaco-editor/esm/vs/language/typescript/ts.worker.js',
+      'editor.worker': '@fluentui/monaco-editor/esm/vs/editor/editor.worker.js',
+      'ts.worker': '@fluentui/monaco-editor/esm/vs/language/typescript/ts.worker.js',
       ...(includeAllLanguages
         ? {
-            'css.worker': '@uifabric/monaco-editor/esm/vs/language/css/css.worker.js',
-            'html.worker': '@uifabric/monaco-editor/esm/vs/language/html/html.worker.js',
-            'json.worker': '@uifabric/monaco-editor/esm/vs/language/json/json.worker.js',
+            'css.worker': '@fluentui/monaco-editor/esm/vs/language/css/css.worker.js',
+            'html.worker': '@fluentui/monaco-editor/esm/vs/language/html/html.worker.js',
+            'json.worker': '@fluentui/monaco-editor/esm/vs/language/json/json.worker.js',
           }
         : {}),
     },
@@ -49,11 +49,11 @@ function addMonacoWebpackConfig(config, includeAllLanguages) {
       alias: {
         ...resolve.alias,
         // Alias monaco-editor imports to version with transformed CSS
-        'monaco-editor': '@uifabric/monaco-editor',
-        // Alias @uifabric/monaco-editor imports to either monacoBundle.js (to include all languages)
+        'monaco-editor': '@fluentui/monaco-editor',
+        // Alias @fluentui/monaco-editor imports to either monacoBundle.js (to include all languages)
         // or monacoCoreBundle.js (to include only the editor and TS). Either of these bundle files
         // also attempts to set up the global MonacoEnvironment.
-        '@uifabric/monaco-editor$': path.resolve(
+        '@fluentui/monaco-editor$': path.resolve(
           __dirname,
           '../lib',
           includeAllLanguages ? 'monacoBundle.js' : 'monacoCoreBundle.js',

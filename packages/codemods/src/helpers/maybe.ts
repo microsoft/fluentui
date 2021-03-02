@@ -37,7 +37,7 @@ class MB<T> implements MaybeChain<T> {
   }
 
   public then<F>(this: Maybe<T>, fn: (v: NonNullable<T>) => F | Maybe<F>): Maybe<F> {
-    return this.chain(v => Maybe(fn(v))).flatten() as Maybe<F>;
+    return this.chain((v) => Maybe(fn(v))).flatten() as Maybe<F>;
   }
 
   public orElse(mElse: NonNullable<T>): NonNullable<T> {
@@ -63,6 +63,27 @@ export const Something = <T>(value: NonNullable<T>): Something<T> => {
     something: true,
     value: value,
   });
+};
+
+export const MaybeDictionary = <T>(dictionary: { [key: string]: T }): { [key: string]: Maybe<T> } => {
+  return new Proxy<{ [key: string]: Maybe<T> }>((dictionary as unknown) as { [key: string]: Maybe<T> }, {
+    get: (target: { [key: string]: Maybe<T> | T }, name: string): Maybe<T> => {
+      const value = target[name];
+      if (!value || !('__isMaybe' in value)) {
+        const mb = Maybe(value);
+        target[name] = mb;
+        return mb;
+      }
+      return value;
+    },
+  });
+};
+export const isSomething = <T>(val: Maybe<T>): val is Something<T> => {
+  return val.something;
+};
+
+export const isNothing = <T>(val: Maybe<T>): val is Nothing<T> => {
+  return !val.something;
 };
 
 export const Maybe = <T>(value: T | undefined | null): Maybe<T> => {

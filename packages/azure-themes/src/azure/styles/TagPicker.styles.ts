@@ -1,4 +1,4 @@
-import { IBasePickerStyles, IBasePickerStyleProps } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerStyles, IBasePickerStyleProps } from '@fluentui/react/lib/Pickers';
 import * as StyleConstants from '../Constants';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 

@@ -335,7 +335,7 @@ interface CustomToolbarProps {
 
 type CustomToolbarLayout = (props: CustomToolbarProps) => ToolbarProps['items'];
 
-const commonLayout: CustomToolbarLayout = props =>
+const commonLayout: CustomToolbarLayout = (props) =>
   [
     props.isRecording && {
       key: 'recording',
@@ -389,7 +389,7 @@ const commonLayout: CustomToolbarLayout = props =>
     },
   ].filter(Boolean);
 
-const sidebarButtons: CustomToolbarLayout = props => [
+const sidebarButtons: CustomToolbarLayout = (props) => [
   {
     tooltip: tooltips.chat,
     active: props.sidebarSelected === 'chat',
@@ -410,7 +410,7 @@ const sidebarButtons: CustomToolbarLayout = props => [
 ];
 
 const layoutItems: ShorthandValue<ToolbarItemProps> = {
-  endCall: props => ({
+  endCall: (props) => ({
     tooltip: tooltips.endCall,
     key: 'end-call',
     icon: <CallEndIcon size="large" />,
@@ -420,9 +420,9 @@ const layoutItems: ShorthandValue<ToolbarItemProps> = {
 };
 
 const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
-  standard: props => [...commonLayout(props), ...sidebarButtons(props), layoutItems.endCall(props)],
+  standard: (props) => [...commonLayout(props), ...sidebarButtons(props), layoutItems.endCall(props)],
 
-  'desktop-share': props => [
+  'desktop-share': (props) => [
     ...commonLayout(props),
     ...sidebarButtons(props),
     { key: 'divider-sidebar', kind: 'divider' },
@@ -435,7 +435,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
     layoutItems.endCall(props),
   ],
 
-  'powerpoint-presenter': props => [
+  'powerpoint-presenter': (props) => [
     ...commonLayout(props),
     ...sidebarButtons(props),
     { key: 'divider-sidebar', kind: 'divider' },
@@ -474,7 +474,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
   ],
 };
 
-const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
+const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = (props) => {
   const { layout = 'standard' } = props;
 
   const items = layouts[layout](props).map((item: ToolbarItemProps) => ({
@@ -499,8 +499,7 @@ const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
 };
 
 const CustomToolbarPrototype = () => {
-  let theme = {};
-  theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
+  const theme = mergeThemes(teamsDarkTheme, darkThemeOverrides);
 
   return (
     <Provider theme={theme}>

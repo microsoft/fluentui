@@ -1,13 +1,25 @@
 import * as React from 'react';
 
 import { MenuButton } from 'src/components/MenuButton/MenuButton';
+import { Box } from 'src/components/Box/Box';
 import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProvider } from '../../../utils';
+
+import {
+  validateBehavior,
+  ComponentTestFacade,
+  menuButtonBehaviorDefinitionTriggerSlotTabbable,
+  menuButtonBehaviorDefinitionMenuSlot,
+  menuButtonBehaviorDefinitionTriggerSlotNotTabbable,
+  menuButtonBehaviorDefinitionTriggerWithTabIndex,
+  menuButtonBehaviorDefinitionTriggerSlotWithoutID,
+  menuButtonBehaviorDefinitionMenuSlotWithoutID,
+} from '@fluentui/a11y-testing';
 
 const mockMenu = { items: ['1', '2', '3'] };
 
 describe('MenuButton', () => {
-  isConformant(MenuButton, { constructorName: 'MenuButton', autoControlledProps: ['open'] });
+  isConformant(MenuButton, { testPath: __filename, constructorName: 'MenuButton', autoControlledProps: ['open'] });
 
   describe('accessibility', () => {
     handlesAccessibility(MenuButton);
@@ -77,5 +89,83 @@ describe('MenuButton', () => {
         expect(menuButton.find('button').prop('aria-controls')).toEqual(menuId);
       });
     });
+  });
+});
+
+describe('MenuButtonBehavior', () => {
+  const menuToRender = { id: 'menuID', 'data-slotid': 'menu', items: ['1', '2', '3'] };
+  const menuToRenderWithoutID = { 'data-slotid': 'menu', items: ['1', '2', '3'] };
+  const triggerButton = <button data-slotid="trigger" id="triggerElementID" />;
+  const triggerButtonWithoutID = <button data-slotid="trigger" />;
+
+  describe('trigger slot - tabbable - Button', () => {
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerButton, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - tabbable - Box as button', () => {
+    const triggerWithoutTabIndex = <Box data-slotid="trigger" id="triggerElementID" as="button" />;
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - tabbable - Anchor', () => {
+    const triggerWithoutTabIndex = (
+      <a href="" data-slotid="trigger" id="triggerElementID">
+        triggerLink
+      </a>
+    );
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - NO tabbable - Anchor without href', () => {
+    const triggerAnchorWtihoutHref = (
+      <a data-slotid="trigger" id="triggerElementID">
+        triggerLink
+      </a>
+    );
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerAnchorWtihoutHref, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - NO tabbable - Span', () => {
+    const triggerWithoutTabIndex = (
+      <span data-slotid="trigger" id="triggerElementID">
+        text to trigger popup
+      </span>
+    );
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithoutTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotNotTabbable, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - doesnt override tabIndex if exists', () => {
+    const triggerWithTabIndex = <button data-slotid="trigger" id="triggerElementID" tabIndex={-1} />;
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerWithTabIndex, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerWithTabIndex, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('trigger slot - autogenerate ID', () => {
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerButtonWithoutID, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionTriggerSlotWithoutID, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('menu slot', () => {
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerButton, menu: menuToRender });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionMenuSlot, testFacade);
+    expect(errors).toEqual([]);
+  });
+
+  describe('menu slot - autogenerate ID', () => {
+    const testFacade = new ComponentTestFacade(MenuButton, { trigger: triggerButton, menu: menuToRenderWithoutID });
+    const errors = validateBehavior(menuButtonBehaviorDefinitionMenuSlotWithoutID, testFacade);
+    expect(errors).toEqual([]);
   });
 });

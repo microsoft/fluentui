@@ -4,6 +4,7 @@ import { ToolbarMenuItemActiveIndicator } from 'src/components/Toolbar/ToolbarMe
 
 describe('ToolbarMenuItemActiveIndicator', () => {
   isConformant(ToolbarMenuItemActiveIndicator, {
+    testPath: __filename,
     constructorName: 'ToolbarMenuItemActiveIndicator',
   });
 });

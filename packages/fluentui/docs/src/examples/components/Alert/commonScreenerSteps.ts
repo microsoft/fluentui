@@ -1,3 +1,4 @@
+import { ScreenerStep, ScreenerSteps } from '@fluentui/scripts/screener';
 import { alertDismissActionClassName } from '@fluentui/react-northstar';
 
 const selectors = {
@@ -15,7 +16,7 @@ export const getFocusScreenerSteps = (): ScreenerSteps => [
 ];
 
 export const getHoverScreenerSteps = (): ScreenerSteps => [
-  builder => builder.hover(selectors.dismissAction).snapshot('Hovers the action button'),
+  (builder) => builder.hover(selectors.dismissAction).snapshot('Hovers the action button'),
 ];
 
 export const getScreenerSteps = (): ScreenerSteps => [...getFocusScreenerSteps(), ...getHoverScreenerSteps()];

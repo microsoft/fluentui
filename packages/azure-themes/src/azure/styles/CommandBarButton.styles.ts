@@ -1,6 +1,6 @@
-import { ITheme } from 'office-ui-fabric-react';
-import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { ITheme } from '@fluentui/react';
+import { getFocusStyle } from '@fluentui/react/lib/Styling';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {

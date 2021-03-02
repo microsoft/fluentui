@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex } from '@fluentui/react-northstar';
+import { Button, Flex, TeamCreateIcon } from '@fluentui/react-northstar';
 
 const ButtonExampleInverted = () => (
   <Flex
@@ -10,6 +10,7 @@ const ButtonExampleInverted = () => (
     })}
   >
     <Button inverted content="Inverted Button" />
+    <Button inverted icon={<TeamCreateIcon />} iconOnly title="Create" />
   </Flex>
 );
 

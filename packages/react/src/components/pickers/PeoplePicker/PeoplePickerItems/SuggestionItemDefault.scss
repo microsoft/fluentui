@@ -1,0 +1,13 @@
+@import '~@fluentui/common-styles/src/common';
+
+.peoplePickerPersona {
+  width: 180px;
+}
+
+.peoplePickerPersonaContent {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px 12px;
+}

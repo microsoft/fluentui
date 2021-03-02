@@ -1,4 +1,4 @@
-import { Accessibility, dialogBehavior, DialogBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, dialogBehavior, DialogBehaviorProps, getCode, keyboardKey } from '@fluentui/accessibility';
 import {
   ComponentWithAs,
   FocusTrapZoneProps,
@@ -17,8 +17,8 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
-import { lockBodyScroll, unlockBodyScroll } from './utils';
+
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 import {
   UIComponentProps,
@@ -143,7 +143,7 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
 export const Dialog: ComponentWithAs<'div', DialogProps> &
   FluentComponentStaticProps<DialogProps> & {
     Footer: typeof DialogFooter;
-  } = props => {
+  } = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
   setStart();
@@ -183,13 +183,13 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
   const getA11yProps = useAccessibility<DialogBehaviorProps>(accessibility, {
     debugName: Dialog.displayName,
     actionHandlers: {
-      closeAndFocusTrigger: e => {
+      closeAndFocusTrigger: (e) => {
         handleDialogCancel(e);
         e.stopPropagation();
 
         _.invoke(triggerRef, 'current.focus');
       },
-      close: e => handleDialogCancel(e),
+      close: (e) => handleDialogCancel(e),
     },
     mapPropsToBehavior: () => ({
       headerId: headerId.current,
@@ -221,15 +221,16 @@ export const Dialog: ComponentWithAs<'div', DialogProps> &
   });
 
   React.useEffect(() => {
+    const target = contentRef?.current;
     if (open) {
-      lockBodyScroll(context.target);
+      disableBodyScroll(target);
     }
     return () => {
       if (open) {
-        unlockBodyScroll(context.target);
+        enableBodyScroll(target);
       }
     };
-  }, [context.target, open]);
+  }, [open]);
 
   const handleDialogCancel = (e: Event | React.SyntheticEvent) => {
     _.invoke(props, 'onCancel', e, { ...props, open: false });

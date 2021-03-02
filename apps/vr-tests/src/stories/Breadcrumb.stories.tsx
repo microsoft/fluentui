@@ -1,15 +1,14 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import { Breadcrumb } from 'office-ui-fabric-react';
+import { FabricDecoratorTall } from '../utilities/index';
+import { Breadcrumb } from '@fluentui/react';
 
 const noOp = () => undefined;
 
 storiesOf('Breadcrumb', module)
   .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -75,8 +74,7 @@ storiesOf('Breadcrumb', module)
 
 // Stories for hovering over actionable and non-actionable items
 storiesOf('Breadcrumb', module)
-  .addDecorator(FabricDecoratorTall)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .hover('.ms-Breadcrumb-list li:nth-child(2)')

@@ -4,6 +4,7 @@ import { isConformant, handlesAccessibility, htmlIsAccessibilityCompliant } from
 
 describe('Checkbox', () => {
   isConformant(Checkbox, {
+    testPath: __filename,
     constructorName: 'Checkbox',
     autoControlledProps: ['checked'],
   });

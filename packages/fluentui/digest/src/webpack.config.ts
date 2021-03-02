@@ -1,5 +1,4 @@
 import * as path from 'path';
-import * as webpack from 'webpack';
 
 // TODO: remove just as a dependency. should only be a dev dependency when used.
 import { webpackConfig, webpackMerge, htmlOverlay } from 'just-scripts';
@@ -9,6 +8,7 @@ const IgnoreNotFoundExportWebpackPlugin = require('ignore-not-found-export-webpa
 export interface DigestConfig {
   configDir: string;
   outputDir: string;
+  resolveDirs?: string[];
 }
 
 // This is the default webpack config for creating story bundles for consumers.
@@ -17,10 +17,13 @@ export interface DigestConfig {
 // TODO:
 // these paths need to be accurate for pathing into library distribution, not source.
 // is require.resolve the best thing to use here?
-export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration[] => {
+export const defaultConfig = (digestConfig: DigestConfig) => {
+  const { resolveDirs } = digestConfig;
+  const resolveLoaderConfig = resolveDirs ? { resolveLoader: { modules: resolveDirs } } : {};
+
   // TODO: optimize configs to share common instances and remove usage of just (use webpack-merge directly)
-  const bundle = webpackMerge(
-    webpackConfig,
+  const bundle = webpackMerge.merge(
+    webpackConfig(resolveLoaderConfig),
     htmlOverlay({
       // TODO: is require.resolve really needed here? path.join / __dirname instead?
       template: require.resolve('../assets/index.html'),
@@ -56,7 +59,7 @@ export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration
   // Currently this is bundling all stories and their dependencies when all the script really needs is the story information.
   // The bundle size may be optimized later somehow, whether by backfilling require.context or somehow using a
   // webpack plugin to extract story information during bundling.
-  const stories = webpackMerge(webpackConfig, {
+  const stories = webpackConfig({
     target: 'node',
     entry: {
       // TODO: If users are passing in require.context args, the entry here should probably
@@ -78,6 +81,7 @@ export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration
         stories: path.resolve(__dirname, '.'),
       },
     },
+    ...resolveLoaderConfig,
     optimization: {
       minimize: false,
     },

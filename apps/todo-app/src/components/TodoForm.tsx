@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IBaseProps, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
-import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
+import { IBaseProps, initializeComponentRef } from '@fluentui/react/lib/Utilities';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { TextField, ITextField } from '@fluentui/react/lib/TextField';
 import * as stylesImport from './Todo.scss';
 const styles: any = stylesImport;
 import strings from './../strings';
@@ -38,8 +38,8 @@ export interface ITodoFormState {
  * The form component used for adding new item to the list. It uses fabric-react components
  * TextField and PrimaryButton.
  *
- * TextField: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/textfield
- * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
+ * Link of <TextField>: https://developer.microsoft.com/en-us/fluentui#/controls/web/textfield
+ * Link of <Button>: https://developer.microsoft.com/en-us/fluentui#/controls/web/button
  */
 export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormState> {
   private _textField = React.createRef<ITextField>();

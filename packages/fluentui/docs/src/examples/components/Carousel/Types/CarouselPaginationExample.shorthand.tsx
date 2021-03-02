@@ -3,20 +3,44 @@ import { Carousel, Image } from '@fluentui/react-northstar';
 
 const carouselItems = [
   {
-    key: 'ade',
-    content: <Image src="public/images/avatar/large/ade.jpg" fluid alt={'Portrait of Ade'} />,
+    key: 'allan',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        fluid
+        alt={'Portrait of Allan'}
+      />
+    ),
   },
   {
-    key: 'elliot',
-    content: <Image src="public/images/avatar/large/elliot.jpg" fluid alt={'Portrait of Elliot'} />,
+    key: 'carole',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+        fluid
+        alt={'Portrait of Carole'}
+      />
+    ),
   },
   {
-    key: 'kristy',
-    content: <Image src="public/images/avatar/large/kristy.png" fluid alt={'Portrait of Kristy'} />,
+    key: 'elvia',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
+        fluid
+        alt={'Portrait of Elvia'}
+      />
+    ),
   },
   {
-    key: 'nan',
-    content: <Image src="public/images/avatar/large/nan.jpg" fluid alt={'Portrait of Nan'} />,
+    key: 'kat',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
+        fluid
+        alt={'Portrait of Kat'}
+      />
+    ),
   },
 ];
 

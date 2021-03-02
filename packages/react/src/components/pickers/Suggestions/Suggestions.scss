@@ -1,0 +1,186 @@
+@import '~@fluentui/common-styles/src/common';
+
+.root {
+  min-width: 260px;
+}
+
+.suggestionsItem {
+  display: flex;
+  align-items: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    background: $ms-color-neutralLighter;
+
+    .closeButton {
+      display: block;
+    }
+  }
+
+  &.suggestionsItemIsSuggested {
+    background: $ms-color-neutralLight;
+
+    &:hover {
+      background: $ms-color-neutralTertiaryAlt;
+
+      @include high-contrast {
+        background: Highlight;
+        color: HighlightText;
+      }
+    }
+
+    @include high-contrast {
+      background: Highlight;
+      color: HighlightText;
+      -ms-high-contrast-adjust: none;
+    }
+
+    .closeButton {
+      &:hover {
+        background: $ms-color-neutralTertiary;
+        color: $ms-color-neutralPrimary;
+      }
+    }
+
+    .itemButton {
+      @include high-contrast {
+        color: HighlightText;
+      }
+    }
+  }
+
+  .closeButton {
+    display: none;
+    color: $ms-color-neutralSecondary;
+
+    &:hover {
+      background: $ms-color-neutralLight;
+    }
+  }
+}
+
+.actionButton {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  @include ms-padding-left(8px);
+  position: relative;
+  border-top: 1px solid $ms-color-neutralLight;
+  height: 40px;
+  @include text-align(left);
+  width: 100%;
+  font-size: 12px;
+  &:hover {
+    background-color: $ms-color-neutralLight;
+    cursor: pointer;
+  }
+  // TODO: Works in Chrome, but not working in IE
+  &:focus,
+  &:active {
+    background-color: $ms-color-themeLight;
+  }
+
+  :global(.ms-Button-icon) {
+    font-size: 16px;
+    width: 25px;
+  }
+
+  :global(.ms-Button-label) {
+    @include margin(0, 4px, 0, 9px);
+  }
+}
+
+.buttonSelected {
+  background-color: $ms-color-themeLight;
+}
+
+.suggestionsTitle {
+  padding: 0 12px;
+  color: $ms-color-themePrimary;
+  font-size: $ms-font-size-s;
+  line-height: 40px;
+  border-bottom: 1px solid $ms-color-neutralLight;
+}
+
+.suggestionsContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+  border-bottom: 1px solid $ms-color-neutralLight;
+}
+
+.suggestionsNone {
+  text-align: center;
+  color: $ms-color-info;
+  font-size: $ms-font-size-s;
+  line-height: 30px;
+}
+
+.suggestionsSpinner {
+  margin: 5px 0;
+  @include padding-left(14px);
+  @include text-align(left);
+  white-space: nowrap;
+  line-height: 20px;
+  font-size: 12px;
+
+  :global(.ms-Spinner-circle) {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  :global(.ms-Spinner-label) {
+    display: inline-block;
+    @include margin(0px, 10px, 0, 16px);
+    vertical-align: middle;
+  }
+}
+
+.itemButton.itemButton {
+  width: 100%;
+  padding: 0px;
+
+  // Force the item button to be collapsible so it can always shrink
+  // to accommodate the close button as a peer in its flex container.
+  min-width: 0;
+
+  /* once this is converted to js css, then specificity won't be an issue. */
+  height: 100%;
+
+  @include high-contrast {
+    color: WindowText;
+  }
+  &:hover {
+    color: $ms-color-neutralDark;
+  }
+}
+
+.closeButton.closeButton {
+  /* once this is converted to js css, then specificity won't be an issue. */
+  padding: 0 4px;
+  height: auto;
+  width: 32px;
+
+  @include high-contrast {
+    color: WindowText;
+  }
+
+  &:hover {
+    background: $ms-color-neutralTertiaryAlt;
+    color: $ms-color-neutralDark;
+  }
+}
+
+.suggestionsAvailable {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

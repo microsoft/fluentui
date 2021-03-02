@@ -36,19 +36,19 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     animationFrameId.current = requestAnimationFrame(() => setFramePosition(frameEl, controlEl));
   }, []);
 
-  const hideFrame = frameEl => {
+  const hideFrame = (frameEl) => {
     frameEl.style.display = 'none';
   };
 
   const handleMove = React.useCallback(
-    e => {
+    (e) => {
       onMove?.(e);
     },
     [onMove],
   );
 
   const handleClone = React.useCallback(
-    e => {
+    (e) => {
       onClone?.(e);
     },
     [onClone],
@@ -117,7 +117,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
         userSelect: 'none',
       }}
     >
-      <div style={{ width: '100%', height: '100%' }} onMouseDown={handleMove} />
+      <div style={{ width: '100%', height: '100%' }} draggable={true} onDragStart={handleMove} />
       <div style={styles}>
         <span style={{ fontWeight: 'bold' }}>{componentName}</span>
         <LevelUpDebugButton onClick={handleGoToParent} />

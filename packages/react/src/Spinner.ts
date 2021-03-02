@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Spinner';
+export * from './components/Spinner/index';

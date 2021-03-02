@@ -3,8 +3,11 @@
 exports[`Button renders a default state 1`] = `
 <button
   className=""
+  onKeyDown={[Function]}
 >
-  <span>
+  <span
+    className=""
+  >
     Default button
   </span>
 </button>

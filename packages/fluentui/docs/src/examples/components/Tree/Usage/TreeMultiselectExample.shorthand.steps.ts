@@ -1,4 +1,5 @@
 import { treeItemClassName, treeTitleClassName, treeTitleSlotClassNames } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   treeTitle: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
@@ -30,6 +31,9 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.treeTitle(7), keys.space)
         .snapshot('selected, when space pressed')
         .click(selectors.treeTitle(15))
+        .click(selectors.selectionIndicator(15))
+        .snapshot('group fully selected, when it has non selectable children')
+        .click(selectors.selectionIndicator(15))
         .keys(selectors.treeTitle(16), keys.space)
         .keys(selectors.treeTitle(17), keys.space)
         .snapshot('selected, when group has non selectable item')

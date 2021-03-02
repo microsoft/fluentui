@@ -2,9 +2,9 @@ const express = require('express');
 const compression = require('compression');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const { renderStatic } = require('@uifabric/merge-styles/lib-commonjs/server');
+const { renderStatic } = require('@fluentui/merge-styles/lib-commonjs/server');
 const { configureLoadStyles } = require('@microsoft/load-themed-styles');
-const { initializeIcons } = require('@uifabric/icons');
+const { initializeIcons } = require('@fluentui/font-icons-mdl2');
 
 const ReactMinScripts =
   `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js"></script>` +
@@ -22,7 +22,7 @@ initializeIcons();
 let _allStyles = '';
 
 // Push styles into variables for injecting later.
-configureLoadStyles(styles => {
+configureLoadStyles((styles) => {
   _allStyles += styles;
 });
 

@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/PersonaPresence';
+export * from './components/Persona/PersonaPresence/index';

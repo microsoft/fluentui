@@ -11,7 +11,7 @@ const InlineMarkdown = React.lazy(() => import('../InlineMarkdown'));
 
 type ComponentPropsRowProps = ComponentProp;
 
-const ComponentPropValue: React.FunctionComponent<ComponentPropType> = props => {
+const ComponentPropValue: React.FunctionComponent<ComponentPropType> = (props) => {
   const { name, parameters } = props;
 
   if (name === 'literal') return <span>enum</span>;
@@ -19,35 +19,37 @@ const ComponentPropValue: React.FunctionComponent<ComponentPropType> = props => 
     const componentName = parameters[0].name.replace('Props', '');
 
     const parentInfo = componentInfoContext.byDisplayName[componentName];
-    const linkName = _.kebabCase(parentInfo.parentDisplayName || componentName);
+    if (parentInfo) {
+      const linkName = _.kebabCase(parentInfo.parentDisplayName || componentName);
 
-    const kindParam = parameters[1] && parameters[1].name !== 'never';
-    const kindIsVisible = name === 'ShorthandCollection' && kindParam;
+      const kindParam = parameters[1] && parameters[1].name !== 'never';
+      const kindIsVisible = name === 'ShorthandCollection' && kindParam;
 
-    const showHash = parentInfo.parentDisplayName || _.size(getComponentGroup(componentName)) > 1;
-    const propsSection = showHash ? `#${_.kebabCase(componentName)}` : '';
+      const showHash = parentInfo.parentDisplayName || _.size(getComponentGroup(componentName)) > 1;
+      const propsSection = showHash ? `#${_.kebabCase(componentName)}` : '';
 
-    return (
-      <span>
-        {name}
-        {`<`}
-        <Link to={`/components/${linkName}/props${propsSection}`}>{parameters[0].name}</Link>
-        {kindIsVisible && <span>, {parameters[1].name}</span>}
-        {`>`}
-      </span>
-    );
+      return (
+        <span>
+          {name}
+          {`<`}
+          <Link to={`/components/${linkName}/props${propsSection}`}>{parameters[0].name}</Link>
+          {kindIsVisible && <span>, {parameters[1].name}</span>}
+          {`>`}
+        </span>
+      );
+    }
   }
 
   return <span>{name}</span>;
 };
 
-const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = props => {
+const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = (props) => {
   const { defaultValue, description, name, required, types } = props;
 
-  const shorthand = types.some(type => type.name === 'ShorthandValue' || type.name === 'ShorthandCollection');
+  const shorthand = types.some((type) => type.name === 'ShorthandValue' || type.name === 'ShorthandCollection');
 
-  const typeValues = _.uniqBy(types, type => type.name);
-  const enumValues = _.filter(types, type => type.name === 'literal');
+  const typeValues = _.uniqBy(types, (type) => type.name);
+  const enumValues = _.filter(types, (type) => type.name === 'literal');
 
   return (
     <tr style={{ borderTop: '1px solid grey' }}>
@@ -68,7 +70,7 @@ const ComponentPropsRow: React.FunctionComponent<ComponentPropsRowProps> = props
       <td>
         <InlineMarkdown value={description} />
         {enumValues.length > 0 && <b>Values:</b>}
-        {enumValues.map(type => (
+        {enumValues.map((type) => (
           <code key={type.value} style={{ marginRight: 3 }}>
             {type.value}
           </code>

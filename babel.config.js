@@ -1,4 +1,4 @@
-module.exports = api => ({
-  ...require('@uifabric/build/babel')(api),
+module.exports = (api) => ({
+  ...require('@fluentui/scripts/babel')(api),
   babelrcRoots: ['./packages/*'],
 });

@@ -14,15 +14,15 @@ export const selectors = {
 };
 
 const inputItems = [
-  'Bruce Wayne',
-  'Natasha Romanoff',
-  'Steven Strange',
-  'Alfred Pennyworth',
-  `Scarlett O'Hara`,
-  'Imperator Furiosa',
-  'Bruce Banner',
-  'Peter Parker',
-  'Selina Kyle',
+  'Robert Tolbert',
+  'Wanda Howard',
+  'Tim Deboer',
+  'Amanda Brady',
+  'Ashley McCarthy',
+  'Cameron Evans',
+  'Carlos Slattery',
+  'Carole Poland',
+  'Robin Counts',
 ];
 
 const DropdownExampleSearch = () => (
@@ -33,7 +33,7 @@ const DropdownExampleSearch = () => (
     placeholder="Start typing a name"
     noResultsMessage="We couldn't find any matches."
     getA11ySelectionMessage={{
-      onAdd: item => `${item} has been selected.`,
+      onAdd: (item) => `${item} has been selected.`,
     }}
   />
 );

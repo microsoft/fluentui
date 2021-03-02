@@ -15,6 +15,9 @@ import { CheckboxStyles as styles } from './checkbox.styles';
   name: 'fluent-checkbox',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentCheckbox extends Checkbox {}
 

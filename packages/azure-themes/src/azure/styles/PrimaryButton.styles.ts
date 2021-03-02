@@ -1,6 +1,6 @@
-import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import * as StyleConstants from '../Constants';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
@@ -21,6 +21,11 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
+      selectors: {
+        '::after': {
+          outlineColor: `${semanticColors.primaryButtonText} !important`,
+        },
+      },
       backgroundColor: semanticColors.primaryButtonBackground,
       color: semanticColors.primaryButtonText,
       borderColor: extendedSemanticColors.primaryCompoundButtonBorder,

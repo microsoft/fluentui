@@ -5,55 +5,55 @@ import { UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
 const inputItems = [
   {
-    header: 'Bruce Wayne',
-    image: 'public/images/avatar/small/matt.jpg',
+    header: 'Robert Tolbert',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
     content: 'Software Engineer',
   },
   {
-    header: 'Natasha Romanoff',
-    image: 'public/images/avatar/small/jenny.jpg',
+    header: 'Wanda Howard',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/WandaHoward.jpg',
     content: 'UX Designer 2',
   },
   {
-    header: 'Steven Strange',
-    image: 'public/images/avatar/small/joe.jpg',
+    header: 'Tim Deboer',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg',
     content: 'Principal Software Engineering Manager',
   },
   {
-    header: 'Alfred Pennyworth',
-    image: 'public/images/avatar/small/justen.jpg',
+    header: 'Amanda Brady',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg',
     content: 'Technology Consultant',
   },
   {
-    header: `Scarlett O'Hara`,
-    image: 'public/images/avatar/small/laura.jpg',
+    header: `Ashley McCarthy`,
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AshleyMcCarthy.jpg',
     content: 'Software Engineer 2',
   },
   {
-    header: 'Imperator Furiosa',
-    image: 'public/images/avatar/small/veronika.jpg',
-    content: 'Boss',
+    header: 'Cameron Evans',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg',
+    content: 'Software Engineer',
   },
   {
-    header: 'Bruce Banner',
-    image: 'public/images/avatar/small/chris.jpg',
+    header: 'Carlos Slattery',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg',
     content: 'Senior Computer Scientist',
   },
   {
-    header: 'Peter Parker',
-    image: 'public/images/avatar/small/daniel.jpg',
+    header: 'Carole Poland',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg',
     content: 'Partner Software Engineer',
   },
   {
-    header: 'Selina Kyle',
-    image: 'public/images/avatar/small/ade.jpg',
+    header: 'Robin Counts',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
     content: 'Graphic Designer',
   },
 ];
 
 const getA11ySelectionMessage = {
-  onAdd: item => `${item} has been selected.`,
-  onRemove: item => `${item} has been removed.`,
+  onAdd: (item) => `${item} has been selected.`,
+  onRemove: (item) => `${item} has been removed.`,
 };
 
 const PopupControlledExample = () => {

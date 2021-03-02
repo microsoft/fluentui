@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
-import { Accordion, Flex, Segment, Menu, Loader } from '@fluentui/react-northstar';
+import { Accordion, Flex, Segment, Menu, Loader, AccordionProps } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
 
 const ComponentPerfChart = React.lazy(async () => ({
@@ -19,8 +19,9 @@ export interface ComponentPerfExampleProps {
   examplePath: string;
 }
 
-const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
+const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = (props) => {
   const { title, description, examplePath } = props;
+  const [activeIndex, setActiveIndex] = React.useState<AccordionProps['activeIndex']>();
 
   const [currentChart, setCurrentChart] = React.useState<'perf' | 'resources'>('perf');
 
@@ -60,6 +61,11 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
           </React.Suspense>
         </Segment>
         <Accordion
+          exclusive
+          activeIndex={activeIndex}
+          onActiveIndexChange={(_, { activeIndex: newIndex }) => {
+            setActiveIndex(newIndex);
+          }}
           panels={
             [
               {
@@ -74,7 +80,9 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                 },
                 content: {
                   key: 'c',
-                  content: <ComponentExample titleForAriaLabel={title} {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
+                  content: activeIndex === 0 && (
+                    <ComponentExample titleForAriaLabel={title} {..._.omit(props, 'title', 'description')} />
+                  ),
                 },
               },
             ] as any[]

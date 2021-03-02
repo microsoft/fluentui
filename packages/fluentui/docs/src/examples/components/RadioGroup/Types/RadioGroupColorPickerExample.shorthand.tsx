@@ -12,13 +12,13 @@ class RadioGroupColorPickerExample extends React.Component {
         <Divider />
         <RadioGroup
           defaultCheckedValue="pink"
-          items={['pink', 'blue', 'green', 'red', 'orange'].map(color => ({
+          items={['pink', 'blue', 'green', 'red', 'orange'].map((color) => ({
             key: color,
             value: color,
             name: color,
             'aria-label': color,
             variables: {
-              indicatorBorderColorDefault: color,
+              indicatorColorDefault: color,
               indicatorBackgroundColorChecked: color,
               indicatorBorderColorDefaultHover: color,
             },

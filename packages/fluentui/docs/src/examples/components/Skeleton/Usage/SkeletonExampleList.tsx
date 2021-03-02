@@ -11,7 +11,7 @@ const SkeletonExampleList = () => {
 
   return (
     <List>
-      {_.times(5, index => (
+      {_.times(5, (index) => (
         <List.Item
           key={index}
           styles={{
@@ -23,7 +23,10 @@ const SkeletonExampleList = () => {
                 <Skeleton.Shape round width="32px" height="32px" />
               </Skeleton>
             ) : (
-              <Image src="public/images/avatar/small/matt.jpg" avatar />
+              <Image
+                src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+                avatar
+              />
             )
           }
           header={
@@ -37,7 +40,7 @@ const SkeletonExampleList = () => {
                 <Skeleton.Line width="100px" />
               </Skeleton>
             ) : (
-              'Irving Kuhic'
+              'Robert Tolbert'
             )
           }
           content={

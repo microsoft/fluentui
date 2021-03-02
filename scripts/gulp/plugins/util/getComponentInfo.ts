@@ -33,7 +33,7 @@ const getAvailableBehaviors = (accessibilityProp: ComponentProp | undefined): Be
   return availableBehaviorNames
     .replace(/\s/g, '')
     .split(',')
-    .map(name => ({
+    .map((name) => ({
       name,
       displayName: _.upperFirst(name.replace('Behavior', '')),
       category: _.upperFirst(name.split(/(?=[A-Z])/)[0]),
@@ -88,7 +88,7 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
 
   const isChild = !isParent;
   const parentDisplayName = isParent ? null : dirname;
-  // "Field" for "FormField" since it is accessed as "Form.Field" in the API
+  // for example, "Menu" for "ToolbarMenu" since it is accessed as "Toolbar.Menu" in the API
   const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName!, '');
 
   // "ListItem.js" is a subcomponent is the "List" directory
@@ -96,8 +96,8 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
   const subcomponents = isParent
     ? fs
         .readdirSync(dir)
-        .filter(file => subcomponentRegExp.test(file))
-        .map(file => path.basename(file, path.extname(file)))
+        .filter((file) => subcomponentRegExp.test(file))
+        .map((file) => path.basename(file, path.extname(file)))
     : null;
 
   // where this component should be exported in the api
@@ -143,9 +143,10 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
         description,
         defaultValue: defaultProps[propName],
         tags,
-        types,
+        types: types,
         name: propName,
         required: propDef.required,
+        resolvedType: propDef.resolvedType,
       });
     }
   });

@@ -67,8 +67,8 @@ export interface CardProps extends UIComponentProps {
   /** A card can have inverted background styles. */
   inverted?: boolean;
 
-  /** A card can have quiet styles. */
-  quiet?: boolean;
+  /** A card can have ghost styles. */
+  ghost?: boolean;
 
   /** A card can show that it is currently selected or not. */
   selected?: boolean;
@@ -85,7 +85,7 @@ export type CardStylesProps = Pick<
   | 'expandable'
   | 'elevated'
   | 'inverted'
-  | 'quiet'
+  | 'ghost'
   | 'selected'
 > & {
   actionable: boolean;
@@ -110,7 +110,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
     TopControls: typeof CardPreview;
     Column: typeof CardColumn;
     ExpandableBox: typeof CardExpandableBox;
-  } = props => {
+  } = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
@@ -132,7 +132,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
     expandable,
     elevated,
     inverted,
-    quiet,
+    ghost,
     selected,
   } = props;
   const ElementType = getElementType(props);
@@ -140,12 +140,12 @@ export const Card: ComponentWithAs<'div', CardProps> &
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Card.displayName,
     actionHandlers: {
-      performClick: e => {
+      performClick: (e) => {
         // prevent Spacebar from scrolling
         e.preventDefault();
         handleClick(e);
       },
-      focusCard: e => {
+      focusCard: (e) => {
         cardRef.current.focus();
       },
     },
@@ -168,7 +168,7 @@ export const Card: ComponentWithAs<'div', CardProps> &
       expandable,
       elevated,
       inverted,
-      quiet,
+      ghost,
       selected,
     }),
     mapPropsToInlineStyles: () => ({
@@ -221,7 +221,7 @@ Card.propTypes = {
   expandable: PropTypes.bool,
   disabled: PropTypes.bool,
   elevated: PropTypes.bool,
-  quiet: PropTypes.bool,
+  ghost: PropTypes.bool,
   inverted: PropTypes.bool,
   selected: PropTypes.bool,
 };

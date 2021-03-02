@@ -10,81 +10,56 @@ yarn add @fluentui/react-theme-provider
 
 ## Example usage
 
-Use the theme with Fluent UI by wrapping content within the provider. If `theme` is not provided, default (Fluent) theme will be provided:
+Use the theme with Fluent UI by wrapping content within the provider:
 
 ```tsx
+import { webLightTheme } from '@fluentui/react-theme';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
 export const App = () => (
   <ThemeProvider>
-    <>...app</>
+    <App />
   </ThemeProvider>
 );
 ```
 
-You can also customize your own theme:
+You can also nest `ThemeProvider`s:
 
 ```tsx
+import { webLightTheme, PartialTheme } from '@fluentui/react-theme';
 import { ThemeProvider } from '@fluentui/react-theme-provider';
 
-export const theme: Theme = {
-  /* Provide any stylesheets which should come along with the theme */
-  stylesheets: [
-    '.className { ... }',
-    ...
-  ],
-
-  /* Provide standard fluent tokens here. */
-  tokens: {
-    body: {
-      fill: '#fafafa',
-      text: '#333'
-    }
-  }
+const headerTheme: PartialTheme = {
+  /* your customizations */
 };
 
 export const App = () => (
-  <ThemeProvider theme={theme}>
-    <>...app</>
+  <ThemeProvider theme={webLightTheme}>
+    <ThemeProvider theme={headerTheme}>
+      <App />
+    </ThemeProvider>
+
+    <App />
   </ThemeProvider>
 );
 ```
 
-You can apply component-level styles:
+## Accessing theme
 
-```tsx
-import { Checkbox } from '@fluentui/react';
-import { ThemeProvider, createTheme } from '@fluentui/react-theme-provider';
+### useTheme
 
-export const App = () => (
-  <ThemeProvider
-    theme={{
-      components: { Checkbox: { styles: { root: { background: 'red' } } } },
-    }}
-  >
-    <Checkbox />
-  </ThemeProvider>
-);
-```
-
-## Create classes for React components based on theme
-
-Themes can be accessed using the `makeStyles` hook. This hook abstracts rendering css given the theme object:
+Theme can be accessed using `useTheme` hook.
 
 ```jsx
-import { makeStyles } from '@fluentui/react-theme-provider';
+import { useTheme } from '@fluentui/react-theme-provider';
 
-const useFooStyles = makeStyles(theme => ({
-    root: {
-      background: theme.semanticColors.bodyBackground,
-      ':hover': {
-        background: theme.semanticColors.bodyBackgroundHovered
-    },
-}));
-
-const Foo = props => {
-  const classes = useFooStyles();
-
-  return <div className={classes.root} />;
+const Content = () => {
+  const theme = useTheme();
 };
+
+export const App = () => (
+  <ThemeProvider>
+    <Content />
+  </ThemeProvider>
+);
 ```

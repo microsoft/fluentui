@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { GroupedList } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { GroupedList } from '@fluentui/react';
 
 /* eslint-disable @fluentui/max-len */
 const items = [
@@ -88,7 +87,7 @@ const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
 
 storiesOf('GroupedList', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

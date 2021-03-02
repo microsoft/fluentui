@@ -1,4 +1,4 @@
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '../../keyboard-key';
 import * as _ from 'lodash';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
@@ -22,7 +22,7 @@ import { menuButtonBehavior, MenuButtonBehaviorProps } from '../MenuButton/menuB
  * Adds attribute 'aria-haspopup=true' to 'toggleButton' slot.
  * Adds attribute 'data-is-focusable=false' to 'toggleButton' slot.
  */
-export const splitButtonBehavior: Accessibility = props => {
+export const splitButtonBehavior: Accessibility = (props) => {
   const splitButtonMenuButtonBehavior = () => {
     const menuButtonBehaviorData = menuButtonBehavior(props);
     menuButtonBehaviorData.attributes.trigger['aria-haspopup'] = undefined;

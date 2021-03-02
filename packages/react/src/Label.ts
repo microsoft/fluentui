@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/Label';
+export * from './components/Label/index';

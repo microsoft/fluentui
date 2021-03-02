@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { setWarningCallback } from '@uifabric/utilities';
+import { setWarningCallback } from '@fluentui/utilities';
 import { IWarningOptions, useWarnings } from './useWarnings';
 
 // These tests don't cover the core warning utilities (which have their own tests), just the
@@ -20,7 +20,7 @@ describe('useWarnings', () => {
   }
 
   let renderCount = 0;
-  const TestComponent: React.FunctionComponent<ITestComponentProps> = props => {
+  const TestComponent: React.FunctionComponent<ITestComponentProps> = (props) => {
     useWarnings({ ...warningOptions!, name: 'TestComponent', props });
     renderCount++;
     return <div />;

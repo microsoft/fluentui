@@ -98,13 +98,14 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
     const getA11Props = useAccessibility(accessibility, {
       debugName: composeOptions.displayName,
       actionHandlers: {
-        performClick: e => {
+        performClick: (e) => {
           if (e.currentTarget === e.target) {
             e.stopPropagation();
             handleClick(e);
           }
         },
       },
+      mapPropsToBehavior: () => ({ actionable }),
       rtl: context.rtl,
     });
 
@@ -143,7 +144,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
       <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ref, ...unhandledProps })}>
         {createShorthand(composeOptions.slots.icon, icon, {
           defaultProps: () => slotProps.icon,
-          overrideProps: predefinedProps => ({
+          overrideProps: (predefinedProps) => ({
             variables: mergeVariablesOverrides(variables, predefinedProps.variables),
           }),
         })}
@@ -151,18 +152,18 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
         {(header || description) &&
           createShorthand(composeOptions.slots.body, body, {
             defaultProps: () => slotProps.body,
-            overrideProps: predefinedProps => ({
+            overrideProps: (predefinedProps) => ({
               content: (
                 <>
                   {createShorthand(composeOptions.slots.header, header, {
                     defaultProps: () => slotProps.header,
-                    overrideProps: predefinedProps => ({
+                    overrideProps: (predefinedProps) => ({
                       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
                     }),
                   })}
                   {createShorthand(composeOptions.slots.description, description, {
                     defaultProps: () => slotProps.description,
-                    overrideProps: predefinedProps => ({
+                    overrideProps: (predefinedProps) => ({
                       variables: mergeVariablesOverrides(variables, predefinedProps.variables),
                     }),
                   })}
@@ -174,7 +175,7 @@ export const Attachment = compose<'div', AttachmentProps, AttachmentStylesProps,
 
         {createShorthand(composeOptions.slots.action, action, {
           defaultProps: () => slotProps.action,
-          overrideProps: predefinedProps => ({
+          overrideProps: (predefinedProps) => ({
             variables: mergeVariablesOverrides(variables, predefinedProps.variables),
           }),
         })}

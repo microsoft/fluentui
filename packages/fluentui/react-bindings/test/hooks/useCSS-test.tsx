@@ -1,6 +1,5 @@
 import { useCSS, UseCSSStyleInput, Unstable_FluentContextProvider } from '@fluentui/react-bindings';
 import { mount } from 'enzyme';
-// @ts-ignore No typings :(
 import * as prettier from 'prettier';
 import * as React from 'react';
 import { RendererRenderGlobal } from '@fluentui/react-northstar-styles-renderer';
@@ -10,13 +9,13 @@ expect.addSnapshotSerializer({
     return value?._isMockFunction;
   },
   print(value: jest.Mock) {
-    const css = value.mock.calls.map(call => call[0]).join(' ');
+    const css = value.mock.calls.map((call) => call[0]).join(' ');
 
     return prettier.format(css, { parser: 'css' }).trim();
   },
 });
 
-const TestComponent: React.FC<{ styles: UseCSSStyleInput[] }> = props => {
+const TestComponent: React.FC<{ styles: UseCSSStyleInput[] }> = (props) => {
   const className = useCSS(...props.styles);
 
   return <div className={className} />;

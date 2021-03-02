@@ -7,6 +7,7 @@ export const selectors = {
   popupTriggerId: 'trigger',
   popupContentClass: popupContentClassName,
   dropdownTriggerClass: dropdownSlotClassNames.triggerButton,
+  dropdownListClass: dropdownSlotClassNames.itemsList,
 };
 
 const PopupEscHandlingExample = () => (
@@ -20,7 +21,7 @@ const PopupEscHandlingExample = () => (
           items={inputItems}
           placeholder="Select your hero"
           getA11ySelectionMessage={{
-            onAdd: item => `${item} has been selected.`,
+            onAdd: (item) => `${item} has been selected.`,
           }}
         />
       </>

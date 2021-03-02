@@ -5,11 +5,11 @@ import {
   getFolderCoverLayout,
   renderFolderCoverWithLayout,
   SharedSignal,
-} from '@uifabric/experiments';
+} from '@fluentui/react-experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
-import { FabricDecorator } from '../utilities';
+import { ISize, fitContentToBounds, Fabric } from '@fluentui/react';
+import { FabricDecorator } from '../utilities/index';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
@@ -38,9 +38,9 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
 };
 
 storiesOf('FolderCover', module)
-  .addDecorator(story => <Fabric>{story()}</Fabric>)
+  .addDecorator((story) => <Fabric>{story()}</Fabric>)
   .addDecorator(FabricDecorator)
-  .addDecorator(story =>
+  .addDecorator((story) =>
     // prettier-ignore
     <Screener
       steps={new Screener.Steps()

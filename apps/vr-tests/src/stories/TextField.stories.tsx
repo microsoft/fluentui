@@ -1,13 +1,12 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities';
-import { TextField } from 'office-ui-fabric-react';
+import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { TextField } from '@fluentui/react';
 
 storiesOf('TextField', module)
   .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

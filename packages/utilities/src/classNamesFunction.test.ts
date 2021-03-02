@@ -1,4 +1,4 @@
-import { IStyle, Stylesheet } from '@uifabric/merge-styles';
+import { IStyle, Stylesheet } from '@fluentui/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { getRTL, setRTL } from './rtl';
 

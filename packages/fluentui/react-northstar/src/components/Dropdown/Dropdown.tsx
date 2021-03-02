@@ -9,12 +9,11 @@ import {
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { indicatorBehavior } from '@fluentui/accessibility';
+import { indicatorBehavior, AccessibilityAttributes, getCode, keyboardKey } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 import cx from 'classnames';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
 import computeScrollIntoView from 'compute-scroll-into-view';
 
 import { ShorthandRenderFunction, ShorthandValue, ShorthandCollection, FluentComponentStaticProps } from '../../types';
@@ -50,6 +49,7 @@ import {
   PopperShorthandProps,
   partitionPopperPropsFromShorthand,
 } from '../../utils/positioner';
+import { CloseIcon, ChevronDownIcon } from '@fluentui/react-icons-northstar';
 
 export interface DownshiftA11yStatusMessageOptions<Item> extends Required<A11yStatusMessageOptions<Item>> {}
 
@@ -68,6 +68,12 @@ export interface DropdownSlotClassNames {
 export interface DropdownProps extends UIComponentProps<DropdownProps>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
+
+  /** Identifies the element (or elements) that labels the current element. Will be passed to `triggerButton`. */
+  'aria-labelledby'?: AccessibilityAttributes['aria-labelledby'];
+
+  /** Indicates the entered value does not conform to the format expected by the application. Will be passed to `triggerButton`. */
+  'aria-invalid'?: AccessibilityAttributes['aria-invalid'];
 
   /** A dropdown item can show a check indicator if it is selected. */
   checkable?: boolean;
@@ -115,6 +121,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
      */
     onRemove?: (item: ShorthandValue<DropdownItemProps>) => string;
   };
+
+  /** A label for selected items listbox. */
+  a11ySelectedItemsMessage?: string;
 
   /**
    * Callback that provides status announcement message with number of items in the list, using Arrow Up/Down keys to navigate through them and, if multiple, using Arrow Left/Right to navigate through selected items.
@@ -208,7 +217,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps>, Position
    * Called when the focus moves out from dropdown.
    * @param event - React's original SyntheticEvent.
    */
-  onBlur?: (event: React.MouseEvent | React.KeyboardEvent | null) => void;
+  onBlur?: (event: React.FocusEvent | null) => void;
 
   /** A dropdown's open state can be controlled. */
   open?: boolean;
@@ -266,6 +275,7 @@ export type DropdownStylesProps = Required<
   hasToggleIndicator: boolean;
   isFromKeyboard: boolean;
   search: boolean;
+  hasItemsSelected: boolean;
 };
 
 type DropdownStateForInvoke = {
@@ -314,7 +324,7 @@ function getFilteredValues(
   const { items, itemToString, itemToValue, multiple, search, searchQuery, value } = options;
 
   const filteredItemsByValue = multiple ? _.differenceBy(items, value, itemToValue) : items;
-  const filteredItemStrings = _.map(filteredItemsByValue, filteredItem => itemToString(filteredItem).toLowerCase());
+  const filteredItemStrings = _.map(filteredItemsByValue, (filteredItem) => itemToString(filteredItem).toLowerCase());
 
   if (search) {
     if (_.isFunction(search)) {
@@ -326,10 +336,7 @@ function getFilteredValues(
 
     return {
       filteredItems: filteredItemsByValue.filter(
-        item =>
-          itemToString(item)
-            .toLowerCase()
-            .indexOf(searchQuery.toLowerCase()) !== -1,
+        (item) => itemToString(item).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
       ),
       filteredItemStrings,
     };
@@ -341,7 +348,7 @@ function getFilteredValues(
   };
 }
 
-const isEmpty = prop => {
+const isEmpty = (prop) => {
   return typeof prop === 'object' && !prop.props && !_.get(prop, 'children') && !_.get(prop, 'content');
 };
 
@@ -359,7 +366,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     Item: typeof DropdownItem;
     SearchInput: typeof DropdownSearchInput;
     SelectedItem: typeof DropdownSelectedItem;
-  } = props => {
+  } = (props) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dropdown.displayName, context.telemetry);
 
@@ -368,6 +375,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
   const {
     align,
     'aria-labelledby': ariaLabelledby,
+    'aria-invalid': ariaInvalid,
     clearable,
     clearIndicator,
     checkable,
@@ -378,6 +386,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     error,
     fluid,
     getA11ySelectionMessage,
+    a11ySelectedItemsMessage,
     getA11yStatusMessage,
     inline,
     inverted,
@@ -401,6 +410,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     styles,
     toggleIndicator,
     triggerButton,
+    unstable_disableTether,
     unstable_pinned,
     variables,
   } = props;
@@ -476,6 +486,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       open,
       position,
       search: !!search,
+      hasItemsSelected: value.length > 0,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -523,11 +534,12 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       disabled,
       onFocus: handleTriggerButtonOrListFocus,
       onBlur: handleTriggerButtonBlur,
-      onKeyDown: e => {
+      onKeyDown: (e) => {
         handleTriggerButtonKeyDown(e);
       },
+      'aria-invalid': ariaInvalid,
       'aria-label': undefined,
-      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter(l => !!l).join(' '),
+      'aria-labelledby': [ariaLabelledby, triggerButtonId].filter((l) => !!l).join(' '),
     });
 
     const { onClick, onFocus, onBlur, onKeyDown, ...restTriggerButtonProps } = triggerButtonProps;
@@ -545,22 +557,22 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
             ...restTriggerButtonProps,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
-            onClick: e => {
+            onClick: (e) => {
               onClick(e);
               _.invoke(predefinedProps, 'onClick', e, predefinedProps);
             },
-            onFocus: e => {
+            onFocus: (e) => {
               onFocus(e);
               _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
             },
-            onBlur: e => {
+            onBlur: (e) => {
               if (!disabled) {
                 onBlur(e);
               }
 
               _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
             },
-            onKeyDown: e => {
+            onKeyDown: (e) => {
               if (!disabled) {
                 onKeyDown(e);
               }
@@ -617,7 +629,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       const accessibilityInputProps = getInputProps();
 
       accessibilityMenuProps['aria-activedescendant'] = accessibilityInputProps['aria-activedescendant'];
-      accessibilityMenuProps['onKeyDown'] = e => {
+      accessibilityMenuProps['onKeyDown'] = (e) => {
         handleListKeyDown(e, highlightedIndex, accessibilityInputProps['onKeyDown'], toggleMenu, selectItemAtIndex);
       };
     }
@@ -636,6 +648,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
           rtl={context.rtl}
           enabled={open}
           targetRef={containerRef}
+          unstable_disableTether={unstable_disableTether}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
           {...positioningProps}
@@ -750,7 +763,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       return null;
     }
 
-    return value.map((item: DropdownItemProps, index) =>
+    const selectedItems = value.map((item: DropdownItemProps, index) =>
       // (!) an item matches DropdownItemProps
       DropdownSelectedItem.create(item, {
         defaultProps: () => ({
@@ -765,6 +778,11 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         overrideProps: handleSelectedItemOverrides(item),
         render: renderSelectedItem,
       }),
+    );
+    return (
+      <div role="listbox" tabIndex={-1} aria-label={a11ySelectedItemsMessage}>
+        {selectedItems}
+      </div>
     );
   };
 
@@ -951,7 +969,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
         item,
         index,
         disabled: item['disabled'],
-        onClick: e => {
+        onClick: (e) => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
           _.invoke(predefinedProps, 'onClick', e, predefinedProps);
@@ -1058,10 +1076,10 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       accessibilityInputProps: {
         ...getInputProps({
           disabled,
-          onBlur: e => {
+          onBlur: (e) => {
             handleInputBlur(e, predefinedProps);
           },
-          onKeyDown: e => {
+          onKeyDown: (e) => {
             handleInputKeyDown(e, predefinedProps);
           },
           onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -1265,14 +1283,14 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     setIsFromKeyboard(detectIsFromKeyboard());
   };
 
-  const handleTriggerButtonBlur = e => {
+  const handleTriggerButtonBlur = (e) => {
     if (listRef.current !== e.relatedTarget) {
       setFocused(false);
       setIsFromKeyboard(detectIsFromKeyboard());
     }
   };
 
-  const handleListBlur = e => {
+  const handleListBlur = (e) => {
     if (buttonRef.current !== e.relatedTarget) {
       setFocused(false);
       setIsFromKeyboard(detectIsFromKeyboard());
@@ -1295,13 +1313,13 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     if (_.isNumber(highlightedIndex)) {
       newHighlightedIndex = _.findIndex(
         filteredItemStrings,
-        item => item.startsWith(newStartingString),
+        (item) => item.startsWith(newStartingString),
         highlightedIndex + (startingString.length > 0 ? 0 : 1),
       );
     }
 
     if (newHighlightedIndex < 0) {
-      newHighlightedIndex = _.findIndex(filteredItemStrings, item => item.startsWith(newStartingString));
+      newHighlightedIndex = _.findIndex(filteredItemStrings, (item) => item.startsWith(newStartingString));
     }
 
     if (newHighlightedIndex >= 0) {
@@ -1331,7 +1349,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
     let newValue = [...value];
 
     if (poppedItem) {
-      newValue = newValue.filter(currentElement => currentElement !== item);
+      newValue = newValue.filter((currentElement) => currentElement !== item);
     } else {
       poppedItem = newValue.pop();
     }
@@ -1377,7 +1395,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
       setValue(newState.value);
     }
 
-    handlerNames.forEach(handlerName => {
+    handlerNames.forEach((handlerName) => {
       _.invoke(props, handlerName, event, { ...props, ...newState, value: newValue });
     });
   };
@@ -1539,17 +1557,20 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                 onClick={search && !open ? handleContainerClick : undefined}
               >
                 <div ref={selectedItemsRef} className={cx(dropdownSlotClassNames.selectedItems, classes.selectedItems)}>
+                  {/* We previously were rendering the trigger button after selected items list,
+                  after listbox wrapper was introduced we moved it to before and
+                   set as absolute to avoid visual regressions   */}
+                  {!search && renderTriggerButton(getToggleButtonProps)}
                   {multiple && renderSelectedItems()}
-                  {search
-                    ? renderSearchInput(
-                        accessibilityRootPropsRest,
-                        highlightedIndex,
-                        getInputProps,
-                        selectItemAtIndex,
-                        toggleMenu,
-                        variables,
-                      )
-                    : renderTriggerButton(getToggleButtonProps)}
+                  {search &&
+                    renderSearchInput(
+                      accessibilityRootPropsRest,
+                      highlightedIndex,
+                      getInputProps,
+                      selectItemAtIndex,
+                      toggleMenu,
+                      variables,
+                    )}
                 </div>
                 {showClearIndicator
                   ? Box.create(clearIndicator, {
@@ -1573,7 +1594,7 @@ export const Dropdown: ComponentWithAs<'div', DropdownProps> &
                         accessibility: indicatorBehavior,
                       }),
                       overrideProps: (predefinedProps: BoxProps) => ({
-                        onClick: e => {
+                        onClick: (e) => {
                           if (!disabled) {
                             getToggleButtonProps({ disabled }).onClick(e);
                           }
@@ -1665,15 +1686,19 @@ Dropdown.propTypes = {
   searchInput: customPropTypes.itemShorthand,
   toggleIndicator: customPropTypes.shorthandAllowingChildren,
   triggerButton: customPropTypes.itemShorthand,
+  unstable_disableTether: PropTypes.oneOf([true, false, 'all']),
   unstable_pinned: PropTypes.bool,
   value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+  'aria-labelledby': PropTypes.string,
+  'aria-invalid': PropTypes.bool,
+  a11ySelectedItemsMessage: PropTypes.string,
 };
 Dropdown.handledProps = Object.keys(Dropdown.propTypes) as any;
 
 Dropdown.defaultProps = {
   align: 'start',
-  clearIndicator: {},
-  itemToString: item => {
+  clearIndicator: <CloseIcon outline />,
+  itemToString: (item) => {
     if (!item || React.isValidElement(item)) {
       return '';
     }
@@ -1681,7 +1706,7 @@ Dropdown.defaultProps = {
     // targets DropdownItem shorthand objects
     return (item as any).header || String(item);
   },
-  itemToValue: item => {
+  itemToValue: (item) => {
     if (!item || React.isValidElement(item)) {
       return '';
     }
@@ -1691,7 +1716,7 @@ Dropdown.defaultProps = {
   },
   list: {},
   position: 'below',
-  toggleIndicator: {},
+  toggleIndicator: <ChevronDownIcon outline />,
   triggerButton: {},
 };
 

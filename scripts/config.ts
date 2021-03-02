@@ -9,10 +9,14 @@ const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-let __BASENAME__ = process.env.PR_DEPLOY
+let __BASENAME__ = process.env.DEPLOYBASEPATH
   ? // This needs a trailing slash or images won't work
-    `/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/react-northstar/`
+    `/${process.env.DEPLOYBASEPATH}/react-northstar/`
   : '/';
+
+if (process.env.OFFICIALRELEASE) {
+  __BASENAME__ = `/${process.env.DEPLOYBASEPATH}/`;
+}
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 
@@ -36,6 +40,7 @@ const envConfig = {
   dir_perf_src: 'packages/fluentui/perf/src',
   dir_umd_dist: 'dist/umd',
   dir_ci_artifacts: 'dist/artifacts',
+  dir_allPackages: 'packages',
 };
 
 // ------------------------------------
@@ -55,6 +60,7 @@ const tempPaths = {
   packageDist: (packageName: string, ...paths: string[]) => base(envConfig.dir_packages, packageName, 'dist', ...paths),
   packageSrc: (packageName: string, ...paths: string[]) => base(envConfig.dir_packages, packageName, 'src', ...paths),
   packages: fromBase(envConfig.dir_packages),
+  allPackages: fromBase(envConfig.dir_allPackages),
   perf: fromBase(envConfig.dir_perf),
   perfDist: fromBase(envConfig.dir_perf_dist),
   perfSrc: fromBase(envConfig.dir_perf_src),
@@ -98,7 +104,7 @@ const config = {
   // ----------------------------------
   // Compiler Configuration
   // ----------------------------------
-  compiler_devtool: __DEV__ && ('eval-source-map' as webpack.Options.Devtool),
+  compiler_devtool: __DEV__ && 'eval-source-map',
   compiler_mode: (__DEV__ ? 'development' : 'production') as webpack.Configuration['mode'],
   compiler_globals: {
     __DEV__,
@@ -106,6 +112,7 @@ const config = {
     __PROD__,
     __BASENAME__: JSON.stringify(__BASENAME__),
     __SKIP_ERRORS__,
+    global: {},
     'process.env': {
       NODE_ENV: JSON.stringify(env),
       SCREENER: !!process.env.SCREENER_API_KEY,

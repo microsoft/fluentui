@@ -2,7 +2,6 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
-import { clearIndicatorUrl } from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
 export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
@@ -105,11 +104,12 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
 
     ...(p.clearable &&
       p.hasValue && {
-        backgroundImage: clearIndicatorUrl(p.disabled ? v.colorDisabled : v.iconColor),
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
         height: '100%',
         width: pxToRem(16),
+        color: v.iconColor,
+        ...(p.disabled && {
+          color: v.colorDisabled,
+        }),
       }),
   }),
 

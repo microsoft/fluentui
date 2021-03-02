@@ -1,5 +1,5 @@
 import { getWindow } from './dom/getWindow';
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
@@ -32,7 +32,7 @@ export function getId(prefix?: string): string {
 
   let index = _global[CURRENT_ID_PROPERTY]++;
 
-  return (prefix || DEFAULT_ID_STRING) + index;
+  return (prefix === undefined ? DEFAULT_ID_STRING : prefix) + index;
 }
 
 /**

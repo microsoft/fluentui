@@ -1,9 +1,10 @@
 import { selectors } from '../commonScreenerSteps';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    builder =>
+    (builder) =>
       builder
         .hover(selectors.item(4))
         .snapshot('Hovers 4th item (hover state styles)')

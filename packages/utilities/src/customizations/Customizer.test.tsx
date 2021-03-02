@@ -2,7 +2,7 @@ import * as React from 'react';
 import { customizable } from './customizable';
 import { Customizer } from './Customizer';
 import { Customizations } from './Customizations';
-import { safeMount } from '@uifabric/test-utilities';
+import { safeMount } from '@fluentui/test-utilities';
 
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {
@@ -34,7 +34,7 @@ describe('Customizer', () => {
       <Customizer settings={{ field: 'customName' }}>
         <Foo />
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>customName</div>');
       },
     );
@@ -47,7 +47,7 @@ describe('Customizer', () => {
       <Customizer settings={{ nonMatch: 'customName' }}>
         <Foo />
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>globalName</div>');
       },
     );
@@ -60,7 +60,7 @@ describe('Customizer', () => {
       <Customizer settings={{ field: 'customName' }}>
         <Foo />
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>customName</div>');
       },
     );
@@ -79,7 +79,7 @@ describe('Customizer', () => {
           <Bar />
         </div>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
       },
     );
@@ -92,7 +92,7 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>fieldfield2</div>');
       },
     );
@@ -107,7 +107,7 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
       },
     );
@@ -126,7 +126,7 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
       },
     );
@@ -144,7 +144,7 @@ describe('Customizer', () => {
           </div>
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
       },
     );
@@ -157,7 +157,7 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>field2</div>');
       },
     );
@@ -170,7 +170,7 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>field2</div>');
       },
     );
@@ -183,7 +183,7 @@ describe('Customizer', () => {
           <Bar />
         </Customizer>
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         expect(wrapper.html()).toEqual('<div>field1field2</div>');
       },
     );
@@ -196,7 +196,7 @@ describe('Customizer', () => {
       <Customizer settings={{ nonMatch: 'customName' }}>
         <Bar />
       </Customizer>,
-      wrapper => {
+      (wrapper) => {
         // verify base state
         expect(wrapper.html()).toEqual('<div>globalName</div>');
 

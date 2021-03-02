@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from './FocusZone';
-import { IRefObject, Point } from '@uifabric/utilities';
+import { IRefObject, Point } from '@fluentui/utilities';
 
 /**
  * FocusZone component class interface.
@@ -25,10 +24,11 @@ export interface IFocusZone {
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * shouldReceiveFocus to create delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param element - The child element within the zone to focus.
+   * @param childElement - The child element within the zone to focus.
+   * @param forceAlignment - If true, focus alignment will be set according to the element provided.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
-  focusElement(childElement?: HTMLElement): boolean;
+  focusElement(childElement?: HTMLElement, forceAlignment?: boolean): boolean;
 
   /**
    * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather
@@ -42,12 +42,18 @@ export interface IFocusZone {
  * FocusZone component props.
  * {@docCategory FocusZone}
  */
-export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
+export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IFocusZone interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<IFocusZone>;
+
+  /**
+   * Optional callback to access the root DOM element.
+   * @deprecated Temporary solution which will be replaced with ref in the V8 release.
+   */
+  elementRef?: React.Ref<HTMLElement>;
 
   /**
    * Additional class name to provide on the root element, in addition to the ms-FocusZone class.
@@ -87,7 +93,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Element type the root element will use. Default is "div".
-   * @deprecated Use 'as' instead.
+   * @deprecated Use `as` instead.
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   elementType?: any /* TODO should be `keyof React.ReactHTML`, tracking with https://github.com/Microsoft/TypeScript/issues/30050 */;
@@ -136,8 +142,8 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /**
-   * Deprecated at v1.12.1. DIV props provided to the FocusZone will be mixed into the root element.
-   * @deprecated DIV props provided to the FocusZone will be mixed into the root element.
+   * @deprecated Div props provided to the FocusZone will be mixed into the root element.
+   * Deprecated at v1.12.1.
    */
   rootProps?: React.HTMLAttributes<HTMLDivElement>;
 
@@ -236,7 +242,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback called when "focus" event triggered in FocusZone.
    * @param event - React's original FocusEvent.
    */
-  onFocus?: (event: React.FocusEvent<HTMLElement | FocusZone>) => void;
+  onFocus?: (event: React.FocusEvent<HTMLElement>) => void;
 
   /**
    * If true, FocusZone prevents the default behavior of Keyboard events when changing focus between elements.

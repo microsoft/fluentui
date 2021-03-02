@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { keyboardKey } from '@fluentui/keyboard-key';
+import { keyboardKey } from '@fluentui/accessibility';
 
 import { isConformant } from 'test/specs/commonTests';
 import { mountWithProvider } from 'test/utils';
@@ -7,6 +7,7 @@ import { Tree } from 'src/components/Tree/Tree';
 import { treeTitleClassName } from 'src/components/Tree/TreeTitle';
 import { treeItemClassName } from 'src/components/Tree/TreeItem';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
+import { TriangleDownIcon, TriangleEndIcon, svgIconClassName } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
@@ -35,7 +36,15 @@ const items = [
     items: [
       {
         id: '21',
-        title: '21',
+        title: {
+          content: '21',
+          children: (Component, { content, expanded, hasSubtree, ...restProps }) => (
+            <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
+              {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
+              {content}
+            </Component>
+          ),
+        },
         items: [
           {
             id: '211',
@@ -56,9 +65,9 @@ const items = [
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${treeTitleClassName}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${treeTitleClassName}`).filterWhere((n) => typeof n.type() === 'string');
 const getItems = (wrapper: ReactWrapper): CommonWrapper =>
-  wrapper.find(`.${treeItemClassName}`).filterWhere(n => typeof n.type() === 'string');
+  wrapper.find(`.${treeItemClassName}`).filterWhere((n) => typeof n.type() === 'string');
 
 const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
   const titles = getTitles(wrapper);
@@ -71,7 +80,11 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 };
 
 describe('Tree', () => {
-  isConformant(Tree, { constructorName: 'Tree', autoControlledProps: ['activeItemIds', 'selectedItemIds'] });
+  isConformant(Tree, {
+    testPath: __filename,
+    constructorName: 'Tree',
+    autoControlledProps: ['activeItemIds', 'selectedItemIds'],
+  });
 
   describe('activeItemIds', () => {
     it('should contain index of item open at click', () => {
@@ -199,6 +212,18 @@ describe('Tree', () => {
         expect.objectContaining({ type: 'click' }),
         expect.objectContaining({ activeItemIds: expect.arrayContaining(['2', '21', '1']) }),
       );
+    });
+
+    it('should expand on click when TreeTitle renders children components ', () => {
+      const wrapper = mountWithProvider(<Tree items={items} />);
+
+      // open title '2'
+      getTitles(wrapper).at(1).simulate('click');
+
+      // click on icon of title '21'
+      const icon = wrapper.find(`.${svgIconClassName}`).filterWhere((n) => typeof n.type() === 'string');
+      icon.simulate('click');
+      checkOpenTitles(wrapper, ['1', '2', '21', '211', '22', '3']);
     });
   });
 });

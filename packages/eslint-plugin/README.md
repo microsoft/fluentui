@@ -6,7 +6,7 @@
 
 Usage: in your [ESLint config file](https://eslint.org/docs/user-guide/configuring), add `{ "extends": ["plugin:@fluentui/<name>"] }` or `{ "extends": ["plugin:@fluentui/eslint-plugin/<name>"] }` (the two are equivalent).
 
-- `react`: For `@fluentui/react` (`office-ui-fabric-react`) and related packages
+- `react`: For `@fluentui/react` and related packages
   - `react--legacy`: Like `react` but requiring an `I` prefix for interfaces
   - `node`: Like `react` but for packages which run in a Node environment (not the browser)
   - `node--legacy`: Like `node` but requiring an `I` prefix for interfaces

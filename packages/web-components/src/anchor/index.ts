@@ -26,6 +26,7 @@ export type AnchorAppearance = ButtonAppearance | 'hypertext';
   styles,
   shadowOptions: {
     delegatesFocus: true,
+    mode: 'closed',
   },
 })
 export class FluentAnchor extends Anchor {
@@ -53,6 +54,21 @@ export class FluentAnchor extends Anchor {
 
     if (!this.appearance) {
       this.appearance = 'neutral';
+    }
+  }
+
+  /**
+   * Applies 'icon-only' class when there is only an SVG in the default slot
+   *
+   * @internal
+   */
+  public defaultSlottedContentChanged(): void {
+    const slottedElements = this.defaultSlottedContent.filter((x) => x.nodeType === Node.ELEMENT_NODE);
+
+    if (slottedElements.length === 1 && slottedElements[0] instanceof SVGElement) {
+      this.control.classList.add('icon-only');
+    } else {
+      this.control.classList.remove('icon-only');
     }
   }
 }

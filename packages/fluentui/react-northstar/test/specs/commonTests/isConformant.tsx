@@ -1,47 +1,37 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { compose, ComposedComponent, FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
+import { isConformant as isConformantBase, IsConformantOptions } from '@fluentui/react-conformance';
 import { Renderer } from '@fluentui/react-northstar-styles-renderer';
 import { ComponentSlotStylesPrepared, emptyTheme } from '@fluentui/styles';
 import * as faker from 'faker';
 import * as _ from 'lodash';
+import * as path from 'path';
 import * as React from 'react';
-import * as ReactIs from 'react-is';
 import { ComponentType, ReactWrapper } from 'enzyme';
-import * as ReactDOMServer from 'react-dom/server';
 import { act } from 'react-dom/test-utils';
-
-import { isExportedAtTopLevel } from './isExportedAtTopLevel';
-import {
-  assertBodyContains,
-  consoleUtil,
-  getDisplayName,
-  mountWithProvider as mount,
-  syntheticEvent,
-} from 'test/utils';
-import { commonHelpers } from './commonHelpers';
+import { getDisplayName, mountWithProvider as mount, syntheticEvent, mountWithProvider } from 'test/utils';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
 
-export interface Conformant {
+export interface Conformant<TProps = {}> extends Pick<IsConformantOptions<TProps>, 'disabledTests' | 'testOptions'> {
+  /** Path to the test file. */
+  testPath: string;
   constructorName?: string;
   /** Map of events and the child component to target. */
   eventTargets?: object;
   hasAccessibilityProp?: boolean;
   /** Props required to render Component without errors or warnings. */
   requiredProps?: object;
-  /** Is this component exported as top level API? */
-  exportedAtTopLevel?: boolean;
   /** Does this component render a Portal powered component? */
   rendersPortal?: boolean;
   /** This component uses wrapper slot to wrap the 'meaningful' element. */
   wrapperComponent?: React.ElementType;
-  handlesAsProp?: boolean;
   /** List of autocontrolled props for this component. */
   autoControlledProps?: string[];
   /** Child component that will receive unhandledProps. */
-  passesUnhandledPropsTo?: ComponentType<any>;
+  targetComponent?: ComponentType<any>;
   /** Child component that will receive ref. */
   forwardsRefTo?: string | false;
 }
@@ -56,24 +46,36 @@ export function isConformant(
     autoControlledProps?: string[];
     deprecated_className?: string;
   },
-  options: Conformant = {},
+  options: Conformant,
 ) {
   const {
+    testPath,
     constructorName = Component.prototype.constructor.name,
     eventTargets = {},
-    exportedAtTopLevel = true,
     hasAccessibilityProp = true,
     requiredProps = {},
-    rendersPortal = false,
     wrapperComponent = null,
-    handlesAsProp = true,
     autoControlledProps = [],
-    passesUnhandledPropsTo,
+    targetComponent,
     forwardsRefTo,
   } = options;
-  const { throwError } = commonHelpers('isConformant', Component);
 
-  const componentType = typeof Component;
+  const defaultConfig: IsConformantOptions = {
+    customMount: mountWithProvider,
+    componentPath: testPath
+      .replace(/test[/\\]specs/, 'src')
+      .replace('-test.', '.')
+      .replace(/.ts$/, '.tsx'),
+    Component,
+    displayName: constructorName,
+    // TODO enable component-has-root-ref and disable test where necessary.
+    // List of the components that will either require the test to be disabled or fixed: (https://hackmd.io/OAUn0pF6Qj-vc315wAHXLQ)
+    disabledTests: ['has-top-level-file', 'component-handles-ref', 'component-has-root-ref'],
+    helperComponents: [Ref, RefFindNode, FocusZone],
+  };
+
+  isConformantBase(defaultConfig, options);
+
   // composed components store `handledProps` under config
   const isComposedComponent: boolean = !!(Component as ComposedComponent).fluentComposeConfig;
   const handledProps = isComposedComponent
@@ -106,92 +108,6 @@ export function isConformant(
     return wrapperComponent ? toNextNonTrivialChild(componentElement) : componentElement;
   };
 
-  // make sure components are properly exported
-  if (!ReactIs.isValidElementType(Component)) {
-    throwError(`Components should export a valid React element type, got: ${componentType}.`);
-  }
-
-  // tests depend on Component constructor names, enforce them
-  if (!constructorName) {
-    throwError(
-      [
-        'Component is not a named function. This should help identify it:\n\n',
-        `${ReactDOMServer.renderToStaticMarkup(<Component />)}`,
-      ].join(''),
-    );
-  }
-
-  // ----------------------------------------
-  // Component info
-  // ----------------------------------------
-  // This is pretty ugly because:
-  // - jest doesn't support custom error messages
-  // - jest will run all test
-  const infoJSONPath = `@fluentui/react-northstar/componentInfo/${constructorName}.info.json`;
-
-  let info;
-
-  try {
-    info = require(infoJSONPath);
-  } catch (err) {
-    // handled in the test() below
-    test('component info file exists', () => {
-      throw new Error(
-        [
-          '!! ==========================================================',
-          `!! Missing ${infoJSONPath}.`,
-          '!! Run `yarn test` or `yarn test:watch` again to generate one.',
-          '!! ==========================================================',
-        ].join('\n'),
-      );
-    });
-    return null;
-  }
-
-  // ----------------------------------------
-  // Docblock description
-  // ----------------------------------------
-  const hasDocblockDescription = info.docblock.description.trim().length > 0;
-
-  test('has a docblock description', () => {
-    expect(hasDocblockDescription).toEqual(true);
-  });
-
-  if (hasDocblockDescription) {
-    const minWords = 5;
-    const maxWords = 25;
-    test(`docblock description is long enough to be meaningful (>${minWords} words)`, () => {
-      expect(_.words(info.docblock.description).length).toBeGreaterThanOrEqual(minWords);
-    });
-
-    test(`docblock description is short enough to be quickly understood (<${maxWords} words)`, () => {
-      expect(_.words(info.docblock.description).length).toBeLessThan(maxWords);
-    });
-  }
-
-  // ----------------------------------------
-  // Class and file name
-  // ----------------------------------------
-  test(`constructor name matches filename "${constructorName}"`, () => {
-    expect(constructorName).toEqual(info.filenameWithoutExt);
-  });
-
-  // find the apiPath in the top level API
-  const foundAsSubcomponent = ReactIs.isValidElementType(_.get(FluentUI, info.apiPath));
-
-  exportedAtTopLevel && isExportedAtTopLevel(constructorName, info.displayName);
-  if (info.isChild) {
-    test('is a static component on its parent', () => {
-      const message =
-        `'${info.displayName}' is a child component (is in ${info.repoPath}).` +
-        ` It must be a static prop of its parent '${info.parentDisplayName}'`;
-      expect({ foundAsSubcomponent, message }).toEqual({
-        message,
-        foundAsSubcomponent: true,
-      });
-    });
-  }
-
   // ----------------------------------------
   // Props
   // ----------------------------------------
@@ -206,83 +122,11 @@ export function isConformant(
     expect(component.find(props).length).toBeGreaterThan(1);
   });
 
-  if (!rendersPortal && handlesAsProp) {
-    describe('"as" prop (common)', () => {
-      test('renders the component as HTML tags or passes "as" to the next component', () => {
-        // silence element nesting warnings
-        consoleUtil.disableOnce();
-
-        const tags = ['a', 'em', 'div', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'i', 'p', 'span', 'strong'];
-
-        tags.forEach(tag => {
-          const wrapper = mount(<Component {...requiredProps} as={tag} />);
-          const component = getComponent(wrapper);
-          try {
-            expect(component.is(tag)).toEqual(true);
-          } catch (err) {
-            expect(component.type()).not.toEqual(Component);
-            expect(component.prop('as')).toEqual(tag);
-          }
-        });
-      });
-
-      test('renders as a functional component or passes "as" to the next component', () => {
-        const MyComponent = () => null;
-
-        const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
-        const component = getComponent(wrapper);
-
-        try {
-          expect(component.type()).toEqual(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toEqual(Component);
-          expect(
-            component
-              .find('[as]')
-              .last()
-              .prop('as'),
-          ).toEqual(MyComponent);
-        }
-      });
-
-      test('renders as a ReactClass or passes "as" to the next component', () => {
-        class MyComponent extends React.Component {
-          render() {
-            return <div data-my-react-class />;
-          }
-        }
-
-        const wrapper = mount(<Component {...requiredProps} as={MyComponent} />);
-        const component = getComponent(wrapper);
-
-        try {
-          expect(component.type()).toEqual(MyComponent);
-        } catch (err) {
-          expect(component.type()).not.toEqual(Component);
-          expect(component.prop('as')).toEqual(MyComponent);
-        }
-      });
-
-      test('passes extra props to the component it is renders as', () => {
-        if (passesUnhandledPropsTo) {
-          const el = mount(<Component {...requiredProps} data-extra-prop="foo" />).find(passesUnhandledPropsTo);
-
-          expect(el.prop('data-extra-prop')).toBe('foo');
-        } else {
-          const MyComponent = () => null;
-          const el = mount(<Component {...requiredProps} as={MyComponent} data-extra-prop="foo" />).find(MyComponent);
-
-          expect(el.prop('data-extra-prop')).toBe('foo');
-        }
-      });
-    });
-  }
-
   // ---------------------------------------
   // Autocontrolled props
   // ---------------------------------------
   test('autoControlled props should have prop, default prop and on change handler in handled props', () => {
-    autoControlledProps.forEach(propName => {
+    autoControlledProps.forEach((propName) => {
       const capitalisedPropName = `${propName.slice(0, 1).toUpperCase()}${propName.slice(1)}`;
       const expectedDefaultProp = `default${capitalisedPropName}`;
       const expectedChangeHandler =
@@ -338,8 +182,8 @@ export function isConformant(
 
     if (!isClassComponent) {
       test('uses "useUnhandledProps" hook', () => {
-        const wrapper = passesUnhandledPropsTo
-          ? mount(<Component {...requiredProps} />).find(passesUnhandledPropsTo)
+        const wrapper = targetComponent
+          ? mount(<Component {...requiredProps} />).find(targetComponent)
           : mount(<Component {...requiredProps} />);
         const element = getComponent(wrapper);
 
@@ -373,15 +217,15 @@ export function isConformant(
 
     test("client's attributes override the ones provided by Fluent UI", () => {
       const wrapperProps = { ...requiredProps, [IS_FOCUSABLE_ATTRIBUTE]: false };
-      const wrapper = passesUnhandledPropsTo
-        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(passesUnhandledPropsTo)
+      const wrapper = targetComponent
+        ? mount(<Component {...wrapperProps} accessibility={noopBehavior} />).find(targetComponent)
         : mount(<Component {...wrapperProps} accessibility={noopBehavior} />);
       const element = getComponent(wrapper);
 
       expect(element.prop(IS_FOCUSABLE_ATTRIBUTE)).toBe(false);
     });
 
-    _.forEach(['onKeyDown', 'onKeyPress', 'onKeyUp'], listenerName => {
+    _.forEach(['onKeyDown', 'onKeyPress', 'onKeyUp'], (listenerName) => {
       test(`handles ${listenerName} transparently`, () => {
         // onKeyDown => keyDown
         const eventName = _.camelCase(listenerName.replace('on', ''));
@@ -414,7 +258,7 @@ export function isConformant(
     // This test catches the case where a developer forgot to call the event prop
     // after handling it internally. It also catch cases where the synthetic event was not passed back.
     _.each(syntheticEvent.types, ({ eventShape, listeners }) => {
-      _.each(listeners, listenerName => {
+      _.each(listeners, (listenerName) => {
         // onKeyDown => keyDown
         const eventName = _.camelCase(listenerName.replace('on', ''));
 
@@ -452,7 +296,7 @@ export function isConformant(
 
         // <Dropdown onBlur={handleBlur} />
         //                   ^ was not called once on "blur"
-        const leftPad = ' '.repeat(info.displayName.length + listenerName.length + 3);
+        const leftPad = ' '.repeat(constructorName.length + listenerName.length + 3);
 
         // onKeyDown => handleKeyDown
         const handlerName = _.camelCase(listenerName.replace('on', 'handle'));
@@ -462,7 +306,7 @@ export function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ was not called once on "${eventName}".`,
               'You may need to hoist your event handlers up to the root element.\n',
             ].join(''),
@@ -494,7 +338,7 @@ export function isConformant(
         } catch (err) {
           throw new Error(
             [
-              `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
+              `<${constructorName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ ${errorMessage}`,
               'It was called with args:',
               JSON.stringify(handlerSpy.mock.calls[0], null, 2),
@@ -509,88 +353,28 @@ export function isConformant(
   // Handles className
   // ----------------------------------------
   describe('className const (common)', () => {
-    const componentClassName = info.componentClassName || `ui-${Component.displayName}`.toLowerCase();
-    const getClassesOfRootElement = component => {
-      return component
-        .find('[className]')
-        .hostNodes()
-        .at(wrapperComponent ? 1 : 0)
-        .prop('className');
-    };
+    // This className calculation is duplicated from scripts/gulp/plugins/util/getComponentInfo.ts.
+    // The duplication isn't ideal, but the speed benefit from removing the requirement to build
+    // component info before running tests is worth it.
+    const { componentPath } = defaultConfig;
+    const dirname = path.basename(path.dirname(componentPath));
+    const filenameWithoutExt = path.basename(componentPath, path.extname(componentPath));
+    const isParent = filenameWithoutExt === dirname;
+    const parentDisplayName = isParent ? null : dirname;
+    // for example, "Menu" for "ToolbarMenu" since it is accessed as "Toolbar.Menu" in the API
+    const subcomponentName = isParent ? null : constructorName.replace(parentDisplayName!, '');
+
+    const componentClassName = (!isParent
+      ? _.includes(subcomponentName, 'Group')
+        ? `ui-${parentDisplayName}s`
+        : `ui-${parentDisplayName}__${subcomponentName}`
+      : `ui-${constructorName.toLowerCase()}`
+    ).toLowerCase();
 
     const constClassName = _.camelCase(`${Component.displayName}ClassName`);
 
     test(`exports a const equal to "${componentClassName}"`, () => {
       expect(FluentUI[constClassName]).toEqual(componentClassName);
-    });
-
-    test(`is applied to the root element`, () => {
-      const component = mount(<Component {...requiredProps} />);
-
-      // only test components that implement className
-      if (component.find('[className]').hostNodes().length > 0) {
-        expect(_.includes(getClassesOfRootElement(component), componentClassName)).toEqual(true);
-      }
-    });
-
-    test("applies user's className to root component", () => {
-      const className = 'is-conformant-class-string';
-
-      // Portal powered components can render to two elements, a trigger and the actual component
-      // The actual component is shown when the portal is open
-      // If a trigger is rendered, open the portal and make assertions on the portal element
-      // TODO some component using renderPortal = 'true'
-      if (rendersPortal) {
-        const mountNode = document.createElement('div');
-        document.body.appendChild(mountNode);
-
-        const wrapper = mount(<Component {...requiredProps} className={className} />, {
-          attachTo: mountNode,
-        });
-        wrapper.setProps({ open: true } as any);
-
-        // portals/popups/etc may render the component to somewhere besides descendants
-        // we look for the component anywhere in the DOM
-        assertBodyContains(`.${className}`);
-
-        wrapper.detach();
-        document.body.removeChild(mountNode);
-      } else {
-        const component = mount(<Component {...requiredProps} className={className} />);
-        expect(_.includes(getClassesOfRootElement(component), className)).toEqual(true);
-      }
-    });
-
-    test("user's className does not override the default classes", () => {
-      const component = mount(<Component {...requiredProps} />);
-      const defaultClasses = getClassesOfRootElement(component);
-
-      if (!defaultClasses) return;
-
-      const userClasses = 'generate';
-      const wrapperWithCustomClasses = mount(<Component {...requiredProps} className={userClasses} />);
-      const mixedClasses = getClassesOfRootElement(wrapperWithCustomClasses);
-
-      const message = [
-        'Make sure you are using the `getUnhandledProps` util to spread the `unhandledProps` props.',
-        'This may also be of help: https://facebook.github.io/react/docs/transferring-props.html.',
-      ].join(' ');
-
-      defaultClasses.split(' ').forEach(defaultClass => {
-        expect({ message, result: _.includes(mixedClasses, defaultClass) }).toEqual({
-          message,
-          result: true,
-        });
-      });
-    });
-  });
-
-  // ----------------------------------------
-  // displayName
-  // ----------------------------------------
-  describe('static displayName (common)', () => {
-    test('matches constructor name', () => {
-      expect(Component.displayName).toEqual(constructorName);
     });
   });
 
@@ -612,7 +396,6 @@ export function isConformant(
   // ---------------------------------------
   // compose()
   // ---------------------------------------
-
   if (isComposedComponent) {
     describe('compose', () => {
       describe('debug', () => {
@@ -660,7 +443,7 @@ export function isConformant(
           Component as ComposedComponent,
           {
             className: 'ui-composed',
-            mapPropsToStylesProps: props => ({ stylesTest: props.test }),
+            mapPropsToStylesProps: (props) => ({ stylesTest: props.test }),
             handledProps: ['test'],
           },
         );
@@ -674,7 +457,7 @@ export function isConformant(
 
         it('allows to define additional styles props', () => {
           const renderer: Partial<Renderer> = {
-            renderRule: styles => {
+            renderRule: (styles) => {
               const props = (styles as unknown) as ComposedComponentStylesProps;
 
               return props.stylesTest ? 'has-test' : 'has-not-test';

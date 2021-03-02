@@ -15,6 +15,7 @@ export const positioningProps: Required<PositioningProps> = {
   popperRef: React.createRef(),
   position: 'above',
   positionFixed: true,
+  unstable_disableTether: 'all',
   unstable_pinned: true,
 };
 

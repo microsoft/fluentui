@@ -20,16 +20,17 @@ let cwdForRepoDeps;
 
 /**
  * Find all the dependencies (and their dependencies) within the repo for a specific package (in the CWD when this was called)
+ * @param {string} [cwd] optional different cwd
  * @returns {import('./index').PackageInfo[]}
  */
-function findRepoDeps() {
-  const cwd = process.cwd();
+function findRepoDeps(cwd) {
+  cwd = cwd || process.cwd();
   if (repoDeps && cwdForRepoDeps === cwd) {
     return repoDeps;
   }
 
   const packageInfo = getAllPackageInfo();
-  const packageJson = readConfig('package.json');
+  const packageJson = readConfig('package.json', cwd);
   const packageDeps = getDeps(packageJson);
   /** @type {Set<string>} */
   const result = new Set();
@@ -40,7 +41,7 @@ function findRepoDeps() {
     if (dep && packageInfo[dep]) {
       result.add(dep);
 
-      getDeps(packageInfo[dep].packageJson).forEach(child => {
+      getDeps(packageInfo[dep].packageJson).forEach((child) => {
         if (child && packageInfo[child] && !result.has(child)) {
           packageDeps.push(child);
         }
@@ -48,7 +49,7 @@ function findRepoDeps() {
     }
   }
 
-  repoDeps = [...result].map(dep => packageInfo[dep]);
+  repoDeps = [...result].map((dep) => packageInfo[dep]);
   cwdForRepoDeps = cwd;
   return repoDeps;
 }

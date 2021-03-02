@@ -17,8 +17,7 @@ export interface ComponentToCompat {
 
 export interface RawCompat {
   componentName: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  namedExports: { [key: string]: any };
+  namedExports: string[];
 }
 
 export interface CompatMap {
@@ -28,9 +27,9 @@ export interface CompatMap {
 
 export function repathNamedImports(file: SourceFile, namedImportMap: { [key: string]: string }, indexPath: string) {
   const imports = getImportsByPath(file, indexPath);
-  return imports.then(ports => {
-    return ports.map(imp => {
-      imp.getNamedImports().forEach(namedImp => {
+  return imports.then((ports) => {
+    return ports.map((imp) => {
+      imp.getNamedImports().forEach((namedImp) => {
         if (namedImportMap[namedImp.getName()]) {
           appendOrCreateNamedImport(file, namedImportMap[namedImp.getName()], [namedImp.getStructure()]);
           namedImp.remove();
@@ -46,9 +45,8 @@ export function repathNamedImports(file: SourceFile, namedImportMap: { [key: str
   });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getNamedExports(obj: { [key: string]: any }) {
-  return Object.keys(obj).filter(key => key !== 'default');
+export function getNamedExports(names: string[]) {
+  return names.filter((key) => key !== 'default');
 }
 
 export function buildCompatHash(
@@ -59,7 +57,7 @@ export function buildCompatHash(
     (acc: CompatMap, val) => {
       const paths = getComponentToCompat(val);
       acc.exactPathMatch[paths.oldPath] = paths.newComponentPath;
-      paths.namedExports.forEach(path => {
+      paths.namedExports.forEach((path) => {
         acc.namedExportsMatch[path] = paths.newComponentPath;
       });
       return acc;
@@ -69,7 +67,7 @@ export function buildCompatHash(
 }
 
 export function repathPathedImports(file: SourceFile, pathMapping: { [key: string]: string }) {
-  file.getImportDeclarations().forEach(dec => {
+  file.getImportDeclarations().forEach((dec) => {
     const str = dec.getModuleSpecifierValue();
     if (pathMapping[str]) {
       repathImport(dec, pathMapping[str]);

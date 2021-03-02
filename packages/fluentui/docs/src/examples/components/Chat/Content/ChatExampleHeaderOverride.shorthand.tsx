@@ -19,7 +19,13 @@ const items: ChatProps['items'] = [
     attached: 'top',
     contentPosition: 'end',
     message: (
-      <Chat.Message reactionGroup={reactions} content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />
+      <Chat.Message
+        reactionGroup={reactions}
+        content="Hello"
+        author="Cecil Folk"
+        timestamp="Yesterday, 10:15 PM"
+        mine
+      />
     ),
     key: 'message-1',
   },
@@ -37,21 +43,16 @@ const items: ChatProps['items'] = [
           },
         ]}
         content="I'm back!"
-        author="John Doe"
+        author="Cecil Folk"
         timestamp="Yesterday, 10:15 PM"
         mine
       />
     ),
   },
   {
-    gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
+    gutter: <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg" />,
     message: (
-      <Chat.Message
-        reactionGroup={reactions}
-        content="Hi"
-        author="Jane John With a really long surname here"
-        timestamp="Yesterday, 10:15 PM"
-      />
+      <Chat.Message reactionGroup={reactions} content="Hi" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />
     ),
     key: 'message-3',
   },

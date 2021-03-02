@@ -3,7 +3,7 @@ import { getUUID } from './getUUID';
 import { JSONTreeElement } from '../components/types';
 
 const prefixElementNamesPlugin = ({ types }) => {
-  const hackElementName = elementNode => {
+  const hackElementName = (elementNode) => {
     if (types.isJSXIdentifier(elementNode.name)) {
       elementNode.name.name = `hack_${elementNode.name.name}`;
     } else if (types.isJSXMemberExpression(elementNode.name) && types.isJSXIdentifier(elementNode.name.object)) {
@@ -28,7 +28,7 @@ const prefixElementNamesPlugin = ({ types }) => {
   };
 };
 
-export const codeToTree: (code: string) => JSONTreeElement = code => {
+export const codeToTree: (code: string) => JSONTreeElement = (code) => {
   const compiled = transform(code, {
     plugins: [prefixElementNamesPlugin],
     presets: [['react', { pragma: 'convert', pragmaFrag: '"hack_React_dot_Fragment"' }]],
@@ -47,7 +47,7 @@ export const codeToTree: (code: string) => JSONTreeElement = code => {
       }
     }
 
-    const uuid = props?.['data-builder-id'] ?? getUUID();
+    const uuid = props && props.hasOwnProperty('data-builder-id') ? props['data-builder-id'] : getUUID();
     delete props?.['data-builder-id'];
 
     return {

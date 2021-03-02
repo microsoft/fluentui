@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'office-ui-fabric-react';
+import { Link } from '@fluentui/react';
 
 const Scenario = () => <Link href="https//www.bing.com">Bing</Link>;
 

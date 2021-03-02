@@ -1,6 +1,36 @@
-# Change Log - @uifabric/set-version
+# Change Log - @fluentui/set-version
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+
+<!-- Start content -->
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/set-version_v8.0.0-beta.2..@fluentui/set-version_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.0.0-beta.2)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/set-version_v8.0.0-beta.1..@fluentui/set-version_v8.0.0-beta.2)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/set-version_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/set-version_v7.0.16..@fluentui/set-version_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15615](https://github.com/microsoft/fluentui/pull/15615) by elcraig@microsoft.com)
 
 ## 7.0.9
 Wed, 25 Mar 2020 12:30:04 GMT
@@ -62,4 +92,3 @@ Fri, 21 Sep 2018 14:25:46 GMT
 ### Minor changes
 
 - Adding a set-version package to manage duplicated version code
-

@@ -1,9 +1,9 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import { argv } from 'yargs';
 import webpack from 'webpack';
-
+import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
 import config from '../config';
 
 const { paths } = config;
@@ -21,13 +21,9 @@ const webpackConfig: webpack.Configuration = {
     pathinfo: true,
     publicPath: config.compiler_public_path,
   },
-  devtool: config.compiler_devtool as webpack.Options.Devtool,
+  devtool: config.compiler_devtool,
   node: {
-    fs: 'empty',
-    module: 'empty',
-    child_process: 'empty',
-    net: 'empty',
-    readline: 'empty',
+    global: true,
   },
   module: {
     noParse: [/anchor-js/],
@@ -43,15 +39,25 @@ const webpackConfig: webpack.Configuration = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({ tsconfig: paths.perf('tsconfig.json') }),
-    new (CopyWebpackPlugin as any)([
-      {
-        from: paths.perfSrc('index.html'),
-        to: paths.perfDist(),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        configFile: paths.e2e('tsconfig.json'),
       },
-    ]),
+    }),
+    new (CopyWebpackPlugin as any)({
+      patterns: [
+        {
+          from: paths.perfSrc('index.html'),
+          to: paths.perfDist(),
+        },
+      ],
+    }),
   ],
   resolve: {
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
@@ -61,6 +67,10 @@ const webpackConfig: webpack.Configuration = {
       // https://gist.github.com/bvaughn/25e6233aeb1b4f0cdb8d8366e54a3977
       'react-dom$': 'react-dom/profiling',
       'scheduler/tracing': 'scheduler/tracing-profiling',
+
+      // Can be removed once Prettier will be upgraded to v2
+      // https://github.com/prettier/prettier/issues/6903
+      '@microsoft/typescript-etw': false,
     },
   },
   performance: {

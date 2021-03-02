@@ -38,7 +38,11 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
 ];
 
 describe('RadioGroup', () => {
-  isConformant(RadioGroup, { constructorName: 'RadioGroup', autoControlledProps: ['checkedValue'] });
+  isConformant(RadioGroup, {
+    testPath: __filename,
+    constructorName: 'RadioGroup',
+    autoControlledProps: ['checkedValue'],
+  });
 
   describe('accessibility', () => {
     handlesAccessibility(RadioGroup, {
@@ -67,27 +71,45 @@ describe('RadioGroup', () => {
       const items = getItems();
       const radioGroupItems = mountWithProvider(<RadioGroup items={items} />).find('RadioGroupItem');
 
-      radioGroupItems
-        .first()
-        .find('div')
-        .first()
-        .simulate('click');
+      radioGroupItems.first().find('div').first().simulate('click');
 
       const onClick = items[0].onClick || items[0].props.onClick;
       expect(onClick).toHaveBeenCalled();
     });
 
+    it('calls onChange handler for item with updated checked state', () => {
+      const onChange = jest.fn();
+      const items = [
+        {
+          name: 'test-name',
+          key: 'test-key0',
+          label: 'test-label0',
+          value: 'test-value0',
+          onChange,
+        },
+        ...getItems(),
+      ];
+      const wrapper = mountWithProvider(<RadioGroup items={items} />);
+      const radioGroupItems = wrapper.find('RadioGroupItem');
+
+      radioGroupItems.first().simulate('click');
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: true }));
+
+      radioGroupItems.last().simulate('click');
+      expect(onChange).toHaveBeenCalledWith(undefined, expect.objectContaining({ checked: false }));
+    });
+
     it('passes arbitrary props', () => {
       const radioGroupItems = mountWithProvider(<RadioGroup items={getItems()} />).find('RadioGroupItem');
 
-      expect(radioGroupItems.everyWhere(item => item.prop('data-foo') === 'something')).toBe(true);
+      expect(radioGroupItems.everyWhere((item) => item.prop('data-foo') === 'something')).toBe(true);
     });
 
     describe('checkedValue', () => {
       it('should not be set and first item is focusable by default', () => {
         const radioGroupItems = mountWithProvider(<RadioGroup items={getItems()} />).find('RadioGroupItem');
 
-        expect(radioGroupItems.everyWhere(item => !item.is('[checked="true"]'))).toBe(true);
+        expect(radioGroupItems.everyWhere((item) => !item.is('[checked="true"]'))).toBe(true);
         expect(radioGroupItems.at(0).props().tabIndex).toBe(0);
       });
     });
@@ -101,11 +123,7 @@ describe('RadioGroup', () => {
           );
           const radioGroupItems = wrapper.find('RadioGroupItem');
 
-          radioGroupItems
-            .at(1)
-            .find('div')
-            .first()
-            .simulate('click');
+          radioGroupItems.at(1).find('div').first().simulate('click');
 
           const updatedItems = wrapper.find('RadioGroupItem');
 
@@ -127,11 +145,7 @@ describe('RadioGroup', () => {
       );
       const radioGroupItems = wrapper.find('RadioGroupItem');
 
-      radioGroupItems
-        .at(1)
-        .find('div')
-        .first()
-        .simulate('click');
+      radioGroupItems.at(1).find('div').first().simulate('click');
 
       expect(onCheckedValueChange).not.toHaveBeenCalled();
     });
@@ -141,11 +155,7 @@ describe('RadioGroup', () => {
         const wrapper = mountWithProvider(<RadioGroup items={getItems({ disabledItem: 1 })} />);
         const radioGroupItems = wrapper.find('RadioGroupItem');
 
-        radioGroupItems
-          .at(1)
-          .find('div')
-          .first()
-          .simulate('click');
+        radioGroupItems.at(1).find('div').first().simulate('click');
 
         const updatedItems = wrapper.find('RadioGroupItem');
 

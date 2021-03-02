@@ -23,10 +23,10 @@ import {
   getElementType,
   useUnhandledProps,
   useAccessibility,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 import {
   createShorthand,
@@ -164,7 +164,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const menuRef = React.useRef<HTMLElement>();
 
     const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
-      menuSlot: v => v.slots.menu,
+      menuSlot: (v) => v.slots.menu,
     }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
@@ -186,18 +186,18 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         'aria-describedby': props['aria-describedby'],
       }),
       actionHandlers: {
-        performClick: event => {
+        performClick: (event) => {
           event.preventDefault();
           handleClick(event);
         },
-        openMenu: event => openMenu(event),
-        closeAllMenusAndFocusNextParentItem: event => closeAllMenus(event),
-        closeMenu: event => closeMenu(event),
-        closeMenuAndFocusTrigger: event => closeMenu(event),
-        doNotNavigateNextParentItem: event => {
+        openMenu: (event) => openMenu(event),
+        closeAllMenusAndFocusNextParentItem: (event) => closeAllMenus(event),
+        closeMenu: (event) => closeMenu(event),
+        closeMenuAndFocusTrigger: (event) => closeMenu(event),
+        doNotNavigateNextParentItem: (event) => {
           event.stopPropagation();
         },
-        closeAllMenus: event => closeAllMenus(event),
+        closeAllMenus: (event) => closeAllMenus(event),
       },
       rtl: context.rtl,
     });
@@ -356,7 +356,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       const popupElement = createShorthand(composeOptions.slots.popup, popup, {
         defaultProps: () => ({
           ...slotProps.popup,
-          onOpenChange: e => {
+          onOpenChange: (e) => {
             e.stopPropagation();
           },
         }),
@@ -444,7 +444,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       activeIndicator: ToolbarMenuItemActiveIndicator,
       popup: Popup,
     },
-    slotProps: props => ({
+    slotProps: (props) => ({
       icon: {
         hasContent: !!props.content,
       },

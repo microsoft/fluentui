@@ -7,9 +7,9 @@ import {
   IColumn,
   IGroup,
   SelectionMode,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/DetailsList';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { IContrastRatioPair } from './AccessibilityChecker';
 
 export interface IAccessibilityDetailsListProps {

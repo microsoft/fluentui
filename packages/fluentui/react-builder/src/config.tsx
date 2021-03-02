@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { isElement } from 'react-is';
 import * as _ from 'lodash';
-
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 
@@ -18,7 +17,9 @@ const docsComponentsPackageJson = require('@fluentui/docs-components/package.jso
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const COMPONENT_GROUP = {
-  Surfaces: ['Popup', 'Dialog'],
+  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
+  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Content: [
     'Text',
     'Image',
@@ -37,11 +38,10 @@ export const COMPONENT_GROUP = {
     'Status',
     'Tooltip',
     'Video',
+    'Skeleton',
   ],
-  Layouts: ['Box', 'Flex', 'Grid', 'Layout', 'Table', 'ItemLayout'],
   Forms: ['Input', 'Dropdown', 'Form', 'Checkbox', 'RadioGroup', 'Slider', 'TextArea'],
-  Actionable: ['Button', 'MenuButton', 'SplitButton', 'Menu', 'Toolbar'],
-  Containers: ['Card', 'Carousel', 'Accordion', 'Segment', 'List', 'Tree', 'HierarchicalTree'],
+  Surfaces: ['Popup', 'Dialog'],
 };
 
 export const DRAGGING_ELEMENTS = {
@@ -140,16 +140,16 @@ export const DRAGGING_ELEMENTS = {
         {
           gutter: (
             <FUI.Avatar
-              image="public/images/avatar/small/ade.jpg"
+              image="public/images/avatar/RobinCounts.jpg"
               status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
             />
           ),
-          message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+          message: <FUI.Chat.Message content="Hi!" author="Robin Counts" timestamp="Yesterday, 10:15 PM" />,
           attached: 'top',
           key: 'message-id-4',
         },
         {
-          message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+          message: <FUI.Chat.Message content="Hello!" author="Cecil Folk" timestamp="Yesterday, 10:15 PM" mine />,
           contentPosition: 'end',
           attached: true,
           key: 'message-id-2',
@@ -265,23 +265,23 @@ export const DRAGGING_ELEMENTS = {
     props: {
       items: [
         {
-          key: 'irving',
-          media: <FUI.Image src="public/images/avatar/small/matt.jpg" avatar />,
-          header: 'Irving Kuhic',
+          key: 'robert',
+          media: <FUI.Image src="public/images/avatar/RobertTolbert.jpg" avatar />,
+          header: 'Robert Tolbert',
           headerMedia: '7:26:56 AM',
           content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
         },
         {
-          key: 'skyler',
-          media: <FUI.Image src="public/images/avatar/small/steve.jpg" avatar />,
-          header: 'Skyler Parks',
+          key: 'celeste',
+          media: <FUI.Image src="public/images/avatar/CelesteBurton.jpg" avatar />,
+          header: 'Celeste Burton',
           headerMedia: '11:30:17 PM',
           content: 'Use the online FTP application to input the multi-byte application!',
         },
         {
-          key: 'dante',
-          media: <FUI.Image src="public/images/avatar/small/nom.jpg" avatar />,
-          header: 'Dante Schneider',
+          key: 'cecil',
+          media: <FUI.Image src="public/images/avatar/CecilFolk.jpg" avatar />,
+          header: 'Cecil Folk',
           headerMedia: '5:22:40 PM',
           content: 'The GB pixel is down, navigate the virtual interface!',
         },
@@ -423,7 +423,14 @@ export const resolveComponent = (displayName): React.ElementType => {
 };
 
 // FIXME: breaks for <button>btn</button>
-const toJSONTreeElement = input => {
+const toJSONTreeElement = (input) => {
+  if (input?.as && _.isPlainObject(input.as)) {
+    return {
+      type: input.as.displayName,
+      props: { ...input, as: undefined },
+      $$typeof: 'Symbol(react.element)',
+    };
+  }
   if (isElement(input)) {
     return {
       $$typeof: 'Symbol(react.element)',
@@ -458,6 +465,7 @@ export const resolveDraggingElement: (displayName: string, module: string, dragg
     type: displayName,
     moduleName: module,
     displayName,
+    props: { children: [] },
     ...jsonTreeElement,
   };
 };
@@ -527,7 +535,7 @@ const resolveProps = (input, cb) => {
 
 export const renderJSONTreeToJSXElement = (
   tree: JSONTreeElement,
-  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = x => x,
+  iterator: (jsonTreeElement: JSONTreeElement) => JSONTreeElement = (x) => x,
 ) => {
   if (tree === null) {
     return null;
@@ -589,7 +597,7 @@ export const JSONTreeToImports = (tree: JSONTreeElement, imports = {}) => {
     }
   }
 
-  tree.props?.children?.forEach(item => {
+  tree.props?.children?.forEach((item) => {
     if (typeof item !== 'string') {
       imports = JSONTreeToImports(item, imports);
     }
@@ -620,7 +628,13 @@ export const getCodeSandboxInfo = (tree: JSONTreeElement, code: string) => {
   };
   for (const [module, components] of Object.entries(imports)) {
     codeSandboxExport += `import {${components.join(', ')}} from "${module}";\n`;
-    packageImports[module] = packageImportList[module];
+    if (packageImportList[module]) {
+      packageImports[module] = packageImportList[module];
+    } else {
+      console.error(
+        `Undefined module "${module}" for export to codesandbox for components {${components.join(', ')}} `,
+      );
+    }
   }
   codeSandboxExport += `\n export default function Example() { \n return (\n
   ${code} \n);}`;
@@ -649,7 +663,7 @@ export const fiberNavFindOwnerInJSONTree = (fiberNav: FiberNavigator, jsonTree: 
   //   edit the components children directly.
   // We need to traverse the parent fibers and find one that has a uuid that exists in the json tree
 
-  return fiberNav.findParent(parent => {
+  return fiberNav.findParent((parent) => {
     return !!jsonTreeFindElement(jsonTree, parent.key);
   });
 };
@@ -658,7 +672,7 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   const newTree = { ...cb(tree) };
 
   if (Array.isArray(newTree.children) && newTree.children.length > 0) {
-    newTree.children = newTree.children.map(child => {
+    newTree.children = newTree.children.map((child) => {
       return jsonTreeMap(child, cb);
     });
   }
@@ -674,7 +688,7 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
 //       If you replace React.Children.map from Flex and just return `children`, no prefixing occurs.
 //       -- FIX?
 //       The builder could use some other way of relating JSON tree elements to React elements besides key.
-const keyToUUID = key => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
+const keyToUUID = (key) => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
 
 export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
   const uuidFromKey = keyToUUID(uuid);
@@ -706,7 +720,7 @@ export const jsonTreeFindParent = (tree: JSONTreeElement, uuid: string | number)
 
   let ret = null;
   if (Array.isArray(tree?.props?.children)) {
-    if (tree.props.children.find(jte => typeof jte !== 'string' && jte.uuid === uuidFromKey)) {
+    if (tree.props.children.find((jte) => typeof jte !== 'string' && jte.uuid === uuidFromKey)) {
       return tree;
     }
     for (let i = 0; i < tree?.props?.children.length && ret === null; ++i) {
@@ -725,8 +739,8 @@ export const jsonTreeDeleteElement = (tree: JSONTreeElement, uuid: string | numb
   const omitChildWithUuid = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement => {
     if (Array.isArray(tree?.props?.children)) {
       tree.props.children = tree.props.children
-        .filter(jte => typeof jte === 'string' || jte.uuid !== uuid)
-        .map(jte => (typeof jte === 'string' ? jte : omitChildWithUuid(jte, uuid)));
+        .filter((jte) => typeof jte === 'string' || jte.uuid !== uuid)
+        .map((jte) => (typeof jte === 'string' ? jte : omitChildWithUuid(jte, uuid)));
     }
 
     return tree;
@@ -754,79 +768,4 @@ export const jsonTreeCloneElement = (tree: JSONTreeElement, element: any): JSONT
     result.uuid = getUUID();
   }
   return result;
-};
-
-/**
- * Displays a knob with the ability to switch between data `types`.
- */
-export const MultiTypeKnob: React.FunctionComponent<{
-  label: string;
-  types: ('boolean' | 'number' | 'string' | 'literal')[];
-  value: any;
-  onChange: (value: any) => void;
-  literalOptions: string[];
-}> = ({ label, types, value, onChange, literalOptions }) => {
-  const valueType = typeof value;
-  const defaultType = valueType !== 'undefined' ? valueType : types[0];
-  const [type, setType] = React.useState(defaultType);
-  const knob = knobs[type];
-  const handleChangeType = React.useCallback(
-    e => setType(e.target.value), // @ts-ignore
-    [],
-  );
-
-  // console.log('MultiTypeKnob', { label, value, type, types });
-
-  return (
-    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
-      <div>
-        {type !== 'boolean' && <label>{label} </label>}
-        {types.length === 1 ? (
-          <code style={{ float: 'right' }}>{type}</code>
-        ) : (
-          types.map(t => (
-            <button key={t} onClick={() => handleChangeType(t)}>
-              {t}
-            </button>
-          ))
-        )}
-      </div>
-      {knob && knob({ options: literalOptions, value, onChange })}
-      {type === 'boolean' && <label> {label}</label>}
-    </div>
-  );
-};
-
-export const knobs = {
-  boolean: ({ value, onChange }) => (
-    <input type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
-  ),
-
-  number: ({ value, onChange }) => (
-    <input
-      style={{ width: '100%' }}
-      type="number"
-      value={Number(value)}
-      onChange={e => onChange(Number(e.target.value))}
-    />
-  ),
-
-  string: ({ value, onChange }) => (
-    <input style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
-  ),
-
-  literal: ({ options, value, onChange }) => (
-    <select onChange={e => onChange(e.target.value)} value={value}>
-      {options?.map((
-        opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
-      ) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
-    </select>
-  ),
-
-  ReactText: (value, onChange) => knobs.string({ value, onChange }),
-  'React.ElementType': (value, onChange) => knobs.string({ value, onChange }),
 };

@@ -1,10 +1,4 @@
 import { attr, css, nullableNumberConverter } from '@microsoft/fast-element';
-import {
-  DensityOffset,
-  DesignSystem,
-  DesignSystemDefaults,
-  neutralForegroundRest,
-} from '@microsoft/fast-components-styles-msft';
 import { Direction } from '@microsoft/fast-web-utilities';
 import {
   CSSCustomPropertyBehavior,
@@ -13,6 +7,9 @@ import {
   designSystemProvider,
   DesignSystemProviderTemplate as template,
 } from '@microsoft/fast-foundation';
+import { parseColorHexRGB } from '@microsoft/fast-colors';
+import { createColorPalette, neutralForegroundRest } from '../color';
+import { DensityOffset, DesignSystem, DesignSystemDefaults } from '../fluent-design-system';
 import { DesignSystemProviderStyles as styles } from './design-system-provider.styles';
 
 const color = new CSSCustomPropertyBehavior(
@@ -41,6 +38,9 @@ const backgroundStyles = css`
   name: 'fluent-design-system-provider',
   template,
   styles,
+  shadowOptions: {
+    mode: 'closed',
+  },
 })
 export class FluentDesignSystemProvider extends DesignSystemProvider
   implements
@@ -71,10 +71,23 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
     default: DesignSystemDefaults.backgroundColor,
   })
   public backgroundColor: string;
-  private backgroundColorChanged() {
+  protected backgroundColorChanged(): void {
     // If background changes or is removed, we need to
     // re-evaluate whether we should have paint styles applied
     this.noPaintChanged();
+  }
+
+  @designSystemProperty({
+    attribute: 'neutral-base-color',
+    cssCustomProperty: false,
+    default: DesignSystemDefaults.neutralBaseColor,
+  })
+  public neutralBaseColor: string;
+  protected neutralBaseColorChanged(oldValue: string, newValue: string): void {
+    const color = parseColorHexRGB(newValue);
+    if (color) {
+      this.neutralPalette = createColorPalette(color);
+    }
   }
 
   @designSystemProperty({
@@ -83,6 +96,12 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
     default: DesignSystemDefaults.accentBaseColor,
   })
   public accentBaseColor: string;
+  protected accentBaseColorChanged(oldValue: string, newValue: string): void {
+    const color = parseColorHexRGB(newValue);
+    if (color) {
+      this.accentPalette = createColorPalette(color);
+    }
+  }
 
   @designSystemProperty({
     attribute: false,
@@ -169,109 +188,109 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
 
   @designSystemProperty({
     attribute: 'type-ramp-minus-2-font-size',
-    default: '10px',
+    default: DesignSystemDefaults.typeRampMinus2FontSize,
   })
   public typeRampMinus2FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-minus-2-line-height',
-    default: '16px',
+    default: DesignSystemDefaults.typeRampMinus2LineHeight,
   })
   public typeRampMinus2LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-minus-1-font-size',
-    default: '12px',
+    default: DesignSystemDefaults.typeRampMinus1FontSize,
   })
   public typeRampMinus1FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-minus-1-line-height',
-    default: '16px',
+    default: DesignSystemDefaults.typeRampMinus1LineHeight,
   })
   public typeRampMinus1LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-base-font-size',
-    default: '14px',
+    default: DesignSystemDefaults.typeRampBaseFontSize,
   })
   public typeRampBaseFontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-base-line-height',
-    default: '20px',
+    default: DesignSystemDefaults.typeRampBaseLineHeight,
   })
   public typeRampBaseLineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-1-font-size',
-    default: '16px',
+    default: DesignSystemDefaults.typeRampPlus1FontSize,
   })
   public typeRampPlus1FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-1-line-height',
-    default: '24px',
+    default: DesignSystemDefaults.typeRampPlus1LineHeight,
   })
   public typeRampPlus1LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-2-font-size',
-    default: '20px',
+    default: DesignSystemDefaults.typeRampPlus2FontSize,
   })
   public typeRampPlus2FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-2-line-height',
-    default: '28px',
+    default: DesignSystemDefaults.typeRampPlus2LineHeight,
   })
   public typeRampPlus2LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-3-font-size',
-    default: '28px',
+    default: DesignSystemDefaults.typeRampPlus3FontSize,
   })
   public typeRampPlus3FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-3-line-height',
-    default: '36px',
+    default: DesignSystemDefaults.typeRampPlus3LineHeight,
   })
   public typeRampPlus3LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-4-font-size',
-    default: '34px',
+    default: DesignSystemDefaults.typeRampPlus4FontSize,
   })
   public typeRampPlus4FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-4-line-height',
-    default: '44px',
+    default: DesignSystemDefaults.typeRampPlus4LineHeight,
   })
   public typeRampPlus4LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-5-font-size',
-    default: '46px',
+    default: DesignSystemDefaults.typeRampPlus5FontSize,
   })
   public typeRampPlus5FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-5-line-height',
-    default: '56px',
+    default: DesignSystemDefaults.typeRampPlus5LineHeight,
   })
   public typeRampPlus5LineHeight: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-6-font-size',
-    default: '60px',
+    default: DesignSystemDefaults.typeRampPlus6FontSize,
   })
   public typeRampPlus6FontSize: string;
 
   @designSystemProperty({
     attribute: 'type-ramp-plus-6-line-height',
-    default: '72px',
+    default: DesignSystemDefaults.typeRampPlus6LineHeight,
   })
   public typeRampPlus6LineHeight: string;
 
@@ -570,4 +589,77 @@ export class FluentDesignSystemProvider extends DesignSystemProvider
     default: DesignSystemDefaults.neutralOutlineFocusDelta,
   })
   public neutralOutlineFocusDelta: number;
+
+  /**
+   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fill recipe. See {@link @microsoft/fast-components#neutralContrastFillRestBehavior} for usage in CSS.
+   *
+   * @remarks
+   * HTML attribute: neutral-contrast-fill-rest-delta
+   *
+   * CSS custom property: N/A
+   */
+  @designSystemProperty({
+    attribute: 'neutral-contrast-fill-rest-delta',
+    converter: nullableNumberConverter,
+    cssCustomProperty: false,
+    default: DesignSystemDefaults.neutralContrastFillRestDelta,
+  })
+  public neutralContrastFillRestDelta: number;
+
+  /**
+   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fillrecipe. See {@link @microsoft/fast-components#neutralContrastFillHoverBehavior} for usage in CSS.
+   *
+   * @remarks
+   * HTML attribute: neutral-contrast-fill-hover-delta
+   *
+   * CSS custom property: N/A
+   */
+  @designSystemProperty({
+    attribute: 'neutral-contrast-fill-hover-delta',
+    converter: nullableNumberConverter,
+    cssCustomProperty: false,
+    default: DesignSystemDefaults.neutralContrastFillHoverDelta,
+  })
+  public neutralContrastFillHoverDelta: number;
+
+  /**
+   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fill recipe. See {@link @microsoft/fast-components#neutralContrastFillActiveBehavior} for usage in CSS.
+   *
+   * @remarks
+   * HTML attribute: neutral-contrast-fill-active-delta
+   *
+   * CSS custom property: N/A
+   */
+  @designSystemProperty({
+    attribute: 'neutral-contrast-fill-active-delta',
+    converter: nullableNumberConverter,
+    cssCustomProperty: false,
+    default: DesignSystemDefaults.neutralContrastFillActiveDelta,
+  })
+  public neutralContrastFillActiveDelta: number;
+
+  /**
+   * The distance from the resolved neutral contrast fill color for the rest state of the neutral-contrast-fill recipe. See {@link @microsoft/fast-components#neutralContrastFillFocusBehavior} for usage in CSS.
+   *
+   * @remarks
+   * HTML attribute: neutral-contrast-fill-focus-delta
+   *
+   * CSS custom property: N/A
+   */
+  @designSystemProperty({
+    attribute: 'neutral-contrast-fill-focus-delta',
+    converter: nullableNumberConverter,
+    cssCustomProperty: false,
+    default: DesignSystemDefaults.neutralContrastFillFocusDelta,
+  })
+  public neutralContrastFillFocusDelta: number;
 }
+
+/**
+ * The Fluent Design System
+ * @public
+ */
+export type FluentDesignSystem = Omit<
+  DesignSystem,
+  'contrast' | 'fontWeight' | 'neutralForegroundDarkIndex' | 'neutralForegroundLightIndex'
+>;

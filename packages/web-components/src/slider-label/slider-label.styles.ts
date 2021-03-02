@@ -5,6 +5,7 @@ import { heightNumber, neutralOutlineRestBehavior } from '../styles';
 
 export const SliderLabelStyles = css`
   ${display('block')} :host {
+    font-family: var(--body-font);
   }
   .root {
     position: absolute;

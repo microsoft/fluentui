@@ -2,6 +2,7 @@
 module.exports = {
   pipeline: {
     build: ['^build'],
+    'build:info': [],
     bundle: ['build'],
     screener: ['build'],
     lint: ['build'],
@@ -9,7 +10,7 @@ module.exports = {
     test: ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
-    '@fluentui/docs:build': ['@fluentui/react-northstar:test'],
+    '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
   },
 
   // Ignores these minimatch patterns when considers what packages have changed for the --since flag
@@ -27,7 +28,6 @@ module.exports = {
       '**/*.source.json',
       '**/*.info.json',
       '**/dist.stats.json',
-      'dist-storybook/**/*',
       '**/*.tar.gz',
       '!bower_components',
       '!node_modules',
@@ -38,6 +38,6 @@ module.exports = {
 
     // These are relative to the git root, and affects the hash of the cache
     // Any of these file changes will invalidate cache
-    environmentGlob: ['.devops/**/*', '*.js', '*.json', '*.yml'],
+    environmentGlob: ['.devops/**/*', '*.js', '*.json', '*.yml', 'apps/pr-deploy-site'],
   },
 };

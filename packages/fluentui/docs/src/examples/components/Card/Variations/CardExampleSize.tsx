@@ -7,9 +7,9 @@ const CardExampleSize = () => (
       <Card.Header>
         <Flex gap="gap.small">
           <Avatar
-            image="public/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             label="Copy bandwidth"
-            name="Evie yundt"
+            name="Robert Tolbert"
             status="unknown"
           />
           <Flex column>
@@ -20,7 +20,7 @@ const CardExampleSize = () => (
       </Card.Header>
       <Card.Body>
         <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" fluid />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" fluid />
           <Text content="Content text" />
         </Flex>
       </Card.Body>
@@ -30,9 +30,9 @@ const CardExampleSize = () => (
       <Card.Header>
         <Flex gap="gap.small">
           <Avatar
-            image="public/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             label="Copy bandwidth"
-            name="Evie yundt"
+            name="Robert Tolbert"
             status="unknown"
           />
           <Flex column>
@@ -43,7 +43,7 @@ const CardExampleSize = () => (
       </Card.Header>
       <Card.Body>
         <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" fluid />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" fluid />
           <Text content="Content text" />
         </Flex>
       </Card.Body>
@@ -53,9 +53,9 @@ const CardExampleSize = () => (
       <Card.Header>
         <Flex gap="gap.small">
           <Avatar
-            image="public/images/avatar/small/matt.jpg"
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
             label="Copy bandwidth"
-            name="Evie yundt"
+            name="Robert Tolbert"
             status="unknown"
           />
           <Flex column>
@@ -66,7 +66,7 @@ const CardExampleSize = () => (
       </Card.Header>
       <Card.Body>
         <Flex column gap="gap.small">
-          <Image src="public/images/wireframe/square-image.png" fluid />
+          <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/wireframe/square-image.png" fluid />
           <Text content="Content text" />
         </Flex>
       </Card.Body>

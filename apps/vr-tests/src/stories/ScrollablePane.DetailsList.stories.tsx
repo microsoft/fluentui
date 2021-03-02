@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -12,15 +11,15 @@ import {
   ConstrainMode,
   IDetailsFooterProps,
   DetailsRow,
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+} from '@fluentui/react/lib/DetailsList';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { TooltipHost, ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
+import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react/lib/ScrollablePane';
+import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { getTheme, mergeStyles } from '@fluentui/react/lib/Styling';
 
 const stickyListTitleClass = mergeStyles({
   paddingTop: '100px',
@@ -198,7 +197,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
 
 storiesOf('ScrollablePane Details List', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComposePreparedOptions } from '@fluentui/react-compose';
-import { useControllableValue, useId, useWarnings } from '@uifabric/react-hooks';
-import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@uifabric/utilities';
+import { useControllableValue, useId, useWarnings } from '@fluentui/react-hooks';
+import { classNamesFunction, getNativeProps, inputProperties, useFocusRects } from '@fluentui/utilities';
 import { IToggle, IToggleProps, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>({ useStaticStyles: true });

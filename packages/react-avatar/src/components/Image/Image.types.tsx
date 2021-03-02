@@ -1,6 +1,6 @@
-import { ComponentProps } from '../utils/commonTypes';
+import { ComponentProps } from '@fluentui/react-utilities';
+import * as React from 'react';
 
-// tslint:disable-next-line:no-any
 export interface ImageProps extends ComponentProps, React.ImgHTMLAttributes<HTMLImageElement> {}
 
 export type ImageState = ImageProps;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone } from 'office-ui-fabric-react';
+import { FocusZone } from '@fluentui/react';
 
 const FocusZoneContent: React.FunctionComponent = () => {
   const items: React.ReactNode[] = [];

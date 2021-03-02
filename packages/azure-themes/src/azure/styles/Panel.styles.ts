@@ -1,4 +1,4 @@
-import { IPanelStyles, IPanelStyleProps } from 'office-ui-fabric-react';
+import { IPanelStyles, IPanelStyleProps } from '@fluentui/react';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { BaseColors } from '../AzureColors';
 

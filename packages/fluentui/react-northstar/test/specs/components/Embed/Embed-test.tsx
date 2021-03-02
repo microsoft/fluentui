@@ -4,7 +4,7 @@ import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('Embed', () => {
-  isConformant(Embed, { constructorName: 'Embed', autoControlledProps: ['active'] });
+  isConformant(Embed, { testPath: __filename, constructorName: 'Embed', autoControlledProps: ['active'] });
 
   describe('accessibility', () => {
     handlesAccessibility(Embed, { defaultRootRole: 'presentation' });
@@ -37,6 +37,13 @@ describe('Embed', () => {
         expect.objectContaining({ type: 'click' }),
         expect.objectContaining({ onActiveChange, active: true }),
       );
+    });
+  });
+
+  describe('variables', () => {
+    it('should be set by default', () => {
+      const variables = mountWithProviderAndGetComponent(Embed, <Embed />).prop('variables');
+      expect(variables).toEqual({});
     });
   });
 });

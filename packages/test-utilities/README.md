@@ -1,4 +1,4 @@
-# @uifabric/test-utilities
+# @fluentui/test-utilities
 
 Provides a set of common test utilities for testing code within the Fluent UI React repo.
 
@@ -10,7 +10,7 @@ will auto unmount after executing the given callback.
 Example:
 
 ```tsx
-safeCreate(<Foo />, foo => {
+safeCreate(<Foo />, (foo) => {
   // assert things about foo
 });
 ```
@@ -21,7 +21,7 @@ will auto unmount after executing the given callback.
 Example:
 
 ```tsx
-safeMount(<Foo />, foo => {
+safeMount(<Foo />, (foo) => {
   // assert things about foo
 });
 ```

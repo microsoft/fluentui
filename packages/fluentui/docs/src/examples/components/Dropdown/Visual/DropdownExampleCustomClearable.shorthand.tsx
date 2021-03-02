@@ -37,13 +37,7 @@ const DropdownCustomClearableExample = () => (
       clearIndicator={'clear'}
     />
     <Divider />
-    <Dropdown
-      defaultValue="Bruce Wayne"
-      clearable
-      items={inputItems}
-      placeholder="Select your hero"
-      clearIndicator={{}}
-    />
+    <Dropdown defaultValue="Bruce Wayne" clearable items={inputItems} placeholder="Select your hero" />
   </>
 );
 

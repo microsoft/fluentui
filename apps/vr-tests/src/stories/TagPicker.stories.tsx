@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
-import { TagPicker, Fabric, ITag } from 'office-ui-fabric-react';
+import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
   'black',
@@ -21,20 +20,20 @@ const testTags: ITag[] = [
   'violet',
   'white',
   'yellow',
-].map(item => ({ key: item, name: item }));
+].map((item) => ({ key: item, name: item }));
 
 const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
@@ -83,8 +82,11 @@ storiesOf('TagPicker', module)
   );
 
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecoratorFixedWidth)
-  .addDecorator(story => (
+  // FIXME: SB6 duplicates same story ID decorators
+  // This is a temporary fix until we migrate to CSF format duplication problem
+  // - previously this used FabricDecoratorFixedWidth
+  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'fixed' }))
+  .addDecorator((story) => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
@@ -106,7 +108,7 @@ storiesOf('TagPicker', module)
 
 storiesOf('TagItem', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
+  .addDecorator((story) => (
     <Screener
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })

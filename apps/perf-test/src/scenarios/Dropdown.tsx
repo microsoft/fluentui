@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDropdownOption, DropdownMenuItemType, Dropdown } from 'office-ui-fabric-react';
+import { IDropdownOption, DropdownMenuItemType, Dropdown } from '@fluentui/react';
 
 const options: IDropdownOption[] = [
   { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },

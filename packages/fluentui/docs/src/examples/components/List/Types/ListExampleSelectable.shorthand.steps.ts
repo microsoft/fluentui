@@ -1,4 +1,5 @@
 import { listItemClassName, listClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
   list: `.${listClassName}`,
@@ -8,7 +9,7 @@ const selectors = {
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    builder =>
+    (builder) =>
       builder
         .hover(selectors.item(2))
         .snapshot('Highlights an item')

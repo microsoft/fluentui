@@ -4,70 +4,46 @@
 
 ```ts
 
-import { ColorTokenSet } from '@fluentui/theme';
-import { IStyle } from '@uifabric/merge-styles';
-import { ITheme } from '@fluentui/theme';
-import { PartialTheme } from '@fluentui/theme';
+import { PartialTheme } from '@fluentui/react-theme';
 import * as React from 'react';
-import { Theme } from '@fluentui/theme';
-import { TokenSetType } from '@fluentui/theme';
+import { Theme } from '@fluentui/react-theme';
+
+// @public (undocumented)
+export const internal__ThemeContext: React.Context<ThemeProviderValue>;
+
+// @public (undocumented)
+export function renderThemeProvider(state: ThemeProviderState): JSX.Element;
 
 // @public
-export const createDefaultTheme: () => Theme;
+export const ThemeProvider: React.FunctionComponent<ThemeProviderProps>;
 
 // @public (undocumented)
-export const FluentTheme: Theme;
-
-// @public (undocumented)
-export const getStyleFromPropsAndOptions: <TProps extends StyleProps<import("@fluentui/theme").ColorTokenSet>, TOptions extends StyleOptions<TProps>>(props: TProps, options: TOptions, prefix?: string | undefined) => React.CSSProperties;
-
-// @public
-export function makeStyles<TStyleSet extends {
-    [key: string]: IStyle;
-}>(styleOrFunction: TStyleSet | ((theme: ITheme) => TStyleSet)): () => {
-    [key in keyof TStyleSet]: string;
-};
-
-export { PartialTheme }
-
-// @public (undocumented)
-export interface StyleOptions<TProps> {
+export interface ThemeProviderProps extends React.HTMLAttributes<HTMLElement> {
     // (undocumented)
-    slotProps: ((props: TProps) => Record<string, object>)[];
-}
-
-// @public
-export interface StyleProps<TTokens extends ColorTokenSet = ColorTokenSet> {
-    // (undocumented)
-    style?: React.CSSProperties;
-    // (undocumented)
-    tokens?: TTokens;
-}
-
-// @public (undocumented)
-export const TeamsTheme: PartialTheme;
-
-export { Theme }
-
-// @public
-export const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
-
-// @public
-export interface ThemeProviderProps extends React.HTMLAttributes<HTMLDivElement> {
     theme?: PartialTheme | Theme;
 }
 
 // @public (undocumented)
-export const tokensToStyleObject: (tokens?: TokenSetType | undefined, prefix?: string | undefined, style?: React.CSSProperties | undefined) => React.CSSProperties;
+export interface ThemeProviderState extends React.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    theme: Theme;
+}
+
+// @public (undocumented)
+export interface ThemeProviderValue extends Theme {
+}
+
+// @public (undocumented)
+export function useTheme(): ThemeProviderValue;
 
 // @public
-export const useInlineTokens: (draftState: {
-    style?: React.CSSProperties | undefined;
-    tokens?: TokenSetType | undefined;
-}, prefix: string) => void;
+export function useThemeProvider(props: ThemeProviderProps, ref: React.Ref<HTMLElement>): {
+    state: ThemeProviderState;
+    render: typeof renderThemeProvider;
+};
 
-// @public
-export const useTheme: () => Theme;
+// @public (undocumented)
+export function useThemeProviderState(draftState: ThemeProviderState): void;
 
 
 // (No @packageDocumentation comment for this package)

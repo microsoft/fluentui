@@ -2,7 +2,7 @@ import { KnobProvider } from '@fluentui/docs-components';
 import * as _ from 'lodash';
 import * as React from 'react';
 
-import { examplePlaygroundContext } from '../../utils';
+import { examplePlaygroundContext } from '../../contexts/examplePlaygroundContext';
 import ComponentPlaygroundTemplate from './ComponentPlaygroundTemplate';
 import usePlaygroundComponent from './usePlaygroundComponent';
 
@@ -33,13 +33,13 @@ const unsupportedComponents = [
   'Ref',
 ];
 
-const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = props => {
+const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = (props) => {
   if (unsupportedComponents.indexOf(props.componentName) !== -1) {
     return null;
   }
 
   const playgroundPaths = examplePlaygroundContext.keys();
-  const playgroundPath = _.find(playgroundPaths, playgroundPath =>
+  const playgroundPath = _.find(playgroundPaths, (playgroundPath) =>
     _.includes(playgroundPath, `/${props.componentName}/`),
   );
 
@@ -73,7 +73,7 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
   );
 };
 
-export default props => (
+export default (props) => (
   /* KnobProvider should be defined outside otherwise hooks will not properly register */
   <KnobProvider>
     <ComponentPlayground {...props} />

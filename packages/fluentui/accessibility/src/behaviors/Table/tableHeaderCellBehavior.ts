@@ -7,7 +7,7 @@ import { TableCellBehaviorProps } from './tableCellBehavior';
  * @specification
  * Adds role='columnheader'.
  */
-export const tableHeaderCellBehavior: Accessibility<TableCellBehaviorProps> = props => ({
+export const tableHeaderCellBehavior: Accessibility<TableCellBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'columnheader',

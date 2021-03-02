@@ -15,6 +15,7 @@ jest.useFakeTimers();
 
 describe('Dropdown', () => {
   isConformant(Dropdown, {
+    testPath: __filename,
     hasAccessibilityProp: false,
     constructorName: 'Dropdown',
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
@@ -1146,9 +1147,7 @@ describe('Dropdown', () => {
         defaultValue: [items[0], items[1]],
       });
 
-      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`)
-        .at(0)
-        .simulate('click');
+      findIntrinsicElement(wrapper, `.${dropdownSelectedItemSlotClassNames.icon}`).at(0).simulate('click');
 
       expect(getSelectedItemNodes()).toHaveLength(1);
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[1]);
@@ -1200,7 +1199,7 @@ describe('Dropdown', () => {
       const itemToBeClickedIndex = 1;
       const { getA11yMessageContainerNode, clickOnItemAtIndex } = renderDropdown({
         defaultOpen: true,
-        getA11ySelectionMessage: { onAdd: item => `${item} has been added` },
+        getA11ySelectionMessage: { onAdd: (item) => `${item} has been added` },
       });
 
       clickOnItemAtIndex(itemToBeClickedIndex);
@@ -1220,7 +1219,7 @@ describe('Dropdown', () => {
         defaultOpen: true,
         multiple: true,
         defaultValue: [items[itemSelectedByDefaultIndex]],
-        getA11ySelectionMessage: { onRemove: item => `${item} has been removed` },
+        getA11ySelectionMessage: { onRemove: (item) => `${item} has been removed` },
       });
 
       keyDownOnSelectedItemAtIndex(0, 'Delete');
@@ -1356,7 +1355,7 @@ describe('Dropdown', () => {
 
     it('is the string equivalent of selected item in single search', () => {
       const itemSelectedIndex = 2;
-      const itemsAsObjects = items.map(item => ({ value: item, key: item }));
+      const itemsAsObjects = items.map((item) => ({ value: item, key: item }));
       const { searchInputNode, clickOnItemAtIndex } = renderDropdown({
         search: true,
         defaultOpen: true,

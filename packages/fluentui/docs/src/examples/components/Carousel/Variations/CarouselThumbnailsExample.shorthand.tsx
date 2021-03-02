@@ -2,53 +2,125 @@ import * as React from 'react';
 import { Carousel, Image } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Ade',
-  elliot: 'Portrait of Elliot',
-  molly: 'Portrait of Molly',
-  nan: 'Portrait of Nan',
+  allan: 'Portrait of Allan',
+  carole: 'Portrait of Carole',
+  johnie: 'Portrait of Johnie',
+  kat: 'Portrait of Kat',
 };
 const carouselItems = [
   {
-    key: 'ade',
-    id: 'ade',
-    content: <Image src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />,
-    thumbnail: <Image src="public/images/avatar/small/ade.jpg" fluid alt={imageAltTags.ade} />,
-    'aria-label': imageAltTags.ade,
+    key: 'allan',
+    id: 'allan',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        fluid
+        alt={imageAltTags.allan}
+      />
+    ),
+    thumbnail: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        fluid
+        alt={imageAltTags.allan}
+      />
+    ),
+    'aria-label': imageAltTags.allan,
   },
   {
-    key: 'elliot',
-    id: 'elliot',
-    content: <Image src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />,
-    thumbnail: <Image src="public/images/avatar/small/elliot.jpg" fluid alt={imageAltTags.elliot} />,
-    'aria-label': imageAltTags.elliot,
+    key: 'carole',
+    id: 'carole',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+        fluid
+        alt={imageAltTags.carole}
+      />
+    ),
+    thumbnail: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+        fluid
+        alt={imageAltTags.carole}
+      />
+    ),
+    'aria-label': imageAltTags.carole,
   },
   {
-    key: 'molly',
-    id: 'molly',
-    content: <Image src="public/images/avatar/large/molly.png" fluid alt={imageAltTags.molly} />,
-    thumbnail: <Image src="public/images/avatar/small/molly.png" fluid alt={imageAltTags.molly} />,
-    'aria-label': imageAltTags.molly,
+    key: 'johnie',
+    id: 'johnie',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
+        fluid
+        alt={imageAltTags.johnie}
+      />
+    ),
+    thumbnail: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/JohnieMcConnell.jpg"
+        fluid
+        alt={imageAltTags.johnie}
+      />
+    ),
+    'aria-label': imageAltTags.johnie,
   },
   {
-    key: 'nan',
-    id: 'nan',
-    content: <Image src="public/images/avatar/large/nan.jpg" fluid alt={imageAltTags.nan} />,
-    thumbnail: <Image src="public/images/avatar/small/nan.jpg" fluid alt={imageAltTags.nan} />,
-    'aria-label': imageAltTags.nan,
+    key: 'kat',
+    id: 'kat',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
+        fluid
+        alt={imageAltTags.kat}
+      />
+    ),
+    thumbnail: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/KatLarsson.jpg"
+        fluid
+        alt={imageAltTags.kat}
+      />
+    ),
+    'aria-label': imageAltTags.kat,
   },
   {
-    key: 'elliot1',
-    id: 'elliot1',
-    content: <Image src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />,
-    thumbnail: <Image src="public/images/avatar/small/elliot.jpg" fluid alt={imageAltTags.elliot} />,
-    'aria-label': imageAltTags.elliot,
+    key: 'carole1',
+    id: 'carole1',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+        fluid
+        alt={imageAltTags.carole}
+      />
+    ),
+    thumbnail: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+        fluid
+        alt={imageAltTags.carole}
+      />
+    ),
+    'aria-label': imageAltTags.carole,
   },
   {
-    key: 'ade1',
-    id: 'ade1',
-    content: <Image src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />,
-    thumbnail: <Image src="public/images/avatar/small/ade.jpg" fluid alt={imageAltTags.ade} />,
-    'aria-label': imageAltTags.ade,
+    key: 'allan1',
+    id: 'allan1',
+    content: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        fluid
+        alt={imageAltTags.allan}
+      />
+    ),
+    thumbnail: (
+      <Image
+        src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+        fluid
+        alt={imageAltTags.allan}
+      />
+    ),
+    'aria-label': imageAltTags.allan,
   },
 ];
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react';
+import { OverflowSet, IOverflowSetItemProps } from '@fluentui/react';
 
 const noOp = () => undefined;
 

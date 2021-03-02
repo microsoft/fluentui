@@ -33,7 +33,8 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
   const trigger = childrenExist(props.children) ? props.children : props.trigger;
   const element = trigger ? (React.Children.only(trigger) as React.ReactElement) : null;
 
-  if (process.env.NODE_ENV !== 'production') {
+  // An exception should not be thrown in tests as components might be rendered without styles
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     if (ReactIs.isFragment(element)) {
       throw new Error(
         'useTriggerElement(): A "React.Fragment" cannot be used as a "trigger" as it will be impossible to spread props on it',
@@ -48,6 +49,7 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
     React.useEffect(() => {
       if (ref.current) {
         if (isDisabledInteractive(ref.current)) {
+          // eslint-disable-next-line no-console
           console.warn(
             [
               'useTriggerElement(): Disabled elements should used as a "trigger" accurately as it may lead to ',
@@ -59,11 +61,10 @@ export function useTriggerElement(props: UseTriggerElementOptions): React.ReactE
           );
         }
 
-        const treeWalker = document.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
+        const treeWalker = ref.current.ownerDocument?.createTreeWalker(ref.current, NodeFilter.SHOW_ELEMENT, {
           acceptNode: isInteractiveFilter,
         });
-
-        while (treeWalker.nextNode()) {
+        while (treeWalker?.nextNode()) {
           const node = treeWalker.currentNode;
           const nodeStyles = node.ownerDocument?.defaultView?.getComputedStyle(node as Element);
 

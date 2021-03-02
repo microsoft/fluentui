@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "adding fix for scenario where DatePicker is fully controlled and the internal selected date updates, but the formatted date does not. Also adding example to verify in the future",
-  "packageName": "@uifabric/date-time",
-  "email": "lorejoh12@gmail.com",
-  "dependentChangeType": "patch",
-  "date": "2020-08-26T17:38:21.922Z"
-}

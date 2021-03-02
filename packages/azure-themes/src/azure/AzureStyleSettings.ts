@@ -1,4 +1,4 @@
-import { ITheme } from 'office-ui-fabric-react';
+import { ITheme } from '@fluentui/react';
 import { ActionButtonStyles } from './styles/ActionButton.styles';
 import { BreadcrumbStyles } from './styles/Breadcrumb.styles';
 import { CalloutContentStyles } from './styles/Callout.styles';
@@ -164,7 +164,7 @@ export const AzureStyleSettings = (theme: ITheme): any => {
       styles: SearchBoxStyles,
     },
     SpinButton: {
-      styles: SpinButtonStyles(theme),
+      styles: SpinButtonStyles,
     },
     TagPicker: {
       styles: TagPickerStyles,

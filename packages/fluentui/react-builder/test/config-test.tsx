@@ -92,7 +92,7 @@ describe('config', () => {
         $$typeof: 'Symbol(react.element)',
         type: 'test_c1',
       });
-      expect(dst.uuid).not.toMatch(c1Uuid);
+      expect(dst.uuid).not.toBe(c1Uuid);
     });
 
     it('does not touch uuid out of Symbol(react.element)', () => {
@@ -109,7 +109,7 @@ describe('config', () => {
       };
 
       const dst = jsonTreeCloneElement(src, jsonTreeFindElement(src, c1Uuid));
-      expect(dst.props.uuid).toMatch(anotherUuid);
+      expect(dst.props.uuid).toBe(anotherUuid);
     });
 
     it('changes uuid in slots', () => {
@@ -137,7 +137,7 @@ describe('config', () => {
       };
 
       const dst = jsonTreeCloneElement(src, jsonTreeFindElement(src, c1Uuid));
-      expect(dst.props.slot.uuid).not.toMatch(c1SlotUUid);
+      expect(dst.props.slot.uuid).not.toBe(c1SlotUUid);
     });
 
     it('clones deep structure', () => {
@@ -181,15 +181,15 @@ describe('config', () => {
         },
       });
       expect(dst.uuid).toBeDefined();
-      expect(dst.uuid).not.toMatch(c1Uuid);
+      expect(dst.uuid).not.toBe(c1Uuid);
 
       expect((dst.props.children[1] as JSONTreeElement).uuid).toBeDefined();
-      expect((dst.props.children[1] as JSONTreeElement).uuid).not.toMatch(c11Uuid);
+      expect((dst.props.children[1] as JSONTreeElement).uuid).not.toBe(c11Uuid);
     });
   });
 
   describe('resolveDraggingElement', () => {
-    const FunctionalComponent: React.FunctionComponent<any> = ({ content }) => <div>fcomponent</div>;
+    const FunctionalComponent: React.FunctionComponent<any> = () => <div>fcomponent</div>;
     FunctionalComponent.displayName = 'FunctionalComponent';
 
     class ClassComponent extends React.Component<any> {

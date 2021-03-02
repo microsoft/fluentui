@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/GroupedList';
+export * from './components/GroupedList/index';
