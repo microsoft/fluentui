@@ -24,7 +24,7 @@ The purpose of redoing the component is to add minor structural updates and new 
 ## Comparison of v8 and v0
 
 - v8 - [Separator](https://developer.microsoft.com/en-us/fluentui#/controls/web/separator)
-- v0 - [Divider](https://fluentsite.z22.web.core.windows.net/0.51.4/components/divider/definition)
+- v0 - [Divider](https://fluentsite.z22.web.core.windows.net/0.52.1/components/divider/definition)
 
 ## Sample Code
 
@@ -92,11 +92,11 @@ Appearance
 
 ## API
 
-From [Divider.types.tsx](http://about:blank)
+From [Divider.types.tsx](https://github.com/microsoft/fluentui/blob/master/packages/react-divider/src/components/Divider/Divider.types.ts)
 
 ### Slots
 
-- content (?)
+- root
 
 ### Props
 
