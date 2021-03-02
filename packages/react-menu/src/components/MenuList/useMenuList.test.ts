@@ -1,10 +1,50 @@
+import * as React from 'react';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useFocusFinders } from '@fluentui/react-focus-management';
 import { useMenuList } from './useMenuList';
 
 jest.mock('@fluentui/react-focus-management');
+(useFocusFinders as jest.Mock).mockReturnValue({
+  findAllFocusable: jest.fn(),
+});
 
 describe('useMenuList', () => {
+  it('should respect defaultCheckedValues on initial render', () => {
+    // Arrange
+    const defaultCheckedValues = { foo: ['1'] };
+
+    // Act
+    const { result } = renderHook(() => useMenuList({ defaultCheckedValues }, null));
+
+    // Assert
+    expect(result.current.checkedValues).toEqual(defaultCheckedValues);
+  });
+
+  it('should use checkedValues if provided with defaultCheckedValues', () => {
+    // Arrange
+    const defaultCheckedValues = { foo: ['1'] };
+    const checkedValues = { bar: ['2'] };
+
+    // Act
+    const { result } = renderHook(() => useMenuList({ checkedValues, defaultCheckedValues }, null));
+
+    // Assert
+    expect(result.current.checkedValues).toEqual(checkedValues);
+  });
+
+  it('should ignore defaultCheckedValues after first render', () => {
+    // Arrange
+    const defaultCheckedValues = { foo: ['1'] };
+    const expectedCheckedValues = { foo: ['2'] };
+
+    // Act
+    const { result } = renderHook(() => useMenuList({ defaultCheckedValues }, null));
+    act(() => result.current.selectRadio(({} as unknown) as React.MouseEvent, 'foo', '2', false));
+
+    // Assert
+    expect(result.current.checkedValues).toEqual(expectedCheckedValues);
+  });
+
   describe('setFocusByFirstCharacter', () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let menuitems: any[];
@@ -64,8 +104,7 @@ describe('useMenuList', () => {
       const { result } = renderHook(() =>
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: undefined }, null),
       );
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      act(() => result.current.toggleCheckbox({} as any, name, value, false));
+      act(() => result.current.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, false));
 
       // Assert
       expect(result.current.checkedValues).toEqual({ [name]: [value] });
@@ -86,8 +125,7 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      state.toggleCheckbox({} as any, name, value, checked);
+      state.toggleCheckbox(({} as unknown) as React.MouseEvent, name, value, checked);
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);
@@ -125,8 +163,7 @@ describe('useMenuList', () => {
         useMenuList({ onCheckedValueChange: jest.fn(), checkedValues: { [name]: checkedItems } }, null),
       );
       const state = result.current;
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      state.selectRadio({} as any, name, value, true);
+      state.selectRadio(({} as unknown) as React.MouseEvent, name, value, true);
 
       // Assert
       expect(state.onCheckedValueChange).toHaveBeenCalledTimes(1);

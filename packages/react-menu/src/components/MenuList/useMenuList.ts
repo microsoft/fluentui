@@ -46,7 +46,7 @@ export const useMenuList = (
         startIndex = 0;
       }
 
-      const firstChars = menuItems.map(menuItem => menuItem.textContent?.charAt(0).toLowerCase());
+      const firstChars = menuItems.map((menuItem) => menuItem.textContent?.charAt(0).toLowerCase());
       const char = e.key.toLowerCase();
 
       const getIndexFirstChars = (start: number, firstChar: string) => {
@@ -74,7 +74,7 @@ export const useMenuList = (
     [findAllFocusable, state.ref],
   );
 
-  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, {});
+  const [checkedValues, setCheckedValues] = useControllableValue(state.checkedValues, state.defaultCheckedValues);
   state.checkedValues = checkedValues;
   const { onCheckedValueChange } = state;
   state.toggleCheckbox = useEventCallback(
@@ -88,13 +88,13 @@ export const useMenuList = (
       }
 
       onCheckedValueChange?.(e, name, newCheckedItems);
-      setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
+      setCheckedValues((s) => ({ ...s, [name]: newCheckedItems }));
     },
   );
 
   state.selectRadio = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, name: string, value: string) => {
     const newCheckedItems = [value];
-    setCheckedValues(s => ({ ...s, [name]: newCheckedItems }));
+    setCheckedValues((s) => ({ ...s, [name]: newCheckedItems }));
     onCheckedValueChange?.(e, name, newCheckedItems);
   });
 
