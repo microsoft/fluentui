@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "BasePicker: added high contrast styling to sass file when picker is disabled",
+  "packageName": "@fluentui/react",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
