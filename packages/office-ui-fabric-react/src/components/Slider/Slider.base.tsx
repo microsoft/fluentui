@@ -343,7 +343,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   };
 
   private _onKeyDown = (event: KeyboardEvent): void => {
-    let value: number | undefined = this.state.value;
+    let { value = this.state.value } = this.props;
     const { max, min, step } = this.props;
 
     let diff: number | undefined = 0;
@@ -380,11 +380,15 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     }
 
     const newValue: number = Math.min(max as number, Math.max(min as number, value! + diff!));
-
     this._updateValue(newValue, newValue);
 
     event.preventDefault();
     event.stopPropagation();
+
+    // Disable renderedValue override.
+    this.setState({
+      renderedValue: undefined,
+    });
   };
 
   private _clearOnKeyDownTimer = (): void => {
