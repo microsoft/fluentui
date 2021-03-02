@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
-import { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
+import {
+  AccordionHeaderExpandIconPosition,
+  AccordionHeaderProps,
+  AccordionHeaderSize,
+  AccordionHeaderState,
+} from './AccordionHeader.types';
 import { useAccordionItemContext } from '../AccordionItem';
 
 /**
@@ -21,12 +26,14 @@ export const useAccordionHeader = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
-  const { headingId, panelId, onAccordionHeaderClick } = useAccordionItemContext();
+  const { headingId, panelId, onAccordionHeaderClick, open } = useAccordionItemContext();
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
+      size: 'medium' as AccordionHeaderSize,
       expandIcon: {
-        as: 'div',
+        as: 'span',
+        open,
       },
       button: {
         as: 'div',
@@ -39,11 +46,10 @@ export const useAccordionHeader = (
       },
       as: 'div',
       role: 'heading',
-      expandIconPosition: 'start',
+      expandIconPosition: 'start' as AccordionHeaderExpandIconPosition,
     },
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
-
   return state;
 };

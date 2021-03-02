@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
+import { ChevronRightIcon, ChevronDownIcon } from '@fluentui/react-icons-mdl2';
+
+const ExpandIcon = ({ open, ...rest }: { open: boolean }) => {
+  return open ? <ChevronDownIcon {...rest} /> : <ChevronRightIcon {...rest} />;
+};
 
 export const AccordionExample = () => {
   return (
     <Accordion>
       <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>
-          Accordion Panel <button>button</button>
-        </AccordionPanel>
+        <AccordionHeader expandIcon={{ as: ExpandIcon }}>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>
-          Accordion Panel <button>button</button>
-        </AccordionPanel>
+        <AccordionHeader expandIcon={{ as: ExpandIcon }}>Accordion Header</AccordionHeader>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
   );
