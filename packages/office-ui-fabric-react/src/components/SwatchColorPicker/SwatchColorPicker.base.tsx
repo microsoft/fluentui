@@ -49,6 +49,19 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     });
   });
 
+  public static getDerivedStateFromProps(newProps: ISwatchColorPickerProps, state: ISwatchColorPickerState) {
+    const newSelectedIndex = newProps.selectedId
+      ? _getSelectedIndex(newProps.colorCells, newProps.selectedId)
+      : undefined;
+    if (newSelectedIndex !== state.selectedIndex) {
+      return {
+        selectedIndex: newSelectedIndex,
+      };
+    }
+
+    return null;
+  }
+
   constructor(props: ISwatchColorPickerProps) {
     super(props);
 
@@ -84,19 +97,6 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     this.state = {
       selectedIndex,
     };
-  }
-
-  public static getDerivedStateFromProps(newProps: ISwatchColorPickerProps, state: ISwatchColorPickerState) {
-    const newSelectedIndex = newProps.selectedId
-      ? _getSelectedIndex(newProps.colorCells, newProps.selectedId)
-      : undefined;
-    if (newSelectedIndex !== state.selectedIndex) {
-      return {
-        selectedIndex: newSelectedIndex,
-      };
-    }
-
-    return null;
   }
 
   public componentWillUnmount() {
