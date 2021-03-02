@@ -33,7 +33,6 @@
   },
   "dependencies": {
     "@emotion/hash": "^0.8.0",
-    "@fluentui/set-version": "^8.0.1",
     "csstype": "^2.6.7",
     "inline-style-expand-shorthand": "^1.2.0",
     "rtl-css-js": "^1.14.0",
