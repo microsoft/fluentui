@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Button, IButtonComponent } from '@uifabric/experiments';
 import { Customizer, IStackProps, Stack } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
 const ButtonTheme = {

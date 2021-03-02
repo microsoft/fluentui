@@ -2,6 +2,21 @@
   "name": "@fluentui/react-stylesheets",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-stylesheets_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-stylesheets"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 30 Oct 2020 18:59:48 GMT",
       "tag": "@fluentui/react-stylesheets_v0.2.4",
       "version": "0.2.4",

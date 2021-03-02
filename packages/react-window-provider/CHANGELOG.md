@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-window-provider
 
-This log was last generated on Thu, 29 Oct 2020 12:24:41 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v1.0.2)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-window-provider_v1.0.1..@fluentui/react-window-provider_v1.0.2)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-window-provider_v1.0.1)
 

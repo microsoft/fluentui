@@ -2,6 +2,163 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-examples_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 12:25:59 GMT",
+      "tag": "@fluentui/react-examples_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "making changes to support the new feature",
+            "author": "email not defined",
+            "commit": "f4d4223122469a5b3eeaaa1fb8fa5a8a311738a9",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update UnifiedPicker example with generic item code",
+            "author": "elvonspa@microsoft.com",
+            "commit": "c130f545693b65361aef76d2652574582a7f44b7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Feb 2021 12:25:47 GMT",
+      "tag": "@fluentui/react-examples_v0.11.29",
+      "version": "0.11.29",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating Link examples so they are underlined since the Link component is alongside other text.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "49d501efbed974a77c4bec5ffa171ebba0d3fc19",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-examples_v0.11.28",
+      "version": "0.11.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "4dd3e254b61bf33eca3051799d558c067de7313e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@fluentui/react-examples_v0.11.25",
+      "version": "0.11.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove use of getEdgeChromiumNoHighContrastAdjustSelector",
+            "author": "sareiff@microsoft.com",
+            "commit": "e49b873eb8467a43bf53067d01151d6fb9e37356",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Disabling deprecation lint rule in examples using deprecated components.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "a2a15adcff93e22af40fcce297fa937cd5a4f06b",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@fluentui/react-examples_v0.11.24",
+      "version": "0.11.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "37f1996872b4d7b9a94fe45dc0d52e5f2be77c94",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 12:26:30 GMT",
+      "tag": "@fluentui/react-examples_v0.11.22",
+      "version": "0.11.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify Persona example and tests to cover the new initials behavior",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9c1e2c6da5ba65ced00465a991c89ac2373871e",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:26:55 GMT",
+      "tag": "@fluentui/react-examples_v0.11.21",
+      "version": "0.11.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding controls to story",
+            "author": "jagaheri@microsoft.com",
+            "commit": "374b0f945a190f56b67529fd48a8d556f4c8cb15",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:26:03 GMT",
+      "tag": "@fluentui/react-examples_v0.11.20",
+      "version": "0.11.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers",
+            "author": "mibes@microsoft.com",
+            "commit": "eee1754f0d92ee3c5fa8d68e9dfdcb03445b7df7",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 12:24:38 GMT",
       "tag": "@fluentui/react-examples_v0.11.18",
       "version": "0.11.18",

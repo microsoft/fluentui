@@ -2,6 +2,21 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-compose_v0.19.15",
+      "version": "0.19.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-compose"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Nov 2020 12:26:33 GMT",
       "tag": "@fluentui/react-compose_v0.19.12",
       "version": "0.19.12",

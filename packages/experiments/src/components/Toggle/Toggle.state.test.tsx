@@ -5,6 +5,8 @@ import * as sinon from 'sinon';
 import { Toggle } from './Toggle';
 import { IToggleProps } from './Toggle.types';
 
+/* eslint-disable deprecation/deprecation */
+
 describe('ToggleState', () => {
   it('can call the callback on a change of toggle', () => {
     let isToggledValue;

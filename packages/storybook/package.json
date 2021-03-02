@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/storybook",
-  "version": "0.6.12",
+  "version": "0.6.22",
   "description": "Storybook addons for Fluent UI React",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,7 +17,7 @@
     "lint": "just-scripts lint"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^0.54.2",
     "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@uifabric/build": "^7.0.0",
@@ -25,14 +25,14 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/theme": "^1.7.1",
-    "@fluentui/react-theme-provider": "^0.18.1",
+    "@fluentui/theme": "^1.7.4",
+    "@fluentui/react-theme-provider": "^0.18.5",
     "@storybook/addon-knobs": "^5.3.8",
     "@storybook/addons": "^5.3.8",
-    "@uifabric/azure-themes": "^7.7.2",
-    "@uifabric/mdl2-theme": "^0.4.10",
-    "@uifabric/theme-samples": "^7.2.10",
-    "office-ui-fabric-react": "^7.158.1",
+    "@uifabric/azure-themes": "^7.7.12",
+    "@uifabric/mdl2-theme": "^0.4.20",
+    "@uifabric/theme-samples": "^7.2.20",
+    "office-ui-fabric-react": "^7.162.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
@@ -40,5 +40,8 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0"
+  },
+  "beachball": {
+    "tag": "lts-7"
   }
 }

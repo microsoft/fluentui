@@ -71,12 +71,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/callout',
         },
         {
-          component: require<any>('./components/pages/CardPage').CardPage,
-          key: 'Card',
-          name: 'Card',
-          url: '#/examples/card',
-        },
-        {
           component: require<any>('./components/pages/CheckboxPage').CheckboxPage,
           key: 'Checkbox',
           name: 'Checkbox',

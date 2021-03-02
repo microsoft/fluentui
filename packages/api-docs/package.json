@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "7.6.13",
+  "version": "7.6.23",
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
@@ -18,22 +18,21 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^0.54.1",
+    "@fluentui/eslint-plugin": "^0.54.2",
     "@types/fs-extra": "^8.0.1",
     "@types/node": "^10.3.2",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@fluentui/date-time-utilities": "^7.9.0",
-    "@fluentui/react-focus": "^7.17.1",
-    "@fluentui/theme": "^1.7.1",
-    "@uifabric/merge-styles": "^7.19.1",
-    "@uifabric/react-cards": "^0.115.13",
-    "@uifabric/styling": "^7.16.19",
-    "@uifabric/utilities": "^7.33.2",
+    "@fluentui/date-time-utilities": "^7.9.1",
+    "@fluentui/react-focus": "^7.17.5",
+    "@fluentui/theme": "^1.7.4",
+    "@uifabric/merge-styles": "^7.19.2",
+    "@uifabric/styling": "^7.18.1",
+    "@uifabric/utilities": "^7.33.5",
     "@microsoft/api-extractor-model": "7.7.1",
     "@microsoft/tsdoc": "0.12.14",
     "fs-extra": "^8.1.0",
-    "office-ui-fabric-react": "^7.158.1"
+    "office-ui-fabric-react": "^7.162.1"
   }
 }

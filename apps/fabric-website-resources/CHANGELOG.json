@@ -2,6 +2,21 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.9.25",
+      "version": "7.9.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Website: Removing Card page from the website.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8856b30a6bce054e0c0f20c2c1be91a59ba38c08",
+            "package": "@uifabric/fabric-website-resources"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Sep 2020 12:28:49 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.8.19",
       "version": "7.8.19",

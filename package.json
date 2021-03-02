@@ -20,7 +20,7 @@
     "bundle": "lage bundle --verbose",
     "bundle:prod": "yarn bundle --production",
     "bundlesize": "cd scripts && yarn bundlesize",
-    "bundlesizecollect": "cd scripts && just-scripts bundle-size-collect",
+    "bundlesizecollect": "node ./scripts/bundle-size-collect",
     "checkchange": "beachball check --changehint \"Run 'yarn change' to generate a change file\" -b 7.0",
     "clean": "lage clean --verbose",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",

@@ -267,7 +267,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -311,8 +311,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
+                          forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
                     role="presentation"
@@ -793,7 +794,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -837,8 +838,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -969,7 +971,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -985,7 +987,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -1333,7 +1335,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -1377,8 +1379,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -1509,7 +1512,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -1525,7 +1528,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -1873,7 +1876,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -1917,8 +1920,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -2049,7 +2053,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -2065,7 +2069,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -2413,7 +2417,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -2457,8 +2461,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -2589,7 +2594,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -2605,7 +2610,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -2953,7 +2958,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -2997,8 +3002,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -3129,7 +3135,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -3145,7 +3151,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -3493,7 +3499,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -3537,8 +3543,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -3669,7 +3676,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -3685,7 +3692,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -4033,7 +4040,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -4077,8 +4084,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -4209,7 +4217,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -4225,7 +4233,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -4573,7 +4581,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -4617,8 +4625,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -4749,7 +4758,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -4765,7 +4774,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -5113,7 +5122,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -5157,8 +5166,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -5289,7 +5299,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -5305,7 +5315,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }
@@ -5653,7 +5663,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     vertical-align: middle;
                                     width: 18px;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
@@ -5697,8 +5707,9 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                   &:hover {
                                     opacity: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){& {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                                     -ms-high-contrast-adjust: none;
+                                    forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
                               role="presentation"
@@ -5829,7 +5840,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     top: 2px;
                                     z-index: 1;
                                   }
-                                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                                     bottom: -2px;
                                     left: -2px;
                                     outline-color: ButtonText;
@@ -5845,7 +5856,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                                     background-color: #f3f2f1;
                                     color: #106ebe;
                                   }
-                                  @media screen and (-ms-high-contrast: active){&:hover {
+                                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                                     border-color: Highlight;
                                     color: Highlight;
                                   }

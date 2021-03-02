@@ -1,6 +1,10 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ListCellsPage/docs/ListCellsRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'Android List Cells', url: '#/controls/android/listcells' },
+  { text: 'iOS List Cells', url: '#/controls/ios/listcells' },
+];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/ListCellsPage';
 

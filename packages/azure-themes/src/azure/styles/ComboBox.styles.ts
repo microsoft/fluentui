@@ -32,14 +32,6 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     input: {
       height: StyleConstants.inputControlHeightInner,
-      selectors: {
-        '::placeholder': {
-          fontStyle: 'italic',
-        },
-        '::-ms-input-placeholder': {
-          fontStyle: 'italic',
-        },
-      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-icons",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/react-icons_v0.4.2",
+      "version": "0.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "@fluentui/react-icons_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding five svg icons for OWA",
+            "author": "ololubek@microsoft.com",
+            "commit": "bc8004e02392ce02c446bf99423146da40937011",
+            "package": "@fluentui/react-icons"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Sep 2020 12:25:17 GMT",
       "tag": "@fluentui/react-icons_v0.3.5",
       "version": "0.3.5",

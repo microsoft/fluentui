@@ -17,6 +17,9 @@ const cssRule = {
   use: ['style-loader', 'css-loader'],
 };
 
+// don't randomly start failing build if caniuse-lite releases a new version
+process.env.BROWSERSLIST_IGNORE_OLD_DATA = '1';
+
 let isValidEnv = false;
 
 function validateEnv() {

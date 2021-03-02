@@ -2,6 +2,21 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Mon, 08 Feb 2021 12:26:55 GMT",
+      "tag": "@uifabric/azure-themes_v7.7.3",
+      "version": "7.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Checkbox, toggle, MessageBar dimensions and removing italic placeholder text",
+            "author": "jagaheri@microsoft.com",
+            "commit": "374b0f945a190f56b67529fd48a8d556f4c8cb15",
+            "package": "@uifabric/azure-themes"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Jan 2021 12:27:21 GMT",
       "tag": "@uifabric/azure-themes_v7.7.0",
       "version": "7.7.0",

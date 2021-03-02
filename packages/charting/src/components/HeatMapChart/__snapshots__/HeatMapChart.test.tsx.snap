@@ -50,7 +50,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -58,7 +58,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -79,7 +79,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -89,7 +89,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -263,7 +263,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -287,7 +287,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
                           opacity: ;
                         }
@@ -369,7 +369,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -377,7 +377,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -398,7 +398,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -408,7 +408,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -582,7 +582,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -606,7 +606,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, rgb(255, 203, 169), rgb(255, 203, 169));
                           opacity: ;
                         }
@@ -671,7 +671,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -695,7 +695,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, rgb(255, 213, 135), rgb(255, 213, 135));
                           opacity: ;
                         }
@@ -777,7 +777,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -785,7 +785,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -806,7 +806,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -816,7 +816,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -944,7 +944,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -952,7 +952,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -973,7 +973,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -983,7 +983,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1157,7 +1157,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1181,7 +1181,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
                           opacity: ;
                         }
@@ -1263,7 +1263,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1271,7 +1271,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1292,7 +1292,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1302,7 +1302,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1476,7 +1476,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1500,7 +1500,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, rgb(144, 180, 215), rgb(144, 180, 215));
                           opacity: ;
                         }

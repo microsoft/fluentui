@@ -50,7 +50,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -58,7 +58,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -79,7 +79,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -89,7 +89,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -101,6 +101,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -121,6 +122,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -141,6 +143,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -165,6 +168,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -185,6 +189,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -205,6 +210,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout0"
             className=
 
                 {
@@ -327,7 +333,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -351,7 +357,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -416,7 +422,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -440,7 +446,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -505,7 +511,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -529,7 +535,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
@@ -611,7 +617,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -619,7 +625,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -640,7 +646,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -650,7 +656,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -662,6 +668,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout14"
             className=
 
                 {
@@ -682,6 +689,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout14"
             className=
 
                 {
@@ -702,6 +710,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout14"
             className=
 
                 {
@@ -726,6 +735,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout14"
             className=
 
                 {
@@ -746,6 +756,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout14"
             className=
 
                 {
@@ -766,6 +777,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout14"
             className=
 
                 {
@@ -871,7 +883,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -895,7 +907,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     content: linear-gradient(to right, #0078d4, #0078d4);
                     opacity: ;
                   }
@@ -960,7 +972,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -984,7 +996,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     content: linear-gradient(to right, #00188f, #00188f);
                     opacity: ;
                   }
@@ -1049,7 +1061,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   top: 1px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   outline-color: #605e5c;
                 }
             data-is-focusable={true}
@@ -1073,7 +1085,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                     opacity: ;
                     width: 12px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     content: linear-gradient(to right, #00bcf2, #00bcf2);
                     opacity: ;
                   }
@@ -1152,7 +1164,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1160,7 +1172,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1181,7 +1193,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1191,7 +1203,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1203,6 +1215,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout5"
             className=
 
                 {
@@ -1223,6 +1236,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout5"
             className=
 
                 {
@@ -1243,6 +1257,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout5"
             className=
 
                 {
@@ -1267,6 +1282,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout5"
             className=
 
                 {
@@ -1287,6 +1303,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout5"
             className=
 
                 {
@@ -1307,6 +1324,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout5"
             className=
 
                 {
@@ -1383,7 +1401,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1391,7 +1409,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1412,7 +1430,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1422,7 +1440,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1434,12 +1452,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout9"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
@@ -1454,12 +1473,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout9"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00188f"
             height={0}
             onBlur={[Function]}
@@ -1474,12 +1494,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout9"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
@@ -1498,12 +1519,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout9"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#0078d4"
             height={0}
             onBlur={[Function]}
@@ -1518,12 +1540,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout9"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00188f"
             height={0}
             onBlur={[Function]}
@@ -1538,12 +1561,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout9"
             className=
 
                 {
                   cursor: default;
                 }
-            data-is-focusable={true}
+            data-is-focusable={false}
             fill="#00bcf2"
             height={0}
             onBlur={[Function]}
@@ -1660,7 +1684,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1684,7 +1708,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -1749,7 +1773,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1773,7 +1797,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -1838,7 +1862,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -1862,7 +1886,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
@@ -1944,7 +1968,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -1952,7 +1976,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1973,7 +1997,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -1983,7 +2007,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -1995,6 +2019,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout19"
             className=
 
                 {
@@ -2015,6 +2040,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout19"
             className=
 
                 {
@@ -2035,6 +2061,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout19"
             className=
 
                 {
@@ -2059,6 +2086,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout19"
             className=
 
                 {
@@ -2079,6 +2107,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout19"
             className=
 
                 {
@@ -2099,6 +2128,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout19"
             className=
 
                 {
@@ -2221,7 +2251,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2245,7 +2275,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2310,7 +2340,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2334,7 +2364,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -2399,7 +2429,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2423,7 +2453,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
@@ -2505,7 +2535,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -2513,7 +2543,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2534,7 +2564,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -2544,7 +2574,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -2556,6 +2586,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -2576,6 +2607,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -2596,6 +2628,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -2620,6 +2653,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -2640,6 +2674,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -2660,6 +2695,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout24"
             className=
 
                 {
@@ -2782,7 +2818,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2806,7 +2842,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -2871,7 +2907,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2895,7 +2931,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -2960,7 +2996,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -2984,7 +3020,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }
@@ -3066,7 +3102,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & line {
@@ -3074,7 +3110,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               stroke: #323130;
               width: 1px;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -3095,7 +3131,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               font-size: 10px;
               font-weight: 400;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& text {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& text {
               fill: rgb(179, 179, 179);
             }
             & path {
@@ -3105,7 +3141,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.2;
               stroke: #323130;
             }
-            @media screen and (-ms-high-contrast: white-on-black){& line {
+            @media screen and (-ms-high-contrast: white-on-black), (forced-colors: white-on-black){& line {
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
@@ -3117,6 +3153,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
           transform="translate(12.222222222222221, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout29"
             className=
 
                 {
@@ -3137,6 +3174,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={5.333333333333329}
           />
           <rect
+            aria-labelledby="toolTipcallout29"
             className=
 
                 {
@@ -3157,6 +3195,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout29"
             className=
 
                 {
@@ -3181,6 +3220,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
           transform="translate(-15.555555555555554, 0)"
         >
           <rect
+            aria-labelledby="toolTipcallout29"
             className=
 
                 {
@@ -3201,6 +3241,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={0}
           />
           <rect
+            aria-labelledby="toolTipcallout29"
             className=
 
                 {
@@ -3221,6 +3262,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             y={20}
           />
           <rect
+            aria-labelledby="toolTipcallout29"
             className=
 
                 {
@@ -3343,7 +3385,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -3367,7 +3409,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #0078d4, #0078d4);
                           opacity: ;
                         }
@@ -3432,7 +3474,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -3456,7 +3498,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00188f, #00188f);
                           opacity: ;
                         }
@@ -3521,7 +3563,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         top: 1px;
                         z-index: 1;
                       }
-                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                         outline-color: #605e5c;
                       }
                   data-is-focusable={true}
@@ -3545,7 +3587,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                           opacity: ;
                           width: 12px;
                         }
-                        @media screen and (-ms-high-contrast: active){& {
+                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                           content: linear-gradient(to right, #00bcf2, #00bcf2);
                           opacity: ;
                         }

@@ -37,18 +37,12 @@ jobs:
           yarn buildci --no-cache --since $(targetBranch)
         displayName: build, test, lint (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       ## duplicated build step, but without --since flag for 7.0 CI builds
       - script: |
           yarn buildci --no-cache
         displayName: build, test, lint (7.0)
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       - template: .devops/templates/cleanup.yml
 
@@ -68,18 +62,12 @@ jobs:
           yarn bundle --no-cache --grouped --since $(targetBranch)
         displayName: bundle (pr, scoped)
         condition: ne(variables['Build.SourceBranch'], 'refs/heads/7.0')
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       ## duplicated for  7.0 CI builds
       - script: |
           yarn bundle --no-cache --grouped
         displayName: bundle (7.0)
         condition: eq(variables['Build.SourceBranch'], 'refs/heads/7.0')
-        env:
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
@@ -125,7 +113,5 @@ jobs:
         displayName: run VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
-          BACKFILL_CACHE_PROVIDER: 'azure-blob'
-          BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
 
       - template: .devops/templates/cleanup.yml

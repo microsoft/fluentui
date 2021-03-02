@@ -20,15 +20,10 @@ steps:
       filePath: yarn-ci.sh
     displayName: yarn
 
-  # @fluentui/perf-test needs build and bundle steps
   - script: |
-      yarn lage build --to @fluentui/perf-test --to perf-test --verbose --no-cache --grouped
-    displayName: build  @fluentui v0
-    env:
-      BACKFILL_CACHE_PROVIDER: 'azure-blob'
-      BACKFILL_CACHE_PROVIDER_OPTIONS: '{"connectionString":"$(BACKFILL_CONNECTION_STRING)", "container":"$(BACKFILL_CONTAINER)"}'
+      yarn lage build --to perf-test --verbose --no-cache --grouped
+    displayName: build to perf-test
 
-  # Fabric: perf-test will build, bundle, and run-perftest
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test

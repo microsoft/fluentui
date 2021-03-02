@@ -7,6 +7,9 @@ import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { ISplitButtonComponent, ISplitButtonTokens } from './SplitButton.types';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
   root: 'span',
   button: Button,
@@ -20,6 +23,7 @@ export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
   splitDivider: 'span',
 });
 
+/** @deprecated */
 export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
   const {
     styles,

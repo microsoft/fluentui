@@ -2,6 +2,21 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "@uifabric/api-docs_v7.6.18",
+      "version": "7.6.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing react-cards from api-docs generation.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "8856b30a6bce054e0c0f20c2c1be91a59ba38c08",
+            "package": "@uifabric/api-docs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 21 Oct 2020 12:32:12 GMT",
       "tag": "@uifabric/api-docs_v7.5.32",
       "version": "7.5.32",

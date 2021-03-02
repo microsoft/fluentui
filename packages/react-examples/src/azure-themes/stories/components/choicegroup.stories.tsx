@@ -9,7 +9,7 @@ const options: IChoiceGroupOption[] = [
 ];
 
 export const ChoiceGroupBasicExample: React.FunctionComponent = () => {
-  return <ChoiceGroup defaultSelectedKey="B" options={options} onChange={_onChange} label="Pick one" required={true} />;
+  return <ChoiceGroup defaultSelectedKey="C" options={options} onChange={_onChange} label="Pick one" required={true} />;
 };
 
 function _onChange(ev: React.FormEvent<HTMLInputElement>, option: IChoiceGroupOption): void {

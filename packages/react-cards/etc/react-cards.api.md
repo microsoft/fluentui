@@ -18,134 +18,155 @@ import { IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { IStyleableComponentProps } from '@uifabric/foundation';
 import * as React from 'react';
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const Card: React.FunctionComponent<ICardProps> & {
     Item: React.FunctionComponent<ICardItemProps>;
     Section: React.FunctionComponent<ICardSectionProps>;
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const CardItem: React.FunctionComponent<ICardItemProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const CardSection: React.FunctionComponent<ICardSectionProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICard {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardItem {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardItemComponent = IComponent<ICardItemProps, ICardItemTokens, ICardItemStyles, ICardItemViewProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardItemProps extends ICardItemSlots, Pick<IStackItemProps, 'grow' | 'shrink' | 'disableShrink' | 'align' | 'verticalFill' | 'order'>, IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles>, IBaseProps<ICardItem> {
+    // @deprecated
     fill?: boolean;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardItemSlot = ISlotProp<ICardItemProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardItemSlots extends IStackItemSlots {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardItemStyles = IComponentStyles<ICardItemSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardItemStylesReturnType = ReturnType<Extract<ICardItemComponent['styles'], Function>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardItemTokenReturnType = ReturnType<Extract<ICardItemComponent['tokens'], Function>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardItemTokens extends IStackItemTokens {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardItemViewProps extends ICardItemProps {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard>, React.AllHTMLAttributes<HTMLElement> {
+    // @deprecated
     horizontal?: boolean;
+    // @deprecated
     onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
+    // @deprecated
     onKeyDown?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardSection {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTokens, ICardSectionStyles, ICardSectionViewProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardSectionProps extends ICardSectionSlots, Pick<IStackProps, 'as' | 'horizontal' | 'reversed' | 'horizontalAlign' | 'verticalAlign' | 'verticalFill' | 'disableShrink' | 'grow' | 'wrap'>, IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>, IBaseProps<ICardSection> {
+    // @deprecated
     fill?: boolean;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardSectionStyles = IComponentStyles<ICardSectionSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardSectionStylesReturnType = ReturnType<Extract<ICardSectionComponent['styles'], Function>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardSectionTokenReturnType = ReturnType<Extract<ICardSectionComponent['tokens'], Function>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardSectionTokens extends IStackTokens {
+    // @deprecated
     margin?: number | string;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardSectionViewProps extends ICardSectionProps {
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardSlots {
+    // @deprecated
     root?: IStackSlot;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardStyles = IComponentStyles<ICardSlots>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardStylesReturnType = ReturnType<Extract<ICardComponent['styles'], Function>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type ICardTokenReturnType = ReturnType<Extract<ICardComponent['tokens'], Function>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface ICardTokens extends IStackTokens {
+    // @deprecated
     borderFocused?: string;
+    // @deprecated
     boxShadow?: string;
+    // @deprecated
     boxShadowFocused?: string;
+    // @deprecated
     boxShadowHovered?: string;
+    // @deprecated
     childrenMargin?: number;
+    // @deprecated
     cursor?: string;
+    // @deprecated
     height?: number | string;
+    // @deprecated
     highContrastBoxShadow?: string;
+    // @deprecated
     highContrastBoxShadowFocused?: string;
+    // @deprecated
     highContrastBoxShadowHovered?: string;
+    // @deprecated
     maxWidth?: number | string;
+    // @deprecated
     minHeight?: number | string;
+    // @deprecated
     minWidth?: number | string;
+    // @deprecated
     width?: number | string;
 }
 

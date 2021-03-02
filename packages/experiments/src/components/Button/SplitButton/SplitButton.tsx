@@ -6,6 +6,12 @@ import { SplitButtonStyles as styles, SplitButtonTokens as tokens } from './Spli
 import { ISplitButtonProps } from './SplitButton.types';
 import { SplitButtonSlots as slots, SplitButtonView as view } from './SplitButton.view';
 
+/* eslint-disable deprecation/deprecation */
+
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const SplitButton: React.FunctionComponent<ISplitButtonProps> = composed({
   displayName: 'SplitButton',
   slots,
@@ -15,4 +21,8 @@ export const SplitButton: React.FunctionComponent<ISplitButtonProps> = composed(
   view,
 });
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export default SplitButton;

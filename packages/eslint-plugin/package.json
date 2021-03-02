@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "0.54.1",
+  "version": "0.54.2",
   "description": "ESLint configuration and custom rules for Fluent UI",
   "main": "src/index.js",
   "repository": {
@@ -37,5 +37,8 @@
   },
   "files": [
     "src"
-  ]
+  ],
+  "beachball": {
+    "tag": "lts-7"
+  }
 }

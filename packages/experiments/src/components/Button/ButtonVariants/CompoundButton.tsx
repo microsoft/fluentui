@@ -19,18 +19,31 @@ import {
 } from '../Button.types';
 import { ButtonSlots, ButtonView } from '../Button.view';
 
+/* eslint-disable deprecation/deprecation */
+
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export interface ICompoundButtonProps extends IButtonProps {
+  /** @deprecated */
   secondaryText?: string;
 }
 
+/** @deprecated */
 export interface ICompoundButtonViewProps extends ICompoundButtonProps {}
 
+/** @deprecated */
 export interface ICompountButtonTokens extends IButtonTokens {
+  /** @deprecated */
   secondaryColor?: string;
+  /** @deprecated */
   secondaryColorHovered?: string;
+  /** @deprecated */
   secondaryColorPressed?: string;
 }
 
+/** @deprecated */
 export type ICompoundButtonComponent = IComponent<
   ICompoundButtonProps,
   ICompountButtonTokens,
@@ -195,6 +208,10 @@ const CompoundButtonView: ICompoundButtonComponent['view'] = (props, slots) => {
   return ButtonView(compoundButtonProps, slots);
 };
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CompoundButton: React.FunctionComponent<ICompoundButtonProps> = composed({
   displayName: 'CompoundButton',
   slots: ButtonSlots,

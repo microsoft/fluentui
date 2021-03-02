@@ -3,6 +3,9 @@ import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } fro
 import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { effects } = theme;
 
@@ -25,10 +28,12 @@ export const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTok
   };
 };
 
+/** @deprecated */
 export const hrefTokens: IButtonComponent['tokens'] = {
   contentPadding: '8px 16px',
 };
 
+/** @deprecated */
 export const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
 
@@ -46,6 +51,7 @@ export const circularTokens: IButtonComponent['tokens'] = (props, theme): IButto
   };
 };
 
+/** @deprecated */
 export const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
@@ -73,6 +79,7 @@ export const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
   };
 };
 
+/** @deprecated */
 export const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
@@ -108,6 +115,7 @@ export const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButto
   };
 };
 
+/** @deprecated */
 export const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
@@ -140,11 +148,13 @@ export const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): 
   };
 };
 
+/** @deprecated */
 export const primaryCircularTokens: IButtonComponent['tokens'] = {
   borderStyleFocused: 'solid',
   borderWidthFocused: 1,
 };
 
+/** @deprecated */
 export const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
@@ -162,6 +172,7 @@ export const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButton
   };
 };
 
+/** @deprecated */
 export const primaryCheckedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
@@ -179,6 +190,7 @@ export const primaryCheckedTokens: IButtonComponent['tokens'] = (props, theme): 
   };
 };
 
+/** @deprecated */
 export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   !!props.href && hrefTokens,
@@ -196,6 +208,7 @@ const GlobalClassNames = {
   msButtonIcon: 'ms-Button-icon',
 };
 
+/** @deprecated */
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className, circular } = props;
 

@@ -7,7 +7,7 @@ import {
   normalize,
   getPlaceholderStyles,
   IconFontSizes,
-  getEdgeChromiumNoHighContrastAdjustSelector,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
@@ -158,8 +158,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           selectors: {
             [HighContrastSelector]: {
               borderColor: 'GrayText',
+              ...getHighContrastNoAdjustStyle(),
             },
-            ...getEdgeChromiumNoHighContrastAdjustSelector(),
           },
         },
         !disabled && {
@@ -169,8 +169,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               selectors: {
                 [HighContrastSelector]: {
                   borderBottomColor: 'Highlight',
+                  ...getHighContrastNoAdjustStyle(),
                 },
-                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
           },
@@ -215,8 +215,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
               selectors: {
                 [HighContrastSelector]: {
                   borderColor: 'Highlight',
+                  ...getHighContrastNoAdjustStyle(),
                 },
-                ...getEdgeChromiumNoHighContrastAdjustSelector(),
               },
             },
           },
@@ -233,8 +233,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'GrayText',
+            ...getHighContrastNoAdjustStyle(),
           },
-          ...getEdgeChromiumNoHighContrastAdjustSelector(),
         },
 
         cursor: 'default',

@@ -1,4 +1,4 @@
-import { getFocusStyle, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle, HighContrastSelector, getHighContrastNoAdjustStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -77,14 +77,14 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
                 [HighContrastSelector]: {
                   color: 'Window',
                   backgroundColor: 'Highlight',
-                  MsHighContrastAdjust: 'none',
+                  ...getHighContrastNoAdjustStyle(),
                 },
               },
             },
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },

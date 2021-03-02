@@ -71,6 +71,7 @@ export interface IMicroFeedbackSlots {
   /**
    * Defines the options available for the follow up questions.
    */
+  // eslint-disable-next-line deprecation/deprecation
   followUpOption?: IButtonSlot;
 
   /**

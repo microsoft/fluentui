@@ -16,7 +16,11 @@ const buttonTwoKeytipProps = {
 export const KeytipsDynamicExample: React.FunctionComponent = () => {
   const [currButton, setCurrButton] = React.useState('Button 1');
   const startSequence = currButton === 'Button 1' ? 'gg1' : 'gg2';
-  const onClick = (ev: React.MouseEvent<{}>) => setCurrButton((ev.target as Element).id);
+  const onClick = (buttonId: string) => {
+    return () => {
+      setCurrButton(buttonId);
+    };
+  };
 
   const buttonThreeKeytipProps = React.useMemo(
     () => ({
@@ -39,15 +43,21 @@ export const KeytipsDynamicExample: React.FunctionComponent = () => {
         id="Button 1"
         text="Button 1"
         // eslint-disable-next-line react/jsx-no-bind
-        onClick={onClick}
-        keytipProps={buttonOneKeytipProps}
+        onClick={onClick('Button 1')}
+        keytipProps={{
+          ...buttonOneKeytipProps,
+          onExecute: onClick('Button 1'),
+        }}
       />
       <DefaultButton
         id="Button 2"
         text="Button 2"
         // eslint-disable-next-line react/jsx-no-bind
-        onClick={onClick}
-        keytipProps={buttonTwoKeytipProps}
+        onClick={onClick('Button 2')}
+        keytipProps={{
+          ...buttonTwoKeytipProps,
+          onExecute: onClick('Button 2'),
+        }}
       />
       <div>
         <DefaultButton text={'Button 3, active button is: ' + currButton} keytipProps={buttonThreeKeytipProps} />

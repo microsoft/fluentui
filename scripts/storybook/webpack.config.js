@@ -5,6 +5,9 @@ const findGitRoot = require('../monorepo/findGitRoot');
 const getResolveAlias = require('../webpack/getResolveAlias');
 const webpack = require('webpack');
 
+// don't randomly start failing build if caniuse-lite releases a new version
+process.env.BROWSERSLIST_IGNORE_OLD_DATA = '1';
+
 module.exports = (/** @type {webpack.Configuration} */ config) => {
   config.resolveLoader = {
     ...config.resolveLoader,

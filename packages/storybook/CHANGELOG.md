@@ -1,8 +1,17 @@
 # Change Log - @fluentui/storybook
 
-This log was last generated on Tue, 17 Nov 2020 12:27:56 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.6.21](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.6.21)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/storybook_v0.5.26..@fluentui/storybook_v0.6.21)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [0.5.26](https://github.com/microsoft/fluentui/tree/@fluentui/storybook_v0.5.26)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 24 Nov 2020 12:26:56 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.162.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.162.0)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.153.0..@fluentui/react_v7.162.0)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [7.153.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.153.0)
 

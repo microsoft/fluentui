@@ -48,6 +48,16 @@ export interface ICartesianChartStyleProps {
    * prop to check if the Page is in Rtl
    */
   isRtl?: boolean;
+
+  /**
+   * color of the line
+   */
+  lineColor?: string;
+
+  /**
+   * boolean flag which determines if shape is drawn in callout
+   */
+  toDrawShape?: boolean;
 }
 
 export interface ICartesianChartStyles {
@@ -122,6 +132,11 @@ export interface ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover?: IStyle;
+
+  /**
+   * styles set for the shape object in the callout
+   */
+  shapeStyles?: IStyle;
 }
 
 export interface ICartesianChartProps {
@@ -300,6 +315,11 @@ export interface ICartesianChartProps {
    * Callout customization props
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * props for the svg; use this to include aria-* or other attributes on the tag
+   */
+  svgProps?: React.SVGProps<SVGSVGElement>;
 }
 
 export interface IYValueHover {
@@ -309,6 +329,7 @@ export interface IYValueHover {
   data?: string | number;
   shouldDrawBorderBottom?: boolean;
   yAxisCalloutData?: string | { [id: string]: number };
+  index?: number;
 }
 
 export interface IChildProps {

@@ -42,7 +42,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
             margin-right: 0;
             margin-top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
             border: none;
             margin-bottom: 0;
             margin-left: 0;
@@ -233,7 +233,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
             margin-right: 0;
             margin-top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
             border: none;
             margin-bottom: 0;
             margin-left: 0;
@@ -305,12 +305,13 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     height: 16px;
                     line-height: 16px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background-color: Window !important;
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                    forced-color-adjust: none;
                   }
                   & i {
                     font-weight: 600;
@@ -465,12 +466,13 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     height: 16px;
                     line-height: 16px;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     -ms-high-contrast-adjust: none;
                     background-color: Window !important;
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                    forced-color-adjust: none;
                   }
                   & i {
                     font-weight: 600;
@@ -570,7 +572,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
             margin-right: 0;
             margin-top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
             border: none;
             margin-bottom: 0;
             margin-left: 0;
@@ -672,7 +674,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
             margin-right: 0;
             margin-top: -2px;
           }
-          @media screen and (-ms-high-contrast: active){& .ms-Persona-imageArea {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-Persona-imageArea {
             border: none;
             margin-bottom: 0;
             margin-left: 0;

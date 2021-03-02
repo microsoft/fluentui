@@ -15,6 +15,7 @@ import {
   ILegendStyleProps,
   ILegendOverflowData,
 } from './Legends.types';
+import { Shape } from './shape';
 
 import { silceOrAppendToArray } from '../../utilities/utilities';
 
@@ -370,6 +371,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const onMouseOut = () => {
       this._onLeave(legend);
     };
+    const shape = this._getShape(classNames, legend, color);
     return (
       <button
         {...(allowFocusOnLegends && {
@@ -390,18 +392,36 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         data-is-focusable={allowFocusOnLegends}
         /* eslint-enable react/jsx-no-bind */
       >
-        <div className={this._getShapeClass(classNames, legend)} />
+        {shape}
         <div className={classNames.text}>{legend.title}</div>
       </button>
     );
   };
 
-  private _getShapeClass(classNames: IProcessedStyleSet<ILegendsStyles>, legend: ILegend): string {
-    if (legend.shape === 'triangle') {
-      return classNames.triangle;
-    }
-
-    return classNames.rect;
+  private _getShape(
+    classNames: IProcessedStyleSet<ILegendsStyles>,
+    legend: ILegend,
+    color: string,
+  ): React.ReactNode | string {
+    const { theme } = this.props;
+    const { palette } = theme!;
+    const svgParentProps: React.SVGAttributes<SVGElement> = {
+      className: classNames.shape,
+    };
+    const svgChildProps: React.SVGAttributes<SVGElement> = {
+      fill: color,
+      strokeWidth: 2,
+      stroke: legend.color,
+      opacity: color === palette.white ? 0.6 : legend.opacity ? legend.opacity : '',
+    };
+    return (
+      <Shape
+        svgProps={svgParentProps}
+        pathProps={svgChildProps}
+        shape={legend.shape as LegendShape}
+        classNameForNonSvg={classNames.rect}
+      />
+    );
   }
 
   private _getColor(title: string, color: string): string {

@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { ComboBoxPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/ComboBox/ComboBox.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ComboBoxPage/docs/ComboBoxRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const ComboBoxPageProps: TFabricPlatformPageProps = {
   web: {

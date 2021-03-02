@@ -1,8 +1,17 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Wed, 21 Oct 2020 12:32:12 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Feb 2021 12:25:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.6.18](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.6.18)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/api-docs_v7.5.32..@uifabric/api-docs_v7.6.18)
+
+### Patches
+
+- Removing react-cards from api-docs generation. ([PR #16956](https://github.com/microsoft/fluentui/pull/16956) by humbertomakotomorimoto@gmail.com)
 
 ## [7.5.32](https://github.com/microsoft/fluentui/tree/@uifabric/api-docs_v7.5.32)
 

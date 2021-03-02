@@ -39,32 +39,32 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           background: #005a9e;
           border-color: #005a9e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
           background: Highlight;
           border-color: Highlight;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-checkbox {
           background: Highlight;
         }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkbox {
           background: Highlight;
         }
-        @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus:hover .ms-Checkbox-checkmark {
           color: Window;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
           color: Window;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
           color: WindowText;
         }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
           color: WindowText;
         }
   >
@@ -83,7 +83,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             outline-offset: 2px;
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid WindowText;
           }
       id="checkbox-0"
@@ -140,11 +140,10 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               background: Highlight;
               border-color: Highlight;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -163,9 +162,10 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 opacity: 1;
                 speak: none;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 color: Window;
+                forced-color-adjust: none;
               }
           data-icon-name="CheckMark"
         >
@@ -182,10 +182,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               line-height: 20px;
               margin-left: 4px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -507,6 +506,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               border: 0px;
               bottom: -2px;
               box-sizing: content-box;
+              forced-color-adjust: none;
               height: 8px;
               left: 0px;
               position: absolute;
@@ -515,7 +515,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               top: 7px;
               width: 8px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
               background-color: WindowText;
               border-color: Window;
               border: 1px solid WindowText;
@@ -532,7 +532,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               top: 0px;
               width: 100%;
             }
-            @media screen and (-ms-high-contrast: active){&:before {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
               border-color: Window;
               height: calc(100% - 2px);
               left: 1px;
@@ -826,6 +826,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 8px;
                 position: absolute;
                 right: -2px;
@@ -833,7 +834,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 8px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Highlight;
                 border-color: Window;
               }
@@ -1124,6 +1125,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 8px;
                 position: absolute;
                 right: -2px;
@@ -1131,7 +1133,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 8px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Highlight;
                 border-color: Window;
               }
@@ -1422,6 +1424,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 12px;
                 position: absolute;
                 right: -2px;
@@ -1429,7 +1432,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 12px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: WindowText;
                 border-color: Window;
               }
@@ -1454,7 +1457,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                   speak: none;
                   vertical-align: top;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name="SkypeClock"
@@ -1746,6 +1749,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 12px;
                 position: absolute;
                 right: -2px;
@@ -1753,7 +1757,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 12px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: WindowText;
                 border-color: Window;
               }
@@ -1772,7 +1776,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                   vertical-align: top;
                   width: 1em;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name=""
@@ -2062,6 +2066,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 16px;
                 position: absolute;
                 right: -2px;
@@ -2069,7 +2074,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 16px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: Highlight;
                 border-color: Window;
               }
@@ -2092,7 +2097,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                   speak: none;
                   vertical-align: top;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name="SkypeCheck"
@@ -2384,6 +2389,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 20px;
                 position: absolute;
                 right: -2px;
@@ -2391,7 +2397,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 20px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: WindowText;
                 border-color: Window;
               }
@@ -2414,7 +2420,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                   speak: none;
                   vertical-align: top;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name="SkypeMinus"
@@ -2706,6 +2712,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 28px;
                 position: absolute;
                 right: -2px;
@@ -2713,7 +2720,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 28px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: WindowText;
                 border-color: Window;
               }
@@ -2727,7 +2734,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 transform: translateY(-50%) rotate(-45deg);
                 width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){&:after {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:after {
                 background-color: Window;
                 left: 2px;
                 width: calc(100% - 4px);
@@ -2743,7 +2750,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
                 width: 100%;
               }
-              @media screen and (-ms-high-contrast: active){&:before {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){&:before {
                 border-color: Window;
                 height: calc(100% - 2px);
                 left: 1px;
@@ -2765,7 +2772,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                   vertical-align: top;
                   width: 1em;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name=""
@@ -3055,6 +3062,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 border: 2px solid #ffffff;
                 bottom: -2px;
                 box-sizing: content-box;
+                forced-color-adjust: none;
                 height: 32px;
                 position: absolute;
                 right: -2px;
@@ -3062,7 +3070,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 top: auto;
                 width: 32px;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 background-color: WindowText;
                 border-color: Window;
               }
@@ -3087,7 +3095,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                   speak: none;
                   vertical-align: top;
                 }
-                @media screen and (-ms-high-contrast: active){& {
+                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                   color: Window;
                 }
             data-icon-name="SkypeClock"

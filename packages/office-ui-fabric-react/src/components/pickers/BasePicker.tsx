@@ -248,6 +248,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
       ? this._ariaMap.selectedSuggestionAlert
       : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
+    const canAddItems = this.canAddItems();
 
     // TODO
     // Clean this up by leaving only the first part after removing support for SASS.
@@ -280,11 +281,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
           shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
-          role={'combobox'}
-          id={this._ariaMap.combobox}
-          aria-label={this.props['aria-label']}
-          aria-expanded={!!this.state.suggestionsVisible}
-          aria-owns={suggestionsAvailable || undefined}
+          role={canAddItems ? 'combobox' : undefined}
+          id={canAddItems ? this._ariaMap.combobox : undefined}
+          aria-label={canAddItems ? this.props['aria-label'] : undefined}
+          aria-expanded={canAddItems ? !!this.state.suggestionsVisible : undefined}
+          aria-owns={canAddItems ? suggestionsAvailable || undefined : undefined}
           // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
           // Currently accessibility insights will flag this as not a valid child because the AXE rules are
           // out of date. Tracking issue: https://github.com/dequelabs/axe-core/issues/1009

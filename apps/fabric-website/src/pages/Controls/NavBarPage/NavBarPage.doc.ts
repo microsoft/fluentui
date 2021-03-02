@@ -1,6 +1,10 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/NavBarRelated.md') as string;
+const related: ISideRailLink[] = [
+  { text: 'iOS Navigation Bar', url: '#/controls/ios/navigationbar' },
+  { text: 'Android Top App Bar', url: '#/controls/android/topappbar' },
+];
 const componentUrl = 'https://github.com/microsoft/fluentui/tree/7.0/apps/fabric-website/src/pages/Controls/NavBarPage';
 
 export const NavBarPageProps: TFabricPlatformPageProps = {

@@ -14,6 +14,10 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { Async, EventGroup, FocusRects } from '@uifabric/utilities';
+
+/* eslint-disable deprecation/deprecation */
+
+/** @deprecated */
 export interface ISliderState {
   value?: number;
   renderedValue?: number;
@@ -22,8 +26,13 @@ export interface ISliderState {
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 const COMPONENT_NAME = 'Slider';
 
+/** @deprecated */
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
@@ -436,7 +445,6 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
     let diff: number | undefined = 0;
 
-    // eslint-disable-next-line deprecation/deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:

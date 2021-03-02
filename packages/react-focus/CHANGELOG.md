@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Wed, 16 Dec 2020 21:12:59 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.17.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.17.5)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.17.0..@fluentui/react-focus_v7.17.5)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
 
 ## [7.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.17.0)
 

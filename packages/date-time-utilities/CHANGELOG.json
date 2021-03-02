@@ -2,6 +2,21 @@
   "name": "@fluentui/date-time-utilities",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "@fluentui/date-time-utilities_v7.9.1",
+      "version": "7.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Publish packages with names that also exist in master under dist-tag lts-7",
+            "author": "elcraig@microsoft.com",
+            "commit": "deaecebffee8e4fd004cc5951d199bdee5585015",
+            "package": "@fluentui/date-time-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Sep 2020 00:46:56 GMT",
       "tag": "@fluentui/date-time-utilities_v7.9.0",
       "version": "7.9.0",

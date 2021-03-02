@@ -5708,6 +5708,7 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
     keytipProps?: IKeytipProps;
     styles?: IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>;
     theme?: ITheme;
+    underline?: boolean;
 }
 
 // @public (undocumented)
@@ -5718,6 +5719,8 @@ export interface ILinkStyleProps {
     isButton?: boolean;
     // (undocumented)
     isDisabled?: boolean;
+    // (undocumented)
+    isUnderlined?: boolean;
     // (undocumented)
     theme: ITheme;
 }
@@ -6195,7 +6198,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     // @deprecated
     focusZoneProps?: IFocusZoneProps;
     items?: IOverflowSetItemProps[];
-    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
+    itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | boolean | undefined;
     keytipSequences?: string[];
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;
@@ -6330,7 +6333,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onLightDismissClick?: () => void;
     onOpen?: () => void;
     onOpened?: () => void;
-    onOuterClick?: () => void;
+    onOuterClick?: (ev?: React.MouseEvent<HTMLDivElement>) => void;
     onRenderBody?: IRenderFunction<IPanelProps>;
     onRenderFooter?: IRenderFunction<IPanelProps>;
     onRenderFooterContent?: IRenderFunction<IPanelProps>;
@@ -6532,6 +6535,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    initialsTextColor?: string;
     isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     // @deprecated

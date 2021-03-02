@@ -1,7 +1,8 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { SpinButtonPageProps as ExternalProps } from '@fluentui/react-examples/lib/office-ui-fabric-react/SpinButton/SpinButton.doc';
+import { ISideRailLink } from '@uifabric/example-app-base/lib/index2';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinButtonPage/docs/SpinButtonRelated.md') as string;
+const related: ISideRailLink[] = [];
 
 export const SpinButtonPageProps: TFabricPlatformPageProps = {
   web: {

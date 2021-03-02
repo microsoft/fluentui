@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 29 Jan 2021 12:27:21 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Feb 2021 12:26:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.7.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.3)
+
+Mon, 08 Feb 2021 12:26:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.7.0..@uifabric/azure-themes_v7.7.3)
+
+### Patches
+
+- Checkbox, toggle, MessageBar dimensions and removing italic placeholder text ([PR #16684](https://github.com/microsoft/fluentui/pull/16684) by jagaheri@microsoft.com)
 
 ## [7.7.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.7.0)
 

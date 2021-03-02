@@ -1,6 +1,8 @@
 import { getGlobalClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { ICardItemComponent, ICardItemStylesReturnType, ICardItemTokenReturnType } from './CardItem.types';
 
+/* eslint-disable deprecation/deprecation */
+
 const GlobalClassNames = {
   root: 'ms-CardItem',
 };
@@ -13,11 +15,19 @@ const filledTokens: ICardItemComponent['tokens'] = {
   margin: 0,
 };
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CardItemTokens: ICardItemComponent['tokens'] = (props, theme): ICardItemTokenReturnType => [
   baseTokens,
   props.fill && filledTokens,
 ];
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const CardItemStyles: ICardItemComponent['styles'] = (props, theme, tokens): ICardItemStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 

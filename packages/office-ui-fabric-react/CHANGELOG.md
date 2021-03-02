@@ -1,8 +1,105 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 12:28:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.162.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.1)
+
+Tue, 02 Mar 2021 12:28:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.162.0..office-ui-fabric-react_v7.162.1)
+
+### Patches
+
+- Picker Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode ([PR #17142](https://github.com/microsoft/fluentui/pull/17142) by tristan.watanabe@gmail.com)
+
+## [7.162.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.0)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.161.0..office-ui-fabric-react_v7.162.0)
+
+### Minor changes
+
+- Allow itemSubMenuProvider to return a boolean ([PR #17150](https://github.com/microsoft/fluentui/pull/17150) by keyou@microsoft.com)
+
+## [7.161.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.161.0)
+
+Fri, 19 Feb 2021 12:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.3..office-ui-fabric-react_v7.161.0)
+
+### Minor changes
+
+- Link: Adding underline prop. ([PR #16624](https://github.com/microsoft/fluentui/pull/16624) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers ([PR #17044](https://github.com/microsoft/fluentui/pull/17044) by tristan.watanabe@gmail.com)
+
+## [7.160.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.3)
+
+Thu, 18 Feb 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.2..office-ui-fabric-react_v7.160.3)
+
+### Patches
+
+- Fix contrast of 'filter chevron' against background color ([PR #16881](https://github.com/microsoft/fluentui/pull/16881) by tmichon@microsoft.com)
+- BasePicker: combobox role and id are removed when itemLimit is reached ([PR #16958](https://github.com/microsoft/fluentui/pull/16958) by tristan.watanabe@gmail.com)
+- Fix handling of topOffsetFixed for Modal ([PR #17018](https://github.com/microsoft/fluentui/pull/17018) by tmichon@microsoft.com)
+- Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips ([PR #17043](https://github.com/microsoft/fluentui/pull/17043) by keyou@microsoft.com)
+
+## [7.160.2](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.2)
+
+Tue, 16 Feb 2021 12:29:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.1..office-ui-fabric-react_v7.160.2)
+
+### Patches
+
+- PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render ([PR #16979](https://github.com/microsoft/fluentui/pull/16979) by tristan.watanabe@gmail.com)
+
+## [7.160.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.1)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.160.0..office-ui-fabric-react_v7.160.1)
+
+### Patches
+
+- Remove use of getEdgeChromiumNoHighContrastAdjustSelector ([PR #16951](https://github.com/microsoft/fluentui/pull/16951) by sareiff@microsoft.com)
+
+## [7.160.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.160.0)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.159.0..office-ui-fabric-react_v7.160.0)
+
+### Minor changes
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
+
+### Patches
+
+- add role of menu to the ul element of a section item ([PR #16932](https://github.com/microsoft/fluentui/pull/16932) by makopch@microsoft.com)
+
+## [7.159.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.159.0)
+
+Wed, 10 Feb 2021 12:25:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.158.3..office-ui-fabric-react_v7.159.0)
+
+### Minor changes
+
+- PersonaCoin: now accepts initialsTextColor prop which sets the text color of the Persona Coin ([PR #16908](https://github.com/microsoft/fluentui/pull/16908) by tristan.watanabe@gmail.com)
+
+### Patches
+
+- [v7.0]ChoiceGroup: Focus border is now visible when focus method is called ([PR #16897](https://github.com/microsoft/fluentui/pull/16897) by tristan.watanabe@gmail.com)
+
+## [7.158.3](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.3)
+
+Tue, 09 Feb 2021 12:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.158.1..office-ui-fabric-react_v7.158.3)
+
+### Patches
+
+- Fixing the modal Panel outerclick issue ([PR #16826](https://github.com/microsoft/fluentui/pull/16826) by ololubek@microsoft.com)
+- Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz) ([PR #16875](https://github.com/microsoft/fluentui/pull/16875) by elvonspa@microsoft.com)
 
 ## [7.158.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.158.1)
 

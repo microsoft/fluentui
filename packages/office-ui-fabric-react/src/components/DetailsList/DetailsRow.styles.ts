@@ -7,6 +7,7 @@ import {
   getFocusStyle,
   getGlobalClassNames,
   FontWeights,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
@@ -196,7 +197,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
         [HighContrastSelector]: {
           background: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
           selectors: {
             a: {
               color: 'HighlightText',
@@ -261,7 +262,7 @@ export const getDetailsRowStyles = (props: IDetailsRowStyleProps): IDetailsRowSt
         [HighContrastSelector]: {
           background: 'Highlight',
           color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
+          ...getHighContrastNoAdjustStyle(),
           selectors: {
             a: {
               color: 'HighlightText',

@@ -8,11 +8,17 @@ import { ICardItemProps } from './CardItem/CardItem.types';
 import { CardSection } from './CardSection/CardSection';
 import { ICardSectionProps } from './CardSection/CardSection.types';
 
+/* eslint-disable deprecation/deprecation */
+
 const CardStatics = {
   Item: CardItem,
   Section: CardSection,
 };
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export const Card: React.FunctionComponent<ICardProps> & {
   Item: React.FunctionComponent<ICardItemProps>;
   Section: React.FunctionComponent<ICardSectionProps>;
@@ -23,4 +29,8 @@ export const Card: React.FunctionComponent<ICardProps> & {
   statics: CardStatics,
 });
 
+/**
+ * @deprecated This component was experimental and is not longer being developed on, nor will it be supported in the
+ * future.
+ */
 export default Card;

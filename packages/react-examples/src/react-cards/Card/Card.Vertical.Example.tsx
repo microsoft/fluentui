@@ -14,6 +14,8 @@ import {
   ITextStyles,
 } from 'office-ui-fabric-react';
 
+/* eslint-disable deprecation/deprecation */
+
 const alertClicked = (): void => {
   alert('Clicked');
 };

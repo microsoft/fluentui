@@ -1,8 +1,90 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 03 Feb 2021 12:24:38 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.1)
+
+Fri, 26 Feb 2021 21:31:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.0..@fluentui/react-examples_v0.12.1)
+
+### Patches
+
+- Publish packages with names that also exist in master under dist-tag lts-7 ([PR #17191](https://github.com/microsoft/fluentui/pull/17191) by elcraig@microsoft.com)
+
+## [0.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.0)
+
+Wed, 24 Feb 2021 12:25:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.29..@fluentui/react-examples_v0.12.0)
+
+### Minor changes
+
+- making changes to support the new feature ([PR #16967](https://github.com/microsoft/fluentui/pull/16967) by email not defined)
+
+## [0.11.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.29)
+
+Fri, 19 Feb 2021 12:25:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.28..@fluentui/react-examples_v0.11.29)
+
+### Patches
+
+- Updating Link examples so they are underlined since the Link component is alongside other text. ([PR #16624](https://github.com/microsoft/fluentui/pull/16624) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.28)
+
+Thu, 18 Feb 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.25..@fluentui/react-examples_v0.11.28)
+
+### Patches
+
+- Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips ([PR #17043](https://github.com/microsoft/fluentui/pull/17043) by keyou@microsoft.com)
+
+## [0.11.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.25)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.24..@fluentui/react-examples_v0.11.25)
+
+### Patches
+
+- Remove use of getEdgeChromiumNoHighContrastAdjustSelector ([PR #16951](https://github.com/microsoft/fluentui/pull/16951) by sareiff@microsoft.com)
+- Disabling deprecation lint rule in examples using deprecated components. ([PR #16962](https://github.com/microsoft/fluentui/pull/16962) by humbertomakotomorimoto@gmail.com)
+
+## [0.11.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.24)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.22..@fluentui/react-examples_v0.11.24)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
+
+## [0.11.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.22)
+
+Tue, 09 Feb 2021 12:26:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.21..@fluentui/react-examples_v0.11.22)
+
+### Patches
+
+- Modify Persona example and tests to cover the new initials behavior ([PR #16875](https://github.com/microsoft/fluentui/pull/16875) by elvonspa@microsoft.com)
+
+## [0.11.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.21)
+
+Mon, 08 Feb 2021 12:26:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.20..@fluentui/react-examples_v0.11.21)
+
+### Patches
+
+- Adding controls to story ([PR #16684](https://github.com/microsoft/fluentui/pull/16684) by jagaheri@microsoft.com)
+
+## [0.11.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.20)
+
+Fri, 05 Feb 2021 12:26:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.11.18..@fluentui/react-examples_v0.11.20)
+
+### Patches
+
+- CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers ([PR #16828](https://github.com/microsoft/fluentui/pull/16828) by mibes@microsoft.com)
 
 ## [0.11.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.11.18)
 

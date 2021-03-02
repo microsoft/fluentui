@@ -101,7 +101,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                   &:hover {
                     background: #edebe9;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: 1px solid WindowText;
                   }
               data-is-focusable={true}
@@ -240,6 +240,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                               border: 2px solid #ffffff;
                               bottom: -2px;
                               box-sizing: content-box;
+                              forced-color-adjust: none;
                               height: 8px;
                               position: absolute;
                               right: -2px;
@@ -247,7 +248,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                               top: auto;
                               width: 8px;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               background-color: Highlight;
                               border-color: Window;
                             }
@@ -437,7 +438,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -454,7 +455,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       background: #c8c6c4;
                       color: #201f1e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -550,7 +551,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                   &:hover {
                     background: #edebe9;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: 1px solid WindowText;
                   }
               data-is-focusable={true}
@@ -689,6 +690,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                               border: 2px solid #ffffff;
                               bottom: -2px;
                               box-sizing: content-box;
+                              forced-color-adjust: none;
                               height: 8px;
                               position: absolute;
                               right: -2px;
@@ -696,7 +698,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                               top: auto;
                               width: 8px;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               background-color: WindowText;
                               border-color: Window;
                             }
@@ -886,7 +888,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -903,7 +905,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       background: #c8c6c4;
                       color: #201f1e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -999,7 +1001,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                   &:hover {
                     background: #edebe9;
                   }
-                  @media screen and (-ms-high-contrast: active){& {
+                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                     border: 1px solid WindowText;
                   }
               data-is-focusable={true}
@@ -1138,6 +1140,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                               border: 2px solid #ffffff;
                               bottom: -2px;
                               box-sizing: content-box;
+                              forced-color-adjust: none;
                               height: 8px;
                               position: absolute;
                               right: -2px;
@@ -1145,7 +1148,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                               top: auto;
                               width: 8px;
                             }
-                            @media screen and (-ms-high-contrast: active){& {
+                            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                               background-color: WindowText;
                               border-color: Window;
                             }
@@ -1335,7 +1338,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       top: 2px;
                       z-index: 1;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                       bottom: -2px;
                       left: -2px;
                       outline-color: ButtonText;
@@ -1352,7 +1355,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       background: #c8c6c4;
                       color: #201f1e;
                     }
-                    @media screen and (-ms-high-contrast: active){&:hover {
+                    @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
@@ -1473,7 +1476,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
         &:hover .ms-Checkbox-checkbox {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
@@ -1483,19 +1486,19 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
           color: #605e5c;
           opacity: 1;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
           color: WindowText;
         }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
           color: WindowText;
         }
   >
@@ -1514,7 +1517,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             outline-offset: 2px;
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid WindowText;
           }
       id="checkbox-26"
@@ -1569,10 +1572,9 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -1591,9 +1593,10 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                 opacity: 0;
                 speak: none;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 color: Window;
+                forced-color-adjust: none;
               }
           data-icon-name="CheckMark"
         >
@@ -1610,10 +1613,9 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
               line-height: 20px;
               margin-left: 4px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -1633,7 +1635,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
         &:hover .ms-Checkbox-checkbox {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkbox {
           border-color: Highlight;
         }
         &:focus .ms-Checkbox-checkbox {
@@ -1643,19 +1645,19 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
           color: #605e5c;
           opacity: 1;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-checkmark {
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-Checkbox-text {
           color: WindowText;
         }
         &:focus .ms-Checkbox-text {
           color: #201f1e;
         }
-        @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-text {
+        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:focus .ms-Checkbox-text {
           color: WindowText;
         }
   >
@@ -1674,7 +1676,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
             outline-offset: 2px;
             outline: 1px solid #605e5c;
           }
-          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+          @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid WindowText;
           }
       id="checkbox-27"
@@ -1729,10 +1731,9 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
               transition-timing-function: cubic-bezier(.4, 0, .23, 1);
               width: 20px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               border-color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >
@@ -1751,9 +1752,10 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                 opacity: 0;
                 speak: none;
               }
-              @media screen and (-ms-high-contrast: active){& {
+              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
                 -ms-high-contrast-adjust: none;
                 color: Window;
+                forced-color-adjust: none;
               }
           data-icon-name="CheckMark"
         >
@@ -1770,10 +1772,9 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
               line-height: 20px;
               margin-left: 4px;
             }
-            @media screen and (-ms-high-contrast: active){& {
+            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              -ms-high-contrast-adjust: none;
               color: WindowText;
-            }
-            @media screen and (forced-colors: active){& {
               forced-color-adjust: none;
             }
       >

@@ -1,8 +1,36 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Thu, 31 Dec 2020 12:29:36 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Feb 2021 12:23:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.19.21](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.21)
+
+Mon, 22 Feb 2021 12:23:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.17..@uifabric/date-time_v7.19.21)
+
+### Patches
+
+- cherry picking and merging 6537ee66190784eb1a04bd765546efff09d451a1 from master ([PR #16330](https://github.com/microsoft/fluentui/pull/16330) by lorejoh12@gmail.com)
+- backfix gridcell role=presentation fix to 7.0 ([PR #17083](https://github.com/microsoft/fluentui/pull/17083) by lorejoh12@gmail.com)
+
+## [7.19.17](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.17)
+
+Fri, 12 Feb 2021 12:25:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.16..@uifabric/date-time_v7.19.17)
+
+### Patches
+
+- Remove use of getEdgeChromiumNoHighContrastAdjustSelector ([PR #16951](https://github.com/microsoft/fluentui/pull/16951) by sareiff@microsoft.com)
+
+## [7.19.16](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.16)
+
+Thu, 11 Feb 2021 12:25:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/date-time_v7.19.5..@uifabric/date-time_v7.19.16)
+
+### Patches
+
+- Update high contract to support forced colors ([PR #16924](https://github.com/microsoft/fluentui/pull/16924) by sareiff@microsoft.com)
 
 ## [7.19.5](https://github.com/microsoft/fluentui/tree/@uifabric/date-time_v7.19.5)
 

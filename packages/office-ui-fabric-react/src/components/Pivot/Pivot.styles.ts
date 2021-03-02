@@ -6,6 +6,7 @@ import {
   IStyle,
   normalize,
   FontWeights,
+  getHighContrastNoAdjustStyle,
 } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
@@ -201,7 +202,7 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
             fontWeight: FontWeights.semibold,
             color: 'HighlightText',
             background: 'Highlight',
-            MsHighContrastAdjust: 'none',
+            ...getHighContrastNoAdjustStyle(),
           },
         },
       },

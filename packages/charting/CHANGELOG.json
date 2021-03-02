@@ -2,6 +2,74 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 24 Feb 2021 12:25:59 GMT",
+      "tag": "@uifabric/charting_v4.15.0",
+      "version": "4.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "introducing the prop allowMultipleShapesFor, when set to true allows shape the data point",
+            "author": "email not defined",
+            "commit": "f4d4223122469a5b3eeaaa1fb8fa5a8a311738a9",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:24:49 GMT",
+      "tag": "@uifabric/charting_v4.14.2",
+      "version": "4.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Narrator issues fixed in bar charts and updated test cases",
+            "author": "v-jasha@microsoft.com",
+            "commit": "974bfc7b812627716055cc056c64ea6fed9edd95",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "@uifabric/charting_v4.14.0",
+      "version": "4.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "barChartCustomData prop exposed to Horizontal bar chart - used to customize the right side data of tha chart",
+            "author": "v-jasha@microsoft.com",
+            "commit": "37f1996872b4d7b9a94fe45dc0d52e5f2be77c94",
+            "package": "@uifabric/charting"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Feb 2021 12:26:03 GMT",
+      "tag": "@uifabric/charting_v4.13.0",
+      "version": "4.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers",
+            "author": "mibes@microsoft.com",
+            "commit": "eee1754f0d92ee3c5fa8d68e9dfdcb03445b7df7",
+            "package": "@uifabric/charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Jan 2021 12:28:20 GMT",
       "tag": "@uifabric/charting_v4.12.8",
       "version": "4.12.8",

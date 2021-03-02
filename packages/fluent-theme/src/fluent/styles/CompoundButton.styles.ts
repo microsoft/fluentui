@@ -1,4 +1,4 @@
-import { getFocusStyle, HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { getFocusStyle, HighContrastSelector, getHighContrastNoAdjustStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
@@ -27,7 +27,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },
@@ -45,7 +45,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },
@@ -64,7 +64,7 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none',
+              ...getHighContrastNoAdjustStyle(),
             },
           },
         },

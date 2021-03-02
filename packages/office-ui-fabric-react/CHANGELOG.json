@@ -2,6 +2,189 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 02 Mar 2021 12:28:02 GMT",
+      "tag": "office-ui-fabric-react_v7.162.1",
+      "version": "7.162.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Picker Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "2fc8d4e88a0199436897bcc386fd29ca4cd0ee57",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 21:31:33 GMT",
+      "tag": "office-ui-fabric-react_v7.162.0",
+      "version": "7.162.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Allow itemSubMenuProvider to return a boolean",
+            "author": "keyou@microsoft.com",
+            "commit": "2dbe3cc7b92d575a538886d52a9a57cc311ba097",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 19 Feb 2021 12:25:47 GMT",
+      "tag": "office-ui-fabric-react_v7.161.0",
+      "version": "7.161.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Link: Adding underline prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "49d501efbed974a77c4bec5ffa171ebba0d3fc19",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "ScrollablePane: removes aria-hidden attribute so Sticky content are no longer hidden from screen readers",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "04e14bd18f4ba6f8daac631217643362c9dedd44",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:25:56 GMT",
+      "tag": "office-ui-fabric-react_v7.160.3",
+      "version": "7.160.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix contrast of 'filter chevron' against background color",
+            "author": "tmichon@microsoft.com",
+            "commit": "5403232626ccc3bcbe4c95f0b18a938646aa3308",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "BasePicker: combobox role and id are removed when itemLimit is reached",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "cdb0c4bced4e6868a7e8ae7d12f0819a153ba61e",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Fix handling of topOffsetFixed for Modal",
+            "author": "tmichon@microsoft.com",
+            "commit": "7feedc8eb8e15c36447ae0748de65979c158ef0d",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Utilize useLayoutEffect for keytips to mimic didUpdate/didMount - Fixes for dynamic menu overflow keytips",
+            "author": "keyou@microsoft.com",
+            "commit": "4dd3e254b61bf33eca3051799d558c067de7313e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Feb 2021 12:29:58 GMT",
+      "tag": "office-ui-fabric-react_v7.160.2",
+      "version": "7.160.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "PersonaCoin: mergeStyles function is now memoized to prevent repeated calls on render",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "154e7ce6b9b62a7b56f99359d7f125d39e010960",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:25:18 GMT",
+      "tag": "office-ui-fabric-react_v7.160.1",
+      "version": "7.160.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove use of getEdgeChromiumNoHighContrastAdjustSelector",
+            "author": "sareiff@microsoft.com",
+            "commit": "e49b873eb8467a43bf53067d01151d6fb9e37356",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:25:26 GMT",
+      "tag": "office-ui-fabric-react_v7.160.0",
+      "version": "7.160.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update high contract to support forced colors",
+            "author": "sareiff@microsoft.com",
+            "commit": "4a612da69e0b56a616147490d2de9ba87351fb60",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "add role of menu to the ul element of a section item",
+            "author": "makopch@microsoft.com",
+            "commit": "bc8fd8d5d9313451d84a0d3f00dc2cd8d7463db4",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 10 Feb 2021 12:25:19 GMT",
+      "tag": "office-ui-fabric-react_v7.159.0",
+      "version": "7.159.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[v7.0]ChoiceGroup: Focus border is now visible when focus method is called",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "169645be467f7e7f5c8a98927f1e0a2182d7dcf1",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "PersonaCoin: now accepts initialsTextColor prop which sets the text color of the Persona Coin",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "1f39dd8e8d6da183ff5d4fb96426e54723d638cd",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 12:26:30 GMT",
+      "tag": "office-ui-fabric-react_v7.158.3",
+      "version": "7.158.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing the modal Panel outerclick issue",
+            "author": "ololubek@microsoft.com",
+            "commit": "58fa58156875c6890da96b117b242b4b576a91b6",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "Modify getInitials to strip [xyz] and {xyz} just like it strips (xyz)",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d9c1e2c6da5ba65ced00465a991c89ac2373871e",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 12:24:38 GMT",
       "tag": "office-ui-fabric-react_v7.158.1",
       "version": "7.158.1",
