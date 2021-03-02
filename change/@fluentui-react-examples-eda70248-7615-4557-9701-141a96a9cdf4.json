@@ -1,7 +1,7 @@
 {
   "type": "minor",
-  "comment": "docs(react-component): Add mdx docs to storybook",
+  "comment": "Support default checked values",
   "packageName": "@fluentui/react-examples",
-  "email": "me@levithomason.com",
+  "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
 }

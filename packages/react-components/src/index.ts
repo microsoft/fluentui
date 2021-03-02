@@ -1,5 +1,3 @@
-import './version';
-
 // Utilities
 export * from '@fluentui/react-make-styles';
 export * from '@fluentui/react-provider';

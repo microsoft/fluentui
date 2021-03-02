@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "remove dependency on @fluentui/utilities",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

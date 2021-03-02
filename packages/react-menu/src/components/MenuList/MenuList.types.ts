@@ -16,6 +16,11 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
    * Map of all checked values
    */
   checkedValues?: Record<string, string[]>;
+
+  /**
+   * Default values to be checked on mount
+   */
+  defaultCheckedValues?: Record<string, string[]>;
 }
 
 export interface MenuListState extends MenuListProps {
