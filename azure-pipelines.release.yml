@@ -42,12 +42,21 @@ steps:
     displayName: Generate version files
 
   - script: |
-      yarn run:published build test lint --production --verbose --no-cache
-    displayName: build, test, lint
+      yarn run:published build --production --no-cache
+    displayName: yarn build
 
-  - script: | # Note: --no-cache arg is OMITTED to use build cache from previous step
-      yarn run:published bundle --production --verbose
-    displayName: bundle
+  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
+  - script: |
+      yarn run:published test --production
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  - script: |
+      yarn run:published bundle --production
+    displayName: yarn bundle
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&

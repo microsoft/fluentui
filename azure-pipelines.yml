@@ -43,7 +43,7 @@ jobs:
 
       ## only do scoped builds with PRs
       - script: |
-          yarn run:published build test lint --production --verbose --no-cache
+          yarn buildci --no-cache --since $(targetBranch)
         displayName: build, test, lint (pr, scoped)
         condition: eq(variables['isPR'], true)
         env:
@@ -75,8 +75,10 @@ jobs:
         displayName: yarn
 
       - script: |
-          yarn run:published build --production --verbose --no-cache &&
-          yarn run:published bundle --production --verbose
+          yarn run:published build --production --no-cache &&
+          yarn run:published test --production &&
+          yarn run:published lint &&
+          yarn run:published bundle --production
         displayName: bundle (pr, scoped)
 
       ## This runs regardless of scope, the app will adapt to the scope as well

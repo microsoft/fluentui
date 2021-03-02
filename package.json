@@ -50,7 +50,7 @@
     "release:fluentui:pack-nightly": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish pack-nightly",
     "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
     "runto:lerna": "node ./scripts/monorepo/runTo.js",
-    "run:published": "node ./scripts/monorepo/runPublished.js",
+    "run:published": "node ./scripts/monorepo/runPublished.js --verbose",
     "satisfied": "satisfied --skip-invalid --ignore \"sass\"",
     "scrub": "node ./scripts/scrub.js",
     "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
