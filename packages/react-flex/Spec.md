@@ -170,7 +170,7 @@ Below is a table of prop comparison:
 ```HTML
 <Flex>
   <span>2</span>
-  <span order={1}>1</span>
+  <Flex.Item order={1}>1</Flex.Item>
 </Flex>
 ```
 
@@ -190,7 +190,7 @@ Below is a table of prop comparison:
 ```HTML
 <Flex>
   <span>thin</span>
-  <span grow>wide</span>
+  <Flex.Item grow>wide</Flex.Item>
 </Flex>
 ```
 
@@ -210,7 +210,7 @@ Below is a table of prop comparison:
 ```HTML
 <Flex>
   <span>thin</span>
-  <span shrink={false}>wide</span>
+  <Flex.Item shrink={false}>wide</Flex.Item>
 </Flex>
 ```
 
@@ -224,9 +224,9 @@ Below is a table of prop comparison:
   verticalAlign="center"
   gap="5rem"
   wrap grow inline>
-  <span order={3}>3</span>
-  <span shrink={false}>1</span>
-  <span basis="25%">2</span>
+  <Flex.Item order={3}>3</Flex.Item>
+  <Flex.Item shrink={false}>1</Flex.Item>
+  <Flex.Item basis="25%">2</Flex.Item>
 </Flex>
 ```
 
