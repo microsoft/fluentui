@@ -2,6 +2,21 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 02 Mar 2021 12:28:02 GMT",
+      "tag": "office-ui-fabric-react_v7.162.1",
+      "version": "7.162.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Picker Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "2fc8d4e88a0199436897bcc386fd29ca4cd0ee57",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 21:31:33 GMT",
       "tag": "office-ui-fabric-react_v7.162.0",
       "version": "7.162.0",

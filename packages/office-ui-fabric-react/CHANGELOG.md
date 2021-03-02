@@ -1,8 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 12:28:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.162.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.1)
+
+Tue, 02 Mar 2021 12:28:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.162.0..office-ui-fabric-react_v7.162.1)
+
+### Patches
+
+- Picker Suggestions: focused dropdown option is now properly highlighted in High Contrast Mode ([PR #17142](https://github.com/microsoft/fluentui/pull/17142) by tristan.watanabe@gmail.com)
 
 ## [7.162.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.0)
 
