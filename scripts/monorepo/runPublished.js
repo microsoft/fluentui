@@ -24,7 +24,13 @@ const beachballPackageScopes = Object.entries(getAllPackageInfo())
   .filter(([, { packageJson, packagePath }]) => !/[\\/]fluentui[\\/]/.test(packagePath) && packageJson.private !== true)
   .map(([packageName]) => `--to=${packageName}`);
 
-const lageArgs = ['run', ...argv, ...beachballPackageScopes, '--verbose'];
+const lageArgs = [
+  'run',
+  ...argv,
+  // default to verbose mode unless already/otherwise specified
+  ...(argv.some(arg => /^--(no-)?verbose/.test(arg)) ? [] : ['--verbose']),
+  ...beachballPackageScopes,
+];
 console.log(`lage ${lageArgs.join(' ')}`); // for debugging
 
 const result = spawnSync(process.execPath, [lageBin, ...lageArgs], {
