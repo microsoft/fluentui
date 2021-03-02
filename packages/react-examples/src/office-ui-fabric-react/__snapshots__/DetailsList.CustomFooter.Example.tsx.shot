@@ -922,7 +922,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1385,7 +1385,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1848,7 +1848,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2311,7 +2311,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2774,7 +2774,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost

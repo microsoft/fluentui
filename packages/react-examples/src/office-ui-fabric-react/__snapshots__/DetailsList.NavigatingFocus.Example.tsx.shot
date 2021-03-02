@@ -810,7 +810,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1347,7 +1347,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1884,7 +1884,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2421,7 +2421,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2958,7 +2958,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3495,7 +3495,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4032,7 +4032,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4569,7 +4569,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5106,7 +5106,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
