@@ -2,6 +2,59 @@
   "name": "perf-test",
   "entries": [
     {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "perf-test_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.2",
+            "author": "feodor@appveyor.com",
+            "commit": "e21d069d3c5ae040a5990d3359a532f0742db21a",
+            "package": "perf-test"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.57",
+            "author": "feodor@appveyor.com",
+            "commit": "e21d069d3c5ae040a5990d3359a532f0742db21a",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-avatar to v9.0.0-alpha.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "529d34473f30680fa35928e0d977434ab2ed2173",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-button to v9.0.0-alpha.5",
+            "author": "olfedias@microsoft.com",
+            "commit": "529d34473f30680fa35928e0d977434ab2ed2173",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.4",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-provider to v9.0.0-alpha.5",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "perf-test"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v9.0.0-alpha.5",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "perf-test"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Mar 2021 07:20:46 GMT",
       "tag": "perf-test_v1.0.0",
       "version": "1.0.0",

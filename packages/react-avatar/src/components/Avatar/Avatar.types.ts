@@ -1,5 +1,5 @@
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
+import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 
 import { BadgeProps } from '../Badge/index';
 import { ImageProps } from '../Image/index';
@@ -31,11 +31,11 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    *
    * Size is restricted to a limited set of supported values recommended for most uses (see `AvatarSizeValue`).
    *
-   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and use the `width` and `height`
-   * tokens to override the rendered size, plus other size-related tokens if needed, such as `fontSize` and `iconSize`.
+   * If a non-supported size is neeeded, set `size` to the next-smaller supported size, and set `width` and `height`
+   * to override the rendered size.
    *
    * For example, to set the avatar to 45px in size:
-   * `<Avatar size={40} tokens={{ width: '45px', height: '45px' }} />`
+   * `<Avatar size={40} style={{ width: '45px', height: '45px' }} />`
    *
    * @defaultvalue 32
    */
@@ -65,24 +65,61 @@ export interface AvatarProps extends ComponentProps, React.HTMLAttributes<HTMLEl
    * The color when displaying either an icon or initials.
    * * neutral (default): gray
    * * brand: color from the brand palette
+   * * colorful: picks a color from a set of pre-defined colors, based on a hash of the name (or idForColor if provided)
+   * * [AvatarNamedColor]: a specific color from the theme
    *
    * @defaultvalue neutral
    */
-  colorVariant?: 'neutral' | 'brand';
+  color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
+
+  /**
+   * Specify a string to be used instead of the name, to determine which color to use when color="colorful".
+   * Use this when a name is not available, but there is another unique identifier that can be used instead.
+   */
+  idForColor?: string;
 }
 
 /**
  * Sizes for the Avatar
  *
  * This is a restricted list based on design guidelines for the Avatar control.
- * It's recommended to use one of these sizes to conform to the design guidelines,
- * but it is possible to render a different size using tokens.
  */
-export const avatarSizeValues = [20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128] as const;
-export type AvatarSizeValue = typeof avatarSizeValues[number]; // 20 | 24 | 28 | ... | 128
+export type AvatarSizeValue = 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
 
-/** Default Avatar size if not specified */
-export const defaultAvatarSize: AvatarSizeValue = 32;
+/**
+ * A specific named color for the Avatar
+ */
+export type AvatarNamedColor =
+  | 'darkRed'
+  | 'cranberry'
+  | 'red'
+  | 'pumpkin'
+  | 'peach'
+  | 'marigold'
+  | 'gold'
+  | 'brass'
+  | 'brown'
+  | 'forest'
+  | 'seafoam'
+  | 'darkGreen'
+  | 'lightTeal'
+  | 'teal'
+  | 'steel'
+  | 'blue'
+  | 'royalBlue'
+  | 'cornflower'
+  | 'navy'
+  | 'lavender'
+  | 'purple'
+  | 'grape'
+  | 'lilac'
+  | 'pink'
+  | 'magenta'
+  | 'plum'
+  | 'beige'
+  | 'mink'
+  | 'platinum'
+  | 'anchor';
 
 /**
  * Convert from a Props type to a State type.

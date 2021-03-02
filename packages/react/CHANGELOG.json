@@ -2,6 +2,33 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react_v8.1.2",
+      "version": "8.1.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix: Layer's div element is not removed from body",
+            "author": "feodor@appveyor.com",
+            "commit": "e21d069d3c5ae040a5990d3359a532f0742db21a",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Adds role=\"presentation\" to BasePicker div for screen reader accessibility",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "a07c5914c145fb7519d6f4e9388ce8819e808cda",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "Add link to version 8 release notes in readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "d7af23bffc0514a52a823ef0ae9b10d91a1f0fc1",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Mar 2021 07:20:46 GMT",
       "tag": "@fluentui/react_v8.1.1",
       "version": "8.1.1",

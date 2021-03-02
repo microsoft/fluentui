@@ -2,6 +2,21 @@
   "name": "a11y-tests",
   "entries": [
     {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "a11y-tests_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.2",
+            "author": "feodor@appveyor.com",
+            "commit": "e21d069d3c5ae040a5990d3359a532f0742db21a",
+            "package": "a11y-tests"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 01 Mar 2021 07:20:46 GMT",
       "tag": "a11y-tests_v1.0.0",
       "version": "1.0.0",

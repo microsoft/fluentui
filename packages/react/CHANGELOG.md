@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 01 Mar 2021 07:20:46 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.2)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.1..@fluentui/react_v8.1.2)
+
+### Patches
+
+- Fix: Layer's div element is not removed from body ([PR #17001](https://github.com/microsoft/fluentui/pull/17001) by feodor@appveyor.com)
+- Adds role="presentation" to BasePicker div for screen reader accessibility ([PR #17202](https://github.com/microsoft/fluentui/pull/17202) by sarah.higley@microsoft.com)
+- Add link to version 8 release notes in readme ([PR #17193](https://github.com/microsoft/fluentui/pull/17193) by elcraig@microsoft.com)
 
 ## [8.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.1)
 
