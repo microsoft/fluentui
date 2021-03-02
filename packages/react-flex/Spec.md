@@ -75,8 +75,8 @@ Below is a table of prop comparison:
 | `gap`             | string (_see [margin](https://developer.mozilla.org/en-US/docs/Web/CSS/margin#values)_)               | `0`           | `margin` setter for each of the children items.                                                                                                                                                                                          |
 | `wrap`            | boolean                                                                                               | `false`       | Interfaces are already aligned. Simplification of `flex-wrap`.                                                                                                                                                                           |
 | `as`              | `React.ElementType<React.HTMLAttributes<HTMLElement>>`                                                | "`div`"       | Perserving same implementation.                                                                                                                                                                                                          |
-| `grow`            | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                                     | `0`           | Focusing again on abstracting, `grow` will affect all the FlexItem's `flex-grow` styles. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack.                                                      |
-| `shrink`          | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                                     | `1`           | Like `grow`, we're wrapping the item's `flex-shrink` with the `shrink` prop . A `true` value will translate into `1` for ease of use and coherence.                                                                                      |
+| `grow`            | number \| string = "`inherit`", "`initial`", "`unset`"                                                | `0`           | Focusing again on abstracting, `grow` will affect all the FlexItem's `flex-grow` styles.                                                                                                                                                 |
+| `shrink`          | number \| string = "`inherit`", "`initial`", "`unset`"                                                | `1`           | Like `grow`, we're wrapping the item's `flex-shrink` with the `shrink` prop.                                                                                                                                                             |
 | `inline`          | boolean                                                                                               | `false`       | Abstracts `display` by changing from `flex` to `flex-inline`. Same as the current Flex.                                                                                                                                                  |
 
 #### _Deprecating_
@@ -94,14 +94,14 @@ Below is a table of prop comparison:
 
 ### FlexItem
 
-| Name     | Type                                                                                            | Default value | Comments                                                                                                                                                 |
-| -------- | ----------------------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `align`  | string (_see [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self#values)_) | "`auto`"      | Abstraction of `align-self`.                                                                                                                             |
-| `grow`   | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `0`           | Abstraction of `flex-grow` and override of Flex's `grow`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack.     |
-| `shrink` | boolean \| number \| string = "`inherit`", "`initial`", "`unset`"                               | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`. A `true` value will translate into `1` for ease of use and retro-compatibility with Stack. |
-| `push`   | boolean                                                                                         | `false`       | Defines an auto margin depending on the flex direction. Kept for retro-compatibility but perhaps can be removed.                                         |
-| `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`.                                                                                               |
-| `order`  | number                                                                                          | `0`           | Abstraction of `order`.                                                                                                                                  |
+| Name     | Type                                                                                            | Default value | Comments                                                                                                         |
+| -------- | ----------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `align`  | string (_see [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self#values)_) | "`auto`"      | Abstraction of `align-self`.                                                                                     |
+| `grow`   | number \| string = "`inherit`", "`initial`", "`unset`"                                          | `0`           | Abstraction of `flex-grow` and override of Flex's `grow`.                                                        |
+| `shrink` | number \| string = "`inherit`", "`initial`", "`unset`"                                          | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`.                                                    |
+| `push`   | boolean                                                                                         | `false`       | Defines an auto margin depending on the flex direction. Kept for retro-compatibility but perhaps can be removed. |
+| `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`.                                                       |
+| `order`  | number                                                                                          | `0`           | Abstraction of `order`.                                                                                          |
 
 #### _Deprecating_
 
@@ -179,7 +179,7 @@ Below is a table of prop comparison:
 #### Globally
 
 ```HTML
-<Flex grow>
+<Flex grow={1}>
   <span>wide</span>
   <span>wide</span>
 </Flex>
@@ -190,7 +190,7 @@ Below is a table of prop comparison:
 ```HTML
 <Flex>
   <span>thin</span>
-  <Flex.Item grow>wide</Flex.Item>
+  <Flex.Item grow={1}>wide</Flex.Item>
 </Flex>
 ```
 
@@ -199,7 +199,7 @@ Below is a table of prop comparison:
 #### Globally
 
 ```HTML
-<Flex shrink={false}>
+<Flex shrink={0}>
   <span>wide</span>
   <span>wide</span>
 </Flex>
@@ -210,7 +210,7 @@ Below is a table of prop comparison:
 ```HTML
 <Flex>
   <span>thin</span>
-  <Flex.Item shrink={false}>wide</Flex.Item>
+  <Flex.Item shrink={0}>wide</Flex.Item>
 </Flex>
 ```
 
@@ -223,9 +223,10 @@ Below is a table of prop comparison:
   horizontalAlign="space-between"
   verticalAlign="center"
   gap="5rem"
-  wrap grow inline>
+  grow={1}
+  wrap inline>
   <Flex.Item order={3}>3</Flex.Item>
-  <Flex.Item shrink={false}>1</Flex.Item>
+  <Flex.Item shrink={0}>1</Flex.Item>
   <Flex.Item basis="25%">2</Flex.Item>
 </Flex>
 ```
@@ -253,13 +254,7 @@ Before
 After
 
 ```HTML
-<Flex shrink="0">
-  items
-</Flex>
-```
-
-```HTML
-<Flex shrink={false}>
+<Flex shrink={0}>
   items
 </Flex>
 ```
@@ -395,15 +390,8 @@ After
 
 ```HTML
 <Flex>
-  <Flex.Item grow>item</Flex.Item>
-  <Flex.Item grow shrink="0">item</Flex.Item>
-</Flex>
-```
-
-```HTML
-<Flex>
-  <Flex.Item grow>item</Flex.Item>
-  <Flex.Item grow shrink={false}>item</Flex.Item>
+  <Flex.Item grow={1}>item</Flex.Item>
+  <Flex.Item grow={1} shrink={0}>item</Flex.Item>
 </Flex>
 ```
 
