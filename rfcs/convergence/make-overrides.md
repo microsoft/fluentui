@@ -30,20 +30,17 @@ To avoid confusion, the names `makeOverrides()` and `makeStyles` are both used i
 `makeStyles()` implementation has two problems that will cause issues at scale: matchers and missing slots. The snippet below highlights these issues:
 
 ```tsx
-import { ax, makeStyles } from "@fluentui/react-make-styles";
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 
 const useRootStyles = makeStyles<TSelectors>([
-  [null, { color: "red" }],
-  [
-    s => s.primary /* <- a matcher function, will be executed on each render */,
-    { color: "blue" }
-  ]
+  [null, { color: 'red' }],
+  [s => s.primary /* <- a matcher function, will be executed on each render */, { color: 'blue' }],
 ]);
 
 const useIconStyles = makeStyles<TSelectors>([
   /* styles for each slot are defined separately */
-  [null, { background: "black" }],
-  [s => s.primary, { background: "white" }]
+  [null, { background: 'black' }],
+  [s => s.primary, { background: 'white' }],
 ]);
 
 function Component() {
@@ -63,7 +60,7 @@ function Component() {
 
 To compute classnames we need to understand what styles should be applied and thus execute matchers on each render as memoization of user's input is more expensive.
 
-This moves us to a next issue: there is no way to define styles for multiple slots/components with a single call of the `makeStyles()`. Each slot will require a separate call of `makeStyles()`. Since these calls are represented by React hooks we can't bail out even if these slots  are not rendered.
+This moves us to a next issue: there is no way to define styles for multiple slots/components with a single call of the `makeStyles()`. Each slot will require a separate call of `makeStyles()`. Since these calls are represented by React hooks we can't bail out even if these slots are not rendered.
 
 _Side note:_
 
@@ -79,16 +76,16 @@ To solve these issues we made a step back to the original API of `makeStyles()` 
 Proposed API solves the problem in a "vandal" way 🪓 Matchers are moved to user's scope thus we can have all definitions in a single `makeStyles()` call => we have a single React hook. See a modified snippet below:
 
 ```tsx
-import { ax, makeOverrides } from "@fluentui/react-make-styles";
+import { ax, makeOverrides } from '@fluentui/react-make-styles';
 
 const useStyles = makeStyles({
   /* 👍 no matchers, no need to execute on each render */
-  root: { color: "red" },
-  rootPrimary: { color: "blue" },
+  root: { color: 'red' },
+  rootPrimary: { color: 'blue' },
 
   /* 👍 styles for each slot are defined together (not a requirement) */
-  icon: { background: "black" },
-  iconPrimary: { background: "white" }
+  icon: { background: 'black' },
+  iconPrimary: { background: 'white' },
 });
 
 function Component() {
@@ -100,18 +97,10 @@ function Component() {
       className={ax(
         classes.root /* The concept of matching is replaced with selective classname concat */,
         props.primary && classes.rootPrimary,
-        props.className
+        props.className,
       )}
     >
-      {props.icon && (
-        <div
-          className={ax(
-            classes.icon,
-            props.primary && classes.iconPrimary,
-            props.icon.className
-          )}
-        />
-      )}
+      {props.icon && <div className={ax(classes.icon, props.primary && classes.iconPrimary, props.icon.className)} />}
     </div>
   );
 }
@@ -128,33 +117,19 @@ These changes result in performance improvements in `makeOveriddes`:
 Surprisingly, this also moves us closer to [CSS Modules](https://github.com/css-modules/css-modules). The same snippet with CSS Modules, for example:
 
 ```tsx
-import cx from "classnames";
-import * as classes from "./Component.css"; // the same styles can be written in CSS
+import cx from 'classnames';
+import * as classes from './Component.css'; // the same styles can be written in CSS
 
 function Component() {
   return (
-    <div
-      className={cx(
-        classes.root,
-        props.primary && classes.rootPrimary,
-        props.className
-      )}
-    >
-      {props.icon && (
-        <div
-          className={cx(
-            classes.icon,
-            props.primary && classes.iconPrimary,
-            props.icon.className
-          )}
-        />
-      )}
+    <div className={cx(classes.root, props.primary && classes.rootPrimary, props.className)}>
+      {props.icon && <div className={cx(classes.icon, props.primary && classes.iconPrimary, props.icon.className)} />}
     </div>
   );
 }
 ```
 
-In [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923)  `Avatar`, from `@fluentui/react-avatar` (check `packages/react-avatar/src/components/Avatar/useAvatarStyles.ts`), was used to validate performance improvements and explore potential issues. It is uncertain if/how these issues are critical, but there are two things that should be mentioned:
+In [microsoft/fluentui#16923](https://github.com/microsoft/fluentui/pull/16923) `Avatar`, from `@fluentui/react-avatar` (check `packages/react-avatar/src/components/Avatar/useAvatarStyles.ts`), was used to validate performance improvements and explore potential issues. It is uncertain if/how these issues are critical, but there are two things that should be mentioned:
 
 ```tsx
 const useStyles = makeOverrides({
@@ -163,7 +138,7 @@ const useStyles = makeOverrides({
   rootShape20: { width: '20px', height: '20px' },
   rootShape24: { width: '24px', height: '24px' },
   rootShape28: { width: '28px', height: '28px' },
-})
+});
 
 export const useAvatarStyles = (state: AvatarState): AvatarState => {
   const classes = useStyles();
@@ -179,7 +154,7 @@ export const useAvatarStyles = (state: AvatarState): AvatarState => {
     state.size === 20 && classes.rootShape20,
     state.size === 24 && classes.rootShape24,
     /* ... many selectors ... */
-    state.size === 128 && classes.rootShape128
+    state.size === 128 && classes.rootShape128,
   );
 
   return state;
