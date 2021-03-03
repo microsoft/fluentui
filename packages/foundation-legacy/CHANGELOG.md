@@ -1,8 +1,17 @@
 # Change Log - @fluentui/foundation-legacy
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.2)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/foundation-legacy_v8.0.1..@fluentui/foundation-legacy_v8.0.2)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
 
 ## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/foundation-legacy_v8.0.1)
 
