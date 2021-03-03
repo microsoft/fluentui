@@ -5,3 +5,4 @@ export { getBasePlacement } from './getBasePlacement';
 export { getScrollParent } from './getScrollParent';
 export { partitionPopperPropsFromShorthand } from './partitionPopperPropsFromShorthand';
 export { Popper } from './Popper';
+export { usePopper } from './usePopper';

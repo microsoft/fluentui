@@ -13,9 +13,14 @@ export * from './FocusZone/focusUtilities';
 
 export { useAccessibility } from './hooks/useAccessibility';
 export { useAutoControlled } from './hooks/useAutoControlled';
+export { useCallbackRef } from './hooks/useCallbackRef';
 export * from './hooks/useCSS';
 export { useDispatchEffect as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
+export { useDeepMemo } from './hooks/useDeepMemo';
+export { useEventCallback } from './hooks/useEventCallback';
+export { useFirstMount } from './hooks/useFirstMount';
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
+export { useLatest } from './hooks/useLatest';
 export { useStateManager } from './hooks/useStateManager';
 export * from './hooks/useStyles';
 export { useTriggerElement } from './hooks/useTriggerElement';
