@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ObjectShorthandProps } from './types';
+import { ObjectShorthandProps, ResolvedShorthandProps } from './types';
 
 /**
  * Ensures that the given slots are represented using object syntax. This ensures that
@@ -7,7 +7,10 @@ import { ObjectShorthandProps } from './types';
  * @param props - The incoming props
  * @param shorthandPropNames - An array of prop names to apply simplification to
  */
-export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames: readonly (keyof TProps)[]) => {
+export const resolveShorthandProps = <TProps, TShorthandPropNames extends keyof TProps>(
+  props: TProps,
+  shorthandPropNames: readonly TShorthandPropNames[],
+) => {
   let newProps = props;
 
   if (shorthandPropNames && shorthandPropNames.length) {
@@ -23,5 +26,5 @@ export const resolveShorthandProps = <TProps,>(props: TProps, shorthandPropNames
     }
   }
 
-  return newProps;
+  return (newProps as unknown) as ResolvedShorthandProps<TProps, TShorthandPropNames>;
 };
