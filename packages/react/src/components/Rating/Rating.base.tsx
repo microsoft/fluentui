@@ -141,6 +141,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           disabled={!!(disabled || readOnly)}
           role="radio"
           type="button"
+          aria-checked={starNum === Math.ceil(displayRating) ? true : false}
         >
           <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
             {format(ariaLabelFormat || '', starNum, max)}
