@@ -18,6 +18,7 @@ interface AccordionItemExampleProps {
   size: AccordionHeaderSize;
   expandIconPosition: AccordionHeaderExpandIconPosition;
   onToggle(index: number): void;
+  label: string;
 }
 
 export const AccordionItemExample = (args: AccordionItemExampleProps) => {
@@ -25,15 +26,19 @@ export const AccordionItemExample = (args: AccordionItemExampleProps) => {
     <Accordion onToggle={args.onToggle} collapsible>
       <AccordionItem>
         <AccordionHeader expandIconPosition={args.expandIconPosition} size={args.size} expandIcon={{ as: ExpandIcon }}>
-          Accordion Header
+          {args.label}
         </AccordionHeader>
-        <AccordionPanel style={{ padding: 50 }}>Accordion Panel</AccordionPanel>
+        <AccordionPanel>Accordion Panel</AccordionPanel>
       </AccordionItem>
     </Accordion>
   );
 };
 AccordionItemExample.argTypes = {
   onToggle: { action: 'toggled' },
+  label: {
+    defaultValue: 'Accordion Header',
+    type: 'string',
+  },
   size: {
     defaultValue: 'medium',
     control: {

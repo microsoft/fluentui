@@ -12,20 +12,24 @@ const useRootStyles = makeStyles<AccordionHeaderState>([
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
       fontSize: theme.global.type.fontSizes.base[300],
       fontFamily: theme.global.type.fontFamilies.base,
+      borderRadius: '2px',
     }),
   ],
+  // Small variant
   [
     (state) => state.size === 'small',
     (theme) => ({
       fontSize: theme.global.type.fontSizes.base[200],
     }),
   ],
+  // Large variant
   [
     (state) => state.size === 'large',
     (theme) => ({
       fontSize: theme.global.type.fontSizes.base[400],
     }),
   ],
+  // Extra Large variant
   [
     (state) => state.size === 'extra-large',
     (theme) => ({
@@ -49,12 +53,14 @@ const useButtonStyles = makeStyles<AccordionHeaderState>([
       cursor: 'pointer',
     }),
   ],
+  // Small variant
   [
     (state) => state.size === 'small',
     () => ({
       height: '32px',
     }),
   ],
+  // Expand icon position end variant
   [
     (state) => state.expandIconPosition === 'end',
     () => ({
@@ -67,12 +73,14 @@ const useButtonStyles = makeStyles<AccordionHeaderState>([
  * style for the expandIcon slot
  */
 const useExpandIconStyles = makeStyles<AccordionHeaderState>([
+  // Expand icon position start variant
   [
     (state) => state.expandIconPosition === 'start',
     () => ({
       paddingInlineEnd: '8px',
     }),
   ],
+  // Expand icon position end variant
   [
     (state) => state.expandIconPosition === 'end',
     () => ({
