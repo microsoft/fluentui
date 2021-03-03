@@ -6804,11 +6804,11 @@ export interface IRating {
 // @public
 export interface IRatingProps extends React.HTMLAttributes<HTMLDivElement>, React.RefAttributes<HTMLDivElement> {
     allowZeroStars?: boolean;
+    ariaLabel?: string;
     ariaLabelFormat?: string;
     componentRef?: IRefObject<IRating>;
     defaultRating?: number;
     disabled?: boolean;
-    // (undocumented)
     getAriaLabel?: (rating: number, max: number) => string;
     icon?: string;
     max?: number;
