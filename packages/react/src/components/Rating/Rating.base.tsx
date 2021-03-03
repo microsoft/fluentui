@@ -139,7 +139,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           onFocus={onSelectStar}
           onClick={onSelectStar} // For Safari & Firefox on OSX
           disabled={!!(disabled || readOnly)}
-          role="presentation"
+          role="radio"
           type="button"
         >
           <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
@@ -167,6 +167,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
         className={css('ms-Rating-star', classNames.root, rootSizeClass)}
         aria-label={!readOnly ? ariaLabel : ''}
         id={id}
+        role="group"
         {...divProps}
       >
         <FocusZone
