@@ -48,6 +48,7 @@ import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVari
 import { ToolbarMenuItemSubmenuIndicator } from './ToolbarMenuItemSubmenuIndicator';
 import { ToolbarMenuItemActiveIndicator } from './ToolbarMenuItemActiveIndicator';
 import { ToolbarItemSubscribedValue, ToolbarMenuContext } from './toolbarMenuContext';
+import { ToolbarMenuItemContent } from './ToolbarMenuItemContent';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -336,7 +337,9 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
         ) : (
           <>
             {createShorthand(composeOptions.slots.icon, icon, { defaultProps: () => slotProps.icon })}
-            {content}
+            {createShorthand(composeOptions.slots.content, content, {
+              defaultProps: () => getA11yProps('content', slotProps.content),
+            })}
             {active &&
               createShorthand(composeOptions.slots.activeIndicator, activeIndicator, {
                 defaultProps: () => slotProps.activeIndicator,
@@ -443,6 +446,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       submenuIndicator: ToolbarMenuItemSubmenuIndicator,
       activeIndicator: ToolbarMenuItemActiveIndicator,
       popup: Popup,
+      content: ToolbarMenuItemContent,
     },
     slotProps: props => ({
       icon: {
