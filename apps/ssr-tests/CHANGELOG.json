@@ -1,0 +1,20 @@
+{
+  "name": "ssr-tests",
+  "entries": [
+    {
+      "date": "Wed, 03 Mar 2021 01:10:32 GMT",
+      "tag": "ssr-tests_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @uifabric/fabric-website-resources to v7.9.34",
+            "author": "aidanmc95@gmail.com",
+            "commit": "83c4f6d73a53fa7d2f34f6754bdfa82700be4350",
+            "package": "ssr-tests"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 03 Mar 2021 01:10:32 GMT",
+      "tag": "@fluentui/react-examples_v0.12.2",
+      "version": "0.12.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "reformatted the callout to show web for fluent alignment / design customization",
+            "author": "aidanmc95@gmail.com",
+            "commit": "83c4f6d73a53fa7d2f34f6754bdfa82700be4350",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 21:31:33 GMT",
       "tag": "@fluentui/react-examples_v0.12.1",
       "version": "0.12.1",
