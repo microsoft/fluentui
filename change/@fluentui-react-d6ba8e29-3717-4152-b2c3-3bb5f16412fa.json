@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Text: Making styles respect semantic colors.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
