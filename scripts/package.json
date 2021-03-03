@@ -100,7 +100,6 @@
     "path-browserify": "^1.0.1",
     "plop": "^2.6.0",
     "portfinder": "^1.0.20",
-    "prettier": "~1.19.1",
     "progress": "^2.0.3",
     "prompts": "^2.3.0",
     "puppeteer": "^1.13.0",

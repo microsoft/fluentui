@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.6)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.5..@fluentui/react-avatar_v9.0.0-alpha.6)
+
+### Patches
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+### Changes
+
+- Remove set-version dependency from converged components ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.5)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.0.0-alpha.4..@fluentui/react-avatar_v9.0.0-alpha.5)
+
+### Changes
+
+- remove dependency on @fluentui/utilities, adopt getInitials() utility ([PR #17197](https://github.com/microsoft/fluentui/pull/17197) by olfedias@microsoft.com)
+- Add support for colorful avatars ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.0.0-alpha.4)
 

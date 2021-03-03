@@ -22,9 +22,10 @@ resources:
 variables:
   # below are variables that cannot be configured at queue time
   - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      deployBasePath: 0.0.0-nightly
   - name: docsiteVersion # used by docsite
-    value: 0.0.0-nightly
-  - name: deployBasePath # used by docsite
     value: 0.0.0-nightly
   - name: officialRelease # used by docsite
     value: true
