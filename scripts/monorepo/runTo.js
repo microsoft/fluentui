@@ -67,7 +67,7 @@ function runTo(script, projects, rest) {
 
   // --include-filtered-Dependencies makes the build include dependencies
   // --stream allows the build to proceed in parallel but still in order
-  spawnSync(
+  const result = spawnSync(
     process.execPath,
     [
       lernaBin,
@@ -85,6 +85,10 @@ function runTo(script, projects, rest) {
       stdio: 'inherit',
     },
   );
+
+  if (result.status !== 0) {
+    process.exit(result.status);
+  }
 }
 
 module.exports = runTo;

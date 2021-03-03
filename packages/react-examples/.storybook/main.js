@@ -4,16 +4,24 @@ import * as path from 'path';
 import * as webpack from 'webpack';
 
 export default {
-  addons: ['@storybook/addon-a11y/register', 'storybook-addon-performance/register', '@storybook/addon-knobs/register'],
+  addons: [
+    '@storybook/addon-a11y',
+    '@storybook/addon-essentials',
+    'storybook-addon-performance',
+    {
+      name: '@storybook/addon-knobs',
+      options: { escapeHTML: false },
+    },
+  ],
   webpackFinal: (/** @type {webpack.Configuration} */ config) => {
-    config = custom(config);
+    const customConfig = custom(config);
 
-    config.module.rules.push({
+    customConfig.module.rules.push({
       // Special loader that only includes stories from the current package
       test: /\.storybook[/\\]preview.js/,
       loader: path.resolve(__dirname, 'preview-loader.js'),
     });
 
-    return config;
+    return customConfig;
   },
 };

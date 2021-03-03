@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "0.7.2",
+  "version": "9.0.0-alpha.6",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,8 +26,8 @@
     "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
-    "@fluentui/eslint-plugin": "^1.0.0-beta.2",
-    "@fluentui/react-conformance": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/react-conformance": "^0.2.2",
     "@fluentui/scripts": "^1.0.0",
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -44,10 +44,8 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-hooks": "^8.0.0-beta.14",
-    "@fluentui/react-make-styles": "^0.2.7",
-    "@fluentui/react-utilities": "^0.3.1",
-    "@fluentui/set-version": "^8.0.0-beta.2",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.6",
+    "@fluentui/react-utilities": "^9.0.0-alpha.5",
     "@microsoft/load-themed-styles": "^1.10.26",
     "object-fit-images": "^3.2.4",
     "tslib": "^1.10.0"
@@ -59,10 +57,11 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "beachball": {
-    "tag": "latest",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }

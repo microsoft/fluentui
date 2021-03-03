@@ -4,6 +4,9 @@ pr:
 trigger:
   - master
 
+variables:
+  - template: .devops/templates/variables.yml
+
 jobs:
   - job: build_react
     timeoutInMinutes: 75
@@ -78,6 +81,8 @@ jobs:
       - build_react
       - build_northstar
     steps:
+      - checkout: none
+
       - task: DownloadPipelineArtifact@2
         displayName: 'Download Pipeline Artifact React'
         inputs:

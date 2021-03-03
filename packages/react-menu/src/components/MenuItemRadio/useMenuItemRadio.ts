@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { MenuItemRadioProps, MenuItemRadioState } from './MenuItemRadio.types';
 import { useMenuItemSelectable } from '../../selectable/index';
-import { useMergedRefs } from '@fluentui/react-hooks';
+import { useCharacterSearch } from '../../utils/useCharacterSearch';
+import { useMenuListContext } from '../../menuListContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -31,6 +32,9 @@ export const useMenuItemRadio = (
     resolveShorthandProps(props, menuItemRadioShorthandProps),
   );
 
-  useMenuItemSelectable(state, () => [state.value]);
+  useCharacterSearch(state);
+
+  const selectRadio = useMenuListContext(context => context.selectRadio);
+  useMenuItemSelectable(state, selectRadio);
   return state;
 };

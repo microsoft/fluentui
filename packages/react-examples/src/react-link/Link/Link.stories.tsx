@@ -9,22 +9,34 @@ const linksStackTokens: IStackTokens = {
 const LinkExamples = (props: LinkProps) => (
   <Stack tokens={linksStackTokens}>
     <div>
-      <Link {...props}>Standalone link</Link>
+      <Link {...props}>Stand-alone link</Link>
+    </div>
+    <div>
+      <Link {...props} secondary>
+        Standalone secondary link
+      </Link>
     </div>
     <div>
       <Link {...props} disabled>
-        Standalone disabled link
+        Stand-alone disabled link
       </Link>
     </div>
     <div>
       <Link {...props} disabled disabledFocusable>
-        Standalone disabled focusable link
+        Stand-alone disabled focusable link
       </Link>
     </div>
     <div>
       This is{' '}
       <Link {...props} inline>
         a link
+      </Link>{' '}
+      used alongside other text content.
+    </div>
+    <div>
+      This is{' '}
+      <Link {...props} inline secondary>
+        a secondary link
       </Link>{' '}
       used alongside other text content.
     </div>

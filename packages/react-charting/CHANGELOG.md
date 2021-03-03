@@ -1,8 +1,98 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 18 Feb 2021 19:38:50 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.5)
+
+Wed, 03 Mar 2021 07:45:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.4..@fluentui/react-charting_v5.0.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.4 ([PR #17252](https://github.com/microsoft/fluentui/pull/17252) by Humberto.Morimoto@microsoft.com)
+
+## [5.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.4)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.3..@fluentui/react-charting_v5.0.4)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [5.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.3)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.2..@fluentui/react-charting_v5.0.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.2 ([PR #17001](https://github.com/microsoft/fluentui/pull/17001) by feodor@appveyor.com)
+
+## [5.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.2)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.1..@fluentui/react-charting_v5.0.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [5.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.62..@fluentui/react-charting_v5.0.1)
+
+### Patches
+
+- Release major version ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [5.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.62)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.61..@fluentui/react-charting_v5.0.0-beta.62)
+
+### Changes
+
+- CartesianChart accessibility: support custom attribute on `svg`; hide axis labels from screen readers ([PR #17170](https://github.com/microsoft/fluentui/pull/17170) by mibes@microsoft.com)
+
+## [5.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.61)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.60..@fluentui/react-charting_v5.0.0-beta.61)
+
+### Changes
+
+- Bump @fluentui/react-focus to v8.0.0-beta.25 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [5.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.60)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.59..@fluentui/react-charting_v5.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [5.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.59)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.58..@fluentui/react-charting_v5.0.0-beta.59)
+
+### Changes
+
+- introducing the prop allowMultipleShapesFor, when set to true allows shape the data point ([PR #17127](https://github.com/microsoft/fluentui/pull/17127) by email not defined)
+
+## [5.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.58)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.0-beta.57..@fluentui/react-charting_v5.0.0-beta.58)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
 
 ## [5.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.0-beta.57)
 

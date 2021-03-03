@@ -7,14 +7,19 @@ name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      azureSubscription: 'UI Fabric (private)'
+      skipComponentGovernanceDetection: false
 
 pool: 'Self Host Ubuntu'
 
 schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+  - cron: '0 7 * * 1-5'
+    # will be 12am during daylight savings time unless trigger is updated
+    displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
     branches:
       include:
         - master
@@ -31,6 +36,17 @@ steps:
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
+  # This step has no dependencies, so do it early in the build in case other steps fail
+  - task: AzureUpload@2
+    displayName: Upload demo images
+    inputs:
+      azureSubscription: $(azureSubscription)
+      BlobPrefix: 'assets'
+      CacheControl: 'public, max-age=600000'
+      ContainerName: 'fabric-website' # this container has a CDN
+      SourcePath: 'packages/fluentui/docs/src/public'
+      storage: fabricweb
+
   - task: Bash@3
     inputs:
       filePath: yarn-ci.sh
@@ -38,12 +54,13 @@ steps:
 
   - script: |
       yarn generate-version-files
-    displayName: yarn generate-version-files
+    displayName: Generate version files
 
   - script: |
-      yarn run:published build --production
-    displayName: yarn build (Create production build)
+      yarn run:published build --production --no-cache
+    displayName: yarn build
 
+  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
   - script: |
       yarn run:published test --production
     displayName: yarn test
@@ -142,11 +159,21 @@ steps:
     displayName: Upload Package Manifest
     inputs:
       SourcePath: 'package-manifest'
-      azureSubscription: 'UI Fabric (private)'
+      azureSubscription: $(azureSubscription)
       storage: fabricweb
       ContainerName: 'fabric'
       BlobPrefix: 'package-manifest'
       Gzip: false
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
 
   - template: .devops/templates/cleanup.yml
     parameters:

@@ -55,8 +55,6 @@ export const MenuItem: React.ForwardRefExoticComponent<MenuItemProps & React.Ref
 // @public
 export const MenuItemCheckbox: React.ForwardRefExoticComponent<MenuItemCheckboxProps & React.RefAttributes<HTMLElement>>;
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemSelectableProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuItemProps, MenuItemSelectableProps {
     checkmark?: ShorthandProps<HTMLElement>;
@@ -66,8 +64,6 @@ export interface MenuItemCheckboxProps extends ComponentProps, React.HTMLAttribu
 // @public
 export const menuItemCheckboxShorthandProps: string[];
 
-// Warning: (ae-forgotten-export) The symbol "MenuItemSelectableState" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface MenuItemCheckboxState extends MenuItemCheckboxProps, MenuItemState, MenuItemSelectableState {
     checkmark: ObjectShorthandProps<HTMLElement>;
@@ -104,6 +100,19 @@ export interface MenuItemRadioState extends MenuItemRadioProps, MenuItemSelectab
 }
 
 // @public
+export interface MenuItemSelectableProps extends React.HTMLAttributes<HTMLElement> {
+    name: string;
+    value: string;
+}
+
+// @public
+export interface MenuItemSelectableState extends MenuItemSelectableProps {
+    checked: boolean;
+    checkedItems: string[];
+    onCheckedValueChange: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
+}
+
+// @public
 export const menuItemShorthandProps: string[];
 
 // @public (undocumented)
@@ -118,12 +127,18 @@ export const MenuList: React.ForwardRefExoticComponent<MenuListProps & React.Ref
 // @public (undocumented)
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     checkedValues?: Record<string, string[]>;
+    defaultCheckedValues?: Record<string, string[]>;
     onCheckedValueChange?: (e: React.MouseEvent | React.KeyboardEvent, name: string, checkedItems: string[]) => void;
 }
 
 // @public (undocumented)
 export interface MenuListState extends MenuListProps {
     ref: React.MutableRefObject<HTMLElement>;
+    selectRadio: SelectableHandler;
+    // Warning: (ae-forgotten-export) The symbol "MenuListContextValue" needs to be exported by the entry point index.d.ts
+    setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
+    // (undocumented)
+    toggleCheckbox: SelectableHandler;
 }
 
 // @public
@@ -146,6 +161,14 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 
 // @public
 export const renderMenuList: (state: MenuListState) => JSX.Element;
+
+// @public (undocumented)
+export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => void;
+
+// @public
+export const useCheckmarkStyles: (state: MenuItemSelectableState & {
+    checkmark: ObjectShorthandProps<HTMLElement>;
+}) => void;
 
 // @public
 export const useIconStyles: (selectors: MenuItemState) => string;
@@ -173,6 +196,9 @@ export const useMenuItemCheckbox: (props: MenuItemCheckboxProps, ref: React.Ref<
 
 // @public
 export const useMenuItemRadio: (props: MenuItemRadioProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuItemRadioProps | undefined) => MenuItemRadioState;
+
+// @public
+export const useMenuItemSelectable: (state: MenuItemSelectableState, handleSelection?: SelectableHandler) => void;
 
 // @public
 export const useMenuItemStyles: (state: MenuItemState) => void;
