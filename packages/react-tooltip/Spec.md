@@ -103,15 +103,15 @@ To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `
 
 The Tooltip API is split among several components and hooks, in two packages. Having two packages allows the lightweight `react-tooltip-provider` package to be referenced by any component, while the bulk of the code for tooltips lives in the larger `react-tooltip` package.
 
-- **@fluentui/react-tooltip-provider**
-  - `TooltipProps`
-  - `TooltipManagerApi`
-  - `TooltipProvider`
-  - `useTooltipSlot`
-  - `useTooltipRef`
-- **@fluentui/react-tooltip**
-  - `Tooltip`
-  - `TooltipManager`
+- [**@fluentui/react-tooltip-provider**](#fluentuireact-tooltip-provider)
+  - [`TooltipProps`](#tooltipprops)
+  - [`TooltipManagerApi`](#tooltipmanagerapi)
+  - [`TooltipProvider`](#tooltipprovider)
+  - [`useTooltipSlot`](#usetooltipslot)
+  - [`useTooltipRef`](#usetooltipref)
+- [**@fluentui/react-tooltip**](#fluentuireact-tooltip)
+  - [`Tooltip`](#tooltip)
+  - [`TooltipManager`](#tooltipmanager)
 
 _A note about the terminology used for the elements that the tooltip is attached to:_
 
