@@ -2,6 +2,7 @@
 
 exports[`Rating renders correctly 1`] = `
 <div
+  aria-label=""
   className=
       ms-Rating-star
       ms-RatingStar-root
@@ -23,6 +24,7 @@ exports[`Rating renders correctly 1`] = `
         height: 32px;
       }
   id="Rating0"
+  role="group"
 >
   <div
     className=
@@ -60,6 +62,7 @@ exports[`Rating renders correctly 1`] = `
     onMouseDownCapture={[Function]}
   >
     <button
+      aria-checked={true}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -127,7 +130,7 @@ exports[`Rating renders correctly 1`] = `
       id="Rating0-star-0"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -216,6 +219,7 @@ exports[`Rating renders correctly 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -282,7 +286,7 @@ exports[`Rating renders correctly 1`] = `
       id="Rating0-star-1"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -371,6 +375,7 @@ exports[`Rating renders correctly 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -437,7 +442,7 @@ exports[`Rating renders correctly 1`] = `
       id="Rating0-star-2"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -526,6 +531,7 @@ exports[`Rating renders correctly 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -592,7 +598,7 @@ exports[`Rating renders correctly 1`] = `
       id="Rating0-star-3"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -681,6 +687,7 @@ exports[`Rating renders correctly 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -747,7 +754,7 @@ exports[`Rating renders correctly 1`] = `
       id="Rating0-star-4"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -841,6 +848,7 @@ exports[`Rating renders correctly 1`] = `
 
 exports[`Rating renders correctly with half star 1`] = `
 <div
+  aria-label=""
   className=
       ms-Rating-star
       ms-RatingStar-root
@@ -862,6 +870,7 @@ exports[`Rating renders correctly with half star 1`] = `
         height: 32px;
       }
   id="Rating3"
+  role="group"
 >
   <div
     className=
@@ -899,6 +908,7 @@ exports[`Rating renders correctly with half star 1`] = `
     onMouseDownCapture={[Function]}
   >
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -965,7 +975,7 @@ exports[`Rating renders correctly with half star 1`] = `
       id="Rating3-star-0"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -1054,6 +1064,7 @@ exports[`Rating renders correctly with half star 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -1120,7 +1131,7 @@ exports[`Rating renders correctly with half star 1`] = `
       id="Rating3-star-1"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -1209,6 +1220,7 @@ exports[`Rating renders correctly with half star 1`] = `
       </div>
     </button>
     <button
+      aria-checked={true}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -1276,7 +1288,7 @@ exports[`Rating renders correctly with half star 1`] = `
       id="Rating3-star-2"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -1365,6 +1377,7 @@ exports[`Rating renders correctly with half star 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -1431,7 +1444,7 @@ exports[`Rating renders correctly with half star 1`] = `
       id="Rating3-star-3"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
@@ -1520,6 +1533,7 @@ exports[`Rating renders correctly with half star 1`] = `
       </div>
     </button>
     <button
+      aria-checked={false}
       className=
           ms-Rating-button
           ms-Rating--small
@@ -1586,7 +1600,7 @@ exports[`Rating renders correctly with half star 1`] = `
       id="Rating3-star-4"
       onClick={[Function]}
       onFocus={[Function]}
-      role="presentation"
+      role="radio"
       type="button"
     >
       <span
