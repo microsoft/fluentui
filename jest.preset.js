@@ -18,7 +18,7 @@ const baseConfig = {
   },
   testMatch: ['**/+(*.)+(spec|test).+(ts|js)?(x)'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/'],
+  testPathIgnorePatterns: ['/node_modules/', '/lib/', '/lib-commonjs/', '/dist/'],
   moduleNameMapper: { ...tsPathAliases },
   cacheDirectory: '<rootDir>/.cache/jest',
   clearMocks: true,
