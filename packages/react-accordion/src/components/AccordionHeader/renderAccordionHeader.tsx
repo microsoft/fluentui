@@ -12,7 +12,7 @@ export const renderAccordionHeader = (state: AccordionHeaderState) => {
     <slots.root {...slotProps.root}>
       <slots.button {...slotProps.button}>
         {state.expandIconPosition === 'start' && <slots.expandIcon {...slotProps.expandIcon} />}
-        {state.children}
+        <slots.children {...slotProps.children} />
         {state.expandIconPosition === 'end' && <slots.expandIcon {...slotProps.expandIcon} />}
       </slots.button>
     </slots.root>

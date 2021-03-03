@@ -11,7 +11,7 @@ import { useAccordionItemContext } from '../AccordionItem';
 /**
  * Consts listing which props are shorthand props.
  */
-export const accordionHeaderShorthandProps = ['expandIcon', 'button'];
+export const accordionHeaderShorthandProps = ['expandIcon', 'button', 'children'];
 
 const mergeProps = makeMergeProps<AccordionHeaderState>({ deepMerge: accordionHeaderShorthandProps });
 

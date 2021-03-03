@@ -44,28 +44,28 @@ const useRootStyles = makeStyles<AccordionHeaderState>([
 const useButtonStyles = makeStyles<AccordionHeaderState>([
   [
     null,
-    () => ({
+    {
       paddingRight: '10px',
       paddingLeft: '10px',
       height: '44px',
       display: 'flex',
       alignItems: 'center',
       cursor: 'pointer',
-    }),
+    },
   ],
   // Small variant
   [
     (state) => state.size === 'small',
-    () => ({
+    {
       height: '32px',
-    }),
+    },
   ],
   // Expand icon position end variant
   [
     (state) => state.expandIconPosition === 'end',
-    () => ({
+    {
       justifyContent: 'space-between',
-    }),
+    },
   ],
 ]);
 
@@ -76,16 +76,27 @@ const useExpandIconStyles = makeStyles<AccordionHeaderState>([
   // Expand icon position start variant
   [
     (state) => state.expandIconPosition === 'start',
-    () => ({
+    {
       paddingInlineEnd: '8px',
-    }),
+    },
   ],
   // Expand icon position end variant
   [
     (state) => state.expandIconPosition === 'end',
-    () => ({
+    {
       paddingInlineStart: '8px',
-    }),
+    },
+  ],
+]);
+
+const useChildrenStyles = makeStyles<AccordionHeaderState>([
+  [
+    null,
+    {
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+    },
   ],
 ]);
 
@@ -94,11 +105,15 @@ export const useAccordionHeaderStyles = (state: AccordionHeaderState) => {
   const rootClassName = useRootStyles(state);
   const buttonClassName = useButtonStyles(state);
   const expandIconClassNames = useExpandIconStyles(state);
+  const childrenClassNames = useChildrenStyles(state);
 
   state.className = ax(rootClassName, state.className);
   state.button.className = ax(buttonClassName, state.button.className);
   if (state.expandIcon) {
     state.expandIcon.className = ax(expandIconClassNames, state.expandIcon.className);
+  }
+  if (state.children) {
+    state.children.className = ax(childrenClassNames, state.children.className);
   }
   return state;
 };

@@ -50,4 +50,5 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
    * The component to be used as button
    */
   button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
