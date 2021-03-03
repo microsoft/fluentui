@@ -113,6 +113,13 @@ The Tooltip API is split among several components and hooks, in two packages. Ha
   - `Tooltip`
   - `TooltipManager`
 
+_A note about the terminology used for the elements that the tooltip is attached to:_
+
+- _The **trigger** is the element that causes the tooltip to open._
+- _The **target** is the element that the tooltip is anchored to (and the arrow points to)._
+
+_Almost always, these will both be the same element, but it is possible to specify them separately, so the tooltip can show up adjacent to a different element than the one that triggered it._
+
 ## @fluentui/react-tooltip-provider
 
 The `react-tooltip-provider` is a lightweight package that allows any component to hook into tooltip functionality.
@@ -362,7 +369,9 @@ export type TooltipManagerState = ComponentState<
 </slots.root>
 ```
 
-## **DOM** - how the component will be rendered as HTML elements
+## DOM
+
+How the component will be rendered as HTML elements
 
 ```tsx
 <div {/* TooltipProvider */}>
@@ -436,13 +445,6 @@ The converged API does not support many of the custom features of the v8 tooltip
 
 # Behaviors
 
-A note about the terminology used for the elements that the tooltip is attached to:
-
-- The _trigger_ is the element that causes the tooltip to open.
-- The _target_ is the element that the tooltip is anchored to (and the arrow points to).
-
-Almost always, these will both be the same element, but it is possible to specify them separately, so the tooltip can show up adjacent to a different element than the one that triggered it.
-
 - Visibility
 
   - There is only ever one tooltip visible at once.
@@ -455,6 +457,7 @@ Almost always, these will both be the same element, but it is possible to specif
 - Placement
 
   - The tooltip is placed relative to its target element, based on the `placement` property.
+  - The placement will likely be handled by the PopperJS open source package. The discussion about using Popper is in [RFC: Integrate Popper into Fluent #17209](https://github.com/microsoft/fluentui/pull/17209)
 
 - Focus
 
