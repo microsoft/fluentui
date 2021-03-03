@@ -13,7 +13,7 @@ export function useCreateAccordionContext(state: AccordionState) {
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   const [openItems, setOpenItems] = React.useState<AccordionOpen>(() => initializeOpenItems(state));
 
-  const requestToggle = React.useCallback(
+  const requestToggle = useEventCallback(
     (index: number) => {
       onToggle?.(index);
       if (!isControlled) {
@@ -25,7 +25,6 @@ export function useCreateAccordionContext(state: AccordionState) {
         );
       }
     },
-    [collapsible, isControlled, multiple, onToggle],
   );
   const context = React.useMemo<AccordionContext>(
     () => ({
