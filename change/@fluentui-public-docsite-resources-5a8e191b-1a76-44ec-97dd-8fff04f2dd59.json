@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix webpack bundle",
-  "packageName": "@fluentui/public-docsite-resources",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

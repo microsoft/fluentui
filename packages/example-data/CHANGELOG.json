@@ -2,6 +2,21 @@
   "name": "@fluentui/example-data",
   "entries": [
     {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/example-data_v8.1.1",
+      "version": "8.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix webpack bundle",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/example-data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Mar 2021 07:24:27 GMT",
       "tag": "@fluentui/example-data_v8.1.0",
       "version": "8.1.0",

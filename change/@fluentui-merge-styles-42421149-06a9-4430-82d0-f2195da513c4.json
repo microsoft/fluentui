@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix webpack bundle",
-  "packageName": "@fluentui/merge-styles",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

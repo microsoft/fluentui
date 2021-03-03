@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix webpack bundle",
-  "packageName": "@fluentui/react-icon-provider",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

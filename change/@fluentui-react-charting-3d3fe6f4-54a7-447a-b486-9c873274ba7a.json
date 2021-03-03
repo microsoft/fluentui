@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix webpack bundle",
-  "packageName": "@fluentui/react-charting",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "patch"
-}

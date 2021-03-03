@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.56)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v1.0.0-beta.55..@fluentui/react-slider_v1.0.0-beta.56)
+
+### Patches
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+- Bump @fluentui/utilities to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+- Bump @fluentui/style-utilities to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+- Bump @fluentui/react to v8.1.3 ([PR #17226](https://github.com/microsoft/fluentui/pull/17226) by tristan.watanabe@gmail.com)
+- Bump @fluentui/react-hooks to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v1.0.0-beta.55)
 
