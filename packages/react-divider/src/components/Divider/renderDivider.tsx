@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getSlots, useId } from '@fluentui/react-utilities';
+import { getSlots } from '@fluentui/react-utilities';
 import { DividerState } from './Divider.types';
 import { dividerShorthandProps } from './useDivider';
 
@@ -8,11 +8,11 @@ import { dividerShorthandProps } from './useDivider';
  */
 export const renderDivider = (state: DividerState) => {
   const { slots, slotProps } = getSlots(state, dividerShorthandProps);
-  const { children } = state;
-  const idBase = children ? useId('divider-') : undefined;
+  const { children, labelledById } = state;
+
   return (
-    <slots.root {...slotProps.root} role="separator" aria-labelledby={idBase}>
-      {children && <div id={idBase}>{children}</div>}
+    <slots.root {...slotProps.root} role="separator" aria-labelledby={labelledById}>
+      {children && <div id={labelledById}>{children}</div>}
     </slots.root>
   );
 };

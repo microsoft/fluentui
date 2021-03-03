@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { DividerProps, DividerState } from './Divider.types';
 
 /**
@@ -23,6 +23,8 @@ export const useDivider = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
+      /* The Id created to expose accessability for readers */
+      labelledById: props.children ? useId('divider-') : undefined,
     },
     defaultProps,
     resolveShorthandProps(props, dividerShorthandProps),

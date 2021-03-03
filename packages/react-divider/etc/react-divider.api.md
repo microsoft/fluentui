@@ -56,6 +56,8 @@ export const dividerShorthandProps: never[];
 
 // @public (undocumented)
 export interface DividerState extends DividerProps {
+    // (undocumented)
+    labelledById?: string;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
