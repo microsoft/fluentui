@@ -4,49 +4,24 @@
 // It only handles certain cases that prettier doesn't support as well/at all natively.
 
 const { execSync } = require('child_process');
-const os = require('os');
-const { default: PQueue } = require('p-queue');
-const { runPrettier, runPrettierForFolder, prettierExtensions } = require('./prettier/prettier-helpers');
+const { runPrettier, runPrettierForFolder } = require('./prettier/prettier-helpers');
 const { findGitRoot } = require('./monorepo');
 
 const parsedArgs = parseArgs();
-const numberOfCpus = os.cpus().length / 2;
-
-/**
- * @typedef {{root:string}} Paths
- */
+const root = findGitRoot();
 
 async function main() {
-  const { all: runOnAllFiles, check: checkMode, _ } = parsedArgs;
-
-  if (_.length) {
-    throw new Error('');
-  }
-  console.dir(parsedArgs);
+  const { all: runOnAllFiles, check: checkMode } = parsedArgs;
 
   console.log(
-    `Running format on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes | in ${
-      checkMode ? 'check' : 'write'
-    } mode)`,
+    `Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files, in ${checkMode ? 'check' : 'write'} mode`,
   );
 
-  /**
-   * @type {Paths}
-   */
-  const paths = { root: findGitRoot() };
-
-  const queue = new PQueue({ concurrency: numberOfCpus });
-
   if (runOnAllFiles) {
-    await runOnAll({ queue, paths });
+    await runPrettierForFolder(root, { runAsync: true, check: parsedArgs.check });
   } else {
-    await runOnChanged({ queue, paths });
+    await runOnChanged();
   }
-
-  await queue.onEmpty().catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
 }
 
 function parseArgs() {
@@ -71,8 +46,8 @@ function parseArgs() {
       },
     })
     .alias('h', 'help')
+    .version(false)
     .conflicts('since', 'all')
-    .conflicts('all', 'since')
     .strict()
     .check(argv => {
       if (argv._.length) {
@@ -87,52 +62,15 @@ function parseArgs() {
     }).argv;
 }
 
-/**
- *
- * @param {{queue:PQueue;paths:Paths}} options
- */
-async function runOnChanged(options) {
-  const { paths, queue } = options;
+async function runOnChanged() {
   const passedDiffTarget = parsedArgs.since;
 
   const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
-  const gitDiffOutput = execSync(cmd, { cwd: paths.root });
-  const prettierExtRegex = new RegExp(`\\.(${prettierExtensions.join('|')})$`);
-  const files = gitDiffOutput
-    .toString('utf8')
-    .split('\n')
-    .filter(fileName => prettierExtRegex.test(fileName));
+  const gitDiffOutput = execSync(cmd, { cwd: root });
+  const files = gitDiffOutput.toString('utf8').split('\n');
 
-  const fileGroups = [];
-  for (let chunkStart = 0; chunkStart < files.length; chunkStart += numberOfCpus) {
-    fileGroups.push(files.slice(chunkStart, chunkStart + numberOfCpus));
-  }
-
-  await queue.addAll(
-    fileGroups.map(group => () => {
-      console.log(`Running for ${group.length} files!`);
-      return runPrettier(group, { runAsync: true, check: parsedArgs.check });
-    }),
-  );
-}
-
-/**
- *
- * @param {{queue:PQueue;paths:Paths}} options
- */
-async function runOnAll(options) {
-  const { queue, paths } = options;
-
-  // Run on groups of files so that the operations can run in parallel
-  await queue.add(() =>
-    runPrettierForFolder(paths.root, { runAsync: true, nonRecursive: true, check: parsedArgs.check }),
-  );
-  await queue.addAll(
-    ['apps', 'packages/!(fluentui)', 'packages/fluentui', '{.*,scripts,typings}'].map(name => () =>
-      runPrettierForFolder(name, { check: parsedArgs.check }),
-    ),
-  );
+  return runPrettier(files, { runAsync: true, check: parsedArgs.check });
 }
 
 main().catch(err => {
