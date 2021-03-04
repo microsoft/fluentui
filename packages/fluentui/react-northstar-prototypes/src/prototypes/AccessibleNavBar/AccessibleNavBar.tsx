@@ -116,7 +116,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
 
   return (
     <>
-      <h1>Accessible Teams Navigation bar prototype</h1>
+      <h1>Teams Navigation bar prototypes</h1>
       <ul>
         <li>
           This page demonstrates and compares different variants of the Navigation bar component of Microsoft Teams from
