@@ -127,7 +127,7 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
         },
 
         /** Allows to disable or enable event listeners. */
-        { name: 'eventListeners', enabled },
+        { name: 'eventListeners', enabled: !!enabled },
 
         { name: 'flip', options: { flipVariations: true } },
 
