@@ -57,7 +57,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="textbox"
       tabIndex={0}
     >
       <button
