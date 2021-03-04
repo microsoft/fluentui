@@ -55,7 +55,7 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
   paddleBoxShadow: siteVars.shadowLevel1,
 
   paddleColorHover: siteVars.colorScheme.brand.foregroundHover,
-  paddleBackgroundColorHover: siteVars.colorScheme.default.backgroundHover2,
+  paddleBackgroundColorHover: siteVars.colorScheme.default.backgroundHover,
   paddleBorderColorHover: siteVars.colorScheme.default.borderHover,
 
   paddleColorActive: siteVars.colorScheme.default.foregroundPressed,
