@@ -23,7 +23,7 @@ async function main() {
     await runOnChanged();
   }
 }
-
+//
 function parseArgs() {
   // Use yargs config to enforce that script must be run with exactly one of `--all` or
   // `--since [target]` (--check is accepted with either one).
