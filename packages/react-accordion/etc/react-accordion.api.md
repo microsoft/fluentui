@@ -171,7 +171,7 @@ export const useAccordionHeaderStyles: (state: AccordionHeaderState) => Accordio
 export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionItemProps | undefined) => AccordionItemState;
 
 // @public (undocumented)
-export function useAccordionItemContext(): AccordionItemContext;
+export const useAccordionItemContext: () => AccordionItemContext;
 
 // @public
 export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
@@ -185,7 +185,7 @@ export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionP
 // @public
 export const useAccordionStyles: (state: AccordionState) => AccordionState;
 
-// @public (undocumented)
+// @public
 export function useCreateAccordionItemContext(state: AccordionItemState): AccordionItemContext;
 
 
