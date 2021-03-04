@@ -46,8 +46,9 @@ function parseArgs() {
     .example('format', 'Run format only on changed files')
     .example('format --commit HEAD~3', 'Run format only on changed files since HEAD~3')
     .options({
-      commit: {
-        description: 'Run format on files in commit only',
+      since: {
+        description: 'Run format on files since commit',
+        type: 'string',
       },
       all: {
         description: 'Run format on all files',
@@ -68,7 +69,7 @@ function parseArgs() {
 async function runOnChanged(options) {
   const { paths, queue } = options;
   const prettierIntroductionCommit = 'HEAD~1';
-  const passedDiffTarget = parsedArgs.commit || prettierIntroductionCommit;
+  const passedDiffTarget = parsedArgs.since || prettierIntroductionCommit;
 
   const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
