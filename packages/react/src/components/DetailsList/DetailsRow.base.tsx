@@ -299,7 +299,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
-              id: `${this._checkboxId}`,
+              id: this._checkboxId,
               selected: isSelected,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
