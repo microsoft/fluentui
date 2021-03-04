@@ -1,0 +1,39 @@
+import { selectors } from './popupInPopup-example';
+
+const popupTrigger = `#${selectors.popupTriggerId}`;
+const popupContent = `#${selectors.popupContentId}`;
+const popupTriggerNested = `#${selectors.popupTriggerNestedId}`;
+const popupContentNested = `#${selectors.popupContentNestedId}`;
+
+describe('Popup in Popup', () => {
+  beforeEach(() => {
+    cy.gotoTestCase(__filename, popupTrigger);
+  });
+
+  it('A click on content and pressing ESC button should close the last opened popup', () => {
+    cy.clickOn(popupTrigger); // opens popup
+    cy.visible(popupContent);
+
+    cy.clickOn(popupTriggerNested); // opens nested popup
+    cy.visible(popupContentNested);
+
+    cy.clickOn(popupContentNested);
+
+    // check that focus moved to body after clicking on Popup content
+    cy.nothingIsFocused();
+
+    // press ESC and check if nested popup is closed and focus is on nested trigger
+    cy.waitForSelectorAndPressKey(popupContentNested, '{esc}');
+    cy.notExist(popupContentNested);
+    cy.isFocused(popupTriggerNested);
+
+    // click on popup content to move focus to body
+    cy.clickOn(popupContent);
+    cy.nothingIsFocused();
+
+    // press ESC again and check if the last popup is closed and focus is on trigger
+    cy.waitForSelectorAndPressKey(popupContent, '{esc}');
+    cy.notExist(popupContent);
+    cy.isFocused(popupTrigger);
+  });
+});
