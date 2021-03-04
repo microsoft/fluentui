@@ -13,37 +13,37 @@ export const useCounterBadgeRootStyles = makeStyles<CounterBadgeState>([
     },
   ],
   [
-    (s) => s.color === 'warning',
-    (theme) => ({
+    s => s.color === 'warning',
+    theme => ({
       backgroundColor: theme.global.palette.cranberry.primary,
       borderColor: theme.global.palette.cranberry.primary,
     }),
   ],
   [
-    (s) => s.color === 'important',
-    (theme) => ({
+    s => s.color === 'important',
+    theme => ({
       backgroundColor: theme.global.palette.grey[14],
       borderColor: theme.global.palette.grey[14],
     }),
   ],
   [
-    (s) => s.color === 'severe',
-    (theme) => ({
+    s => s.color === 'severe',
+    theme => ({
       // @TODO: update these colors once the color used in the design spec has existing color token
       backgroundColor: theme.global.palette.red.primary,
       borderColor: theme.global.palette.red.primary,
     }),
   ],
   [
-    (s) => s.color === 'informative',
-    (theme) => ({
+    s => s.color === 'informative',
+    theme => ({
       backgroundColor: theme.global.palette.grey[92],
       borderColor: theme.global.palette.grey[92],
       color: theme.alias.color.neutral.neutralForeground3,
     }),
   ],
   [
-    (s) => s.count === 0 && !s.showZero,
+    s => s.count === 0 && !s.showZero,
     {
       width: '6px',
       height: '6px',
