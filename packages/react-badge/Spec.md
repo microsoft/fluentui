@@ -133,14 +133,51 @@ A Presence Badge represents someone's availbility or status
 
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
-#### API
+```typescript
+export type CounterBadgeAppearance = 'filled' | 'ghost';
 
-| Property Name   | Type      | Default Value | Description                                                    |
-| --------------- | --------- | ------------- | -------------------------------------------------------------- |
-| `size`          | `enum`    | `medium`      | The Badge size                                                 |
-| `shape`         | `enum`    | `circular`    | The Badge can have different shapes                            |
-| `variation`     | `enum`    | `filled`      | The Badge different style variants                             |
-| `color`         | `enum`    | `accent`      | The Badge has a pre defined set of colors                      |
-| `overflowCount` | `number`  | `99`          | `+` is displayed when count is larger than the specifed count. |
-| `showZero`      | `boolean` | `true`        | If badge should display number if count is 0                   |
-| `count`         | `number`  | `0`           | value to be displayed                                          |
+export type CounterBadgeShape = 'rounded' | 'circular';
+
+export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
+
+export interface CounterBadgeProps
+  extends ComponentProps,
+    React.HTMLAttributes<HTMLElement>,
+    Omit<BadgeProps, 'appearance' | 'shape'> {
+  /**
+   * A Badge can be square, circular or rounded
+   * @defaultvalue circular
+   */
+  shape?: CounterBadgeShape;
+
+  /**
+   * A Badge can be filled, outline, ghost, inverted
+   * @defaultvalue filled
+   */
+  appearance?: CounterBadgeAppearance;
+
+  /**
+   * A Badge can have color variations
+   * @defaultvalue accent
+   */
+  color?: CounterBadgeColors;
+
+  /**
+   * Max number to be displayed
+   * @defaultvalue 99
+   */
+  overflowCount?: number;
+
+  /**
+   * If 0 number should be displayed
+   * @defaultvalue true
+   */
+  showZero?: boolean;
+
+  /**
+   * Value diplayed by the Badge
+   * @defaultvalue 0
+   */
+  count?: number;
+}
+```

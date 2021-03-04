@@ -39,14 +39,59 @@ export interface BadgeState extends BadgeProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
 
+// @public
+export const CounterBadge: React.ForwardRefExoticComponent<CounterBadgeProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export type CounterBadgeAppearance = 'filled' | 'ghost';
+
+// @public (undocumented)
+export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
+
+// @public (undocumented)
+export interface CounterBadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, Omit<BadgeProps, 'appearance' | 'shape'> {
+    appearance?: CounterBadgeAppearance;
+    color?: CounterBadgeColors;
+    count?: number;
+    overflowCount?: number;
+    shape?: CounterBadgeShape;
+    showZero?: boolean;
+}
+
+// @public (undocumented)
+export type CounterBadgeShape = 'rounded' | 'circular';
+
+// @public
+export const counterBadgeShorthandProps: string[];
+
+// @public (undocumented)
+export interface CounterBadgeState extends CounterBadgeProps {
+    count: number;
+    icon?: ObjectShorthandProps<HTMLSpanElement>;
+    overflowCount: number;
+    ref: React.MutableRefObject<HTMLElement>;
+}
+
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
+
+// @public (undocumented)
+export const renderCounterBadge: (state: CounterBadgeState) => JSX.Element;
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;
 
 // @public
 export const useBadgeStyles: (state: BadgeState) => BadgeState;
+
+// @public
+export const useCounterBadge: (props: CounterBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: CounterBadgeProps | undefined) => CounterBadgeState;
+
+// @public
+export const useCounterBadgeRootStyles: (selectors: CounterBadgeState) => string;
+
+// @public
+export const useCounterBadgeStyles: (state: CounterBadgeState) => CounterBadgeState;
 
 // @public
 export const useIconStyles: (selectors: BadgeState) => string;

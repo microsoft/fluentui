@@ -7,7 +7,7 @@ import { BadgeState } from './Badge.types';
 export const useRootStyles = makeStyles<BadgeState>([
   [
     null,
-    theme => ({
+    (theme) => ({
       display: 'inline-flex',
       boxSizing: 'border-box',
       alignItems: 'center',
@@ -22,7 +22,7 @@ export const useRootStyles = makeStyles<BadgeState>([
     }),
   ],
   [
-    s => s.size === 'smallest',
+    (s) => s.size === 'smallest',
     {
       width: '6px',
       height: '6px',
@@ -30,7 +30,7 @@ export const useRootStyles = makeStyles<BadgeState>([
     },
   ],
   [
-    s => s.size === 'smaller',
+    (s) => s.size === 'smaller',
     {
       width: '10px',
       height: '10px',
@@ -38,7 +38,7 @@ export const useRootStyles = makeStyles<BadgeState>([
     },
   ],
   [
-    s => s.size === 'small',
+    (s) => s.size === 'small',
     {
       minWidth: '16px',
       height: '16px',
@@ -49,18 +49,18 @@ export const useRootStyles = makeStyles<BadgeState>([
     },
   ],
   [
-    s => s.size === 'medium',
+    (s) => s.size === 'medium',
     {
       height: '20px',
       minWidth: '20px',
       gap: '4px',
       paddingRight: '8px',
       paddingLeft: '8px',
-      fontSize: '12px',
+      fontSize: '10px',
     },
   ],
   [
-    s => s.size === 'large',
+    (s) => s.size === 'large',
     {
       minWidth: '24px',
       height: '24px',
@@ -71,8 +71,8 @@ export const useRootStyles = makeStyles<BadgeState>([
     },
   ],
   [
-    s => s.size === 'larger' || s.size === 'largest',
-    theme => ({
+    (s) => s.size === 'larger' || s.size === 'largest',
+    (theme) => ({
       minWidth: '32px',
       height: '32px',
       paddingRight: '12px',
@@ -82,31 +82,39 @@ export const useRootStyles = makeStyles<BadgeState>([
       borderWidth: theme.global.strokeWidth.thick,
     }),
   ],
-  [s => s.shape === 'circular', theme => ({ borderRadius: theme.global.borderRadius.circular })],
-  [s => s.shape === 'rounded', theme => ({ borderRadius: theme.global.borderRadius.medium })],
+  [(s) => s.shape === 'circular' && s.size === 'smallest', (theme) => ({ borderRadius: '3px' })],
+  [(s) => s.shape === 'circular' && s.size === 'smaller', (theme) => ({ borderRadius: '5px' })],
+  [(s) => s.shape === 'circular' && s.size === 'small', (theme) => ({ borderRadius: '8px' })],
+  [(s) => s.shape === 'circular' && s.size === 'medium', (theme) => ({ borderRadius: '10px' })],
+  [(s) => s.shape === 'circular' && s.size === 'large', (theme) => ({ borderRadius: '12px' })],
   [
-    s => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
-    theme => ({ borderRadius: theme.global.borderRadius.small }),
+    (s) => s.shape === 'circular' && (s.size === 'larger' || s.size === 'largest'),
+    (theme) => ({ borderRadius: '16px' }),
+  ],
+  [(s) => s.shape === 'rounded', (theme) => ({ borderRadius: theme.global.borderRadius.medium })],
+  [
+    (s) => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
+    (theme) => ({ borderRadius: theme.global.borderRadius.small }),
   ],
   [
-    s => s.appearance === 'ghost',
-    theme => ({
+    (s) => s.appearance === 'ghost',
+    (theme) => ({
       background: 'transparent',
       border: 'none',
       color: theme.alias.color.brand.brandBackground,
     }),
   ],
   [
-    s => s.appearance === 'outline',
-    theme => ({
+    (s) => s.appearance === 'outline',
+    (theme) => ({
       background: 'transparent',
       borderColor: theme.alias.color.brand.brandBackground,
       color: theme.alias.color.brand.brandBackground,
     }),
   ],
   [
-    s => s.appearance === 'tint',
-    theme => ({
+    (s) => s.appearance === 'tint',
+    (theme) => ({
       background: theme.global.palette.brand.tint60,
       color: theme.global.palette.brand.shade40,
       border: 'none',
@@ -119,7 +127,7 @@ export const useRootStyles = makeStyles<BadgeState>([
  */
 export const useIconStyles = makeStyles<BadgeState>([
   [
-    s => !s.children,
+    (s) => !s.children,
     () => ({
       position: 'absolute',
     }),
