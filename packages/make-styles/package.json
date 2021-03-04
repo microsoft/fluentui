@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/make-styles",
-  "version": "9.0.0-alpha.2",
+  "version": "9.0.0-alpha.3",
   "description": "Experimental utility for creating css styles/classes.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,8 +28,7 @@
     "@fluentui/eslint-plugin": "^1.0.1",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/test-utilities": "^8.0.1",
-    "@types/stylis": "^4.0.0",
-    "prettier": "~1.19.1"
+    "@types/stylis": "^4.0.0"
   },
   "dependencies": {
     "@emotion/hash": "^0.8.0",

@@ -16,7 +16,7 @@ async function main() {
   const { all: runOnAllFiles, check: checkMode } = parsedArgs;
 
   console.log(
-    `Running prettier on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes | in ${
+    `Running format on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes | in ${
       checkMode ? 'check' : 'write'
     } mode)`,
   );
@@ -42,16 +42,16 @@ async function main() {
 
 function parseArgs() {
   return require('yargs')
-    .usage('Usage: prettier [commitHash] [options]')
-    .example('prettier', 'Run prettier only on changed files')
-    .example('prettier HEAD~3', 'Run prettier only on changed files since HEAD~3')
+    .usage('Usage: format [commitHash] [options]')
+    .example('format', 'Run format only on changed files')
+    .example('format HEAD~3', 'Run format only on changed files since HEAD~3')
     .options({
       all: {
-        description: 'Run prettier on all files',
+        description: 'Run format on all files',
         boolean: true,
       },
       check: {
-        description: 'Run prettier in check mode. useful for CI',
+        description: 'Run format in check mode. useful for CI',
         boolean: true,
       },
     })
