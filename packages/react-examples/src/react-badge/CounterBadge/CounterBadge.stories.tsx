@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { CounterBadge } from '@fluentui/react-badge';
 
+const DisplayBadge: React.FC<{}> = (props) => (
+  <div style={{ display: 'flex', alignItems: 'center', gap: 4, margin: 4 }}>{props.children}</div>
+);
+
 export const BadgeAppearanceExample = () => {
   const [value, setValue] = React.useState(90);
   return (
@@ -29,11 +33,26 @@ export const BadgeAppearanceExample = () => {
           maxWidth: 200,
         }}
       >
-        <CounterBadge count={value} />
-        <CounterBadge count={value} color="warning" />
-        <CounterBadge count={value} color="important" />
-        <CounterBadge count={value} color="severe" />
-        <CounterBadge count={value} color="informative" />
+        <DisplayBadge>
+          <CounterBadge showZero={false} count={0} />
+          <CounterBadge count={value} />
+        </DisplayBadge>
+        <DisplayBadge>
+          <CounterBadge showZero={false} count={0} color="warning" />
+          <CounterBadge count={value} color="warning" />
+        </DisplayBadge>
+        <DisplayBadge>
+          <CounterBadge showZero={false} count={0} color="important" />
+          <CounterBadge count={value} color="important" />
+        </DisplayBadge>
+        <DisplayBadge>
+          <CounterBadge showZero={false} count={0} color="severe" />
+          <CounterBadge count={value} color="severe" />
+        </DisplayBadge>
+        <DisplayBadge>
+          <CounterBadge showZero={false} count={0} color="informative" />
+          <CounterBadge count={value} color="informative" />
+        </DisplayBadge>
       </div>
     </>
   );

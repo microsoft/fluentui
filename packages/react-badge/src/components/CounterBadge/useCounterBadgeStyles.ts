@@ -9,7 +9,7 @@ export const useCounterBadgeRootStyles = makeStyles<CounterBadgeState>([
   [
     null,
     {
-      minWidth: '',
+      minWidth: 'auto',
     },
   ],
   [
@@ -41,6 +41,14 @@ export const useCounterBadgeRootStyles = makeStyles<CounterBadgeState>([
       borderColor: theme.global.palette.grey[92],
       color: theme.alias.color.neutral.neutralForeground3,
     }),
+  ],
+  [
+    (s) => s.count === 0 && !s.showZero,
+    {
+      width: '6px',
+      height: '6px',
+      padding: '0',
+    },
   ],
 ]);
 
