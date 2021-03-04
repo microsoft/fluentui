@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.7.0)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.6.1..@fluentui/react-menu_v0.7.0)
+
+### Minor changes
+
+- Allow menu to be used uncontrolled ([PR #17176](https://github.com/microsoft/fluentui/pull/17176) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- Remove set-version dependency from converged components ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.5 ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-focus-management to v9.0.0-alpha.4 ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.6 ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
 
 ## [0.6.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.6.1)
 

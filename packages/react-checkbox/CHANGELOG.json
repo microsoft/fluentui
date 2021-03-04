@@ -2,6 +2,45 @@
   "name": "@fluentui/react-checkbox",
   "entries": [
     {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-checkbox_v1.0.0-beta.49",
+      "version": "1.0.0-beta.49",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/common-styles to v1.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-checkbox"
+          },
+          {
+            "comment": "Bump @fluentui/react-icons-mdl2 to v1.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-checkbox"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/react-checkbox_v1.0.0-beta.48",
       "version": "1.0.0-beta.48",
