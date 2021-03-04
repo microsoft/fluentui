@@ -13,7 +13,12 @@ const numberOfCpus = os.cpus().length / 2;
  */
 
 async function main() {
-  const { all: runOnAllFiles, check: checkMode } = parsedArgs;
+  const { all: runOnAllFiles, check: checkMode, _ } = parsedArgs;
+
+  if (_.length) {
+    throw new Error('');
+  }
+  console.dir(parsedArgs);
 
   console.log(
     `Running format on ${runOnAllFiles ? 'all' : 'changed'} files (on ${numberOfCpus} processes | in ${
@@ -41,25 +46,39 @@ async function main() {
 }
 
 function parseArgs() {
+  // Use yargs config to enforce that script must be run with exactly one of `--all` or
+  // `--since [target]` (--check is accepted with either one)
   return require('yargs')
-    .usage('Usage: format [files] [options]')
-    .example('format', 'Run format only on changed files')
-    .example('format --commit HEAD~3', 'Run format only on changed files since HEAD~3')
+    .usage('Usage: format [options]')
+    .example('format --since HEAD~3', 'Run prettier only on changed files since HEAD~3')
+    .example('format --all', 'Run prettier on all files')
     .options({
       since: {
-        description: 'Run format on files since commit',
+        description: 'Run prettier on files since commit',
         type: 'string',
       },
       all: {
-        description: 'Run format on all files',
+        description: 'Run prettier on all files',
         boolean: true,
       },
       check: {
-        description: 'Run format in check mode. useful for CI',
+        description: 'Run prettier in check mode (useful for CI)',
         boolean: true,
       },
     })
-    .alias('h', 'help').argv;
+    .alias('h', 'help')
+    .conflicts('since', 'all')
+    .conflicts('all', 'since')
+    .strict()
+    .check(argv => {
+      if (argv._.length) {
+        throw new Error('To format individual files, run `yarn prettier` directly');
+      }
+      if (!argv.all && !argv.since) {
+        throw new Error('Must specify `--all` or `--since [target]`');
+      }
+      return true;
+    }).argv;
 }
 
 /**
@@ -68,8 +87,7 @@ function parseArgs() {
  */
 async function runOnChanged(options) {
   const { paths, queue } = options;
-  const prettierIntroductionCommit = 'HEAD~1';
-  const passedDiffTarget = parsedArgs.since || prettierIntroductionCommit;
+  const passedDiffTarget = parsedArgs.since;
 
   const cmd = `git --no-pager diff ${passedDiffTarget} --diff-filter=AM --name-only --stat-name-width=0`;
 
