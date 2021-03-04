@@ -18,15 +18,16 @@ export function useCreateAccordionItemContext(state: AccordionItemState) {
   const headingId = useId('accordion-item-heading-');
   const panelId = useId('accordion-item-panel-');
   const { requestToggle, openItems } = useAccordionContext();
+  // index -1 means context not provided
   const index = useAccordionDescendant({
     element: state.ref.current,
     disabled: state.disabled ?? false,
   });
-  const open = React.useMemo(() => (Array.isArray(openItems) ? openItems.includes(index) : openItems === index), [
-    openItems,
-    index,
-  ]);
-  const onAccordionHeaderClick = React.useCallback((ev: React.MouseEvent<HTMLElement>) => requestToggle(index), [
+  const open = React.useMemo(
+    () => (index === -1 ? false : Array.isArray(openItems) ? openItems.includes(index) : openItems === index),
+    [openItems, index],
+  );
+  const onAccordionHeaderClick = React.useCallback((ev: React.MouseEvent<HTMLElement>) => requestToggle(ev, index), [
     requestToggle,
     index,
   ]);

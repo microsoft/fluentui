@@ -7,33 +7,10 @@ import { AccordionHeaderState } from './AccordionHeader.types';
 const useRootStyles = makeStyles<AccordionHeaderState>([
   [
     null,
-    (theme) => ({
+    theme => ({
       color: theme.alias.color.neutral.neutralForeground1,
       backgroundColor: theme.alias.color.neutral.neutralBackground1,
-      fontSize: theme.global.type.fontSizes.base[300],
-      fontFamily: theme.global.type.fontFamilies.base,
       borderRadius: '2px',
-    }),
-  ],
-  // Small variant
-  [
-    (state) => state.size === 'small',
-    (theme) => ({
-      fontSize: theme.global.type.fontSizes.base[200],
-    }),
-  ],
-  // Large variant
-  [
-    (state) => state.size === 'large',
-    (theme) => ({
-      fontSize: theme.global.type.fontSizes.base[400],
-    }),
-  ],
-  // Extra Large variant
-  [
-    (state) => state.size === 'extra-large',
-    (theme) => ({
-      fontSize: theme.global.type.fontSizes.base[500],
     }),
   ],
 ]);
@@ -55,14 +32,14 @@ const useButtonStyles = makeStyles<AccordionHeaderState>([
   ],
   // Small variant
   [
-    (state) => state.size === 'small',
+    state => state.size === 'small',
     {
       height: '32px',
     },
   ],
   // Expand icon position end variant
   [
-    (state) => state.expandIconPosition === 'end',
+    state => state.expandIconPosition === 'end',
     {
       justifyContent: 'space-between',
     },
@@ -76,14 +53,14 @@ const useExpandIconStyles = makeStyles<AccordionHeaderState>([
   [null, { lineHeight: '0' }],
   // Expand icon position start variant
   [
-    (state) => state.expandIconPosition === 'start',
+    state => state.expandIconPosition === 'start',
     {
       paddingRight: '8px',
     },
   ],
   // Expand icon position end variant
   [
-    (state) => state.expandIconPosition === 'end',
+    state => state.expandIconPosition === 'end',
     {
       paddingLeft: '8px',
     },
@@ -93,11 +70,34 @@ const useExpandIconStyles = makeStyles<AccordionHeaderState>([
 const useChildrenStyles = makeStyles<AccordionHeaderState>([
   [
     null,
-    {
+    theme => ({
+      fontSize: theme.global.type.fontSizes.base[300],
+      fontFamily: theme.global.type.fontFamilies.base,
       textOverflow: 'ellipsis',
       whiteSpace: 'nowrap',
       overflow: 'hidden',
-    },
+    }),
+  ],
+  // Small variant
+  [
+    state => state.size === 'small',
+    theme => ({
+      fontSize: theme.global.type.fontSizes.base[200],
+    }),
+  ],
+  // Large variant
+  [
+    state => state.size === 'large',
+    theme => ({
+      fontSize: theme.global.type.fontSizes.base[400],
+    }),
+  ],
+  // Extra Large variant
+  [
+    state => state.size === 'extra-large',
+    theme => ({
+      fontSize: theme.global.type.fontSizes.base[500],
+    }),
   ],
 ]);
 

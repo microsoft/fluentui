@@ -13,7 +13,7 @@ export interface AccordionContext {
   /**
    * Callback used by AccordionItem to request a change on it's own opened state
    */
-  requestToggle(index: number): void;
+  requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
 type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIcon' | 'expandIconPosition' | 'button' | 'size'>;
@@ -37,7 +37,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
    * Default value for the uncontrolled state of the panel
    */
   defaultIndex?: AccordionIndex;
-  onToggle?(index: number): void;
+  onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
 }
 
 /**

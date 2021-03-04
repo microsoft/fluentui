@@ -1,32 +1,37 @@
 import * as React from 'react';
 import { createDescendantContext, useDescendant, useDescendantsInit } from '@reach/descendants';
 import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
-import { useConst } from '@fluentui/react-utilities';
+import { useConst, useControllableValue, useEventCallback } from '@fluentui/react-utilities';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
 
-export const accordionContext = React.createContext<AccordionContext>(undefined!);
+export const accordionContext = React.createContext<AccordionContext>({
+  openItems: -1,
+  requestToggle() {
+    /* noop */
+  },
+});
 
 export function useCreateAccordionContext(state: AccordionState) {
   const { index: open, multiple, collapsible, onToggle } = state;
   const isControlled = useConst(typeof open !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
-  const [openItems, setOpenItems] = React.useState<AccordionIndex>(() => initializeOpenItems(state));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const initialDefaultIndex = React.useMemo(() => initializeOpenItems(state), []);
+  const [openItems, setOpenItems] = useControllableValue(open, initialDefaultIndex);
 
-  const requestToggle = useEventCallback((index: number) => {
-    onToggle?.(index);
-    if (!isControlled) {
-      setOpenItems((previousOpenItems) =>
-        updateOpenItems(index, previousOpenItems, {
-          collapsible,
-          multiple,
-        }),
-      );
-    }
+  const requestToggle = useEventCallback((ev: React.MouseEvent<HTMLElement>, index: number) => {
+    onToggle?.(ev, index);
+    setOpenItems(previousOpenItems =>
+      updateOpenItems(index, previousOpenItems!, {
+        collapsible,
+        multiple,
+      }),
+    );
   });
   const context = React.useMemo<AccordionContext>(
     () => ({
-      openItems: isControlled ? open! : openItems,
+      openItems: isControlled ? open! : openItems!,
       requestToggle,
     }),
     [isControlled, open, openItems, requestToggle],
@@ -34,28 +39,22 @@ export function useCreateAccordionContext(state: AccordionState) {
   return [context, descendants, setDescendants] as const;
 }
 
-export function useAccordionContext() {
-  const context = React.useContext(accordionContext);
-  if (context === undefined) {
-    throw new Error(`${useAccordionContext.name} should be used inside an Accordion element`);
-  }
-  return context;
-}
+export const useAccordionContext = () => React.useContext(accordionContext);
 
 export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescendant, 'index'>) {
   return useDescendant<AccordionDescendant>(accordionDescendant, accordionDescendantContext);
 }
 
-function initializeOpenItems({ index: open, defaultIndex: defaultOpen, multiple, collapsible }: AccordionState) {
-  const isControlled = typeof open !== 'undefined';
+function initializeOpenItems({ index, defaultIndex, multiple, collapsible }: AccordionState) {
+  const isControlled = typeof index !== 'undefined';
   switch (true) {
     case isControlled:
-      return open!;
-    case defaultOpen !== undefined: {
+      return index!;
+    case defaultIndex !== undefined: {
       if (multiple) {
-        return Array.isArray(defaultOpen) ? defaultOpen : [defaultOpen!];
+        return Array.isArray(defaultIndex) ? defaultIndex : [defaultIndex!];
       } else {
-        return Array.isArray(defaultOpen) ? defaultOpen[0] ?? 0 : defaultOpen!;
+        return Array.isArray(defaultIndex) ? defaultIndex[0] ?? 0 : defaultIndex!;
       }
     }
     case collapsible:
@@ -77,7 +76,7 @@ function updateOpenItems(
   if (isMultiple(openItems, multiple)) {
     if (openItems.includes(index)) {
       if (openItems.length > 1 || collapsible) {
-        return openItems.filter((i) => i !== index);
+        return openItems.filter(i => i !== index);
       }
     } else {
       return [...openItems, index].sort();
