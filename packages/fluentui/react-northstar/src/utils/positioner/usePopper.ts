@@ -273,9 +273,6 @@ export function usePopper(
 
     let popperInstance: (PopperJs.Instance & { isFirstRun?: boolean }) | null = null;
 
-    console.log('popperInstance:targetRef', targetRef.current);
-    console.log('popperInstance:containerRef', containerRef.current);
-
     if (isBrowser()) {
       if (targetRef.current && containerRef.current) {
         popperInstance = PopperJs.createPopper(
@@ -285,8 +282,6 @@ export function usePopper(
         );
       }
     }
-
-    console.log('popperInstance', popperInstance);
 
     if (popperInstance) {
       /**
