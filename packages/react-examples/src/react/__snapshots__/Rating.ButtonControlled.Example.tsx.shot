@@ -57,6 +57,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
+      role="textbox"
       tabIndex={0}
     >
       <button
@@ -131,7 +132,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-1"
         >
-          Select 1 of 5 stars
+          1 of 5 stars
         </span>
         <div
           className=
@@ -268,7 +269,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-2"
         >
-          Select 2 of 5 stars
+          2 of 5 stars
         </span>
         <div
           className=
@@ -405,7 +406,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-3"
         >
-          Select 3 of 5 stars
+          3 of 5 stars
         </span>
         <div
           className=
@@ -542,7 +543,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-4"
         >
-          Select 4 of 5 stars
+          4 of 5 stars
         </span>
         <div
           className=
@@ -680,7 +681,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
           id="RatingLabel1-5"
         >
-          Select 5 of 5 stars
+          5 of 5 stars
         </span>
         <div
           className=
