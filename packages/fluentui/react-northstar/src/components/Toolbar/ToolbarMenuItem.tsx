@@ -461,6 +461,7 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       popup: {
         trapFocus: true,
       },
+      content: {},
     }),
 
     shorthandConfig: {
