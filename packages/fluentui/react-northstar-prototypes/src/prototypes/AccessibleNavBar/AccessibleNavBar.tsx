@@ -116,7 +116,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
 
   return (
     <>
-      <h1>Accessible navigation bar prototype</h1>
+      <h1>Accessible Navigation bar prototype</h1>
       <ul>
         <li>
           This page demonstrates different variants of the navigation bar component of Microsoft Teams from the
@@ -135,7 +135,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
           Only the last variant on this page demonstrates the use of the new items count message (e.g. "7 conversations
           with new messages").
         </li>
-        <li>The accepted variant of the navigation bar is the last one on this page.</li>
+        <li>The recommended variant of the navigation bar is the last one on this page.</li>
       </ul>
 
       <EventListener type="keydown" listener={handleKeyDown} target={document} />
@@ -158,8 +158,8 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>
-          The toolbar variant is rejected because the toolbar role does not fit the navigation bar purpose. The toolbar
-          role is more appropriate for a set of tools rather than the main navigation of the app.
+          The toolbar variant is not recommended because the toolbar role does not fit the navigation bar purpose. The
+          toolbar role is more appropriate for a set of tools rather than the main navigation of the app.
         </li>
         <li>When entering the toolbar content, JAWS, NVDA and VoiceOver all read "toolbar" as the firs narration.</li>
       </ul>
@@ -210,8 +210,8 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>
-          The menuitem role does not allow the use of the aria-pressed or aria-selected attribute so this variant is
-          rejected.
+          The menuitem role does not allow the use of the aria-pressed or aria-selected attribute so this variant is not
+          recommended.
         </li>
         <li>When entering the navigation bar content, JAWS reads "menu" as the firs narration.</li>
         <li>When leaving the navigation bar content, JAWS reads "leaving menus".</li>
@@ -253,7 +253,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           When entering the navigation bar content, the position and size is announced, which is not desired, especially
           because with JAWS and NVDA it's narrated before the navigation bar item. So to make the narration less
-          verbose, this variant is rejected.
+          verbose, this variant is not recommended.
         </li>
       </ul>
 
@@ -278,8 +278,8 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           When entering the navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation
           landmark" after narrating the aria-label but before narrating the focused navigation bar item. Since the
-          aria-label we want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is
-          rejected.
+          aria-label we want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is not
+          recommended.
         </li>
         <li>
           However, if the &lt;nav&gt; element is the only &lt;nav&gt; element in the app, and the aria-label is not
@@ -335,8 +335,8 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         </li>
         <li>
           JAWS in the virtual cursor mode behaves as if the "region" role and aria-label were not present on the
-          navigation bar elemente, which is probably a bug, but it is enough for this variant to be rejected (at least
-          until the bug is resolved).
+          navigation bar elemente, which is probably a bug, but it is enough for this variant not to be recommended (at
+          least until the bug is resolved).
         </li>
       </ul>
 
@@ -359,11 +359,12 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <h3>Notes</h3>
       <ul>
         <li>
-          NVDA does not narrate the aria-label when entering the navigation bar content so this variant is rejected.
+          NVDA does not narrate the aria-label when entering the navigation bar content so this variant is not
+          recommended.
         </li>
       </ul>
 
-      <h2>role="group" (accepted variant)</h2>
+      <h2>role="group" (recommended variant)</h2>
       <div role="group" aria-label="Navigation bar" onFocus={handleFocus} onBlur={handleBlur}>
         <button className="item" tabIndex={0} aria-pressed="false">
           Activities
@@ -419,7 +420,6 @@ const AccessibleNavBar: React.FunctionComponent = () => {
           When entering the navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating
           the aria-label but before narrating the navigation bar item.
         </li>
-        <li>This variant is accepted as the best solution.</li>
       </ul>
     </>
   );
