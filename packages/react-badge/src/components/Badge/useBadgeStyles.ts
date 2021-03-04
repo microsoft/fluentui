@@ -82,11 +82,6 @@ export const useRootStyles = makeStyles<BadgeState>([
       borderWidth: theme.global.strokeWidth.thick,
     }),
   ],
-  [(s) => s.shape === 'rounded', (theme) => ({ borderRadius: theme.global.borderRadius.medium })],
-  [
-    (s) => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
-    (theme) => ({ borderRadius: theme.global.borderRadius.small }),
-  ],
   [(s) => s.shape === 'circular' && s.size === 'smallest', (theme) => ({ borderRadius: '3px' })],
   [(s) => s.shape === 'circular' && s.size === 'smaller', (theme) => ({ borderRadius: '5px' })],
   [(s) => s.shape === 'circular' && s.size === 'small', (theme) => ({ borderRadius: '8px' })],
@@ -96,6 +91,12 @@ export const useRootStyles = makeStyles<BadgeState>([
     (s) => s.shape === 'circular' && (s.size === 'larger' || s.size === 'largest'),
     (theme) => ({ borderRadius: '16px' }),
   ],
+  [(s) => s.shape === 'rounded', (theme) => ({ borderRadius: theme.global.borderRadius.medium })],
+  [
+    (s) => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
+    (theme) => ({ borderRadius: theme.global.borderRadius.small }),
+  ],
+
   [
     (s) => s.appearance === 'ghost',
     (theme) => ({
