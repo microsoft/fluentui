@@ -54,6 +54,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       ? _getSelectedIndex(newProps.colorCells, newProps.selectedId)
       : undefined;
 
+    // If not controlled, we do not want to allow updates to selectedIndex to be undefined
     if (!newProps.isControlled && newSelectedIndex === undefined) {
       return null;
     }
