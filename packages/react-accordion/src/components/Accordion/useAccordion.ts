@@ -13,9 +13,9 @@ const mergeProps = makeMergeProps<AccordionState>({ deepMerge: accordionShorthan
 
 /**
  * Returns the props and state required to render the component
- * @param props Accordion properties
- * @param ref reference to root HTMLElement of Accordion
- * @param defaultProps default values for the properties of Accordion
+ * @param props - Accordion properties
+ * @param ref - reference to root HTMLElement of Accordion
+ * @param defaultProps - default values for the properties of Accordion
  */
 export const useAccordion = (
   props: AccordionProps,

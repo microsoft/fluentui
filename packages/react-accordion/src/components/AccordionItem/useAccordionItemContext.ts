@@ -4,16 +4,20 @@ import { useAccordionContext, useAccordionDescendant } from '../Accordion/useAcc
 import { AccordionItemContext, AccordionItemState } from './AccordionItem.types';
 
 // No default value.
-export const accordionItemContext = React.createContext<AccordionItemContext>(undefined!);
+export const accordionItemContext = React.createContext<AccordionItemContext>({
+  headingId: '',
+  panelId: '',
+  onAccordionHeaderClick() {
+    /** */
+  },
+  open: false,
+});
 
-export function useAccordionItemContext() {
-  const context = React.useContext(accordionItemContext);
-  if (context === undefined) {
-    throw new Error(`${useAccordionItemContext.name} should be used inside an AccordionItem element`);
-  }
-  return context;
-}
+export const useAccordionItemContext = () => React.useContext(accordionItemContext);
 
+/**
+ * Creates internal context to be consumed by AccordionHeader and AccordionPanel
+ */
 export function useCreateAccordionItemContext(state: AccordionItemState) {
   const headingId = useId('accordion-item-heading-');
   const panelId = useId('accordion-item-panel-');
@@ -23,10 +27,7 @@ export function useCreateAccordionItemContext(state: AccordionItemState) {
     element: state.ref.current,
     disabled: state.disabled ?? false,
   });
-  const open = React.useMemo(
-    () => (index === -1 ? false : Array.isArray(openItems) ? openItems.includes(index) : openItems === index),
-    [openItems, index],
-  );
+  const open = React.useMemo(() => openItems.includes(index), [openItems, index]);
   const onAccordionHeaderClick = React.useCallback((ev: React.MouseEvent<HTMLElement>) => requestToggle(ev, index), [
     requestToggle,
     index,

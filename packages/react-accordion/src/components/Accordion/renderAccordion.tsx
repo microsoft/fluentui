@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getSlots } from '@fluentui/react-utilities';
 import { AccordionState } from './Accordion.types';
 import { accordionShorthandProps } from './useAccordion';
-import { DescendantProvider } from '@reach/descendants';
+import { DescendantProvider } from '../../utils/descendants';
 import { accordionContext, accordionDescendantContext } from './useAccordionContext';
 
 /**

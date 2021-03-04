@@ -12,6 +12,19 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 // @public
 export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
 
+// @public (undocumented)
+export interface AccordionContext {
+    openItems: number[];
+    requestToggle: NonNullable<AccordionProps['onToggle']>;
+}
+
+// Warning: (ae-forgotten-export) The symbol "Descendant" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export interface AccordionDescendant<ElementType = HTMLElement> extends Descendant<ElementType> {
+    disabled: boolean;
+}
+
 // @public
 export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderProps & React.RefAttributes<HTMLElement>>;
 
@@ -19,27 +32,64 @@ export const AccordionHeader: React.ForwardRefExoticComponent<AccordionHeaderPro
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 // @public
+export interface AccordionHeaderExpandIconProps extends React.HTMLAttributes<HTMLElement> {
+    // (undocumented)
+    expandIconPosition: AccordionHeaderExpandIconPosition;
+    // (undocumented)
+    open: boolean;
+}
+
+// @public
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    expandIcon?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
     expandIconPosition?: AccordionHeaderExpandIconPosition;
+    size?: AccordionHeaderSize;
 }
 
 // @public
 export const accordionHeaderShorthandProps: string[];
 
+// @public (undocumented)
+export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
+
 // @public
 export interface AccordionHeaderState extends AccordionHeaderProps {
-    button?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
-    expandIcon?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    button: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    // (undocumented)
+    children?: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    expandIcon: ObjectShorthandProps<AccordionHeaderExpandIconProps>;
+    // (undocumented)
+    expandIconPosition: AccordionHeaderExpandIconPosition;
     ref: React.MutableRefObject<HTMLElement>;
+    // (undocumented)
+    size: AccordionHeaderSize;
 }
+
+// @public (undocumented)
+export type AccordionIndex = number | number[];
 
 // @public
 export const AccordionItem: React.ForwardRefExoticComponent<AccordionItemProps & React.RefAttributes<HTMLElement>>;
 
+// @public (undocumented)
+export interface AccordionItemContext {
+    // (undocumented)
+    headingId: string;
+    // (undocumented)
+    onAccordionHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
+    // (undocumented)
+    open: boolean;
+    // (undocumented)
+    panelId: string;
+}
+
+// @public (undocumented)
+export const accordionItemContext: React.Context<AccordionItemContext>;
+
 // @public
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+    disabled?: boolean;
 }
 
 // @public
@@ -47,6 +97,8 @@ export const accordionItemShorthandProps: never[];
 
 // @public
 export interface AccordionItemState extends AccordionItemProps {
+    // (undocumented)
+    context: AccordionItemContext;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
@@ -62,11 +114,21 @@ export const accordionPanelShorthandProps: never[];
 
 // @public
 export interface AccordionPanelState extends AccordionPanelProps {
+    // (undocumented)
+    open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
 }
 
+// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommonProps" needs to be exported by the entry point index.d.ts
+//
 // @public
-export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
+    collapsible?: boolean;
+    defaultIndex?: AccordionIndex;
+    index?: AccordionIndex;
+    multiple?: boolean;
+    // (undocumented)
+    onToggle?(event: React.MouseEvent<HTMLElement>, index: number): void;
 }
 
 // @public
@@ -74,7 +136,14 @@ export const accordionShorthandProps: never[];
 
 // @public
 export interface AccordionState extends AccordionProps {
+    // (undocumented)
+    collapsible: boolean;
+    context: AccordionContext;
+    descendants: AccordionDescendant[];
+    // (undocumented)
+    multiple: boolean;
     ref: React.MutableRefObject<HTMLElement>;
+    setDescendants: React.Dispatch<React.SetStateAction<AccordionDescendant[]>>;
 }
 
 // @public
@@ -87,7 +156,7 @@ export const renderAccordionHeader: (state: AccordionHeaderState) => JSX.Element
 export const renderAccordionItem: (state: AccordionItemState) => JSX.Element;
 
 // @public
-export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element;
+export const renderAccordionPanel: (state: AccordionPanelState) => JSX.Element | null;
 
 // @public
 export const useAccordion: (props: AccordionProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionProps | undefined) => AccordionState;
@@ -101,6 +170,9 @@ export const useAccordionHeaderStyles: (state: AccordionHeaderState) => Accordio
 // @public
 export const useAccordionItem: (props: AccordionItemProps, ref: React.Ref<HTMLElement>, defaultProps?: AccordionItemProps | undefined) => AccordionItemState;
 
+// @public (undocumented)
+export function useAccordionItemContext(): AccordionItemContext;
+
 // @public
 export const useAccordionItemStyles: (state: AccordionItemState) => AccordionItemState;
 
@@ -112,6 +184,9 @@ export const useAccordionPanelStyles: (state: AccordionPanelState) => AccordionP
 
 // @public
 export const useAccordionStyles: (state: AccordionState) => AccordionState;
+
+// @public (undocumented)
+export function useCreateAccordionItemContext(state: AccordionItemState): AccordionItemContext;
 
 
 // (No @packageDocumentation comment for this package)

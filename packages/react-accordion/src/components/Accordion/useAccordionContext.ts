@@ -1,29 +1,33 @@
 import * as React from 'react';
-import { createDescendantContext, useDescendant, useDescendantsInit } from '@reach/descendants';
+import { createDescendantContext, useDescendant, useDescendantsInit } from '../../utils/descendants';
 import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
 import { useConst, useControllableValue, useEventCallback } from '@fluentui/react-utilities';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
 
 export const accordionContext = React.createContext<AccordionContext>({
-  openItems: -1,
+  openItems: [],
   requestToggle() {
     /* noop */
   },
 });
 
+/**
+ * Creates the context to be provided for AccordionItem components
+ */
 export function useCreateAccordionContext(state: AccordionState) {
-  const { index: open, multiple, collapsible, onToggle } = state;
-  const isControlled = useConst(typeof open !== 'undefined');
+  const { index, multiple, collapsible, onToggle } = state;
+  const isControlled = useConst(typeof index !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const initialDefaultIndex = React.useMemo(() => initializeOpenItems(state), []);
-  const [openItems, setOpenItems] = useControllableValue(open, initialDefaultIndex);
+  const initialDefaultIndex = React.useMemo(() => initializeUncontrolledOpenItems(state), []);
+  const normalizedIndex = React.useMemo(() => (index !== undefined ? normalizeIndex(index) : undefined), [index]);
+  const [openItems, setOpenItems] = useControllableValue(normalizedIndex, initialDefaultIndex);
 
-  const requestToggle = useEventCallback((ev: React.MouseEvent<HTMLElement>, index: number) => {
-    onToggle?.(ev, index);
+  const requestToggle = useEventCallback((ev: React.MouseEvent<HTMLElement>, i: number) => {
+    onToggle?.(ev, i);
     setOpenItems(previousOpenItems =>
-      updateOpenItems(index, previousOpenItems!, {
+      updateOpenItems(i, previousOpenItems!, {
         collapsible,
         multiple,
       }),
@@ -31,58 +35,70 @@ export function useCreateAccordionContext(state: AccordionState) {
   });
   const context = React.useMemo<AccordionContext>(
     () => ({
-      openItems: isControlled ? open! : openItems!,
+      openItems: isControlled ? normalizedIndex! : openItems!,
       requestToggle,
     }),
-    [isControlled, open, openItems, requestToggle],
+    [isControlled, normalizedIndex, openItems, requestToggle],
   );
   return [context, descendants, setDescendants] as const;
 }
 
 export const useAccordionContext = () => React.useContext(accordionContext);
 
+/**
+ * Registers an descendant in the accordion descendants context
+ */
 export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescendant, 'index'>) {
   return useDescendant<AccordionDescendant>(accordionDescendant, accordionDescendantContext);
 }
 
-function initializeOpenItems({ index, defaultIndex, multiple, collapsible }: AccordionState) {
-  const isControlled = typeof index !== 'undefined';
+/**
+ * Initial value for the uncontrolled case of the list of open indexes
+ */
+function initializeUncontrolledOpenItems({ defaultIndex, multiple, collapsible }: AccordionState) {
   switch (true) {
-    case isControlled:
-      return index!;
     case defaultIndex !== undefined: {
       if (multiple) {
         return Array.isArray(defaultIndex) ? defaultIndex : [defaultIndex!];
       } else {
-        return Array.isArray(defaultIndex) ? defaultIndex[0] ?? 0 : defaultIndex!;
+        return Array.isArray(defaultIndex) ? [defaultIndex[0]] ?? [0] : [defaultIndex!];
       }
     }
     case collapsible:
-      return multiple ? [] : -1;
+      return [];
     default:
-      return multiple ? [0] : 0;
+      return [0];
   }
 }
 
-function isMultiple(open: AccordionIndex, multiple: boolean): open is number[] {
-  return Array.isArray(open) && multiple;
-}
-
+/**
+ * Updates the list of open indexes based on an index that changes
+ * @param index - the index that will change
+ * @param previousOpenItems - list of current open indexes
+ * @param param2 - {multiple, collapsible}
+ */
 function updateOpenItems(
   index: number,
-  openItems: AccordionIndex,
+  previousOpenItems: number[],
   { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
 ) {
-  if (isMultiple(openItems, multiple)) {
-    if (openItems.includes(index)) {
-      if (openItems.length > 1 || collapsible) {
-        return openItems.filter(i => i !== index);
+  if (multiple) {
+    if (previousOpenItems.includes(index)) {
+      if (previousOpenItems.length > 1 || collapsible) {
+        return previousOpenItems.filter(i => i !== index);
       }
     } else {
-      return [...openItems, index].sort();
+      return [...previousOpenItems, index].sort();
     }
   } else {
-    return openItems === index && collapsible ? -1 : index;
+    return previousOpenItems[0] === index && collapsible ? [] : [index];
   }
-  return openItems;
+  return previousOpenItems;
+}
+
+/**
+ * Normalizes Accordion index into an array of indexes
+ */
+function normalizeIndex(index: AccordionIndex) {
+  return Array.isArray(index) ? index : [index];
 }

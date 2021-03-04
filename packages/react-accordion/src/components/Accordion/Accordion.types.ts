@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
-import { Descendant } from '@reach/descendants';
+import { Descendant } from '../../utils/descendants';
 import { AccordionHeaderProps } from '../AccordionHeader';
 
 export type AccordionIndex = number | number[];
@@ -9,7 +9,7 @@ export interface AccordionContext {
   /**
    * The list of opened panels by index
    */
-  openItems: AccordionIndex;
+  openItems: number[];
   /**
    * Callback used by AccordionItem to request a change on it's own opened state
    */

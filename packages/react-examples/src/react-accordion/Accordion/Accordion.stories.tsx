@@ -1,67 +1,48 @@
 import * as React from 'react';
-import { AccordionItem, AccordionHeader, AccordionPanel, Accordion } from '@fluentui/react-accordion';
-import { ChevronRightIcon, ChevronDownIcon } from '@fluentui/react-icons-mdl2';
+import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionProps } from '@fluentui/react-accordion';
+import { ArgType } from '@storybook/addons';
 
-const ExpandIcon = ({ open, ...rest }: { open: boolean }) => {
-  return open ? <ChevronDownIcon {...rest} /> : <ChevronRightIcon {...rest} />;
-};
-
-export const AccordionExample = () => {
+export const AccordionExample = (props: AccordionProps) => {
+  console.log(props);
   return (
-    <Accordion>
+    <Accordion {...props}>
       <AccordionItem>
-        <AccordionHeader expandIcon={{ as: ExpandIcon }}>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
+        <AccordionHeader>Accordion Header 1</AccordionHeader>
+        <AccordionPanel>Accordion Panel 1</AccordionPanel>
       </AccordionItem>
       <AccordionItem>
-        <AccordionHeader expandIcon={{ as: ExpandIcon }}>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
+        <AccordionHeader>Accordion Header 2</AccordionHeader>
+        <AccordionPanel>Accordion Panel 2</AccordionPanel>
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionHeader>Accordion Header 3</AccordionHeader>
+        <AccordionPanel>Accordion Panel 3</AccordionPanel>
       </AccordionItem>
     </Accordion>
   );
 };
-
-export const AccordionMultipleExample = () => {
-  return (
-    <Accordion multiple>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
-      </AccordionItem>
-    </Accordion>
-  );
-};
-
-export const AccordionCollapsibleExample = () => {
-  return (
-    <Accordion collapsible>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
-      </AccordionItem>
-    </Accordion>
-  );
-};
-
-export const AccordionMultipleAndCollapsibleExample = () => {
-  return (
-    <Accordion collapsible multiple>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
-      </AccordionItem>
-      <AccordionItem>
-        <AccordionHeader>Accordion Header</AccordionHeader>
-        <AccordionPanel>Accordion Panel</AccordionPanel>
-      </AccordionItem>
-    </Accordion>
-  );
-};
+AccordionExample.argTypes = {
+  multiple: {
+    defaultValue: false,
+    control: 'boolean',
+  },
+  collapsible: {
+    defaultValue: false,
+    control: 'boolean',
+  },
+  // onToggle: { action: 'toggled' },
+  size: {
+    defaultValue: 'medium',
+    control: {
+      type: 'select',
+      options: ['small', 'medium', 'large', 'extra-large'],
+    },
+  },
+  expandIconPosition: {
+    defaultValue: 'start',
+    control: {
+      type: 'inline-radio',
+      options: ['start', 'end'],
+    },
+  },
+} as { [K in keyof AccordionProps]: ArgType };

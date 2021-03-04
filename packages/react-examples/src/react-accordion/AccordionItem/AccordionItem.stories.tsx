@@ -12,7 +12,7 @@ import {
 interface AccordionItemExampleProps {
   size: AccordionHeaderSize;
   expandIconPosition: AccordionHeaderExpandIconPosition;
-  onToggle(index: number): void;
+  onToggle(ev: React.MouseEvent<HTMLElement>, index: number): void;
   label: string;
 }
 
