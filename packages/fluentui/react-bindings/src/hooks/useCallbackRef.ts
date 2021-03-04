@@ -40,7 +40,7 @@ export function useCallbackRef<T>(
 
         if (last !== value) {
           ref.value = value;
-          console.log('useCallbackRef', last, value, initialValue);
+
           if (skipInitialResolve && isFirst.current) {
             return;
           }
