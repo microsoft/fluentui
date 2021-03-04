@@ -278,7 +278,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           When entering the Navigation bar content, JAWS announces "navigation region" and NVDA announces "navigation
           landmark" after narrating the aria-label but before narrating the focused Navigation bar item. Since the
-          aria-label we want is "NNavigation bar", the word "navigation" would be spoken twice, so this variant is not
+          aria-label we want is "Navigation bar", the word "navigation" would be spoken twice, so this variant is not
           recommended.
         </li>
         <li>
@@ -334,9 +334,9 @@ const AccessibleNavBar: React.FunctionComponent = () => {
           but before narrating the focused Mavigation bar item.
         </li>
         <li>
-          JAWS in the virtual cursor mode behaves as if the "region" role and aria-label were not present on the
-          Navigation bar elemente, which is probably a bug, but it is enough for this variant not to be recommended (at
-          least until the bug is resolved).
+          JAWS in the VPC cursor mode behaves as if the "region" role and aria-label were not present on the Navigation
+          bar elemente, which is probably a bug, but it is enough for this variant not to be recommended (at least until
+          the bug is resolved).
         </li>
       </ul>
 
@@ -361,6 +361,11 @@ const AccessibleNavBar: React.FunctionComponent = () => {
         <li>
           NVDA does not narrate the aria-label when entering the Navigation bar content so this variant is not
           recommended.
+        </li>
+        <li>
+          JAWS in the VPC cursor mode behaves as if the aria-label was not present on the Navigation bar elemente, which
+          is probably a bug, but it is another reason for this variant not to be recommended (at least until the bug is
+          resolved).
         </li>
       </ul>
 
@@ -414,7 +419,7 @@ const AccessibleNavBar: React.FunctionComponent = () => {
       <ul>
         <li>
           NVDA sometimes (could not reproduce when) does not narrate the aria-label when entering the Navigation bar
-          content. However, it does narrate it when in the forms mode. \y\y{' '}
+          content. However, it does narrate it when in the forms mode.
         </li>
         <li>
           When entering the Navigation bar content, JAWS announces "group" and NVDA announces "grouping" after narrating
