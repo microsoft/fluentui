@@ -17,7 +17,13 @@ export const RatingBasicExample: React.FunctionComponent = () => {
         ariaLabelFormat="{0} of {1} stars"
       />
       Small stars, with 0 stars allowed:
-      <Rating defaultRating={3} allowZeroStars max={5} ariaLabel="Small stars" ariaLabelFormat="{0} of {1} stars" />
+      <Rating
+        defaultRating={3}
+        allowZeroStars
+        max={5}
+        ariaLabel="Small stars with 0 stars allowed"
+        ariaLabelFormat="{0} of {1} stars"
+      />
       10 small stars:
       <Rating defaultRating={1} max={10} ariaLabel="10 small stars" ariaLabelFormat="{0} of {1} stars" />
       Disabled:
