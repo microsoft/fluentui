@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { renderHook } from '@testing-library/react-hooks';
 import { useEventCallback } from './useEventCallback';
 
@@ -40,5 +41,19 @@ describe('useEventCallback', () => {
     expect(firstRender).toBe(secondRender);
     expect(firstRenderResult).toBe(2);
     expect(secondRenderResult).toBe(0);
+  });
+
+  it('should run before other layout effects', () => {
+    // Arrange
+    const useTestHook = () => {
+      const callback = useEventCallback(jest.fn());
+      React.useLayoutEffect(() => callback(), [callback]);
+    };
+
+    // Act
+    const { result } = renderHook(() => useTestHook());
+
+    // Assert
+    expect(result.error).toBeUndefined();
   });
 });
