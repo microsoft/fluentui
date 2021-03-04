@@ -271,9 +271,14 @@ export function usePopper(
       popperInstanceRef.current = null;
     }
 
+    let popperInstance: (PopperJs.Instance & { isFirstRun?: boolean }) | null = null;
+
+    console.log('popperInstance:targetRef', targetRef.current);
+    console.log('popperInstance:containerRef', containerRef.current);
+
     if (isBrowser()) {
       if (targetRef.current && containerRef.current) {
-        popperInstanceRef.current = PopperJs.createPopper(
+        popperInstance = PopperJs.createPopper(
           targetRef.current,
           containerRef.current,
           resolvePopperOptions(targetRef.current, containerRef.current, arrowRef.current),
@@ -281,23 +286,27 @@ export function usePopper(
       }
     }
 
-    if (popperInstanceRef.current) {
+    console.log('popperInstance', popperInstance);
+
+    if (popperInstance) {
       /**
        * The patch updates `.forceUpdate()` Popper function which restores the original position before the first
        * forceUpdate() call. See also "positionStyleFix" modifier in usePopperOptions().
        */
-      const originalForceUpdate = popperInstanceRef.current.forceUpdate;
+      const originalForceUpdate = popperInstance.forceUpdate;
 
-      popperInstanceRef.current.isFirstRun = true;
-      popperInstanceRef.current.forceUpdate = () => {
-        if (popperInstanceRef.current.isFirstRun) {
-          popperInstanceRef.current.state.elements.popper.style['position'] = popperOriginalPositionRef.current;
-          popperInstanceRef.current.isFirstRun = false;
+      popperInstance.isFirstRun = true;
+      popperInstance.forceUpdate = () => {
+        if (popperInstance.isFirstRun) {
+          popperInstance.state.elements.popper.style['position'] = popperOriginalPositionRef.current;
+          popperInstance.isFirstRun = false;
         }
 
         originalForceUpdate();
       };
     }
+
+    popperInstanceRef.current = popperInstance;
   }, []);
 
   // Refs are managed there via useCallbackRef() this allows us to handle properly following scenarios:

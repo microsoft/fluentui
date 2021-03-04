@@ -1,14 +1,22 @@
 import * as React from 'react';
-import { Box, Portal, PositioningProps, usePopper } from '@fluentui/react-northstar';
+import { createReferenceFromClick, Box, Portal, PositioningProps, usePopper } from '@fluentui/react-northstar';
 
 const PopperExamplePositioning = () => {
   const [popperProps, setPopperProps] = React.useState<PositioningProps>({ align: 'center', position: 'above' });
-  const [box, setBox] = React.useState<'boxA' | 'boxB'>('boxA');
+
+  const [box, setBox] = React.useState<'boxA' | 'boxB' | 'context'>('boxA');
+  const virtualEl = React.useRef(null);
 
   const [referenceRef, popperRef] = usePopper({
     align: popperProps.align,
     position: popperProps.position,
   });
+
+  React.useLayoutEffect(() => {
+    if (box === 'context') {
+      referenceRef.current = virtualEl.current;
+    }
+  }, [box]);
 
   return (
     <div style={{ border: '2px dotted grey', margin: 100 }}>
@@ -19,6 +27,15 @@ const PopperExamplePositioning = () => {
           </button>
           <button onClick={() => setBox('boxB')} style={{ color: box === 'boxB' ? 'blue' : undefined }}>
             use Box B
+          </button>
+          <button
+            onClick={e => {
+              virtualEl.current = createReferenceFromClick(e.nativeEvent);
+              setBox('context');
+            }}
+            style={{ color: box === 'context' ? 'blue' : undefined }}
+          >
+            use context
           </button>
         </div>
 
@@ -84,7 +101,10 @@ const PopperExamplePositioning = () => {
       </div>
 
       <Portal open>
-        <div ref={popperRef} style={{ height: '50px', width: '100px', border: '2px solid orange' }}>
+        <div
+          ref={popperRef}
+          style={{ background: 'blue', color: 'white', height: '50px', width: '100px', border: '2px solid red' }}
+        >
           A popper
         </div>
       </Portal>
