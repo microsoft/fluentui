@@ -8,7 +8,8 @@ const useRootStyles = makeStyles<AccordionPanelState>([
   [
     null,
     {
-      marginInline: '12px',
+      marginRight: '12px',
+      marginLeft: '12px',
     },
   ],
 ]);

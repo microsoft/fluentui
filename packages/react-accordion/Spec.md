@@ -33,39 +33,82 @@ Sample usages will be given in the following section of this document [Sample co
 
 The root level component serves context and common API between all children.
 
-| Prop name          | Type                | Default Value | Details                                                                                                                    |
-| ------------------ | ------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| multiple           | boolean             | false         | Allows multiple panels to be expanded                                                                                      |
-| collapsible        | boolean             | false         | Allows multiple panels to be collapsed                                                                                     |
-| expandIconPosition | "start" or "end"    | "start"       | Position of the icon to indicate expansion                                                                                 |
-| onToggle           | ToggleEventListener |               | Equivalent to onToggle on AccordionPanel element                                                                           |
-| open               | number or number[]  | undefined     | The index (or a list of indexes) of opened items. If this property is being used than the element is considered Controlled |
-| defaultOpen        | number or number[]  | undefined     | The index (or a list of indexes) of opened items by default.                                                               |
-
-```tsx
-interface ToggleEventListener {
-  (index: number): void;
+```ts
+export interface AccordionProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Indicates if Accordion support multiple Panels opened at the same time
+   */
+  multiple?: boolean;
+  /**
+   * Indicates if Accordion support multiple Panels closed at the same time
+   */
+  collapsible?: boolean;
+  /**
+   * Index indicating the panels that are opened
+   * If used, the component will be in controlled mode
+   */
+  index?: number | number[];
+  /**
+   * Index indicating the panels that are opened
+   */
+  defaultIndex?: number | number[];
+  /**
+   * Size of spacing in the heading
+   */
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
+  /**
+   * The component to be used as button in the heading
+   */
+  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  /**
+   * Expand icon slot rendered before (or after) children content in heading
+   */
+  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+  /**
+   * The position of the expand  icon slot in heading
+   */
+  expandIconPosition?: 'start' | 'end';
+  onToggle?(index: number): void;
 }
 ```
 
 ### AccordionItem
 
-| Prop name | Type    | Details                           |
-| --------- | ------- | --------------------------------- |
-| disabled  | boolean | Disables opening/closing of panel |
+Each Combination of `AccordionHeader` and `AccordionPanel` should be inside an `AccordionItem`, and The `Accordion` component should contain one or more `AccordionItem`.
+
+```ts
+export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Disables opening/closing of panel inside the item
+   */
+  disabled?: boolean;
+}
+```
 
 ### AccordionHeader
 
 Label for or thumbnail representing a section of content that also serves as a control for showing, and in some implementations, hiding the section of content
 
-| Prop name          | Type                                            | Default Value | Details                            |
-| ------------------ | ----------------------------------------------- | ------------- | ---------------------------------- |
-| children           | ReactNode                                       |               | Content of the header              |
-| as                 | React.ElementType                               | "div"         | The component to be used as header |
-| button             | ShorhandValue                                   | "div"         | The component to be used as button |
-| expandIcon         | ShorthandValue                                  | ChevronIcon   | Icon to indicate expansion         |
-| expandIconPosition | "start" or "end"                                | "start"       | Position of the expand icon        |
-| size               | "small" or "medium" or "large" or "extra-large" | "medium"      | Size of spacing                    |
+```ts
+export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  /**
+   * Size of spacing in the heading
+   */
+  size?: 'small' | 'medium' | 'large' | 'extra-large';
+  /**
+   * The component to be used as button in heading
+   */
+  button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  /**
+   * Expand icon slot rendered before (or after) children content in heading
+   */
+  expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
+  /**
+   * The position of the expand  icon slot in heading
+   */
+  expandIconPosition?: 'start' | 'end';
+}
+```
 
 ### AccordionPanel
 

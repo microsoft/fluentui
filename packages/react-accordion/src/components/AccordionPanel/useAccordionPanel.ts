@@ -25,7 +25,7 @@ export const useAccordionPanel = (
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
-      id: props.id ?? panelId,
+      id: panelId,
       open,
       role: 'region',
       'aria-labelledby': headingId,

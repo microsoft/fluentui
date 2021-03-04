@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createDescendantContext, useDescendant, useDescendantsInit } from '@reach/descendants';
-import { AccordionContext, AccordionDescendant, AccordionOpen, AccordionState } from './Accordion.types';
+import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
 import { useConst } from '@fluentui/react-utilities';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
@@ -8,24 +8,22 @@ export const accordionDescendantContext = createDescendantContext<AccordionDesce
 export const accordionContext = React.createContext<AccordionContext>(undefined!);
 
 export function useCreateAccordionContext(state: AccordionState) {
-  const { open, multiple, collapsible, onToggle } = state;
+  const { index: open, multiple, collapsible, onToggle } = state;
   const isControlled = useConst(typeof open !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
-  const [openItems, setOpenItems] = React.useState<AccordionOpen>(() => initializeOpenItems(state));
+  const [openItems, setOpenItems] = React.useState<AccordionIndex>(() => initializeOpenItems(state));
 
-  const requestToggle = useEventCallback(
-    (index: number) => {
-      onToggle?.(index);
-      if (!isControlled) {
-        setOpenItems(previousOpenItems =>
-          updateOpenItems(index, previousOpenItems, {
-            collapsible,
-            multiple,
-          }),
-        );
-      }
-    },
-  );
+  const requestToggle = useEventCallback((index: number) => {
+    onToggle?.(index);
+    if (!isControlled) {
+      setOpenItems((previousOpenItems) =>
+        updateOpenItems(index, previousOpenItems, {
+          collapsible,
+          multiple,
+        }),
+      );
+    }
+  });
   const context = React.useMemo<AccordionContext>(
     () => ({
       openItems: isControlled ? open! : openItems,
@@ -48,7 +46,7 @@ export function useAccordionDescendant(accordionDescendant: Omit<AccordionDescen
   return useDescendant<AccordionDescendant>(accordionDescendant, accordionDescendantContext);
 }
 
-function initializeOpenItems({ open, defaultOpen, multiple, collapsible }: AccordionState) {
+function initializeOpenItems({ index: open, defaultIndex: defaultOpen, multiple, collapsible }: AccordionState) {
   const isControlled = typeof open !== 'undefined';
   switch (true) {
     case isControlled:
@@ -67,19 +65,19 @@ function initializeOpenItems({ open, defaultOpen, multiple, collapsible }: Accor
   }
 }
 
-function isMultiple(open: AccordionOpen, multiple: boolean): open is number[] {
+function isMultiple(open: AccordionIndex, multiple: boolean): open is number[] {
   return Array.isArray(open) && multiple;
 }
 
 function updateOpenItems(
   index: number,
-  openItems: AccordionOpen,
+  openItems: AccordionIndex,
   { multiple, collapsible }: Pick<AccordionState, 'multiple' | 'collapsible'>,
 ) {
   if (isMultiple(openItems, multiple)) {
     if (openItems.includes(index)) {
       if (openItems.length > 1 || collapsible) {
-        return openItems.filter(i => i !== index);
+        return openItems.filter((i) => i !== index);
       }
     } else {
       return [...openItems, index].sort();

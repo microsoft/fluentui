@@ -7,6 +7,7 @@ import {
   AccordionHeaderState,
 } from './AccordionHeader.types';
 import { useAccordionItemContext } from '../AccordionItem';
+import { DefaultExpandIcon } from './DefaultExpandIcon';
 
 /**
  * Consts listing which props are shorthand props.
@@ -32,17 +33,19 @@ export const useAccordionHeader = (
       ref: useMergedRefs(ref, React.useRef(null)),
       size: 'medium' as AccordionHeaderSize,
       expandIcon: {
-        as: 'span',
+        as: DefaultExpandIcon,
         open,
+        children: React.Fragment,
+        'aria-hidden': true,
       },
       button: {
         as: 'div',
         tabIndex: 0,
         role: 'button',
         children: React.Fragment,
-        'aria-controls': panelId,
         id: props.id ?? headingId,
         onClick: onAccordionHeaderClick,
+        'aria-controls': panelId,
       },
       as: 'div',
       role: 'heading',
@@ -51,5 +54,8 @@ export const useAccordionHeader = (
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
+  if (state.expandIcon) {
+    state.expandIcon.expandIconPosition = state.expandIconPosition;
+  }
   return state;
 };

@@ -9,6 +9,7 @@ export type AccordionHeaderExpandIconPosition = 'start' | 'end';
  */
 export interface AccordionHeaderExpandIconProps extends React.HTMLAttributes<HTMLElement> {
   open: boolean;
+  expandIconPosition: AccordionHeaderExpandIconPosition;
 }
 
 /**
@@ -16,19 +17,19 @@ export interface AccordionHeaderExpandIconProps extends React.HTMLAttributes<HTM
  */
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
-   *  Size of spacing in the heading
+   * Size of spacing in the heading
    */
   size?: AccordionHeaderSize;
   /**
-   * The component to be used as button
+   * The component to be used as button in heading
    */
   button?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
   /**
-   * Expand icon slot rendered before children content
+   * Expand icon slot rendered before (or after) children content in heading
    */
   expandIcon?: ShorthandProps<AccordionHeaderExpandIconProps>;
   /**
-   * The position of the expand  icon slot
+   * The position of the expand  icon slot in heading
    */
   expandIconPosition?: AccordionHeaderExpandIconPosition;
 }
@@ -45,7 +46,8 @@ export interface AccordionHeaderState extends AccordionHeaderProps {
   /**
    * Expand icon slot when processed by internal state
    */
-  expandIcon?: ObjectShorthandProps<AccordionHeaderExpandIconProps>;
+  expandIcon: ObjectShorthandProps<AccordionHeaderExpandIconProps>;
+  expandIconPosition: AccordionHeaderExpandIconPosition;
   /**
    * The component to be used as button
    */

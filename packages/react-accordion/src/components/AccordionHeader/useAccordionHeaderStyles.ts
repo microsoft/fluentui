@@ -73,18 +73,19 @@ const useButtonStyles = makeStyles<AccordionHeaderState>([
  * style for the expandIcon slot
  */
 const useExpandIconStyles = makeStyles<AccordionHeaderState>([
+  [null, { lineHeight: '0' }],
   // Expand icon position start variant
   [
     (state) => state.expandIconPosition === 'start',
     {
-      paddingInlineEnd: '8px',
+      paddingRight: '8px',
     },
   ],
   // Expand icon position end variant
   [
     (state) => state.expandIconPosition === 'end',
     {
-      paddingInlineStart: '8px',
+      paddingLeft: '8px',
     },
   ],
 ]);
