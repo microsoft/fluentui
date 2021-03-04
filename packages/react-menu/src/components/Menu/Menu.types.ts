@@ -25,7 +25,7 @@ export interface MenuProps extends ComponentProps, React.HTMLAttributes<HTMLElem
   /**
    * Wrapper to style and add events for the popup
    */
-  menuPopup: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+  menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
 }
 
 /**

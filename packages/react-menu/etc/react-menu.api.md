@@ -9,7 +9,7 @@ import { ObjectShorthandProps } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
-// @public (undocumented)
+// @public
 export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
 
 // @public
@@ -144,8 +144,12 @@ export interface MenuListState extends MenuListProps {
     toggleCheckbox: SelectableHandler;
 }
 
-// @public (undocumented)
-export interface MenuProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+// @public
+export interface MenuProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuListProps {
+    defaultOpen?: boolean;
+    menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    open?: boolean;
+    setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // @public (undocumented)
@@ -153,14 +157,15 @@ export const menuShorthandProps: (keyof MenuProps)[];
 
 // @public (undocumented)
 export interface MenuState extends MenuProps {
-    menuList: ObjectShorthandProps<HTMLElement>;
-    menuTrigger: ObjectShorthandProps<HTMLElement>;
+    menuList: React.ReactNode;
+    menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    menuTrigger: React.ReactNode;
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-// @public (undocumented)
+// @public
 export const MenuTrigger: React.ForwardRefExoticComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -255,9 +260,6 @@ export const useMenuStyles: (state: MenuState) => MenuState;
 
 // @public
 export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
-
-// @public
-export const useMenuTriggerStyles: (state: MenuTriggerState) => MenuTriggerState;
 
 // @public
 export const useRootStyles: (selectors: MenuItemState) => string;
