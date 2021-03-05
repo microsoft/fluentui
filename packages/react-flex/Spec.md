@@ -9,7 +9,7 @@ Flex is a container-type component with the strict purpose of abstracting the im
 Although layout seems to vary highly between the currently available component libraries, a consensus was reached through Open UI research over what Flex is and what current examples of approaches in different design systems.
 You can see the published research [here](https://open-ui.org/components/flex.research) and the discussion [here](https://github.com/WICG/open-ui/pull/264).
 
-Convergence tracking history can be found on [this](https://github.com/microsoft/fluentui/issues/16791) Github epic
+Convergence tracking history can be found on [this](https://github.com/microsoft/fluentui/issues/16791) Github epic.
 
 ## Comparison of [Stack](https://developer.microsoft.com/en-us/fluentui#/controls/web/stack) and [Flex](https://fluentsite.z22.web.core.windows.net/0.52.0/components/flex)
 
