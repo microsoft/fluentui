@@ -53,9 +53,12 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
   // TODO fix useControllableValue typing
   state.open = open !== undefined ? open : state.open;
-  state.setOpen = (...args) => {
-    setOpen(...args);
-  };
+  state.setOpen = React.useCallback(
+    (...args) => {
+      setOpen(...args);
+    },
+    [setOpen],
+  );
 
   return state;
 };
