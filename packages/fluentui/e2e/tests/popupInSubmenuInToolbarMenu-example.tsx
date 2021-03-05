@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react';
+import { Toolbar, Input } from '@fluentui/react-northstar';
+import { ItalicIcon } from '@fluentui/react-icons-northstar';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',
@@ -7,7 +8,7 @@ export const selectors = {
   popupTriggerId: 'popupTrigger',
   popupElementId: 'popupElement',
   submenuTriggerId: 'submenuTrigger',
-  dummyButtonId: 'dummyButton'
+  dummyButtonId: 'dummyButton',
 };
 
 const ToolbarExamplePopupInMenu = () => {
@@ -35,24 +36,24 @@ const ToolbarExamplePopupInMenu = () => {
                       id: selectors.popupTriggerId,
                       key: 'popup',
                       popup: {
-                        content: <Input id={selectors.popupElementId} icon="search" placeholder="Search..." />
-                      }
-                    }
-                  ]
-                }
-              ]
+                        content: <Input id={selectors.popupElementId} icon="search" placeholder="Search..." />,
+                      },
+                    },
+                  ],
+                },
+              ],
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               setMenuOpen(menuOpen);
-            }
+            },
           },
           {
             id: selectors.dummyButtonId,
             key: 'italic',
-            kind: 'toggle' as ToolbarItemShorthandKinds,
-            icon: { name: 'italic', outline: true }
-          }
+            kind: 'toggle',
+            icon: <ItalicIcon {...{ outline: true }} />,
+          },
         ]}
       />
     </>

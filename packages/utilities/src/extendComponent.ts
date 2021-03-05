@@ -7,7 +7,7 @@ import { appendFunction } from './appendFunction';
 export function extendComponent<T extends React.Component>(parent: T, methods: { [key in keyof T]?: T[key] }): void {
   for (let name in methods) {
     if (methods.hasOwnProperty(name)) {
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       parent[name] = appendFunction(parent, parent[name], methods[name]) as any;
     }
   }

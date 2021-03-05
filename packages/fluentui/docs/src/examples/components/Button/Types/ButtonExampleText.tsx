@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, Icon } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
+import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleText = () => (
   <div>
@@ -9,24 +10,24 @@ const ButtonExampleText = () => (
     <br />
     <br />
     <Button text>
-      <Icon name="call-video" />
+      <CallVideoIcon />
       <Button.Content content="A text button with an icon" />
     </Button>
     <br />
     <br />
     <Button text iconOnly title="Video Call">
-      <Icon name="call-video" />
+      <CallVideoIcon />
     </Button>
     <br />
     <br />
     <Button text disabled>
-      <Icon name="call-video" />
+      <CallVideoIcon />
       <Button.Content content="A disabled text button with an icon" />
     </Button>
     <br />
     <br />
     <Button text primary>
-      <Icon name="call-video" />
+      <CallVideoIcon />
       <Button.Content content="A primary text button with an icon" />
     </Button>
   </div>

@@ -1,6 +1,6 @@
 import { NodeRef } from '../types';
 
-export default class RefStack {
+export class RefStack {
   private set = new Set<NodeRef>();
 
   public getContextRefs = (ref: NodeRef): NodeRef[] => {

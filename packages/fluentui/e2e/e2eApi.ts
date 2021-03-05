@@ -1,9 +1,10 @@
-import config from '@uifabric/build/config';
 import { Page, Viewport } from 'puppeteer';
 import * as path from 'path';
 import * as _ from 'lodash';
 
-const serverUrl = `http://${config.server_host}:${config.e2e_port}`;
+const serverHost = 'localhost';
+const e2ePort = Number(process.env.E2E_PORT) || 8082;
+const serverUrl = `http://${serverHost}:${e2ePort}`;
 
 export const exampleUrlTokenFromFilePath = (filePath: string) => {
   const testName = path
@@ -13,6 +14,29 @@ export const exampleUrlTokenFromFilePath = (filePath: string) => {
 
   return _.kebabCase(testName);
 };
+
+type E2EKeys =
+  | 'ArrowDown'
+  | 'ArrowLeft'
+  | 'ArrowRight'
+  | 'ArrowUp'
+  | 'End'
+  | 'Enter'
+  | 'Escape'
+  | 'Home'
+  | 'PageDown'
+  | 'PageUp'
+  | 'Tab'
+  | 'F'
+  | 'O'
+  | '*'
+  | 'T'
+  | 'H'
+  | CyrillicLetters;
+
+type CyrillicLetters = 'т';
+
+const PUPPETEER_ACTION_TIMEOUT = 10 * 1000;
 
 export class E2EApi {
   constructor(private readonly page: Page) {}
@@ -28,42 +52,99 @@ export class E2EApi {
   };
 
   public getElement = async (selector: string) => {
-    return await this.page.waitForSelector(selector, { timeout: 10 * 1000 });
+    return await this.page.waitForSelector(selector, { timeout: PUPPETEER_ACTION_TIMEOUT });
   };
 
-  public count = async (selector: string) => {
-    return (await this.page.$$(selector)).length;
+  public hover = async (selector: string) => {
+    return await this.page.hover(selector);
   };
 
-  public exists = async (selector: string) => {
-    return (await this.count(selector)) > 0;
+  public hasComputedStyle = async (
+    selector: string,
+    property: keyof CSSStyleDeclaration,
+    value: string,
+  ): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, property, value) => {
+        return window.getComputedStyle(document.querySelector(selector))[property] === value;
+      },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
+      selector,
+      property,
+      value,
+    );
   };
 
-  public clickOn = async (selector: string) => await (await this.getElement(selector)).click();
-
-  public clickOnPosition = async (selector: string, x: number, y: number) => {
-    const elementHandle = await this.getElement(selector);
-    const boundingBox = await elementHandle.boundingBox();
-
-    await this.page.mouse.click(Math.round(boundingBox.x) + x, Math.round(boundingBox.y) + y);
+  public hasPropertyValue = async (selector: string, property: string, value: number | string): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, property, value) => {
+        return document.querySelector(selector)[property] === value;
+      },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
+      selector,
+      property,
+      value,
+    );
   };
 
-  public textOf = async (selector: string) => {
-    const element = await this.getElement(selector);
-    return await (await element.getProperty('textContent')).jsonValue();
+  public expectCount = async (selector: string, count: number): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, count) => {
+        return document.querySelectorAll(selector).length === count;
+      },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
+      selector,
+      count,
+    );
   };
 
-  public focusOn = async (selector: string) => await (await this.getElement(selector)).focus();
+  public exists = async (selector: string): Promise<void> => {
+    await this.page.waitForSelector(selector, { timeout: PUPPETEER_ACTION_TIMEOUT });
+  };
 
-  public isFocused = async (selector: string) =>
-    await this.page.evaluate(selector => {
-      const activeElement = document.activeElement;
-      const selectorElement = document.querySelector(selector);
+  public expectHidden = async (selector: string): Promise<void> => {
+    await this.page.waitForSelector(selector, { hidden: true, timeout: PUPPETEER_ACTION_TIMEOUT });
+  };
 
-      return activeElement === selectorElement;
-    }, selector);
+  public clickOn = async (selector: string): Promise<void> => {
+    await (await this.getElement(selector)).click();
+  };
 
-  public pressKey = async (key: string, modifier?: string) => {
+  public expectTextOf = async (selector: string, text: string): Promise<void> => {
+    await this.page.waitForFunction(
+      (selector, text) => {
+        return document.querySelector(selector).innerText === text;
+      },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
+      selector,
+      text,
+    );
+  };
+
+  public focusOn = async (selector: string): Promise<void> => {
+    await (await this.getElement(selector)).focus();
+  };
+
+  public isFocused = async (selector: string): Promise<void> => {
+    await this.page.waitForFunction(
+      selector => {
+        const activeElement = document.activeElement;
+        const selectorElement = document.querySelector(selector);
+
+        return activeElement === selectorElement;
+      },
+      { timeout: PUPPETEER_ACTION_TIMEOUT },
+      selector,
+    );
+  };
+
+  public waitForSelectorAndPressKey = async (
+    selector: string,
+    key: E2EKeys,
+    modifier?: 'Control' | 'Shift',
+  ): Promise<void> => {
+    await this.getElement(selector);
+
     if (modifier) {
       await this.page.keyboard.down(modifier);
     }
@@ -75,10 +156,23 @@ export class E2EApi {
     }
   };
 
-  public resizeViewport = async (size: Partial<Viewport>) => {
+  public resizeViewport = async (size: Partial<Viewport>): Promise<void> => {
     const { height, width } = this.page.viewport();
     await this.page.setViewport({ height, width, ...size });
   };
 
-  public wait = async (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+  // Once we update puppeteer we should replace this by using https://pptr.dev/#?product=Puppeteer&version=v5.2.1&show=api-mousewheeloptions
+  public simulatePageMove = async (): Promise<void> => {
+    await this.page.evaluate(_ => {
+      const type = 'move';
+      const event = document.createEvent('Event') as TouchEvent;
+      event.initEvent(`touch${type}`, true, true);
+
+      document.dispatchEvent(event);
+    });
+  };
+
+  public wait = async (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+
+  public evaluate = async (fn): Promise<void> => await this.page.evaluate(fn);
 }

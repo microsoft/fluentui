@@ -1,24 +1,37 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.46.0",
+  "version": "0.52.0",
   "private": true,
   "license": "MIT",
-  "devDependencies": {
-    "@fluentui/react": "^0.46.0",
+  "dependencies": {
+    "@fluentui/accessibility": "^0.52.0",
+    "@fluentui/react-icons-northstar": "^0.52.0",
+    "@fluentui/react-northstar": "^0.52.0",
+    "@fluentui/react-northstar-prototypes": "^0.52.0",
+    "@types/node": "^10.3.2",
     "@types/puppeteer": "1.12.3",
-    "@types/react": "16.8.11",
-    "@types/react-router-dom": "^4.3.4",
-    "@uifabric/build": "^7.0.0",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@types/react-router-dom": "^5.1.5",
+    "lerna-alias": "^3.0.3-0",
+    "lodash": "^4.17.15",
     "puppeteer": "^1.13.0",
-    "react-router-dom": "^5.0.1"
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "@fluentui/scripts": "^1.0.0",
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/react": "^8.0.0",
+    "gulp": "^4.0.2"
   },
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p ."
+    "test": "echo \"Temporary disabled, you can still run a suite locally via 'yarn gulp test'\"",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix"
   }
 }

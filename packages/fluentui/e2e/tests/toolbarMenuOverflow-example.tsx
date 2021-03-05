@@ -1,15 +1,23 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, ToolbarItem, ToolbarMenu, Ref, Button } from '@fluentui/react';
+import {
+  Toolbar,
+  toolbarItemClassName,
+  toolbarMenuClassName,
+  Ref,
+  Button,
+  toolbarClassName,
+  toolbarItemWrapperClassName,
+} from '@fluentui/react-northstar';
 
 export const selectors = {
-  toolbarItem: ToolbarItem.className,
-  toolbar: Toolbar.className,
-  toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper,
+  toolbarItem: toolbarItemClassName,
+  toolbar: toolbarClassName,
+  toolbarItemWrapper: toolbarItemWrapperClassName,
   menuTrigger: 'menu-trigger',
   itemButtonId: 'item-button',
-  toolbarMenu: ToolbarMenu.className,
-  afterToolbarId: 'after'
+  toolbarMenu: toolbarMenuClassName,
+  afterToolbarId: 'after',
 };
 
 export const itemsCount = 20;
@@ -27,7 +35,7 @@ const ToolbarExampleOverflow = () => {
     onClick: i + 1 === itemsCount ? () => buttonAfterToolbarRef.current.focus() : undefined,
     // first half of items are unwrapped, rest are wrapped, expect of the last item
     // don't add submenu on last item, on last item onClick with moving focus is tested
-    ...(i >= itemsCount / 2 && i + 1 < itemsCount && { menu: [] })
+    ...(i >= itemsCount / 2 && i + 1 < itemsCount && { menu: [] }),
   }));
 
   const toolbarItems = itemData.map(item => {
@@ -43,7 +51,7 @@ const ToolbarExampleOverflow = () => {
         overflowOpen={overflowOpen}
         overflowItem={{
           title: 'More',
-          id: selectors.menuTrigger
+          id: selectors.menuTrigger,
         }}
         onOverflowOpenChange={(e, { overflowOpen }) => {
           setOverflowOpen(overflowOpen);

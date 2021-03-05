@@ -1,0 +1,53 @@
+{
+  "headers": ["Breakpoint", "Range"],
+  "data": [
+    [
+      {
+        "value": "small"
+      },
+      {
+        "value": "320px - 479px"
+      }
+    ],
+    [
+      {
+        "value": "medium"
+      },
+      {
+        "value": "480px - 639px"
+      }
+    ],
+    [
+      {
+        "value": "large"
+      },
+      {
+        "value": "640px - 1023px"
+      }
+    ],
+    [
+      {
+        "value": "extra large"
+      },
+      {
+        "value": "1024px - 1365px"
+      }
+    ],
+    [
+      {
+        "value": "extra extra large"
+      },
+      {
+        "value": "1366px - 1919px"
+      }
+    ],
+    [
+      {
+        "value": "extra extra extra large"
+      },
+      {
+        "value": "1920px and up"
+      }
+    ]
+  ]
+}

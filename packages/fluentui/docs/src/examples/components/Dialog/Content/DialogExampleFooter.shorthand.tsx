@@ -1,4 +1,4 @@
-import { Button, Dialog, Flex, Text } from '@fluentui/react';
+import { Button, Dialog, Flex, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DialogExampleFooter: React.FC = () => (
@@ -8,8 +8,8 @@ const DialogExampleFooter: React.FC = () => (
     content="Are you sure you want to create a new project?"
     header="Project creation"
     trigger={<Button content="Open a dialog" />}
-    footer={render =>
-      render(null, (Component, props) => {
+    footer={{
+      children: (Component, props) => {
         const { styles, ...rest } = props;
 
         return (
@@ -20,8 +20,8 @@ const DialogExampleFooter: React.FC = () => (
             </Flex.Item>
           </Flex>
         );
-      })
-    }
+      },
+    }}
   />
 );
 

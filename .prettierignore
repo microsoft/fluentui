@@ -1,16 +1,17 @@
 # generated or imported files
+.git
 package-deps.json
 CHANGELOG.*
 fabric-icons-*
 version.ts
 dndSim.js
+packages/monaco-editor/esm
 monaco-typescript.d.ts
 *.api.md
+api-report.md
 *.scss.ts
 _*.scss
-
-# messes up formatting
-packages/tslint-rules/tslint.json
+yarn.lock
 
 # folders of generated files
 lib
@@ -24,3 +25,31 @@ common/scripts
 coverage
 etc
 change
+__snapshots__
+
+# package specific files
+packages/web-components/**/*.spec.ts
+packages/web-components/src/default-palette.ts
+
+# no supported formatter/formatting not relevant
+CODEOWNERS
+LICENSE
+gitignore
+.browserslistrc
+.eslintcache
+.eslintignore
+.gitattributes
+.gitignore
+.npm*
+.prettierignore
+*.ejs
+*.ico
+*.jpg
+*.log
+*.png
+*.sh
+*.svg
+*.txt
+
+# template files which actually follow a different language's formatting
+*.hbs

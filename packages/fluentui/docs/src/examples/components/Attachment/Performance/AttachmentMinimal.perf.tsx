@@ -1,4 +1,4 @@
-import { Attachment } from '@fluentui/react';
+import { Attachment } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const AttachmentMinimalPerf = () => <Attachment />;

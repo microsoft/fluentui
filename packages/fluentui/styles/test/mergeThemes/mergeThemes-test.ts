@@ -5,7 +5,7 @@ import {
   mergeStyles,
   ThemeInput,
   withDebugId,
-  emptyTheme
+  emptyTheme,
 } from '@fluentui/styles';
 
 import * as debugEnabled from '../../src/debugEnabled';
@@ -15,7 +15,7 @@ const styleParam: ComponentStyleFunctionParam = {
   props: {},
   rtl: false,
   theme: emptyTheme,
-  variables: {}
+  variables: {},
 };
 
 describe('mergeThemes', () => {
@@ -39,13 +39,13 @@ describe('mergeThemes', () => {
       siteVariables: { color: 'black' },
       componentVariables: { Button: { color: 'black' } },
       componentStyles: { Button: { root: { color: 'black' } } },
-      rtl: true
+      rtl: true,
     };
     const source = {
       siteVariables: undefined,
       componentVariables: undefined,
       componentStyles: undefined,
-      rtl: undefined
+      rtl: undefined,
     };
     expect(() => mergeThemes(target, source)).not.toThrow();
   });
@@ -55,13 +55,13 @@ describe('mergeThemes', () => {
       siteVariables: undefined,
       componentVariables: undefined,
       componentStyles: undefined,
-      rtl: undefined
+      rtl: undefined,
     };
     const source = {
       siteVariables: { color: 'black' },
       componentVariables: { Button: { color: 'black' } },
       componentStyles: { Button: { root: { color: 'black' } } },
-      rtl: true
+      rtl: true,
     };
     expect(() => mergeThemes(target, source)).not.toThrow();
   });
@@ -72,7 +72,7 @@ describe('mergeThemes', () => {
       const source = { siteVariables: { overridden: true, add: true } };
 
       expect(mergeThemes(target, source)).toMatchObject({
-        siteVariables: { overridden: true, keep: true, add: true }
+        siteVariables: { overridden: true, keep: true, add: true },
       });
     });
 
@@ -82,8 +82,8 @@ describe('mergeThemes', () => {
 
       expect(mergeThemes(target, source)).toMatchObject({
         siteVariables: {
-          nested: { replaced: false, other: 'value', deep: { dOne: 1, dTwo: 'two' } }
-        }
+          nested: { replaced: false, other: 'value', deep: { dOne: 1, dTwo: 'two' } },
+        },
       });
     });
   });
@@ -112,7 +112,7 @@ describe('mergeThemes', () => {
     test('functions return merged variables', () => {
       const target = { componentVariables: { Button: () => ({ one: 1, three: 3 }) } };
       const source = {
-        componentVariables: { Button: () => ({ one: 'one', two: 'two' }) }
+        componentVariables: { Button: () => ({ one: 'one', two: 'two' }) },
       };
 
       const merged = mergeThemes(target, source);
@@ -120,20 +120,20 @@ describe('mergeThemes', () => {
       expect(merged.componentVariables.Button()).toMatchObject({
         one: 'one',
         two: 'two',
-        three: 3
+        three: 3,
       });
     });
 
     test('variables are deep merged', () => {
       const target = {
         componentVariables: {
-          Button: () => ({ one: { nestedOne: 1, nestedThree: 3, deep: { dOne: 1 } } })
-        }
+          Button: () => ({ one: { nestedOne: 1, nestedThree: 3, deep: { dOne: 1 } } }),
+        },
       };
       const source = {
         componentVariables: {
-          Button: () => ({ one: { nestedOne: 'one', nestedTwo: 'two', deep: { dTwo: 'two' } } })
-        }
+          Button: () => ({ one: { nestedOne: 'one', nestedTwo: 'two', deep: { dTwo: 'two' } } }),
+        },
       };
 
       const merged = mergeThemes(target, source);
@@ -143,22 +143,22 @@ describe('mergeThemes', () => {
           nestedOne: 'one',
           nestedTwo: 'two',
           nestedThree: 3,
-          deep: { dOne: 1, dTwo: 'two' }
-        }
+          deep: { dOne: 1, dTwo: 'two' },
+        },
       });
     });
 
     test('functions accept and apply siteVariables', () => {
       const target = {
         componentVariables: {
-          Button: siteVariables => ({ one: 1, target: true, ...siteVariables })
-        }
+          Button: siteVariables => ({ one: 1, target: true, ...siteVariables }),
+        },
       };
 
       const source = {
         componentVariables: {
-          Button: siteVariables => ({ two: 2, source: true, ...siteVariables })
-        }
+          Button: siteVariables => ({ two: 2, source: true, ...siteVariables }),
+        },
       };
 
       const merged = mergeThemes(target, source);
@@ -169,7 +169,7 @@ describe('mergeThemes', () => {
         one: 'one',
         two: 'two',
         source: true,
-        target: true
+        target: true,
       });
     });
   });
@@ -183,16 +183,6 @@ describe('mergeThemes', () => {
 
       expect(merged.componentStyles).toHaveProperty('Button');
       expect(merged.componentStyles).toHaveProperty('Icon');
-    });
-
-    test('component parts without styles are not merged', () => {
-      const target = { componentStyles: { Button: { root: {} } } };
-      const source = { componentStyles: { Button: { icon: {} } } };
-
-      const merged = mergeThemes(target, source);
-
-      expect(merged.componentStyles.Button).not.toHaveProperty('root');
-      expect(merged.componentStyles.Button).not.toHaveProperty('icon');
     });
 
     test('component parts with style properties are merged', () => {
@@ -231,11 +221,11 @@ describe('mergeThemes', () => {
               display: 'inline-block',
               color: 'green',
               '::before': {
-                content: 'before content'
-              }
-            }
-          }
-        }
+                content: 'before content',
+              },
+            },
+          },
+        },
       };
 
       const source = {
@@ -244,11 +234,11 @@ describe('mergeThemes', () => {
             root: {
               color: 'blue',
               '::before': {
-                color: 'red'
-              }
-            }
-          }
-        }
+                color: 'red',
+              },
+            },
+          },
+        },
       };
 
       const merged = mergeThemes(target, source);
@@ -258,8 +248,8 @@ describe('mergeThemes', () => {
         color: 'blue',
         '::before': {
           content: 'before content',
-          color: 'red'
-        }
+          color: 'red',
+        },
       });
     });
 
@@ -267,30 +257,30 @@ describe('mergeThemes', () => {
       const target = {
         componentStyles: {
           Button: {
-            root: param => ({ target: true, ...param })
-          }
-        }
+            root: param => ({ target: true, ...param }),
+          },
+        },
       };
 
       const source = {
         componentStyles: {
           Button: {
-            root: param => ({ source: true, ...param })
-          }
-        }
+            root: param => ({ source: true, ...param }),
+          },
+        },
       };
 
       const merged = mergeThemes(target, source);
 
       const styleParam: ComponentStyleFunctionParam = {
         variables: { iconSize: 'large' },
-        props: { primary: true }
+        props: { primary: true },
       } as any;
 
       expect(merged.componentStyles.Button.root(styleParam)).toMatchObject({
         source: true,
         target: true,
-        ...styleParam
+        ...styleParam,
       });
     });
   });
@@ -306,47 +296,47 @@ describe('mergeThemes', () => {
               {
                 name: 'Segoe UI',
                 paths: ['public/fonts/segoe-ui-regular.woff2'],
-                props: { fontWeight: 400 }
-              }
-            ]
+                props: { fontWeight: 400 },
+              },
+            ],
           },
           {
             fontFaces: [
               {
                 name: 'Segoe UI',
                 paths: ['public/fonts/segoe-ui-semibold.woff2'],
-                props: { fontWeight: 600 }
-              }
-            ]
+                props: { fontWeight: 600 },
+              },
+            ],
           },
           {
             fontFaces: [
               {
                 name: 'Segoe UI',
                 paths: ['public/fonts/segoe-ui-bold.woff2'],
-                props: { fontWeight: 700 }
-              }
-            ]
-          }
-        )
+                props: { fontWeight: 700 },
+              },
+            ],
+          },
+        ),
       ).toMatchObject({
         fontFaces: [
           {
             name: 'Segoe UI',
             paths: ['public/fonts/segoe-ui-regular.woff2'],
-            props: { fontWeight: 400 }
+            props: { fontWeight: 400 },
           },
           {
             name: 'Segoe UI',
             paths: ['public/fonts/segoe-ui-semibold.woff2'],
-            props: { fontWeight: 600 }
+            props: { fontWeight: 600 },
           },
           {
             name: 'Segoe UI',
             paths: ['public/fonts/segoe-ui-bold.woff2'],
-            props: { fontWeight: 700 }
-          }
-        ]
+            props: { fontWeight: 700 },
+          },
+        ],
       });
     });
   });
@@ -359,10 +349,10 @@ describe('mergeThemes', () => {
           { staticStyles: undefined },
           { staticStyles: [''] },
           { staticStyles: [{ body: { color: 'red' } }] },
-          { staticStyles: ['*{box-sizing:border-box;}'] }
-        )
+          { staticStyles: ['*{box-sizing:border-box;}'] },
+        ),
       ).toMatchObject({
-        staticStyles: [{ body: { color: 'red' } }, '*{box-sizing:border-box;}']
+        staticStyles: [{ body: { color: 'red' } }, '*{box-sizing:border-box;}'],
       });
     });
   });
@@ -374,15 +364,15 @@ describe('mergeThemes', () => {
         color: 'override',
         ':hover': {
           margin: '0px',
-          color: 'override'
-        }
+          color: 'override',
+        },
       };
 
       const stylesAsFunction = () => ({
         color: 'black',
         ':hover': {
-          color: 'blue'
-        }
+          color: 'blue',
+        },
       });
 
       expect(mergeStyles(stylesAsObject, stylesAsFunction)()).toMatchObject({
@@ -390,8 +380,8 @@ describe('mergeThemes', () => {
         color: 'black',
         ':hover': {
           margin: '0px',
-          color: 'blue'
-        }
+          color: 'blue',
+        },
       });
     });
 
@@ -401,15 +391,15 @@ describe('mergeThemes', () => {
         color: 'override',
         ':hover': {
           margin: '0px',
-          color: 'override'
-        }
+          color: 'override',
+        },
       });
 
       const stylesAsObject = {
         color: 'black',
         ':hover': {
-          color: 'blue'
-        }
+          color: 'blue',
+        },
       };
 
       expect(mergeStyles(stylesAsFunction, stylesAsObject)()).toMatchObject({
@@ -417,8 +407,8 @@ describe('mergeThemes', () => {
         color: 'black',
         ':hover': {
           margin: '0px',
-          color: 'blue'
-        }
+          color: 'blue',
+        },
       });
     });
   });
@@ -432,13 +422,13 @@ describe('mergeThemes', () => {
 
     afterEach(() => {
       Object.defineProperty(debugEnabled, 'isEnabled', {
-        get: () => originalDebugEnabled
+        get: () => originalDebugEnabled,
       });
     });
 
     function mockIsDebugEnabled(enabled: boolean) {
       Object.defineProperty(debugEnabled, 'isEnabled', {
-        get: jest.fn(() => enabled)
+        get: jest.fn(() => enabled),
       });
     }
 
@@ -447,12 +437,12 @@ describe('mergeThemes', () => {
       const target: ThemeInput = {
         siteVariables: { varA: 'tVarA' },
         componentVariables: { Button: { btnVar: 'tBtnVar' } },
-        componentStyles: { Button: { root: { style: 'tStyleA' } } }
+        componentStyles: { Button: { root: { style: 'tStyleA' } } },
       };
       const source = {
         siteVariables: { varA: 'sVarA' },
         componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
-        componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } }
+        componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
       };
 
       const merged = mergeThemes(target, source);
@@ -463,8 +453,8 @@ describe('mergeThemes', () => {
             /* FIXME: unnecessary empty object */
           },
           { resolved: { varA: 'tVarA' } },
-          { resolved: { varA: 'sVarA' } }
-        ]
+          { resolved: { varA: 'sVarA' } },
+        ],
       });
 
       const buttonVariables = merged.componentVariables.Button(merged.siteVariables);
@@ -474,15 +464,15 @@ describe('mergeThemes', () => {
             /* FIXME: unnecessary empty object */
           },
           { resolved: { btnVar: 'tBtnVar' } },
-          { resolved: { btnVar: 'sVarA' } }
-        ]
+          { resolved: { btnVar: 'sVarA' } },
+        ],
       });
 
       const buttonRootStyles = merged.componentStyles.Button.root({
-        variables: buttonVariables
+        variables: buttonVariables,
       } as any);
       expect(buttonRootStyles).toMatchObject({
-        _debug: [{ styles: { style: 'tStyleA' } }, { styles: { style: 'sVarA' } }]
+        _debug: [{ styles: { style: 'tStyleA' } }, { styles: { style: 'sVarA' } }],
       });
     });
 
@@ -491,12 +481,12 @@ describe('mergeThemes', () => {
       const target: ThemeInput = {
         siteVariables: { varA: 'tVarA' },
         componentVariables: { Button: { btnVar: 'tBtnVar' } },
-        componentStyles: { Button: { root: { style: 'tStyleA' } } }
+        componentStyles: { Button: { root: { style: 'tStyleA' } } },
       };
       const source = {
         siteVariables: { varA: 'sVarA' },
         componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
-        componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } }
+        componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
       };
 
       const merged = mergeThemes(target, source);
@@ -504,7 +494,7 @@ describe('mergeThemes', () => {
       const buttonVariables = merged.componentVariables.Button(merged.siteVariables);
       expect(buttonVariables._debug).toBe(undefined);
       const buttonRootStyles = merged.componentStyles.Button.root({
-        variables: buttonVariables
+        variables: buttonVariables,
       } as any);
       expect(buttonRootStyles._debug).toBe(undefined);
     });
@@ -515,17 +505,17 @@ describe('mergeThemes', () => {
         {
           siteVariables: { varA: 'tVarA' },
           componentVariables: { Button: { btnVar: 'tBtnVar' } },
-          componentStyles: { Button: { root: { style: 'tStyleA' } } }
+          componentStyles: { Button: { root: { style: 'tStyleA' } } },
         },
-        'target'
+        'target',
       );
       const source = withDebugId(
         {
           siteVariables: { varA: 'sVarA' },
           componentVariables: { Button: sv => ({ btnVar: sv.varA }) },
-          componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } }
+          componentStyles: { Button: { root: ({ variables }) => ({ style: variables.btnVar }) } },
         },
-        'source'
+        'source',
       );
 
       const merged = mergeThemes(target, source);
@@ -536,8 +526,8 @@ describe('mergeThemes', () => {
             /* FIXME: unnecessary empty object */
           },
           { debugId: 'target' },
-          { debugId: 'source' }
-        ]
+          { debugId: 'source' },
+        ],
       });
 
       const buttonVariables = merged.componentVariables.Button(merged.siteVariables);
@@ -547,15 +537,15 @@ describe('mergeThemes', () => {
             /* FIXME: unnecessary empty object */
           },
           { debugId: 'target' },
-          { debugId: 'source' }
-        ]
+          { debugId: 'source' },
+        ],
       });
 
       const buttonRootStyles = merged.componentStyles.Button.root({
-        variables: buttonVariables
+        variables: buttonVariables,
       } as any);
       expect(buttonRootStyles).toMatchObject({
-        _debug: [{ debugId: 'target' }, { debugId: 'source' }]
+        _debug: [{ debugId: 'target' }, { debugId: 'source' }],
       });
     });
   });

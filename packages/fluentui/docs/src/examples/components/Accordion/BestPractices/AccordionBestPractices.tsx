@@ -4,7 +4,7 @@ import ComponentBestPractices from '../../../../components/ComponentBestPractice
 
 const doList = [
   'Use Accordion for grouping parts of the UI (multipart forms, articles...).',
-  'Use Tree component to display a hierarchical structure that allows user to select one item.'
+  'Use Tree component to display a hierarchical structure that allows user to select one item.',
 ];
 
 const AccordionBestPractices: React.FunctionComponent<{}> = () => {

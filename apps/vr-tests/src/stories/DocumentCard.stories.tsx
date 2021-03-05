@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
+import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -12,25 +11,25 @@ import {
   ImageFit,
   DocumentCardDetails,
   Fabric,
-  IDocumentCardPreviewProps
-} from 'office-ui-fabric-react';
+  IDocumentCardPreviewProps,
+} from '@fluentui/react';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const previewProps: IDocumentCardPreviewProps = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       imageFit: ImageFit.cover,
       width: 318,
-      height: 196
-    }
-  ]
+      height: 196,
+    },
+  ],
 };
 
 const previewPropsCompact: IDocumentCardPreviewProps = {
@@ -39,40 +38,40 @@ const previewPropsCompact: IDocumentCardPreviewProps = {
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
-      width: 144
+      width: 144,
     },
     {
       name: 'New Contoso Collaboration for Conference Presentation Draft',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreviewTwo,
       iconSrc: TestImages.iconPpt,
-      width: 144
+      width: 144,
     },
     {
       name: 'Spec Sheet for design',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreviewThree,
       iconSrc: TestImages.iconPpt,
-      width: 144
+      width: 144,
     },
     {
       name: 'Contoso Marketing Presentation',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
-      width: 144
-    }
-  ]
+      width: 144,
+    },
+  ],
 };
 
 const docActivity = (
@@ -94,14 +93,16 @@ storiesOf('DocumentCard', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
-  // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
+  // Commenting out this story as it has some racing issues with the truncation logic
+  // and causes the test to fail on unrelated PRs
   // .addStory('Root', () => (
   //   <Fabric>
   //     <DocumentCard onClickHref="http://bing.com">
   //       <DocumentCardPreview {...previewProps} />
   //       <DocumentCardTitle
+  // eslint-disable-next-line @fluentui/max-len
   //         title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
   //         shouldTruncate={true}
   //       />
@@ -114,7 +115,10 @@ storiesOf('DocumentCard', module)
       <DocumentCard onClickHref="http://bing.com">
         <DocumentCardPreview {...previewProps} />
         <DocumentCardTitle
-          title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+          title={
+            'Large_file_name_with_underscores_used_to_separate_all_of_the_' +
+            'words_and_there_are_so_many_words_it_needs_truncating.pptx'
+          }
           shouldTruncate={false}
         />
         {docActivity}
@@ -132,7 +136,11 @@ storiesOf('DocumentCard', module)
   ));
 
 storiesOf('DocumentCard', module)
-  .addDecorator(FabricDecoratorFullWidth)
+  // FIXME: SB6 duplicates same story ID decorators
+  // This is a temporary fix until we migrate to CSF format duplication problem
+  // - previously this used FabricDecoratorFullWidth
+  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'full' }))
+
   .addDecorator(story =>
     // prettier-ignore
     <Screener
@@ -141,7 +149,7 @@ storiesOf('DocumentCard', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Compact with preview list', () => (
     <Fabric>

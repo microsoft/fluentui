@@ -1,0 +1,70 @@
+@import './common';
+
+// Standard text size and spacing
+:global {
+  body {
+    @include ms-fontColor-gray160;
+    @include ms-fontSize-16;
+    line-height: 1.4;
+  }
+
+  // Headings
+  h1, h2, h3, h4, h5 {
+    @include ms-fontColor-gray160;
+    @include ms-fontWeight-semibold;
+    margin-bottom: 12px;
+    margin-top: 32px;
+  }
+
+  h1 {
+    @include ms-fontSize-32;
+    margin-bottom: 28px;
+  }
+
+  h2 {
+    @include ms-fontSize-24;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    @include ms-fontColor-gray130;
+    @include ms-fontSize-20;
+    margin-bottom: 4px;
+  }
+
+  // Paragraphs and lists
+  p, ul, ol {
+    @include ms-fontColor-gray160;
+    @include ms-fontSize-16;
+    @include ms-fontWeight-regular;
+    margin-bottom: 8px;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  // Inline text elements
+  a {
+    @include ms-fontColor-communicationPrimary;
+    text-decoration: none;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    @include ms-fontWeight-semibold;
+  }
+
+  code {
+    font-family: monospace;
+  }
+
+  blockquote {
+    padding: 8px 20px;
+    margin: 0 0 20px;
+    border-left: 4px solid $ms-color-gray30;
+  }
+}

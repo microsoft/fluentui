@@ -1,4 +1,4 @@
-import { assign, filteredAssign, mapEnumByName, values } from './object';
+import { assign, filteredAssign, mapEnumByName, values, omit } from './object';
 
 describe('assign', () => {
   it('can copy an object', () => {
@@ -6,8 +6,8 @@ describe('assign', () => {
       a: 1,
       b: 'string',
       c: {
-        d: 2
-      }
+        d: 2,
+      },
     };
 
     let resultTarget = {};
@@ -23,7 +23,7 @@ describe('filteredAssign', () => {
   it('can copy an object but avoid copying some parameters', () => {
     let source = {
       a: 1,
-      b: 'string'
+      b: 'string',
     };
     let result = filteredAssign((propName: string) => propName !== 'b', {}, source);
 
@@ -34,15 +34,15 @@ describe('filteredAssign', () => {
 
 describe('mapEnumByName', () => {
   it('iterates over all the strings of an enum', () => {
-    enum foo {
+    enum Foo {
       first,
       second,
       third,
-      fourth
+      fourth,
     }
 
     let result: string[] = [];
-    mapEnumByName(foo, (name: string) => {
+    mapEnumByName(Foo, (name: string) => {
       if (name) {
         result.push(name);
       } else {
@@ -59,12 +59,18 @@ describe('values', () => {
     const obj = {
       test: 1,
       ing: 2,
-      '123': 3
+      '123': 3,
     };
     const objValues = values<number>(obj);
     expect(objValues).toHaveLength(3);
     expect(objValues).toContain(1);
     expect(objValues).toContain(2);
     expect(objValues).toContain(3);
+  });
+});
+
+describe('omit', () => {
+  it('can omit excluded props and leave non-excluded alone', () => {
+    expect(omit({ a: 1, b: 2 }, ['a'])).toEqual({ b: 2 });
   });
 });

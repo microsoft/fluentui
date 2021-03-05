@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { exampleBestPracticesContext } from '../../utils';
+import { exampleBestPracticesContext } from '../../contexts/exampleBestPracticesContext';
 import ExampleSection from '../ComponentDoc/ExampleSection';
 
 interface ComponentBestPracticesProps {
@@ -11,14 +11,14 @@ interface ComponentBestPracticesProps {
 
 export default class ComponentBestPractices extends React.Component<ComponentBestPracticesProps, any> {
   static propTypes = {
-    displayName: PropTypes.string.isRequired
+    displayName: PropTypes.string.isRequired,
   };
 
   render() {
     const { displayName } = this.props;
 
     const bestPracticesPath = _.find(exampleBestPracticesContext.keys(), path =>
-      new RegExp(`\/${displayName}\/BestPractices\/${displayName}BestPractices\.tsx$`).test(path)
+      new RegExp(`\/${displayName}\/BestPractices\/${displayName}BestPractices\.tsx$`).test(path),
     );
 
     if (!bestPracticesPath) {
@@ -30,6 +30,6 @@ export default class ComponentBestPractices extends React.Component<ComponentBes
       return null;
     }
 
-    return <ExampleSection title="Best Practices">{bestPracticesElement}</ExampleSection>;
+    return <ExampleSection title="Best practices">{bestPracticesElement}</ExampleSection>;
   }
 }

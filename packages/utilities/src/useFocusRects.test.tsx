@@ -9,7 +9,6 @@ describe('useFocusRects', () => {
   let focusRects1: ReactWrapper;
   let focusRects2: ReactWrapper;
 
-  // tslint:disable-next-line:no-any
   class MockWindow {
     public classNames: string[] = [];
     public addEventListenerCallCount = 0;
@@ -26,7 +25,8 @@ describe('useFocusRects', () => {
         classList: {
           contains: (name: string) => this.classNames.indexOf(name) > -1,
           add: (name: string) => this.classNames.indexOf(name) < 0 && this.classNames.push(name),
-          remove: (name: string) => this.classNames.indexOf(name) > -1 && this.classNames.splice(this.classNames.indexOf(name), 1),
+          remove: (name: string) =>
+            this.classNames.indexOf(name) > -1 && this.classNames.splice(this.classNames.indexOf(name), 1),
           toggle: (name: string, val: boolean) => {
             const hasClass = this.classNames.indexOf(name) > -1;
             if (hasClass !== val) {
@@ -36,9 +36,9 @@ describe('useFocusRects', () => {
                 this.classNames.push(name);
               }
             }
-          }
-        }
-      }
+          },
+        },
+      },
     };
 
     public addEventListener(name: string, callback: Function): void {
@@ -65,16 +65,16 @@ describe('useFocusRects', () => {
   const mockWindow = new MockWindow();
   const mockTarget = {
     ownerDocument: {
-      defaultView: mockWindow
-    }
+      defaultView: mockWindow,
+    },
   };
   const mockRefObject = ({ current: mockTarget } as unknown) as React.RefObject<HTMLElement>;
 
   const mockWindow2 = new MockWindow();
   const mockTarget2 = {
     ownerDocument: {
-      defaultView: mockWindow2
-    }
+      defaultView: mockWindow2,
+    },
   };
   const mockRefObject2 = ({ current: mockTarget2 } as unknown) as React.RefObject<HTMLElement>;
 
@@ -245,7 +245,7 @@ describe('useFocusRects', () => {
 
   it('can disable focus rects', () => {
     mockWindow.FabricConfig = {
-      disableFocusRects: true
+      disableFocusRects: true,
     };
     const focusRect = mount(<FocusRects rootRef={mockRefObject} />);
 

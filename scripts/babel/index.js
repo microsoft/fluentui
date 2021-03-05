@@ -17,27 +17,39 @@ module.exports = api => {
     [
       '@babel/preset-env',
       {
+        loose: true,
         modules: useESModules ? false : 'cjs',
         targets: isNode ? { node: '10' } : undefined,
         exclude: [
           // https://github.com/microsoft/fluent-ui-react/pull/1895
           'proposal-object-rest-spread',
-          'transform-async-to-generator'
-        ]
-      }
+          'transform-async-to-generator',
+        ],
+      },
     ],
     '@babel/preset-react',
-    ['@babel/preset-typescript', { allowNamespaces: true }]
+    ['@babel/preset-typescript', { allowNamespaces: true }],
   ];
   const plugins = [
-    '@babel/plugin-proposal-class-properties',
-    '@babel/plugin-proposal-nullish-coalescing-operator',
+    ['@babel/plugin-proposal-class-properties', { loose: true }],
+    ['@babel/plugin-proposal-nullish-coalescing-operator', { loose: true }],
     ['@babel/plugin-proposal-object-rest-spread', { loose: true, useBuiltIns: true }],
-    '@babel/plugin-proposal-optional-chaining',
+    ['@babel/plugin-proposal-optional-chaining', { loose: true }],
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-runtime', { useESModules }],
 
-    isDistBundle && 'lodash'
+    useESModules && 'babel-plugin-iife-wrap-react-components',
+    useESModules && [
+      'babel-plugin-annotate-pure-imports',
+      {
+        imports: {
+          '@fluentui/react-bindings': 'compose',
+          '@fluentui/react-context-selector': 'createContext',
+          '../utils/createSvgIcon': ['createSvgIcon'],
+        },
+      },
+    ],
+    isDistBundle && 'lodash',
   ].filter(Boolean);
 
   return {
@@ -46,7 +58,7 @@ module.exports = api => {
     // Options to facilitate debugging in editor (set DEBUG environment var)
     ...(process.env.DEBUG && {
       sourceMaps: 'inline',
-      retainLines: true
-    })
+      retainLines: true,
+    }),
   };
 };

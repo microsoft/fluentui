@@ -10,7 +10,7 @@ export type FailedConstraintsExplanation = {
 
 const getFailedPackageVersionConstraints = (
   packageId: string,
-  versionConstraintsToSatisfy: string[]
+  versionConstraintsToSatisfy: string[],
 ): FailedConstraintsExplanation | null => {
   const packageName = getPackageName(packageId);
 
@@ -29,7 +29,9 @@ const getFailedPackageVersionConstraints = (
     });
   });
 
-  const failedVersionConstraints = versionConstraintsToSatisfy.filter(constraint => !satisfiedVersionConstraints[constraint]);
+  const failedVersionConstraints = versionConstraintsToSatisfy.filter(
+    constraint => !satisfiedVersionConstraints[constraint],
+  );
 
   const isApproved = failedVersionConstraints.length === 0;
 
@@ -37,7 +39,7 @@ const getFailedPackageVersionConstraints = (
     ? null
     : {
         failedConstraints: failedVersionConstraints.map(versionConstraint => `${packageName}@${versionConstraint}`),
-        approvedPackages: approvedPackageIds
+        approvedPackages: approvedPackageIds,
       };
 };
 

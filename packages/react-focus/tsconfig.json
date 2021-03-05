@@ -16,11 +16,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es2015", "dom", "es2015.promise"],
-    "types": ["jest", "webpack-env"],
-    "paths": {
-      "@fluentui/react-focus/lib/*": ["./src/*"],
-      "@fluentui/react-focus": ["./src"]
-    }
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

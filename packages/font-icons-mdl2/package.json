@@ -1,0 +1,34 @@
+{
+  "name": "@fluentui/font-icons-mdl2",
+  "version": "8.0.2",
+  "description": "Fluent UI React icon set.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/style-utilities": "^8.0.2",
+    "tslib": "^1.10.0"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "codesandbox-react-template",
+  "description": "Template for creating codesandbox environment for @fluentui/react* packages.",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "just-scripts build",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "@microsoft/load-themed-styles": "^1.10.26",
+    "@fluentui/react": "^8.1.4",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "tslib": "^1.10.0"
+  }
+}

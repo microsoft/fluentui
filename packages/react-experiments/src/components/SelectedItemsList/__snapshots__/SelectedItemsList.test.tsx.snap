@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectedItemsList SelectedItemsList renders SelectedItemsList correctly 1`] = `null`;
+
+exports[`SelectedItemsList SelectedItemsList renders SelectedItemsList correctly when no specific render component is provided 1`] = `null`;

@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 import * as _prettier from 'prettier/standalone';
 
-import babylon from 'prettier/parser-babylon';
-import html from 'prettier/parser-html';
-import typescript from 'prettier/parser-typescript';
+import * as babylon from 'prettier/parser-babylon';
+import * as html from 'prettier/parser-html';
+import * as typescript from 'prettier/parser-typescript';
 
 import { CodeSnippetMode, CodeSnippetValue } from './types';
 
@@ -21,8 +21,8 @@ const prettierConfig = {
   plugins: {
     babylon,
     html,
-    typescript
-  }
+    typescript,
+  },
 };
 
 const normalizeToString = (value: CodeSnippetValue): string => {
@@ -34,7 +34,7 @@ export const prettifyCode = (code: string, parser: 'babel' | 'json' | 'html' | '
   const formatted = prettier.format(code, {
     ...prettierConfig,
     // a narrower print width is more friendly to doc examples
-    parser
+    parser,
   });
 
   return formatted.replace(/^;</m, '<'); // remove beginning semi in JSX/HTML
@@ -45,7 +45,7 @@ const formatters = {
   json: (val: string): string => prettifyCode(val, 'json'),
   js: (val: string = ''): string => prettifyCode(val, 'babel'),
   jsx: (val: string = ''): string => prettifyCode(val, 'babel'),
-  html: (val: string = ''): string => prettifyCode(val, 'html')
+  html: (val: string = ''): string => prettifyCode(val, 'html'),
 };
 
 export const formatCode = (code: CodeSnippetValue, mode: CodeSnippetMode) => {

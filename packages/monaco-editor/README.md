@@ -1,4 +1,4 @@
-# @uifabric/monaco-editor
+# @fluentui/monaco-editor
 
 Version of [`monaco-editor`](https://www.npmjs.com/package/monaco-editor) with the CSS files transformed to JS which can be loaded onto the page using `@microsoft/load-themed-styles`, plus some Webpack configuration helpers.
 
@@ -16,7 +16,7 @@ Version of [`monaco-editor`](https://www.npmjs.com/package/monaco-editor) with t
 In your `webpack.config.js`, call the `addMonacoWebpackConfig` helper to add Monaco-related configuration (note that it returns a new configuration object):
 
 ```js
-const { addMonacoWebpackConfig } = require('@uifabric/monaco-editor/scripts/addMonacoWebpackConfig');
+const { addMonacoWebpackConfig } = require('@fluentui/monaco-editor/scripts/addMonacoWebpackConfig');
 
 // Somewhere in this file, call:
 config = addMonacoWebpackConfig(originalConfig, includeAllLanguages);
@@ -26,8 +26,8 @@ Parameters:
 
 - `config` (`webpack.Configuration`): Your configuration object. Its `entry` **must** be an object (not an array or function), and the `output.globalObject` setting (if any) will be ignored.
 - `includeAllLanguages` (`boolean`):
-  - `false` (default): Imports for `@uifabric/monaco-editor` will be remapped to `@uifabric/monaco-editor/lib/monacoCoreBundle`, which includes only core editor features and TypeScript language features. Entry configs will be added for the main editor worker (`editor.worker.js`) and TS worker (`ts.worker.js`) but not other languages.
-  - `true`: Imports for `@uifabric/monaco-editor` will be remapped to `@uifabric/monaco-editor/lib/monacoBundle`, which includes all language contributions. Also, entry configs will be added for CSS/HTML/JSON workers in addition to TS.
+  - `false` (default): Imports for `@fluentui/monaco-editor` will be remapped to `@fluentui/monaco-editor/lib/monacoCoreBundle`, which includes only core editor features and TypeScript language features. Entry configs will be added for the main editor worker (`editor.worker.js`) and TS worker (`ts.worker.js`) but not other languages.
+  - `true`: Imports for `@fluentui/monaco-editor` will be remapped to `@fluentui/monaco-editor/lib/monacoBundle`, which includes all language contributions. Also, entry configs will be added for CSS/HTML/JSON workers in addition to TS.
 
 ### 2. Runtime configuration
 
@@ -42,7 +42,7 @@ This project provides two options for setting up global Monaco configuration at 
 In a root file for your project, import and call the configuration helper manually:
 
 ```js
-import { configureEnvironment } from '@uifabric/monaco-editor/lib/configureEnvironment';
+import { configureEnvironment } from '@fluentui/monaco-editor/lib/configureEnvironment';
 
 configureEnvironment(config);
 ```
@@ -51,25 +51,25 @@ This lightweight helper sets up the global `MonacoEnvironment` required for Mona
 
 #### Option B: Automatic using global
 
-Somewhere in a root file for your project (the Fabric projects do this in `index.html`), define a global variable `MonacoConfig` with the properties described above. Basic example:
+Somewhere in a root file for your project (the Fluent UI React projects do this in `index.html`), define a global variable `MonacoConfig` with the properties described above. Basic example:
 
 ```js
 window.MonacoConfig = {
   baseUrl: '.',
-  useMinified: false
+  useMinified: false,
 };
 ```
 
-Then the first time you import `@uifabric/monaco-editor`, it will automatically call `configureEnvironment` with the global object.
+Then the first time you import `@fluentui/monaco-editor`, it will automatically call `configureEnvironment` with the global object.
 
-(This works because the Webpack config remaps `@uifabric/monaco-editor` imports to point to either `lib/monacoBundle` or `lib/monacoCoreBundle`, both of which re-export Monaco things and call `configureEnvironment` as a side effect.)
+(This works because the Webpack config remaps `@fluentui/monaco-editor` imports to point to either `lib/monacoBundle` or `lib/monacoCoreBundle`, both of which re-export Monaco things and call `configureEnvironment` as a side effect.)
 
 ### 3. Using the editor
 
 When you're ready to use the editor, import as follows:
 
 ```js
-import * as monaco from '@uifabric/monaco-editor';
+import * as monaco from '@fluentui/monaco-editor';
 ```
 
 See the [Monaco documentation](https://microsoft.github.io/monaco-editor) for further usage instructions.
@@ -77,7 +77,7 @@ See the [Monaco documentation](https://microsoft.github.io/monaco-editor) for fu
 If you need types from `monaco-typescript`, import as follows:
 
 ```js
-import { TypeScriptWorker } from '@uifabric/monaco-editor/monaco-typescript.d';
+import { TypeScriptWorker } from '@fluentui/monaco-editor/monaco-typescript.d';
 ```
 
 Note that you may run into conflicts with these types if you're on a different TypeScript version than the one the typings were generated against.

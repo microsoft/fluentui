@@ -6,7 +6,7 @@ describe('asAsync', () => {
   it('can async load exports', (done: () => undefined) => {
     let _resolve: (result: React.ElementType<{}>) => void = () => undefined;
     let _loadCalled = false;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const loadThingPromise = new Promise<any>((resolve: any) => {
       _resolve = resolve;
     });
@@ -15,7 +15,7 @@ describe('asAsync', () => {
       load: () => {
         _loadCalled = true;
         return loadThingPromise;
-      }
+      },
     });
     const wrapper = mount(<AsyncThing />);
 
@@ -41,7 +41,7 @@ describe('asAsync', () => {
   it('can async load with placeholder', (done: () => undefined) => {
     let _resolve: (result: React.ElementType<{}>) => void = () => undefined;
     let _loadCalled = false;
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const loadThingPromise = new Promise<any>((resolve: any) => {
       _resolve = resolve;
     });
@@ -50,9 +50,8 @@ describe('asAsync', () => {
       load: () => {
         _loadCalled = true;
         return loadThingPromise;
-      }
+      },
     });
-    // tslint:disable:jsx-no-lambda
     const wrapper = mount(<AsyncThing asyncPlaceholder={() => <div>placeholder</div>} />);
 
     expect(_loadCalled).toBe(true);

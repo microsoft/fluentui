@@ -2,9 +2,12 @@ import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
-export { IsFocusVisibleClassName } from './setFocusVisibility';
-
-type AppWindow = (Window & { __hasInitializeFocusRects__: boolean; FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+type AppWindow =
+  | (Window & {
+      __hasInitializeFocusRects__: boolean;
+      FabricConfig?: { disableFocusRects?: boolean };
+    })
+  | undefined;
 
 /**
  * Initializes the logic which:
@@ -47,6 +50,6 @@ function _onPointerDown(ev: PointerEvent): void {
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   isDirectionalKeyCode(ev.which) && setFocusVisibility(true, ev.target as Element);
 }

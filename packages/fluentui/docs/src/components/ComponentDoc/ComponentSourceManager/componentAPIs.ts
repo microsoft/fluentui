@@ -10,5 +10,5 @@ export type ComponentAPIs<T = {}> = {
 
 export const componentAPIs: ComponentAPIs = {
   children: { name: 'Children API', fileSuffix: '' },
-  shorthand: { name: 'Shorthand API', fileSuffix: '.shorthand' }
+  shorthand: { name: 'Shorthand API', fileSuffix: '.shorthand' },
 };

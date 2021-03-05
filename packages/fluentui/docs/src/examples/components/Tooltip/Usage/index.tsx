@@ -12,8 +12,13 @@ const Usage = () => (
     />
     <ComponentExample
       title="Disabled Trigger"
-      description="When the tooltip should appear on a disabled element, it should be added on the wrapper on the element."
+      description="When the tooltip should appear on a disabled element, it needs to be focusable to allow keyboard interactions."
       examplePath="components/Tooltip/Usage/TooltipExampleDisabledTrigger"
+    />
+    <ComponentExample
+      title="Tooltip in a Dialog"
+      description="A toopltip appears correctly in other overlay elements such as dialogs."
+      examplePath="components/Tooltip/Usage/TooltipExampleDialogContent"
     />
   </ExampleSection>
 );

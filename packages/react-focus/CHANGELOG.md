@@ -1,7 +1,379 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Mon, 02 Mar 2020 12:25:44 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.2)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.1..@fluentui/react-focus_v8.0.2)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.25..@fluentui/react-focus_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.25)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.24..@fluentui/react-focus_v8.0.0-beta.25)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.2.1 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.24)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.23..@fluentui/react-focus_v8.0.0-beta.24)
+
+### Changes
+
+- Bump @fluentui/jest-serializer-merge-styles to v8.0.0-beta.7 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [8.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.23)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.22..@fluentui/react-focus_v8.0.0-beta.23)
+
+### Changes
+
+- Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find. ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.22)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.21..@fluentui/react-focus_v8.0.0-beta.22)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.13 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.21)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.20..@fluentui/react-focus_v8.0.0-beta.21)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.12 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.20)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.19..@fluentui/react-focus_v8.0.0-beta.20)
+
+### Changes
+
+- FocusZone: Removing FocusZone type from event callbacks. ([PR #16952](https://github.com/microsoft/fluentui/pull/16952) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.19)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.18..@fluentui/react-focus_v8.0.0-beta.19)
+
+### Changes
+
+- Bump @fluentui/utilities to v8.0.0-beta.11 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.18)
+
+Tue, 02 Feb 2021 12:21:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.16..@fluentui/react-focus_v8.0.0-beta.18)
+
+### Changes
+
+- FocusZone: Removing contextual RTL checks to get rid of react-theme-provider dependency from react-focus package. ([PR #16736](https://github.com/microsoft/fluentui/pull/16736) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.16)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.15..@fluentui/react-focus_v8.0.0-beta.16)
+
+### Changes
+
+- Updating to webpack 5, latest typings, latest loaders and plugins. ([PR #16447](https://github.com/microsoft/fluentui/pull/16447) by dzearing@microsoft.com)
+- Clean up some prop comments and deprecated messages ([PR #16555](https://github.com/microsoft/fluentui/pull/16555) by elcraig@microsoft.com)
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.15)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.12..@fluentui/react-focus_v8.0.0-beta.15)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.9)
+
+Thu, 26 Nov 2020 12:28:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.7..@fluentui/react-focus_v8.0.0-beta.9)
+
+### Changes
+
+- Removing dist/storybook from the npm output. ([PR #16062](https://github.com/microsoft/fluentui/pull/16062) by dzearing@hotmail.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.7)
+
+Fri, 20 Nov 2020 12:32:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v8.0.0-beta.0..@fluentui/react-focus_v8.0.0-beta.7)
+
+### Changes
+
+- FocusZone: Consuming theme information from ThemeContext to provide it when calling getRTL. ([PR #16007](https://github.com/microsoft/fluentui/pull/16007) by humbertomakotomorimoto@gmail.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.8..@fluentui/react-focus_v8.0.0-beta.0)
+
+### Changes
+
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+- Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities ([PR #15629](https://github.com/microsoft/fluentui/pull/15629) by ololubek@microsoft.com)
+- Remove react-dom from peerDependencies ([PR #15634](https://github.com/microsoft/fluentui/pull/15634) by elcraig@microsoft.com)
+
+## [7.16.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.6)
+
+Tue, 22 Sep 2020 12:25:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.16.2..@fluentui/react-focus_v7.16.6)
+
+### Patches
+
+- FocusZone: Moving custom onFocus call at the end of private onFocus logic. ([PR #15108](https://github.com/microsoft/fluentui/pull/15108) by humbertomakotomorimoto@gmail.com)
+
+## [7.16.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.16.0)
+
+Mon, 07 Sep 2020 12:26:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.1..@fluentui/react-focus_v7.16.0)
+
+### Minor changes
+
+- FocusZone: Adding forceAlignment attribute to focusElement to set focus alignment according to the element provided. ([PR #14911](https://github.com/microsoft/fluentui/pull/14911) by humbertomakotomorimoto@gmail.com)
+
+## [7.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.1)
+
+Fri, 04 Sep 2020 12:28:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.15.0..@fluentui/react-focus_v7.15.1)
+
+### Patches
+
+- Fix typo in docs ([PR #14851](https://github.com/microsoft/fluentui/pull/14851) by elcraig@microsoft.com)
+
+## [7.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.15.0)
+
+Wed, 02 Sep 2020 12:26:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.22..@fluentui/react-focus_v7.15.0)
+
+### Minor changes
+
+- Add temporary elementRef prop to FocusZone. ([PR #14544](https://github.com/microsoft/fluentui/pull/14544) by czearing@outlook.com)
+
+## [7.12.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.22)
+
+Thu, 16 Jul 2020 21:33:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.19..@fluentui/react-focus_v7.12.22)
+
+### Patches
+
+- Fix memory leak in FocusZone ([PR #14031](https://github.com/microsoft/fluentui/pull/14031) by mistastn@microsoft.com)
+
+## [7.12.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.18)
+
+Thu, 09 Jul 2020 21:59:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.12.12..@fluentui/react-focus_v7.12.18)
+
+### Patches
+
+- Additional HTMLElement casts have been added in a few places for better typing. This should not impact the public API surface. ([PR #13953](https://github.com/microsoft/fluentui/pull/13953) by KevinTCoughlin@users.noreply.github.com)
+
+## [7.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.12.0)
+
+Thu, 21 May 2020 12:34:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.11.5..@fluentui/react-focus_v7.12.0)
+
+### Minor changes
+
+- FocusZone: Adding shouldRaiseClicks prop to allow for opt-in/opt-out way to invoke clicks on focusable elements. ([PR #12478](https://github.com/microsoft/fluentui/pull/12478) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- FocusZone: Defaulting to false for the preventDefaultWhenHandled prop to maintain old behavior. ([PR #13256](https://github.com/microsoft/fluentui/pull/13256) by humbertomakotomorimoto@gmail.com)
+
+## [7.11.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.5)
+
+Fri, 15 May 2020 05:52:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.11.2..@fluentui/react-focus_v7.11.5)
+
+### Patches
+
+- Updating build tool dependencies. ([PR #13103](https://github.com/microsoft/fluentui/pull/13103) by dzearing@microsoft.com)
+
+## [7.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.2)
+
+Wed, 13 May 2020 12:33:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.11.0..@fluentui/react-focus_v7.11.2)
+
+### Patches
+
+- Adding `@fluentui/keyboard-key` as a dependency. ([PR #13123](https://github.com/microsoft/fluentui/pull/13123) by dzearing@microsoft.com)
+
+## [7.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.11.0)
+
+Fri, 08 May 2020 12:35:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.2..@fluentui/react-focus_v7.11.0)
+
+### Minor changes
+
+- FocusZone: Converging defaultTabbableElement/defaultActiveElement and bringing shouldFocusInnerElementWhenReceivedFocus to v7. ([PR #12853](https://github.com/microsoft/fluentui/pull/12853) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- Adding keyboard-key to FocusZone. ([PR #12339](https://github.com/microsoft/fluentui/pull/12339) by humbertomakotomorimoto@gmail.com)
+
+## [7.10.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.2)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.1..@fluentui/react-focus_v7.10.2)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.1)
+
+Wed, 06 May 2020 12:32:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.10.0..@fluentui/react-focus_v7.10.1)
+
+### Patches
+
+- Fix pagingSupportDisabled handling in FocusZone ([PR #12997](https://github.com/microsoft/fluentui/pull/12997) by jukapsia@microsoft.com)
+
+## [7.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.10.0)
+
+Tue, 05 May 2020 12:34:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.9.0..@fluentui/react-focus_v7.10.0)
+
+### Minor changes
+
+- FocusZone: Adding pagingSupportDisabled prop to provide a way to opt out of paging support via the Page Up and Page Down keys. ([PR #12448](https://github.com/microsoft/fluentui/pull/12448) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- Adding missing changes due to move from IPoint to Point. ([PR #12993](https://github.com/microsoft/fluentui/pull/12993) by humbertomakotomorimoto@gmail.com)
+
+## [7.9.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.9.0)
+
+Mon, 04 May 2020 12:33:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.8.0..@fluentui/react-focus_v7.9.0)
+
+### Minor changes
+
+- FocusZone: Bringing preventFocusRestoration functionality to v7. ([PR #12615](https://github.com/microsoft/fluentui/pull/12615) by humbertomakotomorimoto@gmail.com)
+
+## [7.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.8.0)
+
+Fri, 01 May 2020 00:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.7.0..@fluentui/react-focus_v7.8.0)
+
+### Minor changes
+
+- FocusZone: Using v0 prop names for props where names differed and deprecating old ones. ([PR #12484](https://github.com/microsoft/fluentui/pull/12484) by humbertomakotomorimoto@gmail.com)
+
+## [7.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.7.0)
+
+Tue, 28 Apr 2020 12:34:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.6.0..@fluentui/react-focus_v7.7.0)
+
+### Minor changes
+
+- Updating IPoint, x and y references to Point, left and top respectively. ([PR #12722](https://github.com/microsoft/fluentui/pull/12722) by humbertomakotomorimoto@gmail.com)
+
+## [7.6.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.6.0)
+
+Mon, 27 Apr 2020 12:33:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.5.0..@fluentui/react-focus_v7.6.0)
+
+### Minor changes
+
+- FocusZone: Bringing shouldResetActiveElementWhenTabFromZone to v7. ([PR #12593](https://github.com/microsoft/fluentui/pull/12593) by Humberto.Morimoto@microsoft.com)
+
+### Patches
+
+- FocusZone: Adding check to see if element has editable content in Home and End keystroke scenarios. ([PR #12456](https://github.com/microsoft/fluentui/pull/12456) by humbertomakotomorimoto@gmail.com)
+
+## [7.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.5.0)
+
+Thu, 23 Apr 2020 12:32:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.4.0..@fluentui/react-focus_v7.5.0)
+
+### Minor changes
+
+- FocusZone: Adding preventDefaultWhenHandled to v7 version. ([PR #12636](https://github.com/microsoft/fluentui/pull/12636) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- FocusZone: Updating comment for preventDefaultWhenHandled prop. ([PR #12830](https://github.com/microsoft/fluentui/pull/12830) by Humberto.Morimoto@microsoft.com)
+
+## [7.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.4.0)
+
+Thu, 16 Apr 2020 12:37:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.3.1..@fluentui/react-focus_v7.4.0)
+
+### Minor changes
+
+- FocusZone: Bringing shouldFocusOnMount prop from v0 to v7. ([PR #12709](https://github.com/microsoft/fluentui/pull/12709) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- undefined ([PR #12709](https://github.com/microsoft/fluentui/pull/12709) by humbertomakotomorimoto@gmail.com)
+
+## [7.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.3.1)
+
+Thu, 16 Apr 2020 05:06:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.3.0..@fluentui/react-focus_v7.3.1)
+
+### Patches
+
+- FocusZone: Replacing use of 'on' helper with native eventing. ([PR #12710](https://github.com/microsoft/fluentui/pull/12710) by humbertomakotomorimoto@gmail.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-focus_v7.3.0)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-focus_v7.1.13..@fluentui/react-focus_v7.3.0)
+
+### Minor changes
+
+- FocusZone: Adding focusLast imperative method to v7. ([PR #12600](https://github.com/microsoft/fluentui/pull/12600) by humbertomakotomorimoto@gmail.com)
+
+### Patches
+
+- FocusZone: Updating comment of allowFocusRoot to be more descriptive of its functionality. ([PR #12666](https://github.com/microsoft/fluentui/pull/12666) by humbertomakotomorimoto@gmail.com)
+
+## 7.1.12
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Fix repository URL (elcraig@microsoft.com)
+- react-focus: Updating README to reflect package purpose. (humbertomakotomorimoto@gmail.com)
+## 7.1.10
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
 ## 7.1.1
 Mon, 02 Mar 2020 12:25:44 GMT
 
@@ -29,6 +401,3 @@ Thu, 13 Feb 2020 23:22:22 GMT
 ### Patches
 
 - react-focus package being added to move out focus utilities from the main package. (dzearing@microsoft.com)
-# Change Log - @fluentui/react-focus
-
-This log was last generated on Mon, 13 Jan 2020 19:25:55 GMT and should not be manually modified.

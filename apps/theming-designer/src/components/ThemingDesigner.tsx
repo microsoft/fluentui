@@ -1,19 +1,25 @@
 import * as React from 'react';
 import { AccessibilityChecker } from './AccessibilityChecker';
-import { BaseSlots, IThemeRules, FabricSlots, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import {
+  BaseSlots,
+  IThemeRules,
+  FabricSlots,
+  ThemeGenerator,
+  themeRulesStandardCreator,
+} from '@fluentui/react/lib/ThemeGenerator';
+import { Async } from '@fluentui/react/lib/Utilities';
+import { createTheme, ITheme } from '@fluentui/react/lib/Styling';
 import { ThemeSlots } from './ThemeSlots';
-import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
+import { getColorFromString, IColor } from '@fluentui/react/lib/Color';
 import { Header } from './Header';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
-import { mergeStyles } from '@uifabric/merge-styles';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { isDark } from '@fluentui/react/lib/Color';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { Samples } from './Samples/index';
-import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps } from '@fluentui/react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { Text } from 'office-ui-fabric-react';
-import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { Text } from '@fluentui/react';
+import { ThemeProvider } from '@fluentui/foundation-legacy';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
 
 export interface IThemingDesignerState {
@@ -33,15 +39,17 @@ const Page = (props: IStackProps) => (
       selectors: {
         ':global(body)': {
           padding: 0,
-          margin: 0
-        }
-      }
+          margin: 0,
+        },
+      },
     })}
     {...props}
   />
 );
 
-const Content = (props: IStackProps) => <Stack horizontal gap={10} className={mergeStyles({ overflow: 'hidden' })} {...props} />;
+const Content = (props: IStackProps) => (
+  <Stack horizontal gap={10} className={mergeStyles({ overflow: 'hidden' })} {...props} />
+);
 
 const Sidebar = (props: IStackProps) => (
   <Stack
@@ -50,7 +58,7 @@ const Sidebar = (props: IStackProps) => (
     grow={0}
     className={mergeStyles({
       borderRight: '1px solid #ddd',
-      paddingRight: '1rem'
+      paddingRight: '1rem',
     })}
     {...props}
   />
@@ -62,7 +70,7 @@ const Main = (props: IStackProps) => (
     disableShrink
     className={mergeStyles({
       minWidth: MainPanelWidth,
-      overflow: 'scroll'
+      overflow: 'scroll',
     })}
     {...props}
   />
@@ -107,7 +115,11 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
               onColorChange={this._onPrimaryColorPickerChange}
               label={'Primary color'}
             />
-            <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
+            <ThemeDesignerColorPicker
+              color={this.state.textColor}
+              onColorChange={this._onTextColorPickerChange}
+              label={'Text color'}
+            />
             <ThemeDesignerColorPicker
               color={this.state.backgroundColor}
               onColorChange={this._onBkgColorPickerChange}
@@ -171,7 +183,7 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
 
       const finalTheme = createTheme({
         ...{ palette: themeAsJson },
-        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
       });
       this.setState({ theme: finalTheme });
     }
@@ -213,12 +225,18 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
     const colors = {
       primaryColor: getColorFromString('#0078d4')!,
       textColor: getColorFromString('#323130')!,
-      backgroundColor: getColorFromString('#ffffff')!
+      backgroundColor: getColorFromString('#ffffff')!,
     };
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor, undefined, false, false);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor, undefined, false, false);
-    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor, undefined, false, false);
+    ThemeGenerator.setSlot(
+      themeRules[BaseSlots[BaseSlots.backgroundColor]],
+      colors.backgroundColor,
+      undefined,
+      false,
+      false,
+    );
 
     const themeAsJson: {
       [key: string]: string;
@@ -226,13 +244,13 @@ export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> 
 
     const finalTheme = createTheme({
       ...{ palette: themeAsJson },
-      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
     });
 
     const state = {
       ...colors,
       theme: finalTheme,
-      themeRules: themeRules
+      themeRules: themeRules,
     };
 
     return state;

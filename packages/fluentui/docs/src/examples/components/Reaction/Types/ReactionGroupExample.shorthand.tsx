@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Reaction } from '@fluentui/react';
+import { Reaction } from '@fluentui/react-northstar';
+import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const ReactionGroupExample = () => (
   <Reaction.Group
     items={[
-      { icon: 'like', content: '2K', key: 'up' },
-      { icon: 'emoji', content: 10, key: 'smile' }
+      { icon: <LikeIcon />, content: '2K', key: 'up' },
+      { icon: <EmojiIcon />, content: 10, key: 'smile' },
     ]}
   />
 );

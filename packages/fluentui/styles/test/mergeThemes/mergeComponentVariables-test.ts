@@ -12,13 +12,13 @@ describe('mergeComponentVariables', () => {
 
   afterEach(() => {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: () => originalDebugEnabled
+      get: () => originalDebugEnabled,
     });
   });
 
   function mockIsDebugEnabled(enabled: boolean) {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: jest.fn(() => enabled)
+      get: jest.fn(() => enabled),
     });
   }
 
@@ -56,7 +56,7 @@ describe('mergeComponentVariables', () => {
       const merged = mergeComponentVariables({ color: 'black' }, { color: undefined });
 
       expect(merged()).toMatchObject({
-        color: undefined
+        color: undefined,
       });
     });
 
@@ -64,7 +64,7 @@ describe('mergeComponentVariables', () => {
       const merged = mergeComponentVariables({ color: 'black' }, { color: null });
 
       expect(merged()).toMatchObject({
-        color: null
+        color: null,
       });
     });
 
@@ -77,7 +77,7 @@ describe('mergeComponentVariables', () => {
       expect(merged()).toMatchObject({
         one: 'one',
         two: 'two',
-        three: 3
+        three: 3,
       });
     });
 
@@ -93,7 +93,7 @@ describe('mergeComponentVariables', () => {
         one: 'one',
         two: 'two',
         source: true,
-        target: true
+        target: true,
       });
     });
 
@@ -106,15 +106,15 @@ describe('mergeComponentVariables', () => {
       expect(merged()).toMatchObject({
         source: true,
         target: true,
-        foo: { bar: true, baz: false, deep: { dOne: 1, dTwo: 'two' } }
+        foo: { bar: true, baz: false, deep: { dOne: 1, dTwo: 'two' } },
       });
     });
 
     test('merges multiple objects', () => {
       const siteVariables = {
         colors: {
-          colorForC: 'c_color'
-        }
+          colorForC: 'c_color',
+        },
       };
       const target = { a: 1, b: 2, c: 3, d: 4, e: 5 };
       const source1 = { b: 'bS1', d: false, bb: 'bbS1' };
@@ -129,7 +129,7 @@ describe('mergeComponentVariables', () => {
         e: 5,
         bb: 'bbS1',
         cc: 'bbS2',
-        dd: 'bbS3'
+        dd: 'bbS3',
       });
     });
   }
@@ -146,6 +146,13 @@ describe('mergeComponentVariables', () => {
 
       const merged = mergeComponentVariables__PROD(target, source);
       expect(merged()._debug).toBe(undefined);
+    });
+
+    test('useless frames are not created', () => {
+      const target = () => ({});
+
+      expect(mergeComponentVariables__PROD(target)).toBe(target);
+      expect(mergeComponentVariables__PROD(target, undefined)).toBe(target);
     });
   });
 
@@ -180,7 +187,10 @@ describe('mergeComponentVariables', () => {
         const siteVariables = { one: 'one', two: 'two', fontSizes: {} };
 
         expect(merged(siteVariables)).toMatchObject({
-          _debug: [{ resolved: { target: true, one: 'one', a: 'tA' } }, { resolved: { source: true, two: 'two', a: 'sA' } }]
+          _debug: [
+            { resolved: { target: true, one: 'one', a: 'tA' } },
+            { resolved: { source: true, two: 'two', a: 'sA' } },
+          ],
         });
       });
 
@@ -190,7 +200,7 @@ describe('mergeComponentVariables', () => {
 
         const merged = mergeComponentVariables__DEV(target, source);
         expect(merged()).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source' }],
         });
       });
 
@@ -204,32 +214,38 @@ describe('mergeComponentVariables', () => {
         siteVariables['_invertedKeys'] = objectKeyToValues(siteVariables, v => `siteVariables.${v}`);
 
         expect(merged(siteVariables as any)).toMatchObject({
-          _debug: [{ input: { a: 'siteVariables.varA' } }, { input: { a: 'siteVariables.nested.varA' } }]
+          _debug: [{ input: { a: 'siteVariables.varA' } }, { input: { a: 'siteVariables.nested.varA' } }],
         });
       });
 
       test('are flat for recursive merge', () => {
         const siteVariables = {
           colors: {
-            colorForC: 'c_color'
-          }
+            colorForC: 'c_color',
+          },
         };
         const target = withDebugId({ a: 1, b: 2, c: 3, d: 4, e: 5 }, 'target');
         const source1 = withDebugId({ b: 'bS1', d: false, bb: 'bbS1' }, 'source1');
         const source2 = withDebugId(sv => ({ c: sv.colors.colorForC, cc: 'bbS2' }), 'source2');
 
         const merged1 = mergeComponentVariables__DEV(target, source1, source2)(siteVariables as any);
-        const merged2 = mergeComponentVariables__DEV(mergeComponentVariables__DEV(target, source1), source2)(siteVariables as any);
-        const merged3 = mergeComponentVariables__DEV(target, mergeComponentVariables__DEV(source1, source2))(siteVariables as any);
+        const merged2 = mergeComponentVariables__DEV(
+          mergeComponentVariables__DEV(target, source1),
+          source2,
+        )(siteVariables as any);
+        const merged3 = mergeComponentVariables__DEV(
+          target,
+          mergeComponentVariables__DEV(source1, source2),
+        )(siteVariables as any);
 
         expect(merged1).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
         });
         expect(merged2).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
         });
         expect(merged3).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
         });
       });
     });

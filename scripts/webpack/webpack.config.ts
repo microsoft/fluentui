@@ -1,6 +1,6 @@
 import CopyWebpackPlugin from 'copy-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import { webpack as lernaAliases } from 'lerna-alias';
+import { webpack as lernaAliases } from '../lernaAliasNorthstar';
 import _ from 'lodash';
 import webpack from 'webpack';
 import TerserPlugin from 'terser-webpack-plugin';
@@ -8,25 +8,26 @@ import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 
 import config from '../config';
+import getDefaultEnvironmentVars from './getDefaultEnvironmentVars';
 
 const { paths } = config;
-const { __DEV__, __PROD__ } = config.compiler_globals;
+const { __DEV__, __PERF__, __PROD__ } = config.compiler_globals;
 
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
   mode: config.compiler_mode,
   entry: {
-    app: paths.docsSrc('index')
+    app: paths.docsSrc('index'),
   },
   output: {
     // https://webpack.js.org/guides/build-performance/#avoid-production-specific-tooling
     filename: __DEV__ ? '[name].js' : `[name].[${config.compiler_hash_type}].js`,
     path: config.compiler_output_path,
     pathinfo: true,
-    publicPath: config.compiler_public_path
+    publicPath: config.compiler_public_path,
   },
-  devtool: config.compiler_devtool as webpack.Options.Devtool,
+  devtool: config.compiler_devtool,
   externals: {
     '@babel/standalone': 'Babel',
     'anchor-js': 'AnchorJS',
@@ -38,14 +39,10 @@ const webpackConfig: webpack.Configuration = {
     'prop-types': 'PropTypes',
     react: 'React',
     'react-dom': 'ReactDOM',
-    'react-dom/server': 'ReactDOMServer'
+    'react-dom/server': 'ReactDOMServer',
   },
   node: {
-    fs: 'empty',
-    module: 'empty',
-    child_process: 'empty',
-    net: 'empty',
-    readline: 'empty'
+    global: true,
   },
   module: {
     noParse: [/anchor-js/],
@@ -57,35 +54,54 @@ const webpackConfig: webpack.Configuration = {
         options: {
           cacheCompression: false,
           cacheDirectory: __DEV__,
-          plugins: [__DEV__ && 'react-hot-loader/babel'].filter(Boolean)
-        }
+          plugins: [__DEV__ && 'react-hot-loader/babel'].filter(Boolean),
+        },
       },
       {
         test: /\.mdx?$/,
-        use: ['babel-loader', '@mdx-js/loader']
-      }
-    ]
+        use: ['babel-loader', '@mdx-js/loader'],
+      },
+      // solution to process.cwd() is not a function for react-markdown/vfile
+      // https://github.com/remarkjs/react-markdown/issues/339#issuecomment-683199835
+      // https://github.com/vfile/vfile/issues/38
+      {
+        test: /node_modules[\\|/]vfile[\\|/]core\.js/,
+        use: [
+          {
+            loader: 'imports-loader',
+            options: {
+              type: 'commonjs',
+              imports: ['single process/browser process'],
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
-      tsconfig: paths.docs('tsconfig.json'),
-      watch: [paths.docsSrc(), paths.packages()]
+      typescript: {
+        configFile: paths.docs('tsconfig.json'),
+      },
     }),
+    new webpack.DefinePlugin(getDefaultEnvironmentVars()),
     new webpack.DefinePlugin(config.compiler_globals),
     new webpack.ContextReplacementPlugin(/node_modules[\\|/]typescript[\\|/]lib/, /typescript\.js/, false),
-    new (CopyWebpackPlugin as any)([
-      {
-        from: paths.docsSrc('public'),
-        to: paths.docsDist('public')
-      }
-    ]),
+    new (CopyWebpackPlugin as any)({
+      patterns: [
+        {
+          from: paths.docsSrc('public'),
+          to: paths.docsDist('public'),
+        },
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: paths.docsSrc('index.ejs'),
       filename: 'index.html',
       hash: false,
       inject: 'body',
       minify: {
-        collapseWhitespace: __PROD__
+        collapseWhitespace: __PROD__,
       },
       versions: {
         babelStandalone: require('@babel/standalone/package.json').version,
@@ -95,28 +111,32 @@ const webpackConfig: webpack.Configuration = {
         react: require('react/package.json').version,
         reactDOM: require('react-dom/package.json').version,
         fluentUI: require('../package.json').version,
-        reactVis: require('react-vis/package.json').version
-      }
+        reactVis: require('react-vis/package.json').version,
+      },
     }),
-    new webpack.IgnorePlugin({
-      resourceRegExp: /^\.\/locale$/,
-      contextRegExp: /moment$/
-    }),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en/),
     __DEV__ &&
+      // Disable ProgressPlugin in CI and multi-project build because the outdated lines can't be deleted and
+      // spam the log (note that build:docs is the resolved command used by lerna run build --stream)
       !process.env.TF_BUILD &&
+      !process.argv.includes('build:docs') &&
       new webpack.ProgressPlugin({
         entries: true,
         modules: true,
-        modulesCount: 500
-      } as any)
+        modulesCount: 500,
+      } as any),
   ].filter(Boolean),
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
-      src: paths.packageSrc('react'),
-      docs: paths.docs()
-    }
+      src: paths.packageSrc('react-northstar'),
+      faker: 'faker/locale/en',
+      'react-hook-form': 'react-hook-form/dist/react-hook-form.ie11',
+    },
+    fallback: {
+      path: require.resolve('path-browserify'),
+    },
   },
   optimization: {
     // Automatically split vendor and commons
@@ -124,13 +144,13 @@ const webpackConfig: webpack.Configuration = {
     // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
     splitChunks: {
       chunks: 'all',
-      name: false
+      name: false,
     },
     // Keep the runtime chunk separated to enable long term caching
     // https://twitter.com/wSokra/status/969679223278505985
-    runtimeChunk: true
+    runtimeChunk: true,
   },
-  performance: false
+  performance: false,
 };
 
 // ------------------------------------
@@ -145,9 +165,9 @@ if (__DEV__) {
       overlay: true, // Set to false to disable the DOM-based client-side overlay.
       reload: true, // Set to true to auto-reload the page when webpack gets stuck.
       noInfo: false, // Set to true to disable informational console logging.
-      quiet: false // Set to true to disable all console logging.
+      quiet: false, // Set to true to disable all console logging.
     },
-    (val, key) => `&${key}=${val}`
+    (val, key) => `&${key}=${val}`,
   ).join('')}`;
   const entry = webpackConfig.entry as webpack.Entry;
   entry.app = [webpackHotMiddlewareEntry].concat((entry as webpack.Entry).app);
@@ -158,19 +178,23 @@ if (__DEV__) {
 if (__PROD__) {
   webpackConfig.plugins.push(
     new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
+      minimize: true,
+    }),
   );
 
   webpackConfig.optimization.minimizer = [
     new TerserPlugin({
       terserOptions: {
         output: {
-          comments: false
-        }
-      }
-    })
+          comments: false,
+        },
+      },
+    }),
   ];
+
+  if (__PERF__) {
+    webpackConfig.optimization.minimizer = [];
+  }
 }
 
 if (process.env.ANALYZE) {

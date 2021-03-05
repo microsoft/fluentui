@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VerticalPersona renders correctly with a text and secondary text 1`] = `
+<div
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 0;
+        width: 122px;
+      }
+>
+  <div
+    className=
+
+        {
+          align-items: center;
+          background-color: #A4262C;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          position: relative;
+          width: 48px;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 19.2px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            webkit-font-smoothing: antialiased;
+          }
+    >
+      JB
+    </span>
+  </div>
+  <span
+    className=
+        test-cn-text
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
+          webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
+        }
+  >
+    James Bond
+  </span>
+  <span
+    className=
+        test-cn-secondaryText
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #605e5c;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.42;
+          moz-osx-font-smoothing: grayscale;
+          padding-top: 6px;
+          text-align: center;
+          webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
+        }
+  >
+    Super secret agent
+  </span>
+</div>
+`;
+
+exports[`VerticalPersona renders correctly with only a text 1`] = `
+<div
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 0;
+        width: 122px;
+      }
+>
+  <div
+    className=
+
+        {
+          align-items: center;
+          background-color: #A4262C;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          position: relative;
+          width: 48px;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 19.2px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            webkit-font-smoothing: antialiased;
+          }
+    >
+      JB
+    </span>
+  </div>
+  <span
+    className=
+        test-cn-text
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
+          webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
+        }
+  >
+    James Bond
+  </span>
+</div>
+`;
+
+exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
+<div
+  className=
+      test-cn-root
+      {
+        align-items: center;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-bottom: 0;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 0;
+        width: 122px;
+      }
+>
+  <div
+    className=
+
+        {
+          align-items: center;
+          background-color: red;
+          border-radius: 50%;
+          color: white;
+          display: flex;
+          height: 48px;
+          justify-content: center;
+          position: relative;
+          width: 48px;
+        }
+  >
+    <span
+      className=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #323130;
+            display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 19.2px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            webkit-font-smoothing: antialiased;
+          }
+    >
+      MI6
+    </span>
+  </div>
+  <span
+    className=
+        test-cn-text
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #323130;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          padding-top: 8px;
+          text-align: center;
+          webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
+        }
+  >
+    James Bond
+  </span>
+  <span
+    className=
+        test-cn-secondaryText
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #605e5c;
+          display: inline;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.42;
+          moz-osx-font-smoothing: grayscale;
+          padding-top: 6px;
+          text-align: center;
+          webkit-font-smoothing: antialiased;
+          white-space: initial;
+          width: 100%;
+          word-break: break-word;
+          word-wrap: break-word;
+        }
+  >
+    Super secret agent
+  </span>
+</div>
+`;

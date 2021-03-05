@@ -1,0 +1,69 @@
+{
+  "name": "@fluentui/react-checkbox",
+  "version": "1.0.0-beta.49",
+  "description": "Fluent UI React Checkbox component",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev:storybook",
+    "start-test": "just-scripts jest-watch",
+    "test": "just-scripts test",
+    "update-snapshots": "just-scripts jest -u"
+  },
+  "devDependencies": {
+    "@fluentui/common-styles": "^1.0.2",
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/react-conformance": "^0.2.2",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@types/react-test-renderer": "^16.0.0",
+    "@types/webpack-env": "1.16.0",
+    "@fluentui/scripts": "^1.0.0",
+    "enzyme": "~3.10.0",
+    "enzyme-adapter-react-16": "^1.15.0",
+    "react": "16.8.6",
+    "react-app-polyfill": "~1.0.1",
+    "react-dom": "16.8.6",
+    "react-test-renderer": "^16.3.0"
+  },
+  "dependencies": {
+    "@fluentui/react-compose": "^1.0.0-beta.18",
+    "@fluentui/react-hooks": "^8.0.2",
+    "@fluentui/react-icons-mdl2": "^1.0.2",
+    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/style-utilities": "^8.0.2",
+    "@fluentui/utilities": "^8.0.2",
+    "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <18.0.0",
+    "@types/react-dom": ">=16.8.0 <18.0.0",
+    "react": ">=16.8.0 <18.0.0",
+    "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "beta",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
+  }
+}

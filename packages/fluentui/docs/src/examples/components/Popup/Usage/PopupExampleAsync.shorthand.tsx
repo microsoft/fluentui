@@ -1,15 +1,16 @@
 import * as React from 'react';
-import { Button, Popup, Segment } from '@fluentui/react';
+import { Button, PopperRefHandle, Popup, Segment } from '@fluentui/react-northstar';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
-class AsyncDataLoader extends React.Component<any, any> {
+class AsyncDataLoader extends React.Component<{ onLoaded: Function }, { data: React.ReactElement }> {
   state = {
-    data: 'loading..'
+    data: <span>loading..</span>,
   };
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        data: <Segment styles={{ minHeight: '300px' }}>Hello from loaded data!</Segment>
+        data: <Segment styles={{ minHeight: '300px' }}>Hello from loaded data!</Segment>,
       });
       this.props.onLoaded();
     }, 1000);
@@ -20,11 +21,16 @@ class AsyncDataLoader extends React.Component<any, any> {
   }
 }
 
-const PopupExampleAsync = () => (
-  <Popup
-    trigger={<Button icon="more" content="Click me!" />}
-    renderContent={updatePosition => <AsyncDataLoader onLoaded={updatePosition} />}
-  />
-);
+const PopupExampleAsync = () => {
+  const popperRef = React.useRef<PopperRefHandle>();
+
+  return (
+    <Popup
+      content={<AsyncDataLoader onLoaded={() => popperRef.current.updatePosition()} />}
+      trigger={<Button icon={<MoreIcon />} content="Click me!" />}
+      popperRef={popperRef}
+    />
+  );
+};
 
 export default PopupExampleAsync;

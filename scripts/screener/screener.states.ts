@@ -5,15 +5,15 @@ import minimatch from 'minimatch';
 import path from 'path';
 
 import getScreenerSteps from './screener.steps';
-import config from '../config';
 
+const baseUrl = `https://${process.env.DEPLOYHOST}/${process.env.DEPLOYBASEPATH}/react-northstar`;
 const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
-  ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx']
+  ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx'],
 });
 
 const pathFilter = process.env.SCREENER_FILTER;
 const filteredPaths: string[] = minimatch.match(examplePaths, pathFilter || '*', {
-  matchBase: true
+  matchBase: true,
 });
 
 if (pathFilter) {
@@ -22,25 +22,26 @@ if (pathFilter) {
 }
 
 const getStateForPath = (examplePath: string) => {
-  const { name: exampleNameWithoutExtension, base: exampleNameWithExtension, dir: exampleDir } = path.parse(examplePath);
+  const { name: exampleNameWithoutExtension, base: exampleNameWithExtension, dir: exampleDir } = path.parse(
+    examplePath,
+  );
 
   const rtl = exampleNameWithExtension.endsWith('.rtl.tsx');
   const exampleUrl = _.kebabCase(exampleNameWithoutExtension);
-
-  const pageUrl = `http://${config.server_host}:${config.server_port}/maximize/${exampleUrl}/${rtl}`;
+  const pageUrl = `${baseUrl}/maximize/${exampleUrl}/${rtl}`;
 
   return {
     url: pageUrl,
     name: exampleNameWithExtension,
 
     // https://www.npmjs.com/package/screener-runner#testing-interactions
-    steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`)
+    steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`),
   };
 };
 
 const screenerStates = filteredPaths.reduce((states, examplePath) => {
   states.push(getStateForPath(examplePath));
   return states;
-}, []);
+}, [] as ReturnType<typeof getStateForPath>[]);
 
 export default screenerStates;

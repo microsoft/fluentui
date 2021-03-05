@@ -31,7 +31,7 @@ describe('EventListener', () => {
         <>
           <EventListener listener={onClick} targetRef={documentRef} type="click" />
           <EventListener listener={onKeyDown} targetRef={documentRef} type="keydown" />
-        </>
+        </>,
       );
 
       simulant.fire(document, 'click');
@@ -109,16 +109,17 @@ describe('EventListener', () => {
       mount(
         <TestBoundary onError={onError}>
           <EventListener listener={jest.fn()} target={document} targetRef={documentRef} type="click" />
-        </TestBoundary>
+        </TestBoundary>,
       );
 
       expect(onError).toBeCalledWith(
         expect.objectContaining({
-          message: '`target` and `targetRef` props are mutually exclusive, please use one of them.'
-        })
+          message: '`target` and `targetRef` props are mutually exclusive, please use one of them.',
+        }),
       );
 
       // We need to clean up mocks to avoid errors reported by React
+      // eslint-disable-next-line no-console
       (console.error as any).mockClear();
     });
 
@@ -129,16 +130,17 @@ describe('EventListener', () => {
       mount(
         <TestBoundary onError={onError}>
           <EventListener listener={jest.fn()} type="click" />
-        </TestBoundary>
+        </TestBoundary>,
       );
 
       expect(onError).toBeCalledWith(
         expect.objectContaining({
-          message: "`target` and `targetRef` props are `undefined`, it' required to use one of them."
-        })
+          message: "`target` and `targetRef` props are `undefined`, it' required to use one of them.",
+        }),
       );
 
       // We need to clean up mocks to avoid errors reported by React
+      // eslint-disable-next-line no-console
       (console.error as any).mockClear();
     });
   });

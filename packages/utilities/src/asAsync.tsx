@@ -39,7 +39,7 @@ export interface IAsAsyncOptions<TProps> {
  */
 const _syncModuleCache =
   typeof WeakMap !== 'undefined'
-    ? // tslint:disable-next-line:no-any
+    ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
       new WeakMap<() => Promise<React.ElementType<any>>, React.ElementType<any> | undefined>()
     : undefined;
 
@@ -49,26 +49,28 @@ const _syncModuleCache =
  *
  * This overload accepts a module with a default export for the component.
  */
-export function asAsync<TProps>(
-  options: IAsAsyncOptions<TProps>
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & { asyncPlaceholder?: React.ElementType }>> {
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>) {
   class Async extends React.Component<
     TProps & {
       asyncPlaceholder?: React.ElementType;
-      forwardedRef: React.Ref<TProps>;
+      forwardedRef: React.Ref<React.ElementType<TProps>>;
     },
     { Component?: React.ElementType<TProps> }
   > {
     public state = {
-      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined
+      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined,
     };
 
     public render(): JSX.Element | null {
       // Typescript issue: the rest can't be pulled without the any cast, as TypeScript fails with rest on generics.
-      // tslint:disable-next-line:no-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
       const { Component } = this.state;
-      return Component ? React.createElement(Component, { ...rest, ref: forwardedRef }) : Placeholder ? <Placeholder /> : null;
+      return Component ? (
+        React.createElement(Component, { ...rest, ref: forwardedRef })
+      ) : Placeholder ? (
+        <Placeholder />
+      ) : null;
     }
 
     public componentDidMount(): void {
@@ -85,9 +87,9 @@ export function asAsync<TProps>(
               // Set state.
               this.setState(
                 {
-                  Component: LoadedComponent
+                  Component: LoadedComponent,
                 },
-                options.onLoad
+                options.onLoad,
               );
             }
           })
@@ -95,7 +97,8 @@ export function asAsync<TProps>(
       }
     }
   }
-  return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ElementType }, ref: React.Ref<TProps>) => (
-    <Async {...props} forwardedRef={ref} />
-  ));
+
+  return React.forwardRef<React.ElementType<TProps>, TProps & { asyncPlaceholder?: React.ElementType }>(
+    (props, ref) => <Async {...props} forwardedRef={ref} />,
+  );
 }

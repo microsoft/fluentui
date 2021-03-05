@@ -1,11 +1,10 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { List } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { List } from '@fluentui/react';
 
-// tslint:disable:max-line-length
+/* eslint-disable @fluentui/max-len */
 const items = [
   {
     thumbnail: '//placehold.it/233x233',
@@ -17,7 +16,7 @@ const items = [
     shape: 'triangle',
     location: 'Los Angeles',
     width: 233,
-    height: 233
+    height: 233,
   },
   {
     thumbnail: '//placehold.it/210x210',
@@ -29,7 +28,7 @@ const items = [
     shape: 'triangle',
     location: 'Los Angeles',
     width: 210,
-    height: 210
+    height: 210,
   },
   {
     thumbnail: '//placehold.it/231x231',
@@ -41,7 +40,7 @@ const items = [
     shape: 'circle',
     location: 'Chicago',
     width: 231,
-    height: 231
+    height: 231,
   },
   {
     thumbnail: '//placehold.it/158x158',
@@ -53,7 +52,7 @@ const items = [
     shape: 'circle',
     location: 'Seattle',
     width: 158,
-    height: 158
+    height: 158,
   },
   {
     thumbnail: '//placehold.it/165x165',
@@ -65,7 +64,7 @@ const items = [
     shape: 'triangle',
     location: 'Portland',
     width: 165,
-    height: 165
+    height: 165,
   },
   {
     thumbnail: '//placehold.it/226x226',
@@ -77,7 +76,7 @@ const items = [
     shape: 'triangle',
     location: 'New York',
     width: 226,
-    height: 226
+    height: 226,
   },
   {
     thumbnail: '//placehold.it/182x182',
@@ -89,7 +88,7 @@ const items = [
     shape: 'circle',
     location: 'Los Angeles',
     width: 182,
-    height: 182
+    height: 182,
   },
   {
     thumbnail: '//placehold.it/206x206',
@@ -101,7 +100,7 @@ const items = [
     shape: 'square',
     location: 'Seattle',
     width: 206,
-    height: 206
+    height: 206,
   },
   {
     thumbnail: '//placehold.it/240x240',
@@ -113,7 +112,7 @@ const items = [
     shape: 'square',
     location: 'Chicago',
     width: 240,
-    height: 240
+    height: 240,
   },
   {
     thumbnail: '//placehold.it/158x158',
@@ -125,8 +124,8 @@ const items = [
     shape: 'circle',
     location: 'New York',
     width: 158,
-    height: 158
-  }
+    height: 158,
+  },
 ];
 
 const onRenderCell = (item: any) => <div>{item.name}</div>;
@@ -141,6 +140,6 @@ storiesOf('List', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => <List items={items} onRenderCell={onRenderCell} />, { rtl: true });

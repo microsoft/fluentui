@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Attachment } from '@fluentui/react';
+import { Attachment } from '@fluentui/react-northstar';
+import { MoreIcon, TableIcon } from '@fluentui/react-icons-northstar';
 
 class AttachmentActionableExampleShorthand extends React.Component {
   handleClick = message => e => {
@@ -11,10 +12,10 @@ class AttachmentActionableExampleShorthand extends React.Component {
     return (
       <Attachment
         actionable
-        icon="table"
+        icon={<TableIcon />}
         header="Document.docx"
         description="800 Kb"
-        action={{ icon: 'more', onClick: this.handleClick('More Action'), title: 'More Action' }}
+        action={{ icon: <MoreIcon />, onClick: this.handleClick('More Action'), title: 'More Action' }}
         progress={33}
         onClick={this.handleClick('Attachment')}
       />

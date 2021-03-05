@@ -1,0 +1,74 @@
+<fluent-design-system-provider use-defaults>
+  <div
+    style="
+          direction: ltr;
+          display: grid;
+          grid-auto-flow: column;
+          grid-template-columns: min-content;
+          grid-gap: 12px;
+      "
+  >
+    <script>
+      let darkTheme = false;
+    </script>
+    <fluent-switch
+      onclick="document.dir = document.dir === 'rtl' ? 'ltr' : 'rtl'; document.getElementsByTagName('fluent-design-system-provider')[0].setAttribute('direction', document.dir);"
+    >
+      <span style="padding-inline-end: 8px;">Direction</span>
+      <span slot="unchecked-message">ltr</span>
+      <span slot="checked-message">rtl</span>
+    </fluent-switch>
+
+    <fluent-switch
+      onclick="document.darkTheme = !document.darkTheme; document.getElementsByTagName('fluent-design-system-provider')[0].setAttribute('background-color', darkTheme ? '#333333' : '#F7F7F7');"
+    >
+      <span style="padding-inline-end: 8px;"> Theme</span>
+      <span slot="checked-message">Dark</span>
+      <span slot="unchecked-message">Light</span>
+    </fluent-switch>
+  </div>
+  <h1>Switch</h1>
+  <h4>Default</h4>
+  <div style="display: flex; flex-direction: column;">
+    <fluent-switch></fluent-switch>
+    <fluent-switch>
+      Dark Mode
+    </fluent-switch>
+    <fluent-switch checked>
+      New Feature
+      <span slot="checked-message">On</span>
+      <span slot="unchecked-message">Off</span>
+    </fluent-switch>
+    <fluent-switch>
+      Theme
+      <span slot="checked-message">Dark</span>
+      <span slot="unchecked-message">Light</span>
+    </fluent-switch>
+  </div>
+
+  <h4>Checked</h4>
+  <fluent-switch checked></fluent-switch>
+
+  <!-- Required -->
+  <h4>Required</h4>
+  <fluent-switch required></fluent-switch>
+
+  <!-- Disabled -->
+  <h4>Disabled</h4>
+  <div style="display: flex; flex-direction: column;">
+    <fluent-switch disabled></fluent-switch>
+    <fluent-switch disabled>label</fluent-switch>
+    <fluent-switch disabled checked>checked</fluent-switch>
+    <fluent-switch disabled checked>
+      checked
+      <span slot="checked-message">On</span>
+      <span slot="unchecked-message">Off</span>
+    </fluent-switch>
+  </div>
+
+  <h4>Inline</h4>
+  <fluent-switch style="margin-inline-end: 12px;">Light Speed</fluent-switch>
+  <fluent-switch style="margin-inline-end: 12px;">Ridiculous Speed</fluent-switch>
+  <fluent-switch style="margin-inline-end: 12px;">Ludicrous Speed</fluent-switch>
+  <fluent-switch checked>Plaid Speed</fluent-switch>
+</fluent-design-system-provider>

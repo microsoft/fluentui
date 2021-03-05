@@ -1,0 +1,10 @@
+import * as React from 'react';
+import { Label } from '@fluentui/react/lib/Label';
+
+export const LabelBasicExample = () => {
+  return (
+    <div>
+      <Label>I'm a Label</Label>
+    </div>
+  );
+};

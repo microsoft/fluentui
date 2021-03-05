@@ -185,7 +185,7 @@ export interface IRawFontStyle {
    * See CSS 3 font-size-adjust property
    * https://www.w3.org/TR/css-fonts-3/#propdef-font-size-adjust
    */
-  fontSizeAdjust?: ICSSRule | 'none' | number;
+  fontSizeAdjust?: ICSSRule | 'none' | number | string;
 
   /**
    * Allows you to expand or condense the widths for a normal, condensed, or expanded
@@ -203,7 +203,8 @@ export interface IRawFontStyle {
     | 'semi-expanded'
     | 'expanded'
     | 'extra-expanded'
-    | 'ultra-expanded';
+    | 'ultra-expanded'
+    | string;
 
   /**
    * The font-style property allows normal, italic, or oblique faces to be selected.
@@ -212,7 +213,7 @@ export interface IRawFontStyle {
    * sloping the glyphs of the regular face.
    * See CSS 3 font-style property https://www.w3.org/TR/css-fonts-3/#propdef-font-style
    */
-  fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique';
+  fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique' | string;
 
   /**
    * This value specifies whether the user agent is allowed to synthesize bold or
@@ -236,7 +237,7 @@ export interface IRawFontStyle {
    * Specifies the weight or boldness of the font.
    * See CSS 3 'font-weight' property https://www.w3.org/TR/css-fonts-3/#propdef-font-weight
    */
-  fontWeight?: IFontWeight;
+  fontWeight?: IFontWeight | string;
 }
 
 /**
@@ -285,22 +286,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * (Ms specific) scrollbar behavior adjust rule.
    */
-  MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar';
+  MsOverflowStyle?: 'auto' | 'none' | 'scrollbar' | '-ms-autohiding-scrollbar' | string;
 
   /**
    * (Moz specific) font smoothing directive.
    */
-  MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+  MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased' | string;
 
   /**
    * (Webkit specific) font smoothing directive.
    */
-  WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+  WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased' | string;
 
   /**
    * (Webkit specific) momentum scrolling on iOS devices
    */
-  WebkitOverflowScrolling?: 'auto' | 'touch';
+  WebkitOverflowScrolling?: 'auto' | 'touch' | string;
 
   /**
    * (Webkit specific) color of the highlight that appears overa  link while it's being tapped
@@ -308,16 +309,30 @@ export interface IRawStyleBase extends IRawFontStyle {
   WebkitTapHighlightColor?: string;
 
   /**
+   * (Webkit specific) controls the text inflation algorithm used on some smartphones and tablets.
+   * Other browsers will ignore this property.
+   */
+  WebkitTextSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule | string;
+
+  /**
    * Aligns a flex container's lines within the flex container when there is extra space
    * in the cross-axis, similar to how justify-content aligns individual items within the main-axis.
    */
-  alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
+  alignContent?:
+    | ICSSRule
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'stretch'
+    | string;
 
   /**
    * Sets the default alignment in the cross axis for all of the flex container's items,
    * including anonymous flex items, similarly to how justify-content aligns items along the main axis.
    */
-  alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+  alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | string;
 
   /**
    * Aligns the box (as the alignment subject) within its containing block (as the alignment container)
@@ -326,7 +341,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS align-self property
    * https://www.w3.org/TR/css-align-3/#propdef-align-self
    */
-  alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
+  alignSelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowAndSelfPositionRule
+    | string;
 
   /**
    * This property allows precise alignment of elements, such as graphics, that do not
@@ -355,7 +377,8 @@ export interface IRawStyleBase extends IRawFontStyle {
   animation?: ICSSRule | string;
 
   /**
-   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
+   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution
+   * some time after it is applied.
    */
   animationDelay?: ICSSRule | string;
 
@@ -374,7 +397,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * The animation-fill-mode CSS property specifies how a CSS animation should apply
    * styles to its target before and after its execution.
    */
-  animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both';
+  animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both' | string;
 
   /**
    * Specifies how many times an animation cycle should play.
@@ -434,7 +457,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * or scrolls along with its containing block.
    * See CSS 3 background-attachment property https://drafts.csswg.org/css-backgrounds-3/#the-background-attachment
    */
-  backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local';
+  backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local' | string;
 
   /**
    * This property describes how the element's background images should blend with each
@@ -454,7 +477,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    *
    * \* The `text` value is experimental and should not be used in production code.
    */
-  backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
+  backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text' | string;
 
   /**
    * Sets the background color of an element.
@@ -728,7 +751,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * The CSS box-sizing property is used to alter the default CSS box model used to
    * calculate width and height of the elements.
    */
-  boxSizing?: ICSSRule | 'border-box' | 'content-box';
+  boxSizing?: ICSSRule | 'border-box' | 'content-box' | string;
 
   /**
    * The CSS break-after property allows you to force a break on multi-column layouts.
@@ -772,7 +795,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * Describes the number of columns of the element.
    * See CSS 3 column-count property https://www.w3.org/TR/css3-multicol/#cc
    */
-  columnCount?: ICSSRule | number | 'auto';
+  columnCount?: ICSSRule | number | 'auto' | string;
 
   /**
    * Specifies how to fill columns (balanced or sequential).
@@ -872,7 +895,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * W3: https://www.w3.org/TR/css-display-3/#the-display-properties
    * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/display
    */
-  display?: ICSSRule | ICSSDisplayRule;
+  display?: ICSSRule | ICSSDisplayRule | string;
 
   /**
    * The ‘fill’ property paints the interior of the given graphical element. The area to
@@ -924,7 +947,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * The flex-direction CSS property describes how flex items are placed in the flex
    * container, by setting the direction of the flex container's main axis.
    */
-  flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse';
+  flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse' | string;
 
   /**
    * The flex-flow CSS property defines the flex container's main and cross axis. It is
@@ -950,7 +973,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * the direction in which lines are stacked.
    * See CSS flex-wrap property https://drafts.csswg.org/css-flexbox-1/#flex-wrap-property
    */
-  flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse';
+  flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse' | string;
 
   /**
    * Elements which have the style float are floated horizontally. These elements can
@@ -966,6 +989,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * selected elements to form a dynamic chain of layout regions.
    */
   flowFrom?: ICSSRule | string;
+
+  /**
+   * The property which allows authors to opt particular elements out of forced colors mode,
+   * restoring full control over the colors to CSS. Currently it's only supported in Edge Chromium.
+   */
+  forcedColorAdjust?: 'auto' | 'none' | string;
 
   /**
    * Lays out one or more grid items bound by 4 grid lines. Shorthand for setting
@@ -1125,7 +1154,16 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  justifyContent?:
+    | ICSSRule
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch'
+    | string;
 
   /**
    * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
@@ -1148,10 +1186,11 @@ export interface IRawStyleBase extends IRawFontStyle {
     | 'safe right'
     // prefixed with <overflow-position> value 'unsafe'
     | 'unsafe left'
-    | 'unsafe right';
+    | 'unsafe right'
+    | string;
 
   /**
-   * Sets the left position of an element relative to the nearest anscestor that is set
+   * Sets the left position of an element relative to the nearest ancestor that is set
    * to position absolute, relative, or fixed.
    */
   left?: ICSSRule | ICSSPixelUnitRule;
@@ -1327,14 +1366,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * The mix-blend-mode CSS property describes how an element's content should blend
    * with the content of the element's direct parent and the element's background.
    */
-  mixBlendMode?: ICSSRule | IMixBlendModes;
+  mixBlendMode?: ICSSRule | IMixBlendModes | string;
 
   /**
    * The ‘object-fit’ property specifies how the contents of a replaced element should
    * be fitted to the box established by its used height and width.
    * See CSS 3 object-fit property https://www.w3.org/TR/css3-images/#the-object-fit
    */
-  objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
+  objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none' | string;
 
   /**
    * Specifies the transparency of an element.
@@ -1347,14 +1386,14 @@ export interface IRawStyleBase extends IRawFontStyle {
    * Elements are laid out in the ascending order of the order value.
    * See CSS order property https://drafts.csswg.org/css-flexbox-1/#order-property
    */
-  order?: ICSSRule | number;
+  order?: ICSSRule | number | string;
 
   /**
    * In paged media, this property defines the minimum number of lines in
    * a block container that must be left at the bottom of the page.
    * See CSS 3 orphans, widows properties https://drafts.csswg.org/css-break-3/#widows-orphans
    */
-  orphans?: ICSSRule | number;
+  orphans?: ICSSRule | number | string;
 
   /**
    * The CSS outline property is a shorthand property for setting one or more of the
@@ -1400,19 +1439,19 @@ export interface IRawStyleBase extends IRawFontStyle {
    * overflow-wrap will only create a break if an entire word cannot be placed on its
    * own line without overflowing.
    */
-  overflowWrap?: ICSSRule | 'normal' | 'break-word';
+  overflowWrap?: ICSSRule | 'normal' | 'break-word' | string;
 
   /**
    * Controls how extra content exceeding the x-axis of the bounding box of an element
    * is rendered.
    */
-  overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+  overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible' | string;
 
   /**
    * Controls how extra content exceeding the y-axis of the bounding box of an element
    * is rendered.
    */
-  overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+  overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible' | string;
 
   /**
    * The padding optional CSS property sets the required padding space on one to four
@@ -1593,7 +1632,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * The resize CSS sets whether an element is resizable, and if so, in which direction(s).
    */
 
-  resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+  resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline' | string;
 
   /**
    * The rest-after property determines how long a speech media agent should pause after
@@ -1672,13 +1711,13 @@ export interface IRawStyleBase extends IRawFontStyle {
    * SVG: The stroke-linecap attribute defines the shape to be used at the end of open subpaths when they are stroked.
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#LineCaps
    */
-  strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
+  strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square' | string;
 
   /**
    * SVG: Specifies the opacity of the outline on the current object.
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#StrokeOpacityProperty
    */
-  strokeOpacity?: ICSSRule | number;
+  strokeOpacity?: ICSSRule | number | string;
 
   /**
    * SVG: Specifies the width of the outline on the current object.
@@ -1826,6 +1865,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   textShadow?: ICSSRule | string;
 
   /**
+   * The text-size-adjust CSS property controls the text inflation algorithm used
+   * on some smartphones and tablets. Other browsers will ignore this property.
+   */
+  textSizeAdjust?: 'none' | 'auto' | ICSSPercentageRule | ICSSRule;
+
+  /**
    * This property transforms text for styling purposes. (It has no effect on the
    * underlying content.)
    */
@@ -1928,14 +1973,14 @@ export interface IRawStyleBase extends IRawFontStyle {
   userFocus?: ICSSRule | string;
 
   /**
-   * For inputing user content
+   * For inputting user content
    */
   userInput?: ICSSRule | string;
 
   /**
    * Defines the text selection behavior.
    */
-  userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain';
+  userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain' | string;
 
   /**
    * The vertical-align property controls how inline elements or text are vertically
@@ -2021,7 +2066,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS 3 orphans, widows properties
    * https://drafts.csswg.org/css-break-3/#widows-orphans
    */
-  widows?: ICSSRule | number;
+  widows?: ICSSRule | number | string;
 
   /**
    * Specifies the width of the content area of an element. The content area of the element
@@ -2073,7 +2118,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * When elements overlap, z-order determines which one covers the other.
    * See CSS 2 z-index property https://www.w3.org/TR/CSS2/visuren.html#z-index
    */
-  zIndex?: ICSSRule | 'auto' | number;
+  zIndex?: ICSSRule | 'auto' | number | string;
 
   /**
    * Sets the initial zoom factor of a document defined by `@viewport`.

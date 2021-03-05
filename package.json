@@ -1,114 +1,212 @@
 {
-  "name": "office-ui-fabric-react-repo",
-  "version": "7.0.0",
-  "description": "Reusable React components for building experiences for Office 365.",
+  "name": "fluent-ui-react-repo",
+  "version": "1.0.0",
+  "description": "Reusable React components for building experiences for Microsoft 365.",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "scripts": {
-    "a11ytest": "cd apps && cd a11y-tests && npm run test",
-    "build": "lerna run build --stream",
+    "a11ytest": "cd apps && cd a11y-tests && yarn test",
+    "build": "lage build --verbose",
     "build:fluentui:docs": "gulp build:docs",
-    "build:prod": "lerna run build --stream -- --production",
-    "buildci": "yarn build && yarn test && yarn lint && yarn bundle",
-    "buildci:prod": "yarn build:prod && yarn test && yarn lint && yarn bundle:prod",
-    "builddemo": "node ./scripts/monorepo/buildTo.js fabric-website-resources",
-    "buildto": "node ./scripts/monorepo/buildTo.js",
-    "bundle": "lerna run bundle --stream",
-    "bundle:prod": "lerna run bundle --stream -- --production",
-    "bundlesize": "cd scripts && npm run bundlesize",
-    "bundlesizecollect": "cd scripts && just-scripts bundle-size-collect",
-    "checkchange": "beachball check  --scope \"!packages/fluentui/*\" --changehint \"Run 'yarn change' to generate a change file\"",
-    "clean": "lerna run clean --parallel",
-    "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
-    "code-style": "lerna run code-style --stream",
-    "create-component": "node scripts/create-component.js",
-    "create-package": "node scripts/create-package.js",
-    "create-page": "node scripts/create-page.js",
+    "build:min": "yarn build --to @fluentui/react --to @fluentui/react-northstar --min",
+    "buildci": "lage build test lint --verbose",
+    "builddemo": "yarn build --to public-docsite-resources",
+    "buildto": "lage build --verbose --to",
+    "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
+    "bump:beachball": "beachball bump --scope \"!packages/fluentui/*\"",
+    "bundle": "lage bundle --verbose",
+    "bundlesize": "cd scripts && yarn bundlesize",
+    "bundlesizecollect": "node ./scripts/bundle-size-collect",
     "change": "beachball change --scope \"!packages/fluentui/*\"",
-    "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
-    "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
-    "lint": "lerna run lint --parallel",
-    "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
+    "checkchange": "beachball check  --scope \"!packages/fluentui/*\" --changehint \"Run 'yarn change' to generate a change file\"",
+    "clean": "lage clean --verbose",
+    "code-style": "lage code-style --verbose",
+    "codepen": "cd packages/react && node ../../scripts/local-codepen.js",
+    "create-component": "plop --plopfile ./scripts/create-component/create-component.ts --dest . --require ./scripts/ts-node-register",
+    "create-package": "plop --plopfile ./scripts/create-package/plopfile.ts --dest . --require ./scripts/ts-node-register",
+    "format": "node scripts/format.js",
+    "generate-version-files": "yarn workspace @fluentui/scripts just generate-version-files",
+    "graph": "node ./scripts/dependency-graph-generator/index.js",
+    "lint": "yarn prelint && lage lint --verbose",
+    "lint:log": "FORCE_COLOR=0 yarn lint > lint.log 2>&1",
+    "lint:log:lerna": "FORCE_COLOR=0 lerna run lint --stream --no-bail > lint.log 2>&1",
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
-    "preinstall": "node ./scripts/use-yarn-please.js",
-    "prelint": "yarn satisfied && yarn syncpack list-mismatches --prod --dev",
     "postinstall": "node ./scripts/postinstall.js",
-    "prettier": "node scripts/prettier.js",
-    "rebuild": "node ./scripts/invalidate-just-cache.js && npx lerna build --stream",
-    "release:fluentui:minor": "yarn workspace @uifabric/build just fluentui:publish:minor",
-    "release:fluentui:patch": "yarn workspace @uifabric/build just fluentui:publish:patch",
-    "satisfied": "satisfied --skip-invalid",
+    "preinstall": "node ./scripts/use-yarn-please.js",
+    "prelint": "yarn satisfied && yarn syncpack:list && node ./scripts/lint-files/index.js",
+    "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
+    "rebuild": "node ./scripts/invalidate-just-cache.js && yarn build --reset-cache",
+    "release:fluentui:canary": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-canary",
+    "release:fluentui:minor": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-minor",
+    "release:fluentui:pack-nightly": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish pack-nightly",
+    "release:fluentui:patch": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish publish-patch",
+    "release:fluentui:post-validation": "node -r ./scripts/ts-node-register ./scripts/fluentui-publish post-publish",
+    "rename-package": "node -r ./scripts/ts-node-register ./scripts/rename-package.ts",
+    "run:published": "node ./scripts/monorepo/runPublished.js",
+    "runto:lerna": "node ./scripts/monorepo/runTo.js",
+    "satisfied": "satisfied --skip-invalid --ignore \"sass\"",
     "scrub": "node ./scripts/scrub.js",
-    "start:legacy": "yarn workspace @uifabric/fabric-website-resources start",
     "start": "node scripts/start.js",
-    "start-exp": "yarn workspace @uifabric/experiments start",
+    "start:legacy": "yarn workspace @fluentui/public-docsite-resources start",
+    "start:northstar": "yarn workspace @fluentui/docs start",
+    "start-exp": "yarn workspace @fluentui/react-experiments start",
     "stats:build": "gulp stats",
     "stats:save": "gulp stats:save",
-    "test": "lerna run test --stream",
+    "sync:beachball": "beachball sync --scope \"!packages/fluentui/*\"",
+    "syncpack:fix": "syncpack fix-mismatches",
+    "syncpack:list": "syncpack list-mismatches",
+    "test": "lage test --verbose",
     "test:fluentui:circulars": "gulp test:circulars:run",
-    "test:fluentui:e2e": "gulp test:e2e",
-    "test:fluentui:visual": "gulp screener",
-    "test:fluentui:projects": "gulp test:projects",
-    "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
-    "update-snapshots": "lerna run update-snapshots --stream",
-    "update-a11y": "cd apps/a11y-tests && npm run update-snapshots",
-    "vrtest": "cd apps && cd vr-tests && npm run screener"
+    "test:fluentui:e2e": "yarn workspace @fluentui/e2e test",
+    "test:fluentui:projects": "yarn workspace @fluentui/projects-test test",
+    "update-api": "echo API files are now updated when running yarn build",
+    "update-snapshots": "lage update-snapshots --verbose",
+    "update-a11y": "cd apps/a11y-tests && yarn update-snapshots",
+    "vrtest": "cd apps && cd vr-tests && yarn screener"
   },
   "devDependencies": {
-    "beachball": "^1.20.2",
-    "lerna": "^3.15.0",
-    "lint-staged": "^7.0.5",
+    "@types/jest": "24.9.1",
+    "@types/jest-axe": "3.2.2",
+    "@types/prettier": "1.19.1",
+    "@types/webpack-dev-middleware": "4.1.0",
+    "@storybook/addon-a11y": "6.0.28",
+    "@storybook/addons": "6.0.28",
+    "@storybook/addon-actions": "6.0.28",
+    "@storybook/addon-info": "6.0.0-alpha.2",
+    "@storybook/addon-knobs": "6.0.28",
+    "@storybook/core": "6.0.28",
+    "@storybook/react": "6.0.28",
+    "@storybook/channels": "6.0.28",
+    "beachball": "^1.50.1",
     "cross-env": "^5.1.4",
     "danger": "^6.0.5",
     "gulp": "^4.0.2",
-    "sass-loader": "^6.0.6",
+    "jest": "24.9.0",
+    "jest-axe": "3.3.0",
+    "jest-cli": "24.9.0",
+    "jest-environment-jsdom": "24.9.0",
+    "jest-watch-typeahead": "0.4.2",
+    "prettier": "1.19.1",
+    "lage": "0.27.0",
+    "lerna": "^3.21.0",
+    "lint-staged": "^10.2.9",
     "satisfied": "^1.1.1",
-    "syncpack": "^4.5.4",
-    "tsconfig-paths": "^3.7.0"
+    "syncpack": "^5.6.10",
+    "html-webpack-plugin": "5.1.0",
+    "sass-loader": "10.1.1",
+    "css-loader": "5.0.1",
+    "file-loader": "6.2.0",
+    "raw-loader": "4.0.2",
+    "style-loader": "2.0.0",
+    "imports-loader": "1.2.0",
+    "storybook-addon-performance": "0.14.0",
+    "postcss": "8.2.4",
+    "postcss-loader": "4.1.0",
+    "postcss-modules": "2.0.0",
+    "ts-loader": "8.0.14",
+    "ts-jest": "24.0.1",
+    "typescript": "3.7.2",
+    "webpack-dev-server": "4.0.0-beta.0",
+    "webpack-cli": "4.3.1",
+    "webpack": "5.21.2"
   },
   "license": "MIT",
-  "lint-staged": {
-    "linters": {
-      "*.{ts,tsx}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/tslint",
-        "git add"
-      ],
-      "*.{js,jsx,json,scss,css,html,htm,md,yml}": [
-        "node ./scripts/lint-staged/prettier",
-        "node ./scripts/lint-staged/auto-convert-change-files",
-        "git add"
-      ]
-    },
-    "ignore": [
-      "common/scripts/*.js",
-      "packages/tslint-rules/tslint.json",
-      "**/CHANGELOG.*",
-      "**/*.api.md",
-      "**/_*.scss"
-    ]
-  },
   "workspaces": {
     "packages": [
       "apps/*",
       "packages/*",
       "scripts",
       "packages/fluentui/*"
-    ]
-  },
-  "beachball": {
-    "disallowedChangeTypes": [
-      "major"
+    ],
+    "nohoist": [
+      "packages/web-components/webpack",
+      "packages/web-components/@storybook/**",
+      "packages/web-components/typescript",
+      "packages/web-components/typescript/**",
+      "packages/web-components/ts-loader",
+      "packages/web-components/ts-loader/**",
+      "packages/web-components/ts-node",
+      "packages/web-components/ts-node/**"
     ]
   },
   "resolutions": {
-    "webpack": "^4.35.0",
-    "autoprefixer": "7.2.6",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "eslint": "^7.1.0",
+    "//": "pretty-format contains typing only supported by TS 3.8+ remove when support in this repo is available",
+    "@testing-library/dom": "7.22.3",
     "copy-to-clipboard": "3.2.0"
+  },
+  "syncpack": {
+    "prod": true,
+    "dev": true,
+    "peer": false,
+    "source": [
+      "package.json",
+      "apps/*/package.json",
+      "packages/!(web-components)/package.json",
+      "packages/fluentui/*/package.json",
+      "scripts/package.json"
+    ],
+    "versionGroups": [
+      {
+        "packages": [
+          "test-bundles"
+        ],
+        "dependencies": [
+          "webpack"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/web-components"
+        ],
+        "dependencies": [
+          "mocha",
+          "ts-loader",
+          "ts-node",
+          "tslib",
+          "typescript",
+          "webpack"
+        ]
+      },
+      {
+        "packages": [
+          "@fluentui/accessibility",
+          "@fluentui/code-sandbox",
+          "@fluentui/docs-components",
+          "@fluentui/docs",
+          "@fluentui/e2e",
+          "@fluentui/perf",
+          "@fluentui/perf-test",
+          "@fluentui/react-component-event-listener",
+          "@fluentui/react-component-nesting-registry",
+          "@fluentui/react-component-ref",
+          "@fluentui/react-icons-northstar",
+          "@fluentui/react-northstar-emotion-renderer",
+          "@fluentui/react-northstar-fela-renderer",
+          "@fluentui/react-northstar-styles-renderer",
+          "@fluentui/react-proptypes",
+          "@fluentui/react-telemetry",
+          "@fluentui/react-bindings",
+          "@fluentui/react-builder",
+          "@fluentui/react-northstar",
+          "@fluentui/react-northstar-prototypes",
+          "@fluentui/state",
+          "@fluentui/styles"
+        ],
+        "dependencies": [
+          "@fluentui/dom-utilities",
+          "@fluentui/react",
+          "@fluentui/react-compose",
+          "stylis"
+        ]
+      }
+    ]
   }
 }

@@ -1,4 +1,4 @@
-import { ISuggestionsStyleProps, ISuggestionsStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsStyleProps, ISuggestionsStyles } from '@fluentui/react/lib/Pickers';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const SuggestionsStyles = (props: ISuggestionsStyleProps): Partial<ISuggestionsStyles> => {
@@ -10,13 +10,13 @@ export const SuggestionsStyles = (props: ISuggestionsStyleProps): Partial<ISugge
   const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     root: {
-      border: 'none'
+      border: 'none',
     },
     suggestionsContainer: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     title: {
-      color: extendedSemanticColors.labelText
-    }
+      color: extendedSemanticColors.labelText,
+    },
   };
 };

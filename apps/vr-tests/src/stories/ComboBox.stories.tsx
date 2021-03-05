@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTallFixedWidth } from '../utilities';
-import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from 'office-ui-fabric-react';
+import { FabricDecoratorTallFixedWidth } from '../utilities/index';
+import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from '@fluentui/react';
 
 const testOptions = [
   { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
@@ -11,12 +10,12 @@ const testOptions = [
   { key: 'B', text: 'Times New Roman' },
   { key: 'divider_2', text: '-', itemType: SelectableOptionMenuItemType.Divider },
   { key: 'Header1', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
-  { key: 'D', text: 'Option d' }
+  { key: 'D', text: 'Option d' },
 ];
 
 const fontMapping: { [key: string]: string } = {
   'Arial Black': '"Arial Black", "Arial Black_MSFontService", sans-serif',
-  'Time New Roman': '"Times New Roman", "Times New Roman_MSFontService", serif'
+  'Time New Roman': '"Times New Roman", "Times New Roman_MSFontService", serif',
 };
 
 const onRenderFontOption = (item: ISelectableOption) => {
@@ -65,8 +64,8 @@ storiesOf('ComboBox', module)
       />
     ),
     {
-      rtl: true
-    }
+      rtl: true,
+    },
   )
   .addStory('Styled', () => (
     <ComboBox
@@ -84,13 +83,21 @@ storiesOf('ComboBox', module)
       label="Disabled"
       options={testOptions}
       disabled
-    />
+    />,
   )
+  .addStory('Error', () => (
+    <ComboBox
+      defaultSelectedKey="A"
+      label="Error"
+      errorMessage="Oh no! This ComboBox has an error!"
+      options={testOptions}
+    />
+  ))
   .addStory('Placeholder', () =>
     // prettier-ignore
     <ComboBox
       placeholder="Select an option"
       label="With a placeholder"
       options={testOptions}
-    />
+    />,
   );

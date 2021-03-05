@@ -1,6 +1,283 @@
 {
-  "name": "@uifabric/monaco-editor",
+  "name": "@fluentui/monaco-editor",
   "entries": [
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release major version",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.0-beta.3",
+      "version": "1.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.0-beta.2",
+      "version": "1.0.0-beta.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.0-beta.2",
+      "version": "1.0.0-beta.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.0-beta.2",
+      "version": "1.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Fix some remaining references to @uifabric",
+            "author": "elcraig@microsoft.com",
+            "commit": "8f6247d89836bc8577ff618a7593fc455b016e42",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Nov 2020 12:32:47 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove code for TS < 3.7 compat",
+            "author": "elcraig@microsoft.com",
+            "commit": "2858fcaf942682621467b87aaef5d1be47f8ce47",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/monaco-editor_v1.0.0-beta.0",
+      "version": "1.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename @uifabric/monaco-editor to @fluentui/monaco-editor",
+            "author": "elcraig@microsoft.com",
+            "commit": "820f5a34d43c6a573ffa8a9191f03b73e5d29666",
+            "package": "@fluentui/monaco-editor"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/monaco-editor"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update text references to fabric-website",
+            "author": "elcraig@microsoft.com",
+            "commit": "ad2846b8a75c36bf074c7f3630c0b43db4510f79",
+            "package": "@fluentui/monaco-editor"
+          },
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/monaco-editor"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/monaco-editor"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.18",
+      "version": "0.5.18",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove same-package path aliases",
+            "author": "elcraig@microsoft.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.16",
+      "version": "0.5.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix violation of newly added lint rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.11",
+      "version": "0.5.11",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.10",
+      "version": "0.5.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 May 2020 01:06:55 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.8",
+      "version": "0.5.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Addressing commonjs imports.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f4a995d4166c7812976b13c6638fb1ae32a8667d",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 16 Apr 2020 04:01:45 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.7",
+      "version": "0.5.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Readme: Fabric=>Fluent wording updates",
+            "author": "elcraig@microsoft.com",
+            "commit": "9e3c7c7d4b92e132820cdbcd61a667829c712ecb",
+            "package": "@uifabric/monaco-editor"
+          }
+        ],
+        "none": [
+          {
+            "comment": "sync package version",
+            "author": "xgao@microsoft.com",
+            "commit": "6f39958352207acb3029458503db0969a4359806",
+            "package": "@uifabric/monaco-editor"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.5",
+      "version": "0.5.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update Fabric to Fluent strings",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "44ae97a55b2d7bfdab1044f3f5e5b579fc42cac0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.4",
+      "version": "0.5.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/monaco-editor_v0.5.3",
+      "version": "0.5.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
     {
       "date": "Fri, 31 Jan 2020 19:00:10 GMT",
       "tag": "@uifabric/monaco-editor_v0.5.3",

@@ -1,0 +1,268 @@
+{
+  "name": "@fluentui/common-styles",
+  "entries": [
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/common-styles_v1.0.2",
+      "version": "1.0.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/common-styles_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release major version",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.19",
+            "author": "elcraig@microsoft.com",
+            "commit": "6fb020ab622a0fd18c47173d1a38eb046c7ebeaa",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.18",
+      "version": "1.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.18",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.17",
+      "version": "1.0.0-beta.17",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.17",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.16",
+      "version": "1.0.0-beta.16",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.16",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.16",
+      "version": "1.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.16",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.15",
+      "version": "1.0.0-beta.15",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.15",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.14",
+      "version": "1.0.0-beta.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.14",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.14",
+      "version": "1.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/style-utilities to v8.0.0-beta.14",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.13",
+      "version": "1.0.0-beta.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/common-styles_v1.0.0-beta.0",
+      "version": "1.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Rename office-ui-fabric-react package and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/common-styles"
+          },
+          {
+            "comment": "Publish src folder to allow using imports that work without building locally",
+            "author": "elcraig@microsoft.com",
+            "commit": "d2fedc85c81bb0e2d86495ec1e928604bf2260f4",
+            "package": "@fluentui/common-styles"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/common-styles"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update text references to fabric-website",
+            "author": "elcraig@microsoft.com",
+            "commit": "ad2846b8a75c36bf074c7f3630c0b43db4510f79",
+            "package": "@fluentui/common-styles"
+          },
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/common-styles"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/common-styles"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/common-styles_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update semantic slots",
+            "author": "phkuo@microsoft.com",
+            "commit": "f6370cd9eea029fce3088349ab63c7966107bbe4",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/common-styles_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Update focus-border to include $radius parameter and add focus-box-shadow and after-box-shadow.",
+            "author": "behowell@microsoft.com",
+            "commit": "639c468815c9e389eb3002fa54acc159b3fae048",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jul 2020 12:43:51 GMT",
+      "tag": "@fluentui/common-styles_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create @fluentui/common-styles package, for style definitions shared between components",
+            "author": "behowell@microsoft.com",
+            "commit": "940524c755d5cf60ca3f80b705e30fca61b2d5ba",
+            "package": "@fluentui/common-styles"
+          }
+        ]
+      }
+    }
+  ]
+}

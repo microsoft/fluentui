@@ -1,8 +1,9 @@
-import { Attachment } from '@fluentui/react';
+import { attachmentClassName, attachmentActionClassName } from '@fluentui/react-northstar';
+import { ScreenerSteps } from '@fluentui/scripts/screener';
 
 const selectors = {
-  root: `.${Attachment.className}`,
-  action: `.${Attachment.slotClassNames.action}`
+  root: `.${attachmentClassName}`,
+  action: `.${attachmentActionClassName}`,
 };
 
 const getScreenerSteps = (): ScreenerSteps => [
@@ -14,7 +15,7 @@ const getScreenerSteps = (): ScreenerSteps => [
     builder
       .keys('body', keys.tab)
       .keys('body', keys.tab)
-      .snapshot('Focuses action')
+      .snapshot('Focuses action'),
 ];
 
 export default getScreenerSteps;

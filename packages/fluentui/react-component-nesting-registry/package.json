@@ -1,22 +1,24 @@
 {
   "name": "@fluentui/react-component-nesting-registry",
   "description": "Registers a DOM nodes within a context.",
-  "version": "0.46.0",
+  "version": "0.52.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
-  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@babel/runtime": "^7.7.6",
+    "@babel/runtime": "^7.10.4",
     "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@types/react": "16.8.11",
-    "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0"
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@types/react": "16.9.42",
+    "@fluentui/scripts": "^1.0.0",
+    "lerna-alias": "^3.0.3-0",
+    "react": "16.8.6"
   },
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-component-nesting-registry",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-component-nesting-registry",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
@@ -28,14 +30,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "repository": "microsoft/fluentui.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

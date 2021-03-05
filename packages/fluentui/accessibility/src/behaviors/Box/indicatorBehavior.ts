@@ -8,15 +8,13 @@ import { Accessibility } from '../../types';
  * Adds role='img'.
  * Adds attribute 'aria-hidden=true' to 'root' slot.
  */
-const indicatorBehavior: Accessibility<IndicatorBehaviorProps> = () => ({
+export const indicatorBehavior: Accessibility<IndicatorBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'img',
-      'aria-hidden': 'true'
-    }
-  }
+      'aria-hidden': 'true',
+    },
+  },
 });
 
 export type IndicatorBehaviorProps = never;
-
-export default indicatorBehavior;

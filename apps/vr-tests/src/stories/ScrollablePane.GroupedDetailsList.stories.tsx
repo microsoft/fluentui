@@ -1,8 +1,7 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -13,18 +12,18 @@ import {
   IDetailsFooterProps,
   DetailsRow,
   IDetailsRowCheckProps,
-  DetailsRowCheck
-} from 'office-ui-fabric-react/lib/DetailsList';
-import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
-import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
-import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
-import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { createGroups } from '@uifabric/example-data';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+  DetailsRowCheck,
+} from '@fluentui/react/lib/DetailsList';
+import { IRenderFunction } from '@fluentui/react/lib/Utilities';
+import { TooltipHost, ITooltipHostProps } from '@fluentui/react/lib/Tooltip';
+import { ScrollablePane, ScrollbarVisibility } from '@fluentui/react/lib/ScrollablePane';
+import { Sticky, StickyPositionType } from '@fluentui/react/lib/Sticky';
+import { MarqueeSelection } from '@fluentui/react/lib/MarqueeSelection';
+import { SelectionMode } from '@fluentui/react/lib/Selection';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { getTheme } from '@fluentui/react/lib/Styling';
+import { createGroups } from '@fluentui/example-data';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const columnMidWidth = 200;
 const columnMaxWidth = 300;
@@ -36,7 +35,7 @@ const _columns: IColumn[] = [
     minWidth: columnMidWidth,
     maxWidth: columnMaxWidth,
     isResizable: true,
-    ariaLabel: 'Operations for name'
+    ariaLabel: 'Operations for name',
   },
   {
     key: 'column2',
@@ -45,7 +44,7 @@ const _columns: IColumn[] = [
     minWidth: columnMidWidth,
     maxWidth: columnMaxWidth,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column3',
@@ -54,7 +53,7 @@ const _columns: IColumn[] = [
     minWidth: columnMidWidth,
     maxWidth: columnMaxWidth,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column4',
@@ -63,7 +62,7 @@ const _columns: IColumn[] = [
     minWidth: columnMidWidth,
     maxWidth: columnMaxWidth,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column5',
@@ -72,7 +71,7 @@ const _columns: IColumn[] = [
     minWidth: columnMidWidth,
     maxWidth: columnMaxWidth,
     isResizable: true,
-    ariaLabel: 'Operations for value'
+    ariaLabel: 'Operations for value',
   },
   {
     key: 'column6',
@@ -81,8 +80,8 @@ const _columns: IColumn[] = [
     minWidth: columnMidWidth,
     maxWidth: columnMaxWidth,
     isResizable: true,
-    ariaLabel: 'Operations for value'
-  }
+    ariaLabel: 'Operations for value',
+  },
 ];
 
 interface IItem {
@@ -101,14 +100,14 @@ const classNames = mergeStyleSets({
     height: '80vh',
     position: 'relative',
     maxHeight: 'inherit',
-    width: '800px'
+    width: '800px',
   },
   footerDetailsRow: {
-    display: 'inline-block'
+    display: 'inline-block',
   },
   detailsListContent: {
-    padding: '0 64px'
-  }
+    padding: '0 64px',
+  },
 });
 
 class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
@@ -129,7 +128,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
         test3: rowData + '3',
         test4: rowData + '4',
         test5: rowData + '5',
-        test6: rowData + '6'
+        test6: rowData + '6',
       });
     }
 
@@ -175,7 +174,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 
 function onRenderDetailsHeader(
   props: IDetailsHeaderProps,
-  defaultRender?: IRenderFunction<IDetailsHeaderProps>
+  defaultRender?: IRenderFunction<IDetailsHeaderProps>,
 ): JSX.Element {
   return (
     <Sticky
@@ -187,7 +186,7 @@ function onRenderDetailsHeader(
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
           <TooltipHost {...tooltipHostProps} />
-        )
+        ),
       })}
     </Sticky>
   );
@@ -210,7 +209,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
             test3: 'Total 3',
             test4: 'Total 4',
             test5: 'Total 5',
-            test6: 'Total 6'
+            test6: 'Total 6',
           }}
           itemIndex={-1}
           selection={props.selection}
@@ -226,7 +225,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
 
 function _onRenderCheckForFooterRow(
   props: IDetailsRowCheckProps,
-  DefaultRender: React.ComponentType<IDetailsRowCheckProps> = DetailsRowCheck
+  DefaultRender: React.ComponentType<IDetailsRowCheckProps> = DetailsRowCheck,
 ): JSX.Element {
   return <DefaultRender {...props} style={{ visibility: 'hidden' }} selected={true} />;
 }
@@ -253,12 +252,12 @@ storiesOf('ScrollablePane Grouped Details List', module)
         .executeScript(`${getElement}.scrollTop = 99999`)
         .snapshot(
           'Scrollbars visibility after scrolling down to the bottom with non-zero scrollLeft',
-          cropTo
+          cropTo,
         )
         .executeScript(`${getElement}.scrollTop = 0`)
         .snapshot(
           'Scrollbars visibility after scrolling up to the top with non-zero scrollLeft',
-          cropTo
+          cropTo,
         )
         .executeScript(`${getElement}.scrollLeft = 0`)
         .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[0].click()`)
@@ -268,12 +267,12 @@ storiesOf('ScrollablePane Grouped Details List', module)
         .executeScript(`${getElement}.scrollTop = 50`)
         .snapshot(
           'If groups are expanded, when header becomes sticky, horizontal scrollbar should be visible',
-          cropTo
+          cropTo,
         )
         .executeScript(`${getElement}.scrollLeft = 99999`)
         .snapshot(
           'If groups are expanded, on horizontal scroll, over scroll should not happen for content container',
-          cropTo
+          cropTo,
         )
         .end()}
     >

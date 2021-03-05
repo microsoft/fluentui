@@ -20,6 +20,11 @@ const Types = () => (
       description="A Chat message may contained badge positioned at the start or end of the message."
       examplePath="components/Chat/Types/ChatMessageExampleBadge"
     />
+    <ComponentExample
+      title="Edited and Translated"
+      description="A Chat message may contained Edited and/or Translated."
+      examplePath="components/Chat/Types/ChatExampleDetails"
+    />
   </ExampleSection>
 );
 

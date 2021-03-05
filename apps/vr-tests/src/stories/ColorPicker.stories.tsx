@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { ColorPicker, Fabric } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { ColorPicker, Fabric } from '@fluentui/react';
 
 storiesOf('ColorPicker', module)
   .addDecorator(FabricDecorator)
@@ -15,7 +14,7 @@ storiesOf('ColorPicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -24,21 +23,21 @@ storiesOf('ColorPicker', module)
         <ColorPicker
           color="#FFF"
           styles={{
-            input: { fontFamily: 'Segoe UI' }
+            input: { fontFamily: 'Segoe UI' },
           }}
         />
       </Fabric>
     ),
     {
-      rtl: true
-    }
+      rtl: true,
+    },
   )
   .addStory('Blue', () => (
     <Fabric>
       <ColorPicker
         color="#48B"
         styles={{
-          input: { fontFamily: 'Segoe UI' }
+          input: { fontFamily: 'Segoe UI' },
         }}
       />
     </Fabric>

@@ -1,0 +1,34 @@
+{
+  "name": "@fluentui/scheme-utilities",
+  "version": "8.0.2",
+  "description": "Fluent UI React subtheme generator.",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "typings": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "bundle": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "just": "just-scripts",
+    "clean": "just-scripts clean",
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "@fluentui/theme": "^2.0.2",
+    "@fluentui/set-version": "^8.0.1",
+    "tslib": "^1.10.0"
+  }
+}

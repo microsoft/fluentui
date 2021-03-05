@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, RadioGroup } from '@fluentui/react';
+import { Divider, RadioGroup } from '@fluentui/react-northstar';
 
 class RadioGroupColorPickerExample extends React.Component {
   state = { selectedValue: '' };
@@ -18,10 +18,10 @@ class RadioGroupColorPickerExample extends React.Component {
             name: color,
             'aria-label': color,
             variables: {
-              indicatorBorderColorDefault: color,
+              indicatorColorDefault: color,
               indicatorBackgroundColorChecked: color,
-              indicatorBorderColorDefaultHover: color
-            }
+              indicatorBorderColorDefaultHover: color,
+            },
           }))}
           onCheckedValueChange={(e, props) => this.setState({ selectedValue: props.value })}
         />

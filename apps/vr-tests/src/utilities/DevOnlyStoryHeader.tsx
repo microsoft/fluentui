@@ -5,7 +5,7 @@ export const DevOnlyStoryHeader = ({ children }: { children: JSX.Element | strin
     style={{
       padding: '1em',
       backgroundColor: '#EFEFEF',
-      marginBottom: '1em'
+      marginBottom: '1em',
     }}
   >
     <span style={{ fontWeight: 'bold' }}>[Dev Only]</span> {children}

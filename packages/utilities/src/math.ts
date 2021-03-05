@@ -1,4 +1,4 @@
-import { IPoint } from './IPoint';
+import { Point } from './Point';
 import { ISize } from './ISize';
 
 /**
@@ -6,8 +6,15 @@ import { ISize } from './ISize';
  *
  * @public
  */
-export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number {
-  let distance = Math.sqrt(Math.pow(point1.x - point2.x, 2) + Math.pow(point1.y - point2.y, 2));
+/* eslint-disable deprecation/deprecation */
+export function getDistanceBetweenPoints(point1: Point, point2: Point): number {
+  const left1 = point1.left || point1.x || 0;
+  const top1 = point1.top || point1.y || 0;
+  const left2 = point2.left || point2.x || 0;
+  const top2 = point2.top || point2.y || 0;
+  /* eslint-enable deprecation/deprecation */
+
+  let distance = Math.sqrt(Math.pow(left1 - left2, 2) + Math.pow(top1 - top2, 2));
 
   return distance;
 }
@@ -70,7 +77,7 @@ export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize {
 
   return {
     width: contentSize.width * finalScale,
-    height: contentSize.height * finalScale
+    height: contentSize.height * finalScale,
   };
 }
 

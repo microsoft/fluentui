@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Text } from '@fluentui/react';
+import { Flex, Text } from '@fluentui/react-northstar';
 
 const TextExampleRtl = () => (
   <Flex column gap="gap.small">

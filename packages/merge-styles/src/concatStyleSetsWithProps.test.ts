@@ -10,7 +10,7 @@ describe('concatStyleSetsWithProps', () => {
     const result = concatStyleSetsWithProps<IFooProps, { root: IStyle }>(
       { foo: 'bar' },
       (props: IFooProps) => ({ root: { background: props.foo } }),
-      (props: IFooProps) => ({ root: { color: props.foo } })
+      (props: IFooProps) => ({ root: { color: props.foo } }),
     );
 
     expect(result).toEqual({ root: [{ background: 'bar' }, { color: 'bar' }] });
@@ -20,7 +20,7 @@ describe('concatStyleSetsWithProps', () => {
     const result = concatStyleSetsWithProps<IFooProps, { root: IStyle }>(
       { foo: 'bar' },
       { root: { background: 'red' } },
-      (props: IFooProps) => ({ root: { color: props.foo } })
+      (props: IFooProps) => ({ root: { color: props.foo } }),
     );
 
     expect(result).toEqual({ root: [{ background: 'red' }, { color: 'bar' }] });

@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { ExampleSource } from '../../../types';
 import { componentAPIs as APIdefinitions, ComponentAPIs } from './componentAPIs';
-import getExampleModule from './getExampeModule';
+import getExampleModule from './getExampleModule';
 
 export type ComponentSourceManagerRenderProps = ComponentSourceManagerState & {
   defaultExport: React.ElementType;
@@ -44,7 +44,10 @@ export type ComponentSourceManagerState = {
   wasCodeChanged: boolean;
 };
 
-export default class ComponentSourceManager extends React.Component<ComponentSourceManagerProps, ComponentSourceManagerState> {
+export default class ComponentSourceManager extends React.Component<
+  ComponentSourceManagerProps,
+  ComponentSourceManagerState
+> {
   constructor(props: ComponentSourceManagerProps) {
     super(props);
 
@@ -56,7 +59,7 @@ export default class ComponentSourceManager extends React.Component<ComponentSou
         defaultExport: module && module.defaultExport,
         namedExports: module && module.namedExports,
         sourceCode: module ? module.source : '',
-        supported: !!module
+        supported: !!module,
       };
     }) as ComponentSourceManagerAPIs;
 
@@ -67,16 +70,20 @@ export default class ComponentSourceManager extends React.Component<ComponentSou
 
       componentAPIs,
       canCodeBeFormatted: false,
-      wasCodeChanged: false
+      wasCodeChanged: false,
     };
   }
 
   static getDerivedStateFromProps(
     props: ComponentSourceManagerProps,
-    state: ComponentSourceManagerState
+    state: ComponentSourceManagerState,
   ): Partial<ComponentSourceManagerState> {
     const { examplePath } = props;
     const { componentAPIs, currentCodeAPI, currentCodeLanguage, currentCode: storedCode, formattedCode } = state;
+
+    if (!componentAPIs[currentCodeAPI]) {
+      throw new Error(`Cannot find sources for ${examplePath}`);
+    }
 
     const sourceCodes = componentAPIs[currentCodeAPI].sourceCode;
     const originalCode = sourceCodes[currentCodeLanguage];
@@ -93,14 +100,14 @@ export default class ComponentSourceManager extends React.Component<ComponentSou
       originalCode,
 
       canCodeBeFormatted,
-      wasCodeChanged
+      wasCodeChanged,
     };
   }
 
   handleCodeAPIChange = (newAPI: keyof ComponentAPIs): void => {
     this.setState({
       currentCodeAPI: newAPI,
-      currentCode: undefined
+      currentCode: undefined,
     });
   };
 
@@ -126,7 +133,7 @@ export default class ComponentSourceManager extends React.Component<ComponentSou
   handleLanguageChange = (newLanguage: ComponentSourceManagerLanguage): void => {
     this.setState({
       currentCodeLanguage: newLanguage,
-      currentCode: undefined
+      currentCode: undefined,
     });
   };
 
@@ -139,7 +146,7 @@ export default class ComponentSourceManager extends React.Component<ComponentSou
       handleCodeChange: this.handleCodeChange,
       handleCodeFormat: this.handleCodeFormat,
       handleCodeReset: this.handleCodeReset,
-      handleCodeLanguageChange: this.handleLanguageChange
+      handleCodeLanguageChange: this.handleLanguageChange,
     });
   }
 }

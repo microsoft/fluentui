@@ -1,5 +1,6 @@
-import { Alert, Button, Flex } from '@fluentui/react'
-import ExampleSnippet from '../../../components/ExampleSnippet/ExampleSnippet'
+import { Alert, Button, Flex } from '@fluentui/react-northstar';
+import { SkypeLogoIcon } from '@fluentui/react-icons-northstar';
+import ExampleSnippet from '../../../components/ExampleSnippet/ExampleSnippet';
 
 ## Recipes
 
@@ -9,8 +10,7 @@ There are several advices that might help when using `Flex` component.
 
 <Alert warning>
   <p>
-    Use <code>Flex.Item</code> component to wrap child elements only in case if their flex styles
-    should be overriden.
+    Use <code>Flex.Item</code> component to wrap child elements only in case if their flex styles should be overriden.
   </p>
 </Alert>
 
@@ -40,7 +40,7 @@ One of the most representative examples - a navigation menu, it will have a menu
 
 <ExampleSnippet>
   <Flex space="between">
-    <Button content="Logo" icon="skype-logo" />
+    <Button content="Logo" icon={<SkypeLogoIcon />} />
     <Flex gap="gap.small">
       <Button content="Page 1" />
       <Button content="Page 2" />
@@ -53,7 +53,7 @@ This approach introduces unnecessary nesting level - it is possible to achieve t
 
 <ExampleSnippet>
   <Flex gap="gap.small">
-    <Button content="Logo" icon="skype-logo" />
+    <Button content="Logo" icon={<SkypeLogoIcon />} />
     <Flex.Item push>
       <Button content="Page 1" />
     </Flex.Item>

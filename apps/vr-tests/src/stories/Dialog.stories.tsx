@@ -1,15 +1,9 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities';
-import {
-  Dialog,
-  DialogType,
-  DialogFooter,
-  PrimaryButton,
-  DefaultButton
-} from 'office-ui-fabric-react';
+import { FabricDecoratorTall } from '../utilities/index';
+import { Dialog, DialogType, DialogFooter } from '@fluentui/react';
+import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 
 const footer = (
   <DialogFooter>
@@ -21,7 +15,7 @@ const footer = (
 const text = {
   title: 'All emails together',
   subText:
-    'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+    'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.',
 };
 
 storiesOf('Dialog', module)
@@ -34,7 +28,7 @@ storiesOf('Dialog', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -47,7 +41,7 @@ storiesOf('Dialog', module)
         {footer}
       </Dialog>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Wide Dialog', () => (
     <Dialog

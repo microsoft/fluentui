@@ -1,0 +1,27 @@
+@import '~@fluentui/common-styles/src/common';
+
+.signal {
+  display: inline-block;
+  margin: 0 4px;
+  position: relative;
+
+  transition: color 0.2s linear;
+
+  .dark &,
+  .dark.selected {
+    // color must be white irrespective of theme
+    color: #fff;
+  }
+
+  &:first-child {
+    @include margin-left(0);
+  }
+
+  &:last-child {
+    @include margin-right(0);
+  }
+}
+
+i.signal {
+  top: 0.2em;
+}

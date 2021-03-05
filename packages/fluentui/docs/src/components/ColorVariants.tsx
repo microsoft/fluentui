@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { createComponent, ComponentSlotStylesInput, ProviderConsumer } from '@fluentui/react';
+import { createComponent, ComponentSlotStylesInput, ProviderConsumer } from '@fluentui/react-northstar';
 
 import ColorBox from './ColorBox';
 
@@ -14,8 +14,8 @@ export const colorVariantsStyles: ComponentSlotStylesInput<ColorVariantsProps> =
   root: {
     border: '1px solid transparent',
     borderRadius: '.25rem',
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 };
 
 const ColorVariants = createComponent<ColorVariantsProps>({
@@ -31,16 +31,19 @@ const ColorVariants = createComponent<ColorVariantsProps>({
             copyToClipboardIcon={false}
           />
 
-          {!headerOnly && _.map(colors[name], (value, variable) => <ColorBox key={variable} name={variable} size="small" value={value} />)}
+          {!headerOnly &&
+            _.map(colors[name], (value, variable) => (
+              <ColorBox key={variable} name={variable} size="small" value={value} />
+            ))}
         </div>
       )}
     />
-  )
+  ),
 });
 
 ColorVariants.defaultProps = {
   headerOnly: false,
-  size: 'big'
+  size: 'big',
 };
 
 export default ColorVariants;

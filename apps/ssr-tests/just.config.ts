@@ -1,6 +1,5 @@
-const { preset, just } = require('@uifabric/build');
-const { task, series, logger } = just;
-const { spawn } = require('just-scripts-utils');
+import { preset, task, logger } from '@fluentui/scripts';
+import { spawn } from 'just-scripts-utils';
 
 preset();
 

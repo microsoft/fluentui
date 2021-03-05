@@ -1,20 +1,11 @@
 import * as React from 'react';
 
-import {
-  Spinner,
-  Toggle,
-  Checkbox,
-  TextField,
-  PrimaryButton,
-  ProgressIndicator,
-  ChoiceGroup,
-  DefaultButton,
-  PersonaCoin
-} from 'office-ui-fabric-react';
+import { Spinner, Toggle, Checkbox, ProgressIndicator, ChoiceGroup, PersonaCoin } from '@fluentui/react';
+import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 
 const ToggleStrings = {
   onText: 'On',
-  offText: 'Off'
+  offText: 'Off',
 };
 
 const TodoApp = () => {
@@ -30,9 +21,10 @@ const TodoApp = () => {
       <Checkbox label="I am a Checkbox" disabled />
       <Checkbox label="I am a Checkbox" checked />
       <ChoiceGroup
+        defaultSelectedKey="2"
         options={[
           { key: '1', text: 'ChoiceGroup option 1' },
-          { key: '2', text: 'ChoiceGroup option 2', checked: true }
+          { key: '2', text: 'ChoiceGroup option 2' },
         ]}
       />
       <ProgressIndicator percentComplete={0.5} />

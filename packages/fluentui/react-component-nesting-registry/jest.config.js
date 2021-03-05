@@ -1,5 +1,5 @@
-module.exports = {
-  ...require('@uifabric/build/jest'),
+const commonConfig = require('@fluentui/scripts/jest');
+
+module.exports = commonConfig({
   name: 'react-component-nesting-registry',
-  moduleNameMapper: require('lerna-alias').jest()
-};
+});

@@ -12,13 +12,13 @@ describe('mergeSiteVariables', () => {
 
   afterEach(() => {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: () => originalDebugEnabled
+      get: () => originalDebugEnabled,
     });
   });
 
   function mockIsDebugEnabled(enabled: boolean) {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: jest.fn(() => enabled)
+      get: jest.fn(() => enabled),
     });
   }
 
@@ -63,7 +63,7 @@ describe('mergeSiteVariables', () => {
       const merged = mergeSiteVariables({ color: 'black' }, { color: undefined });
 
       expect(merged).toMatchObject({
-        color: undefined
+        color: undefined,
       });
     });
 
@@ -71,7 +71,7 @@ describe('mergeSiteVariables', () => {
       const merged = mergeSiteVariables({ color: 'black' }, { color: null });
 
       expect(merged).toMatchObject({
-        color: null
+        color: null,
       });
     });
 
@@ -82,7 +82,7 @@ describe('mergeSiteVariables', () => {
       expect(mergeSiteVariables(target, source)).toMatchObject({
         overridden: true,
         keep: true,
-        add: true
+        add: true,
       });
     });
 
@@ -91,7 +91,7 @@ describe('mergeSiteVariables', () => {
       const source = { nested: { other: 'value', deep: { dTwo: 'two' } } };
 
       expect(mergeSiteVariables(target, source)).toMatchObject({
-        nested: { replaced: false, other: 'value', deep: { dOne: 1, dTwo: 'two' } }
+        nested: { replaced: false, other: 'value', deep: { dOne: 1, dTwo: 'two' } },
       });
     });
   }
@@ -142,7 +142,7 @@ describe('mergeSiteVariables', () => {
         const merged = mergeSiteVariables__DEV(target, source);
 
         expect(merged).toMatchObject({
-          _debug: [{ resolved: { one: 1, a: 'tA' } }, { resolved: { two: 2, a: 'sA' } }]
+          _debug: [{ resolved: { one: 1, a: 'tA' } }, { resolved: { two: 2, a: 'sA' } }],
         });
       });
 
@@ -152,7 +152,7 @@ describe('mergeSiteVariables', () => {
 
         const merged = mergeSiteVariables__DEV(target, source);
         expect(merged).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source' }],
         });
       });
     });

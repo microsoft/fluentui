@@ -1,5 +1,7 @@
-import { Provider, themes, pxToRem, createTheme } from '@fluentui/react';
+import { Provider, createTheme, teamsDarkTheme } from '@fluentui/react-northstar';
+// This is loaded from a CDN, so it's not in dependencies.
 // @ts-ignore
+// eslint-disable-next-line import/no-extraneous-dependencies
 import AnchorJS from 'anchor-js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -11,7 +13,7 @@ import { mergeThemes } from '@fluentui/styles';
 
 const anchors = new AnchorJS({
   class: 'anchor-link',
-  icon: '#'
+  icon: '#',
 });
 
 class DocsLayout extends React.Component<any, any> {
@@ -24,7 +26,7 @@ class DocsLayout extends React.Component<any, any> {
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     render: PropTypes.func,
-    sidebar: PropTypes.bool
+    sidebar: PropTypes.bool,
   };
 
   static handledProps = ['component', 'history', 'location', 'match', 'render', 'sidebar'];
@@ -67,14 +69,14 @@ class DocsLayout extends React.Component<any, any> {
 
   renderChildren() {
     const { children, render } = this.props;
-    const sidebarWidth = '270';
+    const sidebarWidth = 270;
 
     const treeSectionStyle = {
       fontWeight: 700,
       margin: '0 0 .5rem',
       padding: '0 1.2857rem',
       background: '#201f1f',
-      color: 'white'
+      color: 'white',
     };
 
     const treeItemStyle = {
@@ -85,48 +87,34 @@ class DocsLayout extends React.Component<any, any> {
       color: 'white',
 
       '& .active': {
-        fontWeight: 'bold'
-      }
+        fontWeight: 'bold',
+      },
     };
 
     return (
       <>
         <Provider
           theme={mergeThemes(
-            themes.teamsDark,
+            teamsDarkTheme,
             createTheme(
               {
-                // adjust Teams' theme to Semantic UI's font size scheme
-                componentVariables: {
-                  HierarchicalTreeItem: {
-                    padding: `${pxToRem(7)} ${pxToRem(16)}`,
-                    textDecoration: 'none',
-                    fontSize: pxToRem(12),
-                    fontWeight: 400,
-                    color: '#ffffff80',
-
-                    '& .active': {
-                      fontWeight: 'bold'
-                    }
-                  }
-                },
                 componentStyles: {
-                  HierarchicalTreeItem: {
+                  TreeItem: {
                     root: ({ variables: v, props: p }) => ({
                       ...(!p.items && treeItemStyle),
-                      ...(p.items && treeSectionStyle)
-                    })
+                      ...(p.items && treeSectionStyle),
+                    }),
                   },
-                  HierarchicalTreeTitle: {
+                  TreeTitle: {
                     root: {
                       display: 'block',
-                      width: '100%'
-                    }
-                  }
-                }
+                      width: '100%',
+                    },
+                  },
+                },
               },
-              'DocsLayout'
-            )
+              'DocsLayout',
+            ),
           )}
         >
           <Sidebar width={sidebarWidth} treeItemStyle={treeItemStyle} />

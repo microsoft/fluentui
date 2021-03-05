@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { ProgressIndicator } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { ProgressIndicator } from '@fluentui/react';
 
 storiesOf('ProgressIndicator', module)
   .addDecorator(FabricDecorator)
@@ -15,7 +14,7 @@ storiesOf('ProgressIndicator', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('0%', () => (
     <ProgressIndicator
@@ -33,7 +32,7 @@ storiesOf('ProgressIndicator', module)
         percentComplete={0.5}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('100%', () => (
     <ProgressIndicator

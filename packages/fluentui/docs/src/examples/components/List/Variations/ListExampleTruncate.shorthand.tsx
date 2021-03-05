@@ -1,54 +1,57 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { List, Image, ButtonGroup } from '@fluentui/react';
+import { List, Image, ButtonGroup } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { AcceptIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 const actions = (
   <ButtonGroup
     buttons={[
       {
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         iconOnly: true,
         text: true,
-        title: 'Check'
+        title: 'Check',
+        key: 'check',
       },
       {
-        icon: 'icon-close',
+        icon: <CloseIcon />,
         iconOnly: true,
         text: true,
-        title: 'Close'
-      }
+        title: 'Close',
+        key: 'close',
+      },
     ]}
   />
 );
 
 const items = [
   {
-    key: 'irving',
-    media: <Image src="public/images/avatar/small/matt.jpg" avatar />,
-    header: 'Irving Kuhic - Super long title here',
+    key: 'robert',
+    media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" avatar />,
+    header: 'Robert Tolbert - Software Engineer III',
     headerMedia: '7:26:56 AM',
     content: 'Program the sensor to the SAS alarm through the haptic SQL card!',
     contentMedia: '!!',
-    endMedia: actions
+    endMedia: actions,
   },
   {
-    key: 'skyler',
-    media: <Image src="public/images/avatar/small/steve.jpg" avatar />,
-    header: 'Skyler Parks - Super long title here',
+    key: 'celeste',
+    media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CelesteBurton.jpg" avatar />,
+    header: 'Celeste Burton - Senior Program Manager',
     headerMedia: '11:30:17 PM',
     content: 'Use the online FTP application to input the multi-byte application!',
     contentMedia: '!!',
-    endMedia: actions
+    endMedia: actions,
   },
   {
-    key: 'dante',
-    media: <Image src="public/images/avatar/small/nom.jpg" avatar />,
-    header: 'Dante Schneider - Super long title here',
+    key: 'cecil',
+    media: <Image src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CecilFolk.jpg" avatar />,
+    header: 'Cecil Folk - Senior Program Manager III',
     headerMedia: '5:22:40 PM',
     content: 'The GB pixel is down, navigate the virtual interface!',
     contentMedia: '!!',
-    endMedia: actions
-  }
+    endMedia: actions,
+  },
 ];
 
 const ListExample = () => {

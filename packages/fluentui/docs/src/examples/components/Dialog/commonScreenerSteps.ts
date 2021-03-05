@@ -1,6 +1,7 @@
-import { Button } from '@fluentui/react';
+import { buttonClassName } from '@fluentui/react-northstar';
+import { ScreenerSteps } from '@fluentui/scripts/screener';
 
-const button = `.${Button.className}`;
+const button = `.${buttonClassName}`;
 
 const getScreenerSteps = (): ScreenerSteps => [builder => builder.click(button).snapshot('Clicks the trigger button')];
 

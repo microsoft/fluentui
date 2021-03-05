@@ -1,14 +1,19 @@
-import { ComponentVariablesPrepared, emptyTheme, ThemeComponentVariablesPrepared, ThemePrepared } from '@fluentui/styles';
+import {
+  ComponentVariablesPrepared,
+  emptyTheme,
+  ThemeComponentVariablesPrepared,
+  ThemePrepared,
+} from '@fluentui/styles';
 import * as _ from 'lodash';
 
-import resolveVariables from '../../src/styles/resolveVariables';
+import { resolveVariables } from '../../src/styles/resolveVariables';
 
 const siteVariables = {
   ...emptyTheme.siteVariables,
-  brand: 'blue'
+  brand: 'blue',
 };
 const testVariables: ComponentVariablesPrepared = (siteVariables = emptyTheme.siteVariables) => ({
-  backgroundColor: siteVariables.brand
+  backgroundColor: siteVariables.brand,
 });
 
 const createTheme: (componentVariables?: ThemeComponentVariablesPrepared) => ThemePrepared = componentVariables => ({
@@ -16,8 +21,8 @@ const createTheme: (componentVariables?: ThemeComponentVariablesPrepared) => The
   siteVariables,
   componentVariables: {
     Test: testVariables,
-    ...componentVariables
-  }
+    ...componentVariables,
+  },
 });
 
 describe('resolveVariables', () => {
@@ -28,7 +33,7 @@ describe('resolveVariables', () => {
 
   test('merges theme with input variables', () => {
     const propsVariables = () => ({
-      color: 'red'
+      color: 'red',
     });
     const variables = resolveVariables(['Test'], createTheme(), propsVariables, false);
     expect(variables).toMatchObject({ backgroundColor: 'blue', color: 'red' });
@@ -36,7 +41,7 @@ describe('resolveVariables', () => {
 
   test("allows input variables to override theme's", () => {
     const propsVariables = {
-      backgroundColor: 'green'
+      backgroundColor: 'green',
     };
     const variables = resolveVariables(['Test'], createTheme(), propsVariables, false);
     expect(variables).toMatchObject({ backgroundColor: 'green' });
@@ -84,7 +89,7 @@ describe('resolveVariables', () => {
       expect(resolveVariables(['Foo', 'Bar'], theme, {}, true)).toMatchObject({
         backgroundColor: 'green',
         borderColor: 'black',
-        color: 'red'
+        color: 'red',
       });
 
       // Runs to check cache

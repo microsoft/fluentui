@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import NestingContext from './NestingContext';
+import { NestingContext } from './NestingContext';
 import { NestingContextValue, NestingProps, NodeRef } from './types';
 
 type NestingChildInnerProps = NestingContextValue & NestingProps;
@@ -23,10 +23,8 @@ class NestingChildInner<T extends Node> extends React.Component<NestingChildInne
   }
 }
 
-const NestingChild: React.FunctionComponent<NestingProps> = ({ children }) => (
+export const NestingChild: React.FunctionComponent<NestingProps> = ({ children }) => (
   <NestingContext.Consumer>
     {(contextValue: NestingContextValue) => <NestingChildInner {...contextValue}>{children}</NestingChildInner>}
   </NestingContext.Consumer>
 );
-
-export default NestingChild;

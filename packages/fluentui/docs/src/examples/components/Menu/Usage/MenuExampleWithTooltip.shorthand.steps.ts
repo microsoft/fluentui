@@ -1,8 +1,9 @@
-import { Menu } from '@fluentui/react';
+import { menuClassName } from '@fluentui/react-northstar';
+import { ScreenerTestsConfig } from '@fluentui/scripts/screener';
 
 const selectors = {
-  menu: `.${Menu.className}`,
-  item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`
+  menu: `.${menuClassName}`,
+  item: (itemIndex: number) => `.${menuClassName} li:nth-child(${itemIndex}) a`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -14,8 +15,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Hovers 1st item (show tooltip)')
         .click(selectors.item(1))
         .keys(selectors.item(1), keys.rightArrow)
-        .snapshot('Navigates to next item (shows tooltip)')
-  ]
+        .snapshot('Navigates to next item (shows tooltip)'),
+  ],
 };
 
 export default config;

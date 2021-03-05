@@ -1,3 +1,3 @@
-const { preset, just } = require('@uifabric/build');
+import { preset } from '@fluentui/scripts';
 
 preset();

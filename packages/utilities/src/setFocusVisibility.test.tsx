@@ -8,7 +8,7 @@ describe('setFocusVisibility', () => {
   let wrapper: ReactWrapper;
   let classNames: string[] = [];
 
-  // tslint:disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mockWindow: { [key: string]: any } = {
     addEventListener: (name: string, callback: Function) => {
       mockWindow[name] = callback;
@@ -33,15 +33,15 @@ describe('setFocusVisibility', () => {
                 classNames.push(name);
               }
             }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
   const mockTarget = {
     ownerDocument: {
-      defaultView: mockWindow
-    }
+      defaultView: mockWindow,
+    },
   };
 
   beforeEach(() => {

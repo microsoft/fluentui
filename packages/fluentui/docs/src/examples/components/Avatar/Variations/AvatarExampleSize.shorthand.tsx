@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Avatar, Grid, SizeValue } from '@fluentui/react';
+import { Avatar, Grid, SizeValue } from '@fluentui/react-northstar';
+import { AcceptIcon, UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
 const statusProps = {
-  icon: 'icon-checkmark',
+  icon: <AcceptIcon />,
   color: 'green',
-  title: 'Available'
+  title: 'Available',
 };
 
 const AvatarExampleSizeShorthand = () => (
@@ -13,13 +14,26 @@ const AvatarExampleSizeShorthand = () => (
       <React.Fragment key={size}>
         <strong>{size}</strong>
         <div>
-          <Avatar size={size} image="public/images/avatar/small/matt.jpg" status={statusProps} />
+          <Avatar
+            size={size}
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+            status={statusProps}
+          />
           &emsp;
-          <Avatar size={size} name="John Doe" status={statusProps} />
+          <Avatar size={size} name="Cecil Folk" status={statusProps} />
           &emsp;
-          <Avatar size={size} image="public/images/avatar/small/matt.jpg" />
+          <Avatar
+            size={size}
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+          />
           &emsp;
-          <Avatar size={size} image="public/images/avatar/small/matt.jpg" square />
+          <Avatar size={size} icon={<UserFriendsIcon />} />
+          &emsp;
+          <Avatar
+            size={size}
+            image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+            square
+          />
         </div>
       </React.Fragment>
     ))}

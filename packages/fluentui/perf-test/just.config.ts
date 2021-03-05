@@ -1,6 +1,8 @@
 import path from 'path';
-import '@uifabric/build/tasks/preset';
-import { series, task, argv } from '@uifabric/build';
+import { preset, series, task, argv } from '@fluentui/scripts';
+import { getResolveLoaderDirs } from '@fluentui/scripts/webpack/webpack-resources';
+
+preset();
 
 // TODO: FUR integration issues
 // - FUR build fails when it comes across these new packages inside of packages/
@@ -13,7 +15,8 @@ function bundleStories() {
     const { digestStories } = require('@fluentui/digest');
     await digestStories({
       configDir: path.join(__dirname, '.digest'),
-      outputDir: path.join(__dirname, 'dist')
+      outputDir: path.join(__dirname, 'dist'),
+      resolveDirs: getResolveLoaderDirs(),
     });
   };
 }

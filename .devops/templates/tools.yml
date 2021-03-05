@@ -1,0 +1,13 @@
+# Install versions of Node and Yarn required by build pipelines.
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: '12.x'
+    displayName: 'Install Node.js'
+
+  - task: YarnInstaller@0
+    displayName: 'Use Yarn 1.22.x'
+    inputs:
+      versionSpec: 1.22.x
+      checkLatest: false
+      includePrerelease: false

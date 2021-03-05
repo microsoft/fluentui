@@ -1,58 +1,59 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
 import * as React from 'react';
-import { Button, Dropdown, Popup, Flex } from '@fluentui/react';
+import { Button, Dropdown, Popup, Flex } from '@fluentui/react-northstar';
+import { UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
 const inputItems = [
   {
-    header: 'Bruce Wayne',
-    image: 'public/images/avatar/small/matt.jpg',
-    content: 'Software Engineer'
+    header: 'Robert Tolbert',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg',
+    content: 'Software Engineer',
   },
   {
-    header: 'Natasha Romanoff',
-    image: 'public/images/avatar/small/jenny.jpg',
-    content: 'UX Designer 2'
+    header: 'Wanda Howard',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/WandaHoward.jpg',
+    content: 'UX Designer 2',
   },
   {
-    header: 'Steven Strange',
-    image: 'public/images/avatar/small/joe.jpg',
-    content: 'Principal Software Engineering Manager'
+    header: 'Tim Deboer',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/TimDeboer.jpg',
+    content: 'Principal Software Engineering Manager',
   },
   {
-    header: 'Alfred Pennyworth',
-    image: 'public/images/avatar/small/justen.jpg',
-    content: 'Technology Consultant'
+    header: 'Amanda Brady',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AmandaBrady.jpg',
+    content: 'Technology Consultant',
   },
   {
-    header: `Scarlett O'Hara`,
-    image: 'public/images/avatar/small/laura.jpg',
-    content: 'Software Engineer 2'
+    header: `Ashley McCarthy`,
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AshleyMcCarthy.jpg',
+    content: 'Software Engineer 2',
   },
   {
-    header: 'Imperator Furiosa',
-    image: 'public/images/avatar/small/veronika.jpg',
-    content: 'Boss'
+    header: 'Cameron Evans',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CameronEvans.jpg',
+    content: 'Boss',
   },
   {
-    header: 'Bruce Banner',
-    image: 'public/images/avatar/small/chris.jpg',
-    content: 'Senior Computer Scientist'
+    header: 'Carlos Slattery',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarlosSlattery.jpg',
+    content: 'Senior Computer Scientist',
   },
   {
-    header: 'Peter Parker',
-    image: 'public/images/avatar/small/daniel.jpg',
-    content: 'Partner Software Engineer'
+    header: 'Carole Poland',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg',
+    content: 'Partner Software Engineer',
   },
   {
-    header: 'Selina Kyle',
-    image: 'public/images/avatar/small/ade.jpg',
-    content: 'Graphic Designer'
-  }
+    header: 'Robin Counts',
+    image: 'https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobinCounts.jpg',
+    content: 'Graphic Designer',
+  },
 ];
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item} has been selected.`,
-  onRemove: item => `${item} has been removed.`
+  onRemove: item => `${item} has been removed.`,
 };
 
 const PopupCloseButtonExample = () => {
@@ -88,11 +89,11 @@ const PopupCloseButtonExample = () => {
       onOpenChange={(e, { open }) => setOpen(open)}
       content={{
         content: popupContent,
-        'aria-label': 'People picker'
+        'aria-label': 'People picker',
       }}
       trapFocus
     >
-      <Button icon="user-friends" content="People Picker" aria-label="Choose a person." />
+      <Button icon={<UserFriendsIcon />} content="People Picker" aria-label="Choose a person." />
     </Popup>
   );
 };

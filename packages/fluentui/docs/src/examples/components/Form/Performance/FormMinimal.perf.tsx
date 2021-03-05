@@ -1,4 +1,4 @@
-import { Form } from '@fluentui/react';
+import { Form } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const FormMinimalPerf = () => <Form />;

@@ -1,0 +1,704 @@
+{
+  "name": "@fluentui/react-image",
+  "entries": [
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.5",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.3",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "40e4e2ed855e0b2a4ac67a462f2b79919aef868b",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "make @fluentui/react-conformance public",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.1",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-image_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Breaks dependency on react-hooks for convergence",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "68bc4c7d68b5c01022658fcc485342670d56df39",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.8",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-image_v0.7.2",
+      "version": "0.7.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Allow React 17 in peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.14",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.7",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-image_v0.7.1",
+      "version": "0.7.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.13",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.7-0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-image_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(react-image): redo to match convergence rfc",
+            "author": "jakubkonka@microsoft.com",
+            "commit": "f4c06e3c80ac9cd218137bae66ae7d1a8f4f28ab",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-make-styles to v0.2.6",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.2-0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-image_v0.6.23",
+      "version": "0.6.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "cleanup ref usages, remove unused types",
+            "author": "olfedias@microsoft.com",
+            "commit": "52f6bb844c5dece1af576da1a34f9230c50432d6",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.24",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.2-0",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-image_v0.6.22",
+      "version": "0.6.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.23",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-image_v0.6.21",
+      "version": "0.6.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.12",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-image_v0.6.21",
+      "version": "0.6.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.12",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.22",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1-0",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-image_v0.6.21",
+      "version": "0.6.21",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.21",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-image_v0.6.20",
+      "version": "0.6.20",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme-provider to v1.0.0-beta.20",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-image_v0.6.20",
+      "version": "0.6.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-image_v0.6.20",
+      "version": "0.6.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use a compat version of ThemeProvider",
+            "author": "olfedias@microsoft.com",
+            "commit": "27074a29ffdf4d437dc4d6fcb347effe9fcb195f",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-image_v0.6.19",
+      "version": "0.6.19",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add prerelease in disallowed change type for version packages and fix current versioning.",
+            "author": "xgao@microsoft.com",
+            "commit": "9ec4369a9e7850d7ab37803f931d1a0cf30743a9",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Extract compose/next to react-utils",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f4917ffe3172175eaa332448032d27c64319b679",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-image_v0.6.19-15",
+      "version": "0.6.19-15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-image_v0.6.19-14",
+      "version": "0.6.19-14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 23:25:40 GMT",
+      "tag": "@fluentui/react-image_v0.6.18",
+      "version": "0.6.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Major bump react-compose package since it dependes on packages with new major.",
+            "author": "xgao@microsoft.com",
+            "commit": "302f8e93bc5bc9fd87d1c5a082713560f3bc4583",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-image_v0.6.17",
+      "version": "0.6.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "fix stories for `react-image`, use images from CDN",
+            "author": "olfedias@microsoft.com",
+            "commit": "ad0cdabbbeae3a0fc99363c8f1590d168be97539",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-image"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-image_v0.6.9",
+      "version": "0.6.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Moving examples to @fluentui/examples package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-image_v0.6.1",
+      "version": "0.6.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@fluentui/react-image_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating state to use makeProps (mergeProps with explicit deep cloning, rather than implicit.)",
+            "author": "dzearing@hotmail.com",
+            "commit": "1838dcc8b214345f6cc8f9c0904a2cc66cc39f71",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-image_v0.4.2",
+      "version": "0.4.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat(react-image): improve accessibility, align with design spec",
+            "author": "olfedias@microsoft.com",
+            "commit": "e15ddb80624e29f8da90c5be67d974d47e5cfb51",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-image_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Image: removing compose usage in favor of hooks and factories",
+            "author": "mnajdova@gmail.com",
+            "commit": "0780384fb2ea7bffcad8d51df0ca8aaa7e19be9c",
+            "package": "@fluentui/react-image"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fixing publish",
+            "author": "kchau@microsoft.com",
+            "commit": "88c5b45032954e263c03ec211b950e618f9d5996",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 22 Jul 2020 12:40:51 GMT",
+      "tag": "@fluentui/react-image_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "feat: add @fluentui/react-image",
+            "author": "olfedias@microsoft.com",
+            "commit": "9c9ef94404e37645e271d920eb3c715b6adc0f3e",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { gridRowBehavior } from '@fluentui/accessibility';
 describe('gridRowBehavior.ts', () => {
   test('use gridHeaderRowBehavior if grid row has header prop defined', () => {
     const props = {
-      header: true
+      header: true,
     };
     const expectedResult = gridRowBehavior(props);
     expect(expectedResult.childBehaviors.cell.name).toEqual('gridHeaderCellBehavior');

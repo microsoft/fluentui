@@ -1,12 +1,18 @@
-import shouldHandleOnKeys from '../../src/accessibility/shouldHandleOnKeys';
+import { shouldHandleOnKeys } from '../../src/accessibility/shouldHandleOnKeys';
 
-const getEventArg = (keyCode: number, altKey?: boolean, ctrlKey?: boolean, metaKey?: boolean, shiftKey?: boolean): any => {
+const getEventArg = (
+  keyCode: number,
+  altKey?: boolean,
+  ctrlKey?: boolean,
+  metaKey?: boolean,
+  shiftKey?: boolean,
+): any => {
   return {
     keyCode,
     altKey,
     ctrlKey,
     metaKey,
-    shiftKey
+    shiftKey,
   };
 };
 
@@ -18,10 +24,20 @@ describe('shouldHandleOnKeys', () => {
       { keyCode: 28, altKey: true },
       { keyCode: 32, shiftKey: true, metaKey: true },
       { keyCode: 39, ctrlKey: true },
-      { keyCode: 42, altKey: true, ctrlKey: true, shiftKey: true, metaKey: true }
+      { keyCode: 42, altKey: true, ctrlKey: true, shiftKey: true, metaKey: true },
     ];
-    const events = [...keyCombinations, { keyCode: 27, altKey: true }, { keyCode: 27, altKey: false }].map(keyCombination =>
-      getEventArg(keyCombination.keyCode, keyCombination.altKey, keyCombination.ctrlKey, keyCombination.metaKey, keyCombination.shiftKey)
+    const events = [
+      ...keyCombinations,
+      { keyCode: 27, altKey: true },
+      { keyCode: 27, altKey: false },
+    ].map(keyCombination =>
+      getEventArg(
+        keyCombination.keyCode,
+        keyCombination.altKey,
+        keyCombination.ctrlKey,
+        keyCombination.metaKey,
+        keyCombination.shiftKey,
+      ),
     );
 
     events.forEach(event => {
@@ -36,16 +52,22 @@ describe('shouldHandleOnKeys', () => {
       { keyCode: 32 },
       { keyCode: 32, altKey: true },
       { keyCode: 39, shiftKey: true, metaKey: true },
-      { keyCode: 41, shiftKey: false }
+      { keyCode: 41, shiftKey: false },
     ];
     // other keys mapping, that will be passed as keydown event
     const events = [
       { keyCode: 27, ctrlKey: false },
       { keyCode: 31, altKey: true },
       { keyCode: 39, shiftKey: false, metaKey: false },
-      { keyCode: 41, shiftKey: true }
+      { keyCode: 41, shiftKey: true },
     ].map(keyCombination =>
-      getEventArg(keyCombination.keyCode, keyCombination.altKey, keyCombination.ctrlKey, keyCombination.metaKey, keyCombination.shiftKey)
+      getEventArg(
+        keyCombination.keyCode,
+        keyCombination.altKey,
+        keyCombination.ctrlKey,
+        keyCombination.metaKey,
+        keyCombination.shiftKey,
+      ),
     );
 
     events.forEach(event => {

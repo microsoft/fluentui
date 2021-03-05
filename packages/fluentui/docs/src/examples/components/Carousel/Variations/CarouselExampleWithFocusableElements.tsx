@@ -1,25 +1,25 @@
 import * as React from 'react';
-import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react';
+import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-northstar';
 
 const imageAltTags = {
-  ade: 'Portrait of Ade',
-  elliot: 'Portrait of Elliot',
-  kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan'
+  allan: 'Portrait of Allan',
+  carole: 'Portrait of Carole',
+  elvia: 'Portrait of Elvia',
+  kat: 'Portrait of Kat',
 };
 
 const tabAriaLabel = {
-  ade: 'Ade',
-  elliot: 'Elliot',
-  kristy: 'Kristy',
-  nan: 'Nan'
+  allan: 'Allan',
+  carole: 'Carole',
+  elvia: 'Elvia',
+  kat: 'Kat',
 };
 
 const carouselTextContent = (
   <Text>
     <Header as="h3"> Card </Header>
-    text or any other text 1 , text or any other text 2, text or any other text 3 text or any other text 4, text or any other text 5, text
-    or any other text 6
+    text or any other text 1 , text or any other text 2, text or any other text 3 text or any other text 4, text or any
+    other text 5, text or any other text 6
   </Text>
 );
 
@@ -35,60 +35,75 @@ const carouselToolbarContent = (
         key: 'custom-button-1',
         kind: 'custom',
         content: <Button content="First" />,
-        fitted: 'horizontally'
+        fitted: 'horizontally',
       },
       {
         key: 'custom-button-2',
         kind: 'custom',
         content: <Button content="Second" />,
-        fitted: 'horizontally'
+        fitted: 'horizontally',
       },
       {
         key: 'custom-button-3',
         kind: 'custom',
         content: <Button content="Third" />,
-        fitted: 'horizontally'
-      }
+        fitted: 'horizontally',
+      },
     ]}
   />
 );
 
 const carouselItems = [
   {
-    key: 'ade',
-    id: 'ade',
+    key: 'allan',
+    id: 'allan',
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image styles={imageStyles} src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />
+          <Image
+            styles={imageStyles}
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/AllanMunger.jpg"
+            fluid
+            alt={imageAltTags.allan}
+          />
           {carouselTextContent}
         </Flex>
         <Button content="Open" styles={buttonStyles} />
       </div>
     ),
-    'aria-label': 'Ade card'
+    'aria-label': 'Allan card',
   },
   {
-    key: 'elliot',
-    id: 'elliot',
+    key: 'carole',
+    id: 'carole',
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image styles={imageStyles} src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />
+          <Image
+            styles={imageStyles}
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/CarolePoland.jpg"
+            fluid
+            alt={imageAltTags.carole}
+          />
           {carouselTextContent}
         </Flex>
         {carouselToolbarContent}
       </div>
     ),
-    'aria-label': 'Elliot card'
+    'aria-label': 'Carole card',
   },
   {
-    key: 'kristy',
-    id: 'kristy',
+    key: 'elvia',
+    id: 'elvia',
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image styles={imageStyles} src="public/images/avatar/large/kristy.png" fluid alt={imageAltTags.kristy} />
+          <Image
+            styles={imageStyles}
+            src="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg"
+            fluid
+            alt={imageAltTags.elvia}
+          />
           {carouselTextContent}
         </Flex>
         <Flex gap="gap.medium" styles={buttonStyles}>
@@ -97,8 +112,8 @@ const carouselItems = [
         </Flex>
       </div>
     ),
-    'aria-label': 'Kristy card'
-  }
+    'aria-label': 'Elvia card',
+  },
 ];
 
 const CarouselExample = () => (
@@ -109,8 +124,8 @@ const CarouselExample = () => (
       items: carouselItems.map((item, index) => ({
         key: item.id,
         'aria-label': tabAriaLabel[item.id],
-        'aria-controls': item.id
-      }))
+        'aria-controls': item.id,
+      })),
     }}
     items={carouselItems}
     getItemPositionText={(index: number, size: number) => `${index + 1} of ${size}`}

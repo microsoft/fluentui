@@ -1,28 +1,29 @@
 import * as _ from 'lodash';
 
 import { Accessibility } from '../../types';
-import treeTitleBehavior from './treeTitleBehavior';
+import { treeTitleBehavior, TreeTitleBehaviorProps } from './treeTitleBehavior';
 
 /**
  * @description
- * Adds role 'treeitem' if the title is a leaf node inside the tree.
+ * Adds role 'listitem' if the title is a leaf node inside the tree.
  */
-const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props => {
+export const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => {
   const behavior = treeTitleBehavior(props);
-  return _.merge(behavior, {
+
+  const definition = _.merge(behavior, {
     attributes: {
       root: {
         ...(!props.hasSubtree && {
-          role: 'listitem'
-        })
-      }
-    }
+          role: 'listitem',
+        }),
+      },
+    },
   });
-};
 
-export default treeTitleAsListItemTitleBehavior;
+  if (process.env.NODE_ENV !== 'production') {
+    if (!props.hasSubtree) definition.attributes.root['data-aa-class'] = 'TreeTitleList';
+    else definition.attributes.root['data-aa-class'] = behavior.attributes.root['data-aa-class'];
+  }
 
-type TreeTitleBehavior = {
-  /** Indicates whether `TreeTitle` has a subtree. */
-  hasSubtree?: boolean;
+  return definition;
 };

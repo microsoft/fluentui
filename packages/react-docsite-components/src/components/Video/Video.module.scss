@@ -1,0 +1,40 @@
+@import '../../styles/common';
+
+.video {
+  position: relative;
+
+  .playButton {
+    background-color: $ms-color-white;
+    border-radius: 50%;
+    border: none;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    bottom: 8px;
+    @include ms-left(8px);
+    width: 32px;
+    z-index: 120;
+    transition: opacity $ms-motion-duration-2 $ms-motion-timing-standard;
+
+    &:focus {
+      outline: none;
+    }
+
+    .icon {
+      position: relative;
+      @include ms-fontColor-gray110;
+      // color: $ms-color-gray110;
+      @include ms-fontSize-20;
+      // font-size: $ms-font-size-20;
+      // left: 1px;
+      @include ms-left(1px);
+      top: 1px;
+    }
+
+    &.isHidden {
+      opacity: 0.6;
+    }
+  }
+}

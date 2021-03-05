@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityAttributes } from '../../types';
-import menuItemBehavior from '../Menu/menuItemBehavior';
+import { menuItemBehavior } from '../Menu/menuItemBehavior';
 
 /**
  * @description
@@ -13,8 +13,8 @@ import menuItemBehavior from '../Menu/menuItemBehavior';
  * Adds attribute 'aria-label' based on the property 'aria-label' to 'root' slot.
  * Adds attribute 'aria-labelledby' based on the property 'aria-labelledby' to 'root' slot.
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
- * Adds attribute 'aria-expanded=true' based on the property 'menuOpen' if the component has 'menu' property to 'root' slot.
- * Adds attribute 'aria-haspopup=true' to 'root' slot if 'menu' property is set.
+ * Adds attribute 'aria-expanded=true' based on the property 'menuOpen' if the component has 'hasMenu' property to 'root' slot.
+ * Adds attribute 'aria-haspopup=true' to 'root' slot if 'hasMenu' property is set.
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper'.
@@ -22,11 +22,9 @@ import menuItemBehavior from '../Menu/menuItemBehavior';
  * Triggers 'closeMenu' action with 'ArrowLeft' on 'wrapper'.
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper'.
  */
-const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
+export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
   return menuItemBehavior({ ...props, vertical: true });
 };
-
-export default toolbarMenuItemBehavior;
 
 export type ToolbarMenuItemBehaviorProps = {
   /** Indicated if menu item has submenu. TODO: fix types for all behaviours */

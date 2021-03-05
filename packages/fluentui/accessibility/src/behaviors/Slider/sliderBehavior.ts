@@ -9,22 +9,20 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-valuenow' with value based on the property 'value'.
  * Adds attribute 'aria-valuetext' with value based on the callback function 'getA11yValueMessageOnChange'.
  */
-const sliderBehavior: Accessibility<SliderBehaviorProps> = props => ({
+export const sliderBehavior: Accessibility<SliderBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-disabled': props.disabled
+      'aria-disabled': props.disabled,
     },
     input: {
       'aria-orientation': props.vertical ? 'vertical' : 'horizontal',
       'aria-valuemin': props.min,
       'aria-valuemax': props.max,
       'aria-valuenow': props.value,
-      'aria-valuetext': props.getA11yValueMessageOnChange(props)
-    }
-  }
+      'aria-valuetext': props.getA11yValueMessageOnChange(props),
+    },
+  },
 });
-
-export default sliderBehavior;
 
 export type SliderBehaviorProps = {
   disabled?: boolean;

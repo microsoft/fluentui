@@ -1,0 +1,110 @@
+@import './semanticSlots';
+
+@mixin focus-clear() {
+  &::-moz-focus-inner {
+    // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
+    border: 0;
+  }
+
+  & {
+    // Clear browser specific focus styles and use transparent as placeholder for focus style
+    outline: transparent;
+  }
+}
+
+@mixin focus($onFocus: true) {
+  @if $onFocus {
+    :global(.ms-Fabric--isFocusVisible) &:focus {
+      @content;
+    }
+  }
+  @else {
+    @content;
+  }
+}
+
+@mixin focus-before {
+  :global(.ms-Fabric--isFocusVisible) &:focus::before {
+    @content;
+  }
+}
+
+@mixin focus-after {
+  :global(.ms-Fabric--isFocusVisible) &:focus::after {
+    @content;
+  }
+}
+
+@mixin focus-border($padding: 0, $color: $focusBorderColor, $thickness: 1px, $radius: 0, $onFocus: true, $position: relative) {
+  @include focus-clear();
+
+  & {
+    // It is MUST because the pseudo-element is absolute position.
+    position: $position;
+  }
+
+  @include focus($onFocus) {
+    &:after {
+      @include after-outline($padding, $color, $thickness, $radius);
+    }
+  }
+}
+
+// When focus is set using the keyboard, apply an outline.
+@mixin after-outline ($padding: 0, $color: $focusBorderColor, $thickness: 1px, $radius: 0) {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    top: $padding;
+    right: $padding;
+    bottom: $padding;
+    left: $padding;
+
+    // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
+    pointer-events: none;
+
+    // Add focus border with $color and border-radius with $radius
+    border: $thickness solid $color;
+    border-radius: $radius;
+}
+
+@mixin focus-box-shadow($hOffset: 0, $vOffset: 0, $blur: 0, $thickness: 1px, $color: $focusBorderColor, $onFocus: true, $position: relative) {
+  & {
+    position: $position;
+  }
+
+  @include focus($onFocus) {
+    &:after {
+      @include after-box-shadow($hOffset, $vOffset, $blur, $thickness, $color)
+    }
+  }
+}
+
+// When focus is set using the keyboard, apply a boxShadow.
+@mixin after-box-shadow ($hOffset: 0, $vOffset:0, $blur: 0, $thickness: 1px, $color: $focusBorderColor) {
+  box-sizing: border-box;
+  content: '';
+  position: absolute;
+
+  // Make the content not respond to mouse/touch event. Reference: https://css-tricks.com/almanac/properties/p/pointer-events/
+  pointer-events: none;
+
+  // Add focus border with $color
+  box-shadow: $hOffset $vOffset $blur $thickness $color inset;
+}
+
+// When focus is set using the keyboard, apply an outline.
+@mixin focus-outline {
+  :global(.ms-Fabric--isFocusVisible) &:focus {
+    outline: 1px solid var($semanticColorsFocusBorder);
+  }
+}
+
+// Non-CSS variable version
+@mixin focus-outline-static($inset: 0, $width: $ms-focus-border-width, $color: $ms-focus-border-color) {
+  // Only do this when it's a child of ms-Fabric in a focusVisible state.
+  :global(.ms-Fabric--isFocusVisible) &:focus {
+    outline: $width $ms-focus-border-style $color;
+    outline-offset: -$inset;
+  }
+}

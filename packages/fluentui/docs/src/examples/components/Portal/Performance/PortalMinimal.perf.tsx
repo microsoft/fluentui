@@ -1,4 +1,4 @@
-import { Portal } from '@fluentui/react';
+import { Portal } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const PortalMinimalPerf = () => <Portal />;

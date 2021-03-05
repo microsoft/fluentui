@@ -1,31 +1,32 @@
 import * as _ from 'lodash';
 import { Accessibility } from '../../types';
-import treeItemBehavior from './treeItemBehavior';
-import treeTitleAsListItemTitleBehavior from './treeTitleAsListItemTitleBehavior';
+import { treeItemBehavior, TreeItemBehaviorProps } from './treeItemBehavior';
+import { treeTitleAsListItemTitleBehavior } from './treeTitleAsListItemTitleBehavior';
 
 /**
  * @description
  * Adds role 'listitem' to a non-leaf item and 'none' to a leaf item.
  */
-const treeItemAsListItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
+export const treeItemAsListItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
   const behavior = treeItemBehavior(props);
-  return _.merge(behavior, {
+
+  const definition = _.merge(behavior, {
     attributes: {
       root: {
         ...(props.hasSubtree && {
-          role: 'listitem'
-        })
-      }
+          role: 'listitem',
+        }),
+      },
     },
     childBehaviors: {
-      title: treeTitleAsListItemTitleBehavior
-    }
+      title: treeTitleAsListItemTitleBehavior,
+    },
   });
-};
 
-export type TreeItemBehaviorProps = {
-  /** Indicates whether `TreeTitle` has a subtree. */
-  hasSubtree?: boolean;
-};
+  if (process.env.NODE_ENV !== 'production' && props.hasSubtree) {
+    // Override the default trigger's accessibility schema class.
+    definition.attributes.root['data-aa-class'] = 'TreeItemList';
+  }
 
-export default treeItemAsListItemBehavior;
+  return definition;
+};

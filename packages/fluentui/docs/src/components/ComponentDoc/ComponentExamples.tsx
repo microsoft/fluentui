@@ -2,8 +2,9 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { exampleIndexContext, exampleSourcesContext } from '../../utils';
-import { List, Segment } from '@fluentui/react';
+import { exampleIndexContext } from '../../contexts/exampleIndexContext';
+import { exampleSourcesContext } from '../../contexts/exampleSourcesContext';
+import { List, Segment } from '@fluentui/react-northstar';
 import { componentAPIs } from './ComponentSourceManager';
 
 import ContributionPrompt from './ContributionPrompt';
@@ -29,7 +30,7 @@ function getExamplesElement(displayName: string) {
 
 export class ComponentExamples extends React.Component<ComponentExamplesProps, any> {
   static propTypes = {
-    displayName: PropTypes.string.isRequired
+    displayName: PropTypes.string.isRequired,
   };
 
   render() {
@@ -69,7 +70,7 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
     return this.renderElementWrappedInGrid(
       <ContributionPrompt>
         Looks like we're missing <code title={displayName}>{`<${displayName} />`}</code> examples.
-      </ContributionPrompt>
+      </ContributionPrompt>,
     );
   };
 
@@ -78,7 +79,7 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
       <ContributionPrompt>
         <div>Looks like we're missing examples at following paths:</div>
         <List items={missingPaths} />
-      </ContributionPrompt>
+      </ContributionPrompt>,
     );
   };
 
@@ -86,12 +87,13 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
 
   getMissingExamplePaths(displayName: string, allPaths: string[]): string[] {
     const examplesPattern = `\./${displayName}/[\\w/]+Example`;
-    const [normalExtension, shorthandExtension] = [componentAPIs.children.fileSuffix, componentAPIs.shorthand.fileSuffix].map(
-      pattern => `${pattern}.source.json`
-    );
+    const [normalExtension, shorthandExtension] = [
+      componentAPIs.children.fileSuffix,
+      componentAPIs.shorthand.fileSuffix,
+    ].map(pattern => `${pattern}.source.json`);
 
     const [normalRegExp, shorthandRegExp] = [normalExtension, shorthandExtension].map(
-      extension => new RegExp(`${examplesPattern}${extension}$`)
+      extension => new RegExp(`${examplesPattern}${extension}$`),
     );
 
     const expectedShorthandExamples = allPaths
@@ -100,7 +102,7 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
     const actualShorthandExamples = allPaths.filter(path => shorthandRegExp.test(path));
 
     return _.difference(expectedShorthandExamples, actualShorthandExamples).map(exampleFile =>
-      exampleFile.replace(/\.source\.json$/, '.tsx')
+      exampleFile.replace(/\.source\.json$/, '.tsx'),
     );
   }
 }

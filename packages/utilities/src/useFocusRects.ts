@@ -3,8 +3,6 @@ import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
-export { IsFocusVisibleClassName } from './setFocusVisibility';
-
 /**
  * Counter for mounted component that uses focus rectangle.
  * We want to cleanup the listners before last component that uses focus rectangle unmounts.
@@ -42,11 +40,11 @@ type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) |
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
-  const win = getWindow(rootRef?.current) as AppWindow;
-
   React.useEffect(() => {
+    const win = getWindow(rootRef?.current) as AppWindow;
+
     if (!win || win.FabricConfig?.disableFocusRects === true) {
-      return;
+      return undefined;
     }
 
     let count = setMountCounters(win, 1);
@@ -68,7 +66,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
         win.removeEventListener('keydown', _onKeyDown, true);
       }
     };
-  }, [win]);
+  }, [rootRef]);
 }
 
 /**
@@ -91,7 +89,7 @@ function _onPointerDown(ev: PointerEvent): void {
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
-  // tslint:disable-next-line:deprecation
+  // eslint-disable-next-line deprecation/deprecation
   if (isDirectionalKeyCode(ev.which)) {
     setFocusVisibility(true, ev.target as Element);
   }

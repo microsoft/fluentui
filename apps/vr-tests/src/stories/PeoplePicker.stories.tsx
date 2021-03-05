@@ -1,18 +1,17 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 import {
   Fabric,
   CompactPeoplePicker,
   ListPeoplePicker,
   NormalPeoplePicker,
   IPersonaProps,
-  PersonaPresence
-} from 'office-ui-fabric-react';
+  PersonaPresence,
+} from '@fluentui/react';
 
-import { TestImages } from '@uifabric/example-data';
+import { TestImages } from '@fluentui/example-data';
 
 const overflowPersona: IPersonaProps & { key: string | number } = {
   key: 2,
@@ -22,7 +21,7 @@ const overflowPersona: IPersonaProps & { key: string | number } = {
   secondaryText: 'Designer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
-  presence: PersonaPresence.busy
+  presence: PersonaPresence.busy,
 };
 const people: (IPersonaProps & { key: string | number })[] = [
   {
@@ -33,7 +32,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 2,
@@ -43,7 +42,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 3,
@@ -53,7 +52,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 4,
@@ -63,7 +62,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 5,
@@ -73,7 +72,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 6,
@@ -83,7 +82,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 7,
@@ -93,7 +92,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 8,
@@ -103,7 +102,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 9,
@@ -113,8 +112,8 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
-  }
+    presence: PersonaPresence.offline,
+  },
 ];
 
 const suggestionProps = {
@@ -124,14 +123,15 @@ const suggestionProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const getTextFromItem = (persona: IPersonaProps): string => persona.text as string;
 
 const getPeople = () => people;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// suggestion items won't exist
 storiesOf('PeoplePicker', module)
   .addDecorator(FabricDecorator)
   .addStory('Normal disabled', () => (
@@ -171,30 +171,27 @@ storiesOf('PeoplePicker', module)
     </Fabric>
   ));
 
-storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
-  .addStory('Normal with text', () => (
-    <Screener
-      steps={new Screener.Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .setValue('.ms-BasePicker-input', 'a')
-        .snapshot('suggestion: "a"')
-        .end()}
-    >
-      <Fabric>
-        <NormalPeoplePicker
-          onResolveSuggestions={getPeople}
-          onEmptyInputFocus={getPeople}
-          getTextFromItem={getTextFromItem}
-          className={'ms-PeoplePicker'}
-          pickerSuggestionsProps={suggestionProps}
-        />
-      </Fabric>
-    </Screener>
-  ));
+storiesOf('PeoplePicker', module).addStory('Normal with text', () => (
+  <Screener
+    steps={new Screener.Steps()
+      .snapshot('default', { cropTo: '.testWrapper' })
+      .setValue('.ms-BasePicker-input', 'a')
+      .snapshot('suggestion: "a"')
+      .end()}
+  >
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={getPeople}
+        onEmptyInputFocus={getPeople}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+      />
+    </Fabric>
+  </Screener>
+));
 
 storiesOf('PeoplePicker', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -232,7 +229,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Normal Overflow selected',
@@ -249,7 +246,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('List', () => (
     <Fabric>
@@ -276,7 +273,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Compact', () => (
     <Fabric>
@@ -303,5 +300,5 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );

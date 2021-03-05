@@ -4,6 +4,7 @@ import Rtl from './Rtl';
 import Slots from './Slots';
 import States from './States';
 import Types from './Types';
+import Visual from './Visual';
 
 const CheckboxExamples = () => (
   <>
@@ -11,6 +12,7 @@ const CheckboxExamples = () => (
     <States />
     <Slots />
     <Rtl />
+    <Visual />
   </>
 );
 

@@ -1,6 +1,5 @@
-const { preset, just } = require('@uifabric/build');
-const { task, series } = just;
+import { preset, task } from '@fluentui/scripts';
 
 preset();
 
-task('build', series('clean', 'ts')).cached();
+task('build', 'build:node-lib').cached();

@@ -1,56 +1,113 @@
-import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { BaseColors } from '../AzureColors';
+import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from '@fluentui/react/lib/TeachingBubble';
 import { Depths } from '../AzureDepths';
-import * as StyleConstants from '../Constants';
+import { FontSizes } from '../AzureType';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
   const { theme } = props;
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     bodyContent: {
-      color: semanticColors.bodyText,
-      border: `1px solid ${palette.themePrimary}`
+      color: extendedSemanticColors.teachingBubbleText,
+      selectors: {
+        '.ms-TeachingBubble-subText': {
+          fontSize: FontSizes.size14,
+        },
+      },
     },
     footer: {
-      color: semanticColors.bodyText
+      color: extendedSemanticColors.teachingBubbleText,
+      selectors: {
+        '.ms-Button-label': {
+          lineHeight: 22,
+        },
+      },
     },
     header: {
-      color: semanticColors.bodyText
+      color: extendedSemanticColors.teachingBubbleText,
     },
     headline: {
-      color: semanticColors.bodyText
+      color: extendedSemanticColors.teachingBubbleText,
     },
     content: {
-      backgroundColor: semanticColors.bodyBackground,
-      color: semanticColors.bodyText
+      backgroundColor: extendedSemanticColors.teachingBubbleBackground,
+      color: extendedSemanticColors.teachingBubbleText,
+      selectors: {
+        '.ms-TeachingBubble-header--small': {
+          fontSize: FontSizes.size14,
+        },
+        '.ms-TeachingBubble-header--condensed': {
+          fontSize: FontSizes.size14,
+        },
+      },
     },
     subText: {
-      color: semanticColors.bodyText
+      color: extendedSemanticColors.teachingBubbleText,
     },
     subComponentStyles: {
       callout: {
         root: {
-          borderColor: semanticColors.inputBorder,
-          borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth,
-          boxShadow: Depths.depth8
-        }
-      }
+          boxShadow: Depths.depth8,
+          selectors: {
+            '.ms-Callout-main': {
+              border: 0,
+            },
+            '.ms-Callout-beak': {
+              backgroundColor: extendedSemanticColors.teachingBubbleBackground,
+              border: 0,
+            },
+          },
+        },
+      },
     },
     closeButton: {
-      color: semanticColors.bodyText,
+      color: extendedSemanticColors.teachingBubbleText,
       margin: 1,
       selectors: {
         '&:hover': {
-          backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: BaseColors.WHITE
+          backgroundColor: `${extendedSemanticColors.primaryButtonBackgroundPressed} !important`,
         },
         '&:active': {
-          backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: BaseColors.WHITE
-        }
-      }
-    }
+          backgroundColor: extendedSemanticColors.primaryButtonBackgroundPressed,
+        },
+      },
+    },
+    primaryButton: {
+      // backgroundColor and border color requires !important to override primary btn color
+      backgroundColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
+      borderColor: `${extendedSemanticColors.teachingBubbleSecondaryBackground} !important`,
+      selectors: {
+        '&:focus': {
+          backgroundColor: extendedSemanticColors.teachingBubblePrimaryButtonHover,
+          color: extendedSemanticColors.primaryButtonBackground,
+        },
+        '&:hover': {
+          backgroundColor: extendedSemanticColors.teachingBubblePrimaryButtonHover,
+          borderColor: extendedSemanticColors.teachingBubblePrimaryButtonHover,
+        },
+        span: {
+          color: extendedSemanticColors.teachingBubbleBackground,
+        },
+        '.ms-Button-label': {
+          fontSize: theme.fonts.medium.fontSize,
+        },
+      },
+    },
+    secondaryButton: {
+      backgroundColor: extendedSemanticColors.teachingBubbleBackground,
+      selectors: {
+        '.ms-Button-label': {
+          fontSize: theme.fonts.medium.fontSize,
+        },
+        '&:hover': {
+          backgroundColor: extendedSemanticColors.primaryButtonBackgroundHovered,
+        },
+        '&:focus': {
+          backgroundColor: extendedSemanticColors.teachingBubbleBackground,
+        },
+      },
+    },
   };
 };

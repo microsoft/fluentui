@@ -1,4 +1,4 @@
-export { default as getVersionConstrains } from './getVersionConstrains';
+export { default as getVersionConstraints } from './getVersionConstraints';
 export { default as getRuntimeDependencies } from './getRuntimeDependencies';
 export { default as getFailedPackageVersionConstraints } from './getFailedPackageVersionConstraints';
 export * from './getFailedPackageVersionConstraints';

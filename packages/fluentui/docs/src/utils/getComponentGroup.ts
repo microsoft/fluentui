@@ -8,7 +8,7 @@ const getComponentGroup = (displayName: string): { [key: string]: ComponentInfo 
   const info = componentInfoContext.byDisplayName[displayName];
 
   const group = {
-    [info.displayName]: info
+    [info.displayName]: info,
   };
 
   if (!info.subcomponents) return group;

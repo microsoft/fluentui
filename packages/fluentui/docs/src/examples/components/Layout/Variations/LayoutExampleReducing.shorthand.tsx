@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout } from '@fluentui/react';
+import { Layout } from '@fluentui/react-northstar';
 
 const LayoutExampleReducing = () => (
   <div>

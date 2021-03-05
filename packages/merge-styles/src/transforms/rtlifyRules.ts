@@ -5,12 +5,12 @@ const RIGHT = 'right';
 const NO_FLIP = '@noflip';
 const NAME_REPLACEMENTS: { [key: string]: string } = {
   [LEFT]: RIGHT,
-  [RIGHT]: LEFT
+  [RIGHT]: LEFT,
 };
 const VALUE_REPLACEMENTS: { [key: string]: string } = {
   'w-resize': 'e-resize',
   'sw-resize': 'se-resize',
-  'nw-resize': 'ne-resize'
+  'nw-resize': 'ne-resize',
 };
 
 /**

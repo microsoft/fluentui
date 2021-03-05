@@ -1,8 +1,17 @@
-type ComponentPerfStats = {
-  count: number;
+export type ComponentPerfStats = {
+  instances: number;
+  renders: number;
+
   msTotal: number;
   msMin: number;
   msMax: number;
+
+  msResolveVariablesTotal: number;
+  msResolveStylesTotal: number;
+  msRenderStylesTotal: number;
+
+  stylesRootCacheHits: number;
+  stylesSlotsCacheHits: number;
 };
 
 export type UseTelemetryResult = {

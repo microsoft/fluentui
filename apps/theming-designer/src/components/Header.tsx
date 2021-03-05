@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Stack, Link, ILinkStyleProps, ILinkStyles, PrimaryButton, ITheme, IStackProps } from 'office-ui-fabric-react';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { mergeStyles } from '@uifabric/merge-styles';
-import { CodepenComponent } from '@uifabric/example-app-base';
+import { Stack, Link, ILinkStyleProps, ILinkStyles, ITheme, IStackProps } from '@fluentui/react';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { Panel, PanelType } from '@fluentui/react/lib/Panel';
+import { Pivot, PivotItem } from '@fluentui/react/lib/Pivot';
+import { IThemeRules, ThemeGenerator } from '@fluentui/react/lib/ThemeGenerator';
+import { mergeStyles } from '@fluentui/merge-styles';
+import { CodepenComponent } from '@fluentui/react-docsite-components';
 
 export interface IHeaderProps {
   themeRules?: IThemeRules;
@@ -18,7 +19,7 @@ export interface IHeaderState {
 }
 
 const outputPanelClassName = mergeStyles({
-  display: 'flex'
+  display: 'flex',
 });
 
 const textAreaClassName = mergeStyles({
@@ -26,12 +27,12 @@ const textAreaClassName = mergeStyles({
   width: '100%',
   marginRight: 28,
   backgroundColor: 'white',
-  color: '#333'
+  color: '#333',
 });
 
 const microsoftLogo = mergeStyles({
   width: '120px',
-  display: 'block'
+  display: 'block',
 });
 
 const pipeFabricStyles = (p: ILinkStyleProps): ILinkStyles => ({
@@ -39,8 +40,8 @@ const pipeFabricStyles = (p: ILinkStyleProps): ILinkStyles => ({
     textDecoration: 'none',
     color: p.theme.semanticColors.bodyText,
     fontWeight: '600',
-    fontSize: p.theme.fonts.medium.fontSize
-  }
+    fontSize: p.theme.fonts.medium.fontSize,
+  },
 });
 
 const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
@@ -48,22 +49,45 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
     backgroundColor: theme.semanticColors.bodyBackground,
     minHeight: 47,
     padding: '0 32px',
-    boxShadow: theme.effects.elevation16
-  }
+    boxShadow: theme.effects.elevation16,
+  },
 });
 
-const codepenHeader = `const { createTheme, Customizations, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n`;
-const codepenSamples = `\n\nclass Content extends React.Component {
-    public render()
-    {
-      Customizations.applySettings({ theme: myTheme });
-      return (
-        <div>
-          <DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/>
-          <Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>
-        </div>
-      );
-    }
+const codepenHeader = `const {
+  createTheme,
+  Checkbox,
+  DefaultButton,
+  Fabric,
+  Pivot,
+  PivotItem,
+  PrimaryButton,
+  Stack,
+  Toggle,
+  ThemeProvider
+} = FluentUIReact;\n\n`;
+const codepenSamples = `\n\n
+
+const Content = () => {
+    return (
+      <ThemeProvider applyTo='body' theme={myTheme}>
+        <Stack tokens={{childrenGap: 8, maxWidth: 300}}>
+          <Pivot>
+            <PivotItem headerText="Home" />
+            <PivotItem headerText="Pages" />
+            <PivotItem headerText="Documents" />
+            <PivotItem headerText="Activity" />
+          </Pivot>
+          <Stack horizontal gap={8}>
+            <DefaultButton text="DefaultButton"/>
+            <PrimaryButton text="PrimaryButton"/>
+          </Stack>
+          <Toggle label="Enabled"/>
+          <Toggle label="Disabled" disabled={true}/>
+          <Checkbox label="Checkbox"/>
+          <Checkbox checked label="Checkbox Checked" />
+        </Stack>
+      </ThemeProvider>
+    );
 }
 ReactDOM.render(<Content />,document.getElementById('content'));`;
 
@@ -74,7 +98,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
       showPanel: false,
       jsonTheme: '',
       powershellTheme: '',
-      themeAsCode: <div />
+      themeAsCode: <div />,
     };
   }
 
@@ -82,7 +106,12 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     return (
       <Stack horizontal verticalAlign="center" grow={0} styles={headerStackStyles}>
         <Stack horizontal grow={1} verticalAlign="center">
-          <a href="https://www.microsoft.com" title="Microsoft Home Page" aria-label="Microsoft Home Page" className={microsoftLogo}>
+          <a
+            href="https://www.microsoft.com"
+            title="Microsoft Home Page"
+            aria-label="Microsoft Home Page"
+            className={microsoftLogo}
+          >
             <img src="https://themingdesigner.blob.core.windows.net/$web/MicrosoftLogo.png" className={microsoftLogo} />
           </a>
           <Link
@@ -91,35 +120,50 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             aria-label="Microsoft Fabric Theme Designer page"
             styles={pipeFabricStyles}
           >
-            | UI Fabric Theme Designer
+            | Fluent UI Theme Designer
           </Link>
         </Stack>
-        <PrimaryButton text="Export theme" onClick={this.showPanel} />
+        <PrimaryButton text="Export theme" onClick={this._showPanel} />
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
-          onDismiss={this.hidePanel}
+          onDismiss={this._hidePanel}
           headerText="Export theme"
           closeButtonAriaLabel="Close"
-          onRenderFooterContent={this.onRenderFooterContent}
+          onRenderFooterContent={this._onRenderFooterContent}
         >
           <span>
             <p>
-              This code block creates the theme you have configured above using the createTheme utility function. Calling
-              Customizations.applySettings with this theme will automatically apply the configured theming to any Fabric controls used
-              within the same app. You can also export this example to CodePen with a few component examples below.
+              This code block creates the theme you have configured above using the createTheme utility function.
+              Calling loadTheme with this theme will automatically apply the configured theming to any Fabric controls
+              used within the same app. You can also export this example to CodePen with a few component examples below.
             </p>
           </span>
           <div className={outputPanelClassName}>
             <Pivot>
               <PivotItem headerText="Code">
-                <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.themeAsCode} />
+                <textarea
+                  className={textAreaClassName}
+                  readOnly={true}
+                  spellCheck={false}
+                  value={this.state.themeAsCode}
+                />
               </PivotItem>
               <PivotItem headerText="JSON">
-                <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.jsonTheme} />
+                <textarea
+                  className={textAreaClassName}
+                  readOnly={true}
+                  spellCheck={false}
+                  value={this.state.jsonTheme}
+                />
               </PivotItem>
               <PivotItem headerText="PowerShell">
-                <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.powershellTheme} />
+                <textarea
+                  className={textAreaClassName}
+                  readOnly={true}
+                  spellCheck={false}
+                  value={this.state.powershellTheme}
+                />
               </PivotItem>
             </Pivot>
           </div>
@@ -128,7 +172,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     );
   }
 
-  private exportToJson = () => {
+  private _exportToJson = () => {
     const themeRules = this.props.themeRules!;
 
     // strip out the unnecessary shade slots from the final output theme
@@ -148,26 +192,29 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     }
 
     this.setState({
-      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
+      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), undefined, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
-      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme)
+      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme),
     });
   };
 
-  private onRenderFooterContent = () => {
+  private _onRenderFooterContent = () => {
     return (
       <div>
-        <CodepenComponent jsContent={codepenHeader + this.state.themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
+        <CodepenComponent
+          jsContent={codepenHeader + this.state.themeAsCode + codepenSamples}
+          buttonAs={PrimaryButton}
+        />
       </div>
     );
   };
 
-  private showPanel = () => {
+  private _showPanel = () => {
     this.setState({ showPanel: true });
-    this.exportToJson();
+    this._exportToJson();
   };
 
-  private hidePanel = () => {
+  private _hidePanel = () => {
     this.setState({ showPanel: false });
   };
 }

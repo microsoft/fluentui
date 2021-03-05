@@ -1,5 +1,6 @@
 import { Accessibility } from '../../types';
 import { FocusZoneDirection } from '../../focusZone/types';
+import { GridBehaviorProps } from './gridBehavior';
 
 /**
  * @description
@@ -9,13 +10,11 @@ import { FocusZoneDirection } from '../../focusZone/types';
  * @specification
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  */
-const gridHorizontalBehavior: Accessibility = () => ({
+export const gridHorizontalBehavior: Accessibility<GridBehaviorProps> = () => ({
   attributes: {},
   focusZone: {
     props: {
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
-  }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
+  },
 });
-
-export default gridHorizontalBehavior;

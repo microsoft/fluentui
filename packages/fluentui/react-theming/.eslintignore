@@ -1,8 +1,0 @@
-coverage/
-dist/
-lib/
-node_modules/
-jest.config.js
-scripts/config
-*.d.ts
-**/*.js

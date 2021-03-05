@@ -1,7 +1,7 @@
 import { CodeSnippet } from '@fluentui/docs-components';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import DocPage from '../components/DocPage';
 import { link, code } from '../utils/helpers';
 
@@ -17,14 +17,19 @@ export default () => (
     </ul>
     <Header as="h2">Overview</Header>
     <p>
-      {code('FocusTrapZone')} grabs the focus and traps it within an HTML element. Currently can be used only in {code('Popup')}
-      and {code('Dialog')} components. Pressing {code('TAB')} key will circle focus within the inner focusable elements of the{' '}
-      {code('FocusTrapZone')}. The main purpose is to block user interaction outside {code('FocusTrapZone')} in any way. Therefore, keyboard
-      events are not propagated outside {code('FocusTrapZone')}, hence {code('Popup')} or {code('Dialog')}.
+      {code('FocusTrapZone')} grabs the focus and traps it within an HTML element. Currently can be used only in{' '}
+      {code('Popup')}
+      and {code('Dialog')} components. Pressing {code('TAB')} key will circle focus within the inner focusable elements
+      of the {code('FocusTrapZone')}. The main purpose is to block user interaction outside {code('FocusTrapZone')} in
+      any way. Therefore, keyboard events are not propagated outside {code('FocusTrapZone')}, hence {code('Popup')} or{' '}
+      {code('Dialog')}.
     </p>
     <p>
       Fluent UI leverages Focus Trap Zone component which is based on the{' '}
-      {link('Focus Trap Zone from Office UI Fabric.', 'https://developer.microsoft.com/en-us/fabric#/components/focustrapzone')}
+      {link(
+        'Focus Trap Zone from Fluent UI React.',
+        'https://developer.microsoft.com/en-us/fluentui#/controls/web/focustrapzone',
+      )}
     </p>
     <Header as="h2">Usage</Header>
     <p>
@@ -33,14 +38,14 @@ export default () => (
     </p>
     <CodeSnippet label="PopupExample.jsx" value={`const Example = () => <Popup trapFocus />`} />
     <p>
-      {code('Dialog')} component has always set {code('trapFocus')} prop to {code('true')}, but it is also possible to override default
-      settings by specifying object of {code('FocusTrapZoneProps')}.
+      {code('Dialog')} component has always set {code('trapFocus')} prop to {code('true')}, but it is also possible to
+      override default settings by specifying object of {code('FocusTrapZoneProps')}.
     </p>
     <p>
       {code('FocusTrapZone')}'s props which can be applied to {code('trapFocus')} prop (
       {link(
         'lookup for API on GitHub',
-        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.types.tsx'
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.types.tsx',
       )}
       ):
     </p>
@@ -78,7 +83,7 @@ export default () => (
       {code('FocusTrapZone')} code on{' '}
       {link(
         'GitHub.',
-        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.tsx'
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusTrapZone.tsx',
       )}
     </p>
   </DocPage>

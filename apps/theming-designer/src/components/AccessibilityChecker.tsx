@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { FabricSlots, IThemeRules } from 'office-ui-fabric-react';
-import { getContrastRatio } from 'office-ui-fabric-react/lib/utilities/color/shades';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
+import { FabricSlots, IThemeRules } from '@fluentui/react';
+import { getContrastRatio, IColor } from '@fluentui/react/lib/Color';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from '@fluentui/react/lib/Styling';
 import { TitleText } from '../shared/Typography';
 
 export interface IAccessibilityCheckerProps {
@@ -18,7 +17,9 @@ export interface IContrastRatioPair {
   colorPair: string;
 }
 
-export const AccessibilityChecker: React.FunctionComponent<IAccessibilityCheckerProps> = (props: IAccessibilityCheckerProps) => {
+export const AccessibilityChecker: React.FunctionComponent<IAccessibilityCheckerProps> = (
+  props: IAccessibilityCheckerProps,
+) => {
   let nonAccessiblePairs: IContrastRatioPair[] = [];
   let accessiblePairs: IContrastRatioPair[] = [];
 
@@ -36,13 +37,13 @@ export const AccessibilityChecker: React.FunctionComponent<IAccessibilityChecker
         nonAccessiblePairs.push({
           contrastRatioValue: contrastRatioString,
           contrastRatioPair: currContrastRatioPair,
-          colorPair: colorPairString
+          colorPair: colorPairString,
         });
       } else {
         accessiblePairs.push({
           contrastRatioValue: contrastRatioString,
           contrastRatioPair: currContrastRatioPair,
-          colorPair: colorPairString
+          colorPair: colorPairString,
         });
       }
     }
@@ -58,7 +59,11 @@ export const AccessibilityChecker: React.FunctionComponent<IAccessibilityChecker
   return (
     <div className={MainPanelInnerContent}>
       <TitleText>Accessibility checker</TitleText>
-      <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
+      <AccessibilityDetailsList
+        theme={props.theme!}
+        accessiblePairs={accessiblePairs}
+        nonAccessiblePairs={nonAccessiblePairs}
+      />
     </div>
   );
 };

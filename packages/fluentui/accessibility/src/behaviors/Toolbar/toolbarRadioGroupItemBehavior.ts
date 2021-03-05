@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityDefinition } from '../../types';
-import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
+import { buttonBehavior, ButtonBehaviorProps } from '../Button/buttonBehavior';
 
 /**
  * @specification
@@ -8,16 +8,16 @@ import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
  *  Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  *  Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemBehaviorProps> = props => {
+export const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemBehaviorProps> = props => {
   const definition: AccessibilityDefinition = {
     attributes: {
       root: {
         role: 'radio',
         'aria-checked': props.active,
-        'aria-disabled': props.disabled
-      }
+        'aria-disabled': props.disabled,
+      },
     },
-    keyActions: buttonBehavior(props).keyActions
+    keyActions: buttonBehavior(props).keyActions,
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -27,8 +27,6 @@ const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemBehavior
 
   return definition;
 };
-
-export default toolbarRadioGroupItemBehavior;
 
 type ToolbarRadioGroupItemBehaviorProps = {
   /** Indicates if radio item is selected. */

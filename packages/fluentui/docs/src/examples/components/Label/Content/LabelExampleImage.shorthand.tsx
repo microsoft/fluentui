@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react';
+import { Label } from '@fluentui/react-northstar';
 
-const LabelExampleImageShorthand = () => <Label content="John Doe" image="public/images/avatar/small/matt.jpg" />;
+const LabelExampleImageShorthand = () => (
+  <Label
+    content="Robert Tolbert"
+    image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg"
+  />
+);
 
 export default LabelExampleImageShorthand;

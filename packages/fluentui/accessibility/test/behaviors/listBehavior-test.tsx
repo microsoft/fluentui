@@ -3,7 +3,7 @@ import { listBehavior } from '@fluentui/accessibility';
 describe('ListBehavior.ts', () => {
   test('use SelectableListBehavior if selectable prop is defined', () => {
     const property = {
-      selectable: true
+      selectable: true,
     };
     const expectedResult = listBehavior(property);
     expect(expectedResult.attributes.root.role).toEqual('listbox');
@@ -11,7 +11,7 @@ describe('ListBehavior.ts', () => {
 
   test('use NavigableListBehavior if navigable prop is defined', () => {
     const property = {
-      navigable: true
+      navigable: true,
     };
     const expectedResult = listBehavior(property);
     expect(expectedResult.attributes.root.role).toEqual('menu');

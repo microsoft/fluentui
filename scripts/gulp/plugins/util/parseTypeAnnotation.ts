@@ -1,7 +1,7 @@
 import * as t from '@babel/types';
 import _ from 'lodash';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from './docs-types';
 
 const keywords: Record<string, Function> = {
   any: t.isTSAnyKeyword,
@@ -10,7 +10,7 @@ const keywords: Record<string, Function> = {
   number: t.isTSNumberKeyword,
   null: t.isTSNullKeyword,
   object: t.isTSObjectKeyword,
-  string: t.isTSStringKeyword
+  string: t.isTSStringKeyword,
 };
 
 const parseTypeAnnotation = (propName: string, propType: string, tsType: t.TSType): ComponentPropType[] => {
@@ -32,8 +32,8 @@ const parseTypeAnnotation = (propName: string, propType: string, tsType: t.TSTyp
     return [
       {
         name: 'array',
-        parameters: parseTypeAnnotation(propName, propType, tsType.elementType)
-      }
+        parameters: parseTypeAnnotation(propName, propType, tsType.elementType),
+      },
     ];
   }
 
@@ -61,11 +61,13 @@ const parseTypeAnnotation = (propName: string, propType: string, tsType: t.TSTyp
   if (t.isTSTypeReference(tsType)) {
     if (t.isIdentifier(tsType.typeName)) {
       const definition: ComponentPropType = {
-        name: tsType.typeName.name
+        name: tsType.typeName.name,
       };
 
       if (t.isTSTypeParameterInstantiation(tsType.typeParameters)) {
-        definition.parameters = _.flatMap(tsType.typeParameters.params, param => parseTypeAnnotation(propName, propType, param));
+        definition.parameters = _.flatMap(tsType.typeParameters.params, param =>
+          parseTypeAnnotation(propName, propType, param),
+        );
       }
 
       return [definition];

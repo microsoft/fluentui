@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Attachment } from '@fluentui/react';
+import { Attachment } from '@fluentui/react-northstar';
+import { WordColorIcon, ExcelColorIcon, PowerPointColorIcon } from '@fluentui/react-icons-northstar';
 
 const AttachmentIconExampleShorthand = () => (
   <div>
-    <Attachment icon="word-color" header="MeetingNotes.docx" />
-    <Attachment icon="excel-color" header="Budget.xlsx" />
-    <Attachment icon="powerpoint-color" header="Presentation.pptx" />
+    <Attachment icon={<WordColorIcon />} header="MeetingNotes.docx" />
+    <Attachment icon={<ExcelColorIcon />} header="Budget.xlsx" />
+    <Attachment icon={<PowerPointColorIcon />} header="Presentation.pptx" />
   </div>
 );
 

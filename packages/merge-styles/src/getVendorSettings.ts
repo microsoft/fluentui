@@ -18,14 +18,14 @@ export function getVendorSettings(): IVendorSettings {
         isWebkit: true,
         isMoz: true,
         isOpera: true,
-        isMs: true
+        isMs: true,
       };
     } else {
       _vendorSettings = {
         isWebkit: !!(doc && 'WebkitAppearance' in doc.documentElement.style),
         isMoz: !!(userAgent && userAgent.indexOf('firefox') > -1),
         isOpera: !!(userAgent && userAgent.indexOf('opera') > -1),
-        isMs: !!(nav && (/rv:11.0/i.test(nav.userAgent) || /Edge\/\d./i.test(navigator.userAgent)))
+        isMs: !!(nav && (/rv:11.0/i.test(nav.userAgent) || /Edge\/\d./i.test(navigator.userAgent))),
       };
     }
   }

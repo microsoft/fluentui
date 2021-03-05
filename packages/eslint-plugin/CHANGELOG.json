@@ -1,0 +1,252 @@
+{
+  "name": "@fluentui/eslint-plugin",
+  "entries": [
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Release major version",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.0.0-beta.2",
+      "version": "1.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow references to devDependencies defined in root package.json",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: switch to single version policy with typescript",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Tweaking max-len exclusion matching.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.0.0-beta.0",
+      "version": "1.0.0-beta.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "removing overrides from eslintrc.json file",
+            "author": "email not defined",
+            "commit": "7fc8435387fa90c21cdc396b41ed43f6f9e7979b",
+            "package": "@fluentui/eslint-plugin"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Rename office-ui-fabric-react package and update references",
+            "author": "elcraig@microsoft.com",
+            "commit": "c23194868dfef332395fef60df74d2e86dff7241",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.54.1",
+      "version": "0.54.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding isConformant files to list of test files.",
+            "author": "czearing@outlook.com",
+            "commit": "9c17d8cd7af2f8fab4b075c2b95ea43f2e96e2be",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.54.0",
+      "version": "0.54.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add no-global-react rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 13 Aug 2020 12:41:58 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.4",
+      "version": "0.53.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add rule to prevent accidental references to globals",
+            "author": "elcraig@microsoft.com",
+            "commit": "673554b124199cfe65a271ccc9e778c26ca244e7",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.3",
+      "version": "0.53.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Lint: update jsx-no-bind settings to ignore native elements",
+            "author": "elcraig@microsoft.com",
+            "commit": "aa142e7c4b64e62db238e727a86b5f2a774a229a",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Aug 2020 12:45:42 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.2",
+      "version": "0.53.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add testUtilities.{ts,tsx} to list of test files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ac40ad122cd2d1855ff06231c43403bf52054556",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Jul 2020 12:43:08 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.1",
+      "version": "0.53.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable react-hooks lint rules",
+            "author": "elcraig@microsoft.com",
+            "commit": "63b41e907049f38dd65f5cbb027b1be4ade7615c",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jul 2020 12:41:19 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.53.0",
+      "version": "0.53.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add custom max-len rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "6ddf7d61096e644b7ee3a63abf02629a786a99ac",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.52.0",
+      "version": "0.52.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add no-tslint-comments rule; bug fixes",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Fluent React Northstar ESLint config to disallow default exports",
+            "author": "olfedias@microsoft.com",
+            "commit": "ae46225e1b94e6b348daa23fe90d983a285ce4ad",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.51.0",
+      "version": "0.51.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add custom configs and rules",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Jun 2020 12:36:30 GMT",
+      "tag": "@fluentui/eslint-plugin_v0.50.0",
+      "version": "0.50.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move eslint-plugin package and add keyboard event props rule",
+            "author": "elcraig@microsoft.com",
+            "commit": "2cfb4d4f68ff72187620c43373033b1374fc6a78",
+            "package": "@fluentui/eslint-plugin"
+          }
+        ]
+      }
+    }
+  ]
+}

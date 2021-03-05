@@ -7,5 +7,5 @@ import '../../../gulpfile';
 task('test', series('build:docs:component-menu-behaviors', 'test:jest'));
 task(
   'test:watch',
-  series('build:docs:component-menu-behaviors', 'test:jest', parallel('test:jest:watch', 'watch:docs:component-menu-behaviors'))
+  series('build:docs:component-menu-behaviors', parallel('test:jest:watch', 'watch:docs:component-menu-behaviors')),
 );

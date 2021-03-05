@@ -1,7 +1,8 @@
-import { Slider } from '@fluentui/react';
+import { sliderSlotClassNames } from '@fluentui/react-northstar';
+import { ScreenerStep, ScreenerSteps } from '@fluentui/scripts/screener';
 
 const selectors = {
-  input: `.${Slider.slotClassNames.input}`
+  input: `.${sliderSlotClassNames.input}`,
 };
 
 const focusSliderStep: ScreenerStep = (builder, keys) => builder.keys('body', keys.tab);
@@ -23,7 +24,7 @@ const getScreenerSteps = (): ScreenerSteps => [
       .keys(selectors.input, keys.upArrow)
       .keys(selectors.input, keys.upArrow)
       .keys(selectors.input, keys.upArrow)
-      .snapshot('Navigates to the right with the up arrow key')
+      .snapshot('Navigates to the right with the up arrow key'),
 ];
 
 export default getScreenerSteps;

@@ -19,12 +19,12 @@ import {
   RecordSignal,
   ReadOnlySignal,
   FollowedSignal,
-  NotFollowedSignal
-} from '@uifabric/experiments';
+  NotFollowedSignal,
+} from '@fluentui/react-experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
-import { Fabric } from 'office-ui-fabric-react';
+import { FabricDecorator } from '../utilities/index';
+import { Fabric } from '@fluentui/react';
 
 interface ISignalExampleProps {
   name: string;
@@ -32,7 +32,7 @@ interface ISignalExampleProps {
 }
 
 const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
-  props: ISignalExampleProps
+  props: ISignalExampleProps,
 ): JSX.Element => {
   return (
     <div>

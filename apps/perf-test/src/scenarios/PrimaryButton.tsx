@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { PrimaryButton } from 'office-ui-fabric-react';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 
-const scenario = <PrimaryButton>I am a button</PrimaryButton>;
+const styles = { root: { background: 'red' } };
+const Scenario = () => <PrimaryButton styles={styles}>I am a button</PrimaryButton>;
 
-export default scenario;
+export default Scenario;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, Header } from '@fluentui/react';
+import { Menu, Header } from '@fluentui/react-northstar';
 
 class MenuWithSubmenuControlledExample extends React.Component {
   state = { menuOpen: false };
@@ -24,10 +24,10 @@ class MenuWithSubmenuControlledExample extends React.Component {
               menu: [
                 { key: '1', content: 'item1' },
                 { key: '2', content: 'item2' },
-                { key: '3', content: 'item3' }
-              ]
+                { key: '3', content: 'item3' },
+              ],
             },
-            { key: 'events', content: 'Upcoming Events' }
+            { key: 'events', content: 'Upcoming Events' },
           ]}
         />
       </>

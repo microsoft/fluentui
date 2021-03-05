@@ -1,24 +1,4 @@
-import { IRawStyleBase } from './IRawStyleBase';
-
-/**
- * IStyleObject extends a raw style objects, but allows selectors to be defined
- * under the selectors node.
- * @public
- * {@docCategory IRawStyle}
- */
-export interface IRawStyle extends IRawStyleBase {
-  /**
-   * Display name for the style.
-   */
-  displayName?: string;
-
-  /**
-   * Custom selectors for the style.
-   */
-  selectors?: {
-    [key: string]: IStyle;
-  };
-}
+import { IRawStyle } from './IRawStyle';
 
 /**
  * {@docCategory IStyleBase}

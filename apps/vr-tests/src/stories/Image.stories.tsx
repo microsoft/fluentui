@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import { storiesOf } from '@storybook/react';
-import { Image, ImageFit, Label, Layer, IImageProps } from 'office-ui-fabric-react';
+import { Image, ImageFit, Label, Layer, IImageProps } from '@fluentui/react';
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/index';
 
 const img350x150 = 'http://placehold.it/350x150';
 
@@ -11,45 +10,43 @@ const imagePropsFitNone: IImageProps = {
   src: 'http://placehold.it/500x250',
   imageFit: ImageFit.none,
   width: 350,
-  height: 150
+  height: 150,
 };
 
 const imagePropsFitCenter: IImageProps = {
   src: 'http://placehold.it/800x300',
   imageFit: ImageFit.center,
   width: 350,
-  height: 150
+  height: 150,
 };
 
 const imagePropsFitContain: IImageProps = {
   src: 'http://placehold.it/700x300',
-  imageFit: ImageFit.contain
+  imageFit: ImageFit.contain,
 };
 
 const imagePropsFitCover: IImageProps = {
   src: 'http://placehold.it/500x500',
-  imageFit: ImageFit.cover
+  imageFit: ImageFit.cover,
 };
 
 const imagePropsFitCenterContain: IImageProps = {
   src: 'http://placehold.it/400x400',
-  imageFit: ImageFit.centerContain
+  imageFit: ImageFit.centerContain,
 };
 
 const imagePropsFitCenterCover: IImageProps = {
   src: 'http://placehold.it/400x400',
-  imageFit: ImageFit.centerCover
+  imageFit: ImageFit.centerCover,
 };
 
 const imagePropsMaximizeFrame: IImageProps = {
   src: 'http://placehold.it/500x500',
   imageFit: ImageFit.cover,
-  maximizeFrame: true
+  maximizeFrame: true,
 };
 
 const border = 'solid 1px black';
-
-// tslint:disable:jsx-ban-props
 
 storiesOf('Image', module)
   .addDecorator(FabricDecorator)
@@ -61,7 +58,7 @@ storiesOf('Image', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('No fit, no w/h', () => (
     <div>

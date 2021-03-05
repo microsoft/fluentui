@@ -1,7 +1,7 @@
 {
   "name": "theming-designer",
-  "description": "Theming designer for office-ui-fabric-react.",
-  "version": "7.0.0",
+  "description": "Theming designer for @fluentui/react.",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "just-scripts build",
@@ -14,24 +14,21 @@
     "start": "just-scripts dev"
   },
   "devDependencies": {
-    "@types/es6-promise": "0.0.32",
-    "@types/react": "16.8.11",
-    "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.15.1",
-    "@uifabric/tslint-rules": "^7.1.0",
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@types/react": "16.9.42",
+    "@types/react-dom": "16.9.10",
+    "@types/webpack-env": "1.16.0",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.109.39",
-    "@uifabric/merge-styles": "^7.8.7",
-    "@uifabric/example-app-base": "^7.12.19",
-    "@uifabric/variants": "^7.1.29",
-    "@uifabric/set-version": "^7.0.6",
-    "@uifabric/icons": "^7.3.18",
+    "@fluentui/react": "^8.1.4",
+    "@fluentui/merge-styles": "^8.0.2",
+    "@fluentui/react-docsite-components": "^8.0.5",
+    "@fluentui/foundation-legacy": "^8.0.2",
+    "@fluentui/scheme-utilities": "^8.0.2",
+    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/font-icons-mdl2": "^8.0.2",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "es6-promise": "^4.1.0",
-    "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.104.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

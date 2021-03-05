@@ -1,12 +1,28 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
+import { MicIcon, CallVideoIcon, PlayIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonGroupExampleShorthand = () => (
   <Button.Group
     buttons={[
-      { key: 'emoji', icon: 'emoji', iconOnly: true, title: 'Emoji' },
-      { key: 'translation', icon: 'translation', iconOnly: true, title: 'Translation' },
-      { key: 'play', icon: 'play', iconOnly: true, title: 'Play' }
+      {
+        icon: <MicIcon />,
+        key: 'mic',
+        iconOnly: true,
+        title: 'Microphone',
+      },
+      {
+        icon: <CallVideoIcon />,
+        key: 'video',
+        iconOnly: true,
+        title: 'video call',
+      },
+      {
+        icon: <PlayIcon />,
+        key: 'play',
+        iconOnly: true,
+        title: 'Play',
+      },
     ]}
   />
 );

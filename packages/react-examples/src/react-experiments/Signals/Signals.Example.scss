@@ -1,0 +1,24 @@
+@import '~@fluentui/common-styles/src/common';
+
+.example {
+  padding: 8px;
+
+  transition: color 0.2s linear, background-color 0.2s linear;
+}
+
+.small {
+  font-size: $ms-font-size-s;
+}
+
+.medium {
+  font-size: $ms-font-size-m;
+}
+
+.large {
+  font-size: $ms-font-size-l;
+}
+
+.dark {
+  background-color: $ms-color-neutralDark;
+  color: $ms-color-white;
+}

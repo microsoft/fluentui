@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Loader } from '@fluentui/react';
+import { Loader } from '@fluentui/react-northstar';
 
 const AccessibilityDescription = React.lazy(() => import('./InlineMarkdown'));
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Loader, Text, Segment, Header } from '@fluentui/react';
+import { Flex, Loader, Text, Segment, Header } from '@fluentui/react-northstar';
 import { link } from '../../utils/helpers';
 import { BehaviorInfo, ComponentInfo, BehaviorVariantionInfo } from '../../types';
 import { BehaviorCard, exampleStyle, behaviorVariantDisplayName } from './BehaviorCard';
@@ -9,16 +9,19 @@ const InlineMarkdown = React.lazy(() => import('./InlineMarkdown'));
 
 const behaviorMenu = require('../../behaviorMenu');
 
-const knownIsusesId = 'known-issues';
+const knownIssuesId = 'known-issues';
 
 type ComponentDocAccessibility = {
   info: ComponentInfo;
 };
 
 export function containsAccessibility(info) {
-  const defaulBehaviorName = getDefaultBehaviorName(info);
+  const defaultBehaviorName = getDefaultBehaviorName(info);
   return (
-    !!getDescription(info) || !!getBehaviorName(defaulBehaviorName) || (info.behaviors && info.behaviors.length > 0) || !!getAccIssues(info)
+    !!getDescription(info) ||
+    !!getBehaviorName(defaultBehaviorName) ||
+    (info.behaviors && info.behaviors.length > 0) ||
+    !!getAccIssues(info)
   );
 }
 
@@ -31,8 +34,8 @@ function getDefaultBehaviorName(info) {
   return defaultValue && defaultValue.split('.').pop();
 }
 
-function getBehaviorName(defaulBehaviorName) {
-  const filename = defaulBehaviorName && `${_.camelCase(defaulBehaviorName)}.ts`;
+function getBehaviorName(defaultBehaviorName) {
+  const filename = defaultBehaviorName && `${_.camelCase(defaultBehaviorName)}.ts`;
   for (const category of behaviorMenu) {
     const behavior = category.variations.find(variation => variation.name === filename);
     if (behavior) {
@@ -62,7 +65,7 @@ function getAccIssues(info) {
 function getAllAvailableBehaviors(
   behaviorName: string,
   defaultBehaviorFileName: string,
-  availableBehaviors: BehaviorInfo[]
+  availableBehaviors: BehaviorInfo[],
 ): BehaviorVariantionInfo[] {
   let behaviorVariantsWithoutDefault = [];
   if (defaultBehaviorFileName && behaviorName) {
@@ -108,11 +111,13 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
               {behaviorName && <li>{link(`Default: ${behaviorName}`, '#default-behavior')} </li>}
               {(info.behaviors || allAvailableBehaviors.length > 0) &&
                 allAvailableBehaviors.map(variant => {
-                  return <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>;
+                  return (
+                    <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>
+                  );
                 })}
             </ul>
           </li>
-          {accIssues && <li>{link('Known issues', `#${knownIsusesId}`)} </li>}
+          {accIssues && <li>{link('Known issues', `#${knownIssuesId}`)} </li>}
         </ul>
       )}
 
@@ -141,7 +146,7 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
 
       {accIssues && (
         <>
-          <Header content="Known issues" id={knownIsusesId} as="h2" />
+          <Header content="Known issues" id={knownIssuesId} as="h2" />
           <Segment className="docs-example" styles={exampleStyle}>
             <Text style={{ whiteSpace: 'pre-line' }}>
               <InlineMarkdown value={accIssues} />

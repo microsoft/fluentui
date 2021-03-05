@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding onClick callback to divider in SplitButtons that stops propagation so that clicking on the divider does not trigger action.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "64d2c080fcb69ec5e89acbeace6a1f5c77fa0580",
-  "dependentChangeType": "patch",
-  "date": "2020-03-16T22:37:59.137Z"
-}

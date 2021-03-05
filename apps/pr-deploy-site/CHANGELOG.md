@@ -1,22 +1,23 @@
-# Change Log - @uifabric/pr-deploy-site
+# Change Log - @fluentui/pr-deploy-site
 
-This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
-## 7.0.7
-Tue, 28 Jan 2020 12:43:24 GMT
+<!-- Start content -->
 
-### Patches
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/pr-deploy-site_v1.0.0)
 
-- adding pr-deploy-site for fabric storybook (kchau@microsoft.com)
-## 7.0.2
-Mon, 13 Jan 2020 12:28:56 GMT
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/pr-deploy-site_v1.0.0..@fluentui/pr-deploy-site_v1.0.0)
 
 ### Patches
 
-- getting rid of test-bundles dep from pr-deploy-site (kchau@microsoft.com)
-## 7.0.1
-Wed, 17 Jul 2019 18:58:57 GMT
+- Bump @fluentui/scripts to v1.0.0 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
 
-### Patches
+## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/pr-deploy-site_v1.0.0)
 
-- Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom. (makotom@microsoft.com)
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/pr-deploy-site_v1.0.0..@fluentui/pr-deploy-site_v1.0.0)
+
+### Changes
+
+- Bump @fluentui/scripts to v1.0.0 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)

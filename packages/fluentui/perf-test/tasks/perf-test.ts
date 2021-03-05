@@ -1,9 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
 import _ from 'lodash';
 import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
-
 import { generateUrl } from '@fluentui/digest';
 
 type ExtendedCookResult = CookResult & {
@@ -51,8 +49,8 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
 
   if (!baselineOnly) {
     urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
-      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
-      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
+      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test-northstar/index.html`
+      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test-northstar/index.html';
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
@@ -79,8 +77,8 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
           ...(!baselineOnly &&
             storyKey !== 'Fabric' && {
               // Optimization: skip baseline comparision for Fabric
-              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey))
-            })
+              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
+            }),
         };
       });
   });
@@ -103,7 +101,17 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
     });
   }
 
-  const scenarioConfig: ScenarioConfig = { outDir, tempDir };
+  const scenarioConfig: ScenarioConfig = {
+    outDir,
+    tempDir,
+    pageActions: async (page, options) => {
+      // Occasionally during our CI, page takes unexpected amount of time to navigate (unsure about the root cause).
+      // Removing the timeout to avoid perf-test failures but be cautious about long test runs.
+      page.setDefaultTimeout(0);
+
+      await page.goto(options.url);
+    },
+  };
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
   const extendedCookResults = extendCookResults(stories, scenarioResults);
@@ -139,8 +147,8 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
         iterations,
         tpi,
         fabricTpi,
-        filename: stories[kind][story].filename
-      }
+        filename: stories[kind][story].filename,
+      },
     };
   });
 }
@@ -180,7 +188,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   const resultsToDisplay = Object.keys(testResults)
     .filter(
       key =>
-        showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression)
+        showAll ||
+        (testResults[key].analysis &&
+          testResults[key].analysis.regression &&
+          testResults[key].analysis.regression.isRegression),
     )
     .filter(testResultKey => getStoryKey(testResultKey) !== 'Fabric')
     .sort();
@@ -196,10 +207,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   // <tr>
   //   <th>Scenario</th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
   //   </th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
   //   </th>
   //   <th>Status</th>
   // </tr>`.concat(
@@ -228,17 +239,25 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
     <th>TPI</th>
     <th>Iterations</th>
     <th>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
     </th>
   </tr>`.concat(
     resultsToDisplay
       .map(resultKey => {
         const testResult = testResults[resultKey];
         const tpi = testResult.extended.tpi
-          ? linkifyResult(testResult, testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }), false)
+          ? linkifyResult(
+              testResult,
+              testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
+              false,
+            )
           : 'n/a';
         const fabricTpi = testResult.extended.fabricTpi
-          ? linkifyResult(testResult, testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }), false)
+          ? linkifyResult(
+              testResult,
+              testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
+              false,
+            )
           : '';
 
         return `<tr>
@@ -251,7 +270,7 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
            </tr>`;
       })
       .join('\n')
-      .concat(`</table>`)
+      .concat(`</table>`),
   );
 
   return result;
@@ -281,7 +300,9 @@ function getTpiResult(testResults, stories, kind, story): number | undefined {
 
 function getIterations(stories, kind, story): number {
   // Give highest priority to most localized definition of iterations. Story => kind => default.
-  return stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations;
+  return (
+    stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations
+  );
 }
 
 function getTicks(testResult: CookResult): number | undefined {

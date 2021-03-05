@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import { CodeSnippet } from '@fluentui/docs-components';
 
 import ComponentPropsTable from '../components/ComponentDoc/ComponentPropsTable';
@@ -24,14 +24,15 @@ export default () => (
     <Header as="h2">Overview</Header>
     <p>
       {code('FocusZone')} provides arrow key navigation between component's child items, in such components as
-      {code('Menu')}, {code('List')}, {code('Toolbar')} and {code('Grid')}. At the same time it is possible to navigate between these
-      components by using {code('TAB')} key.
+      {code('Menu')}, {code('List')}, {code('Toolbar')} and {code('Grid')}. At the same time it is possible to navigate
+      between these components by using {code('TAB')} key.
     </p>
     <p>
       Tabbable elements (buttons, anchors, etc., elements with {code('tabindex="0"')} or
-      {code('data-is-focusable="true"')} attributes) are considered when pressing directional arrow keys and focus is moved appropriately.
-      Tabbing to a zone sets focus only to the current "active" element, making it simple to use the {code('TAB')} key to transition from
-      one zone to the next (from e.g., {code('TAB')} from Menu to List), rather than through every focusable element.
+      {code('data-is-focusable="true"')} attributes) are considered when pressing directional arrow keys and focus is
+      moved appropriately. Tabbing to a zone sets focus only to the current "active" element, making it simple to use
+      the {code('TAB')} key to transition from one zone to the next (from e.g., {code('TAB')} from Menu to List), rather
+      than through every focusable element.
     </p>
     <p>{code('FocusZone')} operates based on DOM structure to:</p>
     <ul>
@@ -43,8 +44,11 @@ export default () => (
     </ul>
     <p>
       Fluent UI leverages {code('FocusZone')} component which is based on the{' '}
-      {link('Focus Zone from Office UI Fabric.', 'https://developer.microsoft.com/en-us/fabric#/components/focuszone')} The Focus Zone can
-      wrap any component / element and adds arrow key navigation functionality.
+      {link(
+        'Focus Zone from Fluent UI React.',
+        'https://developer.microsoft.com/en-us/fluentui#/controls/web/focuszone',
+      )}{' '}
+      The Focus Zone can wrap any component / element and adds arrow key navigation functionality.
     </p>
     <Header as="h2">Usage</Header>
     <div>
@@ -74,14 +78,15 @@ export default () => (
       Read more about <Link to="accessibility-behaviors">Accessibility Behaviors</Link>.
     </div>
     <p>
-      The accessibility behavior can control the focus zone operation by specifying Focus zone's properties - <b>mode</b> and <b>props</b>.
+      The accessibility behavior can control the focus zone operation by specifying Focus zone's properties -{' '}
+      <b>mode</b> and <b>props</b>.
     </p>
     <Header as="h3">Mode</Header>
     <p>Type: {code('FocusZoneMode')}, with 2 main options:</p>
     <ul>
       <li>
-        <b>Embed</b> - Focus Zone is embeded into component's container, thus all {code('FocusZone')}'s attributes/events listeners are
-        applied to component's container.
+        <b>Embed</b> - Focus Zone is embeded into component's container, thus all {code('FocusZone')}'s
+        attributes/events listeners are applied to component's container.
         <CodeSnippet
           label="html"
           value={`
@@ -95,7 +100,8 @@ export default () => (
         />
       </li>
       <li>
-        <b>Wrap</b> - Focus Zone wraps component to it's own container and all attributes/events listeners applied there.
+        <b>Wrap</b> - Focus Zone wraps component to it's own container and all attributes/events listeners applied
+        there.
         <CodeSnippet
           label="html"
           value={`
@@ -116,15 +122,15 @@ export default () => (
       The following props can be applied (
       {link(
         'lookup for API on GitHub',
-        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusZone.types.ts'
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusZone.types.ts',
       )}
       ):
     </p>
     <ComponentPropsTable componentName="FocusZone" />
     <Header as="h2">Override {code('FocusZone')} settings</Header>
     <p>
-      To be able to add/override Focus Zone settings already set for a component, it is needed to override or create a new accessibility
-      behavior.
+      To be able to add/override Focus Zone settings already set for a component, it is needed to override or create a
+      new accessibility behavior.
     </p>
     <p>For example, we want to specify default tabbable element for Menu to be the last one, not first.</p>
     <CodeSnippet
@@ -164,7 +170,7 @@ export default () => (
       {code('FocusZone')} code on{' '}
       {link(
         'GitHub.',
-        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusZone.tsx'
+        'https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusZone.tsx',
       )}
     </p>
   </DocPage>

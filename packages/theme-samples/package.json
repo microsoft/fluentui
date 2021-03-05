@@ -1,6 +1,6 @@
 {
-  "name": "@uifabric/theme-samples",
-  "version": "7.0.39",
+  "name": "@fluentui/theme-samples",
+  "version": "8.0.5",
   "description": "Sample themes for use with Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -22,13 +22,13 @@
     "clean": "just-scripts clean"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.0"
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.6",
-    "@uifabric/variants": "^7.1.29",
-    "office-ui-fabric-react": "^7.104.0",
+    "@fluentui/react": "^8.1.4",
+    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/scheme-utilities": "^8.0.2",
     "tslib": "^1.10.0"
   }
 }

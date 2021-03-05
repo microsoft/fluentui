@@ -1,9 +1,9 @@
-export { default as callable } from './callable';
-export { default as createTheme } from './createTheme';
+export { callable } from './callable';
+export { createTheme } from './createTheme';
 export { isEnabled as isDebugEnabled } from './debugEnabled';
-export { default as deepmerge } from './deepmerge';
+export { deepmerge } from './deepmerge';
 export {
-  default as mergeThemes,
+  mergeThemes,
   emptyTheme,
   mergeComponentVariables,
   mergeComponentStyles,
@@ -12,9 +12,9 @@ export {
   mergeStyles,
   mergeThemeStyles,
   mergeThemeVariables,
-  mergeSiteVariables
+  mergeSiteVariables,
 } from './mergeThemes';
-export { default as objectKeyToValues } from './objectKeysToValues';
-export { default as withDebugId } from './withDebugId';
+export { objectKeyToValues } from './objectKeysToValues';
+export { withDebugId } from './withDebugId';
 
 export * from './types';

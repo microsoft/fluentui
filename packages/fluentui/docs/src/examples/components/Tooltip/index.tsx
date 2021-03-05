@@ -5,6 +5,7 @@ import Types from './Types';
 import Variations from './Variations';
 import States from './States';
 import Usage from './Usage';
+import Visual from './Visual';
 
 const TooltipExamples = () => (
   <>
@@ -13,6 +14,7 @@ const TooltipExamples = () => (
     <States />
     <Rtl />
     <Usage />
+    <Visual />
   </>
 );
 

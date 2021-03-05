@@ -1,0 +1,34 @@
+{
+  "name": "@fluentui/date-time-utilities",
+  "version": "8.0.1",
+  "description": "Date-time utilities",
+  "main": "lib-commonjs/index.js",
+  "module": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "sideEffects": [
+    "lib/version.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/microsoft/fluentui"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "just-scripts build",
+    "test": "just-scripts test",
+    "just": "just-scripts",
+    "code-style": "just-scripts code-style",
+    "clean": "just-scripts clean",
+    "start-test": "just-scripts jest-watch",
+    "lint": "just-scripts lint"
+  },
+  "devDependencies": {
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@types/webpack-env": "1.16.0",
+    "@fluentui/scripts": "^1.0.0"
+  },
+  "dependencies": {
+    "@fluentui/set-version": "^8.0.1",
+    "tslib": "^1.10.0"
+  }
+}

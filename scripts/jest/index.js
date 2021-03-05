@@ -1,11 +1,23 @@
-module.exports = {
+// @ts-check
+const lernaAlias = require('../lernaAliasNorthstar');
+const findGitRoot = require('../monorepo/findGitRoot');
+
+module.exports = customConfig => ({
   coverageDirectory: './coverage/',
   coverageReporters: ['json', 'lcov'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   setupFilesAfterEnv: [`${__dirname}/setupTests.js`],
   testRegex: '/test/.*-test\\.tsx?$',
   transform: {
-    '^.+\\.tsx?$': 'babel-jest'
+    '^.+\\.tsx?$': 'babel-jest',
   },
-  verbose: false
-};
+  verbose: false,
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+  ...customConfig,
+  moduleNameMapper: {
+    ...lernaAlias.jest({
+      directory: findGitRoot(),
+    }),
+    ...customConfig.moduleNameMapper,
+  },
+});

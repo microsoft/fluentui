@@ -3,13 +3,25 @@ import DocPage from '../components/DocPage/DocPage';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import CategoryColorSchemes from '../components/CategoryColorSchemes';
 
-import { Dropdown, themes, Flex, Provider } from '@fluentui/react';
+import {
+  Dropdown,
+  Flex,
+  Provider,
+  teamsHighContrastTheme,
+  teamsDarkTheme,
+  teamsTheme,
+} from '@fluentui/react-northstar';
 import { faderStyles } from '../components/Fader';
 import { colorVariantsStyles } from '../components/ColorVariants';
 import { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
 
 export default () => {
   const [color, setColor] = React.useState('red');
+
+  // Currently all flavours of themes (default/dark/hc) all have the same colors
+  // Should be updated if this is no longer the case
+  const colors = Object.keys(teamsTheme.siteVariables.categoryColorScheme);
+
   return (
     <Provider
       theme={{
@@ -19,55 +31,42 @@ export default () => {
           Fader: faderStyles,
           Header: {
             root: {
-              fontWeight: 700
-            }
-          }
+              fontWeight: 700,
+            },
+          },
         },
         componentVariables: {
-          ColorBox: colorBoxVariables
-        }
+          ColorBox: colorBoxVariables,
+        },
       }}
     >
       <DocPage title="Category color schemes">
         <Flex column>
           <Dropdown
-            items={[
-              'red',
-              'redDark',
-              'orangeDark',
-              'orange',
-              'orangeLight',
-              'yellowDark',
-              'yellow',
-              'brown',
-              'oliveDark',
-              'olive',
-              'neon',
-              'formatting'
-            ]}
+            items={colors}
             defaultValue={'red'}
             placeholder="Select the color"
             onChange={(e, { value }) => setColor(value as string)}
           />
           <CategoryColorSchemes
-            themes={[themes.teams, themes.teamsHighContrast, themes.teamsDark]}
+            themes={[teamsTheme, teamsHighContrastTheme, teamsDarkTheme]}
             headers={[
               {
                 as: 'h3',
-                content: 'Design token'
+                content: 'Design token',
               },
               {
                 as: 'h3',
-                content: 'Light theme'
+                content: 'Light theme',
               },
               {
                 as: 'h3',
-                content: 'HC theme'
+                content: 'HC theme',
               },
               {
                 as: 'h3',
-                content: 'Dark theme'
-              }
+                content: 'Dark theme',
+              },
             ]}
             name={color}
           />

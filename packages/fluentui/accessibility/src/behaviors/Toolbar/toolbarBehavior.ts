@@ -10,18 +10,18 @@ import { FocusZoneDirection } from '../../focusZone/types';
  * Provides arrow key navigation in horizontal direction.
  * When component's container element receives focus, focus will be set to the default focusable child element of the component.
  */
-const toolbarBehavior: Accessibility = props => ({
+export const toolbarBehavior: Accessibility<ToolbarBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'toolbar'
-    }
+      role: 'toolbar',
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.horizontal
-    }
-  }
+      direction: FocusZoneDirection.horizontal,
+    },
+  },
 });
 
-export default toolbarBehavior;
+export type ToolbarBehaviorProps = never;

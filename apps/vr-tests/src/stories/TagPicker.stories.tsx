@@ -1,9 +1,8 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities';
-import { TagPicker, Fabric, ITag } from 'office-ui-fabric-react';
+import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
   'black',
@@ -20,20 +19,20 @@ const testTags: ITag[] = [
   'rose',
   'violet',
   'white',
-  'yellow'
+  'yellow',
 ].map(item => ({ key: item, name: item }));
 
 const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
+// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -57,7 +56,7 @@ storiesOf('TagPicker', module)
       pickerSuggestionsProps={{
         suggestionsHeaderText: 'Suggested Tags',
         noResultsFoundText: 'No Color Tags Found',
-        searchForMoreText: 'Get more Results'
+        searchForMoreText: 'Get more Results',
       }}
       itemLimit={2}
     />
@@ -73,17 +72,20 @@ storiesOf('TagPicker', module)
           getTextFromItem={getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+            noResultsFoundText: 'No Color Tags Found',
           }}
           itemLimit={2}
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  // FIXME: SB6 duplicates same story ID decorators
+  // This is a temporary fix until we migrate to CSF format duplication problem
+  // - previously this used FabricDecoratorFixedWidth
+  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'fixed' }))
   .addDecorator(story => (
     <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
@@ -97,8 +99,8 @@ storiesOf('TagPicker', module)
         defaultSelectedItems={[
           {
             key: 'test',
-            name: 'Very very long tag (this part should be truncated)'
-          }
+            name: 'Very very long tag (this part should be truncated)',
+          },
         ]}
       />
     </Fabric>
@@ -134,11 +136,11 @@ storiesOf('TagItem', module)
           getTextFromItem={getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found'
+            noResultsFoundText: 'No Color Tags Found',
           }}
           itemLimit={2}
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );

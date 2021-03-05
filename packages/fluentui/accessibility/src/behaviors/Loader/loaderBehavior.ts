@@ -8,24 +8,21 @@ import { Accessibility } from '../../types';
  * @specification
  * Adds role 'progressbar' to 'root' slot.
  */
-
-const loaderBehavior: Accessibility<LoaderBehaviorProps> = props => {
+export const loaderBehavior: Accessibility<LoaderBehaviorProps> = props => {
   return {
     attributes: {
       root: {
         role: 'progressbar',
-        'aria-labelledby': getDefaultAriaLabelledBy(props)
-      }
-    }
+        'aria-labelledby': getDefaultAriaLabelledBy(props),
+      },
+    },
   };
 };
 
-type LoaderBehaviorProps = {
+export type LoaderBehaviorProps = {
   /** id of the loader label element. */
   labelId?: string;
 };
-
-export default loaderBehavior;
 
 /**
  * Returns the id of the loader label if user provide tabIndex prop. It is used when user does not provide aria-label or

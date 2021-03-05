@@ -1,6 +1,6 @@
 import * as React from 'react';
-import PerfDataContext from '../PerfChart/PerfDataContext';
 import * as _ from 'lodash';
+import PerfDataContext from './PerfDataContext';
 
 const usePerfData = (filter?: string) => {
   const { loading, error, data = [] } = React.useContext(PerfDataContext);
@@ -14,7 +14,8 @@ const usePerfData = (filter?: string) => {
         .filter(entry => _.get(entry, `performance.${filter}`))
         .map(entry => ({
           ...entry,
-          performance: { [filter]: entry.performance[filter] }
+          performance: { [filter]: entry.performance[filter] },
+          bundleSize: undefined,
         }))
     : data;
 
@@ -25,7 +26,7 @@ const usePerfData = (filter?: string) => {
   return {
     loading,
     error,
-    data: filteredData
+    data: filteredData,
   };
 };
 

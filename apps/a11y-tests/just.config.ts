@@ -1,7 +1,8 @@
+import { preset, task } from '@fluentui/scripts';
+
+preset();
+
+task('build', 'build:node-lib').cached();
+
 // a11y-tests disabled until occasional local and CI timeout issue can be resolved.
-// const { preset, just } = require('@uifabric/build');
-// const { task, series, condition, argv } = just;
-
-// preset();
-
-// task('build', series('clean', 'ts:commonjs-only')).cached();
+task('test', 'no-op');

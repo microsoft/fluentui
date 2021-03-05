@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 
-import { Provider, Telemetry, themes } from '@fluentui/react';
+import { Provider, Telemetry, teamsTheme } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';
@@ -12,13 +12,13 @@ import { ProfilerMeasure, ProfilerMeasureCycle } from '../types';
 const Profiler = (React as any).unstable_Profiler;
 
 const mountNode = document.querySelector('#root');
-const performanceExamplesContext = require.context('docs/src/examples/', true, /.perf.tsx$/);
+const performanceExamplesContext = require.context('@fluentui/docs/src/examples/', true, /.perf.tsx$/);
 
 // Heads up!
 // We want to randomize examples to avoid any notable issues with always first example
 const performanceExampleNames: string[] = _.shuffle(performanceExamplesContext.keys());
 
-const asyncRender = (element: React.ReactElement<any>, container: Element) =>
+const asyncRender = (element: React.ReactElement, container: Element) =>
   new Promise(resolve => {
     ReactDOM.render(element, container, () => {
       ReactDOM.unmountComponentAtNode(container);
@@ -26,12 +26,16 @@ const asyncRender = (element: React.ReactElement<any>, container: Element) =>
     });
   });
 
-const renderCycle = async (exampleName: string, Component: React.ComponentType, exampleIndex: number): Promise<ProfilerMeasure> => {
+const renderCycle = async (
+  exampleName: string,
+  Component: React.ComponentType,
+  exampleIndex: number,
+): Promise<ProfilerMeasure> => {
   let profilerMeasure: ProfilerMeasure;
   const telemetryRef: React.Ref<Telemetry> = React.createRef();
 
   await asyncRender(
-    <Provider theme={themes.teams} telemetryRef={telemetryRef}>
+    <Provider theme={teamsTheme} telemetryRef={telemetryRef}>
       <Profiler
         id={exampleName}
         onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
@@ -39,11 +43,11 @@ const renderCycle = async (exampleName: string, Component: React.ComponentType, 
             _.values(telemetryRef.current.performance),
             (acc, next) => {
               return {
-                componentCount: acc.componentCount + next.count,
-                renderComponentTime: acc.renderComponentTime + next.msTotal
+                componentCount: acc.componentCount + next.instances,
+                renderComponentTime: acc.renderComponentTime + next.msTotal,
               };
             },
-            { componentCount: 0, renderComponentTime: 0 }
+            { componentCount: 0, renderComponentTime: 0 },
           );
 
           profilerMeasure = {
@@ -52,14 +56,14 @@ const renderCycle = async (exampleName: string, Component: React.ComponentType, 
             phase,
             commitTime,
             startTime,
-            ...renderComponentTelemetry
+            ...renderComponentTelemetry,
           };
         }}
       >
         <Component />
       </Profiler>
     </Provider>,
-    mountNode
+    mountNode,
   );
 
   return profilerMeasure;
@@ -67,7 +71,7 @@ const renderCycle = async (exampleName: string, Component: React.ComponentType, 
 
 const satisfiesFilter = (componentFilePath: string, filter: string) =>
   minimatch(componentFilePath, filter || '*', {
-    matchBase: true
+    matchBase: true,
   });
 
 window.runMeasures = async (filter: string = '') => {
@@ -81,7 +85,11 @@ window.runMeasures = async (filter: string = '') => {
 
     const Component = performanceExamplesContext(exampleName).default;
 
-    performanceMeasures[componentName] = await renderCycle(componentName, Component, performanceExampleNames.indexOf(exampleName));
+    performanceMeasures[componentName] = await renderCycle(
+      componentName,
+      Component,
+      performanceExampleNames.indexOf(exampleName),
+    );
   }
 
   return performanceMeasures;
@@ -97,13 +105,15 @@ const Control: React.FunctionComponent = () => {
     // Heads up! On first run, this Provider increases measured time due to style DOM elements being
     // rendered to the browser. Subsequent rerenders, in contrast, are not rendering these style DOM
     // elements again.
-    <Provider theme={themes.teams}>
+    <Provider theme={teamsTheme}>
       <label htmlFor="filter">
         Filter (use <code>minimatch</code>):
       </label>
       <input onChange={e => setFilter(e.target.value)} type="text" value={filter} />
 
-      <pre>{_.filter(performanceExamplesContext.keys(), exampleName => satisfiesFilter(exampleName, filter)).join('\n')}</pre>
+      <pre>
+        {_.filter(performanceExamplesContext.keys(), exampleName => satisfiesFilter(exampleName, filter)).join('\n')}
+      </pre>
 
       <button
         onClick={async () => {

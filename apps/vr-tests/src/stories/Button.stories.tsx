@@ -1,28 +1,28 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorTall } from '../utilities';
+import { FabricDecorator, FabricDecoratorTall } from '../utilities/index';
 import {
   DefaultButton,
   ActionButton,
   CompoundButton,
   IconButton,
   IButtonProps,
-  CommandBarButton
-} from 'office-ui-fabric-react';
+  CommandBarButton,
+} from '@fluentui/react/lib/Button';
 
 const baseProps: IButtonProps = {
   iconProps: {
-    iconName: 'AddFriend'
+    iconName: 'AddFriend',
   },
   children: 'Button',
-  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor'
+  secondaryText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor',
 };
 
 const commandProps: IButtonProps = {
   iconProps: { iconName: 'Add' },
   text: 'Create account',
+  // eslint-disable-next-line no-alert
   onClick: () => alert('Clicked'),
   menuProps: {
     items: [
@@ -30,21 +30,21 @@ const commandProps: IButtonProps = {
         key: 'emailMessage',
         text: 'Email message',
         iconProps: {
-          iconName: 'Mail'
-        }
+          iconName: 'Mail',
+        },
       },
       {
         key: 'calendarEvent',
         text: 'Calendar event',
         iconProps: {
-          iconName: 'Calendar'
-        }
-      }
-    ]
-  }
+          iconName: 'Calendar',
+        },
+      },
+    ],
+  },
 };
 
-storiesOf('Button Default', module)
+storiesOf('Button (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -66,11 +66,16 @@ storiesOf('Button Default', module)
   .addStory('Primary Disabled', () => (
     <DefaultButton {...baseProps} primary={true} disabled={true} />
   ))
-  .addStory('Primary Checked', () => (
-    <DefaultButton {...baseProps} primary={true} checked={true} />
-  ));
+  .addStory('Primary Checked', () => <DefaultButton {...baseProps} primary={true} checked={true} />)
+  .addStory('Primary Anchor', () => (
+    <DefaultButton primary href="http://www.bing.com">
+      Button
+    </DefaultButton>
+  ))
+  .addStory('No Icon', () => <DefaultButton>Button</DefaultButton>)
+  .addStory('Icon Only', () => <DefaultButton iconProps={baseProps.iconProps} />);
 
-storiesOf('Button Action', module)
+storiesOf('Button Action (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -87,9 +92,11 @@ storiesOf('Button Action', module)
   ))
   .addStory('Root', () => <ActionButton {...baseProps} />, { rtl: true })
   .addStory('Disabled', () => <ActionButton {...baseProps} disabled={true} />)
-  .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />);
+  .addStory('Checked', () => <ActionButton {...baseProps} checked={true} />)
+  .addStory('No Icon', () => <ActionButton>Button</ActionButton>)
+  .addStory('Icon Only', () => <ActionButton iconProps={baseProps.iconProps} />);
 
-storiesOf('Button Compound', module)
+storiesOf('Button Compound (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -113,9 +120,10 @@ storiesOf('Button Compound', module)
   ))
   .addStory('Primary Checked', () => (
     <CompoundButton {...baseProps} primary={true} checked={true} />
-  ));
+  ))
+  .addStory('No Icon', () => <CompoundButton {...baseProps} iconProps={undefined} />);
 
-storiesOf('Button Command', module)
+storiesOf('Button Command (compat)', module)
   .addDecorator(story => (
     <div style={{ display: 'flex', alignItems: 'stretch', height: '40px' }}>{story()}</div>
   ))
@@ -140,7 +148,7 @@ storiesOf('Button Command', module)
   .addStory('Disabled', () => <CommandBarButton {...commandProps} disabled={true} />)
   .addStory('Checked', () => <CommandBarButton {...commandProps} checked={true} />);
 
-storiesOf('Button Split', module)
+storiesOf('Button Split (compat)', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
@@ -182,7 +190,7 @@ storiesOf('Button Split', module)
   ))
   .addStory('Command Split', () => <CommandBarButton {...commandProps} split={true} />);
 
-storiesOf('Button Special Scenarios', module)
+storiesOf('Button Special Scenarios (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
@@ -215,7 +223,7 @@ storiesOf('Button Special Scenarios', module)
     </div>
   ));
 
-storiesOf('IconButton Scenarios', module)
+storiesOf('IconButton Scenarios (compat)', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
     <Screener
@@ -242,8 +250,8 @@ storiesOf('IconButton Scenarios', module)
         menuProps={{
           items: [
             { key: 'a', text: 'Item 1' },
-            { key: 'b', text: 'Item 2' }
-          ]
+            { key: 'b', text: 'Item 2' },
+          ],
         }}
       />
     </div>

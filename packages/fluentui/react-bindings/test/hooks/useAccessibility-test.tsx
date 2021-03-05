@@ -1,63 +1,105 @@
-import { Accessibility } from '@fluentui/accessibility';
+import { Accessibility, keyboardKey } from '@fluentui/accessibility';
 import { useAccessibility } from '@fluentui/react-bindings';
 import { mount, shallow } from 'enzyme';
-// @ts-ignore
-import * as keyboardKey from 'keyboard-key';
 import * as React from 'react';
 
 type TestBehaviorProps = {
   disabled: boolean;
 };
 
+type ChildBehaviorProps = {
+  pressed: boolean;
+};
+
 const testBehavior: Accessibility<TestBehaviorProps> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
-      tabIndex: 1
+      tabIndex: 1,
     },
     img: {
       'aria-label': 'Pixel',
-      role: 'presentation'
-    }
+      role: 'presentation',
+    },
   },
   keyActions: {
     root: {
       click: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
+      },
+    },
+  },
 });
 
 const conditionalBehavior: Accessibility<{ disabled: boolean }> = props => ({
   attributes: {
     root: {
-      'aria-label': 'Noop behavior'
-    }
+      'aria-label': 'Noop behavior',
+    },
   },
   keyActions: {
     root: {
       ...((!props.disabled && {
         click: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
-        }
-      }) as any)
+          keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
+        },
+      }) as any),
     },
     img: {
       click: {
-        keyCombinations: [props.disabled ? { keyCode: keyboardKey.ArrowDown } : { keyCode: keyboardKey.ArrowUp }]
-      }
-    }
-  }
+        keyCombinations: [props.disabled ? { keyCode: keyboardKey.ArrowDown } : { keyCode: keyboardKey.ArrowUp }],
+      },
+    },
+  },
 });
 
 const focusZoneBehavior: Accessibility<never> = () => ({
   focusZone: {
     props: {
       disabled: true,
-      shouldFocusOnMount: true
-    }
-  }
+      shouldFocusOnMount: true,
+    },
+  },
+});
+
+const childOverriddenBehavior: Accessibility<ChildBehaviorProps> = props => ({
+  attributes: {
+    root: {
+      'aria-pressed': props.pressed,
+      'aria-label': 'overridden',
+    },
+  },
+});
+
+const childBehavior: Accessibility<ChildBehaviorProps> = props => ({
+  attributes: {
+    root: {
+      'aria-pressed': props.pressed,
+    },
+  },
+});
+
+const overriddenChildBehavior: Accessibility<TestBehaviorProps> = props => ({
+  attributes: {
+    root: {
+      'aria-disabled': props.disabled,
+      tabIndex: 1,
+    },
+    img: {
+      'aria-label': 'Pixel',
+      role: 'presentation',
+    },
+  },
+  keyActions: {
+    root: {
+      click: {
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
+      },
+    },
+  },
+  childBehaviors: {
+    child: childOverriddenBehavior,
+  },
 });
 
 type TestComponentProps = {
@@ -67,28 +109,46 @@ type TestComponentProps = {
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
+type ChildComponentProps = {
+  accessibility?: Accessibility<ChildBehaviorProps>;
+  pressed?: boolean;
+  onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
+};
+
 const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   const { accessibility = testBehavior, disabled, onClick, onKeyDown, ...rest } = props;
   const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
-      disabled
+      disabled,
     }),
     actionHandlers: {
       click: (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (onClick) onClick(e, 'root');
-      }
-    }
+      },
+    },
   });
 
   return getA11Props.unstable_wrapWithFocusZone(
     <div {...getA11Props('root', { onKeyDown, ...rest })}>
       <img
         {...getA11Props('img', {
-          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=='
+          src: 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==',
         })}
       />
-    </div>
+      <ChildComponent {...getA11Props('child', {})} />
+    </div>,
   );
+};
+
+const ChildComponent: React.FunctionComponent<ChildComponentProps> = props => {
+  const { accessibility = childBehavior, pressed, onKeyDown, ...rest } = props;
+  const getA11Props = useAccessibility(accessibility, {
+    mapPropsToBehavior: () => ({
+      pressed,
+    }),
+  });
+
+  return <button {...getA11Props('root', { onKeyDown, ...rest })} />;
 };
 
 type FocusZoneComponentProps = {
@@ -103,24 +163,36 @@ const FocusZoneComponent: React.FunctionComponent<FocusZoneComponentProps> = pro
   return getA11Props.unstable_wrapWithFocusZone(<ElementType {...getA11Props('root', {})}>{children}</ElementType>);
 };
 
+const UnstableBehaviorDefinitionComponent: React.FunctionComponent<TestComponentProps> = props => {
+  const { accessibility = testBehavior } = props;
+  const getA11Props = useAccessibility(accessibility, {
+    mapPropsToBehavior: () => ({
+      disabled: false,
+    }),
+  });
+
+  return <div {...getA11Props.unstable_behaviorDefinition().attributes.root} />;
+};
+
 describe('useAccessibility', () => {
   it('sets attributes', () => {
     const wrapper = shallow(<TestComponent />);
 
     expect(wrapper.find('div').prop('tabIndex')).toBe(1);
     expect(wrapper.find('img').prop('role')).toBe('presentation');
+    expect(wrapper.find('ChildComponent').prop('accessibility')).toBe(undefined);
   });
 
   it('attributes can be conditional', () => {
     expect(
       shallow(<TestComponent disabled />)
         .find('div')
-        .prop('aria-disabled')
+        .prop('aria-disabled'),
     ).toBe(true);
     expect(
       shallow(<TestComponent disabled={false} />)
         .find('div')
-        .prop('aria-disabled')
+        .prop('aria-disabled'),
     ).toBe(false);
   });
 
@@ -128,8 +200,29 @@ describe('useAccessibility', () => {
     expect(
       shallow(<TestComponent tabIndex={-1} />)
         .find('div')
-        .prop('tabIndex')
+        .prop('tabIndex'),
     ).toBe(-1);
+  });
+
+  it('child behaviors can be overridden', () => {
+    expect(
+      shallow(<TestComponent accessibility={overriddenChildBehavior} />)
+        .find('ChildComponent')
+        .prop('accessibility'),
+    ).toBe(childOverriddenBehavior);
+  });
+
+  it('it shoult return current definition from unstable_behaviorDefinition', () => {
+    expect(
+      shallow(<UnstableBehaviorDefinitionComponent />)
+        .find('div')
+        .prop('aria-disabled'),
+    ).toBe(false);
+    expect(
+      shallow(<UnstableBehaviorDefinitionComponent />)
+        .find('div')
+        .prop('tabIndex'),
+    ).toBe(1);
   });
 
   it('adds event handlers', () => {
@@ -141,22 +234,22 @@ describe('useAccessibility', () => {
       .find('div')
       .simulate('click')
       .simulate('keydown', {
-        keyCode: keyboardKey.ArrowDown
+        keyCode: keyboardKey.ArrowDown,
       });
 
     expect(onKeyDown).toBeCalledTimes(1);
     expect(onKeyDown).toBeCalledWith(
       expect.objectContaining({
-        keyCode: keyboardKey.ArrowDown
-      })
+        keyCode: keyboardKey.ArrowDown,
+      }),
     );
 
     expect(onClick).toBeCalledTimes(1);
     expect(onClick).toBeCalledWith(
       expect.objectContaining({
-        keyCode: keyboardKey.ArrowDown
+        keyCode: keyboardKey.ArrowDown,
       }),
-      'root'
+      'root',
     );
   });
 
@@ -190,15 +283,15 @@ describe('useAccessibility', () => {
     const wrapper = mount(<TestComponent accessibility={conditionalBehavior} onClick={onClick} />);
 
     wrapper.find('img').simulate('keydown', {
-      keyCode: keyboardKey.ArrowUp
+      keyCode: keyboardKey.ArrowUp,
     });
 
     wrapper.setProps({ disabled: true });
     wrapper.find('img').simulate('keydown', {
-      keyCode: keyboardKey.ArrowUp // Noop, will not call handler
+      keyCode: keyboardKey.ArrowUp, // Noop, will not call handler
     });
     wrapper.find('img').simulate('keydown', {
-      keyCode: keyboardKey.ArrowDown
+      keyCode: keyboardKey.ArrowDown,
     });
 
     expect(onClick).toBeCalledTimes(2);
@@ -242,12 +335,25 @@ describe('useAccessibility', () => {
       expect(
         shallow(<FocusZoneComponent />)
           .find('FocusZone')
-          .props()
+          .props(),
       ).toEqual(
         expect.objectContaining({
           disabled: true,
-          shouldFocusOnMount: true
-        })
+          shouldFocusOnMount: true,
+        }),
+      );
+    });
+
+    it('applies default props for FocusZone', () => {
+      expect(
+        shallow(<FocusZoneComponent />)
+          .find('FocusZone')
+          .props(),
+      ).toEqual(
+        expect.objectContaining({
+          preventFocusRestoration: true,
+          shouldRaiseClicks: false,
+        }),
       );
     });
 
@@ -255,12 +361,12 @@ describe('useAccessibility', () => {
       expect(
         shallow(<FocusZoneComponent />)
           .find('FocusZone')
-          .prop('isRtl')
+          .prop('isRtl'),
       ).toBe(false);
       expect(
         shallow(<FocusZoneComponent rtl />)
           .find('FocusZone')
-          .prop('isRtl')
+          .prop('isRtl'),
       ).toBe(true);
     });
   });

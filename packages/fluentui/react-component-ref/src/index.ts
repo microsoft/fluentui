@@ -1,8 +1,5 @@
-export { default as handleRef } from './handleRef';
-export { default as isRefObject } from './isRefObject';
+export { Ref } from './Ref';
+export { RefFindNode } from './RefFindNode';
+export { RefForward } from './RefForward';
 
-export { default as Ref } from './Ref';
-export { default as RefFindNode } from './RefFindNode';
-export { default as RefForward } from './RefForward';
-
-export * from './types';
+export * from './utils';

@@ -22,7 +22,7 @@ const copyIcon = (
   </svg>
 );
 
-const CodeSnippetLabel: React.FunctionComponent<CopySnippetLabelProps> = props => {
+export const CodeSnippetLabel: React.FunctionComponent<CopySnippetLabelProps> = props => {
   const { copyable, label, mode, value } = props;
   const hasLabel = label !== false;
 
@@ -44,7 +44,7 @@ const CodeSnippetLabel: React.FunctionComponent<CopySnippetLabelProps> = props =
           position: 'absolute',
           right: '0.8rem',
           top: '0.8rem',
-          zIndex: 100
+          zIndex: 100,
         }}
         title={copyable ? 'Copy' : undefined}
       >
@@ -54,5 +54,3 @@ const CodeSnippetLabel: React.FunctionComponent<CopySnippetLabelProps> = props =
     )
   );
 };
-
-export default CodeSnippetLabel;

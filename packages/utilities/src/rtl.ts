@@ -1,7 +1,7 @@
 import { KeyCodes } from './KeyCodes';
 import { getDocument } from './dom/getDocument';
 import { getItem, setItem } from './sessionStorage';
-import { setRTL as mergeStylesSetRTL } from '@uifabric/merge-styles';
+import { setRTL as mergeStylesSetRTL } from '@fluentui/merge-styles';
 
 const RTL_LOCAL_STORAGE_KEY = 'isRTL';
 

@@ -1,0 +1,29 @@
+@import '~@fluentui/common-styles/src/common';
+
+.resultContent {
+  display: table-row;
+  .resultItem {
+    display: table-cell;
+    vertical-align: bottom;
+  }
+}
+
+.peoplePickerPersona {
+  width: 180px;
+  :global(.ms-Persona-details) {
+    width: 100%;
+  }
+}
+
+.peoplePicker {
+  :global(.ms-BasePicker-text) {
+    min-height: 40px;
+  }
+}
+
+.peoplePickerPersonaContent {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}

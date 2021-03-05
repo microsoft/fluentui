@@ -1,8 +1,13 @@
-import { callable, Grid, Header, Segment, ProviderContextPrepared, ThemeComponentVariablesPrepared } from '@fluentui/react';
+import {
+  callable,
+  Grid,
+  Header,
+  Segment,
+  useFluentContext,
+  ThemeComponentVariablesPrepared,
+} from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import ComponentExampleVariable, { ComponentExampleVariableProps } from './ComponentExampleVariable';
 import { mergeThemeVariables } from '@fluentui/styles';
@@ -26,14 +31,14 @@ const getGroupName = (variableName: string): string => {
 const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariablesProps> = props => {
   const { onChange, overriddenVariables, usedVariables } = props;
 
-  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext);
+  const { theme } = useFluentContext();
   const [hideUnused] = React.useState(true);
 
   const componentVariables: ThemeComponentVariablesPrepared = _.pickBy(
     mergeThemeVariables(theme.componentVariables, overriddenVariables),
     (componentVariables, componentName) => {
       return usedVariables[componentName];
-    }
+    },
   );
   const filteredVariables = _.omitBy(
     _.mapValues(componentVariables, (variables, componentName) =>
@@ -50,10 +55,10 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
 
           return acc;
         },
-        {}
-      )
+        {},
+      ),
     ),
-    _.isEmpty
+    _.isEmpty,
   );
 
   return (
@@ -67,7 +72,10 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
       {/* /> */}
 
       {_.map(filteredVariables, (componentVariables, componentName) => {
-        const groupedVariables: Record<string, string[]> = _.groupBy(Object.keys(componentVariables).sort(), getGroupName);
+        const groupedVariables: Record<string, string[]> = _.groupBy(
+          Object.keys(componentVariables).sort(),
+          getGroupName,
+        );
 
         return (
           <Segment key={componentName}>
@@ -80,7 +88,7 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
                 <Header as="h3" styles={{ marginTop: '4px', marginBottom: '4px' }}>
                   {groupName}
                 </Header>
-                <Grid columns="4">
+                <Grid columns={4}>
                   {_.map(variableNames, variableName => (
                     <ComponentExampleVariable
                       componentName={componentName}

@@ -1,5 +1,5 @@
 import { UseKnobOptions } from '@fluentui/docs-components';
-import { ThemePrepared } from '@fluentui/react';
+import { ThemePrepared } from '@fluentui/react-northstar';
 
 export type ExampleSource = {
   js: string;
@@ -38,7 +38,7 @@ export type ComponentInfo = {
   props: ComponentProp[];
   repoPath: string;
   subcomponentName: null | string;
-  subcomponents: string[];
+  subcomponents: string[] | null;
   type: 'component';
 };
 

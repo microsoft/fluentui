@@ -8,7 +8,7 @@ import config from '../../../config';
 import { cyclesToSkip } from './config';
 import { buildWebpackConfig, configureCircularDependencyCheckPlugin, isCycleToSkip } from './utils';
 
-const entryFilePath = config.paths.packageDist('react', 'es', 'index.js');
+const entryFilePath = config.paths.packageDist('react-northstar', 'es', 'index.js');
 const outputFilePath = path.resolve(__dirname, 'result.js');
 
 task('test:circulars:run', done => {
@@ -22,10 +22,12 @@ task('test:circulars:run', done => {
           return;
         }
 
-        const relativePathsCycle = absolutePathsCycle.map(absolutePath => path.relative(config.paths.base(), absolutePath));
+        const relativePathsCycle = absolutePathsCycle.map(absolutePath =>
+          path.relative(config.paths.base(), absolutePath),
+        );
         compilation.errors.push(new Error(relativePathsCycle.join(' -> ')));
-      })
-    ]
+      }),
+    ],
   });
 
   webpackPlugin(webpackConfig, done, () => {

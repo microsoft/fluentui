@@ -5,7 +5,7 @@
     "lib": ["es2015", "dom"],
     "baseUrl": "../../",
     "paths": {
-      "@uifabric/build": ["scripts"],
+      "@fluentui/scripts": ["scripts"],
       "@fluentui/*": ["packages/fluentui/*/src"]
     },
     "types": ["node", "jest"],
@@ -19,6 +19,7 @@
     "noImplicitThis": false,
     "noImplicitAny": false,
     "strictNullChecks": false,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true
   }
 }

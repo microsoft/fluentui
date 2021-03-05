@@ -1,0 +1,19 @@
+import * as React from 'react';
+import { ComponentProps } from '@fluentui/react-utilities';
+
+/**
+ * {@docCategory {{componentName}} }
+ */
+export interface {{componentName}}Props extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+  // TODO Add props and slots here
+}
+
+/**
+ * {@docCategory {{componentName}} }
+ */
+export interface {{componentName}}State extends {{componentName}}Props {
+  /**
+   * Ref to the root slot
+   */
+  ref: React.MutableRefObject<HTMLElement>;
+}

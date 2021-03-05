@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react';
+import { Toolbar, Button, toolbarMenuClassName, Ref } from '@fluentui/react-northstar';
 
 export const selectors = {
   beforeToolbarId: 'before',
   afterToolbarId: 'after',
   triggerButtonId: 'trigger',
   menuItemButtonId: 'menu-button',
-  toolbarMenu: ToolbarMenu.className
+  toolbarMenu: toolbarMenuClassName,
 };
 
 const ToolbarExampleMenuShorthand = () => {
@@ -20,7 +20,7 @@ const ToolbarExampleMenuShorthand = () => {
         items={[
           {
             key: 'highlight',
-            icon: 'highlight'
+            icon: 'highlight',
           },
           {
             key: 'more',
@@ -34,22 +34,22 @@ const ToolbarExampleMenuShorthand = () => {
                   id: `${selectors.menuItemButtonId}-0`,
                   content: 'Play',
                   icon: 'play',
-                  onClick: () => buttonAfterToolbarRef.current.focus()
+                  onClick: () => buttonAfterToolbarRef.current.focus(),
                 },
                 { key: 'pause', content: 'Pause', icon: 'pause' },
                 { key: 'divider', kind: 'divider' },
-                'Without icon'
-              ]
+                'Without icon',
+              ],
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               setMenuOpen(menuOpen);
-            }
+            },
           },
           {
             key: 'bold',
-            icon: 'bold'
-          }
+            icon: 'bold',
+          },
         ]}
       />
       <Ref innerRef={buttonAfterToolbarRef}>

@@ -1,4 +1,4 @@
-import { INavStyleProps, INavStyles } from 'office-ui-fabric-react/lib/Nav';
+import { INavStyleProps, INavStyles } from '@fluentui/react/lib/Nav';
 import { borderNone } from '../Constants';
 
 export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
@@ -7,19 +7,19 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
 
   return {
     compositeLink: {
-      border: borderNone
+      border: borderNone,
     },
     link: {
       border: borderNone,
       color: semanticColors.bodyText,
       selectors: {
         '&:hover': {
-          border: borderNone
+          border: borderNone,
         },
         '&:active': {
-          border: borderNone
-        }
-      }
-    }
+          border: borderNone,
+        },
+      },
+    },
   };
 };

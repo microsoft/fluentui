@@ -1,0 +1,1160 @@
+{
+  "name": "@fluentui/react-theme-provider",
+  "entries": [
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-theme to v9.0.0-alpha.4",
+            "author": "behowell@microsoft.com",
+            "commit": "b97a96052d0b4c0c1d2f280bdb01f443f8d9bc63",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.4",
+      "version": "9.0.0-alpha.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Update references to major-bumped packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/set-version to v8.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 20:16:39 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove /compat",
+            "author": "olfedias@microsoft.com",
+            "commit": "9f99ccbf4bbfea823581b0f74a0b5f3f0640176c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.2",
+      "version": "9.0.0-alpha.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "make @fluentui/react-conformance public",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-conformance to v0.2.1",
+            "author": "altinokd@microsoft.com",
+            "commit": "9de2c9938c00408da7746d4b3f6fe7f80b37e37f",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Feb 2021 00:05:29 GMT",
+      "tag": "@fluentui/react-theme-provider_v9.0.0-alpha.1",
+      "version": "9.0.0-alpha.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "bump version to v9",
+            "author": "olfedias@microsoft.com",
+            "commit": "74da15f2f1fb10fe089fcaef24a47ac5dba89ad2",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.27",
+      "version": "1.0.0-beta.27",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Breaks dependency on react-hooks for convergence",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "68bc4c7d68b5c01022658fcc485342670d56df39",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.4.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.3",
+            "author": "elcraig@microsoft.com",
+            "commit": "a37bab178f676de967b937a8bad1a309e3e67fd8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 19:38:50 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.26",
+      "version": "1.0.0-beta.26",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Allow React 17 in peerDependencies. The library has not yet been fully validated with React 17, so please report any issues you find.",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b7379fde2d54e677a1d65ae86468bb5fdaf9fa4",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.25",
+      "version": "1.0.0-beta.25",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "use @fluentui/react-utilities instead of @fluentui/react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utilities to v0.3.0",
+            "author": "olfedias@microsoft.com",
+            "commit": "e0d4772fbaff0afd7ae0a2f85b53c4ca3831a701",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 17 Feb 2021 12:21:39 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.24",
+      "version": "1.0.0-beta.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: apply single version policy on jest",
+            "author": "martinhochel@microsoft.com",
+            "commit": "0de01d003589b5e2f166bc070729dca20125a091",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Feb 2021 12:22:00 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.24",
+      "version": "1.0.0-beta.24",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove dependency on @fluentui/react-stylesheets",
+            "author": "olfedias@microsoft.com",
+            "commit": "c5110956b421df4bc7542ca117935ae4c7919864",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "xgao@microsoft.com",
+            "commit": "d5a5a4f26ce900b3e1b3c0f6c46a17c2e3430439",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.23",
+      "version": "1.0.0-beta.23",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove theming logic/interface which are unrelated to v8 release from @fluentui/theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "84f36ddd24db3546e4ccb129a60f7f7f98ceefef",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.1",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "8ee2abdf839b14a45598ded245e0d0865618f4bb",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.22",
+      "version": "1.0.0-beta.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.11",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 00:58:10 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.22",
+      "version": "1.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-hooks to v8.0.0-beta.11",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "xgao@microsoft.com",
+            "commit": "69357e7a30d4c282ad82d2ecf4da6fc4b942ab99",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.21",
+      "version": "1.0.0-beta.21",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.1",
+            "author": "olfedias@microsoft.com",
+            "commit": "e6a1c491a67b911cc285fcc9d89b6fca152aacd9",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Bump @fluentui/react-utils to v0.3.0",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "fe4959d22fec3382fa743b396f671b1b63a26b9e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.20",
+      "version": "1.0.0-beta.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react-theme to v0.3.0",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "bca3d0d79accb3675bf3dfd49c0297e646b91d2c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Feb 2021 05:51:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "none": [
+          {
+            "comment": "refactor: remove unused .npmrc in packages",
+            "author": "hantatsang@gmail.com",
+            "commit": "c688ee2ea6f192c4874974ebf11598523ccf6db9",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Feb 2021 12:21:54 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.19",
+      "version": "1.0.0-beta.19",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "move react-theme-provider utils to /compat",
+            "author": "olfedias@microsoft.com",
+            "commit": "27074a29ffdf4d437dc4d6fcb347effe9fcb195f",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "feat: add converged Provider and basic theme utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "026320cfc0408dbc2d25d3959856d787ef21d344",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Feb 2021 12:23:48 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.18",
+      "version": "1.0.0-beta.18",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Cleanup unused code.",
+            "author": "xgao@microsoft.com",
+            "commit": "4f9fe37e9be56a7e2ceb81eec8dbe9f7aa6a64be",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Extract compose/next to react-utils",
+            "author": "olfedias@microsoft.com",
+            "commit": "f4917ffe3172175eaa332448032d27c64319b679",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jan 2021 12:25:56 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.17",
+      "version": "1.0.0-beta.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "Delete update-api script which is no longer needed",
+            "author": "elcraig@microsoft.com",
+            "commit": "943a9ef5768a9cd77ade84217d142f93b1be6127",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Remove incorrect mock of requestAnimationFrame",
+            "author": "elcraig@microsoft.com",
+            "commit": "6bd0ce75decd9f62c40967bd7a59bfff960a0105",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Updating to webpack 5, latest typings, latest loaders and plugins.",
+            "author": "dzearing@microsoft.com",
+            "commit": "9c2c4a61c7d9eb8d153945ff57962118b569ea5b",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jan 2021 12:36:12 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.16",
+      "version": "1.0.0-beta.16",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": " Updating dev dependencies.",
+            "author": "dzearing@microsoft.com",
+            "commit": "f7813725750ecc893ca37792bbb004e554591279",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jan 2021 12:36:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.14",
+      "version": "1.0.0-beta.14",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "add webpack bundles to react-icons-mdl2 and react-theme-provider",
+            "author": "ololubek@microsoft.com",
+            "commit": "be4ad025c27e09a43ee9dacb74d6a3e465d0a93a",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Nov 2020 12:29:52 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.10",
+      "version": "1.0.0-beta.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix syntax error in readme",
+            "author": "elcraig@microsoft.com",
+            "commit": "5adfeff3d1ef72ab3621b8de323185b4855816b7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Nov 2020 12:31:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.10",
+      "version": "1.0.0-beta.10",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Move getTokens logic out from ThemeProvider to mergeTheme/createTheme.",
+            "author": "xgao@microsoft.com",
+            "commit": "8f026356eb3228e0a156aa7a54aa35f06f55b7f2",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Nov 2020 12:30:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.9",
+      "version": "1.0.0-beta.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Moving the auto-distribution logic out of makeClasses and into an applyClasses helper.",
+            "author": "dzearing@hotmail.com",
+            "commit": "af6cf1bcb3f9609ab8c0e03fda6e182a16f71de6",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Nov 2020 12:36:24 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.8",
+      "version": "1.0.0-beta.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Updating makeStyles hook to take in options bag, rather than specific arguments.",
+            "author": "dzearing@hotmail.com",
+            "commit": "c170c8c0891fd77ea5572f5e922a15efcfeeccab",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Changing useStyleRenderer to default to merge-styles so that things actually happen.",
+            "author": "xgao@microsoft.com",
+            "commit": "79ff394998a9917d69f6d3262ffcc931e189e648",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Oct 2020 12:32:24 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.4",
+      "version": "1.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Expanding type of MakeVariantClassesOptions to take into account user provided Variants.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "eca3b8690a04e641ee494c7fecb62615f1c468af",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 23:25:40 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.1",
+      "version": "1.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Major bump react-compose package since it dependes on packages with new major.",
+            "author": "xgao@microsoft.com",
+            "commit": "302f8e93bc5bc9fd87d1c5a082713560f3bc4583",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 23 Oct 2020 03:26:15 GMT",
+      "tag": "@fluentui/react-theme-provider_v1.0.0-beta.0",
+      "version": "1.0.0-beta.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "ThemeProvider: RecursivePartial now correctly works.",
+            "author": "dzearing@hotmail.com",
+            "commit": "f155a92488fbe53ebeadd9b5b153d35a753e5647",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Remove unintended exports from public APIs and ensure default theme is always provided by ThemeProvider.",
+            "author": "xgao@microsoft.com",
+            "commit": "c773138c91eb4e8c1c002540e5faf7a3e4fd2cd0",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Fix getTokens to only override with user provided tokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "b7015bb38cfb44ea3f71989f8f89ea0fcf024280",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Adding checked iconColor tokens.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "7befd3044831e2ac6b1bf19ed40fbbae1c17cf49",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "add tokens for `react-text`",
+            "author": "olfedias@microsoft.com",
+            "commit": "5b078c73e52ed6c791b369a320fa053c101df1de",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Set correct dir on root element based on rtl value in theme.",
+            "author": "xgao@microsoft.com",
+            "commit": "f07d62b82901a2ee58aff015ba63b52b5775e51f",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Fix ThemeProvider props and state typings.",
+            "author": "xgao@microsoft.com",
+            "commit": "00962543c408ca46f50dfff5dda287a3fd75fa43",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "do not use css vars for default styles applied by ThemeProvider.",
+            "author": "xgao@microsoft.com",
+            "commit": "17f2130e2a97e602ca2dfbb63adba24aa905d5da",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Rename @uifabric/styling to @fluentui/style-utilities",
+            "author": "elcraig@microsoft.com",
+            "commit": "5158b5e4050cb04e9c22e0d5292cd96cc674746e",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Rename @uifabric/set-version to @fluentui/set-version",
+            "author": "ololubek@microsoft.com",
+            "commit": "2eba5d5be163a7a64975f058dc38b465f2363064",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Rename @uifabric/merge-styles to @fluentui/merge-styles",
+            "author": "ololubek@microsoft.com",
+            "commit": "30c25030ee043ded4a2afb86c7eb02a506ce9fdb",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Rename @uifabric/react-hooks to @fluentui/react-hooks & @uifabric/utilities to @fluentui/utilities",
+            "author": "ololubek@microsoft.com",
+            "commit": "c6ae2b350037deb4e0bea07cdbdfe2e93455f4b1",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Remove react-dom from peerDependencies",
+            "author": "elcraig@microsoft.com",
+            "commit": "c57941f88df0dd5e7a9e10da84471e435b669ef8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Update npmignore",
+            "author": "elcraig@microsoft.com",
+            "commit": "aec02d96e7cef745e9867c03a528426a5ad28038",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Rename build-related packages",
+            "author": "elcraig@microsoft.com",
+            "commit": "32a158fd2c7fca8dc308a3e41f692817e6c26c44",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Update package version for @fluentui/react version 8 beta release.",
+            "author": "xgao@microsoft.com",
+            "commit": "ee2622a8572c11f1eeb9d7f1c8d759d6ae0281ca",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sun, 27 Sep 2020 04:20:52 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add instructions to replace Fabric, Customizer, loadTheme in README.",
+            "author": "xgao@microsoft.com",
+            "commit": "cdc0aec2397bf1caa8d0730fef6baedf36c741eb",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Sep 2020 12:25:17 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adjusting storybook config so that it works with new changes.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "85432b281ce55e1a990dd811e5adebbad84e7cb8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Sep 2020 12:27:48 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "set theme package version to be 1.0.0.",
+            "author": "xgao@microsoft.com",
+            "commit": "1c60f6078577423a15e15a48e90c8c0a32865f7a",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding Card tokens to theme.",
+            "author": "makotom@microsoft.com",
+            "commit": "ed851559770bc8aa7348ac4e93e63f17fa27c9bc",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Sep 2020 12:23:24 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.13.3",
+      "version": "0.13.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Code cleanup: remove defaultTokens and aggregate everything in getTokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "9cf9695e4f49212b40215dd862627f626f74537e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 15:52:49 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix button styles to match v7 buttons.",
+            "author": "xgao@microsoft.com",
+            "commit": "70025f8282c9ba918580a1679ef3ae2ee217ecc9",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Sep 2020 12:25:04 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support applyTo prop and align styles with Fabric component.",
+            "author": "xgao@microsoft.com",
+            "commit": "730c61559ee97a7cfc2f84d40c96fab3077e5fb0",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Updating color token references to use `color` prefix, and `accent` tokens have been renamed to `brand`.",
+            "author": "dzearing@hotmail.com",
+            "commit": "63a9ede0bb731c8dad96c12e6a5d4d0a10aa493e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Sep 2020 12:27:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update API Extractor settings to share config and handle newlines better",
+            "author": "elcraig@microsoft.com",
+            "commit": "7d093f59a06527fc39656c903cab4470650e3acd",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 15 Sep 2020 12:26:06 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.12.0",
+      "version": "0.12.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support passing different renderer and default to use merge-styles",
+            "author": "dzearing@hotmail.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Sep 2020 12:22:12 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix API file newlines",
+            "author": "elcraig@microsoft.com",
+            "commit": "728b287a05f3c521e3b1ab7ea58071ac07d7c727",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 10 Sep 2020 22:29:38 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.3",
+      "version": "0.11.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up default styles applied on ThemeProvider root to match Fabric",
+            "author": "xgao@microsoft.com",
+            "commit": "591e2cfebdce8b9b3a8108c49ee6ca54a381cdb8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Sep 2020 12:24:19 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.2",
+      "version": "0.11.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding token definition for tokens related to CompoundButton.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "0d0c48f6cfb2eb9dd22f62a56f11a1d2120257ab",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Sep 2020 12:26:26 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.1",
+      "version": "0.11.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Minor tweaks in theme styling.",
+            "author": "dzearing@microsoft.com",
+            "commit": "14eca1367c19abc6dd1653b764dc5687d76861e8",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 31 Aug 2020 18:11:10 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.11.0",
+      "version": "0.11.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export ThemeContext.",
+            "author": "xgao@microsoft.com",
+            "commit": "6d5b28c97bcbef0d79fccfa98f903e5c3ed42460",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Aug 2020 12:29:20 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.10.0",
+      "version": "0.10.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding ghost defaults to Fluent theme.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "d9de3d77bb24ac881fa63b8cf72e6d56d53d97ad",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Aug 2020 12:35:38 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.1",
+      "version": "0.9.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Theme and PartialTheme typing.",
+            "author": "xgao@microsoft.com",
+            "commit": "e5f362d4c0dca7d9a7648d76b121d1d39331c59c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Aug 2020 12:36:19 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.9.0",
+      "version": "0.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move mergeThemes and Theme related typings to new theme package.",
+            "author": "xgao@microsoft.com",
+            "commit": "27f84c4116e519dc10b8478a7670182f2ad145d4",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Adding `makeStyles` helper to register styles as a function of the theme.",
+            "author": "dzearing@hotmail.com",
+            "commit": "46f1add2165e357c71291281a65ebc0fcb095994",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Updated typings for makeStyles so that it can more correctly resolve style inputs.",
+            "author": "dzearing@hotmail.com",
+            "commit": "af039939f1de57e9db36cee2a4943f583956301f",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Aug 2020 12:37:22 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.8.1",
+      "version": "0.8.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix default button tokens",
+            "author": "xgao@microsoft.com",
+            "commit": "9bf73ea3bd03c9f695b899651fb327d90db3d0bc",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Remove references to React global (add explicit imports)",
+            "author": "elcraig@microsoft.com",
+            "commit": "a95407790172cb25bad455e6d4cffb2bf12bc629",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Aug 2020 12:44:33 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.8.0",
+      "version": "0.8.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Teams/Fluent/default themes; Convert v7 theme to tokens.",
+            "author": "xgao@microsoft.com",
+            "commit": "1a7794c6e7933a5e1790a6a50eada3a0f9928216",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Aug 2020 07:58:00 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.7.3",
+      "version": "0.7.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ThemeProvider: RecursivePartial now correctly works.",
+            "author": "dzearing@hotmail.com",
+            "commit": "f155a92488fbe53ebeadd9b5b153d35a753e5647",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 12 Aug 2020 18:34:18 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.7.0",
+      "version": "0.7.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support v7 theme (ITheme)",
+            "author": "xgao@microsoft.com",
+            "commit": "306edd737757ba27ae55332825d200fddcfa5bd7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Aug 2020 05:47:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.6.0",
+      "version": "0.6.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Renaming TokenPlateSet to TokenColorSet",
+            "author": "dzearing@hotmail.com",
+            "commit": "59a535edb9ef5b85fada1259818a3758197ed27d",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 10 Aug 2020 06:19:21 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.5.0",
+      "version": "0.5.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding useInlineTokens hook.",
+            "author": "dzearing@microsoft.com",
+            "commit": "427a8b1215a1f2510f41361b4e6b4d583a397c7c",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jul 2020 12:42:21 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.4.0",
+      "version": "0.4.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Move ThemeProvider from react-next to react-theme-provider's Compat folder",
+            "author": "behowell@microsoft.com",
+            "commit": "20caabd592970eef8431d4b47c923e54767e3d3e",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jul 2020 23:14:39 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.7",
+      "version": "0.3.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Replace tslint with eslint",
+            "author": "elcraig@microsoft.com",
+            "commit": "e7b119a05ef8a4aa254df00320f3672298617ade",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Jun 2020 12:36:28 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.2",
+      "version": "0.3.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Automatically configure jest moduleNameMapper",
+            "author": "elcraig@microsoft.com",
+            "commit": "33bcc34156eb6e9e19932546d153284933e4cdd5",
+            "package": "@fluentui/react-theme-provider"
+          },
+          {
+            "comment": "Update config files in preparation for enabling ESLint",
+            "author": "elcraig@microsoft.com",
+            "commit": "94ab6757c1050007b9f8343986f19c7685fed6d7",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Jun 2020 12:41:54 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.3.0",
+      "version": "0.3.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding getStylesFromOptionsAndProps method to calculate the correct value for the style prop.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "01f6a1cb03f18e26d80c75998794dbeffbe326fc",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 16 Jun 2020 17:35:36 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Clean up devDependencies and clarify version file placeholder comments",
+            "author": "elcraig@microsoft.com",
+            "commit": "695c29fcf6f07a903e7d849098c5e6c0ec178b3d",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Jun 2020 18:29:07 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Exporting utility to generate inline styles based on tokens.",
+            "author": "dzearing@microsoft.com",
+            "commit": "7026390333eeeb5bb1765bca68389b3b43312a49",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 May 2020 12:34:43 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.1.6",
+      "version": "0.1.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Avoid adding empty string class attribute",
+            "author": "xgao@microsoft.com",
+            "commit": "ecbfff23b83b795d51d73322a4938a2f6ed682bf",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 May 2020 12:36:34 GMT",
+      "tag": "@fluentui/react-theme-provider_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial publishing of the Fluent UI theme provider package.",
+            "author": "dzearing@microsoft.com",
+            "commit": "156c760b3320f32bae20f4955f97269536d10372",
+            "package": "@fluentui/react-theme-provider"
+          }
+        ]
+      }
+    }
+  ]
+}

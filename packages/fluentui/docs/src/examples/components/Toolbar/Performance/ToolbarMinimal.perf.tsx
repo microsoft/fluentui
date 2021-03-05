@@ -1,4 +1,4 @@
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ToolbarMinimalPerf = () => <Toolbar />;

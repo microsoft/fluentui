@@ -1,7 +1,343 @@
-# Change Log - @uifabric/azure-themes
+# Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 06 Feb 2020 12:37:34 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.5)
+
+Wed, 03 Mar 2021 07:45:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.4..@fluentui/azure-themes_v8.0.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.4 ([PR #17252](https://github.com/microsoft/fluentui/pull/17252) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.4)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.3..@fluentui/azure-themes_v8.0.4)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.3)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.2..@fluentui/azure-themes_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.2 ([PR #17001](https://github.com/microsoft/fluentui/pull/17001) by feodor@appveyor.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.2)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.1..@fluentui/azure-themes_v8.0.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.61..@fluentui/azure-themes_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.61)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.60..@fluentui/azure-themes_v8.0.0-beta.61)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.63 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
+
+## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.60)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.59..@fluentui/azure-themes_v8.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.62 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.59)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.58..@fluentui/azure-themes_v8.0.0-beta.59)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.58)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.57..@fluentui/azure-themes_v8.0.0-beta.58)
+
+### Changes
+
+- Updated primary button styles to match fluentui ([PR #17136](https://github.com/microsoft/fluentui/pull/17136) by andredias@microsoft.com)
+
+## [8.0.0-beta.57](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.57)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.56..@fluentui/azure-themes_v8.0.0-beta.57)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.59 ([PR #17066](https://github.com/microsoft/fluentui/pull/17066) by elcraig@microsoft.com)
+
+## [8.0.0-beta.56](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.56)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.55..@fluentui/azure-themes_v8.0.0-beta.56)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.58 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.55](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.55)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.54..@fluentui/azure-themes_v8.0.0-beta.55)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.54](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.54)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.53..@fluentui/azure-themes_v8.0.0-beta.54)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.55 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.53](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.53)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.52..@fluentui/azure-themes_v8.0.0-beta.53)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.54 ([PR #16849](https://github.com/microsoft/fluentui/pull/16849) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.52)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.51..@fluentui/azure-themes_v8.0.0-beta.52)
+
+### Changes
+
+- Remove compat Button imports ([PR #16895](https://github.com/microsoft/fluentui/pull/16895) by elcraig@microsoft.com)
+
+## [8.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.51)
+
+Wed, 10 Feb 2021 12:20:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.50..@fluentui/azure-themes_v8.0.0-beta.51)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.52 ([PR #16873](https://github.com/microsoft/fluentui/pull/16873) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.50](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.50)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.49..@fluentui/azure-themes_v8.0.0-beta.50)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.51 ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by tristan.watanabe@gmail.com)
+
+## [8.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.49)
+
+Tue, 09 Feb 2021 00:56:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.48..@fluentui/azure-themes_v8.0.0-beta.49)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.50 ([PR #16835](https://github.com/microsoft/fluentui/pull/16835) by ololubek@microsoft.com)
+
+## [8.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.48)
+
+Fri, 05 Feb 2021 12:20:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.46..@fluentui/azure-themes_v8.0.0-beta.48)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.49 ([PR #15707](https://github.com/microsoft/fluentui/pull/15707) by czearing@outlook.com)
+
+## [8.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.43)
+
+Thu, 28 Jan 2021 12:25:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.36..@fluentui/azure-themes_v8.0.0-beta.43)
+
+### Changes
+
+- Icon button & disabled textbox style fix. Callout, messagebar and teachingbubble style updates. Azure theme fix: MessageBar, Callout and TeachingBubble (#16337). dark mode themes are now correctly set as inverted ([PR #16638](https://github.com/microsoft/fluentui/pull/16638) by martinhochel@microsoft.com)
+- Fix some remaining references to @uifabric ([PR #16679](https://github.com/microsoft/fluentui/pull/16679) by elcraig@microsoft.com)
+
+## [8.0.0-beta.36](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.36)
+
+Mon, 18 Jan 2021 12:35:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.0.0-beta.0..@fluentui/azure-themes_v8.0.0-beta.36)
+
+### Changes
+
+- fix(azure-themes): dark mode themes are now correctly set as inverted ([PR #16377](https://github.com/microsoft/fluentui/pull/16377) by daparks@microsoft.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.5.17..@fluentui/azure-themes_v8.0.0-beta.0)
+
+### Changes
+
+- Rename theme packages ([PR #15454](https://github.com/microsoft/fluentui/pull/15454) by elcraig@microsoft.com)
+- Remove unneeded package dependencies. ([PR #15456](https://github.com/microsoft/fluentui/pull/15456) by xgao@microsoft.com)
+- Update Theme instances to contain components/scopedSettings. ([PR #15504](https://github.com/microsoft/fluentui/pull/15504) by xgao@microsoft.com)
+- Updating imports for Button component to import from the compat folder. ([PR #15576](https://github.com/microsoft/fluentui/pull/15576) by humbertomakotomorimoto@gmail.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Azure Theme: Updating control outlines, pivot indentation and label weight. ([PR #15633](https://github.com/microsoft/fluentui/pull/15633) by humbertomakotomorimoto@gmail.com)
+- Rename office-ui-fabric-react package and update references ([PR #15271](https://github.com/microsoft/fluentui/pull/15271) by elcraig@microsoft.com)
+- Updating SpinButton.styles to a StyleFunction. ([PR #15408](https://github.com/microsoft/fluentui/pull/15408) by czearing@outlook.com)
+
+## [7.5.17](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.5.17)
+
+Fri, 25 Sep 2020 12:25:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.3..@uifabric/azure-themes_v7.5.17)
+
+### Patches
+
+- Moving examples to @fluentui/examples package. ([PR #15132](https://github.com/microsoft/fluentui/pull/15132) by humbertomakotomorimoto@gmail.com)
+
+## [7.4.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.3)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.4.1..@uifabric/azure-themes_v7.4.3)
+
+### Patches
+
+- Body text font size clean up, <Text> ([PR #14534](https://github.com/microsoft/fluentui/pull/14534) by jagaheri@microsoft.com)
+
+## [7.4.1](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.4.1)
+
+Thu, 20 Aug 2020 12:37:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.6..@uifabric/azure-themes_v7.4.1)
+
+### Patches
+
+- Remove references to React global (add explicit imports) ([PR #14613](https://github.com/microsoft/fluentui/pull/14613) by elcraig@microsoft.com)
+
+## [7.3.6](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.6)
+
+Tue, 18 Aug 2020 07:58:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.3.0..@uifabric/azure-themes_v7.3.6)
+
+### Patches
+
+- Messagebar palette update, defaultbutton as primiary styling fix ([PR #14459](https://github.com/microsoft/fluentui/pull/14459) by jagaheri@microsoft.com)
+- fix publish ([PR #14566](https://github.com/microsoft/fluentui/pull/14566) by kchau@microsoft.com)
+
+## [7.3.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.3.0)
+
+Mon, 10 Aug 2020 06:19:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.2.0..@uifabric/azure-themes_v7.3.0)
+
+### Minor changes
+
+- High contrast light + dark themes ([PR #14193](https://github.com/microsoft/fluentui/pull/14193) by jagaheri@microsoft.com)
+
+## [7.2.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.2.0)
+
+Thu, 30 Jul 2020 12:38:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.49..@uifabric/azure-themes_v7.2.0)
+
+### Minor changes
+
+- High contrast light + dark themes ([PR #14193](https://github.com/microsoft/fluentui/pull/14193) by jagaheri@microsoft.com)
+
+## [7.1.49](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.49)
+
+Mon, 27 Jul 2020 12:42:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.43..@uifabric/azure-themes_v7.1.49)
+
+### Patches
+
+- Fix choicegroup's disabled style for Azure theme ([PR #14190](https://github.com/microsoft/fluentui/pull/14190) by hyoshi@microsoft.com)
+
+## [7.1.43](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.43)
+
+Sat, 18 Jul 2020 00:04:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.41..@uifabric/azure-themes_v7.1.43)
+
+### Patches
+
+- style updates per devops  ([PR #14014](https://github.com/microsoft/fluentui/pull/14014) by jagaheri@microsoft.com)
+
+## [7.1.40](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.40)
+
+Mon, 13 Jul 2020 23:14:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.31..@uifabric/azure-themes_v7.1.40)
+
+### Patches
+
+- Fixed primary button color on expand ([PR #13878](https://github.com/microsoft/fluentui/pull/13878) by 67673432+q-xg@users.noreply.github.com)
+- undefined ([PR #13959](https://github.com/microsoft/fluentui/pull/13959) by jagaheri@microsoft.com)
+
+## [7.1.3](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.3)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.1.0..@uifabric/azure-themes_v7.1.3)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.1.0)
+
+Fri, 01 May 2020 12:28:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.59..@uifabric/azure-themes_v7.1.0)
+
+### Minor changes
+
+- Azure-theme component style updates per Azure portal design team ([PR #12537](https://github.com/microsoft/fluentui/pull/12537) by jagaheri@microsoft.com)
+
+## [7.0.59](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.0.59)
+
+Thu, 16 Apr 2020 04:01:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.0.50..@uifabric/azure-themes_v7.0.59)
+
+### Patches
+
+- Readme: Fabric=>Fluent wording updates ([PR #12508](https://github.com/microsoft/fluentui/pull/12508) by elcraig@microsoft.com)
+
+## 7.0.50
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.0.49
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.0.47
+Wed, 18 Mar 2020 12:24:00 GMT
+
+### Patches
+
+- Azure theme: Adding storybook `yarn start` workflow for helping to design and debug the Azure themes. (dzearing@microsoft.com)
 ## 7.0.21
 Thu, 06 Feb 2020 12:37:34 GMT
 
@@ -156,4 +492,3 @@ Mon, 21 Jan 2019 13:36:01 GMT
 Thu, 17 Jan 2019 13:34:42 GMT
 
 *Initial release*
-

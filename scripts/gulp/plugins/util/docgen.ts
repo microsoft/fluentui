@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import ts from 'typescript';
+import ts, { TypeFlags } from 'typescript';
 
 /**
  * THIS MODULE is largely based on the parser's logic
@@ -42,6 +42,7 @@ export interface PropItem {
   description: string;
   defaultValue: any;
   parent?: ParentType;
+  resolvedType?: any;
 }
 
 export interface Component {
@@ -57,6 +58,40 @@ export interface ParentType {
   name: string;
   fileName: string;
 }
+export type ResolvedType = {
+  type: string;
+  name: string;
+};
+
+export type RTLiteral = ResolvedType & {
+  type: 'StringLiteral' | 'NumberLiteral' | 'BooleanLiteral';
+  value: string | number | boolean;
+};
+
+export type RTUnion = ResolvedType & {
+  type: 'union';
+  types: ResolvedType[];
+};
+
+export type RTEnum = ResolvedType & {
+  type: 'enum';
+  values: RTLiteral[]; // these should be just
+};
+
+export type RTIntersection = ResolvedType & {
+  type: 'intersection';
+  types: ResolvedType[];
+};
+
+export type RTArray = ResolvedType & {
+  type: 'array';
+  indexedType: ResolvedType;
+};
+
+export type RTObject = ResolvedType & {
+  type: 'object';
+  props: Record<string, ResolvedType>;
+};
 
 export type PropFilter = (props: PropItem, component: Component) => boolean;
 
@@ -84,10 +119,19 @@ const defaultOptions: ts.CompilerOptions = {
   module: ts.ModuleKind.CommonJS,
   target: ts.ScriptTarget.Latest,
   allowUnusedLabels: true,
-  allowUnreachableCode: true
+  allowUnreachableCode: true,
 };
 
-const reactComponentSymbolNames = ['StatelessComponent', 'Stateless', 'StyledComponentClass', 'FunctionComponent'];
+const reactComponentSymbolNames = [
+  'StatelessComponent',
+  'Stateless',
+  'StyledComponentClass',
+  'FunctionComponent',
+
+  // magic for ComponentWithAs
+  'ComponentWithAs',
+  '__type',
+];
 
 type MaybeIntersectType = ts.Type & { types?: ts.Type[] };
 
@@ -130,14 +174,17 @@ export function withCustomConfig(tsconfigPath: string, parserOpts: ParserOptions
 /**
  * Constructs a parser for a specified set of TS compiler options.
  */
-export function withCompilerOptions(compilerOptions: ts.CompilerOptions, parserOpts: ParserOptions = defaultParserOpts): FileParser {
+export function withCompilerOptions(
+  compilerOptions: ts.CompilerOptions,
+  parserOpts: ParserOptions = defaultParserOpts,
+): FileParser {
   return {
     parse(filePathOrPaths: string | string[]): ComponentDoc[] {
       return parseWithProgramProvider(filePathOrPaths, compilerOptions, parserOpts);
     },
     parseWithProgramProvider(filePathOrPaths, programProvider) {
       return parseWithProgramProvider(filePathOrPaths, compilerOptions, parserOpts, programProvider);
-    }
+    },
   };
 }
 
@@ -150,7 +197,7 @@ interface JSDoc {
 const defaultJSDoc: JSDoc = {
   description: '',
   fullComment: '',
-  tags: {}
+  tags: {},
 };
 
 const defaultPropFilter = (prop, component) => {
@@ -191,7 +238,7 @@ export class Parser {
   public getComponentInfo(
     symbolParam: ts.Symbol,
     source: ts.SourceFile,
-    componentNameResolver: ComponentNameResolver = () => undefined
+    componentNameResolver: ComponentNameResolver = () => undefined,
   ): ComponentDoc | null {
     if (!!symbolParam.declarations && symbolParam.declarations.length === 0) {
       return null;
@@ -218,11 +265,15 @@ export class Parser {
     }
 
     // Skip over PropTypes that are exported
-    if (type.symbol && (type.symbol.getEscapedName() === 'Requireable' || type.symbol.getEscapedName() === 'Validator')) {
+    if (
+      type.symbol &&
+      (type.symbol.getEscapedName() === 'Requireable' || type.symbol.getEscapedName() === 'Validator')
+    ) {
       return null;
     }
 
-    const propsType = this.extractPropsFromTypeIfStatelessComponent(type) || this.extractPropsFromTypeIfStatefulComponent(type);
+    const propsType =
+      this.extractPropsFromTypeIfStatelessComponent(type) || this.extractPropsFromTypeIfStatefulComponent(type);
 
     const resolvedComponentName = componentNameResolver(exp, source);
     const displayName = resolvedComponentName || computeComponentName(exp, source);
@@ -243,7 +294,7 @@ export class Parser {
       return {
         description,
         displayName,
-        props
+        props,
       };
     }
 
@@ -251,7 +302,7 @@ export class Parser {
       return {
         description,
         displayName,
-        props: {}
+        props: {},
       };
     }
 
@@ -302,6 +353,145 @@ export class Parser {
     return null;
   }
 
+  private static isLiteral(type: ResolvedType): boolean {
+    return type.type === 'StringLiteral' || type.type === 'NumberLiteral' || type.type === 'BooleanLiteral';
+  }
+
+  private customResolveTypeOverride(typeNode, name): ResolvedType | undefined {
+    if (typeNode?.symbol?.parent?.getEscapedName?.() === 'React') {
+      const symbolName = typeNode.symbol.getEscapedName?.();
+      if (symbolName === 'ReactElement') {
+        return {
+          type: 'ReactElement',
+          name,
+        };
+      } else if (symbolName === 'ReactPortal') {
+        return {
+          type: 'ReactPortal',
+          name,
+        };
+      }
+    }
+
+    if (
+      name === 'ICSSInJSStyle' || // expanding this leads to a single component.info being MBs big
+      name === 'Document' || // OOM :-/
+      name === 'CSSProperties' ||
+      name === 'HTMLElement'
+    ) {
+      return {
+        type: 'object',
+        props: {},
+        name,
+      } as RTObject;
+    }
+
+    if (name === 'Document') {
+      return {
+        type: 'object',
+        props: {},
+        name,
+      } as RTObject;
+    }
+
+    return undefined;
+  }
+
+  private resolveType(typeNode, depth = 0): ResolvedType {
+    const name = this.checker.typeToString(typeNode);
+
+    const customType = this.customResolveTypeOverride(typeNode, name);
+    if (customType) {
+      return customType;
+    }
+
+    if (depth > 1) {
+      return {
+        type: 'MAX_DEPTH',
+        name,
+      };
+    }
+
+    const typeMap = {
+      [TypeFlags.Object]: () => {
+        // Function
+        if (typeNode.getCallSignatures().length > 0) {
+          return { type: 'function', name };
+        }
+
+        // Array
+        const numberIndexedType = typeNode.getNumberIndexType();
+        if (numberIndexedType) {
+          return {
+            type: 'array',
+            indexedType: this.resolveType(numberIndexedType, depth + 1),
+            name,
+          } as RTArray;
+        }
+
+        // Object
+        const props: RTObject['props'] = {};
+        typeNode.getProperties().forEach(prop => {
+          const childType = this.checker.getTypeOfSymbolAtLocation(prop, prop.valueDeclaration!);
+
+          props[prop.getName()] = this.resolveType(childType, depth + 1);
+        });
+        return {
+          type: 'object',
+          props,
+          name,
+        } as RTObject;
+      },
+      [TypeFlags.Any]: () => ({ type: 'any', name }),
+      [TypeFlags.String]: () => ({ type: 'string', name }),
+      [TypeFlags.Number]: () => ({ type: 'number', name }),
+      [TypeFlags.Boolean]: () => ({ type: 'boolean', name }),
+      [TypeFlags.Enum]: () => ({ type: 'enum', name }), // FIXME
+      [TypeFlags.StringLiteral]: () => ({ type: 'StringLiteral', name, value: typeNode.value }),
+      [TypeFlags.NumberLiteral]: () => ({ type: 'NumberLiteral', name, value: typeNode.value }),
+      [TypeFlags.BooleanLiteral]: () => ({ type: 'BooleanLiteral', name, value: name === 'true' }),
+    };
+
+    if (typeMap[typeNode.flags]) {
+      return typeMap[typeNode.flags]();
+    } else if (typeNode.isIntersection()) {
+      return {
+        type: 'intersection',
+        types: typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1)),
+        name,
+      } as RTIntersection;
+    } else if (typeNode.isUnion()) {
+      const subTypes: any[] = typeNode.types.map(childTypeNode => this.resolveType(childTypeNode, depth + 1));
+      const allSubTypesAreLiterals = subTypes.filter(Parser.isLiteral).length === subTypes.length;
+
+      // Convert union to enum
+      if (allSubTypesAreLiterals) {
+        return subTypes.map(st => ({ name: 'literal', value: st.value, label: st.name })) as any;
+      }
+
+      // Merge boolean literals to boolean type
+      const trueBooleanLiteralIndex = subTypes.findIndex(
+        subtype => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === true,
+      );
+      const falseBooleanLiteralIndex = subTypes.findIndex(
+        subtype => subtype.type === 'BooleanLiteral' && (subtype as RTLiteral).value === false,
+      );
+      if (trueBooleanLiteralIndex >= 0 && falseBooleanLiteralIndex >= 0) {
+        // to keep the order, replace `true` and delete `false` instead of appending
+        subTypes[trueBooleanLiteralIndex] = { type: 'boolean', name: 'boolean' };
+        subTypes.splice(falseBooleanLiteralIndex, 1);
+      }
+
+      return {
+        type: 'union',
+        types: subTypes,
+        name,
+      } as RTUnion;
+    }
+
+    return { type: 'unknown', name };
+  }
+
   public getPropsInfo(propsObj: ts.Symbol, defaultProps: StringIndexedObject<string> = {}): Props {
     if (!propsObj.valueDeclaration) {
       return {};
@@ -319,18 +509,20 @@ export class Parser {
 
       const propTypeString = this.checker.typeToString(propType);
 
-      // tslint:disable-next-line:no-bitwise
+      // eslint-disable-next-line no-bitwise
       const isOptional = (prop.getFlags() & ts.SymbolFlags.Optional) !== 0;
 
       const jsDocComment = this.findDocComment(prop);
 
-      let defaultValue = null;
+      let defaultValue: any = null;
 
       if (defaultProps[propName] !== undefined) {
         defaultValue = { value: defaultProps[propName] };
       } else if (jsDocComment.tags.default) {
         defaultValue = { value: jsDocComment.tags.default };
       }
+
+      const resolvedType = this.resolveType(propType);
 
       const parent = getParentType(prop);
 
@@ -340,7 +532,8 @@ export class Parser {
         name: propName,
         parent,
         required: !isOptional,
-        type: { name: propTypeString }
+        type: { name: propTypeString },
+        resolvedType,
       };
     });
 
@@ -401,7 +594,7 @@ export class Parser {
     return {
       description: mainComment,
       fullComment: `${mainComment}\n${tagComments.join('\n')}`.trim(),
-      tags: tagMap
+      tags: tagMap,
     };
   }
 
@@ -424,7 +617,9 @@ export class Parser {
     const statement = possibleStatements[0];
 
     if (statementIsClassDeclaration(statement) && statement.members.length) {
-      const possibleDefaultProps = statement.members.filter(member => member.name && getPropertyName(member.name) === 'defaultProps');
+      const possibleDefaultProps = statement.members.filter(
+        member => member.name && getPropertyName(member.name) === 'defaultProps',
+      );
 
       if (!possibleDefaultProps.length) {
         return {};
@@ -624,7 +819,9 @@ function computeComponentName(exp: ts.Symbol, source: ts.SourceFile) {
   const statelessDisplayName = getTextValueOfFunctionProperty(exp, source, 'displayName');
 
   const statefulDisplayName =
-    exp.valueDeclaration && ts.isClassDeclaration(exp.valueDeclaration) && getTextValueOfClassMember(exp.valueDeclaration, 'displayName');
+    exp.valueDeclaration &&
+    ts.isClassDeclaration(exp.valueDeclaration) &&
+    getTextValueOfClassMember(exp.valueDeclaration, 'displayName');
 
   if (statelessDisplayName || statefulDisplayName) {
     return statelessDisplayName || statefulDisplayName || '';
@@ -684,7 +881,7 @@ function getParentType(prop: ts.Symbol): ParentType | undefined {
 
   return {
     fileName: trimmedFileName,
-    name: parentName
+    name: parentName,
   };
 }
 
@@ -692,11 +889,11 @@ function isInterfaceOrTypeAliasDeclaration(node: ts.Node): node is ts.InterfaceD
   return node.kind === ts.SyntaxKind.InterfaceDeclaration || node.kind === ts.SyntaxKind.TypeAliasDeclaration;
 }
 
-function parseWithProgramProvider(
+export function parseWithProgramProvider(
   filePathOrPaths: string | string[],
   compilerOptions: ts.CompilerOptions,
   parserOpts: ParserOptions,
-  programProvider?: () => ts.Program
+  programProvider?: () => ts.Program,
 ): ComponentDoc[] {
   const filePaths = Array.isArray(filePathOrPaths) ? filePathOrPaths : [filePathOrPaths];
 
@@ -722,7 +919,9 @@ function parseWithProgramProvider(
           .getExportsOfModule(moduleSymbol)
           .map(exp => parser.getComponentInfo(exp, sourceFile, parserOpts.componentNameResolver))
           .filter((comp): comp is ComponentDoc => comp !== null)
-          .filter((comp, index, comps) => comps.slice(index + 1).every(innerComp => innerComp!.displayName !== comp!.displayName))
+          .filter((comp, index, comps) =>
+            comps.slice(index + 1).every(innerComp => innerComp!.displayName !== comp!.displayName),
+          ),
       );
 
       return docs;

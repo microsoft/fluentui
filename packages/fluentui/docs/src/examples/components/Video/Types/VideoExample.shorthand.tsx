@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Video, Text, Flex } from '@fluentui/react';
+import { Video, Text, Flex } from '@fluentui/react-northstar';
 
 const VideoExample = () => (
   <Flex column>

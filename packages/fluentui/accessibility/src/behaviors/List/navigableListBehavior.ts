@@ -7,18 +7,16 @@ import { ListBehaviorProps } from './listBehavior';
  * Adds role='menu'.
  * Provides arrow key navigation in bidirectionalDomOrder direction.
  */
-const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
+export const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'menu'
-    }
+      role: 'menu',
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
-  }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
+  },
 });
-
-export default navigableListBehavior;

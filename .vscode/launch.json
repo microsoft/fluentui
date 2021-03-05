@@ -10,7 +10,7 @@
       "stopOnEntry": false,
       "args": ["-i", "--watch"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
       },
@@ -27,9 +27,26 @@
       "stopOnEntry": false,
       "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": ["--nolazy", "--inspect"],
       "env": {
         "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug current open test (v0)",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false,
+      "args": ["-i", "--testPathPattern=\\b${fileBasenameNoExtension}", "--watch"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--inspect"],
+      "env": {
+        "NODE_ENV": "test"
       },
       "sourceMaps": true,
       "outputCapture": "std",
@@ -55,7 +72,7 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just-scripts.js",
-      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
+      "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["ts"],
       "runtimeExecutable": null,
@@ -66,13 +83,13 @@
       "sourceMaps": true
     },
     {
-      "name": "Debug build Production",
+      "name": "Debug build",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
-      "args": ["tslint"],
-      "cwd": "${workspaceRoot}/packages/styling",
+      "args": ["build"],
+      "cwd": "${workspaceRoot}/packages/style-utilities",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
@@ -86,7 +103,7 @@
       "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
       "args": ["webpack", "--", "--production", "--dogfood"],
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "cwd": "${workspaceRoot}/apps/public-docsite",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
@@ -94,17 +111,23 @@
       }
     },
     {
-      "name": "Debug npm start (fabric-website)",
+      "name": "Debug npm start (public-docsite)",
       "type": "node",
       "request": "launch",
       // scripts/start.js generates this script path and launches a subprocess (which is harder
       // to debug), so in the launch configuration we start the script directly instead.
       "program": "${workspaceRoot}/node_modules/webpack-dev-server/bin/webpack-dev-server.js",
       "stopOnEntry": true,
-      "cwd": "${workspaceRoot}/apps/fabric-website",
+      "cwd": "${workspaceRoot}/apps/public-docsite",
       "runtimeExecutable": null,
-      // Use the config file for fabric-website, plus command line options used in start.js
-      "args": ["--nolazy", "--debug", "--config", "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js", "--open"],
+      // Use the config file for public-docsite, plus command line options used in start.js
+      "args": [
+        "--nolazy",
+        "--debug",
+        "--config",
+        "${workspaceRoot}/apps/public-docsite/webpack.serve.config.js",
+        "--open"
+      ],
       "env": {
         "NODE_ENV": "development"
       }
@@ -125,26 +148,11 @@
       "sourceMaps": false
     },
     {
-      "name": "Debug add new component",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceRoot}/scripts/create-component.js",
-      "cwd": "${workspaceRoot}",
-      "stopOnEntry": false,
-      "args": ["--name", "TestComponentName"],
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "sourceMaps": true
-    },
-    {
       "name": "Debug lint imports",
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/scripts/tasks/lint-imports.js",
-      "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
+      "cwd": "${workspaceRoot}/packages/react",
       "stopOnEntry": false,
       "args": ["--name", "TestComponentName"],
       "runtimeExecutable": null,
@@ -158,13 +166,34 @@
       "name": "Debug update release notes",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/updateReleaseNotes/index.js",
+      "protocol": "inspector",
       "cwd": "${workspaceRoot}",
+      "args": [
+        "${workspaceRoot}/scripts/updateReleaseNotes/index.ts",
+        "--token",
+        // For local testing, generate a personal access token (https://github.com/settings/tokens)
+        // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
+        "your token here",
+        "--patch",
+        "--age",
+        "10"
+      ],
+      "runtimeArgs": ["--nolazy", "--debug", "-r", "${workspaceRoot}/scripts/ts-node-register"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug eslint",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/.bin/eslint",
+      "cwd": "${workspaceRoot}/packages/example-data",
       "stopOnEntry": false,
-      // For local testing, generate a personal access token (https://github.com/settings/tokens)
-      // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
-      "args": ["--token", "your token here", "--patch", "--age", "20"],
       "runtimeExecutable": null,
+      "args": ["--ext", ".ts,.tsx,.js,.jsx", "src"],
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
@@ -196,7 +225,7 @@
       "runtimeArgs": ["--nolazy", "--debug"],
       // You can change the task name and cwd locally as needed
       "args": ["build"],
-      "cwd": "${workspaceRoot}/packages/fluentui/react",
+      "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
       "env": {
         "NODE_ENV": "development",
         // This is used in scripts/babel/index.js to enable sourcemaps
@@ -204,6 +233,22 @@
       },
       "sourceMaps": true,
       "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug create-package",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn create-package",
+      "cwd": "${workspaceFolder}",
+      "outputCapture": "std"
+    },
+    {
+      "name": "Debug create-component",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn create-component",
+      "cwd": "${workspaceFolder}",
+      "outputCapture": "std"
     }
   ]
 }

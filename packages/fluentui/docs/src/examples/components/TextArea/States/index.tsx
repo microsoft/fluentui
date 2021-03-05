@@ -9,7 +9,11 @@ const States = () => (
       description="A text area that is read-only."
       examplePath="components/TextArea/States/TextAreaDisabledExample"
     />
-    <ComponentExample title="Value" description="A text area with a value." examplePath="components/TextArea/States/TextAreaValueExample" />
+    <ComponentExample
+      title="Value"
+      description="A text area with a value."
+      examplePath="components/TextArea/States/TextAreaValueExample"
+    />
   </ExampleSection>
 );
 

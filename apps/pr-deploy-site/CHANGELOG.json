@@ -1,119 +1,47 @@
 {
-  "name": "@uifabric/pr-deploy-site",
+  "name": "@fluentui/pr-deploy-site",
   "entries": [
     {
-      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.17",
-      "version": "7.0.17",
-      "comments": {
-        "none": [
-          {
-            "comment": "fixing released versions",
-            "author": "kchau@microsoft.com",
-            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.10",
-      "version": "7.0.10",
-      "comments": {
-        "none": [
-          {
-            "comment": "bumping versions to fix broken publishes",
-            "author": "kchau@microsoft.com",
-            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.7",
-      "version": "7.0.7",
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
       "comments": {
         "patch": [
           {
-            "comment": "adding pr-deploy-site for fabric storybook",
-            "author": "kchau@microsoft.com",
-            "commit": "4cb8d719a8d7e4e66c42d0dc082cbfb22d0e084f"
-          }
-        ],
-        "none": [
-          {
-            "comment": "Rename all just configs to TS.",
-            "author": "jagore@microsoft.com",
-            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/pr-deploy-site"
           }
         ]
       }
     },
     {
-      "date": "Mon, 13 Jan 2020 12:28:56 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.2",
-      "version": "7.0.2",
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
       "comments": {
-        "patch": [
+        "prerelease": [
           {
-            "comment": "getting rid of test-bundles dep from pr-deploy-site",
-            "author": "kchau@microsoft.com",
-            "commit": "94ac80c98368f12fe5fd63cd37f0ad24e3efe8c4"
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/pr-deploy-site"
           }
         ]
       }
     },
     {
-      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.1",
-      "version": "7.0.1",
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/pr-deploy-site_v1.0.0",
+      "version": "1.0.0",
       "comments": {
         "none": [
           {
-            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
-            "author": "jagore@microsoft.com",
-            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Wed, 17 Jul 2019 18:58:57 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.1",
-      "version": "7.0.1",
-      "comments": {
-        "patch": [
-          {
-            "comment": "Adding @types/react and @types/react-dom to package.json that have peer dependencies on react and react-dom.",
-            "author": "makotom@microsoft.com",
-            "commit": "4fa2fef6380c18877fcf379648d4e52146d59812"
-          }
-        ],
-        "none": [
-          {
-            "comment": "get rid of npx",
-            "author": "kchau@microsoft.com",
-            "commit": "472993033369aa470e59197a534045c02c24e852"
-          }
-        ]
-      }
-    },
-    {
-      "date": "Sat, 13 Jul 2019 22:20:41 GMT",
-      "tag": "@uifabric/pr-deploy-site_v7.0.0",
-      "version": "7.0.0",
-      "comments": {
-        "none": [
-          {
-            "comment": "Use resolves for all package paths",
-            "author": "kchau@microsoft.com",
-            "commit": "f8887fbdac76e651b0161edf624014a33741cf86"
-          },
-          {
-            "comment": "adding build cache",
-            "author": "kchau@microsoft.com",
-            "commit": "babf367fa3a2f05d6689b9ea0a0cdb765b282380"
+            "comment": "Bump @fluentui/scripts to v1.0.0",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/pr-deploy-site"
           }
         ]
       }

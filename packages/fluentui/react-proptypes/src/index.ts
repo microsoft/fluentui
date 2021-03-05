@@ -43,22 +43,22 @@ export const suggest = (suggestions: string[]) => {
           const propValueScore = _.sum(
             _.map(
               _.map(propValueWords, x => _.map(suggestionWords, y => leven(x, y))),
-              _.min
-            )
+              _.min,
+            ),
           );
 
           const suggestionScore = _.sum(
             _.map(
               _.map(suggestionWords, x => _.map(propValueWords, y => leven(x, y))),
-              _.min
-            )
+              _.min,
+            ),
           );
 
           return { suggestion, score: propValueScore + suggestionScore };
         }),
-        ['score', 'suggestion']
+        ['score', 'suggestion'],
       ),
-      3
+      3,
     );
   });
 
@@ -102,8 +102,8 @@ export const suggest = (suggestions: string[]) => {
         `Invalid prop \`${propName}\` of value \`${propValue}\` supplied to \`${componentName}\`.`,
         `\n\nInstead of \`${propValue}\`, did you mean:`,
         bestMatches.map(x => `\n  - ${x.suggestion}`).join(''),
-        '\n'
-      ].join('')
+        '\n',
+      ].join(''),
     );
   };
 };
@@ -122,12 +122,17 @@ export const never = (props: ObjectOf<any>, propName: string, componentName: str
  * Disallow other props from being defined with this prop.
  * @param disallowedProps - An array of props that cannot be used with this prop.
  */
-export const disallow = (disallowedProps: string[]) => (props: ObjectOf<any>, propName: string, componentName: string) => {
+export const disallow = (disallowedProps: string[]) => (
+  props: ObjectOf<any>,
+  propName: string,
+  componentName: string,
+) => {
   if (!Array.isArray(disallowedProps)) {
     throw new Error(
-      ['Invalid argument supplied to disallow, expected an instance of array.', ` See \`${propName}\` prop in \`${componentName}\`.`].join(
-        ''
-      )
+      [
+        'Invalid argument supplied to disallow, expected an instance of array.',
+        ` See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(''),
     );
   }
 
@@ -146,8 +151,8 @@ export const disallow = (disallowedProps: string[]) => (props: ObjectOf<any>, pr
     return new Error(
       [
         `Prop \`${propName}\` in \`${componentName}\` conflicts with props: \`${disallowed.join('`, `')}\`.`,
-        'They cannot be defined together, choose one or the other.'
-      ].join(' ')
+        'They cannot be defined together, choose one or the other.',
+      ].join(' '),
     );
   }
 
@@ -158,10 +163,18 @@ export const disallow = (disallowedProps: string[]) => (props: ObjectOf<any>, pr
  * Ensure a prop adherers to multiple prop type validators.
  * @param validators - An array of propType functions.
  */
-export const every = (validators: Function[]) => (props: ObjectOf<any>, propName: string, componentName: string, ...args: any[]) => {
+export const every = (validators: Function[]) => (
+  props: ObjectOf<any>,
+  propName: string,
+  componentName: string,
+  ...args: any[]
+) => {
   if (!Array.isArray(validators)) {
     throw new Error(
-      ['Invalid argument supplied to every, expected an instance of array.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+      [
+        'Invalid argument supplied to every, expected an instance of array.',
+        `See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(' '),
     );
   }
 
@@ -172,8 +185,8 @@ export const every = (validators: Function[]) => (props: ObjectOf<any>, propName
           throw new Error(`every() argument "validators" should contain functions, found: ${typeOf(validator)}.`);
         }
         return validator(props, propName, componentName, ...args);
-      })
-    )
+      }),
+    ),
   ); // we can only return one error at a time
 };
 
@@ -181,10 +194,18 @@ export const every = (validators: Function[]) => (props: ObjectOf<any>, propName
  * Ensure a prop adherers to at least one of the given prop type validators.
  * @param validators - An array of propType functions.
  */
-export const some = (validators: Function[]) => (props: ObjectOf<any>, propName: string, componentName: string, ...args: any[]) => {
+export const some = (validators: Function[]) => (
+  props: ObjectOf<any>,
+  propName: string,
+  componentName: string,
+  ...args: any[]
+) => {
   if (!Array.isArray(validators)) {
     throw new Error(
-      ['Invalid argument supplied to some, expected an instance of array.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+      [
+        'Invalid argument supplied to some, expected an instance of array.',
+        `See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(' '),
     );
   }
 
@@ -194,7 +215,7 @@ export const some = (validators: Function[]) => (props: ObjectOf<any>, propName:
         throw new Error(`some() argument "validators" should contain functions, found: ${typeOf(validator)}.`);
       }
       return validator(props, propName, componentName, ...args);
-    })
+    }),
   );
 
   // fail only if all validators failed
@@ -220,13 +241,19 @@ export const givenProps = (propsShape: Record<string, any>, validator: Function)
 ) => {
   if (!_.isPlainObject(propsShape)) {
     throw new Error(
-      ['Invalid argument supplied to givenProps, expected an object.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+      [
+        'Invalid argument supplied to givenProps, expected an object.',
+        `See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(' '),
     );
   }
 
   if (typeof validator !== 'function') {
     throw new Error(
-      ['Invalid argument supplied to givenProps, expected a function.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+      [
+        'Invalid argument supplied to givenProps, expected a function.',
+        `See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(' '),
     );
   }
 
@@ -268,8 +295,8 @@ export const demand = (requiredProps: string[]) => (props: ObjectOf<any>, propNa
     throw new Error(
       [
         'Invalid `requiredProps` argument supplied to require, expected an instance of array.',
-        ` See \`${propName}\` prop in \`${componentName}\`.`
-      ].join('')
+        ` See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(''),
     );
   }
 
@@ -278,7 +305,9 @@ export const demand = (requiredProps: string[]) => (props: ObjectOf<any>, propNa
 
   const missingRequired = requiredProps.filter(requiredProp => props[requiredProp] === undefined);
   if (missingRequired.length > 0) {
-    return new Error(`\`${propName}\` prop in \`${componentName}\` requires props: \`${missingRequired.join('`, `')}\`.`);
+    return new Error(
+      `\`${propName}\` prop in \`${componentName}\` requires props: \`${missingRequired.join('`, `')}\`.`,
+    );
   }
 
   return undefined;
@@ -288,10 +317,17 @@ export const demand = (requiredProps: string[]) => (props: ObjectOf<any>, propNa
  * Ensure an multiple prop contains a string with only possible values.
  * @param possible - An array of possible values to prop.
  */
-export const multipleProp = (possible: string[]) => (props: ObjectOf<string | false>, propName: string, componentName: string) => {
+export const multipleProp = (possible: string[]) => (
+  props: ObjectOf<string | false>,
+  propName: string,
+  componentName: string,
+) => {
   if (!Array.isArray(possible)) {
     throw new Error(
-      ['Invalid argument supplied to some, expected an instance of array.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+      [
+        'Invalid argument supplied to some, expected an instance of array.',
+        `See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(' '),
     );
   }
 
@@ -323,13 +359,21 @@ export const nodeContent = every([disallow(['children']), PropTypes.node]);
 export const wrapperShorthand = PropTypes.oneOfType([
   PropTypes.node,
   PropTypes.object,
-  PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.node, PropTypes.object]))
+  PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.node, PropTypes.object])),
 ]);
 
 /**
  * A shorthand prop which can be used together with `children`.
  */
 export const shorthandAllowingChildren = PropTypes.oneOfType([PropTypes.node, PropTypes.object, PropTypes.func]);
+
+export const shorthandObjectAllowingChildren = PropTypes.oneOfType([PropTypes.object, PropTypes.func]);
+
+/**
+ * ObjectItemShorthand is a description of a component that can be
+ * a props object or a render function.
+ */
+export const objectItemShorthand = every([disallow(['children']), shorthandAllowingChildren]);
 
 /**
  * Item shorthand is a description of a component that can be a literal,
@@ -342,16 +386,21 @@ export const itemShorthandWithKindProp = (kindPropValues: string[]) => {
     PropTypes.oneOfType([
       PropTypes.node,
       PropTypes.shape({
-        kind: PropTypes.oneOf(kindPropValues)
+        kind: PropTypes.oneOf(kindPropValues),
       }),
-      PropTypes.func
-    ])
+      PropTypes.func,
+    ]),
   ]);
 };
 export const itemShorthandWithoutJSX = every([
   disallow(['children']),
-  PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.string, PropTypes.oneOf([false])])
+  PropTypes.oneOfType([PropTypes.func, PropTypes.number, PropTypes.object, PropTypes.string, PropTypes.oneOf([false])]),
 ]);
+
+/**
+ * Collection shorthand ensures a prop is an array of item shorthand.
+ */
+export const collectionObjectShorthand = every([disallow(['children']), PropTypes.arrayOf(objectItemShorthand)]);
 
 /**
  * Collection shorthand ensures a prop is an array of item shorthand.
@@ -374,7 +423,10 @@ export const deprecate = (help: string, validator?: Function) => (
 ) => {
   if (typeof help !== 'string') {
     throw new Error(
-      ['Invalid `help` argument supplied to deprecate, expected a string.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+      [
+        'Invalid `help` argument supplied to deprecate, expected a string.',
+        `See \`${propName}\` prop in \`${componentName}\`.`,
+      ].join(' '),
     );
   }
 
@@ -394,7 +446,10 @@ export const deprecate = (help: string, validator?: Function) => (
       }
     } else {
       throw new Error(
-        ['Invalid argument supplied to deprecate, expected a function.', `See \`${propName}\` prop in \`${componentName}\`.`].join(' ')
+        [
+          'Invalid argument supplied to deprecate, expected a function.',
+          `See \`${propName}\` prop in \`${componentName}\`.`,
+        ].join(' '),
       );
     }
   }
@@ -411,7 +466,7 @@ export const size = PropTypes.oneOf<'smallest' | 'smaller' | 'small' | 'medium' 
   'medium',
   'large',
   'larger',
-  'largest'
+  'largest',
 ]);
 
 export const align = PropTypes.oneOf<'start' | 'end' | 'center' | 'justify'>(['start', 'end', 'center', 'justify']);
@@ -426,9 +481,9 @@ export const animation = PropTypes.oneOfType([
     fillMode: PropTypes.string,
     iterationCount: PropTypes.string,
     playState: PropTypes.string,
-    timingFunction: PropTypes.string
+    timingFunction: PropTypes.string,
   }) as any,
-  PropTypes.string
+  PropTypes.string,
 ]);
 
 // Heads Up!
@@ -459,7 +514,7 @@ export const design = PropTypes.shape({
   minWidth: PropTypes.string,
   maxWidth: PropTypes.string,
   minHeight: PropTypes.string,
-  maxHeight: PropTypes.string
+  maxHeight: PropTypes.string,
 });
 
 /** A checker that matches the React.Ref type. */

@@ -2,46 +2,76 @@ pr: none
 trigger: none
 
 # Customize build number to include major version
-# Example: v7_20190626.1
-name: 'v7_$(Date:yyyyMMdd)$(Rev:.r)'
+# Example: v8_20201022.1
+name: 'v8_$(Date:yyyyMMdd)$(Rev:.r)'
 
 variables:
   - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      azureSubscription: 'UI Fabric (private)'
+      skipComponentGovernanceDetection: false
 
 pool: 'Self Host Ubuntu'
 
 schedules:
-  # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)
+  # minute 0, hour 7 in UTC (11pm in UTC-8), any day of month, any month, days 1-5 of week (M-F)
   # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops#supported-cron-syntax
-  - cron: '0 12 * * 1-5'
-    displayName: 'Daily release (M-F at 5am)' # will be 4am when DST ends unless trigger is updated
+  - cron: '0 7 * * 1-5'
+    # will be 12am during daylight savings time unless trigger is updated
+    displayName: 'Daily release (Sundary-Thursday at 11pm PST)'
     branches:
       include:
         - master
 
+workspace:
+  clean: all
+
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '10.x'
-    displayName: 'Install Node.js'
+  - template: .devops/templates/tools.yml
 
   - script: |
-      git config user.name "UI Fabric Build"
-      git config user.email "fabrictactical@service.microsoft.com"
-      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+      git config user.name "Fluent UI Build"
+      git config user.email "fluentui-internal@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
 
-  - script: |
-      yarn
+  # This step has no dependencies, so do it early in the build in case other steps fail
+  - task: AzureUpload@2
+    displayName: Upload demo images
+    inputs:
+      azureSubscription: $(azureSubscription)
+      BlobPrefix: 'assets'
+      CacheControl: 'public, max-age=600000'
+      ContainerName: 'fabric-website' # this container has a CDN
+      SourcePath: 'packages/fluentui/docs/src/public'
+      storage: fabricweb
+
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
     displayName: yarn
 
   - script: |
       yarn generate-version-files
-    displayName: yarn generate-version-files
+    displayName: Generate version files
 
   - script: |
-      yarn buildci:prod
-    displayName: yarn buildci:prod (Create production build)
+      yarn run:published build --production --no-cache
+    displayName: yarn build
+
+  # test, lint, bundle using lage cached build from previous step (omit --no-cache)
+  - script: |
+      yarn run:published test --production
+    displayName: yarn test
+
+  - script: |
+      yarn run:published lint
+    displayName: yarn lint
+
+  - script: |
+      yarn run:published bundle --production
+    displayName: yarn bundle
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&
@@ -58,35 +88,38 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/dist
+      pathtoPublish: apps/public-docsite/dist
       artifactName: 'fabric-website'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/index.html
+      pathtoPublish: apps/public-docsite/index.html
       artifactName: 'fabric-website-index'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website index.html'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: packages/office-ui-fabric-react/dist
+      pathtoPublish: packages/react/dist
       artifactName: 'fabric'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+      npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y &&
+      git reset --hard origin/master
+    env:
+      GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
-      node scripts/updateReleaseNotes/index.js --token=$(githubPAT) --apply --debug
+      node -r ./scripts/ts-node-register ./scripts/updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
   - script: |
-      oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
+      oufrVersion=$(node -p -e "require('./packages/react/package.json').version") &&
       echo "OUFR Version: $oufrVersion" &&
       echo $oufrVersion > oufr-version.txt &&
       echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
@@ -101,32 +134,47 @@ steps:
 
   - script: |
       npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
-    workingDirectory: apps/fabric-website
+    workingDirectory: apps/public-docsite
     displayName: 'Generate Fabric Website Flight Manifest Files'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/flights
+      pathtoPublish: apps/public-docsite/flights
       artifactName: 'fabric-website-manifests'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Website manifests'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website-resources/dist
+      pathtoPublish: apps/public-docsite-resources/dist/demo
       artifactName: 'fabric-website-resources'
       publishLocation: 'Container'
     displayName: 'Publish Artifact: Fabric Website Resources'
 
   - script: |
-      yarn workspace @uifabric/build just generate-package-manifest
+      node ./scripts/generate-package-manifest
     displayName: 'Generates a package manifest'
 
-  - task: AzureUpload@1
+  - task: AzureUpload@2
     displayName: Upload Package Manifest
     inputs:
-      SourcePath: 'package-manifest.json'
-      azureSubscription: 'UI Fabric (bac044cf-49e1-4843-8dda-1ce9662606c8)'
+      SourcePath: 'package-manifest'
+      azureSubscription: $(azureSubscription)
       storage: fabricweb
       ContainerName: 'fabric'
-      BlobPrefix: 'package-manifest/latest'
+      BlobPrefix: 'package-manifest'
+      Gzip: false
+
+  # This would usually be run automatically (via a pipeline decorator from an extension), but the
+  # thorough cleanup step prevents it from working. So run it manually here.
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+    inputs:
+      sourceScanPath: $(Agent.BuildDirectory)
+    condition: succeeded()
+    timeoutInMinutes: 5
+    continueOnError: true
+
+  - template: .devops/templates/cleanup.yml
+    parameters:
+      checkForChangedFiles: false

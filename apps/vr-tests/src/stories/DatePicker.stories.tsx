@@ -1,12 +1,31 @@
-/*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities';
-import { Fabric } from 'office-ui-fabric-react';
-import { DatePicker } from 'office-ui-fabric-react';
+import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { Fabric, IDatePickerProps, DatePicker } from '@fluentui/react';
+
+const customDayClass = 'test-dayCell';
+const daySelector = `td.${customDayClass}`;
+const customMonthClass = 'test-monthOption';
+const monthSelector = `.${customMonthClass}`;
 
 const date = new Date(2010, 1, 12);
+const commonProps: Partial<IDatePickerProps> = {
+  value: date,
+  calendarProps: {
+    calendarDayProps: {
+      styles: {
+        dayCell: customDayClass,
+      },
+    },
+    calendarMonthProps: {
+      styles: {
+        itemButton: customMonthClass,
+      },
+    },
+  },
+};
+
 storiesOf('DatePicker', module)
   .addDecorator(FabricDecoratorFixedWidth)
   .addDecorator(story => (
@@ -18,9 +37,9 @@ storiesOf('DatePicker', module)
         .click('.ms-DatePicker')
         .hover('.ms-DatePicker')
         .snapshot('click', { cropTo: '.ms-Layer' })
-        .hover('.ms-DatePicker-day')
+        .hover(daySelector)
         .snapshot('hover day', { cropTo: '.ms-Layer' })
-        .hover('.ms-DatePicker-monthOption')
+        .hover(monthSelector)
         .snapshot('hover month', { cropTo: '.ms-Layer' })
         .end()}
     >
@@ -31,34 +50,34 @@ storiesOf('DatePicker', module)
     'Root',
     () => (
       <Fabric>
-        <DatePicker value={date} />
+        <DatePicker {...commonProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Placeholder', () => (
     <Fabric>
-      <DatePicker value={date} placeholder="Enter date" />
+      <DatePicker {...commonProps} placeholder="Enter date" />
     </Fabric>
   ))
   .addStory('Allow text input', () => (
     <Fabric>
-      <DatePicker value={date} allowTextInput />
+      <DatePicker {...commonProps} allowTextInput />
     </Fabric>
   ))
   .addStory('Required', () => (
     <Fabric>
-      <DatePicker value={date} isRequired />
+      <DatePicker {...commonProps} isRequired />
     </Fabric>
   ))
   .addStory('Underlined', () => (
     <Fabric>
-      <DatePicker value={date} underlined />
+      <DatePicker {...commonProps} underlined />
     </Fabric>
   ))
   .addStory('Underlined and Required', () => (
     <Fabric>
-      <DatePicker value={date} underlined isRequired />
+      <DatePicker {...commonProps} underlined isRequired />
     </Fabric>
   ));
 
@@ -73,7 +92,7 @@ storiesOf('DatePicker - No Month Option', module)
         .click('.ms-DatePicker')
         .hover('.ms-DatePicker')
         .snapshot('click', { cropTo: '.ms-Layer' })
-        .hover('.ms-DatePicker-day')
+        .hover(daySelector)
         .snapshot('hover day', { cropTo: '.ms-Layer' })
         .end()}
     >
@@ -82,7 +101,7 @@ storiesOf('DatePicker - No Month Option', module)
   ))
   .addStory('Show Month as Overlay and no Go To Today', () => (
     <Fabric>
-      <DatePicker value={date} showGoToToday={false} showMonthPickerAsOverlay={true} />
+      <DatePicker {...commonProps} showGoToToday={false} showMonthPickerAsOverlay={true} />
     </Fabric>
   ));
 
@@ -104,16 +123,16 @@ storiesOf('DatePicker - Disabled', module)
   ))
   .addStory('Without Label', () => (
     <Fabric>
-      <DatePicker value={date} disabled />
+      <DatePicker {...commonProps} disabled />
     </Fabric>
   ))
   .addStory('With Label', () => (
     <Fabric>
-      <DatePicker label="This is my label" value={date} disabled />
+      <DatePicker label="This is my label" {...commonProps} disabled />
     </Fabric>
   ))
   .addStory('Without Value', () => (
     <Fabric>
-      <DatePicker label="This is my label" disabled />
+      <DatePicker calendarProps={commonProps.calendarProps} label="This is my label" disabled />
     </Fabric>
   ));

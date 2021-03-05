@@ -1,8 +1,6 @@
-import * as FluentUI from '@fluentui/react';
+import * as FluentUI from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
 
 import { ComponentInfo } from '../../types';
 import componentInfoContext from '../../utils/componentInfoContext';
@@ -10,18 +8,20 @@ import componentInfoContext from '../../utils/componentInfoContext';
 import createHookGenerator from './createHookGenerator';
 
 const usePlaygroundComponent = (componentName: string): [React.ReactElement, string[]] => {
-  const context: FluentUI.ProviderContextPrepared = React.useContext(ThemeContext);
+  const context = FluentUI.useFluentContext();
   const componentInfo: ComponentInfo = componentInfoContext.byDisplayName[componentName];
 
   if (process.env.NODE_ENV !== 'production') {
     if (!componentInfo) {
       throw new Error(
-        `Cannot find a definition for "${componentName}", please check that "docs/src/componentInfo/${componentName}.info.json" file exists`
+        `Cannot find a definition for "${componentName}", please check that "docs/src/componentInfo/${componentName}.info.json" file exists`,
       );
     }
 
     if (!FluentUI[componentName]) {
-      throw new Error(`Cannot find an export for "${componentName}", please check that it is exported from "@fluentui/react"`);
+      throw new Error(
+        `Cannot find an export for "${componentName}", please check that it is exported from "@fluentui/react-northstar"`,
+      );
     }
   }
 
@@ -33,7 +33,7 @@ const usePlaygroundComponent = (componentName: string): [React.ReactElement, str
       componentInfo,
       propName: propDef.name,
       propDef,
-      theme: context.theme
+      theme: context.theme,
     });
 
     if (hookDefinition) {

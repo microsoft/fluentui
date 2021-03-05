@@ -12,7 +12,7 @@ export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: R
   extendComponent(obj, {
     componentDidMount: _onMount,
     componentDidUpdate: _onUpdate,
-    componentWillUnmount: _onUnmount
+    componentWillUnmount: _onUnmount,
   });
 }
 
@@ -22,7 +22,7 @@ function _onMount(): void {
 
 function _onUpdate(prevProps: IBaseProps): void {
   if (prevProps.componentRef !== this.props.componentRef) {
-    // tslint:disable-next-line:no-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     _setComponentRef((prevProps as any).componentRef, null);
     _setComponentRef(this.props.componentRef, this);
   }

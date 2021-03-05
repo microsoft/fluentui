@@ -1,6 +1,6 @@
 {
-  "name": "@uifabric/merge-styles",
-  "version": "7.8.7",
+  "name": "@fluentui/merge-styles",
+  "version": "8.0.2",
   "description": "Style loading utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -21,16 +21,14 @@
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start-test": "just-scripts jest-watch",
-    "update-api": "just-scripts update-api"
+    "start-test": "just-scripts jest-watch"
   },
   "devDependencies": {
-    "@types/jest": "~24.9.0",
-    "@uifabric/tslint-rules": "^7.1.0",
-    "@uifabric/build": "^7.0.0"
+    "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.6",
+    "@fluentui/set-version": "^8.0.1",
     "tslib": "^1.10.0"
   }
 }

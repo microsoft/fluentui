@@ -1,6 +1,7 @@
 import { RefFindNode } from '@fluentui/react-component-ref';
 import { mount } from 'enzyme';
 import * as React from 'react';
+import { create } from 'react-test-renderer';
 
 import { CompositeClass, CompositeFunction, DOMClass, DOMFunction } from './fixtures';
 
@@ -9,7 +10,7 @@ const testInnerRef = (Component: React.ElementType) => {
   const node = mount(
     <RefFindNode innerRef={innerRef}>
       <Component />
-    </RefFindNode>
+    </RefFindNode>,
   ).getDOMNode();
 
   expect(innerRef).toHaveBeenCalledTimes(1);
@@ -39,7 +40,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={innerRef}>
           <CompositeClass />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       innerRef.mockClear();
@@ -54,7 +55,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={innerRef}>
           <div />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
@@ -69,7 +70,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={innerRef}>
           <div />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       expect(innerRef).toHaveBeenCalledWith(expect.objectContaining({ tagName: 'DIV' }));
@@ -85,7 +86,7 @@ describe('RefFindNode', () => {
       const wrapper = mount(
         <RefFindNode innerRef={initialRef}>
           <div />
-        </RefFindNode>
+        </RefFindNode>,
       );
 
       expect(initialRef).toHaveBeenCalled();
@@ -96,6 +97,20 @@ describe('RefFindNode', () => {
 
       expect(initialRef).not.toHaveBeenCalled();
       expect(updatedRef).toHaveBeenCalled();
+    });
+
+    it('always returns "null" for react-test-renderer', () => {
+      const innerRef = jest.fn();
+      const ref = jest.fn();
+
+      create(
+        <RefFindNode innerRef={innerRef}>
+          <div ref={ref} />
+        </RefFindNode>,
+      );
+
+      expect(innerRef).toHaveBeenCalledWith(null);
+      expect(ref).toHaveBeenCalledWith(null);
     });
   });
 });

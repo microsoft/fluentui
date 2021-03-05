@@ -2,11 +2,14 @@ import * as React from 'react';
 
 import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
 import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
-import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample title="Default" description="A default popup." examplePath="components/Popup/Types/PopupExample" />
+    <ComponentExample
+      title="Default"
+      description="A default popup."
+      examplePath="components/Popup/Types/PopupExample"
+    />
     <ComponentExample
       title="Pointing"
       description="A popup can have a pointer."
@@ -32,11 +35,6 @@ const Types = () => (
       description="The content of the popup can be rendered next to the trigger element instead of the body."
       examplePath="components/Popup/Types/PopupExampleInline"
     />
-
-    <NonPublicSection title="Types for visual tests">
-      <ComponentExample examplePath="components/Popup/Types/PopupExamplePointerOffset" />
-      <ComponentExample examplePath="components/Popup/Types/PopupExamplePointerMargin" />
-    </NonPublicSection>
   </ExampleSection>
 );
 

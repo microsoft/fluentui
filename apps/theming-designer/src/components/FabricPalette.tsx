@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { FabricSlots, IThemeRules } from '@fluentui/react/lib/ThemeGenerator';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
-import { mergeStyles } from '@uifabric/merge-styles';
-import { Text } from 'office-ui-fabric-react';
-import { IColor } from 'office-ui-fabric-react/lib/Color';
+import { mergeStyles } from '@fluentui/merge-styles';
+import { Text } from '@fluentui/react';
+import { IColor } from '@fluentui/react/lib/Color';
 import { FabricSlotWidget } from './FabricSlotWidget';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { DirectionalHint } from '@fluentui/react/lib/Callout';
 
 export interface IFabricPaletteProps {
   themeRules?: IThemeRules;
@@ -16,21 +16,21 @@ const tableClassName = mergeStyles({
   width: '100%',
   selectors: {
     thead: {
-      textAlign: 'center'
+      textAlign: 'center',
     },
     tr: {
       padding: 80,
-      textAlign: 'left'
+      textAlign: 'left',
     },
     th: {
-      display: 'table-cell'
+      display: 'table-cell',
     },
     td: {
       padding: 10,
       textAlign: 'left',
-      display: 'table-cell'
-    }
-  }
+      display: 'table-cell',
+    },
+  },
 });
 
 export const FabricPalette: React.FunctionComponent<IFabricPaletteProps> = (props: IFabricPaletteProps) => {

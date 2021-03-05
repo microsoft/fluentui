@@ -1,0 +1,50 @@
+{
+  "name": "@fluentui/scripts",
+  "entries": [
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/scripts_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.1",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Feb 2021 12:27:34 GMT",
+      "tag": "@fluentui/scripts_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "1072765ed2e0ffda34688d84d376a8bc4bf928f0",
+            "package": "@fluentui/scripts"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/scripts_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Bump @fluentui/eslint-plugin to v1.0.0-beta.1",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/scripts"
+          }
+        ]
+      }
+    }
+  ]
+}

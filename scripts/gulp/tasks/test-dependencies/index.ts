@@ -22,7 +22,7 @@ task('test:dependencies:list', cb => {
     outputFilePath: tempOutputFilePath,
     onDependencyPackage: (packageName, packageVersion) => {
       console.log(`${prefix}${packageName}@${packageVersion}`);
-    }
+    },
   });
 
   runWebpack(webpackConfig, () => {

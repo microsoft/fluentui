@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Button, Flex, Icon } from '@fluentui/react';
+import { Button, Flex } from '@fluentui/react-northstar';
+import { MicIcon, TranslationIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleDisabled = () => (
   <Flex column gap="gap.smaller">
@@ -12,14 +13,14 @@ const ButtonExampleDisabled = () => (
         <Button.Content content="Inverted Button" />
       </Button>
       <Button disabled icon iconPosition="before" primary>
-        <Icon name="emoji" xSpacing="after" />
+        <MicIcon xSpacing="after" />
         <Button.Content content="Click me" />
       </Button>
       <Button disabled circular title="Translation">
-        <Icon name="translation" xSpacing="none" />
+        <TranslationIcon xSpacing="none" />
       </Button>
       <Button disabled text>
-        <Icon name="call-video" xSpacing="before" />
+        <CallVideoIcon xSpacing="before" />
         <Button.Content content="Disabled text button" />
       </Button>
     </Flex>

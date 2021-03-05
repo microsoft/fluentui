@@ -1,4 +1,4 @@
-import createManager from '../createManager';
+import { createManager } from '../createManager';
 import { Manager, ManagerConfig } from '../types';
 
 export type DialogActions = {
@@ -17,11 +17,11 @@ export const createDialogManager = (config: Partial<ManagerConfig<DialogState, D
     ...config,
     state: {
       open: false,
-      ...config.state
+      ...config.state,
     },
     actions: {
       close: () => () => ({ open: false }),
       open: () => () => ({ open: true }),
-      ...config.actions
-    }
+      ...config.actions,
+    },
   });

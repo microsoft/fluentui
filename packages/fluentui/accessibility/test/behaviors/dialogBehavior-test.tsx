@@ -10,7 +10,7 @@ describe('DialogBehavior.ts', () => {
   test('adds tabIndex attribute with value passed as prop', () => {
     const expectedResult = dialogBehavior({
       trigger: <div tabIndex={-1} />,
-      tabbableTrigger: true
+      tabbableTrigger: true,
     });
     expect(expectedResult.attributes.trigger.tabIndex).toEqual(-1);
   });

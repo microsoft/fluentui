@@ -117,22 +117,20 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/checkbox
 
 ### Recommended props
 
-| Name                 | Type                                |
-| -------------------- | ----------------------------------- |
-| ariaDescribedBy      | string                              |
-| ariaLabel            | string                              |
-| ariaLabelledBy       | string                              |
-| as                   | keyof JSX.IntrinsicElements         |
-| checked              | boolean                             |
-| className            | string                              |
-| defaultChecked       | boolean                             |
-| defaultIndeterminate | boolean                             |
-| disabled             | boolean                             |
-| indeterminate        | boolean                             |
-| label                | string                              |
-| name                 | string                              |
-| onChange             | (ev: Event, value: boolean) => void |
-| labelPosition        | start or end                        |
+| Name            | Type                                |
+| --------------- | ----------------------------------- |
+| ariaDescribedBy | string                              |
+| ariaLabel       | string                              |
+| ariaLabelledBy  | string                              |
+| as              | keyof JSX.IntrinsicElements         |
+| checked         | boolean \| 'mixed'                  |
+| className       | string                              |
+| defaultChecked  | boolean                             |
+| disabled        | boolean                             |
+| label           | string                              |
+| name            | string                              |
+| onChange        | (ev: Event, value: boolean) => void |
+| labelPosition   | start or end                        |
 
 Note: rtl, styles, and theme come from compose or the ThemeProvider. And name has been added to support checkbox in form scenarios.
 
@@ -147,27 +145,25 @@ Removing the following two props because the ARIA spec dictates role='checkbox' 
 
 #### Fluent Checkbox recommended props interface
 
-| Name                   | To transition or not? | Property transitioned? | Breaking change? | Codemod/Shim created? |
-| ---------------------- | --------------------- | :--------------------: | :--------------: | :-------------------: |
-| `ariaDescribedBy`      | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaLabel`            | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaLabelledBy`       | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaPositionInSet`    | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `ariaSetSize`          | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `boxSide`              | No; labelPosition     |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `checked`              | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `checkmarkIconProps`   | No                    |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `className`            | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `defaultChecked`       | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `defaultIndetermiante` | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `disabled`             | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `indeterminate`        | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `keytipProps`          | Yes - redesign        |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `label`                | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `onChange`             | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `onRenderLabel`        | No; shorthand         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `styles`               | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
-| `theme`                | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| Name                 | To transition or not? | Property transitioned? | Breaking change? | Codemod/Shim created? |
+| -------------------- | --------------------- | :--------------------: | :--------------: | :-------------------: |
+| `ariaDescribedBy`    | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaLabel`          | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaLabelledBy`     | User provided         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaPositionInSet`  | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `ariaSetSize`        | Won't be transitioned |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `boxSide`            | No; labelPosition     |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `checked`            | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `checkmarkIconProps` | No                    |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `className`          | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `defaultChecked`     | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `disabled`           | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `keytipProps`        | Yes - redesign        |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `label`              | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `onChange`           | Yes - native          |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `onRenderLabel`      | No; shorthand         |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `styles`             | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `theme`              | TBD                   |        &#x274C;        |     &#x274C;     |       &#x274C;        |
 
 Props being removed:
 
@@ -210,7 +206,13 @@ Could consider supporting an invalid state/error state but this might just be su
 
 ```html
 <div class="ms-Checkbox-checkbox">
-  <input type="checkbox" class="input-226" id="checkbox-268" aria-label="Unchecked checkbox (uncontrolled)" aria-checked="false" />
+  <input
+    type="checkbox"
+    class="input-226"
+    id="checkbox-268"
+    aria-label="Unchecked checkbox (uncontrolled)"
+    aria-checked="false"
+  />
   <label class="ms-Checkbox-label label-227" for="checkbox-268">
     <div class="ms-Checkbox-checkbox checkbox-228">
       <i data-icon-name="CheckMark" aria-hidden="true" class="ms-Checkbox-checkmark checkmark-231"> </i>
@@ -316,12 +318,31 @@ Same behavior as above except no preview of toggled state through hover.
 
 ### Screenreader accessibility:
 
+#### `Fluent UI & Fluent UI Northstar comparison`:
+
+From accessibility point of view the main difference is in type of element used for Checkbox itself:
+
+- Fluent UI has `<input>` element with type="checkbox"
+- Fluent UI Northstar has `<div>` element with role="checkbox"
+
+  [Verification with screen reader](https://jurokapsiar.github.io/open-a11y/components/checkbox.research) doens't show any differences between these two approaches, everything was working as expected.
+
+#### `Accessibility variants`:
+
+- two-state checkbox
+- tri-state checkbox
+- disabled
+
 #### `root`:
 
 - should render the native element using the `as` prop, defaulting to `div`
 - should mix in native props expected for the element type defined in `as`.
 
-Input slot: role should be set to `checkbox`
+Input slot:
+
+- receives `aria-checked` representing checkbox state
+- receives `aria-disabled="true"` representing disabled checkbox
+
 A visible label referenced by the value of `aria-labelledby` (id of element containing the label) set on the element with role `checkbox`.
 If there's additional static text representing that is descriptive, `aria-describedby` should be set to id of element containing the description.
 `aria-label` set on the element with role `checkbox`.

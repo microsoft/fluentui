@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-northstar';
 
 const AvatarExampleImageShorthand = () => (
   <>
-    <Avatar image="public/images/avatar/small/matt.jpg" />
-    <Avatar image="public/images/avatar/large/jerry.png" />
+    <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/RobertTolbert.jpg" />
+    <Avatar image="https://fabricweb.azureedge.net/fabric-website/assets/images/avatar/ElviaAtkins.jpg" />
   </>
 );
 

@@ -7,11 +7,9 @@ import * as React from 'react';
  * @param props - A ReactElement props object
  * @returns A ReactElement type
  */
-function getElementType<P extends Record<string, any>>(props: P): React.ElementType {
+export function getElementType<P extends Record<string, any>>(props: P): React.ElementType {
   // ----------------------------------------
   // use defaultProp or 'div'
 
   return props.as || 'div';
 }
-
-export default getElementType;

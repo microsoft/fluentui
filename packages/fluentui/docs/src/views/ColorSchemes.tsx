@@ -3,12 +3,40 @@ import DocPage from '../components/DocPage/DocPage';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import ColorSchemes from '../components/ColorSchemes';
 
-import { Dropdown, themes, Flex, Provider } from '@fluentui/react';
+import {
+  Dropdown,
+  Flex,
+  Provider,
+  teamsTheme,
+  teamsHighContrastTheme,
+  teamsDarkTheme,
+  teamsV2Theme,
+  teamsDarkV2Theme,
+} from '@fluentui/react-northstar';
 import { faderStyles } from '../components/Fader';
 import { colorVariantsStyles } from '../components/ColorVariants';
 import { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
+import { ThemeOption } from '../context/ThemeContext';
+import ThemeDropdown from '../components/ThemeDropdown';
+
+const themes = {
+  teamsTheme: { light: teamsTheme, dark: teamsDarkTheme },
+  teamsV2Theme: { light: teamsV2Theme, dark: teamsDarkV2Theme },
+};
+
+const themeOptions: ThemeOption[] = [
+  { text: 'Teams', value: 'teamsTheme' },
+  { text: 'Teams V2', value: 'teamsV2Theme' },
+];
 
 export default () => {
+  const [theme, setTheme] = React.useState(themeOptions[0]);
+  const changeTheme: (event: React.SyntheticEvent, data: { value: ThemeOption }) => void = (event, { value }) => {
+    setTheme(value);
+  };
+
+  const themeSwitcher = <ThemeDropdown style={{ float: 'right' }} onChange={changeTheme} themeOptions={themeOptions} />;
+
   const [color, setColor] = React.useState('brand');
   return (
     <Provider
@@ -19,16 +47,16 @@ export default () => {
           Fader: faderStyles,
           Header: {
             root: {
-              fontWeight: 700
-            }
-          }
+              fontWeight: 700,
+            },
+          },
         },
         componentVariables: {
-          ColorBox: colorBoxVariables
-        }
+          ColorBox: colorBoxVariables,
+        },
       }}
     >
-      <DocPage title="Color schemes">
+      <DocPage title="Color schemes" themeSwitcher={themeSwitcher}>
         <Flex column>
           <Dropdown
             items={['default', 'brand', 'red', 'green', 'yellow', 'orange', 'pink', 'silver', 'onyx', 'amethyst']}
@@ -37,24 +65,24 @@ export default () => {
             onChange={(e, { value }) => setColor(value as string)}
           />
           <ColorSchemes
-            themes={[themes.teams, themes.teamsHighContrast, themes.teamsDark]}
+            themes={[themes[theme.value].light, teamsHighContrastTheme, themes[theme.value].dark]}
             headers={[
               {
                 as: 'h3',
-                content: 'Design token'
+                content: 'Design token',
               },
               {
                 as: 'h3',
-                content: 'Light theme'
+                content: 'Light theme',
               },
               {
                 as: 'h3',
-                content: 'HC theme'
+                content: 'HC theme',
               },
               {
                 as: 'h3',
-                content: 'Dark theme'
-              }
+                content: 'Dark theme',
+              },
             ]}
             name={color}
           />

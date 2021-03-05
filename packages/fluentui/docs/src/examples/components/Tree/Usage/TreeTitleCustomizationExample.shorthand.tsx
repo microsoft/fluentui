@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Icon, Tree } from '@fluentui/react';
+import { Tree } from '@fluentui/react-northstar';
+import { TriangleDownIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
@@ -12,11 +13,11 @@ const items = [
         items: [
           {
             id: 'tree-title-customization-item-3',
-            title: 'one one one'
-          }
-        ]
-      }
-    ]
+            title: 'one one one',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'tree-title-customization-item-4',
@@ -24,19 +25,21 @@ const items = [
     items: [
       {
         id: 'tree-title-customization-item-5',
-        title: 'two one'
-      }
-    ]
-  }
+        title: 'two one',
+      },
+    ],
+  },
 ];
 
-const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
-  <Component open={open} hasSubtree={hasSubtree} {...restProps}>
-    {hasSubtree && <Icon name={open ? 'triangle-down' : 'triangle-right'} />}
-    <span>{content}</span>
+const titleRenderer = (Component, { content, expanded, open, hasSubtree, ...restProps }) => (
+  <Component expanded={expanded} hasSubtree={hasSubtree} {...restProps}>
+    {expanded ? <TriangleDownIcon /> : <TriangleEndIcon />}
+    {content}
   </Component>
 );
 
-const TreeTitleCustomizationExample = () => <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />;
+const TreeTitleCustomizationExample = () => (
+  <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />
+);
 
 export default TreeTitleCustomizationExample;

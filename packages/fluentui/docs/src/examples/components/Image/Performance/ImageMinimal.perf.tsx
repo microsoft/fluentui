@@ -1,4 +1,4 @@
-import { Image } from '@fluentui/react';
+import { Image } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ImageMinimalPerf = () => <Image />;

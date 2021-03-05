@@ -1,11 +1,10 @@
-// @ts-check
-const { just, preset } = require('@uifabric/build');
-const { task, series, parallel, copyInstructions, copyInstructionsTask, cleanTask } = just;
-const { ts } = require('@uifabric/build/tasks/ts');
-const { postprocessTask, defaultLibPaths } = require('@uifabric/build/tasks/postprocess');
-const path = require('path');
-const { transformCssTask } = require('./tasks/transformCssTask');
-const { transformDtsTask } = require('./tasks/transformDtsTask');
+import { preset, task, series, parallel, copyInstructions, copyInstructionsTask, cleanTask } from '@fluentui/scripts';
+import { ts } from '@fluentui/scripts/tasks/ts';
+import { postprocessTask, defaultLibPaths } from '@fluentui/scripts/tasks/postprocess';
+import { eslint } from '@fluentui/scripts/tasks/eslint';
+import * as path from 'path';
+import { transformCssTask } from './tasks/transformCssTask';
+import { transformDtsTask } from './tasks/transformDtsTask';
 
 const monacoEditorPath = path.dirname(require.resolve('monaco-editor/package.json'));
 const monacoSrcPath = path.join(monacoEditorPath, 'esm');
@@ -17,8 +16,8 @@ task('clean', cleanTask({ paths: ['esm', 'lib', 'lib-commonjs'] }));
 task(
   'copy',
   copyInstructionsTask({
-    copyInstructions: copyInstructions.copyFilesInDirectory(monacoSrcPath, monacoDestPath)
-  })
+    copyInstructions: copyInstructions.copyFilesInDirectory(monacoSrcPath, monacoDestPath),
+  }),
 );
 task('transform-css', transformCssTask);
 task('transform-dts', transformDtsTask);
@@ -26,5 +25,8 @@ task('ts:esm', ts.esm);
 task('ts:commonjs', ts.commonjs);
 task('ts:postprocess', postprocessTask([...defaultLibPaths, 'esm/**/*.d.ts']));
 task('ts', series(parallel('ts:esm', 'ts:commonjs'), 'ts:postprocess'));
+task('eslint', eslint);
 
 task('build', series('clean', 'copy', 'transform-css', 'transform-dts', 'ts')).cached();
+
+task('lint', 'eslint');

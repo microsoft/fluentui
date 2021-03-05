@@ -1,7 +1,95 @@
-# Change Log - @uifabric/jest-serializer-merge-styles
+# Change Log - @fluentui/jest-serializer-merge-styles
 
-This log was last generated on Wed, 04 Sep 2019 04:09:58 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
+<!-- Start content -->
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.2)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.1..@fluentui/jest-serializer-merge-styles_v8.0.2)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.7..@fluentui/jest-serializer-merge-styles_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.7)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.6..@fluentui/jest-serializer-merge-styles_v8.0.0-beta.7)
+
+### Changes
+
+- Built files use commonjs only. ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.6)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.5..@fluentui/jest-serializer-merge-styles_v8.0.0-beta.6)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.4)
+
+Thu, 21 Jan 2021 12:36:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.0..@fluentui/jest-serializer-merge-styles_v8.0.0-beta.4)
+
+### Changes
+
+-  Updating dev dependencies. ([PR #16548](https://github.com/microsoft/fluentui/pull/16548) by dzearing@microsoft.com)
+
+## [8.0.0-beta.0](https://github.com/microsoft/fluentui/tree/@fluentui/jest-serializer-merge-styles_v8.0.0-beta.0)
+
+Fri, 23 Oct 2020 03:26:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/jest-serializer-merge-styles_v7.1.0..@fluentui/jest-serializer-merge-styles_v8.0.0-beta.0)
+
+### Changes
+
+- Rename @fluentui/jest-serializer-merge-styles to @fluentui/jest-serializer-merge-styles ([PR #15615](https://github.com/microsoft/fluentui/pull/15615) by elcraig@microsoft.com)
+- Rename @uifabric/set-version to @fluentui/set-version ([PR #15616](https://github.com/microsoft/fluentui/pull/15616) by ololubek@microsoft.com)
+- Rename @uifabric/merge-styles to @fluentui/merge-styles ([PR #15627](https://github.com/microsoft/fluentui/pull/15627) by ololubek@microsoft.com)
+
+## [7.1.0](https://github.com/microsoft/fluentui/tree/@uifabric/jest-serializer-merge-styles_v7.1.0)
+
+Tue, 25 Aug 2020 12:36:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/jest-serializer-merge-styles_v7.0.30..@uifabric/jest-serializer-merge-styles_v7.1.0)
+
+### Minor changes
+
+- Adding test to ensure styles with selectors not wrapped in a selectors node still serialize. ([PR #14707](https://github.com/microsoft/fluentui/pull/14707) by dzearing@hotmail.com)
+
+## [7.0.21](https://github.com/microsoft/fluentui/tree/@uifabric/jest-serializer-merge-styles_v7.0.21)
+
+Thu, 07 May 2020 01:06:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/jest-serializer-merge-styles_v7.0.16..@uifabric/jest-serializer-merge-styles_v7.0.21)
+
+### Patches
+
+- Addressing commonjs imports. ([PR #13031](https://github.com/microsoft/fluentui/pull/13031) by dzearing@microsoft.com)
+
+## 7.0.15
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.0.14
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.0.6
 Wed, 04 Sep 2019 04:09:58 GMT
 
@@ -155,4 +243,3 @@ Tue, 24 Oct 2017 10:21:08 GMT
 Tue, 17 Oct 2017 17:17:41 GMT
 
 *Initial release*
-
