@@ -1,5 +1,6 @@
 import { getGlobalClassNames, HighContrastSelector, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+import { IsFocusVisibleClassName } from '../../../Utilities';
 
 export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',
@@ -35,6 +36,13 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
       },
       suggested && {
         selectors: {
+          [`.${IsFocusVisibleClassName} &`]: {
+            selectors: {
+              [`.${classNames.closeButton}`]: {
+                display: 'block',
+              },
+            },
+          },
           ':after': {
             pointerEvents: 'none',
             content: '""',
@@ -102,6 +110,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         padding: '0 4px',
         height: 'auto',
         width: 32,
+        background: semanticColors.menuItemBackgroundPressed,
         selectors: {
           ':hover, :active': {
             background: palette.neutralTertiaryAlt,
