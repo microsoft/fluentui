@@ -18,7 +18,7 @@ We should avoid output folder changes occuring simply because we output less for
 
 ## Detailed Design or Proposal
 
-Proposed standard folders in a published JavaScript package (does not imply they will all be present - only applicable output folders will be present):
+Proposed standard folders in a published JavaScript package (only applicable output folders would be present):
 
 - `lib` - esm
 - `lib-commonjs` - commonjs
