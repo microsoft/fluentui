@@ -6,9 +6,9 @@ import { useBadge } from '../Badge/index';
 /**
  * Consts listing which props are shorthand props.
  */
-export const badgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'];
+export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[] = ['icon'];
 
-const mergeProps = makeMergeProps<PresenceBadgeState>({ deepMerge: badgeShorthandProps });
+const mergeProps = makeMergeProps<PresenceBadgeState>({ deepMerge: presenceBadgeShorthandProps });
 
 /**
  * Returns the props and state required to render the component
@@ -18,7 +18,16 @@ export const usePresenceBadge = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: PresenceBadgeProps,
 ): PresenceBadgeState => {
-  const state = mergeProps(useBadge(props, ref), defaultProps, resolveShorthandProps(props, badgeShorthandProps));
+  const state = mergeProps(
+    useBadge(props, ref),
+    {
+      size: 'small',
+      status: 'available',
+      inOffice: true,
+    },
+    defaultProps,
+    resolveShorthandProps(props, presenceBadgeShorthandProps),
+  );
 
   return state;
 };

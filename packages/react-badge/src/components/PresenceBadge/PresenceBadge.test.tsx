@@ -4,10 +4,10 @@ import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
 
-describe('Presence', () => {
+describe('PresenceBadge', () => {
   isConformant({
     Component: PresenceBadge,
-    displayName: 'Presence',
+    displayName: 'PresenceBadge',
   });
 
   let wrapper: ReactWrapper | undefined;

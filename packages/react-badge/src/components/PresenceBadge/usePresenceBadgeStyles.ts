@@ -1,12 +1,112 @@
-import { ax } from '@fluentui/react-make-styles';
+import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { PresenceBadgeState } from './PresenceBadge.types';
 import { useRootStyles } from '../../Badge';
+
+export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
+  [
+    null,
+    {
+      padding: 0,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  ],
+  [
+    s => s.status === 'busy',
+    theme => ({
+      backgroundColor: theme.global.palette.cranberry.primary,
+      borderColor: theme.global.palette.cranberry.primary,
+    }),
+  ],
+  [
+    s => s.status === 'away',
+    theme => ({
+      backgroundColor: theme.global.palette.yellow.primary,
+      borderColor: theme.global.palette.yellow.primary,
+    }),
+  ],
+  [
+    s => s.status === 'available',
+    theme => ({
+      backgroundColor: theme.global.palette.lightGreen.primary,
+      borderColor: theme.global.palette.lightGreen.primary,
+    }),
+  ],
+  [
+    s => s.status === 'offline',
+    theme => ({
+      backgroundColor: 'transparent',
+      color: theme.global.palette.grey[38],
+      borderColor: theme.global.palette.grey[38],
+    }),
+  ],
+  [
+    s => s.status === 'oof',
+    theme => ({
+      backgroundColor: 'transparent',
+      color: theme.global.palette.magenta.primary,
+      borderColor: theme.global.palette.magenta.primary,
+    }),
+  ],
+  [
+    s => !s.inOffice,
+    {
+      background: 'transparent',
+    },
+  ],
+  [
+    s => !s.inOffice && s.status === 'available',
+    theme => ({
+      color: theme.global.palette.lightGreen.primary,
+    }),
+  ],
+  [
+    s => !s.inOffice && s.status === 'busy',
+    theme => ({
+      color: theme.global.palette.red.primary,
+    }),
+  ],
+  [
+    s => !s.inOffice && s.status === 'away',
+    theme => ({
+      color: theme.global.palette.yellow.primary,
+    }),
+  ],
+  [
+    s => s.size === 'small',
+    {
+      width: '16px',
+      height: '16px',
+    },
+  ],
+  [
+    s => s.size === 'medium',
+    {
+      height: '20px',
+      width: '20px',
+    },
+  ],
+  [
+    s => s.size === 'large',
+    {
+      width: '24px',
+      height: '24px',
+    },
+  ],
+  [
+    s => s.size === 'larger' || s.size === 'largest',
+    {
+      width: '32px',
+      height: '32px',
+    },
+  ],
+]);
 
 /**
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
-  state.className = ax(useRootStyles(state), state.className);
+  state.className = ax(useRootStyles(state), usePresenceBadgeRootStyles(state), state.className);
 
   return state;
 };

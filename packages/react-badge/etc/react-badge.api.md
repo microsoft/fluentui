@@ -39,6 +39,35 @@ export interface BadgeState extends BadgeProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
 
+// @public
+export const PresenceBadge: React.ForwardRefExoticComponent<PresenceBadgeProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface PresenceBadgeProps extends BadgeProps {
+    // (undocumented)
+    appearance?: Extract<BadgeAppearance, 'filled'>;
+    // (undocumented)
+    inOffice?: boolean;
+    // (undocumented)
+    shape?: Extract<BadgeShape, 'circular'>;
+    // (undocumented)
+    status?: PresenceBadgeStatus;
+}
+
+// @public
+export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[];
+
+// @public (undocumented)
+export interface PresenceBadgeState extends BadgeState {
+    // (undocumented)
+    inOffice: boolean;
+    // (undocumented)
+    status: PresenceBadgeStatus;
+}
+
+// @public (undocumented)
+export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offline';
+
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
 
@@ -50,6 +79,15 @@ export const useBadgeStyles: (state: BadgeState) => BadgeState;
 
 // @public
 export const useIconStyles: (selectors: BadgeState) => string;
+
+// @public
+export const usePresenceBadge: (props: PresenceBadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: PresenceBadgeProps | undefined) => PresenceBadgeState;
+
+// @public (undocumented)
+export const usePresenceBadgeRootStyles: (selectors: PresenceBadgeState) => string;
+
+// @public
+export const usePresenceBadgeStyles: (state: PresenceBadgeState) => PresenceBadgeState;
 
 // @public
 export const useRootStyles: (selectors: BadgeState) => string;

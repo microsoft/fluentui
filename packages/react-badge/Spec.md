@@ -120,14 +120,44 @@ interface BadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
 
 A Presence Badge represents someone's availbility or status
 
-#### API
+```typescript
+/**
+ * {@docCategory PresenceBadge}
+ */
+export type PresenceBadgeStatus = 'busy' | 'oof' | 'away' | 'available' | 'offline';
 
-| Property Name | Type      | Default Value | Description                                                                                |
-| ------------- | --------- | ------------- | ------------------------------------------------------------------------------------------ |
-| `size`        | `enum`    | `medium`      | The Badge size                                                                             |
-| `status`      | `enum`    | `available`   | The Badge status representation                                                            |
-| `inOffice`    | `boolean` | `true`        | The Badge can be represented in different ways depeding if user is in or out of the office |
-| `inverted`    | `boolean` | `false`       | The Badge can be inverted                                                                  |
+/**
+ * {@docCategory PresenceBadge}
+ */
+export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
+  /**
+   * A PresenceBadge can represent several status
+   * @defaultvalue available
+   */
+  status?: PresenceBadgeStatus;
+  /**
+   * A PresenceBadge can represent status of someone out of the office
+   * @defaultvalue true
+   */
+  inOffice?: boolean;
+}
+
+/**
+ * {@docCategory Badge}
+ */
+export interface PresenceBadgeState extends BadgeState {
+  /**
+   * A PresenceBadge can represent several status
+   * @defaultvalue available
+   */
+  status: PresenceBadgeStatus;
+  /**
+   * A PresenceBadge can represent status of someone out of the office
+   * @defaultvalue true
+   */
+  inOffice: boolean;
+}
+```
 
 ### Counter Badge
 
