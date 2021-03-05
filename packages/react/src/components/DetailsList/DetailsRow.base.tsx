@@ -19,7 +19,7 @@ import { IDragDropOptions } from '../../DragDrop';
 import { IDetailsRowBaseProps } from './DetailsRow.types';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { classNamesFunction, getId } from '../../Utilities';
+import { classNamesFunction } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { IProcessedStyleSet } from '../../Styling';
 
@@ -57,9 +57,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
   private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
 
-  private _checkboxId: string;
-  private _rowHeaderId: string;
-
   public static getDerivedStateFromProps(
     nextProps: IDetailsRowBaseProps,
     previousState: IDetailsRowState,
@@ -83,9 +80,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     };
 
     this._droppingClassNames = '';
-
-    this._checkboxId = getId('checkbox');
-    this._rowHeaderId = getId('rowHeader');
   }
   public componentDidMount(): void {
     const { dragDropHelper, selection, item, onDidMount } = this.props;
@@ -184,6 +178,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       dragDropEvents,
       item,
       itemIndex,
+      rowId,
       onRenderCheck = this._onRenderCheck,
       onRenderDetailsCheckbox,
       onRenderItemColumn,
@@ -256,7 +251,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     const rowFields = (
       <RowFields
         rowClassNames={this._rowClassNames}
-        rowHeaderId={this._rowHeaderId}
+        rowHeaderId={`${rowId}-header`}
         cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
@@ -299,11 +294,11 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {showCheckbox && (
           <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
-              id: this._checkboxId,
+              id: `${rowId}-checkbox`,
               selected: isSelected,
               anySelected: isSelectionModal,
               'aria-label': checkButtonAriaLabel,
-              'aria-labelledby': `${this._checkboxId} ${this._rowHeaderId}`,
+              'aria-labelledby': `${rowId}-checkbox ${rowId}-header`,
               canSelect,
               compact,
               className: this._classNames.check,
@@ -330,7 +325,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
           >
             <RowFields
               rowClassNames={this._rowClassNames}
-              rowHeaderId={this._rowHeaderId}
+              rowHeaderId={`${rowId}-header`}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}
