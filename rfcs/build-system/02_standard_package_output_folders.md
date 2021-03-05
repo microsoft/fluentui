@@ -10,7 +10,7 @@ There are multiple javascript formats we may include in our npm packages: `commo
 
 We should adopt a predictable folder structure within the published npm package for these formats. That way consumers of our packages can know exactly where things are and which folders have what things in as few steps as possible.
 
-This is one of those small details that other partners will emulate and adopt. If we can be consistent, many packages exported by Microsoft will likely follow guidance because it is really minutia, but ends up adding to more predictability at scale.
+This is one of those small details that other partners will emulate and adopt. If we can be consistent, many packages exported by our partners will likely follow guidance because it is really minutia, but ends up adding to more predictability at scale.
 
 ## Problem statement
 
