@@ -43,14 +43,8 @@ export interface BadgeState extends BadgeProps {
 export const PresenceBadge: React.ForwardRefExoticComponent<PresenceBadgeProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface PresenceBadgeProps extends BadgeProps {
-    // (undocumented)
-    appearance?: Extract<BadgeAppearance, 'filled'>;
-    // (undocumented)
+export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
     inOffice?: boolean;
-    // (undocumented)
-    shape?: Extract<BadgeShape, 'circular'>;
-    // (undocumented)
     status?: PresenceBadgeStatus;
 }
 
@@ -59,9 +53,7 @@ export const presenceBadgeShorthandProps: (keyof PresenceBadgeProps)[];
 
 // @public (undocumented)
 export interface PresenceBadgeState extends BadgeState {
-    // (undocumented)
     inOffice: boolean;
-    // (undocumented)
     status: PresenceBadgeStatus;
 }
 
