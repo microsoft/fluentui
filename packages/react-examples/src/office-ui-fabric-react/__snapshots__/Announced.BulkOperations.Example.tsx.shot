@@ -879,6 +879,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -1284,6 +1285,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -1689,6 +1691,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2094,6 +2097,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2499,6 +2503,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -2904,6 +2909,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3309,6 +3315,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -3714,6 +3721,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4119,6 +4127,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost
@@ -4524,6 +4533,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                         >
                           <div
                             aria-checked={false}
+                            aria-label="select row"
                             className=
                                 ms-DetailsRow-check
                                 ms-Check-checkHost

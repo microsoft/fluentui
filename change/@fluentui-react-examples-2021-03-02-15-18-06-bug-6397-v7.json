@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "DetailsList: Updated examples to pass 'select row' as checkButtonAriaLabel prop",
+  "packageName": "@fluentui/react-examples",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2021-03-02T23:18:06.588Z"
+}
