@@ -37,11 +37,13 @@ jobs:
           yarn prelint
         displayName: prelint (satisfied, syncpack, lint-files)
 
-      ## Only check formatting in PR (it's less important to check formatting of all files in CI)
       - script: |
-          yarn format --since $(targetBranch) --check
+          if [[ -n "$(targetBranch)" ]]; then
+            yarn format --since $(targetBranch) --check
+          else
+            yarn format --all --check
+          fi
         displayName: check formatting
-        condition: variables.isPR
 
       ## Danger.js checks for Fluent UI N*
       - script: |
