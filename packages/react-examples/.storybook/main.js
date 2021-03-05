@@ -1,7 +1,6 @@
 // @ts-check
 import custom from '@fluentui/scripts/storybook/webpack.config';
 import * as path from 'path';
-import * as webpack from 'webpack';
 
 export default {
   addons: [
@@ -13,7 +12,7 @@ export default {
       options: { escapeHTML: false },
     },
   ],
-  webpackFinal: (/** @type {webpack.Configuration} */ config) => {
+  webpackFinal: (/** @type {import("webpack").Configuration} */ config) => {
     const customConfig = custom(config);
 
     customConfig.module.rules.push({

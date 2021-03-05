@@ -1,7 +1,6 @@
 // @ts-check
 import * as fs from 'fs-extra';
 import * as path from 'path';
-import * as webpack from 'webpack';
 
 /**
  * Replace the PACKAGE_NAME token in preview.js with the actual current package name
@@ -10,7 +9,7 @@ import * as webpack from 'webpack';
  * Also if this is the storybook for `@fluentui/react`, replace the REACT_DEPS token
  * with the actual list of dependencies of `@fluentui/react` which have their own examples
  * but should be included in the suite package storybook.
- * @this {webpack.loader.LoaderContext}
+ * @this {*} loader API https://webpack.js.org/api/loaders/
  * @param {string} source
  */
 export default function loader(source) {
