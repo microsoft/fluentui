@@ -1,7 +1,7 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "Add tests to swatch color picker",
   "packageName": "@fluentui/react",
   "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch"
+  "dependentChangeType": "none"
 }
