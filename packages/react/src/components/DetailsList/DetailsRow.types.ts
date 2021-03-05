@@ -200,7 +200,7 @@ export interface IDetailsRowBaseProps
   /**
    * Id for row
    */
-  rowId: string;
+  rowId?: string;
 }
 
 /**
