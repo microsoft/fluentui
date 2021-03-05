@@ -10,25 +10,35 @@ There are multiple javascript formats we may include in our npm packages: `commo
 
 We should adopt a predictable folder structure within the published npm package for these formats. That way consumers of our packages can know exactly where things are and which folders have what things in as few steps as possible.
 
+This is one of those small details that other partners will emulate and adopt. If we can be consistent, many packages exported by Microsoft will likely follow guidance because it is really minutia, but ends up adding to more predictability at scale.
+
 ## Problem statement
 
-Recently a change to a library to use the `build:commonjs-only` build step changed the `commonjs` output folder from `lib-commonjs` to `lib`. This in turn caused a partner to hit friction because on syncing the change, their `lib` folder still had `esm`. In debugging why they hit this, developers unfamiliar with the change didn't know why the package.json `main` entry was changed to `lib` and had to hunt down if the change was intentional or not.
-
-We should avoid output folder changes occuring simply because we output less formats. There is no need for additional friction for end users when simply having some standards here can avoid confusion.
+Without having a standard output folder locations within an npm package, the content is a harder to predict. Structuring our packages in a consistent way reducees friction in understanding what a package contains and what's is missing.
 
 ## Detailed Design or Proposal
 
-Proposed standard folders in a published JavaScript package (only applicable output folders would be present):
+Proposed standard output folders in a published JavaScript package (only applicable output folders would be present):
 
-- `lib` - esm
-- `lib-commonjs` - commonjs
-- `lib-amd` - amd
+- `lib` - esm (as we've had for a long time)
+- `lib-commonjs` - commonjs (only needed while Node <= 13.2.0 is supported)
+- `lib-amd` - amd (hopefully we can drop someday)
 - `dist` - bundles and static content
+
+Examples:
+
+A node library like `jest-serializer-merge-styles` which only requires CommonJS would only have `lib-commonjs` output folder. Later when we want to switch to only ESM, we'd only have a `lib` output folder.
+
+A library like `react-button` which might be consumed by Node and bundlers likely will need both ESM and CommonJS, until Node 13.2.0 or greater is the minimum requirement. Its output will have both a `lib` and `lib-commonjs` folder.
+
+If in the future, we wanted to include processed TypeScript output, perhaps we'd add a `lib-ts` to the mix.
 
 ### Pros and Cons
 
 #### Pros
 
+- Almost no difference from what we currently have - only the `build:commonjs-only` task needs to be modified to output to `lib-commonjs`.
+- Our partners won't really notice changes here at all, since this has been the convention we've used for a long time.
 - ESM is becoming the standard that all platforms will snap to, hence why `lib` and not `lib-esm`
 - Changes in output won't change the folder structure
 - Unchanging folder structures mean that full builds are required less
@@ -38,8 +48,42 @@ Proposed standard folders in a published JavaScript package (only applicable out
 
 #### Cons
 
-No obvious cons.
+- Potentially `esm` might be changed as the "standard" library format in the future, which would require us to adjust what `lib` means.
+
+### Alternatives
+
+Many libraries in OSS have kept `lib` representing CommonJS and have added `es` to the mix as the folder for containing esm. This is very likely because they've existed for a while and didn't want to change their existing folder structure. We could also consider this convention. React itself avoids `lib` and explicitly uses `cjs` to indicate the output format. (It also has no ESM flavor.)
+
+#### Alternative proposal:
+
+* `cjs` - CommonJS
+* `es` - esm
+* `amd` - amd
+* `dist` - statics and bundles
+
+#### Pros:
+
+* Follows a few more OSS library conventions (though there isn't consistency here)
+* Won't have to revisit if the JavaScript flavor of the month changes later
+
+#### Cons:
+
+* A bigger shift than the original proposal - will impact nearly all of our packages
+* Definitely more work to clean things up to this format
+
+### How do other major packages organize their output?
+
+"Standards" haven't really emerged other than `dist` being the output folder. There is a commonality of using `es` as the esm folder. Here's a small sampling:
+
+* @angular/core - Uses `bundles` for output which includes a UMD bundle for commonjs support, and `fesm2015` for esm. 
+* @apollo/client - No folders; `index.js` at root is esm while `index.cjs.js` is CommonJS.
+* @material-ui/core - Uses a root `index.js` rollup entry for commonjs and `es` folder for esm.
+* antd - Uses `es` for esm, `lib` for commonjs.
+* immer - Uses only `dist` and rolls up a separate `esm` bundle.
+* react - Commonjs is in `cjs`, there's also a `umd` folder for bundles.
+* redux - Uses `es` for esm, `lib` for commonjs.
+* styled-components - Only `dist` with `s-c.esm.js` and `s-c.cjs.js`. They also emit a react-native `s-c.native.js` flavor.
 
 ## Discarded Solutions
 
-The current solution of "use `lib` folder for `commonjs` format javascript if that's the only output flavor" should be discarded. It creates unpredictability and changes expectations as soon as we move the library to esm.
+The current solution of using `lib` for either CommonJS or ESM depending on which platforms are (currently) supported should be replaced with something that doesn't mean different things in different contexts.
