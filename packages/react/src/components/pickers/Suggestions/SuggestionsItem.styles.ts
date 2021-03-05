@@ -40,6 +40,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
             selectors: {
               [`.${classNames.closeButton}`]: {
                 display: 'block',
+                background: semanticColors.menuItemBackgroundPressed,
               },
             },
           },
@@ -110,7 +111,6 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
         padding: '0 4px',
         height: 'auto',
         width: 32,
-        background: semanticColors.menuItemBackgroundPressed,
         selectors: {
           ':hover, :active': {
             background: palette.neutralTertiaryAlt,
@@ -124,7 +124,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
       suggested && {
         selectors: {
           ':hover, :active': {
-            background: palette.neutralTertiary,
+            background: `${palette.neutralTertiary} !important`,
             color: palette.neutralPrimary,
           },
         },
