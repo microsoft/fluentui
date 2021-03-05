@@ -1,6 +1,6 @@
 {
   "name": "{{{packageNpmName}}}",
-  "version": "0.1.0",
+  "version": "9.0.0-alpha.0",
   "description": "{{{description}}}",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,6 @@
     "@testing-library/react-hooks": "",
     "@types/enzyme": "",
     "@types/enzyme-adapter-react-16": "",
-    "@types/jest": "",
     "@types/react": "",
     "@types/react-dom": "",
     "@types/react-test-renderer": "",
@@ -45,11 +44,9 @@
     "react-test-renderer": ""
   },
   "dependencies": {
-    "@fluentui/react-hooks": "",
     "@fluentui/react-make-styles": "",
     "@fluentui/react-theme-provider": "",
-    "@fluentui/react-utils": "",
-    "@fluentui/set-version": "",
+    "@fluentui/react-utilities": "",
     "tslib": ""
   },
   "peerDependencies": {
@@ -59,10 +56,11 @@
     "react-dom": ""
   },
   "beachball": {
-    "tag": "latest",
+    "tag": "alpha",
     "disallowedChangeTypes": [
       "major",
-      "prerelease"
+      "minor",
+      "patch"
     ]
   }
 }

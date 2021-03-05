@@ -1,4 +1,4 @@
-import { keyboardKey, SpacebarKey, EnterKey, LetterKeys } from '../../keyboard-key';
+import { keyboardKey, SpacebarKey, EnterKey } from '../../keyboard-key';
 import { Accessibility, AriaRole } from '../../types';
 
 import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
@@ -74,9 +74,6 @@ export const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => {
             }),
         expandSiblings: {
           keyCombinations: [{ keyCode: keyboardKey['*'] }],
-        },
-        setFocusByFirstCharacter: {
-          keyCombinations: LetterKeys.map(key => ({ keyCode: key })),
         },
         ...(props.selectable && {
           performClick: {

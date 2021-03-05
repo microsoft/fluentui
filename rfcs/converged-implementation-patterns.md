@@ -75,7 +75,7 @@ Accepts the component props and handles the internal state that the component mi
 `State` here can be pretty broad, you could also consume context or create side effects. This hook should be what the component relies on to function/render. All state operations will mutate `draftState` object.
 
 ```typescript
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utils';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * Defines the different slots that can be rendered in this component
@@ -185,7 +185,7 @@ This should be a pure function whose sole responsibility is to render JSX from t
 should happen in this function, but rather done in the `useSample` hook
 
 ```typescript
-import { getSlots } from '@fluentui/react-utils';
+import { getSlots } from '@fluentui/react-utilities';
 import { sampleShorthandProps } from './useSample';
 
 // state should come from `useSample` hook
@@ -210,7 +210,7 @@ The below will probably be present in every component, other utility types are f
 
 ```typescript
 import * as React from 'react';
-import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utils';
+import { ComponentProps, ShorthandProps, ObjectShorthandProps } from '@fluentui/react-utilities';
 
 // For a component all HTML attributes should be allowed to maximize consistencty with DOM
 export interface SampleProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {

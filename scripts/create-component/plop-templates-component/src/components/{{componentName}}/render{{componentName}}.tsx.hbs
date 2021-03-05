@@ -1,16 +1,18 @@
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utils';
+import { getSlots } from '@fluentui/react-utilities';
 import { {{componentName}}State } from './{{componentName}}.types';
 import { {{camelCase componentName}}ShorthandProps } from './use{{componentName}}';
 
 /**
- * Function that renders the final JSX of the component
+ * Render the final JSX of {{componentName}}
+ * {@docCategory {{componentName}} }
  */
 export const render{{componentName}} = (state: {{componentName}}State) => {
   const { slots, slotProps } = getSlots(state, {{camelCase componentName}}ShorthandProps);
 
   return (
     <slots.root {...slotProps.root}>
+      {/* TODO Add additional slots in the appropritate place */}
       {state.children}
     </slots.root>
   );

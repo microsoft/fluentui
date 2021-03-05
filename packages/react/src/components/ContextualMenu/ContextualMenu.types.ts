@@ -4,10 +4,9 @@ import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../../Icon';
 import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
-// Might need to be changed to compat button
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { IWithResponsiveModeState } from '../../ResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import {
@@ -43,6 +42,7 @@ export interface IContextualMenu {}
 export interface IContextualMenuProps
   extends IBaseProps<IContextualMenu>,
     React.RefAttributes<HTMLDivElement>,
+    // eslint-disable-next-line deprecation/deprecation
     IWithResponsiveModeState {
   /**
    * Optional callback to access the IContextualMenu interface. Use this instead of ref for accessing
@@ -302,6 +302,8 @@ export interface IContextualMenuListProps {
   hasCheckmarks: boolean;
   hasIcons: boolean;
   defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
+  ariaLabel?: string;
+  labelElementId?: string;
   role?: string;
 }
 

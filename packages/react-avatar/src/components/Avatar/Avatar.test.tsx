@@ -4,7 +4,6 @@ import { isConformant } from '@fluentui/react-conformance';
 import { Avatar } from './Avatar';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
-import { GroupIcon } from '@fluentui/react-icons-mdl2';
 
 describe('Avatar', () => {
   let wrapper: ReactWrapper | undefined;
@@ -34,7 +33,7 @@ describe('Avatar', () => {
   });
 
   it('renders an icon', () => {
-    const component = renderer.create(<Avatar icon={<GroupIcon />} />);
+    const component = renderer.create(<Avatar icon={<span className="icon" />} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -78,7 +77,7 @@ describe('Avatar', () => {
   });
 
   it('prioritizes icon over initials', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} />);
+    const component = renderer.create(<Avatar name="First Last" icon={<span className="icon" />} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -90,13 +89,13 @@ describe('Avatar', () => {
   });
 
   it('prioritizes image over icon', () => {
-    const component = renderer.create(<Avatar icon={<GroupIcon />} image="i.png" />);
+    const component = renderer.create(<Avatar icon={<span className="icon" />} image="i.png" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('prioritizes image over initials and icon', () => {
-    const component = renderer.create(<Avatar name="First Last" icon={<GroupIcon />} image="i.png" />);
+    const component = renderer.create(<Avatar name="First Last" icon={<span className="icon" />} image="i.png" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -108,9 +107,7 @@ describe('Avatar', () => {
   });
 
   it('handles customSize', () => {
-    const component = renderer.create(
-      <Avatar name="First Last" size={32} tokens={{ width: '33px', height: '33px' }} />,
-    );
+    const component = renderer.create(<Avatar name="First Last" size={32} style={{ width: '33px', height: '33px' }} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

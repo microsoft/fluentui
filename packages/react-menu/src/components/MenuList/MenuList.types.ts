@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utils';
+import { ComponentProps } from '@fluentui/react-utilities';
+import { MenuListContextValue } from '../../menuListContext';
+import { SelectableHandler } from '../../selectable/index';
 
 export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -14,6 +16,11 @@ export interface MenuListProps extends ComponentProps, React.HTMLAttributes<HTML
    * Map of all checked values
    */
   checkedValues?: Record<string, string[]>;
+
+  /**
+   * Default values to be checked on mount
+   */
+  defaultCheckedValues?: Record<string, string[]>;
 }
 
 export interface MenuListState extends MenuListProps {
@@ -21,4 +28,19 @@ export interface MenuListState extends MenuListProps {
    * Ref to the root slot
    */
   ref: React.MutableRefObject<HTMLElement>;
+
+  /**
+   * Callback to set focus on the next menu item by first character
+   */
+  setFocusByFirstCharacter: MenuListContextValue['setFocusByFirstCharacter'];
+
+  /*
+   * Toggles the state of a checkbox item
+   */
+  toggleCheckbox: SelectableHandler;
+
+  /**
+   * Selects a radio item, will de-select the currently selected ratio item
+   */
+  selectRadio: SelectableHandler;
 }

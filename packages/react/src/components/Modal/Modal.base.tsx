@@ -14,11 +14,10 @@ import { IDragOptions, IModalProps, IModalStyleProps, IModalStyles } from './Mod
 import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../../Popup';
-import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
+import { ResponsiveMode, useResponsiveMode } from '../../ResponsiveMode';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { Icon } from '../../Icon';
 import { DraggableZone, ICoordinates, IDragData } from '../../utilities/DraggableZone/index';
-import { useResponsiveMode } from '../../utilities/hooks/useResponsiveMode';
 import { useWindow } from '@fluentui/react-window-provider';
 import {
   useBoolean,

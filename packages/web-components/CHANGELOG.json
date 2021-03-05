@@ -2,6 +2,56 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/web-components_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update beachball config",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/web-components_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update card background color attribute to reflect from view",
+            "author": "chhol@microsoft.com",
+            "commit": "d91f1404203ae715d9c9f9edf98f38ebef9eb634",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "commit": "d91f1404203ae715d9c9f9edf98f38ebef9eb634",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/web-components_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove hard coded background color in favor of default design system behavior",
+            "author": "chhol@microsoft.com",
+            "commit": "0f7fa189c9b96cf65609c54781f958d0679e4678",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 12 Feb 2021 12:26:20 GMT",
       "tag": "@fluentui/web-components_v0.14.0",
       "version": "0.14.0",

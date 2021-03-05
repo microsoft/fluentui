@@ -1,7 +1,14 @@
 import * as React from 'react';
 import { useTree, UseTreeResult, UseTreeOptions } from './useTree';
+import { ShorthandValue } from '../../../types';
+import { TreeItemProps } from '../TreeItem';
 
-export interface UseVirtualTreeOptions extends Omit<UseTreeOptions, 'selectedItemIds' | 'defaultSelectedItemIds'> {}
+export interface UseVirtualTreeOptions extends Omit<UseTreeOptions, 'selectedItemIds' | 'defaultSelectedItemIds'> {
+  /**
+   * A function that converts an item to string. Used for keyboard navigation based on the first letter of an item's text content
+   */
+  itemToString?: (item: ShorthandValue<TreeItemProps>) => string;
+}
 
 export interface UseVirtualTreeResult extends UseTreeResult {
   /** ref to be assigned to react-window VariableSizeList/FixedSizeList component */
@@ -98,11 +105,53 @@ export function useVirtualTree(props: UseVirtualTreeOptions): UseVirtualTreeResu
     }
   }, [getItemRef, visibleItemIds]);
 
+  const searchByFirstChar = React.useCallback(
+    (startIndex: number, endIndex: number, char: string) => {
+      const itemToString = props.itemToString || (item => (item as any).content || '');
+      for (let i = startIndex; i < endIndex; ++i) {
+        const itemFirstChar = itemToString(getItemById(visibleItemIds[i]).item)
+          ?.trim()
+          ?.charAt(0)
+          ?.toLowerCase();
+        if (itemFirstChar === char.toLowerCase()) {
+          return i;
+        }
+      }
+      return -1;
+    },
+    [getItemById, props.itemToString, visibleItemIds],
+  );
+
+  const getToFocusIDByFirstCharacter = React.useCallback(
+    (e: React.KeyboardEvent, idToStartSearch: string) => {
+      // Get start index for search
+      let starIndex = visibleItemIds.indexOf(idToStartSearch) + 1;
+      if (starIndex === visibleItemIds.length) {
+        starIndex = 0;
+      }
+
+      // Check following nodes in tree
+      let toFocusIndex = searchByFirstChar(starIndex, visibleItemIds.length, e.key);
+      // If not found in following nodes, check from beginning
+      if (toFocusIndex === -1) {
+        toFocusIndex = searchByFirstChar(0, starIndex - 1, e.key);
+      }
+
+      if (toFocusIndex === -1) {
+        return idToStartSearch;
+      }
+
+      return visibleItemIds[toFocusIndex];
+    },
+    [searchByFirstChar, visibleItemIds],
+  );
+
   return {
     ...baseTree,
     registerItemRef,
     focusItemById,
     expandSiblings,
+    getToFocusIDByFirstCharacter,
     listRef,
   };
 }

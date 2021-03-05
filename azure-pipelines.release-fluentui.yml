@@ -22,9 +22,10 @@ resources:
 variables:
   # below are variables that cannot be configured at queue time
   - group: 'Github and NPM secrets'
+  - template: .devops/templates/variables.yml
+    parameters:
+      deployBasePath: 0.0.0-nightly
   - name: docsiteVersion # used by docsite
-    value: 0.0.0-nightly
-  - name: deployBasePath # used by docsite
     value: 0.0.0-nightly
   - name: officialRelease # used by docsite
     value: true
@@ -130,6 +131,15 @@ jobs:
 
     steps:
       - template: .devops/templates/tools.yml
+
+      - task: CmdLine@2
+        displayName: Checkout branch for pull
+        condition: and(succeeded(), eq(variables.publishOfficial, true))
+        inputs:
+          script: |
+            BRANCH_NAME=`echo $(Build.SourceBranch) | sed "s/refs\/heads\///"`
+            git checkout $BRANCH_NAME
+            git pull
 
       - task: Bash@3
         displayName: Yarn

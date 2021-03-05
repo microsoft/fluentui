@@ -1,8 +1,27 @@
 # Change Log - @fluentui/codemods
 
-This log was last generated on Thu, 11 Feb 2021 00:58:10 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.5..@fluentui/codemods_v8.0.1)
+
+### Patches
+
+- Enable office-ui-fabric-react to fluentui repath ([PR #16852](https://github.com/microsoft/fluentui/pull/16852) by joschect@microsoft.com)
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [1.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.5)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/codemods_v1.0.0-beta.4..@fluentui/codemods_v1.0.0-beta.5)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
 
 ## [1.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/codemods_v1.0.0-beta.4)
 
