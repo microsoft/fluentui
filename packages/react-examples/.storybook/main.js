@@ -12,6 +12,11 @@ export default {
       options: { escapeHTML: false },
     },
   ],
+  typescript: {
+    // disable react-docgen-typescript due to perf issues
+    // (also appears that it would require more configuration to work properly)
+    reactDocgen: false,
+  },
   webpackFinal: (/** @type {import("webpack").Configuration} */ config) => {
     const customConfig = custom(config);
 
