@@ -32,9 +32,9 @@ export const MenuControlledExample = () => {
   const [open, setOpen] = React.useState(false);
   return (
     <>
-      <Menu open={open} setOpen={setOpen}>
+      <Menu open={open}>
         <MenuTrigger>
-          <button>Toggle menu</button>
+          <button onClick={() => setOpen(s => !s)}>Toggle menu</button>
         </MenuTrigger>
 
         <MenuList>

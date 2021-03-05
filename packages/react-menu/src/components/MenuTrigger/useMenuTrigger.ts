@@ -35,16 +35,18 @@ export const useMenuTrigger = (
   state.setOpen = setOpen;
 
   const child = React.Children.only(state.children);
-  state.children = React.cloneElement(child as React.ReactElement, getTriggerProps(state.setOpen));
+  state.children = React.cloneElement(child as React.ReactElement, getTriggerProps(state.setOpen, child.props));
 
   return state;
 };
 
 // TODO this is quick 'n dirty, follow up and improve interactions
-const getTriggerProps = (setOpen: MenuContextValue['setOpen']) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getTriggerProps = (setOpen: MenuContextValue['setOpen'], props: any) => {
   const triggerProps: React.HTMLAttributes<HTMLElement> = {};
   triggerProps.onClick = e => {
     setOpen(s => !s);
+    props.onClick(e);
   };
 
   return triggerProps;
