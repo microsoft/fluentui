@@ -4,7 +4,6 @@ import {
   useEventCallback,
   useFirstMount,
   useIsomorphicLayoutEffect,
-  useLatest,
 } from '@fluentui/react-bindings';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
@@ -72,10 +71,6 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
 
   const placement = getPlacement(options.align, options.position, options.rtl);
   const strategy = options.positionFixed ? 'fixed' : 'absolute';
-
-  // "placement" and "strategy" should be used from these hooks as a switch of elements can cause inconsistencies
-  const latestPlacement = useLatest<PopperJs.Placement>(placement);
-  const latestStrategy = useLatest<PopperJs.PositioningStrategy>(strategy);
 
   const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
     if (onStateUpdate) {
@@ -227,14 +222,28 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
       const options: PopperJs.Options = {
         modifiers,
 
-        placement: latestPlacement.current,
-        strategy: latestStrategy.current,
+        placement,
+        strategy,
         onFirstUpdate: state => handleStateUpdate({ state }),
       };
 
       return options;
     },
-    [autoSize, offsetModifier, userModifiers, placement, strategy],
+    [
+      autoSize,
+      flipBoundary,
+      offsetModifier,
+      overflowBoundary,
+      placement,
+      strategy,
+      unstable_disableTether,
+      unstable_pinned,
+      userModifiers,
+
+      // These can be skipped from deps as they will not ever change
+      handleStateUpdate,
+      popperOriginalPositionRef,
+    ],
   );
 }
 
