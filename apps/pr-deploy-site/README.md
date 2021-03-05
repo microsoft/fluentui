@@ -11,7 +11,7 @@ These steps cover the most common scenario, a component package with a storybook
 1. Ensure the package has examples under `packages/react-examples/src/react-notbutton`
 2. In `packages/react-notbutton/package.json`, add an entry to `scripts` like this:
    ```
-   "bundle:storybook": "cross-env NODE_OPTIONS=--max-old-space-size=4096 just-scripts storybook:build"
+   "bundle:storybook": "just-scripts storybook:build"
    ```
 3. In `apps/pr-deploy-site/just.config.ts`, add `@fluentui/react-notbutton` to the `dependencies` array.
 4. In `apps/pr-deploy-site/pr-deploy-site.js`, add an entry for `@fluentui/react-notbutton`, substituting actual appropriate values. (Choose an icon name [from this page](https://developer.microsoft.com/en-us/fluentui#/styles/web/icons#available-icons).)
