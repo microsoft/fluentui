@@ -183,6 +183,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   } = props;
 
   const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
+  const hasActionMenu = !_.isNil(actionMenu);
+
   const modifiers = React.useCallback<PopperModifiersFn>(
     (target, container) => {
       return (
@@ -206,7 +208,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     position: 'above',
     positionFixed: overflow,
 
-    enabled: positionActionMenu,
+    enabled: hasActionMenu && positionActionMenu,
     modifiers,
     popperRef,
 
