@@ -87,12 +87,7 @@ export const useRootStyles = makeStyles<BadgeState>([
     s => s.shape === 'rounded' && (s.size === 'small' || s.size === 'smaller' || s.size === 'smallest'),
     theme => ({ borderRadius: theme.global.borderRadius.small }),
   ],
-  [s => s.shape === 'circular' && s.size === 'smallest', { borderRadius: '3px' }],
-  [s => s.shape === 'circular' && s.size === 'smaller', { borderRadius: '5px' }],
-  [s => s.shape === 'circular' && s.size === 'small', { borderRadius: '8px' }],
-  [s => s.shape === 'circular' && s.size === 'medium', { borderRadius: '10px' }],
-  [s => s.shape === 'circular' && s.size === 'large', { borderRadius: '12px' }],
-  [s => s.shape === 'circular' && (s.size === 'larger' || s.size === 'largest'), theme => ({ borderRadius: '16px' })],
+  [s => s.shape === 'circular', { borderRadius: '99px' }],
   [
     s => s.appearance === 'ghost',
     theme => ({
