@@ -20,11 +20,12 @@ export const useDivider = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: DividerProps,
 ): DividerState => {
+  const dividerId = useId('divider-');
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
       /* The Id created to expose accessability for readers */
-      labelledById: props.children ? useId('divider-') : undefined,
+      labelledById: props.children ? dividerId : undefined,
     },
     defaultProps,
     resolveShorthandProps(props, dividerShorthandProps),
