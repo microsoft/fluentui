@@ -43,7 +43,7 @@ const PopperExamplePositioning = () => {
     if (box === 'context') {
       referenceRef.current = virtualEl.current;
     }
-  }, [box]);
+  }, [box, referenceRef]);
 
   return (
     <div style={{ border: '2px dotted grey', margin: 100 }}>
