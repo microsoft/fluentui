@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "switch menu buttton to aria-controls to remove nesting",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
