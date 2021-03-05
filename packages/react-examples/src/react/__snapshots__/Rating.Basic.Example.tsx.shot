@@ -3972,6 +3972,8 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
       tabIndex={0}
     >
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -4020,7 +4022,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         id="Rating12-star-0"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -4109,6 +4111,8 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         </div>
       </button>
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -4157,7 +4161,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         id="Rating12-star-1"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -4246,6 +4250,8 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         </div>
       </button>
       <button
+        aria-checked={true}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -4295,7 +4301,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         id="Rating12-star-2"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -4384,6 +4390,8 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         </div>
       </button>
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -4432,7 +4440,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         id="Rating12-star-3"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
@@ -4521,6 +4529,8 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         </div>
       </button>
       <button
+        aria-checked={false}
+        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -4569,7 +4579,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         id="Rating12-star-4"
         onClick={[Function]}
         onFocus={[Function]}
-        role="presentation"
+        role="radio"
         type="button"
       >
         <span
