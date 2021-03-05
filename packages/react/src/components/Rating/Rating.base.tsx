@@ -140,9 +140,10 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
           onFocus={onSelectStar}
           onClick={onSelectStar} // For Safari & Firefox on OSX
           disabled={!!(disabled || readOnly)}
-          role={!readOnly ? 'radio' : 'presentation'}
+          role="radio"
+          aria-hidden={readOnly ? 'true' : undefined}
           type="button"
-          aria-checked={!readOnly ? (starNum === Math.ceil(displayRating) ? true : false) : undefined}
+          aria-checked={starNum === Math.ceil(displayRating) ? true : false}
         >
           <span id={`${labelId}-${starNum}`} className={classNames.labelText}>
             {format(ariaLabelFormat || '', starNum, max)}
