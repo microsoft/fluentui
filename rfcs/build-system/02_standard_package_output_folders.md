@@ -14,7 +14,7 @@ This is one of those small details that other partners will emulate and adopt. I
 
 ## Problem statement
 
-Today, `lib` contains esm JavaScript output, except for node-only packages which drop CommonJS modules in them. This obfuscates what `lib` actually contains. We should have some standards and stick to patterns which add clarity to what output format is used.
+Today, `lib` contains esm JavaScript output, except for node-only packages which will drop CommonJS modules in them. This obfuscates what `lib` actually contains. We should adopt standards which add clarity to what output format is used.
 
 ## Detailed Design or Proposal
 
