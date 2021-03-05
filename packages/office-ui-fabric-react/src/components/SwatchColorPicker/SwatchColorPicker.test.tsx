@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
+import { ISwatchColorPickerProps } from './SwatchColorPicker.types';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { expectNodes, findNodes } from '../../common/testUtilities';
 
@@ -102,22 +103,22 @@ describe('SwatchColorPicker', () => {
 
   it('Can set the selectedID ', () => {
     const wrapper = mount(
-      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} columnCount={4} isControlled={true} selectedId={'a'} />,
+      <SwatchColorPicker
+        colorCells={[DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[1]]}
+        columnCount={4}
+        isControlled={true}
+        selectedId={'a'}
+      />,
     );
 
     const tableElements = findNodes(wrapper, '.ms-Button');
-    expect(tableElements.length).toEqual(1);
-    expect(
-      tableElements
-        .at(0)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('true');
+    expect(tableElements.length).toEqual(2);
+    expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
   });
 
-  it('Can clear the selectedID if isControlled', () => {
+  it('Can clear the selectedID if controlled', () => {
     const colorChanged = jest.fn();
-    const props = {
+    const props: ISwatchColorPickerProps = {
       colorCells: [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[1]],
       columnCount: 4,
       selectedId: 'a',
@@ -130,42 +131,22 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.length).toEqual(2);
 
     // Verify initial id is selected
-    expect(
-      tableElements
-        .at(0)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('true');
-    expect(
-      tableElements
-        .at(1)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('false');
+    expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
+    expect(tableElements.at(1).prop('aria-selected')).toEqual(false);
 
     // Update the props to set selected to undefined
-    wrapper.setProps({ ...props, selectedId: 'undefined' });
+    wrapper.setProps({ selectedId: undefined });
 
     tableElements = findNodes(wrapper, '.ms-Button');
     expect(tableElements.length).toEqual(2);
 
     // Verify nothing is selected
-    expect(
-      tableElements
-        .at(0)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('false');
-    expect(
-      tableElements
-        .at(1)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('false');
+    expect(tableElements.at(0).prop('aria-selected')).toEqual(false);
+    expect(tableElements.at(1).prop('aria-selected')).toEqual(false);
   });
 
-  it('Can not clear the selectedID', () => {
-    const props = {
+  it('Cannot clear the selectedID if uncontrolled', () => {
+    const props: ISwatchColorPickerProps = {
       colorCells: DEFAULT_OPTIONS,
       columnCount: 4,
       selectedId: 'a',
@@ -176,25 +157,15 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.length).toEqual(12);
 
     // Verify initial id is selected
-    expect(
-      tableElements
-        .at(0)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('true');
+    expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
 
     // Update the props to set selected to undefined
-    wrapper.setProps({ ...props, selectedId: 'undefined' });
+    wrapper.setProps({ selectedId: undefined });
 
     tableElements = findNodes(wrapper, '.ms-Button');
     expect(tableElements.length).toEqual(12);
 
     // Verify initial id is still selected
-    expect(
-      tableElements
-        .at(0)
-        .getDOMNode()
-        .getAttribute('aria-selected'),
-    ).toEqual('true');
+    expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
   });
 });
