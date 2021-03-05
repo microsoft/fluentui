@@ -328,6 +328,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /** Role for in details list. */
+  role?: string;
 }
 
 /**
@@ -716,6 +719,6 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 /**
  * {@docCategory DetailsList}
  */
-export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps { }
 
-export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps { }

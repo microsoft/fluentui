@@ -138,9 +138,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     this._dragDropHelper = props.dragDropEvents
       ? new DragDropHelper({
-          selection: this._selection,
-          minimumPixelsForDrag: props.minimumPixelsForDrag
-        })
+        selection: this._selection,
+        minimumPixelsForDrag: props.minimumPixelsForDrag
+      })
       : undefined;
     this._initialFocusedIndex = props.initialFocusedIndex;
   }
@@ -281,9 +281,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       this._dragDropHelper && this._dragDropHelper.dispose();
       this._dragDropHelper = newProps.dragDropEvents
         ? new DragDropHelper({
-            selection: this._selection,
-            minimumPixelsForDrag: newProps.minimumPixelsForDrag
-          })
+          selection: this._selection,
+          minimumPixelsForDrag: newProps.minimumPixelsForDrag
+        })
         : undefined;
       shouldForceUpdates = true;
     }
@@ -379,59 +379,63 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       className
     });
 
+    let role = this.props;
+    if (!role)
+      role = "grid";
+
     const list = groups ? (
       <GroupedList
-        componentRef={this._groupedList}
-        groups={groups}
-        groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
-        items={items}
-        onRenderCell={this._onRenderCell}
-        selection={selection}
-        selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
-        dragDropEvents={dragDropEvents}
-        dragDropHelper={dragDropHelper}
-        eventsToRegister={rowElementEventMap}
-        listProps={additionalListProps}
-        onGroupExpandStateChanged={this._onGroupExpandStateChanged}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        getGroupHeight={getGroupHeight}
-        compact={compact}
+        componentRef={ this._groupedList }
+        groups={ groups }
+        groupProps={ groupProps ? this._getGroupProps(groupProps) : undefined }
+        items={ items }
+        onRenderCell={ this._onRenderCell }
+        selection={ selection }
+        selectionMode={ checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none }
+        dragDropEvents={ dragDropEvents }
+        dragDropHelper={ dragDropHelper }
+        eventsToRegister={ rowElementEventMap }
+        listProps={ additionalListProps }
+        onGroupExpandStateChanged={ this._onGroupExpandStateChanged }
+        usePageCache={ usePageCache }
+        onShouldVirtualize={ onShouldVirtualize }
+        getGroupHeight={ getGroupHeight }
+        compact={ compact }
       />
     ) : (
-      <List
-        ref={this._list}
-        role="presentation"
-        items={items}
-        onRenderCell={this._onRenderListCell(0)}
-        usePageCache={usePageCache}
-        onShouldVirtualize={onShouldVirtualize}
-        {...additionalListProps}
-      />
-    );
+        <List
+          ref={ this._list }
+          role="presentation"
+          items={ items }
+          onRenderCell={ this._onRenderListCell(0) }
+          usePageCache={ usePageCache }
+          onShouldVirtualize={ onShouldVirtualize }
+          { ...additionalListProps }
+        />
+      );
 
     return (
       // If shouldApplyApplicationRole is true, role application will be applied to make arrow keys work
       // with JAWS.
       <div
-        ref={this._root}
-        className={classNames.root}
+        ref={ this._root }
+        className={ classNames.root }
         data-automationid="DetailsList"
         data-is-scrollable="false"
-        aria-label={ariaLabel}
-        {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
+        aria-label={ ariaLabel }
+        { ...(shouldApplyApplicationRole ? { role: 'application' } : {}) }
       >
         <FocusRects />
         <div
-          role="grid"
-          aria-label={ariaLabelForGrid}
-          aria-rowcount={isPlaceholderData ? -1 : rowCount}
-          aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
+          role={ role }
+          aria-label={ ariaLabelForGrid }
+          aria-rowcount={ isPlaceholderData ? -1 : rowCount }
+          aria-colcount={ (selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0) }
           aria-readonly="true"
-          aria-busy={isPlaceholderData}
+          aria-busy={ isPlaceholderData }
         >
-          <div onKeyDown={this._onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
-            {isHeaderVisible &&
+          <div onKeyDown={ this._onHeaderKeyDown } role="presentation" className={ classNames.headerWrapper }>
+            { isHeaderVisible &&
               onRenderDetailsHeader(
                 {
                   componentRef: this._header,
@@ -463,41 +467,41 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   useFastIcons
                 },
                 this._onRenderDetailsHeader
-              )}
+              ) }
           </div>
-          <div onKeyDown={this._onContentKeyDown} role="presentation" className={classNames.contentWrapper}>
+          <div onKeyDown={ this._onContentKeyDown } role="presentation" className={ classNames.contentWrapper }>
             <FocusZone
-              componentRef={this._focusZone}
-              className={classNames.focusZone}
-              direction={FocusZoneDirection.vertical}
-              isInnerZoneKeystroke={this.isRightArrow}
-              onActiveElementChanged={this._onActiveRowChanged}
-              onBlur={this._onBlur}
+              componentRef={ this._focusZone }
+              className={ classNames.focusZone }
+              direction={ FocusZoneDirection.vertical }
+              isInnerZoneKeystroke={ this.isRightArrow }
+              onActiveElementChanged={ this._onActiveRowChanged }
+              onBlur={ this._onBlur }
             >
-              {!this.props.disableSelectionZone ? (
+              { !this.props.disableSelectionZone ? (
                 <SelectionZone
-                  ref={this._selectionZone}
-                  selection={selection}
-                  selectionPreservedOnEmptyClick={selectionPreservedOnEmptyClick}
-                  selectionMode={selectionMode}
-                  onItemInvoked={onItemInvoked}
-                  onItemContextMenu={onItemContextMenu}
-                  enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...(selectionZoneProps || {})}
+                  ref={ this._selectionZone }
+                  selection={ selection }
+                  selectionPreservedOnEmptyClick={ selectionPreservedOnEmptyClick }
+                  selectionMode={ selectionMode }
+                  onItemInvoked={ onItemInvoked }
+                  onItemContextMenu={ onItemContextMenu }
+                  enterModalOnTouch={ this.props.enterModalSelectionOnTouch }
+                  { ...(selectionZoneProps || {}) }
                 >
-                  {list}
+                  {list }
                 </SelectionZone>
               ) : (
-                list
-              )}
+                  list
+                ) }
             </FocusZone>
           </div>
-          {onRenderDetailsFooter(
+          { onRenderDetailsFooter(
             {
               ...detailsFooterProps
             },
             this._onRenderDetailsFooter
-          )}
+          ) }
         </div>
       </div>
     );
@@ -509,14 +513,14 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
   }
 
   protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
-    return <DetailsRow {...props} />;
+    return <DetailsRow { ...props } />;
   };
 
   private _onRenderDetailsHeader = (
     detailsHeaderProps: IDetailsHeaderProps,
     defaultRender?: IRenderFunction<IDetailsHeaderProps>
   ): JSX.Element => {
-    return <DetailsHeader {...detailsHeaderProps} />;
+    return <DetailsHeader { ...detailsHeaderProps } />;
   };
 
   private _onRenderDetailsFooter = (
@@ -1046,40 +1050,40 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
 
     const onRenderFooter = onRenderDetailsGroupFooter
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupFooter(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps
-            },
-            defaultRender
-          );
-        }
+        return onRenderDetailsGroupFooter(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            indentWidth,
+            selection: this._selection,
+            selectionMode: selectionMode,
+            viewport: viewport,
+            checkboxVisibility,
+            cellStyleProps
+          },
+          defaultRender
+        );
+      }
       : undefined;
 
     const onRenderHeader = onRenderDetailsGroupHeader
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
-          return onRenderDetailsGroupHeader(
-            {
-              ...props,
-              columns: columns,
-              groupNestingDepth: groupNestingDepth,
-              indentWidth,
-              selection: this._selection,
-              selectionMode: selectionMode,
-              viewport: viewport,
-              checkboxVisibility,
-              cellStyleProps
-            },
-            defaultRender
-          );
-        }
+        return onRenderDetailsGroupHeader(
+          {
+            ...props,
+            columns: columns,
+            groupNestingDepth: groupNestingDepth,
+            indentWidth,
+            selection: this._selection,
+            selectionMode: selectionMode,
+            viewport: viewport,
+            checkboxVisibility,
+            cellStyleProps
+          },
+          defaultRender
+        );
+      }
       : undefined;
 
     return {
