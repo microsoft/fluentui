@@ -3,9 +3,9 @@ import { useForkRef, Ref, isRefObject } from '@fluentui/react-component-ref';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
+import { getPlacement } from './positioningHelper';
 import { PopperChildrenFn, PopperProps, PopperRefHandle } from './types';
-import { usePopper } from 'src/utils/positioner/usePopper';
-import { getPlacement } from 'src/utils/positioner/positioningHelper';
+import { usePopper } from './usePopper';
 
 /**
  * Popper relies on the 3rd party library [Popper.js](https://github.com/FezVrasta/popper.js) for positioning.
