@@ -24,13 +24,18 @@ const popperStyles: React.CSSProperties = {
 };
 
 const PopperExamplePositioning = () => {
-  const [popperProps, setPopperProps] = React.useState<PositioningProps>({ align: 'center', position: 'above' });
-
   const [box, setBox] = React.useState<'boxA' | 'boxB' | 'context'>('boxA');
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  const [popperProps, setPopperProps] = React.useState<PositioningProps>({
+    align: 'center',
+    position: 'above',
+  });
   const virtualEl = React.useRef(null);
 
   const [referenceRef, popperRef] = usePopper({
     align: popperProps.align,
+    enabled: open,
     position: popperProps.position,
   });
 
@@ -44,10 +49,15 @@ const PopperExamplePositioning = () => {
     <div style={{ border: '2px dotted grey', margin: 100 }}>
       <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', gap: '5px' }}>
+          <button id="open-popper" onClick={() => setOpen(true)} style={buttonStyles(open)}>
+            open a popper
+          </button>
+        </div>
+        <div style={{ display: 'flex', gap: '5px' }}>
           <button onClick={() => setBox('boxA')} style={buttonStyles(box === 'boxA')}>
             use Box A
           </button>
-          <button onClick={() => setBox('boxB')} style={buttonStyles(box === 'boxB')}>
+          <button id="use-boxB" onClick={() => setBox('boxB')} style={buttonStyles(box === 'boxB')}>
             use Box B
           </button>
           <button
@@ -75,6 +85,7 @@ const PopperExamplePositioning = () => {
             align: center, position: above
           </button>
           <button
+            id="align-end-position-above"
             onClick={() => setPopperProps({ align: 'end', position: 'above' })}
             style={buttonStyles(popperProps.align === 'end' && popperProps.position === 'above')}
           >
@@ -103,7 +114,7 @@ const PopperExamplePositioning = () => {
         <Box content="Box B" ref={box === 'boxB' ? referenceRef : undefined} styles={boxStyles} />
       </div>
 
-      <Portal open>
+      <Portal open={open}>
         <div ref={popperRef} style={popperStyles}>
           A popper
         </div>
