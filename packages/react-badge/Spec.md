@@ -134,27 +134,26 @@ A Presence Badge represents someone's availbility or status
 A Counter Badge is a visual indicator for numeric values such as tallies and scores.
 
 ```typescript
-export type CounterBadgeAppearance = 'filled' | 'ghost';
-
-export type CounterBadgeShape = 'rounded' | 'circular';
-
+/**
+ * {@docCategory CounterBadge}
+ */
 export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
 
-export interface CounterBadgeProps
-  extends ComponentProps,
-    React.HTMLAttributes<HTMLElement>,
-    Omit<BadgeProps, 'appearance' | 'shape'> {
+/**
+ * {@docCategory CounterBadge}
+ */
+export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
   /**
-   * A Badge can be square, circular or rounded
+   * A Badge can be circular or rounded
    * @defaultvalue circular
    */
-  shape?: CounterBadgeShape;
+  shape?: Extract<BadgeShape, 'rounded' | 'circular'>;
 
   /**
-   * A Badge can be filled, outline, ghost, inverted
+   * A Badge can be filled, ghost
    * @defaultvalue filled
    */
-  appearance?: CounterBadgeAppearance;
+  appearance?: Extract<BadgeAppearance, 'filled' | 'ghost'>;
 
   /**
    * A Badge can have color variations
@@ -169,15 +168,21 @@ export interface CounterBadgeProps
   overflowCount?: number;
 
   /**
-   * If 0 number should be displayed
-   * @defaultvalue true
-   */
-  showZero?: boolean;
-
-  /**
    * Value diplayed by the Badge
    * @defaultvalue 0
    */
   count?: number;
+
+  /**
+   * If the badge should be shown when count is 0
+   * @defaultvalue false
+   */
+  showZero?: boolean;
+
+  /**
+   * If a dot badge should be displayed
+   * @defaultvalue false
+   */
+  dot?: boolean;
 }
 ```
