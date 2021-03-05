@@ -80,7 +80,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone1"
     data-is-focusable={true}
     data-item-index={0}
     data-selection-index={0}
@@ -470,7 +470,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField4"
+                id="TextField2"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -678,7 +678,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField7"
+                id="TextField5"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -774,7 +774,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone8"
     data-is-focusable={true}
     data-item-index={1}
     data-selection-index={1}
@@ -1164,7 +1164,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField13"
+                id="TextField9"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1372,7 +1372,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField16"
+                id="TextField12"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -1468,7 +1468,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone15"
     data-is-focusable={true}
     data-item-index={2}
     data-selection-index={2}
@@ -1858,7 +1858,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField22"
+                id="TextField16"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2066,7 +2066,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField25"
+                id="TextField19"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2162,7 +2162,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone30"
+    data-focuszone-id="FocusZone22"
     data-is-focusable={true}
     data-item-index={3}
     data-selection-index={3}
@@ -2552,7 +2552,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField31"
+                id="TextField23"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2760,7 +2760,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField34"
+                id="TextField26"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -2856,7 +2856,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone29"
     data-is-focusable={true}
     data-item-index={4}
     data-selection-index={4}
@@ -3246,7 +3246,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField40"
+                id="TextField30"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -3454,7 +3454,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField43"
+                id="TextField33"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -3550,7 +3550,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone48"
+    data-focuszone-id="FocusZone36"
     data-is-focusable={true}
     data-item-index={5}
     data-selection-index={5}
@@ -3940,7 +3940,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField49"
+                id="TextField37"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -4148,7 +4148,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField52"
+                id="TextField40"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -4244,7 +4244,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone57"
+    data-focuszone-id="FocusZone43"
     data-is-focusable={true}
     data-item-index={6}
     data-selection-index={6}
@@ -4634,7 +4634,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField58"
+                id="TextField44"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -4842,7 +4842,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField61"
+                id="TextField47"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -4938,7 +4938,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone66"
+    data-focuszone-id="FocusZone50"
     data-is-focusable={true}
     data-item-index={7}
     data-selection-index={7}
@@ -5328,7 +5328,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField67"
+                id="TextField51"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -5536,7 +5536,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField70"
+                id="TextField54"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -5632,7 +5632,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone75"
+    data-focuszone-id="FocusZone57"
     data-is-focusable={true}
     data-item-index={8}
     data-selection-index={8}
@@ -6022,7 +6022,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField76"
+                id="TextField58"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -6230,7 +6230,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField79"
+                id="TextField61"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -6326,7 +6326,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
           opacity: 1;
         }
     data-automationid="DetailsRow"
-    data-focuszone-id="FocusZone84"
+    data-focuszone-id="FocusZone64"
     data-is-focusable={true}
     data-item-index={9}
     data-selection-index={9}
@@ -6716,7 +6716,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField85"
+                id="TextField65"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -6924,7 +6924,7 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
                     @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
                       color: GrayText;
                     }
-                id="TextField88"
+                id="TextField68"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
