@@ -322,6 +322,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * @defaultvalue true
    */
   useFastIcons?: boolean;
+
+  /** Role for the list. */
+  role?: string;
 }
 
 /**

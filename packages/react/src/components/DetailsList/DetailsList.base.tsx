@@ -179,6 +179,8 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionZoneRef,
   } = props;
 
+  const role = props.role ? props.role : "grid";
+
   const groupNestingDepth = getGroupNestingDepth(groups);
 
   const additionalListProps = React.useMemo((): IListProps => {
@@ -612,7 +614,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     >
       <FocusRects />
       <div
-        role="grid"
+        role={role}
         aria-label={ariaLabelForGrid}
         aria-rowcount={isPlaceholderData ? -1 : rowCount}
         aria-colcount={colCount}
