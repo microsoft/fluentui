@@ -4,6 +4,6 @@ exports[`CounterBadge renders a default state 1`] = `
 <div
   className=" "
 >
-  0
+  undefined
 </div>
 `;

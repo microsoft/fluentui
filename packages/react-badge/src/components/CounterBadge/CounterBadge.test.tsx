@@ -20,7 +20,7 @@ describe('CounterBadge', () => {
   });
 
   it('renders a default state', () => {
-    const component = renderer.create(<CounterBadge>Default CounterBadge</CounterBadge>);
+    const component = renderer.create(<CounterBadge></CounterBadge>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
