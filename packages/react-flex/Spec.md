@@ -94,22 +94,22 @@ Below is a table of prop comparison:
 
 ### FlexItem
 
-| Name     | Type                                                                                            | Default value | Comments                                                                                                         |
-| -------- | ----------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `align`  | string (_see [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self#values)_) | "`auto`"      | Abstraction of `align-self`.                                                                                     |
-| `grow`   | number \| string = "`inherit`", "`initial`", "`unset`"                                          | `0`           | Abstraction of `flex-grow` and override of Flex's `grow`.                                                        |
-| `shrink` | number \| string = "`inherit`", "`initial`", "`unset`"                                          | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`.                                                    |
-| `push`   | boolean                                                                                         | `false`       | Defines an auto margin depending on the flex direction. Kept for retro-compatibility but perhaps can be removed. |
-| `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`.                                                       |
-| `order`  | number                                                                                          | `0`           | Abstraction of `order`.                                                                                          |
+| Name     | Type                                                                                            | Default value | Comments                                                      |
+| -------- | ----------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------- |
+| `align`  | string (_see [align-self](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self#values)_) | "`auto`"      | Abstraction of `align-self`.                                  |
+| `grow`   | number \| string = "`inherit`", "`initial`", "`unset`"                                          | `0`           | Abstraction of `flex-grow` and override of Flex's `grow`.     |
+| `shrink` | number \| string = "`inherit`", "`initial`", "`unset`"                                          | `1`           | Abstraction of `flex-shrink` and override of Flex's `shrink`. |
+| `basis`  | string (_see [flex-basis](https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis#values)_) | "`auto`"      | For clarity, renaming of v0 Flex's `size` prop to `basis`.    |
+| `order`  | number                                                                                          | `0`           | Abstraction of `order`.                                       |
 
 #### _Deprecating_
 
-| Original Component | Name            | Comments                                               |
-| ------------------ | --------------- | ------------------------------------------------------ |
-| StackItem          | `disableShrink` | Extraneous prop given the existance of `shrink`.       |
-| StackItem          | `verticalFill`  | Redundant. Same as a style override of `height: 100%`. |
-| FlexItem           | `size`          | Renamed to `basis`.                                    |
+| Original Component | Name            | Comments                                                                                                             |
+| ------------------ | --------------- | -------------------------------------------------------------------------------------------------------------------- |
+| StackItem          | `disableShrink` | Extraneous prop given the existance of `shrink`.                                                                     |
+| StackItem          | `verticalFill`  | Redundant. Same as a style override of `height: 100%`.                                                               |
+| FlexItem           | `size`          | Renamed to `basis`.                                                                                                  |
+| FlexItem           | `push`          | Redundant. Same as a style override of `marginTop: 'auto'`for column layout and `marginLeft: 'auto'` for row layout. |
 
 ## Sample Code
 
@@ -526,3 +526,33 @@ Alternative
 ##### `size`
 
 Renamed from `size` to `basis`
+
+##### `push` [DEPRECATED]
+
+Before
+
+```HTML
+<Flex>
+ <Flex.Item push>item</Flex.Item>
+</Flex>
+```
+
+```HTML
+<Flex column>
+ <Flex.Item push>item</Flex.Item>
+</Flex>
+```
+
+Alternative
+
+```HTML
+<Flex>
+ <Flex.Item style={{ marginLeft: "auto" }}>item</Flex.Item>
+</Flex>
+```
+
+```HTML
+<Flex direction="column">
+ <Flex.Item style={{ marginTop: "auto" }}>item</Flex.Item>
+</Flex>
+```
