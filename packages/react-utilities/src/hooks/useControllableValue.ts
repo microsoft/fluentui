@@ -7,6 +7,8 @@ export type ChangeCallback<
   TEvent extends React.SyntheticEvent<TElement> | undefined
 > = (ev: TEvent, newValue: TValue | undefined) => void;
 
+type DefaultValue<TValue> = TValue | (() => TValue);
+
 /**
  * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
  * text box string.
@@ -19,31 +21,30 @@ export type ChangeCallback<
  * @see https://reactjs.org/docs/uncontrolled-components.html
  */
 export function useControllableValue<TValue, TElement extends HTMLElement>(
-  controlledValue: TValue | undefined,
-  defaultUncontrolledValue: TValue | undefined,
-): Readonly<[TValue | undefined, (update: React.SetStateAction<TValue | undefined>) => void]>;
+  controlledValue: TValue,
+  defaultUncontrolledValue: DefaultValue<TValue>,
+): Readonly<[TValue, (update: React.SetStateAction<TValue>) => void]>;
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
   TEvent extends React.SyntheticEvent<TElement> | undefined
 >(
-  controlledValue: TValue | undefined,
-  defaultUncontrolledValue: TValue | undefined,
-  onChange: ChangeCallback<TElement, TValue, TEvent> | undefined,
-): Readonly<
-  [TValue | undefined, (update: React.SetStateAction<TValue | undefined>, ev?: React.FormEvent<TElement>) => void]
->;
+  controlledValue: TValue,
+  defaultUncontrolledValue: DefaultValue<TValue>,
+  onChange: ChangeCallback<TElement, TValue, TEvent>,
+): Readonly<[TValue, (update: React.SetStateAction<TValue>, ev?: React.FormEvent<TElement>) => void]>;
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
   TEvent extends React.SyntheticEvent<TElement> | undefined
 >(
-  controlledValue: TValue | undefined,
-  defaultUncontrolledValue: TValue | undefined,
+  controlledValue: TValue,
+  defaultUncontrolledValue: DefaultValue<TValue>,
   onChange?: ChangeCallback<TElement, TValue, TEvent>,
 ) {
-  const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
-  const isControlled = useConst<boolean>(controlledValue !== undefined);
+  const isControlled = useIsControlled(controlledValue);
+
+  const [value, setValue] = React.useState<TValue>(defaultUncontrolledValue);
   const currentValue = isControlled ? controlledValue : value;
 
   // Duplicate the current value and onChange in refs so they're accessible from
@@ -73,3 +74,36 @@ export function useControllableValue<
 
   return [currentValue, setValueOrCallOnChange] as const;
 }
+
+/**
+ * Helper hook to handle previous comparison of controlled/uncontrolled
+ * Prints an error when isControlled value switches between subsequent renders
+ */
+const useIsControlled = <TValue>(controlledValue: TValue) => {
+  const wasControlledRef = React.useRef<boolean>(controlledValue !== undefined);
+  const isCurrentControlled = controlledValue !== undefined;
+
+  if (process.env.NODE_ENV !== 'production') {
+    // We don't want these warnings in production even though it is against native behaviour
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (wasControlledRef.current !== (controlledValue !== undefined)) {
+        // eslint-disable-next-line no-console
+        console.error(
+          [
+            // Default react error
+            'A component is changing an uncontrolled value to be controlled. This is likely caused by the value',
+            'changing from undefined to a defined value, which should not happen.',
+            'Decide between using a controlled or uncontrolled input element for the lifetime of the component.',
+            'More info: https://reactjs.org/link/controlled-components',
+          ].join(' '),
+        );
+      }
+    }, [wasControlledRef, controlledValue, isCurrentControlled]);
+  }
+
+  React.useEffect(() => {
+    wasControlledRef.current = isCurrentControlled;
+  }, [isCurrentControlled]);
+  return isCurrentControlled;
+};
