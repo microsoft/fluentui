@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CounterBadgeProps } from './CounterBadge.types';
 import { useCounterBadge } from './useCounterBadge';
 import { useCounterBadgeStyles } from './useCounterBadgeStyles';
-import { renderCounterBadge } from './renderCounterBadge';
+import { renderBadge } from '../Badge/index';
 
 /**
  * Define a styled CounterBadge, using the `useCounterBadge` hook.
@@ -12,7 +12,7 @@ export const CounterBadge = React.forwardRef<HTMLElement, CounterBadgeProps>((pr
   const state = useCounterBadge(props, ref);
   useCounterBadgeStyles(state);
 
-  return renderCounterBadge(state);
+  return renderBadge(state);
 });
 
 CounterBadge.displayName = 'CounterBadge';

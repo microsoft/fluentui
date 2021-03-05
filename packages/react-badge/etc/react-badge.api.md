@@ -43,40 +43,32 @@ export interface BadgeState extends BadgeProps {
 export const CounterBadge: React.ForwardRefExoticComponent<CounterBadgeProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export type CounterBadgeAppearance = 'filled' | 'ghost';
-
-// @public (undocumented)
 export type CounterBadgeColors = 'accent' | 'warning' | 'important' | 'severe' | 'informative';
 
 // @public (undocumented)
-export interface CounterBadgeProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, Omit<BadgeProps, 'appearance' | 'shape'> {
-    appearance?: CounterBadgeAppearance;
+export interface CounterBadgeProps extends Omit<BadgeProps, 'appearance' | 'shape'> {
+    appearance?: Extract<BadgeAppearance, 'filled' | 'ghost'>;
     color?: CounterBadgeColors;
     count?: number;
+    dot?: boolean;
     overflowCount?: number;
-    shape?: CounterBadgeShape;
+    shape?: Extract<BadgeShape, 'rounded' | 'circular'>;
     showZero?: boolean;
 }
-
-// @public (undocumented)
-export type CounterBadgeShape = 'rounded' | 'circular';
 
 // @public
 export const counterBadgeShorthandProps: string[];
 
 // @public (undocumented)
-export interface CounterBadgeState extends CounterBadgeProps {
+export interface CounterBadgeState extends BadgeState {
     count: number;
-    icon?: ObjectShorthandProps<HTMLSpanElement>;
+    dot: boolean;
     overflowCount: number;
-    ref: React.MutableRefObject<HTMLElement>;
+    showZero: boolean;
 }
 
 // @public (undocumented)
 export const renderBadge: (state: BadgeState) => JSX.Element;
-
-// @public (undocumented)
-export const renderCounterBadge: (state: CounterBadgeState) => JSX.Element;
 
 // @public
 export const useBadge: (props: BadgeProps, ref: React.Ref<HTMLElement>, defaultProps?: BadgeProps | undefined) => BadgeState;

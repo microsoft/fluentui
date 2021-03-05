@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
+import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
 import { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
+import { useBadge } from '../Badge/index';
 
 /**
  * Consts listing which props are shorthand props.
@@ -17,16 +18,21 @@ export const useCounterBadge = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CounterBadgeProps,
 ): CounterBadgeState => {
+  const count = 0;
+  const overflowCount = 99;
   const state = mergeProps(
+    useBadge(props, ref),
     {
-      ref: useMergedRefs(ref, React.useRef(null)),
-      shape: 'circular',
-      size: 'medium',
-      iconPosition: 'before',
-      showZero: true,
-      overflowCount: 99,
-      count: 0,
+      showZero: false,
+      overflowCount,
+      count,
+      dot: false,
+      ...(!props.dot && {
+        children:
+          (props.count || count) > (props.overflowCount || overflowCount) ? `${props.count}+` : `${props.count}`,
+      }),
     },
+
     defaultProps,
     resolveShorthandProps(props, counterBadgeShorthandProps),
   );

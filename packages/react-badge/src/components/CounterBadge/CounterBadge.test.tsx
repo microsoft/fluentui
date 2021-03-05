@@ -19,9 +19,6 @@ describe('CounterBadge', () => {
     }
   });
 
-  /**
-   * Note: see more visual regression tests for CounterBadge in /apps/vr-tests.
-   */
   it('renders a default state', () => {
     const component = renderer.create(<CounterBadge>Default CounterBadge</CounterBadge>);
     const tree = component.toJSON();

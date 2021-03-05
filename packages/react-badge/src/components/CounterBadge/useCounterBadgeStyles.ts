@@ -43,11 +43,17 @@ export const useCounterBadgeRootStyles = makeStyles<CounterBadgeState>([
     }),
   ],
   [
-    s => s.count === 0 && !s.showZero,
+    s => s.dot,
     {
       width: '6px',
       height: '6px',
       padding: '0',
+    },
+  ],
+  [
+    s => !s.showZero && s.count === 0 && !s.dot,
+    {
+      display: 'none',
     },
   ],
 ]);

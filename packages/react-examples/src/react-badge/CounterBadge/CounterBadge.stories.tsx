@@ -34,23 +34,23 @@ export const BadgeAppearanceExample = () => {
         }}
       >
         <DisplayBadge>
-          <CounterBadge showZero={false} count={0} />
+          <CounterBadge dot />
           <CounterBadge count={value} />
         </DisplayBadge>
         <DisplayBadge>
-          <CounterBadge showZero={false} count={0} color="warning" />
+          <CounterBadge dot color="warning" />
           <CounterBadge count={value} color="warning" />
         </DisplayBadge>
         <DisplayBadge>
-          <CounterBadge showZero={false} count={0} color="important" />
+          <CounterBadge dot color="important" />
           <CounterBadge count={value} color="important" />
         </DisplayBadge>
         <DisplayBadge>
-          <CounterBadge showZero={false} count={0} color="severe" />
+          <CounterBadge dot color="severe" />
           <CounterBadge count={value} color="severe" />
         </DisplayBadge>
         <DisplayBadge>
-          <CounterBadge showZero={false} count={0} color="informative" />
+          <CounterBadge dot color="informative" />
           <CounterBadge count={value} color="informative" />
         </DisplayBadge>
       </div>
