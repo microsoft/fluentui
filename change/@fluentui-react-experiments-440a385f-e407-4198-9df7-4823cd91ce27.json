@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Use listbox/option roles for the list/items elements in recipient list.",
+  "packageName": "@fluentui/react-experiments",
+  "email": "jaredi@microsoft.com",
+  "dependentChangeType": "patch"
+}
