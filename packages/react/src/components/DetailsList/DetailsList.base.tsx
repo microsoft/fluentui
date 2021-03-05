@@ -481,6 +481,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
       adjustedColumns,
       selectionMode,
       selection,
+      rowId,
       onRowDidMount,
       onRowWillUnmount,
       onRenderItemColumn,
