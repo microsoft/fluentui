@@ -25,6 +25,8 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
       // eslint-disable-next-line deprecation/deprecation
       onAriaLabel,
       onChange,
+      // eslint-disable-next-line deprecation/deprecation
+      onChanged,
       onClick: onToggleClick,
       onText,
       role,
@@ -32,7 +34,17 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
       theme,
     } = props;
 
-    const [checked, setChecked] = useControllableValue(controlledChecked, defaultChecked, onChange);
+    const [checked, setChecked] = useControllableValue(
+      controlledChecked,
+      defaultChecked,
+      React.useCallback(
+        (ev, isChecked) => {
+          onChange?.(ev, isChecked);
+          onChanged?.(isChecked);
+        },
+        [onChange, onChanged],
+      ),
+    );
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
