@@ -38,7 +38,7 @@ export const ToggleBase: React.FunctionComponent<IToggleProps> = React.forwardRe
       controlledChecked,
       defaultChecked,
       React.useCallback(
-        (ev, isChecked) => {
+        (ev: React.MouseEvent<HTMLElement>, isChecked: boolean) => {
           onChange?.(ev, isChecked);
           onChanged?.(isChecked);
         },
