@@ -5,6 +5,10 @@ import { findGitRoot } from '../monorepo/index';
 
 import storybook from '@storybook/react/standalone';
 
+function logHeapLimit() {
+  console.log(`node heap limit = ${require('v8').getHeapStatistics().heap_size_limit / (1024 * 1024)} MB`);
+}
+
 export function startStorybookTask(options?: { port?: number; quiet?: boolean; ci?: boolean }) {
   options = options || {};
   // This shouldn't be necessary but is needed due to strange logic in
@@ -12,6 +16,8 @@ export function startStorybookTask(options?: { port?: number; quiet?: boolean; c
   process.env.NODE_ENV = 'development';
 
   return async function() {
+    logHeapLimit();
+
     let { port, quiet, ci } = argv();
 
     port = options.port || port;
@@ -36,6 +42,8 @@ export function startStorybookTask(options?: { port?: number; quiet?: boolean; c
 export function buildStorybookTask(options?: { quiet?: boolean }) {
   options = options || {};
   return async function() {
+    logHeapLimit();
+
     const localConfigDir = path.join(process.cwd(), '.storybook');
 
     await storybook({

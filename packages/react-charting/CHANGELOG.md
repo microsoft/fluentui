@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.6)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.0.5..@fluentui/react-charting_v5.0.6)
+
+### Patches
+
+- Horizontal bar chart: Fix issue for Rounded value to 1 if less than 1% to appear in the chart ([PR #17292](https://github.com/microsoft/fluentui/pull/17292) by email not defined)
 
 ## [5.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.0.5)
 

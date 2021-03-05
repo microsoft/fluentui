@@ -17,7 +17,7 @@
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/monorepo/buildTo.js",
     "bump:beachball": "beachball bump --scope \"!packages/fluentui/*\"",
-    "bundle": "lage bundle --verbose",
+    "bundle": "lage bundle bundle:storybook --verbose",
     "bundlesize": "cd scripts && yarn bundlesize",
     "bundlesizecollect": "node ./scripts/bundle-size-collect",
     "change": "beachball change --scope \"!packages/fluentui/*\"",

@@ -40,7 +40,7 @@
     "react-dom": ">=16.8.0 <18.0.0"
   },
   "dependencies": {
-    "@fluentui/react": "^8.1.4",
+    "@fluentui/react": "^8.1.5",
     "@fluentui/theme": "^2.0.2",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/example-data": "^8.1.1",
