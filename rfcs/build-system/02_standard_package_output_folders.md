@@ -18,12 +18,12 @@ We should avoid output folder changes occuring simply because we output less for
 
 ## Detailed Design or Proposal
 
-Proposed standard folders in a published package (does not imply they will all be present - only applicable output folders will be present):
+Proposed standard folders in a published JavaScript package (does not imply they will all be present - only applicable output folders will be present):
 
-`lib` - esm
-`lib-commonjs` - commonjs
-`lib-amd` - amd
-`dist` - bundles and static content
+- `lib` - esm
+- `lib-commonjs` - commonjs
+- `lib-amd` - amd
+- `dist` - bundles and static content
 
 ### Pros and Cons
 
@@ -33,11 +33,13 @@ Proposed standard folders in a published package (does not imply they will all b
 - Changes in output won't change the folder structure
 - Unchanging folder structures mean that full builds are required less
 - End users can predict which folders contain what format
+- Scalable. If we need other formats in our JS packages, we can update add more formats.
+- `CommonJS` was the standard of the past. More and more, modern node libraries will be moving to ESM as Node 13.2.0+ now supports it. I anticipate this format to phase out over the next few years as AMD has.
 
 #### Cons
 
-None that I see
+No obvious cons.
 
 ## Discarded Solutions
 
-The current solution of "use `lib` for commonjs if that's the only output flavor" should be discarded. It creates unpredictability and changes expectations as soon as we move the library to esm.
+The current solution of "use `lib` folder for `commonjs` format javascript if that's the only output flavor" should be discarded. It creates unpredictability and changes expectations as soon as we move the library to esm.
