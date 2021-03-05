@@ -27,7 +27,7 @@ const siteInfo = [
   },
   {
     package: '@fluentui/react-components',
-    link: './react/storybook/index.html',
+    link: './react-components/storybook/index.html',
     icon: 'Teamwork',
     title: 'Converged (@fluentui/react-components)',
   },
