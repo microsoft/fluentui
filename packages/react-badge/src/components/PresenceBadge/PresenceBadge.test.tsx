@@ -19,9 +19,6 @@ describe('PresenceBadge', () => {
     }
   });
 
-  /**
-   * Note: see more visual regression tests for Badge in /apps/vr-tests.
-   */
   it('renders a default state', () => {
     const component = renderer.create(<PresenceBadge />);
     const tree = component.toJSON();
