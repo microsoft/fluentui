@@ -2,7 +2,6 @@ import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs, useControllableValue } from '@fluentui/react-utilities';
 import { MenuProps, MenuState } from './Menu.types';
 import { MenuTrigger } from '../MenuTrigger/index';
-import { MenuList } from '../MenuList/index';
 
 export const menuShorthandProps: (keyof MenuProps)[] = ['menuPopup'];
 
@@ -42,9 +41,7 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   children.forEach(child => {
     if (child.type === MenuTrigger) {
       state.menuTrigger = child;
-    }
-
-    if (child.type === MenuList) {
+    } else {
       state.menuList = child;
     }
   });
@@ -54,10 +51,9 @@ export const useMenu = (props: MenuProps, ref: React.Ref<HTMLElement>, defaultPr
   };
 
   const [open, setOpen] = useControllableValue(state.open, state.defaultOpen);
-  const { setOpen: setOpenProp } = state;
+  // TODO fix useControllableValue typing
   state.open = open !== undefined ? open : state.open;
   state.setOpen = (...args) => {
-    setOpenProp && setOpenProp(...args);
     setOpen(...args);
   };
 

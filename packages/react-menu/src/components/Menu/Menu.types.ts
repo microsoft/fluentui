@@ -1,12 +1,17 @@
 import * as React from 'react';
-import { ComponentProps, ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
+import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { MenuListProps } from '../MenuList/index';
 
 /**
  * Extends and drills down Menulist props to simplify API
  * {@docCategory Menu }
  */
-export interface MenuProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuListProps {
+export interface MenuProps extends MenuListProps {
+  /**
+   * Explicitly require children
+   */
+
+  children: React.ReactNode;
   /**
    * Whether the popup is open
    */
@@ -16,11 +21,6 @@ export interface MenuProps extends ComponentProps, React.HTMLAttributes<HTMLElem
    * Whether the popup is open by default
    */
   defaultOpen?: boolean;
-
-  /**
-   * Callback to open/close the popup
-   */
-  setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 
   /**
    * Wrapper to style and add events for the popup

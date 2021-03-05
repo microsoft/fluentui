@@ -16,11 +16,9 @@ export const renderMenu = (state: MenuState) => {
     <MenuProvider
       value={{ open, setOpen, onCheckedValueChange, checkedValues, defaultCheckedValues, hasMenuContext: true }}
     >
-      <>
-        {state.menuTrigger}
-        {/** TODO use open state to control a real popup */}
-        {state.open && <slots.menuPopup {...slotProps.menuPopup} />}
-      </>
+      {state.menuTrigger}
+      {/** TODO use open state to control a real popup */}
+      {state.open && <slots.menuPopup {...slotProps.menuPopup} />}
     </MenuProvider>
   );
 };

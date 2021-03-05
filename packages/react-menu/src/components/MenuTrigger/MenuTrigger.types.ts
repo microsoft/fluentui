@@ -1,10 +1,14 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory MenuTrigger }
  */
-export interface MenuTriggerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {}
+export interface MenuTriggerProps {
+  /**
+   * Explicitly require single child
+   */
+  children: React.ReactElement;
+}
 
 /**
  * {@docCategory MenuTrigger }

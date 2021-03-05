@@ -145,11 +145,11 @@ export interface MenuListState extends MenuListProps {
 }
 
 // @public
-export interface MenuProps extends ComponentProps, React.HTMLAttributes<HTMLElement>, MenuListProps {
+export interface MenuProps extends MenuListProps {
+    children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     open?: boolean;
-    setOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 // @public (undocumented)
@@ -169,7 +169,8 @@ export interface MenuState extends MenuProps {
 export const MenuTrigger: React.ForwardRefExoticComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
-export interface MenuTriggerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
+export interface MenuTriggerProps {
+    children: React.ReactElement;
 }
 
 // @public (undocumented)
@@ -206,7 +207,7 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
 // @public
-export const renderMenuTrigger: (state: MenuTriggerState) => JSX.Element;
+export const renderMenuTrigger: (state: MenuTriggerState) => import("react").ReactElement<any, string | ((props: any) => import("react").ReactElement<any, string | any | (new (props: any) => import("react").Component<any, any, any>)> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
 
 // @public (undocumented)
 export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => void;

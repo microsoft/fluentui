@@ -23,7 +23,11 @@ describe('MenuTrigger', () => {
    * Note: see more visual regression tests for MenuTrigger in /apps/vr-tests.
    */
   it('renders a default state', () => {
-    const component = renderer.create(<MenuTrigger>Default MenuTrigger</MenuTrigger>);
+    const component = renderer.create(
+      <MenuTrigger>
+        <button>Menu trigger</button>
+      </MenuTrigger>,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

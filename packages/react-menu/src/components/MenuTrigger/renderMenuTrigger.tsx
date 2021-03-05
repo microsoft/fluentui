@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { MenuTriggerState } from './MenuTrigger.types';
 
 /**
@@ -8,5 +7,5 @@ import { MenuTriggerState } from './MenuTrigger.types';
  * {@docCategory MenuTrigger }
  */
 export const renderMenuTrigger = (state: MenuTriggerState) => {
-  return <>{state.children}</>;
+  return state.children;
 };
