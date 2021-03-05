@@ -145,7 +145,7 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.at(1).prop('aria-selected')).toEqual(false);
 
     // Update the props to set selected to undefined
-    wrapper.setProps({ selectedId: 'undefined' });
+    wrapper.setProps({ selectedId: undefined });
 
     tableElements = findNodes(wrapper, '.ms-Button');
     expect(tableElements.length).toEqual(2);
@@ -169,7 +169,7 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
 
     // Update the props to set selected to undefined
-    wrapper.setProps({ selectedId: 'undefined' });
+    wrapper.setProps({ selectedId: undefined });
 
     tableElements = findNodes(wrapper, '.ms-Button');
     expect(tableElements.length).toEqual(12);
