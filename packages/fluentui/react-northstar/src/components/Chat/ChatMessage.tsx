@@ -206,6 +206,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     position: 'above',
     positionFixed: overflow,
 
+    enabled: positionActionMenu,
     modifiers,
     popperRef,
 

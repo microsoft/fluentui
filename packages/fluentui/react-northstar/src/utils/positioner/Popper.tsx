@@ -30,6 +30,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
       if (state.placement !== latestPlacement.current) {
         latestPlacement.current = state.placement;
 
+        // A state change has sense only if renderProps are passed, otherwise a state value is unused
         if (usesRenderProps) {
           setComputedPlacement(state.placement);
         }

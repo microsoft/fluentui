@@ -1,6 +1,28 @@
 import * as React from 'react';
 import { createReferenceFromClick, Box, Portal, PositioningProps, usePopper } from '@fluentui/react-northstar';
 
+const boxStyles: React.CSSProperties = {
+  border: '1px dashed #ccc',
+  color: 'blue',
+  justifySelf: 'end',
+  textAlign: 'center',
+  width: '250px',
+};
+const buttonStyles = (active: boolean): React.CSSProperties => ({
+  ...(active && {
+    borderColor: 'blue',
+    borderStyle: 'dotted',
+    color: 'blue',
+  }),
+});
+const popperStyles: React.CSSProperties = {
+  background: 'blue',
+  color: 'white',
+  height: '50px',
+  width: '100px',
+  border: '2px solid red',
+};
+
 const PopperExamplePositioning = () => {
   const [popperProps, setPopperProps] = React.useState<PositioningProps>({ align: 'center', position: 'above' });
 
@@ -22,10 +44,10 @@ const PopperExamplePositioning = () => {
     <div style={{ border: '2px dotted grey', margin: 100 }}>
       <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', gap: '5px' }}>
-          <button onClick={() => setBox('boxA')} style={{ color: box === 'boxA' ? 'blue' : undefined }}>
+          <button onClick={() => setBox('boxA')} style={buttonStyles(box === 'boxA')}>
             use Box A
           </button>
-          <button onClick={() => setBox('boxB')} style={{ color: box === 'boxB' ? 'blue' : undefined }}>
+          <button onClick={() => setBox('boxB')} style={buttonStyles(box === 'boxB')}>
             use Box B
           </button>
           <button
@@ -33,7 +55,7 @@ const PopperExamplePositioning = () => {
               virtualEl.current = createReferenceFromClick(e.nativeEvent);
               setBox('context');
             }}
-            style={{ color: box === 'context' ? 'blue' : undefined }}
+            style={buttonStyles(box === 'context')}
           >
             use context
           </button>
@@ -42,19 +64,19 @@ const PopperExamplePositioning = () => {
         <div style={{ display: 'flex', gap: '5px' }}>
           <button
             onClick={() => setPopperProps({ align: 'start', position: 'above' })}
-            style={{ color: popperProps.align === 'start' && popperProps.position === 'above' ? 'blue' : undefined }}
+            style={buttonStyles(popperProps.align === 'start' && popperProps.position === 'above')}
           >
             align: start, position: above
           </button>
           <button
             onClick={() => setPopperProps({ align: 'center', position: 'above' })}
-            style={{ color: popperProps.align === 'center' && popperProps.position === 'above' ? 'blue' : undefined }}
+            style={buttonStyles(popperProps.align === 'center' && popperProps.position === 'above')}
           >
             align: center, position: above
           </button>
           <button
             onClick={() => setPopperProps({ align: 'end', position: 'above' })}
-            style={{ color: popperProps.align === 'end' && popperProps.position === 'above' ? 'blue' : undefined }}
+            style={buttonStyles(popperProps.align === 'end' && popperProps.position === 'above')}
           >
             align: end, position: above
           </button>
@@ -63,13 +85,13 @@ const PopperExamplePositioning = () => {
         <div style={{ display: 'flex', gap: '5px' }}>
           <button
             onClick={() => setPopperProps({ align: 'center', position: 'before' })}
-            style={{ color: popperProps.align === 'center' && popperProps.position === 'before' ? 'blue' : undefined }}
+            style={buttonStyles(popperProps.align === 'center' && popperProps.position === 'before')}
           >
             align: center, position: before
           </button>
           <button
             onClick={() => setPopperProps({ align: 'center', position: 'after' })}
-            style={{ color: popperProps.align === 'center' && popperProps.position === 'after' ? 'blue' : undefined }}
+            style={buttonStyles(popperProps.align === 'center' && popperProps.position === 'after')}
           >
             align: center, position: after
           </button>
@@ -77,34 +99,12 @@ const PopperExamplePositioning = () => {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', marginTop: 200 }}>
-        <Box
-          content="Box A"
-          ref={box === 'boxA' ? referenceRef : undefined}
-          styles={{
-            border: '1px dashed #ccc',
-            color: 'blue',
-            textAlign: 'center',
-            width: '250px',
-          }}
-        />
-        <Box
-          content="Box B"
-          ref={box === 'boxB' ? referenceRef : undefined}
-          styles={{
-            border: '1px dashed #ccc',
-            color: 'blue',
-            justifySelf: 'end',
-            textAlign: 'center',
-            width: '250px',
-          }}
-        />
+        <Box content="Box A" ref={box === 'boxA' ? referenceRef : undefined} styles={boxStyles} />
+        <Box content="Box B" ref={box === 'boxB' ? referenceRef : undefined} styles={boxStyles} />
       </div>
 
       <Portal open>
-        <div
-          ref={popperRef}
-          style={{ background: 'blue', color: 'white', height: '50px', width: '100px', border: '2px solid red' }}
-        >
+        <div ref={popperRef} style={popperStyles}>
           A popper
         </div>
       </Portal>

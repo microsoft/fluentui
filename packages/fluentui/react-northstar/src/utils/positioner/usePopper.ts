@@ -14,7 +14,7 @@ import { isBrowser } from '../isBrowser';
 import { getBoundary } from './getBoundary';
 import { getScrollParent } from './getScrollParent';
 import { applyRtlToOffset, getPlacement } from './positioningHelper';
-import { UsePopperOptions } from './types';
+import { PopperInstance, UsePopperOptions } from './types';
 
 //
 // Dev utils to detect if nodes have "autoFocus" props.
@@ -61,7 +61,6 @@ function hasAutofocusFilter(node: Node) {
 function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
     autoSize,
-    enabled,
     flipBoundary,
     offset,
     onStateUpdate,
@@ -74,7 +73,7 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
   const placement = getPlacement(options.align, options.position, options.rtl);
   const strategy = options.positionFixed ? 'fixed' : 'absolute';
 
-  // "placement" and "strategy" should be
+  // "placement" and "strategy" should be used from these hooks as a switch of elements can cause inconsistencies
   const latestPlacement = useLatest<PopperJs.Placement>(placement);
   const latestStrategy = useLatest<PopperJs.PositioningStrategy>(strategy);
 
@@ -117,17 +116,18 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
           name: 'positionStyleFix',
           enabled: true,
           phase: 'afterWrite' as PopperJs.ModifierPhases,
-          effect: ({ state }: { state: Partial<PopperJs.State> }) => {
-            popperOriginalPositionRef.current = state.elements.popper.style['position'];
-            state.elements.popper.style['position'] = 'fixed';
+          effect: ({ state, instance }: { state: Partial<PopperJs.State>; instance: PopperInstance }) => {
+            // ".isFirstRun" is a part of our patch, on a first evaluation it will "undefined"
+            // should be disabled for subsequent runs as it breaks positioning for them
+            if (instance.isFirstRun !== false) {
+              popperOriginalPositionRef.current = state.elements.popper.style['position'];
+              state.elements.popper.style['position'] = 'fixed';
+            }
 
             return () => {};
           },
           requires: [],
         },
-
-        /** Allows to disable or enable event listeners. */
-        { name: 'eventListeners', enabled: !!enabled },
 
         { name: 'flip', options: { flipVariations: true } },
 
@@ -234,7 +234,7 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
 
       return options;
     },
-    [autoSize, enabled, offsetModifier, userModifiers, placement, strategy],
+    [autoSize, offsetModifier, userModifiers, placement, strategy],
   );
 }
 
@@ -258,22 +258,21 @@ export function usePopper(
   React.MutableRefObject<any> /* containerRef */,
   React.MutableRefObject<any> /* arrowRef */,
 ] {
+  const { enabled = true } = options;
   const isFirstMount = useFirstMount();
 
   const popperOriginalPositionRef = React.useRef<string>('absolute');
   const resolvePopperOptions = usePopperOptions(options, popperOriginalPositionRef);
 
-  const popperInstanceRef = React.useRef<(PopperJs.Instance & { isFirstRun?: boolean }) | null>(null);
+  const popperInstanceRef = React.useRef<PopperInstance | null>(null);
 
-  const handlePopperUpdate = React.useCallback(() => {
-    if (popperInstanceRef.current) {
-      popperInstanceRef.current.destroy();
-      popperInstanceRef.current = null;
-    }
+  const handlePopperUpdate = useEventCallback(() => {
+    popperInstanceRef.current?.destroy();
+    popperInstanceRef.current = null;
 
-    let popperInstance: (PopperJs.Instance & { isFirstRun?: boolean }) | null = null;
+    let popperInstance: PopperInstance | null = null;
 
-    if (isBrowser()) {
+    if (isBrowser() && enabled) {
       if (targetRef.current && containerRef.current) {
         popperInstance = PopperJs.createPopper(
           targetRef.current,
@@ -302,7 +301,7 @@ export function usePopper(
     }
 
     popperInstanceRef.current = popperInstance;
-  }, []);
+  });
 
   // Refs are managed there via useCallbackRef() this allows us to handle properly following scenarios:
   // - updates for a targetRef without re-rendering
@@ -329,7 +328,7 @@ export function usePopper(
       popperInstanceRef.current?.destroy();
       popperInstanceRef.current = null;
     };
-  }, []);
+  }, [options.enabled]);
   useIsomorphicLayoutEffect(() => {
     if (!isFirstMount) {
       popperInstanceRef.current?.setOptions(

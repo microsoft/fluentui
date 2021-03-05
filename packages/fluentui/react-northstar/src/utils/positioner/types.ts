@@ -147,7 +147,7 @@ export interface PopperProps extends PositioningProps {
   children: PopperChildrenFn | React.ReactElement;
 
   /**
-   * Enables events (resize, scroll).
+   * If false, delays Popper's creation.
    * @default true
    */
   enabled?: boolean;
@@ -189,3 +189,5 @@ export type PopperShorthandProps = PositioningProps;
 export type UsePopperOptions = Omit<PopperProps, 'children' | 'targetRef'> & {
   onStateUpdate?: (state: Partial<PopperJs.State>) => void;
 };
+
+export type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
