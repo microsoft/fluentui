@@ -41,10 +41,6 @@ const suggest = (input, choices) => Promise.resolve(choices.filter(i => i.title.
     {
       shell: true,
       stdio: 'inherit',
-      env: {
-        ...process.env,
-        NODE_OPTIONS: '--max-old-space-size=4096',
-      },
     },
   );
 })();
