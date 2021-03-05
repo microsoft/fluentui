@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "useIsomorphicLayout effect with useEventCallback",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

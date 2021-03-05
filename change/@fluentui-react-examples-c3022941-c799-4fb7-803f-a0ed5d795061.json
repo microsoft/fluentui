@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Remove (react) suffix from story names and clarify docs",
-  "packageName": "@fluentui/react-examples",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}

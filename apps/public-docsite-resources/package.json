@@ -33,7 +33,7 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react": "^8.1.4",
+    "@fluentui/react": "^8.1.5",
     "@fluentui/react-examples": "^8.3.1",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@fluentui/api-docs": "^8.0.5",

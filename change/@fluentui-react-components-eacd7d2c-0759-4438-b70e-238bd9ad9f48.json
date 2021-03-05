@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Add separate bundle:storybook script",
-  "packageName": "@fluentui/react-components",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none"
-}
