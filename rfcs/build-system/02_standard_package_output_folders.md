@@ -20,12 +20,12 @@ Today, `lib` contains esm JavaScript output, except for node-only packages which
 
 We've historically used the following standard output folders in a published JavaScript package (only applicable output folders would be present):
 
-- `lib` - esm (as we've had for a long time)
-- `lib-commonjs` - commonjs (only needed while Node <= 13.2.0 is supported)
-- `lib-amd` - amd (hopefully we can drop someday)
-- `dist` - bundles and static content
+- `/lib` - esm (as we've had for a long time)
+- `/lib-commonjs` - commonjs (only needed while Node <= 13.2.0 is supported)
+- `/lib-amd` - amd (hopefully we can drop someday)
+- `/dist` - bundles and static content
 
-If this seems reasonable to folks, we should just stick with this and stay consistent. If a library needs to output CommonJS, it should go inthe `lib-commonjs` folder.
+If this seems reasonable, we should adopt and stay consistent to stay predictable to consumers. If a library needs to output CommonJS, it should be output within the `lib-commonjs` folder.
 
 A library like `react-button` which might be consumed by Node and bundlers likely will need both ESM and CommonJS, until Node 13.2.0 or greater is the minimum requirement. Its output will have both a `lib` and `lib-commonjs` folder.
 
@@ -52,12 +52,10 @@ Once 13.2.0 becomes the minimum Node requirement, there is little reason to buil
 
 Many libraries in OSS have kept `lib` representing CommonJS and have added `es` to the mix as the folder for containing esm. This is very likely because they've existed for a while and didn't want to change their existing folder structure. We could also consider this convention. React itself avoids `lib` and explicitly uses `cjs` to indicate the output format. (It also has no ESM flavor.)
 
-#### Alternative proposal:
-
-* `cjs` - CommonJS
-* `es` - esm
-* `amd` - amd
-* `dist` - statics and bundles
+* `/cjs` - CommonJS
+* `/es` - esm
+* `/amd` - amd
+* `/dist` - statics and bundles
 
 #### Pros:
 
@@ -85,3 +83,4 @@ Many libraries in OSS have kept `lib` representing CommonJS and have added `es` 
 ## Discarded Solutions
 
 The current solution of using `lib` for either CommonJS or ESM depending on which platforms are (currently) supported should be replaced with something that doesn't mean different things in different contexts.
+
