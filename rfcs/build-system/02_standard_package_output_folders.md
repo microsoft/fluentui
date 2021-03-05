@@ -14,32 +14,30 @@ This is one of those small details that other partners will emulate and adopt. I
 
 ## Problem statement
 
-Without having a standard output folder locations within an npm package, the content is a harder to predict. Structuring our packages in a consistent way reducees friction in understanding what a package contains and what's is missing.
+Today, `lib` contains esm JavaScript output, except for node-only packages which drop CommonJS modules in them. This obfuscates what `lib` actually contains. We should have some standards and stick to patterns which add clarity to what output format is used.
 
 ## Detailed Design or Proposal
 
-Proposed standard output folders in a published JavaScript package (only applicable output folders would be present):
+We've historically used the following standard output folders in a published JavaScript package (only applicable output folders would be present):
 
 - `lib` - esm (as we've had for a long time)
 - `lib-commonjs` - commonjs (only needed while Node <= 13.2.0 is supported)
 - `lib-amd` - amd (hopefully we can drop someday)
 - `dist` - bundles and static content
 
-Examples:
-
-A node library like `jest-serializer-merge-styles` which only requires CommonJS would only have `lib-commonjs` output folder. Later when we want to switch to only ESM, we'd only have a `lib` output folder.
+If this seems reasonable to folks, we should just stick with this and stay consistent. If a library needs to output CommonJS, it should go inthe `lib-commonjs` folder.
 
 A library like `react-button` which might be consumed by Node and bundlers likely will need both ESM and CommonJS, until Node 13.2.0 or greater is the minimum requirement. Its output will have both a `lib` and `lib-commonjs` folder.
 
-If in the future, we wanted to include processed TypeScript output, perhaps we'd add a `lib-ts` to the mix.
+Once 13.2.0 becomes the minimum Node requirement, there is little reason to build CommonJS at all, and I anticipate we'll be removing that folder.
 
 ### Pros and Cons
 
 #### Pros
 
 - Almost no difference from what we currently have - only the `build:commonjs-only` task needs to be modified to output to `lib-commonjs`.
-- Our partners won't really notice changes here at all, since this has been the convention we've used for a long time.
-- ESM is becoming the standard that all platforms will snap to, hence why `lib` and not `lib-esm`
+- Our partners won't really notice changes here at all, since this has been the convention we've used for a long time for nearly all the packages currently being consumed.
+- ESM is becoming the standard that all platforms will snap to, hence why `lib` and not `lib-esm`.
 - Changes in output won't change the folder structure
 - Unchanging folder structures mean that full builds are required less
 - End users can predict which folders contain what format
