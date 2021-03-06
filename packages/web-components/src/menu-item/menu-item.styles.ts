@@ -216,6 +216,44 @@ export const MenuItemStyles = css`
                 fill: currentcolor;
                 opacity: 1;
             }
+
+            :host .checkbox,
+            :host .radio{
+                border-color: ${SystemColors.ButtonText};
+                background: ${SystemColors.HighlightText};
+            }
+
+            :host([checked="true"]) .checkbox,
+            :host([checked="true"]) .radio {
+                background: ${SystemColors.HighlightText};
+                border-color: ${SystemColors.HighlightText};
+            }
+
+            :host(:hover) .checkbox,
+            :host(:hover) .radio,
+            :host(:${focusVisible}) .checkbox,
+            :host(:${focusVisible}) .radio,
+            :host([checked="true"]:hover) .checkbox,
+            :host([checked="true"]:hover) .radio,
+            :host([checked="true"]:${focusVisible}) .checkbox,
+            :host([checked="true"]:${focusVisible}) .radio {
+                border-color: ${SystemColors.HighlightText};
+            }
+
+            :host([aria-checked="true"]) {
+                background: ${SystemColors.Highlight};
+                color: ${SystemColors.HighlightText};
+            }
+
+            :host([aria-checked="true"]) .checkbox-indicator,
+            :host([aria-checked="true"]) ::slotted([slot="checkbox-indicator"]),
+            :host([aria-checked="true"]) ::slotted([slot="radio-indicator"]) {
+                fill: ${SystemColors.Highlight};
+            }
+
+            :host([aria-checked="true"]) .radio-indicator {
+                background: ${SystemColors.Highlight};
+            }
         `,
   ),
 );
