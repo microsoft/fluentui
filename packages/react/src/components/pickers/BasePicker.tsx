@@ -164,7 +164,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         // Reset focus and selection so that selected item stays in sync if something
         // has been removed
         if (this.state.items.length < oldState.items.length) {
-          this.selection.setIndexSelected(currentSelectedIndex, true, true);
+          this.selection.setIndexSelected(currentSelectedIndex, false, true);
           this.resetFocus(currentSelectedIndex);
         }
       }
