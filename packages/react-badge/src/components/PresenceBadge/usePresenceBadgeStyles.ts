@@ -1,6 +1,6 @@
 import { ax, makeStyles } from '@fluentui/react-make-styles';
 import { PresenceBadgeState } from './PresenceBadge.types';
-import { useRootStyles } from '../../Badge';
+import { useRootStyles as useBadgeStyles } from '../../Badge';
 
 export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
   [
@@ -106,7 +106,7 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
-  state.className = ax(usePresenceBadgeRootStyles(state), state.className);
+  state.className = ax(useBadgeStyles(state), usePresenceBadgeRootStyles(state), state.className);
 
-  return useBadgeStyles(state);
+  return state;
 };
