@@ -106,7 +106,7 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
  * Applies style classnames to slots
  */
 export const usePresenceBadgeStyles = (state: PresenceBadgeState) => {
-  state.className = ax(useRootStyles(state), usePresenceBadgeRootStyles(state), state.className);
+  state.className = ax(usePresenceBadgeRootStyles(state), state.className);
 
-  return state;
+  return useBadgeStyles(state);
 };
