@@ -62,12 +62,6 @@ export const useCounterBadgeRootStyles = makeStyles<CounterBadgeState>([
  * Applies style classnames to slots
  */
 export const useCounterBadgeStyles = (state: CounterBadgeState) => {
-  state.className = ax(useRootStyles(state), useCounterBadgeRootStyles(state), state.className);
-  const iconClassName = useIconStyles(state);
-
-  if (state.icon) {
-    state.icon.className = ax(iconClassName, state.icon.className);
-  }
-
-  return state;
+  state.className = ax(useCounterBadgeRootStyles(state), state.className);
+  return useBadgeStyles(state);
 };
