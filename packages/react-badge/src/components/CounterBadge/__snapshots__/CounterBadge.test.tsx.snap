@@ -2,8 +2,9 @@
 
 exports[`CounterBadge renders a default state 1`] = `
 <div
+  aria-hidden={true}
   className=" "
 >
-  undefined
+  0
 </div>
 `;
