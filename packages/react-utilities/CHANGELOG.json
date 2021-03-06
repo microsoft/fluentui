@@ -2,6 +2,44 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "useIsomorphicLayout effect with useEventCallback",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f7b97e9dc1cf0fec0201533042db4befb800cbd0",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-utilities_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/react-utilities"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-utilities"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Mar 2021 07:24:27 GMT",
       "tag": "@fluentui/react-utilities_v9.0.0-alpha.4",
       "version": "9.0.0-alpha.4",

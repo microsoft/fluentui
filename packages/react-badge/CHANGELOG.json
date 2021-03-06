@@ -2,6 +2,36 @@
   "name": "@fluentui/react-badge",
   "entries": [
     {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.6",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f7b97e9dc1cf0fec0201533042db4befb800cbd0",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-badge_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-utilities to v9.0.0-alpha.5",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-badge"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Mar 2021 07:24:27 GMT",
       "tag": "@fluentui/react-badge_v9.0.0-alpha.5",
       "version": "9.0.0-alpha.5",

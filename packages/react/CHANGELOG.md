@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.5)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.4..@fluentui/react_v8.1.5)
+
+### Patches
+
+- Fix menu hierarchy in ContextualMenu, and update labelled element ([PR #17266](https://github.com/microsoft/fluentui/pull/17266) by sarah.higley@microsoft.com)
+
+## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.4)
+
+Wed, 03 Mar 2021 07:45:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.3..@fluentui/react_v8.1.4)
+
+### Patches
+
+- Text: Making styles respect semantic colors. ([PR #17252](https://github.com/microsoft/fluentui/pull/17252) by Humberto.Morimoto@microsoft.com)
+
+## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.3)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.2..@fluentui/react_v8.1.3)
+
+### Patches
+
+- BasePicker: added high contrast styling to sass file when picker is disabled ([PR #17226](https://github.com/microsoft/fluentui/pull/17226) by tristan.watanabe@gmail.com)
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
 
 ## [8.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.2)
 

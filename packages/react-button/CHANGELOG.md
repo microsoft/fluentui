@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Tue, 02 Mar 2021 07:24:27 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.7)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.6..@fluentui/react-button_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.6 ([PR #17273](https://github.com/microsoft/fluentui/pull/17273) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.6)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.0.0-alpha.5..@fluentui/react-button_v9.0.0-alpha.6)
+
+### Patches
+
+- Bump @fluentui/common-styles to v1.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+### Changes
+
+- Remove set-version dependency from converged components ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
 
 ## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.0.0-alpha.5)
 

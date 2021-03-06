@@ -180,6 +180,9 @@ export const useEventCallback: <Args extends unknown[], Return>(fn: (...args: Ar
 // @public
 export function useId(prefix?: string, providedId?: string): string;
 
+// @public (undocumented)
+export const useIsomorphicLayoutEffect: typeof React.useEffect;
+
 // @public
 export function useMergedRefs<T>(...refs: (React.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
