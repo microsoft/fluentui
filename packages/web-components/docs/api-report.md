@@ -662,6 +662,11 @@ export class FluentRadioGroup extends RadioGroup {
 
 // @public
 export class FluentSelect extends Select {
+    appearance: SelectAppearance;
+    // @internal (undocumented)
+    appearanceChanged(oldValue: SelectAppearance, newValue: SelectAppearance): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
 }
 
 // @public
@@ -1192,6 +1197,9 @@ export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export type SelectAppearance = 'filled' | 'outline';
 
 // @public
 export const SelectStyles: import("@microsoft/fast-element").ElementStyles;
