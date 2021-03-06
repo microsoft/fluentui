@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps } from '@fluentui/react-utilities';
 import { CounterBadgeProps, CounterBadgeState } from './CounterBadge.types';
-import { useBadge } from '../Badge/index';
+import { useBadge, BadgeProps } from '../Badge/index';
 
 /**
  * Consts listing which props are shorthand props.
@@ -18,24 +18,23 @@ export const useCounterBadge = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: CounterBadgeProps,
 ): CounterBadgeState => {
-  const count = 0;
-  const overflowCount = 99;
-  const state = mergeProps(
-    useBadge(props, ref),
-    {
-      showZero: false,
-      overflowCount,
-      count,
-      dot: false,
-      ...(!props.dot && {
-        children:
-          (props.count ?? count) > (props.overflowCount ?? overflowCount) ? `${props.count}+` : `${props.count}`,
-      }),
-    },
+  const state = useBadge(
+    props,
+    ref,
+    mergeProps(
+      {
+        showZero: false,
+        overflowCount: 99,
+        count: 0,
+        dot: false,
+      },
+      defaultProps,
+    ) as BadgeProps,
+  ) as CounterBadgeState;
 
-    defaultProps,
-    resolveShorthandProps(props, counterBadgeShorthandProps),
-  );
+  if (!state.dot && !state.children) {
+    state.children = state.count > state.overflowCount ? `${state.overflowCount}+` : `${state.count}`;
+  }
 
   return state;
 };
