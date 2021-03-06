@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import { selectors } from './tableNavigable-example';
 
 const tableHeaderClass = `.${selectors.tableHeaderClass}`;
@@ -14,7 +13,7 @@ const buttonInTheCell = (rowIndex: number, cellIndex: number, buttonIndex: numbe
 const buttonInCellOnclickTest = `#${selectors.buttonInCellOnclickTestId}`;
 const rowOnclickTestButton = `#${selectors.rowOnclickTestId}`;
 
-context('table', () => {
+describe('table', () => {
   beforeEach(() => {
     cy.gotoTestCase(__filename, tableHeaderClass);
     cy.focusOn(buttonBeforeTable);

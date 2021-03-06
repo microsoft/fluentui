@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 import { selectors } from './datepicker-example';
 
 const datepicker = `.${selectors.DatepickerClassName}`;
@@ -13,7 +12,7 @@ const datepickerCalendarCell = index => {
               >.${selectors.CellButtonClassName}`;
 };
 
-context('Datepicker', () => {
+describe('Datepicker', () => {
   beforeEach(() => {
     cy.gotoTestCase(__filename, datepicker);
   });

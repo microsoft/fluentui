@@ -12,6 +12,7 @@ packages/fluentui/docs/src/exampleMenus
 packages/fluentui/docs/src/exampleSources
 packages/fluentui/docs/dist/
 packages/fluentui/ability-attributes/src/schema.ts
+packages/fluentui/e2e/cypress/fixtures/example.json
 stats/
 
 # Windows image file caches

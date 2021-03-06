@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 type E2EKeys =
   | '{downarrow}'
   | '{leftarrow}'
