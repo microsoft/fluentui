@@ -1,6 +1,6 @@
 import { makeStyles, ax } from '@fluentui/react-make-styles';
 import { CounterBadgeState } from './CounterBadge.types';
-import { useRootStyles, useIconStyles } from '../Badge/useBadgeStyles';
+import { useRootStyles as useBadgeStyles } from '../Badge/useBadgeStyles';
 
 /**
  * Styles for the root slot
