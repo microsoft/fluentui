@@ -16,7 +16,7 @@ import { MenuItemStyles as styles } from './menu-item.styles';
   template,
   styles,
   shadowOptions: {
-    mode: 'open',
+    mode: 'closed',
   },
 })
 export class FluentMenuItem extends MenuItem {}
