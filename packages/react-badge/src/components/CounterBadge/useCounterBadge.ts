@@ -29,7 +29,7 @@ export const useCounterBadge = (
       dot: false,
       ...(!props.dot && {
         children:
-          (props.count || count) > (props.overflowCount || overflowCount) ? `${props.count}+` : `${props.count}`,
+          (props.count ?? count) > (props.overflowCount ?? overflowCount) ? `${props.count}+` : `${props.count}`,
       }),
     },
 
