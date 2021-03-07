@@ -10,7 +10,7 @@ export type PresenceBadgeStatus = 'busy' | 'outOfOffice' | 'away' | 'available' 
  */
 export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearance'> {
   /**
-   * A PresenceBadge can represent several status
+   * Represents several status
    * @defaultvalue available
    */
   status?: PresenceBadgeStatus;
@@ -27,7 +27,7 @@ export interface PresenceBadgeProps extends Omit<BadgeProps, 'shape' | 'appearan
  */
 export interface PresenceBadgeState extends BadgeState {
   /**
-   * A PresenceBadge can represent several status
+   * Represents several status
    * @defaultvalue available
    */
   status: PresenceBadgeStatus;
