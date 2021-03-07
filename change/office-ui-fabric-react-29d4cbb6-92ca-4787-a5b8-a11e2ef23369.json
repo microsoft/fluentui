@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update detailslist to use grid aria props for group rows",
+  "packageName": "office-ui-fabric-react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
