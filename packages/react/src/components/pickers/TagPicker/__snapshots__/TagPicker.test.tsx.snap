@@ -50,6 +50,7 @@ exports[`TagPicker renders correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
+        role="presentation"
       >
         <span
           className=
@@ -358,6 +359,7 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
+        role="presentation"
       >
         <span
           className=

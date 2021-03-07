@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.7)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.6..@fluentui/react-image_v9.0.0-alpha.7)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.7 ([PR #17273](https://github.com/microsoft/fluentui/pull/17273) by lingfan.gao@microsoft.com)
+
+## [9.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.6)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.5..@fluentui/react-image_v9.0.0-alpha.6)
+
+### Changes
+
+- Remove set-version dependency from converged components ([PR #17211](https://github.com/microsoft/fluentui/pull/17211) by miroslav.stastny@microsoft.com)
+
+## [9.0.0-alpha.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.5)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.0.0-alpha.4..@fluentui/react-image_v9.0.0-alpha.5)
+
+### Changes
+
+- Bump @fluentui/react-make-styles to v9.0.0-alpha.5 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
 
 ## [9.0.0-alpha.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.0.0-alpha.4)
 

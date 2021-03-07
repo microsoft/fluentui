@@ -2,6 +2,65 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f7b97e9dc1cf0fec0201533042db4befb800cbd0",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.6",
+      "version": "9.0.0-alpha.6",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/react-link"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/jest-serializer-merge-styles to v8.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Mar 2021 07:24:27 GMT",
+      "tag": "@fluentui/react-link_v9.0.0-alpha.5",
+      "version": "9.0.0-alpha.5",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "remove unused dependencies",
+            "author": "olfedias@microsoft.com",
+            "commit": "529d34473f30680fa35928e0d977434ab2ed2173",
+            "package": "@fluentui/react-link"
+          },
+          {
+            "comment": "Adding behavioral, snapshot and accessibility tests and cleaning up useLinkState function.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4765a203d0d25f4c09eb946b23e06fe50966d59f",
+            "package": "@fluentui/react-link"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/react-link_v9.0.0-alpha.4",
       "version": "9.0.0-alpha.4",

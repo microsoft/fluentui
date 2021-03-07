@@ -98,8 +98,8 @@
   "dependencies": {
     "lodash-es": "^4.17.20",
     "@microsoft/fast-colors": "^5.1.0",
-    "@microsoft/fast-element": "^0.22.2",
-    "@microsoft/fast-foundation": "^1.14.0",
+    "@microsoft/fast-element": "^1.0.0",
+    "@microsoft/fast-foundation": "^1.15.1",
     "tslib": "^1.13.0"
   }
 }

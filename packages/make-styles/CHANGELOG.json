@@ -2,6 +2,29 @@
   "name": "@fluentui/make-styles",
   "entries": [
     {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/make-styles_v9.0.0-alpha.3",
+      "version": "9.0.0-alpha.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore(scripts): move prettier to single version policy,make formating abstraction explicit",
+            "author": "martinhochel@microsoft.com",
+            "commit": "2ca35f1a1755fa5e5931a175ee199f89c7c4329d",
+            "package": "@fluentui/make-styles"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Remove set-version dependency from converged components",
+            "author": "miroslav.stastny@microsoft.com",
+            "commit": "712ca04cd82ad2b3426762a409cdce05a7cc80fc",
+            "package": "@fluentui/make-styles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/make-styles_v9.0.0-alpha.2",
       "version": "9.0.0-alpha.2",

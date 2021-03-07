@@ -43,6 +43,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix `dropdownSelectedItem` has tiny icon when the content is long @yuanboxue-amber ([#16795](https://github.com/microsoft/fluentui/pull/16795))
 - Updating various icons, `ArrowSortIcon`, `BreakoutRoomIcon`, `CalendarAgendaIcon`, `CallControlCloseTrayIcon`, `PlayIcon`, `TenantPersonalIcon` @notandrew ([#16723](https://github.com/microsoft/fluentui/pull/16723))
 - Fix touch scroll for `Dialog` @assuncaocharles ([#17054](https://github.com/microsoft/fluentui/pull/17054))
+- Prevent scrollable parent element or viewport scroll when an item is seleted in `Dropdown` @yuanboxue-amber ([#17222](https://github.com/microsoft/fluentui/pull/17222))
+- Prevent menu to be dismissed when scroll happens inside `Menu` boundaries @assuncaocharles ([#17294](https://github.com/microsoft/fluentui/pull/17294))
 
 ## Features
 - For `Tree`, add keyboard navigation based on the first letter of the text content of tree items @yuanboxue-amber ([#16994](https://github.com/microsoft/fluentui/pull/16994))
@@ -50,6 +52,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `OneNoteMonoIcon`. Updated `VideoProhibitedIcon`. @TanelVari ([#17051](https://github.com/microsoft/fluentui/pull/17051))
 - Added `onKeyDown` handler for `TreeItem` allowing key navigation more than A-Z @yuanboxue-amber ([#17073](https://github.com/microsoft/fluentui/pull/17073))
 - Added `ArchiveIcon`, `ContactCardIcon`, `DoorArrowLeftIcon`, `FluidFileIcon`, `GridIcon`, `ShieldKeyholeIcon`, `WandIcon` @notandrew ([#17152](https://github.com/microsoft/fluentui/pull/17152))
+- Added `autoSize` prop to make `Popper` responsive @yuanboxue-amber ([#17159](https://github.com/microsoft/fluentui/pull/17159))
 
 ## Performance
 
