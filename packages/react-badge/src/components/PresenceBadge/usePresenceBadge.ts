@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { makeMergeProps, resolveShorthandProps } from '@fluentui/react-utilities';
+import { makeMergeProps } from '@fluentui/react-utilities';
 import { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
-import { useBadge } from '../Badge/index';
+import { useBadge, BadgeProps } from '../Badge/index';
 
 /**
  * Consts listing which props are shorthand props.
@@ -18,16 +18,18 @@ export const usePresenceBadge = (
   ref: React.Ref<HTMLElement>,
   defaultProps?: PresenceBadgeProps,
 ): PresenceBadgeState => {
-  const state = mergeProps(
-    useBadge(props, ref),
-    {
-      size: 'small',
-      status: 'available',
-      outOfOffice: false,
-    },
-    defaultProps,
-    resolveShorthandProps(props, presenceBadgeShorthandProps),
-  );
+  const state = useBadge(
+    props,
+    ref,
+    mergeProps(
+      {
+        size: 'small',
+        status: 'available',
+        outOfOffice: false,
+      },
+      defaultProps,
+    ) as BadgeProps,
+  ) as PresenceBadgeState;
 
   return state;
 };

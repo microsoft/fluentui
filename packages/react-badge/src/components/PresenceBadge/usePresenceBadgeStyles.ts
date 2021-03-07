@@ -7,8 +7,6 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
     null,
     {
       padding: 0,
-      justifyContent: 'center',
-      alignItems: 'center',
     },
   ],
   [
@@ -71,34 +69,6 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
     theme => ({
       color: theme.global.palette.yellow.primary,
     }),
-  ],
-  [
-    s => s.size === 'small',
-    {
-      width: '16px',
-      height: '16px',
-    },
-  ],
-  [
-    s => s.size === 'medium',
-    {
-      height: '20px',
-      width: '20px',
-    },
-  ],
-  [
-    s => s.size === 'large',
-    {
-      width: '24px',
-      height: '24px',
-    },
-  ],
-  [
-    s => s.size === 'larger' || s.size === 'largest',
-    {
-      width: '32px',
-      height: '32px',
-    },
   ],
 ]);
 
