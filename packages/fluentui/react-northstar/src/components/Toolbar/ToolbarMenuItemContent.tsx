@@ -6,7 +6,7 @@ import { Box, BoxProps, BoxStylesProps } from '../Box/Box';
 interface ToolbarMenuItemContentOwnProps {}
 export interface ToolbarMenuItemContentProps extends ToolbarMenuItemContentOwnProps, BoxProps {}
 
-export type ToolbarMenuItemContentStylesProps = {};
+export type ToolbarMenuItemContentStylesProps = never;
 export const toolbarMenuItemContentClassName = 'ui-toolbar__menuitemcontent';
 
 /**
