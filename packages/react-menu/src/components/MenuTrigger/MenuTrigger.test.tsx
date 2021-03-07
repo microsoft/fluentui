@@ -6,8 +6,19 @@ import { isConformant } from '../../common/isConformant';
 
 describe('MenuTrigger', () => {
   isConformant({
+    disabledTests: [
+      'as-renders-html',
+      'as-renders-fc',
+      'component-handles-ref',
+      'component-has-root-ref',
+      'component-handles-classname',
+      'as-passes-as-value',
+    ],
     Component: MenuTrigger,
     displayName: 'MenuTrigger',
+    requiredProps: {
+      children: <button>MenuTrigger</button>,
+    },
   });
 
   let wrapper: ReactWrapper | undefined;

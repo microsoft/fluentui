@@ -4,7 +4,7 @@ import { MenuTriggerProps } from './MenuTrigger.types';
 import { renderMenuTrigger } from './renderMenuTrigger';
 
 /**
- * The MenuTrigger component wraps a potential trigger element as a child
+ * Wraps a trigger element as an only child
  * and adds the necessary event handling to open a popup menu
  * {@docCategory MenuTrigger }
  */
