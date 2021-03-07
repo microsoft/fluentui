@@ -14,6 +14,7 @@ import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
+import { Combobox } from '@microsoft/fast-foundation';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
@@ -252,6 +253,12 @@ export const CardStyles: import("@microsoft/fast-element").ElementStyles;
 export const CheckboxStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
+export type ComboboxAppearance = SelectAppearance;
+
+// @public
+export const ComboboxStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export function createColorPalette(baseColor: any): string[];
 
 // @public
@@ -455,6 +462,15 @@ export class FluentCard extends FluentDesignSystemProvider {
 
 // @public
 export class FluentCheckbox extends Checkbox {
+}
+
+// @public
+export class FluentCombobox extends Combobox {
+    appearance: ComboboxAppearance;
+    // @internal (undocumented)
+    appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
 }
 
 // @public
