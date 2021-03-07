@@ -23,7 +23,7 @@ export const usePresenceBadge = (
     {
       size: 'small',
       status: 'available',
-      inOffice: true,
+      outOfOffice: false,
     },
     defaultProps,
     resolveShorthandProps(props, presenceBadgeShorthandProps),

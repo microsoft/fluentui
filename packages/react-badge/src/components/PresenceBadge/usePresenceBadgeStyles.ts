@@ -41,7 +41,7 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
     }),
   ],
   [
-    s => s.status === 'oof',
+    s => s.status === 'outOfOffice',
     theme => ({
       backgroundColor: 'transparent',
       color: theme.global.palette.magenta.primary,
@@ -49,25 +49,25 @@ export const usePresenceBadgeRootStyles = makeStyles<PresenceBadgeState>([
     }),
   ],
   [
-    s => !s.inOffice,
+    s => s.outOfOffice,
     {
       background: 'transparent',
     },
   ],
   [
-    s => !s.inOffice && s.status === 'available',
+    s => s.outOfOffice && s.status === 'available',
     theme => ({
       color: theme.global.palette.lightGreen.primary,
     }),
   ],
   [
-    s => !s.inOffice && s.status === 'busy',
+    s => s.outOfOffice && s.status === 'busy',
     theme => ({
       color: theme.global.palette.red.primary,
     }),
   ],
   [
-    s => !s.inOffice && s.status === 'away',
+    s => s.outOfOffice && s.status === 'away',
     theme => ({
       color: theme.global.palette.yellow.primary,
     }),
