@@ -136,7 +136,7 @@ There's no components related to `Pill` in V8
 | key                | state    | title                                                              |
 | ------------------ | -------- | ------------------------------------------------------------------ |
 | left/right         | OnFocus  | Role= “button”, aria-describedby=”Press enter or delete to remove” |
-| Enter/Delete       | OnDelete | The pill is removed since there is only one primary action         |
+| Enter/Delete/Space | OnDelete | The pill is removed since there is only one primary action         |
 | Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                                 |
 
 ### Pill with popup
@@ -151,7 +151,7 @@ There's no components related to `Pill` in V8
 | key                | state    | title                                                        |
 | ------------------ | -------- | ------------------------------------------------------------ |
 | Esc                | OnFocus  | Dismis popup                                                 |
-| Enter              | OnFocus  | Open Popup                                                   |
+| Enter/Space        | OnFocus  | Open Popup                                                   |
 | Backspace/Ctrl + X | OnDelete | Backspace/Ctrl + X                                           |
 | left/right         | OnFocus  | Role= “button”, aria-label=”Press enter or delete to remove” |
 
@@ -177,6 +177,6 @@ There's no components related to `Pill` in V8
 
 #### Keyboard Navigation
 
-| key   | state   | title                 |
-| ----- | ------- | --------------------- |
-| Enter | OnFocus | Toggle selected state |
+| key         | state   | title                 |
+| ----------- | ------- | --------------------- |
+| Enter/Space | OnFocus | Toggle selected state |
