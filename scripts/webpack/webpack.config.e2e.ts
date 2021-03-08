@@ -9,16 +9,14 @@ const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
-  mode: config.compiler_mode,
+  mode: 'production',
   entry: {
     app: paths.e2eSrc('app'),
   },
   output: {
     filename: `[name].js`,
     path: paths.e2eDist(),
-    pathinfo: true,
   },
-  devtool: config.compiler_devtool,
   node: {
     global: true,
   },
