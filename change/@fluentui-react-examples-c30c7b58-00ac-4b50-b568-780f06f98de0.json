@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "added example to support changes",
+  "packageName": "@fluentui/react-examples",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
