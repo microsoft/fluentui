@@ -5,7 +5,11 @@ import { AccordionHeaderProps } from '../AccordionHeader';
 
 export type AccordionIndex = number | number[];
 
-export interface AccordionContext {
+/**
+ * Common properties shared between Accordion and AccordionHeader through context
+ */
+type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIcon' | 'expandIconPosition' | 'button' | 'size'>;
+export interface AccordionContext extends AccordionHeaderCommonProps {
   /**
    * The list of opened panels by index
    */
@@ -16,7 +20,6 @@ export interface AccordionContext {
   requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
 
-type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIcon' | 'expandIconPosition' | 'button' | 'size'>;
 /**
  * {@docCategory Accordion}
  */

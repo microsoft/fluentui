@@ -16,7 +16,7 @@ export const accordionContext = React.createContext<AccordionContext>({
  * Creates the context to be provided for AccordionItem components
  */
 export function useCreateAccordionContext(state: AccordionState) {
-  const { index, multiple, collapsible, onToggle } = state;
+  const { index, multiple, collapsible, onToggle, size, expandIcon, expandIconPosition, button } = state;
   const isControlled = useConst(typeof index !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -37,8 +37,12 @@ export function useCreateAccordionContext(state: AccordionState) {
     () => ({
       openItems: isControlled ? normalizedIndex! : openItems!,
       requestToggle,
+      size,
+      expandIconPosition,
+      expandIcon,
+      button,
     }),
-    [isControlled, normalizedIndex, openItems, requestToggle],
+    [isControlled, normalizedIndex, openItems, requestToggle, size, expandIcon, expandIconPosition, button],
   );
   return [context, descendants, setDescendants] as const;
 }

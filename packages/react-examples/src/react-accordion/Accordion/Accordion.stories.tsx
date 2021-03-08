@@ -3,7 +3,6 @@ import { AccordionItem, AccordionHeader, AccordionPanel, Accordion, AccordionPro
 import { ArgType } from '@storybook/addons';
 
 export const AccordionExample = (props: AccordionProps) => {
-  console.log(props);
   return (
     <Accordion {...props}>
       <AccordionItem>

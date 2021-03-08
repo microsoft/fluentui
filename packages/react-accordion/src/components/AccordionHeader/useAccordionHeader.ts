@@ -8,6 +8,7 @@ import {
 } from './AccordionHeader.types';
 import { useAccordionItemContext } from '../AccordionItem';
 import { DefaultExpandIcon } from './DefaultExpandIcon';
+import { useAccordionContext } from '../Accordion/useAccordionContext';
 
 /**
  * Consts listing which props are shorthand props.
@@ -28,6 +29,7 @@ export const useAccordionHeader = (
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
   const { headingId, panelId, onAccordionHeaderClick, open } = useAccordionItemContext();
+  const { button, expandIcon, expandIconPosition, size } = useAccordionContext();
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -51,6 +53,7 @@ export const useAccordionHeader = (
       role: 'heading',
       expandIconPosition: 'start' as AccordionHeaderExpandIconPosition,
     },
+    { button, expandIconPosition, expandIcon, size },
     defaultProps,
     resolveShorthandProps(props, accordionHeaderShorthandProps),
   );
