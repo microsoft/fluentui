@@ -71,7 +71,7 @@ const getRepather: (search: RegExp, newValue: string) => (file: SourceFile) => C
   };
 };
 
-const allRepathers = uiFabricMap.map(mp => getRepather.apply(null, mp)).concat([getRepather.apply(null, officeuimap)]);
+const allRepathers = uiFabricMap.map(mp => getRepather(...mp)).concat([getRepather.apply(null, officeuimap)]);
 
 const RepathOfficeToFluentImports: CodeMod = {
   run: (file: SourceFile) => {
