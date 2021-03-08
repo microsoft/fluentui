@@ -312,10 +312,26 @@ export function usePopper(
     popperInstanceRef.current = popperInstance;
   });
 
-  // Refs are managed by useCallbackRef() to handle the following scenarios:
-  // - updates for a targetRef without re-rendering
-  // - workarounds refs resolution on React's layer: refs are resolved in the same order as effects that causes an
-  //   issue when you have a container inside a target, for example: actions in ChatMessage
+  // Refs are managed by useCallbackRef() to handle ref updates scenarios.
+  //
+  // The first scenario are updates for a targetRef, we can handle it properly only via callback refs, but it causes
+  // re-renders (we would like to avoid them).
+  //
+  // The second problem is related to refs resolution on React's layer: refs are resolved in the same order as effects
+  // that causes an issue when you have a container inside a target, for example: a menu in ChatMessage.
+  //
+  // function ChatMessage(props) {
+  //   <div className="message" ref={targetRef}> // 3) ref will be resolved only now, but it's too late already
+  //     <Popper target={targetRef}> // 2) create a popper instance
+  //       <div className="menu" /> // 1) capture ref from this element
+  //     </Popper>
+  //   </div>
+  // }
+  //
+  // Check a demo on CodeSandbox: https://codesandbox.io/s/popper-refs-emy60.
+  //
+  // This again can be solved with callback refs. It's not a huge issue as with hooks we are moving popper's creation
+  // to ChatMessage itself, however, without `useCallback()` refs it's still a Pandora box.
   const targetRef = useCallbackRef<HTMLElement | PopperJs.VirtualElement | null>(null, handlePopperUpdate, true);
   const containerRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
