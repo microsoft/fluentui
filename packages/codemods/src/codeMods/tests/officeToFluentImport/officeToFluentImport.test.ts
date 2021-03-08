@@ -1,21 +1,24 @@
-import { Project } from 'ts-morph';
+import { Project, SourceFile } from 'ts-morph';
 import RepathOfficeToFluentImports from '../../mods/officeToFluentImport/officeToFluentImport.mod';
 
 const basicFileName = 'mockImports.tsx';
 const edgeCaseFile = 'mockEdgeImports.tsx';
 const newRoot = '@fluentui/react';
 const oldRoot = 'office-ui-fabric-react';
+const oldFabricRoot = '@uifabric';
+const newFluentRoot = '@fluentui';
 
 describe('Office to Fluent import repath tests', () => {
-  let project: Project;
+  let project: Project = new Project();
+  project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/utils/*.tsx`);
+  let file: SourceFile;
 
-  beforeEach(() => {
-    project = new Project();
-    project.addSourceFilesAtPaths(`${process.cwd()}/**/tests/mock/utils/*.tsx`);
+  afterEach(() => {
+    file.refreshFromFileSystemSync();
   });
 
   it('Can remove all old paths in one file', () => {
-    const file = project.getSourceFileOrThrow(basicFileName);
+    file = project.getSourceFileOrThrow(basicFileName);
     RepathOfficeToFluentImports.run(file);
 
     file.getImportStringLiterals().forEach(val => {
@@ -25,7 +28,7 @@ describe('Office to Fluent import repath tests', () => {
   });
 
   it('Can replace all old paths in one with the new root', () => {
-    const file = project.getSourceFileOrThrow(basicFileName);
+    file = project.getSourceFileOrThrow(basicFileName);
     const oldImportList = file.getImportStringLiterals().map(val => {
       return val.getLiteralValue();
     });
@@ -41,7 +44,7 @@ describe('Office to Fluent import repath tests', () => {
   });
 
   it('Only Replaces paths that start with oufr', () => {
-    const file = project.getSourceFileOrThrow(edgeCaseFile);
+    file = project.getSourceFileOrThrow(edgeCaseFile);
     const oldImportList = file.getImportStringLiterals().map(val => {
       return val.getLiteralValue();
     });
@@ -61,7 +64,7 @@ describe('Office to Fluent import repath tests', () => {
   });
 
   it('Can replace all old paths in one with the new root', () => {
-    const file = project.getSourceFileOrThrow(basicFileName);
+    file = project.getSourceFileOrThrow(basicFileName);
     const oldImportList = file.getImportStringLiterals().map(val => {
       return val.getLiteralValue();
     });
@@ -74,5 +77,29 @@ describe('Office to Fluent import repath tests', () => {
         expect(val.getLiteralValue().indexOf(newRoot)).toBe(0);
       }
     });
+  });
+
+  it('Replaces @uifabric with @fluentui', () => {
+    file = project.getSourceFileOrThrow(basicFileName);
+    const oldImportList = file.getImportStringLiterals().map(val => {
+      return val.getLiteralValue();
+    });
+
+    RepathOfficeToFluentImports.run(file);
+    const newImpList = file.getImportStringLiterals();
+    expect(newImpList.some(val => val.getLiteralValue().indexOf(newFluentRoot) > -1)).toBe(true);
+    newImpList.forEach((val, index) => {
+      if (oldImportList[index].indexOf(oldFabricRoot) === 0) {
+        expect(val.getLiteralValue().indexOf(newFluentRoot)).toBe(0);
+      }
+    });
+  });
+
+  it('Replaces old uifabric package to new package', () => {
+    file = project.getSourceFileOrThrow(basicFileName);
+
+    RepathOfficeToFluentImports.run(file);
+    const newImpList = file.getImportStringLiterals();
+    expect(newImpList.some(val => val.getLiteralValue().indexOf('font-icons-mdl2') > -1)).toBe(true);
   });
 });
