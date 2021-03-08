@@ -162,7 +162,8 @@ const SelectedPersonaInner = React.memo(
         data-is-focusable={true}
         data-is-sub-focuszone={true}
         data-selection-index={index}
-        role={'listitem'}
+        role={'option'}
+        aria-selected={selected}
         aria-labelledby={'selectedItemPersona-' + itemId}
       >
         <div hidden={!canExpand || !canExpand(item) || !getExpandedItems}>

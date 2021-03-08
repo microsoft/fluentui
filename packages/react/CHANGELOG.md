@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Mar 2021 23:34:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.5..@fluentui/react_v8.1.6)
+
+### Patches
+
+- Still trigger deprecated `onChanged` property of Toggle until it is removed ([PR #17296](https://github.com/microsoft/fluentui/pull/17296) by miclo@microsoft.com)
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.5)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.4..@fluentui/react_v8.1.5)
+
+### Patches
+
+- Fix menu hierarchy in ContextualMenu, and update labelled element ([PR #17266](https://github.com/microsoft/fluentui/pull/17266) by sarah.higley@microsoft.com)
 
 ## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.4)
 

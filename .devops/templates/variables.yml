@@ -27,5 +27,6 @@ variables:
     targetBranch: 'origin/$(System.PullRequest.TargetBranch)'
   ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/master') }}:
     isPR: false
+    targetBranch: ''
 
   skipComponentGovernanceDetection: ${{ parameters.skipComponentGovernanceDetection }}

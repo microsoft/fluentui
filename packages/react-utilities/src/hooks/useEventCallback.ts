@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
 
 /**
  * https://reactjs.org/docs/hooks-faq.html#how-to-read-an-often-changing-value-from-usecallback
@@ -17,7 +18,7 @@ export const useEventCallback = <Args extends unknown[], Return>(fn: (...args: A
     throw new Error('Cannot call an event handler while rendering');
   });
 
-  React.useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     callbackRef.current = fn;
   }, [fn]);
 

@@ -2,6 +2,44 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "@fluentui/react-charting_v5.0.7",
+      "version": "5.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.6",
+            "author": "miclo@microsoft.com",
+            "commit": "5e06dfbf2d4e421934d09521a178d4acec404d02",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-charting_v5.0.6",
+      "version": "5.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Horizontal bar chart: Fix issue for Rounded value to 1 if less than 1% to appear in the chart",
+            "author": "email not defined",
+            "commit": "388bdae3ccf3943696e2b1af36bf625f388ccaa3",
+            "package": "@fluentui/react-charting"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.5",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "45fbce608a02afd1928f80fa7cec784a667e9b60",
+            "package": "@fluentui/react-charting"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Mar 2021 07:45:18 GMT",
       "tag": "@fluentui/react-charting_v5.0.5",
       "version": "5.0.5",

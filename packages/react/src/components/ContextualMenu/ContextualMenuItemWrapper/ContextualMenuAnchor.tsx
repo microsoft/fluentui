@@ -40,7 +40,6 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
       anchorRel = anchorRel ? anchorRel : 'nofollow noopener noreferrer'; // Safe default to prevent tabjacking
     }
 
-    const subMenuId = this._getSubMenuId(item);
     const itemHasSubmenu = hasSubmenu(item);
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLAnchorElement>>(item, anchorProperties);
     const disabled = isItemDisabled(item);
@@ -80,7 +79,6 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               rel={anchorRel}
               className={classNames.root}
               role="menuitem"
-              aria-owns={item.key === expandedMenuItemKey ? subMenuId : undefined}
               aria-haspopup={itemHasSubmenu || undefined}
               aria-expanded={itemHasSubmenu ? item.key === expandedMenuItemKey : undefined}
               aria-posinset={focusableElementIndex + 1}

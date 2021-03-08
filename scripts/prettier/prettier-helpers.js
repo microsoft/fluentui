@@ -10,13 +10,6 @@ const prettierBin = getPrettierBinary();
 const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
 
-const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'htm', 'md', 'yml'];
-
-/**
- * NOTE:
- * we should use public prettier node API. This is a temporary workaround
- * https://prettier.io/docs/en/api.html
- */
 function getPrettierBinary() {
   const prettierPath = path.dirname(require.resolve('prettier'));
   const pkg = JSON.parse(fs.readFileSync(path.join(prettierPath, 'package.json'), 'utf-8'));
@@ -37,6 +30,8 @@ function getPrettierBinary() {
 function runPrettier(files, config = {}) {
   const { check, logErrorsOnly, runAsync } = config;
 
+  // As of writing, Prettier's Node API (https://prettier.io/docs/en/api.html) only supports running
+  // on a single file. So to easily format multiple files, we have to use the CLI.
   const cmd = [
     'node',
     prettierBin,
@@ -72,11 +67,11 @@ function runPrettierForFolder(folderPath, config = {}) {
     folderPath = path.join(repoRoot, folderPath);
   }
 
-  const sourcePath = `"${path.join(folderPath, nonRecursive ? '' : '**', `*.{${prettierExtensions.join(',')}}`)}"`;
+  const sourcePath = `"${path.join(folderPath, nonRecursive ? '' : '**', '*')}"`;
 
   console.log(`Running prettier for ${sourcePath}`);
 
   return runPrettier([sourcePath], { runAsync, logErrorsOnly: true, check });
 }
 
-module.exports = { runPrettierForFolder, runPrettier, prettierExtensions };
+module.exports = { runPrettierForFolder, runPrettier };
