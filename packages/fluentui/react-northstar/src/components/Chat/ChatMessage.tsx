@@ -15,6 +15,8 @@ import {
   useTelemetry,
   useContextSelector,
 } from '@fluentui/react-bindings';
+// import { PortalInner } from '../Portal/PortalInner';
+// import { Popup } from '../Popup/Popup';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';
@@ -65,6 +67,8 @@ export interface ChatMessageProps
   extends UIComponentProps,
     ChildrenComponentProps,
     ContentComponentProps<ShorthandValue<BoxProps>> {
+  renderOutsideDomOrder?: boolean;
+
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ChatMessageBehaviorProps>;
 
@@ -159,6 +163,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
 
   const parentAttached = useContextSelector(ChatItemContext, v => v.attached);
   const {
+    // renderOutsideDomOrder,
     accessibility,
     attached = parentAttached,
     author,
@@ -234,12 +239,14 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleBlur = (e: React.SyntheticEvent) => {
-    // `focused` controls is focused the whole `ChatMessage` or any of its children. When we're navigating
-    // with keyboard the focused element will be changed and there is no way to use `:focus` selector
-    const shouldPreserveFocusState = _.invoke(e, 'currentTarget.contains', (e as any).relatedTarget);
+    // // `focused` controls is focused the whole `ChatMessage` or any of its children. When we're navigating
+    // // with keyboard the focused element will be changed and there is no way to use `:focus` selector
+    if (e.target === e.currentTarget && (e as any).relatedTarget.className.indexOf('ui-menu__item') === -1) {
+      const shouldPreserveFocusState = _.invoke(e, 'currentTarget.contains', (e as any).relatedTarget);
 
-    setFocused(shouldPreserveFocusState);
-    _.invoke(props, 'onBlur', e, props);
+      setFocused(shouldPreserveFocusState);
+      _.invoke(props, 'onBlur', e, props);
+    }
   };
 
   const handleMouseEnter = (e: React.SyntheticEvent) => {
@@ -270,6 +277,28 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
         options: { boundary: getScrollParent(messageNode) },
       },
     ];
+
+    // return renderOutsideDomOrder ? (
+    //   // <PortalInner mountNode={messageNode}>{actionMenuElement}</PortalInner>
+    //  <PortalInner>{actionMenuElement}</PortalInner>
+    //   // messageNode && <Popup trigger={messageNode} on={['hover', 'focus']} content={actionMenuElement} />
+    // ) : (
+    //   <Popper
+    //     enabled={positionActionMenu}
+    //     align="end"
+    //     modifiers={modifiers}
+    //     position="above"
+    //     positionFixed={overflow}
+    //     targetRef={messageNode}
+    //     {...positioningProps}
+    //   >
+    //     {({ scheduleUpdate }) => {
+    //       updateActionsMenuPosition.current = scheduleUpdate;
+
+    //       return actionMenuElement;
+    //     }}
+    //   </Popper>
+    // );
 
     return (
       <Popper

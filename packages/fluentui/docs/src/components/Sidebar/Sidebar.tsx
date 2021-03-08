@@ -65,6 +65,11 @@ const prototypesTreeItems: TreeProps['items'] = [
     public: true,
   },
   {
+    id: 'chatMessageActionsOutsideDomOrder',
+    title: { content: 'Chat Message actions otside DOM order', as: NavLink, to: '/prototype-chat-message-actions' },
+    public: true,
+  },
+  {
     id: 'customscrollbar',
     title: { content: 'Custom Scrollbar', as: NavLink, to: '/prototype-custom-scrollbar' },
     public: true,

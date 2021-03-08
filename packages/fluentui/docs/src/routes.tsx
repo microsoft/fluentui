@@ -39,6 +39,7 @@ import { LazyWithBabel } from './components/ComponentDoc/LazyWithBabel';
 import {
   ChatPanePrototype,
   ChatMessagesPrototype,
+  ChatMessageActionsPrototype,
   CustomScrollbarPrototype,
   CustomToolbarPrototype,
   AsyncShorthandPrototype,
@@ -110,6 +111,7 @@ const Routes = () => (
                 <Route exact path="/prototype-roster" component={RosterPrototype} />
                 <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
                 <Route exact path="/prototype-chat-messages" component={ChatMessagesPrototype} />
+                <Route exact path="/prototype-chat-message-actions" component={ChatMessageActionsPrototype} />
                 <Route exact path="/prototype-custom-scrollbar" component={CustomScrollbarPrototype} />
                 <Route exact path="/prototype-custom-toolbar" component={CustomToolbarPrototype} />
                 <Route exact path="/prototype-async-shorthand" component={AsyncShorthandPrototype} />
