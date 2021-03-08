@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-cards
 
-This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-beta.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.66)
+
+Fri, 05 Mar 2021 20:30:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-cards_v1.0.0-beta.65..@fluentui/react-cards_v1.0.0-beta.66)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.0.0-alpha.6 ([PR #17273](https://github.com/microsoft/fluentui/pull/17273) by lingfan.gao@microsoft.com)
 
 ## [1.0.0-beta.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-cards_v1.0.0-beta.65)
 

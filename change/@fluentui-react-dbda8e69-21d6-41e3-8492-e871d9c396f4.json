@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Still trigger deprecated `onChanged` property of Toggle until it is removed",
+  "packageName": "@fluentui/react",
+  "email": "miclo@microsoft.com",
+  "dependentChangeType": "patch"
+}
