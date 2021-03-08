@@ -312,7 +312,7 @@ export function usePopper(
     popperInstanceRef.current = popperInstance;
   });
 
-  // Refs are managed there via useCallbackRef() this allows us to handle properly following scenarios:
+  // Refs are managed by useCallbackRef() to handle the following scenarios:
   // - updates for a targetRef without re-rendering
   // - workarounds refs resolution on React's layer: refs are resolved in the same order as effects that causes an
   //   issue when you have a container inside a target, for example: actions in ChatMessage
