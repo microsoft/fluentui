@@ -57,7 +57,7 @@ Focus handling (except of the points mentioned above) on an application level ne
 3. Perform an initial test on prototype, model component or when converged component functionality is available (all supported screen reader/browser combinations, including user testing)
 4. Incorporate test results in the component implementation
 5. Create [component behavior tests](https://github.com/microsoft/fluentui/tree/master/packages/a11y-testing/src/definitions) and [axe-core tests](https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/test/specs/commonTests/htmlIsAccessibilityCompliant.ts)
-6. Document best practices
+6. Document best practices (includes Do's and Don'ts)
 7. Document known issues, including links if they are tracked by browsers or screen readers
 8. Create validation rules for component - help to identify accessibility issues early in the development phase (or even design with UI Builder)
 9. Schedule trusted user test
