@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "none",
   "comment": "chore: removed broken links",
   "packageName": "@fluentui/web-components",
   "email": "jes@microsoft.com",
