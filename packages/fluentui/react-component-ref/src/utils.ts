@@ -42,28 +42,3 @@ export const handleRef = <N>(ref: React.Ref<N> | undefined, node: N) => {
 export const isRefObject = (ref: any): ref is React.RefObject<any> =>
   // https://github.com/facebook/react/blob/v16.8.2/packages/react-reconciler/src/ReactFiberCommitWork.js#L665
   ref !== null && typeof ref === 'object' && ref.hasOwnProperty('current');
-
-/**
- * Merges up to two React Refs into a single memoized function React Ref so you
- * can pass it to an element.
- *
- * @example
- * import React from "react";
- * import { useForkRef } from "reakit-utils";
- *
- * const Component = React.forwardRef((props, ref) => {
- *   const internalRef = React.useRef();
- *   return <div {...props} ref={useForkRef(internalRef, ref)} />;
- * });
- */
-export function useForkRef(refA?: React.Ref<any>, refB?: React.Ref<any>) {
-  return React.useMemo(() => {
-    if (refA == null && refB == null) {
-      return null;
-    }
-    return (value: any) => {
-      handleRef(refA, value);
-      handleRef(refB, value);
-    };
-  }, [refA, refB]);
-}

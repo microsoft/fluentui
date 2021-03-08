@@ -1,5 +1,5 @@
-import { useIsomorphicLayoutEffect } from '@fluentui/react-bindings';
-import { useForkRef, Ref, isRefObject } from '@fluentui/react-component-ref';
+import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-bindings';
+import { Ref, isRefObject } from '@fluentui/react-component-ref';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
@@ -23,7 +23,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
   const [targetRef, containerRef, arrowRef] = usePopper({
     ...props,
 
-    popperRef: useForkRef(props.popperRef, popperRef),
+    popperRef: useMergedRefs(props.popperRef, popperRef),
     onStateUpdate: state => {
       // PopperJS performs computations that might update the computed placement: auto positioning, flipping the
       // placement in case the popper box should be rendered at the edge of the viewport and does not fit
