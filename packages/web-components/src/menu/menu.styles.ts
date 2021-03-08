@@ -16,6 +16,11 @@ export const MenuStyles = css`
     min-width: 64px;
   }
 
+  :host([slot='submenu']) {
+    width: max-content;
+    margin: 0 calc(var(--design-unit) * 1px);
+  }
+
   ::slotted(hr) {
     box-sizing: content-box;
     height: 0;

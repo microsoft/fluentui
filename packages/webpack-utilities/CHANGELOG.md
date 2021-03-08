@@ -1,8 +1,44 @@
 # Change Log - @fluentui/webpack-utilities
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Feb 2021 01:16:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.4..@fluentui/webpack-utilities_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.4)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.3..@fluentui/webpack-utilities_v8.0.0-beta.4)
+
+### Changes
+
+- Bump @fluentui/eslint-plugin to v1.0.0-beta.2 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.3)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.2..@fluentui/webpack-utilities_v8.0.0-beta.3)
+
+### Changes
+
+- Webpack dependency updated. ([PR #16942](https://github.com/microsoft/fluentui/pull/16942) by dzearing@microsoft.com)
+
+## [8.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.2)
+
+Tue, 09 Feb 2021 12:24:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.0.0-beta.1..@fluentui/webpack-utilities_v8.0.0-beta.2)
+
+### Changes
+
+- Combine react-internal back into react, and update references ([PR #16832](https://github.com/microsoft/fluentui/pull/16832) by elcraig@microsoft.com)
 
 ## [8.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.0.0-beta.1)
 

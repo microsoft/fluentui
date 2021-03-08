@@ -196,7 +196,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                     text-align: center;
                   }
               data-icon-name="Info"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -236,9 +235,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
               border-color: Highlight;
-            }
-            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -446,6 +444,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="Globe"
+          role="img"
           title="Globe"
         >
           
@@ -479,9 +478,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
               border-color: Highlight;
-            }
-            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >
@@ -661,9 +659,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+              -ms-high-contrast-adjust: none;
               border-color: Highlight;
-            }
-            @media screen and (forced-colors: active){&:hover {
               forced-color-adjust: none;
             }
       >

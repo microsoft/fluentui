@@ -270,7 +270,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -315,7 +314,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -810,7 +808,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -932,7 +930,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -977,7 +974,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1093,7 +1089,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -1348,7 +1343,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1470,7 +1465,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1515,7 +1509,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1631,7 +1624,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -1886,7 +1878,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2008,7 +2000,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2053,7 +2044,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2169,7 +2159,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -2424,7 +2413,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2546,7 +2535,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2591,7 +2579,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2707,7 +2694,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -2962,7 +2948,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3084,7 +3070,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3129,7 +3114,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3245,7 +3229,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -3500,7 +3483,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3622,7 +3605,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3667,7 +3649,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3783,7 +3764,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -4038,7 +4018,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4160,7 +4140,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4205,7 +4184,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4321,7 +4299,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -4576,7 +4553,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4698,7 +4675,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4743,7 +4719,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4859,7 +4834,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;
@@ -5114,7 +5088,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                       >
                         <div
                           aria-checked={false}
-                          aria-label="Row checkbox"
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5236,7 +5210,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     color: WindowText;
                                   }
                               data-icon-name="CircleRing"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5281,7 +5254,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                     forced-color-adjust: none;
                                   }
                               data-icon-name="StatusCircleCheckmark"
-                              role="presentation"
                               style={
                                 Object {
                                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -5397,7 +5369,6 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
                                   outline: 1px solid WindowText;
                                 }
                                 @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-                                  -ms-high-contrast-adjust: none;
                                   border-bottom: none;
                                   color: LinkText;
                                   forced-color-adjust: none;

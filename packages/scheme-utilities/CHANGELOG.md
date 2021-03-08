@@ -1,8 +1,80 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Thu, 28 Jan 2021 12:25:56 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Mar 2021 00:10:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.2)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.1..@fluentui/scheme-utilities_v8.0.2)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.19..@fluentui/scheme-utilities_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.19)
+
+Mon, 22 Feb 2021 12:26:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.18..@fluentui/scheme-utilities_v8.0.0-beta.19)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.19 ([PR #17061](https://github.com/microsoft/fluentui/pull/17061) by elcraig@microsoft.com)
+
+## [8.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.18)
+
+Thu, 18 Feb 2021 19:38:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.17..@fluentui/scheme-utilities_v8.0.0-beta.18)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.18 ([PR #17048](https://github.com/microsoft/fluentui/pull/17048) by elcraig@microsoft.com)
+
+## [8.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.17)
+
+Thu, 18 Feb 2021 12:27:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.16..@fluentui/scheme-utilities_v8.0.0-beta.17)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.17 ([PR #16975](https://github.com/microsoft/fluentui/pull/16975) by elcraig@microsoft.com)
+
+## [8.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.16)
+
+Mon, 15 Feb 2021 12:22:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.15..@fluentui/scheme-utilities_v8.0.0-beta.16)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.16 ([PR #16880](https://github.com/microsoft/fluentui/pull/16880) by xgao@microsoft.com)
+
+## [8.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.15)
+
+Fri, 12 Feb 2021 12:26:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.14..@fluentui/scheme-utilities_v8.0.0-beta.15)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.15 ([PR #16935](https://github.com/microsoft/fluentui/pull/16935) by xgao@microsoft.com)
+
+## [8.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.14)
+
+Thu, 11 Feb 2021 00:58:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.0.0-beta.13..@fluentui/scheme-utilities_v8.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/theme to v2.0.0-beta.14 ([PR #16911](https://github.com/microsoft/fluentui/pull/16911) by xgao@microsoft.com)
 
 ## [8.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.0.0-beta.13)
 

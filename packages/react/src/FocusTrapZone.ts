@@ -1,1 +1,1 @@
-export * from '@fluentui/react-internal/lib/FocusTrapZone';
+export * from './components/FocusTrapZone/index';

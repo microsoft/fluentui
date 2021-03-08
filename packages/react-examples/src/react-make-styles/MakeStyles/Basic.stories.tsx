@@ -8,9 +8,9 @@ const useBasicStyles = makeStyles<{ primary?: boolean }>([
   [
     null,
     theme => ({
-      border: `5px solid ${theme.neutralColorTokens.neutralStroke1}`,
-      backgroundColor: theme.neutralColorTokens.neutralBackground1,
-      color: theme.neutralColorTokens.neutralForeground1,
+      border: `5px solid ${theme.alias.color.neutral.neutralStroke1}`,
+      backgroundColor: theme.alias.color.neutral.neutralBackground1,
+      color: theme.alias.color.neutral.neutralForeground1,
 
       margin: '5px',
       padding: '5px',
@@ -19,8 +19,8 @@ const useBasicStyles = makeStyles<{ primary?: boolean }>([
   [
     s => s.primary,
     theme => ({
-      borderColor: theme.neutralColorTokens.brandForeground,
-      color: theme.neutralColorTokens.brandForeground,
+      borderColor: theme.alias.color.neutral.brandForeground,
+      color: theme.alias.color.neutral.brandForeground,
     }),
   ],
 ]);

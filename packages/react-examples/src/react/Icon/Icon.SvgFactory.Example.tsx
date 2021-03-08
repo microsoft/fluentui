@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactIcons from '@fluentui/react-icons-mdl2';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 
 const classes = mergeStyleSets({
@@ -70,10 +70,10 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
           .map((Icon: React.FunctionComponent<ReactIcons.ISvgIconProps>) => (
             <div key={Icon.displayName} className={classes.cell}>
               {/*
-                Provide an `aria-label` (and set `role="img"`) for screen reader users if the icon is not accompanied by
+                Provide an `aria-label` for screen reader users if the icon is not accompanied by
                 text that conveys the same meaning.
               */}
-              <Icon aria-label={Icon.displayName} role="img" className={classes.icon} />
+              <Icon aria-label={Icon.displayName?.replace('Icon', '')} className={classes.icon} />
               <br />
               <code className={classes.code}>{Icon.displayName}</code>
             </div>

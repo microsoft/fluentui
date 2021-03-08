@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { LayoutGroup } from '@fluentui/react-experiments/lib/LayoutGroup';
-import { PrimaryButton } from '@fluentui/react/lib/compat/Button';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { Dropdown } from '@fluentui/react/lib/Dropdown';
 import { TextField } from '@fluentui/react/lib/TextField';
 import { ChoiceGroup } from '@fluentui/react/lib/ChoiceGroup';

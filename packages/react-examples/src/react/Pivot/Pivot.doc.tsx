@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { PivotBasicExample } from './Pivot.Basic.Example';
 import { PivotIconCountExample } from './Pivot.IconCount.Example';
 import { PivotLargeExample } from './Pivot.Large.Example';
@@ -26,7 +26,7 @@ const PivotOverflowMenuExampleCode = require('!raw-loader?esModule=false!@fluent
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
   componentName: 'Pivot',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Pivot',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Pivot',
   examples: [
     {
       title: 'Default Pivot',

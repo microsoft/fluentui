@@ -189,10 +189,13 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             }
       >
         <div
-          role="list"
+          aria-multiselectable="true"
+          aria-orientation="horizontal"
+          role="listbox"
         >
           <div
             aria-labelledby="selectedItemPersona-id__2"
+            aria-selected={false}
             className=
                 ms-PickerPersona-container
                 {
@@ -237,7 +240,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
             data-is-sub-focuszone={true}
             data-selection-index={0}
             draggable={true}
-            role="listitem"
+            role="option"
           >
             <div
               hidden={true}
@@ -370,7 +373,6 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           text-align: center;
                         }
                     data-icon-name="Add"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -804,7 +806,6 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                           text-align: center;
                         }
                     data-icon-name="Cancel"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",

@@ -13,6 +13,7 @@ import {
   useStyles,
   ComponentWithAs,
   ShorthandConfig,
+  useContextSelectors,
 } from '@fluentui/react-bindings';
 
 import { Ref, handleRef } from '@fluentui/react-component-ref';
@@ -40,7 +41,6 @@ import { ComponentEventHandler, ShorthandValue, ShorthandCollection } from '../.
 import { Popper, PopperShorthandProps, partitionPopperPropsFromShorthand } from '../../utils/positioner';
 
 import { MenuContext, MenuItemSubscribedValue } from './menuContext';
-import { useContextSelectors } from '@fluentui/react-context-selector';
 
 export interface MenuItemSlotClassNames {
   submenu: string;
@@ -308,7 +308,10 @@ export const MenuItem = compose<'a', MenuItemProps, MenuItemStylesProps, {}, {}>
 
     const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
       if (!isSubmenuOpen()) return;
-      trySetMenuOpen(false, e);
+      // we only need to dismiss if the scroll happens outside the menu
+      if (!menuRef.current.contains(e.target as Node)) {
+        trySetMenuOpen(false, e);
+      }
     };
 
     const outsideClickHandler = (e: MouseEvent) => {

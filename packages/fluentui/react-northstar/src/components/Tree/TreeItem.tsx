@@ -29,6 +29,7 @@ import {
   ShorthandValue,
   ShorthandCollection,
   FluentComponentStaticProps,
+  ComponentKeyboardEventHandler,
 } from '../../types';
 import { TreeTitle, TreeTitleProps } from './TreeTitle';
 import { BoxProps } from '../Box/Box';
@@ -100,6 +101,14 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** A selection indicator icon can be customized. */
   selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /**
+   * Called on item key down.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onKeyDown?: ComponentKeyboardEventHandler<TreeItemProps>;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>> & {
@@ -145,6 +154,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     focusItemById,
     expandSiblings,
     toggleItemSelect,
+    getToFocusIDByFirstCharacter,
   } = React.useContext(TreeContext);
 
   const { selected, hasSubtree, childrenIds } = getItemById(id);
@@ -256,6 +266,18 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
     _.invoke(props, 'onClick', e, props);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key && e.key.length === 1 && e.key.match(/\S/) && e.key !== '*') {
+      e.preventDefault();
+      e.stopPropagation();
+      const toFocusID = getToFocusIDByFirstCharacter(e, props.id);
+      if (toFocusID !== props.id) {
+        focusItemById(toFocusID);
+      }
+    }
+    _.invoke(props, 'onKeyDown', e, props);
+  };
+
   const ref = React.useCallback(
     node => {
       registerItemRef(id, node);
@@ -273,6 +295,7 @@ export const TreeItem: ComponentWithAs<'div', TreeItemProps> & FluentComponentSt
         id,
         selected: selected === true,
         onClick: handleClick,
+        onKeyDown: handleKeyDown,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -330,6 +353,7 @@ TreeItem.propTypes = {
   title: customPropTypes.itemShorthand,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
   selectable: PropTypes.bool,
+  onKeyDown: PropTypes.func,
 };
 
 TreeItem.defaultProps = {

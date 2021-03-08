@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text renders Text with {0} as its children correctly 1`] = `
+<span
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #323130;
+        display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        moz-osx-font-smoothing: grayscale;
+        webkit-font-smoothing: antialiased;
+      }
+>
+  0
+</span>
+`;
+
+exports[`Text renders default Text correctly 1`] = `
+<span
+  className=
+
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #323130;
+        display: inline;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        moz-osx-font-smoothing: grayscale;
+        webkit-font-smoothing: antialiased;
+      }
+>
+  I'm default text
+</span>
+`;

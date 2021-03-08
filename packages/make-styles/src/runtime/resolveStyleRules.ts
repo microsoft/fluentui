@@ -4,7 +4,7 @@ import { expand } from 'inline-style-expand-shorthand';
 import { HASH_PREFIX, RTL_PREFIX } from '../constants';
 import { MakeStyles, MakeStylesResolvedRule } from '../types';
 import { compileCSS } from './compileCSS';
-import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeRule';
+import { compileKeyframeRule, compileKeyframesCSS } from './compileKeyframeCSS';
 import { hashString } from './utils/hashString';
 import { generateCombinedQuery } from './utils/generateCombinedMediaQuery';
 import { isMediaQuerySelector } from './utils/isMediaQuerySelector';
@@ -22,7 +22,7 @@ export function resolveStyleRules(
   result: Record<string, MakeStylesResolvedRule> = {},
   rtlValue?: string,
 ): Record<string, MakeStylesResolvedRule> {
-  const expandedStyles = (expand(styles) as unknown) as MakeStyles;
+  const expandedStyles: MakeStyles = expand(styles);
   const properties = Object.keys(expandedStyles);
 
   // TODO: => for-in loop

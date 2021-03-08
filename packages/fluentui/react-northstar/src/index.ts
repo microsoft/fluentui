@@ -188,6 +188,7 @@ export * from './components/Toolbar/ToolbarItemIcon';
 export * from './components/Toolbar/ToolbarMenu';
 export * from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemContent';
 export * from './components/Toolbar/ToolbarMenuItemIcon';
 export * from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';
@@ -198,6 +199,7 @@ export * from './components/Toolbar/ToolbarRadioGroup';
 export * from './components/Tree/Tree';
 export * from './components/Tree/TreeItem';
 export * from './components/Tree/TreeTitle';
+export * from './components/Tree/context';
 export * from './components/Tree/hooks/useTree';
 export * from './components/Tree/hooks/useVirtualTree';
 

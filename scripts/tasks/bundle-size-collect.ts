@@ -11,7 +11,7 @@ export function bundleSizeCollect() {
 
   const distRoot = path.join(__dirname, '../../apps/test-bundles/dist');
   const sizes = {};
-  const outputFilename = 'bundlesizes.json';
+  const outputFilename = 'bundlesize.json';
 
   var items = fs.readdirSync(distRoot);
   items.forEach(item => {

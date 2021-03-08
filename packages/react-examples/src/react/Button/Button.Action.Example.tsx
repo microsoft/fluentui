@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IIconProps } from '@fluentui/react';
-import { ActionButton } from '@fluentui/react/lib/compat/Button';
+import { ActionButton } from '@fluentui/react/lib/Button';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)

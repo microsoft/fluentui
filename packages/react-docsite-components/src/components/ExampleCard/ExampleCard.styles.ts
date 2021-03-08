@@ -1,7 +1,7 @@
 import { AnimationVariables, IRawStyle, getTheme, HighContrastSelector } from '@fluentui/react/lib/Styling';
 import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IDropdownStyles } from '@fluentui/react/lib/Dropdown';
-import { IButtonStyles } from '@fluentui/react/lib/compat/Button';
+import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
 import { NeutralColors } from '@fluentui/theme';
 

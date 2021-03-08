@@ -83,7 +83,6 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
     iconForegroundColor: semanticColors.bodySubtext,
     headerForegroundColor: semanticColors.bodyText,
     headerBackgroundColor: semanticColors.bodyBackground,
-    dropdownChevronForegroundColor: palette.neutralTertiary,
     resizerColor: palette.neutralTertiaryAlt,
   };
 

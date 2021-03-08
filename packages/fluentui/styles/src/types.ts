@@ -25,7 +25,7 @@ export type ObjectOrFunc<TResult, TArg = {}> = ((arg: TArg) => TResult) | TResul
 // CSS in JS
 // ========================================================
 
-type AnimationKeyFrame = Record<'from' | 'to' | string, ICSSInJSStyle>;
+export type AnimationKeyFrame = Record<'from' | 'to' | string, ICSSInJSStyle>;
 
 export interface AnimationName<P = Record<string, any>> {
   keyframe?: AnimationKeyFrame | ((params: P) => AnimationKeyFrame);

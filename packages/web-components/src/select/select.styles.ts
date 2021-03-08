@@ -5,9 +5,11 @@ import { elevation } from '../styles/elevation';
 import {
   accentFillHoverBehavior,
   accentForegroundCutRestBehavior,
+  neutralFillHoverBehavior,
   neutralFillInputActiveBehavior,
   neutralFillInputHoverBehavior,
   neutralFillInputRestBehavior,
+  neutralFillRestBehavior,
   neutralFillStealthRestBehavior,
   neutralFocusBehavior,
   neutralFocusInnerAccentBehavior,
@@ -182,9 +184,24 @@ export const SelectStyles = css`
         flex: 0 0 auto;
     }
 
+    :host([filled]) {
+        background: ${neutralFillRestBehavior.var};
+        border-color: transparent;
+    }
+
+    :host([filled]:hover:not([disabled])) {
+        background: ${neutralFillHoverBehavior.var};
+        border-color: transparent;
+    }
+
+    :host([filled]:${focusVisible}) {
+        border-color: ${neutralFocusBehavior.var};
+    }
 `.withBehaviors(
   accentFillHoverBehavior,
   accentForegroundCutRestBehavior,
+  neutralFillRestBehavior,
+  neutralFillHoverBehavior,
   neutralOutlineActiveBehavior,
   neutralOutlineHoverBehavior,
   neutralOutlineRestBehavior,

@@ -2,6 +2,160 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "@fluentui/web-components_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add menuitemcheckbox and menuitemradio styling to menu-item",
+            "author": "chhol@microsoft.com",
+            "commit": "a8552af0ad666f77e2ba8a3aa3768611d6fed3a5",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add combobox as a new web component",
+            "author": "chhol@microsoft.com",
+            "commit": "7e0fcf35ae384bf5047acca7a5c52634664a504a",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Feb 2021 01:16:27 GMT",
+      "tag": "@fluentui/web-components_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Update beachball config",
+            "author": "elcraig@microsoft.com",
+            "commit": "71f0a43b375b4a932ecbcf6778288422db2dc267",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Feb 2021 01:15:27 GMT",
+      "tag": "@fluentui/web-components_v0.14.2",
+      "version": "0.14.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update card background color attribute to reflect from view",
+            "author": "chhol@microsoft.com",
+            "commit": "d91f1404203ae715d9c9f9edf98f38ebef9eb634",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "author": "chhol@microsoft.com",
+            "commit": "d91f1404203ae715d9c9f9edf98f38ebef9eb634",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Feb 2021 12:26:22 GMT",
+      "tag": "@fluentui/web-components_v0.14.1",
+      "version": "0.14.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove hard coded background color in favor of default design system behavior",
+            "author": "chhol@microsoft.com",
+            "commit": "0f7fa189c9b96cf65609c54781f958d0679e4678",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Feb 2021 12:26:20 GMT",
+      "tag": "@fluentui/web-components_v0.14.0",
+      "version": "0.14.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Improved support for design system neutral color - Added a neutralBaseColor property in the design system - Update neutralPalette and accentPalette when respective baseColor changes - Updated Card to base background color on local neutralPalette - Updated Card stories to illustrate use cases",
+            "author": "brheston@microsoft.com",
+            "commit": "c71f383781bb3b10dbce840d64881a94004fac95",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 12:18:41 GMT",
+      "tag": "@fluentui/web-components_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: use exact version for typescript devDep",
+            "author": "martinhochel@microsoft.com",
+            "commit": "7566015a7edd355b4fcd3796bc8f44f732ef0877",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 11 Feb 2021 02:38:00 GMT",
+      "tag": "@fluentui/web-components_v0.13.1",
+      "version": "0.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove duplicate color export from web components package",
+            "author": "chhol@microsoft.com",
+            "commit": "abe60136582d21dafec4f192b41be8bbe940487f",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 09 Feb 2021 00:56:52 GMT",
+      "tag": "@fluentui/web-components_v0.13.0",
+      "version": "0.13.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add neutral-contrast-fill recipe",
+            "author": "khamu@microsoft.com",
+            "commit": "9a4c92e59563c268c3905152e6641e78c1ac2616",
+            "package": "@fluentui/web-components"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "fix: export missing parseColorString util",
+            "author": "chhol@microsoft.com",
+            "commit": "c4508a1520f5d87c120f481db32f58911a04e9ba",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Feb 2021 12:23:08 GMT",
+      "tag": "@fluentui/web-components_v0.12.1",
+      "version": "0.12.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "correct focus visible outline on accent button and anchor styles",
+            "author": "sethdonohue@Admins-MBP.guest.corp.microsoft.com",
+            "commit": "7e1723e57c7956e09c206327e2b79114a18a4492",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Feb 2021 05:51:40 GMT",
       "tag": "@fluentui/web-components_v0.12.0",
       "version": "0.12.0",

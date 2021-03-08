@@ -5,7 +5,7 @@ import { IFocusZoneProps } from '../../FocusZone';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../DragDrop';
 import { ISelection, SelectionMode } from '../../Selection';
-import { IViewport } from '@fluentui/react-internal/lib/utilities/decorators/withViewport';
+import { IViewport } from '../../utilities/decorators/withViewport';
 import { ITheme, IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IGroupHeaderProps } from './GroupHeader.types';
@@ -282,6 +282,18 @@ export interface IGroupDividerProps {
 
   /** Defines the number of columns a group header needs to span in the case of a grid or treegrid */
   ariaColSpan?: number;
+
+  /** Defines the number of items in the current set of listitems or treeitems */
+  ariaSetSize?: number;
+
+  /** Defines an element's number or position in the current set of listitems or treeitems */
+  ariaPosInSet?: number;
+
+  /** Defines the number of items in the current set of grid items */
+  ariaRowCount?: number;
+
+  /** Defines an element's number or position in the current set of grid items */
+  ariaRowIndex?: number;
 
   /**
    * Width corresponding to a single level.

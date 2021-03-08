@@ -170,6 +170,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     targetRef,
     unstable_disableTether,
     unstable_pinned,
+    autoSize,
   } = props;
 
   const proposedPlacement = getPlacement({ align, position, rtl });
@@ -292,6 +293,35 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
           fn: handleUpdate,
         },
         popperInitialPositionFix.modifier,
+
+        autoSize && {
+          // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
+          // popper-maxsize-modifier only calculates the max sizes. This modifier applies the max sizes when overflow is detected
+          name: 'applyMaxSize',
+          enabled: true,
+          phase: 'beforeWrite' as PopperJs.ModifierPhases,
+          requiresIfExists: ['offset', 'preventOverflow', 'flip'],
+          options: {
+            altBoundary: true,
+            boundary: getBoundary(contentRef.current, overflowBoundary),
+          },
+          fn({ state, options }: PopperJs.ModifierArguments<{}>) {
+            const overflow = PopperJs.detectOverflow(state, options);
+            const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
+            const { width, height } = state.rects.popper;
+            const [basePlacement] = state.placement.split('-');
+
+            const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
+            const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
+
+            if (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width')) {
+              state.styles.popper.maxWidth = `${width - overflow[widthProp] - x}px`;
+            }
+            if (overflow[heightProp] > 0 && (autoSize === true || autoSize === 'height')) {
+              state.styles.popper.maxHeight = `${height - overflow[heightProp] - y}px`;
+            }
+          },
+        },
       ].filter(Boolean),
       onFirstUpdate: state => handleUpdate({ state }),
     };
@@ -311,6 +341,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
     unstable_disableTether,
     unstable_pinned,
     popperInitialPositionFix,
+    autoSize,
   ]);
 
   const destroyInstance = React.useCallback(() => {

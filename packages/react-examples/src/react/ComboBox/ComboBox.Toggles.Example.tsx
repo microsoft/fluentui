@@ -1,15 +1,16 @@
 import * as React from 'react';
 import {
   ComboBox,
-  Fabric,
+  Stack,
   IComboBoxOption,
-  mergeStyles,
   SelectableOptionMenuItemType,
   Toggle,
-} from '@fluentui/react/lib/index';
+  IStackTokens,
+  IComboBoxStyles,
+} from '@fluentui/react';
 import { useBoolean } from '@fluentui/react-hooks';
 
-const INITIAL_OPTIONS: IComboBoxOption[] = [
+const options: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
@@ -24,30 +25,27 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'I', text: 'Option I' },
   { key: 'J', text: 'Option J' },
 ];
+// Optional styling to make the example look nicer
+const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: 300 } };
+const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 
-const wrapperClassName = mergeStyles({
-  display: 'flex',
-  selectors: {
-    '& > *': { marginRight: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' },
-  },
-});
-
-export const ComboBoxTogglesExample: React.FC = () => {
-  const [autoComplete, { toggle: ToggleAutoComplete }] = useBoolean(false);
-  const [allowFreeform, { toggle: ToggleAllowFreeform }] = useBoolean(true);
+export const ComboBoxTogglesExample: React.FunctionComponent = () => {
+  const [autoComplete, { toggle: toggleAutoComplete }] = useBoolean(false);
+  const [allowFreeform, { toggle: toggleAllowFreeform }] = useBoolean(true);
 
   return (
-    <Fabric className={wrapperClassName}>
+    <Stack horizontal tokens={stackTokens}>
       <ComboBox
         label="ComboBox with toggleable freeform/auto-complete"
-        key={'' + autoComplete + allowFreeform}
         allowFreeform={allowFreeform}
         autoComplete={autoComplete ? 'on' : 'off'}
-        options={INITIAL_OPTIONS}
+        options={options}
+        styles={comboBoxStyles}
+        // Force re-creating the component when the toggles change (for demo purposes)
+        key={'' + autoComplete + allowFreeform}
       />
-      <Toggle label="Allow freeform" checked={allowFreeform} onChange={ToggleAllowFreeform} />
-      <Toggle label="Auto-complete" checked={autoComplete} onChange={ToggleAutoComplete} />
-    </Fabric>
+      <Toggle label="Allow freeform" checked={allowFreeform} onChange={toggleAllowFreeform} />
+      <Toggle label="Auto-complete" checked={autoComplete} onChange={toggleAutoComplete} />
+    </Stack>
   );
 };

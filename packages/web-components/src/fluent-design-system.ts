@@ -39,6 +39,12 @@ export interface DesignSystem {
   backgroundColor: string;
 
   /**
+   * The neutral color, which the neutral palette is based on.
+   * Keep this value in sync with neutralPalette.
+   */
+  neutralBaseColor: string;
+
+  /**
    * The accent color, which the accent palette is based on.
    * Keep this value in sync with accentPalette.
    */
@@ -46,6 +52,7 @@ export interface DesignSystem {
 
   /**
    * An array of colors in a ramp from light to dark, used to look up values for neutral color recipes.
+   * Keep this value in sync with neutralBaseColor.
    * Generate by calling createColorPalette.
    */
   neutralPalette: string[];
@@ -190,6 +197,14 @@ export interface DesignSystem {
   neutralOutlineHoverDelta: number;
   neutralOutlineActiveDelta: number;
   neutralOutlineFocusDelta: number;
+
+  /*
+   * Color swatch deltas for the neutral-contrast-fill recipe.
+   */
+  neutralContrastFillRestDelta: number;
+  neutralContrastFillHoverDelta: number;
+  neutralContrastFillActiveDelta: number;
+  neutralContrastFillFocusDelta: number;
 }
 
 /**
@@ -228,6 +243,7 @@ export const DesignSystemDefaults: DesignSystem = {
   direction: Direction.ltr,
   disabledOpacity: 0.3,
   focusOutlineWidth: 2,
+  neutralBaseColor: '#808080',
   neutralPalette: defaultNeutralPalette,
   outlineWidth: 1,
 
@@ -280,6 +296,11 @@ export const DesignSystemDefaults: DesignSystem = {
   neutralOutlineHoverDelta: 40,
   neutralOutlineActiveDelta: 16,
   neutralOutlineFocusDelta: 25,
+
+  neutralContrastFillRestDelta: 0,
+  neutralContrastFillHoverDelta: -3,
+  neutralContrastFillActiveDelta: 7,
+  neutralContrastFillFocusDelta: 0,
 };
 
 /**
@@ -305,6 +326,11 @@ export function getDesignSystemValue<T extends DesignSystem, K extends keyof T>(
  * Retrieve the backgroundColor when invoked with a DesignSystem
  */
 export const backgroundColor: DesignSystemResolver<string> = getDesignSystemValue('backgroundColor');
+
+/**
+ * Retrieve the neutralBaseColor when invoked with a DesignSystem
+ */
+export const neutralBaseColor: DesignSystemResolver<string> = getDesignSystemValue('neutralBaseColor');
 
 /**
  * Retrieve the accentBaseColor when invoked with a DesignSystem
@@ -451,3 +477,16 @@ export const neutralOutlineActiveDelta: DesignSystemResolver<number> = getDesign
 );
 
 export const neutralOutlineFocusDelta: DesignSystemResolver<number> = getDesignSystemValue('neutralOutlineFocusDelta');
+
+export const neutralContrastFillRestDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillRestDelta',
+);
+export const neutralContrastFillHoverDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillHoverDelta',
+);
+export const neutralContrastFillActiveDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillActiveDelta',
+);
+export const neutralContrastFillFocusDelta: DesignSystemResolver<number> = getDesignSystemValue(
+  'neutralContrastFillFocusDelta',
+);

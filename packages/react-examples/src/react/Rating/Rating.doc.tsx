@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { RatingBasicExample } from './Rating.Basic.Example';
 
-import { IDocPageProps } from '@fluentui/react-internal/lib/common/DocPage.types';
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { RatingButtonControlledExample } from './Rating.ButtonControlled.Example';
 
 const RatingBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Rating/Rating.Basic.Example.tsx') as string;
@@ -10,7 +10,7 @@ const RatingButtonControlledExampleCode = require('!raw-loader?esModule=false!@f
 export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
   componentName: 'Rating',
-  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-internal/src/components/Rating',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react/src/components/Rating',
   examples: [
     {
       title: 'Rating',

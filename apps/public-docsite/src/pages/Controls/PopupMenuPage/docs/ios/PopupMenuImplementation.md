@@ -6,10 +6,10 @@
 
 ### Source code
 
-[PopupMenuController](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Popup%20Menu/PopupMenuController.swift)
+[PopupMenuController](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Popup%20Menu/PopupMenuController.swift)
 
-[PopupMenuItem](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI/Popup%20Menu/PopupMenuItem.swift)
+[PopupMenuItem](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Popup%20Menu/PopupMenuItem.swift)
 
 ### Sample code
 
-[PopupMenuController demo](https://github.com/microsoft/fluentui-apple/blob/master/ios/FluentUI.Demo/FluentUI.Demo/Demos/PopupMenuDemoController.swift)
+[PopupMenuController demo](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI.Demo/FluentUI.Demo/Demos/PopupMenuDemoController.swift)
