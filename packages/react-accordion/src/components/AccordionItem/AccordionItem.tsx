@@ -6,8 +6,7 @@ import { useAccordionItemStyles } from './useAccordionItemStyles';
 
 /**
  * Define a styled AccordionItem, using the `useAccordionItem` and `useAccordionItemStyles` hooks.
- * {@docCategory AccordionItem\}
- */
+ * {@docCategoryAccordionItem} */
 export const AccordionItem = React.forwardRef<HTMLElement, AccordionItemProps>((props, ref) => {
   const state = useAccordionItem(props, ref);
 

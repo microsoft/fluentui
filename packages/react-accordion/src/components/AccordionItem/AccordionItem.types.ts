@@ -9,8 +9,7 @@ export interface AccordionItemContext {
 }
 
 /**
- * {@docCategory AccordionItem\}
- */
+ * {@docCategoryAccordionItem} */
 export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Disables opening/closing of panel
@@ -19,8 +18,7 @@ export interface AccordionItemProps extends ComponentProps, React.HTMLAttributes
 }
 
 /**
- * {@docCategory AccordionItem\}
- */
+ * {@docCategoryAccordionItem} */
 export interface AccordionItemState extends AccordionItemProps {
   /**
    * Ref to the root slot

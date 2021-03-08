@@ -1,3 +1,11 @@
+/**
+ * This file is from @reach/descendants
+ * https://github.com/reach/reach-ui/tree/develop/packages/descendants
+ *
+ * Copying it was required due to TS version issues. The original one required TS 3.8.
+ * Next step would be to implement an internal version of it under react-utilities
+ */
+
 import * as React from 'react';
 
 export function createDescendantContext<DescendantType extends Descendant>(name: string, initialValue = {}) {

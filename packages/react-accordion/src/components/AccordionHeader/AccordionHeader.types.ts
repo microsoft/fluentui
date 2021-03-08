@@ -5,16 +5,14 @@ export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
 
 /**
- * {@docCategory AccordionHeader\}
- */
+ * {@docCategoryAccordionHeader} */
 export interface AccordionHeaderExpandIconProps extends React.HTMLAttributes<HTMLElement> {
   open: boolean;
   expandIconPosition: AccordionHeaderExpandIconPosition;
 }
 
 /**
- * {@docCategory AccordionHeader\}
- */
+ * {@docCategoryAccordionHeader} */
 export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
   /**
    * Size of spacing in the heading
@@ -35,8 +33,7 @@ export interface AccordionHeaderProps extends ComponentProps, React.HTMLAttribut
 }
 
 /**
- * {@docCategory AccordionHeader\}
- */
+ * {@docCategoryAccordionHeader} */
 export interface AccordionHeaderState extends AccordionHeaderProps {
   size: AccordionHeaderSize;
   /**

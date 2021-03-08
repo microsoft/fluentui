@@ -6,8 +6,7 @@ import { useAccordionHeaderStyles } from './useAccordionHeaderStyles';
 
 /**
  * Define a styled AccordionHeader, using the `useAccordionHeader` and `useAccordionHeaderStyles` hooks.
- * {@docCategory AccordionHeader\}
- */
+ * {@docCategoryAccordionHeader} */
 export const AccordionHeader = React.forwardRef<HTMLElement, AccordionHeaderProps>((props, ref) => {
   const state = useAccordionHeader(props, ref);
 

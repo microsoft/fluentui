@@ -18,7 +18,7 @@ export interface AccordionContext {
 
 type AccordionHeaderCommonProps = Pick<AccordionHeaderProps, 'expandIcon' | 'expandIconPosition' | 'button' | 'size'>;
 /**
- * {@docCategory Accordion\}
+ * {@docCategory Accordion}
  */
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
   /**
@@ -41,7 +41,7 @@ export interface AccordionProps extends ComponentProps, AccordionHeaderCommonPro
 }
 
 /**
- * {@docCategory Accordion\}
+ * {@docCategory Accordion}
  */
 export interface AccordionState extends AccordionProps {
   /**
