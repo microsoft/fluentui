@@ -7,6 +7,9 @@ export type ChangeCallback<
   TEvent extends React.SyntheticEvent<TElement> | undefined
 > = (ev: TEvent, newValue: TValue | undefined) => void;
 
+/**
+ * Default value can be a value or an initializer
+ */
 type DefaultValue<TValue> = TValue | (() => TValue);
 
 /**
