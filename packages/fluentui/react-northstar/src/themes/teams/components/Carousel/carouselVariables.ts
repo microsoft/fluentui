@@ -7,8 +7,6 @@ export interface CarouselVariables {
   focusOuterBorderColor: string;
   focusOuterBorderRadius: string;
 
-  paddleHeight: string;
-
   paddleColor: string;
   paddleBackgroundColor: string;
   paddleBorderRadius: string;
@@ -31,6 +29,8 @@ export interface CarouselVariables {
   paddleBackgroundColorDisabled: string;
   paddleBorderColorDisabled: string;
 
+  paddleHeight: string;
+
   paddleIndicatorSize: string;
 
   focusBorderRadius: string;
@@ -46,29 +46,28 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
   focusOuterBorderColor: siteVars.focusOuterBorderColor,
   focusOuterBorderRadius: siteVars.borderRadius,
 
-  paddleHeight: pxToRem(32),
-
-  paddleColor: siteVars.colorScheme.default.foreground,
-  paddleBackgroundColor: siteVars.colorScheme.default.background,
-  paddleBorderRadius: siteVars.borderRadius,
-  paddleBorderColor: siteVars.colorScheme.default.border,
-  paddleBoxShadow: siteVars.shadowLevel1,
-
-  paddleColorHover: siteVars.colorScheme.brand.foregroundHover,
-  paddleBackgroundColorHover: siteVars.colorScheme.default.backgroundHover,
-  paddleBorderColorHover: siteVars.colorScheme.default.borderHover,
-
-  paddleColorActive: siteVars.colorScheme.default.foregroundPressed,
-  paddleBackgroundColorActive: siteVars.colorScheme.default.backgroundPressed,
-  paddleBorderColorActive: siteVars.colorScheme.default.borderPressed,
-
-  paddleBackgroundColorFocus: undefined,
-  paddleBorderColorFocus: undefined,
+  paddleColor: siteVars.colorScheme.default.foreground4,
+  paddleColorActive: undefined,
+  paddleColorHover: undefined,
   paddleColorFocus: undefined,
-
   paddleColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
+
+  paddleBackgroundColor: siteVars.colorScheme.onyx.background3,
+  paddleBackgroundColorActive: siteVars.colorScheme.onyx.backgroundPressed,
+  paddleBackgroundColorHover: siteVars.colorScheme.onyx.backgroundHover,
+  paddleBackgroundColorFocus: undefined,
   paddleBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
-  paddleBorderColorDisabled: 'transparent',
+
+  paddleBorderColor: 'transparent',
+  paddleBorderColorActive: undefined,
+  paddleBorderColorHover: undefined,
+  paddleBorderColorFocus: undefined,
+  paddleBorderColorDisabled: undefined,
+
+  paddleBorderRadius: siteVars.borderRadius,
+  paddleBoxShadow: undefined,
+
+  paddleHeight: pxToRem(32),
 
   paddleIndicatorSize: pxToRem(16),
 
