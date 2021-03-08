@@ -186,7 +186,7 @@ export interface PopperChildrenProps {
 
 export type PopperShorthandProps = PositioningProps;
 
-export type UsePopperOptions = Omit<PopperProps, 'children' | 'targetRef'> & {
+export type PopperOptions = Omit<PopperProps, 'children' | 'targetRef'> & {
   onStateUpdate?: (state: Partial<PopperJs.State>) => void;
 };
 

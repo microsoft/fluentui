@@ -13,7 +13,7 @@ import { isBrowser } from '../isBrowser';
 import { getBoundary } from './getBoundary';
 import { getScrollParent } from './getScrollParent';
 import { applyRtlToOffset, getPlacement } from './positioningHelper';
-import { PopperInstance, UsePopperOptions } from './types';
+import { PopperInstance, PopperOptions } from './types';
 
 //
 // Dev utils to detect if nodes have "autoFocus" props.
@@ -52,12 +52,12 @@ function hasAutofocusFilter(node: Node) {
  * A callback is used there intentionally as some of Popper.js modifiers require DOM nodes (targer, container, arrow)
  * that can't be resolved properly during an initial rendering.
  *
- * @param {UsePopperOptions} options
+ * @param {PopperOptions} options
  * @param {React.MutableRefObject} popperOriginalPositionRef
  *
  * @returns {Function}
  */
-function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
+function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
     autoSize,
     flipBoundary,
@@ -255,10 +255,10 @@ function usePopperOptions(options: UsePopperOptions, popperOriginalPositionRef: 
  * - contains a specific to React fix related to initial positioning when containers have components with managed focus
  *   to avoid focus jumps
  *
- * @param {UsePopperOptions} options
+ * @param {PopperOptions} options
  */
 export function usePopper(
-  options: UsePopperOptions = {},
+  options: PopperOptions = {},
 ): [
   // React refs are supposed to be contravariant (allows a more general type to be passed rather than a more specific one)
   // However, Typescript currently can't infer that fact for refs
