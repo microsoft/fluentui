@@ -4,7 +4,6 @@ import { createReferenceFromClick, Box, Portal, PositioningProps, usePopper } fr
 const boxStyles: React.CSSProperties = {
   border: '1px dashed #ccc',
   color: 'blue',
-  justifySelf: 'end',
   textAlign: 'center',
   width: '250px',
 };
@@ -16,11 +15,11 @@ const buttonStyles = (active: boolean): React.CSSProperties => ({
   }),
 });
 const popperStyles: React.CSSProperties = {
-  background: 'blue',
-  color: 'white',
+  background: 'lightgray',
+  border: '2px dotted red',
   height: '50px',
+  textAlign: 'center',
   width: '100px',
-  border: '2px solid red',
 };
 
 const PopperExamplePositioning = () => {
@@ -33,7 +32,7 @@ const PopperExamplePositioning = () => {
   });
   const virtualEl = React.useRef(null);
 
-  const [referenceRef, popperRef] = usePopper({
+  const { targetRef, containerRef } = usePopper({
     align: popperProps.align,
     enabled: open,
     position: popperProps.position,
@@ -41,12 +40,12 @@ const PopperExamplePositioning = () => {
 
   React.useLayoutEffect(() => {
     if (box === 'context') {
-      referenceRef.current = virtualEl.current;
+      targetRef.current = virtualEl.current;
     }
-  }, [box, referenceRef]);
+  }, [box, targetRef]);
 
   return (
-    <div style={{ border: '2px dotted grey', margin: 100 }}>
+    <div style={{ border: '2px dotted grey', margin: 120 }}>
       <div style={{ display: 'flex', gap: '5px', flexDirection: 'column' }}>
         <div style={{ display: 'flex', gap: '5px' }}>
           <button id="open-popper" onClick={() => setOpen(true)} style={buttonStyles(open)}>
@@ -110,12 +109,16 @@ const PopperExamplePositioning = () => {
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', marginTop: 200 }}>
-        <Box content="Box A" ref={box === 'boxA' ? referenceRef : undefined} styles={boxStyles} />
-        <Box content="Box B" ref={box === 'boxB' ? referenceRef : undefined} styles={boxStyles} />
+        <Box content="Box A" ref={box === 'boxA' ? targetRef : undefined} styles={boxStyles} />
+        <Box
+          content="Box B"
+          ref={box === 'boxB' ? targetRef : undefined}
+          styles={{ ...boxStyles, justifySelf: 'end' }}
+        />
       </div>
 
       <Portal open={open}>
-        <div ref={popperRef} style={popperStyles}>
+        <div ref={containerRef} style={popperStyles}>
           A popper
         </div>
       </Portal>

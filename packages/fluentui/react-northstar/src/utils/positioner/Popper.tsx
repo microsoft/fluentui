@@ -20,7 +20,7 @@ export const Popper: React.FunctionComponent<PopperProps> = props => {
   const [computedPlacement, setComputedPlacement] = React.useState<PopperJs.Placement>(proposedPlacement);
 
   const popperRef = React.useRef<PopperRefHandle | null>(null);
-  const [targetRef, containerRef, arrowRef] = usePopper({
+  const { targetRef, containerRef, arrowRef } = usePopper({
     ...props,
 
     popperRef: useMergedRefs(props.popperRef, popperRef),

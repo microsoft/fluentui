@@ -259,14 +259,14 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
  */
 export function usePopper(
   options: PopperOptions = {},
-): [
+): {
   // React refs are supposed to be contravariant (allows a more general type to be passed rather than a more specific one)
   // However, Typescript currently can't infer that fact for refs
   // See https://github.com/microsoft/TypeScript/issues/30748 for more information
-  React.MutableRefObject<any> /* targetRef */,
-  React.MutableRefObject<any> /* containerRef */,
-  React.MutableRefObject<any> /* arrowRef */,
-] {
+  targetRef: React.MutableRefObject<any>;
+  containerRef: React.MutableRefObject<any>;
+  arrowRef: React.MutableRefObject<any>;
+} {
   const { enabled = true } = options;
   const isFirstMount = useFirstMount();
 
@@ -404,5 +404,5 @@ export function usePopper(
     }, []);
   }
 
-  return [targetRef, containerRef, arrowRef];
+  return { targetRef, containerRef, arrowRef };
 }

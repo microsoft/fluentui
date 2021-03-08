@@ -203,7 +203,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   );
 
   const popperRef = React.useRef<PopperRefHandle>();
-  const [messageRef, actionsMenuRef] = usePopper({
+  const { targetRef: messageRef, containerRef: actionsMenuRef } = usePopper({
     align: 'end',
     position: 'above',
     positionFixed: overflow,
