@@ -91,7 +91,7 @@ describe('SelectedPeopleList', () => {
         removeButtonAriaLabel="Remove"
         selectedItems={[people[0]]}
         onItemsRemoved={onItemsRemoved}
-        onRenderItem={SelectedItem}
+        onRenderItem={SelectedItem as any}
       />,
     );
 

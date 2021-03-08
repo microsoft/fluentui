@@ -9,14 +9,13 @@ export type ChangeCallback<
 
 /**
  * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
- * text box string.
+ * text box string. See https://reactjs.org/docs/uncontrolled-components.html
  * @param controlledValue - The controlled value passed in the props. This value will always be used if provided,
  * and the internal state will be updated to reflect it.
  * @param defaultUncontrolledValue - Initial value for the internal state in the uncontrolled case.
  * @returns An array of the current value and an updater callback. Like `React.useState`, the updater
  * callback always has the same identity, and it can take either a new value, or a function which
  * is passed the previous value and returns the new value.
- * @see https://reactjs.org/docs/uncontrolled-components.html
  */
 export function useControllableValue<TValue, TElement extends HTMLElement>(
   controlledValue: TValue | undefined,

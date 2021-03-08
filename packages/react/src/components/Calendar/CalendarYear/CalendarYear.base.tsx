@@ -26,7 +26,7 @@ interface ICalendarYearGrid {
   focus(): void;
 }
 
-interface ICalendarYearGridCellProps extends ICalendarYearProps {
+interface ICalendarYearGridCellProps extends Omit<ICalendarYearProps, 'ref'> {
   year: number;
   current?: boolean;
   selected?: boolean;
@@ -35,7 +35,7 @@ interface ICalendarYearGridCellProps extends ICalendarYearProps {
   onRenderYear?: (year: number) => React.ReactNode;
 }
 
-interface ICalendarYearGridProps extends ICalendarYearProps, ICalendarYearRange {
+interface ICalendarYearGridProps extends Omit<ICalendarYearProps, 'ref'>, ICalendarYearRange {
   selectedYear?: number;
   animateBackwards?: boolean;
   componentRef?: IRefObject<ICalendarYearGridCell>;
@@ -437,45 +437,46 @@ function useYearRangeState({ selectedYear, navigatedYear }: ICalendarYearProps) 
   return [fromYear, toYear, onNavNext, onNavPrevious] as const;
 }
 
-export const CalendarYearBase = React.forwardRef(
-  (props: ICalendarYearProps, forwardedRef: React.Ref<HTMLDivElement>) => {
-    const animateBackwards = useAnimateBackwards(props);
-    const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
+export const CalendarYearBase: React.FunctionComponent<ICalendarYearProps> = React.forwardRef<
+  HTMLDivElement,
+  ICalendarYearProps
+>(({ ref: unusedRef, ...props }, forwardedRef) => {
+  const animateBackwards = useAnimateBackwards(props);
+  const [fromYear, toYear, onNavNext, onNavPrevious] = useYearRangeState(props);
 
-    const gridRef = React.useRef<ICalendarYearGrid>(null);
+  const gridRef = React.useRef<ICalendarYearGrid>(null);
 
-    React.useImperativeHandle(props.componentRef, () => ({
-      focus() {
-        gridRef.current?.focus?.();
-      },
-    }));
+  React.useImperativeHandle(props.componentRef, () => ({
+    focus() {
+      gridRef.current?.focus?.();
+    },
+  }));
 
-    const { styles, theme, className } = props;
+  const { styles, theme, className } = props;
 
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      className: className,
-    });
+  const classNames = getClassNames(styles, {
+    theme: theme!,
+    className: className,
+  });
 
-    return (
-      <div className={classNames.root} ref={forwardedRef}>
-        <CalendarYearHeader
-          {...props}
-          fromYear={fromYear}
-          toYear={toYear}
-          onSelectPrev={onNavPrevious}
-          onSelectNext={onNavNext}
-          animateBackwards={animateBackwards}
-        />
-        <CalendarYearGrid
-          {...props}
-          fromYear={fromYear}
-          toYear={toYear}
-          animateBackwards={animateBackwards}
-          componentRef={gridRef}
-        />
-      </div>
-    );
-  },
-);
+  return (
+    <div className={classNames.root} ref={forwardedRef}>
+      <CalendarYearHeader
+        {...props}
+        fromYear={fromYear}
+        toYear={toYear}
+        onSelectPrev={onNavPrevious}
+        onSelectNext={onNavNext}
+        animateBackwards={animateBackwards}
+      />
+      <CalendarYearGrid
+        {...props}
+        fromYear={fromYear}
+        toYear={toYear}
+        animateBackwards={animateBackwards}
+        componentRef={gridRef}
+      />
+    </div>
+  );
+});
 CalendarYearBase.displayName = 'CalendarYearBase';

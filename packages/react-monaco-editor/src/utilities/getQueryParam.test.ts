@@ -4,7 +4,8 @@ describe('getQueryParam', () => {
   const realLocation = window.location;
 
   beforeAll(() => {
-    delete window.location;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    delete (window as any).location;
     window.location = {} as Location;
   });
 

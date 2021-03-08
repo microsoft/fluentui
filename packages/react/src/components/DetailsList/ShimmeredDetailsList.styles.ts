@@ -1,4 +1,13 @@
-import { IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
+import {
+  IShimmeredDetailsListStyleProps,
+  IShimmeredDetailsListStyles,
+  IShimmeredDetailsListProps,
+} from './ShimmeredDetailsList.types';
+
+// This prevents an inferred import() in the .d.ts, which would cause problems for API Extractor
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const foo: IShimmeredDetailsListProps = {} as any;
 
 export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDetailsListStyles => {
   const { theme } = props;

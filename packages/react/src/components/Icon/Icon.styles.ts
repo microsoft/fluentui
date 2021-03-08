@@ -2,7 +2,7 @@ import { IIconStyleProps, IIconStyles } from './Icon.types';
 import { mergeStyleSets } from '../../Styling';
 
 /** Class names used in themeable and non-themeable Icon components */
-export const classNames = mergeStyleSets({
+export const classNames: { root: string; placeholder: string; image: string } = mergeStyleSets({
   root: {
     display: 'inline-block',
   },

@@ -49,8 +49,7 @@ function createBasicTableJson(
     description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined,
   };
 
-  const extendsArr: HeritageType[] | undefined =
-    !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];
+  const extendsArr = !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];
   if (extendsArr && extendsArr.length) {
     tableJson.extendsTokens = [];
     for (const extendsType of extendsArr) {

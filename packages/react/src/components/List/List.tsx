@@ -114,7 +114,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     };
   };
   private _focusedIndex: number;
-  private _scrollElement: HTMLElement;
+  private _scrollElement?: HTMLElement;
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
@@ -136,7 +136,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _requiredWindowsBehind: number;
 
   private _measureVersion: number;
-  private _scrollHeight: number;
+  private _scrollHeight: number | undefined;
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
 
@@ -228,7 +228,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       itemsPerPage = pageSpecification.itemCount;
 
       const requestedIndexIsInPage = itemIndex <= index && itemIndex + itemsPerPage > index;
-      if (requestedIndexIsInPage) {
+      if (requestedIndexIsInPage && this._scrollElement) {
         // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in
         // just the given item, otherwise we'll only bring the page into view
         if (measureItem && this._scrollElement) {

@@ -49,7 +49,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     // Default route.
     appRoutes.push(<Route key="gettingstarted" component={gettingStartedPage} />);
 
-    const App: React.FunctionComponent<IAppProps> = props => <AppBase appDefinition={appDefinition} {...props} />;
+    const App: React.FunctionComponent<IAppProps> = props => <AppBase {...props} appDefinition={appDefinition} />;
 
     routes.push(
       // eslint-disable-next-line react/jsx-no-bind

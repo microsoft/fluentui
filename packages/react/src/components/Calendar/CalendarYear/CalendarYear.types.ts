@@ -39,7 +39,7 @@ export interface ICalendarYearStrings {
 /**
  * {@docCategory Calendar}
  */
-export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
+export interface ICalendarYearProps extends IBaseProps<ICalendarYear>, React.RefAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the ICalendarYear interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -134,7 +134,7 @@ export interface ICalendarYearStyleProps extends ICalendarPickerStyleProps {}
 
 export interface ICalendarYearStyles extends ICalendarPickerStyles {}
 
-export interface ICalendarYearHeaderProps extends ICalendarYearProps, ICalendarYearRange {
+export interface ICalendarYearHeaderProps extends Omit<ICalendarYearProps, 'ref'>, ICalendarYearRange {
   /**
    * Callback action when the 'previous' navigation button is selected
    */

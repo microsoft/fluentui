@@ -6,15 +6,16 @@
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean {
   for (let propName in a) {
-    if (a.hasOwnProperty(propName)) {
-      if (!b.hasOwnProperty(propName) || b[propName] !== a[propName]) {
+    if ((a as object).hasOwnProperty(propName)) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (!(b as object).hasOwnProperty(propName) || (b as any)[propName] !== a[propName]) {
         return false;
       }
     }
   }
   for (let propName in b) {
-    if (b.hasOwnProperty(propName)) {
-      if (!a.hasOwnProperty(propName)) {
+    if ((b as object).hasOwnProperty(propName)) {
+      if (!(a as object).hasOwnProperty(propName)) {
         return false;
       }
     }

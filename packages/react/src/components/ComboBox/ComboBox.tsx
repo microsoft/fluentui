@@ -19,6 +19,7 @@ import {
   Async,
   EventGroup,
   getPropsWithDefaults,
+  IRenderFunction,
 } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -1203,7 +1204,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   }
 
   // Render Callout container and pass in list
-  private _onRenderContainer = (props: IComboBoxProps): JSX.Element => {
+  private _onRenderContainer: IRenderFunction<IComboBoxProps> = props => {
     const {
       onRenderList,
       calloutProps,
@@ -1214,7 +1215,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       useComboBoxAsMenuWidth,
       persistMenu,
       shouldRestoreFocus = true,
-    } = props;
+    } = props!;
 
     const { isOpen } = this.state;
 

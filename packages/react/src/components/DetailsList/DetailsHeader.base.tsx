@@ -59,7 +59,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   private _dropHintDetails: { [key: number]: IDropHintDetails } = {};
   private _dragDropHelper: DragDropHelper;
   private _currentDropHintIndex: number;
-  private _subscriptionObject: IDisposable;
+  private _subscriptionObject?: IDisposable;
   private _onDropIndexInfo: {
     sourceIndex: number;
     targetIndex: number;

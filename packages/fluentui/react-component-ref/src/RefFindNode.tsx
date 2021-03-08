@@ -71,7 +71,7 @@ export class RefFindNode extends React.Component<RefProps> {
   componentWillUnmount() {
     handleRef(this.props.innerRef, null);
 
-    delete this.prevNode;
+    this.prevNode = null;
   }
 
   render() {

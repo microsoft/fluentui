@@ -4,7 +4,7 @@ import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
 import { setRTL, IRenderFunction } from '../../Utilities';
 import { Persona } from './Persona';
-import { mount, ReactWrapper } from 'enzyme';
+import { mount } from 'enzyme';
 import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, IPersonaCoinProps, PersonaPresence, PersonaSize } from './index';
 import { isConformant } from '../../common/isConformant';
@@ -201,14 +201,14 @@ describe('Persona', () => {
   describe('image', () => {
     it('renders empty alt text by default', () => {
       const wrapper = mount(<Persona text="Kat Larrson" imageUrl={testImage1x1} />);
-      const image: ReactWrapper<React.ImgHTMLAttributes<unknown>, unknown> = wrapper.find('ImageBase');
+      const image = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('');
     });
 
     it('renders its given alt text', () => {
       const wrapper = mount(<Persona text="Kat Larrson" imageUrl={testImage1x1} imageAlt="ALT TEXT" />);
-      const image: ReactWrapper<React.ImgHTMLAttributes<unknown>, unknown> = wrapper.find('ImageBase');
+      const image = wrapper.find('ImageBase');
 
       expect(image.props().alt).toEqual('ALT TEXT');
     });

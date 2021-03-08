@@ -20,7 +20,7 @@ export class RefForward extends React.Component<RefProps> {
   }
 
   componentWillUnmount() {
-    delete this.currentNode;
+    this.currentNode = null;
   }
 
   render() {

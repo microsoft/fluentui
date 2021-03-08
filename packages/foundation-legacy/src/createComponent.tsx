@@ -13,7 +13,7 @@ import {
   ITokenFunction,
   IViewComponent,
 } from './IComponent';
-import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
+import { ISlotCreator, ValidProps } from './ISlots';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -84,7 +84,7 @@ export function createComponent<
       tokens,
       _defaultStyles: styles,
       theme,
-    } as TViewProps & IDefaultSlotProps<any>;
+    } as any;
 
     return view(viewProps);
   };

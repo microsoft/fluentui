@@ -15,7 +15,7 @@ export type OverflowItemsChangedCallback = (
   items: { ele: HTMLElement; isOverflowing: boolean }[],
 ) => void;
 
-/** Parameters for {@see useOverflow} */
+/** Parameters for `useOverflow` */
 export type OverflowParams = {
   /** Callback to notify the user that the items in the overflow have changed. */
   onOverflowItemsChanged: OverflowItemsChangedCallback;
@@ -27,7 +27,7 @@ export type OverflowParams = {
   pinnedIndex?: number;
 };
 
-/** Return value for {@see useOverflow} */
+/** Return value for `useOverflow` */
 export type OverflowRefs = {
   /** Set the overflow menu button's ref to this ref callback */
   menuButtonRef: RefCallback<HTMLElement>;

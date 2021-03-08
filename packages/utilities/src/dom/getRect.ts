@@ -16,7 +16,8 @@ export function getRect(element: HTMLElement | Window | null): IRectangle | unde
         right: window.innerWidth,
         bottom: window.innerHeight,
       };
-    } else if ((element as HTMLElement).getBoundingClientRect) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } else if ((element as any).getBoundingClientRect) {
       rect = (element as HTMLElement).getBoundingClientRect();
     }
   }
