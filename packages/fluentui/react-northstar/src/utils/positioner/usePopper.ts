@@ -190,8 +190,8 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
             altBoundary: true,
             boundary: getBoundary(container, overflowBoundary),
           },
-          fn({ state, options }: PopperJs.ModifierArguments<{}>) {
-            const overflow = PopperJs.detectOverflow(state, options);
+          fn({ state, options: modifierOptions }: PopperJs.ModifierArguments<{}>) {
+            const overflow = PopperJs.detectOverflow(state, modifierOptions);
             const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
             const { width, height } = state.rects.popper;
             const [basePlacement] = state.placement.split('-');
