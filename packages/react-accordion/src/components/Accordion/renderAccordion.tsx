@@ -11,10 +11,12 @@ import { accordionContext, accordionDescendantContext } from './useAccordionCont
 export const renderAccordion = (state: AccordionState) => {
   const { slots, slotProps } = getSlots(state, accordionShorthandProps);
   return (
-    <accordionContext.Provider value={state.context}>
-      <DescendantProvider context={accordionDescendantContext} items={state.descendants} set={state.setDescendants}>
-        <slots.root {...slotProps.root}>{state.children}</slots.root>
-      </DescendantProvider>
-    </accordionContext.Provider>
+    <slots.root {...slotProps.root}>
+      <accordionContext.Provider value={state.context}>
+        <DescendantProvider context={accordionDescendantContext} items={state.descendants} set={state.setDescendants}>
+          {state.children}
+        </DescendantProvider>
+      </accordionContext.Provider>
+    </slots.root>
   );
 };

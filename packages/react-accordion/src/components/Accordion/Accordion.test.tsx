@@ -3,11 +3,14 @@ import { Accordion } from './Accordion';
 import * as renderer from 'react-test-renderer';
 import { ReactWrapper } from 'enzyme';
 import { isConformant } from '../../common/isConformant';
+import { accordionContext, accordionDescendantContext } from './useAccordionContext';
+import { DescendantProvider } from '../../utils/descendants';
 
 describe('Accordion', () => {
   isConformant({
     Component: Accordion,
     displayName: 'Accordion',
+    helperComponents: [accordionContext.Provider, DescendantProvider, accordionDescendantContext.Provider],
   });
 
   let wrapper: ReactWrapper | undefined;

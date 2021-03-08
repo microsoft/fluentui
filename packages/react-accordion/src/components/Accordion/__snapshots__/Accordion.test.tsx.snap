@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Accordion renders a default state 1`] = `
+<div
+  className=""
+  data-ah="{\\"focusable\\":{\\"mover\\":{\\"navigationType\\":1,\\"cyclic\\":true}}}"
+>
+  Default Accordion
+</div>
+`;

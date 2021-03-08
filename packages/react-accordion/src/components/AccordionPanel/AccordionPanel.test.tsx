@@ -6,6 +6,7 @@ import { isConformant } from '../../common/isConformant';
 
 describe('AccordionPanel', () => {
   isConformant({
+    requiredProps: { open: true },
     Component: AccordionPanel,
     displayName: 'AccordionPanel',
   });
