@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Mon, 08 Mar 2021 12:26:05 GMT",
+      "tag": "@fluentui/react-examples_v0.12.3",
+      "version": "0.12.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Updated examples to pass 'select row' as checkButtonAriaLabel prop",
+            "author": "tristan.watanabe@gmail.com",
+            "commit": "ae414b2b5c0ff8be1c4419983a2d59740cfe2ea6",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Mar 2021 01:10:32 GMT",
       "tag": "@fluentui/react-examples_v0.12.2",
       "version": "0.12.2",

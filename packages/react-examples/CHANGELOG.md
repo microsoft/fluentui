@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
+This log was last generated on Mon, 08 Mar 2021 12:26:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.3)
+
+Mon, 08 Mar 2021 12:26:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.2..@fluentui/react-examples_v0.12.3)
+
+### Patches
+
+- DetailsList: Updated examples to pass 'select row' as checkButtonAriaLabel prop ([PR #17256](https://github.com/microsoft/fluentui/pull/17256) by tristan.watanabe@gmail.com)
 
 ## [0.12.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.1)
 
