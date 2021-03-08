@@ -16,7 +16,7 @@ export const PresenceBadgeStatus = () => (
       <PresenceBadge status="busy" icon={<SkypeMinusIcon />} />
       <PresenceBadge status="away" icon={<SkypeClockIcon />} />
       <PresenceBadge status="available" icon={<SkypeCheckIcon />} />
-      <PresenceBadge status="oof" icon={<SkypeArrowIcon />} />
+      <PresenceBadge status="outOfOffice" icon={<SkypeArrowIcon />} />
       <PresenceBadge status="offline" icon={<CancelIcon />} />
     </div>
   </>
