@@ -10041,10 +10041,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     // (undocumented)
     static defaultProps: ISwatchColorPickerProps;
     // (undocumented)
-    render(): JSX.Element | null;
+    static getDerivedStateFromProps(newProps: ISwatchColorPickerProps, state: ISwatchColorPickerState): {
+        selectedIndex: number | undefined;
+    } | null;
     // (undocumented)
-    UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void;
-}
+    render(): JSX.Element | null;
+    }
 
 // @public (undocumented)
 export const TagItem: React.FunctionComponent<ITagItemProps>;
