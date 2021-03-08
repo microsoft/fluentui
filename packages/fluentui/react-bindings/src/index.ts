@@ -20,7 +20,6 @@ export { useDeepMemo } from './hooks/useDeepMemo';
 export { useEventCallback } from './hooks/useEventCallback';
 export { useFirstMount } from './hooks/useFirstMount';
 export { useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
-export { useLatest } from './hooks/useLatest';
 export { useStateManager } from './hooks/useStateManager';
 export * from './hooks/useStyles';
 export { useTriggerElement } from './hooks/useTriggerElement';
