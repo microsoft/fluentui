@@ -72,6 +72,7 @@ import { ToolbarDividerStylesProps } from '../../components/Toolbar/ToolbarDivid
 import { ToolbarItemStylesProps } from '../../components/Toolbar/ToolbarItem';
 import { ToolbarCustomItemStylesProps } from '../../components/Toolbar/ToolbarCustomItem';
 import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
+import { ToolbarMenuItemContentStylesProps } from '../../components/Toolbar/ToolbarMenuItemContent';
 import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
 import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
@@ -185,6 +186,7 @@ export type TeamsThemeStylesProps = {
   ToolbarRadioGroup: ToolbarRadioGroupStylesProps;
   ToolbarMenu: ToolbarMenuStylesProps;
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
+  ToolbarMenuItemContent: ToolbarMenuItemContentStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
   TooltipContent: TooltipContentStylesProps;
