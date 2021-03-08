@@ -27,7 +27,6 @@ export const menuVariables = (siteVars: any): Partial<MenuVariables> => ({
   activeUnderlinedWrapperColor: siteVars.colors.white,
   pointingIndicatorBackgroundColor: 'transparent',
 
-  verticalBackgroundColor: siteVars.colors.black,
   verticalBackgroundColorFocus: undefined,
   iconOnlyColorActive: siteVars.colors.black,
   iconOnlyColorFocus: 'transparent',
