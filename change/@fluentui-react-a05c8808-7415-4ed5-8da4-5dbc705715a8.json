@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "The package.json sideEffects array now correctly tags scss files as having side effects, so that they aren't dropped by the bundler accidentally.",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@microsoft.com",
+  "dependentChangeType": "patch"
+}
