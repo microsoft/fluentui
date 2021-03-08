@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Fri, 05 Mar 2021 20:30:59 GMT and should not be manually modified.
+This log was last generated on Sun, 07 Mar 2021 23:34:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.8.0)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v0.7.0..@fluentui/react-menu_v0.8.0)
+
+### Minor changes
+
+- Add Menu, MenuTrigger components ([PR #17271](https://github.com/microsoft/fluentui/pull/17271) by lingfan.gao@microsoft.com)
 
 ## [0.7.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v0.7.0)
 

@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Add Flex's convergence spec",
+  "packageName": "@fluentui/react-flex",
+  "email": "andredias@microsoft.com",
+  "dependentChangeType": "none"
+}

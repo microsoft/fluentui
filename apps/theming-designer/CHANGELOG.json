@@ -2,6 +2,21 @@
   "name": "theming-designer",
   "entries": [
     {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "theming-designer_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.6",
+            "author": "miclo@microsoft.com",
+            "commit": "5e06dfbf2d4e421934d09521a178d4acec404d02",
+            "package": "theming-designer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 05 Mar 2021 20:30:59 GMT",
       "tag": "theming-designer_v1.0.0",
       "version": "1.0.0",

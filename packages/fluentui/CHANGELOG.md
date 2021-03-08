@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Updated `Datepicker` to allow the entire week selection and removed space between cells. @vejrj ([#16887](https://github.com/microsoft/fluentui/pull/16887))
 
 ## Fixes
+- Fix vertical `Menu` background color to pull from the correct color scheme in Teams themes @codepretty ([#17200](https://github.com/microsoft/fluentui/pull/17200))
 - Fix `Menu` iconOnly focus border to be correct style in Teams themes @codepretty ([#17005](https://github.com/microsoft/fluentui/pull/17005))
 - Fix `Label` color schemes. Fix padding for circular `Label`. @TanelVari ([#16160](https://github.com/microsoft/fluentui/pull/16160))
 - Fix RadioGroup visual issues. Add `RadioButtonIcon`. Fix vertical RadioGroup alignment issue with custom content. Fix focus frame alignment for bare indicator. @TanelVari ([#16478](https://github.com/microsoft/fluentui/pull/16478))
@@ -52,6 +53,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added `onKeyDown` handler for `TreeItem` allowing key navigation more than A-Z @yuanboxue-amber ([#17073](https://github.com/microsoft/fluentui/pull/17073))
 - Added `ArchiveIcon`, `ContactCardIcon`, `DoorArrowLeftIcon`, `FluidFileIcon`, `GridIcon`, `ShieldKeyholeIcon`, `WandIcon` @notandrew ([#17152](https://github.com/microsoft/fluentui/pull/17152))
 - Added `autoSize` prop to make `Popper` responsive @yuanboxue-amber ([#17159](https://github.com/microsoft/fluentui/pull/17159))
+- Add `ToolbarMenuItemContent` to wrap content in span @yuanboxue-amber ([#17264](https://github.com/microsoft/fluentui/pull/17264))
 
 ## Performance
 
