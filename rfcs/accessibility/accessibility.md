@@ -11,34 +11,36 @@ Fluent UI components are designed to support various aspects of accessibility, s
 
 ## Background
 
-[Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG21/) and [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/) are community driven standard for accessible web pages and applications. They provide basic framework allowing consistent usage of web pages and applications with or without assistive technologies.
+The [Web Content Accessibility Guidelines (WCAG)](https://www.w3.org/TR/WCAG21/) and [WAI-ARIA Authoring Practices](https://www.w3.org/TR/wai-aria-practices-1.2/) are community-driven standards for accessible web pages and applications. They provide a basic framework allowing consistent usage of web pages and applications with or without assistive technologies.
 
 ## Problem statement
 
-Fluent UI components aim to fully respect both WCAG and ARIA and the Fluent UI team is working with the community to improve them. From the technical point of view, thee main challenges were identified:
+Fluent UI components aim to fully respect both WCAG and ARIA and the Fluent UI team is working with the community to improve them. From a technical point of view, three main challenges were identified:
 
-1. Accessibility is usually not intuitive as it is not immediately obvious. It is hard to achieve high quality user experience and easy to regress it.
-2. Each screen reader and browser works differently, often making it hard or even impossible to achieve high quality user experience for all combinations. Browsers and screen readers release new versions that change the experience
-3. Not all UI/UX designs can be sufficiently represented with ARIA roles and patterns
+1. Accessibility is a complex field that is often not taught and left behind in planning, design, development, and testing. It can be hard to achieve high quality user experiences and easy to regress them.
+2. Each screen reader and browser works differently, often making it hard or even impossible to achieve high quality user experience for all combinations. One of the biggest reasons behind this is that browsers and screen readers are often updated, with each update having the potential to change the user experience from one version to the next.
+3. Not all UI/UX designs can be sufficiently represented with the existing ARIA roles and patterns.
 
 ## Detailed Design or Proposal
 
-To address these challenges, following principles will be followed:
+To address these challenges, the following principles will be followed:
 
-- Challenge 1: Sufficient test coverage with understandable and documented tests
-- Challenge 2: Components will be created based on well tested prototypes or existing components. We will report and track issues to the screen readers vendors
-- Challenge 3: We will work with the community to improve standards. We will maintain set of best practices and validations that help consumers design accessible user interfaces
+- Challenge 1: Sufficient test coverage will be provided, with understandable and documented tests.
+- Challenge 2: Components will be created based on well tested prototypes or existing components. We will report and track issues with browsers and assistive tech vendors.
+- Challenge 3: We will work with the community to improve standards. We will maintain a set of best practices and validations that help consumers design accessible user interfaces.
 
 ### Target accessibility areas
 
 - DOM structure that provides semantical value either by using correct element types or roles
 - ARIA attributes that are valid for elements/roles used and provide correct state information about the component or element
-- Keyboard navigation (navigation by tabbing, arrow keys, pagination or letter keys, click and right click (Enter/Space, Shift+F10), and close (Escape))
-- Focus handling when the component is able to move the focus in a predictable way - mostly when opening menus, popups or dialogs or dismissing them using Esc. Focus trap for Dialog and popups
-- Sufficient contrast level
+- Keyboard navigation (navigation by tabbing, arrow keys, pagination or letter keys, click and right click (Enter/Space, Shift+F10), and close (Escape)) applied based on the component
+- Screen reader navigation (Virtual Cursor/Browse mode/Scan mode/VoiceOver keys)
+- Touch interaction
+- Focus handling when the component is able to move the focus in a predictable way - mostly when opening menus, popups or dialogs (autofocus) or dismissing them using Esc. Focus trap for Dialog and popups
+- Sufficient color contrast
 - Light, Dark and High Contrast themes
 - Displaying focus indicator when keyboard is used to interact with them
-- Zoom up to 400%
+- Tested against visual inconsistencies/bugs on a zoom up 400%
 
 Fluent UI components will use [ability-helpers](https://github.com/microsoft/ability-helpers) for focus handling functionality, so that they can be easily integrated with application-level ability-helpers functionality such as delooser and cross-iframe focusing.
 
@@ -52,9 +54,9 @@ Focus handling (except of the points mentioned above) on an application level ne
 
 1. Fill in Accessibility section of the [component specification](https://github.com/microsoft/fluentui/blob/master/scripts/create-package/plop-templates-react/Spec.md.hbs)
 2. Create prototype or base functionality of the component or reference an existing Fluent UI React or Fluent UI React Northstar component as model example
-3. Perform an initial test on prototype, model component or when converged component functionality is available (all supported screen reader/browser combinations)
+3. Perform an initial test on prototype, model component or when converged component functionality is available (all supported screen reader/browser combinations, including user testing)
 4. Incorporate test results in the component implementation
-5. Create [component behavior tests](https://github.com/microsoft/fluentui/tree/master/packages/a11y-testing/src/definitions)
+5. Create [component behavior tests](https://github.com/microsoft/fluentui/tree/master/packages/a11y-testing/src/definitions) and [axe-core tests](https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/test/specs/commonTests/htmlIsAccessibilityCompliant.ts)
 6. Document best practices
 7. Document known issues, including links if they are tracked by browsers or screen readers
 8. Create validation rules for component - help to identify accessibility issues early in the development phase (or even design with UI Builder)
