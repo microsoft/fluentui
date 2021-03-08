@@ -219,7 +219,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         },
       ].filter(Boolean);
 
-      const options: PopperJs.Options = {
+      const popperOptions: PopperJs.Options = {
         modifiers,
 
         placement,
@@ -227,7 +227,7 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
         onFirstUpdate: state => handleStateUpdate({ state }),
       };
 
-      return options;
+      return popperOptions;
     },
     [
       autoSize,
