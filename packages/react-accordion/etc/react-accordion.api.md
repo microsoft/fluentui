@@ -114,7 +114,6 @@ export const accordionPanelShorthandProps: never[];
 
 // @public (undocumented)
 export interface AccordionPanelState extends AccordionPanelProps {
-    // (undocumented)
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
 }

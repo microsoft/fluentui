@@ -4,7 +4,7 @@ import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withPerformance } from 'storybook-addon-performance';
-import { withCompatThemeProvider, withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
+import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withPerformance);
 addDecorator(withInfo());
@@ -15,7 +15,6 @@ if (
   )
 ) {
   initializeIcons();
-  addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
 if (
@@ -31,7 +30,6 @@ if (
     'react-components',
   ].includes('PACKAGE_NAME')
 ) {
-  addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
 if (['react-avatar', 'react-link', 'react-image', 'react-menu', 'react-accordion'].includes('PACKAGE_NAME')) {
@@ -84,7 +82,7 @@ function loadStories() {
   }
 
   for (const req of contexts) {
-    req.keys().forEach((key) => {
+    req.keys().forEach(key => {
       generateStoriesFromExamples(key, stories, req);
     });
   }
@@ -146,7 +144,10 @@ function generateStoriesFromExamples(key, stories, req) {
     });
   }
 
-  const storyName = segments.slice(-1)[0].replace('.tsx', '').replace(/\./g, '_');
+  const storyName = segments
+    .slice(-1)[0]
+    .replace('.tsx', '')
+    .replace(/\./g, '_');
 
   const story = stories.get(componentName);
   const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
