@@ -91,6 +91,8 @@ const useIsControlled = <TValue>(controlledValue: TValue) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (wasControlledRef.current !== (controlledValue !== undefined)) {
+        const error = new Error();
+
         // eslint-disable-next-line no-console
         console.error(
           [
@@ -99,6 +101,7 @@ const useIsControlled = <TValue>(controlledValue: TValue) => {
             'changing from undefined to a defined value, which should not happen.',
             'Decide between using a controlled or uncontrolled input element for the lifetime of the component.',
             'More info: https://reactjs.org/link/controlled-components',
+            error.stack,
           ].join(' '),
         );
       }

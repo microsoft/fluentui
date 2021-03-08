@@ -81,7 +81,9 @@ describe('useControllableValue', () => {
     expect(result.current[0]).toBe(second);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(
-      'A component is changing an uncontrolled value to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components',
+      expect.stringContaining(
+        'A component is changing an uncontrolled value to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components',
+      ),
     );
   });
 });
