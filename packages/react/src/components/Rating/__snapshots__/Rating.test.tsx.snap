@@ -2,7 +2,6 @@
 
 exports[`Rating renders correctly 1`] = `
 <div
-  aria-label=""
   className=
       ms-Rating-star
       ms-RatingStar-root
@@ -848,7 +847,6 @@ exports[`Rating renders correctly 1`] = `
 
 exports[`Rating renders correctly with half star 1`] = `
 <div
-  aria-label=""
   className=
       ms-Rating-star
       ms-RatingStar-root
