@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Update swatch colorpicker to allow for unselected",
-  "packageName": "office-ui-fabric-react",
-  "email": "sareiff@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2021-03-02T16:42:05.547Z"
-}

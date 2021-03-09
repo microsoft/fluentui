@@ -1,8 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 24 Feb 2021 12:25:59 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Mar 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.39.3](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.3)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/experiments_v7.39.0..@uifabric/experiments_v7.39.3)
+
+### Patches
+
+- UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality ([PR #17319](https://github.com/microsoft/fluentui/pull/17319) by elvonspa@microsoft.com)
 
 ## [7.39.0](https://github.com/microsoft/fluentui/tree/@uifabric/experiments_v7.39.0)
 

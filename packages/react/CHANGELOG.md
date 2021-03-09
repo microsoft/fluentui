@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 26 Feb 2021 21:31:33 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Mar 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.163.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.163.0)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v7.162.0..@fluentui/react_v7.163.0)
+
+### Patches
+
+- Bump office-ui-fabric-react to v7.163.0 ([PR #17240](https://github.com/microsoft/fluentui/pull/17240) by sareiff@microsoft.com)
 
 ## [7.162.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v7.162.0)
 

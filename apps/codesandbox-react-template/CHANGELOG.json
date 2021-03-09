@@ -1,0 +1,20 @@
+{
+  "name": "codesandbox-react-template",
+  "entries": [
+    {
+      "date": "Tue, 09 Mar 2021 12:24:49 GMT",
+      "tag": "codesandbox-react-template_v7.0.0",
+      "version": "7.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v7.163.0",
+            "author": "sareiff@microsoft.com",
+            "commit": "f42ad1819235008e7757d09a16e8f9c164a778da",
+            "package": "codesandbox-react-template"
+          }
+        ]
+      }
+    }
+  ]
+}

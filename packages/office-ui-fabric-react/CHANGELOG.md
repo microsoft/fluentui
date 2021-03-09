@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 02 Mar 2021 12:28:02 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Mar 2021 12:24:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.163.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.163.0)
+
+Tue, 09 Mar 2021 12:24:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.162.1..office-ui-fabric-react_v7.163.0)
+
+### Minor changes
+
+- Update swatch colorpicker to allow for unselected ([PR #17240](https://github.com/microsoft/fluentui/pull/17240) by sareiff@microsoft.com)
+
+### Patches
+
+- Fix Slider Keyboard Controls when `props.value` changes ([PR #17251](https://github.com/microsoft/fluentui/pull/17251) by shrbalaji@microsoft.com)
+- update detailslist to use grid aria props for group rows ([PR #17300](https://github.com/microsoft/fluentui/pull/17300) by sarah.higley@microsoft.com)
 
 ## [7.162.1](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.162.1)
 
