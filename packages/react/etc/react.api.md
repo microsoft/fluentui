@@ -3813,6 +3813,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onRowDidMount?: (item?: any, index?: number) => void;
     onRowWillUnmount?: (item?: any, index?: number) => void;
     onShouldVirtualize?: (props: IListProps) => boolean;
+    role?: string;
     rowElementEventMap?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
