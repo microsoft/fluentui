@@ -1583,16 +1583,6 @@
     classnames "^2.2.6"
     tslib "^1.10.0"
 
-"@fluentui/react-flex@*":
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/@fluentui/react-flex/-/react-flex-0.2.9.tgz#471f7542f4cc1db7760fe8f734dc4ba33277c613"
-  integrity sha512-/MHgcvpU76xNV7nHB/LPpWbhh0hOLU0KewzuzQo6s2ebfTMzcGeUYioepE4+4BkHkBWjzIT41MVrBVeUvirErw==
-  dependencies:
-    "@fluentui/react-compose" "^1.0.0-beta.18"
-    "@fluentui/set-version" "^8.0.1"
-    "@fluentui/theme" "^2.0.2"
-    tslib "^1.10.0"
-
 "@fluentui/react-stylesheets@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@fluentui/react-stylesheets/-/react-stylesheets-0.2.5.tgz#46892a14830e4f33a7f17abb3ca1ee4d1c3d4ef2"
