@@ -187,7 +187,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
 
   const handleKeyDownOnActionMenu = e => {
     if (e.keyCode === keyboardKey.Tab) {
-      let getElementTabbableElements: NodeListOf<HTMLElement> = messageRef.current.querySelectorAll(
+      const getElementTabbableElements: NodeListOf<HTMLElement> = messageRef.current.querySelectorAll(
         '[tabindex="-1"]:not([data-is-focusable="false"])',
       );
 
