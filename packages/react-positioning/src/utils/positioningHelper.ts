@@ -1,33 +1,22 @@
 import * as PopperJs from '@popperjs/core';
 import { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from '../types';
 
-enum PlacementParts {
-  top = 'top',
-  bottom = 'bottom',
-  start = 'start',
-  end = 'end',
-  left = 'left',
-  right = 'right',
-  center = '',
-}
+type PlacementPosition = 'top' | 'bottom' | 'left' | 'right';
+type PlacementAlign = 'start' | 'end' | ''; // '' represents center
 
-const getPositionMap = (
-  rtl?: boolean,
-): Record<Position, PlacementParts.top | PlacementParts.bottom | PlacementParts.left | PlacementParts.right> => ({
-  above: PlacementParts.top,
-  below: PlacementParts.bottom,
-  before: rtl ? PlacementParts.right : PlacementParts.left,
-  after: rtl ? PlacementParts.left : PlacementParts.right,
+const getPositionMap = (rtl?: boolean): Record<Position, PlacementPosition> => ({
+  above: 'top',
+  below: 'bottom',
+  before: rtl ? 'right' : 'left',
+  after: rtl ? 'left' : 'right',
 });
 
-const getAlignmentMap = (
-  rtl?: boolean,
-): Record<Alignment, PlacementParts.start | PlacementParts.end | PlacementParts.center> => ({
-  start: rtl ? PlacementParts.end : PlacementParts.start,
-  end: rtl ? PlacementParts.start : PlacementParts.end,
-  top: PlacementParts.start,
-  bottom: PlacementParts.end,
-  center: PlacementParts.center,
+const getAlignmentMap = (rtl?: boolean): Record<Alignment, PlacementAlign> => ({
+  start: rtl ? 'end' : 'start',
+  end: rtl ? 'start' : 'end',
+  top: 'start',
+  bottom: 'end',
+  center: '',
 });
 
 const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {

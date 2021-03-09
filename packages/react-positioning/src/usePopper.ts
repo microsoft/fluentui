@@ -21,9 +21,6 @@ type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 /**
  * Detects if a passed HTML node has "autoFocus" prop on a React's fiber. Is needed as React handles autofocus behavior
  * in React DOM and will not pass "autoFocus" to an actual HTML.
- *
- * @param {Node} node
- * @returns {Boolean}
  */
 function hasAutofocusProp(node: Node): boolean {
   // https://github.com/facebook/react/blob/848bb2426e44606e0a55dfe44c7b3ece33772485/packages/react-dom/src/client/ReactDOMHostConfig.js#L157-L166
@@ -247,8 +244,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
  * - refs changes and resolution is handled properly without re-renders
  * - contains a specific to React fix related to initial positioning when containers have components with managed focus
  *   to avoid focus jumps
- *
- * @param {PopperOptions} options
  */
 export function usePopper(
   options: PopperOptions = {},
