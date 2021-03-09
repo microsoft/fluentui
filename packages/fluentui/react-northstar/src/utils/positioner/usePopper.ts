@@ -59,7 +59,6 @@ function hasAutofocusFilter(node: Node) {
  */
 function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: React.MutableRefObject<string>) {
   const {
-    autoSize,
     flipBoundary,
     offset,
     onStateUpdate,
@@ -179,35 +178,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
           fn: handleStateUpdate,
         },
 
-        autoSize && {
-          // Similar code as popper-maxsize-modifier: https://github.com/atomiks/popper.js/blob/master/src/modifiers/maxSize.js
-          // popper-maxsize-modifier only calculates the max sizes. This modifier applies the max sizes when overflow is detected
-          name: 'applyMaxSize',
-          enabled: true,
-          phase: 'beforeWrite' as PopperJs.ModifierPhases,
-          requiresIfExists: ['offset', 'preventOverflow', 'flip'],
-          options: {
-            altBoundary: true,
-            boundary: getBoundary(container, overflowBoundary),
-          },
-          fn({ state, options: modifierOptions }: PopperJs.ModifierArguments<{}>) {
-            const overflow = PopperJs.detectOverflow(state, modifierOptions);
-            const { x, y } = state.modifiersData.preventOverflow || { x: 0, y: 0 };
-            const { width, height } = state.rects.popper;
-            const [basePlacement] = state.placement.split('-');
-
-            const widthProp: keyof PopperJs.SideObject = basePlacement === 'left' ? 'left' : 'right';
-            const heightProp: keyof PopperJs.SideObject = basePlacement === 'top' ? 'top' : 'bottom';
-
-            if (overflow[widthProp] > 0 && (autoSize === true || autoSize === 'width')) {
-              state.styles.popper.maxWidth = `${width - overflow[widthProp] - x}px`;
-            }
-            if (overflow[heightProp] > 0 && (autoSize === true || autoSize === 'height')) {
-              state.styles.popper.maxHeight = `${height - overflow[heightProp] - y}px`;
-            }
-          },
-        },
-
         /**
          * This modifier is necessary in order to render the pointer. Refs are resolved in effects, so it can't be
          * placed under computed modifiers. Deep merge is not required as this modifier has only these properties.
@@ -230,7 +200,6 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       return popperOptions;
     },
     [
-      autoSize,
       flipBoundary,
       offsetModifier,
       overflowBoundary,
