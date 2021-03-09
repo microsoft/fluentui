@@ -45,7 +45,6 @@
   },
   "dependencies": {
     "@fluentui/react-make-styles": "^9.0.0-alpha.7",
-    "@fluentui/react-theme-provider": "",
     "@fluentui/react-utilities": "^9.0.0-alpha.6",
     "@popperjs/core": "~2.4.3",
     "tslib": "^1.10.0"
