@@ -2788,7 +2788,7 @@
   resolved "https://registry.yarnpkg.com/@pnpm/types/-/types-6.2.0.tgz#8ef1ecfddaa6b5c67faef61435e04eab947304a5"
   integrity sha512-UQIu6DzsMo0H/wA5zKga3WpMyq38daFmAgvcz/QtttMkZsI75tH4J/ZGIKMGMj1wXgfp+2rGpbcr/Lv9kbMIrw==
 
-"@popperjs/core@^2.4.2":
+"@popperjs/core@~2.4.2":
   version "2.4.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.4.2.tgz#7c6dc4ecef16149fd7a736710baa1b811017fdca"
   integrity sha512-JlGTGRYHC2QK+DDbePyXdBdooxFq2+noLfWpRqJtkxcb/oYWzOF0kcbfvvbWrwevCC1l6hLUg1wHYT+ona5BWQ==
