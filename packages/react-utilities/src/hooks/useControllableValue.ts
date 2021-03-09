@@ -41,7 +41,10 @@ export function useControllableValue<
   controlledValue,
   defaultUncontrolledValue,
   onChange,
-}: UseControllableValueOptions<TValue, TElement, TEvent>): readonly [TValue, React.Dispatch<TValue>] {
+}: UseControllableValueOptions<TValue, TElement, TEvent>): readonly [
+  TValue,
+  (update: React.SetStateAction<TValue>, ev?: TEvent) => void,
+] {
   const [value, setValue] = React.useState<TValue>(defaultUncontrolledValue);
   const isControlled = useIsControlled(controlledValue);
   const currentValue = isControlled ? (controlledValue as TValue) : value;
