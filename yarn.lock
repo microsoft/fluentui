@@ -3000,14 +3000,6 @@
   resolved "https://registry.yarnpkg.com/@quid/stylis-plugin-focus-visible/-/stylis-plugin-focus-visible-4.0.0.tgz#2200cbc3e41e8a951028efcdc89e4b55c9b0f1ca"
   integrity sha512-dS4Vl1D4NHN4gAiWxUQLPAN4k2NMmNpfujuAPU2JF5P/XX8OUD7svhM8f9TudWr8dVdWYjQEAMaRtSUcf4720w==
 
-"@reach/descendants@0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@reach/descendants/-/descendants-0.13.2.tgz#14cebb203a017d4a316345048deece75caa920b4"
-  integrity sha512-8FdcYF48U3RXeMTlaYPO0JZ7RD01z8pUl6sCAXcDBw1Hony4ZgiubjZOHD9c+fOZrC9kHqD+yJfIb6K+T+vabw==
-  dependencies:
-    "@reach/utils" "0.13.2"
-    tslib "^2.1.0"
-
 "@reach/router@^1.2.1", "@reach/router@^1.3.3":
   version "1.3.4"
   resolved "https://registry.yarnpkg.com/@reach/router/-/router-1.3.4.tgz#d2574b19370a70c80480ed91f3da840136d10f8c"
@@ -3017,15 +3009,6 @@
     invariant "^2.2.3"
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
-
-"@reach/utils@0.13.2":
-  version "0.13.2"
-  resolved "https://registry.yarnpkg.com/@reach/utils/-/utils-0.13.2.tgz#87e8fef8ebfe583fa48250238a1a3ed03189fcc8"
-  integrity sha512-3ir6cN60zvUrwjOJu7C6jec/samqAeyAB12ZADK+qjnmQPdzSYldrFWwDVV5H0WkhbYXR3uh+eImu13hCetNPQ==
-  dependencies:
-    "@types/warning" "^3.0.0"
-    tslib "^2.1.0"
-    warning "^4.0.3"
 
 "@rollup/pluginutils@^3.0.8":
   version "3.1.0"
@@ -5445,11 +5428,6 @@
   dependencies:
     "@types/expect" "^1.20.4"
     "@types/node" "*"
-
-"@types/warning@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@types/warning/-/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
-  integrity sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=
 
 "@types/webpack-dev-middleware@4.1.0":
   version "4.1.0"
@@ -26165,7 +26143,7 @@ tslib@^1.13.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha512-hcVC3wYEziELGGmEEXue7D75zbwIIVUMWAVbHItGPx0ziyXxrOMQx4rQEVEV45Ut/1IotuEvwqPopzIOkDMf0A==

@@ -39,7 +39,7 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.0.0-alpha.3",
+    "@fluentui/react-utilities": "^9.0.0-alpha.6",
     "ability-helpers": "^0.4.3",
     "tslib": "^1.10.0"
   },

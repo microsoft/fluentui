@@ -46,7 +46,7 @@
     "@fluentui/react-make-styles": "^9.0.0-alpha.7",
     "@fluentui/react-theme": "^9.0.0-alpha.5",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.7",
-    "@fluentui/react-utilities": "^9.0.0-alpha.3",
+    "@fluentui/react-utilities": "^9.0.0-alpha.6",
     "@testing-library/react-hooks": "5.1.0",
     "tslib": "^1.10.0"
   },
