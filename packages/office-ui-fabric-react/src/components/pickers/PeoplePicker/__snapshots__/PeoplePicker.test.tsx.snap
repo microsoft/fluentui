@@ -50,6 +50,7 @@ exports[`PeoplePicker renders correctly 1`] = `
             &:hover {
               border-color: #323130;
             }
+        role="presentation"
       >
         <input
           aria-autocomplete="both"
@@ -150,6 +151,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             &:hover {
               border-color: #323130;
             }
+        role="presentation"
       >
         <span
           className=
