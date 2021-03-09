@@ -79,7 +79,7 @@ export interface AccordionItemContext {
     // (undocumented)
     headingId: string;
     // (undocumented)
-    onAccordionHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
+    onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
     // (undocumented)
     open: boolean;
     // (undocumented)
