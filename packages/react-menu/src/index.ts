@@ -6,3 +6,5 @@ export * from './MenuDivider';
 export * from './MenuGroupHeader';
 export * from './MenuGroup';
 export * from './selectable/index';
+export * from './MenuTrigger';
+export * from './Menu';
