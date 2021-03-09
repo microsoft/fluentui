@@ -598,6 +598,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -646,7 +647,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -1126,6 +1129,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -1174,7 +1178,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -1654,6 +1660,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -1702,7 +1709,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -2584,6 +2593,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -2632,7 +2642,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -3112,6 +3124,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -3160,7 +3173,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -3640,6 +3655,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -3688,7 +3704,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -4570,6 +4588,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -4618,7 +4637,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -5098,6 +5119,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -5146,7 +5168,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
@@ -5626,6 +5650,7 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                             >
                               <div
                                 aria-checked={false}
+                                aria-labelledby="undefined-checkbox undefined-header"
                                 className=
                                     ms-DetailsRow-check
                                     ms-Check-checkHost
@@ -5674,7 +5699,9 @@ exports[`Component Examples renders GroupedList.CustomCheckbox.Example.tsx corre
                                     }
                                 data-automationid="DetailsRowCheck"
                                 data-selection-toggle={true}
+                                id="undefined-checkbox"
                                 role="checkbox"
+                                tabIndex={-1}
                               >
                                 <div
                                   className=
