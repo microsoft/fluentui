@@ -196,6 +196,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 data-selection-toggle={true}
                 id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -1032,6 +1033,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 data-selection-toggle={true}
                 id="header13-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -1857,6 +1859,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       data-selection-toggle={true}
       id="undefined-checkbox"
       role="checkbox"
+      tabIndex={-1}
     >
       <div
         className=
@@ -2380,6 +2383,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 data-selection-toggle={true}
                 id="header5-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -3216,6 +3220,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 data-selection-toggle={true}
                 id="header9-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=

@@ -197,6 +197,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                 data-selection-toggle={true}
                 id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=

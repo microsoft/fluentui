@@ -2044,6 +2044,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 data-selection-toggle={true}
                 id="header9-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -2648,6 +2649,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 data-selection-toggle={true}
                 id="header1-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -3848,6 +3850,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 data-selection-toggle={true}
                 id="header17-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -4453,6 +4456,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 data-selection-toggle={true}
                 id="header13-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
@@ -5437,6 +5441,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 data-selection-toggle={true}
                 id="header5-check"
                 role="checkbox"
+                tabIndex={-1}
               >
                 <div
                   className=
