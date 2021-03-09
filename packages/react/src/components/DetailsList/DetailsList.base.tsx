@@ -179,7 +179,7 @@ const DetailsListInner: React.ComponentType<IDetailsListInnerProps> = (
     selectionZoneRef,
   } = props;
 
-  const role = props.role ? props.role : "grid";
+  const role = props.role ? props.role : 'grid';
 
   const groupNestingDepth = getGroupNestingDepth(groups);
 
