@@ -30,7 +30,7 @@ const getAlignmentMap = (
   center: PlacementParts.center,
 });
 
-const shouldAlignToCenter = (p?: Position, a?: Alignment) => {
+const shouldAlignToCenter = (p?: Position, a?: Alignment): boolean => {
   const positionedVertically = p === 'above' || p === 'below';
   const alignedVertically = a === 'top' || a === 'bottom';
 

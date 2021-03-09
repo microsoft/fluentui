@@ -1,5 +1,5 @@
-import { getPlacement } from './positioningHelper';
-import { Alignment, Position } from '../types';
+import { getPlacement, applyRtlToOffset } from './positioningHelper';
+import { Alignment, Position, OffsetFunction, OffsetFunctionParam } from '../types';
 
 describe('getPlacement', () => {
   it.each([
@@ -33,4 +33,19 @@ describe('getPlacement', () => {
       expect(rtlPlacement).toEqual(expectedRtlPlacement);
     },
   );
+});
+
+describe('applyRtlOffset', () => {
+  it('flips an axis value RTL for an array', () => {
+    expect(applyRtlToOffset([10, 10])).toEqual([-10, 10]);
+  });
+
+  it('flips an axis value RTL for a function', () => {
+    // Arrange
+    const offsetFn: OffsetFunction = () => [10, 10];
+    const flippedFn = applyRtlToOffset(offsetFn) as OffsetFunction;
+
+    // Assert
+    expect(flippedFn(({} as unknown) as OffsetFunctionParam)).toEqual([-10, 10]);
+  });
 });
