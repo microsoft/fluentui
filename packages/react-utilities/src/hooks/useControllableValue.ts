@@ -57,15 +57,18 @@ export function useControllableValue<
     valueRef.current = currentValue;
     onChangeRef.current = onChange;
   });
+
   // To match the behavior of the setter returned by React.useState, this callback's identity
   // should never change. This means it MUST NOT directly reference variables that can change.
   const setValueOrCallOnChange = useConst(() => (update: React.SetStateAction<TValue | undefined>, ev?: TEvent) => {
     // Assuming here that TValue is not a function, because a controllable value will typically
     // be something a user can enter as input
     const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
+
     if (onChangeRef.current) {
       onChangeRef.current(ev!, newValue);
     }
+
     if (!isControlled) {
       setValue(newValue);
     }
