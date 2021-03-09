@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove incorrect rowindex and rowcount for grouped detailslist and groupedlist, fix remaining automated a11y errors",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
