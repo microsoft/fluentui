@@ -1,6 +1,13 @@
 // @ts-check
 
 const cp = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+if (!fs.existsSync(path.join(__dirname, 'dist/storybook'))) {
+  console.error('You must run `yarn screener:build` before `yarn screener`');
+  process.exit(1);
+}
 
 function getCurrentHash() {
   try {

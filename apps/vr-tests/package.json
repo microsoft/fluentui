@@ -9,10 +9,10 @@
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "screener": "yarn storybook:build && screener-storybook --conf screener.config.js --debug",
+    "screener": "screener-storybook --conf screener.config.js --debug",
+    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
-    "start": "start-storybook --port 5555",
-    "storybook:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build"
+    "start": "start-storybook --port 5555"
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
