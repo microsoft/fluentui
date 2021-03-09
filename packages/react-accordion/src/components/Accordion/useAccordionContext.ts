@@ -2,10 +2,11 @@ import * as React from 'react';
 import { createDescendantContext, useDescendant, useDescendantsInit } from '../../utils/descendants';
 import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
 import { useConst, useControllableValue, useEventCallback } from '@fluentui/react-utilities';
+import { createContext } from '@fluentui/react-context-selector';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
 
-export const accordionContext = React.createContext<AccordionContext>({
+export const accordionContext = createContext<AccordionContext>({
   openItems: [],
   requestToggle() {
     /* noop */
@@ -33,17 +34,14 @@ export function useCreateAccordionContext(state: AccordionState) {
       }),
     );
   });
-  const context = React.useMemo<AccordionContext>(
-    () => ({
-      openItems: isControlled ? normalizedIndex! : openItems!,
-      requestToggle,
-      size,
-      expandIconPosition,
-      expandIcon,
-      button,
-    }),
-    [isControlled, normalizedIndex, openItems, requestToggle, size, expandIcon, expandIconPosition, button],
-  );
+  const context = {
+    openItems: isControlled ? normalizedIndex! : openItems!,
+    requestToggle,
+    size,
+    expandIconPosition,
+    expandIcon,
+    button,
+  };
   return [context, descendants, setDescendants] as const;
 }
 
