@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@fluentui/react-theme": "^9.0.0-alpha.5",
-    "@fluentui/react-utilities": "^9.0.0-alpha.6",
+    "@fluentui/react-utilities": "^9.0.0-alpha.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

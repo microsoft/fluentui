@@ -42,10 +42,10 @@
   },
   "dependencies": {
     "@fluentui/react-context-selector": "^0.53.3",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.2",
-    "@fluentui/react-make-styles": "^9.0.0-alpha.6",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.5",
+    "@fluentui/react-make-styles": "^9.0.0-alpha.7",
     "@fluentui/react-theme": "^9.0.0-alpha.5",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.6",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.7",
     "@fluentui/react-utilities": "^9.0.0-alpha.3",
     "@reach/descendants": "0.13.2",
     "@testing-library/react-hooks": "5.1.0",
