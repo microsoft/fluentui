@@ -53,7 +53,7 @@ const PopperExamplePositioning = () => {
           </button>
         </div>
         <div style={{ display: 'flex', gap: '5px' }}>
-          <button onClick={() => setBox('boxA')} style={buttonStyles(box === 'boxA')}>
+          <button id="use-boxA" onClick={() => setBox('boxA')} style={buttonStyles(box === 'boxA')}>
             use Box A
           </button>
           <button id="use-boxB" onClick={() => setBox('boxB')} style={buttonStyles(box === 'boxB')}>
