@@ -23,26 +23,13 @@ type DefaultValue<TValue> = TValue | (() => TValue);
  * is passed the previous value and returns the new value.
  * @see https://reactjs.org/docs/uncontrolled-components.html
  */
-export function useControllableValue<TValue, TElement extends HTMLElement>(
-  controlledValue: TValue,
-  defaultUncontrolledValue: DefaultValue<TValue>,
-): Readonly<[TValue, (update: React.SetStateAction<TValue>) => void]>;
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
   TEvent extends React.SyntheticEvent<TElement> | undefined
 >(
-  controlledValue: TValue,
-  defaultUncontrolledValue: DefaultValue<TValue>,
-  onChange: ChangeCallback<TElement, TValue, TEvent>,
-): Readonly<[TValue, (update: React.SetStateAction<TValue>, ev?: React.FormEvent<TElement>) => void]>;
-export function useControllableValue<
-  TValue,
-  TElement extends HTMLElement,
-  TEvent extends React.SyntheticEvent<TElement> | undefined
->(
-  controlledValue: TValue,
-  defaultUncontrolledValue: DefaultValue<TValue>,
+  controlledValue?: TValue,
+  defaultUncontrolledValue?: DefaultValue<TValue>,
   onChange?: ChangeCallback<TElement, TValue, TEvent>,
 ) {
   const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
