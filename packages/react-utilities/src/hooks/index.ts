@@ -2,5 +2,6 @@ export * from './useBoolean';
 export * from './useConst';
 export * from './useControllableValue';
 export * from './useEventCallback';
-export * from './useId';
+export { useId } from './useId';
+export * from './useIsomorphicLayoutEffect';
 export * from './useMergedRefs';

@@ -14,6 +14,7 @@ import { BreadcrumbItem } from '@microsoft/fast-foundation';
 import { Button } from '@microsoft/fast-foundation';
 import { Checkbox } from '@microsoft/fast-foundation';
 import { ColorRGBA64 } from '@microsoft/fast-colors';
+import { Combobox } from '@microsoft/fast-foundation';
 import { CSSCustomPropertyBehavior } from '@microsoft/fast-foundation';
 import { DesignSystemProvider } from '@microsoft/fast-foundation';
 import { Dialog } from '@microsoft/fast-foundation';
@@ -252,6 +253,12 @@ export const CardStyles: import("@microsoft/fast-element").ElementStyles;
 export const CheckboxStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
+export type ComboboxAppearance = SelectAppearance;
+
+// @public
+export const ComboboxStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
 export function createColorPalette(baseColor: any): string[];
 
 // @public
@@ -455,6 +462,15 @@ export class FluentCard extends FluentDesignSystemProvider {
 
 // @public
 export class FluentCheckbox extends Checkbox {
+}
+
+// @public
+export class FluentCombobox extends Combobox {
+    appearance: ComboboxAppearance;
+    // @internal (undocumented)
+    appearanceChanged(oldValue: ComboboxAppearance, newValue: ComboboxAppearance): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
 }
 
 // @public
@@ -662,6 +678,11 @@ export class FluentRadioGroup extends RadioGroup {
 
 // @public
 export class FluentSelect extends Select {
+    appearance: SelectAppearance;
+    // @internal (undocumented)
+    appearanceChanged(oldValue: SelectAppearance, newValue: SelectAppearance): void;
+    // @internal (undocumented)
+    connectedCallback(): void;
 }
 
 // @public
@@ -1192,6 +1213,9 @@ export const RadioGroupStyles: import("@microsoft/fast-element").ElementStyles;
 
 // @public
 export const RadioStyles: import("@microsoft/fast-element").ElementStyles;
+
+// @public
+export type SelectAppearance = 'filled' | 'outline';
 
 // @public
 export const SelectStyles: import("@microsoft/fast-element").ElementStyles;

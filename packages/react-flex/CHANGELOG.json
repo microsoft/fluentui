@@ -2,6 +2,44 @@
   "name": "@fluentui/react-flex",
   "entries": [
     {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "@fluentui/react-flex_v0.2.9",
+      "version": "0.2.9",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add Flex's convergence spec",
+            "author": "andredias@microsoft.com",
+            "commit": "ea8b17adc361b8a834fc769e944bb3f2f6dd67cc",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 03 Mar 2021 00:10:09 GMT",
+      "tag": "@fluentui/react-flex_v0.2.9",
+      "version": "0.2.9",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-compose to v1.0.0-beta.18",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-flex"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/theme to v2.0.2",
+            "author": "elcraig@microsoft.com",
+            "commit": "9fa8d85af3c60daab15f5a91ec876c8648b018f2",
+            "package": "@fluentui/react-flex"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/react-flex_v0.2.8",
       "version": "0.2.8",

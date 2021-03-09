@@ -1,4 +1,4 @@
-import { task, series, parallel, condition, option, argv, addResolvePath, resolveCwd } from 'just-scripts';
+import { task, series, parallel, condition, option, argv, addResolvePath } from 'just-scripts';
 import { Arguments } from 'yargs-parser';
 
 import path from 'path';
@@ -20,7 +20,6 @@ import { postprocessTask } from './tasks/postprocess';
 import { postprocessAmdTask } from './tasks/postprocess-amd';
 import { postprocessCommonjsTask } from './tasks/postprocess-commonjs';
 import { startStorybookTask, buildStorybookTask } from './tasks/storybook';
-import { findGitRoot } from './monorepo/index';
 
 interface BasicPresetArgs extends Arguments {
   production: boolean;
@@ -56,19 +55,6 @@ function basicPreset() {
   option('push', { default: true } as any);
 
   option('package', { alias: 'p' });
-}
-
-/** Resolve whereas a storybook config + stories exist for a given path */
-function checkForStorybookExistence() {
-  const packageName = path.basename(process.cwd());
-
-  // Returns true if the current package has a storybook config or the examples package has a storybook config and
-  // contains a folder with the current package's name.
-  return (
-    !!resolveCwd('./.storybook/main.js') ||
-    (!!resolveCwd('../react-examples/.storybook/main.js') &&
-      fs.existsSync(path.join(findGitRoot(), `packages/react-examples/src/${packageName}`)))
-  );
 }
 
 export function preset() {
@@ -139,10 +125,7 @@ export function preset() {
 
   task(
     'bundle',
-    parallel(
-      condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => checkForStorybookExistence()),
-    ),
+    condition('webpack', () => fs.existsSync(path.join(process.cwd(), 'webpack.config.js'))),
   );
 }
 

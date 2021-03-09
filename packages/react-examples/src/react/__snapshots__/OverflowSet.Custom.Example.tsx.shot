@@ -191,9 +191,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar
@@ -763,10 +763,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label="More items"
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar

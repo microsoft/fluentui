@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-provider",
-  "version": "9.0.0-alpha.4",
+  "version": "9.0.0-alpha.7",
   "description": "Fluent UI React provider component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,11 +34,10 @@
     "react-dom": "16.8.6"
   },
   "dependencies": {
-    "@fluentui/react-focus-management": "^9.0.0-alpha.2",
-    "@fluentui/react-theme": "^9.0.0-alpha.3",
-    "@fluentui/react-theme-provider": "^9.0.0-alpha.4",
-    "@fluentui/react-utilities": "^9.0.0-alpha.3",
-    "@fluentui/set-version": "^8.0.1",
+    "@fluentui/react-focus-management": "^9.0.0-alpha.5",
+    "@fluentui/react-theme": "^9.0.0-alpha.5",
+    "@fluentui/react-theme-provider": "^9.0.0-alpha.7",
+    "@fluentui/react-utilities": "^9.0.0-alpha.6",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

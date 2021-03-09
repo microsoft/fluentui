@@ -675,6 +675,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -919,10 +920,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 0
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -1213,6 +1214,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1457,10 +1459,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 1
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -1751,6 +1753,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -1995,10 +1998,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 2
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -2289,6 +2292,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -2533,10 +2537,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 3
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -2827,6 +2831,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3071,10 +3076,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 4
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -3365,6 +3370,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -3609,10 +3615,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 5
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -3903,6 +3909,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4147,10 +4154,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 6
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -4441,6 +4448,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -4685,10 +4693,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 7
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -4979,6 +4987,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5223,10 +5232,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 8
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon
@@ -5517,6 +5526,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                       >
                         <div
                           aria-checked={false}
+                          aria-label="select row"
                           className=
                               ms-DetailsRow-check
                               ms-Check-checkHost
@@ -5761,10 +5771,10 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
                           <div>
                             Item 9
                             <button
+                              aria-controls={null}
                               aria-expanded={false}
                               aria-haspopup={true}
                               aria-label="Show actions"
-                              aria-owns={null}
                               className=
                                   ms-Button
                                   ms-Button--icon

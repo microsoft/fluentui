@@ -2,6 +2,27 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Sun, 07 Mar 2021 23:34:51 GMT",
+      "tag": "@fluentui/web-components_v0.15.0",
+      "version": "0.15.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add menuitemcheckbox and menuitemradio styling to menu-item",
+            "author": "chhol@microsoft.com",
+            "commit": "a8552af0ad666f77e2ba8a3aa3768611d6fed3a5",
+            "package": "@fluentui/web-components"
+          },
+          {
+            "comment": "add combobox as a new web component",
+            "author": "chhol@microsoft.com",
+            "commit": "7e0fcf35ae384bf5047acca7a5c52634664a504a",
+            "package": "@fluentui/web-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 26 Feb 2021 01:16:27 GMT",
       "tag": "@fluentui/web-components_v0.14.2",
       "version": "0.14.2",
