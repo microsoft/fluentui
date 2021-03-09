@@ -9,7 +9,9 @@ describe('useControllableValue', () => {
     let defaultValue: boolean | undefined;
 
     value = true;
-    const { result, rerender } = renderHook(() => useControllableValue(value, defaultValue));
+    const { result, rerender } = renderHook(() =>
+      useControllableValue({ controlledValue: value, defaultUncontrolledValue: defaultValue }),
+    );
     expect(result.current[0]).toBe(true);
 
     value = false;
@@ -29,23 +31,25 @@ describe('useControllableValue', () => {
   it.each([
     ['', true],
     ['factory', () => true],
-  ])('uses the default value %s if no controlled value is provided', (_, defaultValue) => {
-    const { result } = renderHook(() => useControllableValue(undefined, defaultValue));
+  ])('uses the default value %s if no controlled value is provided', (_, defaultUncontrolledValue) => {
+    const { result } = renderHook(() => useControllableValue({ defaultUncontrolledValue }));
     expect(result.current[0]).toBe(true);
   });
 
   it('does not change value when the default value changes', () => {
-    let defaultValue = true;
-    const { result, rerender } = renderHook(() => useControllableValue(undefined, defaultValue));
+    let defaultUncontrolledValue = true;
+    const { result, rerender } = renderHook(() => useControllableValue({ defaultUncontrolledValue }));
 
-    defaultValue = false;
+    defaultUncontrolledValue = false;
     rerender();
 
     expect(result.current[0]).toBe(true);
   });
 
   it('returns the same setter callback', () => {
-    const { result, rerender } = renderHook(() => useControllableValue('hello', 'world'));
+    const { result, rerender } = renderHook(() =>
+      useControllableValue({ controlledValue: 'hello', defaultUncontrolledValue: 'world' }),
+    );
     const firstResult = result.current;
 
     rerender();
@@ -54,13 +58,13 @@ describe('useControllableValue', () => {
   });
 
   it('returns the same setter callback even if param values change', () => {
-    let value = 'hello';
-    let defaultValue = 'world';
-    const { result, rerender } = renderHook(() => useControllableValue(value, defaultValue));
+    let controlledValue = 'hello';
+    let defaultUncontrolledValue = 'world';
+    const { result, rerender } = renderHook(() => useControllableValue({ controlledValue, defaultUncontrolledValue }));
     const firstResult = result.current;
 
-    value = 'foo';
-    defaultValue = 'bar';
+    controlledValue = 'foo';
+    defaultUncontrolledValue = 'bar';
     rerender();
 
     expect(result.current[1]).toEqual(firstResult[1]);
@@ -73,7 +77,9 @@ describe('useControllableValue', () => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
     let value: string | undefined = first;
-    const { rerender } = renderHook(() => useControllableValue(value, undefined));
+    const { rerender } = renderHook(() =>
+      useControllableValue({ controlledValue: value, defaultUncontrolledValue: '' }),
+    );
 
     value = second;
     rerender();

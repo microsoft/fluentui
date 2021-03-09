@@ -12,6 +12,16 @@ export type ChangeCallback<
  */
 type DefaultValue<TValue> = TValue | (() => TValue);
 
+export interface UseControllableValueOptions<
+  TValue,
+  TElement extends HTMLElement,
+  TEvent extends React.SyntheticEvent<TElement> | undefined
+> {
+  controlledValue?: TValue;
+  defaultUncontrolledValue: DefaultValue<TValue>;
+  onChange?: (event: TEvent, value: TValue) => void;
+}
+
 /**
  * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
  * text box string.
@@ -27,14 +37,14 @@ export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
   TEvent extends React.SyntheticEvent<TElement> | undefined
->(
-  controlledValue?: TValue,
-  defaultUncontrolledValue?: DefaultValue<TValue>,
-  onChange?: ChangeCallback<TElement, TValue, TEvent>,
-) {
-  const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
+>({
+  controlledValue,
+  defaultUncontrolledValue,
+  onChange,
+}: UseControllableValueOptions<TValue, TElement, TEvent>): readonly [TValue, React.Dispatch<TValue>] {
+  const [value, setValue] = React.useState<TValue>(defaultUncontrolledValue);
   const isControlled = useIsControlled(controlledValue);
-  const currentValue = isControlled ? controlledValue : value;
+  const currentValue = isControlled ? (controlledValue as TValue) : value;
 
   // Duplicate the current value and onChange in refs so they're accessible from
   // setValueOrCallOnChange without creating a new callback every time
@@ -47,7 +57,7 @@ export function useControllableValue<
 
   // To match the behavior of the setter returned by React.useState, this callback's identity
   // should never change. This means it MUST NOT directly reference variables that can change.
-  const setValueOrCallOnChange = useConst(() => (update: React.SetStateAction<TValue | undefined>, ev?: TEvent) => {
+  const setValueOrCallOnChange = useConst(() => (update: React.SetStateAction<TValue>, ev?: TEvent) => {
     // Assuming here that TValue is not a function, because a controllable value will typically
     // be something a user can enter as input
     const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
