@@ -15,6 +15,17 @@
 # Changelog
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<!--------------------------------[ v0.52.2 ]------------------------------- -->
+## [v0.52.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.2) (2021-03-09)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.52.1..@fluentui/react-northstar_v0.52.2)
+
+### Fixes
+- Prevent menu to be dismissed when scroll happens inside `Menu` boundaries @assuncaocharles ([#17294](https://github.com/microsoft/fluentui/pull/17294))
+- Fix double rendering of `ChatMessage` component @layershifter ([#17276](https://github.com/microsoft/fluentui/pull/17276))
+
+### Features
+- Add `usePopper()` hook for positioning @layershifter ([#17276](https://github.com/microsoft/fluentui/pull/17276))
+
 <!--------------------------------[ v0.52.1 ]------------------------------- -->
 ## [v0.52.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.52.0) (2021-02-22)
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.51.7..@fluentui/react-northstar_v0.52.1)
