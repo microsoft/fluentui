@@ -168,7 +168,7 @@ export const RatingBase: React.FunctionComponent<IRatingProps> = React.forwardRe
       <div
         ref={ref}
         className={css('ms-Rating-star', classNames.root, rootSizeClass)}
-        aria-label={!readOnly ? (ariaLabel ? ariaLabel : '') : ''}
+        aria-label={!readOnly ? ariaLabel : undefined}
         id={id}
         role={!readOnly ? 'group' : undefined}
         {...divProps}
