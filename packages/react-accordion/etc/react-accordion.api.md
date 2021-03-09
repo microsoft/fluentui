@@ -12,8 +12,10 @@ import { ShorthandProps } from '@fluentui/react-utilities';
 // @public
 export const Accordion: React.ForwardRefExoticComponent<AccordionProps & React.RefAttributes<HTMLElement>>;
 
+// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommonProps" needs to be exported by the entry point index.d.ts
+//
 // @public (undocumented)
-export interface AccordionContext {
+export interface AccordionContext extends AccordionHeaderCommonProps {
     openItems: number[];
     requestToggle: NonNullable<AccordionProps['onToggle']>;
 }
@@ -118,8 +120,6 @@ export interface AccordionPanelState extends AccordionPanelProps {
     ref: React.MutableRefObject<HTMLElement>;
 }
 
-// Warning: (ae-forgotten-export) The symbol "AccordionHeaderCommonProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export interface AccordionProps extends ComponentProps, AccordionHeaderCommonProps, React.HTMLAttributes<HTMLElement> {
     collapsible?: boolean;
