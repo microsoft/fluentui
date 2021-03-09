@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Fix Slider Keyboard Controls when `props.value` changes",
+  "packageName": "office-ui-fabric-react",
+  "email": "shrbalaji@microsoft.com",
+  "dependentChangeType": "patch",
+  "date": "2021-03-02T20:14:42.680Z"
+}
