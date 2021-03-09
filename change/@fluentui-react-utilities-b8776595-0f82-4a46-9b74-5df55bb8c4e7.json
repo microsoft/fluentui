@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "useIsomorphicLayout effect with useEventCallback",
+  "comment": "useControllableValue should behave natively",
   "packageName": "@fluentui/react-utilities",
   "email": "lingfan.gao@microsoft.com",
   "dependentChangeType": "patch"
