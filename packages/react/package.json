@@ -6,6 +6,7 @@
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "sideEffects": [
+    "*.scss*",
     "lib/version.js"
   ],
   "repository": {
