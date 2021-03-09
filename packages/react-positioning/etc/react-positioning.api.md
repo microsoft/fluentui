@@ -8,26 +8,123 @@ import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
 // @public (undocumented)
+export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
+
+// Warning: (ae-forgotten-export) The symbol "ModifierProps" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export type ArrowModifier = ModifierProps<'arrow', Partial<{
+    element: HTMLElement | string;
+    padding: PopperJs.Padding;
+}>>;
+
+// @public (undocumented)
+export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
+
+// @public (undocumented)
+export type FlipModifier = ModifierProps<'flip', Partial<{
+    fallbackPlacements: PopperJs.Placement[];
+    padding: PopperJs.Padding;
+    boundary: PopperJs.Boundary;
+    rootBoundary: PopperJs.RootBoundary;
+    altBoundary: boolean;
+    flipVariations: boolean;
+}>>;
+
+// @public (undocumented)
+export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
+
+// @public (undocumented)
+export type OffsetFunction = (param: OffsetFunctionParam) => [number | null | undefined, number | null | undefined];
+
+// @public (undocumented)
+export type OffsetFunctionParam = {
+    popper: PopperJs.Rect;
+    reference: PopperJs.Rect;
+    placement: PopperJs.Placement;
+};
+
+// @public (undocumented)
+export type OffsetModifier = ModifierProps<'offset', Partial<{
+    offset: Offset;
+}>>;
+
+// @public (undocumented)
+export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement;
+
+// @public (undocumented)
+export interface PopperChildrenProps {
+    placement: PopperJs.Placement;
+    scheduleUpdate(): void;
+}
+
+// @public (undocumented)
+export type PopperInstance = PopperJs.Instance & {
+    isFirstRun?: boolean;
+};
+
+// @public (undocumented)
+export type PopperModifiers = (ArrowModifier | FlipModifier | OffsetModifier | PreventOverflowModifier)[];
+
+// @public (undocumented)
+export type PopperModifiersFn = (target: HTMLElement | PopperJs.VirtualElement, container: HTMLElement, arrow: HTMLElement | null) => PopperModifiers;
+
+// @public (undocumented)
+export type PopperOptions = Omit<PopperProps, 'children' | 'targetRef'> & {
+    onStateUpdate?: (state: Partial<PopperJs.State>) => void;
+};
+
+// @public (undocumented)
+export interface PopperProps extends PositioningProps {
+    children: PopperChildrenFn | React.ReactElement;
+    enabled?: boolean;
+    pointerTargetRef?: React.RefObject<Element>;
+    positioningDependencies?: React.DependencyList;
+    rtl?: boolean;
+    targetRef: React.RefObject<Element> | PopperJs.VirtualElement;
+}
+
+// @public (undocumented)
+export type PopperRefHandle = {
+    updatePosition: () => void;
+};
+
+// @public (undocumented)
+export type PopperShorthandProps = PositioningProps;
+
+// @public (undocumented)
+export type Position = 'above' | 'below' | 'before' | 'after';
+
+// @public (undocumented)
 export interface PositioningProps {
-    // Warning: (ae-forgotten-export) The symbol "Alignment" needs to be exported by the entry point index.d.ts
     align?: Alignment;
     autoSize?: 'height' | 'width' | boolean;
-    // Warning: (ae-forgotten-export) The symbol "Boundary" needs to be exported by the entry point index.d.ts
     flipBoundary?: Boundary;
-    // Warning: (ae-forgotten-export) The symbol "Offset" needs to be exported by the entry point index.d.ts
     offset?: Offset;
     overflowBoundary?: Boundary;
-    // Warning: (ae-forgotten-export) The symbol "PopperRefHandle" needs to be exported by the entry point index.d.ts
     popperRef?: React.Ref<PopperRefHandle>;
-    // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
     position?: Position;
     positionFixed?: boolean;
     unstable_disableTether?: boolean | 'all';
     unstable_pinned?: boolean;
 }
 
-// Warning: (ae-forgotten-export) The symbol "PopperOptions" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export type PreventOverflowModifier = ModifierProps<'preventOverflow', Partial<{
+    mainAxis: boolean;
+    altAxis: boolean;
+    boundary: PopperJs.Boundary;
+    rootBoundary: PopperJs.RootBoundary;
+    altBoundary: boolean;
+    tether: boolean;
+    tetherOffset: (arg0: {
+        popper: PopperJs.Rect;
+        reference: PopperJs.Rect;
+        placement: PopperJs.Placement;
+    }) => number;
+    padding: PopperJs.Padding;
+}>>;
+
 // @public
 export function usePopper(options?: PopperOptions): {
     targetRef: React.MutableRefObject<any>;
