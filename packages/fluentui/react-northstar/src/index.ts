@@ -251,7 +251,7 @@ export * from './utils/createComponent';
 export * from './utils/date-time-utilities';
 export * from './utils';
 export * from './types';
-export { Popper as UNSTABLE_Popper } from './utils/positioner';
+export { createReferenceFromClick, Popper as UNSTABLE_Popper, usePopper } from './utils/positioner';
 export * from './utils/positioner/types';
 
 //
