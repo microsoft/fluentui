@@ -32,7 +32,6 @@ There are a few drawbacks with this approach to adding tooltips, which are outli
 
 - The wrapper `div` created by `TooltipHost` can cause layout issues for the component. It also doesn't always result in proper positioning for the tooltip.
 - The API is overly complex.
-- It's not possible to have a tooltip within a tooltip
 - There's no coordination between tooltips on a page. For example, moving the mouse between two elements with tooltips should cause the second tooltip to appear immediately without fading in/out.
 
 ### Tooltips in v0/Northstar
@@ -49,7 +48,7 @@ There are a few ways to add a tooltip to a component.
 
 ## A component with a `tooltip` slot
 
-Components can choose to expose a pseudo-slot `tooltip`, by inheriting props from the `WithTooltipSlot` interface and using the `useTooltipSlot` hook.
+Components can choose to expose a `tooltip` slot, by inheriting props from the `WithTooltipSlot` interface and using the `useTooltipSlot` hook.
 
 While this looks and acts like a normal slot to users, the `Tooltip` is not actually rendered by the component, but rather passed to the `TooltipManager` to render. The `useTooltipSlot` hook is lightweight (small bundle size impact); it does not have a direct dependency on the `Tooltip` or `TooltipManager` classes.
 
@@ -87,9 +86,9 @@ Example usage:
 To attach a tooltip to a component that doesn't have a `tooltip` slot, use the `useTooltipRef` hook. It takes the same shorthand props that the `tooltip` slot does. This is slightly less ergonomic than the tooltip slot, and requires using a ref, but works with any element.
 
 ```jsx
-<div ref={useTooltipRef('Example tooltip', { id: 'exampleTooltipId' })} aria-describedby="exampleTooltipId">
-  A div with a tooltip
-</div>
+<a href="http://example.com" ref={useTooltipRef('Example tooltip', { id: 'exampleTooltipId' })} aria-describedby="exampleTooltipId">
+  A link with a tooltip
+</a>
 
 <ThirdPartyComponent ref={useTooltipRef(<>Tooltips <u>everywhere</u>!</>)} />
 ```
@@ -117,8 +116,7 @@ _A note about the terminology used for the elements that the tooltip is attached
 
 - _The **trigger** is the element that causes the tooltip to open._
 - _The **target** is the element that the tooltip is anchored to (and the arrow points to)._
-
-_Almost always, these will both be the same element, but it is possible to specify them separately, so the tooltip can show up adjacent to a different element than the one that triggered it._
+- _Almost always, these will both be the same element, but it is possible to specify them separately, so the tooltip can show up adjacent to a different element than the one that triggered it._
 
 ## @fluentui/react-tooltip-provider
 
@@ -134,7 +132,7 @@ export interface TooltipProps extends ComponentProps, React.HTMLAttributes<HTMLE
    * How to position the tooltip relative to the target element. This is a "best effort" placement,
    * but the tooltip may be flipped to the other side if there is not enough room.
    *
-   * @defaultvalue bottom
+   * @defaultvalue top
    */
   placement?: TooltipPlacement;
 
@@ -220,6 +218,8 @@ export interface TooltipManagerApi {
 ### TooltipProvider
 
 `TooltipProvider` is responsible for lazy-loading `TooltipManager`. It creates a React context that provides a ref to the `TooltipManager` once it is loaded. This context will also be built into `FluentContext`.
+
+> _Question_ - Server-side rendering is not compatible with lazy loading (yet!). Do we need to worry about that?
 
 ```typescript
 export interface TooltipProviderProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
@@ -378,7 +378,7 @@ How the component will be rendered as HTML elements
   <button aria-describedby="tooltip42" /> {/* for example... */}
 
   <div {/* TooltipManager */}>
-    <div id="tooltip42" {/* Tooltip */}>
+    <div role="tooltip" id="tooltip42" {/* Tooltip */}>
       <div {/* Arrow */} />
       Hello world
     </div>
