@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Initial package",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
