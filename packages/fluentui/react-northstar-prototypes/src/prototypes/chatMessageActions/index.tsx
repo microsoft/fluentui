@@ -18,7 +18,6 @@ import { PortalInner } from '@fluentui/react-northstar/src/components/Portal/Por
 const chatBehaviorOverride: any = () => {
   const behavior = chatBehavior();
 
-  // doesn't work when chat message get only focus event
   behavior.focusZone.props.shouldEnterInnerZone = event => false;
   return behavior;
 };
@@ -158,7 +157,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
   const messageRef = React.useRef<HTMLElement>();
 
   const handleKeyDownOnMessage = e => {
-    const focusableElements = popoverRef.current.querySelectorAll('[tabindex="0"],[tabindex="-1"]');
+    const focusableElements = popoverRef?.current?.querySelectorAll('[tabindex="0"],[tabindex="-1"]');
 
     if (e.keyCode === keyboardKey.Enter) {
       focusableElements[0].focus();
@@ -187,7 +186,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
 
   const handleKeyDownOnActionMenu = e => {
     if (e.keyCode === keyboardKey.Tab) {
-      const getElementTabbableElements: NodeListOf<HTMLElement> = messageRef.current.querySelectorAll(
+      const getElementTabbableElements: NodeListOf<HTMLElement> = messageRef?.current?.querySelectorAll(
         '[tabindex="-1"]:not([data-is-focusable="false"])',
       );
 
@@ -265,7 +264,8 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
   ) => {
     console.log(`show popover variable: ${showPopover}`);
 
-    return !showPopover || showPopover === 'button' ? (
+    return (
+      // just let there button alwasy in the DOM hidden
       <div>
         <Ref innerRef={buttonRef}>
           <Button
@@ -279,28 +279,52 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
             styles={{ opacity: 0, width: '0px', height: '0px' }}
           />
         </Ref>
+
         {!!showPopover && (
-          // <PortalInner mountNode={messageRef.current}>
           <PortalInner>
             <Ref innerRef={popoverRef}>
-              <Component
-                onKeyDown={handleKeyDownOnActionMenu}
-                // accessibility={popoverBehavior(showPopover === 'button')}
-                items={getPopoverItems(messageProps)}
-                {...props}
-              />
+              <Component onKeyDown={handleKeyDownOnActionMenu} items={getPopoverItems(messageProps)} {...props} />
             </Ref>
           </PortalInner>
         )}
       </div>
-    ) : (
-      // <PortalInner mountNode={messageRef.current}>
-      <PortalInner>
-        <Ref innerRef={popoverRef}>
-          <Component onKeyDown={handleKeyDownOnActionMenu} items={getPopoverItems(messageProps)} {...props} />
-        </Ref>
-      </PortalInner>
     );
+    // return !showPopover || showPopover === 'button' ? (
+    //   <div>
+    //     <Ref innerRef={buttonRef}>
+    //       <Button
+    //         id="hidden-button"
+    //         data-is-focusable={false}
+    //         aria-expanded={!!showPopover}
+    //         tabIndex={-1}
+    //         aria-label={`Open actions toolbar for ${messageProps.author}`}
+    //         onClick={() => setShowPopover('button')}
+    //         iconOnly
+    //         styles={{ opacity: 0, width: '0px', height: '0px' }}
+    //       />
+    //     </Ref>
+    //     {!!showPopover && (
+    //       // <PortalInner mountNode={messageRef.current}>
+    //       <PortalInner>
+    //         <Ref innerRef={popoverRef}>
+    //           <Component
+    //             onKeyDown={handleKeyDownOnActionMenu}
+    //             // accessibility={popoverBehavior(showPopover === 'button')}
+    //             items={getPopoverItems(messageProps)}
+    //             {...props}
+    //           />
+    //         </Ref>
+    //       </PortalInner>
+    //     )}
+    //   </div>
+    // ) : (
+    //   // <PortalInner mountNode={messageRef.current}>
+    //   <PortalInner>
+    //     <Ref innerRef={popoverRef}>
+    //       <Component onKeyDown={handleKeyDownOnActionMenu} items={getPopoverItems(messageProps)} {...props} />
+    //     </Ref>
+    //   </PortalInner>
+    // );
   };
 
   const handleFocusOnMessage = (show, e) => {
