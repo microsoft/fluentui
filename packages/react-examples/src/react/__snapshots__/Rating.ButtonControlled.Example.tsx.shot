@@ -57,12 +57,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
       onFocus={[Function]}
       onKeyDown={[Function]}
       onMouseDownCapture={[Function]}
-      role="textbox"
       tabIndex={0}
     >
       <button
-        aria-checked={false}
-        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -111,7 +108,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-0"
         onClick={[Function]}
         onFocus={[Function]}
-        role="radio"
+        role="presentation"
         type="button"
       >
         <span
@@ -200,8 +197,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
-        aria-checked={false}
-        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -250,7 +245,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-1"
         onClick={[Function]}
         onFocus={[Function]}
-        role="radio"
+        role="presentation"
         type="button"
       >
         <span
@@ -339,8 +334,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
-        aria-checked={false}
-        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -389,7 +382,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-2"
         onClick={[Function]}
         onFocus={[Function]}
-        role="radio"
+        role="presentation"
         type="button"
       >
         <span
@@ -478,8 +471,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
-        aria-checked={false}
-        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -528,7 +519,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-3"
         onClick={[Function]}
         onFocus={[Function]}
-        role="radio"
+        role="presentation"
         type="button"
       >
         <span
@@ -617,8 +608,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         </div>
       </button>
       <button
-        aria-checked={true}
-        aria-hidden="true"
         className=
             ms-Rating-button
             ms-Rating--small
@@ -668,7 +657,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
         id="Rating0-star-4"
         onClick={[Function]}
         onFocus={[Function]}
-        role="radio"
+        role="presentation"
         type="button"
       >
         <span
