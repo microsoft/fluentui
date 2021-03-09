@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality",
-  "packageName": "@fluentui/react-experiments",
-  "email": "elvonspa@microsoft.com",
-  "dependentChangeType": "patch"
-}

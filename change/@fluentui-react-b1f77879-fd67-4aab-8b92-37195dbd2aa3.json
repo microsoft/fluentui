@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "PeoplePicker: Fixing the need to press backspace key twice when removing multiple items.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
