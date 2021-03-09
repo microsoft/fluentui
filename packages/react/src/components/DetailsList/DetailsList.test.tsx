@@ -744,39 +744,40 @@ describe('DetailsList', () => {
     );
 
     expect(component.toJSON()).toMatchSnapshot();
-  }),
-    it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
-      const container = document.createElement('div');
-      const columns = [
-        {
-          key: 'column1',
-          name: 'Name',
-          fieldName: 'name',
-          minWidth: 100,
-          maxWidth: 200,
-          isResizable: true,
-          isRowHeader: true,
-        },
-        { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
-      ];
-      const items = mockData(1);
+  });
 
-      ReactDOM.render(
-        <DetailsListBase
-          items={mockData(1)}
-          columns={columns}
-          ariaLabelForSelectionColumn="Toggle selection"
-          ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-          checkButtonAriaLabel="select row"
-        />,
-        container,
-      );
+  it('returns an element with the correct text based on the second id passed in aria-labelledby', () => {
+    const container = document.createElement('div');
+    const columns = [
+      {
+        key: 'column1',
+        name: 'Name',
+        fieldName: 'name',
+        minWidth: 100,
+        maxWidth: 200,
+        isResizable: true,
+        isRowHeader: true,
+      },
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
+    ];
+    const items = mockData(1);
 
-      const checkbox = container.querySelector('div[role="checkbox"][aria-label="select row"]') as HTMLElement;
-      const rowHeaderId = checkbox?.getAttribute('aria-labelledby')?.split(' ')[1];
+    ReactDOM.render(
+      <DetailsListBase
+        items={mockData(1)}
+        columns={columns}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
+        checkButtonAriaLabel="select row"
+      />,
+      container,
+    );
 
-      expect(container.querySelector(`#${rowHeaderId}`)!.textContent).toEqual(items[0].name);
-    });
+    const checkbox = container.querySelector('div[role="checkbox"][aria-label="select row"]') as HTMLElement;
+    const rowHeaderId = checkbox?.getAttribute('aria-labelledby')?.split(' ')[1];
+
+    expect(container.querySelector(`#${rowHeaderId}`)!.textContent).toEqual(items[0].name);
+  });
 
   it('has an aria-labelledby checkboxId that matches the id of the checkbox', () => {
     const component = renderer.create(
