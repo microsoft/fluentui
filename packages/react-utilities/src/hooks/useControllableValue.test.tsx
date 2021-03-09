@@ -67,23 +67,19 @@ describe('useControllableValue', () => {
   });
 
   it.each([
-    ['controlled to uncontrolled', 'hello', undefined],
-    ['uncontrolled to controlled', undefined, 'hello'],
-  ])('wans when switching from %s', (_, first, second) => {
+    ['a controlled value to be uncontrolled', 'defined to an undefined', 'hello', undefined],
+    ['an uncontrolled value to be controlled', 'undefined to a defined', undefined, 'hello'],
+  ])('warns when switching from %s', (controlWarning, undefinedWarning, first, second) => {
     // eslint-disable-next-line @typescript-eslint/no-empty-function
     const spy = jest.spyOn(console, 'error').mockImplementation(() => {});
     let value: string | undefined = first;
-    const { result, rerender } = renderHook(() => useControllableValue(value, undefined));
+    const { rerender } = renderHook(() => useControllableValue(value, undefined));
 
     value = second;
     rerender();
 
-    expect(result.current[0]).toBe(second);
     expect(spy).toHaveBeenCalledTimes(1);
-    expect(spy).toHaveBeenCalledWith(
-      expect.stringContaining(
-        'A component is changing an uncontrolled value to be controlled. This is likely caused by the value changing from undefined to a defined value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components',
-      ),
-    );
+    const expectedWarning = `A component is changing ${controlWarning}. This is likely caused by the value changing from ${undefinedWarning} value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components`;
+    expect(spy).toHaveBeenCalledWith(expect.stringContaining(expectedWarning));
   });
 });

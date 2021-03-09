@@ -45,9 +45,8 @@ export function useControllableValue<
   defaultUncontrolledValue: DefaultValue<TValue>,
   onChange?: ChangeCallback<TElement, TValue, TEvent>,
 ) {
+  const [value, setValue] = React.useState<TValue | undefined>(defaultUncontrolledValue);
   const isControlled = useIsControlled(controlledValue);
-
-  const [value, setValue] = React.useState<TValue>(defaultUncontrolledValue);
   const currentValue = isControlled ? controlledValue : value;
 
   // Duplicate the current value and onChange in refs so they're accessible from
@@ -58,18 +57,15 @@ export function useControllableValue<
     valueRef.current = currentValue;
     onChangeRef.current = onChange;
   });
-
   // To match the behavior of the setter returned by React.useState, this callback's identity
   // should never change. This means it MUST NOT directly reference variables that can change.
   const setValueOrCallOnChange = useConst(() => (update: React.SetStateAction<TValue | undefined>, ev?: TEvent) => {
     // Assuming here that TValue is not a function, because a controllable value will typically
     // be something a user can enter as input
     const newValue = typeof update === 'function' ? (update as Function)(valueRef.current) : update;
-
     if (onChangeRef.current) {
       onChangeRef.current(ev!, newValue);
     }
-
     if (!isControlled) {
       setValue(newValue);
     }
@@ -83,33 +79,35 @@ export function useControllableValue<
  * Prints an error when isControlled value switches between subsequent renders
  */
 const useIsControlled = <TValue>(controlledValue: TValue) => {
-  const wasControlledRef = React.useRef<boolean>(controlledValue !== undefined);
-  const isCurrentControlled = controlledValue !== undefined;
+  const isControlled = useConst<boolean>(controlledValue !== undefined);
 
   if (process.env.NODE_ENV !== 'production') {
     // We don't want these warnings in production even though it is against native behaviour
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
-      if (wasControlledRef.current !== (controlledValue !== undefined)) {
+      if (isControlled !== (controlledValue !== undefined)) {
         const error = new Error();
+
+        const controlWarning = isControlled
+          ? 'a controlled value to be uncontrolled'
+          : 'an uncontrolled value to be controlled';
+
+        const undefinedWarning = isControlled ? 'defined to an undefined' : 'undefined to a defined';
 
         // eslint-disable-next-line no-console
         console.error(
           [
             // Default react error
-            'A component is changing an uncontrolled value to be controlled. This is likely caused by the value',
-            'changing from undefined to a defined value, which should not happen.',
+            'A component is changing ' + controlWarning + '. This is likely caused by the value',
+            'changing from ' + undefinedWarning + ' value, which should not happen.',
             'Decide between using a controlled or uncontrolled input element for the lifetime of the component.',
             'More info: https://reactjs.org/link/controlled-components',
             error.stack,
           ].join(' '),
         );
       }
-    }, [wasControlledRef, controlledValue, isCurrentControlled]);
+    }, [isControlled, controlledValue]);
   }
 
-  React.useEffect(() => {
-    wasControlledRef.current = isCurrentControlled;
-  }, [isCurrentControlled]);
-  return isCurrentControlled;
+  return isControlled;
 };
