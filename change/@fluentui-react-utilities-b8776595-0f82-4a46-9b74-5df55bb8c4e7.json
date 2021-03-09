@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "useControllableValue should behave natively",
+  "packageName": "@fluentui/react-utilities",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

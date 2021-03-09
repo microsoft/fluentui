@@ -2,6 +2,21 @@
   "name": "todo-app",
   "entries": [
     {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "todo-app_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump @fluentui/react to v8.1.7",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "todo-app"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 07 Mar 2021 23:34:51 GMT",
       "tag": "todo-app_v1.0.0",
       "version": "1.0.0",

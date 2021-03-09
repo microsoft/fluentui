@@ -2,6 +2,21 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "@fluentui/react-experiments_v8.0.7",
+      "version": "8.0.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality",
+            "author": "elvonspa@microsoft.com",
+            "commit": "d16cd3a67e7cd6cac7f9da498945e447ac566bd6",
+            "package": "@fluentui/react-experiments"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 07 Mar 2021 23:34:51 GMT",
       "tag": "@fluentui/react-experiments_v8.0.6",
       "version": "8.0.6",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Sun, 07 Mar 2021 23:34:51 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Mar 2021 07:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.1.6..@fluentui/react_v8.1.7)
+
+### Patches
+
+- switch menu buttton to aria-controls to remove nesting ([PR #17299](https://github.com/microsoft/fluentui/pull/17299) by sarah.higley@microsoft.com)
+- PeoplePicker: Fixing the need to press backspace key twice when removing multiple items. ([PR #17304](https://github.com/microsoft/fluentui/pull/17304) by Humberto.Morimoto@microsoft.com)
 
 ## [8.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.1.6)
 

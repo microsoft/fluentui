@@ -2,6 +2,55 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "@fluentui/react-examples_v8.4.1",
+      "version": "8.4.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "update snapshots for button with menu",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-flex to v0.2.9",
+            "author": "andredias@microsoft.com",
+            "commit": "ea8b17adc361b8a834fc769e944bb3f2f6dd67cc",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @fluentui/azure-themes to v8.0.7",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-slider to v1.0.0-beta.59",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-tabs to v1.0.0-beta.61",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react-examples"
+          },
+          {
+            "comment": "Bump @fluentui/react-toggle to v1.0.0-beta.59",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 07 Mar 2021 23:34:51 GMT",
       "tag": "@fluentui/react-examples_v8.4.0",
       "version": "8.4.0",
