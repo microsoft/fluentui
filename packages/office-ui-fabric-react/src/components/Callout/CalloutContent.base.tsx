@@ -195,6 +195,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       beakWidth,
       calloutWidth,
       calloutMaxWidth,
+      calloutMinWidth,
       finalHeight,
       hideOverflow = !!finalHeight,
       backgroundColor,
@@ -224,6 +225,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       positions,
       beakWidth,
       backgroundColor,
+      calloutMinWidth,
       calloutMaxWidth,
     });
 
