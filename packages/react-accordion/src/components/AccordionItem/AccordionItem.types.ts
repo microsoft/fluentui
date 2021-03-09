@@ -5,7 +5,7 @@ export interface AccordionItemContext {
   headingId: string;
   panelId: string;
   open: boolean;
-  onAccordionHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
+  onHeaderClick(ev: React.MouseEvent<HTMLElement>): void;
 }
 
 /**

@@ -8,7 +8,7 @@ import { useContextSelector } from '@fluentui/react-context-selector';
 export const accordionItemContext = React.createContext<AccordionItemContext>({
   headingId: '',
   panelId: '',
-  onAccordionHeaderClick() {
+  onHeaderClick() {
     /** */
   },
   open: false,
@@ -38,7 +38,7 @@ export function useCreateAccordionItemContext(state: AccordionItemState) {
       headingId,
       panelId,
       open,
-      onAccordionHeaderClick,
+      onHeaderClick: onAccordionHeaderClick,
     }),
     [headingId, panelId, onAccordionHeaderClick, open],
   );

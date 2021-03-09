@@ -28,7 +28,7 @@ ChevronUpIcon.displayName = 'ChevronUpIcon';
 export const DefaultExpandIcon = React.forwardRef<HTMLSpanElement, AccordionHeaderExpandIconProps>(
   ({ open, expandIconPosition, children, ...rest }, ref) => (
     <span {...rest} ref={ref}>
-      {children ?? React.useMemo(() => mapStateToIcon({ open, expandIconPosition }), [open, expandIconPosition])}
+      {children ?? mapStateToIcon({ open, expandIconPosition })}
     </span>
   ),
 );
