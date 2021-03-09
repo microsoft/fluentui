@@ -14,10 +14,7 @@ variables:
 
   - template: .devops/templates/variables.yml
 
-pool:
-  name: 'Self Host Ubuntu'
-  demands:
-    - agent.name -equals agent-vm4
+pool: 'Self Host Ubuntu'
 
 jobs:
   - job: BuildTestLint
