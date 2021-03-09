@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Remove theme-provider dep",
+  "packageName": "@fluentui/react-badge",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
