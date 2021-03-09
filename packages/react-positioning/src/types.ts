@@ -1,34 +1,6 @@
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
-// Temporary typings for modifiers
-
-type ModifierProps<Name, Options> = {
-  enabled?: boolean;
-  name: Name;
-  options?: Options;
-};
-
-export type ArrowModifier = ModifierProps<
-  'arrow',
-  Partial<{
-    element: HTMLElement | string;
-    padding: PopperJs.Padding;
-  }>
->;
-
-export type FlipModifier = ModifierProps<
-  'flip',
-  Partial<{
-    fallbackPlacements: PopperJs.Placement[];
-    padding: PopperJs.Padding;
-    boundary: PopperJs.Boundary;
-    rootBoundary: PopperJs.RootBoundary;
-    altBoundary: boolean;
-    flipVariations: boolean;
-  }>
->;
-
 export type OffsetFunctionParam = {
   popper: PopperJs.Rect;
   reference: PopperJs.Rect;
@@ -39,42 +11,8 @@ export type OffsetFunction = (param: OffsetFunctionParam) => [number | null | un
 
 export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 
-export type OffsetModifier = ModifierProps<
-  'offset',
-  Partial<{
-    offset: Offset;
-  }>
->;
-
-export type PreventOverflowModifier = ModifierProps<
-  'preventOverflow',
-  Partial<{
-    mainAxis: boolean;
-    altAxis: boolean;
-    boundary: PopperJs.Boundary;
-    rootBoundary: PopperJs.RootBoundary;
-    altBoundary: boolean;
-    /**
-     * Allows the popper to overflow from its boundaries to keep it near its
-     * reference element
-     */
-    tether: boolean;
-    tetherOffset: (arg0: { popper: PopperJs.Rect; reference: PopperJs.Rect; placement: PopperJs.Placement }) => number;
-    padding: PopperJs.Padding;
-  }>
->;
-
-export type PopperModifiers = (ArrowModifier | FlipModifier | OffsetModifier | PreventOverflowModifier)[];
-export type PopperModifiersFn = (
-  target: HTMLElement | PopperJs.VirtualElement,
-  container: HTMLElement,
-  arrow: HTMLElement | null,
-) => PopperModifiers;
-
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
-
-export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement;
 
 export type Boundary = PopperJs.Boundary | 'scrollParent' | 'window';
 
@@ -138,17 +76,7 @@ export interface PositioningProps {
   autoSize?: 'height' | 'width' | boolean;
 }
 
-export interface PopperProps extends PositioningProps {
-  /**
-   * Ref object containing the pointer node.
-   */
-  pointerTargetRef?: React.RefObject<Element>;
-
-  /**
-   * The content of the Popper box (the element that is going to be repositioned).
-   */
-  children: PopperChildrenFn | React.ReactElement;
-
+export interface PopperOptions extends PositioningProps {
   /**
    * If false, delays Popper's creation.
    * @default true
@@ -160,31 +88,8 @@ export interface PopperProps extends PositioningProps {
    */
   positioningDependencies?: React.DependencyList;
 
-  /**
-   * Ref object containing the target node (the element that we're using as reference for Popper box).
-   */
-  targetRef: React.RefObject<Element> | PopperJs.VirtualElement;
-
   /** Rtl attribute for the component. */
   rtl?: boolean;
-}
 
-export interface PopperChildrenProps {
-  /**
-   * Popper's placement.
-   */
-  placement: PopperJs.Placement;
-
-  /**
-   * Function that updates the position of the Popper box, computing the new offsets and applying the new style.
-   */
-  scheduleUpdate(): void;
-}
-
-export type PopperShorthandProps = PositioningProps;
-
-export type PopperOptions = Omit<PopperProps, 'children' | 'targetRef'> & {
   onStateUpdate?: (state: Partial<PopperJs.State>) => void;
-};
-
-export type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
+}

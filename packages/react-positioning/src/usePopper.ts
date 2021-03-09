@@ -11,7 +11,8 @@ import {} from './utils';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
-import { PopperInstance, PopperOptions } from './types';
+import { PopperOptions } from './types';
+type PopperInstance = PopperJs.Instance & { isFirstRun?: boolean };
 
 //
 // Dev utils to detect if nodes have "autoFocus" props.
