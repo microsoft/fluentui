@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ObjectShorthandProps, ShorthandProps } from '@fluentui/react-utilities';
 import { MenuListProps } from '../MenuList/index';
+import { PositioningProps } from '@fluentui/react-positioning';
 
 /**
  * Extends and drills down Menulist props to simplify API
@@ -26,6 +27,16 @@ export interface MenuProps extends MenuListProps {
    * Wrapper to style and add events for the popup
    */
   menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+
+  /**
+   * Where the menu is positioned with respect to the trigger
+   */
+  position?: PositioningProps['position'];
+
+  /**
+   * How the menu is aligned wtih respect to the trigger
+   */
+  align?: PositioningProps['align'];
 }
 
 /**
@@ -56,6 +67,11 @@ export interface MenuState extends MenuProps {
    * Internal react node that just simplifies handling children
    */
   menuTrigger: React.ReactNode;
+
+  /**
+   * The ref for the MenuTrigger, used for popup positioning
+   */
+  triggerRef: React.MutableRefObject<HTMLElement>;
 
   /**
    * Wrapper to style and add events for the popup

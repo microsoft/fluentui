@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-menu",
-  "version": "0.8.0",
-  "description": "Fluent UI menu component",
+  "name": "@fluentui/react-positioning",
+  "version": "9.0.0-alpha.0",
+  "description": "A react wrapper around Popper.js for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -36,7 +36,6 @@
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.16.0",
     "enzyme": "~3.10.0",
     "enzyme-adapter-react-16": "^1.15.0",
     "react": "16.8.6",
@@ -45,12 +44,10 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/keyboard-key": "^0.2.14",
-    "@fluentui/react-context-selector": "^0.53.3",
-    "@fluentui/react-focus-management": "^9.0.0-alpha.5",
     "@fluentui/react-make-styles": "^9.0.0-alpha.7",
-    "@fluentui/react-positioning": "^9.0.0-alpha.0",
+    "@fluentui/react-theme-provider": "",
     "@fluentui/react-utilities": "^9.0.0-alpha.6",
+    "@popperjs/core": "~2.4.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
@@ -58,5 +55,13 @@
     "@types/react-dom": ">=16.8.0 <18.0.0",
     "react": ">=16.8.0 <18.0.0",
     "react-dom": ">=16.8.0 <18.0.0"
+  },
+  "beachball": {
+    "tag": "alpha",
+    "disallowedChangeTypes": [
+      "major",
+      "minor",
+      "patch"
+    ]
   }
 }

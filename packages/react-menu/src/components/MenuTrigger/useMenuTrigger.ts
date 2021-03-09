@@ -23,6 +23,7 @@ export const useMenuTrigger = (
   defaultProps?: MenuTriggerProps,
 ): MenuTriggerState => {
   const setOpen = useMenuContext(context => context.setOpen);
+  const triggerRef = useMenuContext(context => context.triggerRef);
 
   const state = mergeProps(
     {
@@ -35,7 +36,10 @@ export const useMenuTrigger = (
   state.setOpen = setOpen;
 
   const child = React.Children.only(state.children);
-  state.children = React.cloneElement(child as React.ReactElement, getTriggerProps(state.setOpen, child.props));
+  state.children = React.cloneElement(child as React.ReactElement, {
+    ...getTriggerProps(state.setOpen, child.props),
+    ref: useMergedRefs(child.props.ref, triggerRef),
+  });
 
   return state;
 };
@@ -46,7 +50,7 @@ const getTriggerProps = (setOpen: MenuContextValue['setOpen'], props: any) => {
   const triggerProps: React.HTMLAttributes<HTMLElement> = {};
   triggerProps.onClick = e => {
     setOpen(s => !s);
-    props.onClick(e);
+    props.onClick?.(e);
   };
 
   return triggerProps;

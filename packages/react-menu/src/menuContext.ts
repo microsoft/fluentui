@@ -9,6 +9,7 @@ const MenuContext = createContext<MenuContextValue>({
   onCheckedValueChange: () => null,
   defaultCheckedValues: {},
   hasMenuContext: false,
+  triggerRef: undefined,
 });
 
 /**
@@ -20,6 +21,7 @@ export interface MenuContextValue extends MenuListProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   hasMenuContext: boolean;
+  triggerRef?: React.MutableRefObject<HTMLElement>;
 }
 
 export const MenuProvider = MenuContext.Provider;
