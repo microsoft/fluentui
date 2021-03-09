@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding support to provide custom role for DetailsList",
+  "packageName": "@fluentui/react",
+  "email": "vishgup@microsoft.com",
+  "dependentChangeType": "patch"
+}
