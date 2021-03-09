@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "cherry picked 'Add jsxRuntime classic pragma (#16863)' from master",
+  "packageName": "office-ui-fabric-react",
+  "email": "trenkmann@noxum.com",
+  "dependentChangeType": "patch"
+}
