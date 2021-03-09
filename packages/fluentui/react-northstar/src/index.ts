@@ -188,6 +188,7 @@ export * from './components/Toolbar/ToolbarItemIcon';
 export * from './components/Toolbar/ToolbarMenu';
 export * from './components/Toolbar/ToolbarMenuDivider';
 export * from './components/Toolbar/ToolbarMenuItem';
+export * from './components/Toolbar/ToolbarMenuItemContent';
 export * from './components/Toolbar/ToolbarMenuItemIcon';
 export * from './components/Toolbar/ToolbarMenuItemSubmenuIndicator';
 export * from './components/Toolbar/ToolbarMenuItemActiveIndicator';

@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Tue, 09 Mar 2021 07:32:29 GMT",
+      "tag": "@fluentui/react_v8.1.7",
+      "version": "8.1.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "switch menu buttton to aria-controls to remove nesting",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "fac7ea5e97dc1d8c87f3279e1132b09545158b58",
+            "package": "@fluentui/react"
+          },
+          {
+            "comment": "PeoplePicker: Fixing the need to press backspace key twice when removing multiple items.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "212ace7653123df288c08b1c43cad2561a2cdae7",
+            "package": "@fluentui/react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sun, 07 Mar 2021 23:34:51 GMT",
       "tag": "@fluentui/react_v8.1.6",
       "version": "8.1.6",
