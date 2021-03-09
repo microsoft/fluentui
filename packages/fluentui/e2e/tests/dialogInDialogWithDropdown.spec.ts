@@ -1,15 +1,33 @@
-import { dropdownSlotClassNames } from '@fluentui/react-northstar';
-import { selectors } from './dialogInDialogWithDropdown-example';
-
-const outerHeader = `#${selectors.outerHeader}`;
-const outerTrigger = `#${selectors.outerTrigger}`;
-const innerHeader = `#${selectors.innerHeader}`;
-const innerTrigger = `#${selectors.innerTrigger}`;
-const dropdownSelector = `#${selectors.dropdown}`;
-const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
-const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
-
 describe('Dialog in Dialog', () => {
+  const selectors = {
+    outerClose: 'outer-close',
+    outerHeader: 'outer-header',
+    outerTrigger: 'outer-trigger',
+    innerClose: 'inner-close',
+    innerHeader: 'inner-header',
+    innerTrigger: 'inner-trigger',
+    dropdown: 'dropdown-id',
+  };
+  const dropdownSlotClassNames = {
+    clearIndicator: 'ui-dropdown__clear-indicator',
+    container: 'ui-dropdown__container',
+    toggleIndicator: 'ui-dropdown__toggle-indicator',
+    item: 'ui-dropdown__item',
+    itemsList: 'ui-dropdown__items-list',
+    searchInput: 'ui-dropdown__searchinput',
+    selectedItem: 'ui-dropdown__selecteditem',
+    selectedItems: 'ui-dropdown__selected-items',
+    triggerButton: 'ui-dropdown__trigger-button',
+  };
+
+  const outerHeader = `#${selectors.outerHeader}`;
+  const outerTrigger = `#${selectors.outerTrigger}`;
+  const innerHeader = `#${selectors.innerHeader}`;
+  const innerTrigger = `#${selectors.innerTrigger}`;
+  const dropdownSelector = `#${selectors.dropdown}`;
+  const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
+  const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, outerTrigger);
   });
@@ -26,6 +44,7 @@ describe('Dialog in Dialog', () => {
     cy.clickOn(innerTrigger);
 
     cy.clickOn(dropdownIndicator);
+    cy.visible(dropdownList);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');
 
     cy.visible(dropdownSelector);

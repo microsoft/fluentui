@@ -1,12 +1,18 @@
-import { selectors } from './toolbarMenu-example';
-
-const beforeToolbarId = `#${selectors.beforeToolbarId}`;
-const afterToolbarId = `#${selectors.afterToolbarId}`;
-const menuTrigger = `#${selectors.triggerButtonId}`;
-const toolbarMenu = `.${selectors.toolbarMenu}`;
-const menuItemButton = (index: number) => `#${selectors.menuItemButtonId}-${index}`;
-
 describe('Toolbar menu on', () => {
+  const selectors = {
+    beforeToolbarId: 'before',
+    afterToolbarId: 'after',
+    triggerButtonId: 'trigger',
+    menuItemButtonId: 'menu-button',
+    toolbarMenu: 'ui-toolbar__menu',
+  };
+
+  const beforeToolbarId = `#${selectors.beforeToolbarId}`;
+  const afterToolbarId = `#${selectors.afterToolbarId}`;
+  const menuTrigger = `#${selectors.triggerButtonId}`;
+  const toolbarMenu = `.${selectors.toolbarMenu}`;
+  const menuItemButton = (index: number) => `#${selectors.menuItemButtonId}-${index}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, menuTrigger);
   });

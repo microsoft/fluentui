@@ -1,28 +1,30 @@
-import { treeItemClassName, treeTitleClassName, treeClassName } from '@fluentui/react-northstar';
-
-const selectors = {
-  tree: `.${treeClassName}`,
-  treeItem: `.${treeItemClassName}`,
-  treeTitleAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
-  treeItemAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) `,
-};
-
-const navigateToLastLevel = () => {
-  cy.focusOn(selectors.treeItemAt(1));
-  cy.waitForSelectorAndPressKey(selectors.treeItemAt(1), '{rightarrow}'); // Expand first level item
-  cy.expectCount(selectors.treeItem, 3);
-
-  cy.waitForSelectorAndPressKey(selectors.treeItemAt(1), '{rightarrow}'); // Focus first child  2nd level
-  cy.isFocused(selectors.treeItemAt(2));
-
-  cy.waitForSelectorAndPressKey(selectors.treeItemAt(2), '{rightarrow}'); // Expand second level item
-  cy.expectCount(selectors.treeItem, 6);
-
-  cy.waitForSelectorAndPressKey(selectors.treeItemAt(2), '{rightarrow}'); // Focus first child 3rd level
-  cy.isFocused(selectors.treeTitleAt(3)); // last level has always tree title focused
-};
-
 describe('Tree keyboard navigation', () => {
+  const treeItemClassName = 'ui-tree__item';
+  const treeTitleClassName = 'ui-tree__title';
+  const treeClassName = 'ui-tree';
+
+  const selectors = {
+    tree: `.${treeClassName}`,
+    treeItem: `.${treeItemClassName}`,
+    treeTitleAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
+    treeItemAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) `,
+  };
+
+  const navigateToLastLevel = () => {
+    cy.focusOn(selectors.treeItemAt(1));
+    cy.waitForSelectorAndPressKey(selectors.treeItemAt(1), '{rightarrow}'); // Expand first level item
+    cy.expectCount(selectors.treeItem, 3);
+
+    cy.waitForSelectorAndPressKey(selectors.treeItemAt(1), '{rightarrow}'); // Focus first child  2nd level
+    cy.isFocused(selectors.treeItemAt(2));
+
+    cy.waitForSelectorAndPressKey(selectors.treeItemAt(2), '{rightarrow}'); // Expand second level item
+    cy.expectCount(selectors.treeItem, 6);
+
+    cy.waitForSelectorAndPressKey(selectors.treeItemAt(2), '{rightarrow}'); // Focus first child 3rd level
+    cy.isFocused(selectors.treeTitleAt(3)); // last level has always tree title focused
+  };
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, selectors.tree);
   });

@@ -1,10 +1,14 @@
-import { selectors } from './popupWithCloseInContent-example';
-
-const popupTrigger = `#${selectors.popupTriggerId}`;
-const popupContent = `#${selectors.popupContentId}`;
-const popupClose = `#${selectors.popupCloseId}`;
-
 describe('Popup With Close in the content and hover trigger', () => {
+  const selectors = {
+    popupContentId: 'popup-content-id',
+    popupTriggerId: 'popup-trigger-id',
+    popupCloseId: 'popup-close',
+  };
+
+  const popupTrigger = `#${selectors.popupTriggerId}`;
+  const popupContent = `#${selectors.popupContentId}`;
+  const popupClose = `#${selectors.popupCloseId}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, popupTrigger);
   });

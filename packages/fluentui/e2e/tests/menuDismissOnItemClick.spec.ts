@@ -1,20 +1,10 @@
-import { menuItemClassName } from '@fluentui/react-northstar';
-import {
-  firstSubmenuID,
-  firstSubmenuItemID,
-  secondSubmenuID,
-  secondSubmenuItemID,
-} from './menuDismissOnItemClick-example';
-
-const menuItem = `.${menuItemClassName}`;
-
-const firstSubmenuItem = `#${firstSubmenuItemID}`;
-const secondSubmenuItem = `#${secondSubmenuItemID}`;
-
-const firstSubmenu = `#${firstSubmenuID}`;
-const secondSubmenu = `#${secondSubmenuID}`;
-
 describe('Dismiss Menu on Item Click', () => {
+  const menuItem = '.ui-menu__item';
+  const firstSubmenuItem = `#first`;
+  const secondSubmenuItem = `#second`;
+  const firstSubmenu = `#firstSubmenu`;
+  const secondSubmenu = `#secondSubmenu`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, menuItem);
   });

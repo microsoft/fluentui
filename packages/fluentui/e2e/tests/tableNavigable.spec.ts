@@ -1,19 +1,29 @@
-import { selectors } from './tableNavigable-example';
-
-const tableHeaderClass = `.${selectors.tableHeaderClass}`;
-const buttonBeforeTable = `#${selectors.beforeTableId}`;
-const buttonAfterTable = `#${selectors.afterTableId}`;
-const tableRow = (index: number) => `.${selectors.row}:nth-child(${index + 1})`;
-const tableCell = (rowIndex: number, cellIndex: number) =>
-  `.${selectors.row}:nth-child(${rowIndex + 1}) .${selectors.cell}:nth-child(${cellIndex + 1})`;
-const buttonInTheCell = (rowIndex: number, cellIndex: number, buttonIndex: number) =>
-  `.${selectors.row}:nth-child(${rowIndex + 1}) .${selectors.cell}:nth-child(${cellIndex + 1}) .${
-    selectors.buttonClassName
-  }:nth-child(${buttonIndex + 1})`;
-const buttonInCellOnclickTest = `#${selectors.buttonInCellOnclickTestId}`;
-const rowOnclickTestButton = `#${selectors.rowOnclickTestId}`;
-
 describe('table', () => {
+  const selectors = {
+    buttonClassName: 'ui-button',
+    tableHeaderClass: 'ui-table__header',
+    row: 'ui-table__row',
+    cell: 'ui-table__cell',
+    beforeTableId: 'before-table',
+    afterTableId: 'after-table',
+    moreOptionsButtonId: 'more-options',
+    rowOnclickTestId: 'row-onclick',
+    buttonInCellOnclickTestId: 'button-in-cell-onlick',
+  };
+
+  const tableHeaderClass = `.${selectors.tableHeaderClass}`;
+  const buttonBeforeTable = `#${selectors.beforeTableId}`;
+  const buttonAfterTable = `#${selectors.afterTableId}`;
+  const tableRow = (index: number) => `.${selectors.row}:nth-child(${index + 1})`;
+  const tableCell = (rowIndex: number, cellIndex: number) =>
+    `.${selectors.row}:nth-child(${rowIndex + 1}) .${selectors.cell}:nth-child(${cellIndex + 1})`;
+  const buttonInTheCell = (rowIndex: number, cellIndex: number, buttonIndex: number) =>
+    `.${selectors.row}:nth-child(${rowIndex + 1}) .${selectors.cell}:nth-child(${cellIndex + 1}) .${
+      selectors.buttonClassName
+    }:nth-child(${buttonIndex + 1})`;
+  const buttonInCellOnclickTest = `#${selectors.buttonInCellOnclickTestId}`;
+  const rowOnclickTestButton = `#${selectors.rowOnclickTestId}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, tableHeaderClass);
     cy.focusOn(buttonBeforeTable);

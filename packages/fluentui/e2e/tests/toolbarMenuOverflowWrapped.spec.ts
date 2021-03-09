@@ -1,11 +1,16 @@
-import { selectors, itemsCount } from './toolbarMenuOverflowWrapped-example';
-
-const toolbarItem = (index: number) => `.${selectors.toolbarItem}:nth-child(${index + 1})`;
-const toolbarItemWrapped = (index: number) =>
-  `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
-const toolbar = `.${selectors.toolbar}`;
-
 describe('Toolbar menu overflow with wrapped first item', () => {
+  const selectors = {
+    toolbarItem: 'ui-toolbar__item',
+    toolbar: 'ui-toolbar',
+    toolbarItemWrapper: 'ui-toolbar__itemwrapper',
+  };
+  const itemsCount = 20;
+
+  const toolbarItem = (index: number) => `.${selectors.toolbarItem}:nth-child(${index + 1})`;
+  const toolbarItemWrapped = (index: number) =>
+    `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
+  const toolbar = `.${selectors.toolbar}`;
+
   let itemWidth;
 
   beforeEach(() => {

@@ -1,14 +1,20 @@
-import { selectors } from './dialogInPopup-example';
-
-const dialogCancel = `#${selectors.dialogCancel}`;
-const dialogHeader = `.${selectors.dialogHeader}`;
-const dialogTrigger = `#${selectors.dialogTrigger}`;
-const popupContent = `#${selectors.popupContent}`;
-const popupTrigger = `#${selectors.popupTrigger}`;
-const overlayPoint = `#${selectors.overlayPoint}`;
-
-// https://github.com/microsoft/fluent-ui-react/issues/1674
 describe('Dialog in Popup', () => {
+  const selectors = {
+    dialogCancel: 'dialog-cancel',
+    dialogHeader: 'ui-dialog__header',
+    dialogTrigger: 'dialog-trigger',
+    popupContent: 'popup-content',
+    popupTrigger: 'popup-trigger',
+    overlayPoint: 'overlay-point',
+  };
+
+  const dialogCancel = `#${selectors.dialogCancel}`;
+  const dialogHeader = `.${selectors.dialogHeader}`;
+  const dialogTrigger = `#${selectors.dialogTrigger}`;
+  const popupContent = `#${selectors.popupContent}`;
+  const popupTrigger = `#${selectors.popupTrigger}`;
+  const overlayPoint = `#${selectors.overlayPoint}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, popupTrigger);
   });
@@ -44,6 +50,8 @@ describe('Dialog in Popup', () => {
     cy.clickOn(popupTrigger);
     cy.clickOn(dialogTrigger);
 
+    cy.visible(dialogHeader);
+    cy.wait(100);
     cy.clickOn(overlayPoint);
     cy.visible(popupContent);
     cy.notExist(dialogHeader);

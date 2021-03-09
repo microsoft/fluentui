@@ -1,8 +1,5 @@
-import { menuItemClassName } from '@fluentui/react-northstar';
-
-const menuItem = `.${menuItemClassName}`;
-
 describe('Dismiss Menu on Scroll', () => {
+  const menuItem = '.ui-menu__item';
   beforeEach(() => {
     cy.gotoTestCase(__filename, menuItem);
   });

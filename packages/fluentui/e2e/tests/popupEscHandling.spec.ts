@@ -1,12 +1,17 @@
-import { selectors } from './popupEscHandling-example';
-
-const popupTrigger = `#${selectors.popupTriggerId}`;
-const popupContent = `.${selectors.popupContentClass}`;
-const dropdownTriggerButton = `.${selectors.dropdownTriggerClass}`;
-const dropdownList = `.${selectors.dropdownListClass}`;
-
 // https://github.com/microsoft/fluent-ui-react/issues/1079
 describe('Popup - on ESC key press', () => {
+  const selectors = {
+    popupTriggerId: 'trigger',
+    popupContentClass: 'ui-popup__content',
+    dropdownTriggerClass: 'ui-dropdown__trigger-button',
+    dropdownListClass: 'ui-dropdown__items-list',
+  };
+
+  const popupTrigger = `#${selectors.popupTriggerId}`;
+  const popupContent = `.${selectors.popupContentClass}`;
+  const dropdownTriggerButton = `.${selectors.dropdownTriggerClass}`;
+  const dropdownList = `.${selectors.dropdownListClass}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, popupTrigger);
   });

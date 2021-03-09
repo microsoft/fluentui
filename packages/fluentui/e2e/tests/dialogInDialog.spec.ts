@@ -1,15 +1,23 @@
-import { selectors } from './dialogInDialog-example';
-
-const outerClose = `#${selectors.outerClose}`;
-const outerHeader = `#${selectors.outerHeader}`;
-const outerTrigger = `#${selectors.outerTrigger}`;
-const innerClose = `#${selectors.innerClose}`;
-const innerHeader = `#${selectors.innerHeader}`;
-const innerTrigger = `#${selectors.innerTrigger}`;
-const overlayPoint = `#${selectors.overlayPoint}`;
-
 // https://github.com/microsoft/fluent-ui-react/issues/1674
 describe('Dialog in Dialog', () => {
+  const selectors = {
+    outerClose: 'outer-close',
+    outerHeader: 'outer-header',
+    outerTrigger: 'outer-trigger',
+    innerClose: 'inner-close',
+    innerHeader: 'inner-header',
+    innerTrigger: 'inner-trigger',
+    overlayPoint: 'overlay-point',
+  };
+
+  const outerClose = `#${selectors.outerClose}`;
+  const outerHeader = `#${selectors.outerHeader}`;
+  const outerTrigger = `#${selectors.outerTrigger}`;
+  const innerClose = `#${selectors.innerClose}`;
+  const innerHeader = `#${selectors.innerHeader}`;
+  const innerTrigger = `#${selectors.innerTrigger}`;
+  const overlayPoint = `#${selectors.overlayPoint}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, outerTrigger);
   });

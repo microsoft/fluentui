@@ -1,13 +1,18 @@
-import { selectors } from './popupInMenu-example';
-
-const menu = `#${selectors.menuId}`;
-
-const menuItem = (index: number) => `#${selectors.menuItemId(index)}`;
-const itemPopup = (index: number) => `#${selectors.popupContentId(index)}`;
-const popupContent = `.${selectors.popupContentClass}`;
-
 // https://github.com/microsoft/fluent-ui-react/issues/557
 describe('Popup of menu item', () => {
+  const selectors = {
+    menuId: 'menu',
+    menuItemId: index => `menu-item-${index}`,
+    popupContentClass: 'ui-popup__content',
+    popupContentId: index => `popup-content-${index}`,
+  };
+
+  const menu = `#${selectors.menuId}`;
+
+  const menuItem = (index: number) => `#${selectors.menuItemId(index)}`;
+  const itemPopup = (index: number) => `#${selectors.popupContentId(index)}`;
+  const popupContent = `.${selectors.popupContentClass}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, menu);
   });

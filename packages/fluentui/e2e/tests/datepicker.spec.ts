@@ -1,18 +1,24 @@
-import { selectors } from './datepicker-example';
+describe('Datepicker', () => {
+  const selectors: any = {
+    DatepickerClassName: 'ui-datepicker',
+    CalendarClassName: 'ui-datepicker__calendar',
+    CalendarGridRowClassName: 'ui-datepicker__calendargridrow',
+    CellClassName: 'ui-datepicker__calendarcell',
+    CellButtonClassName: 'ui-datepicker__calendarcellbutton',
+  };
 
-const datepicker = `.${selectors.DatepickerClassName}`;
-const datepickerButton = `.${selectors.DatepickerClassName}>button`;
-const datepickerCalendar = `.${selectors.CalendarClassName}`;
+  const datepicker = `.${selectors.DatepickerClassName}`;
+  const datepickerButton = `.${selectors.DatepickerClassName}>button`;
+  const datepickerCalendar = `.${selectors.CalendarClassName}`;
 
-const datepickerCalendarCell = index => {
-  const row = Math.floor((index - 1) / 7);
-  const col = index - row * 7;
-  return `.${selectors.CalendarGridRowClassName}:nth-child(${row})
+  const datepickerCalendarCell = index => {
+    const row = Math.floor((index - 1) / 7);
+    const col = index - row * 7;
+    return `.${selectors.CalendarGridRowClassName}:nth-child(${row})
               >.${selectors.CellClassName}:nth-child(${col})
               >.${selectors.CellButtonClassName}`;
-};
+  };
 
-describe('Datepicker', () => {
   beforeEach(() => {
     cy.gotoTestCase(__filename, datepicker);
   });

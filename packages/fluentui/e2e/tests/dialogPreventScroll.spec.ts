@@ -1,11 +1,16 @@
-import { selectors } from './dialogPreventScroll-example';
-
-const outerClose = `#${selectors.outerClose}`;
-const outerTrigger = `#${selectors.outerTrigger}`;
-const innerClose = `#${selectors.innerClose}`;
-const innerTrigger = `#${selectors.innerTrigger}`;
-
 describe('Dialog scroll', () => {
+  const selectors: any = {
+    outerClose: 'outer-close',
+    outerTrigger: 'outer-trigger',
+    innerClose: 'inner-close',
+    innerTrigger: 'inner-trigger',
+  };
+
+  const outerClose = `#${selectors.outerClose}`;
+  const outerTrigger = `#${selectors.outerTrigger}`;
+  const innerClose = `#${selectors.innerClose}`;
+  const innerTrigger = `#${selectors.innerTrigger}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, outerTrigger);
   });

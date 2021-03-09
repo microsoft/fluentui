@@ -1,11 +1,14 @@
-import { selectors } from './popupClickHandling-example';
-
-const popupTrigger = `#${selectors.triggerButtonId}`;
-const popupContent = `.${selectors.popupContentClass}`;
-const popupContentButton = `#${selectors.popupContentButtonId}`;
-
 // https://github.com/microsoft/fluent-ui-react/issues/1324
 describe('Popup - on content click', () => {
+  const selectors = {
+    triggerButtonId: 'trigger',
+    popupContentClass: 'ui-popup__content',
+    popupContentButtonId: 'content-button',
+  };
+  const popupTrigger = `#${selectors.triggerButtonId}`;
+  const popupContent = `.${selectors.popupContentClass}`;
+  const popupContentButton = `#${selectors.popupContentButtonId}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, popupTrigger);
   });

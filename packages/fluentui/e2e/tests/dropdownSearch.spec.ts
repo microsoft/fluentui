@@ -1,6 +1,5 @@
-import { selectors } from './dropdownSearch-example';
-
 describe('DropdownSearch', () => {
+  const selectors = { input: '.ui-dropdown__searchinput__input' };
   beforeEach(() => {
     cy.gotoTestCase(__filename, selectors.input);
   });

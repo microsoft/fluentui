@@ -1,15 +1,23 @@
-import { selectors, itemsCount } from './toolbarMenuOverflow-example';
-
-const toolbarItem = (index: number) => `.${selectors.toolbarItem}:nth-child(${index + 1})`;
-const toolbarItemButton = (index: number) => `#${selectors.itemButtonId}-${index}`;
-const toolbarItemWrapped = (index: number) =>
-  `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
-const toolbar = `.${selectors.toolbar}`;
-const menuTrigger = `#${selectors.menuTrigger}`;
-const toolbarMenu = `.${selectors.toolbarMenu}`;
-const buttonAfterToolbarId = `#${selectors.afterToolbarId}`;
-
 describe('Toolbar menu overflow', () => {
+  const selectors = {
+    toolbarItem: 'ui-toolbar__item',
+    toolbar: 'ui-toolbar',
+    toolbarItemWrapper: 'ui-toolbar__itemwrapper',
+    menuTrigger: 'menu-trigger',
+    itemButtonId: 'item-button',
+    toolbarMenu: 'ui-toolbar__menu',
+    afterToolbarId: 'after',
+  };
+  const itemsCount = 20;
+  const toolbarItem = (index: number) => `.${selectors.toolbarItem}:nth-child(${index + 1})`;
+  const toolbarItemButton = (index: number) => `#${selectors.itemButtonId}-${index}`;
+  const toolbarItemWrapped = (index: number) =>
+    `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
+  const toolbar = `.${selectors.toolbar}`;
+  const menuTrigger = `#${selectors.menuTrigger}`;
+  const toolbarMenu = `.${selectors.toolbarMenu}`;
+  const buttonAfterToolbarId = `#${selectors.afterToolbarId}`;
+
   let itemWidth;
 
   beforeEach(() => {

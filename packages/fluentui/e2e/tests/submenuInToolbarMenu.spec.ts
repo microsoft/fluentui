@@ -1,13 +1,20 @@
-import { selectors } from './submenuInToolbarMenu-example';
-
-const toolbarMenuId = `#${selectors.toolbarMenuId}`;
-const toolbarMenuSubmenuId = `#${selectors.toolbarMenuSubmenuId}`;
-const moreButtonId = `#${selectors.moreButtonId}`;
-const playId = `#${selectors.playId}`;
-const playVideoId = `#${selectors.playVideoId}`;
-const hdId = `#${selectors.hdId}`;
-
 describe('Popup in ToolbarMenu', () => {
+  const selectors = {
+    toolbarMenuId: 'toolbarMenu',
+    toolbarMenuSubmenuId: 'toolbarMenuSubmenu',
+    moreButtonId: 'moreButton',
+    playId: 'play',
+    playVideoId: 'playVideo',
+    hdId: 'hd',
+  };
+
+  const toolbarMenuId = `#${selectors.toolbarMenuId}`;
+  const toolbarMenuSubmenuId = `#${selectors.toolbarMenuSubmenuId}`;
+  const moreButtonId = `#${selectors.moreButtonId}`;
+  const playId = `#${selectors.playId}`;
+  const playVideoId = `#${selectors.playVideoId}`;
+  const hdId = `#${selectors.hdId}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, moreButtonId);
   });

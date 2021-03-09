@@ -1,26 +1,15 @@
-import * as path from 'path';
-import * as _ from 'lodash';
-
 const CYPRESS_ACTION_TIMEOUT = 10 * 1000;
 
-const exampleUrlTokenFromFilePath = filepath => {
-  const testname = path
-    .basename(filepath)
-    .replace(/^(.+)-test.tsx?$/, '$1')
-    .replace(/^(.+).spec.ts?$/, '$1')
-    .replace(/^(.+)-example.tsx?$/, '$1');
-
-  return _.kebabCase(testname);
-};
-
-Cypress.Commands.add('goto', (docsUrl, waitForSelector) => {
-  cy.visit(`/${docsUrl.replace(/^\//, '')}`);
-  cy.exist(waitForSelector);
-});
-
 Cypress.Commands.add('gotoTestCase', (testFilePath, waitForSelector) => {
-  const testCaseUrl = `/${exampleUrlTokenFromFilePath(testFilePath)}`;
-  cy.goto(testCaseUrl, waitForSelector);
+  const { _ } = Cypress;
+  const path = testFilePath
+    .split('/')
+    .pop()
+    .replace(/^(.+).spec.ts?$/, '$1')
+    .replace(/^\//, '');
+
+  cy.visit(`/${_.kebabCase(path)}`);
+  cy.exist(waitForSelector);
 });
 
 Cypress.Commands.add('exist', selector => {

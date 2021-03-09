@@ -1,10 +1,19 @@
-import { dropdownSlotClassNames } from '@fluentui/react-northstar';
-import { selectors } from './dropdown-example';
-
-const triggerButton = `.${selectors.triggerButtonClass}`;
-const list = `.${dropdownSlotClassNames.itemsList}`;
-
 describe('Dropdown', () => {
+  const selectors: any = { triggerButtonClass: 'ui-dropdown__trigger-button' };
+  const dropdownSlotClassNames: any = {
+    clearIndicator: 'ui-dropdown__clear-indicator',
+    container: 'ui-dropdown__container',
+    toggleIndicator: 'ui-dropdown__toggle-indicator',
+    item: 'ui-dropdown__item',
+    itemsList: 'ui-dropdown__items-list',
+    searchInput: 'ui-dropdown__searchinput',
+    selectedItem: 'ui-dropdown__selecteditem',
+    selectedItems: 'ui-dropdown__selected-items',
+    triggerButton: 'ui-dropdown__trigger-button',
+  };
+
+  const triggerButton = `.${selectors.triggerButtonClass}`;
+  const list = `.${dropdownSlotClassNames.itemsList}`;
   describe('Focus behavior', () => {
     beforeEach(() => {
       cy.gotoTestCase(__filename, triggerButton);

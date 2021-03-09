@@ -1,13 +1,28 @@
-import { selectors } from './dialogWithDropdown-example';
-import { dropdownSlotClassNames } from '@fluentui/react-northstar';
-
-const dialogTrigger = `#${selectors.dialogTrigger}`;
-const dialogHeader = `#${selectors.dialogHeader}`;
-const dropdownSelector = `#${selectors.dropdown}`;
-const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
-const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
-
 describe('Dialog with dropdown', () => {
+  const selectors: any = {
+    dialogTrigger: 'outer-trigger',
+    dropdown: 'dropdown-id',
+    dialogClose: 'dialog-close',
+    dialogHeader: 'header',
+  };
+  const dropdownSlotClassNames: any = {
+    clearIndicator: 'ui-dropdown__clear-indicator',
+    container: 'ui-dropdown__container',
+    toggleIndicator: 'ui-dropdown__toggle-indicator',
+    item: 'ui-dropdown__item',
+    itemsList: 'ui-dropdown__items-list',
+    searchInput: 'ui-dropdown__searchinput',
+    selectedItem: 'ui-dropdown__selecteditem',
+    selectedItems: 'ui-dropdown__selected-items',
+    triggerButton: 'ui-dropdown__trigger-button',
+  };
+
+  const dialogTrigger = `#${selectors.dialogTrigger}`;
+  const dialogHeader = `#${selectors.dialogHeader}`;
+  const dropdownSelector = `#${selectors.dropdown}`;
+  const dropdownIndicator = `.${dropdownSlotClassNames.toggleIndicator}`;
+  const dropdownList = `.${dropdownSlotClassNames.itemsList}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, dialogTrigger);
   });
@@ -21,6 +36,7 @@ describe('Dialog with dropdown', () => {
     cy.clickOn(dialogTrigger);
     cy.clickOn(dropdownIndicator);
 
+    cy.visible(dropdownList);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');
     cy.visible(dropdownSelector);
   });
@@ -29,6 +45,7 @@ describe('Dialog with dropdown', () => {
     cy.clickOn(dialogTrigger);
     cy.clickOn(dropdownIndicator);
 
+    cy.visible(dropdownList);
     cy.waitForSelectorAndPressKey(dropdownList, '{esc}');
     cy.visible(dropdownSelector);
 

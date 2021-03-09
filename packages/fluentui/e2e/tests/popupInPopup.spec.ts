@@ -1,11 +1,15 @@
-import { selectors } from './popupInPopup-example';
-
-const popupTrigger = `#${selectors.popupTriggerId}`;
-const popupContent = `#${selectors.popupContentId}`;
-const popupTriggerNested = `#${selectors.popupTriggerNestedId}`;
-const popupContentNested = `#${selectors.popupContentNestedId}`;
-
 describe('Popup in Popup', () => {
+  const selectors = {
+    popupContentId: 'popup-content-id',
+    popupTriggerId: 'popup-trigger-id',
+    popupContentNestedId: 'popup-content-nested-id',
+    popupTriggerNestedId: 'popup-trigger-nested-id',
+  };
+  const popupTrigger = `#${selectors.popupTriggerId}`;
+  const popupContent = `#${selectors.popupContentId}`;
+  const popupTriggerNested = `#${selectors.popupTriggerNestedId}`;
+  const popupContentNested = `#${selectors.popupContentNestedId}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, popupTrigger);
   });

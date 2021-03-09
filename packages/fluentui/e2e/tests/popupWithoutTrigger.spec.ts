@@ -1,9 +1,8 @@
-import { selectors } from './popupWithoutTrigger-example';
-
-const button = `.${selectors.button}`;
-const popupContent = `.${selectors.popupContent}`;
-
 describe('Popup without `trigger`', () => {
+  const selectors = { popupContent: 'ui-popup__content', button: 'ui-button' };
+  const button = `.${selectors.button}`;
+  const popupContent = `.${selectors.popupContent}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, button);
   });

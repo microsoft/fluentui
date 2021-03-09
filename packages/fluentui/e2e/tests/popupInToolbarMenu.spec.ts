@@ -1,12 +1,18 @@
-import { selectors } from './popupInToolbarMenu-example';
-
-const toolbarMenuId = `.${selectors.toolbarMenu}`;
-const menuButtonId = `#${selectors.menuButtonId}`;
-const popupTriggerId = `#${selectors.popupTriggerId}`;
-const popupElementId = `#${selectors.popupElementId}`;
-const dummyButtonId = `#${selectors.dummyButtonId}`;
-
 describe('Popup in ToolbarMenu', () => {
+  const selectors = {
+    toolbarMenu: 'ui-toolbar__menu',
+    menuButtonId: 'menuButton',
+    popupTriggerId: 'popupTrigger',
+    popupElementId: 'popupElement',
+    dummyButtonId: 'dummyButton',
+  };
+
+  const toolbarMenuId = `.${selectors.toolbarMenu}`;
+  const menuButtonId = `#${selectors.menuButtonId}`;
+  const popupTriggerId = `#${selectors.popupTriggerId}`;
+  const popupElementId = `#${selectors.popupElementId}`;
+  const dummyButtonId = `#${selectors.dummyButtonId}`;
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, menuButtonId);
   });

@@ -1,13 +1,11 @@
-import { popupContentClassName } from '@fluentui/react-northstar';
-
-const buttonInPopup = '#button-in-popup';
-const menu = '.ms-ContextualMenu-Callout';
-const menuTrigger = '#menu-trigger';
-const outside = '#outside';
-const popupContent = `.${popupContentClassName}`;
-const popupTrigger = '#popup-trigger';
-
 describe('Fabric Layer in Popup', () => {
+  const buttonInPopup = '#button-in-popup';
+  const menu = '.ms-ContextualMenu-Callout';
+  const menuTrigger = '#menu-trigger';
+  const outside = '#outside';
+  const popupContent = '.ui-popup__content';
+  const popupTrigger = '#popup-trigger';
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, popupTrigger);
   });

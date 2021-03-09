@@ -1,13 +1,14 @@
-import { treeItemClassName, treeTitleClassName, treeClassName } from '@fluentui/react-northstar';
-
-const selectors = {
-  tree: `.${treeClassName}`,
-  treeItem: `.${treeItemClassName}`,
-  treeTitleAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
-  treeItemAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) `,
-};
-
 describe('Virtual Tree keyboard navigation', () => {
+  const treeItemClassName = 'ui-tree__item';
+  const treeTitleClassName = 'ui-tree__title';
+  const treeClassName = 'ui-tree';
+  const selectors = {
+    tree: `.${treeClassName}`,
+    treeItem: `.${treeItemClassName}`,
+    treeTitleAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) .${treeTitleClassName}`,
+    treeItemAt: (itemIndex: number) => `.${treeItemClassName}:nth-of-type(${itemIndex}) `,
+  };
+
   beforeEach(() => {
     cy.gotoTestCase(__filename, selectors.tree);
   });
