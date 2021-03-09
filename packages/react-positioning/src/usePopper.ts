@@ -6,8 +6,7 @@ import {
   getPlacement,
   getReactFiberFromNode,
   getBoundary,
-} from './utils';
-import {} from './utils';
+} from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
 
