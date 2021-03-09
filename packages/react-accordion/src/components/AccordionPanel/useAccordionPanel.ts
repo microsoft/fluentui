@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeMergeProps, resolveShorthandProps, useMergedRefs } from '@fluentui/react-utilities';
 import { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
-import { useAccordionItemContext } from '../AccordionItem';
+import { useAccordionItemContext } from '../AccordionItem/index';
 
 /**
  * Consts listing which props are shorthand props.

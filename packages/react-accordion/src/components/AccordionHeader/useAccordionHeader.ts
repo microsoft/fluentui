@@ -6,7 +6,7 @@ import {
   AccordionHeaderSize,
   AccordionHeaderState,
 } from './AccordionHeader.types';
-import { useAccordionItemContext } from '../AccordionItem';
+import { useAccordionItemContext } from '../AccordionItem/index';
 import { DefaultExpandIcon } from './DefaultExpandIcon';
 import { useAccordionContext } from '../Accordion/useAccordionContext';
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ComponentProps } from '@fluentui/react-utilities';
 import { Descendant } from '../../utils/descendants';
-import { AccordionHeaderProps } from '../AccordionHeader';
+import { AccordionHeaderProps } from '../AccordionHeader/AccordionHeader.types';
 
 export type AccordionIndex = number | number[];
 
