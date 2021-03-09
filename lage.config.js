@@ -5,7 +5,7 @@ module.exports = {
     'build:info': [],
     bundle: ['build'],
     'bundle:storybook': ['build'],
-    screener: ['build'],
+    screener: [],
     lint: ['build'],
     clean: [],
     test: ['build'],

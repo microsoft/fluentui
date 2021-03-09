@@ -31,7 +31,7 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 // https://github.com/screener-io/screener-storybook#additional-configuration-options
 const config = {
   projectRepo: 'microsoft/fluentui',
-  storybookBuildDir: 'dist/storybook',
+  storybookStaticBuildDir: 'dist/storybook',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
