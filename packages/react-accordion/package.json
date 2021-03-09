@@ -47,7 +47,7 @@
     "@fluentui/react-theme": "^9.0.0-alpha.5",
     "@fluentui/react-theme-provider": "^9.0.0-alpha.7",
     "@fluentui/react-utilities": "^9.0.0-alpha.6",
-    "@testing-library/react-hooks": "5.1.0",
+    "@testing-library/react-hooks": "5.0.3",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {
