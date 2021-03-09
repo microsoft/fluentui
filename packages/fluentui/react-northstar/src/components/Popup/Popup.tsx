@@ -35,11 +35,17 @@ import {
   setWhatInputSource,
 } from '../../utils';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
+import {
+  ALIGNMENTS,
+  POSITIONS,
+  createReferenceFromClick,
+  Popper,
+  PositioningProps,
+  PopperChildrenProps,
+} from '../../utils/positioner';
 import { PopupContent, PopupContentProps } from './PopupContent';
 
 import { createShorthandFactory } from '../../utils/factories';
-import { createReferenceFromContextClick } from './createReferenceFromContextClick';
 import { isRightClick } from '../../utils/isRightClick';
 import { PortalInner } from '../Portal/PortalInner';
 import { Animation } from '../Animation/Animation';
@@ -506,7 +512,7 @@ export const Popup: React.FC<PopupProps> &
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
-    rightClickReferenceObject.current = nativeEvent ? createReferenceFromContextClick(nativeEvent) : null;
+    rightClickReferenceObject.current = nativeEvent ? createReferenceFromClick(nativeEvent) : null;
   };
 
   if (process.env.NODE_ENV !== 'production') {

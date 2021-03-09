@@ -189,7 +189,9 @@ exports[`UnifiedPicker renders correctly with selected and suggested items 1`] =
             }
       >
         <div
-          role="list"
+          aria-multiselectable="true"
+          aria-orientation="horizontal"
+          role="listbox"
         >
           <div>
              

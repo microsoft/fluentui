@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Wed, 03 Mar 2021 07:45:18 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Mar 2021 07:32:29 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.6..@fluentui/react-experiments_v8.0.7)
+
+### Patches
+
+- UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality ([PR #17320](https://github.com/microsoft/fluentui/pull/17320) by elvonspa@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.5..@fluentui/react-experiments_v8.0.6)
+
+### Patches
+
+- Use listbox/option roles for the list/items elements in recipient list. ([PR #17287](https://github.com/microsoft/fluentui/pull/17287) by jaredi@microsoft.com)
 
 ## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.5)
 

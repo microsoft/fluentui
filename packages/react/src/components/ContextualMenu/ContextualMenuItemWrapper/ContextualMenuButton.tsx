@@ -36,8 +36,6 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       dismissMenu,
     } = this.props;
 
-    const subMenuId = this._getSubMenuId(item);
-
     const isChecked: boolean | null | undefined = getIsChecked(item);
     const canCheck: boolean = isChecked !== null;
     const defaultRole = getMenuItemAriaRole(item);
@@ -78,7 +76,6 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-label': ariaLabel,
       'aria-describedby': ariaDescribedByIds,
       'aria-haspopup': itemHasSubmenu || undefined,
-      'aria-owns': item.key === expandedMenuItemKey ? subMenuId : undefined,
       'aria-expanded': itemHasSubmenu ? item.key === expandedMenuItemKey : undefined,
       'aria-posinset': focusableElementIndex + 1,
       'aria-setsize': totalItemCount,
