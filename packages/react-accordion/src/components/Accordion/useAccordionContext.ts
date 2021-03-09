@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createDescendantContext, useDescendant, useDescendantsInit } from '../../utils/descendants';
 import { AccordionContext, AccordionDescendant, AccordionIndex, AccordionState } from './Accordion.types';
-import { useConst, useControllableValue, useEventCallback } from '@fluentui/react-utilities';
+import { useControllableValue, useEventCallback } from '@fluentui/react-utilities';
 import { createContext } from '@fluentui/react-context-selector';
 
 export const accordionDescendantContext = createDescendantContext<AccordionDescendant>('AccordionDescendantContext');
@@ -18,12 +18,11 @@ export const accordionContext = createContext<AccordionContext>({
  */
 export function useCreateAccordionContext(state: AccordionState) {
   const { index, multiple, collapsible, onToggle, size, expandIcon, expandIconPosition, button } = state;
-  const isControlled = useConst(typeof index !== 'undefined');
   const [descendants, setDescendants] = useDescendantsInit<AccordionDescendant>();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const initialDefaultIndex = React.useMemo(() => initializeUncontrolledOpenItems(state), []);
   const normalizedIndex = React.useMemo(() => (index !== undefined ? normalizeIndex(index) : undefined), [index]);
-  const [openItems, setOpenItems] = useControllableValue(normalizedIndex, initialDefaultIndex);
+  const [openItems, setOpenItems] = useControllableValue<number[], HTMLElement>(normalizedIndex!, () =>
+    initializeUncontrolledOpenItems(state),
+  );
 
   const requestToggle = useEventCallback((ev: React.MouseEvent<HTMLElement>, i: number) => {
     onToggle?.(ev, i);
@@ -34,8 +33,8 @@ export function useCreateAccordionContext(state: AccordionState) {
       }),
     );
   });
-  const context = {
-    openItems: isControlled ? normalizedIndex! : openItems!,
+  const context: AccordionContext = {
+    openItems,
     requestToggle,
     size,
     expandIconPosition,
@@ -44,8 +43,6 @@ export function useCreateAccordionContext(state: AccordionState) {
   };
   return [context, descendants, setDescendants] as const;
 }
-
-export const useAccordionContext = () => React.useContext(accordionContext);
 
 /**
  * Registers an descendant in the accordion descendants context

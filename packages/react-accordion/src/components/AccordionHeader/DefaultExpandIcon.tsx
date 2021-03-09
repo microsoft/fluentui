@@ -26,9 +26,9 @@ const ChevronUpIcon = React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGEleme
 ChevronUpIcon.displayName = 'ChevronUpIcon';
 
 export const DefaultExpandIcon = React.forwardRef<HTMLSpanElement, AccordionHeaderExpandIconProps>(
-  ({ open, expandIconPosition, ...rest }, ref) => (
+  ({ open, expandIconPosition, children, ...rest }, ref) => (
     <span {...rest} ref={ref}>
-      {React.useMemo(() => mapStateToIcon({ open, expandIconPosition }), [open, expandIconPosition])}
+      {children ?? React.useMemo(() => mapStateToIcon({ open, expandIconPosition }), [open, expandIconPosition])}
     </span>
   ),
 );

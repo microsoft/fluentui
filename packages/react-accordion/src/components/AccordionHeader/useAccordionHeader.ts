@@ -8,7 +8,8 @@ import {
 } from './AccordionHeader.types';
 import { useAccordionItemContext } from '../AccordionItem/index';
 import { DefaultExpandIcon } from './DefaultExpandIcon';
-import { useAccordionContext } from '../Accordion/useAccordionContext';
+import { accordionContext } from '../Accordion/useAccordionContext';
+import { useContextSelector } from '@fluentui/react-context-selector';
 
 /**
  * Consts listing which props are shorthand props.
@@ -29,7 +30,10 @@ export const useAccordionHeader = (
   defaultProps?: AccordionHeaderProps,
 ): AccordionHeaderState => {
   const { headingId, panelId, onAccordionHeaderClick, open } = useAccordionItemContext();
-  const { button, expandIcon, expandIconPosition, size } = useAccordionContext();
+  const button = useContextSelector(accordionContext, ctx => ctx.button);
+  const expandIcon = useContextSelector(accordionContext, ctx => ctx.expandIcon);
+  const expandIconPosition = useContextSelector(accordionContext, ctx => ctx.expandIconPosition);
+  const size = useContextSelector(accordionContext, ctx => ctx.size);
   const state = mergeProps(
     {
       ref: useMergedRefs(ref, React.useRef(null)),
@@ -37,7 +41,6 @@ export const useAccordionHeader = (
       expandIcon: {
         as: DefaultExpandIcon,
         open,
-        children: React.Fragment,
         'aria-hidden': true,
       },
       button: {

@@ -29,7 +29,6 @@ AccordionExample.argTypes = {
     defaultValue: false,
     control: 'boolean',
   },
-  // onToggle: { action: 'toggled' },
   size: {
     defaultValue: 'medium',
     control: {
