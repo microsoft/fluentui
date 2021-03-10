@@ -20,6 +20,7 @@ exports[`AccordionHeader renders a default state 1`] = `
       <svg
         fill="currentColor"
         height="1em"
+        transform="rotate(0)"
         viewBox="0 0 2048 2048"
         width="1em"
       >
