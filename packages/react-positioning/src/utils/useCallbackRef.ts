@@ -11,9 +11,9 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities/src/hooks/u
  * @param skipInitialResolve - a flag to skip an initial ref report
  *
  * @example
- * const ref = useCallbackRef(0, (newValue, oldValue) =\> console.log(oldValue, '-\>', newValue);
+ * const ref = useCallbackRef(0, (newValue, oldValue) => console.log(oldValue, '->', newValue);
  * ref.current = 1;
- * // prints 0 -\> 1
+ * // prints 0 -> 1
  *
  * @see https://reactjs.org/docs/hooks-reference.html#useref
  * @see https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
