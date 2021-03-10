@@ -121,7 +121,7 @@ To disable slot rendering you can use falsy (`null`, `false`) values:
 
 ### Renders props via `children` function
 
-Slots can be deeply customized via `children` function that behave similarly to [Render Props pattern](https://reactjs.org/docs/render-props.html) in React:
+Slots can be deeply customized without ignoring the original content by using `children` as a function that behave similarly to [Render Props pattern](https://reactjs.org/docs/render-props.html) in React:
 
 ```jsx
 <Button
