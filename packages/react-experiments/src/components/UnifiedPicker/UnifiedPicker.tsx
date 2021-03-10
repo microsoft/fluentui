@@ -579,6 +579,35 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onRemoveSuggestion: _onFloatingSuggestionRemoved,
     });
 
+  const renderPickerInput = () => {
+    return (
+      <div
+        aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
+        aria-expanded={isSuggestionsShown}
+        aria-haspopup="listbox"
+        role="combobox"
+        className={css('ms-BasePicker-div', classNames.pickerDiv)}
+        onDrop={_onDropAutoFill}
+        onDragOver={_onDragOverAutofill}
+      >
+        <Autofill
+          {...(inputProps as IInputProps)}
+          className={css('ms-BasePicker-input', classNames.pickerInput)}
+          ref={input}
+          onFocus={_onInputFocus}
+          onClick={_onInputClick}
+          onInputValueChange={_onInputChange}
+          aria-autocomplete="list"
+          aria-activedescendant={
+            isSuggestionsShown && focusItemIndex >= 0 ? 'FloatingSuggestionsItemId-' + focusItemIndex : undefined
+          }
+          disabled={false}
+          onPaste={_onPaste}
+        />
+      </div>
+    );
+  };
+
   const _canAddItems = () => true;
 
   return (
@@ -600,35 +629,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         >
           <div className={css('ms-BasePicker-text', classNames.pickerText)}>
             {headerComponent}
-            {_renderSelectedItemsList()}
-            {_canAddItems() && (
+            {selectedItems.length > 0 && (
               <div
-                aria-owns={isSuggestionsShown ? 'suggestion-list' : undefined}
-                aria-expanded={isSuggestionsShown}
-                aria-haspopup="listbox"
-                role="combobox"
-                className={css('ms-BasePicker-div', classNames.pickerDiv)}
-                onDrop={_onDropAutoFill}
-                onDragOver={_onDragOverAutofill}
+                className={css('ms-UnifiedPicker-listDiv', classNames.listDiv)}
+                role={'listbox'}
+                aria-orientation={'horizontal'}
+                aria-multiselectable={'true'}
               >
-                <Autofill
-                  {...(inputProps as IInputProps)}
-                  className={css('ms-BasePicker-input', classNames.pickerInput)}
-                  ref={input}
-                  onFocus={_onInputFocus}
-                  onClick={_onInputClick}
-                  onInputValueChange={_onInputChange}
-                  aria-autocomplete="list"
-                  aria-activedescendant={
-                    isSuggestionsShown && focusItemIndex >= 0
-                      ? 'FloatingSuggestionsItemId-' + focusItemIndex
-                      : undefined
-                  }
-                  disabled={false}
-                  onPaste={_onPaste}
-                />
+                {_renderSelectedItemsList()}
+                {_canAddItems() && renderPickerInput()}
               </div>
             )}
+            {_canAddItems() && selectedItems.length === 0 && renderPickerInput()}
           </div>
         </SelectionZone>
       </FocusZone>

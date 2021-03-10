@@ -21,6 +21,23 @@ import {
 import { IInputProps } from '@fluentui/react';
 import { FloatingPeopleSuggestions } from '@fluentui/react-experiments/lib/FloatingPeopleSuggestionsComposite';
 import { KeyCodes } from '@fluentui/react-experiments/lib/Utilities';
+import { mergeStyleSets } from '@fluentui/react/lib/Styling';
+
+const classNames = mergeStyleSets({
+  to: {
+    display: 'inline-block',
+    position: 'relative',
+    height: 32,
+    lineHeight: 32,
+    margin: '4px',
+    minWidth: '52px',
+    padding: '0 4px',
+    textAlign: 'center',
+    color: '#005A9E',
+    backgroundColor: '#EFF6FC',
+    borderRadius: '2px',
+  },
+});
 
 const _suggestions = [
   {
@@ -376,6 +393,11 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         defaultDragDropEnabled={false}
         onKeyDown={_onKeyDown}
         onValidateInput={_onValidateInput}
+        headerComponent={
+          <div className={classNames.to} data-is-focusable>
+            To
+          </div>
+        }
       />
     </>
   );
