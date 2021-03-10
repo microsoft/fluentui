@@ -329,7 +329,7 @@ export function usePopper(
   const arrowRef = useCallbackRef<HTMLElement | null>(null, handlePopperUpdate, true);
 
   React.useImperativeHandle(
-    options.popperRef,
+    options.containerRef,
     () => ({
       updatePosition: () => {
         popperInstanceRef.current?.update();

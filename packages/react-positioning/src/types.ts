@@ -31,7 +31,7 @@ export interface PositioningProps {
   overflowBoundary?: Boundary;
 
   /** An imperative handle to Popper methods. */
-  popperRef?: React.Ref<PopperRefHandle>;
+  containerRef?: React.Ref<PopperRefHandle>;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')

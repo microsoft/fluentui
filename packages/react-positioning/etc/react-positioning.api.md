@@ -46,10 +46,10 @@ export type Position = 'above' | 'below' | 'before' | 'after';
 export interface PositioningProps {
     align?: Alignment;
     autoSize?: 'height' | 'width' | boolean;
+    containerRef?: React.Ref<PopperRefHandle>;
     flipBoundary?: Boundary;
     offset?: Offset;
     overflowBoundary?: Boundary;
-    popperRef?: React.Ref<PopperRefHandle>;
     position?: Position;
     positionFixed?: boolean;
     unstable_disableTether?: boolean | 'all';
