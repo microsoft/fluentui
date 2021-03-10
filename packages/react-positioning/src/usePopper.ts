@@ -1,4 +1,5 @@
 import { useEventCallback, useIsomorphicLayoutEffect, useCallbackRef, useFirstMount } from '@fluentui/react-utilities';
+import { useFluent } from '@fluentui/react-provider';
 import {
   isBrowser,
   getScrollParent,
@@ -54,14 +55,14 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
     offset,
     onStateUpdate,
     overflowBoundary,
-    rtl,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether,
     // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_pinned,
   } = options;
 
-  const placement = getPlacement(options.align, options.position, options.rtl);
+  const isRtl = useFluent().dir === 'rtl';
+  const placement = getPlacement(options.align, options.position, isRtl);
   const strategy = options.positionFixed ? 'fixed' : 'absolute';
 
   const handleStateUpdate = useEventCallback(({ state }: { state: Partial<PopperJs.State> }) => {
@@ -75,10 +76,10 @@ function usePopperOptions(options: PopperOptions, popperOriginalPositionRef: Rea
       offset
         ? {
             name: 'offset',
-            options: { offset: rtl ? applyRtlToOffset(offset) : offset },
+            options: { offset: isRtl ? applyRtlToOffset(offset) : offset },
           }
         : null,
-    [offset, rtl],
+    [offset, isRtl],
   );
 
   return React.useCallback(

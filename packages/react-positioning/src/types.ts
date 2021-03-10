@@ -88,8 +88,5 @@ export interface PopperOptions extends PositioningProps {
    */
   positioningDependencies?: React.DependencyList;
 
-  /** Rtl attribute for the component. */
-  rtl?: boolean;
-
   onStateUpdate?: (state: Partial<PopperJs.State>) => void;
 }
