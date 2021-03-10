@@ -1,14 +1,17 @@
 pr:
   - 5.0
 
-trigger:
-  - 5.0
+# There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
+# https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
+trigger: none
 
 variables:
   - group: fabric-variables
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+pool: 'Self Host Ubuntu'
+
+workspace:
+  clean: all
 
 steps:
   - task: NodeTool@0
@@ -34,3 +37,11 @@ steps:
     displayName: run VR Test
     env:
       SCREENER_API_KEY: $(screener.key)
+
+  # In theory the "workspace: clean: all" setting should handle this, but it doesn't always seem to work.
+  # ReallyClean is a custom task from our internal UI Fabric azure-devops-tasks repo which attempts to
+  # delete the given directory with multiple retries.
+  - task: ReallyClean@0
+    inputs:
+      directory: $(Agent.BuildDirectory)
+    condition: always()
