@@ -8,14 +8,33 @@ For example, `Button` component contains `content`, `loader` and `icon` slots in
 
 ```jsx
 // ⚠️ not a real JSX/DOM markup
-<root>
-  <loader />
-  <content />
-  <icon />
-</root>
+<slots.root>
+  <slots.loader />
+  <slots.children />
+  <slots.icon />
+</slots.root>
 ```
 
 Slots let define the complex layouts required by many components according to accessibility and design requirements automatically. Slots can be configured through props, which lets the caller pass in a variety of inputs for a given slot.
+
+## Slots components
+
+Each slot is represented by a React component or a primitive, for example: `slots.loader` can be a `Loader` component and `slots.icon` can be a `span`:
+
+```jsx
+// ⚠️ not a real JSX/DOM markup
+<>
+  {/* renders a <button /> element */}
+  <slots.root>
+    {/* renders a <Loader /> element */}
+    <slots.loader />
+    {/* renders a <span /> element */}
+    <slots.icon />
+  </slots.root>
+</>
+```
+
+A default set of components is manually configured per each component, but is optional, by default slots are represented by `div` elements.
 
 ## Slots usage
 
@@ -26,13 +45,14 @@ There are several forms of values that can be provided, but all of them share on
 If you will pass an object to component props we will handle it as props for a slot, can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
 
 ```jsx
-<Button icon={{ children: <FooIcon />, id: '#button-icon' }} />
+<Button icon={{ children: <FooIcon />, className: 'an-awesome-slot', id: '#button-icon' }} />
 ```
 
 ```html
-<!-- ⚠ Simplified DOM output -->
+<!-- 💡 Simplified DOM output -->
 <button class="ms-Button">
-  <span class="ms-Button-icon" id="#button-icon">
+  <!-- 👇 An additional class and id have been added to markup -->
+  <span class="ms-Button-icon an-awesome-slot" id="#button-icon">
     <span class="ms-Icon"><svg /></span>
   </span>
 </button>
@@ -40,15 +60,17 @@ If you will pass an object to component props we will handle it as props for a s
 
 ### Primitives as a value
 
-We consider JSX elements, strings and numbers as primitive values that will be passed to a meaningful prop, usually to `children`:
+We consider JSX elements, strings and numbers as primitive values that will be passed to a meaningful prop, by default to `children` (but this can be configured in the component's implementation):
 
 ```jsx
 <>
   <Button icon={<FooIcon />} />
-  {/* 💡 has identical effect to the previous one */}
+  {/* 💡 has an identical effect to the previous one */}
   <Button icon={{ children: <FooIcon /> }} />
 </>
 ```
+
+_Such usage is called shorthands (similarly to [CSS shorthand properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties))._
 
 To disable slot rendering you can use falsy (`null`, `false`) values:
 
@@ -60,20 +82,52 @@ To disable slot rendering you can use falsy (`null`, `false`) values:
 </>
 ```
 
-### Children function
+`true` will render a slot without any content:
 
-Slots can be deeply customized via `children` function that behave similarly to [Render Props](https://reactjs.org/docs/render-props.html):
+```jsx
+// 💡 A loader slot will be renderer without any content
+<Button loading loader={true} />
+```
+
+```html
+<!-- 💡 Simplified DOM output -->
+<button class="ms-Button">
+  <span class="ms-Button-loader"></span>
+</button>
+```
+
+### Renders props via `children` function
+
+Slots can be deeply customized via `children` function that behave similarly to [Render Props pattern](https://reactjs.org/docs/render-props.html) in React:
 
 ```jsx
 <Button
   icon={{
-    // - Component is an original element type for slot
-    // - props are defaults that are provided to a slot
+    // 💡 "Component" is an original element type for slot, for example, it can be a "span"
+    //    "props" are defaults that are provided to a slot by a host component, for example, may contain "onClick"
+    //    handler
     children: (Component, props) => (
-      <div>
-        <Component {...props} />
+      <div id="icon-wrapper">
+        {/* 💡 "props" can be modified there to override component's behavior */}
+        <Component {...props} id="icon-slot">
+          <FooIcon />
+        </Component>
       </div>
     ),
   }}
 />
 ```
+
+```html
+<!-- 💡 Simplified DOM output -->
+<button class="ms-Button">
+  <!-- 👇 An additional element was added to markup -->
+  <div id="icon-wrapper">
+    <span class="ms-Button-icon" id="icon-slot">
+      <span class="ms-Icon"><svg /></span>
+    </span>
+  </div>
+</button>
+```
+
+⚠️An important note is that `children` function replaces the whole slot, not its contents.
