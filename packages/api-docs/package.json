@@ -20,8 +20,7 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
     "@types/fs-extra": "^8.0.1",
-    "@fluentui/scripts": "^1.0.0",
-    "@types/node": "^10.3.2"
+    "@fluentui/scripts": "^1.0.0"
   },
   "dependencies": {
     "@fluentui/date-time-utilities": "^8.0.1",

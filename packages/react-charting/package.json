@@ -35,7 +35,6 @@
     "@types/react-addons-test-utils": "0.14.18",
     "@types/react-dom": "16.9.10",
     "@types/react-test-renderer": "^16.0.0",
-    "@types/webpack-env": "1.16.0",
     "@fluentui/scripts": "^1.0.0",
     "@fluentui/jest-serializer-merge-styles": "^8.0.2",
     "enzyme": "~3.10.0",

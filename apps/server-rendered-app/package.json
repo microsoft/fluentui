@@ -18,12 +18,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
+    "@fluentui/scripts": "^1.0.0",
     "@types/react": "16.9.42",
     "@types/react-dom": "16.9.10",
-    "@types/webpack-env": "1.16.0",
-    "express": "^4.15.4",
     "compression": "^1.7.2",
-    "@fluentui/scripts": "^1.0.0"
+    "express": "^4.15.4"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",

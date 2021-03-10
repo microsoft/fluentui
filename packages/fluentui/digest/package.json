@@ -22,9 +22,7 @@
     "querystring": "^0.2.0",
     "webpack": "5.21.2"
   },
-  "devDependencies": {
-    "@types/node": "^10.3.2"
-  },
+  "devDependencies": {},
   "publishConfig": {
     "access": "public"
   }

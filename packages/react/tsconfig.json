@@ -18,7 +18,7 @@
     "lib": ["es5", "dom", "es2015.promise"],
     "skipLibCheck": true,
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global"]
+    "types": ["jest", "custom-global"]
   },
   "include": ["src"]
 }
