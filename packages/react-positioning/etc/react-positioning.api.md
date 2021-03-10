@@ -32,7 +32,6 @@ export interface PopperOptions extends PositioningProps {
     // (undocumented)
     onStateUpdate?: (state: Partial<PopperJs.State>) => void;
     positioningDependencies?: React.DependencyList;
-    rtl?: boolean;
 }
 
 // @public (undocumented)
