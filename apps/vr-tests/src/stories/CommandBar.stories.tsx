@@ -87,7 +87,7 @@ const farItems = [
 ];
 
 storiesOf('CommandBar', module)
-  .addDecorator(getTallWideDecorator('750px'))
+  .addDecorator(getTallWideDecorator('760px'))
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
