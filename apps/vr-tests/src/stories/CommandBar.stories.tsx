@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener, { Steps } from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { getTallWideDecorator } from '../utilities';
+import { FabricDecoratorTall } from '../utilities';
 import { CommandBar } from 'office-ui-fabric-react';
 
 const items = [
@@ -87,7 +87,7 @@ const farItems = [
 ];
 
 storiesOf('CommandBar', module)
-  .addDecorator(getTallWideDecorator('760px'))
+  .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
     <Screener
       steps={ new Screener.Steps()
