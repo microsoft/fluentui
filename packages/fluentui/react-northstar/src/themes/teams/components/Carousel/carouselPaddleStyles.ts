@@ -52,7 +52,6 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       marginBottom: pxToRem(40),
       outline: 0,
       padding: 0,
-      boxShadow: v.paddleBoxShadow,
       transition: faster,
       ...(p.hidden && {
         visibility: 'hidden',
@@ -63,29 +62,23 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
         [`& .${carouselPaddleSlotClassNames.content}`]: {
           ...getIndicatorStyles(v.paddleColorHover, p.next, v.paddleIndicatorSize),
         },
-        color: v.paddleColorHover,
         background: v.paddleBackgroundColorHover,
       },
 
       ':active': {
         transition: ultraFast,
-        color: v.paddleColorActive,
         backgroundColor: v.paddleBackgroundColorActive,
-        boxShadow: 'none',
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
         ...borderFocusStyles[':focus-visible'],
-        backgroundColor: v.paddleBackgroundColorFocus,
-        color: v.paddleColorFocus,
       },
 
       // Overrides for "disabled" buttons
       ...(p.disabled && {
         cursor: 'default',
         color: v.paddleColorDisabled,
-        boxShadow: 'none',
         pointerEvents: 'none',
         ':hover': {
           color: v.paddleColorDisabled,

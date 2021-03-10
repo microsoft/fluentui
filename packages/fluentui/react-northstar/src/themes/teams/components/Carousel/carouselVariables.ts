@@ -8,21 +8,16 @@ export interface CarouselVariables {
   focusOuterBorderRadius: string;
 
   paddleColor: string;
-  paddleColorActive: string;
-  paddleColorHover: string;
-  paddleColorFocus: string;
   paddleColorDisabled: string;
 
   paddleBackgroundColor: string;
   paddleBackgroundColorActive: string;
   paddleBackgroundColorHover: string;
-  paddleBackgroundColorFocus: string;
   paddleBackgroundColorDisabled: string;
 
   paddleBorderColor: string;
 
   paddleBorderRadius: string;
-  paddleBoxShadow: string;
 
   paddleHeight: string;
 
@@ -42,21 +37,16 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
   focusOuterBorderRadius: siteVars.borderRadius,
 
   paddleColor: siteVars.colorScheme.default.foreground4,
-  paddleColorActive: undefined,
-  paddleColorHover: undefined,
-  paddleColorFocus: undefined,
   paddleColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
 
   paddleBackgroundColor: siteVars.colorScheme.onyx.background3,
   paddleBackgroundColorActive: siteVars.colorScheme.onyx.backgroundPressed,
   paddleBackgroundColorHover: siteVars.colorScheme.onyx.backgroundHover,
-  paddleBackgroundColorFocus: undefined,
   paddleBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
 
   paddleBorderColor: 'transparent',
 
   paddleBorderRadius: siteVars.borderRadius,
-  paddleBoxShadow: undefined,
 
   paddleHeight: pxToRem(32),
 
