@@ -129,7 +129,7 @@ The Tooltip API is split among several components and hooks, in two packages. Ha
 - [**@fluentui/react-tooltip-hook**](#fluentuireact-tooltip-hook)
   - [`TooltipProps`](#tooltipprops)
   - [`TooltipManagerApi`](#tooltipmanagerapi)
-  - ['useTooltipContext](#usetooltipcontext)
+  - [`useTooltipContext`](#usetooltipcontext)
   - [`useTooltipSlot`](#usetooltipslot)
   - [`TooltipTrigger`](#tooltiptrigger)
 - [**@fluentui/react-tooltip**](#fluentuireact-tooltip)
