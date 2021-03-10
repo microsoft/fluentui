@@ -32,6 +32,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onInputChange,
     customClipboardType,
     onValidateInput,
+    itemListAriaLabel,
   } = props;
 
   const {
@@ -635,6 +636,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                 role={'listbox'}
                 aria-orientation={'horizontal'}
                 aria-multiselectable={'true'}
+                aria-label={itemListAriaLabel}
               >
                 {_renderSelectedItemsList()}
                 {_canAddItems() && renderPickerInput()}

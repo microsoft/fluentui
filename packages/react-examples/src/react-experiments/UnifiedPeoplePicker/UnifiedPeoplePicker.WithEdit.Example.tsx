@@ -393,6 +393,7 @@ export const UnifiedPeoplePickerWithEditExample = (): JSX.Element => {
         defaultDragDropEnabled={false}
         onKeyDown={_onKeyDown}
         onValidateInput={_onValidateInput}
+        itemListAriaLabel="Recipient list"
         headerComponent={
           <div className={classNames.to} data-is-focusable>
             To
