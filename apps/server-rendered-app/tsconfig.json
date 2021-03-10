@@ -13,7 +13,8 @@
     "moduleResolution": "node",
     "preserveConstEnums": false,
     "lib": ["es5", "dom"],
-    "types": []
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["custom-global"]
   },
   "include": ["src"]
 }
