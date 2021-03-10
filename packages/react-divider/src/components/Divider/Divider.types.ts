@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentProps } from '@fluentui/react-utilities';
+import { ComponentProps, ShorthandProps } from '@fluentui/react-utilities';
 
 /**
  * {@docCategory Divider}
@@ -41,6 +41,14 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
    */
   borderStyle?: string;
   borderSize?: string | number;
+
+  /**
+   * Accessibility wrapper for content when presented.
+   * A shorthand prop can be a literal, object, or
+   * JSX. The `children` prop of the object can be a render function,
+   * taking in the original slot component and props.
+   */
+  wrapper?: ShorthandProps<React.HTMLAttributes<HTMLDivElement>>;
 
   /**
    * Exposed used properties

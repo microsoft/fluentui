@@ -5,7 +5,7 @@ import { DividerProps, DividerState } from './Divider.types';
 /**
  * Consts listing which props are shorthand props.
  */
-export const dividerShorthandProps = [];
+export const dividerShorthandProps = ['wrapper', 'children'];
 
 const mergeProps = makeMergeProps<DividerState>({ deepMerge: dividerShorthandProps });
 
@@ -26,6 +26,7 @@ export const useDivider = (
       ref: useMergedRefs(ref, React.useRef(null)),
       /* The Id created to expose accessibility for readers */
       labelledById: props.children ? dividerId : undefined,
+      wrapper: { as: 'div', children: props.children, id: dividerId },
     },
     defaultProps,
     resolveShorthandProps(props, dividerShorthandProps),

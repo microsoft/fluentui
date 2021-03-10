@@ -12,7 +12,7 @@ export const renderDivider = (state: DividerState) => {
 
   return (
     <slots.root {...slotProps.root} role="separator" aria-labelledby={labelledById}>
-      {children && <div id={labelledById}>{children}</div>}
+      {children !== undefined && <slots.wrapper {...slotProps.wrapper} />}
     </slots.root>
   );
 };
