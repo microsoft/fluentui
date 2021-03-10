@@ -11,27 +11,40 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
    */
   alignContent?: 'start' | 'end' | 'center';
 
+  /**
+   * Predefined visual styles
+   * @defaultvalue 'default'
+   */
   appearance?: 'default' | 'subtle' | 'brand' | 'strong';
 
-  children?: any;
-
-  /* A divider can have a overriding border color */
+  /**
+   * A divider can have a overriding border color
+   */
   color?: string;
 
-  /* A divider can be classified as important to emphasize its content */
+  /**
+   * A divider can be classified as important to emphasize its content
+   */
   important?: boolean;
 
+  /**
+   * Adds a 12px padding to the begining and end of the divider
+   */
   inset?: boolean;
 
-  /* A divider can be horizontal (default) or vertical*/
+  /**
+   * A divider can be horizontal (default) or vertical*/
   vertical?: boolean;
 
-  /* Overrides for border visuals */
+  /**
+   * Overrides for border visuals
+   */
   borderStyle?: string;
   borderSize?: string | number;
 
-  /* Exposed used properties */
-  /*
+  /**
+   * Exposed used properties
+   *
    *** NOTE ***
     Once we have a full story and patterns for component tokens,
     the following should be removed and the pattern updated.
@@ -57,6 +70,8 @@ export interface DividerState extends DividerProps {
    */
   ref: React.MutableRefObject<HTMLElement>;
 
-  /* The Id created to expose accessability for readers */
+  /**
+   * The Id created to expose accessability for readers
+   */
   labelledById?: string;
 }

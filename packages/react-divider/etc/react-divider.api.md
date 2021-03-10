@@ -13,14 +13,11 @@ export const Divider: React.ForwardRefExoticComponent<DividerProps & React.RefAt
 // @public (undocumented)
 export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLElement> {
     alignContent?: 'start' | 'end' | 'center';
-    // (undocumented)
     appearance?: 'default' | 'subtle' | 'brand' | 'strong';
     // (undocumented)
     borderSize?: string | number;
     // (undocumented)
     borderStyle?: string;
-    // (undocumented)
-    children?: any;
     // (undocumented)
     color?: string;
     // (undocumented)

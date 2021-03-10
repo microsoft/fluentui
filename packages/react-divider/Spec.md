@@ -108,41 +108,37 @@ export interface DividerProps extends ComponentProps, React.HTMLAttributes<HTMLE
    */
   alignContent?: 'start' | 'end' | 'center';
 
+  /**
+   * Predefined visual styles
+   * @defaultvalue 'default'
+   */
   appearance?: 'default' | 'subtle' | 'brand' | 'strong';
 
-  children?: any;
-
-  /* A divider can have a overriding border color */
+  /**
+   * A divider can have a overriding border color
+   */
   color?: string;
 
-  /* A divider can be classified as important to emphasize its content */
+  /**
+   * A divider can be classified as important to emphasize its content
+   */
   important?: boolean;
 
+  /**
+   * Adds a 12px padding to the begining and end of the divider
+   */
   inset?: boolean;
 
-  /* A divider can be horizontal (default) or vertical*/
+  /**
+   * A divider can be horizontal (default) or vertical
+   */
   vertical?: boolean;
 
-  /* Overrides for border visuals */
+  /**
+   * Overrides for border visuals
+   */
   borderStyle?: string;
   borderSize?: string | number;
-
-  /* Exposed used properties */
-  /*
-   *** NOTE ***
-    Once we have a full story and patterns for component tokens,
-    the following should be removed and the pattern updated.
-  */
-  fontColor?: string;
-  fontSize?: string;
-  fontWeight?: string;
-  height?: string;
-  margin?: string;
-  marginBottom?: string;
-  marginLeft?: string;
-  marginRight?: string;
-  marginTop?: string;
-  width?: string;
 }
 ```
 
@@ -186,9 +182,7 @@ Border Color: tokens.alias.color.neutral.neutralStroke1
 
 ## Migration
 
-The divider control is a direct replacement of the current Separator control. Notable changes are listed below:
-
-Migration from V0 will require removing the content property and nesting that content as a child of the node ex.
+[See MIGRATION.md](./Migration.md)
 
 ## Behaviors
 

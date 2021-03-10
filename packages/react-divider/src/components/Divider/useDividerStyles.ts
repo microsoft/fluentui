@@ -128,7 +128,7 @@ export const useRootStyles = (state: DividerState): string => {
       }),
     ],
     [
-      s => s.vertical && s.children,
+      s => s.vertical && s.children !== undefined,
       {
         minHeight: '84px',
       },
@@ -155,7 +155,7 @@ export const useRootStyles = (state: DividerState): string => {
     /* alignContent Center or Default with content Vertical */
     [
       s => {
-        return (s.alignContent === 'center' || !s.alignContent) && s.children && s.vertical;
+        return (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && s.vertical;
       },
       {
         ':before': {
@@ -169,7 +169,7 @@ export const useRootStyles = (state: DividerState): string => {
     /* alignContent Center or Default with content Horizontal*/
     [
       s => {
-        return (s.alignContent === 'center' || !s.alignContent) && s.children && !s.vertical;
+        return (s.alignContent === 'center' || !s.alignContent) && s.children !== undefined && !s.vertical;
       },
       {
         ':before': {
@@ -183,7 +183,7 @@ export const useRootStyles = (state: DividerState): string => {
     /* alignContent Center or Default without content*/
     [
       s => {
-        return (s.alignContent === 'center' || !s.alignContent) && !s.children;
+        return (s.alignContent === 'center' || !s.alignContent) && s.children === undefined;
       },
       {
         ':before': {
@@ -311,7 +311,7 @@ export const useRootStyles = (state: DividerState): string => {
     ],
     [
       s => {
-        return !s.children && s.vertical;
+        return s.children === undefined && s.vertical;
       },
       {
         ':before': {
