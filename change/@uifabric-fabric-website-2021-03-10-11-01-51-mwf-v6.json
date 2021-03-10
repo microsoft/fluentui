@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Hides modal and footer in prep for MWF stylesheet removal",
+  "packageName": "@uifabric/fabric-website",
+  "email": "sarah.higley@microsoft.com",
+  "commit": "57854cdf45d4a73903cabb736edbd31f3945a305",
+  "date": "2021-03-10T19:01:51.567Z"
+}
