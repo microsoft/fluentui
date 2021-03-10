@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Hides modal and footer in prep for MWF stylesheet removal",
+  "packageName": "@fluentui/public-docsite",
+  "email": "tristan.watanabe@gmail.com",
+  "dependentChangeType": "patch"
+}
