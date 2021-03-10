@@ -26,10 +26,11 @@ import * as React from 'react';
 
 import {
   getScrollParent,
-  Popper,
-  PopperShorthandProps,
   partitionPopperPropsFromShorthand,
-  PopperModifiers,
+  PopperModifiersFn,
+  PopperRefHandle,
+  PopperShorthandProps,
+  usePopper,
 } from '../../utils/positioner';
 import {
   childrenExist,
@@ -185,12 +186,41 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
     readStatus,
     unstable_overflow: overflow,
   } = props;
+
   const [actionMenu, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
+  const hasActionMenu = !_.isNil(actionMenu);
+
+  const modifiers = React.useCallback<PopperModifiersFn>(
+    (target, container) => {
+      return (
+        positionActionMenu && [
+          // https://popper.js.org/docs/v2/modifiers/flip/
+          // Forces to flip only in "top-*" positions
+          { name: 'flip', options: { fallbackPlacements: ['top'] } },
+          overflow && {
+            name: 'preventOverflow',
+            options: { boundary: getScrollParent(container) },
+          },
+        ]
+      );
+    },
+    [positionActionMenu, overflow],
+  );
+
+  const popperRef = React.useRef<PopperRefHandle>();
+  const { targetRef: messageRef, containerRef: actionsMenuRef } = usePopper({
+    align: 'end',
+    position: 'above',
+    positionFixed: overflow,
+
+    enabled: hasActionMenu && positionActionMenu,
+    modifiers,
+    popperRef,
+
+    ...positioningProps,
+  });
 
   const [focused, setFocused] = React.useState<boolean>(false);
-  const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
-
-  const updateActionsMenuPosition = React.useRef<(() => void) | null>(null);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -204,8 +234,8 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       },
 
       focus: event => {
-        if (messageNode) {
-          messageNode.focus();
+        if (messageRef.current) {
+          messageRef.current.focus();
           event.stopPropagation();
         }
       },
@@ -232,7 +262,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(updateActionsMenuPosition, 'current');
+    popperRef.current?.updatePosition();
 
     setFocused(true);
     _.invoke(props, 'onFocus', e, props);
@@ -250,7 +280,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   };
 
   const handleMouseEnter = (e: React.SyntheticEvent) => {
-    _.invoke(updateActionsMenuPosition, 'current');
+    popperRef.current?.updatePosition();
     _.invoke(props, 'onMouseEnter', e, props);
   };
 
@@ -268,55 +298,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
       return actionMenuElement;
     }
 
-    const modifiers: PopperModifiers | undefined = positionActionMenu && [
-      // https://popper.js.org/docs/v2/modifiers/flip/
-      // Forces to flip only in "top-*" positions
-      { name: 'flip', options: { fallbackPlacements: ['top'] } },
-      overflow && {
-        name: 'preventOverflow',
-        options: { boundary: getScrollParent(messageNode) },
-      },
-    ];
-
-    // return renderOutsideDomOrder ? (
-    //   // <PortalInner mountNode={messageNode}>{actionMenuElement}</PortalInner>
-    //  <PortalInner>{actionMenuElement}</PortalInner>
-    //   // messageNode && <Popup trigger={messageNode} on={['hover', 'focus']} content={actionMenuElement} />
-    // ) : (
-    //   <Popper
-    //     enabled={positionActionMenu}
-    //     align="end"
-    //     modifiers={modifiers}
-    //     position="above"
-    //     positionFixed={overflow}
-    //     targetRef={messageNode}
-    //     {...positioningProps}
-    //   >
-    //     {({ scheduleUpdate }) => {
-    //       updateActionsMenuPosition.current = scheduleUpdate;
-
-    //       return actionMenuElement;
-    //     }}
-    //   </Popper>
-    // );
-
-    return (
-      <Popper
-        enabled={positionActionMenu}
-        align="end"
-        modifiers={modifiers}
-        position="above"
-        positionFixed={overflow}
-        targetRef={messageNode}
-        {...positioningProps}
-      >
-        {({ scheduleUpdate }) => {
-          updateActionsMenuPosition.current = scheduleUpdate;
-
-          return actionMenuElement;
-        }}
-      </Popper>
-    );
+    return <Ref innerRef={actionsMenuRef}>{actionMenuElement}</Ref>;
   };
 
   const childrenPropExists = childrenExist(children);
@@ -385,7 +367,7 @@ export const ChatMessage: ComponentWithAs<'div', ChatMessageProps> &
   });
 
   const element = (
-    <Ref innerRef={setMessageNode}>
+    <Ref innerRef={messageRef}>
       {getA11Props.unstable_wrapWithFocusZone(
         <ElementType
           {...getA11Props('root', {

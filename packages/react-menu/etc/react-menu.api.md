@@ -10,6 +10,9 @@ import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
 // @public
+export const Menu: React.ForwardRefExoticComponent<MenuProps & React.RefAttributes<HTMLElement>>;
+
+// @public
 export const MenuDivider: React.ForwardRefExoticComponent<import("@fluentui/react-utilities").ComponentProps & React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>>;
 
 // @public (undocumented)
@@ -142,6 +145,47 @@ export interface MenuListState extends MenuListProps {
 }
 
 // @public
+export interface MenuProps extends MenuListProps {
+    children: React.ReactNode;
+    defaultOpen?: boolean;
+    menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    open?: boolean;
+}
+
+// @public (undocumented)
+export const menuShorthandProps: (keyof MenuProps)[];
+
+// @public (undocumented)
+export interface MenuState extends MenuProps {
+    menuList: React.ReactNode;
+    menuPopup: ObjectShorthandProps<React.HTMLAttributes<HTMLElement>>;
+    menuTrigger: React.ReactNode;
+    open: boolean;
+    ref: React.MutableRefObject<HTMLElement>;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+// @public
+export const MenuTrigger: React.ForwardRefExoticComponent<MenuTriggerProps & React.RefAttributes<HTMLElement>>;
+
+// @public (undocumented)
+export interface MenuTriggerProps {
+    children: React.ReactElement;
+}
+
+// @public (undocumented)
+export const menuTriggerShorthandProps: (keyof MenuTriggerProps)[];
+
+// @public (undocumented)
+export interface MenuTriggerState extends MenuTriggerProps {
+    ref: React.MutableRefObject<HTMLElement>;
+    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+// @public
+export const renderMenu: (state: MenuState) => JSX.Element;
+
+// @public
 export const renderMenuDivider: (state: MenuDividerState) => JSX.Element;
 
 // @public
@@ -162,6 +206,9 @@ export const renderMenuItemRadio: (state: MenuItemRadioState) => JSX.Element;
 // @public
 export const renderMenuList: (state: MenuListState) => JSX.Element;
 
+// @public
+export const renderMenuTrigger: (state: MenuTriggerState) => import("react").ReactElement<any, string | ((props: any) => import("react").ReactElement<any, string | any | (new (props: any) => import("react").Component<any, any, any>)> | null) | (new (props: any) => import("react").Component<any, any, any>)>;
+
 // @public (undocumented)
 export type SelectableHandler = (e: React.MouseEvent | React.KeyboardEvent, name: string, value: string, checked: boolean) => void;
 
@@ -172,6 +219,9 @@ export const useCheckmarkStyles: (state: MenuItemSelectableState & {
 
 // @public
 export const useIconStyles: (selectors: MenuItemState) => string;
+
+// @public
+export const useMenu: (props: MenuProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuProps | undefined) => MenuState;
 
 // @public
 export const useMenuDivider: (props: MenuDividerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuDividerProps | undefined) => MenuDividerState;
@@ -205,6 +255,12 @@ export const useMenuItemStyles: (state: MenuItemState) => void;
 
 // @public
 export const useMenuList: (props: MenuListProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuListProps | undefined) => MenuListState;
+
+// @public
+export const useMenuStyles: (state: MenuState) => MenuState;
+
+// @public
+export const useMenuTrigger: (props: MenuTriggerProps, ref: React.Ref<HTMLElement>, defaultProps?: MenuTriggerProps | undefined) => MenuTriggerState;
 
 // @public
 export const useRootStyles: (selectors: MenuItemState) => string;

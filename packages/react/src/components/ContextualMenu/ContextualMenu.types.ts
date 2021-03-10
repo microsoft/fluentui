@@ -302,6 +302,8 @@ export interface IContextualMenuListProps {
   hasCheckmarks: boolean;
   hasIcons: boolean;
   defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
+  ariaLabel?: string;
+  labelElementId?: string;
   role?: string;
 }
 
