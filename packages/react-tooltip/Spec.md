@@ -92,21 +92,7 @@ Example usage:
 <Button tooltip="Example tooltip" />
 <Button tooltip={<>Custom <b>Tooltip</b> content!</>} />
 <Button tooltip={{ children: 'Placed Tooltip', placement: 'right' }} />
-<Button tooltip={{ as: MyTooltip, children: 'You can even implement your own tooltip' }} />
 ```
-
-> **Question**: One alternative option is to require the tooltip slot to specify the actual `<Tooltip>` element as JSX:
->
-> ```tsx
-> <Button tooltip={<Tooltip>Example tooltip</Tooltip>}>
-> <Button tooltip={<Tooltip>Custom <b>Tooltip</b> content!</Tooltip>}>
-> <Button tooltip={<Tooltip placement="right">Placed tooltip</Tooltip>}>
-> <Button tooltip={<MyTooltip>You can even implement your own tooltip</MyTooltip>}>
-> ```
->
-> **Pro**: It's not possible to specify a tooltip without importing the react-tooltip package (and thus can't have a case where your tooltip doesn't work because you don't have a `TooltipProvider`).
->
-> **Con**: It's a little less ergonomic for the simple/common case. It also prevents higher order components like `DetailsList` from including tooltip content without having a dependency on `react-tooltip`.
 
 ## On any element using TooltipTrigger
 
