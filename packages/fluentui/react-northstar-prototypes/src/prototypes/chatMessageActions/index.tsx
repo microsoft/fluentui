@@ -158,7 +158,9 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
   const messageRef = React.useRef<HTMLElement>();
 
   const handleKeyDownOnMessage = e => {
-    const focusableElements = popoverRef?.current?.querySelectorAll('[tabindex="0"],[tabindex="-1"]');
+    const focusableElements = popoverRef?.current?.querySelectorAll(
+      '[tabindex="0"],[tabindex="-1"]:not([data-is-focusable="false"])',
+    );
 
     if (e.keyCode === keyboardKey.Enter) {
       focusableElements[0].focus();
@@ -166,7 +168,9 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
       e.preventDefault();
     }
     if (e.keyCode === keyboardKey.Tab) {
-      const focusableElementsInsideMessage = e.currentTarget.querySelectorAll('[tabindex="-1"]');
+      const focusableElementsInsideMessage = e.currentTarget.querySelectorAll(
+        '[tabindex="-1"]:not([data-is-focusable="false"])',
+      );
       if (e.shiftKey) {
         const firstElement = focusableElementsInsideMessage[0];
         if (e.target === firstElement) {
@@ -210,13 +214,17 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
     e.stopPropagation();
     e.preventDefault();
 
-    console.log('currentTarget:');
-    console.log(e.currentTarget);
-    console.log('relatedTarget:');
-    console.log(e.relatedTarget);
+    // console.log('currentTarget:');
+    // console.log(e.currentTarget);
+    // console.log('relatedTarget:');
+    // console.log(e.relatedTarget);
     const messageElement = e.currentTarget as HTMLElement;
     const nextFocusedElement = e.relatedTarget as HTMLElement;
-    const shouldPreserveFocusState = messageElement.contains(nextFocusedElement);
+    // second part of condition check if focus goes to the actionMenu then it should not be hidden
+    // because now actionMenu is outside the message so this condition "messageElement.contains(nextFocusedElement)" is not enough
+    // selector for that could be better
+    const shouldPreserveFocusState =
+      messageElement.contains(nextFocusedElement) || nextFocusedElement.className.indexOf('ui-menu__item') !== -1;
     // when voiceOver keys are used then 'relatedTarget' is null
     if (!nextFocusedElement) {
       return;
@@ -254,6 +262,11 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
     return behavior;
   };
 
+  const handleOnclickForHiddenButton = () => {
+    setShowActionMenu(true);
+    setShowPopover('button');
+  };
+
   const actionMenu = (
     Component: any,
     props: any,
@@ -276,7 +289,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
             aria-expanded={!!showPopover}
             tabIndex={-1}
             aria-label={`Open actions toolbar for ${messageProps.author}`}
-            onClick={() => setShowPopover('button')}
+            onClick={handleOnclickForHiddenButton}
             iconOnly
             styles={{ opacity: 0, width: '0px', height: '0px' }}
           />
@@ -348,6 +361,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
     if (triggerEvent === null) {
       setTriggerEvent(es);
     }
+    setShowActionMenu(true);
     setShowPopover(es);
   };
 
@@ -374,7 +388,6 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
         accessibility={chatMessageBehaviorOverride}
         role="group"
         aria-label="tempary label"
-        renderOutsideDomOrder={true}
         {...messageProps}
         actionMenu={{
           accessibility: popoverBehavior(showPopover === 'button'),
