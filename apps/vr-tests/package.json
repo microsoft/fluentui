@@ -5,11 +5,12 @@
   "description": "Visual regression tests for Fluent UI React",
   "scripts": {
     "build": "just-scripts build",
-    "clean": "",
+    "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
-    "screener": "screener-storybook --conf screener.config.js",
+    "screener": "screener-storybook --conf screener.config.js --debug",
+    "screener:build": "cross-env NODE_OPTIONS=--max-old-space-size=3072 just-scripts storybook:build",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555"
   },
@@ -49,7 +50,7 @@
     "react-dom": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react": "16.8.6",
-    "screener-storybook": "0.21.0",
+    "screener-storybook": "0.21.2",
     "style-loader": "2.0.0",
     "tslib": "^1.10.0"
   }
