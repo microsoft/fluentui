@@ -420,9 +420,35 @@ export type TooltipManagerState = ComponentState<
 
 ```tsx
 <TooltipProvider>
-  <Button tooltip="First example tooltip" />
-  <Button tooltip="Second example tooltip" />
+  <Button tooltip="Example tooltip" />
+  <TooltipTrigger tooltip="Element wrapped with TooltipTrigger">
+    <a href="http://example.com" />
+  </TooltipTrigger>
 </TooltipProvider>
+```
+
+## DOM
+
+In this example, the mouse is hovering over the first tooltip in the example above
+
+```tsx
+<body>
+  <div {/* TooltipProvider */}>
+    <button aria-describedby="tooltip-1" onPointerEnter={...} onPointerLeave={...} onFocus={...} onBlur={...} />
+    <a href="http://example.com" aria-describedby="tooltip-2" onPointerEnter={...} onPointerLeave={...} onFocus={...} onBlur={...} />
+  </div>
+
+  <div {/* Tooltip portal */}>
+    <div role="tooltip" id="tooltip-1" {/* Tooltip */}>
+      <div {/* Arrow */} />
+      Example tooltip
+    </div>
+    <div role="tooltip" id="tooltip-2" hidden="true" aria-hidden="true" {/* Tooltip */}>
+      <div {/* Arrow */} />
+      Element wrapped with TooltipTrigger
+    </div>
+  </div>
+</body>
 ```
 
 ## Internal
@@ -444,30 +470,12 @@ export type TooltipManagerState = ComponentState<
 </slots.root>
 ```
 
-## DOM
+`TooltipTrigger`:
 
-How the component will be rendered as HTML elements.
-
-In this example, the mouse is hovering over the first tooltip
+Transparently renders children, without any wrapper element:
 
 ```tsx
-<body>
-  <div {/* TooltipProvider */}>
-    <button aria-describedby="tooltip-1" /> {/* for example... */}
-    <button aria-describedby="tooltip-2" /> {/* for example... */}
-  </div>
-
-  <div {/* Tooltip portal */}>
-    <div role="tooltip" id="tooltip-1" {/* Tooltip */}>
-      <div {/* Arrow */} />
-      First example tooltip
-    </div>
-    <div role="tooltip" id="tooltip-2" hidden="true" aria-hidden="true" {/* Tooltip */}>
-      <div {/* Arrow */} />
-      Second example tooltip
-    </div>
-  </div>
-</body>
+<>{state.children}</>
 ```
 
 # Migration
