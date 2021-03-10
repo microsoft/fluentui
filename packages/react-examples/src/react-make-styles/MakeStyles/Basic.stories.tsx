@@ -1,10 +1,10 @@
-import { ax, makeStyles } from '@fluentui/react-make-styles';
+import { ax, makeStylesCompat } from '@fluentui/react-make-styles';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme, teamsLightTheme } from '@fluentui/react-theme';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-const useBasicStyles = makeStyles<{ primary?: boolean }>([
+const useBasicStyles = makeStylesCompat<{ primary?: boolean }>([
   [
     null,
     theme => ({
@@ -25,7 +25,7 @@ const useBasicStyles = makeStyles<{ primary?: boolean }>([
   ],
 ]);
 
-const useOverrideStyles = makeStyles<{}>([
+const useOverrideStyles = makeStylesCompat<{}>([
   [
     null,
     () => ({

@@ -8,7 +8,7 @@ import {
   MakeStylesResolvedDefinition,
 } from './types';
 
-export function makeStyles<Selectors, Tokens>(
+export function makeStylesCompat<Selectors, Tokens>(
   definitions: MakeStylesDefinition<Selectors, Tokens>[],
   unstable_cssPriority: number = 0,
 ) {

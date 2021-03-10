@@ -1,10 +1,10 @@
-import { makeStyles, ax } from '@fluentui/react-make-styles';
+import { makeStylesCompat, ax } from '@fluentui/react-make-styles';
 import { MenuItemState } from './MenuItem.types';
 
 /**
  * Styles for the root slot
  */
-export const useRootStyles = makeStyles<MenuItemState>([
+export const useRootStyles = makeStylesCompat<MenuItemState>([
   [
     null,
     theme => ({
@@ -34,7 +34,7 @@ export const useRootStyles = makeStyles<MenuItemState>([
 /**
  * Styles for the icon slot
  */
-export const useIconStyles = makeStyles<MenuItemState>([
+export const useIconStyles = makeStylesCompat<MenuItemState>([
   [
     null,
     () => ({

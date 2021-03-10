@@ -2,7 +2,7 @@ import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStaticStyles } from './makeStaticStyles';
 import { cssRulesSerializer, makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
-import { makeStyles } from './makeStyles';
+import { makeStylesCompat } from './makeStyles';
 
 expect.addSnapshotSerializer(cssRulesSerializer);
 expect.addSnapshotSerializer(makeStylesRulesSerializer);
@@ -121,7 +121,7 @@ describe('makeStaticStyles', () => {
       },
     });
 
-    const useStyles = makeStyles([
+    const useStyles = makeStylesCompat([
       [
         null,
         {
