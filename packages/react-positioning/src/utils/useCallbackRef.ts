@@ -6,6 +6,9 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities/src/hooks/u
  * changes and mutating the .current property doesn't cause a re-render. An opt-out will be use a callback ref via
  * React.useState(), but it will cause re-renders always.
  *
+ * https://reactjs.org/docs/hooks-reference.html#useref
+ * https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
+ *
  * @param initialValue - initial ref value
  * @param callback - a callback to run when value changes
  * @param skipInitialResolve - a flag to skip an initial ref report
@@ -14,9 +17,6 @@ import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities/src/hooks/u
  * const ref = useCallbackRef(0, (newValue, oldValue) => console.log(oldValue, '->', newValue);
  * ref.current = 1;
  * // prints 0 -> 1
- *
- * @see https://reactjs.org/docs/hooks-reference.html#useref
- * @see https://github.com/theKashey/use-callback-ref#usecallbackref---to-replace-reactuseref
  */
 export function useCallbackRef<T>(
   initialValue: T | null,
