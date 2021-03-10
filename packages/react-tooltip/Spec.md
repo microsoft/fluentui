@@ -13,7 +13,7 @@ v8 tooltips use a `TooltipHost` wrapped around the target element to provide too
 
 The `Tooltip` component renders as a `Callout`, and supports all `Callout` props.
 
-```jsx
+```tsx
 <TooltipHost
   content="This is the tooltip content"
   // This id is used on the tooltip itself, not the host
@@ -38,7 +38,7 @@ There are a few drawbacks with this approach to adding tooltips, which are outli
 
 v0 tooltips use a `trigger` property to render the tooltip's target component. However, unlike v8 it does not create a wrapper `div` around the target component, but instead adds listeners to the target component's props.
 
-```jsx
+```tsx
 <Tooltip content="Example tooltip" trigger={<Button content="A button" />} />
 ```
 
@@ -88,7 +88,7 @@ export const renderButton = (state: ButtonState) => {
 
 Example usage:
 
-```jsx
+```tsx
 <Button tooltip="Example tooltip" />
 <Button tooltip={<>Custom <b>Tooltip</b> content!</>} />
 <Button tooltip={{ children: 'Placed Tooltip', placement: 'right' }} />
@@ -99,7 +99,7 @@ Example usage:
 
 To attach a tooltip to a component that doesn't have a `tooltip` slot, wrap it with the `TooltipTrigger` element. It has its own `tooltip` slot, similar to the one that gets added by `useTooltipSlot`. It doesn't create any DOM nodes of its own (it does _not_ wrap the element with a `<div>` for example). Instead, it attaches listeners to the child by cloning the JSX object and adding `onPointerDown`, etc. events. This is slightly less ergonomic than the tooltip slot, but works with any component that has pointer and focus events.
 
-```jsx
+```tsx
 <TooltipTrigger tooltip="Example Tooltip">
   <a href="http://example.com">
     A link with a tooltip
