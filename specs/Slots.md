@@ -59,7 +59,7 @@ If you will pass an object to component's props we will handle it as props for a
 </button>
 ```
 
-Any props what are valid for a component can be passed to a slot, i.e. `data-*` attributes and event handlers:
+Any props which are valid for a component can be passed to a slot, i.e. `data-*` attributes and event handlers:
 
 ```jsx
 <Button
