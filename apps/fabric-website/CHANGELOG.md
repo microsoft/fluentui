@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 01 Apr 2020 22:48:52 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 22:38:42 GMT and should not be manually modified.
+
+## 5.8.8
+Wed, 10 Mar 2021 22:38:42 GMT
+
+### Patches
+
+- Hides modal and footer in prep for MWF stylesheet removal
 
 ## 5.8.7
 Wed, 01 Apr 2020 22:48:52 GMT

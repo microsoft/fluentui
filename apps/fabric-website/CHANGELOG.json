@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.8",
+      "tag": "@uifabric/fabric-website_v5.8.8",
+      "date": "Wed, 10 Mar 2021 22:38:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Sarah Higley <smhigley@users.noreply.github.com>",
+            "commit": "abd1be8416713ff1ce4ff7d41f9c4862e10e3723",
+            "comment": "Hides modal and footer in prep for MWF stylesheet removal"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.7",
       "tag": "@uifabric/fabric-website_v5.8.7",
       "date": "Wed, 01 Apr 2020 22:48:52 GMT",
