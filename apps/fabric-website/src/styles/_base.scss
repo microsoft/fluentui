@@ -95,9 +95,13 @@
   }
 
   // Hide UHF back to top button that attempts to go to a nonexistent #main-content page,
-  // and #flightPicker element which creates accessibility issues
+  // and #flightPicker element which creates accessibility issues.
+  // Hide #socialMediaContainer element which holds the footer with social media links
+  // and #signInPrompt element which contains the sign in modal
   a.m-back-to-top,
-  #flightPicker {
+  #flightPicker,
+  #socialMediaContainer,
+  #signInPrompt {
     display: none !important;
   }
 
