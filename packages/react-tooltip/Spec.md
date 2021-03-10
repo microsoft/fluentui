@@ -480,10 +480,10 @@ See MIGRATION.md.
 - Visibility
 
   - There is only ever one tooltip visible at once.
-  - The tooltip shows 250ms after the trigger element receieves either mouse/pointer hover or keyboard focus.
+  - The tooltip shows 250ms (by default) after the trigger element receives either mouse/pointer hover or keyboard focus.
     - _Exception_: if another tooltip is currently visible, the new tooltip will immediately replace the old one without any delay.
     - _Exception_: if `onlyIfTruncated` is true, then the tooltip will only show if the target element's content is overflowing.
-  - The tooltip hides 250ms after both the trigger element AND tooltip itself lose mouse/pointer hover or keyboard focus (or immediately if another tooltip is shown).
+  - The tooltip hides 250ms (by default) after both the trigger element AND tooltip itself lose mouse/pointer hover or keyboard focus (or immediately if another tooltip is shown).
   - The tooltip hides immediately when the user presses Esc.
 
 - Placement
