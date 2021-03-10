@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useIsomorphicLayoutEffect } from './useIsomorphicLayoutEffect';
+import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities/src/hooks/useIsomorphicLayoutEffect';
 
 /**
  * Creates a MutableRef with ref change callback. Is useful as React.useRef() doesn't notify you when its content

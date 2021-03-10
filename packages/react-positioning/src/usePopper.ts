@@ -1,4 +1,4 @@
-import { useEventCallback, useIsomorphicLayoutEffect, useCallbackRef, useFirstMount } from '@fluentui/react-utilities';
+import { useEventCallback, useIsomorphicLayoutEffect, useFirstMount } from '@fluentui/react-utilities';
 import { useFluent } from '@fluentui/react-provider';
 import {
   isBrowser,
@@ -7,6 +7,7 @@ import {
   getPlacement,
   getReactFiberFromNode,
   getBoundary,
+  useCallbackRef,
 } from './utils/index';
 import * as PopperJs from '@popperjs/core';
 import * as React from 'react';
