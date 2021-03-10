@@ -95,6 +95,19 @@ Example usage:
 <Button tooltip={{ as: MyTooltip, children: 'You can even implement your own tooltip' }} />
 ```
 
+> **Question**: One alternative option is to require the tooltip slot to specify the actual `<Tooltip>` element as JSX:
+>
+> ```tsx
+> <Button tooltip={<Tooltip>Example tooltip</Tooltip>}>
+> <Button tooltip={<Tooltip>Custom <b>Tooltip</b> content!</Tooltip>}>
+> <Button tooltip={<Tooltip placement="right">Placed tooltip</Tooltip>}>
+> <Button tooltip={<MyTooltip>You can even implement your own tooltip</MyTooltip>}>
+> ```
+>
+> **Pro**: It's not possible to specify a tooltip without importing the react-tooltip package (and thus can't have a case where your tooltip doesn't work because you don't have a `TooltipProvider`).
+>
+> **Con**: It's a little less ergonomic for the simple/common case. It also prevents higher order components like `DetailsList` from including tooltip content without having a dependency on `react-tooltip`.
+
 ## On any element using TooltipTrigger
 
 To attach a tooltip to a component that doesn't have a `tooltip` slot, wrap it with the `TooltipTrigger` element. It has its own `tooltip` slot, similar to the one that gets added by `useTooltipSlot`. It doesn't create any DOM nodes of its own (it does _not_ wrap the element with a `<div>` for example). Instead, it attaches listeners to the child by cloning the JSX object and adding `onPointerDown`, etc. events. This is slightly less ergonomic than the tooltip slot, but works with any component that has pointer and focus events.
