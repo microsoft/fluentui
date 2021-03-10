@@ -15,15 +15,14 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle": "just-scripts bundle",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
     "lint": "just-scripts lint",
+    "start-test": "just-scripts jest-watch",
     "start": "just-scripts dev:storybook",
-    "update-snapshots": "just-scripts jest -u",
     "test": "just-scripts test",
-    "start-test": "just-scripts jest-watch"
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "^1.0.1",
