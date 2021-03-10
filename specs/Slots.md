@@ -2,7 +2,7 @@
 
 ## Slots definition
 
-Fluent UI components almost always contain sub parts and these pre-defined layouts can be configured via Slots API. Slots are named areas in a component that can receive props and provide styling and layout for them.
+Fluent UI components are often composed internally with different subparts to help with layouts. These pre-defined layouts can be configured via the Slots API. Slots are named areas in a component that can receive props for styling and layout.
 
 For example, `Button` component contains `content`, `loader` and `icon` slots in its layout:
 
