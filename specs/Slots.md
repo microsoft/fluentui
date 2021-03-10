@@ -53,6 +53,7 @@ If you will pass an object to component's props we will handle it as props for a
 <button class="ms-Button">
   <!-- 👇 An additional class and id have been added to markup -->
   <span class="ms-Button-icon an-awesome-slot" id="#button-icon">
+    <!-- 👇 An icon will be rendered inside a slot as it is passed as children -->
     <span class="ms-Icon"><svg /></span>
   </span>
 </button>
