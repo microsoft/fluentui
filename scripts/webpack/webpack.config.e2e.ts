@@ -18,6 +18,8 @@ const webpackConfig: webpack.Configuration = {
     filename: `[name].js`,
     path: paths.e2eDist(),
   },
+  // CI should not use sourcemaps, but it's useful for local debugging
+  devtool: process.env.CI ? false : config.compiler_devtool,
   node: {
     global: true,
   },
