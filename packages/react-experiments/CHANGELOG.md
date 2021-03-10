@@ -1,8 +1,119 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.7..@fluentui/react-experiments_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.8 ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.6..@fluentui/react-experiments_v8.0.7)
+
+### Patches
+
+- UnifiedPicker: Add null check to onValidateInput/createGenericItem functionality ([PR #17320](https://github.com/microsoft/fluentui/pull/17320) by elvonspa@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.5..@fluentui/react-experiments_v8.0.6)
+
+### Patches
+
+- Use listbox/option roles for the list/items elements in recipient list. ([PR #17287](https://github.com/microsoft/fluentui/pull/17287) by jaredi@microsoft.com)
+
+## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.5)
+
+Wed, 03 Mar 2021 07:45:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.4..@fluentui/react-experiments_v8.0.5)
+
+### Patches
+
+- Updating snapshots. ([PR #17252](https://github.com/microsoft/fluentui/pull/17252) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.4)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.3..@fluentui/react-experiments_v8.0.4)
+
+### Patches
+
+- Fix webpack bundle ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.3)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.2..@fluentui/react-experiments_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/example-data to v8.1.0 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.2)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.1..@fluentui/react-experiments_v8.0.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.66..@fluentui/react-experiments_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.66](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.66)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.65..@fluentui/react-experiments_v8.0.0-beta.66)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.63 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
+
+## [8.0.0-beta.65](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.65)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.64..@fluentui/react-experiments_v8.0.0-beta.65)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.62 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.64](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.64)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.63..@fluentui/react-experiments_v8.0.0-beta.64)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.63](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.63)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.0.0-beta.62..@fluentui/react-experiments_v8.0.0-beta.63)
+
+### Changes
+
+- Implement keyboard shortcut for Cut and Delete ([PR #17114](https://github.com/microsoft/fluentui/pull/17114) by jaredi@microsoft.com)
+- Use role="presentation" for all <div> elements in TilesList ([PR #17138](https://github.com/microsoft/fluentui/pull/17138) by andredias@microsoft.com)
+- UnifiedPicker: fix suggestions keyboard issue, add generic item functionality ([PR #17143](https://github.com/microsoft/fluentui/pull/17143) by elvonspa@microsoft.com)
+- Add a check for if we are in a drop action to the UnifiedPicker drag end ([PR #17121](https://github.com/microsoft/fluentui/pull/17121) by elvonspa@microsoft.com)
 
 ## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.0.0-beta.62)
 

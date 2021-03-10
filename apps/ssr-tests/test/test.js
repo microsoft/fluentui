@@ -1,10 +1,5 @@
 'use strict';
 
-// Treat warnings as failures.
-console.warn = message => {
-  throw new Error(message);
-};
-
 // Configure load-themed-styles to avoid registering styles.
 let themeLoader = require('@microsoft/load-themed-styles');
 themeLoader.configureLoadStyles(styles => {

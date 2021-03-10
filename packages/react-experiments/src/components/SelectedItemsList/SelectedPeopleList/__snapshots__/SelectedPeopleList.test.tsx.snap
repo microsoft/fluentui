@@ -4,7 +4,9 @@ exports[`SelectedPeopleList renders nothing if nothing is provided 1`] = `null`;
 
 exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 <div
-  role="list"
+  aria-multiselectable="true"
+  aria-orientation="horizontal"
+  role="listbox"
 >
   <div
     aria-labelledby="selectedItemPersona-id__0"
@@ -50,7 +52,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={0}
-    role="listitem"
+    role="option"
   >
     <div
       hidden={true}
@@ -182,7 +184,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -525,7 +526,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -583,7 +583,7 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={1}
-    role="listitem"
+    role="option"
   >
     <div
       hidden={true}
@@ -715,7 +715,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1058,7 +1057,6 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1077,7 +1075,9 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 
 exports[`SelectedPeopleList renders personas that are passed in as default 1`] = `
 <div
-  role="list"
+  aria-multiselectable="true"
+  aria-orientation="horizontal"
+  role="listbox"
 >
   <div
     aria-labelledby="selectedItemPersona-id__16"
@@ -1123,7 +1123,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={0}
-    role="listitem"
+    role="option"
   >
     <div
       hidden={true}
@@ -1255,7 +1255,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1598,7 +1597,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1656,7 +1654,7 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={1}
-    role="listitem"
+    role="option"
   >
     <div
       hidden={true}
@@ -1788,7 +1786,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2131,7 +2128,6 @@ exports[`SelectedPeopleList renders personas that are passed in as default 1`] =
                   text-align: center;
                 }
             data-icon-name="Cancel"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",

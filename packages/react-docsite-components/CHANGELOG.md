@@ -1,8 +1,116 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.7..@fluentui/react-docsite-components_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.8 ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.6..@fluentui/react-docsite-components_v8.0.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.7 ([PR #17299](https://github.com/microsoft/fluentui/pull/17299) by sarah.higley@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.5..@fluentui/react-docsite-components_v8.0.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.6 ([PR #17296](https://github.com/microsoft/fluentui/pull/17296) by miclo@microsoft.com)
+
+## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.5)
+
+Wed, 03 Mar 2021 07:45:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.4..@fluentui/react-docsite-components_v8.0.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.4 ([PR #17252](https://github.com/microsoft/fluentui/pull/17252) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.4)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.3..@fluentui/react-docsite-components_v8.0.4)
+
+### Patches
+
+- Bump @fluentui/example-data to v8.1.1 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.3)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.2..@fluentui/react-docsite-components_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/example-data to v8.1.0 ([PR #17131](https://github.com/microsoft/fluentui/pull/17131) by behowell@microsoft.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.2)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.1..@fluentui/react-docsite-components_v8.0.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.62..@fluentui/react-docsite-components_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.62](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.62)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.61..@fluentui/react-docsite-components_v8.0.0-beta.62)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.63 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
+
+## [8.0.0-beta.61](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.61)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.60..@fluentui/react-docsite-components_v8.0.0-beta.61)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.62 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.60](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.60)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.59..@fluentui/react-docsite-components_v8.0.0-beta.60)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.59)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.0.0-beta.58..@fluentui/react-docsite-components_v8.0.0-beta.59)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.60 ([PR #17033](https://github.com/microsoft/fluentui/pull/17033) by martinhochel@microsoft.com)
 
 ## [8.0.0-beta.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.0.0-beta.58)
 

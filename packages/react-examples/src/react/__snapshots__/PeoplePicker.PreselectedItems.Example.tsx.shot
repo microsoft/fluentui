@@ -51,6 +51,7 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
               &:hover {
                 border-color: #323130;
               }
+          role="presentation"
         >
           <span
             className=

@@ -1,8 +1,116 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Mon, 22 Feb 2021 12:26:22 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 07:34:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.8)
+
+Wed, 10 Mar 2021 07:34:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.7..@fluentui/api-docs_v8.0.8)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.8 ([PR #17316](https://github.com/microsoft/fluentui/pull/17316) by dzearing@microsoft.com)
+
+## [8.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.7)
+
+Tue, 09 Mar 2021 07:32:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.6..@fluentui/api-docs_v8.0.7)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.7 ([PR #17299](https://github.com/microsoft/fluentui/pull/17299) by sarah.higley@microsoft.com)
+
+## [8.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.6)
+
+Sun, 07 Mar 2021 23:34:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.5..@fluentui/api-docs_v8.0.6)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.6 ([PR #17296](https://github.com/microsoft/fluentui/pull/17296) by miclo@microsoft.com)
+
+## [8.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.5)
+
+Wed, 03 Mar 2021 07:45:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.4..@fluentui/api-docs_v8.0.5)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.4 ([PR #17252](https://github.com/microsoft/fluentui/pull/17252) by Humberto.Morimoto@microsoft.com)
+
+## [8.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.4)
+
+Wed, 03 Mar 2021 00:10:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.3..@fluentui/api-docs_v8.0.4)
+
+### Patches
+
+- Bump @fluentui/merge-styles to v8.0.2 ([PR #17246](https://github.com/microsoft/fluentui/pull/17246) by elcraig@microsoft.com)
+
+## [8.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.3)
+
+Tue, 02 Mar 2021 07:24:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.2..@fluentui/api-docs_v8.0.3)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.2 ([PR #17001](https://github.com/microsoft/fluentui/pull/17001) by feodor@appveyor.com)
+
+## [8.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.2)
+
+Mon, 01 Mar 2021 07:20:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.1..@fluentui/api-docs_v8.0.2)
+
+### Patches
+
+- Bump @fluentui/react to v8.1.1 ([PR #16599](https://github.com/microsoft/fluentui/pull/16599) by hantatsang@gmail.com)
+
+## [8.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.1)
+
+Fri, 26 Feb 2021 01:16:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.9..@fluentui/api-docs_v8.0.1)
+
+### Patches
+
+- Release version 8 ([PR #17169](https://github.com/microsoft/fluentui/pull/17169) by elcraig@microsoft.com)
+
+## [8.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.9)
+
+Thu, 25 Feb 2021 20:16:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.8..@fluentui/api-docs_v8.0.0-beta.9)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.63 ([PR #16836](https://github.com/microsoft/fluentui/pull/16836) by sarah.higley@microsoft.com)
+
+## [8.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.8)
+
+Thu, 25 Feb 2021 01:15:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.7..@fluentui/api-docs_v8.0.0-beta.8)
+
+### Changes
+
+- Bump @fluentui/react-focus to v8.0.0-beta.25 ([PR #17118](https://github.com/microsoft/fluentui/pull/17118) by altinokd@microsoft.com)
+
+## [8.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.7)
+
+Wed, 24 Feb 2021 07:19:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.6..@fluentui/api-docs_v8.0.0-beta.7)
+
+### Changes
+
+- Bump @fluentui/react to v8.0.0-beta.61 ([PR #16854](https://github.com/microsoft/fluentui/pull/16854) by shi.cheng@microsoft.com)
+
+## [8.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.6)
+
+Wed, 24 Feb 2021 00:05:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.0.0-beta.5..@fluentui/api-docs_v8.0.0-beta.6)
+
+### Changes
+
+- bump version to v9 for converged packages ([PR #17093](https://github.com/microsoft/fluentui/pull/17093) by olfedias@microsoft.com)
 
 ## [8.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.0.0-beta.5)
 

@@ -62,7 +62,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   return (
     <>
       {items.length > 0 && (
-        <div role={'list'}>
+        <div role={'listbox'} aria-orientation={'horizontal'} aria-multiselectable={'true'}>
           {SelectedItem &&
             renderedItems.map((item: TItem, index: number) => (
               <SelectedItem

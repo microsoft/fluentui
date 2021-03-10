@@ -191,9 +191,9 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar
@@ -326,7 +326,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 text-align: center;
               }
           data-icon-name="Add"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -392,7 +391,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 color: GrayText;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -544,7 +542,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 text-align: center;
               }
           data-icon-name="Upload"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -721,7 +718,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 text-align: center;
               }
           data-icon-name="Share"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -767,10 +763,10 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
         }
   >
     <button
+      aria-controls={null}
       aria-expanded={false}
       aria-haspopup={true}
       aria-label="More items"
-      aria-owns={null}
       className=
           ms-Button
           ms-Button--commandBar
@@ -908,7 +904,6 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
                 color: GrayText;
               }
           data-icon-name="More"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",

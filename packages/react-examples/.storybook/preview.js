@@ -10,21 +10,26 @@ addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withKeytipLayer);
 if (
-  [
-    'react-button',
-    'react-cards',
-    'react-checkbox',
-    'react-link',
-    'react-slider',
-    'react-tabs',
-    'react-text',
-    'react-toggle',
-  ].includes('PACKAGE_NAME')
+  ['react-button', 'react-cards', 'react-checkbox', 'react-slider', 'react-tabs', 'react-toggle'].includes(
+    'PACKAGE_NAME',
+  )
 ) {
+  initializeIcons();
   addDecorator(withCompatThemeProvider);
   addDecorator(withStrictMode);
 }
-if (['react-avatar', 'react-badge', 'react-link', 'react-image', 'react-menu'].includes('PACKAGE_NAME')) {
+if (
+  [
+    'react-avatar',
+    'react-badge',
+    'react-button',
+    'react-image',
+    'react-link',
+    'react-menu',
+    'react-text',
+    'react-components',
+  ].includes('PACKAGE_NAME')
+) {
   addDecorator(withFluentProvider);
   addDecorator(withStrictMode);
 }
@@ -35,9 +40,17 @@ addParameters({
   },
 });
 
-initializeIcons();
-
 configure(loadStories, module);
+
+function getStoryOrder(storyName) {
+  const order = ['Concepts/Introduction', 'Concepts', 'Components'];
+  for (let i = 0; i < order.length; i++) {
+    if (storyName.startsWith(order[i])) {
+      return i;
+    }
+  }
+  return order.length;
+}
 
 /**
  * @typedef {{
@@ -56,14 +69,13 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  // @ts-ignore
-  if ('PACKAGE_NAME' === 'react') {
-    // For the @fluentui/react storybook, also show the examples of re-exported component packages.
+  // @ts-ignore -- PACKAGE_NAME is replaced by a loader
+  if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
+    // For suite package storybooks, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
-    // Note that the regex intentionally goes only one directory below the package name
-    // (the first `\w+`, which will be the component name) to avoid picking up "next" examples
-    // which are under src/pkg-name/ComponentName/next/ComponentName.
-    contexts.push(require.context('../src', true, /(REACT_DEPS)\/\w+\/[\w.]+\.(Example|stories)\.tsx$/));
+    contexts.push(
+      require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
+    );
   }
 
   for (const req of contexts) {
@@ -73,7 +85,18 @@ function loadStories() {
   }
 
   // convert stories Set to array
-  const sorted = [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+  const sorted = [...stories.values()].sort((s1, s2) => {
+    const order1 = getStoryOrder(s1.default.title);
+    const order2 = getStoryOrder(s2.default.title);
+    if (order1 < order2) {
+      // the lowest order goes first
+      return -1;
+    }
+    if (order1 > order2) {
+      return 1;
+    }
+    return s1.default.title > s2.default.title ? 1 : -1;
+  });
   return sorted;
 }
 
@@ -86,19 +109,34 @@ function loadStories() {
 function generateStoriesFromExamples(key, stories, req) {
   // Depending on the starting point of the context, and the package layout, the key will be like one of these:
   //   ./ComponentName/ComponentName.Something.Example.tsx
-  //   ./next/ComponentName/ComponentName.Something.Example.tsx
   //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
   const segments = key.split('/');
   if (segments.length < 3) {
     return;
   }
 
-  const componentName = segments.length === 3 ? segments[1] : `${segments[2]} (${segments[1]})`;
+  if (key.endsWith('.mdx')) {
+    // out out of the custom naming for mdx, use meta information
+    stories.set(key, req(key));
+    return;
+  }
+
+  /** @type {string} */
+  let componentName;
+  if (segments.length === 3) {
+    // ./ComponentName/ComponentName.Something.Example.tsx
+    componentName = segments[1];
+  } else {
+    // ./package-name/ComponentName/ComponentName.Something.Example.tsx
+    // For @fluentui/react, don't include the package name in the sidebar
+    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
+    componentName = 'PACKAGE_NAME' === 'react' ? segments[2] : `${segments[2]} (${segments[1]})`;
+  }
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
-        title: componentName,
+        title: 'Components/' + componentName,
       },
     });
   }
@@ -126,3 +164,11 @@ function generateStoriesFromExamples(key, stories, req) {
     }
   }
 }
+
+export const parameters = {
+  options: {
+    storySort: {
+      order: ['Concepts/Introduction', 'Concepts', 'Components'],
+    },
+  },
+};

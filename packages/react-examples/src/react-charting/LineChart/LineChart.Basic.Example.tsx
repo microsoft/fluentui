@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface ILineChartBasicState {
   width: number;
   height: number;
+  allowMultipleShapes: boolean;
 }
 
 export class LineChartBasicExample extends React.Component<{}, ILineChartBasicState> {
@@ -13,6 +15,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     this.state = {
       width: 700,
       height: 300,
+      allowMultipleShapes: false,
     };
   }
 
@@ -25,6 +28,9 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
   };
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ height: parseInt(e.target.value, 10) });
+  };
+  private _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ allowMultipleShapes: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -129,6 +135,13 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <Toggle
+          label="Enabled  multiple shapes for each line"
+          onText="On"
+          offText="Off"
+          onChange={this._onShapeChange}
+          checked={this.state.allowMultipleShapes}
+        />
         <div style={rootStyle}>
           <LineChart
             data={data}
@@ -138,6 +151,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             height={this.state.height}
             width={this.state.width}
             margins={margins}
+            allowMultipleShapesForPoints={this.state.allowMultipleShapes}
           />
         </div>
       </>

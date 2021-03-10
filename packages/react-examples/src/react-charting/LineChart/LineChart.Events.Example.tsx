@@ -3,6 +3,7 @@ import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-chartin
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { mergeStyles } from '@fluentui/react/lib/Styling';
 import * as d3 from 'd3-format';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
@@ -12,6 +13,7 @@ const calloutItemStyle = mergeStyles({
 interface ILineChartEventsExampleState {
   width: number;
   height: number;
+  allowMultipleShapes: boolean;
 }
 
 export class LineChartEventsExample extends React.Component<{}, ILineChartEventsExampleState> {
@@ -20,6 +22,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
     this.state = {
       width: 700,
       height: 330,
+      allowMultipleShapes: false,
     };
   }
 
@@ -30,6 +33,13 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
         <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
         <label>change Height:</label>
         <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <Toggle
+          label="Enabled  multiple shapes for each line"
+          onText="On"
+          offText="Off"
+          onChange={this._onShapeChange}
+          checked={this.state.allowMultipleShapes}
+        />
         <div>{this._basicExample()}</div>
       </>
     );
@@ -40,6 +50,9 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
   };
   private _onHeightChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({ height: parseInt(e.target.value, 10) });
+  };
+  private _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ allowMultipleShapes: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -85,31 +98,31 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297,
+              y: 292,
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284,
+              y: 287,
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282,
+              y: 287,
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294,
+              y: 292,
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 294,
+              y: 287,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300,
+              y: 297,
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298,
+              y: 292,
             },
           ],
           color: DefaultPalette.green,
@@ -131,6 +144,7 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           yMaxValue={301}
           yAxisTickFormat={d3.format('$,')}
           tickFormat={'%m/%d'}
+          allowMultipleShapesForPoints={this.state.allowMultipleShapes}
           tickValues={[
             new Date('2020-03-03'),
             new Date('2020-03-04'),

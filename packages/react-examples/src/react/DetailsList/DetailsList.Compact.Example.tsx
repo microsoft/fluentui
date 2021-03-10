@@ -82,7 +82,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
             onItemInvoked={this._onItemInvoked}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
-            checkButtonAriaLabel="Row checkbox"
+            checkButtonAriaLabel="select row"
           />
         </MarqueeSelection>
       </Fabric>

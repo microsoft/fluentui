@@ -270,7 +270,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -315,7 +314,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                           forced-color-adjust: none;
                         }
                     data-icon-name="StatusCircleCheckmark"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -428,7 +426,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                     transition: transform .1s linear;
                   }
               data-icon-name="ChevronRightMed"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons-3\\"",
@@ -905,9 +902,10 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                         </div>
                       </div>
                       <div
+                        aria-label="group 0"
                         className="ms-List"
                         id="GroupedListSection3"
-                        role="presentation"
+                        role="rowgroup"
                       >
                         <div
                           className="ms-List-surface"
@@ -926,7 +924,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={1}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -1061,7 +1058,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -1183,7 +1180,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1228,7 +1224,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1343,7 +1338,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={2}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -1478,7 +1472,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -1600,7 +1594,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1645,7 +1638,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1760,7 +1752,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={3}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -1895,7 +1886,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -2017,7 +2008,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2062,7 +2052,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2177,7 +2166,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2312,7 +2300,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -2434,7 +2422,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2479,7 +2466,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2594,7 +2580,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={5}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -2729,7 +2714,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -2851,7 +2836,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2896,7 +2880,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3011,7 +2994,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={6}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3146,7 +3128,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -3268,7 +3250,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3313,7 +3294,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3428,7 +3408,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={7}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3563,7 +3542,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -3685,7 +3664,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3730,7 +3708,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -3845,7 +3822,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={8}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -3980,7 +3956,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -4102,7 +4078,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4147,7 +4122,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4262,7 +4236,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={9}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -4397,7 +4370,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -4519,7 +4492,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4564,7 +4536,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4679,7 +4650,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                             >
                               <div
                                 aria-level={2}
-                                aria-rowindex={10}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -4814,7 +4784,7 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                 >
                                   <div
                                     aria-checked={false}
-                                    aria-label="Row checkbox"
+                                    aria-label="select row"
                                     className=
                                         ms-DetailsRow-check
                                         ms-Check-checkHost
@@ -4936,7 +4906,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               color: WindowText;
                                             }
                                         data-icon-name="CircleRing"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -4981,7 +4950,6 @@ exports[`Component Examples renders DetailsList.CustomGroupHeaders.Example.tsx c
                                               forced-color-adjust: none;
                                             }
                                         data-icon-name="StatusCircleCheckmark"
-                                        role="presentation"
                                         style={
                                           Object {
                                             "fontFamily": "\\"FabricMDL2Icons\\"",

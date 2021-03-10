@@ -239,7 +239,6 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
                   text-align: center;
                 }
             data-icon-name="Add"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -348,7 +347,6 @@ exports[`Component Examples renders Button.CustomSplit.Example.tsx correctly 1`]
                   text-align: center;
                 }
             data-icon-name="ChevronDown"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
