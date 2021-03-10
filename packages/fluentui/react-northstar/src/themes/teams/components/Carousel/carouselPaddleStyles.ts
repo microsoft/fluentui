@@ -60,7 +60,7 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         [`& .${carouselPaddleSlotClassNames.content}`]: {
-          ...getIndicatorStyles(v.paddleColorHover, p.next, v.paddleIndicatorSize),
+          ...getIndicatorStyles(v.paddleColor, p.next, v.paddleIndicatorSize),
         },
         background: v.paddleBackgroundColorHover,
       },
