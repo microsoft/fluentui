@@ -9,7 +9,7 @@ variables:
   - group: 'Github and NPM secrets'
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'Ubuntu 20.04'
 
 schedules:
   # minute 0, hour 12 in UTC (5am in UTC+7), any day of month, any month, days 1-5 of week (M-F)

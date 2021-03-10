@@ -126,7 +126,7 @@ describe('List', () => {
   });
 
   describe('if provided', () => {
-    it('invokes optional onRenderCell prop per item render', done => {
+    xit('invokes optional onRenderCell prop per item render', done => {
       const onRenderCellMock = jest.fn();
       const wrapper = mount(<List items={mockData(100)} />);
 

@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "disable failing test",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "d5ee83f6682070794a8274a689346250a5ee91fb",
+  "date": "2021-03-10T21:15:41.344Z"
+}

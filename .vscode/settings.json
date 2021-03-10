@@ -45,7 +45,7 @@
   "tslint.rulesDirectory": "./common/temp/node_modules/tslint-microsoft-contrib",
   // Defines space handling after opening and before closing JSX expression braces. Requires TypeScript >= 2.0.6.
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false, // to prevent formatting conflicts with newer prettier
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
   "tslint.autoFixOnSave": false,
   "files.associations": {
