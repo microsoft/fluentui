@@ -9,6 +9,7 @@ const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
+  // CI should use production builds to improve perf of loading pages
   mode: 'production',
   entry: {
     app: paths.e2eSrc('app'),
