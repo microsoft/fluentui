@@ -76,3 +76,5 @@ declare namespace NodeJS {
     };
   }
 }
+
+declare var process: NodeJS.Process;
