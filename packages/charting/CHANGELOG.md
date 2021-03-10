@@ -1,8 +1,17 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 10 Mar 2021 12:28:45 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 22:51:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [4.15.5](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.5)
+
+Wed, 10 Mar 2021 22:51:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/charting_v4.15.4..@uifabric/charting_v4.15.5)
+
+### Patches
+
+- adding mouse events single data point, backward compatible ([PR #17312](https://github.com/microsoft/fluentui/pull/17312) by email not defined)
 
 ## [4.15.4](https://github.com/microsoft/fluentui/tree/@uifabric/charting_v4.15.4)
 

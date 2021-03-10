@@ -2,6 +2,21 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 10 Mar 2021 22:51:07 GMT",
+      "tag": "@fluentui/react-examples_v0.12.6",
+      "version": "0.12.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding changes to support fixes",
+            "author": "email not defined",
+            "commit": "d5ada972e0dd8fe5d3113c0c83e0b973d5b7fe74",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 10 Mar 2021 12:28:45 GMT",
       "tag": "@fluentui/react-examples_v0.12.5",
       "version": "0.12.5",

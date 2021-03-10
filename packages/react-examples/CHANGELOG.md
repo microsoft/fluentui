@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-examples
 
-This log was last generated on Wed, 10 Mar 2021 12:28:45 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 22:51:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.12.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.6)
+
+Wed, 10 Mar 2021 22:51:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-examples_v0.12.5..@fluentui/react-examples_v0.12.6)
+
+### Patches
+
+- adding changes to support fixes ([PR #17312](https://github.com/microsoft/fluentui/pull/17312) by email not defined)
 
 ## [0.12.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-examples_v0.12.5)
 

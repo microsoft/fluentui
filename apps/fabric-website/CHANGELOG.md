@@ -1,8 +1,17 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 10 Mar 2021 12:28:45 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 22:51:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.16.39](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.39)
+
+Wed, 10 Mar 2021 22:51:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/fabric-website_v7.16.38..@uifabric/fabric-website_v7.16.39)
+
+### Patches
+
+- Hides modal and footer in prep for MWF stylesheet removal ([PR #17349](https://github.com/microsoft/fluentui/pull/17349) by tristan.watanabe@gmail.com)
 
 ## [7.16.38](https://github.com/microsoft/fluentui/tree/@uifabric/fabric-website_v7.16.38)
 
