@@ -151,6 +151,7 @@ const ChatMessageActions = () => {
 const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageProps) => {
   const [showPopover, setShowPopover] = React.useState<EventSource | string>(null);
   const [triggerEvent, setTriggerEvent] = React.useState<any>(null);
+  const [showActionMenu, setShowActionMenu] = React.useState(false);
 
   const popoverRef = React.useRef(null);
   const buttonRef = React.useRef<HTMLElement>();
@@ -202,6 +203,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
 
   const handleMouseEnterOnMessage = e => {
     show('mouse', e);
+    setShowActionMenu(true);
   };
 
   const handleBlurOnMessage = (e: any) => {
@@ -384,6 +386,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (messageProps: ChatMessageP
         onMouseEnter={e => handleMouseEnterOnMessage(e)}
         onMouseLeave={() => hide('mouse')}
         onKeyDown={e => handleKeyDownOnMessage(e)}
+        variables={{ showActionMenu }}
       />
     </Ref>
   );
