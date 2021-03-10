@@ -166,9 +166,6 @@ export interface UseBooleanCallbacks {
 }
 
 // @public
-export function useCallbackRef<T>(initialValue: T | null, callback: (newValue: T | null, lastValue: T | null) => void, skipInitialResolve?: boolean): React.MutableRefObject<T | null>;
-
-// @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
 // Warning: (ae-forgotten-export) The symbol "DefaultValue" needs to be exported by the entry point index.d.ts
