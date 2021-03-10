@@ -6,6 +6,7 @@
 
 import { ComponentProps } from '@fluentui/react-utilities';
 import { ObjectShorthandProps } from '@fluentui/react-utilities';
+import { PositioningProps } from '@fluentui/react-positioning';
 import * as React from 'react';
 import { ShorthandProps } from '@fluentui/react-utilities';
 
@@ -146,10 +147,12 @@ export interface MenuListState extends MenuListProps {
 
 // @public
 export interface MenuProps extends MenuListProps {
+    align?: PositioningProps['align'];
     children: React.ReactNode;
     defaultOpen?: boolean;
     menuPopup?: ShorthandProps<React.HTMLAttributes<HTMLElement>>;
     open?: boolean;
+    position?: PositioningProps['position'];
 }
 
 // @public (undocumented)
@@ -163,6 +166,7 @@ export interface MenuState extends MenuProps {
     open: boolean;
     ref: React.MutableRefObject<HTMLElement>;
     setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    triggerRef: React.MutableRefObject<HTMLElement>;
 }
 
 // @public
