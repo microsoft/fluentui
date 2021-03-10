@@ -42,7 +42,7 @@ Slots can be configured with different types and shapes of values, but result sh
 
 ### An object as a value
 
-If you will pass an object to component's props we will handle it as props for a slot, this behavior can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
+This behavior can be considered as declaring a JSX element with a javascript object. In an example below, props will be passed to an `icon` slot:
 
 ```jsx
 <Button icon={{ children: <FooIcon />, className: 'an-awesome-slot', id: '#button-icon' }} />
