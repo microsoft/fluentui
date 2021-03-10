@@ -26,6 +26,14 @@ export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
   </div>
 );
 
+export const getTallWideDecorator = (width: string) => (story: RenderFunction) => (
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px 10px 120px', width }}>
+      {story()}
+    </div>
+  </div>
+);
+
 export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
