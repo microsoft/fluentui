@@ -70,13 +70,10 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  // @ts-ignore
+  // @ts-ignore -- PACKAGE_NAME is replaced by a loader
   if ('PACKAGE_NAME' === 'react' || 'PACKAGE_NAME' === 'react-components') {
-    // For the @fluentui/react storybook, also show the examples of re-exported component packages.
+    // For suite package storybooks, also show the examples of re-exported component packages.
     // preview-loader will replace REACT_ DEPS with the actual list.
-    // Note that the regex intentionally goes only one directory below the package name
-    // (the first `\w+`, which will be the component name) to avoid picking up "next" examples
-    // which are under src/pkg-name/ComponentName/next/ComponentName.
     contexts.push(
       require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
     );
@@ -113,7 +110,6 @@ function loadStories() {
 function generateStoriesFromExamples(key, stories, req) {
   // Depending on the starting point of the context, and the package layout, the key will be like one of these:
   //   ./ComponentName/ComponentName.Something.Example.tsx
-  //   ./next/ComponentName/ComponentName.Something.Example.tsx
   //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
   const segments = key.split('/');
   if (segments.length < 3) {
@@ -126,7 +122,17 @@ function generateStoriesFromExamples(key, stories, req) {
     return;
   }
 
-  const componentName = segments.length === 3 ? segments[1] : `${segments[2]} (${segments[1]})`;
+  /** @type {string} */
+  let componentName;
+  if (segments.length === 3) {
+    // ./ComponentName/ComponentName.Something.Example.tsx
+    componentName = segments[1];
+  } else {
+    // ./package-name/ComponentName/ComponentName.Something.Example.tsx
+    // For @fluentui/react, don't include the package name in the sidebar
+    // @ts-ignore -- PACKAGE_NAME is replaced by a loader
+    componentName = 'PACKAGE_NAME' === 'react' ? segments[2] : `${segments[2]} (${segments[1]})`;
+  }
 
   if (!stories.has(componentName)) {
     stories.set(componentName, {

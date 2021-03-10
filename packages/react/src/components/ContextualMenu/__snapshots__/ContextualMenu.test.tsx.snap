@@ -2,9 +2,9 @@
 
 exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present in DOM when hidden (snapshot) 1`] = `
 <button
+  aria-controls={null}
   aria-expanded={false}
   aria-haspopup={true}
-  aria-owns={null}
   className=
       ms-Button
       ms-Button--default

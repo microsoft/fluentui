@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix menu hierarchy in ContextualMenu, and update labelled element",
-  "packageName": "@fluentui/react",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

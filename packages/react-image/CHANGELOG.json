@@ -2,6 +2,36 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Wed, 10 Mar 2021 07:34:39 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.8",
+      "version": "9.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.8",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "458d1a05b3288c5d36da578f954df06f227066bf",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 Mar 2021 20:30:59 GMT",
+      "tag": "@fluentui/react-image_v9.0.0-alpha.7",
+      "version": "9.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "comment": "Bump @fluentui/react-make-styles to v9.0.0-alpha.7",
+            "author": "lingfan.gao@microsoft.com",
+            "commit": "f7b97e9dc1cf0fec0201533042db4befb800cbd0",
+            "package": "@fluentui/react-image"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Mar 2021 00:10:09 GMT",
       "tag": "@fluentui/react-image_v9.0.0-alpha.6",
       "version": "9.0.0-alpha.6",
