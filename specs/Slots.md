@@ -34,7 +34,7 @@ Each slot is represented by a React component or a primitive, for example: `slot
 </>
 ```
 
-A default set of components is manually configured per each component, but is optional, by default slots are represented by `div` elements.
+Slots are rendered as `div` elements by default. However, all rendering aspects of a slot can be manually configured and overridden.
 
 ## Slots usage
 
