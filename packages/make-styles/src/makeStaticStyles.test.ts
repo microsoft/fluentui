@@ -2,7 +2,7 @@ import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
 import { makeStaticStyles } from './makeStaticStyles';
 import { cssRulesSerializer, makeStylesRulesSerializer } from './utils/test/snapshotSerializer';
-import { makeStylesCompat } from './makeStyles';
+import { makeStylesCompat } from './makeStylesCompat';
 
 expect.addSnapshotSerializer(cssRulesSerializer);
 expect.addSnapshotSerializer(makeStylesRulesSerializer);

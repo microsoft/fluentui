@@ -1,5 +1,5 @@
 import { ax } from './ax';
-import { makeStylesCompat } from './makeStyles';
+import { makeStylesCompat } from './makeStylesCompat';
 import { createDOMRenderer } from './renderer/createDOMRenderer';
 import { MakeStylesOptions } from './types';
 

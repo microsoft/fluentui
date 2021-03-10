@@ -1,6 +1,6 @@
 import { getCSSRules } from '@fluentui/test-utilities';
 import { createDOMRenderer, MakeStylesDOMRenderer, resetDOMRenderer } from './renderer/createDOMRenderer';
-import { makeStylesCompat } from './makeStyles';
+import { makeStylesCompat } from './makeStylesCompat';
 import { cssRulesSerializer } from './utils/test/snapshotSerializer';
 
 /* eslint-disable @fluentui/max-len */
