@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "adding mouse events single data point, backward compatible",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
