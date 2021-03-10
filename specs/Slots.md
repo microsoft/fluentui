@@ -15,7 +15,7 @@ For example, `Button` component contains `content`, `loader` and `icon` slots in
 </slots.root>
 ```
 
-Slots let define the complex layouts required by many components according to accessibility and design requirements automatically. Slots can be configured through props, which lets the caller pass in a variety of inputs for a given slot.
+Slots define the complex layouts required by many components according to accessibility and design requirements automatically. Slots can be configured through props, allowing the caller pass in a variety of inputs for a given slot.
 
 ## Slots components
 
