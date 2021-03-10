@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Remove unneeded scripts",
+  "packageName": "@fluentui/react-flex",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "none"
+}
