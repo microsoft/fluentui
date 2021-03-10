@@ -38,7 +38,7 @@ A default set of components is manually configured per each component, but is op
 
 ## Slots usage
 
-There are several forms of values that can be provided, but all of them share one common thing - they will produce a proper layout inside a component.
+Slots can be configured with different types and shapes of values, but result should not change - slots will produce a correct layout inside a component.
 
 ### An object as a value
 
