@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Calendar/DatePicker: add ref to props where appropriate, and remove unnecessary forwardRef",
+  "packageName": "@fluentui/react",
+  "email": "elcraig@microsoft.com",
+  "dependentChangeType": "patch"
+}
