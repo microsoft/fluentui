@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Change makeStyle to makeStyleCompat",
+  "comment": "Change makeStyles to makeStylesCompat",
   "packageName": "@fluentui/react-menu",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"

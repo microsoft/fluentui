@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "Change makeStyle to makeStyleCompat",
+  "comment": "Change makeStyles to makeStylesCompat",
   "packageName": "@fluentui/make-styles",
   "email": "bsunderhus@microsoft.com",
   "dependentChangeType": "patch"
