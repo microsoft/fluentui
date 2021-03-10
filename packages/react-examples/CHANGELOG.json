@@ -2,6 +2,29 @@
   "name": "@fluentui/react-examples",
   "entries": [
     {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "@fluentui/react-examples_v0.12.5",
+      "version": "0.12.5",
+      "comments": {
+        "none": [
+          {
+            "comment": "Snapshot changes for BasePicker",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "db9b2fdee04e224f21fb17063b6acd80a28ab615",
+            "package": "@fluentui/react-examples"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Bump @uifabric/api-docs to v7.6.25",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "@fluentui/react-examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Mar 2021 12:24:49 GMT",
       "tag": "@fluentui/react-examples_v0.12.4",
       "version": "0.12.4",

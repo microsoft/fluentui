@@ -1,8 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 09 Mar 2021 12:24:49 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Mar 2021 12:28:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.164.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.164.0)
+
+Wed, 10 Mar 2021 12:28:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/office-ui-fabric-react_v7.163.0..office-ui-fabric-react_v7.164.0)
+
+### Minor changes
+
+- Dropdown: cherry pick #16298 ([PR #16959](https://github.com/microsoft/fluentui/pull/16959) by joschect@microsoft.com)
+
+### Patches
+
+- Adds role="presentation" to BasePicker div for screen reader accessibility" ([PR #17325](https://github.com/microsoft/fluentui/pull/17325) by sarah.higley@microsoft.com)
+- cherry picked 'Add jsxRuntime classic pragma (#16863)' from master ([PR #17340](https://github.com/microsoft/fluentui/pull/17340) by trenkmann@noxum.com)
 
 ## [7.163.0](https://github.com/microsoft/fluentui/tree/office-ui-fabric-react_v7.163.0)
 

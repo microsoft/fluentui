@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 10 Mar 2021 12:28:45 GMT",
+      "tag": "office-ui-fabric-react_v7.164.0",
+      "version": "7.164.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Dropdown: cherry pick #16298",
+            "author": "joschect@microsoft.com",
+            "commit": "dbb4ca1b976e60f995c243bfbc12acc33559a1a4",
+            "package": "office-ui-fabric-react"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Adds role=\"presentation\" to BasePicker div for screen reader accessibility\"",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "db9b2fdee04e224f21fb17063b6acd80a28ab615",
+            "package": "office-ui-fabric-react"
+          },
+          {
+            "comment": "cherry picked 'Add jsxRuntime classic pragma (#16863)' from master",
+            "author": "trenkmann@noxum.com",
+            "commit": "124a0478ef62fc464882315a332497a2d760c56c",
+            "package": "office-ui-fabric-react"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 09 Mar 2021 12:24:49 GMT",
       "tag": "office-ui-fabric-react_v7.163.0",
       "version": "7.163.0",
