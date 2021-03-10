@@ -9,16 +9,17 @@ const { paths } = config;
 const webpackConfig: webpack.Configuration = {
   name: 'client',
   target: 'web',
-  mode: config.compiler_mode,
+  // CI should use production builds to improve perf of loading pages
+  mode: 'production',
   entry: {
     app: paths.e2eSrc('app'),
   },
   output: {
     filename: `[name].js`,
     path: paths.e2eDist(),
-    pathinfo: true,
   },
-  devtool: config.compiler_devtool,
+  // CI should not use sourcemaps, but it's useful for local debugging
+  devtool: process.env.CI ? false : config.compiler_devtool,
   node: {
     global: true,
   },
