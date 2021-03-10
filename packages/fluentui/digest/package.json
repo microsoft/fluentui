@@ -23,8 +23,7 @@
     "webpack": "5.21.2"
   },
   "devDependencies": {
-    "@types/node": "^10.3.2",
-    "@types/webpack": "4.41.26"
+    "@types/node": "^10.3.2"
   },
   "publishConfig": {
     "access": "public"
