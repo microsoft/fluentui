@@ -44,7 +44,6 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
-    "@fluentui/react-make-styles": "^9.0.0-alpha.8",
     "@fluentui/react-provider": "^9.0.0-alpha.8",
     "@fluentui/react-utilities": "^9.0.0-alpha.7",
     "@popperjs/core": "~2.4.3",
